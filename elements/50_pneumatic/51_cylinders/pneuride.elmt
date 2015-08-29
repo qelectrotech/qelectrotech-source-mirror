@@ -1,22 +1,24 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{35FCFB02-C15B-407E-883D-DB6A4C284D0D}"/><names>
+<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="23" orientation="dyyy">
+    <uuid uuid="{ce6dc64f-bacf-4712-ae2f-7b0735eae58b}"/>
+    <names>
         <name lang="en">Cylinder bellows</name>
-        <name lang="fr">Pneuride</name>
         <name lang="pl">Siłownik mieszkowy</name>
         <name lang="cs">Vlnovcový válec (válcový měch)</name>
-        <name lang="ar">اسطوانة منفاخ</name>
-        <name lang="it">Cilindro a soffietto</name>
         <name lang="nl">Cilnder luchtzak</name>
+        <name lang="fr">Pneuride</name>
+        <name lang="it">Cilindro a soffietto</name>
+        <name lang="ar">اسطوانة منفاخ</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="30" x="20" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.05" x1="-10.05" y2="-20.05" x2="49.95"/>
-        <arc width="30" x="-10" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="18" y2="10" x2="22" y3="6" x3="20" y4="10"/>
+        <input x="-7" tagg="label" y="-34.45" rotate="true" text="_" size="9"/>
+        <arc x="20" height="30" width="30" start="90" y="-20" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="-10" end1="none" x2="50" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20.05" end2="none" length2="1.5" x1="-10.05" end1="none" x2="49.95" length1="1.5" y2="-20.05" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" height="30" width="30" start="-90" y="-20" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" x3="20" y4="10" x1="18" y3="6" x4="18" x2="22" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="20" y="20" orientation="s"/>
     </description>
 </definition>

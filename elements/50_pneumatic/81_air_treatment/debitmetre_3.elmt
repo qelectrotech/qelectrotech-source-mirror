@@ -1,22 +1,24 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-<uuid uuid="{100EBE75-A6A6-4C96-A837-69E1C5C4437B}"/><names>
+<definition height="80" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+    <uuid uuid="{6b944278-3868-45e9-b0ad-f13b12c96658}"/>
+    <names>
         <name lang="en">Flowmeter</name>
-        <name lang="fr">Debitmetre</name>
         <name lang="pl">Przepływomierz</name>
         <name lang="cs">Průtokoměr</name>
-        <name lang="ar">مقياس ضغط</name>
-        <name lang="it">Sensore di portata</name>
         <name lang="nl">Stromingsmeter</name>
+        <name lang="fr">Debitmetre</name>
+        <name lang="it">Sensore di portata</name>
+        <name lang="ar">مقياس ضغط</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="10" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="0"/>
-        <arc width="30" x="0" y="15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-225" angle="-90"/>
-        <circle x="0" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <arc width="30" x="0" y="-25" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
-        <terminal x="-10" y="10" orientation="w"/>
+        <input x="-12" tagg="label" y="-9.45" rotate="true" text="_" size="9"/>
+        <line y1="10" end2="none" length2="1.5" x1="30" end1="none" x2="40" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" height="30" width="30" start="-225" y="15" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="0" y="-5" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" height="30" width="30" start="-45" y="-25" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="40" y="10" orientation="e"/>
+        <terminal x="-10" y="10" orientation="w"/>
     </description>
 </definition>

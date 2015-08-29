@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnnn">
-<uuid uuid="{D29B7713-461A-42B0-AD50-CEA7447957C6}"/><names>
+<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{79f914dd-7a04-4060-874e-c94796bb1c59}"/>
+    <names>
         <name lang="en">Check valve with spring</name>
-        <name lang="fr">Clapet anti-retour avec ressort</name>
         <name lang="pl">Zawór zwrotny obciążony sprężyną</name>
         <name lang="cs">Pojistný ventil s pružinou</name>
-        <name lang="ar">صمّام ضد الرجع بزمبرك</name>
-        <name lang="it">Valvola di ritegno con molla</name>
         <name lang="nl">Klep terugslag met veer</name>
+        <name lang="fr">Clapet anti-retour avec ressort</name>
+        <name lang="it">Valvola di ritegno con molla</name>
+        <name lang="ar">صمّام ضد الرجع بزمبرك</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="5" y5="-7" x5="-5" y6="-5" x6="5" y7="-4" x7="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="0" y2="-13" x2="5" y3="-11" x3="-5" y4="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-4" x2="0"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="5" x2="0" y3="0" x3="5"/>
-        <circle x="-3" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="8" tagg="label" y="-4.45" rotate="true" text="_" size="9"/>
+        <polygon y1="-14" x7="0" y5="-7" y7="-4" x5="-5" y6="-5" closed="false" x3="-5" y4="-9" x1="0" x6="5" y3="-11" x4="5" x2="5" y2="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" closed="false" x3="5" x1="-5" y3="0" x2="0" y2="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" y="-3" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
     </description>
 </definition>

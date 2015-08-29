@@ -1,24 +1,26 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{95F6E82D-68AD-4540-A131-22CC7BAA8200}"/><names>
+<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38" orientation="dyyy">
+    <uuid uuid="{5dc90539-7cef-40a4-a151-93b31d250825}"/>
+    <names>
         <name lang="en">Selector circuit</name>
-        <name lang="fr">Selecteur de circuit</name>
         <name lang="pl">Przełącznik obiegu (zawór logiczny LUB)</name>
         <name lang="cs">Volič obvodu</name>
-        <name lang="ar">مُحدّد دائرة</name>
-        <name lang="it">Selettore di circuito</name>
         <name lang="nl">Selectie (OR)</name>
+        <name lang="fr">Selecteur de circuit</name>
+        <name lang="it">Selettore di circuito</name>
+        <name lang="ar">مُحدّد دائرة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="28.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="30" y2="-30" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="44"/>
-        <rect width="50" x="5" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="13" y2="0" x2="7" y3="5" x3="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="53" y2="0" x2="70"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="48" y2="0" x2="53" y3="5" x3="48"/>
-        <circle x="45" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <input x="33" tagg="label" y="-24.45" rotate="true" text="_" size="9"/>
+        <circle x="28.85" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="30" end1="none" x2="30" length1="1.5" y2="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="44" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" height="30" width="50" y="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-5" closed="false" x3="13" x1="13" y3="5" x2="7" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="53" end1="none" x2="70" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-5" closed="false" x3="48" x1="48" y3="5" x2="53" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="45" y="-3" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="30" y="-30" orientation="n"/>
         <terminal x="-10" y="0" orientation="w"/>
         <terminal x="70" y="0" orientation="e"/>

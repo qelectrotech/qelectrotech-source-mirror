@@ -1,22 +1,24 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{6590B8BA-B891-4F28-BF8B-7F7373B9772D}"/><names>
+<definition height="40" version="0.5" width="90" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{68332bef-de43-4166-bb52-a9270d9c6a20}"/>
+    <names>
         <name lang="en">Cylinder (engine) telescopic single acting pneumatic</name>
-        <name lang="fr">Cylindre (moteur) telescopique pneumatique simple effet</name>
         <name lang="pl">Cylinder (siłownik) teleskowpowy pneumatyczny jednostronnego działania</name>
         <name lang="cs">Vysunovatelný jednočinný vzduchový válec (motor)</name>
-        <name lang="ar">اسطوانة (محرك) تيليسكوبي نيوماتي بفعل وحيد</name>
-        <name lang="it">Cilindro (motore) telescopico, effetto singolo</name>
         <name lang="nl">Cilnder telescoop 1 richting</name>
+        <name lang="fr">Cylindre (moteur) telescopique pneumatique simple effet</name>
+        <name lang="it">Cilindro (motore) telescopico, effetto singolo</name>
+        <name lang="ar">اسطوانة (محرك) تيليسكوبي نيوماتي بفعل وحيد</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="0" y2="-16" x2="55" y3="-12" x3="55"/>
-        <polygon x4="-12" y5="0" x5="42" y6="-4" x6="42" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="42" y2="-20" x2="42" y3="-20" x3="-12" y4="0"/>
-        <polygon x4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="20" y2="-12" x2="70" y3="-8" x3="70" y4="-8"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="0" y2="-4" x2="55" y3="-8" x3="55"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="10" x2="-10"/>
-        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="0" x2="-8" y3="-4" x3="-10" y4="0"/>
+        <polygon y1="-16" closed="false" x3="55" x1="0" y3="-12" x2="55" y2="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-12" tagg="label" y="-29.45" rotate="true" text="_" size="9"/>
+        <polygon y1="-16" y5="0" x5="42" y6="-4" closed="false" x3="-12" y4="0" x1="42" x6="42" y3="-20" x4="-12" x2="42" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-12" closed="false" x3="70" y4="-8" x1="20" y3="-8" x4="20" x2="70" y2="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-4" closed="false" x3="55" x1="0" y3="-8" x2="55" y2="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="-10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" x3="-10" y4="0" x1="-12" y3="-4" x4="-12" x2="-8" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-10" y="10" orientation="s"/>
     </description>
 </definition>

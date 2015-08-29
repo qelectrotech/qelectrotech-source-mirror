@@ -1,23 +1,25 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" orientation="dnnn">
-<uuid uuid="{9160DD8D-616E-4019-B913-961F5BB3193D}"/><names>
+<definition height="70" version="0.5" width="50" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+    <uuid uuid="{588165c9-233d-4062-97d1-6b241f02348c}"/>
+    <names>
         <name lang="en">Adjustable throttle valve</name>
+        <name lang="pl">Zawór dławiący nastawialny</name>
+        <name lang="cs">Nastavitelná škrtící klapka</name>
+        <name lang="nl">Smoring regelbaar</name>
         <name lang="fr">Réducteur de
 débit variable
 </name>
-        <name lang="pl">Zawór dławiący nastawialny</name>
-        <name lang="cs">Nastavitelná škrtící klapka</name>
-        <name lang="ar">مُخفّض تدفّق قابل للتعديل</name>
         <name lang="it">Riduttore di flusso regolabile</name>
-        <name lang="nl">Smoring regelbaar</name>
+        <name lang="ar">مُخفّض تدفّق قابل للتعديل</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="30"/>
-        <polygon x4="16" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="16" y2="-6" x2="18" y3="-10" x3="20" y4="-8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="-7" x2="17"/>
-        <arc width="30" x="-5" y="-32" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
-        <arc width="30" x="-5" y="2" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-225" angle="-90"/>
+        <input x="28" tagg="label" y="-14.45" rotate="true" text="_" size="9"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="30" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-8" x3="20" y4="-8" x1="16" y3="-10" x4="16" x2="18" y2="-6" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="0" end1="none" x2="17" length1="1.5" y2="-7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-5" height="30" width="30" start="-45" y="-32" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-5" height="30" width="30" start="-225" y="2" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="30" y="0" orientation="e"/>
         <terminal x="-10" y="0" orientation="w"/>
     </description>

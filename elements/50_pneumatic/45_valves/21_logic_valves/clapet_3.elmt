@@ -1,26 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnnn">
-<uuid uuid="{1D55241E-0001-496B-8AEA-66BAAF12690B}"/><names>
+<definition height="50" version="0.5" width="40" hotspot_x="17" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{a1fefedb-7432-4125-8d57-a4a3bc1c3cea}"/>
+    <names>
         <name lang="en">Non-return valve</name>
+        <name lang="pl">Zawór zwrotny sterowany, zamykany ciśnieniem</name>
+        <name lang="cs">Řízený vratný ventil, zamykaný tlakem</name>
+        <name lang="nl">Klep terugslag met luchtbediend</name>
         <name lang="fr">Clapet anti-
 retour piloté
 </name>
-        <name lang="pl">Zawór zwrotny sterowany, zamykany ciśnieniem</name>
-        <name lang="cs">Řízený vratný ventil, zamykaný tlakem</name>
-        <name lang="ar">صمّام ضدّ الرجع محكوم</name>
         <name lang="it">Valvola di ritegno comandata</name>
-        <name lang="nl">Klep terugslag met luchtbediend</name>
+        <name lang="ar">صمّام ضدّ الرجع محكوم</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="5" y2="-15" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="9" y2="-15" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="-15" x2="5"/>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-4" x2="0"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="5" x2="0" y3="0" x3="5"/>
-        <circle x="-3" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <line y1="-15" end2="none" length2="1.5" x1="5" end1="none" x2="7" length1="1.5" y2="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="13" tagg="label" y="-4.45" rotate="true" text="_" size="9"/>
+        <line y1="-15" end2="none" length2="1.5" x1="9" end1="none" x2="14" length1="1.5" y2="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" height="20" width="20" y="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" closed="false" x3="5" x1="-5" y3="0" x2="0" y2="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" y="-3" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="-20" orientation="n"/>
         <terminal x="0" y="20" orientation="s"/>
         <terminal x="14" y="-15" orientation="e"/>

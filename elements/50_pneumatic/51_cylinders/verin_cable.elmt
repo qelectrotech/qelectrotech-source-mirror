@@ -1,34 +1,36 @@
-<definition width="120" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{F75016CC-09A6-49F6-80D2-35B4A425997B}"/><names>
+<definition height="50" version="0.5" width="120" hotspot_x="15" type="element" link_type="simple" hotspot_y="25" orientation="dyyy">
+    <uuid uuid="{53b8a067-c7f0-4227-8ee7-90d3dffb286e}"/>
+    <names>
         <name lang="en">Pneumatic actuator cable</name>
-        <name lang="fr">Verin a cable</name>
         <name lang="pl">Siłownik cięgnowy pneumatyczny z hamowaniem dwustronnym o stałej wartości</name>
         <name lang="cs">Vzduchové kabelové poháněcí zařízení</name>
-        <name lang="ar">اسطوانة بكايبل</name>
-        <name lang="it">Cilindro a cavo</name>
         <name lang="nl">Cilinder met kabel</name>
+        <name lang="fr">Verin a cable</name>
+        <name lang="it">Cilindro a cavo</name>
+        <name lang="ar">اسطوانة بكايبل</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="50" y2="-18" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="40" y2="-18" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="40" y2="-22" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="90"/>
-        <circle x="88" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <circle x="80" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <polygon x4="47" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="47" y2="6" x2="53" y3="-6" x3="53" y4="-6"/>
-        <polygon x4="43" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="43" y2="6" x2="37" y3="-6" x3="37" y4="-6"/>
-        <circle x="-2" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <polygon x4="72" y5="10" x5="72" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="72" y2="10" x2="18" y3="-10" x3="18" y4="-10"/>
-        <circle x="-10" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="20" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <polygon x4="68" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="68" y2="10" x2="72" y3="6" x3="70" y4="10"/>
-        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="18" y2="10" x2="22" y3="6" x3="20" y4="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="47" y2="10" x2="47"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="43" y2="10" x2="43"/>
+        <line y1="-22" end2="none" length2="1.5" x1="50" end1="none" x2="50" length1="1.5" y2="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="3" tagg="label" y="-34.45" rotate="true" text="_" size="9"/>
+        <line y1="-22" end2="none" length2="1.5" x1="40" end1="none" x2="40" length1="1.5" y2="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-22" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="0" end1="none" x2="90" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="0" end1="none" x2="90" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="88" y="-12" diameter="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="80" y="-20" diameter="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="6" closed="false" x3="53" y4="-6" x1="47" y3="-6" x4="47" x2="53" y2="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="6" closed="false" x3="37" y4="-6" x1="43" y3="-6" x4="43" x2="37" y2="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2" y="-12" diameter="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" y5="10" x5="72" x3="18" y4="-10" x1="72" y3="-10" x4="72" x2="18" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-10" y="-20" diameter="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="70" end1="none" x2="70" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" x3="70" y4="10" x1="68" y3="6" x4="68" x2="72" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" x3="20" y4="10" x1="18" y3="6" x4="18" x2="22" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="47" end1="none" x2="47" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="43" end1="none" x2="43" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="20" y="20" orientation="s"/>
         <terminal x="70" y="20" orientation="s"/>
     </description>

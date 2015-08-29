@@ -1,25 +1,27 @@
-<definition width="40" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{948DCC64-A03F-4642-B867-BBB69A74C76A}"/><names>
-        <name lang="ar">صمّام معياري</name>
-        <name lang="el">Ρυθμιζόμενη βαλβίδα</name>
+<definition height="40" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="31" orientation="dyyy">
+    <uuid uuid="{d60e3b83-b1fc-4388-9577-601ebb7d1906}"/>
+    <names>
         <name lang="en">Calibrated valve</name>
-        <name lang="it">Valvola tarata</name>
-        <name lang="fr">Soupape tarré</name>
         <name lang="pl">Odpowietrznik chwilowy o zadanej wartości</name>
         <name lang="nl">Klep gekalibreerd</name>
         <name lang="cs">Přesně nastavený ventil</name>
+        <name lang="el">Ρυθμιζόμενη βαλβίδα</name>
+        <name lang="it">Valvola tarata</name>
+        <name lang="fr">Soupape tarré</name>
+        <name lang="ar">صمّام معياري</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="5" y2="-18" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="-25" x2="10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="0" y2="-18" x2="5" y3="-13" x3="10"/>
-        <circle x="2" y="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="0" x2="5"/>
-        <circle x="3.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="20"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <input x="11" tagg="label" y="-13.45" rotate="true" text="_" size="9"/>
+        <line y1="-25" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end2="none" length2="1.5" x1="0" end1="none" x2="10" length1="1.5" y2="-25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-13" closed="false" x3="10" x1="0" y3="-13" x2="5" y2="-18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="2" y="-16" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="3.85" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="20" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
     </description>
 </definition>

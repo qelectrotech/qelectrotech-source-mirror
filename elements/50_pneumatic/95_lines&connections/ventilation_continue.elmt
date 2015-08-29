@@ -1,23 +1,25 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dnnn">
-<uuid uuid="{2D47C9A0-2B49-4874-86D2-BB0CDE6589FF}"/><names>
+<definition height="40" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="32" orientation="dyyy">
+    <uuid uuid="{13e82f27-1949-47bb-b499-019c3bbe5455}"/>
+    <names>
         <name lang="en">Continuous vent</name>
-        <name lang="fr">Ventilation continue</name>
         <name lang="pl">Odpowietrznik ciągły</name>
         <name lang="cs">Stálé větrání</name>
-        <name lang="ar">تهوئة مسنمرة</name>
-        <name lang="it">Ventilazione continua</name>
         <name lang="nl">Uitlaat</name>
+        <name lang="fr">Ventilation continue</name>
+        <name lang="it">Ventilazione continua</name>
+        <name lang="ar">تهوئة مسنمرة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="13.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <arc width="20" x="-7" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="-20" x2="15"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="8" y2="-20" x2="22" y3="-26" x3="15"/>
-        <arc width="20" x="17" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
-        <terminal x="30" y="0" orientation="e"/>
+        <input x="22" tagg="label" y="-14.45" rotate="true" text="_" size="9"/>
+        <circle x="13.85" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <arc x="-7" height="20" width="20" start="45" y="-20" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="0" end1="none" x2="30" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="15" end1="none" x2="15" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-20" x3="15" x1="8" y3="-26" x2="22" y2="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="17" height="20" width="20" start="-135" y="-20" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="0" orientation="w"/>
+        <terminal x="30" y="0" orientation="e"/>
     </description>
 </definition>

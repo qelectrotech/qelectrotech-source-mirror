@@ -1,27 +1,29 @@
-<definition width="60" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{0D540C49-BEED-45C3-A093-E04AA1076394}"/><names>
-        <name lang="ar">مغزل دوّار بثلاث كابلات</name>
-        <name lang="el">Ανέμη με 3 σωλήνες</name>
+<definition height="40" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="31" orientation="dyyy">
+    <uuid uuid="{a78f56c7-1cac-4e91-b1d5-eb3afbc93118}"/>
+    <names>
         <name lang="en">Rotating spindle with 3 cables</name>
-        <name lang="it">Mandrino rotante con 3 cavi</name>
-        <name lang="fr">Broche rotative avec 3 cables</name>
         <name lang="pl">Łącznik kątowy obrotowy z trzema przewodami współśrodkowymi</name>
         <name lang="nl">Draaibare vrbinding met 3 leidingen</name>
         <name lang="cs">Otáčející se hřídel se třemi kabely</name>
+        <name lang="el">Ανέμη με 3 σωλήνες</name>
+        <name lang="it">Mandrino rotante con 3 cavi</name>
+        <name lang="fr">Broche rotative avec 3 cables</name>
+        <name lang="ar">مغزل دوّار بثلاث كابلات</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-20" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="40"/>
-        <polygon x4="13" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-27" x1="13" y2="-23" x2="13" y3="-25" x3="18" y4="-27"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="40"/>
-        <circle x="3.5527" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="40" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="40" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="-20" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="40" y="-20" nameHidden="0" number="" name="" orientation="e"/>
+        <input x="-5" tagg="label" y="-31.5" rotate="true" text="_" size="9"/>
+        <line y1="-20" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-27" x3="18" y4="-27" x1="13" y3="-25" x4="13" x2="13" y2="-23" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="3.5527" y="-25" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="40" y="-10" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="40" y="0" orientation="e"/>
+        <terminal x="-10" y="-20" orientation="w"/>
+        <terminal x="40" y="-20" orientation="e"/>
     </description>
 </definition>

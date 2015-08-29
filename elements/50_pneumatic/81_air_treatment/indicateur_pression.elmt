@@ -1,21 +1,23 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{87E881CD-55B9-4BC2-B486-A94D83E3A7FD}"/><names>
+<definition height="50" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{261a6f7a-9997-4d82-84a7-60130e6371cf}"/>
+    <names>
         <name lang="en">Pressure Indicator
 </name>
-        <name lang="fr">Indicateur de pression</name>
         <name lang="pl">Wskaźnik ciśnienia</name>
         <name lang="cs">Ukazatel tlaku</name>
-        <name lang="ar">مُؤشّر ضغط</name>
-        <name lang="it">Indicatore di pressione</name>
         <name lang="nl">Druk aanwijzer</name>
+        <name lang="fr">Indicateur de pression</name>
+        <name lang="it">Indicatore di pressione</name>
+        <name lang="ar">مُؤشّر ضغط</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="10" x2="10"/>
-        <circle x="-5" y="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="-5" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-25" x2="20"/>
+        <input x="13" tagg="label" y="0.55" rotate="true" text="_" size="9"/>
+        <line y1="0" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-5" y="-30" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end2="none" length2="1.5" x1="0" end1="none" x2="20" length1="1.5" y2="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" end2="none" length2="1.5" x1="0" end1="none" x2="20" length1="1.5" y2="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="10" y="10" orientation="s"/>
     </description>
 </definition>

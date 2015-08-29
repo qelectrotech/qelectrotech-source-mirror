@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{ADB41F03-B6E2-4A68-B2D9-42A34237A69A}"/><names>
+<definition height="50" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{f1e46c60-9834-4e5b-82eb-03553d380ebc}"/>
+    <names>
         <name lang="en">Manometer</name>
-        <name lang="fr">Manometre</name>
         <name lang="pl">Manometr</name>
         <name lang="cs">Tlakoměr</name>
-        <name lang="ar">مقياس ضغط</name>
-        <name lang="it">Manometro</name>
         <name lang="nl">Drukaanwijzer</name>
+        <name lang="fr">Manometre</name>
+        <name lang="it">Manometro</name>
+        <name lang="ar">مقياس ضغط</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="19" y2="-21" x2="4"/>
-        <circle x="-5" y="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <polygon x4="3" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19" x1="3" y2="-22" x2="6" y3="-24" x3="1" y4="-19"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="10" x2="10"/>
+        <input x="18" tagg="label" y="5.55" rotate="true" text="_" size="9"/>
+        <line y1="-6" end2="none" length2="1.5" x1="19" end1="none" x2="4" length1="1.5" y2="-21" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-5" y="-30" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-19" x3="1" y4="-19" x1="3" y3="-24" x4="3" x2="6" y2="-22" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="10" y="10" orientation="s"/>
     </description>
 </definition>

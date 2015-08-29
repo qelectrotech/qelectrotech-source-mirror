@@ -1,21 +1,23 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{D2B8F5CB-DB6C-42BA-A239-EB7DBC51E283}"/><names>
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+    <uuid uuid="{31b621f5-fe93-46ca-b455-986778734af9}"/>
+    <names>
         <name lang="en">Cooler</name>
-        <name lang="fr">Refroidisseur</name>
         <name lang="pl">Chłodnica</name>
         <name lang="cs">Chladič</name>
-        <name lang="ar">مُبرّد</name>
-        <name lang="it">Raffreddatore</name>
         <name lang="nl">Koeler</name>
+        <name lang="fr">Refroidisseur</name>
+        <name lang="it">Raffreddatore</name>
+        <name lang="ar">مُبرّد</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="20" y2="5" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="50"/>
-        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="4.5" x1="18" y2="4.5" x2="22" y3="9.5" x3="20" y4="4.5"/>
-        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-29.5" x1="20" y2="-24.5" x2="18" y3="-24.5" x3="22" y4="-29.5"/>
-        <polygon x4="20" y5="-10" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-30" x2="20" y3="-10" x3="40" y4="10"/>
+        <input x="-7" tagg="label" y="-29.45" rotate="true" text="_" size="9"/>
+        <line y1="-25" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="4.5" x3="20" y4="4.5" x1="18" y3="9.5" x4="18" x2="22" y2="4.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-29.5" x3="22" y4="-29.5" x1="20" y3="-24.5" x4="20" x2="18" y2="-24.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-10" y="-10" orientation="w"/>
         <terminal x="50" y="-10" orientation="e"/>
     </description>

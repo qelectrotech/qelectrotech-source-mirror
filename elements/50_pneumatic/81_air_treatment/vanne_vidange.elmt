@@ -1,23 +1,25 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{F429D473-BEB1-42A2-B7E3-8F838E702495}"/><names>
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{b132eb51-e11b-4e94-8169-00ffb70386b3}"/>
+    <names>
         <name lang="en">Separator drain valve</name>
-        <name lang="fr">Vanne de vidange</name>
         <name lang="pl">Zawór spustowy oddzielacza, ze spustem siłą mięśni</name>
         <name lang="cs">Vypouštěcí ventil oddělovače</name>
-        <name lang="ar">صمّام تصريف</name>
-        <name lang="it">Valvola di scarico</name>
         <name lang="nl">Afscheider met aftap</name>
+        <name lang="fr">Vanne de vidange</name>
+        <name lang="it">Valvola di scarico</name>
+        <name lang="ar">صمّام تصريف</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <polygon x4="20" y5="-10" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-30" x2="20" y3="-10" x3="40" y4="10"/>
-        <line length1="0.1" length2="0.1" antialias="false" end1="circle" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="9" y2="-1" x2="31"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="40" y2="-10" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="0"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="28" tagg="label" y="5.55" rotate="true" text="_" size="9"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-1" end2="circle" length2="0.1" x1="9" end1="circle" x2="31" length1="0.1" y2="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-10" y="-10" orientation="w"/>
-        <terminal x="50" y="-10" orientation="e"/>
         <terminal x="20" y="20" orientation="s"/>
+        <terminal x="50" y="-10" orientation="e"/>
     </description>
 </definition>

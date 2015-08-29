@@ -1,27 +1,29 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="40" height="70" type="element" orientation="dnnn">
-<uuid uuid="{E992193B-9004-4056-8DF1-EF0B802700E5}"/><names>
+<definition height="60" version="0.5" width="40" hotspot_x="16" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{c5e88bc4-ecae-448b-a141-84deaab82115}"/>
+    <names>
         <name lang="en">Valve-controlled spring return</name>
-        <name lang="fr">Clapet anti-retour a ressort controlé</name>
         <name lang="pl">Zawór zwrotny sterowany, otwierany ciśnieniem, obciążony sprężyną</name>
         <name lang="cs">Řízený vratný ventil, odklopný tlakem, vychýlený pružinou</name>
-        <name lang="ar">صمّام ضد الرجع بزمبرك محكوم</name>
-        <name lang="it">Valvola di ritegno a molla controllata</name>
         <name lang="nl">Klep terugslag met veer en luchtbediend</name>
+        <name lang="fr">Clapet anti-retour a ressort controlé</name>
+        <name lang="it">Valvola di ritegno a molla controllata</name>
+        <name lang="ar">صمّام ضد الرجع بزمبرك محكوم</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="6" y2="15" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-3" x2="0"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="6" y2="15" x2="8"/>
-        <polygon x4="5" y5="-7" x5="-5" y6="-5" x6="5" y7="-4" x7="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="0" y2="-13" x2="5" y3="-11" x3="-5" y4="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="10" y2="15" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="5" x2="0" y3="0" x3="5"/>
-        <circle x="-3" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <terminal x="0" y="-30" orientation="n"/>
+        <line y1="10" end2="none" length2="1.5" x1="6" end1="none" x2="6" length1="1.5" y2="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="15" tagg="label" y="-7.45" rotate="true" text="_" size="9"/>
+        <line y1="-30" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" height="30" width="20" y="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="15" end2="none" length2="1.5" x1="6" end1="none" x2="8" length1="1.5" y2="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-14" x7="0" y5="-7" y7="-4" x5="-5" y6="-5" closed="false" x3="-5" y4="-9" x1="0" x6="5" y3="-11" x4="5" x2="5" y2="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="15" end2="none" length2="1.5" x1="10" end1="none" x2="15" length1="1.5" y2="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" closed="false" x3="5" x1="-5" y3="0" x2="0" y2="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" y="-3" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-30" orientation="n"/>
         <terminal x="15" y="15" orientation="e"/>
     </description>
 </definition>

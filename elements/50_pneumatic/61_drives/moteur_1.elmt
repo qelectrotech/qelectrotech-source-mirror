@@ -1,26 +1,28 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{66DE5276-3CAC-46EE-9B90-863F58E7DA3C}"/><names>
+<definition height="60" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{68f177ae-b730-400c-89b4-325981d83d72}"/>
+    <names>
         <name lang="en">Motor with two directions of
 rotation</name>
+        <name lang="pl">Silnik pneumatyczny o dwóch kierunkach przepływu</name>
+        <name lang="cs">Motor se dvěma směry otáčení</name>
+        <name lang="nl">Motor 2 richtingen</name>
         <name lang="fr">Moteur à deux sens de
 rotation
 </name>
-        <name lang="pl">Silnik pneumatyczny o dwóch kierunkach przepływu</name>
-        <name lang="cs">Motor se dvěma směry otáčení</name>
-        <name lang="ar">مُحرّك بدوران في اتجاهين</name>
         <name lang="it">Motore 2 direzioni</name>
-        <name lang="nl">Motor 2 richtingen</name>
+        <name lang="ar">مُحرّك بدوران في اتجاهين</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="5" y2="2" x2="10" y3="9" x3="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="6" y2="-12" x2="10" y3="-19" x3="14"/>
-        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <input x="18" tagg="label" y="-24.45" rotate="true" text="_" size="9"/>
+        <polygon y1="9" closed="false" x3="14" x1="5" y3="9" x2="10" y2="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-4" end2="none" length2="1.5" x1="25" end1="none" x2="40" length1="1.5" y2="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-6" end2="none" length2="1.5" x1="25" end1="none" x2="40" length1="1.5" y2="-6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-19" closed="false" x3="14" x1="6" y3="-19" x2="10" y2="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-5" y="-20" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="10" y="-30" orientation="n"/>
         <terminal x="10" y="20" orientation="s"/>
     </description>

@@ -1,25 +1,27 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
-<uuid uuid="{862F4C79-3393-4AAD-8297-3FCE49D98258}"/><names>
+<definition height="40" version="0.5" width="50" hotspot_x="17" type="element" link_type="simple" hotspot_y="15" orientation="dyyy">
+    <uuid uuid="{c7519c30-74ba-4496-81ec-6029f6998b7c}"/>
+    <names>
         <name lang="en">Pneumatic rotary engine</name>
-        <name lang="fr">Moteur pneumatique rotatif</name>
         <name lang="pl">Silnik pneumatyczny o ruchu wachadłowym, o ograniczonym kącie obrotu, o dwóch kierunkach obrotów</name>
         <name lang="cs">Vzduchový motor s otáčejícími se písty (Wankelův motor)</name>
-        <name lang="ar">مُحرّك نيوماتي دوراني</name>
-        <name lang="it">Motore rotativo pneumatico</name>
         <name lang="nl">Motor draaiend</name>
+        <name lang="fr">Moteur pneumatique rotatif</name>
+        <name lang="it">Motore rotativo pneumatico</name>
+        <name lang="ar">مُحرّك نيوماتي دوراني</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23" x1="10" y2="-20" x2="16" y3="-17" x3="10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="10" y2="-10" x2="16" y3="-7" x3="10"/>
-        <arc width="30" x="-5" y="-30.5" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-1" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="25" y2="-14" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="25" y2="-16" x2="40"/>
-        <terminal x="0" y="-20" orientation="w"/>
-        <terminal x="0" y="-10" orientation="w"/>
+        <input x="12" tagg="label" y="-7.5" rotate="true" text="_" size="9"/>
+        <polygon y1="-3" closed="false" x3="0" x1="0" y3="3" x2="6" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="7" closed="false" x3="0" x1="0" y3="13" x2="6" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-15" height="30" width="30" start="90" y="-10.5" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="0" end1="none" x2="-10" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="0" end1="none" x2="-10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="6" end2="none" length2="1.5" x1="15" end1="none" x2="30" length1="1.5" y2="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="4" end2="none" length2="1.5" x1="15" end1="none" x2="30" length1="1.5" y2="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="-10" y="10" orientation="w"/>
     </description>
 </definition>

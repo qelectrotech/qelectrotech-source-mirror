@@ -1,24 +1,26 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{73F55168-F0F5-49E6-82C2-884922665C6D}"/><names>
+<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{5c1e4259-f94d-4880-8c96-88a840cd0414}"/>
+    <names>
         <name lang="en">Diaphragm actuator bracket</name>
-        <name lang="fr">Support actionneur à membrane</name>
         <name lang="pl">Siłownik membranowy mocujący</name>
         <name lang="cs">Podpůrné membránové poháněcí zařízení</name>
-        <name lang="ar">حامل مُشغّل بغشاء</name>
-        <name lang="it">Supporto dell'attuatore a membrana</name>
         <name lang="nl">Diafragma met steun(klem)</name>
+        <name lang="fr">Support actionneur à membrane</name>
+        <name lang="it">Supporto dell'attuatore a membrana</name>
+        <name lang="ar">حامل مُشغّل بغشاء</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="50" y2="-20" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="-20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="5" y2="-20" x2="34"/>
-        <arc width="30" x="20" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="50"/>
-        <arc width="30" x="-10" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="18" y2="10" x2="22" y3="6" x3="20" y4="10"/>
+        <line y1="10" end2="none" length2="1.5" x1="50" end1="none" x2="50" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-7" tagg="label" y="-29.45" rotate="true" text="_" size="9"/>
+        <line y1="10" end2="none" length2="1.5" x1="-10" end1="none" x2="-10" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="5" end1="none" x2="34" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="20" height="30" width="30" start="90" y="-20" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="-10" end1="none" x2="50" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" height="30" width="30" start="-90" y="-20" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" x3="20" y4="10" x1="18" y3="6" x4="18" x2="22" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="20" y="20" orientation="s"/>
     </description>
 </definition>

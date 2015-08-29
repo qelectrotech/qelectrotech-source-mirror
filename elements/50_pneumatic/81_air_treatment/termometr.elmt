@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{E6E29F03-8167-4782-822D-B22385C8631B}"/><names>
+<definition height="50" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{751eb270-f677-442c-9db3-0c2665f2e5cf}"/>
+    <names>
         <name lang="en">Thermometer</name>
-        <name lang="fr">Thermometre</name>
         <name lang="pl">Termometr</name>
         <name lang="cs">Teploměr</name>
-        <name lang="ar">مقياس حرارة</name>
-        <name lang="it">Termometro</name>
         <name lang="nl">Thermometer</name>
+        <name lang="fr">Thermometre</name>
+        <name lang="it">Termometro</name>
+        <name lang="ar">مقياس حرارة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="10" y2="-8" x2="10"/>
-        <circle x="-5" y="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <circle x="8" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="10" x2="10"/>
+        <input x="15" tagg="label" y="-3.45" rotate="true" text="_" size="9"/>
+        <line y1="-25" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-5" y="-30" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="8" y="-9" diameter="4" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="10" y="10" orientation="s"/>
     </description>
 </definition>

@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{8A7418E0-5DD7-4C4D-B494-D8EA7B285E5F}"/><names>
+<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="36" orientation="dyyy">
+    <uuid uuid="{12af5626-710a-456b-a20c-4d61cb605184}"/>
+    <names>
         <name lang="en">Silent air</name>
-        <name lang="fr">Silencieux pneumatique</name>
         <name lang="pl">Tłumik hałasu</name>
         <name lang="cs">Tlumič hluku</name>
-        <name lang="ar">كاتم صوت نيوماتي</name>
-        <name lang="it">Silenziatore pneumatico</name>
         <name lang="nl">Geluiddemper lucht</name>
+        <name lang="fr">Silencieux pneumatique</name>
+        <name lang="it">Silenziatore pneumatico</name>
+        <name lang="ar">كاتم صوت نيوماتي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="10" x="-5" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-2" y2="-15" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-2" y2="-5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="-10" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
-        <polygon x4="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="10" x2="0" y3="0" x3="5" y4="0"/>
+        <input x="5" tagg="label" y="-5.45" rotate="true" text="_" size="9"/>
+        <rect x="-5" height="20" width="10" y="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="-2" end1="none" x2="5" length1="1.5" y2="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" end2="none" length2="1.5" x1="-2" end1="none" x2="5" length1="1.5" y2="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-5" end1="none" x2="2" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" closed="false" x3="5" y4="0" x1="-5" y3="0" x4="-5" x2="0" y2="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="-30" orientation="n"/>
     </description>
 </definition>

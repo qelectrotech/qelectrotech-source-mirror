@@ -1,30 +1,32 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{E3E69934-CD4D-4ECD-BD0B-3A6CB2F6D0A0}"/><names>
+<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{6f3c5a39-c1ad-4763-95b9-bc8b2c05a8f8}"/>
+    <names>
         <name lang="en">Double acting actuator with brake with two settings</name>
-        <name lang="fr">Double effet actionneur avec frein à deux réglages</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z hamowaniem dwustronnym nastawialnym, z bezstykową sygnalizacją położenia tłoka</name>
         <name lang="cs">Dvojčinné poháněcí zařízení s brzdou se dvěma nastaveními</name>
-        <name lang="ar">مُشغّل بفعل مزدوج ذو مكبح بتعديلين</name>
-        <name lang="it">Azionatore doppio effetto con freno a due regolazioni</name>
         <name lang="nl">cilinder met regelbare buffers</name>
+        <name lang="fr">Double effet actionneur avec frein à deux réglages</name>
+        <name lang="it">Azionatore doppio effetto con freno a due regolazioni</name>
+        <name lang="ar">مُشغّل بفعل مزدوج ذو مكبح بتعديلين</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="11" y2="-1" x2="-4"/>
-        <polygon x4="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="-1" y2="-17" x2="-7" y3="-3" x3="-7" y4="-3"/>
-        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-18" x1="10" y2="-16" x2="12" y3="-21" x3="15" y4="-18"/>
-        <polygon x4="-12" y5="-20" x5="42" y6="-12" x6="42" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="42" y2="0" x2="42" y3="0" x3="-12" y4="-20"/>
-        <rect width="2" x="1" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <polygon x4="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="5" y2="-16" x2="10" y3="-4" x3="10" y4="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="10" x2="40"/>
-        <polygon x4="38" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="38" y2="0" x2="42" y3="-4" x3="40" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="10" x2="-10"/>
-        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="0" x2="-8" y3="-4" x3="-10" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="10" y2="-8" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="10" y2="-12" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="5" y2="0" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-1" y2="0" x2="-1"/>
+        <line y1="-17" end2="none" length2="1.5" x1="11" end1="none" x2="-4" length1="1.5" y2="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-11" tagg="label" y="-29.45" rotate="true" text="_" size="9"/>
+        <polygon y1="-17" closed="false" x3="-7" y4="-3" x1="-1" y3="-3" x4="-1" x2="-7" y2="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-18" x3="15" y4="-18" x1="10" y3="-21" x4="10" x2="12" y2="-16" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-8" y5="-20" x5="42" y6="-12" closed="false" x3="-12" y4="-20" x1="42" x6="42" y3="0" x4="-12" x2="42" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="1" height="20" width="2" y="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y1="-16" closed="false" x3="10" y4="-4" x1="5" y3="-4" x4="5" x2="10" y2="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="40" end1="none" x2="40" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" x3="40" y4="0" x1="38" y3="-4" x4="38" x2="42" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="-10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" x3="-10" y4="0" x1="-12" y3="-4" x4="-12" x2="-8" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-8" end2="none" length2="1.5" x1="10" end1="none" x2="50" length1="1.5" y2="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-12" end2="none" length2="1.5" x1="10" end1="none" x2="50" length1="1.5" y2="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end2="none" length2="1.5" x1="-1" end1="none" x2="-1" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-10" y="10" orientation="s"/>
         <terminal x="40" y="10" orientation="s"/>
     </description>

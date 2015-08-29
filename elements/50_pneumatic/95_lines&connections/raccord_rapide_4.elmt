@@ -1,26 +1,28 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{ADBF7030-C12B-4D0F-B40F-9DA8F84149AA}"/><names>
+<definition height="30" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="15" orientation="dyyy">
+    <uuid uuid="{e7b12c7f-f4f4-4fb0-8150-909687e96004}"/>
+    <names>
         <name lang="en">Quick opening valves with mechanical feedback</name>
-        <name lang="fr">Vannes à ouverture rapide avec rétroaction mécanique</name>
         <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - rozłączona</name>
         <name lang="cs">Rychle se otevírající klapky s mechanickým zpětným působením</name>
-        <name lang="ar">صمّام بفتح سريع و بارتداد خلفي ميكانيكي</name>
-        <name lang="it">Valvola ad apertura rapida con feedback meccanico</name>
         <name lang="nl">Snelkoppeling met kleppen</name>
+        <name lang="fr">Vannes à ouverture rapide avec rétroaction mécanique</name>
+        <name lang="it">Valvola ad apertura rapida con feedback meccanico</name>
+        <name lang="ar">صمّام بفتح سريع و بارتداد خلفي ميكانيكي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="40" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="5" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <circle x="47" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="34" y2="2" x2="34"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="26"/>
-        <rect width="20" x="0" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="34" y2="0" x2="70"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="10" y2="0" x2="15" y3="5" x3="10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="50" y2="0" x2="45" y3="-5" x3="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="26" y2="2" x2="26"/>
+        <input x="-2" tagg="label" y="-19.45" rotate="true" text="_" size="9"/>
+        <rect x="40" height="20" width="20" y="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="5" y="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="47" y="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-2" end2="none" length2="1.5" x1="34" end1="none" x2="34" length1="1.5" y2="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="26" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="0" height="20" width="20" y="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="34" end1="none" x2="70" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-5" closed="false" x3="10" x1="10" y3="5" x2="15" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="5" closed="false" x3="50" x1="50" y3="-5" x2="45" y2="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-2" end2="none" length2="1.5" x1="26" end1="none" x2="26" length1="1.5" y2="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="70" y="0" orientation="e"/>
         <terminal x="-10" y="0" orientation="w"/>
     </description>

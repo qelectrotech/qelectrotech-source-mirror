@@ -1,21 +1,23 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dnnn">
-<uuid uuid="{6AE9FBA2-BCB0-4728-96A1-047FBB86C432}"/><names>
+<definition height="30" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{e70d0373-1d06-4478-9aa7-4eccbf8f7b2e}"/>
+    <names>
         <name lang="en">Air drain</name>
-        <name lang="fr">Reniflard</name>
         <name lang="pl">Odpowietrznik chwilowy</name>
         <name lang="cs">Větrací kanál</name>
-        <name lang="ar">صرف هواء</name>
-        <name lang="it">Scarico d'aria</name>
         <name lang="nl">Smoring</name>
+        <name lang="fr">Reniflard</name>
+        <name lang="it">Scarico d'aria</name>
+        <name lang="ar">صرف هواء</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="13.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <arc width="20" x="-7" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="-20" x2="15"/>
-        <arc width="20" x="17" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
+        <circle x="13.85" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="19" tagg="label" y="-12.45" rotate="true" text="_" size="9"/>
+        <arc x="-7" height="20" width="20" start="45" y="-20" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="0" end1="none" x2="30" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="15" end1="none" x2="15" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="17" height="20" width="20" start="-135" y="-20" angle="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="30" y="0" orientation="e"/>
         <terminal x="0" y="0" orientation="w"/>
     </description>

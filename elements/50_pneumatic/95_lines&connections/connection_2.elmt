@@ -1,21 +1,23 @@
-<definition width="20" version="0.4" hotspot_x="15" hotspot_y="15" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{AD17E008-E20B-4F28-8AA8-90191F3AFC54}"/><names>
-        <name lang="ar">كابل ربط - 2</name>
-        <name lang="el">Σύνδεσμος</name>
+<definition height="20" version="0.5" width="20" hotspot_x="14" type="element" link_type="simple" hotspot_y="14" orientation="dyyy">
+    <uuid uuid="{1c77fc1c-a72e-4db4-b530-13d39624ce61}"/>
+    <names>
         <name lang="en">Cable Connection - 2</name>
-        <name lang="it">Connessione cavo - 2</name>
-        <name lang="fr">Câble de connection - 2</name>
         <name lang="pl">Połączenie przewodu - 2</name>
         <name lang="nl">Verbinding 2</name>
         <name lang="cs">Spojení vedení - 2</name>
+        <name lang="el">Σύνδεσμος</name>
+        <name lang="it">Connessione cavo - 2</name>
+        <name lang="fr">Câble de connection - 2</name>
+        <name lang="ar">كابل ربط - 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0"/>
-        <circle x="-1.15" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <terminal x="0" y="-10" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <input x="2" tagg="label" y="-8.45" rotate="true" text="_" size="9"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="0" end1="none" x2="0" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-1.15" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="0" y="-10" orientation="n"/>
     </description>
 </definition>

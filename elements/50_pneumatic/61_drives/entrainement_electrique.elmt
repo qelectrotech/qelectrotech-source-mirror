@@ -1,19 +1,21 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{0CD9A22C-859E-4C3D-BABD-C8CAF59B8433}"/><names>
+<definition height="40" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="25" orientation="dyyy">
+    <uuid uuid="{81a932be-1940-40bc-b0ee-691a1530c54b}"/>
+    <names>
         <name lang="en">Electrical drive</name>
-        <name lang="fr">Entrainement electrique</name>
         <name lang="pl">Silnik elektryczny</name>
         <name lang="cs">Elektrický pohon</name>
-        <name lang="ar">مُحرّك كهربائي</name>
-        <name lang="it">Motore elettrico</name>
         <name lang="nl">Motor elektrisch</name>
+        <name lang="fr">Entrainement electrique</name>
+        <name lang="it">Motore elettrico</name>
+        <name lang="ar">مُحرّك كهربائي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <text x="3" y="-0.3333" size="12" text="M"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
+        <input x="27" tagg="label" y="-21.45" rotate="true" text="_" size="9"/>
+        <circle x="-5" y="-20" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="3" y="-0.3333" text="M" size="12"/>
+        <line y1="-4" end2="none" length2="1.5" x1="25" end1="none" x2="40" length1="1.5" y2="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-6" end2="none" length2="1.5" x1="25" end1="none" x2="40" length1="1.5" y2="-6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

@@ -1,29 +1,31 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{48E384BA-5D94-421E-92CF-658ECACBF06F}"/><names>
+<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38" orientation="dyyy">
+    <uuid uuid="{4845c845-16fb-46bb-8720-fa8cb0ed8caf}"/>
+    <names>
         <name lang="en">Dual signal valve (valve logical AND)</name>
-        <name lang="fr">Soupape de signal double (valve logique ET)</name>
         <name lang="pl">Zawór podwójnego sygnału (zawór logiczny I)</name>
         <name lang="cs">Ventil dvojitého signálu (logický ventil A (AND))</name>
-        <name lang="ar">مكبس إشارة مزدوجة (صمّام منطقي كفاية AND )</name>
-        <name lang="it">Valvola di segnale doppia (ADN logico)</name>
         <name lang="nl">klep signaal (AND)</name>
+        <name lang="fr">Soupape de signal double (valve logique ET)</name>
+        <name lang="it">Valvola di segnale doppia (ADN logico)</name>
+        <name lang="ar">مكبس إشارة مزدوجة (صمّام منطقي كفاية AND )</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="30" y2="-15" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="46" y2="-8" x2="46"/>
-        <rect width="50" x="5" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="46" y2="15" x2="46"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="14" y2="-8" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="15" y2="15" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="50" y2="10" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="55" y2="0" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="5"/>
-        <terminal x="30" y="-30" orientation="n"/>
+        <line y1="-30" end2="none" length2="1.5" x1="30" end1="none" x2="30" length1="1.5" y2="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="31" tagg="label" y="-24.45" rotate="true" text="_" size="9"/>
+        <line y1="-15" end2="none" length2="1.5" x1="46" end1="none" x2="46" length1="1.5" y2="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" height="30" width="50" y="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="8" end2="none" length2="1.5" x1="46" end1="none" x2="46" length1="1.5" y2="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="14" end1="none" x2="14" length1="1.5" y2="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="8" end2="none" length2="1.5" x1="15" end1="none" x2="15" length1="1.5" y2="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="10" end1="none" x2="50" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="50" end1="none" x2="50" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="55" end1="none" x2="70" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="5" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-10" y="0" orientation="w"/>
         <terminal x="70" y="0" orientation="e"/>
+        <terminal x="30" y="-30" orientation="n"/>
     </description>
 </definition>
