@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
-<uuid uuid="{1DB59A64-5122-4A5E-A1B7-6AFA5F461049}"/><names>
-        <name lang="ar">قاعدة قابس تيّار (قدرة ) , رمز عام  (EN 60617 11-13-01)</name>
-        <name lang="de">Steckdose allgemein (EN 60617 11-13-01)</name>
-        <name lang="el">Ρευματοδότης  (EN 60617: 11-13-01)</name>
-        <name lang="en">electrical socket (EN 60617 11-13-01)</name>
-        <name lang="it">Presa di corrente (EN 60617 11-13-01)</name>
+<definition hotspot_x="15" hotspot_y="18" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{b3158290-ee31-4b4e-8aec-83e20e09498a}"/>
+    <names>
         <name lang="fr">Socle de prise de courant (puissance), symbole general (EN 60617 11-13-01)</name>
         <name lang="pl">Gniazdo wtykowe (EN 60617: 11-13-01)</name>
         <name lang="cs">Elektrická zásuvka, obecný symbol (EN 60617 11-13-01)</name>
+        <name lang="ar">قاعدة قابس تيّار (قدرة ) , رمز عام  (EN 60617 11-13-01)</name>
+        <name lang="el">Ρευματοδότης  (EN 60617: 11-13-01)</name>
+        <name lang="it">Presa di corrente (EN 60617 11-13-01)</name>
+        <name lang="de">Steckdose allgemein (EN 60617 11-13-01)</name>
+        <name lang="en">electrical socket (EN 60617 11-13-01)</name>
         <name lang="nl">wandcontactdoos algemeen (EN 60617 11-13-01)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="20" x="-10" y="7.5" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="0" y2="-8" x2="0"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="7.5" angle="-180" width="20"/>
+        <input x="3" rotate="true" size="9" text="_" y="-4.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" antialias="false" y2="-8" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

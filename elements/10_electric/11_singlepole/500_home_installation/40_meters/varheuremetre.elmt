@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{BA4C8CE2-F830-4387-B3FD-9C93B7A845D9}"/><names>
-        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
-        <name lang="el">Μετρητής, Βαρώρια</name>
-        <name lang="en">Var hour meter</name>
-        <name lang="de">Blindverbrauchszähler</name>
-        <name lang="it">Misuratore di varh</name>
+<definition hotspot_x="19" hotspot_y="28" orientation="dyyy" height="50" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{dbc25a11-2aa2-4522-8150-d80a620d6fcc}"/>
+    <names>
         <name lang="fr">Varheuremètre</name>
         <name lang="pl">Licznik warogodzin</name>
         <name lang="cs">Počítadlo varhodin</name>
+        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
+        <name lang="el">Μετρητής, Βαρώρια</name>
+        <name lang="it">Misuratore di varh</name>
+        <name lang="en">Var hour meter</name>
+        <name lang="de">Blindverbrauchszähler</name>
         <name lang="nl">VAr energie meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-13" y="2.3333" size="9" text="Varh"/>
-        <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-23" orientation="n"/>
-        <terminal x="0" y="15" orientation="s"/>
+        <text x="-13" size="9" text="Varh" y="2.3333"/>
+        <input x="18" rotate="true" size="9" text="_" y="-4.45" tagg="label"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" antialias="false" y="-11" width="30"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" antialias="false" y="-19" width="30"/>
+        <terminal x="0" orientation="s" y="15"/>
+        <terminal x="0" orientation="n" y="-23"/>
     </description>
 </definition>

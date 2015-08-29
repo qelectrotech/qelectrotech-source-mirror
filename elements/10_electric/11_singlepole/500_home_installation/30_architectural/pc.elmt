@@ -1,26 +1,28 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn">
-<uuid uuid="{34029D33-F39A-4304-A0A6-7CEC7AD41A9F}"/><names>
-        <name lang="ar">مقبس</name>
-        <name lang="de">Steckdose</name>
+<definition hotspot_x="15" hotspot_y="30" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{88583090-190d-4c45-975c-97f89386c179}"/>
+    <names>
         <name lang="ru">Розетка</name>
-        <name lang="pt">Tomada</name>
-        <name lang="el">Πρίζα</name>
-        <name lang="en">Outlet</name>
-        <name lang="it">Presa</name>
         <name lang="fr">Prise</name>
         <name lang="pl">Gniazdo wtyczkowe</name>
-        <name lang="es">Enchufe</name>
         <name lang="cs">Zásuvka</name>
+        <name lang="ar">مقبس</name>
+        <name lang="el">Πρίζα</name>
+        <name lang="pt">Tomada</name>
+        <name lang="it">Presa</name>
+        <name lang="de">Steckdose</name>
+        <name lang="en">Outlet</name>
+        <name lang="es">Enchufe</name>
         <name lang="nl">Contactdoos</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26"/>
-        <circle x="-9" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <circle x="3" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-20" x2="0"/>
-        <circle x="-2.5" y="-8.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
-        <terminal x="0" y="-21" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="12.55" tagg="label"/>
+        <circle x="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26" antialias="true" y="-13"/>
+        <circle x="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true" y="-1"/>
+        <circle x="3" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true" y="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5" antialias="true" y="-8.5"/>
+        <terminal x="0" orientation="n" y="-21"/>
     </description>
 </definition>

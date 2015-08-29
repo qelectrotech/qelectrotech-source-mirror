@@ -1,21 +1,23 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="60" type="element" orientation="dyyy">
-<uuid uuid="{B2D38EA8-7E24-4087-A416-4BCBA9483D1B}"/><names>
-        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
-        <name lang="de">Wattstundenzähler</name>
-        <name lang="el">Μετρητής βατ/ώρα</name>
-        <name lang="en">Watt hour meter</name>
-        <name lang="it">Misuratore di Wh</name>
+<definition hotspot_x="10" hotspot_y="4" orientation="dyyy" height="60" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{5139fc3f-3211-400d-bdcb-3027fe390173}"/>
+    <names>
         <name lang="fr">Compteur d'énergie active Wattheuremètre</name>
         <name lang="pl">Licznik watogodzin</name>
         <name lang="cs">Počítadlo watthodin</name>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
+        <name lang="el">Μετρητής βατ/ώρα</name>
+        <name lang="it">Misuratore di Wh</name>
+        <name lang="de">Wattstundenzähler</name>
+        <name lang="en">Watt hour meter</name>
         <name lang="nl">Watt uur meter</name>
     </names>
     <informations>EN 60617: 08-04-03</informations>
     <description>
-        <rect width="32" x="-6" y="0" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-6" y2="14" x2="26"/>
-        <text x="0" y="35" size="10" text="Wh"/>
-        <terminal x="0" y="50" orientation="s"/>
-        <terminal x="20" y="50" orientation="s"/>
+        <rect x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" antialias="false" y="0" width="32"/>
+        <input x="27" rotate="true" size="9" text="_" y="28.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" antialias="false" y2="14" end1="none" x2="26" length1="1.5" x1="-6"/>
+        <text x="0" size="10" text="Wh" y="35"/>
+        <terminal x="20" orientation="s" y="50"/>
+        <terminal x="0" orientation="s" y="50"/>
     </description>
 </definition>

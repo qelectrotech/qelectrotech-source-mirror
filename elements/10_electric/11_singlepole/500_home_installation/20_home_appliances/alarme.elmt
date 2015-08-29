@@ -1,34 +1,35 @@
-<definition link_type="simple" hotspot_x="26" width="150" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-<uuid uuid="{0F303AEA-4F09-4131-9C0D-E3E419FC6209}"/><names>
+<definition hotspot_x="26" hotspot_y="185" orientation="dyyy" height="190" type="element" link_type="simple" width="150" version="0.5">
+    <uuid uuid="{12f294a8-a786-4695-aca7-ad130fcad19f}"/>
+    <names>
         <name lang="fr">Alarme</name>
     </names>
     <informations>cbh41</informations>
     <description>
-        <rect x="0" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="120" height="85"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-15" y2="-15" x1="0"/>
-        <input x="29" y="-34.5" size="7" text="10" tagg="none" rotate="true"/>
-        <input x="-2" y="-53.5" size="7" text="Local" tagg="label" rotate="true"/>
-        <text x="58" y="-18" size="5" text=" kA C"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-45" y2="-45" x1="0"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-65" y2="-65" x1="0"/>
-        <text x="66" y="-32" size="7" text="A"/>
-        <line x2="120" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-170" y2="-170" x1="0"/>
-        <text x="2" y="-69" size="7" text="Alarme"/>
-        <text x="58" y="-2" size="5" text=" mm²"/>
-        <line x2="27" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-139.375" y2="-120.625" x1="27"/>
-        <arc x="-23" y="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="100" angle="90" height="20"/>
-        <arc x="-23" y="-160" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="270" width="100" angle="90" height="20"/>
-        <line x2="77" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-149.804" y2="-110.196" x1="77"/>
-        <line x2="60" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-175.19" y2="-142.81" x1="60"/>
-        <line x2="31" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-139.232" y2="-120.768" x1="31"/>
-        <line x2="35" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-139.391" y2="-120.609" x1="35"/>
-        <line x2="102.75" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-130" y2="-130" x1="82.2501"/>
-        <line x2="104" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-140" y2="-148" x1="82"/>
-        <line x2="103" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-120" y2="-114" x1="82"/>
-        <line x2="103" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-135" y2="-138" x1="82"/>
-        <line x2="103" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-125" y2="-121" x1="82"/>
-        <input x="30" y="-20" size="5" text="4.5" tagg="none" rotate="true"/>
-        <input x="28" y="-5" size="5" text="3 G1.5" tagg="none" rotate="true"/>
-        <terminal x="60" y="-180" orientation="n"/>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" antialias="false" y="-85" width="120"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" antialias="false" y2="-15" end1="none" x2="120" length1="1.5" x1="0"/>
+        <input x="29" rotate="true" size="7" text="10" y="-34.5" tagg="none"/>
+        <input x="-2" rotate="true" size="7" text="Local" y="-53.5" tagg="label"/>
+        <text x="58" size="5" text=" kA C" y="-18"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" antialias="false" y2="-45" end1="none" x2="120" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" antialias="false" y2="-65" end1="none" x2="120" length1="1.5" x1="0"/>
+        <text x="66" size="7" text="A" y="-32"/>
+        <line end2="none" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-170" antialias="false" y2="-170" end1="none" x2="120" length1="1.5" x1="0"/>
+        <text x="2" size="7" text="Alarme" y="-69"/>
+        <text x="58" size="5" text=" mm²" y="-2"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-139.375" antialias="false" y2="-120.625" end1="none" x2="27" length1="1.5" x1="27"/>
+        <arc x="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="0" y="-120" angle="90" width="100"/>
+        <arc x="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="270" y="-160" angle="90" width="100"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-149.804" antialias="false" y2="-110.196" end1="none" x2="77" length1="1.5" x1="77"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-175.19" antialias="false" y2="-142.81" end1="none" x2="60" length1="1.5" x1="60"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-139.232" antialias="false" y2="-120.768" end1="none" x2="31" length1="1.5" x1="31"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-139.391" antialias="false" y2="-120.609" end1="none" x2="35" length1="1.5" x1="35"/>
+        <line end2="none" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-130" antialias="false" y2="-130" end1="none" x2="102.75" length1="1.5" x1="82.2501"/>
+        <line end2="none" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-140" antialias="false" y2="-148" end1="none" x2="104" length1="1.5" x1="82"/>
+        <line end2="none" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-120" antialias="false" y2="-114" end1="none" x2="103" length1="1.5" x1="82"/>
+        <line end2="none" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-135" antialias="false" y2="-138" end1="none" x2="103" length1="1.5" x1="82"/>
+        <line end2="none" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-125" antialias="false" y2="-121" end1="none" x2="103" length1="1.5" x1="82"/>
+        <input x="30" rotate="true" size="5" text="4.5" y="-20" tagg="none"/>
+        <input x="28" rotate="true" size="5" text="3 G1.5" y="-5" tagg="none"/>
+        <terminal x="60" orientation="n" y="-180"/>
     </description>
 </definition>

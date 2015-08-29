@@ -1,23 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnyn">
-<uuid uuid="{9D277A6C-3E54-4D19-99DF-803173E47FFD}"/><names>
-        <name lang="de">Elektrobackofen</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{80ea845b-b805-4331-918c-b364f92e7126}"/>
+    <names>
         <name lang="ru">Печь</name>
-        <name lang="el">Φούρνος</name>
-        <name lang="en">Oven</name>
-        <name lang="it">Forno</name>
         <name lang="fr">Four</name>
         <name lang="pl">Piekarnik elektryczny</name>
-        <name lang="es">Horno</name>
         <name lang="cs">Elektrická pec</name>
+        <name lang="el">Φούρνος</name>
+        <name lang="it">Forno</name>
+        <name lang="de">Elektrobackofen</name>
+        <name lang="en">Oven</name>
+        <name lang="es">Horno</name>
         <name lang="nl">Elektrische Oven</name>
     </names>
     <informations>Author: Jonas Stein
 </informations>
     <description>
-        <rect width="18" x="-9" y="3" antialias="false" height="2" style="line-style:normal;line-weight:none;filling:black;color:white"/>
-        <rect width="18" x="-9" y="18" antialias="false" height="2" style="line-style:normal;line-weight:none;filling:black;color:white"/>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="23.5" tagg="label"/>
+        <rect x="-9" style="line-style:normal;line-weight:none;filling:black;color:white" height="2" antialias="false" y="3" width="18"/>
+        <rect x="-9" style="line-style:normal;line-weight:none;filling:black;color:white" height="2" antialias="false" y="18" width="18"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

@@ -1,20 +1,22 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{D1442560-82A2-4142-AD83-35FFA084AC9B}"/><names>
-        <name lang="ar">مُبدّل وحيد القطبية</name>
-        <name lang="de">Serienschalter einpolig</name>
-        <name lang="en">Two pole switch
-</name>
-        <name lang="it">Commutatore unipolare</name>
+<definition hotspot_x="15" hotspot_y="15" orientation="dyyy" height="30" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{44001fa9-7cba-4e01-866f-b76c04d4a8de}"/>
+    <names>
         <name lang="fr">Commutateur unipolaire</name>
         <name lang="pl">Łącznik grupowy</name>
         <name lang="cs">Sériový přepínač, jednopólový</name>
+        <name lang="ar">مُبدّل وحيد القطبية</name>
+        <name lang="it">Commutatore unipolare</name>
+        <name lang="de">Serienschalter einpolig</name>
+        <name lang="en">Two pole switch
+</name>
         <name lang="nl">Serieschakelaar</name>
     </names>
     <informations>EN 60617: 11-14-05</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-2" y2="-11" x2="-9" y3="-9" x3="-12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="2" y2="-11" x2="9" y3="-9" x3="12"/>
-        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <terminal x="0" y="0" orientation="n"/>
+        <polygon y3="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" closed="false" y2="-11" x3="-12" x2="-9" x1="-2"/>
+        <input x="3" rotate="true" size="9" text="_" y="4.55" tagg="label"/>
+        <polygon y3="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" closed="false" y2="-11" x3="12" x2="9" x1="2"/>
+        <circle x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" antialias="true" y="0"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

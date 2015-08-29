@@ -1,24 +1,26 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{D2E92D4B-9032-437C-B211-5F9F72AADFB6}"/><names>
+<definition hotspot_x="15" hotspot_y="25" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{b120205f-3bc7-4f09-b934-663a8e91c48c}"/>
+    <names>
+        <name lang="fr">Socle pour plusieurs prises de courant</name>
+        <name lang="pl">Gniazdo potrójne</name>
+        <name lang="cs">Vícezdířková zásuvka</name>
         <name lang="ar">قاعدة لعدّة مقابس تيّار</name>
-        <name lang="de">Mehrfachsteckdose</name>
         <name lang="el">Ρευματοδότης 3πλος</name>
+        <name lang="it">Presa multipla</name>
+        <name lang="de">Mehrfachsteckdose</name>
         <name lang="en">Multiple socket outlet (power)
  The symbol is shown with three
 outlets.
 </name>
-        <name lang="it">Presa multipla</name>
-        <name lang="fr">Socle pour plusieurs prises de courant</name>
-        <name lang="pl">Gniazdo potrójne</name>
-        <name lang="cs">Vícezdířková zásuvka</name>
         <name lang="nl">Wandcontactdoos (3)</name>
     </names>
     <informations>EN 60617: 11-13-02</informations>
     <description>
-        <input x="4" y="-14.5" size="5" rotate="true" text="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="2" y2="-12" x2="7"/>
-        <arc width="20" x="-10" y="-9" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="-1" rotate="true" size="9" text="_" y="-26.5" tagg="label"/>
+        <input x="4" rotate="true" size="5" text="3" y="-14.5" tagg="none"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" antialias="true" y2="-12" end1="none" x2="7" length1="1.5" x1="2"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="-9" angle="-180" width="20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

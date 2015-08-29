@@ -1,19 +1,21 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{C20F31ED-7B0F-49A1-953F-F36179CE90A2}"/><names>
-        <name lang="ar">مُؤقت</name>
-        <name lang="de">Zeitrelais</name>
-        <name lang="el">Χρονικό</name>
-        <name lang="en">timer</name>
-        <name lang="it">Temporizzatore</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="30" type="element" link_type="simple" width="50" version="0.5">
+    <uuid uuid="{797eade4-d986-465f-942c-594d7e1f0f71}"/>
+    <names>
         <name lang="fr">Minuterie</name>
         <name lang="pl">Datownik czasu</name>
         <name lang="cs">Časový spínač</name>
+        <name lang="ar">مُؤقت</name>
+        <name lang="el">Χρονικό</name>
+        <name lang="it">Temporizzatore</name>
+        <name lang="de">Zeitrelais</name>
+        <name lang="en">timer</name>
         <name lang="nl">Tijdrelais</name>
     </names>
     <informations>EN 60617: 11-14-13</informations>
     <description>
-        <text x="8" y="-6" size="9" text="t"/>
-        <rect width="40" x="-10" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="-20" orientation="n"/>
+        <text x="8" size="9" text="t" y="-6"/>
+        <input x="3" rotate="true" size="9" text="_" y="0.55" tagg="label"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" y="-20" width="40"/>
+        <terminal x="10" orientation="n" y="-20"/>
     </description>
 </definition>

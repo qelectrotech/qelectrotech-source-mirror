@@ -1,20 +1,22 @@
-<definition width="70" version="0.3" hotspot_x="5" hotspot_y="20" height="20" type="element" orientation="dyyy">
-<uuid uuid="{F311AB97-04E8-4BCC-A287-F31CFF811D6F}"/><names>
-        <name lang="ar">مصباح فليوريسنت</name>
-        <name lang="de">Leuchtstofflampe</name>
-        <name lang="el">Λάμπα φθορισμού</name>
-        <name lang="en"> Fluorescent lamp</name>
-        <name lang="it">Lampada ﬂuorescente, segno generale</name>
+<definition hotspot_x="35" hotspot_y="8" orientation="dyyy" height="20" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{216019da-3a0d-4079-babb-b89e3b2d7ba0}"/>
+    <names>
         <name lang="fr">Lampe à fluorescence</name>
         <name lang="pl">Świetlówka</name>
         <name lang="cs">Zářivka</name>
+        <name lang="ar">مصباح فليوريسنت</name>
+        <name lang="el">Λάμπα φθορισμού</name>
+        <name lang="it">Lampada ﬂuorescente, segno generale</name>
+        <name lang="de">Leuchtstofflampe</name>
+        <name lang="en"> Fluorescent lamp</name>
         <name lang="nl">TL lamp</name>
     </names>
     <informations>EN 60617: 11-15-04</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-7" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="60" y2="-7" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="60"/>
-        <terminal x="30" y="-10" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="-9.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="3" end1="none" x2="-30" length1="1.5" x1="-30"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="3" end1="none" x2="30" length1="1.5" x1="30"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="30" length1="1.5" x1="-30"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

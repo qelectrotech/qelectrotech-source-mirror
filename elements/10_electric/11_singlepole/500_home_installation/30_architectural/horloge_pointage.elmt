@@ -1,21 +1,23 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{DFD6D2E6-67C7-43A5-82F8-631BE76937F8}"/><names>
-        <name lang="ar">ساعة تسجيل</name>
-        <name lang="de">Zeiterfassungsgerät</name>
-        <name lang="en">Time clock Time recorder</name>
-        <name lang="it">Orologio segna tempo</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{d421de61-3a13-47ec-826e-f58dc87255d5}"/>
+    <names>
         <name lang="fr">Horloge de pointage, Enregistreur horaire</name>
         <name lang="pl">Zegar kontrolny</name>
         <name lang="cs">Docházkové kontrolní hodiny</name>
+        <name lang="ar">ساعة تسجيل</name>
+        <name lang="it">Orologio segna tempo</name>
+        <name lang="de">Zeiterfassungsgerät</name>
+        <name lang="en">Time clock Time recorder</name>
         <name lang="nl">Tijdrecorder klok</name>
     </names>
     <informations>EN 60617: 11-16-03</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-7" y2="-13" x2="7"/>
-        <circle x="-7" y="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="10.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="0" length1="1.5" x1="-5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="false" y2="0" end1="none" x2="0" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-13" end1="none" x2="7" length1="1.5" x1="-7"/>
+        <circle x="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14" antialias="true" y="-7"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" y="-20" width="20"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

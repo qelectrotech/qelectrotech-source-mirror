@@ -1,21 +1,23 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{388437EA-29EB-4491-8C97-219CC2E70BC7}"/><names>
-        <name lang="ar">جهاز كهرومنزلي</name>
-        <name lang="el">Ηλεκτρική συσκευή</name>
-        <name lang="en">Appliance</name>
-        <name lang="de">Haushaltsgerät</name>
-        <name lang="it">Apparecchio elettrico</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{a66164c7-7f58-417b-ab73-6fb41c3abe12}"/>
+    <names>
         <name lang="fr">Appareil électroménager</name>
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="cs">Elektrický spotřebič</name>
+        <name lang="ar">جهاز كهرومنزلي</name>
+        <name lang="el">Ηλεκτρική συσκευή</name>
+        <name lang="it">Apparecchio elettrico</name>
+        <name lang="en">Appliance</name>
+        <name lang="de">Haushaltsgerät</name>
         <name lang="nl">Elektrisch apparaat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <text x="-4" y="14.3333" size="9" text="E"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="22.5" tagg="label"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <text x="-4" size="9" text="E" y="14.3333"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

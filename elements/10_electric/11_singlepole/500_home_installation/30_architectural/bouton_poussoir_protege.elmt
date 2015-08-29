@@ -1,24 +1,26 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
-<uuid uuid="{FD066063-3572-4588-8FCC-44D6C2C40995}"/><names>
-        <name lang="ar">زرّ ضاغط محمي</name>
-        <name lang="de">Drucktaster geschützt</name>
-        <name lang="el">Μπουτόν, προστατευμένο</name>
-        <name lang="en">Push-button protected</name>
-        <name lang="it">Pulsante, protetto meccanicamente</name>
+<definition hotspot_x="13" hotspot_y="12" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{753d26b4-3ccc-448c-97f5-fd3885bf8083}"/>
+    <names>
         <name lang="fr">Bouton-poussoir, protégé</name>
         <name lang="pl">Przycisk chroniony</name>
         <name lang="cs">Chráněné tlačítko</name>
+        <name lang="ar">زرّ ضاغط محمي</name>
+        <name lang="el">Μπουτόν, προστατευμένο</name>
+        <name lang="it">Pulsante, protetto meccanicamente</name>
+        <name lang="de">Drucktaster geschützt</name>
+        <name lang="en">Push-button protected</name>
         <name lang="nl">Drukknop beschermd</name>
     </names>
     <informations>EN 60617: 11-14-12</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="5" y2="23" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="5" y2="-7" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="5" y2="-2" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="5" y2="18" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="10" y2="18" x2="10"/>
-        <circle x="-7.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15"/>
-        <circle x="-4.25" y="3.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5"/>
-        <terminal x="0" y="0" orientation="n"/>
+        <input x="13" rotate="true" size="9" text="_" y="5.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" antialias="false" y2="23" end1="none" x2="5" length1="1.5" x1="5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" antialias="false" y2="-7" end1="none" x2="5" length1="1.5" x1="5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" antialias="false" y2="-2" end1="none" x2="10" length1="1.5" x1="5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" antialias="false" y2="18" end1="none" x2="10" length1="1.5" x1="5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" antialias="false" y2="18" end1="none" x2="10" length1="1.5" x1="10"/>
+        <circle x="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15" antialias="true" y="0.5"/>
+        <circle x="-4.25" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5" antialias="true" y="3.75"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

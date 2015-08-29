@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{797AACFD-A82D-4EE4-9A15-851842EBA8B3}"/><names>
-        <name lang="ar">عدّاد أحادي الوجه 220V </name>
-        <name lang="el">Μονοφασικός μετρητής</name>
-        <name lang="en">220V single phase meter</name>
-        <name lang="de">Zähler einphasig</name>
-        <name lang="it">Contatore monofase 230V</name>
+<definition hotspot_x="20" hotspot_y="35" orientation="dyyy" height="60" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{2c8aab42-6ee3-426d-b3f8-77111f7601f1}"/>
+    <names>
         <name lang="fr">Compteur 220V monophase</name>
         <name lang="pl">Licznik jednofazowy</name>
         <name lang="cs">Jednofázové počítadlo 220V</name>
+        <name lang="ar">عدّاد أحادي الوجه 220V </name>
+        <name lang="el">Μονοφασικός μετρητής</name>
+        <name lang="it">Contatore monofase 230V</name>
+        <name lang="en">220V single phase meter</name>
+        <name lang="de">Zähler einphasig</name>
         <name lang="nl">KWh meter 230V</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-10" y="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-29" orientation="n"/>
-        <terminal x="0" y="18" orientation="s"/>
+        <input x="18" rotate="true" size="9" text="_" y="-14.45" tagg="label"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="9" antialias="false" y="5" width="20"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" antialias="false" y="-20" width="20"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" y="-25" width="30"/>
+        <terminal x="0" orientation="n" y="-29"/>
+        <terminal x="0" orientation="s" y="18"/>
     </description>
 </definition>

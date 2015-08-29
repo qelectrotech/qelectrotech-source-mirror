@@ -1,27 +1,29 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{E5D135BD-2F1F-494E-A268-9279B8FB279F}"/><names>
-        <name lang="ar">سخّان ماء</name>
-        <name lang="be">Heißwassergerät</name>
-        <name lang="el">Θερμοσίφωνας</name>
-        <name lang="en">Water heater</name>
-        <name lang="de">Wasserkocher</name>
-        <name lang="it">Scalda acqua</name>
+<definition hotspot_x="16" hotspot_y="25" orientation="dyyy" height="30" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{302a8056-b940-4b06-9b79-39e8de182678}"/>
+    <names>
         <name lang="fr">Chauffe-eau</name>
         <name lang="pl">Ogrzewacz wody</name>
         <name lang="cs">Ohřívač vody</name>
+        <name lang="ar">سخّان ماء</name>
+        <name lang="el">Θερμοσίφωνας</name>
+        <name lang="it">Scalda acqua</name>
+        <name lang="en">Water heater</name>
+        <name lang="de">Wasserkocher</name>
         <name lang="nl">Water verwarmer</name>
+        <name lang="be">Heißwassergerät</name>
     </names>
     <informations>EN 60617: 11-16-01</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="17.5" y2="-4" x2="17.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="12.5" y2="-1" x2="12.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="15" y2="-2" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="2.5" y2="-4" x2="2.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="7.5" y2="-1" x2="7.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="5" y2="-2" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="0" x2="10"/>
-        <circle x="0" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input x="3" rotate="true" size="9" text="_" y="-1.5" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-10" end1="none" x2="0" length1="1.5" x1="-10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" antialias="false" y2="-4" end1="none" x2="17.5" length1="1.5" x1="17.5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" antialias="false" y2="-1" end1="none" x2="12.5" length1="1.5" x1="12.5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" antialias="false" y2="-2" end1="none" x2="15" length1="1.5" x1="15"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" antialias="false" y2="-4" end1="none" x2="2.5" length1="1.5" x1="2.5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" antialias="false" y2="-1" end1="none" x2="7.5" length1="1.5" x1="7.5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" antialias="false" y2="-2" end1="none" x2="5" length1="1.5" x1="5"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" antialias="false" y2="0" end1="none" x2="10" length1="1.5" x1="10"/>
+        <circle x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true" y="-20"/>
+        <terminal x="-10" orientation="w" y="-10"/>
     </description>
 </definition>

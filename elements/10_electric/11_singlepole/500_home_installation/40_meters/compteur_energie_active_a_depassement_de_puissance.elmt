@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{9437AAFB-FC3E-4622-B8B6-4CE69B4A7C67}"/><names>
-        <name lang="ar">عدّاد طاقة فعّالة مع تجاوز قدرة</name>
-        <name lang="de">Überverbrauchszähler, Spitzenzähler&#xd;</name>
-        <name lang="en"> Excess watt-hour meter&#xd;</name>
-        <name lang="it">Contatore di energia attiva a supero di potenza</name>
+<definition hotspot_x="20" hotspot_y="29" orientation="dyyy" height="50" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{fecbdbdd-a4ec-4304-9c7a-1c3927385a23}"/>
+    <names>
         <name lang="fr">Compteur à énergie active à dépassement de puissance</name>
         <name lang="pl">Licznik watogodzin szczytowy</name>
         <name lang="cs">Počítadlo překročení spotřeby watthodin</name>
+        <name lang="ar">عدّاد طاقة فعّالة مع تجاوز قدرة</name>
+        <name lang="it">Contatore di energia attiva a supero di potenza</name>
+        <name lang="de">Überverbrauchszähler, Spitzenzähler&#xd;</name>
+        <name lang="en"> Excess watt-hour meter&#xd;</name>
         <name lang="nl">Overcapaciteit teller</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-10" y="7" size="9" text="P &gt;"/>
-        <text x="-10" y="-3" size="9" text="Wh"/>
-        <rect width="30" x="-15" y="-12" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-24" orientation="n"/>
-        <terminal x="0" y="14" orientation="s"/>
+        <input x="18" rotate="true" size="9" text="_" y="-9.45" tagg="label"/>
+        <text x="-10" size="9" text="P >" y="7"/>
+        <text x="-10" size="9" text="Wh" y="-3"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" antialias="false" y="-12" width="30"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" antialias="false" y="-20" width="30"/>
+        <terminal x="0" orientation="s" y="14"/>
+        <terminal x="0" orientation="n" y="-24"/>
     </description>
 </definition>

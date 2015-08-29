@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{976A09EF-5B5D-4C2C-9AE6-4BA387BBA586}"/><names>
-        <name lang="ar">عدّاد زمني</name>
-        <name lang="de">Betriebsstundenzähler</name>
-        <name lang="el">Ωρόμετρο</name>
-        <name lang="en">Hour counter</name>
-        <name lang="it">Conta tempo</name>
+<definition hotspot_x="20" hotspot_y="28" orientation="dyyy" height="50" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{8054da18-8ba7-409e-8cf4-0e57a026884c}"/>
+    <names>
         <name lang="fr">Compteur horaire</name>
         <name lang="pl">Licznik godzin</name>
         <name lang="cs">Počítadlo hodin</name>
+        <name lang="ar">عدّاد زمني</name>
+        <name lang="el">Ωρόμετρο</name>
+        <name lang="it">Conta tempo</name>
+        <name lang="de">Betriebsstundenzähler</name>
+        <name lang="en">Hour counter</name>
         <name lang="nl">Bedrijfsurenteller</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-3" y="2.3333" size="9" text="h"/>
-        <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-23" orientation="n"/>
-        <terminal x="0" y="15" orientation="s"/>
+        <text x="-3" size="9" text="h" y="2.3333"/>
+        <input x="18" rotate="true" size="9" text="_" y="-9.45" tagg="label"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" antialias="false" y="-11" width="30"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" antialias="false" y="-19" width="30"/>
+        <terminal x="0" orientation="n" y="-23"/>
+        <terminal x="0" orientation="s" y="15"/>
     </description>
 </definition>

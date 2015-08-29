@@ -1,22 +1,24 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{28CF94E8-505F-4ADD-83DE-D03438C867DB}"/><names>
-        <name lang="ar">مُحرّك خطوة-خطوة</name>
-        <name lang="de">Schrittmotor</name>
-        <name lang="el">Βηματικός κινητήρας</name>
-        <name lang="en">Stepping motor</name>
-        <name lang="it">Motore passo-passo</name>
+<definition hotspot_x="15" hotspot_y="29" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{7f6e837b-6407-44ed-9768-4f3f852c5463}"/>
+    <names>
         <name lang="fr">Moteur pas à pas</name>
         <name lang="pl">Silnik krokowy</name>
         <name lang="cs">Krokový motor</name>
+        <name lang="ar">مُحرّك خطوة-خطوة</name>
+        <name lang="el">Βηματικός κινητήρας</name>
+        <name lang="it">Motore passo-passo</name>
+        <name lang="de">Schrittmotor</name>
+        <name lang="en">Stepping motor</name>
         <name lang="nl">Stappenmotor</name>
     </names>
     <informations>EN 60617: 06-04-03</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="6" y2="-6" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-6" y2="-1" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-6" y2="-3" x2="6"/>
-        <circle x="-12" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>
-        <text x="-4.5" y="-6" size="8" text="M"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="2.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="-6" end1="none" x2="6" length1="1.5" x1="6"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="-1" end1="none" x2="-6" length1="1.5" x1="-6"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="-3" end1="none" x2="6" length1="1.5" x1="-6"/>
+        <circle x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24" antialias="true" y="-20"/>
+        <text x="-4.5" size="8" text="M" y="-6"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

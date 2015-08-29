@@ -1,23 +1,25 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
-<uuid uuid="{5699D1A1-AF0F-4454-9603-09EAB65FA789}"/><names>
-        <name lang="ar">مفتاح أحادي القطب (مبدّل طرف سلم)</name>
-        <name lang="de">Serienschalter 1-polig
-</name>
-        <name lang="el">Διακόπτης εναλλαγής (αλέ-ρετούρ)</name>
-        <name lang="en">Two-way single pole switch
-</name>
-        <name lang="it">Deviatore unipolare</name>
+<definition hotspot_x="15" hotspot_y="5" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{e8b0f573-7432-48a1-8a5e-df59cf14c61c}"/>
+    <names>
         <name lang="fr">Interrupteur unipolaire va-et-vient
 </name>
         <name lang="pl">Łącznik schodowy</name>
         <name lang="cs">Schodišťový jednopólový vypínač</name>
+        <name lang="ar">مفتاح أحادي القطب (مبدّل طرف سلم)</name>
+        <name lang="el">Διακόπτης εναλλαγής (αλέ-ρετούρ)</name>
+        <name lang="it">Deviatore unipolare</name>
+        <name lang="de">Serienschalter 1-polig
+</name>
+        <name lang="en">Two-way single pole switch
+</name>
         <name lang="nl">Serieschakelaar (1)</name>
     </names>
     <informations>EN 60617: 11-14-06</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-2" y2="30" x2="-9" y3="28" x3="-12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="2" y2="-1" x2="9" y3="1" x3="12"/>
-        <circle x="-5" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <terminal x="0" y="10" orientation="n"/>
+        <input x="5" rotate="true" size="9" text="_" y="13.55" tagg="label"/>
+        <polygon y3="28" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" antialias="true" closed="false" y2="30" x3="-12" x2="-9" x1="-2"/>
+        <polygon y3="1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="true" closed="false" y2="-1" x3="12" x2="9" x1="2"/>
+        <circle x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" antialias="true" y="10"/>
+        <terminal x="0" orientation="n" y="10"/>
     </description>
 </definition>

@@ -1,24 +1,26 @@
-<definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{865CFC6D-0157-4E93-B149-29D48273508D}"/><names>
-        <name lang="ar">سخّان بالتراكم</name>
-        <name lang="el">Θερμοσυσσωρευτής</name>
-        <name lang="en">Heater has accumulated</name>
-        <name lang="de">Heizung mit Pufferspeicher</name>
-        <name lang="it">Apparecchio di riscaldamento ad accumulo</name>
+<definition hotspot_x="35" hotspot_y="20" orientation="dyyy" height="40" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{b45c2f98-8401-4742-bb8f-eafa8c73a742}"/>
+    <names>
         <name lang="fr">Appareil de chauffage a accumulation</name>
         <name lang="pl">Grzejnik elektryczny akumulacyjny</name>
         <name lang="cs">Akumulační ohřívač, topné těleso</name>
+        <name lang="ar">سخّان بالتراكم</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
+        <name lang="it">Apparecchio di riscaldamento ad accumulo</name>
+        <name lang="en">Heater has accumulated</name>
+        <name lang="de">Heizung mit Pufferspeicher</name>
         <name lang="nl">Verwarming met accumulator (steenkachel)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="66" x="-33" y="-7" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="0" y2="-10" x2="0"/>
-        <rect width="15" x="-30" y="-4" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="15" x="15" y="-4" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="15" x="0" y="-4" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="15" x="-15" y="-4" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-14" orientation="n"/>
+        <input x="-8" rotate="true" size="9" text="_" y="14.5" tagg="label"/>
+        <rect x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="23" antialias="false" y="-7" width="66"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" antialias="false" y2="-10" end1="none" x2="0" length1="1.5" x1="0"/>
+        <rect x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17" antialias="false" y="-4" width="15"/>
+        <rect x="15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17" antialias="false" y="-4" width="15"/>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17" antialias="false" y="-4" width="15"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17" antialias="false" y="-4" width="15"/>
+        <terminal x="0" orientation="n" y="-14"/>
     </description>
 </definition>

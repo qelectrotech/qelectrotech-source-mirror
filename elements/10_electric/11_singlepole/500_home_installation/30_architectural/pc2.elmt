@@ -1,19 +1,21 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{7B36264B-6165-43EB-8B8B-C8F83C683F60}"/><names>
-        <name lang="ar">قاعدة مقبس تيّار (رمز عام)</name>
-        <name lang="de">Steckdose</name>
-        <name lang="el">Ρευματοδότης απλός</name>
-        <name lang="en">Socket outlet (power), general symbol</name>
-        <name lang="it">Presa, segno graﬁco generale</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{6c18a57b-7d55-4c7d-935e-6042aa1e6344}"/>
+    <names>
         <name lang="fr">Socle de prise de courant</name>
         <name lang="pl">Gniazdo pojedyncze</name>
         <name lang="cs">Zásuvka, obecný symbol</name>
+        <name lang="ar">قاعدة مقبس تيّار (رمز عام)</name>
+        <name lang="el">Ρευματοδότης απλός</name>
+        <name lang="it">Presa, segno graﬁco generale</name>
+        <name lang="de">Steckdose</name>
+        <name lang="en">Socket outlet (power), general symbol</name>
         <name lang="nl">Contactdoos</name>
     </names>
     <informations>EN 60617: 11-13-01</informations>
     <description>
-        <arc width="20" x="-10" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="-10" angle="-180" width="20"/>
+        <input x="-1" rotate="true" size="9" text="_" y="-20.5" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

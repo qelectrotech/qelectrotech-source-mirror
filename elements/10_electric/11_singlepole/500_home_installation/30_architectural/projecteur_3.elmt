@@ -1,23 +1,25 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{BE3F9D20-9681-4B37-B684-3EFD3E7F16F9}"/><names>
-        <name lang="ar">عاكس إضاءة</name>
-        <name lang="de">Punktleuchte</name>
-        <name lang="en">Floodlight</name>
+<definition hotspot_x="16" hotspot_y="30" orientation="dyyy" height="40" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{bdb122e8-6852-4125-9ae1-4d804f5b1c61}"/>
+    <names>
         <name lang="fr">Projecteur d'illumination</name>
         <name lang="pl">Projektor o świetle rozproszonym</name>
         <name lang="cs">Bodová světla</name>
-        <name lang="it">Faro a fascio largo</name>
-        <name lang="nl">Schijnwerper</name>
+        <name lang="ar">عاكس إضاءة</name>
         <name lang="el">Προβολέας</name>
+        <name lang="it">Faro a fascio largo</name>
+        <name lang="de">Punktleuchte</name>
+        <name lang="en">Floodlight</name>
+        <name lang="nl">Schijnwerper</name>
     </names>
     <informations>EN 60617: 11-15-09</informations>
     <description>
-        <line length1="2" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="4" x1="19" y2="-7" x2="8"/>
-        <line length1="1.5" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13" x1="8" y2="-24" x2="19"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-3" y2="-7" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-3" y2="-13" x2="3"/>
-        <circle x="-4.5" y="-14.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9"/>
-        <arc width="20" x="-10" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input x="19" rotate="true" size="9" text="_" y="-11.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="4" antialias="false" y2="-7" end1="triangle" x2="8" length1="2" x1="19"/>
+        <line end2="triangle" length2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13" antialias="false" y2="-24" end1="none" x2="19" length1="1.5" x1="8"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="true" y2="-7" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" antialias="true" y2="-13" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <circle x="-4.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9" antialias="true" y="-14.5"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-90" y="-20" angle="-180" width="20"/>
+        <terminal x="-10" orientation="w" y="-10"/>
     </description>
 </definition>

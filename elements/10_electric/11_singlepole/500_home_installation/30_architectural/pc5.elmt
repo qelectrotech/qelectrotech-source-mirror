@@ -1,20 +1,22 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{8A802162-61BA-4853-88C7-0D0D8F3E3B76}"/><names>
-        <name lang="ar">قاعدة مقبس تيّار (قدرة) بمفتاح أحادي القطب</name>
-        <name lang="de">Steckdose schaltbar</name>
-        <name lang="el">Πρίζα και διακόπτης</name>
-        <name lang="en">Socket outlet (power) single-pole switch with</name>
-        <name lang="it">Presa con interruttore unipolare</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{f4e7b0ae-afa4-4184-bed6-696e3b3e4891}"/>
+    <names>
         <name lang="fr">Socle de prise de courant (puissance) avec interrupteur unipolaire</name>
         <name lang="pl">Gniazdo pojedyncze z łącznikiem</name>
         <name lang="cs">Zásuvka, jednopólový spínač, odpojitelná</name>
+        <name lang="ar">قاعدة مقبس تيّار (قدرة) بمفتاح أحادي القطب</name>
+        <name lang="el">Πρίζα και διακόπτης</name>
+        <name lang="it">Presa con interruttore unipolare</name>
+        <name lang="de">Steckdose schaltbar</name>
+        <name lang="en">Socket outlet (power) single-pole switch with</name>
         <name lang="nl">wandcontactdoos, schakelend</name>
     </names>
     <informations>EN 60617: 11-13-06</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="0" y2="-18" x2="8" y3="-16" x3="10"/>
-        <arc width="20" x="-10" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <polygon y3="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" closed="false" y2="-18" x3="10" x2="8" x1="0"/>
+        <input x="12" rotate="true" size="9" text="_" y="-16.45" tagg="label"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="-10" angle="-180" width="20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

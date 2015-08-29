@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{2E8167A0-42A0-4934-9910-ECA73AC3B581}"/><names>
-        <name lang="ar">عاكس</name>
-        <name lang="de">Scheinwerfer</name>
-        <name lang="el">Προβολέας</name>
-        <name lang="en">Projector</name>
-        <name lang="it">Faro</name>
+<definition hotspot_x="16" hotspot_y="25" orientation="dyyy" height="30" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{740a8bd2-bb22-4f31-a3d1-49b566fabd97}"/>
+    <names>
         <name lang="fr">Projecteur</name>
         <name lang="pl">Projektor, symbol ogólny</name>
         <name lang="cs">Světlomet</name>
+        <name lang="ar">عاكس</name>
+        <name lang="el">Προβολέας</name>
+        <name lang="it">Faro</name>
+        <name lang="de">Scheinwerfer</name>
+        <name lang="en">Projector</name>
         <name lang="nl">Projector</name>
     </names>
     <informations>EN 60617: 11-15-07</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-3" y2="-7" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-3" y2="-13" x2="3"/>
-        <circle x="-4.5" y="-14.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9"/>
-        <arc width="20" x="-10" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input x="8" rotate="true" size="9" text="_" y="-9.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="true" y2="-7" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" antialias="true" y2="-13" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <circle x="-4.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9" antialias="true" y="-14.5"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-90" y="-20" angle="-180" width="20"/>
+        <terminal x="-10" orientation="w" y="-10"/>
     </description>
 </definition>

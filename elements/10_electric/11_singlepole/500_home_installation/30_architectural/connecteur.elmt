@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="5" height="30" type="element" orientation="dyyy">
-<uuid uuid="{70147BEE-0D80-42D0-88FE-C4E8D3100DD6}"/><names>
-        <name lang="ar">رابط</name>
-        <name lang="el">Σύνδεσμος</name>
-        <name lang="en">Connector</name>
-        <name lang="de">Stecker</name>
-        <name lang="it">Connettore</name>
+<definition hotspot_x="14" hotspot_y="10" orientation="dyyy" height="20" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{2bb8880f-16ae-4a25-b20b-49c4ea1afc07}"/>
+    <names>
         <name lang="fr">Connecteur</name>
         <name lang="pl">Złącze</name>
         <name lang="cs">Spojka</name>
+        <name lang="ar">رابط</name>
+        <name lang="el">Σύνδεσμος</name>
+        <name lang="it">Connettore</name>
+        <name lang="en">Connector</name>
+        <name lang="de">Stecker</name>
         <name lang="nl">Connector</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="0"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="0" y2="5" x2="10" y3="15" x3="10" y4="10"/>
-        <terminal x="-10" y="10" orientation="w"/>
-        <terminal x="20" y="10" orientation="e"/>
+        <input x="10" rotate="true" size="9" text="_" y="6.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="20" length1="1.5" x1="10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="0" length1="1.5" x1="-10"/>
+        <polygon y3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" closed="false" y2="-5" x3="10" x2="10" x4="0" x1="0" y4="0"/>
+        <terminal x="-10" orientation="w" y="0"/>
+        <terminal x="20" orientation="e" y="0"/>
     </description>
 </definition>

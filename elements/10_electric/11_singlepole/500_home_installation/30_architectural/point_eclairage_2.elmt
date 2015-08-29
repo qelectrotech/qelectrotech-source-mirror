@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{25C38E8D-2DF8-4918-98F3-16F6127DDC5F}"/><names>
-        <name lang="ar">وحدة إضاءة مستقلّة للسلامة</name>
-        <name lang="de">Sicherheitsleuchte mit eingebauter Stromversorgung</name>
-        <name lang="el">Αυτόνομο φωτιστικό ασφαλείας</name>
-        <name lang="en">Self-containned emmergency lighting luminaire</name>
-        <name lang="it">Apparecchio autonomo per illuminazione di emergenza</name>
+<definition hotspot_x="16" hotspot_y="25" orientation="dyyy" height="30" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{40ab86d3-9221-4764-b93d-11c1a43ba82d}"/>
+    <names>
         <name lang="fr">Bloc autonome d'éclairage de sécurité</name>
         <name lang="pl">Oświetlenie ewakuacyjne autonomiczne</name>
         <name lang="cs">Bezpečnostní světla se zabudovanou dodávkou elektrického proudu</name>
+        <name lang="ar">وحدة إضاءة مستقلّة للسلامة</name>
+        <name lang="el">Αυτόνομο φωτιστικό ασφαλείας</name>
+        <name lang="it">Apparecchio autonomo per illuminazione di emergenza</name>
+        <name lang="de">Sicherheitsleuchte mit eingebauter Stromversorgung</name>
+        <name lang="en">Self-containned emmergency lighting luminaire</name>
         <name lang="nl">Noodlamp automatisch met accu</name>
     </names>
     <informations>EN 60617: 11-15-12</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-8" y2="-18" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-8" y2="-2" x2="8"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-1.5" y="-11.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input x="-7" rotate="true" size="9" text="_" y="0.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" antialias="true" y2="-18" end1="none" x2="8" length1="1.5" x1="-8"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" antialias="true" y2="-2" end1="none" x2="8" length1="1.5" x1="-8"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" y="-20" width="20"/>
+        <circle x="-1.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" antialias="true" y="-11.5"/>
+        <terminal x="-10" orientation="w" y="-10"/>
     </description>
 </definition>

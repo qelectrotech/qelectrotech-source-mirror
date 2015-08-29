@@ -1,26 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="50" type="element" orientation="dnnn">
-<uuid uuid="{08B3DBE0-4802-44D6-BF0E-27A6DEEFE1E3}"/><names>
-        <name lang="ar">غسّالة أواني</name>
-        <name lang="de">Geschirrspüler</name>
+<definition hotspot_x="15" hotspot_y="20" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{8e5d1c1a-60e2-4ee1-bea2-d6a971c3239f}"/>
+    <names>
         <name lang="ru">Посудомоечная машина</name>
-        <name lang="pt">Máquina de lavar louça</name>
-        <name lang="el">Πλυντήριο πιάτων</name>
-        <name lang="en">Dishwasher</name>
-        <name lang="it">Lavastoviglie</name>
         <name lang="fr">Lave-vaisselle</name>
         <name lang="pl">Zmywarka</name>
-        <name lang="es">Lavavajillas</name>
         <name lang="cs">Myčka na nádobí</name>
+        <name lang="ar">غسّالة أواني</name>
+        <name lang="el">Πλυντήριο πιάτων</name>
+        <name lang="pt">Máquina de lavar louça</name>
+        <name lang="it">Lavastoviglie</name>
+        <name lang="de">Geschirrspüler</name>
+        <name lang="en">Dishwasher</name>
+        <name lang="es">Lavavajillas</name>
         <name lang="nl">Afwasmachine</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
-        <circle x="-8" y="6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="16"/>
-        <circle x="-6" y="8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-12" y2="4" x2="12"/>
-        <terminal x="0" y="-12" orientation="n"/>
+        <polygon y3="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="24" x3="12" x2="-12" x4="12" x1="-12" y4="0"/>
+        <input x="-7" rotate="true" size="9" text="_" y="20.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" antialias="false" y2="0" end1="none" x2="0" length1="1.5" x1="0"/>
+        <circle x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="16" antialias="true" y="6"/>
+        <circle x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="12" antialias="true" y="8"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" antialias="false" y2="4" end1="none" x2="12" length1="1.5" x1="-12"/>
+        <terminal x="0" orientation="n" y="-12"/>
     </description>
 </definition>

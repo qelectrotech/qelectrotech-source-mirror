@@ -1,32 +1,34 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{BDA2EC77-2FAD-46B5-A120-4195EB10A653}"/><names>
-        <name lang="ar">غسّالة ملابس</name>
-        <name lang="de">Waschmaschine</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{3d189366-0810-4bd9-8eee-5f5683a21b00}"/>
+    <names>
         <name lang="ru">Стиральная машина</name>
-        <name lang="pt">Máquina de lavar roupa</name>
-        <name lang="el">Πλυντήριο</name>
-        <name lang="en">Washer</name>
-        <name lang="it">Lavatrice</name>
         <name lang="fr">Lave-linge</name>
         <name lang="pl">Pralka</name>
-        <name lang="es">Lavarropas</name>
         <name lang="cs">Pračka</name>
+        <name lang="ar">غسّالة ملابس</name>
+        <name lang="el">Πλυντήριο</name>
+        <name lang="pt">Máquina de lavar roupa</name>
+        <name lang="it">Lavatrice</name>
+        <name lang="de">Waschmaschine</name>
+        <name lang="en">Washer</name>
+        <name lang="es">Lavarropas</name>
         <name lang="nl">Wasmachine</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.7775" x1="-2.3114" y2="8.7774" x2="3.6885"/>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.0445" x1="-3.822" y2="7.0444" x2="2.1779"/>
-        <circle x="-9" y="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.733" x1="-4.2669" y2="6.7329" x2="0.733"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <circle x="-4.4721" y="6.5278" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.9442"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.9999" x1="-4" y2="6.9999" x2="-0.9999"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15" x1="1" y2="12" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.0445" x1="-0.9999" y2="10.0445" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="-3" y2="7.9999" x2="3"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.7775" antialias="false" y2="8.7774" end1="none" x2="3.6885" length1="1.5" x1="-2.3114"/>
+        <input x="-7" rotate="true" size="9" text="_" y="25.55" tagg="label"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.0445" antialias="false" y2="7.0444" end1="none" x2="2.1779" length1="1.5" x1="-3.822"/>
+        <circle x="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18" antialias="true" y="2"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.733" antialias="false" y2="6.7329" end1="none" x2="0.733" length1="1.5" x1="-4.2669"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <circle x="-4.4721" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.9442" antialias="true" y="6.5278"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.9999" antialias="false" y2="6.9999" end1="none" x2="-0.9999" length1="1.5" x1="-4"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15" antialias="false" y2="12" end1="none" x2="4" length1="1.5" x1="1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.0445" antialias="false" y2="10.0445" end1="none" x2="4" length1="1.5" x1="-0.9999"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" antialias="false" y2="7.9999" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

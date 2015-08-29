@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-<uuid uuid="{E126F40D-33EB-4477-A330-111A5694D464}"/><names>
-        <name lang="ar">قفل كهربائي</name>
-        <name lang="de">Türöffner</name>
-        <name lang="el">Ηλεκτρική κλειδαριά</name>
-        <name lang="en">Electric lock</name>
-        <name lang="it">Serratura elettrica</name>
+<definition hotspot_x="15" hotspot_y="6" orientation="dyyy" height="20" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{c008c558-6460-4fae-81d0-4bbe68ceb2ca}"/>
+    <names>
         <name lang="fr">Gâche électrique</name>
         <name lang="pl">Zamek elektryczny</name>
         <name lang="cs">Elektrický zámek</name>
+        <name lang="ar">قفل كهربائي</name>
+        <name lang="el">Ηλεκτρική κλειδαριά</name>
+        <name lang="it">Serratura elettrica</name>
+        <name lang="de">Türöffner</name>
+        <name lang="en">Electric lock</name>
         <name lang="nl">Electrisch slot</name>
     </names>
     <informations>EN 60617: 11-16-04</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-10" x2="20" y3="-20" x3="10"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="5" x="-5" y="-16.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="5" x="0" y="-16.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="-10" rotate="true" size="9" text="_" y="10.55" tagg="label"/>
+        <polygon y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="true" y2="10" x3="10" x2="20" x1="10"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false" y="0" width="20"/>
+        <arc x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="true" start="-180" y="3.5" angle="-180" width="5"/>
+        <arc x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="true" start="-180" y="3.5" angle="-180" width="5"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

@@ -1,22 +1,24 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{DD57B677-2F58-420A-9850-A3277A22E344}"/><names>
-        <name lang="ar">هاتف داخلي</name>
-        <name lang="el">Ενδοεπικοινωνία</name>
-        <name lang="en">Audio intercommunication equipment</name>
-        <name lang="de">Gegensprechanlage</name>
-        <name lang="it">Interfono, citofono</name>
+<definition hotspot_x="7" hotspot_y="26" orientation="dyyy" height="30" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{9ec26e5f-e34e-4096-9e4b-f774ecde3649}"/>
+    <names>
         <name lang="fr">interphone</name>
         <name lang="pl">Domofon</name>
         <name lang="cs">Domácí telefon</name>
+        <name lang="ar">هاتف داخلي</name>
+        <name lang="el">Ενδοεπικοινωνία</name>
+        <name lang="it">Interfono, citofono</name>
+        <name lang="en">Audio intercommunication equipment</name>
+        <name lang="de">Gegensprechanlage</name>
         <name lang="nl">Audio communicatie</name>
     </names>
     <informations>EN 60617: 11-16-05</informations>
     <description>
-        <line length1="1" length2="1" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" x1="20" y2="-10" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="15" y2="-1" x2="24"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="15" y2="-19" x2="24"/>
-        <rect width="4" x="11" y="-14" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-5" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="-20" orientation="n"/>
+        <line end2="triangle" length2="1" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" antialias="false" y2="-10" end1="triangle" x2="30" length1="1" x1="20"/>
+        <input x="1" rotate="true" size="9" text="_" y="0.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" antialias="true" y2="-1" end1="none" x2="24" length1="1.5" x1="15"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" antialias="true" y2="-19" end1="none" x2="24" length1="1.5" x1="15"/>
+        <rect x="11" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" antialias="false" y="-14" width="4"/>
+        <rect x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" y="-20" width="30"/>
+        <terminal x="10" orientation="n" y="-20"/>
     </description>
 </definition>

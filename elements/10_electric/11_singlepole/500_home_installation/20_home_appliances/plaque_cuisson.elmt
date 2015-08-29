@@ -1,27 +1,29 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{5D7C0AE2-59A9-46F2-BDD6-DC450D0C5DAF}"/><names>
-        <name lang="ar">لوحة طبخ</name>
-        <name lang="de">Herdplatte</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{8a85a876-2de4-4742-a2e2-3b5692a8a884}"/>
+    <names>
         <name lang="ru">Эл. плита</name>
-        <name lang="pt">Placa de fogão</name>
-        <name lang="el">Κεραμική εστία</name>
-        <name lang="en">Solid plate</name>
-        <name lang="it">Fornelli</name>
         <name lang="fr">Plaque de cuisson</name>
         <name lang="pl">Kuchenka elektryczna</name>
-        <name lang="es">Placa de cocina</name>
         <name lang="cs">Deska na vaření</name>
+        <name lang="ar">لوحة طبخ</name>
+        <name lang="el">Κεραμική εστία</name>
+        <name lang="pt">Placa de fogão</name>
+        <name lang="it">Fornelli</name>
+        <name lang="de">Herdplatte</name>
+        <name lang="en">Solid plate</name>
+        <name lang="es">Placa de cocina</name>
         <name lang="nl">Inductieplaat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <circle x="-8.5" y="13.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
-        <circle x="0.5" y="12.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9"/>
-        <circle x="-9.5" y="2.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9"/>
-        <circle x="1.5" y="3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <input x="-8" rotate="true" size="9" text="_" y="23.5" tagg="label"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <circle x="-8.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7" antialias="true" y="13.5"/>
+        <circle x="0.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" antialias="true" y="12.5"/>
+        <circle x="-9.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" antialias="true" y="2.5"/>
+        <circle x="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7" antialias="true" y="3.5"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

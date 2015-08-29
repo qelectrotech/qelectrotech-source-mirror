@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{060F549F-FF8A-4BB3-A609-8BCCCBC18F2C}"/><names>
-        <name lang="ar">مُحرّك</name>
-        <name lang="de">Motor</name>
-        <name lang="el">Ηλεκτροκινητήρας</name>
-        <name lang="en">Motor</name>
-        <name lang="it">Motore</name>
+<definition hotspot_x="15" hotspot_y="29" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{1f94c11a-7cb5-4796-8076-9d8b89ff2fb8}"/>
+    <names>
         <name lang="fr">Moteur</name>
         <name lang="pl">Silnik</name>
         <name lang="cs">Motor</name>
+        <name lang="ar">مُحرّك</name>
+        <name lang="el">Ηλεκτροκινητήρας</name>
+        <name lang="it">Motore</name>
+        <name lang="de">Motor</name>
+        <name lang="en">Motor</name>
         <name lang="nl">Motor</name>
     </names>
     <informations>EN 60617: 06-04-01</informations>
     <description>
-        <circle x="-12" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>
-        <text x="-5" y="-4" size="9" text="M"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <circle x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24" antialias="true" y="-20"/>
+        <input x="13" rotate="true" size="9" text="_" y="-4.45" tagg="label"/>
+        <text x="-5" size="9" text="M" y="-4"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

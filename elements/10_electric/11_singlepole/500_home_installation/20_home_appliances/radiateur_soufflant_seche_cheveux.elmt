@@ -1,28 +1,30 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{B4ECC45A-5CC1-4D0B-8864-33DFA0881F9E}"/><names>
-        <name lang="ar">مشعاع نافخ - مجفف شعر</name>
-        <name lang="el">Στεγνωτήρας μαλλιών</name>
-        <name lang="en">Fan heater hairdryer</name>
-        <name lang="de">Gebläseheizkörper</name>
-        <name lang="it">Asciuga capelli</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{aa2050b3-27ff-4536-857f-739dc255b21b}"/>
+    <names>
         <name lang="fr">Radiateur soufflant sèche cheveux</name>
         <name lang="pl">Suszarka do włosów</name>
         <name lang="cs">Vysoušeč vlasů, fén na vlasy</name>
+        <name lang="ar">مشعاع نافخ - مجفف شعر</name>
+        <name lang="el">Στεγνωτήρας μαλλιών</name>
+        <name lang="it">Asciuga capelli</name>
+        <name lang="en">Fan heater hairdryer</name>
+        <name lang="de">Gebläseheizkörper</name>
         <name lang="nl">Ventilator verwarmer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="4" x="-7.4982" y="12.585" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5596" x1="4.9763" y2="16.5596" x2="-5.0236"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5596" x1="-5.0236" y2="16.5596" x2="4.9763"/>
-        <arc width="4" x="3.561" y="12.585" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <rect width="6" x="-12" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="6" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="0" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="-6" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="23.5" tagg="label"/>
+        <arc x="-7.4982" style="line-style:normal;line-weight:normal;filling:none;color:black" height="4" antialias="true" start="-90" y="12.585" angle="-180" width="4"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5596" antialias="false" y2="16.5596" end1="none" x2="-5.0236" length1="1.5" x1="4.9763"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5596" antialias="false" y2="16.5596" end1="none" x2="4.9763" length1="1.5" x1="-5.0236"/>
+        <arc x="3.561" style="line-style:normal;line-weight:normal;filling:none;color:black" height="4" antialias="true" start="90" y="12.585" angle="-180" width="4"/>
+        <rect x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="false" y="-1" width="6"/>
+        <rect x="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="false" y="-1" width="6"/>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="false" y="-1" width="6"/>
+        <rect x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="false" y="-1" width="6"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

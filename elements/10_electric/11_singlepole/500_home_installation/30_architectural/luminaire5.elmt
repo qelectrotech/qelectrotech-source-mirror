@@ -1,26 +1,28 @@
-<definition width="70" version="0.3" hotspot_x="5" hotspot_y="20" height="30" type="element" orientation="dyyy">
-<uuid uuid="{A065C653-18F4-47C6-8BC0-CBD907F8C277}"/><names>
-        <name lang="ar">جهاز إضاءة ب5 مصابيح فليورسنت</name>
-        <name lang="de">Leuchte mit 5 Leuchtstofflampen
-</name>
-        <name lang="el">Φωτιστικό με 5 λάμπες φθορισμού</name>
-        <name lang="en"> Luminaire with ﬁve ﬂuorescent
-tubes
-</name>
-        <name lang="it">Lampada a 5 tubi ﬂuorescenti</name>
+<definition hotspot_x="5" hotspot_y="8" orientation="dyyy" height="20" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{69b9d074-e803-4715-a800-01e45bf78258}"/>
+    <names>
         <name lang="fr">Luminaire à cinq tubes fluorescents
 </name>
         <name lang="pl">Świetlówka</name>
         <name lang="cs">Světlo s pěti zářivkami</name>
+        <name lang="ar">جهاز إضاءة ب5 مصابيح فليورسنت</name>
+        <name lang="el">Φωτιστικό με 5 λάμπες φθορισμού</name>
+        <name lang="it">Lampada a 5 tubi ﬂuorescenti</name>
+        <name lang="de">Leuchte mit 5 Leuchtstofflampen
+</name>
+        <name lang="en"> Luminaire with ﬁve ﬂuorescent
+tubes
+</name>
         <name lang="nl">TL met x buizen</name>
     </names>
     <informations>EN 60617: 11-15-06</informations>
     <description>
-        <input x="30" y="-4.5" size="5" rotate="true" text="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="27" y2="-3" x2="33"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="0" y2="3" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="60" y2="3" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="60"/>
-        <terminal x="30" y="0" orientation="n"/>
+        <input x="3" rotate="true" size="9" text="_" y="5.55" tagg="label"/>
+        <input x="30" rotate="true" size="5" text="5" y="-4.5" tagg="none"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" antialias="false" y2="-3" end1="none" x2="33" length1="1.5" x1="27"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="3" end1="none" x2="0" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="3" end1="none" x2="60" length1="1.5" x1="60"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="60" length1="1.5" x1="0"/>
+        <terminal x="30" orientation="n" y="0"/>
     </description>
 </definition>

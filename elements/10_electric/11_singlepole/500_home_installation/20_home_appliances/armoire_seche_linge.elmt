@@ -1,25 +1,27 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{56DAD24F-09FD-440C-9BB2-03CD0AEA39D7}"/><names>
-        <name lang="ar">مُجفّف ملابس</name>
-        <name lang="el">Στεγνωτήριο</name>
-        <name lang="en">Drying cabinet</name>
-        <name lang="de">Trocknungsgerät</name>
-        <name lang="it">Asciugatrice</name>
+<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{a4d01446-fd3f-414b-adc6-a3fb89e1f9bb}"/>
+    <names>
         <name lang="fr">Armoire sèche-linge</name>
         <name lang="pl">Suszarka</name>
         <name lang="cs">Sušička, sušící skříň</name>
+        <name lang="ar">مُجفّف ملابس</name>
+        <name lang="el">Στεγνωτήριο</name>
+        <name lang="it">Asciugatrice</name>
+        <name lang="en">Drying cabinet</name>
+        <name lang="de">Trocknungsgerät</name>
         <name lang="nl">Droog kast</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="4" x="-7.4982" y="2.5849" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.5595" x1="4.9763" y2="6.5595" x2="-5.0236"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.5595" x1="-5.0236" y2="6.5595" x2="4.9763"/>
-        <circle x="-2.5" y="13.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="5"/>
-        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <arc width="4" x="3.561" y="2.5849" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <terminal x="0" y="-13" orientation="n"/>
+        <arc x="-7.4982" style="line-style:normal;line-weight:normal;filling:none;color:black" height="4" antialias="true" start="-90" y="2.5849" angle="-180" width="4"/>
+        <input x="-8" rotate="true" size="9" text="_" y="21.5" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.5595" antialias="false" y2="6.5595" end1="none" x2="-5.0236" length1="1.5" x1="4.9763"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.5595" antialias="false" y2="6.5595" end1="none" x2="4.9763" length1="1.5" x1="-5.0236"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="5" antialias="true" y="13.5"/>
+        <polygon y3="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" antialias="false" y2="23" x3="12" x2="-12" x4="12" x1="-12" y4="-1"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="-1" end1="none" x2="0" length1="1.5" x1="0"/>
+        <arc x="3.561" style="line-style:normal;line-weight:normal;filling:none;color:black" height="4" antialias="true" start="90" y="2.5849" angle="-180" width="4"/>
+        <terminal x="0" orientation="n" y="-13"/>
     </description>
 </definition>

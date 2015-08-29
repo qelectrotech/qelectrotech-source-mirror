@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dyyy">
-<uuid uuid="{C57448C5-CADB-4F7D-8923-C6ACB142A502}"/><names>
-        <name lang="ar">مفتاح ثلاثي الأقطاب</name>
-        <name lang="el">Τριπλός διακόπτης</name>
-        <name lang="en">Switch 3 pole</name>
-        <name lang="de">Schalter 3-polig</name>
-        <name lang="it">Interruttore tripolare</name>
+<definition hotspot_x="5" hotspot_y="13" orientation="dyyy" height="20" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{2d125d1b-fe2f-4b0b-abac-9f1183011797}"/>
+    <names>
         <name lang="fr">Interrupteur tripolaire</name>
         <name lang="pl">Łącznik trójbiegunowy</name>
         <name lang="cs">Třípólový spínač</name>
+        <name lang="ar">مفتاح ثلاثي الأقطاب</name>
+        <name lang="el">Τριπλός διακόπτης</name>
+        <name lang="it">Interruttore tripolare</name>
+        <name lang="en">Switch 3 pole</name>
+        <name lang="de">Schalter 3-polig</name>
         <name lang="nl">Schakelaar (3)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="6" y2="-4" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="8" y2="-6" x2="10"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="2" y2="-10" x2="10" y3="-8" x3="12"/>
-        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <terminal x="0" y="-3" orientation="n"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" antialias="false" y2="-4" end1="none" x2="8" length1="1.5" x1="6"/>
+        <input x="0" rotate="true" size="9" text="_" y="-0.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" antialias="false" y2="-6" end1="none" x2="10" length1="1.5" x1="8"/>
+        <polygon y3="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" antialias="false" closed="false" y2="-10" x3="12" x2="10" x1="2"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" antialias="true" y="-2.5"/>
+        <terminal x="0" orientation="n" y="-3"/>
     </description>
 </definition>

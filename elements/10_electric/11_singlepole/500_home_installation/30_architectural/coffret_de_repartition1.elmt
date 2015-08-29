@@ -1,28 +1,30 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-<uuid uuid="{E7FF98AC-35A5-4303-B8EA-BF2D11D3B05B}"/><names>
-        <name lang="ar">مربع توزيع ب4 قنوات</name>
-        <name lang="de">Verteiler mit 4 Strängen</name>
-        <name lang="el">Κουτί διανομής 4 γραμμών</name>
-        <name lang="en">Assembly</name>
-        <name lang="it">Scatola di derivazione a 4 linee</name>
+<definition hotspot_x="14" hotspot_y="30" orientation="dyyy" height="80" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{f3a4f1a8-15c1-42d3-a478-ab336dba08ea}"/>
+    <names>
         <name lang="fr">Coffret de répartition avec 4 canalisations</name>
         <name lang="pl">Rozdzielnica</name>
         <name lang="cs">Rozvodna</name>
+        <name lang="ar">مربع توزيع ب4 قنوات</name>
+        <name lang="el">Κουτί διανομής 4 γραμμών</name>
+        <name lang="it">Scatola di derivazione a 4 linee</name>
+        <name lang="de">Verteiler mit 4 Strängen</name>
+        <name lang="en">Assembly</name>
         <name lang="nl">Verdeler</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="10" x="0" y="-25" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="10" y2="40" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="10" y2="20" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-20" x2="20"/>
-        <terminal x="20" y="20" orientation="e"/>
-        <terminal x="20" y="0" orientation="e"/>
-        <terminal x="20" y="-20" orientation="e"/>
-        <terminal x="-10" y="10" orientation="w"/>
-        <terminal x="20" y="40" orientation="e"/>
+        <input x="3" rotate="true" size="9" text="_" y="-39.45" tagg="label"/>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false" y="-25" width="10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="false" y2="10" end1="none" x2="0" length1="1.5" x1="-10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" antialias="false" y2="40" end1="none" x2="20" length1="1.5" x1="10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" antialias="false" y2="20" end1="none" x2="20" length1="1.5" x1="10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="20" length1="1.5" x1="10"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" antialias="false" y2="-20" end1="none" x2="20" length1="1.5" x1="10"/>
+        <terminal x="-10" orientation="w" y="10"/>
+        <terminal x="20" orientation="e" y="40"/>
+        <terminal x="20" orientation="e" y="20"/>
+        <terminal x="20" orientation="e" y="0"/>
+        <terminal x="20" orientation="e" y="-20"/>
     </description>
 </definition>

@@ -1,21 +1,23 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{4A6FEBF8-4571-497C-9DC0-1F7EAC807FD1}"/><names>
-        <name lang="ar">مفتاح نهاية مشوار</name>
-        <name lang="el">Τερματικός διακόπτης</name>
-        <name lang="en">Limit switch</name>
-        <name lang="de">Endschalter</name>
-        <name lang="it">Interruttore fine corsa</name>
+<definition hotspot_x="7" hotspot_y="16" orientation="dyyy" height="30" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{0c564c48-bd72-4d4a-965c-ed9086012af8}"/>
+    <names>
         <name lang="fr">Interrupteur fin de course</name>
         <name lang="pl">Łącznik krańcowy</name>
         <name lang="cs">Koncový spínač</name>
+        <name lang="ar">مفتاح نهاية مشوار</name>
+        <name lang="el">Τερματικός διακόπτης</name>
+        <name lang="it">Interruttore fine corsa</name>
+        <name lang="en">Limit switch</name>
+        <name lang="de">Endschalter</name>
         <name lang="nl">Eindschakelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="2" y2="-9" x2="8"/>
-        <circle x="7.75" y="-12.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5"/>
-        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <terminal x="0" y="0" orientation="n"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" y2="-9" end1="none" x2="8" length1="1.5" x1="2"/>
+        <input x="5" rotate="true" size="9" text="_" y="1.55" tagg="label"/>
+        <circle x="7.75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5" antialias="true" y="-12.75"/>
+        <circle x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" antialias="true" y="0"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

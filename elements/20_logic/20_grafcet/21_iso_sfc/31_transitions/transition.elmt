@@ -1,26 +1,27 @@
-<definition width="60" version="0.4" hotspot_x="20" hotspot_y="21" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{4A030AC0-E127-4969-B24A-ED1CAA0BE7F9}"/><names>
-        <name lang="ar">إنتقاليّة</name>
-        <name lang="de">Übergang</name>
-        <name lang="pt">transição</name>
-        <name lang="el">Μετάβαση</name>
-        <name lang="en">transition</name>
-        <name lang="it">Transizione</name>
+<definition hotspot_x="19" hotspot_y="9" orientation="dyyy" height="20" type="element" link_type="simple" width="40" version="0.5">
+    <uuid uuid="{884e45af-b571-4157-9d2b-3b2aeb1ed1bb}"/>
+    <names>
         <name lang="fr">transition</name>
         <name lang="pl">Tranzycja</name>
+        <name lang="cs">Přechod</name>
+        <name lang="ar">إنتقاليّة</name>
+        <name lang="el">Μετάβαση</name>
+        <name lang="pt">transição</name>
+        <name lang="it">Transizione</name>
+        <name lang="de">Übergang</name>
+        <name lang="en">transition</name>
         <name lang="es">transición</name>
         <name lang="nl">Overgang</name>
-        <name lang="cs">Přechod</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-        <input x="9" y="-7" size="5" rotate="true" text="T###"/>
-        <input x="9" y="7" size="5" rotate="true" text="_"/>
-        <terminal x="0" y="5" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-5" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="13" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-13" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <rect x="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" height="4" antialias="false" y="-2" width="26"/>
+        <input x="9" rotate="true" size="5" text="T###" y="-7" tagg="none"/>
+        <input x="9" rotate="true" size="5" text="_" y="7" tagg="label"/>
+        <terminal x="0" orientation="s" y="5"/>
+        <terminal x="0" orientation="n" y="-5"/>
+        <terminal x="13" orientation="e" y="0"/>
+        <terminal x="-13" orientation="w" y="0"/>
     </description>
 </definition>

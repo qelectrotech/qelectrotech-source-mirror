@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{C5966DDB-B3E9-4837-AAC9-8864A878D201}"/><names>
-        <name lang="ar">جهاز إنارة للسلامة بدائرة خاصة</name>
-        <name lang="de">Vorschaltgerät für Notbeleuchtung</name>
-        <name lang="el">Φωτιστικό ασφαλείας, σε ειδικό κύκλωμα</name>
-        <name lang="en">Emmergency Lighting luminaire on special circuit</name>
-        <name lang="it">Apparecchio di illuminazione di emergenza su circuito speciale</name>
+<definition hotspot_x="0" hotspot_y="0" orientation="dyyy" height="20" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{59cc726b-c4ca-4451-a756-d807751773fa}"/>
+    <names>
         <name lang="fr">Appareil d'éclairage de sécurité sur circuit spécial</name>
         <name lang="pl">Oświetlenie ewakuacyjne</name>
         <name lang="cs">Nouzová světla se samostatným okruhem</name>
+        <name lang="ar">جهاز إنارة للسلامة بدائرة خاصة</name>
+        <name lang="el">Φωτιστικό ασφαλείας, σε ειδικό κύκλωμα</name>
+        <name lang="it">Apparecchio di illuminazione di emergenza su circuito speciale</name>
+        <name lang="de">Vorschaltgerät für Notbeleuchtung</name>
+        <name lang="en">Emmergency Lighting luminaire on special circuit</name>
         <name lang="nl">Noodlamp op speciaal circuit</name>
     </names>
     <informations>EN 60617: 11-15-011</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-18" y2="-18" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-18" y2="-2" x2="-2"/>
-        <circle x="-11.5" y="-11.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input x="3" rotate="true" size="9" text="_" y="14.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" antialias="false" y2="2" end1="none" x2="18" length1="1.5" x1="2"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" antialias="true" y2="18" end1="none" x2="18" length1="1.5" x1="2"/>
+        <circle x="8.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" antialias="true" y="8.5"/>
+        <terminal x="10" orientation="w" y="10"/>
     </description>
 </definition>

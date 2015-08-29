@@ -1,21 +1,23 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{8B4E39F0-D500-470C-B545-EA77E542F75F}"/><names>
-        <name lang="ar">قاعدة مقبس تيّار (قدرة) مع  قفل</name>
-        <name lang="de">Steckdose mit Abdeckung</name>
-        <name lang="el">Ρευματοδότης με κάλυμα</name>
-        <name lang="en">Socket outlet (power) with shutter</name>
-        <name lang="it">Presa con schermo interno</name>
+<definition hotspot_x="25" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="50" version="0.5">
+    <uuid uuid="{6e0129f6-3a81-48ca-b8d0-ab9ee4983d14}"/>
+    <names>
         <name lang="fr">Socle de prise de courant (puissance) avec volet d'obturation</name>
         <name lang="pl">Gniazdo z pokrywą</name>
         <name lang="cs">Zásuvka se zakrytím</name>
+        <name lang="ar">قاعدة مقبس تيّار (قدرة) مع  قفل</name>
+        <name lang="el">Ρευματοδότης με κάλυμα</name>
+        <name lang="it">Presa con schermo interno</name>
+        <name lang="de">Steckdose mit Abdeckung</name>
+        <name lang="en">Socket outlet (power) with shutter</name>
         <name lang="nl">Wandcontactdoos met klep</name>
     </names>
     <informations>EN 60617: 11-13-05</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="19"/>
-        <arc width="20" x="-10" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="4" rotate="true" size="9" text="_" y="-16.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="-11" length1="1.5" x1="-20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="19" length1="1.5" x1="10"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="-10" angle="-180" width="20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

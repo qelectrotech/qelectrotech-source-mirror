@@ -1,20 +1,22 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{7EF0BAC3-7A8A-4626-985B-6E80B982AA05}"/><names>
-        <name lang="ar">قاعدة مقبس تيّار بحماية</name>
-        <name lang="de">Schutzkontaktsteckdose</name>
-        <name lang="el">Ρευματοδότης με προστασία</name>
-        <name lang="en">Socket outlet (power) with protective contact</name>
-        <name lang="it">Presa con contatto per conduttore di protezione</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{13761e82-bc6a-4fff-a6c7-89f3ea893b12}"/>
+    <names>
         <name lang="fr">Socle de prise de courant avec protection</name>
         <name lang="pl">Gniazdo pojedyncze ze stykiem ochronnym</name>
         <name lang="cs">Zdířková zásuvka s ochranným kontaktem</name>
+        <name lang="ar">قاعدة مقبس تيّار بحماية</name>
+        <name lang="el">Ρευματοδότης με προστασία</name>
+        <name lang="it">Presa con contatto per conduttore di protezione</name>
+        <name lang="de">Schutzkontaktsteckdose</name>
+        <name lang="en">Socket outlet (power) with protective contact</name>
         <name lang="nl">Contactdoos met beschermingscontact</name>
     </names>
     <informations>EN 60617: 11-13-04</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="10"/>
-        <arc width="20" x="-10" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="3" rotate="true" size="9" text="_" y="-19.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-10" end1="none" x2="10" length1="1.5" x1="-10"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="-10" angle="-180" width="20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

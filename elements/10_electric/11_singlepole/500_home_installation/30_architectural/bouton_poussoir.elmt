@@ -1,19 +1,21 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{1216EC4B-66F9-4924-AA62-D1680CD7324C}"/><names>
-        <name lang="ar">زرّ ضاغط</name>
-        <name lang="de">Drucktaster</name>
-        <name lang="el">Μπουτόν</name>
-        <name lang="en">Push button</name>
-        <name lang="it">Pulsante</name>
+<definition hotspot_x="9" hotspot_y="16" orientation="dyyy" height="30" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{49b15ea7-8bc5-4faf-aba6-717f8118d80e}"/>
+    <names>
         <name lang="fr">Bouton-poussoir</name>
         <name lang="pl">Przycisk</name>
         <name lang="cs">Tlačítko</name>
+        <name lang="ar">زرّ ضاغط</name>
+        <name lang="el">Μπουτόν</name>
+        <name lang="it">Pulsante</name>
+        <name lang="de">Drucktaster</name>
+        <name lang="en">Push button</name>
         <name lang="nl">Drukknop</name>
     </names>
     <informations>EN 60617: 11-14-10</informations>
     <description>
-        <circle x="-7.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15"/>
-        <circle x="-4.25" y="-4.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5"/>
-        <terminal x="0" y="-8" orientation="n"/>
+        <circle x="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15" antialias="true" y="-7.5"/>
+        <input x="8" rotate="true" size="9" text="_" y="-9.45" tagg="label"/>
+        <circle x="-4.25" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5" antialias="true" y="-4.25"/>
+        <terminal x="0" orientation="n" y="-8"/>
     </description>
 </definition>

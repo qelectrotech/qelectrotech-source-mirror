@@ -1,26 +1,28 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{FFB6AF27-4DC1-47F7-8B5F-AAE72EC6B341}"/><names>
-        <name lang="ar">مفتاح زمني</name>
-        <name lang="de">Schaltuhr
-</name>
-        <name lang="el">Χρονοδιακόπτης</name>
-        <name lang="en">Time switch
-</name>
-        <name lang="it">Interruttore orario</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{28f0b616-c54a-4dd1-b341-ea9ddff8abb5}"/>
+    <names>
         <name lang="fr">Interrupteur horaire
 </name>
         <name lang="pl">Łącznik zegarowy</name>
         <name lang="cs">Časový spínač - spínací hodiny</name>
+        <name lang="ar">مفتاح زمني</name>
+        <name lang="el">Χρονοδιακόπτης</name>
+        <name lang="it">Interruttore orario</name>
+        <name lang="de">Schaltuhr
+</name>
+        <name lang="en">Time switch
+</name>
         <name lang="nl">Schakelklok</name>
     </names>
     <informations>PN-EN 60617: 11-14-14</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="42" y2="-5" x2="37" y3="-2" x3="23"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="23" y2="-5" x2="18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="-5" x2="5"/>
-        <rect width="60" x="-10" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-2" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14"/>
-        <terminal x="20" y="-20" orientation="n"/>
+        <input x="11" rotate="true" size="9" text="_" y="10.55" tagg="label"/>
+        <polygon y3="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="true" closed="false" y2="-5" x3="23" x2="37" x1="42"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="false" y2="-5" end1="none" x2="18" length1="1.5" x1="23"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="false" y2="-5" end1="none" x2="5" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-5" end1="none" x2="5" length1="1.5" x1="5"/>
+        <rect x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" y="-20" width="60"/>
+        <circle x="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14" antialias="true" y="-12"/>
+        <terminal x="20" orientation="n" y="-20"/>
     </description>
 </definition>

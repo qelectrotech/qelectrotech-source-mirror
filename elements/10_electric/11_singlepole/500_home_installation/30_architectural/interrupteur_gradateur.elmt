@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{94F1602F-5AB6-4FFB-83C2-166FFD9D89C2}"/><names>
-        <name lang="ar">مفتاح حاكم جهد</name>
-        <name lang="de">Dimmer</name>
-        <name lang="el">Ρυθμιζόμενος διακόπτης (dimmer)</name>
-        <name lang="en">Dimmer</name>
-        <name lang="it">Variatore (dimmer)</name>
+<definition hotspot_x="8" hotspot_y="14" orientation="dyyy" height="30" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{145515ad-34a2-4366-85de-131d4a0ce6fb}"/>
+    <names>
         <name lang="fr">Interrupteur gradateur</name>
         <name lang="pl">Ściemniacz</name>
         <name lang="cs">Reostat</name>
+        <name lang="ar">مفتاح حاكم جهد</name>
+        <name lang="el">Ρυθμιζόμενος διακόπτης (dimmer)</name>
+        <name lang="it">Variatore (dimmer)</name>
+        <name lang="de">Dimmer</name>
+        <name lang="en">Dimmer</name>
         <name lang="nl">Dimmer</name>
     </names>
     <informations>EN 60617: 11-14-08</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="2" y2="-9" x2="8"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-3" x1="0" y2="-3" x2="9" y3="-7" x3="9" y4="-3"/>
-        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <terminal x="0" y="0" orientation="n"/>
+        <input x="4" rotate="true" size="9" text="_" y="0.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" y2="-9" end1="none" x2="8" length1="1.5" x1="2"/>
+        <polygon y3="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" antialias="true" closed="false" y2="-3" x3="9" x2="9" x4="0" x1="0" y4="-3"/>
+        <circle x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" antialias="true" y="0"/>
+        <terminal x="0" orientation="n" y="0"/>
     </description>
 </definition>

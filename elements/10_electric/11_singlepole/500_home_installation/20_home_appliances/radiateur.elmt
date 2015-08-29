@@ -1,23 +1,25 @@
-<definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{1A621B20-D261-48FA-8B57-12457E488C23}"/><names>
-        <name lang="ar">مشعاع</name>
-        <name lang="el">Θερμοσυσσωρευτής</name>
-        <name lang="en">Radiator</name>
-        <name lang="de">Heizkörper</name>
-        <name lang="it">Termoconvettore</name>
+<definition hotspot_x="35" hotspot_y="20" orientation="dyyy" height="40" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{5757a88b-afec-4b6d-bc89-fa7e178647b3}"/>
+    <names>
         <name lang="fr">Radiateur</name>
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
+        <name lang="it">Termoconvettore</name>
+        <name lang="en">Radiator</name>
+        <name lang="de">Heizkörper</name>
         <name lang="nl">Elektrische radiator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="11" x="-31" y="-5" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="66" x="-33" y="11" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="66" x="-33" y="6" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="66" x="-33" y="-7" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="0" y2="-10" x2="0"/>
-        <terminal x="0" y="-14" orientation="n"/>
+        <input x="-7" rotate="true" size="9" text="_" y="18.5" tagg="label"/>
+        <rect x="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" height="3" antialias="false" y="-5" width="11"/>
+        <rect x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" y="11" width="66"/>
+        <rect x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false" y="6" width="66"/>
+        <rect x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="23" antialias="false" y="-7" width="66"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" antialias="false" y2="-10" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-14"/>
     </description>
 </definition>

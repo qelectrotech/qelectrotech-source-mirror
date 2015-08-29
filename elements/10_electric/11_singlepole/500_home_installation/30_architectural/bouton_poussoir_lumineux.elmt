@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{A5FD3C83-D6AD-4CB6-AC13-FB0DC98703ED}"/><names>
-        <name lang="ar">زرّ ضاغط مُضيئ</name>
-        <name lang="de">Drucktaster beleuchtet</name>
-        <name lang="en">Push-button with indicator lamp</name>
+<definition hotspot_x="9" hotspot_y="16" orientation="dyyy" height="30" type="element" link_type="simple" width="20" version="0.5">
+    <uuid uuid="{123ce7c9-9be0-43ad-a8b3-096c074d036d}"/>
+    <names>
         <name lang="fr">Bouton-poussoir lumineux</name>
         <name lang="pl">Przycisk podświetlony</name>
         <name lang="cs">Podsvícené tlačítko</name>
-        <name lang="it">Pulsante luminoso</name>
-        <name lang="nl">Drukknop met lamp</name>
+        <name lang="ar">زرّ ضاغط مُضيئ</name>
         <name lang="el">Μπουτόν φωτιζόμενο</name>
+        <name lang="it">Pulsante luminoso</name>
+        <name lang="de">Drucktaster beleuchtet</name>
+        <name lang="en">Push-button with indicator lamp</name>
+        <name lang="nl">Drukknop met lamp</name>
     </names>
     <informations>EN 60617: 11-14-11</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-3" y2="-3" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-3" y2="3" x2="3"/>
-        <circle x="-7.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15"/>
-        <circle x="-4.25" y="-4.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5"/>
-        <terminal x="0" y="-8" orientation="n"/>
+        <input x="6" rotate="true" size="9" text="_" y="-10.45" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" antialias="false" y2="-3" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" y2="3" end1="none" x2="3" length1="1.5" x1="-3"/>
+        <circle x="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15" antialias="true" y="-7.5"/>
+        <circle x="-4.25" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.5" antialias="true" y="-4.25"/>
+        <terminal x="0" orientation="n" y="-8"/>
     </description>
 </definition>

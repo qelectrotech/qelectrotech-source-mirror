@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
-<uuid uuid="{9F51D499-D817-4E35-BED6-A7E81FF39285}"/><names>
-        <name lang="ar">قاعدة مقبس تيّار (قدرة) مع محوّل عزل</name>
-        <name lang="de">Steckdose mit Trenntrafo</name>
-        <name lang="el">Ρευματοδότης με μετασχημαστιστή απομόνωσης</name>
-        <name lang="en"> Socket outlet (power) with isolating transformer</name>
-        <name lang="it">Presa con trasformatore d’isolamento</name>
+<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+    <uuid uuid="{3845b80f-07c8-4ea0-be06-c3f164ab5915}"/>
+    <names>
         <name lang="fr">Socle de prise de courant (puissance) avec
 transformateur de séparation</name>
         <name lang="pl">Gniazdo z transformatorem separacyjnym</name>
         <name lang="cs">Zásuvka s oddělovacím transformátorem</name>
+        <name lang="ar">قاعدة مقبس تيّار (قدرة) مع محوّل عزل</name>
+        <name lang="el">Ρευματοδότης με μετασχημαστιστή απομόνωσης</name>
+        <name lang="it">Presa con trasformatore d’isolamento</name>
+        <name lang="de">Steckdose mit Trenntrafo</name>
+        <name lang="en"> Socket outlet (power) with isolating transformer</name>
         <name lang="nl">wandcontactdoos met transformator</name>
     </names>
     <informations>EN 60617: 11-13-08</informations>
     <description>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <arc width="20" x="-10" y="0" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <input x="5" rotate="true" size="9" text="_" y="-15.45" tagg="label"/>
+        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true" y="-10"/>
+        <arc x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="true" start="-180" y="0" angle="-180" width="20"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-20" end1="none" x2="0" length1="1.5" x1="0"/>
+        <terminal x="0" orientation="n" y="-20"/>
     </description>
 </definition>

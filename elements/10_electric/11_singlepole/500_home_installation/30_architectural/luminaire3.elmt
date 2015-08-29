@@ -1,26 +1,28 @@
-<definition width="70" version="0.3" hotspot_x="5" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{9E600111-EC91-4B02-AE84-E3EEB4CF9034}"/><names>
-        <name lang="ar">جهاز إضاءة بثلاث مصابيح فليورسنت</name>
-        <name lang="de">Leuchte mit drei Leuchtstofflampen
-</name>
-        <name lang="el">Φωτιστικό με 3 λάμπες φθορισμού</name>
-        <name lang="en"> Luminaire with three ﬂuorescent
-tubes
-</name>
-        <name lang="it">Lampada a tre tubi ﬂuorescenti</name>
+<definition hotspot_x="5" hotspot_y="15" orientation="dyyy" height="30" type="element" link_type="simple" width="70" version="0.5">
+    <uuid uuid="{c36a7cb4-e5c0-40fb-ad24-a6b556daa745}"/>
+    <names>
         <name lang="fr">Luminaire à trois tubes fluorescents
 </name>
         <name lang="pl">Oprawa zawierająca 3 świetlówki</name>
         <name lang="cs">Světlo se třemi zářivkami</name>
+        <name lang="ar">جهاز إضاءة بثلاث مصابيح فليورسنت</name>
+        <name lang="el">Φωτιστικό με 3 λάμπες φθορισμού</name>
+        <name lang="it">Lampada a tre tubi ﬂuorescenti</name>
+        <name lang="de">Leuchte mit drei Leuchtstofflampen
+</name>
+        <name lang="en"> Luminaire with three ﬂuorescent
+tubes
+</name>
         <name lang="nl">TL lamp 3 buizen</name>
     </names>
     <informations>EN 60617: 11-15-05</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="13" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="60" y2="13" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="60"/>
-        <terminal x="30" y="-10" orientation="n"/>
+        <input x="23" rotate="true" size="9" text="_" y="6.55" tagg="label"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="13" end1="none" x2="0" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" antialias="false" y2="13" end1="none" x2="60" length1="1.5" x1="60"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" y2="-10" end1="none" x2="60" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" y2="0" end1="none" x2="60" length1="1.5" x1="0"/>
+        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="false" y2="10" end1="none" x2="60" length1="1.5" x1="0"/>
+        <terminal x="30" orientation="n" y="-10"/>
     </description>
 </definition>
