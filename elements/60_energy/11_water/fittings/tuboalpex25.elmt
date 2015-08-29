@@ -1,16 +1,18 @@
-<definition width="90" version="0.4" hotspot_x="46" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E6A4B57A-11BC-415F-AF49-AC20C7CE5AD0}"/><names>
-        <name lang="es">Tubo Alpex 25</name>
+<definition width="90" hotspot_x="45" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+    <uuid uuid="{2d48fbf3-06c8-42eb-b987-7485e8a565ed}"/>
+    <names>
+        <name lang="cs">Trubka Alpex 25</name>
         <name lang="it">Tubo Alpex 25</name>
         <name lang="pl">Rura Alpex 25</name>
-        <name lang="cs">Trubka Alpex 25</name>
+        <name lang="es">Tubo Alpex 25</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="79" x="-40" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-9" y="1" size="4" text="Alpex 25"/>
-        <terminal x="-40" y="0" nameHidden="184" number="" name="" orientation="w"/>
-        <terminal x="38" y="0" nameHidden="248" number="" name="" orientation="e"/>
+        <rect width="79" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10" x="-40" height="20"/>
+        <input tagg="label" rotate="true" size="9" y="-20.5" x="-30" text="_"/>
+        <text size="4" y="1" x="-9" text="Alpex 25"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="0" x="38" orientation="e"/>
     </description>
 </definition>

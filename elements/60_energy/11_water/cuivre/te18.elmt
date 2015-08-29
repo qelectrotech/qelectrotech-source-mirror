@@ -1,27 +1,29 @@
-<definition width="50" version="0.4" hotspot_x="23" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E8146889-8B2B-41AE-9667-4249C021C4B6}"/><names>
-        <name lang="en">Te 18 copper</name>
-        <name lang="it">T rame 18</name>
-        <name lang="fr">te 18 cuivre</name>
-        <name lang="pl">Trójnik 18</name>
-        <name lang="es">Te cobre 18</name>
+<definition width="50" hotspot_x="23" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="26">
+    <uuid uuid="{9d781a4a-0d07-4716-91c9-0b9e11de43cd}"/>
+    <names>
         <name lang="cs">T 18 měď</name>
+        <name lang="it">T rame 18</name>
+        <name lang="pl">Trójnik 18</name>
+        <name lang="en">Te 18 copper</name>
+        <name lang="es">Te cobre 18</name>
+        <name lang="fr">te 18 cuivre</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="7.65" x="11.44" y="-8.24137" antialias="false" height="16.2414" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="7.65" x="-16.61" y="-8.24137" antialias="false" height="16.2414" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="16.32" x="-6.92" y="-17.6718" antialias="false" height="6.8109" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.38042" x1="-8.96" y2="5.38042" x2="10.93"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.9615" x1="-4.37" y2="-6.56065" x2="-4.37"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.14571" x1="-8.55644" y2="-6.14571" x2="-4.76469"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.14571" x1="7.25356" y2="-6.14571" x2="11.0453"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.9615" x1="6.85" y2="-6.56065" x2="6.85"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.00222" x1="-1.31" y2="-6.14571" x2="-4.37"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.00222" x1="3.79" y2="-6.14571" x2="6.85"/>
-        <text x="-6" y="2" size="4" text="Te 18"/>
-        <terminal x="-17" y="0" orientation="w"/>
-        <terminal x="20" y="0" orientation="e"/>
-        <terminal x="1.24" y="-18.1958" orientation="n"/>
+        <rect width="7.65" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-8.24137" x="11.44" height="16.2414"/>
+        <input tagg="label" rotate="true" size="9" y="3.55" x="-5" text="_"/>
+        <rect width="7.65" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-8.24137" x="-16.61" height="16.2414"/>
+        <rect width="16.32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-17.6718" x="-6.92" height="6.8109"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5.38042" antialias="false" length2="1.5" end1="none" length1="1.5" y1="5.38042" x1="-8.96" x2="10.93"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.56065" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10.9615" x1="-4.37" x2="-4.37"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.14571" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-6.14571" x1="-8.55644" x2="-4.76469"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.14571" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-6.14571" x1="7.25356" x2="11.0453"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.56065" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10.9615" x1="6.85" x2="6.85"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.14571" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3.00222" x1="-1.31" x2="-4.37"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6.14571" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3.00222" x1="3.79" x2="6.85"/>
+        <text size="4" y="2" x="-6" text="Te 18"/>
+        <terminal y="0" x="-17" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="-18.1958" x="1.24" orientation="n"/>
     </description>
 </definition>

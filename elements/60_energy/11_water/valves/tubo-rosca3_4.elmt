@@ -1,25 +1,27 @@
-<definition width="70" version="0.4" hotspot_x="35" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5F3092EE-0921-44A1-B9D6-774131BE0F5C}"/><names>
-        <name lang="es">Tubo rosca 3/4"</name>
+<definition width="70" hotspot_x="34" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="16">
+    <uuid uuid="{5c17586a-2e65-4bb2-8c40-3c373b94b28e}"/>
+    <names>
+        <name lang="cs">Trubka se závitem 3/4"</name>
         <name lang="it">Tubo filettato 3/4</name>
         <name lang="pl">Rurka gwintowana 3/4"</name>
-        <name lang="cs">Trubka se závitem 3/4"</name>
+        <name lang="es">Tubo rosca 3/4"</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
-        <rect width="60" x="-30" y="-10.1576" antialias="false" height="17.1576" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-10" y="1" size="4" text="3/4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="20" y2="-10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="23" y2="-10" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="-20" y2="-10" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="25" y2="-10" x2="23"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="-26" y2="-10" x2="-28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="-24" y2="-10" x2="-26"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="27" y2="-10" x2="25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="29" y2="-10" x2="27"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="-22" y2="-10" x2="-24"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6" x1="-20" y2="-10" x2="-22"/>
-        <terminal x="-30" y="-1" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="30" y="-1" nameHidden="0" number="" name="" orientation="e"/>
+        <rect width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10.1576" x="-30" height="17.1576"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-22" text="_"/>
+        <text size="4" y="1" x="-10" text="3/4"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="20" x2="20"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="23" x2="21"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="-20" x2="-20"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="25" x2="23"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="-26" x2="-28"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="-24" x2="-26"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="27" x2="25"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="29" x2="27"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="-22" x2="-24"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="6" x1="-20" x2="-22"/>
+        <terminal y="-1" x="30" orientation="e"/>
+        <terminal y="-1" x="-30" orientation="w"/>
     </description>
 </definition>
