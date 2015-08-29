@@ -1,22 +1,23 @@
-<definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="70" type="element" orientation="dyyy">
-<uuid uuid="{8E38CEAC-3A88-4F67-AC12-619A737A5960}"/><names>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="70">
+    <uuid uuid="{611c7905-39d0-4097-be5e-edb7f8155acf}"/>
+    <names>
         <name lang="el">Υποπρόγραμμα</name>
-        <name lang="en">subprogram</name>
-        <name lang="it">Processo predefinito</name>
         <name lang="fr">sous programme</name>
-        <name lang="pl">Blok fragmentu</name>
-        <name lang="es">Subprograma 02</name>
         <name lang="cs">Pod program</name>
+        <name lang="es">Subprograma 02</name>
+        <name lang="it">Processo predefinito</name>
+        <name lang="pl">Blok fragmentu</name>
+        <name lang="en">subprogram</name>
         <name lang="nl">Subprogramma</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <rect width="100" x="-10" y="0.15447" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="3" y="18.5" size="9" rotate="true" text="sous pgm"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="40" y2="41" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.89565" x1="40" y2="-0.113043" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-4" y2="40" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="84" y2="40" x2="84"/>
+        <rect x="-10" y="0.15447" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="100" height="40"/>
+        <input text="sous pgm" x="3" y="18.5" tagg="label" size="9" rotate="true"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" y2="41" length1="1.5" antialias="false" end1="triangle" x2="40"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.89565" y2="-0.113043" length1="1.5" antialias="false" end1="none" x2="40"/>
+        <line x1="-4" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" y2="40" length1="1.5" antialias="false" end1="none" x2="-4"/>
+        <line x1="84" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" y2="40" length1="1.5" antialias="false" end1="none" x2="84"/>
         <terminal x="40" y="50" orientation="s"/>
         <terminal x="40" y="-10" orientation="n"/>
     </description>

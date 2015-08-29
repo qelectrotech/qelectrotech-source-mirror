@@ -1,32 +1,33 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{05CA1744-E19D-4E4A-A8F7-972F27A760CE}"/><names>
-        <name lang="ar">قلاب إلغاء/ إبقاء RS</name>
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+    <uuid uuid="{f731c2f7-4c56-43a9-96da-af21ec67aec6}"/>
+    <names>
         <name lang="de">SETZEN/RÜCKSETZEN</name>
-        <name lang="ru">Установка/Сброс</name>
-        <name lang="pt">SET/RESET</name>
         <name lang="el">SET/RESET</name>
-        <name lang="en">SET/RESET</name>
-        <name lang="it">SET/RESET</name>
         <name lang="fr">SET/RESET</name>
-        <name lang="pl">Przerzutnik RS</name>
-        <name lang="es">SET/RESET</name>
         <name lang="cs">NASTAVIT/NASTAVIT ZNOVU</name>
+        <name lang="ru">Установка/Сброс</name>
+        <name lang="es">SET/RESET</name>
+        <name lang="ar">قلاب إلغاء/ إبقاء RS</name>
+        <name lang="it">SET/RESET</name>
+        <name lang="pl">Przerzutnik RS</name>
+        <name lang="en">SET/RESET</name>
+        <name lang="pt">SET/RESET</name>
         <name lang="nl">SET/RESET Aan/Uit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-46" y="-10" size="8" rotate="true" text="R"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-40" y2="0" x2="-20"/>
-        <input x="-46" y="15" size="8" rotate="true" text="Par"/>
-        <input x="-46" y="-30" size="8" rotate="true" text="S"/>
-        <input x="25" y="-10" size="8" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
-        <input x="-25" y="50" size="9" rotate="true" text="_"/>
-        <text x="-10.5" y="5" size="12" text="RS"/>
-        <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="R" x="-46" y="-10" tagg="none" size="8" rotate="true"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-20"/>
+        <input text="Par" x="-46" y="15" tagg="none" size="8" rotate="true"/>
+        <input text="S" x="-46" y="-30" tagg="none" size="8" rotate="true"/>
+        <input text="_" x="25" y="-10" tagg="none" size="8" rotate="true"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="21"/>
+        <input text="_" x="-25" y="50" tagg="label" size="9" rotate="true"/>
+        <text text="RS" x="-10.5" y="5" size="12"/>
+        <rect x="-20" y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="40" height="70"/>
         <terminal x="40" y="0" orientation="e"/>
         <terminal x="-40" y="-20" orientation="w"/>
         <terminal x="-40" y="0" orientation="w"/>

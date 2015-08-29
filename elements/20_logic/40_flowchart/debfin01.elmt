@@ -1,22 +1,23 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dyyy">
-<uuid uuid="{B08051CC-CB96-4623-B47D-47ADFE0AB1CE}"/><names>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="70" orientation="dyyy" height="40">
+    <uuid uuid="{2234ace5-e9bf-4a8b-8d73-ea3767237285}"/>
+    <names>
         <name lang="el">Αρχή-τέλος προγράμματος</name>
-        <name lang="en">Start-End program</name>
-        <name lang="it">Inizio-Fine</name>
         <name lang="fr">Début-Fin programme</name>
-        <name lang="pl">Blok graniczny (początek / koniec programu)</name>
-        <name lang="es">Inicio-Fin de programa 1</name>
         <name lang="cs">Začátek-Konec program</name>
+        <name lang="es">Inicio-Fin de programa 1</name>
+        <name lang="it">Inizio-Fine</name>
+        <name lang="pl">Blok graniczny (początek / koniec programu)</name>
+        <name lang="en">Start-End program</name>
         <name lang="nl">Start/Stop programma</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <arc width="20" x="-10" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <input x="10" y="0.5" size="9" text="..."/>
-        <arc width="20" x="30" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="39"/>
+        <arc start="-90" x="-10" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="20" height="20"/>
+        <input text="..." x="10" y="0.5" tagg="label" size="9"/>
+        <arc start="90" x="30" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="20" height="20"/>
+        <line x1="20" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="20" length1="1.5" antialias="false" end1="none" x2="20"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-10" length1="1.5" antialias="false" end1="none" x2="40"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="10" length1="1.5" antialias="false" end1="none" x2="39"/>
         <terminal x="20" y="20" orientation="s"/>
     </description>
 </definition>

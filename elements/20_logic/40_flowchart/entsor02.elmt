@@ -1,21 +1,22 @@
-<definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="70" type="element" orientation="dyyy">
-<uuid uuid="{37818D37-D7D0-4B3C-81FE-ED0118195991}"/><names>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="70">
+    <uuid uuid="{4f308d28-f0dd-48cd-9012-1efe18ef59df}"/>
+    <names>
         <name lang="el">Είσοδος/Έξοδος "2 γραμμές"</name>
-        <name lang="en">Input / Output "two lines"</name>
-        <name lang="it">Ingresso/uscita "2 righe"</name>
         <name lang="fr">Entrée/Sortie "2 lignes"</name>
-        <name lang="pl">Blok wejścia/wyjścia</name>
-        <name lang="es">Entrada/Salida 2 lineas</name>
         <name lang="cs">Vstup/Výstup 2 řádky</name>
+        <name lang="es">Entrada/Salida 2 lineas</name>
+        <name lang="it">Ingresso/uscita "2 righe"</name>
+        <name lang="pl">Blok wejścia/wyjścia</name>
+        <name lang="en">Input / Output "two lines"</name>
         <name lang="nl">Ingang / Uitgang "2 lijnen"</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <polygon x4="80" y5="40" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-10" y2="0" x2="0" y3="0" x3="90" y4="40"/>
-        <input x="-6" y="18.5" size="9" rotate="true" text="Entrée-Sortie"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="40" y2="41" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="40" y2="-1" x2="40"/>
-        <terminal x="40" y="50" orientation="s"/>
+        <polygon x1="-10" x4="80" x5="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="0" y4="40" antialias="true" y3="0" y5="40" x2="0" x3="90"/>
+        <input text="Entrée-Sortie" x="-6" y="18.5" tagg="label" size="9" rotate="true"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" y2="41" length1="1.5" antialias="false" end1="triangle" x2="40"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-1" length1="1.5" antialias="false" end1="none" x2="40"/>
         <terminal x="40" y="-10" orientation="n"/>
+        <terminal x="40" y="50" orientation="s"/>
     </description>
 </definition>

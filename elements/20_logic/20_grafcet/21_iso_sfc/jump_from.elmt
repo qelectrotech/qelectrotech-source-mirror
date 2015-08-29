@@ -1,23 +1,24 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="32" height="60" type="element" ic="true" orientation="dyyy"
-link_type="previous_report">
-<uuid uuid="{AE2FAE99-2983-4355-926B-86FF0399C07E}"/><names>
-        <name lang="ar">الصفحة السابقة</name>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="4" link_type="previous_report" width="30" orientation="dyyy" height="30">
+    <uuid uuid="{25e20e87-09a5-42ad-bca7-e208a253aece}"/>
+    <names>
         <name lang="de">Vorherige Seite</name>
         <name lang="el">Προηγούμενη σελίδα</name>
-        <name lang="en">jump from</name>
-        <name lang="it">Foglio precedente</name>
         <name lang="fr">Folio précédent</name>
-        <name lang="pl">Wejście adresowe</name>
-        <name lang="es">folio anterior</name>
-        <name lang="nl">sprong van</name>
         <name lang="cs">Předchozí list</name>
+        <name lang="es">folio anterior</name>
+        <name lang="ar">الصفحة السابقة</name>
+        <name lang="it">Foglio precedente</name>
+        <name lang="pl">Wejście adresowe</name>
+        <name lang="en">jump from</name>
+        <name lang="nl">sprong van</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-6" y="-13.5" size="9" rotate="true" text="/"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="0" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="15" x2="0"/>
-        <terminal x="0" y="19" nameHidden="0" number="" name="" orientation="s"/>
+        <input text="_" x="5" y="-14.45" tagg="label" size="9" rotate="true"/>
+        <input text="/" x="-6" y="-13.5" tagg="none" size="9" rotate="true"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="15" length1="1.5" antialias="true" end1="none" x2="0"/>
+        <terminal x="0" y="19" orientation="s"/>
     </description>
 </definition>

@@ -1,22 +1,23 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{CB40D283-66B7-4BF4-80F3-7B9E27D04C6E}"/><names>
-        <name lang="ar">إنتقاليّة</name>
+<definition type="element" hotspot_x="20" version="0.5" hotspot_y="9" link_type="simple" width="40" orientation="dyyy" height="20">
+    <uuid uuid="{bc3fe91d-1989-4af2-89c5-09399a1d9582}"/>
+    <names>
         <name lang="de">Übergang</name>
-        <name lang="pt">transição</name>
         <name lang="el">Μετάβαση</name>
-        <name lang="en">transition</name>
-        <name lang="it">Transizione</name>
         <name lang="fr">transition</name>
-        <name lang="pl">Tranzycja</name>
-        <name lang="es">transición</name>
         <name lang="cs">Přechod</name>
+        <name lang="es">transición</name>
+        <name lang="ar">إنتقاليّة</name>
+        <name lang="it">Transizione</name>
+        <name lang="pl">Tranzycja</name>
+        <name lang="en">transition</name>
+        <name lang="pt">transição</name>
         <name lang="nl">Overgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="15" y="2" size="8" rotate="true" text="T 00"/>
-        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <input text="T 00" x="15" y="2" tagg="label" size="8" rotate="true"/>
+        <rect x="-13" y="-2" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" width="26" height="4"/>
         <terminal x="0" y="5" orientation="s"/>
         <terminal x="0" y="-5" orientation="n"/>
         <terminal x="-12" y="0" orientation="w"/>

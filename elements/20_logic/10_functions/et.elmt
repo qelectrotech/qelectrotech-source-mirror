@@ -1,30 +1,31 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="45" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A8516219-BA0C-4E3A-8B13-7E9872E07B21}"/><names>
-        <name lang="ar">بوابة  AND</name>
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+    <uuid uuid="{3b794022-d58e-41c8-b4ba-38e787ab93f0}"/>
+    <names>
         <name lang="de">UND</name>
-        <name lang="ru">И</name>
-        <name lang="pt">E</name>
         <name lang="el">AND</name>
-        <name lang="en">AND</name>
-        <name lang="it">AND</name>
         <name lang="fr">ET</name>
-        <name lang="pl">AND</name>
-        <name lang="es">Y</name>
         <name lang="cs">A</name>
+        <name lang="ru">И</name>
+        <name lang="es">Y</name>
+        <name lang="ar">بوابة  AND</name>
+        <name lang="it">AND</name>
+        <name lang="pl">AND</name>
+        <name lang="en">AND</name>
+        <name lang="pt">E</name>
         <name lang="nl">EN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-46" y="10" size="8" rotate="true" text="_"/>
-        <input x="-46" y="-30" size="8" rotate="true" text="_"/>
-        <input x="25" y="-10" size="8" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
-        <input x="-25" y="50" size="9" rotate="true" text="_"/>
-        <text x="-6" y="5" size="12" text="&amp;"/>
-        <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" x="-46" y="10" tagg="none" size="8" rotate="true"/>
+        <input text="_" x="-46" y="-30" tagg="none" size="8" rotate="true"/>
+        <input text="_" x="25" y="-10" tagg="none" size="8" rotate="true"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="21"/>
+        <input text="_" x="-25" y="50" tagg="label" size="9" rotate="true"/>
+        <text text="&amp;" x="-6" y="5" size="12"/>
+        <rect x="-20" y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="40" height="70"/>
         <terminal x="40" y="0" orientation="e"/>
         <terminal x="-40" y="-20" orientation="w"/>
         <terminal x="-40" y="20" orientation="w"/>

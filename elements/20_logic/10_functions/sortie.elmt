@@ -1,26 +1,27 @@
-<definition width="80" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C3B0CC49-0152-4E51-9CCD-E5B72F5C29C5}"/><names>
-        <name lang="ar">خرج</name>
+<definition type="element" hotspot_x="46" version="0.5" hotspot_y="40" link_type="simple" width="70" orientation="dyyy" height="80">
+    <uuid uuid="{e0cd1669-95e5-413a-9435-8411fa77ad9d}"/>
+    <names>
         <name lang="de">Ausgang</name>
-        <name lang="ru">Выход</name>
-        <name lang="pt">Saída</name>
         <name lang="el">Έξοδος</name>
-        <name lang="en">Output</name>
-        <name lang="it">Uscita</name>
         <name lang="fr">Sortie</name>
-        <name lang="pl">Wyjście</name>
-        <name lang="es">Salida</name>
         <name lang="cs">Výstup</name>
+        <name lang="ru">Выход</name>
+        <name lang="es">Salida</name>
+        <name lang="ar">خرج</name>
+        <name lang="it">Uscita</name>
+        <name lang="pl">Wyjście</name>
+        <name lang="en">Output</name>
+        <name lang="pt">Saída</name>
         <name lang="nl">Uitgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-46" y="-10" size="8" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-39" y2="0" x2="-20"/>
-        <input x="-25" y="50" size="9" rotate="true" text="_"/>
-        <text x="-6.5" y="5" size="12" text="Q"/>
-        <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" x="-46" y="-10" tagg="none" size="8" rotate="true"/>
+        <line x1="-39" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-20"/>
+        <input text="_" x="-25" y="50" tagg="label" size="9" rotate="true"/>
+        <text text="Q" x="-6.5" y="5" size="12"/>
+        <rect x="-20" y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="40" height="70"/>
         <terminal x="-40" y="0" orientation="w"/>
     </description>
 </definition>

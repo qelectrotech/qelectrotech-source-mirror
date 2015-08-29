@@ -1,15 +1,16 @@
-<definition width="170" version="0.4" hotspot_x="8" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{4D9CD1B7-C28A-4BF9-83C0-CC2CE0BF89D0}"/><names>
-        <name lang="ar">مستمرّ</name>
+<definition type="element" hotspot_x="8" version="0.5" hotspot_y="10" link_type="simple" width="170" orientation="dyyy" height="20">
+    <uuid uuid="{b9cf6b55-fd78-4fe8-9cdd-b187e571441b}"/>
+    <names>
         <name lang="de">Aktion</name>
-        <name lang="pt">continuo</name>
         <name lang="el">Συνέχεια</name>
-        <name lang="en">Action Normal</name>
-        <name lang="it">Continua</name>
         <name lang="fr">Action normal</name>
-        <name lang="pl">Działanie</name>
-        <name lang="nl">Actie normaal</name>
         <name lang="cs">Čin</name>
+        <name lang="ar">مستمرّ</name>
+        <name lang="it">Continua</name>
+        <name lang="pl">Działanie</name>
+        <name lang="en">Action Normal</name>
+        <name lang="pt">continuo</name>
+        <name lang="nl">Actie normaal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license
@@ -19,10 +20,10 @@ N  executes whiler the step is active
 
 </informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="25" y2="5" x2="25"/>
-        <rect width="150" x="5" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="2" y="0" size="7" rotate="true" text="N"/>
-        <input x="25" y="0" size="5" rotate="true" text="action"/>
-        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <line x1="25" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="5" length1="1.5" antialias="false" end1="none" x2="25"/>
+        <rect x="5" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="150" height="10"/>
+        <input text="N" x="2" y="0" tagg="none" size="7" rotate="true"/>
+        <input text="action" x="25" y="0" tagg="label" size="5" rotate="true"/>
+        <terminal x="0" y="0" orientation="w"/>
     </description>
 </definition>

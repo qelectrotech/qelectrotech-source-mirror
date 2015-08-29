@@ -1,26 +1,27 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-<uuid uuid="{A0722DC6-32A6-41D6-A9E3-21C56BCA0EFB}"/><names>
-        <name lang="ar">دخل</name>
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="10" link_type="simple" width="60" orientation="dyyy" height="20">
+    <uuid uuid="{c15dafc5-2249-476f-8305-afc02ea1c63d}"/>
+    <names>
         <name lang="de">Eingang</name>
-        <name lang="ru">Вход</name>
-        <name lang="pt">Entrada</name>
         <name lang="el">Είσοδος</name>
-        <name lang="en">Input</name>
-        <name lang="it">Ingresso</name>
         <name lang="fr">Entrée</name>
-        <name lang="pl">Wejście</name>
-        <name lang="es">Entrada</name>
         <name lang="cs">Vstup</name>
+        <name lang="ru">Вход</name>
+        <name lang="es">Entrada</name>
+        <name lang="ar">دخل</name>
+        <name lang="it">Ingresso</name>
+        <name lang="pl">Wejście</name>
+        <name lang="en">Input</name>
+        <name lang="pt">Entrada</name>
         <name lang="nl">Ingang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+        <input text="_" x="-24" y="-12.5" tagg="label" size="9" rotate="true"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="-5" length1="1.5" antialias="false" end1="none" x2="10"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="5" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="24"/>
+        <line x1="-24" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
         <terminal x="24" y="0" orientation="e"/>
         <terminal x="-24" y="0" orientation="w"/>
     </description>

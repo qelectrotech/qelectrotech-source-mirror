@@ -1,22 +1,24 @@
-<definition width="70" version="0.2" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny" >
-<uuid uuid="{981CC4E7-DDF9-401E-88D5-E68A4DB27668}"/><names>
-        <name lang="en" >Limit switch NO</name>
-        <name lang="de" >Näherungsschalter Schliesser</name>
-        <name lang="fr" >Capteur de proximité NO</name>
-        <name lang="es" >Final de carrera</name>
+<definition type="element" hotspot_x="42" version="0.5" hotspot_y="29" link_type="simple" width="50" orientation="dyyy" height="60">
+    <uuid uuid="{ff97d8a8-6396-43b6-bbce-9d37f9bc3c56}"/>
+    <names>
+        <name lang="de">Näherungsschalter Schliesser</name>
+        <name lang="fr">Capteur de proximité NO</name>
+        <name lang="cs">Čidlo přiblížení</name>
+        <name lang="es">Final de carrera</name>
         <name lang="pl">Czujnik zbliżeniowy</name>
         <name lang="it">Sensore di prossimità</name>
-        <name lang="cs">Čidlo přiblížení</name>
+        <name lang="en">Limit switch NO</name>
     </names>
+    <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-6" y2="0" x2="-3" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11" y2="0" x2="-8" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-16" y2="0" x2="-14" />
-        <polygon y21="-8" x15="-24" x16="-24" x17="-24" x18="-24" x19="-24" x20="-24" x21="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-26" x2="-36" x3="-26" x4="-16" x5="-26" x6="-28" closed="false" x7="-28" x8="-28" x9="-28" y1="-10" y2="0" y3="10" y4="0" y5="-10" y6="-8" y7="7" y8="7" y10="10" y9="8" y11="10" y12="8" y13="-8" y14="-8" y15="-8" y16="-8" y17="-8" y18="-8" y19="-8" x10="-26" x11="-26" x12="-24" antialias="false" x13="-24" x14="-24" y20="-8" />
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0" />
-        <input x="2.75" y="3" size="9" text="_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0" />
-        <terminal x="0" y="-21" orientation="n" />
-        <terminal x="0" y="21" orientation="s" />
+        <line x1="-6" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-3"/>
+        <line x1="-11" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-8"/>
+        <line x1="-16" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-14"/>
+        <polygon x11="-26" closed="false" x13="-24" y21="-8" y13="-8" y2="0" x21="-24" x15="-24" x20="-24" x1="-26" x6="-28" y20="-8" y17="-8" y18="-8" x12="-24" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y5="-10" antialias="false" x18="-24" x10="-26" y19="-8" y9="8" x19="-24" y16="-8" x17="-24" y8="7" y11="10" x5="-26" y3="10" y14="-8" y15="-8" y6="-8" x3="-26" x4="-16" y4="0" x14="-24" x8="-28" y10="10" x2="-36" y12="8" x9="-28" x7="-28" x16="-24" y7="7"/>
+        <polygon x1="-5" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="10" antialias="true" y3="20" x2="0" x3="0"/>
+        <input text="_" x="2.75" y="3" tagg="label" size="9"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-10" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
     </description>
 </definition>

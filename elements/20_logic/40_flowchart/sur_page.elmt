@@ -1,19 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{7D5AE25E-E8E4-4F12-B6C9-A3F9986E3E6B}"/><names>
-        <name lang="en">On-page reference</name>
-        <name lang="it">Riferimento interno</name>
+<definition type="element" hotspot_x="14" version="0.5" hotspot_y="24" link_type="simple" width="30" orientation="dyyy" height="30">
+    <uuid uuid="{ac0b702f-5be7-4986-b7ab-5871ec767f25}"/>
+    <names>
         <name lang="fr">connecteur interne</name>
-        <name lang="pl">Łącznik wewnętrzny</name>
-        <name lang="es">Conector interno</name>
         <name lang="cs">Vnitřní odkaz</name>
+        <name lang="es">Conector interno</name>
+        <name lang="it">Riferimento interno</name>
+        <name lang="pl">Łącznik wewnętrzny</name>
+        <name lang="en">On-page reference</name>
         <name lang="nl">Referentie</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <circle x="-10" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <input x="-7" y="-10" size="9" rotate="true" text="_"/>
-        <terminal x="0" y="0" orientation="s"/>
+        <circle diameter="20" x="-10" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <input text="_" x="7" y="-20.45" tagg="label" size="9" rotate="true"/>
         <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="0" orientation="s"/>
         <terminal x="10" y="-10" orientation="e"/>
         <terminal x="-10" y="-10" orientation="w"/>
     </description>

@@ -1,24 +1,25 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{7DE6BD72-9C63-4FA0-A07E-54C6C9025672}"/><names>
-        <name lang="ar">خطوة أوليّة</name>
+<definition type="element" hotspot_x="40" version="0.5" hotspot_y="26" link_type="simple" width="80" orientation="dyyy" height="60">
+    <uuid uuid="{80640d71-c5a4-480c-a8a2-a3ffdc5da459}"/>
+    <names>
         <name lang="de">Initialisierungs Schritt</name>
-        <name lang="pt">Etapa inicial</name>
         <name lang="el">Αρχικό βήμα</name>
-        <name lang="en">Initial step</name>
-        <name lang="it">Inizio</name>
         <name lang="fr">Etape initiale</name>
-        <name lang="pl">Krok początkowy</name>
-        <name lang="es">Etapa inicial</name>
         <name lang="cs">Počáteční krok</name>
+        <name lang="es">Etapa inicial</name>
+        <name lang="ar">خطوة أوليّة</name>
+        <name lang="it">Inizio</name>
+        <name lang="pl">Krok początkowy</name>
+        <name lang="en">Initial step</name>
+        <name lang="pt">Etapa inicial</name>
         <name lang="nl">Begin stap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="66" x="-33" y="-18" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-30" y="14" size="6" rotate="true" text=""/>
-        <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
-        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-33" y="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="66" height="36"/>
+        <input text="" x="-30" y="14" tagg="none" size="6" rotate="true"/>
+        <input text="E 00" x="-20" y="0" tagg="label" size="10" rotate="true"/>
+        <rect x="-35" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="70" height="40"/>
         <terminal x="0" y="25" orientation="s"/>
     </description>
 </definition>

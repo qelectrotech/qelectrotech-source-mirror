@@ -1,27 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-<uuid uuid="{B9929C1C-8317-4A1A-ADE4-8D6CA65E4C78}"/><names>
-        <name lang="ar">خرج (إلغاء)</name>
+<definition type="element" hotspot_x="31" version="0.5" hotspot_y="15" link_type="simple" width="60" orientation="dyyy" height="30">
+    <uuid uuid="{08e9af36-97b5-46a9-9db5-a90e7414bd1d}"/>
+    <names>
         <name lang="de">Ausgang (rücksetzen)</name>
-        <name lang="ru">Выход (сброс)</name>
-        <name lang="pt">Saída (reset)</name>
         <name lang="el">Έξοδος (επαναφορά)</name>
-        <name lang="en">Output (reset)</name>
-        <name lang="it">Uscita (reset)</name>
         <name lang="fr">Sortie (reset)</name>
-        <name lang="pl">Wyjście (kasowanie bitu)</name>
-        <name lang="es">Salida (reset)</name>
         <name lang="cs">Výstup (nastavit znovu)</name>
+        <name lang="ru">Выход (сброс)</name>
+        <name lang="es">Salida (reset)</name>
+        <name lang="ar">خرج (إلغاء)</name>
+        <name lang="it">Uscita (reset)</name>
+        <name lang="pl">Wyjście (kasowanie bitu)</name>
+        <name lang="en">Output (reset)</name>
+        <name lang="pt">Saída (reset)</name>
         <name lang="nl">Uitgang (Reset)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-4.25" y="5.25" size="9" text="R"/>
-        <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160"/>
-        <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-        <arc width="4" x="-10" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-100" angle="-160"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+        <text text="R" x="-4.25" y="5.25" size="9"/>
+        <arc start="80" x="6" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-160" antialias="true" width="4" height="10"/>
+        <input text="_" x="-23" y="-10.5" tagg="label" size="9" rotate="true"/>
+        <arc start="-100" x="-10" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-160" antialias="true" width="4" height="10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="24"/>
+        <line x1="-24" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
         <terminal x="-24" y="0" orientation="w"/>
     </description>
 </definition>

@@ -1,29 +1,29 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="10" width="20" hotspot_y="29" orientation="dyyy" height="60">
-    <uuid uuid="{e257652f-1cbe-409c-aee4-7c7a82d2c878}"/>
+<definition type="element" hotspot_x="10" version="0.5" hotspot_y="29" link_type="simple" width="20" orientation="dyyy" height="60">
+    <uuid uuid="{af30335a-4d6f-4d8c-a3a5-60c5e1d43dc7}"/>
     <names>
-        <name lang="es">Resistencia</name>
         <name lang="el">Αντίσταση</name>
-        <name lang="it">Resistore</name>
         <name lang="fr">Résistance</name>
         <name lang="de">Widerstand</name>
+        <name lang="cs">Odporník</name>
+        <name lang="ru">Резистор</name>
+        <name lang="es">Resistencia</name>
+        <name lang="ar">مُقاومة</name>
+        <name lang="it">Resistore</name>
         <name lang="pl">Rezystor</name>
         <name lang="en">Resistor</name>
-        <name lang="ar">مُقاومة</name>
-        <name lang="cs">Odporník</name>
         <name lang="pt">Resistência</name>
-        <name lang="ru">Резистор</name>
         <name lang="nl">Weerstand</name>
     </names>
     <informations>EN 60617: 04-01-01</informations>
     <description>
-        <line x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="0" end2="none" antialias="false" y2="-20" y1="-10"/>
-        <line x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="0" end2="none" antialias="false" y2="20" y1="10"/>
-        <line x1="4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="4" end2="none" antialias="false" y2="-10" y1="10"/>
-        <line x1="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="4" end2="none" antialias="false" y2="10" y1="10"/>
-        <line x1="4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="-4" end2="none" antialias="false" y2="-10" y1="-10"/>
-        <line x1="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="-4" end2="none" antialias="false" y2="10" y1="-10"/>
-        <input rotate="true" x="9" y="-1" tagg="label" text="_" size="9"/>
-        <terminal x="0" y="-21" orientation="n"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-20" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="20" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <line x1="4" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="-10" length1="1.5" antialias="false" end1="none" x2="4"/>
+        <line x1="-4" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="10" length1="1.5" antialias="false" end1="none" x2="4"/>
+        <line x1="4" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-10" length1="1.5" antialias="false" end1="none" x2="-4"/>
+        <line x1="-4" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="10" length1="1.5" antialias="false" end1="none" x2="-4"/>
+        <input text="_" x="6" y="0" tagg="label" size="9" rotate="true"/>
         <terminal x="0" y="21" orientation="s"/>
+        <terminal x="0" y="-21" orientation="n"/>
     </description>
 </definition>

@@ -1,15 +1,16 @@
-<definition width="170" version="0.4" hotspot_x="8" hotspot_y="17" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{523BDCB0-F6C9-496C-92BC-F587A1FBA3A4}"/><names>
-        <name lang="ar">مستمرّ</name>
+<definition type="element" hotspot_x="8" version="0.5" hotspot_y="10" link_type="simple" width="170" orientation="dyyy" height="30">
+    <uuid uuid="{a91f0682-4d4c-4fdf-9601-3c90fce8731a}"/>
+    <names>
         <name lang="de">Aktion</name>
-        <name lang="pt">continuo</name>
         <name lang="el">Συνέχεια</name>
-        <name lang="en">Action puls</name>
-        <name lang="it">Continua</name>
         <name lang="fr">Action puls</name>
-        <name lang="pl">Działanie</name>
-        <name lang="nl">Actie puls</name>
         <name lang="cs">Čin</name>
+        <name lang="ar">مستمرّ</name>
+        <name lang="it">Continua</name>
+        <name lang="pl">Działanie</name>
+        <name lang="en">Action puls</name>
+        <name lang="pt">continuo</name>
+        <name lang="nl">Actie puls</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license
@@ -19,11 +20,11 @@ P action is only executed once ((IEC it will be twice) when step becomes active
 
 </informations>
     <description>
-        <input x="30" y="0" size="5" rotate="true" text="action"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="30" y2="15" x2="30"/>
-        <rect width="150" x="5" y="-5" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="2" y="0" size="7" rotate="true" text="P"/>
-        <input x="2" y="10" size="5" rotate="true" text="T#60s"/>
-        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <input text="action" x="30" y="0" tagg="label" size="5" rotate="true"/>
+        <line x1="30" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="15" length1="1.5" antialias="false" end1="none" x2="30"/>
+        <rect x="5" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="150" height="20"/>
+        <input text="P" x="2" y="0" tagg="none" size="7" rotate="true"/>
+        <input text="T#60s" x="2" y="10" tagg="none" size="5" rotate="true"/>
+        <terminal x="0" y="0" orientation="w"/>
     </description>
 </definition>

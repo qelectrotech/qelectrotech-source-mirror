@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-<uuid uuid="{B8C06C1F-6EE9-4C62-8087-3DDE24F46CA0}"/><names>
+<definition type="element" hotspot_x="10" version="0.5" hotspot_y="13" link_type="simple" width="20" orientation="dyyy" height="30">
+    <uuid uuid="{e2b3ac2c-0ab4-473f-9d2f-b2fc4185c96a}"/>
+    <names>
         <name lang="el">Κύκλος</name>
-        <name lang="en">circle on</name>
-        <name lang="it">riferimento interno</name>
         <name lang="fr">cercle de suite</name>
-        <name lang="pl">Blok graniczny</name>
-        <name lang="es">Circulo</name>
         <name lang="cs">Kruh</name>
+        <name lang="es">Circulo</name>
+        <name lang="it">riferimento interno</name>
+        <name lang="pl">Blok graniczny</name>
+        <name lang="en">circle on</name>
         <name lang="nl">Cirkel aan</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <circle x="-8" y="-28" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-12" x2="0"/>
-        <terminal x="0" y="-10" orientation="s"/>
+        <circle diameter="16" x="-8" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <input text="_" x="6" y="-6.5" tagg="label" size="9" rotate="true"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="8" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <terminal x="0" y="10" orientation="s"/>
     </description>
 </definition>

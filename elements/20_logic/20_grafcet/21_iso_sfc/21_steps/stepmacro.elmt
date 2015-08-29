@@ -1,29 +1,30 @@
-<definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A18BCDF0-F6BC-439E-AA0C-7DB91BDF8878}"/><names>
-        <name lang="ar">خطوة</name>
+<definition type="element" hotspot_x="41" version="0.5" hotspot_y="29" link_type="simple" width="90" orientation="dyyy" height="60">
+    <uuid uuid="{1e9f5898-ef37-48d9-a562-b26a2be04b8b}"/>
+    <names>
         <name lang="de">Schritt</name>
-        <name lang="pt">Etapa</name>
         <name lang="el">Βήμα</name>
-        <name lang="en">Step macro</name>
-        <name lang="it">Passo</name>
         <name lang="fr">Etape</name>
-        <name lang="pl">Krok</name>
-        <name lang="es">Etapa</name>
-        <name lang="nl">Stap macro</name>
         <name lang="cs">Krok</name>
+        <name lang="es">Etapa</name>
+        <name lang="ar">خطوة</name>
+        <name lang="it">Passo</name>
+        <name lang="pl">Krok</name>
+        <name lang="en">Step macro</name>
+        <name lang="pt">Etapa</name>
+        <name lang="nl">Stap macro</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-30" y="14" size="6" rotate="true" text=""/>
-        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-4" y="-10" size="10" rotate="true" text="E 00"/>
-        <input x="-34" y="-11" size="4" rotate="true" text="S###"/>
-        <input x="-30" y="10" size="6" rotate="true" text="Label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-35" y2="-17" x2="35"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="-35" y2="17" x2="35"/>
-        <terminal x="0" y="-25" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="25" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="40" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <input text="" x="-30" y="14" tagg="none" size="6" rotate="true"/>
+        <rect x="-35" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="70" height="40"/>
+        <input text="E 00" x="-4" y="-10" tagg="none" size="10" rotate="true"/>
+        <input text="S###" x="-34" y="-11" tagg="none" size="4" rotate="true"/>
+        <input text="Label" x="-30" y="10" tagg="label" size="6" rotate="true"/>
+        <line x1="-35" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" y2="-17" length1="1.5" antialias="false" end1="none" x2="35"/>
+        <line x1="-35" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" y2="17" length1="1.5" antialias="false" end1="none" x2="35"/>
+        <terminal x="0" y="-25" orientation="n"/>
+        <terminal x="0" y="25" orientation="s"/>
+        <terminal x="40" y="-10" orientation="e"/>
     </description>
 </definition>

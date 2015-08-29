@@ -1,27 +1,29 @@
-<definition width="140" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9E5892BE-5B6E-4F59-9C73-99963B2928CB}"/><names>
-        <name lang="ar">إنتقاليّة</name>
+<definition type="element" hotspot_x="19" version="0.5" hotspot_y="9" link_type="simple" width="140" orientation="dyyy" height="20">
+    <uuid uuid="{4db4787b-d5b3-4ecd-bc58-9f28f4049b0f}"/>
+    <names>
         <name lang="de">Übergang</name>
-        <name lang="pt">transição</name>
         <name lang="el">Μετάβαση</name>
-        <name lang="en">simultane trans</name>
-        <name lang="it">Transizione</name>
         <name lang="fr">transition</name>
-        <name lang="pl">Tranzycja</name>
-        <name lang="es">transición</name>
-        <name lang="nl">simultaan pad</name>
         <name lang="cs">Přechod</name>
+        <name lang="es">transición</name>
+        <name lang="ar">إنتقاليّة</name>
+        <name lang="it">Transizione</name>
+        <name lang="pl">Tranzycja</name>
+        <name lang="en">simultane trans</name>
+        <name lang="pt">transição</name>
+        <name lang="nl">simultaan pad</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-12" y2="-5" x2="112"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-12" y2="5" x2="112"/>
-        <terminal x="0" y="5" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-5" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-12" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="100" y="-5" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="100" y="5" nameHidden="1" number="" name="" orientation="s"/>
-        <terminal x="112" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <line x1="-12" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="-5" length1="1.5" antialias="false" end1="none" x2="112"/>
+        <input text="_" x="8" y="-19.45" tagg="label" size="9" rotate="true"/>
+        <line x1="-12" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="5" length1="1.5" antialias="false" end1="none" x2="112"/>
+        <terminal x="0" y="-5" orientation="n"/>
+        <terminal x="-12" y="0" orientation="w"/>
+        <terminal x="100" y="-5" orientation="n"/>
+        <terminal x="0" y="5" orientation="s"/>
+        <terminal x="100" y="5" orientation="s"/>
+        <terminal x="112" y="0" orientation="e"/>
     </description>
 </definition>

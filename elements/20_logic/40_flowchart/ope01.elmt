@@ -1,21 +1,22 @@
-<definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="60" type="element" orientation="dyyy">
-<uuid uuid="{E24227CB-1F75-474B-A15D-300E2F308407}"/><names>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="60">
+    <uuid uuid="{376fc4a7-f2d8-4018-81b8-a2bc264c4b30}"/>
+    <names>
         <name lang="el">Επεξεργασία / Λειτουργίες</name>
-        <name lang="en">Treatment / Operations</name>
-        <name lang="it">Elaborazione</name>
         <name lang="fr">Traitement / opérations </name>
-        <name lang="pl">Blok obliczeniowy</name>
-        <name lang="es">Tratamiento / Operaciones</name>
         <name lang="cs">Zacházení/Operace</name>
+        <name lang="es">Tratamiento / Operaciones</name>
+        <name lang="it">Elaborazione</name>
+        <name lang="pl">Blok obliczeniowy</name>
+        <name lang="en">Treatment / Operations</name>
         <name lang="nl">Behandeling / Gebeurtenis</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <rect width="100" x="-10" y="0" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="13" y="15.5" size="9" rotate="true" text="Traitement"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="40" y2="31" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.792" x1="40" y2="-9.192" x2="40"/>
-        <terminal x="40" y="40" orientation="s"/>
+        <rect x="-10" y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="100" height="30"/>
+        <input text="Traitement" x="13" y="15.5" tagg="label" size="9" rotate="true"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="31" length1="1.5" antialias="false" end1="triangle" x2="40"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.792" y2="-9.192" length1="1.5" antialias="false" end1="none" x2="40"/>
         <terminal x="40" y="-10" orientation="n"/>
+        <terminal x="40" y="40" orientation="s"/>
     </description>
 </definition>

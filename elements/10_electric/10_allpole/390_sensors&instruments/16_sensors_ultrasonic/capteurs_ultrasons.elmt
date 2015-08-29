@@ -1,34 +1,36 @@
-<definition width="50" version="0.3" hotspot_x="27" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{EDF2FB51-E89E-400C-B513-B187431DEFE1}"/><names>
-        <name lang="ar">حسّاس فوق صوتي ثلاث أطراف</name>
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="37" link_type="simple" width="50" orientation="dyyy" height="60">
+    <uuid uuid="{10429ada-2bbc-45ba-99eb-61bd80780b17}"/>
+    <names>
         <name lang="el">Αισθητήρας υπερήχων με 3 ακροδέκτες</name>
-        <name lang="en">Ultrasonic  sensor 3 terminals</name>
         <name lang="de">Ultraschallsensor 3-Leiter</name>
-        <name lang="it">Sensore ultrasonico a 3 terminali</name>
         <name lang="fr">Capteur ultrasons 3 bornes</name>
-        <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy</name>
-        <name lang="es">Sensor ultrasónico 3 terminales</name>
         <name lang="cs">Ultrazvukové čidlo se třemi svorkami</name>
+        <name lang="es">Sensor ultrasónico 3 terminales</name>
+        <name lang="ar">حسّاس فوق صوتي ثلاث أطراف</name>
+        <name lang="it">Sensore ultrasonico a 3 terminali</name>
+        <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy</name>
+        <name lang="en">Ultrasonic  sensor 3 terminals</name>
         <name lang="nl">ultrasoon sensor 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-19" y2="-16" x2="-19"/>
-        <rect width="2" x="-20" y="-12" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-20" y2="-14" x2="-18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-19" y2="-6" x2="-19"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.05" x1="-20.05" y2="-6.05" x2="-18.05"/>
-        <text x="-9" y="14" size="4" text="BU"/>
-        <text x="6" y="-3" size="4" text="BK"/>
-        <text x="-9" y="-25" size="4" text="BN"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="2" y2="-8" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-10" y2="-20" x2="-10"/>
-        <rect width="25" x="-24" y="-19" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="-10" y5="-10" x5="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-16" y2="-16" x2="-10" y3="-10" x3="-4" y4="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-9" y2="-6" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-11" y2="-6" x2="-11"/>
+        <line x1="-19" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-16" length1="1.5" antialias="false" end1="none" x2="-19"/>
+        <rect x="-20" y="-12" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="2" height="4"/>
+        <line x1="-20" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-14" length1="1.5" antialias="false" end1="none" x2="-18"/>
+        <line x1="-19" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" y2="-6" length1="1.5" antialias="false" end1="none" x2="-19"/>
+        <line x1="-20.05" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.05" y2="-6.05" length1="1.5" antialias="false" end1="none" x2="-18.05"/>
+        <text text="BU" x="-9" y="14" size="4"/>
+        <text text="BK" x="6" y="-3" size="4"/>
+        <text text="BN" x="-9" y="-25" size="4"/>
+        <line x1="2" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" y2="-8" length1="1.5" antialias="false" end1="none" x2="8"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="5" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" y2="-20" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <rect x="-24" y="-19" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="25" height="23"/>
+        <polygon x1="-16" closed="false" x4="-10" x5="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-16" y4="-4" antialias="true" y3="-10" y5="-10" x2="-10" x3="-4"/>
+        <line x1="-9" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-6" length1="1.5" antialias="false" end1="none" x2="-9"/>
+        <line x1="-11" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-6" length1="1.5" antialias="false" end1="none" x2="-11"/>
+        <input text="_" x="0" y="0" tagg="label" size="9" rotate="true"/>
         <terminal x="-10" y="-30" orientation="n"/>
         <terminal x="13" y="-8" orientation="e"/>
         <terminal x="-10" y="15" orientation="s"/>

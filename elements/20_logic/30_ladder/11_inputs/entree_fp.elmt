@@ -1,27 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-<uuid uuid="{D2AAE0BF-ADEB-486C-A31B-8DE9FD160199}"/><names>
-        <name lang="ar">دخل (حافة صاعدة)</name>
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="15" link_type="simple" width="60" orientation="dyyy" height="30">
+    <uuid uuid="{58f03172-a737-47f5-b887-5d4d3d10f6d7}"/>
+    <names>
         <name lang="de">Eingang (steigende Flanke)</name>
-        <name lang="ru">Вход (передний фронт)</name>
-        <name lang="pt">Entrada (ascendente)</name>
         <name lang="el">Είσοδος (θετικός παλμός)</name>
-        <name lang="en">Input (up front)</name>
-        <name lang="it">Ingresso (fronte ascendente)</name>
         <name lang="fr">Entrée (front montant)</name>
-        <name lang="pl">Wejście (zbocze narastające)</name>
-        <name lang="es">Entrada (ascendente)</name>
         <name lang="cs">Vstup (stoupající)</name>
+        <name lang="ru">Вход (передний фронт)</name>
+        <name lang="es">Entrada (ascendente)</name>
+        <name lang="ar">دخل (حافة صاعدة)</name>
+        <name lang="it">Ingresso (fronte ascendente)</name>
+        <name lang="pl">Wejście (zbocze narastające)</name>
+        <name lang="en">Input (up front)</name>
+        <name lang="pt">Entrada (ascendente)</name>
         <name lang="nl">Ingang (Opgaande flank)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-3.5" y="5.25" size="9" text="P"/>
-        <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+        <text text="P" x="-3.5" y="5.25" size="9"/>
+        <input text="_" x="-26" y="-13.5" tagg="label" size="9" rotate="true"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="-5" length1="1.5" antialias="false" end1="none" x2="10"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="5" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="24"/>
+        <line x1="-24" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
         <terminal x="24" y="0" orientation="e"/>
         <terminal x="-24" y="0" orientation="w"/>
     </description>

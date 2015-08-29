@@ -1,26 +1,26 @@
-<definition height="10" version="0.5" link_type="simple" width="50" orientation="dyyy" hotspot_x="24" hotspot_y="4" type="element">
-    <uuid uuid="{ad749ad8-3cee-4a29-a114-8a3ea0b3a444}"/>
+<definition type="element" hotspot_x="24" version="0.5" hotspot_y="4" link_type="simple" width="50" orientation="dyyy" height="10">
+    <uuid uuid="{a090422e-ed0a-4f66-8472-f643cf897a35}"/>
     <names>
         <name lang="de">Induktivität</name>
         <name lang="el">Επαγωγή</name>
+        <name lang="fr">Inductance</name>
+        <name lang="cs">Cívka (forma 2)</name>
         <name lang="pl">Cewka (forma 2)</name>
         <name lang="it">Induttanza 2</name>
         <name lang="en">Inductor</name>
-        <name lang="cs">Cívka (forma 2)</name>
-        <name lang="fr">Inductance</name>
         <name lang="nl">Inductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input tagg="label" y="-13.45" size="9" rotate="true" text="_" x="16"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" angle="-180" antialias="true" start="-180" width="5" x="-10"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" angle="-180" antialias="true" start="-180" width="5" x="5"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" angle="-180" antialias="true" start="-180" width="5" x="0"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" angle="-180" antialias="true" start="-180" width="5" x="-5"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-10" x1="-20" end1="none" y2="0"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="20" x1="10" end1="none" y2="0"/>
-        <terminal y="0" orientation="e" x="20"/>
-        <terminal y="0" orientation="w" x="-20"/>
+        <input text="_" x="8" y="-10.45" tagg="label" size="9" rotate="true"/>
+        <arc start="-180" x="-10" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="5" height="5"/>
+        <arc start="-180" x="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="5" height="5"/>
+        <arc start="-180" x="0" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="5" height="5"/>
+        <arc start="-180" x="-5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="5" height="5"/>
+        <line x1="-20" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="20"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-20" y="0" orientation="w"/>
     </description>
 </definition>

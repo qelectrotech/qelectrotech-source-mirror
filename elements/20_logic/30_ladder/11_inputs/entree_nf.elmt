@@ -1,27 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-<uuid uuid="{EB78D2C9-36CC-4E58-B190-6C9ECA57AB57}"/><names>
-        <name lang="ar">دخل (منطق سالب)</name>
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="10" link_type="simple" width="60" orientation="dyyy" height="20">
+    <uuid uuid="{ff35882c-4f89-4cd7-b78d-7a8dcff33de2}"/>
+    <names>
         <name lang="de">Eingang (negative Logik)</name>
-        <name lang="ru">Вход (отрицательная логика)</name>
-        <name lang="pt">Entrada (lógica negativa)</name>
         <name lang="el">Είσοδος (αρνητική λογική)</name>
-        <name lang="en">Input (negative logic)</name>
-        <name lang="it">Ingresso (logica negativa)</name>
         <name lang="fr">Entrée (NF)</name>
-        <name lang="pl">Wejscie (negacja logiczna)</name>
-        <name lang="es">Entrada (lógica negativa)</name>
         <name lang="cs">Vstup (záporná logika)</name>
+        <name lang="ru">Вход (отрицательная логика)</name>
+        <name lang="es">Entrada (lógica negativa)</name>
+        <name lang="ar">دخل (منطق سالب)</name>
+        <name lang="it">Ingresso (logica negativa)</name>
+        <name lang="pl">Wejscie (negacja logiczna)</name>
+        <name lang="en">Input (negative logic)</name>
+        <name lang="pt">Entrada (lógica negativa)</name>
         <name lang="nl">Ingang (negatieve Logica)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-7" y2="-5" x2="7"/>
-        <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+        <line x1="-7" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="-5" length1="1.5" antialias="true" end1="none" x2="7"/>
+        <input text="_" x="-24" y="-12.5" tagg="label" size="9" rotate="true"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="-5" length1="1.5" antialias="false" end1="none" x2="10"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="5" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="24"/>
+        <line x1="-24" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
         <terminal x="24" y="0" orientation="e"/>
         <terminal x="-24" y="0" orientation="w"/>
     </description>

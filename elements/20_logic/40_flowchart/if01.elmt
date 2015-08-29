@@ -1,24 +1,25 @@
-<definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dyyy">
-<uuid uuid="{38C2BD72-9FF6-4227-868A-5DA133A1D1C2}"/><names>
+<definition type="element" hotspot_x="14" version="0.5" hotspot_y="34" link_type="simple" width="120" orientation="dyyy" height="100">
+    <uuid uuid="{750bf7ef-c4a7-4d1d-8f6a-8092545fe059}"/>
+    <names>
         <name lang="el">ΑΝ 01</name>
-        <name lang="en">IF 01</name>
-        <name lang="it">Decisione (IF)</name>
         <name lang="fr">IF 01</name>
-        <name lang="pl">Blok decyzyjny, warunkowy</name>
-        <name lang="es">Bloque de decisión condicional 01</name>
         <name lang="cs">IF 01</name>
+        <name lang="es">Bloque de decisión condicional 01</name>
+        <name lang="it">Decisione (IF)</name>
+        <name lang="pl">Blok decyzyjny, warunkowy</name>
+        <name lang="en">IF 01</name>
         <name lang="nl">IF 01 beslissing</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <polygon x4="40" y5="10" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="-30" x2="40" y3="10" x3="90" y4="50"/>
-        <text x="88" y="17" size="5" text="N"/>
-        <input x="31" y="-2.5" size="9" rotate="true" text="IF"/>
-        <text x="43" y="53" size="5" text="O"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="59" x1="40" y2="50" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="100" y2="10" x2="90"/>
-        <terminal x="40" y="60" orientation="s"/>
+        <polygon x1="-10" x4="40" x5="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="-30" y4="50" antialias="true" y3="10" y5="10" x2="40" x3="90"/>
+        <text text="N" x="88" y="17" size="5"/>
+        <input text="IF" x="31" y="-2.5" tagg="label" size="9" rotate="true"/>
+        <text text="O" x="43" y="53" size="5"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="59" y2="50" length1="1.5" antialias="false" end1="triangle" x2="40"/>
+        <line x1="100" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="10" length1="1.5" antialias="false" end1="triangle" x2="90"/>
         <terminal x="100" y="10" orientation="e"/>
         <terminal x="40" y="-30" orientation="n"/>
+        <terminal x="40" y="60" orientation="s"/>
     </description>
 </definition>

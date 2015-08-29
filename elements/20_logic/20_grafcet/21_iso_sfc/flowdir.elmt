@@ -1,17 +1,19 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B79AE8FD-2AE2-4F20-87AC-6685805FDE2D}"/><names>
-        <name lang="en">flow direction</name>
-        <name lang="nl">richting</name>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="4" link_type="simple" width="30" orientation="dyyy" height="30">
+    <uuid uuid="{42759fdb-3e2f-4e5e-815a-1087d50fc4d1}"/>
+    <names>
+        <name lang="cs">Směr proudu</name>
         <name lang="it">Direzione del flusso</name>
         <name lang="pl">Kierunek</name>
-        <name lang="cs">Směr proudu</name>
+        <name lang="en">flow direction</name>
+        <name lang="nl">richting</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="10" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="0" y2="5" x2="0"/>
-        <terminal x="0" y="0" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="0" y="20" nameHidden="1" number="" name="" orientation="s"/>
+        <input text="_" x="5" y="0.55" tagg="label" size="9" rotate="true"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="20" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="0" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" y2="5" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <terminal x="0" y="0" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
     </description>
 </definition>

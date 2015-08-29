@@ -1,35 +1,37 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{B56BFE0E-1C6A-409C-994F-2A865F12852D}"/><names>
-        <name lang="ar">حسّاس حثّي ب 3 أطراف</name>
+<definition type="element" hotspot_x="28" version="0.5" hotspot_y="37" link_type="simple" width="50" orientation="dyyy" height="60">
+    <uuid uuid="{14a464d7-725a-4477-a980-bb2c3e88da08}"/>
+    <names>
         <name lang="de">Induktiver Sensor 3-Leiter</name>
         <name lang="el">Επαγωγικός αισθητήρας, 3 ακροδέκτες</name>
-        <name lang="en">Inductive sensor 3 terminals</name>
-        <name lang="it">Sensore induttivo a 3 terminali</name>
         <name lang="fr">Capteur inductif 3 bornes</name>
-        <name lang="pl">Czujnik indukcyjny trójprzewodowy</name>
-        <name lang="es">Sensor inductivo 3 terminales</name>
         <name lang="cs">Indukční čidlo se třemi svorkami</name>
+        <name lang="es">Sensor inductivo 3 terminales</name>
+        <name lang="ar">حسّاس حثّي ب 3 أطراف</name>
+        <name lang="it">Sensore induttivo a 3 terminali</name>
+        <name lang="pl">Czujnik indukcyjny trójprzewodowy</name>
+        <name lang="en">Inductive sensor 3 terminals</name>
         <name lang="nl">Inductief 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-14" y2="0" x2="-16"/>
-        <arc width="3" x="-8" y="-1.5" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="-5"/>
-        <arc width="3" x="-14" y="-1.5" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
-        <arc width="3" x="-8" y="-1.5" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <arc width="3" x="-11" y="-1.5" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
-        <text x="-9" y="14" size="4" text="BU"/>
-        <text x="6" y="-3" size="4" text="BK"/>
-        <text x="-9" y="-25" size="4" text="BN"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="2" y2="-8" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-10" y2="-20" x2="-10"/>
-        <rect width="22" x="-21" y="-19" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="-10" y5="-10" x5="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-16" y2="-16" x2="-10" y3="-10" x3="-4" y4="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-9" y2="-6" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-11" y2="-6" x2="-11"/>
+        <line x1="-14" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-16"/>
+        <input text="_" x="1" y="0.5" tagg="label" size="9" rotate="true"/>
+        <arc start="180" x="-8" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90" antialias="true" width="3" height="2"/>
+        <line x1="-3" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-5"/>
+        <arc start="180" x="-14" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="3" height="2"/>
+        <arc start="90" x="-8" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90" antialias="true" width="3" height="2"/>
+        <arc start="180" x="-11" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" antialias="true" width="3" height="2"/>
+        <text text="BU" x="-9" y="14" size="4"/>
+        <text text="BK" x="6" y="-3" size="4"/>
+        <text text="BN" x="-9" y="-25" size="4"/>
+        <line x1="2" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" y2="-8" length1="1.5" antialias="false" end1="none" x2="8"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="5" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <line x1="-10" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" y2="-20" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <rect x="-21" y="-19" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="22" height="23"/>
+        <polygon x1="-16" closed="false" x4="-10" x5="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-16" y4="-4" antialias="false" y3="-10" y5="-10" x2="-10" x3="-4"/>
+        <line x1="-9" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-6" length1="1.5" antialias="false" end1="none" x2="-9"/>
+        <line x1="-11" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" y2="-6" length1="1.5" antialias="false" end1="none" x2="-11"/>
         <terminal x="-10" y="-30" orientation="n"/>
         <terminal x="13" y="-8" orientation="e"/>
         <terminal x="-10" y="15" orientation="s"/>

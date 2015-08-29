@@ -1,26 +1,27 @@
-<definition width="70" version="0.3" hotspot_x="23" hotspot_y="25" height="100" type="element" orientation="dyyy">
-<uuid uuid="{916A3760-1124-41D4-8015-D1C85F55F11F}"/><names>
-        <name lang="ar">قفز</name>
+<definition type="element" hotspot_x="25" version="0.5" hotspot_y="13" link_type="simple" width="50" orientation="dyyy" height="80">
+    <uuid uuid="{236a4e50-2609-48c7-8cc2-6ca9996643c9}"/>
+    <names>
         <name lang="de">Sprung</name>
-        <name lang="pt">Saltar</name>
         <name lang="el">Άλμα</name>
-        <name lang="en">jump</name>
-        <name lang="it">Salto</name>
         <name lang="fr">saut</name>
-        <name lang="pl">Skok</name>
-        <name lang="es">Saltar</name>
         <name lang="cs">Skok</name>
+        <name lang="es">Saltar</name>
+        <name lang="ar">قفز</name>
+        <name lang="it">Salto</name>
+        <name lang="pl">Skok</name>
+        <name lang="en">jump</name>
+        <name lang="pt">Saltar</name>
         <name lang="nl">Sprong</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-20" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="19" x2="0"/>
-        <input x="-15" y="45" size="10" rotate="true" text="E 00"/>
-        <input x="15" y="2" size="8" rotate="true" text="T 00"/>
-        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-        <terminal x="0" y="-5" orientation="n"/>
+        <circle diameter="40" x="-20" y="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line x1="0" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" y2="19" length1="1.5" antialias="false" end1="none" x2="0"/>
+        <input text="E 00" x="-15" y="45" tagg="none" size="10" rotate="true"/>
+        <input text="T 00" x="15" y="2" tagg="label" size="8" rotate="true"/>
+        <rect x="-13" y="-2" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" width="26" height="4"/>
         <terminal x="-12" y="0" orientation="w"/>
+        <terminal x="0" y="-5" orientation="n"/>
     </description>
 </definition>

@@ -1,22 +1,23 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="25" height="80" type="element" orientation="dyyy">
-<uuid uuid="{E745EC99-C913-497A-AB8C-147E8B3A5AF0}"/><names>
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="28" link_type="simple" width="90" orientation="dyyy" height="80">
+    <uuid uuid="{d0792cbd-6fd8-4457-a76f-f1ceca5e60ad}"/>
+    <names>
         <name lang="el">Έγγραφο</name>
-        <name lang="en">Document</name>
-        <name lang="it">Documento</name>
         <name lang="fr">Document</name>
-        <name lang="pl">Dokument</name>
-        <name lang="es">Documento 2</name>
         <name lang="cs">Dokument</name>
+        <name lang="es">Documento 2</name>
+        <name lang="it">Documento</name>
+        <name lang="pl">Dokument</name>
+        <name lang="en">Document</name>
         <name lang="nl">Document</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <arc width="30" x="34.5" y="15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-225" angle="-90"/>
-        <input x="5" y="-4.5" size="9" text="....."/>
-        <arc width="30" x="-5" y="10" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-50" angle="-80"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="30" y2="-20" x2="30"/>
-        <polygon x4="70" y5="27" x5="70" y6="19" x6="60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="36" x1="0" y2="27" x2="-10" y3="-10" x3="-10" y4="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" x1="20" y2="19" x2="39"/>
+        <arc start="-225" x="34.5" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90" antialias="true" width="30" height="30"/>
+        <input text="....." x="5" y="-4.5" tagg="label" size="9"/>
+        <arc start="-50" x="-5" y="10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-80" antialias="true" width="30" height="30"/>
+        <line x1="30" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-20" length1="1.5" antialias="false" end1="none" x2="30"/>
+        <polygon x1="0" closed="false" x4="70" x5="70" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" y2="27" y4="-10" antialias="false" y3="-10" y5="27" x6="60" y6="19" x2="-10" x3="-10"/>
+        <line x1="20" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" y2="19" length1="1.5" antialias="false" end1="none" x2="39"/>
         <terminal x="30" y="-20" orientation="n"/>
     </description>
 </definition>

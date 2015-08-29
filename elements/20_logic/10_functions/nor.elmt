@@ -1,31 +1,32 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{25C3AC45-1A25-45C9-AAE8-43466E164225}"/><names>
-        <name lang="ar">بوابة NOR</name>
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+    <uuid uuid="{79a2edd2-5348-40e4-8f9f-a4e9d93998c5}"/>
+    <names>
         <name lang="de">ODER-NICHT (NOR)</name>
-        <name lang="ru">ИЛИ-НЕ</name>
-        <name lang="pt">NÃO-OU (NOR)</name>
         <name lang="el">NOR</name>
-        <name lang="en">NOR</name>
-        <name lang="it">NOR</name>
         <name lang="fr">NON-OU (NOR)</name>
-        <name lang="pl">NOR</name>
-        <name lang="es">NO-O (NOR)</name>
         <name lang="cs">Ne-NEBO (NOR)</name>
+        <name lang="ru">ИЛИ-НЕ</name>
+        <name lang="es">NO-O (NOR)</name>
+        <name lang="ar">بوابة NOR</name>
+        <name lang="it">NOR</name>
+        <name lang="pl">NOR</name>
+        <name lang="en">NOR</name>
+        <name lang="pt">NÃO-OU (NOR)</name>
         <name lang="nl">OF NIET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="26"/>
-        <circle x="20.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="-46" y="10" size="8" rotate="true" text="_"/>
-        <input x="-46" y="-30" size="8" rotate="true" text="_"/>
-        <input x="25" y="-10" size="8" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
-        <input x="-25" y="50" size="9" rotate="true" text="_"/>
-        <text x="-11.5" y="5" size="12" text="≥1"/>
-        <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="26"/>
+        <circle diameter="5" x="20.5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <input text="_" x="-46" y="10" tagg="none" size="8" rotate="true"/>
+        <input text="_" x="-46" y="-30" tagg="none" size="8" rotate="true"/>
+        <input text="_" x="25" y="-10" tagg="none" size="8" rotate="true"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <line x1="-40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" length1="1.5" antialias="false" end1="none" x2="-21"/>
+        <input text="_" x="-25" y="50" tagg="label" size="9" rotate="true"/>
+        <text text="≥1" x="-11.5" y="5" size="12"/>
+        <rect x="-20" y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="40" height="70"/>
         <terminal x="40" y="0" orientation="e"/>
         <terminal x="-40" y="-20" orientation="w"/>
         <terminal x="-40" y="20" orientation="w"/>

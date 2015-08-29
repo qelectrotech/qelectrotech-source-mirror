@@ -1,23 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dnnn">
-<uuid uuid="{97124F65-6660-461D-A3C9-7950C33882A1}"/><names>
-        <name lang="ar">إرجاء خرج</name>
+<definition type="element" hotspot_x="24" version="0.5" hotspot_y="10" link_type="simple" width="40" orientation="dyyy" height="20">
+    <uuid uuid="{f418beb3-a109-4235-9e56-559291974ece}"/>
+    <names>
         <name lang="de">Ausgang Report</name>
-        <name lang="pt">Relatório saída</name>
         <name lang="el">Αναφορά Εξόδου</name>
-        <name lang="en">Output Report</name>
-        <name lang="it">Report uscita</name>
         <name lang="fr">Report Sortie</name>
-        <name lang="pl">Wyjście adresowe</name>
-        <name lang="es">Reporte de salida</name>
         <name lang="cs">Hlášení výstupu</name>
+        <name lang="es">Reporte de salida</name>
+        <name lang="ar">إرجاء خرج</name>
+        <name lang="it">Report uscita</name>
+        <name lang="pl">Wyjście adresowe</name>
+        <name lang="en">Output Report</name>
+        <name lang="pt">Relatório saída</name>
         <name lang="nl">Uitgang raport</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-10" y="15" size="9" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-16" y2="0" x2="-10"/>
-        <polygon x4="5" y5="5" x5="-10" y6="-5" x6="-10" y7="-5" x7="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-10" y2="-5" x2="5" y3="0" x3="10" y4="5"/>
+        <input text="_" x="-10" y="15" tagg="label" size="9" rotate="true"/>
+        <line x1="-16" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length1="1.5" antialias="false" end1="none" x2="-10"/>
+        <polygon x1="-10" closed="false" x4="5" y7="-5" x5="-10" x7="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="-5" y4="5" antialias="false" y3="0" y5="5" x6="-10" y6="-5" x2="5" x3="10"/>
         <terminal x="-16" y="0" orientation="w"/>
     </description>
 </definition>
