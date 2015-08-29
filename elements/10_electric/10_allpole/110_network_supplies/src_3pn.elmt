@@ -1,32 +1,34 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{648C5E51-A672-4A68-ACD1-011E3984668D}"/><names>
-        <name lang="ar">مصدر ثلاثي القطبيّة + محايد</name>
-        <name lang="de">Dreiphasig + Neutral</name>
-        <name lang="ru">Трёхполюсный + нейтраль</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="80" hotspot_y="40" type="element">
+    <uuid uuid="{8bfb1790-0735-47d5-88a2-8b4d91aba2f1}"/>
+    <names>
         <name lang="pt">Fonte tripolar + neutro</name>
-        <name lang="en">Three-pole source + neutral</name>
-        <name lang="it">Sorgente tripolare + neutro</name>
-        <name lang="fr">Source tripolaire + neutre</name>
-        <name lang="pl">Linia trójfazowa (czteroprzewodowa)</name>
         <name lang="es">Fuente tripolar + neutro</name>
-        <name lang="cs">Třípólový zdroj + nulový</name>
         <name lang="nl">Driefasen + nul</name>
-         <name lang="el">Τριφασικό + Ουδέτερος</name>
+        <name lang="el">Τριφασικό + Ουδέτερος</name>
+        <name lang="de">Dreiphasig + Neutral</name>
+        <name lang="cs">Třípólový zdroj + nulový</name>
+        <name lang="pl">Linia trójfazowa (czteroprzewodowa)</name>
+        <name lang="it">Sorgente tripolare + neutro</name>
+        <name lang="ar">مصدر ثلاثي القطبيّة + محايد</name>
+        <name lang="en">Three-pole source + neutral</name>
+        <name lang="fr">Source tripolaire + neutre</name>
+        <name lang="ru">Трёхполюсный + нейтраль</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="30" x2="10"/>
+        <input x="-7" y="-44.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
         <text x="-12" y="33" size="5" text="N"/>
         <text x="-12" y="13" size="5" text="L3"/>
         <text x="-12" y="-7" size="5" text="L2"/>
         <text x="-12" y="-27" size="5" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-30" x2="10"/>
-        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="30" nameHidden="0" number="" name="" orientation="e"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <terminal x="10" y="10" orientation="e"/>
+        <terminal x="10" y="30" orientation="e"/>
+        <terminal x="10" y="-30" orientation="e"/>
+        <terminal x="10" y="-10" orientation="e"/>
     </description>
 </definition>

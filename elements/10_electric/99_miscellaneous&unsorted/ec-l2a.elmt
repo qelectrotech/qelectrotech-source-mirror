@@ -1,26 +1,27 @@
-<definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{73E29DDD-1FE4-452B-9302-178DB82ECB58}"/><names>
+<definition width="40" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="50" hotspot_y="24" type="element">
+    <uuid uuid="{cbb82648-e893-496b-86c4-1166ec1ef01d}"/>
+    <names>
+        <name lang="es">EC L2A</name>
+        <name lang="nl">EC L2A</name>
+        <name lang="cs">EC L2A</name>
+        <name lang="pl">EC L2A</name>
+        <name lang="it">EC L2A</name>
         <name lang="ar">EC L2A</name>
         <name lang="en">EC L2A</name>
         <name lang="fr">EC L2A</name>
-        <name lang="pl">EC L2A</name>
-        <name lang="es">EC L2A</name>
-        <name lang="cs">EC L2A</name>
-        <name lang="it">EC L2A</name>
-        <name lang="nl">EC L2A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-7.53" y="-12.53" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="25.0599"/>
-        <circle x="-9.5602" y="-14.5602" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="29.1204"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="10" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="3" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="3" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="-5" x2="0"/>
-        <input x="22.5" y="4.33333" size="9" rotate="true" text="_"/>
+        <circle x="-7.53" antialias="true" y="-12.53" diameter="25.0599" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-9.5602" antialias="true" y="-14.5602" diameter="29.1204" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="10" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4"/>
+        <line antialias="true" length1="1.5" x2="3" end2="none" x1="0" end1="none" y2="3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line antialias="true" length1="1.5" x2="13" end2="none" x1="10" end1="none" y2="3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="10" end1="none" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <input x="22.5" y="4.33333" tagg="label" size="9" rotate="true" text="_"/>
         <terminal x="0" y="-20" orientation="n"/>
         <terminal x="0" y="20" orientation="s"/>
         <terminal x="10" y="20" orientation="s"/>

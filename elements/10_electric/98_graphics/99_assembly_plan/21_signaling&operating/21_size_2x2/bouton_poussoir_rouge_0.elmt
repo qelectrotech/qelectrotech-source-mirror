@@ -1,22 +1,23 @@
-<definition height="60" version="0.5" width="50" link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element">
-    <uuid uuid="{3e85da9f-903b-4a06-8673-8ca37baf9f3d}"/>
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+    <uuid uuid="{40a9935f-de80-4aea-b6da-c94b053dda20}"/>
     <names>
-        <name lang="it">Pulsante</name>
-        <name lang="cs">Tlačítko</name>
         <name lang="el">Μπουτόν</name>
-        <name lang="ar">مفتاح ضاغط</name>
+        <name lang="nl">Drukknop</name>
+        <name lang="cs">Tlačítko</name>
         <name lang="pl">Przycisk</name>
+        <name lang="it">Pulsante</name>
+        <name lang="ar">مفتاح ضاغط</name>
         <name lang="en">Pushbutton</name>
         <name lang="fr">Bouton poussoir rouge</name>
-        <name lang="nl">Drukknop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle diameter="44" style="line-style:normal;line-weight:normal;filling:red;color:black" antialias="true" x="-22" y="-22"/>
-        <circle diameter="28" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-14" y="-14"/>
-        <circle diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="-20"/>
-        <input rotate="true" size="3" x="-17" y="42.5" text="_" tagg="label"/>
-        <text size="20" x="-7" y="10" text="0"/>
+        <input x="-6" y="-35.5" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-22" antialias="true" y="-22" diameter="44" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <circle x="-14" antialias="true" y="-14" diameter="28" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-20" antialias="true" y="-20" diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-17" y="42.5" tagg="label" size="3" rotate="true" text="_"/>
+        <text x="-7" y="10" size="20" text="0"/>
     </description>
 </definition>

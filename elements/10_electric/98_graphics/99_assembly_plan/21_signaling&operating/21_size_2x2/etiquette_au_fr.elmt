@@ -1,32 +1,33 @@
-<definition height="150" version="0.5" width="140" link_type="simple" hotspot_x="69" orientation="dyyy" hotspot_y="66" type="element">
-    <uuid uuid="{d0c584f1-53fa-4b25-802e-c4c0a87cb730}"/>
+<definition width="140" link_type="simple" version="0.5" hotspot_x="70" orientation="dyyy" height="150" hotspot_y="65" type="element">
+    <uuid uuid="{63237a43-b5fd-421d-bea0-0aeb8aab1e58}"/>
     <names>
+        <name lang="nl">Label Noodstop (fr)</name>
         <name lang="cs">Štítek - nouzové zastavení - fr</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
         <name lang="it">Etichetta - Arrêt d'urgence (fr)</name>
         <name lang="ar">توقيف طارئ</name>
-        <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
         <name lang="en">Label - Emergency stopping - fr</name>
         <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
-        <name lang="nl">Label Noodstop (fr)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle diameter="135" style="line-style:normal;line-weight:normal;filling:yellow;color:black" antialias="true" x="-67.5" y="-57.5"/>
-        <circle diameter="80" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="true" x="-40" y="-30"/>
-        <text size="16" rotation="299" x="48.977" y="46.822" text="C"/>
-        <text size="16" rotation="322" x="31.101" y="62.145" text="N"/>
-        <text size="16" rotation="-14" x="7.8087" y="70.164" text="E"/>
-        <text size="16" rotation="15" x="-22.2105" y="66.577" text="G"/>
-        <text size="16" rotation="37" x="-41.5252" y="54.376" text="R"/>
-        <text size="16" rotation="58" x="-55.431" y="35.446" text="U"/>
-        <text size="16" rotation="81" x="-61.5225" y="10.4578" text="D'"/>
-        <text size="16" rotation="279" x="59.025" y="26.0481" text="E"/>
-        <text size="16" rotation="45" x="28.361" y="-27.468" text="T"/>
-        <text size="16" rotation="24" x="12.7788" y="-35.3224" text="Ê"/>
-        <text size="16" x="-7" y="-37" text="R"/>
-        <text size="16" rotation="335" x="-25.6413" y="-29.2965" text="R"/>
-        <text size="16" rotation="315" x="-39.1508" y="-17.565" text="A"/>
-        <input rotate="true" size="9" x="-40" y="100" text="_" tagg="label"/>
+        <circle x="-67.5" antialias="true" y="-57.5" diameter="135" style="line-style:normal;line-weight:normal;filling:yellow;color:black"/>
+        <input x="-7" y="-79.45" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-40" antialias="true" y="-30" diameter="80" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <text x="48.977" y="46.822" size="16" text="C" rotation="299"/>
+        <text x="31.101" y="62.145" size="16" text="N" rotation="322"/>
+        <text x="7.8087" y="70.164" size="16" text="E" rotation="-14"/>
+        <text x="-22.2105" y="66.577" size="16" text="G" rotation="15"/>
+        <text x="-41.5252" y="54.376" size="16" text="R" rotation="37"/>
+        <text x="-55.431" y="35.446" size="16" text="U" rotation="58"/>
+        <text x="-61.5225" y="10.4578" size="16" text="D'" rotation="81"/>
+        <text x="59.025" y="26.0481" size="16" text="E" rotation="279"/>
+        <text x="28.361" y="-27.468" size="16" text="T" rotation="45"/>
+        <text x="12.7788" y="-35.3224" size="16" text="Ê" rotation="24"/>
+        <text x="-7" y="-37" size="16" text="R"/>
+        <text x="-25.6413" y="-29.2965" size="16" text="R" rotation="335"/>
+        <text x="-39.1508" y="-17.565" size="16" text="A" rotation="315"/>
+        <input x="-40" y="100" tagg="label" size="9" rotate="true" text="_"/>
     </description>
 </definition>

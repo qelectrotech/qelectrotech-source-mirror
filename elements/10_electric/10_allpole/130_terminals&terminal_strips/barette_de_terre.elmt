@@ -1,23 +1,25 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnnn">
-<uuid uuid="{0E3BFD10-F95A-4757-8ABF-EECF404E65FC}"/><names>
-        <name lang="ar">مشبك أرضي</name>
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="60" hotspot_y="29" type="element">
+    <uuid uuid="{e1463f74-cad0-4ef6-a1f4-beedd55b7d41}"/>
+    <names>
         <name lang="el">Μπάρα γείωσης</name>
-        <name lang="en">Ground bar</name>
-        <name lang="de">Erdtrennklemme</name>
-        <name lang="it">Barra di terra</name>
-        <name lang="fr">Barette de terre</name>
-        <name lang="pl">Złącze gniazdowe dwuprzerwowe</name>
         <name lang="es">Barra de tierra</name>
+        <name lang="de">Erdtrennklemme</name>
         <name lang="cs">Zemnící tyč</name>
+        <name lang="pl">Złącze gniazdowe dwuprzerwowe</name>
+        <name lang="it">Barra di terra</name>
+        <name lang="ar">مشبك أرضي</name>
+        <name lang="en">Ground bar</name>
+        <name lang="fr">Barette de terre</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
-        <arc width="10" x="-5" y="0" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <arc width="10" x="-5" y="-10" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <input x="8" y="0.55" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <arc x="-5" width="10" antialias="true" y="0" angle="-180" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="-5" width="10" antialias="true" y="-10" angle="-180" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
         <terminal x="0" y="-21" orientation="n"/>
         <terminal x="0" y="21" orientation="s"/>
     </description>

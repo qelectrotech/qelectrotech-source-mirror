@@ -1,47 +1,49 @@
-<definition width="120" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-<uuid uuid="{D5543F28-A198-4A39-A9A4-1D5F21A5F695}"/><names>
-        <name lang="ar">مجموعة 3PC 2P+T 220V 16A</name>
+<definition width="120" link_type="simple" version="0.5" hotspot_x="51" orientation="dyyy" height="50" hotspot_y="17" type="element">
+    <uuid uuid="{355a6cff-a677-4a53-b6a2-79bf09d28904}"/>
+    <names>
+        <name lang="nl">Contactdoos 3voudig 230V 16A</name>
         <name lang="de">Steckdose 3-fach P+N+PE 230V 16A</name>
+        <name lang="cs">Blok 3 PC 2P+T 230v 16A</name>
+        <name lang="pl">Potrójne gniazdo wtyczkowe (modułowe)</name>
+        <name lang="it">Blocco 3 prese di corrente 220V 16A</name>
+        <name lang="ar">مجموعة 3PC 2P+T 220V 16A</name>
         <name lang="en">Plugs 3 PC 2P+T 230v 16A</name>
         <name lang="fr">Bloc 3 PC 2P+T 230v 16A</name>
-        <name lang="pl">Potrójne gniazdo wtyczkowe (modułowe)</name>
-        <name lang="cs">Blok 3 PC 2P+T 230v 16A</name>
-        <name lang="it">Blocco 3 prese di corrente 220V 16A</name>
-        <name lang="nl">Contactdoos 3voudig 230V 16A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="69.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <circle x="59.25" y="6.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <circle x="49.25" y="9.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="30" y2="4" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="20" y2="7" x2="100"/>
-        <circle x="29.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="90"/>
-        <circle x="19.25" y="6.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <circle x="9.25" y="9.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
-        <rect width="2" x="59" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="2" x="99" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <text x="5" y="34.3333" size="4" text="Bloc 3 x PC 230V 16A"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="60" y2="19" x2="60"/>
-        <rect width="2" x="19" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="100" y2="19" x2="100"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="110" y2="17" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="70" y2="17" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="19" x2="20"/>
-        <arc width="6" x="87" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="30" y2="17" x2="30"/>
-        <arc width="6" x="47" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="50" y2="17" x2="50"/>
-        <arc width="6" x="7" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="90" y2="17" x2="90"/>
-        <arc width="6" x="67" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="17" x2="10"/>
-        <arc width="6" x="107" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="6" x="27" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="20" y="0" orientation="n"/>
-        <terminal x="10" y="0" orientation="n"/>
-        <terminal x="30" y="0" orientation="n"/>
+        <input x="13" y="-19.45" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="19.25" antialias="true" y="-6.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="9.25" antialias="true" y="-3.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-0.75" antialias="true" y="-0.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="60" end2="none" x1="-20" end1="none" y2="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6"/>
+        <line antialias="false" length1="1.5" x2="50" end2="none" x1="-30" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3"/>
+        <circle x="-20.75" antialias="true" y="-6.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="40" end2="none" x1="-40" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <circle x="-30.75" antialias="true" y="-3.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-40.75" antialias="true" y="-0.75" diameter="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="9" width="2" antialias="false" y="9" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="49" width="2" antialias="false" y="9" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="-45" y="24.3333" size="4" text="Bloc 3 x PC 230V 16A"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="10" end1="none" y2="9" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3"/>
+        <rect x="-31" width="2" antialias="false" y="9" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line antialias="false" length1="1.5" x2="50" end2="none" x1="50" end1="none" y2="9" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3"/>
+        <line antialias="false" length1="1.5" x2="60" end2="none" x1="60" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6"/>
+        <line antialias="false" length1="1.5" x2="20" end2="none" x1="20" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6"/>
+        <line antialias="false" length1="1.5" x2="-30" end2="none" x1="-30" end1="none" y2="9" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="37" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <line antialias="false" length1="1.5" x2="-20" end2="none" x1="-20" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="-3" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <arc x="-43" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <line antialias="false" length1="1.5" x2="40" end2="none" x1="40" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <arc x="17" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <line antialias="false" length1="1.5" x2="-40" end2="none" x1="-40" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="57" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <arc x="-23" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <terminal x="-30" y="-10" orientation="n"/>
+        <terminal x="-40" y="-10" orientation="n"/>
+        <terminal x="-20" y="-10" orientation="n"/>
     </description>
 </definition>

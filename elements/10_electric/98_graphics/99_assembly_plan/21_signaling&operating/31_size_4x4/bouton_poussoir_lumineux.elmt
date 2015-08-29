@@ -1,21 +1,23 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-<uuid uuid="{7378EB7F-2CFD-4EBA-8657-99689CDCE10F}"/><names>
-        <name lang="ar">مفتاح ضاغط مُضيئ</name>
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+    <uuid uuid="{3b10b14d-2363-4ead-8b08-4862dc940ebd}"/>
+    <names>
         <name lang="el">Μπουτόν φωτειζόμενο</name>
-        <name lang="en">Illuminated pushbutton</name>
-        <name lang="de">Drucktaster beleuchtet</name>
-        <name lang="it">Pulsante luminoso</name>
-        <name lang="fr">Bouton poussoir lumineux</name>
-        <name lang="pl">Przycisk podświetlony</name>
-        <name lang="cs">Podsvícené tlačítko</name>
         <name lang="nl">Drukknop lamp</name>
+        <name lang="de">Drucktaster beleuchtet</name>
+        <name lang="cs">Podsvícené tlačítko</name>
+        <name lang="pl">Przycisk podświetlony</name>
+        <name lang="it">Pulsante luminoso</name>
+        <name lang="ar">مفتاح ضاغط مُضيئ</name>
+        <name lang="en">Illuminated pushbutton</name>
+        <name lang="fr">Bouton poussoir lumineux</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="24" x="-12" y="-12" antialias="true" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-270"/>
-        <circle x="-14" y="-14" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="28"/>
-        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
-        <circle x="-22" y="-22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="44"/>
+        <input x="-7" y="-34.45" tagg="label" size="9" rotate="true" text="_"/>
+        <arc x="-12" width="24" antialias="true" y="-12" angle="-270" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0"/>
+        <circle x="-14" antialias="true" y="-14" diameter="28" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-20" antialias="true" y="-20" diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-22" antialias="true" y="-22" diameter="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

@@ -1,21 +1,23 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
-<uuid uuid="{0EAC8606-E0BB-4D59-8642-6FCFCE4B4F65}"/><names>
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="90" hotspot_y="45" type="element">
+    <uuid uuid="{852b72ec-d326-4981-aa30-a19721d33a80}"/>
+    <names>
+        <name lang="nl">Knop noodstop met slot</name>
+        <name lang="de">Not-Aus Taster mit Schlüssel</name>
+        <name lang="cs">Nouzové zastavení odblokované klíčkem</name>
+        <name lang="pl">Przycisk awaryjny odblokowywany kluczykiem</name>
+        <name lang="it">Arresto d'emergenza a chiave</name>
         <name lang="en">Emergency Stop key to</name>
         <name lang="fr">Arret d'urgence à clef</name>
-        <name lang="de">Not-Aus Taster mit Schlüssel</name>
-        <name lang="pl">Przycisk awaryjny odblokowywany kluczykiem</name>
-        <name lang="cs">Nouzové zastavení odblokované klíčkem</name>
         <name lang="ar">توقيف طارئ بمفتاح</name>
-        <name lang="it">Arresto d'emergenza a chiave</name>
-        <name lang="nl">Knop noodstop met slot</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="26"/>
-        <circle x="-36" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="72"/>
-        <circle x="-38" y="-38" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="76"/>
-        <circle x="-40" y="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="80"/>
-        <rect width="4" x="-2" y="-12" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-6" y="-56.5" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-13" antialias="true" y="-13" diameter="26" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-36" antialias="true" y="-36" diameter="72" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-38" antialias="true" y="-38" diameter="76" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-40" antialias="true" y="-40" diameter="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-2" width="4" antialias="false" y="-12" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
     </description>
 </definition>

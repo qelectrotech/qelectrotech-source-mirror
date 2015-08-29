@@ -1,81 +1,84 @@
-<definition width="600" version="0.2" hotspot_x="15" hotspot_y="45" height="310" type="element" orientation="dnnn" >
-<uuid uuid="{5CD952DE-EC1B-46DB-874E-184FB1E87293}"/><names>
-        <name lang="fr">Répertoire de folios</name>
+<definition width="600" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="300" hotspot_y="39" type="element">
+    <uuid uuid="{9455057a-951c-4187-b838-70b9507aff5c}"/>
+    <names>
         <name lang="de">Inhaltsverzeichnis</name>
-        <name lang="en">Table of content</name>
         <name lang="pl">Spis treści</name>
         <name lang="it">Catalogo delle pagine</name>
+        <name lang="fr">Répertoire de folios</name>
+        <name lang="en">Table of content</name>
     </names>
+    <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31" x1="527" y2="256" x2="527" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31" x1="45" y2="256" x2="45" />
-        <rect width="592" x="-13" y="240" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="223" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="206" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="189" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="172" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="155" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="138" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="121" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="104" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="87" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="70" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="53" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="36" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="19" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="2" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="-15" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="592" x="-13" y="-32" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <text x="-6" y="-21.5" size="8" text="FOLIO" />
-        <text x="61" y="-21.5" size="8" text="APPELLATION" />
-        <text x="533" y="-21.5" size="8" text="VERSION" />
-        <input x="-8" y="-4" size="8" rotate="true" text="_" />
-        <input x="-8" y="30" size="8" rotate="true" text="_" />
-        <input x="-8" y="47" size="8" rotate="true" text="_" />
-        <input x="-8" y="234" size="8" rotate="true" text="_" />
-        <input x="-8" y="217" size="8" rotate="true" text="_" />
-        <input x="-8" y="200" size="8" rotate="true" text="_" />
-        <input x="-8" y="183" size="8" rotate="true" text="_" />
-        <input x="-8" y="166" size="8" rotate="true" text="_" />
-        <input x="-8" y="149" size="8" rotate="true" text="_" />
-        <input x="-8" y="132" size="8" rotate="true" text="_" />
-        <input x="-8" y="115" size="8" rotate="true" text="_" />
-        <input x="-8" y="98" size="8" rotate="true" text="_" />
-        <input x="-8" y="81" size="8" rotate="true" text="_" />
-        <input x="-8" y="64" size="8" rotate="true" text="_" />
-        <input x="-8" y="13" size="8" rotate="true" text="_" />
-        <input x="50" y="-4" size="8" rotate="true" text="_" />
-        <input x="50" y="13" size="8" rotate="true" text="_" />
-        <input x="50" y="64" size="8" rotate="true" text="_" />
-        <input x="50" y="81" size="8" rotate="true" text="_" />
-        <input x="50" y="98" size="8" rotate="true" text="_" />
-        <input x="50" y="115" size="8" rotate="true" text="_" />
-        <input x="50" y="132" size="8" rotate="true" text="_" />
-        <input x="50" y="149" size="8" rotate="true" text="_" />
-        <input x="50" y="166" size="8" rotate="true" text="_" />
-        <input x="50" y="183" size="8" rotate="true" text="_" />
-        <input x="50" y="200" size="8" rotate="true" text="_" />
-        <input x="50" y="217" size="8" rotate="true" text="_" />
-        <input x="50" y="234" size="8" rotate="true" text="_" />
-        <input x="50" y="47" size="8" rotate="true" text="_" />
-        <input x="50" y="30" size="8" rotate="true" text="_" />
-        <input x="-8" y="251" size="8" rotate="true" text="_" />
-        <input x="50" y="251" size="8" rotate="true" text="_" />
-        <input x="530" y="-4" size="8" rotate="true" text="_" />
-        <input x="530" y="30" size="8" rotate="true" text="_" />
-        <input x="530" y="47" size="8" rotate="true" text="_" />
-        <input x="530" y="234" size="8" rotate="true" text="_" />
-        <input x="530" y="217" size="8" rotate="true" text="_" />
-        <input x="530" y="200" size="8" rotate="true" text="_" />
-        <input x="530" y="183" size="8" rotate="true" text="_" />
-        <input x="530" y="166" size="8" rotate="true" text="_" />
-        <input x="530" y="149" size="8" rotate="true" text="_" />
-        <input x="530" y="132" size="8" rotate="true" text="_" />
-        <input x="530" y="115" size="8" rotate="true" text="_" />
-        <input x="530" y="98" size="8" rotate="true" text="_" />
-        <input x="530" y="81" size="8" rotate="true" text="_" />
-        <input x="530" y="64" size="8" rotate="true" text="_" />
-        <input x="530" y="13" size="8" rotate="true" text="_" />
-        <input x="530" y="251" size="8" rotate="true" text="_" />
+        <input x="-7" y="-49.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="527" end2="none" x1="527" end1="none" y2="256" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31"/>
+        <line antialias="false" length1="1.5" x2="45" end2="none" x1="45" end1="none" y2="256" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31"/>
+        <rect x="-13" width="592" antialias="false" y="240" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="223" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="206" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="189" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="172" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="155" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="138" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="121" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="104" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="87" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="70" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="53" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="36" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="19" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="2" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="-15" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-13" width="592" antialias="false" y="-32" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-6" y="-21.5" size="8" text="FOLIO"/>
+        <text x="61" y="-21.5" size="8" text="APPELLATION"/>
+        <text x="533" y="-21.5" size="8" text="VERSION"/>
+        <input x="-8" y="-4" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="30" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="47" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="234" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="217" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="200" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="183" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="166" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="149" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="132" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="115" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="98" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="81" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="64" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="13" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="-4" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="13" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="64" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="81" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="98" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="115" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="132" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="149" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="166" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="183" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="200" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="217" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="234" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="47" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="30" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-8" y="251" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="50" y="251" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="-4" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="30" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="47" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="234" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="217" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="200" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="183" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="166" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="149" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="132" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="115" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="98" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="81" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="64" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="13" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="530" y="251" tagg="none" size="8" rotate="true" text="_"/>
     </description>
 </definition>

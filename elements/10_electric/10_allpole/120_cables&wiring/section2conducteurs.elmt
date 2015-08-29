@@ -1,17 +1,18 @@
-<definition width="70" version="0.3" hotspot_x="46" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{BD2793DE-91DF-4F85-BA62-949374E237EB}"/><names>
+<definition width="40" link_type="simple" version="0.5" hotspot_x="14" orientation="dyyy" height="10" hotspot_y="5" type="element">
+    <uuid uuid="{c94d9e16-e3bb-4117-b037-466a15edcb14}"/>
+    <names>
         <name lang="de">Verdrahtungsdefinition 2 Leiter</name>
+        <name lang="cs">Označení drátového propojení 2 vodiče</name>
+        <name lang="pl">Oznaczenie pola przekroju przewodu dwużyłowego</name>
         <name lang="it">Sezione 2 conduttori</name>
         <name lang="fr">Section 2 conducteurs</name>
-        <name lang="pl">Oznaczenie pola przekroju przewodu dwużyłowego</name>
-        <name lang="cs">Označení drátového propojení 2 vodiče</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.05" x1="17.95" y2="1.95" x2="21.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10.8107" y2="0" x2="19.8781"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-2" y2="2" x2="2"/>
-        <input x="-44" y="2" size="4" rotate="true" text="1,5 mm²&#xa; "/>
+        <line antialias="true" length1="1.5" x2="21.95" end2="none" x1="17.95" end1="none" y2="1.95" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.05"/>
+        <line antialias="false" length1="1.5" x2="19.8781" end2="none" x1="-10.8107" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <line antialias="true" length1="1.5" x2="2" end2="none" x1="-2" end1="none" y2="2" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2"/>
+        <input x="-44" y="2" tagg="label" size="4" rotate="true" text="1,5 mm²&#xa; "/>
     </description>
 </definition>

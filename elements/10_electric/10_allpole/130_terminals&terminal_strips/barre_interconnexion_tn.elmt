@@ -1,24 +1,26 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-<uuid uuid="{D8C55A01-AD46-4BAD-8492-5364B19FDDDF}"/><names>
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="80" hotspot_y="39" type="element">
+    <uuid uuid="{7ae24759-36ff-414f-bf1f-3a9861e75f73}"/>
+    <names>
+        <name lang="es">Barra de interconexión TN</name>
+        <name lang="de">TN-Verbindungsschiene</name>
+        <name lang="cs">Propojovací tyč TN</name>
+        <name lang="pl">Oddzielacz w stanie zamknięcia</name>
+        <name lang="it">Barra di connessione TN</name>
         <name lang="ar">شريط ربط</name>
         <name lang="en">Bar interconnection TN</name>
-        <name lang="de">TN-Verbindungsschiene</name>
-        <name lang="it">Barra di connessione TN</name>
         <name lang="fr">Barre d'interconnection TN</name>
-        <name lang="pl">Oddzielacz w stanie zamknięcia</name>
-        <name lang="cs">Propojovací tyč TN</name>
-        <name lang="es">Barra de interconexión TN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-5" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-5" y="9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <arc width="16" x="-8" y="12" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-8" y2="20" x2="-8"/>
-        <arc width="16" x="-8" y="-28" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="8" y2="20" x2="8"/>
-        <terminal x="0" y="-32" orientation="n"/>
+        <input x="13" y="-19.45" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-5" antialias="true" y="-19" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-5" antialias="true" y="9" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-8" width="16" antialias="true" y="12" angle="-180" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0"/>
+        <line antialias="false" length1="1.5" x2="-8" end2="none" x1="-8" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <arc x="-8" width="16" antialias="true" y="-28" angle="-180" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180"/>
+        <line antialias="false" length1="1.5" x2="8" end2="none" x1="8" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
         <terminal x="0" y="32" orientation="s"/>
+        <terminal x="0" y="-32" orientation="n"/>
     </description>
 </definition>

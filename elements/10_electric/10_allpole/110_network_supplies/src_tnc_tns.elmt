@@ -1,46 +1,48 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E9A813AA-7E9B-48A3-85D1-5D3B1A363DC2}"/><names>
-        <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
-        <name lang="de">Netz TNC > TNS</name>
-        <name lang="ru">Распределительный пункт TN-C >TN-S</name>
-        <name lang="en">Distribution point TN-C >TN-S</name>
-        <name lang="it">Punto di distribuzione TN-C</name>
-        <name lang="fr">Point de distribution TN-C >TN-S</name>
-        <name lang="pl">Linia trójfazowa (TN-C-S)</name>
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="100" hotspot_y="40" type="element">
+    <uuid uuid="{4b9794cf-e7c0-4f59-aa0a-bb1fce4dfe48}"/>
+    <names>
         <name lang="es">Punto de distribución TN-C > TN-S</name>
-        <name lang="cs">Bod rozdělení TN-C > TN-S</name>
         <name lang="nl">Net TN-C > TN-S</name>
+        <name lang="de">Netz TNC > TNS</name>
+        <name lang="cs">Bod rozdělení TN-C > TN-S</name>
+        <name lang="pl">Linia trójfazowa (TN-C-S)</name>
+        <name lang="it">Punto di distribuzione TN-C</name>
+        <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
+        <name lang="en">Distribution point TN-C >TN-S</name>
+        <name lang="fr">Point de distribution TN-C >TN-S</name>
+        <name lang="ru">Распределительный пункт TN-C >TN-S</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="24" y2="-30" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="24" y2="50" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="24" y2="30" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="24" y2="10" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="24" y2="-10" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="-6" y2="54" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="52" x1="-8" y2="52" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-10" y2="50" x2="0"/>
+        <line antialias="false" length1="1.5" x2="28" end2="none" x1="24" end1="none" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <input x="-17" y="-49.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="28" end2="none" x1="24" end1="none" y2="50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
+        <line antialias="false" length1="1.5" x2="28" end2="none" x1="24" end1="none" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <line antialias="false" length1="1.5" x2="28" end2="none" x1="24" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="28" end2="none" x1="24" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="-4" end2="none" x1="-6" end1="none" y2="54" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54"/>
+        <line antialias="false" length1="1.5" x2="-2" end2="none" x1="-8" end1="none" y2="52" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="52"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="-10" end1="none" y2="50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
         <text x="13" y="53" size="5" text="PE"/>
         <text x="13" y="33" size="5" text="N"/>
         <text x="13" y="13" size="5" text="L3"/>
         <text x="13" y="-7" size="5" text="L2"/>
         <text x="13" y="-27" size="5" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-13" y2="10" x2="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="7" y2="50" x2="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-13" y2="-10" x2="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-13" y2="30" x2="12"/>
+        <line antialias="false" length1="1.5" x2="12" end2="none" x1="-13" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="12" end2="none" x1="7" end1="none" y2="50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
+        <line antialias="false" length1="1.5" x2="12" end2="none" x1="-13" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="12" end2="none" x1="-13" end1="none" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
         <text x="-30" y="33" size="5" text="PEN"/>
         <text x="-30" y="13" size="5" text="L3"/>
         <text x="-30" y="-7" size="5" text="L2"/>
         <text x="-30" y="-27" size="5" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-13" y2="-30" x2="12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="50" x1="7" y2="30" x2="-5" y3="49" x3="-5"/>
-        <terminal x="30" y="50" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="-30" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="30" nameHidden="0" number="" name="" orientation="e"/>
+        <line antialias="false" length1="1.5" x2="12" end2="none" x1="-13" end1="none" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <polygon antialias="true" x2="-5" x1="7" x3="-5" y2="30" y3="49" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
+        <terminal x="30" y="-10" orientation="e"/>
+        <terminal x="30" y="10" orientation="e"/>
+        <terminal x="30" y="30" orientation="e"/>
+        <terminal x="30" y="50" orientation="e"/>
+        <terminal x="30" y="-30" orientation="e"/>
     </description>
 </definition>

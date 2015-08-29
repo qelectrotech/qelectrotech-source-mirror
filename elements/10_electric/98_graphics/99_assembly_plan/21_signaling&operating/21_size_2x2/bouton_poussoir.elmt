@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{DAA38263-1087-45F5-BC09-58CE698F5E08}"/><names>
-        <name lang="ar">زرّ ضاغط</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+    <uuid uuid="{da9297ad-d8a3-4434-b0d3-36bd61f6aed8}"/>
+    <names>
         <name lang="el">Μπουτόν</name>
-        <name lang="en">Pushbutton</name>
-        <name lang="de">Drucktaster</name>
-        <name lang="it">Pulsante</name>
-        <name lang="fr">Bouton poussoir</name>
-        <name lang="pl">Przycisk</name>
-        <name lang="cs">Tlačítko</name>
         <name lang="nl">Drukknop</name>
+        <name lang="de">Drucktaster</name>
+        <name lang="cs">Tlačítko</name>
+        <name lang="pl">Przycisk</name>
+        <name lang="it">Pulsante</name>
+        <name lang="ar">زرّ ضاغط</name>
+        <name lang="en">Pushbutton</name>
+        <name lang="fr">Bouton poussoir</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-7" y="-7" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="14"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="-11" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
+        <input x="-7" y="-20.5" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-7" antialias="true" y="-7" diameter="14" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-11" antialias="true" y="-11" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

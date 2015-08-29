@@ -1,28 +1,30 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{131B6CA1-DA3C-46F0-8FD5-B1C47C13C171}"/><names>
-        <name lang="ar">مصدر وحيد القطبية + أرضي PE + محايد N</name>
-        <name lang="de">Wechselstrom + PE +N</name>
-        <name lang="ru">Однополюсный + PE +N</name>
-        <name lang="en">Single-pole source + PE +N</name>
-        <name lang="it">Sorgente unipolare + PE +N</name>
-        <name lang="fr">Source unipolaire + PE +N</name>
-        <name lang="pl">Linia jednofazowa (trójprzewodowa)</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="60" hotspot_y="30" type="element">
+    <uuid uuid="{35f2834a-308b-4e79-bc2a-1c00486b24e7}"/>
+    <names>
         <name lang="es">Fuente unipolo + PE +N</name>
-        <name lang="cs">1 fáze + PE +N</name>
         <name lang="nl">1 fase + aarde + nul</name>
         <name lang="el">Μονοφασικό +N +PE</name>
+        <name lang="de">Wechselstrom + PE +N</name>
+        <name lang="cs">1 fáze + PE +N</name>
+        <name lang="pl">Linia jednofazowa (trójprzewodowa)</name>
+        <name lang="it">Sorgente unipolare + PE +N</name>
+        <name lang="ar">مصدر وحيد القطبية + أرضي PE + محايد N</name>
+        <name lang="en">Single-pole source + PE +N</name>
+        <name lang="fr">Source unipolaire + PE +N</name>
+        <name lang="ru">Однополюсный + PE +N</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="10"/>
+        <input x="-12" y="-34.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
         <text x="-12" y="23" size="5" text="PE"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
         <text x="-12" y="3" size="5" text="N"/>
         <text x="-12" y="-17" size="5" text="L"/>
-        <terminal x="10" y="-20" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="10" y="20" orientation="e"/>
+        <terminal x="10" y="-20" orientation="e"/>
     </description>
 </definition>

@@ -1,31 +1,33 @@
-<definition width="40" version="0.3" hotspot_x="23" hotspot_y="41" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{2B437BB6-AE8B-461F-9FC4-14CE5DE1ECDD}"/><names>
-        <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
-        <name lang="de">Drehstrom + PEN</name>
-        <name lang="ru">Трёхполюсный + PEN</name>
-        <name lang="en">Three-pole source + PEN</name>
-        <name lang="it">Sorgente tripolare + PEN</name>
-        <name lang="fr">Source tripolaire + PEN</name>
-        <name lang="pl">Linia trójfazowa (PEN)</name>
+<definition width="40" link_type="simple" version="0.5" hotspot_x="23" orientation="dyyy" height="80" hotspot_y="41" type="element">
+    <uuid uuid="{c0913e95-3b3c-4dc2-a74d-bc73ded78c32}"/>
+    <names>
         <name lang="es">Fuente tripolar + PEN</name>
-        <name lang="cs">3 fáze + PEN</name>
         <name lang="nl">driefasen + aardenul</name>
         <name lang="el">Τριφασικό + PEN</name>
+        <name lang="de">Drehstrom + PEN</name>
+        <name lang="cs">3 fáze + PEN</name>
+        <name lang="pl">Linia trójfazowa (PEN)</name>
+        <name lang="it">Sorgente tripolare + PEN</name>
+        <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
+        <name lang="en">Three-pole source + PEN</name>
+        <name lang="fr">Source tripolaire + PEN</name>
+        <name lang="ru">Трёхполюсный + PEN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="30" x2="10"/>
+        <input x="-7" y="-49.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
         <text x="-18" y="32" size="5" text="PEN"/>
         <text x="-18" y="12" size="5" text="L3"/>
         <text x="-18" y="-8" size="5" text="L2"/>
         <text x="-18" y="-28" size="5" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-30" x2="10"/>
-        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="30" nameHidden="0" number="" name="" orientation="e"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <terminal x="10" y="-30" orientation="e"/>
+        <terminal x="10" y="-10" orientation="e"/>
+        <terminal x="10" y="10" orientation="e"/>
+        <terminal x="10" y="30" orientation="e"/>
     </description>
 </definition>

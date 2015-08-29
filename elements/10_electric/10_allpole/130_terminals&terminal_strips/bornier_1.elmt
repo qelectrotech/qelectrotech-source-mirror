@@ -1,40 +1,42 @@
-<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{C7F58329-EA65-4779-AD26-CBD7DFE9211C}"/><names>
-        <name lang="ar">كتلة نهائيات</name>
-        <name lang="en">Terminal block 6x terminals</name>
-        <name lang="de">Klemmleiste mit 6x Klemmen</name>
-        <name lang="it">Morsettira orizzontale</name>
-        <name lang="fr">Bornier 6x bornes</name>
-        <name lang="pl">Listwa zaciskowa</name>
-        <name lang="cs">Svorkový blok</name>
+<definition width="130" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="60" hotspot_y="34" type="element">
+    <uuid uuid="{49729087-e683-425b-89e6-f41fe90f4f81}"/>
+    <names>
         <name lang="es">Blok de terminales</name>
         <name lang="nl">Klemmenblok</name>
+        <name lang="de">Klemmleiste mit 6x Klemmen</name>
+        <name lang="cs">Svorkový blok</name>
+        <name lang="pl">Listwa zaciskowa</name>
+        <name lang="it">Morsettira orizzontale</name>
+        <name lang="ar">كتلة نهائيات</name>
+        <name lang="en">Terminal block 6x terminals</name>
+        <name lang="fr">Bornier 6x bornes</name>
     </names>
     <informations>EN 60617: 03-02-03</informations>
     <description>
-        <rect width="20" x="90" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="70" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="-10" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="92" y="-19" size="8" rotate="true" text="6"/>
-        <input x="72" y="-19" size="8" rotate="true" text="5"/>
-        <rect width="20" x="50" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="30" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="10" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="52" y="-19" size="8" rotate="true" text="4"/>
-        <input x="32" y="-19" size="8" rotate="true" text="3"/>
-        <input x="12" y="-19" size="8" rotate="true" text="2"/>
-        <input x="-8" y="-19" size="8" rotate="true" text="1"/>
+        <rect x="90" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-7" y="0.55" tagg="label" size="9" rotate="true" text="_"/>
+        <rect x="70" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="92" y="-19" tagg="none" size="8" rotate="true" text="6"/>
+        <input x="72" y="-19" tagg="none" size="8" rotate="true" text="5"/>
+        <rect x="50" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="30" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="10" width="20" antialias="false" y="-30" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="52" y="-19" tagg="none" size="8" rotate="true" text="4"/>
+        <input x="32" y="-19" tagg="none" size="8" rotate="true" text="3"/>
+        <input x="12" y="-19" tagg="none" size="8" rotate="true" text="2"/>
+        <input x="-8" y="-19" tagg="none" size="8" rotate="true" text="1"/>
         <terminal x="0" y="-30" orientation="n"/>
         <terminal x="0" y="20" orientation="s"/>
         <terminal x="20" y="-30" orientation="n"/>
         <terminal x="20" y="20" orientation="s"/>
         <terminal x="40" y="-30" orientation="n"/>
-        <terminal x="40" y="20" orientation="s"/>
-        <terminal x="60" y="-30" orientation="n"/>
         <terminal x="60" y="20" orientation="s"/>
         <terminal x="80" y="-30" orientation="n"/>
         <terminal x="80" y="20" orientation="s"/>
         <terminal x="100" y="-30" orientation="n"/>
         <terminal x="100" y="20" orientation="s"/>
+        <terminal x="40" y="20" orientation="s"/>
+        <terminal x="60" y="-30" orientation="n"/>
     </description>
 </definition>

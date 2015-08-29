@@ -1,26 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-<uuid uuid="{1DDAA085-A673-48F4-9860-82E7416B1E5B}"/><names>
-        <name lang="ar">Outlet 2P+T</name>
+<definition width="40" link_type="simple" version="0.5" hotspot_x="19" orientation="dyyy" height="50" hotspot_y="16" type="element">
+    <uuid uuid="{c73b40e1-79a4-4711-9338-e019449bf76e}"/>
+    <names>
+        <name lang="nl">Contact AC + aarde</name>
         <name lang="de">Steckdose P+N+PE</name>
+        <name lang="cs">Zásuvka PC 2P+T</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="it">Presa 2p+T</name>
+        <name lang="ar">Outlet 2P+T</name>
         <name lang="en">PC 2P+T</name>
         <name lang="fr">PC 2P+T</name>
-        <name lang="pl">Gniazdo wtyczkowe</name>
-        <name lang="cs">Zásuvka PC 2P+T</name>
-        <name lang="it">Presa 2p+T</name>
-        <name lang="nl">Contact AC + aarde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="5" y="34.3333" size="4" text="PC 230V 16A"/>
-        <rect width="2" x="19" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="19" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="30" y2="17" x2="30"/>
-        <arc width="6" x="7" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="17" x2="10"/>
-        <arc width="6" x="27" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="20" y="1" orientation="n"/>
-        <terminal x="10" y="1" orientation="n"/>
-        <terminal x="30" y="1" orientation="n"/>
+        <text x="-15" y="24.3333" size="4" text="PC 230V 16A"/>
+        <input x="13" y="-4.45" tagg="label" size="9" rotate="true" text="_"/>
+        <rect x="-1" width="2" antialias="false" y="9" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="9" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="10" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="-13" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <line antialias="false" length1="1.5" x2="-10" end2="none" x1="-10" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="7" width="6" antialias="true" y="7" angle="-180" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180"/>
+        <terminal x="0" y="-9" orientation="n"/>
+        <terminal x="-10" y="-9" orientation="n"/>
+        <terminal x="10" y="-9" orientation="n"/>
     </description>
 </definition>

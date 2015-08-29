@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{0426B6E7-CB04-4495-BFEB-1403E6BB000E}"/><names>
-        <name lang="ar">مُؤشر ضوئي</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+    <uuid uuid="{5b2559a6-e8c0-49e2-ac87-8c2532af91ea}"/>
+    <names>
         <name lang="el">Λάμπα</name>
-        <name lang="en">Light</name>
-        <name lang="de">Meldeleuchte</name>
-        <name lang="it">Lampada spia</name>
-        <name lang="fr">Voyant </name>
-        <name lang="pl">Lampka sygnalizacyjna</name>
-        <name lang="cs">Světelný signál</name>
         <name lang="nl">Lamp</name>
+        <name lang="de">Meldeleuchte</name>
+        <name lang="cs">Světelný signál</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="ar">مُؤشر ضوئي</name>
+        <name lang="en">Light</name>
+        <name lang="fr">Voyant </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="14" x="-7" y="-7" antialias="true" height="14" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-270"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="-11" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
+        <input x="-7" y="-24.45" tagg="label" size="9" rotate="true" text="_"/>
+        <arc x="-7" width="14" antialias="true" y="-7" angle="-270" height="14" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0"/>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-11" antialias="true" y="-11" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

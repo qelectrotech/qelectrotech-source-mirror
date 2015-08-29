@@ -1,16 +1,17 @@
-<definition width="60" version="0.3" hotspot_x="47" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{1190611E-C275-48C8-9FC7-DB0B2030C0BD}"/><names>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="10" hotspot_y="5" type="element">
+    <uuid uuid="{b96a76a6-a798-497b-a044-dd933756d175}"/>
+    <names>
         <name lang="de">Verdrahtungsdefinition 1 Leiter</name>
+        <name lang="cs">Označení drátového propojení 1 vodič</name>
+        <name lang="pl">Oznaczenie pola przekroju przewodu jednożyłowego</name>
         <name lang="it">Sezione 1 conduttore</name>
         <name lang="fr">Section 1 conducteur</name>
-        <name lang="pl">Oznaczenie pola przekroju przewodu jednożyłowego</name>
-        <name lang="cs">Označení drátového propojení 1 vodič</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10.8483" y2="0" x2="9.91885"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-2" y2="2" x2="2"/>
-        <input x="-44" y="2" size="4" rotate="true" text="1,5 mm²&#xa; "/>
+        <line antialias="false" length1="1.5" x2="9.91885" end2="none" x1="-10.8483" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <line antialias="true" length1="1.5" x2="2" end2="none" x1="-2" end1="none" y2="2" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2"/>
+        <input x="-44" y="2" tagg="label" size="4" rotate="true" text="1,5 mm²&#xa; "/>
     </description>
 </definition>

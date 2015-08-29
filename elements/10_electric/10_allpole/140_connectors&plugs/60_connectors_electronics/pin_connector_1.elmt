@@ -1,22 +1,23 @@
-<definition type="element" link_type="simple" hotspot_x="10" hotspot_y="11" orientation="dyyy" version="0.5" width="20" height="20">
-<uuid uuid="{D33EA9EA-C93B-4C6A-B3A3-99D7A6AA2096}"/><names>
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="20" hotspot_y="11" type="element">
+    <uuid uuid="{632255c0-4acd-4220-8bdd-3f99e339ab4d}"/>
+    <names>
+        <name lang="nl">Connector 1 pin</name>
+        <name lang="el">Σύνδεσμος, 1 ακροδέκτης</name>
+        <name lang="de">Steckverbindung 1 Anschluss</name>
+        <name lang="cs">Spojka, 1 kolík</name>
+        <name lang="pl">Złącze jednostykowe</name>
+        <name lang="it">Connettore, 1 pin</name>
         <name lang="en">Connector, 1 pin</name>
         <name lang="fr">Connecteur ,1 broche</name>
-        <name lang="nl">Connector 1 pin</name>
-        <name lang="cs">Spojka, 1 kolík</name>
-        <name lang="de">Steckverbindung 1 Anschluss</name>
-        <name lang="it">Connettore, 1 pin</name>
-        <name lang="el">Σύνδεσμος, 1 ακροδέκτης</name>
         <name lang="ar">وصلة , 1 دبوس</name>
-        <name lang="pl">Złącze jednostykowe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-5.5" tagg="label" y="21" size="9" rotate="true" text="_"/>
-        <line x1="-5" end1="simple" antialias="false" x2="5" length1="1.5" end2="simple" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" y2="5"/>
-        <line x1="-5" end1="simple" antialias="false" x2="5" length1="1.5" end2="simple" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="-5"/>
-        <rect x="-5" y="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" height="10"/>
+        <input x="-5.5" y="21" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="5" end2="simple" x1="-5" end1="simple" y2="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line antialias="false" length1="1.5" x2="5" end2="simple" x1="-5" end1="simple" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <rect x="-5" width="10" antialias="false" y="-5" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="-6" orientation="n"/>
     </description>
 </definition>

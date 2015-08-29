@@ -1,23 +1,25 @@
-<definition width="220" version="0.3" hotspot_x="96" hotspot_y="65" height="140" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{69505824-B3A0-4116-93D3-E8324A91ABE6}"/><names>
+<definition width="220" link_type="simple" version="0.5" hotspot_x="96" orientation="dyyy" height="150" hotspot_y="70" type="element">
+    <uuid uuid="{666d3c84-6159-4b55-82cd-dcba3d628c8a}"/>
+    <names>
         <name lang="el">CPJ</name>
-        <name lang="en">CPJ</name>
-        <name lang="it">CPJ</name>
-        <name lang="fr">CPJ</name>
-        <name lang="pl">CPJ</name>
         <name lang="es">CPJ</name>
-        <name lang="cs">CPJ</name>
         <name lang="nl">CPJ</name>
+        <name lang="cs">CPJ</name>
+        <name lang="pl">CPJ</name>
+        <name lang="it">CPJ</name>
+        <name lang="en">CPJ</name>
+        <name lang="fr">CPJ</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="-93" y2="60" x2="-80"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-51.5" x1="-93.2" y2="72.5" x2="-93.2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39" x1="-80" y2="-52" x2="-93"/>
-        <rect width="55" x="50" y="-60" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="80" x="-50" y="-60" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="200" x="-80" y="-39" antialias="false" height="99" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-80" end2="none" x1="-93" end1="none" y2="60" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73"/>
+        <input x="-67" y="0.55" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="-93.2" end2="none" x1="-93.2" end1="none" y2="72.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-51.5"/>
+        <line antialias="false" length1="1.5" x2="-93" end2="none" x1="-80" end1="none" y2="-52" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39"/>
+        <rect x="50" width="55" antialias="false" y="-60" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-50" width="80" antialias="false" y="-60" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-80" width="200" antialias="false" y="-39" height="99" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-42" y="-49.6667" size="4" text="1"/>
         <text x="56" y="-49.6667" size="4" text="8"/>
         <text x="18" y="-49.6667" size="4" text="7"/>
@@ -30,29 +32,29 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="75" y="-49.6667" size="4" text="10"/>
         <text x="66" y="-49.6667" size="4" text="9"/>
         <text x="95" y="-49.6667" size="4" text="12"/>
-        <circle x="19.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="9.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-0.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-10.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-20.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-30.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-40.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="97.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="87.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="77.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="67.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="57.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <terminal x="58" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="68" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="78" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="88" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="98" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-40" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-30" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-20" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="-61" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="20" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <circle x="19.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="9.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-0.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-10.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-20.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-30.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-40.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="97.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="87.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="77.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="67.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="57.5" antialias="true" y="-60.5" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="58" y="-61" orientation="n"/>
+        <terminal x="78" y="-61" orientation="n"/>
+        <terminal x="10" y="-61" orientation="n"/>
+        <terminal x="20" y="-61" orientation="n"/>
+        <terminal x="88" y="-61" orientation="n"/>
+        <terminal x="98" y="-61" orientation="n"/>
+        <terminal x="-40" y="-61" orientation="n"/>
+        <terminal x="0" y="-61" orientation="n"/>
+        <terminal x="68" y="-61" orientation="n"/>
+        <terminal x="-30" y="-61" orientation="n"/>
+        <terminal x="-20" y="-61" orientation="n"/>
+        <terminal x="-10" y="-61" orientation="n"/>
     </description>
 </definition>

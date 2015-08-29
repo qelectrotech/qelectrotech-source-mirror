@@ -1,21 +1,22 @@
-<definition width="60" version="0.3" hotspot_x="3" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5E2325AA-C5DD-487D-BCA0-A01F9562871A}"/><names>
-        <name lang="ar">تسمية مساحة المقطع </name>
-        <name lang="de">Verdrahtungsquerschnitt</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="14" orientation="dyyy" height="20" hotspot_y="4" type="element">
+    <uuid uuid="{a0e9e33a-ee38-4c08-8f40-c307da8d822b}"/>
+    <names>
         <name lang="el">Διατομή αγωγού</name>
-        <name lang="en">Wiring section</name>
-        <name lang="it">Sezione della nomenclatura</name>
-        <name lang="fr">Section de fil</name>
-        <name lang="pl">Pole przekróju przewodu</name>
         <name lang="es">Clasificación de sección</name>
         <name lang="nl">Doorsnede</name>
+        <name lang="de">Verdrahtungsquerschnitt</name>
         <name lang="cs">Průřez drátovým propojením</name>
+        <name lang="pl">Pole przekróju przewodu</name>
+        <name lang="it">Sezione della nomenclatura</name>
+        <name lang="ar">تسمية مساحة المقطع </name>
+        <name lang="en">Wiring section</name>
+        <name lang="fr">Section de fil</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="0" y="0" size="6" rotate="true" text="_"/>
-        <text x="48" y="-3.6666" size="4" text="2"/>
-        <text x="30" y="0" size="6" text="mm"/>
+        <input x="-40" y="10" tagg="label" size="6" rotate="true" text="_"/>
+        <text x="8" y="6.3334" size="4" text="2"/>
+        <text x="-10" y="10" size="6" text="mm"/>
     </description>
 </definition>

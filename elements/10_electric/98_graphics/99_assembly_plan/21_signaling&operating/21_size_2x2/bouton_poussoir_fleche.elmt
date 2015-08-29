@@ -1,23 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{16219E43-98F5-40C8-A380-355F3F16C12E}"/><names>
-        <name lang="ar">زرّ ضاغط سهم</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+    <uuid uuid="{7e925faf-c5d0-4c7a-8b84-c277ea2b1e22}"/>
+    <names>
         <name lang="el">Μπουτόν με βέλος</name>
-        <name lang="en">Arrow button</name>
-        <name lang="de">Drucktaster mit Pfeil</name>
-        <name lang="it">Pulsante freccia</name>
-        <name lang="fr">Bouton poussoir flèche</name>
-        <name lang="pl">Przycisk ze strzałką</name>
-        <name lang="cs">Tlačítko se šipkou</name>
         <name lang="nl">Knop pijl</name>
+        <name lang="de">Drucktaster mit Pfeil</name>
+        <name lang="cs">Tlačítko se šipkou</name>
+        <name lang="pl">Przycisk ze strzałką</name>
+        <name lang="it">Pulsante freccia</name>
+        <name lang="ar">زرّ ضاغط سهم</name>
+        <name lang="en">Arrow button</name>
+        <name lang="fr">Bouton poussoir flèche</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="1" y2="-3" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-1" y2="-3" x2="-1"/>
-        <line length1="2" length2="4" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="7" x1="0" y2="-7" x2="0"/>
-        <circle x="-7.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="15"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="-11" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
+        <input x="-7" y="-20.5" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="1" end2="none" x1="1" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7"/>
+        <line antialias="false" length1="1.5" x2="-1" end2="none" x1="-1" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7"/>
+        <line antialias="false" length1="2" x2="0" end2="triangle" x1="0" end1="none" y2="-7" length2="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="7"/>
+        <circle x="-7.5" antialias="true" y="-7.5" diameter="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-11" antialias="true" y="-11" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

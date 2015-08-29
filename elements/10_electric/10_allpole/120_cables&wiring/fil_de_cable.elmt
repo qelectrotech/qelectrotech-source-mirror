@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D5FC9D5C-2942-47F6-AFEE-36B6896D2891}"/><names>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="20" hotspot_y="9" type="element">
+    <uuid uuid="{6ac285f9-6492-40cb-be58-9ba565ea1921}"/>
+    <names>
         <name lang="de">Kabelader</name>
+        <name lang="cs">Vedení kabelu</name>
+        <name lang="pl">Połączenie przewodu</name>
+        <name lang="it">Conduttore di un cavo</name>
         <name lang="en">Wire of cable</name>
         <name lang="fr">Fil de cable</name>
-        <name lang="it">Conduttore di un cavo</name>
-        <name lang="pl">Połączenie przewodu</name>
-        <name lang="cs">Vedení kabelu</name>
-	<name lang="ru">Жила кабеля</name>
+        <name lang="ru">Жила кабеля</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-9.76313" y2="0" x2="9.82672"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.10435" x1="0" y2="4.11304" x2="0"/>
-        <terminal x="0" y="-5" orientation="n"/>
+        <line antialias="false" length1="1.5" x2="9.82672" end2="none" x1="-9.76313" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <input x="1" y="-11.5" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="4.11304" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.10435"/>
         <terminal x="0" y="5" orientation="s"/>
+        <terminal x="0" y="-5" orientation="n"/>
     </description>
 </definition>

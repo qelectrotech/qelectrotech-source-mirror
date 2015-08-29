@@ -1,29 +1,31 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{A35B5B0F-C30D-45F1-AE56-713909F3CE70}"/><names>
-        <name lang="ar">زرّ دوُار جنب</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+    <uuid uuid="{5d000cf1-5350-4a1b-9417-dc5d56fb748b}"/>
+    <names>
         <name lang="el">Περιστροφικός διακόπτης, δεξιά</name>
-        <name lang="en">Turning button side</name>
-        <name lang="de">Knebelschalter rechts</name>
-        <name lang="it">Pulsante rotativo a lato</name>
-        <name lang="fr">Bouton tournant coté</name>
-        <name lang="pl">Łącznik obrotowy w pozycji prawej</name>
-        <name lang="cs">Otočné tlačítko v pravé pozici</name>
         <name lang="nl">knop draai stand 1</name>
+        <name lang="de">Knebelschalter rechts</name>
+        <name lang="cs">Otočné tlačítko v pravé pozici</name>
+        <name lang="pl">Łącznik obrotowy w pozycji prawej</name>
+        <name lang="it">Pulsante rotativo a lato</name>
+        <name lang="ar">زرّ دوُار جنب</name>
+        <name lang="en">Turning button side</name>
+        <name lang="fr">Bouton tournant coté</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="3" y2="7" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-5" y2="-1" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-6" y2="-2" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-7" y2="-3" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-7" y2="-3" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="1" y2="-1" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-5" y2="-5" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-8" y2="-8" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-8" y2="8" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="5" y2="-5" x2="8"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="-11" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
+        <line antialias="false" length1="1.5" x2="-6" end2="none" x1="3" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2"/>
+        <input x="-7" y="-19.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="3" end2="none" x1="-5" end1="none" y2="-1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7"/>
+        <line antialias="false" length1="1.5" x2="2" end2="none" x1="-6" end1="none" y2="-2" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6"/>
+        <line antialias="false" length1="1.5" x2="2" end2="none" x1="-7" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6"/>
+        <line antialias="false" length1="1.5" x2="1" end2="none" x1="-7" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="4" end2="none" x1="1" end1="none" y2="-1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4"/>
+        <line antialias="false" length1="1.5" x2="8" end2="none" x1="-5" end1="none" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8"/>
+        <line antialias="false" length1="1.5" x2="5" end2="none" x1="-8" end1="none" y2="-8" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="-5" end2="none" x1="-8" end1="none" y2="8" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="8" end2="none" x1="5" end1="none" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8"/>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-11" antialias="true" y="-11" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

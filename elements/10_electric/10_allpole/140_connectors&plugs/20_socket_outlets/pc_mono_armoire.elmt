@@ -1,27 +1,29 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{3F371A0C-3C07-4DBE-88AB-FAB6F2B76D61}"/><names>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="50" hotspot_y="24" type="element">
+    <uuid uuid="{b048336c-afa9-4ee0-b3ea-c8f5509e4e79}"/>
+    <names>
+        <name lang="nl">Contact 1AC + aarde</name>
+        <name lang="de">Steckdose Schaltschrank 1P+N+PE</name>
+        <name lang="cs">Zásuvka jednopólová skříň</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="it">Presa monofase da pannello</name>
         <name lang="ar">مقبس أحادي الوجه لخزانة</name>
         <name lang="en">Socket cabinet</name>
-        <name lang="de">Steckdose Schaltschrank 1P+N+PE</name>
         <name lang="fr">PC mono armoire</name>
-        <name lang="pl">Gniazdo wtyczkowe</name>
-        <name lang="cs">Zásuvka jednopólová skříň</name>
-        <name lang="it">Presa monofase da pannello</name>
-        <name lang="nl">Contact 1AC + aarde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-6" y2="-16" x2="-6"/>
-        <circle x="-6" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <circle x="-8" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="0" y2="10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="6" y2="-16" x2="6"/>
-        <circle x="-1.5" y="-6.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
-        <circle x="2" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <terminal x="-6" y="-17" orientation="n"/>
+        <input x="11" y="-7.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="-6" end2="none" x1="-6" end1="none" y2="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <circle x="-6" antialias="true" y="-2" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-8" antialias="true" y="-8" diameter="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" width="20" antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16"/>
+        <line antialias="false" length1="1.5" x2="6" end2="none" x1="6" end1="none" y2="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <circle x="-1.5" antialias="true" y="-6.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle x="2" antialias="true" y="-2" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="6" y="-17" orientation="n"/>
         <terminal x="0" y="17" orientation="s"/>
+        <terminal x="-6" y="-17" orientation="n"/>
     </description>
 </definition>

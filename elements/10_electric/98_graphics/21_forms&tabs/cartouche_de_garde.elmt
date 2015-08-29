@@ -1,23 +1,26 @@
-<definition width="400" version="0.2" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dnnn" >
-<uuid uuid="{E0AA79DE-1A11-4229-AA95-F2BC84BF59AA}"/><names>
-        <name lang="fr">cartouche de garde</name>
+<definition width="400" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="100" hotspot_y="34" type="element">
+    <uuid uuid="{36fae55a-5576-4f93-804d-a404bdebc6cb}"/>
+    <names>
         <name lang="de">Deckblatt</name>
-        <name lang="en">Form cover sheet</name>
         <name lang="pl">Tabliczka rysunkowa</name>
         <name lang="it">cartiglio della protezione</name>
+        <name lang="fr">cartouche de garde</name>
+        <name lang="en">Form cover sheet</name>
     </names>
+    <informations></informations>
     <description>
-        <rect width="195" x="185" y="-31" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="195" x="-10" y="-31" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="92" x="288" y="-10" antialias="false" height="73" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="93" x="-10" y="-10" antialias="false" height="73" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="205" x="83" y="-10" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <rect width="205" x="83" y="8" antialias="false" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <input x="144" y="2.5" size="8" rotate="true" text="LOCALISATION" />
-        <input x="87" y="29.5" size="12" rotate="true" text="DESIGNATION" />
-        <input x="-3" y="28.5" size="8" rotate="true" text="SITE" />
-        <input x="300" y="29.5" size="8" rotate="true" text="EMPLACEMENT" />
-        <input x="28" y="-16.5" size="8" rotate="true" text="DEPART D'ORIGINE" />
-        <input x="223" y="-16.5" size="8" rotate="true" text="TENSION D'ALIMENTATION" />
+        <rect x="185" width="195" antialias="false" y="-31" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-7" y="-49.45" tagg="label" size="9" rotate="true" text="_"/>
+        <rect x="-10" width="195" antialias="false" y="-31" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="288" width="92" antialias="false" y="-10" height="73" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" width="93" antialias="false" y="-10" height="73" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="83" width="205" antialias="false" y="-10" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="83" width="205" antialias="false" y="8" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="144" y="2.5" tagg="none" size="8" rotate="true" text="LOCALISATION"/>
+        <input x="87" y="29.5" tagg="none" size="12" rotate="true" text="DESIGNATION"/>
+        <input x="-3" y="28.5" tagg="none" size="8" rotate="true" text="SITE"/>
+        <input x="291" y="31" tagg="none" size="8" rotate="true" text="EMPLACEMENT"/>
+        <input x="28" y="-16.5" tagg="none" size="8" rotate="true" text="DEPART D'ORIGINE"/>
+        <input x="223" y="-16.5" tagg="none" size="8" rotate="true" text="TENSION D'ALIMENTATION"/>
     </description>
 </definition>

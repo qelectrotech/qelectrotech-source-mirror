@@ -1,21 +1,23 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{C0B38A10-2AC2-49A5-9F58-4BA30DFA9D3D}"/><names>
-        <name lang="ar">زرّ دوّار متمركز</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+    <uuid uuid="{96100c5a-e46c-4440-9d8e-e14b0b5107f8}"/>
+    <names>
         <name lang="el">Περιστροφικός διακόπτης, κέντρο</name>
-        <name lang="en">Turning button centered</name>
-        <name lang="de">Knebeischalter Mittelstellung</name>
-        <name lang="it">Pulsante rotativo centrato</name>
-        <name lang="fr">Bouton tournant centré</name>
-        <name lang="pl">Łącznik obrotowy przełączny otwarty w pozycji pośredniej</name>
-        <name lang="cs">Otočné tlačítko otevřené ve středové pozici</name>
         <name lang="nl">knop draai stand 0</name>
+        <name lang="de">Knebeischalter Mittelstellung</name>
+        <name lang="cs">Otočné tlačítko otevřené ve středové pozici</name>
+        <name lang="pl">Łącznik obrotowy przełączny otwarty w pozycji pośredniej</name>
+        <name lang="it">Pulsante rotativo centrato</name>
+        <name lang="ar">زرّ دوّار متمركز</name>
+        <name lang="en">Turning button centered</name>
+        <name lang="fr">Bouton tournant centré</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="4" x="-2" y="-9" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="-11" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
-        <rect width="4" x="-2" y="-9" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <input x="-7" y="-24.45" tagg="label" size="9" rotate="true" text="_"/>
+        <rect x="-2" width="4" antialias="false" y="-9" height="18" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-11" antialias="true" y="-11" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-2" width="4" antialias="false" y="-9" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
     </description>
 </definition>

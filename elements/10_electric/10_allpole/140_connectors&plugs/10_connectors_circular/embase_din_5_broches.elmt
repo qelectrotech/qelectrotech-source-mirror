@@ -1,33 +1,35 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-<uuid uuid="{F72CF89C-959F-4DAE-ADB1-E69206A4126F}"/><names>
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="60" hotspot_y="23" type="element">
+    <uuid uuid="{fbd0333e-782a-4042-99f6-e80e3f9bba2e}"/>
+    <names>
+        <name lang="nl">DIN 5 Pin</name>
+        <name lang="de">Rundstecker 5-polig</name>
+        <name lang="cs">Kulatá zástrčka DIN 5 kolíků</name>
+        <name lang="pl">Złącze DIN, pięciostykowe</name>
+        <name lang="it">DIN 5 Pin</name>
         <name lang="ar">قاعدة DIN ب5 نقاط توصيل </name>
         <name lang="en">5-pin DIN socket</name>
-        <name lang="de">Rundstecker 5-polig</name>
         <name lang="fr">Embase DIN 5 broches</name>
-        <name lang="pl">Złącze DIN, pięciostykowe</name>
-        <name lang="cs">Kulatá zástrčka DIN 5 kolíků</name>
-        <name lang="it">DIN 5 Pin</name>
-        <name lang="nl">DIN 5 Pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="18" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="25" y2="10" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-25" y2="10" x2="-13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-18" y2="0" x2="-25"/>
-        <circle x="-2.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-2" y2="-16" x2="-2" y3="-16" x3="2" y4="-20"/>
-        <arc width="40" x="-20" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84" angle="-348"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="25" y2="0" x2="18"/>
-        <circle x="-17.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="12.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="7.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-12.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="13" y="20.55" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <line antialias="false" length1="1.5" x2="13" end2="none" x1="25" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="-13" end2="none" x1="-25" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="-25" end2="none" x1="-18" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <circle x="-2.5" antialias="true" y="12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x2="-2" x4="2" x1="-2" x3="2" y2="-16" y3="-16" closed="false" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <arc x="-20" width="40" antialias="true" y="-20" angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84"/>
+        <line antialias="false" length1="1.5" x2="18" end2="none" x1="25" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <circle x="-17.5" antialias="true" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="12.5" antialias="true" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="7.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-12.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-26" y="0" orientation="w"/>
+        <terminal x="0" y="31" orientation="s"/>
         <terminal x="-26" y="10" orientation="w"/>
         <terminal x="26" y="0" orientation="e"/>
         <terminal x="26" y="10" orientation="e"/>
-        <terminal x="0" y="31" orientation="s"/>
     </description>
 </definition>

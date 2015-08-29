@@ -1,23 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="80" type="element" orientation="dnnn">
-<uuid uuid="{6048505D-E0C0-447C-8DB5-28C795060A2A}"/><names>
-        <name lang="ar">طرف</name>
-        <name lang="de">Klemme</name>
-        <name lang="en">Terminal</name>
-        <name lang="it">Morsetto</name>
-        <name lang="fr">Borne de bornier</name>
-        <name lang="pl">Zacisk</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="80" hotspot_y="35" type="element">
+    <uuid uuid="{96eb8e93-2001-4385-85cc-2d7dcc662024}"/>
+    <names>
         <name lang="es">Terminal</name>
-        <name lang="cs">Svorka svorkoviště</name>
         <name lang="nl">Klem</name>
+        <name lang="de">Klemme</name>
+        <name lang="cs">Svorka svorkoviště</name>
+        <name lang="pl">Zacisk</name>
+        <name lang="it">Morsetto</name>
+        <name lang="ar">طرف</name>
+        <name lang="en">Terminal</name>
+        <name lang="fr">Borne de bornier</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-14" y="-42" size="6" rotate="true" text="(0000)"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37" x1="-3" y2="40" x2="0"/>
-        <input x="-10" y="-18" size="9" rotate="true" text="00"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="37" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="40" x2="0"/>
-        <rect width="20" x="-10" y="-30" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-14" y="-42" tagg="label" size="6" rotate="true" text="(0000)"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="-3" end1="none" y2="40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37"/>
+        <input x="-10" y="-18" tagg="none" size="9" rotate="true" text="00"/>
+        <line antialias="false" length1="1.5" x2="3" end2="none" x1="0" end1="none" y2="37" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <rect x="-10" width="20" antialias="false" y="-30" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
     </description>
 </definition>

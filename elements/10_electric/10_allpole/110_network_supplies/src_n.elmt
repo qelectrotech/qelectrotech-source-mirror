@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{E4E7849E-1436-42D7-8325-38B1F9D85CBB}"/><names>
-        <name lang="ar">مصدر محايد</name>
-        <name lang="de">Neutralleiter</name>
-        <name lang="ru">Нейтраль</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="20" hotspot_y="10" type="element">
+    <uuid uuid="{b5ad2e41-804d-4745-99be-e8951cffdf98}"/>
+    <names>
         <name lang="pt">Fonte de neutro</name>
-        <name lang="en">Neutral source</name>
-        <name lang="it">Sorgente neutro</name>
-        <name lang="fr">Source neutre</name>
-        <name lang="pl">Przewód neutralny</name>
         <name lang="es">Fuente neutro</name>
-        <name lang="cs">Nulový zdroj</name>
         <name lang="nl">Nul voeding</name>
         <name lang="el">Ουδέτερος</name>
+        <name lang="de">Neutralleiter</name>
+        <name lang="cs">Nulový zdroj</name>
+        <name lang="pl">Przewód neutralny</name>
+        <name lang="it">Sorgente neutro</name>
+        <name lang="ar">مصدر محايد</name>
+        <name lang="en">Neutral source</name>
+        <name lang="fr">Source neutre</name>
+        <name lang="ru">Нейтраль</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <input x="-5" y="-14.45" tagg="label" size="9" rotate="true" text="_"/>
         <text x="-12" y="3" size="5" text="N"/>
         <terminal x="10" y="0" orientation="e"/>
     </description>

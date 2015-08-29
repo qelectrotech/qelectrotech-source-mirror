@@ -1,16 +1,18 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{72AE607F-732D-4708-B844-66DA682C8095}"/><names>
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="20" hotspot_y="9" type="element">
+    <uuid uuid="{374ed6b3-7329-4cad-ac8c-200b17508460}"/>
+    <names>
         <name lang="de">Verdrahtung</name>
-        <name lang="en">Wiring</name>
-        <name lang="it">Conduttura</name>
-        <name lang="fr">Filerie</name>
-        <name lang="pl">Oznaczenie przewodu</name>
         <name lang="cs">Drátové propojení</name>
+        <name lang="pl">Oznaczenie przewodu</name>
+        <name lang="it">Conduttura</name>
+        <name lang="en">Wiring</name>
+        <name lang="fr">Filerie</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
+        <line antialias="false" length1="1.5" x2="-5" end2="none" x1="5" end1="none" y2="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <input x="0" y="-2.5" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
         <terminal x="0" y="-5" orientation="n"/>
         <terminal x="0" y="5" orientation="s"/>
     </description>

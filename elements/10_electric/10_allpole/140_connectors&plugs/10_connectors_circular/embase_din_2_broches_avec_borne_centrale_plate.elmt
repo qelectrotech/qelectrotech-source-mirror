@@ -1,25 +1,27 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-<uuid uuid="{CC705436-C564-491C-B5CB-2281795E2A2D}"/><names>
+<definition width="60" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="60" hotspot_y="23" type="element">
+    <uuid uuid="{291fc0d7-cc36-4f89-a4f8-e7bef74d95be}"/>
+    <names>
+        <name lang="nl">DIN 2 pin, luidspreker</name>
+        <name lang="de">Rundstecker 2-polig</name>
+        <name lang="cs">Kulatá zástrčka DIN 2 kolíky s plochým středovým kolíkem</name>
+        <name lang="pl">Złącze DIN, dwustykowe</name>
+        <name lang="it">DIN 2 pin, centrale piatto</name>
         <name lang="ar">قاعدة توصيل  DIN بطرفي توصيل أحدهما مركزي</name>
         <name lang="en">2-pin DIN socket with center pin flat</name>
-        <name lang="de">Rundstecker 2-polig</name>
         <name lang="fr">Embase DIN 2 broches avec borne centrale plate</name>
-        <name lang="pl">Złącze DIN, dwustykowe</name>
-        <name lang="cs">Kulatá zástrčka DIN 2 kolíky s plochým středovým kolíkem</name>
-        <name lang="it">DIN 2 pin, centrale piatto</name>
-        <name lang="nl">DIN 2 pin, luidspreker</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="27"/>
-        <arc width="40" x="-20" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84" angle="-348"/>
-        <rect width="20" x="-10" y="-1.5" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="18" y="15.55" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="27" end2="none" x1="10" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <arc x="-20" width="40" antialias="true" y="-20" angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84"/>
+        <rect x="-10" width="20" antialias="false" y="-1.5" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="1" y="29.3333" size="4" text="2"/>
         <text x="23" y="-1.6666" size="4" text="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="18" x2="0"/>
-        <circle x="-2.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-2" y2="-16" x2="-2" y3="-16" x3="2" y4="-20"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <circle x="-2.5" antialias="true" y="12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x2="-2" x4="2" x1="-2" x3="2" y2="-16" y3="-16" closed="false" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
         <terminal x="28" y="0" orientation="e"/>
         <terminal x="0" y="31" orientation="s"/>
     </description>

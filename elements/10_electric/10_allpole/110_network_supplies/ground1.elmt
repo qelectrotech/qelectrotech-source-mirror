@@ -1,24 +1,26 @@
-<definition width="30" version="0.4" hotspot_x="16" hotspot_y="24" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{F3767237-F283-479E-9C66-0EFD66BEF882}"/><names>
-        <name lang="en">Ground</name>
-        <name lang="ro">Masă</name>
-        <name lang="ar">هيكل معدني</name>
-        <name lang="de">Masse</name>
-        <name lang="ru">Шасси</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="16" orientation="dyyy" height="50" hotspot_y="29" type="element">
+    <uuid uuid="{75d4e5ef-6080-4118-9eab-afb53220b9ef}"/>
+    <names>
         <name lang="pt">Massa</name>
-        <name lang="it">Massa</name>
-        <name lang="fr">Masse</name>
-        <name lang="pl">Masa</name>
         <name lang="es">Masa</name>
-        <name lang="cs">Kostra</name>
         <name lang="nl">Massa</name>
         <name lang="el">Γείωση</name>
+        <name lang="de">Masse</name>
+        <name lang="cs">Kostra</name>
+        <name lang="pl">Masa</name>
+        <name lang="ro">Masă</name>
+        <name lang="it">Massa</name>
+        <name lang="en">Ground</name>
+        <name lang="ar">هيكل معدني</name>
+        <name lang="fr">Masse</name>
+        <name lang="ru">Шасси</name>
     </names>
     <informations>titus
 titus0818@yahoo.com</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-16" x1="0" y2="13" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="14" x1="-13.6493" y2="14" x2="12.62"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="13" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-16"/>
+        <line antialias="false" length1="1.5" x2="12.62" end2="none" x1="-13.6493" end1="none" y2="14" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="14"/>
+        <input x="8" y="2" tagg="label" size="9" rotate="true" text="_"/>
         <terminal x="0" y="-20" orientation="n"/>
     </description>
 </definition>

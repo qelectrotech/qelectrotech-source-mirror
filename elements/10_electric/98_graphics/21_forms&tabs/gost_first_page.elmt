@@ -1,47 +1,49 @@
-<definition type="element" orientation="dyyy" width="670" hotspot_x="656" height="210" hotspot_y="198" version="0.5" link_type="simple">
-<uuid uuid="{9CF7B32C-D971-406C-9F8A-1AC363815422}"/><names>
-        <name lang="ru">Штамп ГОСТ большой</name>
+<definition width="670" link_type="simple" version="0.5" hotspot_x="656" orientation="dyyy" height="210" hotspot_y="198" type="element">
+    <uuid uuid="{c760e607-ce0e-4398-8c1a-51c34755de4d}"/>
+    <names>
         <name lang="en">GOST title first page</name>
+        <name lang="ru">Штамп ГОСТ большой</name>
     </names>
     <informations>Евгений Козлов &lt;evgeny@qelectrotech.org></informations>
     <description>
-        <line end1="none" x1="-650" y1="-49" length1="1.5" x2="5" end2="none" length2="1.5" antialias="false" y2="-49" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-154" y1="-67" length1="1.5" x2="-154" end2="none" length2="1.5" antialias="false" y2="-121" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-58" y1="-67" length1="1.5" x2="-58" end2="none" length2="1.5" antialias="false" y2="-139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-136" y1="-67" length1="1.5" x2="-136" end2="none" length2="1.5" antialias="false" y2="-121" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text text="Разраб." size="9" x="-642" y="-88"/>
-        <text text="Масса" size="9" x="-106" y="-124"/>
-        <text text="Пров." size="9" x="-642" y="-70"/>
-        <text text="Лит" size="9" x="-155" y="-124"/>
-        <text text="Лист" size="9" x="-168" y="-52"/>
-        <text text="Листов" size="9" x="-96" y="-52"/>
-        <line end1="none" x1="-650" y1="-139" length1="1.5" x2="5" end2="none" length2="1.5" antialias="false" y2="-139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text text="Массшт." size="9" x="-50" y="-124"/>
-        <line end1="none" x1="-455" y1="5" length1="1.5" x2="-455" end2="none" length2="1.5" antialias="false" y2="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-625" y1="-103" length1="1.5" x2="-625" end2="none" length2="1.5" antialias="false" y2="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-420" y1="5" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="655" x="-650" height="198" antialias="false" y="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-31" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-509" y1="5" length1="1.5" x2="-509" end2="none" length2="1.5" antialias="false" y2="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-590" y1="5" length1="1.5" x2="-590" end2="none" length2="1.5" antialias="false" y2="-193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text text="Дата" size="9" x="-451" y="-106"/>
-        <line end1="none" x1="-650" y1="-13" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input text="" size="9" tagg="label" x="5" rotate="true" y="15"/>
-        <text text="Изм" size="9" x="-648" y="-106"/>
-        <text text="Лист" size="9" x="-621" y="-106"/>
-        <text text="№ докум." size="9" x="-579" y="-106"/>
-        <text text="Подп." size="9" x="-499" y="-106"/>
-        <line end1="none" x1="-650" y1="-67" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-67" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-85" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-103" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-103" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-121" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-121" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-157" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-157" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-650" y1="-175" length1="1.5" x2="-420" end2="none" length2="1.5" antialias="false" y2="-175" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-172" y1="5" length1="1.5" x2="-172" end2="none" length2="1.5" antialias="false" y2="-139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-172" y1="-67" length1="1.5" x2="5" end2="none" length2="1.5" antialias="false" y2="-67" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-172" y1="-121" length1="1.5" x2="5" end2="none" length2="1.5" antialias="false" y2="-121" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-118" y1="-67" length1="1.5" x2="-118" end2="none" length2="1.5" antialias="false" y2="-139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end1="none" x1="-100" y1="-67" length1="1.5" x2="-100" end2="none" length2="1.5" antialias="false" y2="-49" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal orientation="n" x="5" y="1"/>
+        <line antialias="false" length1="1.5" x2="5" end2="none" x1="-650" end1="none" y2="-49" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-49"/>
+        <input x="-642" y="-213.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="-154" end2="none" x1="-154" end1="none" y2="-121" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <line antialias="false" length1="1.5" x2="-58" end2="none" x1="-58" end1="none" y2="-139" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <line antialias="false" length1="1.5" x2="-136" end2="none" x1="-136" end1="none" y2="-121" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <text x="-642" y="-88" size="9" text="Разраб."/>
+        <text x="-106" y="-124" size="9" text="Масса"/>
+        <text x="-642" y="-70" size="9" text="Пров."/>
+        <text x="-155" y="-124" size="9" text="Лит"/>
+        <text x="-168" y="-52" size="9" text="Лист"/>
+        <text x="-96" y="-52" size="9" text="Листов"/>
+        <line antialias="false" length1="1.5" x2="5" end2="none" x1="-650" end1="none" y2="-139" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-139"/>
+        <text x="-50" y="-124" size="9" text="Массшт."/>
+        <line antialias="false" length1="1.5" x2="-455" end2="none" x1="-455" end1="none" y2="-193" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="-625" end2="none" x1="-625" end1="none" y2="-193" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-103"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-420" end1="none" y2="-193" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <rect x="-650" width="655" antialias="false" y="-193" height="198" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-31" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31"/>
+        <line antialias="false" length1="1.5" x2="-509" end2="none" x1="-509" end1="none" y2="-193" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="-590" end2="none" x1="-590" end1="none" y2="-193" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <text x="-451" y="-106" size="9" text="Дата"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13"/>
+        <input x="5" y="15" tagg="label" size="9" rotate="true" text=""/>
+        <text x="-648" y="-106" size="9" text="Изм"/>
+        <text x="-621" y="-106" size="9" text="Лист"/>
+        <text x="-579" y="-106" size="9" text="№ докум."/>
+        <text x="-499" y="-106" size="9" text="Подп."/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-67" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-85" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-85"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-103" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-103"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-121" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-121"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-157" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-157"/>
+        <line antialias="false" length1="1.5" x2="-420" end2="none" x1="-650" end1="none" y2="-175" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-175"/>
+        <line antialias="false" length1="1.5" x2="-172" end2="none" x1="-172" end1="none" y2="-139" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5"/>
+        <line antialias="false" length1="1.5" x2="5" end2="none" x1="-172" end1="none" y2="-67" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <line antialias="false" length1="1.5" x2="5" end2="none" x1="-172" end1="none" y2="-121" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-121"/>
+        <line antialias="false" length1="1.5" x2="-118" end2="none" x1="-118" end1="none" y2="-139" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <line antialias="false" length1="1.5" x2="-100" end2="none" x1="-100" end1="none" y2="-49" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-67"/>
+        <terminal x="5" y="1" orientation="n"/>
     </description>
 </definition>

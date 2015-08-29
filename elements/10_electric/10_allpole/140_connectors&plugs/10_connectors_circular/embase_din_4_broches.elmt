@@ -1,31 +1,33 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-<uuid uuid="{7979970C-6F47-4CFF-AE44-3CE1D123F8D3}"/><names>
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="50" hotspot_y="25" type="element">
+    <uuid uuid="{1b5c434d-630e-412b-98c0-c6f9f25a7016}"/>
+    <names>
+        <name lang="nl">DIN 4 Pin</name>
+        <name lang="de">Rundstecker 4-polig</name>
+        <name lang="cs">Kulatá zástrčka DIN 4 kolíky</name>
+        <name lang="pl">Złącze DIN czterostykowe</name>
+        <name lang="it">DIN 4 Pin</name>
         <name lang="ar">قاعدة DINب 4 أطراف توصيل </name>
         <name lang="en">4-pin DIN socket</name>
-        <name lang="de">Rundstecker 4-polig</name>
         <name lang="fr">Embase DIN 4 broches</name>
-        <name lang="pl">Złącze DIN czterostykowe</name>
-        <name lang="cs">Kulatá zástrčka DIN 4 kolíky</name>
-        <name lang="it">DIN 4 Pin</name>
-        <name lang="nl">DIN 4 Pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-25" y="-12.6667" size="4" text="1"/>
+        <input x="18" y="20.55" tagg="label" size="9" rotate="true" text="_"/>
         <text x="22" y="-12.6667" size="4" text="4"/>
         <text x="23" y="6.3333" size="4" text="5"/>
         <text x="-25" y="8.3333" size="4" text="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="25" y2="-10" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-25" y2="-10" x2="-13"/>
-        <arc width="40" x="-20" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84" angle="-348"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="25" y2="10" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-25" y2="10" x2="-13"/>
-        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-2" y2="-16" x2="-2" y3="-16" x3="2" y4="-20"/>
-        <circle x="-12.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="7.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="7.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-12.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line antialias="false" length1="1.5" x2="13" end2="none" x1="25" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <line antialias="false" length1="1.5" x2="-13" end2="none" x1="-25" end1="none" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <arc x="-20" width="40" antialias="true" y="-20" angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84"/>
+        <line antialias="false" length1="1.5" x2="13" end2="none" x1="25" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="false" length1="1.5" x2="-13" end2="none" x1="-25" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <polygon antialias="false" x2="-2" x4="2" x1="-2" x3="2" y2="-16" y3="-16" closed="false" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <circle x="-12.5" antialias="true" y="-12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="7.5" antialias="true" y="-12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="7.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-12.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-26" y="10" orientation="w"/>
         <terminal x="26" y="10" orientation="e"/>
         <terminal x="-26" y="-10" orientation="w"/>

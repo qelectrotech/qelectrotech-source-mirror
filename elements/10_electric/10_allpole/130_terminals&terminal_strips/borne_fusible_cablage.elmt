@@ -1,29 +1,30 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D66B7B8B-D201-46E1-9137-49511D5B1D63}"/><names>
-        <name lang="ar">طرف ربط مصهر</name>
-        <name lang="de">Sicherungsklemme</name>
-        <name lang="en">Terminal fuse</name>
-        <name lang="it">Terminale con fusibile</name>
-        <name lang="fr">Borne fusible cablage</name>
-        <name lang="pl">Złącze bezpiecznikowe</name>
+<definition width="10" link_type="simple" version="0.5" hotspot_x="5" orientation="dyyy" height="90" hotspot_y="14" type="element">
+    <uuid uuid="{c419294c-f582-48ff-ada2-d1129abb2939}"/>
+    <names>
         <name lang="es">Terminal fusible</name>
-        <name lang="cs">Tavná pojistka elektrického propojení</name>
         <name lang="nl">klem met zekering</name>
+        <name lang="de">Sicherungsklemme</name>
+        <name lang="cs">Tavná pojistka elektrického propojení</name>
+        <name lang="pl">Złącze bezpiecznikowe</name>
+        <name lang="it">Terminale con fusibile</name>
+        <name lang="ar">طرف ربط مصهر</name>
+        <name lang="en">Terminal fuse</name>
+        <name lang="fr">Borne fusible cablage</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="10" y="24.6667" size="9" rotate="true" text="F_"/>
-        <rect width="6" x="-3" y="17" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="5" y="68" size="7" text="_"/>
-        <input x="5" y="8" size="7" text="_"/>
-        <input x="5" y="55" size="10" text="_"/>
-        <input x="5" y="-5" size="10" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57" x1="0" y2="3" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="0" y2="63" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-3" x2="0"/>
-        <circle x="-2.5" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="10" y="24.6667" tagg="label" size="9" rotate="true" text="F_"/>
+        <rect x="-3" width="6" antialias="false" y="17" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="5" y="68" tagg="none" size="7" text="_"/>
+        <input x="5" y="8" tagg="none" size="7" text="_"/>
+        <input x="5" y="55" tagg="none" size="10" text="_"/>
+        <input x="5" y="-5" tagg="none" size="10" text="_"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="63" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10"/>
+        <circle x="-2.5" antialias="true" y="57.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" antialias="true" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="0" y="-10" orientation="n"/>
         <terminal x="0" y="70" orientation="s"/>
     </description>

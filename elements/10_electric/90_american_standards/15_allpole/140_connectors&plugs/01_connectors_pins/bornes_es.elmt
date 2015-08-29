@@ -1,24 +1,26 @@
-<definition width="10" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy">
-<uuid uuid="{4ECE3E5B-9DEF-4B15-8FBD-ABC5C73B3F4D}"/><names>
-        <name lang="ar">طرف مزدوج</name>
-        <name lang="de">Steckverbindung Buchse + Stecker</name>
-        <name lang="ru">Соединение (стар.)</name>
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="60" hotspot_y="29" type="element">
+    <uuid uuid="{10c77f42-992b-49f3-b98d-9c4e664692dc}"/>
+    <names>
         <name lang="pt">Terminal duplo</name>
-        <name lang="en">Plug and socket </name>
-        <name lang="it">Terminale doppio</name>
-        <name lang="fr">Fiche et prise</name>
-        <name lang="pl">Złącze wtykowe</name>
         <name lang="es">Terminal doble</name>
-        <name lang="cs">Dvojitá svorka</name>
         <name lang="nl">Steker en contact</name>
+        <name lang="de">Steckverbindung Buchse + Stecker</name>
+        <name lang="cs">Dvojitá svorka</name>
+        <name lang="pl">Złącze wtykowe</name>
+        <name lang="it">Terminale doppio</name>
+        <name lang="ar">طرف مزدوج</name>
+        <name lang="en">Plug and socket </name>
+        <name lang="fr">Fiche et prise</name>
+        <name lang="ru">Соединение (стар.)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-4" y2="1" x2="0" y3="-5" x3="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.5" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="0" x2="0"/>
+        <input x="8" y="-4.45" tagg="label" size="9" rotate="true" text="_"/>
+        <polygon antialias="true" x2="0" x1="-4" x3="4" y2="5" y3="-1" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1"/>
+        <polygon antialias="true" x2="0" x1="-4" x3="4" y2="1" y3="-5" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.5"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
         <terminal x="0" y="-21" orientation="n"/>
         <terminal x="0" y="21" orientation="s"/>
     </description>

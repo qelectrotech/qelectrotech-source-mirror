@@ -1,35 +1,36 @@
-<definition width="110" version="0.3" hotspot_x="44" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{FEF0649C-02AF-45D3-9092-C62E532764B1}"/><names>
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="90" hotspot_y="45" type="element">
+    <uuid uuid="{f53dffe0-4e1a-4a53-aefb-42719976cbe3}"/>
+    <names>
         <name lang="de">Rundstecker 17-polig</name>
-        <name lang="en">Encoder plug 17 Pin</name>
-        <name lang="it">Encoder maschio 17 Pin</name>
-        <name lang="fr">Fiche codeur 17 broches</name>
-        <name lang="pl">Złącze enkodera</name>
         <name lang="cs">Zástrčka kodéru 17 kolíků</name>
+        <name lang="pl">Złącze enkodera</name>
+        <name lang="it">Encoder maschio 17 Pin</name>
+        <name lang="en">Encoder plug 17 Pin</name>
+        <name lang="fr">Fiche codeur 17 broches</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-22" y="17" size="4" text="E"/>
-        <circle x="-2.5" y="28.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <arc width="80" x="-40" y="-40" antialias="true" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" start="87" angle="-354"/>
-        <circle x="8.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-16.5" y="25.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="27.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-27.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="22.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="10.5" y="-9.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-32.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="24.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-14.5" y="-9.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-2.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-28.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-39.5" x1="-2" y2="-35.5" x2="-2" y3="-35.5" x3="2" y4="-39.5"/>
-        <circle x="-17.5" y="-29.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-13.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="12.5" y="25.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="12.5" y="-29.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-2.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" antialias="true" y="28.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-40" width="80" antialias="true" y="-40" angle="-354" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" start="87"/>
+        <circle x="8.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-16.5" antialias="true" y="25.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="27.5" antialias="true" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-27.5" antialias="true" y="-17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="22.5" antialias="true" y="-17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="10.5" antialias="true" y="-9.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-32.5" antialias="true" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="24.5" antialias="true" y="12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-14.5" antialias="true" y="-9.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" antialias="true" y="-17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-28.5" antialias="true" y="12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x2="-2" x4="2" x1="-2" x3="2" y2="-35.5" y3="-35.5" closed="false" y4="-39.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.5"/>
+        <circle x="-17.5" antialias="true" y="-29.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-13.5" antialias="true" y="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="12.5" antialias="true" y="25.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="12.5" antialias="true" y="-29.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" antialias="true" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-1" y="-23" size="4" text="A"/>
         <text x="-10" y="29" size="4" text="F"/>
         <text x="-20" y="-13" size="4" text="C"/>
@@ -46,7 +47,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-11" y="0" size="4" text="P"/>
         <text x="7" y="0" size="4" text="T"/>
         <text x="22" y="2" size="4" text="K"/>
-        <input x="47" y="2" size="9" rotate="true" text="_"/>
+        <input x="47" y="2" tagg="label" size="9" rotate="true" text="_"/>
         <terminal x="0" y="-32" orientation="n"/>
         <terminal x="29" y="15" orientation="e"/>
         <terminal x="-28" y="15" orientation="w"/>

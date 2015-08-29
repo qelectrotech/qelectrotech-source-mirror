@@ -1,23 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-<uuid uuid="{34A2174C-572C-4018-AAA9-7B56C403BD31}"/><names>
-        <name lang="ar">حامل مُلصق يسار / يمين</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="27" type="element">
+    <uuid uuid="{6e39afc3-3b08-419f-95a3-695ddd21fdbb}"/>
+    <names>
         <name lang="el">Ετικέτα, αριστερά/δεξιά</name>
-        <name lang="en">Label holder left / right</name>
-        <name lang="de">Schild Pfeil links/rechts</name>
-        <name lang="it">Etichetta - Destra/Sinistra</name>
-        <name lang="fr">Porte étiquette gauche/droite</name>
-        <name lang="pl">Prawo-lewo</name>
-        <name lang="cs">Vpravo/Vlevo</name>
         <name lang="nl">Label houder links/rechts</name>
+        <name lang="de">Schild Pfeil links/rechts</name>
+        <name lang="cs">Vpravo/Vlevo</name>
+        <name lang="pl">Prawo-lewo</name>
+        <name lang="it">Etichetta - Destra/Sinistra</name>
+        <name lang="ar">حامل مُلصق يسار / يمين</name>
+        <name lang="en">Label holder left / right</name>
+        <name lang="fr">Porte étiquette gauche/droite</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="2" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-18" x1="-2" y2="-18" x2="-9"/>
-        <line length1="2" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-18" x1="2" y2="-18" x2="9"/>
-        <rect width="20" x="-10" y="-24" antialias="false" height="12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-11" y2="-25" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-11" y2="1" x2="-11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="11" y2="1" x2="11"/>
+        <input x="-7" y="-36.5" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="2" x2="-9" end2="triangle" x1="-2" end1="none" y2="-18" length2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-18"/>
+        <line antialias="false" length1="2" x2="9" end2="triangle" x1="2" end1="none" y2="-18" length2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-18"/>
+        <rect x="-10" width="20" antialias="false" y="-24" height="12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="11" end2="none" x1="-11" end1="none" y2="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25"/>
+        <line antialias="false" length1="1.5" x2="-11" end2="none" x1="-11" end1="none" y2="1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25"/>
+        <line antialias="false" length1="1.5" x2="11" end2="none" x1="11" end1="none" y2="1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25"/>
     </description>
 </definition>

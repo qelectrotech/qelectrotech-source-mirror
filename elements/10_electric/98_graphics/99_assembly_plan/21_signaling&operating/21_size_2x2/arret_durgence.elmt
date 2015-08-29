@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-<uuid uuid="{6B924DA3-9211-495F-95B9-9291B389650F}"/><names>
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+    <uuid uuid="{f21023a9-806d-4b11-8582-6681c6260ac2}"/>
+    <names>
+        <name lang="nl">knop noodstop</name>
+        <name lang="de">Not-Aus Taster</name>
+        <name lang="cs">Nouzové zastavení</name>
+        <name lang="pl">Przycisk awaryjny</name>
+        <name lang="it">Arresto d'emergenza</name>
         <name lang="en">Emergency Stop</name>
         <name lang="fr">Arret d'urgence</name>
-        <name lang="de">Not-Aus Taster</name>
-        <name lang="pl">Przycisk awaryjny</name>
-        <name lang="cs">Nouzové zastavení</name>
         <name lang="ar">توقيف طوارئ</name>
-        <name lang="it">Arresto d'emergenza</name>
-        <name lang="nl">knop noodstop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-19" y="-19" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="38"/>
-        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
-        <circle x="-18" y="-18" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="36"/>
-        <circle x="-6" y="-6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="12"/>
+        <input x="-8" y="-34.5" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-19" antialias="true" y="-19" diameter="38" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-20" antialias="true" y="-20" diameter="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-18" antialias="true" y="-18" diameter="36" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-6" antialias="true" y="-6" diameter="12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
     </description>
 </definition>

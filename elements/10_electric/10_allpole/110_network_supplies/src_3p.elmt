@@ -1,29 +1,31 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A6B3A889-B394-4802-9A0A-9B23B9B1195C}"/><names>
-        <name lang="ar">مصدر ثلاثي القطبيّة</name>
-        <name lang="de">Drehstrom</name>
-        <name lang="ru">Трёхполюсный</name>
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="60" hotspot_y="30" type="element">
+    <uuid uuid="{03b9e482-cb45-4bee-8030-96b93624fc60}"/>
+    <names>
         <name lang="pt">Fonte tripolar</name>
-        <name lang="en">Three-pole source</name>
-        <name lang="it">Sorgente tripolare</name>
-        <name lang="fr">Source tripolaire</name>
-        <name lang="pl">Linia trójfazowa (trójprzewodowa)</name>
         <name lang="es">Fuente tripolar</name>
-        <name lang="cs">Třípólový zdroj</name>
         <name lang="nl">3fasen</name>
         <name lang="el">Τριφασικό</name>
+        <name lang="de">Drehstrom</name>
+        <name lang="cs">Třípólový zdroj</name>
+        <name lang="pl">Linia trójfazowa (trójprzewodowa)</name>
+        <name lang="it">Sorgente tripolare</name>
+        <name lang="ar">مصدر ثلاثي القطبيّة</name>
+        <name lang="en">Three-pole source</name>
+        <name lang="fr">Source tripolaire</name>
+        <name lang="ru">Трёхполюсный</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <input x="-2" y="-34.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
         <text x="-12" y="23" size="5" text="L3"/>
         <text x="-12" y="3" size="5" text="L2"/>
         <text x="-12" y="-17" size="5" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="10"/>
-        <terminal x="10" y="-20" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="e"/>
+        <line antialias="false" length1="1.5" x2="10" end2="none" x1="0" end1="none" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <terminal x="10" y="-20" orientation="e"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="10" y="20" orientation="e"/>
     </description>
 </definition>

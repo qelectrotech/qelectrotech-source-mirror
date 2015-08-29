@@ -1,23 +1,24 @@
-<definition width="120" version="0.3" hotspot_x="51" hotspot_y="15" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C177F42C-2650-462C-B65F-E2F0C68B4317}"/><names>
+<definition width="90" link_type="simple" version="0.5" hotspot_x="42" orientation="dyyy" height="20" hotspot_y="3" type="element">
+    <uuid uuid="{5ba1917d-c353-41b2-aa70-caf65579b81e}"/>
+    <names>
         <name lang="de">Kabel 3G</name>
+        <name lang="cs">Označení drátového propojení - 2 fáze + země</name>
+        <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
         <name lang="it">Cavo 2 fasi + terra</name>
         <name lang="fr">Cable 2 phases+terre</name>
-        <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
-        <name lang="cs">Označení drátového propojení - 2 fáze + země</name>
-	<name lang="ru">Кабель 2 жилы + PE</name>
+        <name lang="ru">Кабель 2 жилы + PE</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="32" y="9" size="4" text="2"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.95" x1="46.95" y2="11.95" x2="50.95"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="28" y2="12" x2="32"/>
-        <text x="50.5" y="8.55" size="4" text="GNYE"/>
-        <input x="-48" y="17" size="3" rotate="true" text="210007&#xa;4G1,5 mm²&#xa;               4m"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-19.9373" y2="10" x2="57.932"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-12" y2="12" x2="-8"/>
-        <text x="-8" y="9" size="4" text="1"/>
-        <input x="-41" y="1" size="5" rotate="true" text="+"/>
+        <text x="12" y="9" size="4" text="2"/>
+        <line antialias="true" length1="1.5" x2="30.95" end2="none" x1="26.95" end1="none" y2="11.95" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.95"/>
+        <line antialias="true" length1="1.5" x2="12" end2="none" x1="8" end1="none" y2="12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8"/>
+        <text x="30.5" y="8.55" size="4" text="GNYE"/>
+        <input x="-68" y="17" tagg="none" size="3" rotate="true" text="210007&#xa;4G1,5 mm²&#xa;               4m"/>
+        <line antialias="false" length1="1.5" x2="37.932" end2="none" x1="-39.9373" end1="none" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10"/>
+        <line antialias="true" length1="1.5" x2="-28" end2="none" x1="-32" end1="none" y2="12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8"/>
+        <text x="-28" y="9" size="4" text="1"/>
+        <input x="-61" y="1" tagg="label" size="5" rotate="true" text="+"/>
     </description>
 </definition>

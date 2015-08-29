@@ -1,35 +1,37 @@
-<definition width="160" version="0.3" hotspot_x="0" hotspot_y="0" height="160" type="element" orientation="dnnn">
-<uuid uuid="{A18154FA-9B0E-404F-8E47-7584AE301C00}"/><names>
+<definition width="150" link_type="simple" version="0.5" hotspot_x="66" orientation="dyyy" height="150" hotspot_y="65" type="element">
+    <uuid uuid="{5ca7f8db-1d5b-4a9c-bbae-f22b82fec1cc}"/>
+    <names>
+        <name lang="nl">Label Noodstop (pl)</name>
+        <name lang="de">Schild Not-Aus polnisch</name>
+        <name lang="cs">Štítek - nouzové zastavení - pl</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - pl</name>
+        <name lang="it">Etichetta - Zatrzymanie awaryjne (pl)</name>
         <name lang="ar">توقيف طارئ</name>
         <name lang="en">Label - Emergency stopping - pl</name>
-        <name lang="de">Schild Not-Aus polnisch</name>
         <name lang="fr">Etiquette - Arrêt d'urgence - pl</name>
-        <name lang="pl">Etykieta - Zatrzymanie awaryjne - pl</name>
-        <name lang="cs">Štítek - nouzové zastavení - pl</name>
-        <name lang="it">Etichetta - Zatrzymanie awaryjne (pl)</name>
-        <name lang="nl">Label Noodstop (pl)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="12.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="135"/>
-        <circle x="40" y="40" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="80"/>
-        <text x="133.03" y="109.234" size="16" rotation="291" text="Y"/>
-        <text x="117.849" y="126.435" size="16" rotation="314" text="N"/>
-        <text x="102.272" y="136.189" size="16" rotation="333" text="J"/>
-        <text x="82.4578" y="140.523" size="16" rotation="351" text="Y"/>
-        <text x="60.8199" y="137.771" size="16" rotation="11" text="R"/>
-        <text x="44.4935" y="129.128" size="16" rotation="29" text="A"/>
-        <text x="26.8062" y="111.126" size="16" rotation="50" text="W"/>
-        <text x="19.9806" y="92.7351" size="16" rotation="72" text="A"/>
-        <text x="125.159" y="68.6522" size="14" rotation="85" text="K"/>
-        <text x="122.687" y="61.1009" size="16" rotation="70" text="I"/>
-        <text x="113.629" y="46.8349" size="16" rotation="53" text="N"/>
-        <text x="100.946" y="38.3181" size="16" rotation="33" text="Z"/>
-        <text x="81.5118" y="32.8698" size="16" rotation="10" text="C"/>
-        <text x="61.1423" y="37.0597" size="16" rotation="-15" text="&#x104;"/>
-        <text x="46.3636" y="46.9136" size="16" rotation="321" text="&#x141;"/>
-        <text x="36.6584" y="61.4436" size="16" rotation="301" text="Y"/>
-        <text x="31.8698" y="81.4882" size="16" rotation="280" text="W"/>
+        <input x="3" y="-79.45" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-57.5" antialias="true" y="-57.5" diameter="135" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-30" antialias="true" y="-30" diameter="80" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="63.03" y="39.234" size="16" text="Y" rotation="291"/>
+        <text x="47.849" y="56.435" size="16" text="N" rotation="314"/>
+        <text x="32.272" y="66.189" size="16" text="J" rotation="333"/>
+        <text x="12.4578" y="70.523" size="16" text="Y" rotation="351"/>
+        <text x="-9.1801" y="67.771" size="16" text="R" rotation="11"/>
+        <text x="-25.5065" y="59.128" size="16" text="A" rotation="29"/>
+        <text x="-43.1938" y="41.126" size="16" text="W" rotation="50"/>
+        <text x="-50.0194" y="22.7351" size="16" text="A" rotation="72"/>
+        <text x="55.159" y="-1.3478" size="14" text="K" rotation="85"/>
+        <text x="52.687" y="-8.8991" size="16" text="I" rotation="70"/>
+        <text x="43.629" y="-23.1651" size="16" text="N" rotation="53"/>
+        <text x="30.946" y="-31.6819" size="16" text="Z" rotation="33"/>
+        <text x="11.5118" y="-37.1302" size="16" text="C" rotation="10"/>
+        <text x="-8.8577" y="-32.9403" size="16" text="Ą" rotation="-15"/>
+        <text x="-23.6364" y="-23.0864" size="16" text="Ł" rotation="321"/>
+        <text x="-33.3416" y="-8.5564" size="16" text="Y" rotation="301"/>
+        <text x="-38.1302" y="11.4882" size="16" text="W" rotation="280"/>
     </description>
 </definition>

@@ -1,32 +1,34 @@
-<definition width="100" version="0.3" hotspot_x="0" hotspot_y="0" height="100" type="element" orientation="dnnn">
-<uuid uuid="{5FC2C4F3-EF7D-42B3-95D6-3EFC8A1D4717}"/><names>
-        <name lang="ar">توقيف طارئ</name>
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="80" hotspot_y="40" type="element">
+    <uuid uuid="{dbf3f413-5ab1-4a48-8062-ba59b7b300e7}"/>
+    <names>
         <name lang="el">Στάση κινδύνου - Γαλλικά</name>
-        <name lang="en">Label - Emergency stopping - fr</name>
-        <name lang="de">Schild Not-Aus französisch</name>
-        <name lang="it">Etichetta - Arresto d'emergenza - fr</name>
-        <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
-        <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
-        <name lang="cs">Štítek - nouzové zastavení - fr</name>
         <name lang="nl">Label Noodstop (fr)</name>
+        <name lang="de">Schild Not-Aus französisch</name>
+        <name lang="cs">Štítek - nouzové zastavení - fr</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
+        <name lang="it">Etichetta - Arresto d'emergenza - fr</name>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="en">Label - Emergency stopping - fr</name>
+        <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="12.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="75"/>
-        <circle x="30" y="30" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
-        <text x="76.8549" y="70.4279" size="9" rotation="299" text="C"/>
-        <text x="66.7916" y="79.6285" size="9" rotation="322" text="N"/>
-        <text x="54.1153" y="83.3719" size="9" rotation="-14" text="E"/>
-        <text x="39.5011" y="81.952" size="9" rotation="11" text="G"/>
-        <text x="27.7584" y="75.4474" size="9" rotation="33" text="R"/>
-        <text x="19.0706" y="65.4502" size="9" rotation="54" text="U"/>
-        <text x="15.4297" y="50.4621" size="9" rotation="79" text="D'"/>
-        <text x="83.025" y="58.5918" size="9" rotation="277" text="E"/>
-        <text x="65.0082" y="31.4418" size="9" rotation="48" text="T"/>
-        <text x="56.9891" y="27.0371" size="9" rotation="27" text="Ê"/>
-        <text x="46" y="26" size="9" text="R"/>
-        <text x="36.2011" y="30.4694" size="9" rotation="336" text="R"/>
-        <text x="28.9841" y="38.025" size="9" rotation="307" text="A"/>
+        <input x="-7" y="-49.45" tagg="label" size="9" rotate="true" text="_"/>
+        <circle x="-37.5" antialias="true" y="-37.5" diameter="75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-20" antialias="true" y="-20" diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="26.8549" y="20.4279" size="9" text="C" rotation="299"/>
+        <text x="16.7916" y="29.6285" size="9" text="N" rotation="322"/>
+        <text x="4.1153" y="33.3719" size="9" text="E" rotation="-14"/>
+        <text x="-10.4989" y="31.952" size="9" text="G" rotation="11"/>
+        <text x="-22.2416" y="25.4474" size="9" text="R" rotation="33"/>
+        <text x="-30.9294" y="15.4502" size="9" text="U" rotation="54"/>
+        <text x="-34.5703" y="0.4621" size="9" text="D'" rotation="79"/>
+        <text x="33.025" y="8.5918" size="9" text="E" rotation="277"/>
+        <text x="15.0082" y="-18.5582" size="9" text="T" rotation="48"/>
+        <text x="6.9891" y="-22.9629" size="9" text="Ê" rotation="27"/>
+        <text x="-4" y="-24" size="9" text="R"/>
+        <text x="-13.7989" y="-19.5306" size="9" text="R" rotation="336"/>
+        <text x="-21.0159" y="-11.975" size="9" text="A" rotation="307"/>
     </description>
 </definition>

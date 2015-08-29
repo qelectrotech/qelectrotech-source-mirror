@@ -1,35 +1,38 @@
-<definition width="400" version="0.2" hotspot_x="15" hotspot_y="20" height="150" type="element" orientation="dnnn" >
-<uuid uuid="{AB07EB5C-1569-4265-9346-A18F09344BE9}"/><names>
-        <name lang="fr">Version</name>
+<definition width="400" link_type="simple" version="0.5" hotspot_x="18" orientation="dyyy" height="150" hotspot_y="21" type="element">
+    <uuid uuid="{5bcec2ed-d3cd-49ef-8365-e60cc994be62}"/>
+    <names>
         <name lang="de">Versionsverfolgung</name>
-        <name lang="en">Version tracking</name>
         <name lang="pl">Historia modyfikacji</name>
         <name lang="it">versione</name>
+        <name lang="fr">Version</name>
+        <name lang="en">Version tracking</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="317" y="98.5" size="8" rotate="true" text="_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="311" y2="125" x2="311" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="34" y2="125" x2="34" />
-        <rect width="390" x="-13" y="8" antialias="false" height="117" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <text x="-8" y="-2.5" size="8" text="Version" />
-        <text x="317" y="-2" size="8" text="DATE" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="311" y2="7" x2="311" />
-        <text x="65" y="-3" size="8" text="MODIFICATION" />
-        <rect width="390" x="-13" y="-18" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="34" y2="7" x2="34" />
-        <input x="-6" y="25.5" size="8" rotate="true" text="_" />
-        <input x="-6" y="50.5" size="8" rotate="true" text="_" />
-        <input x="-6" y="74.5" size="8" rotate="true" text="_" />
-        <input x="-6" y="98.5" size="8" rotate="true" text="_" />
-        <input x="-6" y="121.5" size="8" rotate="true" text="_" />
-        <input x="40" y="25.5" size="8" rotate="true" text="_" />
-        <input x="40" y="49.5" size="8" rotate="true" text="_" />
-        <input x="40" y="74.5" size="8" rotate="true" text="_" />
-        <input x="40" y="98.5" size="8" rotate="true" text="_" />
-        <input x="40" y="121.5" size="8" rotate="true" text="_" />
-        <input x="317" y="24.5" size="8" rotate="true" text="_" />
-        <input x="317" y="49.5" size="8" rotate="true" text="_" />
-        <input x="317" y="74.5" size="8" rotate="true" text="_" />
-        <input x="317" y="121.5" size="8" rotate="true" text="_" />
+        <input x="317" y="98.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-7" y="-29.45" tagg="label" size="9" rotate="true" text="_"/>
+        <line antialias="false" length1="1.5" x2="311" end2="none" x1="311" end1="none" y2="125" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9"/>
+        <line antialias="false" length1="1.5" x2="34" end2="none" x1="34" end1="none" y2="125" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9"/>
+        <rect x="-13" width="390" antialias="false" y="8" height="117" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-8" y="-2.5" size="8" text="Version"/>
+        <text x="317" y="-2" size="8" text="DATE"/>
+        <line antialias="false" length1="1.5" x2="311" end2="none" x1="311" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17"/>
+        <text x="65" y="-3" size="8" text="MODIFICATION"/>
+        <rect x="-13" width="390" antialias="false" y="-18" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="34" end2="none" x1="34" end1="none" y2="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17"/>
+        <input x="-6" y="25.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-6" y="50.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-6" y="74.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-6" y="98.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="-6" y="121.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="40" y="25.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="40" y="49.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="40" y="74.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="40" y="98.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="40" y="121.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="317" y="24.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="317" y="49.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="317" y="74.5" tagg="none" size="8" rotate="true" text="_"/>
+        <input x="317" y="121.5" tagg="none" size="8" rotate="true" text="_"/>
     </description>
 </definition>

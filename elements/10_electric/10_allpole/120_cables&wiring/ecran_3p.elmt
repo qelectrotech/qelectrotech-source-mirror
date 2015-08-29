@@ -1,20 +1,22 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
-<uuid uuid="{640D7C48-5729-4380-AC4B-15087044A2FA}"/><names>
-        <name lang="ar">شاشة</name>
-        <name lang="en">Screen</name>
-        <name lang="de">Schirm</name>
-        <name lang="it">Schermo</name>
-        <name lang="fr">Ecran</name>
-        <name lang="pl">Ekran 3</name>
-        <name lang="cs">Obrazovka</name>
+<definition width="60" link_type="simple" version="0.5" hotspot_x="21" orientation="dyyy" height="10" hotspot_y="-6" type="element">
+    <uuid uuid="{822e6fc1-0104-4d3a-ba3c-995c24c79cf2}"/>
+    <names>
         <name lang="nl">Scherm</name>
         <name lang="el">Πλέγμα</name>
-	<name lang="ru">Экран</name>
+        <name lang="de">Schirm</name>
+        <name lang="cs">Obrazovka</name>
+        <name lang="pl">Ekran 3</name>
+        <name lang="it">Schermo</name>
+        <name lang="ar">شاشة</name>
+        <name lang="en">Screen</name>
+        <name lang="fr">Ecran</name>
+        <name lang="ru">Экран</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <ellipse width="50" x="-5" y="-12.5" antialias="true" height="5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
-        <terminal x="-5" y="-10" orientation="w"/>
+        <ellipse width="50" x="-15" antialias="true" y="7.5" height="5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <input x="-9" y="-2.45" tagg="label" size="9" rotate="true" text="_"/>
+        <terminal x="-15" y="10" orientation="w"/>
     </description>
 </definition>

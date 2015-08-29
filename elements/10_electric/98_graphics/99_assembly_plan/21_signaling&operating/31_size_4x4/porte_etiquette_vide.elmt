@@ -1,21 +1,23 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="55" height="60" type="element" orientation="dyyy">
-<uuid uuid="{2AD26F56-40B5-4F50-9502-91F89F141778}"/><names>
-        <name lang="ar">حامل مُلصق فارغ</name>
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="60" hotspot_y="54" type="element">
+    <uuid uuid="{367b676c-1276-4711-81d4-2c41711b9562}"/>
+    <names>
         <name lang="el">Ετικέτα πόρτας, κενή</name>
-        <name lang="en">Label holder virgin</name>
-        <name lang="de">Schild leer</name>
-        <name lang="it">Etichetta vuota</name>
-        <name lang="fr">Porte étiquette vièrge</name>
-        <name lang="pl">Bez oznaczenia</name>
-        <name lang="cs">Bez označení</name>
         <name lang="nl">Label houder leeg</name>
+        <name lang="de">Schild leer</name>
+        <name lang="cs">Bez označení</name>
+        <name lang="pl">Bez oznaczenia</name>
+        <name lang="it">Etichetta vuota</name>
+        <name lang="ar">حامل مُلصق فارغ</name>
+        <name lang="en">Label holder virgin</name>
+        <name lang="fr">Porte étiquette vièrge</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="40" x="-20" y="-48" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="-22" y2="-50" x2="22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="-22" y2="2" x2="-22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="22" y2="2" x2="22"/>
+        <input x="-7" y="-66.5" tagg="label" size="9" rotate="true" text="_"/>
+        <rect x="-20" width="40" antialias="false" y="-48" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="22" end2="none" x1="-22" end1="none" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50"/>
+        <line antialias="false" length1="1.5" x2="-22" end2="none" x1="-22" end1="none" y2="2" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50"/>
+        <line antialias="false" length1="1.5" x2="22" end2="none" x1="22" end1="none" y2="2" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50"/>
     </description>
 </definition>
