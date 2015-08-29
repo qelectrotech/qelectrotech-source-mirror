@@ -1,31 +1,33 @@
-<definition width="120" version="0.4" hotspot_x="14" hotspot_y="30" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{0A45B0D4-7B7E-4EBE-A564-D563459E57C1}"/><names>
-        <name lang="ar">نقل هيدروليكي</name>
-        <name lang="el">Υδραυλική μετάδοση</name>
+<definition version="0.5" hotspot_x="14" hotspot_y="30" width="120" orientation="dyyy" height="50" link_type="simple" type="element">
+    <uuid uuid="{378dc5ab-4e7b-4784-ade4-e344bf01c164}"/>
+    <names>
         <name lang="en">Hydraulic transmission</name>
-        <name lang="it">Trasmissione idraulica</name>
+        <name lang="nl">Hydrauliek aandrijving</name>
+        <name lang="el">Υδραυλική μετάδοση</name>
         <name lang="fr">Transmission hydraulique</name>
         <name lang="pl">Przekładnia hydrauliczna zwarta, o zmiennej prędkości, o jednym kierunku obrotów, z pompą o zmiennej objętości roboczej</name>
+        <name lang="it">Trasmissione idraulica</name>
         <name lang="cs">Vodní převod</name>
-        <name lang="nl">Hydrauliek aandrijving</name>
+        <name lang="ar">نقل هيدروليكي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-4" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="-4" y2="-13" x2="-1" y3="-19" x3="2" y4="-16"/>
-        <circle x="5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <arc width="30" x="-6" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="65" y2="-6" x2="80"/>
-        <circle x="35" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <polygon x4="35" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-23" x1="35" y2="-20" x2="38" y3="-26" x3="41" y4="-23"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="-25" x2="40"/>
-        <polygon x4="16" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13" x1="16" y2="-13" x2="24" y3="-20" x3="20" y4="-13"/>
-        <polygon x4="46" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="3" x1="46" y2="3" x2="54" y3="10" x3="50" y4="3"/>
-        <polygon x4="74" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="6" x1="74" y2="3" x2="77" y3="9" x3="80" y4="6"/>
-        <polygon x4="74" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="74" y2="-13" x2="77" y3="-19" x3="80" y4="-16"/>
-        <arc width="30" x="72" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-10" y2="-4" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="-10" y2="-6" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="65" y2="-4" x2="80"/>
+        <polygon antialias="true" y4="-16" x1="-4" x4="-4" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-13" y1="-16" x3="2" x2="-1" y3="-19"/>
+        <input size="9" x="3" rotate="true" tagg="label" y="-29.45" text="_"/>
+        <circle antialias="true" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5" y="-20"/>
+        <arc antialias="true" start="-135" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" angle="-90" x="-6" y="-20"/>
+        <line antialias="false" x1="65" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-6" y1="-6" end1="none" x2="80"/>
+        <circle antialias="true" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35" y="-20"/>
+        <polygon antialias="true" y4="-23" x1="35" x4="35" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-20" y1="-23" x3="41" x2="38" y3="-26"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-25" y1="15" end1="none" x2="40"/>
+        <polygon antialias="true" y4="-13" x1="16" x4="16" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-13" y1="-13" x3="20" x2="24" y3="-20"/>
+        <polygon antialias="true" y4="3" x1="46" x4="46" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="3" y1="3" x3="50" x2="54" y3="10"/>
+        <polygon antialias="true" y4="6" x1="74" x4="74" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="3" y1="6" x3="80" x2="77" y3="9"/>
+        <polygon antialias="true" y4="-16" x1="74" x4="74" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-13" y1="-16" x3="80" x2="77" y3="-19"/>
+        <arc antialias="true" start="-135" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" angle="-90" x="72" y="-20"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4" y1="-4" end1="none" x2="5"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-6" y1="-6" end1="none" x2="5"/>
+        <line antialias="false" x1="65" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4" y1="-4" end1="none" x2="80"/>
     </description>
 </definition>

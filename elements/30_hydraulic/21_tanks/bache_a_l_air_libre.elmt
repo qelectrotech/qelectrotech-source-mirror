@@ -1,20 +1,22 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C133053B-5A7F-4926-9CB7-8FB5CAFB8DB0}"/><names>
-        <name lang="ar">حاوية في الهواء الطلق</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="30" link_type="simple" type="element">
+    <uuid uuid="{31ba3ca6-d425-405a-be4c-0ff2e0c723a6}"/>
+    <names>
         <name lang="en">Pipings under level</name>
-        <name lang="it">Tubazioni sotto livello</name>
+        <name lang="nl">Onder niveau</name>
         <name lang="fr">Bâche à l'air libre</name>
         <name lang="pl">Zbiornik otwarty</name>
+        <name lang="it">Tubazioni sotto livello</name>
         <name lang="cs">Otevřená nádrž</name>
-        <name lang="nl">Onder niveau</name>
+        <name lang="ar">حاوية في الهواء الطلق</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.3682" x1="13.9219" y2="0.0791" x2="13.9219"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.4473" x1="-13.7637" y2="13.3682" x2="13.9219"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0791" x1="-13.7637" y2="13.4473" x2="-13.7637"/>
-        <terminal x="0" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" y1="10" end1="none" x2="0"/>
+        <line antialias="false" x1="13.9219" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0.0791" y1="13.3682" end1="none" x2="13.9219"/>
+        <line antialias="false" x1="-13.7637" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="13.3682" y1="13.4473" end1="none" x2="13.9219"/>
+        <line antialias="false" x1="-13.7637" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="13.4473" y1="0.0791" end1="none" x2="-13.7637"/>
+        <input size="9" x="15" rotate="true" tagg="label" y="10" text="_"/>
+        <terminal orientation="n" x="0" y="-10"/>
     </description>
 </definition>

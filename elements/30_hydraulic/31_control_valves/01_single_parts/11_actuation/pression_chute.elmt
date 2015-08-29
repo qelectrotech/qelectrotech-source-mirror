@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-<uuid uuid="{650CA69C-24A5-421A-894F-43491EFDB71E}"/><names>
+<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{b3d514b1-bc11-4f65-91de-445aae6865bc}"/>
+    <names>
         <name lang="en">Control air pressure drop</name>
+        <name lang="nl">Lucht dalend</name>
         <name lang="fr">Commande chute de pression d'air</name>
         <name lang="pl">Sterowane przez spadek ciśnienia</name>
+        <name lang="it">Riduzione di pressione</name>
         <name lang="cs">Řízeno úbytkem tlaku</name>
         <name lang="ar">تحكم هبوط ضغط الهواء</name>
-        <name lang="it">Riduzione di pressione</name>
-        <name lang="nl">Lucht dalend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-4" y2="10" x2="-4" y3="5" x3="-14" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-4" y2="5" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-16" y2="5" x2="-14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-25" y2="5" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="1" y2="5" x2="5"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="-9.45" text="_"/>
+        <polygon antialias="true" y4="0" x1="-4" x4="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" closed="false" y1="0" x3="-14" x2="-4" y3="5"/>
+        <line antialias="false" x1="-4" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="5" y1="5" end1="none" x2="-3"/>
+        <line antialias="false" x1="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="5" y1="5" end1="none" x2="-14"/>
+        <line antialias="false" x1="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="5" y1="5" end1="none" x2="-20"/>
+        <line antialias="false" x1="1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="5" y1="5" end1="none" x2="5"/>
     </description>
 </definition>

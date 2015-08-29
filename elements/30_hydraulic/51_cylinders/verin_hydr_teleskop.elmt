@@ -1,33 +1,35 @@
-<definition width="90" version="0.4" hotspot_x="16" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{CB1919AE-29C7-4AA2-93BD-23E17B49551C}"/><names>
-        <name lang="ar">اسطوانة هيدروليكية تلسكوبية</name>
-        <name lang="el">Τηλεσκοπικό Υδραυλικό έμβολο</name>
+<definition version="0.5" hotspot_x="16" hotspot_y="24" width="90" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{ef70741f-8f72-4fa1-9fe1-581d1bd4c50c}"/>
+    <names>
         <name lang="en">Telescopic hydraulic cylinder</name>
-        <name lang="it">Pistone idraulico telescopico</name>
+        <name lang="nl">Cylinder telescopisch</name>
+        <name lang="el">Τηλεσκοπικό Υδραυλικό έμβολο</name>
         <name lang="fr">Verin hydraulique telescopique</name>
         <name lang="pl">Cylinder (siłownik) teleskowpowy hydrauliczny dwustronnego działania</name>
+        <name lang="it">Pistone idraulico telescopico</name>
         <name lang="cs">Zasouvací vodní válec</name>
-        <name lang="nl">Cylinder telescopisch</name>
+        <name lang="ar">اسطوانة هيدروليكية تلسكوبية</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="0" y2="-16" x2="52" y3="-12" x3="52"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="0" y2="-4" x2="52" y3="-8" x3="52"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="50" y2="10" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="20" y2="-4" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="10" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="20" y2="-12" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-4" x2="0"/>
-        <polygon x4="-12" y5="0" x5="42" y6="-4" x6="42" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="42" y2="-20" x2="42" y3="-20" x3="-12" y4="0"/>
-        <polygon x4="48" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-4" x1="48" y2="-4" x2="52" y3="-8" x3="50" y4="-4"/>
-        <polygon x4="38" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="38" y2="0" x2="42" y3="-4" x3="40" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="0" y2="-20" x2="0"/>
-        <polygon x4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="20" y2="-12" x2="70" y3="-8" x3="70" y4="-8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="10" x2="-10"/>
-        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="-12" y2="0" x2="-8" y3="-4" x3="-10" y4="0"/>
-        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="40" y="10" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="50" y="10" nameHidden="0" number="" name="" orientation="s"/>
+        <input size="9" x="-12" rotate="true" tagg="label" y="-29.45" text="_"/>
+        <polygon antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-16" closed="false" y1="-16" x3="52" x2="52" y3="-12"/>
+        <polygon antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" closed="false" y1="-4" x3="52" x2="52" y3="-8"/>
+        <line antialias="false" x1="50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="-4" end1="none" x2="50"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4" y1="-8" end1="none" x2="20"/>
+        <line antialias="false" x1="40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="0" end1="none" x2="40"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-12" y1="-16" end1="none" x2="20"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4" y1="0" end1="none" x2="0"/>
+        <polygon antialias="false" y4="0" x5="42" x1="42" y5="0" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" closed="false" y1="-16" y6="-4" x3="-12" x2="42" y3="-20" x6="42"/>
+        <polygon antialias="true" y4="-4" x1="48" x4="48" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-4" y1="-4" x3="50" x2="52" y3="-8"/>
+        <polygon antialias="true" y4="0" x1="38" x4="38" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="0" y1="0" x3="40" x2="42" y3="-4"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" y1="-16" end1="none" x2="0"/>
+        <polygon antialias="false" y4="-8" x1="20" x4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" closed="false" y1="-12" x3="70" x2="70" y3="-8"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="0" end1="none" x2="-10"/>
+        <polygon antialias="true" y4="0" x1="-12" x4="-12" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="0" y1="0" x3="-10" x2="-8" y3="-4"/>
+        <terminal orientation="s" x="50" y="10"/>
+        <terminal orientation="s" x="-10" y="10"/>
+        <terminal orientation="s" x="40" y="10"/>
     </description>
 </definition>

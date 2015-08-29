@@ -1,19 +1,21 @@
-<definition width="30" version="0.4" hotspot_x="21" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5FC0AF70-8634-4BBB-8899-DAA641D9EA63}"/><names>
-        <name lang="ar">دوّاسة</name>
-        <name lang="el">Ποδόπληκτρο</name>
+<definition version="0.5" hotspot_x="21" hotspot_y="14" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+    <uuid uuid="{5cb1418b-2d92-43be-a4a6-46193a7d028a}"/>
+    <names>
         <name lang="en">Pedal</name>
-        <name lang="it">pedale</name>
+        <name lang="nl">Voetpedaal</name>
+        <name lang="el">Ποδόπληκτρο</name>
         <name lang="fr">Pédale</name>
         <name lang="pl">Pedał</name>
+        <name lang="it">pedale</name>
         <name lang="cs">Pedál</name>
-        <name lang="nl">Voetpedaal</name>
+        <name lang="ar">دوّاسة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="5"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-6" y2="-5" x2="-2" y3="10" x3="-17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-13" y2="6" x2="5"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="0.55" text="_"/>
+        <line antialias="false" x1="-7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="5"/>
+        <polygon antialias="true" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" closed="false" y1="-9" x3="-17" x2="-2" y3="10"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="6" y1="6" end1="none" x2="5"/>
     </description>
 </definition>

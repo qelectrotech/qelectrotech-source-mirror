@@ -1,25 +1,27 @@
-<definition width="50" version="0.4" hotspot_x="15" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{60CDF0B7-E55D-428F-AB0E-2FF3949C54CB}"/><names>
-        <name lang="ar">صمّام بثلاث مسارات</name>
-        <name lang="el">Τρίοδη βαλβίδα</name>
+<definition version="0.5" hotspot_x="14" hotspot_y="22" width="50" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{b3f214ce-2036-46f7-b22f-e16a214bf357}"/>
+    <names>
         <name lang="en">Three-way valve</name>
-        <name lang="it">Valvola 3vie</name>
+        <name lang="nl">Klep Drieweg</name>
+        <name lang="el">Τρίοδη βαλβίδα</name>
         <name lang="fr">Vanne trois voies</name>
         <name lang="pl">Zawór trójdrogowy</name>
+        <name lang="it">Valvola 3vie</name>
         <name lang="cs">Trojcestná klapka</name>
-        <name lang="nl">Klep Drieweg</name>
+        <name lang="ar">صمّام بثلاث مسارات</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="10" x2="10"/>
-        <polygon x4="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="0" x2="15" y3="-10" x3="10" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-10" x2="30"/>
-        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="20" y2="-10" x2="10" y3="-16" x3="20" y4="-4"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="0" y2="-4" x2="0" y3="-10" x3="10" y4="-16"/>
-        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="s"/>
+        <input size="9" x="21" rotate="true" tagg="label" y="-21.45" text="_"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="0" end1="none" x2="10"/>
+        <polygon antialias="true" y4="0" x1="5" x4="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" x3="10" x2="15" y3="-10"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" y1="-10" end1="none" x2="0"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" y1="-10" end1="none" x2="30"/>
+        <polygon antialias="true" y4="-4" x1="20" x4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" y1="-4" x3="20" x2="10" y3="-16"/>
+        <polygon antialias="true" y4="-16" x1="0" x4="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" y1="-16" x3="10" x2="0" y3="-10"/>
+        <terminal orientation="w" x="-10" y="-10"/>
+        <terminal orientation="s" x="10" y="10"/>
+        <terminal orientation="e" x="30" y="-10"/>
     </description>
 </definition>

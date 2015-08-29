@@ -1,18 +1,20 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{2EC556AA-E969-448D-97A3-2F6612CD3D7E}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="2" width="30" orientation="dyyy" height="10" link_type="simple" type="element">
+    <uuid uuid="{0dd39709-38f3-4620-86a9-cf7f03fbc0e5}"/>
+    <names>
         <name lang="en">Push-button</name>
+        <name lang="nl">Drukknop</name>
         <name lang="fr">Poussoir</name>
         <name lang="pl">Popychacz</name>
+        <name lang="it">Pulsante</name>
         <name lang="cs">Táhlo</name>
         <name lang="ar">ضاغط</name>
-        <name lang="it">Pulsante</name>
-        <name lang="nl">Drukknop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-13" y2="0" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-13" y2="6" x2="5"/>
-        <arc width="6" x="-16" y="0" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="0.55" text="_"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="5"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="6" y1="6" end1="none" x2="5"/>
+        <arc antialias="true" start="-90" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" angle="-180" x="-16" y="0"/>
     </description>
 </definition>

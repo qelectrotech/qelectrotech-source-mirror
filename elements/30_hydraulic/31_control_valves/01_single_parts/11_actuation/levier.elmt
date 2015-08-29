@@ -1,20 +1,22 @@
-<definition width="30" version="0.4" hotspot_x="20" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B9D68014-076F-4617-8309-A99B21C5787D}"/><names>
-        <name lang="ar">رافعة</name>
-        <name lang="el">Μοχλός</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+    <uuid uuid="{ded9c87d-191d-4ba6-8030-48781f73d310}"/>
+    <names>
         <name lang="en">Lever</name>
-        <name lang="it">Comando a leva</name>
+        <name lang="nl">hefboom</name>
+        <name lang="el">Μοχλός</name>
         <name lang="fr">Levier</name>
         <name lang="pl">Dźwignia</name>
+        <name lang="it">Comando a leva</name>
         <name lang="cs">Páka</name>
-        <name lang="nl">hefboom</name>
+        <name lang="ar">رافعة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-16" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-13" y2="0" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-14" y2="-5" x2="-14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-13" y2="6" x2="5"/>
+        <circle antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" y="-9"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="0.55" text="_"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="5"/>
+        <line antialias="false" x1="-14" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="11" end1="none" x2="-14"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="6" y1="6" end1="none" x2="5"/>
     </description>
 </definition>

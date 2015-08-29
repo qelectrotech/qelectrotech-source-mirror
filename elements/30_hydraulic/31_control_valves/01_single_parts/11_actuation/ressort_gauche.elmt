@@ -1,17 +1,19 @@
-<definition width="20" version="0.4" hotspot_x="1" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{1222E167-F130-42F1-8FDE-E1C4A727D59D}"/><names>
-        <name lang="ar">زمبرك تمركز</name>
-        <name lang="el">Ελατήριο</name>
+<definition version="0.5" hotspot_x="1" hotspot_y="5" width="20" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{f34e1557-3731-464c-ae9f-e72db2fceafa}"/>
+    <names>
         <name lang="en">Spring</name>
-        <name lang="it">Molla Sx</name>
+        <name lang="nl">Veer</name>
+        <name lang="el">Ελατήριο</name>
         <name lang="fr">Ressort de centrage</name>
         <name lang="pl">Sprężyna (strona lewa)</name>
+        <name lang="it">Molla Sx</name>
         <name lang="cs">Pružina (levá strana)</name>
-        <name lang="nl">Veer</name>
+        <name lang="ar">زمبرك تمركز</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="9" y5="9" x5="11" y6="1" x6="13" y7="6" x7="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="3" y2="1" x2="5" y3="9" x3="7" y4="1"/>
+        <polygon antialias="true" y4="1" x5="11" x7="15" x1="3" y5="9" x4="9" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="1" closed="false" y1="6" y7="6" y6="1" x3="7" x2="5" y3="9" x6="13"/>
+        <input size="9" x="-10" rotate="true" tagg="label" y="1.55" text="_"/>
     </description>
 </definition>

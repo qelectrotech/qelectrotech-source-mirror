@@ -1,20 +1,22 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{C52ABA8E-624A-4393-AF03-987441A9D3A0}"/><names>
-        <name lang="ar">فوهات موصلة 2</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{61f3c2ac-775e-499f-a691-74b977414e3c}"/>
+    <names>
         <name lang="en">2 ports open directional</name>
+        <name lang="nl">2 P -> A</name>
         <name lang="fr">2 orifices passant</name>
         <name lang="pl">2 drogi, otwarty</name>
-        <name lang="cs">2 otvory otevřené usměrněné</name>
         <name lang="it">2 porte aperte</name>
-        <name lang="nl">2 P -&gt; A</name>
+        <name lang="cs">2 otvory otevřené usměrněné</name>
+        <name lang="ar">فوهات موصلة 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.075" x1="19.95" y2="-14.925" x2="19.95"/>
-        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.875" x1="20" y2="-14.875" x2="18" y3="-14.875" x3="22" y4="-19.875"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="20" y="10" orientation="s"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="0.55" text="_"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" x="-15" y="-10"/>
+        <line antialias="false" x1="-0.05" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4.925" y1="20.075" end1="none" x2="-0.05"/>
+        <polygon antialias="true" y4="-9.875" x1="0" x4="0" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-4.875" y1="-9.875" x3="2" x2="-2" y3="-4.875"/>
+        <terminal orientation="n" x="0" y="-10"/>
+        <terminal orientation="s" x="0" y="20"/>
     </description>
 </definition>

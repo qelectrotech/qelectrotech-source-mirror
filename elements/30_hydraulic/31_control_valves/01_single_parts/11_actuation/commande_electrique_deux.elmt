@@ -1,18 +1,20 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-<uuid uuid="{2D4E31FF-16E7-478C-9BFA-28AA5E9CA0A5}"/><names>
+<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{0dff143b-dfb1-49af-8a7b-179e0786a09b}"/>
+    <names>
         <name lang="en">Two electric coil</name>
+        <name lang="nl">Spoel Elektrisch dubbel</name>
         <name lang="fr">Electrique deux bobine</name>
         <name lang="pl">Elektryczne (dwie cewki)</name>
+        <name lang="it">Doppio comando elettrico</name>
         <name lang="cs">Elektrické řízení (dvě cívky)</name>
         <name lang="ar">تحكم كهربائي (ملفين)</name>
-        <name lang="it">Doppio comando elettrico</name>
-        <name lang="nl">Spoel Elektrisch dubbel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-25" y="0" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-8" y2="10" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.95" x1="-22.05" y2="-0.05" x2="-12.05"/>
+        <input size="9" x="-43" rotate="true" tagg="label" y="4.55" text="_"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-25" y="0"/>
+        <line antialias="false" x1="-8" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="0" end1="none" x2="2"/>
+        <line antialias="true" x1="-22.05" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-0.05" y1="9.95" end1="none" x2="-12.05"/>
     </description>
 </definition>

@@ -1,23 +1,25 @@
-<definition width="80" version="0.4" hotspot_x="40" hotspot_y="14" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{2174D258-5056-4467-8891-F9CFBF40EF56}"/><names>
-        <name lang="ar">اسطوانة غير متماثلة مزدوج الفعل مع قضيب مُوجّه لليمين</name>
-        <name lang="el">Έμβολο διπλής ενεργείας, δεξιά</name>
+<definition version="0.5" hotspot_x="40" hotspot_y="14" width="80" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{9b384a88-1bc2-400e-bca1-2bec9c91eb04}"/>
+    <names>
         <name lang="en">Double acting cylinders right</name>
-        <name lang="it">Pistone a doppia azione Dx</name>
+        <name lang="nl">Cilinder dubbelwerkend</name>
+        <name lang="el">Έμβολο διπλής ενεργείας, δεξιά</name>
         <name lang="fr">Vérin assymétrique double effet tige orientée à droite</name>
         <name lang="pl">Siłownik asymetryczny podwójnego działania</name>
+        <name lang="it">Pistone a doppia azione Dx</name>
         <name lang="cs">Dvojčinný nesouměrný válec, osa natočená vpravo</name>
-        <name lang="nl">Cilinder dubbelwerkend</name>
+        <name lang="ar">اسطوانة غير متماثلة مزدوج الفعل مع قضيب مُوجّه لليمين</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-35" y5="-10" x5="-35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-35" y2="-10" x2="25" y3="10" x3="25" y4="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-30" y2="20" x2="-30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-25" y2="10" x2="-25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="35"/>
-        <terminal x="20" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-30" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="-19.45" text="_"/>
+        <polygon antialias="false" y4="10" x5="-35" x1="-35" y5="-10" x4="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" closed="false" y1="-10" x3="25" x2="25" y3="10"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="10" end1="none" x2="20"/>
+        <line antialias="false" x1="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="10" end1="none" x2="-30"/>
+        <line antialias="false" x1="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" y1="-10" end1="none" x2="-25"/>
+        <line antialias="false" x1="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="35"/>
+        <terminal orientation="s" x="-30" y="20"/>
+        <terminal orientation="s" x="20" y="20"/>
     </description>
 </definition>

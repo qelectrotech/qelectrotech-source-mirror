@@ -1,26 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{38ADEF71-BDA9-4BDC-9BAD-0FCE02529683}"/><names>
-        <name lang="ar">مسارات -B-T مُغلقة</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{5c597258-a285-4d58-96d9-205976c440b2}"/>
+    <names>
         <name lang="en">4 ports - B-T close</name>
+        <name lang="nl">4 P -> A</name>
         <name lang="fr">4 voies - B-T fermés</name>
         <name lang="pl">4 drogi - B-T zamknięte</name>
-        <name lang="cs">4 cesty - B-T zavřené</name>
         <name lang="it">4 porte - B-T chiuse</name>
-        <name lang="nl">4 P -&gt; A</name>
+        <name lang="cs">4 cesty - B-T zavřené</name>
+        <name lang="ar">مسارات -B-T مُغلقة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="27.975" y2="-15" x2="31.975"/>
-        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="30" y2="10" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-15" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.075" x1="9.95" y2="-14.925" x2="9.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="27.925" y2="4.95" x2="31.925"/>
-        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.875" x1="10" y2="-14.875" x2="8" y3="-14.875" x3="12" y4="-19.875"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="30" y="-20" orientation="n"/>
-        <terminal x="10" y="10" orientation="s"/>
-        <terminal x="30" y="10" orientation="s"/>
+        <input size="9" x="-31" rotate="true" tagg="label" y="4.55" text="_"/>
+        <line antialias="false" x1="7.975" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-5" end1="none" x2="11.975"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" x="-15" y="-10"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="15" end1="none" x2="10"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-10" end1="none" x2="10"/>
+        <line antialias="false" x1="-10.05" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4.925" y1="20.075" end1="none" x2="-10.05"/>
+        <line antialias="false" x1="7.925" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="14.95" y1="14.95" end1="none" x2="11.925"/>
+        <polygon antialias="true" y4="-9.875" x1="-10" x4="-10" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-4.875" y1="-9.875" x3="-8" x2="-12" y3="-4.875"/>
+        <terminal orientation="n" x="-10" y="-10"/>
+        <terminal orientation="n" x="10" y="-10"/>
+        <terminal orientation="s" x="-10" y="20"/>
+        <terminal orientation="s" x="10" y="20"/>
     </description>
 </definition>

@@ -1,19 +1,21 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{EE0556ED-A9BD-4207-A8B3-F23A2352E187}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="7" width="30" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{7af53d6c-e80b-46a8-ad97-dac13b2105b5}"/>
+    <names>
         <name lang="en">Two-way button</name>
+        <name lang="nl">Drukknop 2 standen</name>
         <name lang="fr">Bouton deux voies</name>
         <name lang="pl">Przycisk o dwuch kierunkach działania</name>
+        <name lang="it">Pulsante due vie</name>
         <name lang="cs">Dvousměrové tlačítko</name>
         <name lang="ar">زرّ بمسارين</name>
-        <name lang="it">Pulsante due vie</name>
-        <name lang="nl">Drukknop 2 standen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <ellipse width="6" x="-16" y="-3" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-13" y2="9" x2="-13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-10" y2="6" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="5"/>
+        <input size="9" x="-12" rotate="true" tagg="label" y="-8.45" text="_"/>
+        <ellipse antialias="true" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="12" x="-16" y="-3"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="9" y1="-3" end1="none" x2="-13"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="6" y1="6" end1="none" x2="5"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="5"/>
     </description>
 </definition>

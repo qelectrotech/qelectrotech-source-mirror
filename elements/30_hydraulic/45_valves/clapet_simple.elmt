@@ -1,23 +1,25 @@
-<definition width="40" version="0.4" hotspot_x="19" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{2C40C7D1-8A5B-4876-A6FF-12A45C2B88C5}"/><names>
-        <name lang="ar">صمّام بسيط</name>
-        <name lang="el">Ανεπίστροφη βαλβίδα</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="30" link_type="simple" type="element">
+    <uuid uuid="{eeb69c49-4c27-402e-a4e1-6d5fabfe52f1}"/>
+    <names>
         <name lang="en">Check valve</name>
-        <name lang="it">Valvola di ritegno</name>
+        <name lang="nl">Klep terugslag</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα</name>
         <name lang="fr">Clapet simple</name>
         <name lang="pl">Zawór zwrotny</name>
+        <name lang="it">Valvola di ritegno</name>
         <name lang="cs">Pojistný ventil</name>
-        <name lang="nl">Klep terugslag</name>
+        <name lang="ar">صمّام بسيط</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0444" x1="-9.3883" y2="0.0444" x2="-14.5052"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0791" x1="9.4773" y2="-9.3339" x2="0.2224"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9.5564" y2="9.2548" x2="0.3015"/>
-        <circle x="-9.3526" y="-7.4393" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.8787"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9.7443" y2="0" x2="14.4608"/>
-        <terminal x="-14.4608" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="14.5052" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <input size="9" x="7" rotate="true" tagg="label" y="-16.5" text="_"/>
+        <line antialias="false" x1="-9.3883" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0.0444" y1="0.0444" end1="none" x2="-14.5052"/>
+        <line antialias="false" x1="9.4773" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-9.3339" y1="-0.0791" end1="none" x2="0.2224"/>
+        <line antialias="false" x1="9.5564" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="9.2548" y1="0" end1="none" x2="0.3015"/>
+        <circle antialias="true" diameter="14.8787" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.3526" y="-7.4393"/>
+        <line antialias="false" x1="9.7443" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="14.4608"/>
+        <terminal orientation="w" x="-14.4608" y="0"/>
+        <terminal orientation="e" x="14.5052" y="0"/>
     </description>
 </definition>

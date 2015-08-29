@@ -1,30 +1,32 @@
-<definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
-<uuid uuid="{6E6B6660-ADE8-4D1E-9F67-97B149CB844B}"/><names>
+<definition version="0.5" hotspot_x="10" hotspot_y="34" width="40" orientation="dyyy" height="60" link_type="simple" type="element">
+    <uuid uuid="{67db8120-081e-4a48-83e4-80914b7d075d}"/>
+    <names>
         <name lang="en">4 ports -P-A-T connected</name>
-        <name lang="fr">4 voies - P-A-T Relies</name>
-        <name lang="cs">4 cesty - P-A-T spojené</name>
-        <name lang="pl">4 drogi - P-A-T połączone</name>
-        <name lang="ar">مسارات -P-A-T  مُتّصلة</name>
-        <name lang="it">4 porte - P-A-T connesse</name>
         <name lang="nl">4 P - A - T</name>
+        <name lang="fr">4 voies - P-A-T Relies</name>
+        <name lang="pl">4 drogi - P-A-T połączone</name>
+        <name lang="it">4 porte - P-A-T connesse</name>
+        <name lang="cs">4 cesty - P-A-T spojené</name>
+        <name lang="ar">مسارات -P-A-T  مُتّصلة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-15" x2="20"/>
-        <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="20"/>
-        <input x="-10" y="-25.5" size="5" rotate="true" text="a"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="20" x2="20"/>
-        <input x="18" y="15.5" size="5" rotate="true" text="t"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="18" y2="-15" x2="22"/>
-        <input x="-10" y="15.5" size="5" rotate="true" text="p"/>
-        <circle x="-1.15" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
-        <input x="18" y="-25.5" size="5" rotate="true" text="b"/>
-        <terminal x="20" y="20" orientation="s"/>
-        <terminal x="0" y="20" orientation="s"/>
-        <terminal x="0" y="-30" orientation="n"/>
-        <terminal x="20" y="-30" orientation="n"/>
+        <input size="9" x="-21" rotate="true" tagg="label" y="-5.45" text="_"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-15" y1="-30" end1="none" x2="20"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" x="-5" y="-20"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-5" end1="none" x2="20"/>
+        <input size="5" x="-10" rotate="true" tagg="none" y="-25.5" text="a"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="-30" end1="none" x2="0"/>
+        <line antialias="false" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="-5" end1="none" x2="20"/>
+        <input size="5" x="18" rotate="true" tagg="none" y="15.5" text="t"/>
+        <line antialias="false" x1="18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-15" y1="-15" end1="none" x2="22"/>
+        <input size="5" x="-10" rotate="true" tagg="none" y="15.5" text="p"/>
+        <circle antialias="true" diameter="2.3" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-1.15" y="-6.15"/>
+        <input size="5" x="18" rotate="true" tagg="none" y="-25.5" text="b"/>
+        <terminal orientation="n" x="0" y="-30"/>
+        <terminal orientation="n" x="20" y="-30"/>
+        <terminal orientation="s" x="20" y="20"/>
+        <terminal orientation="s" x="0" y="20"/>
     </description>
 </definition>

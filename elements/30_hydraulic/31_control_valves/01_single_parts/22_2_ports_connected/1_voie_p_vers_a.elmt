@@ -1,24 +1,26 @@
-<definition width="40" version="0.22" hotspot_x="0" hotspot_y="40" height="70" type="element" orientation="dyyy">
-<uuid uuid="{5B9025CF-84DC-4C7C-BCD4-2F2A5AFBE0A9}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="24" width="40" orientation="dyyy" height="60" link_type="simple" type="element">
+    <uuid uuid="{477de281-3285-4c93-8583-5b92f383a13b}"/>
+    <names>
         <name lang="en">2 ports open</name>
+        <name lang="nl">2 P -> A</name>
         <name lang="fr">2 orifices passants</name>
-        <name lang="cs">2 otvory otevřené</name>
         <name lang="pl">2 drogi, otwarty</name>
-        <name lang="ar">فوهات موصولة 2</name>
         <name lang="it">2 porte aperte</name>
-        <name lang="nl">2 P -&gt; A</name>
+        <name lang="cs">2 otvory otevřené</name>
+        <name lang="ar">فوهات موصولة 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="10" y="-25.5" size="5" rotate="true" text="a"/>
-        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="20"/>
-        <input x="10" y="15.5" size="5" rotate="true" text="p"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-21" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="-15" x2="20"/>
-        <polygon x4="20.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="20.05" y2="-14.95" x2="18.05" y3="-14.95" x3="22.05" y4="-19.95"/>
-        <terminal x="20" y="-30" orientation="n"/>
-        <terminal x="20" y="20" orientation="s"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="5.55" text="_"/>
+        <input size="5" x="-10" rotate="true" tagg="none" y="-15.5" text="a"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" x="-15" y="-10"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="30" end1="none" x2="0"/>
+        <input size="5" x="-10" rotate="true" tagg="none" y="25.5" text="p"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-11" y1="-20" end1="none" x2="0"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="20" end1="none" x2="0"/>
+        <polygon antialias="true" y4="-9.95" x1="0.05" x4="0.05" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-4.95" y1="-9.95" x3="2.05" x2="-1.95" y3="-4.95"/>
+        <terminal orientation="n" x="0" y="-20"/>
+        <terminal orientation="s" x="0" y="30"/>
     </description>
 </definition>

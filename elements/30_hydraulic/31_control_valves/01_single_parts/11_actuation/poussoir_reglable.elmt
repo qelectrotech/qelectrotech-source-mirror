@@ -1,20 +1,22 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{0E4337D4-798F-43BA-9903-CCDF08F9F90F}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="13" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+    <uuid uuid="{3ecd6cbe-659d-4aa0-b21b-cc44cc649cb6}"/>
+    <names>
         <name lang="en">Push adjustable length</name>
+        <name lang="nl">Drukknop regelbaar</name>
         <name lang="fr">Poussoir longueur réglable</name>
         <name lang="pl">Popychacz z nastawną długością</name>
+        <name lang="it">Pulsante regolabile</name>
         <name lang="cs">Táhlo s nastavitelnou délkou</name>
         <name lang="ar">ضاغط بطول قابل للتعديل</name>
-        <name lang="it">Pulsante regolabile</name>
-        <name lang="nl">Drukknop regelbaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="0" y2="12" x2="-15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-13" y2="0" x2="5"/>
-        <polygon x4="-1" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-5" x1="-1" y2="-3" x2="1" y3="-8" x3="4" y4="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-13" y2="6" x2="5"/>
-        <arc width="6" x="-16" y="0" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <input size="9" x="-32" rotate="true" tagg="label" y="-4.45" text="_"/>
+        <line antialias="true" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="12" y1="-4" end1="none" x2="-15"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="5"/>
+        <polygon antialias="true" y4="-5" x1="-1" x4="-1" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-3" y1="-5" x3="4" x2="1" y3="-8"/>
+        <line antialias="false" x1="-13" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="6" y1="6" end1="none" x2="5"/>
+        <arc antialias="true" start="-90" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" angle="-180" x="-16" y="0"/>
     </description>
 </definition>

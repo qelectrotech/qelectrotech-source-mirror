@@ -1,25 +1,27 @@
-<definition width="90" version="0.4" hotspot_x="45" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{94F28C10-1B97-45DF-87A2-D789C8ED8686}"/><names>
-        <name lang="ar">مُبادل ماء - زيت</name>
-        <name lang="el">Εναλλάκτης νερού λαδιού</name>
+<definition version="0.5" hotspot_x="45" hotspot_y="35" width="90" orientation="dyyy" height="70" link_type="simple" type="element">
+    <uuid uuid="{38e88729-6d3b-4c67-aeba-169f3e44722c}"/>
+    <names>
         <name lang="en">Water oil exchanger</name>
-        <name lang="it">Scambiatore acqua/olio</name>
+        <name lang="nl">Water Olie warmtewisselaar</name>
+        <name lang="el">Εναλλάκτης νερού λαδιού</name>
         <name lang="fr">Echangeur Eau-Huile</name>
         <name lang="pl">Wodno-olejowy wymiennik ciepła</name>
+        <name lang="it">Scambiatore acqua/olio</name>
         <name lang="cs">Výměník voda olej</name>
-        <name lang="nl">Water Olie warmtewisselaar</name>
+        <name lang="ar">مُبادل ماء - زيت</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30.0652" x1="0.8679" y2="30.0652" x2="25.6179"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.9817" x1="-0.5185" y2="-29.9817" x2="-25.1279"/>
-        <polygon x4="-0.4152" y5="-29.9004" x5="-1.8984" y6="-29.9004" x6="-1.8984" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30.019" x1="-0.4152" y2="-30.9089" x2="-6.7038" y3="-29.0698" x3="-6.7038" y4="-29.9004"/>
-        <polygon x4="0.4746" y5="30.197" x5="0.4746" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30.0784" x1="0.4152" y2="29.1292" x2="6.5852" y3="30.9089" x3="6.5852" y4="30.197"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="39.9375" y2="0" x2="29.6719"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-40.0781" y2="0" x2="-30.6562"/>
-        <polygon x4="29.9092" y5="-29.9004" x5="0.0966" y6="-29.9004" x6="0.0966" y7="-29.9004" x7="0.0966" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.041" x1="0.0966" y2="0.0527" x2="-29.9971" y3="30.0059" x3="-0.0439" y4="0.0527"/>
-        <terminal x="-40.1836" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="39.9727" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <input size="9" x="-27" rotate="true" tagg="label" y="-44.45" text="_"/>
+        <line antialias="false" x1="0.8679" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="30.0652" y1="30.0652" end1="none" x2="25.6179"/>
+        <line antialias="false" x1="-0.5185" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-29.9817" y1="-29.9817" end1="none" x2="-25.1279"/>
+        <polygon antialias="true" y4="-29.9004" x5="-1.8984" x1="-0.4152" y5="-29.9004" x4="-0.4152" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30.9089" closed="false" y1="-30.019" y6="-29.9004" x3="-6.7038" x2="-6.7038" y3="-29.0698" x6="-1.8984"/>
+        <polygon antialias="true" y4="30.197" x5="0.4746" x1="0.4152" y5="30.197" x4="0.4746" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="29.1292" closed="false" y1="30.0784" x3="6.5852" x2="6.5852" y3="30.9089"/>
+        <line antialias="false" x1="39.9375" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="29.6719"/>
+        <line antialias="false" x1="-40.0781" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="-30.6562"/>
+        <polygon antialias="true" y4="0.0527" x5="0.0966" x7="0.0966" x1="0.0966" y5="-29.9004" x4="29.9092" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.0527" y1="-30.041" y7="-29.9004" y6="-29.9004" x3="-0.0439" x2="-29.9971" y3="30.0059" x6="0.0966"/>
+        <terminal orientation="w" x="-40.1836" y="0"/>
+        <terminal orientation="e" x="39.9727" y="0"/>
     </description>
 </definition>

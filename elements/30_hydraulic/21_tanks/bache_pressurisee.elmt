@@ -1,23 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="40" height="90" type="element" orientation="dnnn">
-<uuid uuid="{176F78E6-3506-40A2-AEE1-7D213732225E}"/><names>
+<definition version="0.5" hotspot_x="14" hotspot_y="43" width="30" orientation="dyyy" height="100" link_type="simple" type="element">
+    <uuid uuid="{c1f30735-64eb-40c1-8d2d-e8b322852c11}"/>
+    <names>
         <name lang="en">Hydraulic accumulator</name>
+        <name lang="nl">Druktank</name>
         <name lang="fr">Bâche pressurisée (accumulateur)</name>
         <name lang="pl">Akumulator hydrauliczny</name>
+        <name lang="it">Accumulatore idraulico</name>
         <name lang="cs">Vodní akumulátor</name>
         <name lang="ar">مُراكم هيدروليكي</name>
-        <name lang="it">Accumulatore idraulico</name>
-        <name lang="nl">Druktank</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="0" x2="12"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="0" y2="-5" x2="-5" y3="-5" x3="5" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37.8633" x1="0" y2="46.9336" x2="0"/>
-        <arc width="25" x="-12.5" y="-37.5" antialias="true" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="25" x="-12.5" y="12.5" antialias="true" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-12.5" y2="25" x2="-12.5"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="12.5" y2="25" x2="12.5"/>
-        <terminal x="0" y="46.9336" orientation="s"/>
+        <input size="9" x="13" rotate="true" tagg="label" y="10.55" text="_"/>
+        <line antialias="false" x1="-12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="0" end1="none" x2="12"/>
+        <polygon antialias="true" y4="0" x1="0" x4="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" closed="false" y1="0" x3="5" x2="-5" y3="-5"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="46.9336" y1="37.8633" end1="none" x2="0"/>
+        <arc antialias="true" start="-180" width="25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="25" angle="-180" x="-12.5" y="-37.5"/>
+        <arc antialias="true" start="0" width="25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="25" angle="-180" x="-12.5" y="12.5"/>
+        <line antialias="true" x1="-12.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="25" y1="-25" end1="none" x2="-12.5"/>
+        <line antialias="true" x1="12.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="25" y1="-25" end1="none" x2="12.5"/>
+        <terminal orientation="s" x="0" y="46.9336"/>
     </description>
 </definition>

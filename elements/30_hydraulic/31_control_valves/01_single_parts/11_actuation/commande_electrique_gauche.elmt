@@ -1,17 +1,19 @@
-<definition width="30" version="0.22" hotspot_x="20" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{C9B80997-E931-43B0-9EDB-5E7F578992D7}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="5" width="30" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{f2a34b6f-6b55-4572-8da7-e86f37415ad2}"/>
+    <names>
         <name lang="en">Electrical command left</name>
+        <name lang="nl">Spoel Elektrisch links</name>
         <name lang="fr">Commande electrique gauche</name>
         <name lang="pl">Elektryczne (strona lewa)</name>
+        <name lang="it">Comando elettrico Sx</name>
         <name lang="cs">Elektrické řízení (levá strana)</name>
         <name lang="ar">تحكم كهربائي يسار</name>
-        <name lang="it">Comando elettrico Sx</name>
-        <name lang="nl">Spoel Elektrisch links</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="0" x2="0"/>
-        <rect width="20" x="-15" y="0" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="true" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" y1="10" end1="none" x2="0"/>
+        <input size="9" x="-28" rotate="true" tagg="label" y="2.55" text="_"/>
+        <rect antialias="false" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-15" y="0"/>
     </description>
 </definition>

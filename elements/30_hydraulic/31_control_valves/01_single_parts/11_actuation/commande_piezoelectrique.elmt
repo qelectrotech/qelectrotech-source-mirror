@@ -1,19 +1,21 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="5" height="20" type="element" orientation="dyyy">
-<uuid uuid="{34B41931-45F2-4F0B-B216-7479533C0183}"/><names>
+<definition version="0.5" hotspot_x="20" hotspot_y="5" width="30" orientation="dyyy" height="20" link_type="simple" type="element">
+    <uuid uuid="{31cf6e10-531c-42ce-9aa5-86c6c2922a57}"/>
+    <names>
         <name lang="en">Piezoelectric</name>
+        <name lang="nl">Piezo lektrisch</name>
         <name lang="fr">Piézoélectrique</name>
         <name lang="pl">Piezoelektryczne</name>
+        <name lang="it">Comando piezoelettrico</name>
         <name lang="cs">Piezoelektrické řízení</name>
         <name lang="ar">انضغاط كهربائي</name>
-        <name lang="it">Comando piezoelettrico</name>
-        <name lang="nl">Piezo lektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-15" y="0" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-12" y2="8" x2="2"/>
-        <rect width="14" x="-12" y="4" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-12" y2="2" x2="2"/>
+        <rect antialias="false" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-15" y="0"/>
+        <input size="9" x="-30" rotate="true" tagg="label" y="1.55" text="_"/>
+        <line antialias="false" x1="-12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="8" y1="8" end1="none" x2="2"/>
+        <rect antialias="false" width="14" style="line-style:normal;line-weight:normal;filling:none;color:black" height="2" x="-12" y="4"/>
+        <line antialias="false" x1="-12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="2" y1="2" end1="none" x2="2"/>
     </description>
 </definition>

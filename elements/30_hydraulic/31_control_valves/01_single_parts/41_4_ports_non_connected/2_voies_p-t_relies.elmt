@@ -1,27 +1,29 @@
-<definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{BDC3F306-7446-4D48-A39E-7D2487B877DD}"/><names>
-        <name lang="ar">مسارات  - P -&gt; T  مُتّصلة 2</name>
-        <name lang="en">4 ports - P -&gt; T connected</name>
-        <name lang="fr">4 voies - P -&gt; T Relies</name>
-        <name lang="pl">4 drogi - P -&gt; T połączone</name>
-        <name lang="cs">4 cesty - P -&gt; T spojené</name>
-        <name lang="it">4 porte - P -&gt; T connesse</name>
-        <name lang="nl">4 P -&gt; T</name>
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+    <uuid uuid="{761c5eff-0a37-4784-a2f4-0b683a83127e}"/>
+    <names>
+        <name lang="en">4 ports - P -> T connected</name>
+        <name lang="nl">4 P -> T</name>
+        <name lang="fr">4 voies - P -> T Relies</name>
+        <name lang="pl">4 drogi - P -> T połączone</name>
+        <name lang="it">4 porte - P -> T connesse</name>
+        <name lang="cs">4 cesty - P -> T spojené</name>
+        <name lang="ar">مسارات  - P -> T  مُتّصلة 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="30" y2="10" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="-5" x2="30"/>
-        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-15" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-15" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="27.975" y2="-15" x2="31.975"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="7.975" y2="-15" x2="11.975"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="30" y="-20" orientation="n"/>
-        <terminal x="30" y="10" orientation="s"/>
-        <terminal x="10" y="10" orientation="s"/>
+        <input size="9" x="-27" rotate="true" tagg="label" y="5.55" text="_"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="5" end1="none" x2="10"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="5" end1="none" x2="-10"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="5" y1="5" end1="none" x2="10"/>
+        <rect antialias="false" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" x="-15" y="-10"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-10" end1="none" x2="10"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-10" end1="none" x2="-10"/>
+        <line antialias="false" x1="7.975" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-5" end1="none" x2="11.975"/>
+        <line antialias="false" x1="-12.025" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-5" y1="-5" end1="none" x2="-8.025"/>
+        <terminal orientation="s" x="10" y="20"/>
+        <terminal orientation="s" x="-10" y="20"/>
+        <terminal orientation="n" x="-10" y="-10"/>
+        <terminal orientation="n" x="10" y="-10"/>
     </description>
 </definition>

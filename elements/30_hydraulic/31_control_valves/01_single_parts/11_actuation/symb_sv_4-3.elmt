@@ -1,29 +1,31 @@
-<definition width="80" version="0.22" hotspot_x="40" hotspot_y="40" height="70" type="element" orientation="dyyy">
-<uuid uuid="{43686A52-4C31-439B-BC0F-225E85BBE8EE}"/><names>
+<definition version="0.5" hotspot_x="40" hotspot_y="34" width="70" orientation="dyyy" height="60" link_type="simple" type="element">
+    <uuid uuid="{391544e2-59ea-4bea-85cb-f45df5725ee7}"/>
+    <names>
         <name lang="en">Servovalve 4-3</name>
-        <name lang="fr">Symbolisation Servovalve 4-3</name>
-        <name lang="cs">Servoventil 4/3</name>
-        <name lang="pl">Serwozawór 4/3</name>
-        <name lang="ar">صمّام محكوم 4-3</name>
-        <name lang="it">Servo-valvola 4-3</name>
         <name lang="nl">klep servo 4-3</name>
+        <name lang="fr">Symbolisation Servovalve 4-3</name>
+        <name lang="pl">Serwozawór 4/3</name>
+        <name lang="it">Servo-valvola 4-3</name>
+        <name lang="cs">Servoventil 4/3</name>
+        <name lang="ar">صمّام محكوم 4-3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
-        <input x="-2" y="17.5" size="5" rotate="true" text="t"/>
-        <input x="-20" y="17.5" size="5" rotate="true" text="p"/>
-        <input x="-2" y="-26.5" size="5" rotate="true" text="b"/>
-        <input x="-20" y="-26.5" size="5" rotate="true" text="a"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-35" y2="12" x2="25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21.6752" x1="-35.3462" y2="-21.6752" x2="24.6538"/>
-        <terminal x="-10" y="20" orientation="s"/>
-        <terminal x="0" y="20" orientation="s"/>
-        <terminal x="0" y="-30" orientation="n"/>
-        <terminal x="-10" y="-30" orientation="n"/>
+        <input size="9" x="-57" rotate="true" tagg="label" y="-9.45" text="_"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="10" end1="none" x2="0"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="10" end1="none" x2="-10"/>
+        <line antialias="false" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" y1="-30" end1="none" x2="-10"/>
+        <line antialias="false" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" y1="-30" end1="none" x2="0"/>
+        <input size="5" x="-2" rotate="true" tagg="none" y="17.5" text="t"/>
+        <input size="5" x="-20" rotate="true" tagg="none" y="17.5" text="p"/>
+        <input size="5" x="-2" rotate="true" tagg="none" y="-26.5" text="b"/>
+        <input size="5" x="-20" rotate="true" tagg="none" y="-26.5" text="a"/>
+        <line antialias="false" x1="-35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="12" y1="12" end1="none" x2="25"/>
+        <line antialias="false" x1="-35.3462" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-21.6752" y1="-21.6752" end1="none" x2="24.6538"/>
+        <terminal orientation="n" x="0" y="-30"/>
+        <terminal orientation="n" x="-10" y="-30"/>
+        <terminal orientation="s" x="-10" y="20"/>
+        <terminal orientation="s" x="0" y="20"/>
     </description>
 </definition>

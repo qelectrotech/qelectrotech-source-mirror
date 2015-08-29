@@ -1,28 +1,30 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-<uuid uuid="{BFDA293C-E6A3-4862-A624-8C719E94F325}"/><names>
+<definition version="0.5" hotspot_x="14" hotspot_y="34" width="80" orientation="dyyy" height="60" link_type="simple" type="element">
+    <uuid uuid="{e50c97b1-f2d8-46cb-a503-4d10e4d72d0f}"/>
+    <names>
         <name lang="en">Pump hydraulic motor 1</name>
+        <name lang="nl">Pomp motor 1</name>
         <name lang="fr">Pompe-moteur hydraulique 1</name>
         <name lang="pl">Pompa-silnik hydrauliczny o zmiennej objętości roboczej, o jednym kierunku obrotów</name>
+        <name lang="it">Pompa idraulica motore 1</name>
         <name lang="cs">Čerpadlo - vodní motor 1</name>
         <name lang="ar">مضخّة محرّكة هيدروليكية 1</name>
-        <name lang="it">Pompa idraulica motore 1</name>
-        <name lang="nl">Pomp motor 1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-25" x2="30"/>
-        <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-6" x1="6" y2="-6" x2="14" y3="-13" x3="10" y4="-6"/>
-        <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-19" x1="6" y2="-19" x2="14" y3="-13" x3="10" y4="-19"/>
-        <polygon x4="25" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-23" x1="25" y2="-20" x2="28" y3="-26" x3="31" y4="-23"/>
-        <polygon x4="34" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="34" y2="-13" x2="37" y3="-19" x3="40" y4="-16"/>
-        <arc width="30" x="32" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
-        <terminal x="10" y="-30" orientation="n"/>
-        <terminal x="10" y="20" orientation="s"/>
+        <input size="9" x="-17" rotate="true" tagg="label" y="-29.45" text="_"/>
+        <circle antialias="true" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" y="-20"/>
+        <line antialias="true" x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-25" y1="15" end1="none" x2="30"/>
+        <polygon antialias="true" y4="-6" x1="6" x4="6" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-6" y1="-6" x3="10" x2="14" y3="-13"/>
+        <polygon antialias="true" y4="-19" x1="6" x4="6" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-19" y1="-19" x3="10" x2="14" y3="-13"/>
+        <polygon antialias="true" y4="-23" x1="25" x4="25" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-20" y1="-23" x3="31" x2="28" y3="-26"/>
+        <polygon antialias="true" y4="-16" x1="34" x4="34" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-13" y1="-16" x3="40" x2="37" y3="-19"/>
+        <arc antialias="true" start="-135" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" angle="-90" x="32" y="-20"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="20" y1="10" end1="none" x2="10"/>
+        <line antialias="false" x1="25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-4" y1="-4" end1="none" x2="40"/>
+        <line antialias="false" x1="25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-6" y1="-6" end1="none" x2="40"/>
+        <line antialias="false" x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" y1="-30" end1="none" x2="10"/>
+        <terminal orientation="n" x="10" y="-30"/>
+        <terminal orientation="s" x="10" y="20"/>
     </description>
 </definition>
