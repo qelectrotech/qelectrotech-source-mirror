@@ -19,6 +19,8 @@
 #include "element.h"
 #include "diagram.h"
 #include "conductorautonumerotation.h"
+#include "conductor.h"
+#include "potentialselectordialog.h"
 
 /**
  * @brief LinkElementCommand::LinkElementCommand
@@ -211,7 +213,19 @@ void LinkElementCommand::redo()
 		&& m_element->conductors().size() \
 		&& m_linked_after.size() && m_linked_after.first()->conductors().size())
 	{
-		ConductorAutoNumerotation::checkPotential(m_element->conductors().first(), this);
+			//fill list of potential
+		QSet <Conductor *> c_list = m_element->conductors().first()->relatedPotentialConductors();
+		c_list << m_element->conductors().first();
+			//fill list of text
+		QStringList strl;
+		foreach (const Conductor *c, c_list) strl<<(c->properties().text);
+
+			//check text list, isn't same in potential, ask user what to do
+		if (!QET::eachStrIsEqual(strl))
+		{
+			PotentialSelectorDialog psd(m_element, this);
+			psd.exec();
+		}
 		m_first_redo = false;
 	}
 	QUndoCommand::redo();

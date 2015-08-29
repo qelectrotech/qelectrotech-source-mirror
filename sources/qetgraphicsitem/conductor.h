@@ -105,20 +105,20 @@ class Conductor : public QObject, public QGraphicsPathItem
 		bool pathFromXml(const QDomElement &);
 
 	public:
-	const QList<ConductorSegment *> segmentsList() const;
-	void setProperties(const ConductorProperties &);
-	ConductorProperties properties() const;
-	void setProfile(const ConductorProfile &, Qt::Corner);
-	ConductorProfile profile(Qt::Corner) const;
-	void setProfiles(const ConductorProfilesGroup &);
-	ConductorProfilesGroup profiles() const;
-	void readProperties();
-	void calculateTextItemPosition();
-	virtual Highlight highlight() const;
-	virtual void setHighlighted(Highlight);
-	QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
-	QETDiagramEditor* diagramEditor() const;
-	void editProperty ();
+		const QList<ConductorSegment *> segmentsList() const;
+		void setProperties(const ConductorProperties &properties);
+		ConductorProperties properties() const;
+		void setProfile(const ConductorProfile &, Qt::Corner);
+		ConductorProfile profile(Qt::Corner) const;
+		void setProfiles(const ConductorProfilesGroup &);
+		ConductorProfilesGroup profiles() const;
+		void readProperties();
+		void calculateTextItemPosition();
+		virtual Highlight highlight() const;
+		virtual void setHighlighted(Highlight);
+		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
+		QETDiagramEditor* diagramEditor() const;
+		void editProperty ();
 	
 	public slots:
 	void displayedTextChanged();

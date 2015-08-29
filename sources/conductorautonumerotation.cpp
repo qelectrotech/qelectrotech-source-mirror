@@ -20,9 +20,9 @@
 #include "qetdiagrameditor.h"
 #include "conductor.h"
 #include "diagram.h"
-#include "potentialtextsdialog.h"
 #include "qet.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "potentialselectordialog.h"
 
 /**
  * @brief ConductorAutoNumerotation::ConductorAutoNumerotation
@@ -49,31 +49,6 @@ void ConductorAutoNumerotation::numerate() {
 	if (!conductor_) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
 	else if (conductor_ -> properties().type == ConductorProperties::Multi) numerateNewConductor();
-}
-
-/**
- * @brief ConductorAutoNumerotation::checkPotential
- * Check if eah texts of this potential is identical.
- * If not, ask user how to numerate
- * @param conductor
- * A conductor of the potential to check.
- */
-void ConductorAutoNumerotation::checkPotential(Conductor *conductor, QUndoCommand *parent) {
-		//fill list of potential
-	QSet <Conductor *> c_list = conductor->relatedPotentialConductors();
-	c_list << conductor;
-		//fill list of text
-	QStringList strl;
-	foreach (const Conductor *c, c_list) strl<<(c->text());
-
-		//check text list, isn't same in potential, ask user what to do
-	if (!QET::eachStrIsEqual(strl)) {
-		PotentialTextsDialog ptd(conductor, conductor->diagramEditor());
-		if ( ptd.exec() == QDialog::Accepted ) {
-			ConductorAutoNumerotation can(conductor, conductor -> diagram(), parent);
-			can.applyText(ptd.selectedText());
-		}
-	}
 }
 
 /**
@@ -130,9 +105,8 @@ void ConductorAutoNumerotation::numeratePotential()
 		//the texts isn't identicals
 	else
 	{
-		PotentialTextsDialog ptd (conductor_, conductor_ -> diagramEditor());
-		ptd.exec();
-		applyText(ptd.selectedText());
+		PotentialSelectorDialog psd(conductor_, m_parent_undo, conductor_->diagramEditor());
+		psd.exec();
 	}
 }
 

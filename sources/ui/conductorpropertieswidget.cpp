@@ -66,7 +66,8 @@ ConductorPropertiesWidget::~ConductorPropertiesWidget()
  * Set the properties
  * @param properties
  */
-void ConductorPropertiesWidget::setProperties(const ConductorProperties &properties) {
+void ConductorPropertiesWidget::setProperties(const ConductorProperties &properties)
+{
 	if (m_properties == properties) return;
 	m_properties = properties;
 
@@ -74,18 +75,20 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
-	ui -> m_text_le                  -> setText    (m_properties.text);
-	ui -> m_text_size_sb             -> setValue   (m_properties.text_size);
-	ui -> m_show_text_cb             -> setChecked (m_properties.m_show_text);
-	ui -> m_one_text_per_folio_cb    -> setChecked (m_properties.m_one_text_per_folio);
-	ui -> m_earth_cb                 -> setChecked (m_properties.singleLineProperties.hasGround);
-	ui -> m_neutral_cb               -> setChecked (m_properties.singleLineProperties.hasNeutral);
-	ui -> m_pen_cb                   -> setChecked (m_properties.singleLineProperties.isPen());
-	ui -> m_phase_cb                 -> setChecked (m_properties.singleLineProperties.phasesCount());
-	ui -> m_phase_slider             -> setValue   (m_properties.singleLineProperties.phasesCount());
+	ui->m_text_le               -> setText    (m_properties.text);
+	ui->m_function_le           ->setText     (m_properties.m_function);
+	ui->m_tension_protocol_le   ->setText     (m_properties.m_tension_protocol);
+	ui->m_text_size_sb          -> setValue   (m_properties.text_size);
+	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
+	ui->m_one_text_per_folio_cb -> setChecked (m_properties.m_one_text_per_folio);
+	ui->m_earth_cb              -> setChecked (m_properties.singleLineProperties.hasGround);
+	ui->m_neutral_cb            -> setChecked (m_properties.singleLineProperties.hasNeutral);
+	ui->m_pen_cb                -> setChecked (m_properties.singleLineProperties.isPen());
+	ui->m_phase_cb              -> setChecked (m_properties.singleLineProperties.phasesCount());
+	ui->m_phase_slider          -> setValue   (m_properties.singleLineProperties.phasesCount());
 
-	m_verti_select                   -> setValue   (m_properties.verti_rotate_text);
-	m_horiz_select                   -> setValue   (m_properties.horiz_rotate_text);
+	m_verti_select -> setValue (m_properties.verti_rotate_text);
+	m_horiz_select -> setValue (m_properties.horiz_rotate_text);
 
 	setConductorType(m_properties.type);
 	updatePreview(false);
@@ -95,7 +98,8 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
  * @brief ConductorPropertiesWidget::properties
  * @return the edited properties
  */
-ConductorProperties ConductorPropertiesWidget::properties() const {
+ConductorProperties ConductorPropertiesWidget::properties() const
+{
 	ConductorProperties properties_;
 	if (ui -> m_multiwires_gb  -> isChecked()) properties_.type = ConductorProperties::Multi;
 	else if (ui -> m_singlewire_gb -> isChecked()) properties_.type = ConductorProperties::Single;
@@ -103,6 +107,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
 	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.text                    = ui -> m_text_le -> text();
+	properties_.m_function              = ui -> m_function_le->text();
+	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.text_size               = ui -> m_text_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();

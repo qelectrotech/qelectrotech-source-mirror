@@ -627,7 +627,6 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 		new_conductor->setProperties(others_properties);
 	else
 	{
-		new_conductor -> setProperties(diagram() -> defaultConductorProperties);
 			//Autonum it
 		ConductorAutoNumerotation can (new_conductor, diagram(), undo);
 		can.numerate();

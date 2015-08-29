@@ -32,7 +32,6 @@ class ConductorAutoNumerotation
 
 			//methods
 		void        numerate       ();
-		static void checkPotential (Conductor *conductor, QUndoCommand *parent = nullptr);
 		void        applyText      (QString);
 
 	private:

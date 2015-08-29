@@ -241,18 +241,19 @@ ConductorProperties::~ConductorProperties() {
  * Export conductor propertie, in the XML element 'e'
  * @param e the xml element
  */
-void ConductorProperties::toXml(QDomElement &e) const {
+void ConductorProperties::toXml(QDomElement &e) const
+{
 	e.setAttribute("type", typeToString(type));
 
-	
-	if (color != QColor(Qt::black)) {
+	if (color != QColor(Qt::black))
 		e.setAttribute("color", color.name());
-	}
 	
-	if (type == Single) {
+	if (type == Single)
 		singleLineProperties.toXml(e);
-	}
+
 	e.setAttribute("num", text);
+	e.setAttribute("function", m_function);
+	e.setAttribute("tension-protocol", m_tension_protocol);
 	e.setAttribute("numsize", text_size);
 	e.setAttribute("displaytext", m_show_text);
 	e.setAttribute("onetextperfolio", m_one_text_per_folio);
@@ -260,9 +261,8 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("horizrotatetext", horiz_rotate_text);
 	
 	QString conductor_style = writeStyle();
-	if (!conductor_style.isEmpty()) {
+	if (!conductor_style.isEmpty())
 		e.setAttribute("style", conductor_style);
-	}
 }
 
 
@@ -271,35 +271,36 @@ void ConductorProperties::toXml(QDomElement &e) const {
  * Import conductor propertie, from the attribute of the xml element 'e'
  * @param e the xml document
  */
-void ConductorProperties::fromXml(QDomElement &e) {
-	// get conductor color
+void ConductorProperties::fromXml(QDomElement &e)
+{
+		// get conductor color
 	QColor xml_color= QColor(e.attribute("color"));
-	if (xml_color.isValid()) {
-		color = xml_color;
-	} else {
-		color = QColor(Qt::black);
-	}
+	color = (xml_color.isValid()? xml_color : QColor(Qt::black));
 	
-	// read style of conductor
+		// read style of conductor
 	readStyle(e.attribute("style"));
 	
-	if (e.attribute("type") == typeToString(Single)) {
-		// get specific properties for single conductor
+	if (e.attribute("type") == typeToString(Single))
+	{
+			// get specific properties for single conductor
 		singleLineProperties.fromXml(e);
 		type = Single;
-	} else {
-		type = Multi;
 	}
-	// get text field
-	text = e.attribute("num");
-	text_size = e.attribute("numsize", QString::number(9)).toInt();
-	m_show_text = e.attribute("displaytext", QString::number(1)).toInt();
-	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
-	verti_rotate_text = e.attribute("vertirotatetext").toDouble();
-	horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
+	else
+		type = Multi;
 
-	//Keep retrocompatible with version older than 0,4
-	//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
+	text                 = e.attribute("num");
+	m_function           = e.attribute("function");
+	m_tension_protocol   = e.attribute("tension-protocol");
+	text_size            = e.attribute("numsize", QString::number(9)).toInt();
+	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
+	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
+	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
+	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
+
+		//Keep retrocompatible with version older than 0,4
+		//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
+		//@TODO remove this code for qet 0.6 or later
 	if (e.attribute("type") == "simple") m_show_text = false;
 }
 
@@ -307,11 +308,14 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	@param settings Parametres a ecrire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const {
+void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const
+{
 	settings.setValue(prefix + "color", color.name());
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
+	settings.setValue(prefix + "function", m_function);
+	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "displaytext", m_show_text);
 	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
@@ -324,30 +328,25 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	@param settings Parametres a lire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix) {
-	// recupere la couleur dans les parametres
+void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix)
+{
 	QColor settings_color = QColor(settings.value(prefix + "color").toString());
-	if (settings_color.isValid()) {
-		color = settings_color;
-	} else {
-		color = QColor(Qt::black);
-	}
+	color = (settings_color.isValid()? settings_color : QColor(Qt::black));
 	
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
-	if (setting_type == typeToString(Single)) {
-		type = Single;
-	} else {
-		type = Multi;
-	}
-	singleLineProperties.fromSettings(settings, prefix);
-	text = settings.value(prefix + "text", "_").toString();
-	text_size = settings.value(prefix + "textsize", "7").toInt();
-	m_show_text = settings.value(prefix + "displaytext", true).toBool();
-	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
-	verti_rotate_text = settings.value((prefix + "vertirotatetext"), "270").toDouble();
-	horiz_rotate_text = settings.value((prefix + "horizrotatetext"), "0").toDouble();
+	type = (setting_type == typeToString(Single)? Single : Multi);
 
-	// lit le style du conducteur
+	singleLineProperties.fromSettings(settings, prefix);
+
+	text                 = settings.value(prefix + "text", "_").toString();
+	m_function           = settings.value(prefix + "function", "").toString();
+	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
+	text_size            = settings.value(prefix + "textsize", "7").toInt();
+	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
+	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
+	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
+	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
+
 	readStyle(settings.value(prefix + "style").toString());
 }
 
@@ -385,6 +384,8 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const{
 		other.color == color &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.m_function == m_function &&\
+		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_show_text == m_show_text &&\
 		other.text_size == text_size &&\
 		other.verti_rotate_text == verti_rotate_text &&\

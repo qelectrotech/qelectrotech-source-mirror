@@ -61,56 +61,50 @@ class SingleLineProperties {
 	This class represents the functional properties of a particular conductor,
 	i.e. properties other than path and terminals.
 */
-class ConductorProperties {
-	// constructors, destructor
+class ConductorProperties
+{
 	public:
-	ConductorProperties();
-	virtual ~ConductorProperties();
+		ConductorProperties();
+		virtual ~ConductorProperties();
 	
-	/**
-		Represents the kind of a particular conductor:
-		 * Simple: no symbols, no text input
-		 * Single: singleline symbols, no text input
-		 * Multi: text input, no symbol
-	*/
-	enum ConductorType { Single, Multi };
-	
-	// attributes
-	/// Conductor type
-	ConductorType type;
-	/// Conductor color
-	QColor color;
-	/// Texte displayed for multiline conductors
-	QString text;
-	/// size of text
-	int text_size;
-	/// rotation angle texte
-	double verti_rotate_text;
-	double horiz_rotate_text;
-	bool m_show_text;
-	bool m_one_text_per_folio;
-	/// conducteur style (Qt::SolidLine or Qt::DashLine)
-	Qt::PenStyle style;
-	
-	/// properties for singleline conductors
-	SingleLineProperties singleLineProperties;
-	
-	// methods
-	void toXml(QDomElement &) const;
-	void fromXml(QDomElement &);
-	void toSettings(QSettings &, const QString & = QString()) const;
-	void fromSettings(QSettings &, const QString & = QString());
-	static QString typeToString(ConductorType);
+			/**
+			 * @brief The ConductorType enum Represents the kind of a particular conductor:
+			 * Single: singleline symbols, no text input
+			 * Multi: text input, no symbol
+			 */
+		enum ConductorType { Single, Multi };
 
-	static ConductorProperties defaultProperties();
+
+			//Attributes
+		ConductorType type;
+		QColor color;
+		QString text,
+				m_function,
+				m_tension_protocol;
+		int text_size;
+		double verti_rotate_text;
+		double horiz_rotate_text;
+		bool m_show_text;
+		bool m_one_text_per_folio;
+		Qt::PenStyle style;
+		SingleLineProperties singleLineProperties;
 	
-	// operators
-	bool operator==(const ConductorProperties &) const;
-	bool operator!=(const ConductorProperties &) const;
+			// methods
+		void toXml(QDomElement &) const;
+		void fromXml(QDomElement &);
+		void toSettings(QSettings &, const QString & = QString()) const;
+		void fromSettings(QSettings &, const QString & = QString());
+		static QString typeToString(ConductorType);
+
+		static ConductorProperties defaultProperties();
+	
+			// operators
+		bool operator==(const ConductorProperties &) const;
+		bool operator!=(const ConductorProperties &) const;
 	
 	private:
-	void readStyle(const QString &);
-	QString writeStyle() const;
+		void readStyle(const QString &);
+		QString writeStyle() const;
 };
 
 Q_DECLARE_METATYPE(ConductorProperties)

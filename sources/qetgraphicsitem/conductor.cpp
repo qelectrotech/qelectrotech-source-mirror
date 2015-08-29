@@ -35,12 +35,13 @@ bool Conductor::pen_and_brush_initialized = false;
 QPen Conductor::conductor_pen = QPen();
 QBrush Conductor::conductor_brush = QBrush();
 QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
+
 /**
-	Constructeur
-	@param p1              Premiere Borne a laquelle le conducteur est lie
-	@param p2              Seconde Borne a laquelle le conducteur est lie
-	@param parent_diagram  QGraphicsScene a laquelle appartient le conducteur
-*/
+ * @brief Conductor::Conductor
+ * Default constructor.
+ * @param p1 : first terminal of this conductor.
+ * @param p2 : second terminal of this conductor.
+ */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	QObject(),
 	QGraphicsPathItem(0),
@@ -57,7 +58,13 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	segments_squares_scale_(1.0),
 	must_highlight_(Conductor::None)
 {
-	//set Zvalue at 9 to be upper than the DiagramImageItem and bottom of element(10)
+		//Set the default conductor properties.
+	if (p1->diagram())
+		properties_ = p1->diagram()->defaultConductorProperties;
+	else if (p2->diagram())
+		properties_ = p2->diagram()->defaultConductorProperties;
+
+		//set Zvalue at 9 to be upper than the DiagramImageItem and bottom of element(10)
 	setZValue(9);
 	previous_z_value = zValue();
 
@@ -67,8 +74,9 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		//m_valid become false if the conductor can't be added to terminal (conductor already exist)
 	m_valid = (!ajout_p1 || !ajout_p2) ? false : true;
 	
-	// attributs de dessin par defaut (communs a tous les conducteurs)
-	if (!pen_and_brush_initialized) {
+		//Default attribut for paint a conductor
+	if (!pen_and_brush_initialized)
+	{
 		conductor_pen.setJoinStyle(Qt::MiterJoin);
 		conductor_pen.setCapStyle(Qt::SquareCap);
 		conductor_pen.setColor(Qt::black);
@@ -79,13 +87,13 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		pen_and_brush_initialized = true;
 	}
 	
-	// par defaut, les 4 profils sont des profils nuls = il faut utiliser priv_calculeConductor
+		//By default, the 4 profils are nuls -> we must to use priv_calculeConductor
 	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
 	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
 	conductor_profiles.insert(Qt::BottomLeftCorner,  ConductorProfile());
 	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
 
-	// calcul du rendu du conducteur
+		//Generate the path of this conductor.
 	generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
@@ -1338,14 +1346,26 @@ void Conductor::setText(const QString &t) {
 /**
  * @brief Conductor::setProperties
  * Set new properties for this conductor
- * @param p : properties
+ * Also change the common properties for every conductors at the same potential.
+ * (text, function and tension/protocol) other value of properties isn't changed.
+ * @param properties : properties
  */
-void Conductor::setProperties(const ConductorProperties &p) {
-	if (properties_ != p)
+void Conductor::setProperties(const ConductorProperties &properties)
+{
+	if (properties_ == properties) return;
+
+	properties_ = properties;
+
+	foreach(Conductor *other_conductor, relatedPotentialConductors())
 	{
-		properties_ = p;
-		readProperties();
+		ConductorProperties other_properties = other_conductor->properties();
+		other_properties.text = properties_.text;
+		other_properties.m_function = properties_.m_function;
+		other_properties.m_tension_protocol = properties_.m_tension_protocol;
+		other_conductor->setProperties(other_properties);
 	}
+
+	readProperties();
 }
 
 /**
