@@ -1,17 +1,20 @@
-<definition width="60" version="0.2" hotspot_x="20" hotspot_y="35" height="80" type="element" orientation="dyyy" >
-<uuid uuid="{6C57B039-4C22-4098-BA77-6405661CFFBC}"/><names>
-        <name lang="fr">désignation relai et repere contact</name>
-        <name lang="de">Rechteck für Kontaktspiegel</name>
+<definition width="50" hotspot_x="16" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="35">
+    <uuid uuid="{f1ec42ea-90d5-424c-ba9b-e339e658cc9a}"/>
+    <names>
         <name lang="pl">Lokalizacja zestyków</name>
         <name lang="it">descrizione relè e riferimento contatto</name>
+        <name lang="de">Rechteck für Kontaktspiegel</name>
+        <name lang="fr">désignation relai et repere contact</name>
     </names>
+    <informations></informations>
     <description>
-        <rect width="45" x="-14" y="-30" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <input x="8" y="-19.6667" size="5" rotate="true" text="_" />
-        <line length1="1" length2="1" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-30" x1="5" y2="40" x2="5" />
-        <input x="8" y="32.3333" size="5" rotate="true" text="_" />
-        <input x="8" y="19.3333" size="5" rotate="true" text="_" />
-        <input x="8" y="-6.66667" size="5" rotate="true" text="_" />
-        <input x="8" y="6.33333" size="5" rotate="true" text="_" />
+        <input tagg="label" rotate="true" size="9" y="-44.45" x="-7" text="_"/>
+        <rect width="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-30" x="-14" height="70"/>
+        <input tagg="none" rotate="true" size="5" y="-19.6667" x="8" text="_"/>
+        <line end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="40" antialias="false" length2="1" end1="none" length1="1" y1="-30" x1="5" x2="5"/>
+        <input tagg="none" rotate="true" size="5" y="32.3333" x="8" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="19.3333" x="8" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="-6.66667" x="8" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="6.33333" x="8" text="_"/>
     </description>
 </definition>

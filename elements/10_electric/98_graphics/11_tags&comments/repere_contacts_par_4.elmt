@@ -1,22 +1,25 @@
-<definition width="50" version="0.2" hotspot_x="25" hotspot_y="45" height="80" type="element" orientation="dnnn" >
-<uuid uuid="{A3EFE030-9A3F-4841-B4AD-B36C3318E17C}"/><names>
-        <name lang="fr">Repère des contacts par 4</name>
-        <name lang="de">Kreuz für Kontaktspiegel</name>
+<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+    <uuid uuid="{ea73da5f-bda2-4589-8d60-e63b19d46670}"/>
+    <names>
         <name lang="pl">Lokalizacja zestyków</name>
         <name lang="it">Riferimento contatti per 4</name>
+        <name lang="de">Kreuz für Kontaktspiegel</name>
+        <name lang="fr">Repère des contacts par 4</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="-14" y="27.3333" size="5" rotate="true" text="_" />
-        <input x="-14" y="14.3333" size="5" rotate="true" text="_" />
-        <input x="-14" y="1.33339" size="5" rotate="true" text="_" />
-        <input x="-14" y="-11.6667" size="5" rotate="true" text="_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="0" y2="32" x2="0" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-14" y2="-20" x2="14" />
-        <input x="3" y="-23.6667" size="5" rotate="true" text="F" />
-        <input x="3" y="-11.6667" size="5" rotate="true" text="_" />
-        <input x="3" y="27.3333" size="5" rotate="true" text="_" />
-        <input x="3" y="14.3333" size="5" rotate="true" text="_" />
-        <input x="3" y="1.33339" size="5" rotate="true" text="_" />
-        <input x="-15" y="-23.6667" size="5" rotate="true" text="O" />
+        <input tagg="label" rotate="true" size="9" y="40.55" x="-7" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="27.3333" x="-14" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="14.3333" x="-14" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="1.33339" x="-14" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="-11.6667" x="-14" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="32" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-33" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="-14" x2="14"/>
+        <input tagg="none" rotate="true" size="5" y="-23.6667" x="3" text="F"/>
+        <input tagg="none" rotate="true" size="5" y="-11.6667" x="3" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="27.3333" x="3" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="14.3333" x="3" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="1.33339" x="3" text="_"/>
+        <input tagg="none" rotate="true" size="5" y="-23.6667" x="-15" text="O"/>
     </description>
 </definition>

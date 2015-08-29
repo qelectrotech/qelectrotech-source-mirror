@@ -1,20 +1,22 @@
-<definition width="50" version="0.4" hotspot_x="15" hotspot_y="20" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C44DEC95-8C0B-4ECB-82C1-C5777937BF9C}"/><names>
-        <name lang="ar">خط ثلاثي الأوجه - الشكل 2</name>
-        <name lang="el">Τριφασική γραμμή - τύπος 2</name>
-        <name lang="en">Three-phase line -form 2</name>
-        <name lang="it">Linea trifase 2</name>
-        <name lang="fr">Ligne triphase forme 2</name>
-        <name lang="pl">Trzy przewody - forma 2</name>
-        <name lang="nl">Driefasen lijn </name>
+<definition width="50" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+    <uuid uuid="{b693b711-32c0-49c5-8d4a-45c3ac6b4ea0}"/>
+    <names>
         <name lang="cs">Třífázový vodič - typ 2</name>
+        <name lang="it">Linea trifase 2</name>
+        <name lang="pl">Trzy przewody - forma 2</name>
+        <name lang="en">Three-phase line -form 2</name>
+        <name lang="nl">Driefasen lijn </name>
+        <name lang="ar">خط ثلاثي الأوجه - الشكل 2</name>
+        <name lang="fr">Ligne triphase forme 2</name>
+        <name lang="el">Τριφασική γραμμή - τύπος 2</name>
     </names>
     <informations>EN 60617: 03-01-03</informations>
     <description>
-        <input x="10" y="-5.5" size="5" rotate="true" text="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="13" y2="4" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="30"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <input tagg="none" rotate="true" size="5" y="-5.5" x="10" text="3"/>
+        <input tagg="label" rotate="true" size="9" y="3.55" x="4" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-4" x1="13" x2="7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="30"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="30" orientation="e"/>
     </description>
 </definition>

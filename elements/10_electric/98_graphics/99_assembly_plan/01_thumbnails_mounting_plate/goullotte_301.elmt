@@ -1,19 +1,21 @@
-<definition width="50" version="0.3" hotspot_x="0" hotspot_y="30" height="30" type="element" orientation="dyyy">
-<uuid uuid="{D2638F95-6FBA-4949-ACCE-17299D9795DD}"/><names>
-        <name lang="en">Terminal Installation 30.1</name>
-        <name lang="de">Montageschiene</name>
-        <name lang="it">Elenco 30.1</name>
-        <name lang="fr">goullotte 30.1</name>
-        <name lang="pl">Listwa instalacyjna 30.1</name>
+<definition width="60" hotspot_x="5" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="35">
+    <uuid uuid="{27cae709-785e-492d-b2be-057bb578b126}"/>
+    <names>
         <name lang="cs">Instalační lišta 30.1</name>
+        <name lang="it">Elenco 30.1</name>
+        <name lang="pl">Listwa instalacyjna 30.1</name>
+        <name lang="en">Terminal Installation 30.1</name>
         <name lang="nl">Klemmenstrook 30.1</name>
+        <name lang="de">Montageschiene</name>
+        <name lang="fr">goullotte 30.1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-30" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="50"/>
+        <input tagg="label" rotate="true" size="9" y="-44.45" x="3" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="50"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-30" x1="0" x2="50"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="0" x2="50"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="0" x2="50"/>
     </description>
 </definition>

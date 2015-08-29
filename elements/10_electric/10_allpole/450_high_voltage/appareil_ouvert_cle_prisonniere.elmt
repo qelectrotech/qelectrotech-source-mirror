@@ -1,17 +1,19 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{3F986460-D6CF-4C37-A457-BF6A40F09D5B}"/><names>
-        <name lang="en">Key prisoner open device</name>
-        <name lang="fr">Appareil ouvert Clef prisonniere</name>
-        <name lang="pl">Urządzenie otwarte, klucz niedostępny</name>
+<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+    <uuid uuid="{406b1d51-fc0d-4525-b5f5-14dbf88b468f}"/>
+    <names>
         <name lang="cs">Zařízení odemčeno, klíč nedostupný</name>
-        <name lang="ar">جهاز مفتوح, مفتاج سجين</name>
+        <name lang="pl">Urządzenie otwarte, klucz niedostępny</name>
         <name lang="it">Apparecchio a chiave, aperto</name>
+        <name lang="en">Key prisoner open device</name>
         <name lang="nl">Sleutelvanger open</name>
+        <name lang="fr">Appareil ouvert Clef prisonniere</name>
+        <name lang="ar">جهاز مفتوح, مفتاج سجين</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10" x1="-10" y2="-10" x2="10" y3="10" x3="10" y4="10"/>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-7" text="_"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-10" x4="-10" antialias="false" y1="10" x1="-10" x3="10" y3="10" y4="10" x2="10"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10" x="-10" height="20"/>
     </description>
 </definition>

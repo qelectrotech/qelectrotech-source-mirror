@@ -1,19 +1,21 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{5C0497F1-DA88-443C-87C5-EBA76CE660AA}"/><names>
-        <name lang="en">Free key bolt out maneuver blocked</name>
-        <name lang="fr">Cle libre  pene sorti manoeuvre bloquée</name>
-        <name lang="pl">Klucz dostępny, wyjście niedozwolone</name>
+<definition width="60" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+    <uuid uuid="{6598358d-a4ac-4ead-8a53-c76fff328df3}"/>
+    <names>
         <name lang="cs">Klíč dostupný, výstup nedovolen</name>
-        <name lang="ar">المفتاح متاح خرج المناورة محظور</name>
+        <name lang="pl">Klucz dostępny, wyjście niedozwolone</name>
         <name lang="it">Chiave libera, manovra bloccata</name>
+        <name lang="en">Free key bolt out maneuver blocked</name>
         <name lang="nl">Slot sleutel uit geblokt </name>
+        <name lang="fr">Cle libre  pene sorti manoeuvre bloquée</name>
+        <name lang="ar">المفتاح متاح خرج المناورة محظور</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="8" y2="8" x2="-8"/>
-        <rect width="22" x="18" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-8" x1="8" x2="-8"/>
+        <rect width="22" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="-4" x="18" height="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="14.1421" y="-7.071" x="-7.071"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10" x="-10" height="20"/>
     </description>
 </definition>

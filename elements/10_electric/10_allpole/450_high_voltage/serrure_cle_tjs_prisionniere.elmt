@@ -1,16 +1,18 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{FCFAA37A-69E7-40EC-AA62-8955019AE758}"/><names>
-        <name lang="en">Lock with key still trapped</name>
-        <name lang="fr">Serrure avec cle toujours prisionniere</name>
-        <name lang="pl">Zamek,  klucz niedostępny</name>
+<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+    <uuid uuid="{030c2398-5d5e-4713-8635-77cce3130320}"/>
+    <names>
         <name lang="cs">Zámek, klíč vždy nedostupný</name>
-        <name lang="ar">قفل بمفتاح دائما سجين</name>
+        <name lang="pl">Zamek,  klucz niedostępny</name>
         <name lang="it">Serratura con chiave bloccata</name>
+        <name lang="en">Lock with key still trapped</name>
         <name lang="nl">Slot met gevangen sleutel</name>
+        <name lang="fr">Serrure avec cle toujours prisionniere</name>
+        <name lang="ar">قفل بمفتاح دائما سجين</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="-10" x="-10" height="20"/>
+        <input tagg="label" rotate="true" size="9" y="-21.5" x="-6" text="_"/>
     </description>
 </definition>

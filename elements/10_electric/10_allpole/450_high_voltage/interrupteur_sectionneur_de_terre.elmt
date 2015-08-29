@@ -1,26 +1,28 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{12866EAC-FE8D-4C1C-8E55-738D90FF0EA4}"/><names>
-        <name lang="ar">مفتاح-عازل أرضي</name>
-        <name lang="de">Erdungsschalter</name>
-        <name lang="pt">Interruptor-seccionador de terra</name>
-        <name lang="el">Διακόπτης αποσύνδεσης γείωσης</name>
-        <name lang="en">Ground switch disconnector</name>
-        <name lang="it">Interruttore-sezionatore di terra</name>
-        <name lang="fr">Interrupteur-sectionneur de terre</name>
-        <name lang="pl">Uziemnik</name>
-        <name lang="nl">Aardeschakelaar</name>
+<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="29">
+    <uuid uuid="{c6339842-c3fa-439f-9107-c0d7b2388614}"/>
+    <names>
         <name lang="cs">Vypínač uzemnění</name>
+        <name lang="pt">Interruptor-seccionador de terra</name>
+        <name lang="it">Interruttore-sezionatore di terra</name>
+        <name lang="pl">Uziemnik</name>
+        <name lang="en">Ground switch disconnector</name>
+        <name lang="nl">Aardeschakelaar</name>
+        <name lang="de">Erdungsschalter</name>
+        <name lang="ar">مفتاح-عازل أرضي</name>
+        <name lang="fr">Interrupteur-sectionneur de terre</name>
+        <name lang="el">Διακόπτης αποσύνδεσης γείωσης</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-2.5" y2="12" x2="2.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="10" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.5" x1="-4" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-2" y2="-10" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0"/>
-        <terminal x="0" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <input tagg="label" rotate="true" size="9" y="-6.45" x="2" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14" antialias="false" length2="1.5" end1="none" length1="1.5" y1="14" x1="-1" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="12" antialias="false" length2="1.5" end1="none" length1="1.5" y1="12" x1="-2.5" x2="2.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="10" x1="4" x2="-4"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-8.5" x1="-4" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="-2" x2="2"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="0"/>
+        <terminal y="-20" x="0" orientation="n"/>
     </description>
 </definition>

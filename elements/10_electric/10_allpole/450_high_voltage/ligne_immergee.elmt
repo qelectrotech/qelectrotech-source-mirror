@@ -1,21 +1,23 @@
-<definition width="50" version="0.4" hotspot_x="15" hotspot_y="15" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B5EA2AEE-D5A3-4192-9D9E-2AB42B90377C}"/><names>
-        <name lang="ar">خط مغمور</name>
-        <name lang="de">Leiter im Gewässer,Seekabel</name>
-        <name lang="el">Βυθισμένη γραμμή</name>
-        <name lang="en">Line immersed</name>
-        <name lang="it">Linea immersa</name>
-        <name lang="fr">Ligne immergée</name>
-        <name lang="pl">Linia podwodna</name>
-        <name lang="nl">Onderwater lijn</name>
+<definition width="50" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="15">
+    <uuid uuid="{80bd0321-d828-4618-be41-f1ab7b7831f4}"/>
+    <names>
         <name lang="cs">Ponořený vodič, mořský kabel</name>
+        <name lang="it">Linea immersa</name>
+        <name lang="pl">Linia podwodna</name>
+        <name lang="en">Line immersed</name>
+        <name lang="nl">Onderwater lijn</name>
+        <name lang="de">Leiter im Gewässer,Seekabel</name>
+        <name lang="ar">خط مغمور</name>
+        <name lang="fr">Ligne immergée</name>
+        <name lang="el">Βυθισμένη γραμμή</name>
     </names>
     <informations>EN 60617: 11-03-02</informations>
     <description>
-        <arc width="10" x="2" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
-        <arc width="10" x="9" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="30"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <arc width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" antialias="true" angle="-90" y="-13" x="2" height="10"/>
+        <input tagg="label" rotate="true" size="9" y="-0.45" x="2" text="_"/>
+        <arc width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" antialias="true" angle="-90" y="-13" x="9" height="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="30"/>
+        <terminal y="0" x="30" orientation="e"/>
+        <terminal y="0" x="-10" orientation="w"/>
     </description>
 </definition>

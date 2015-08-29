@@ -1,20 +1,22 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-<uuid uuid="{57897066-5E91-4EC3-AE95-2C45BAFECE35}"/><names>
-        <name lang="en">Dual Spark</name>
-        <name lang="fr">Eclateur double</name>
-        <name lang="pl">Odgromnik trójelektrodowy</name>
+<definition width="20" hotspot_x="12" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="29">
+    <uuid uuid="{c76e9f74-eb38-4c03-a42c-ac4fa8321843}"/>
+    <names>
         <name lang="cs">Dvojitý elektrický výboj</name>
-        <name lang="ar">محدث شرر مزدوج</name>
+        <name lang="pl">Odgromnik trójelektrodowy</name>
         <name lang="it">Dual Spark</name>
+        <name lang="en">Dual Spark</name>
         <name lang="nl">Dubbele Vonk</name>
+        <name lang="fr">Eclateur double</name>
+        <name lang="ar">محدث شرر مزدوج</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="1" x2="-6"/>
+        <input tagg="label" rotate="true" size="9" y="-9.45" x="8" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="simple" length1="1.5" y1="-5" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" length2="1.5" end1="simple" length1="1.5" y1="5" x1="0" x2="0"/>
+        <terminal y="-21" x="0" orientation="n"/>
+        <terminal y="21" x="0" orientation="s"/>
     </description>
 </definition>

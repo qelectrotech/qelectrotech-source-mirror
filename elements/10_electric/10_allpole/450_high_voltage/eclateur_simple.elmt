@@ -1,19 +1,21 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-<uuid uuid="{087C5ED0-F4AD-4DFD-B3EA-84E195C6B1D1}"/><names>
-        <name lang="en">Simple Spark</name>
-        <name lang="fr">Eclateur simple</name>
-        <name lang="pl">Odgromnik dwuelektrodowy</name>
+<definition width="10" hotspot_x="4" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="29">
+    <uuid uuid="{01cc2a19-2d58-478f-b496-44d71f2cbcc9}"/>
+    <names>
         <name lang="cs">Jednoduchý elektrický výboj</name>
-        <name lang="ar">مُحدث شرر بسيط</name>
+        <name lang="pl">Odgromnik dwuelektrodowy</name>
         <name lang="it">Scarica semplice</name>
+        <name lang="en">Simple Spark</name>
         <name lang="nl">Enkele Vonk</name>
+        <name lang="fr">Eclateur simple</name>
+        <name lang="ar">مُحدث شرر بسيط</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <input tagg="label" rotate="true" size="9" y="-4.45" x="3" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="simple" length1="1.5" y1="-5" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" length2="1.5" end1="simple" length1="1.5" y1="5" x1="0" x2="0"/>
+        <terminal y="-21" x="0" orientation="n"/>
+        <terminal y="21" x="0" orientation="s"/>
     </description>
 </definition>

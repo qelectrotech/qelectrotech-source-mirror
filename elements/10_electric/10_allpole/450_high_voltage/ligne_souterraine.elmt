@@ -1,22 +1,24 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="2" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{3036865E-7070-43CC-99B4-F70CD36FDEEA}"/><names>
-        <name lang="ar">خط تحت أرضي</name>
-        <name lang="de">Leiter im Erdreich, Erdkabel</name>
-        <name lang="el">Υπόγεια γραμμή</name>
-        <name lang="en">Underground line</name>
-        <name lang="it">Linea sotteranea</name>
-        <name lang="fr">Ligne souterraine</name>
-        <name lang="pl">Linia podziemna</name>
-        <name lang="nl">Ondergronds lijn</name>
+<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="2">
+    <uuid uuid="{2c964aeb-f85b-4888-b7ea-23f53dad397b}"/>
+    <names>
         <name lang="cs">Podzemní vodič, zemní kabel</name>
+        <name lang="it">Linea sotteranea</name>
+        <name lang="pl">Linia podziemna</name>
+        <name lang="en">Underground line</name>
+        <name lang="nl">Ondergronds lijn</name>
+        <name lang="de">Leiter im Erdreich, Erdkabel</name>
+        <name lang="ar">خط تحت أرضي</name>
+        <name lang="fr">Ligne souterraine</name>
+        <name lang="el">Υπόγεια γραμμή</name>
     </names>
     <informations>EN 60617: 11-03-01</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-2" y2="6" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-1" y2="8" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-20" y2="10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-4" y2="4" x2="4"/>
-        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="6" x1="-2" x2="2"/>
+        <input tagg="label" rotate="true" size="9" y="10.55" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8" antialias="false" length2="1.5" end1="none" length1="1.5" y1="8" x1="-1" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="10" x1="-20" x2="20"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" antialias="false" length2="1.5" end1="none" length1="1.5" y1="4" x1="-4" x2="4"/>
+        <terminal y="10" x="-20" orientation="w"/>
+        <terminal y="10" x="20" orientation="e"/>
     </description>
 </definition>

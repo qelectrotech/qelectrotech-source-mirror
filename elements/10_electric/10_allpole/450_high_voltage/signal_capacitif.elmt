@@ -1,25 +1,27 @@
-<definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{03C49C17-701C-400B-8623-4AB9E63528A1}"/><names>
-        <name lang="de">Kapazitätsschalter</name>
-        <name lang="fr">Indicateur présence tension capacitif</name>
-        <name lang="en">Capacitive voltage attendance indicator</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+    <uuid uuid="{e2d5ccb0-f91e-4aae-b669-cb2126ee6df3}"/>
+    <names>
         <name lang="cs">Kapacitní ukazatel přítomnosti napětí</name>
         <name lang="pt">Indicador de presença de tensão capacitiva</name>
         <name lang="pl">Pojemnościowy wskaźnik napięcia</name>
         <name lang="it">Indicatore presenza tensione capacitiva</name>
-        <name lang="ar">مُؤشر وجود جهد سعوي</name>
+        <name lang="en">Capacitive voltage attendance indicator</name>
         <name lang="nl">Capacitair Voltage melder</name>
+        <name lang="de">Kapazitätsschalter</name>
+        <name lang="fr">Indicateur présence tension capacitif</name>
+        <name lang="ar">مُؤشر وجود جهد سعوي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="10" x2="10"/>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="5"/>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="5"/>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="3.25" y2="5" x2="3.25"/>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="3"/>
-        <arc width="10" x="-10" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <terminal x="10" y="10" orientation="s"/>
-        <terminal x="10" y="-10" orientation="n"/>
+        <input tagg="label" rotate="true" size="9" y="-1.45" x="13" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="10" x2="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="5" x2="5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="3.25" x2="3.25"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="3"/>
+        <arc width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-180" y="-5" x="-10" height="10"/>
+        <terminal y="-10" x="10" orientation="n"/>
+        <terminal y="10" x="10" orientation="s"/>
     </description>
 </definition>

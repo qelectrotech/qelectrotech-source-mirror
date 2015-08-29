@@ -1,19 +1,21 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{A8B2E1CB-618C-4FB1-B8F9-4344A60D52FE}"/><names>
-        <name lang="en">Latch key free free entry maneuver</name>
-        <name lang="fr">Cle libre pene entree manoeuvre libre</name>
-        <name lang="pl">Klucz dostępny, wejście dozwolone</name>
+<definition width="50" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+    <uuid uuid="{64bffe53-abbd-4652-ab6b-c238885377d8}"/>
+    <names>
         <name lang="cs">Klíč dostupný, vstup dovolen</name>
-        <name lang="ar">المفتاح مُتاح يُسمح بالدخول</name>
+        <name lang="pl">Klucz dostępny, wejście dozwolone</name>
         <name lang="it">Chiave libera, manovra libera</name>
+        <name lang="en">Latch key free free entry maneuver</name>
         <name lang="nl">Slot sleutel in vrij</name>
+        <name lang="fr">Cle libre pene entree manoeuvre libre</name>
+        <name lang="ar">المفتاح مُتاح يُسمح بالدخول</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-8" y2="8" x2="9"/>
-        <rect width="4" x="19" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="40" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-5" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-7" x1="-8" x2="9"/>
+        <rect width="4" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="-8" x="19" height="15"/>
+        <rect width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10" x="-10" height="20"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="14.1421" y="-7.071" x="-7.071"/>
     </description>
 </definition>
