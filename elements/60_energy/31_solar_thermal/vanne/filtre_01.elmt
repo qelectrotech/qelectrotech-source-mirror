@@ -1,23 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{65BC2648-ABC8-441A-B57B-14AB566E173A}"/><names>
-        <name lang="ar">مُرشّح بغربال</name>
-        <name lang="en">Filter Screens</name>
-        <name lang="fr">Filtre à Tamis</name>
-        <name lang="pl">Filtr</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="18">
+    <uuid uuid="{b9fe7b6c-b168-4425-8a53-3eb55b291287}"/>
+    <names>
         <name lang="cs">Filtr se sítkem</name>
+        <name lang="pl">Filtr</name>
         <name lang="it">Filtro a schermi</name>
+        <name lang="en">Filter Screens</name>
         <name lang="nl">Filter grof</name>
+        <name lang="ar">مُرشّح بغربال</name>
+        <name lang="fr">Filtre à Tamis</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-14" y="-14" size="6" rotate="true" text="filtre"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="-5" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="5" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-7" x3="1" x4="7" antialias="true" x5="4" x6="10" x7="10" x8="-10" x9="-10" y1="-3" y2="-3" y3="-11" y4="-6" y5="-3" y6="-3" y7="3" y8="3" y9="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="2"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="6" y="-14" x="-14" text="filtre"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-12" x1="0" x2="8"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="10" x2="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="-10" x2="-10"/>
+        <polygon y3="-11" x7="10" y9="-3" y8="3" x8="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="10" x9="-10" y4="-6" x1="-10" x4="7" y6="-3" x5="4" y5="-3" y2="-3" x2="-7" x3="1" y7="3" y1="-3"/>
+        <line end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-3" x2="2"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
     </description>
 </definition>

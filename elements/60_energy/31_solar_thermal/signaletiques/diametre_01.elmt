@@ -1,19 +1,20 @@
-<definition width="60" version="0.3" hotspot_x="5" hotspot_y="20" height="30" type="element" orientation="dyyy">
-<uuid uuid="{C8792701-A8AD-420A-B6B0-8BB873608B90}"/><names>
-        <name lang="ar">قطر</name>
-        <name lang="el">Διάμετρος</name>
-        <name lang="en">diameter</name>
-        <name lang="it">Diametro</name>
-        <name lang="fr">Diamètre</name>
-        <name lang="pl">Średnica</name>
+<definition width="20" hotspot_x="6" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="5">
+    <uuid uuid="{9e91fc76-9bab-4622-b643-308665c80c4c}"/>
+    <names>
         <name lang="cs">Průměr</name>
+        <name lang="it">Diametro</name>
+        <name lang="pl">Średnica</name>
+        <name lang="en">diameter</name>
         <name lang="nl">Diameter</name>
+        <name lang="ar">قطر</name>
+        <name lang="fr">Diamètre</name>
+        <name lang="el">Διάμετρος</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="52" y2="3" x2="36"/>
-        <circle x="38.0001" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
-        <input x="-2" y="-7" size="8" rotate="true" text=" / "/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="13" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3" x1="12" x2="-4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="12" y="-1" x="-1.9999"/>
+        <input tagg="label" rotate="true" size="8" y="3" x="-42" text=" / "/>
     </description>
 </definition>

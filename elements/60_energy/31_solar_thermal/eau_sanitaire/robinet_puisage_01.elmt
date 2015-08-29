@@ -1,26 +1,28 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{27C054B3-06D1-4A13-B8CE-8C34C41138DC}"/><names>
-        <name lang="ar">حنفيّة</name>
-        <name lang="en">Faucet</name>
-        <name lang="fr">Robinet de Puisage</name>
-        <name lang="pl">Bateria</name>
+<definition width="30" hotspot_x="16" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="8">
+    <uuid uuid="{072b6cfb-fa19-4412-a137-dd531e9e8d67}"/>
+    <names>
         <name lang="cs">Baterie</name>
+        <name lang="pl">Bateria</name>
         <name lang="it">Rubinetto</name>
+        <name lang="en">Faucet</name>
         <name lang="nl">Tappunt</name>
+        <name lang="ar">حنفيّة</name>
+        <name lang="fr">Robinet de Puisage</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-10" y2="-1" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="0"/>
-        <arc width="12" x="-6" y="0" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <arc width="12" x="-5" y="-0.8" antialias="true" height="5.6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="5" y2="7" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-1" y2="-3" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="1" y2="-3" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="8" y2="7" x2="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="7" y2="7" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="6" y2="7" x2="6"/>
-        <terminal x="-10" y="0" orientation="w"/>
+        <input tagg="label" rotate="true" size="9" y="-5.45" x="10" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-1" x1="-10" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="0"/>
+        <arc width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-90" y="0" x="-6" height="4"/>
+        <arc width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-90" y="-0.8" x="-5" height="5.6"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="3" x1="5" x2="4"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3" x1="-1" x2="3"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-1" x1="1" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="3" x1="8" x2="9"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="3" x1="7" x2="7"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="3" x1="6" x2="6"/>
+        <terminal y="0" x="-10" orientation="w"/>
     </description>
 </definition>

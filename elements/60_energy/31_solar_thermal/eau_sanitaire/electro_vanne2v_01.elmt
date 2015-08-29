@@ -1,21 +1,23 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="30" type="element" orientation="dyyy">
-<uuid uuid="{794DE06A-407A-4C99-8BBB-6FB9F0EDFBA5}"/><names>
-        <name lang="ar">صمّام كهربائي 2V "صحي"</name>
-        <name lang="en">Solenoid 2V "health"</name>
-        <name lang="fr">Electro-vanne 2V "sanitaire"</name>
-        <name lang="pl">Elektrozawór dwudrożny</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="13">
+    <uuid uuid="{f61cab44-59d5-4439-8ac3-961dabbecdf5}"/>
+    <names>
         <name lang="cs">Elektrický uzávěr 2V</name>
+        <name lang="pl">Elektrozawór dwudrożny</name>
         <name lang="it">Elettrovalvola 2vie acqua sanitaria</name>
+        <name lang="en">Solenoid 2V "health"</name>
         <name lang="nl">Elketrische klep sanitair 2</name>
+        <name lang="ar">صمّام كهربائي 2V "صحي"</name>
+        <name lang="fr">Electro-vanne 2V "sanitaire"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="1" y5="-7" x5="1" y6="-7" x6="3" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-7" x1="-3" y2="-7" x2="-1" y3="-9" x3="-1" y4="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="0" x2="0"/>
-        <rect width="8" x="-4" y="-11" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="0" y5="-4" x5="8" y6="4" x6="8" y7="0" x7="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-4" x2="-8" y3="4" x3="-8" y4="0"/>
-        <terminal x="-8" y="0" orientation="w"/>
-        <terminal x="8" y="0" orientation="e"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-7" x4="1" x6="3" antialias="false" y6="-7" y5="-7" y1="-7" x1="-3" closed="false" x3="-1" y3="-9" y4="-9" x2="-1" x5="1"/>
+        <input tagg="label" rotate="true" size="9" y="-21.5" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="0" x2="0"/>
+        <rect width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-11" x="-4" height="6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" x4="0" x6="8" antialias="true" y7="0" y6="4" y5="-4" y1="0" x1="0" x3="-8" y3="4" y4="0" x2="-8" x5="8" x7="0"/>
+        <terminal y="0" x="-8" orientation="w"/>
+        <terminal y="0" x="8" orientation="e"/>
     </description>
 </definition>

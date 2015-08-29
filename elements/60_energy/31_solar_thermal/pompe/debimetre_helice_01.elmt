@@ -1,23 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{758E4FD7-9DB2-429F-B357-A6B10F1267F9}"/><names>
-        <name lang="ar">مقياس تدفق بمروحة</name>
-        <name lang="en">Propeller flowmeter</name>
-        <name lang="fr">Débimetre Hélice</name>
-        <name lang="pl">Przepływomierz wirnikowy</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="18">
+    <uuid uuid="{401b7bc3-ffe1-460d-b43e-2ba1157cdbed}"/>
+    <names>
         <name lang="cs">Točitý průtokoměr</name>
+        <name lang="pl">Przepływomierz wirnikowy</name>
         <name lang="it">Misuratore di portata a elica</name>
+        <name lang="en">Propeller flowmeter</name>
         <name lang="nl">Stromingsmeter propellor</name>
+        <name lang="ar">مقياس تدفق بمروحة</name>
+        <name lang="fr">Débimetre Hélice</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-4.5" y="17" size="5" rotate="true" text="Débim&#xE8;tre"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="11" y2="15" x2="11"/>
-        <arc width="5" x="6" y="0" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <circle x="-8.60233" y="-8.60233" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="17.2047"/>
-        <rect width="6" x="-3" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <ellipse width="2" x="-1" y="-7" antialias="true" height="9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <ellipse width="2" x="-1" y="-1" antialias="true" height="9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <terminal x="0" y="-10" orientation="n"/>
+        <input tagg="label" rotate="true" size="5" y="17" x="-4.5" text="Débimètre"/>
+        <line end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false" length2="1.5" end1="none" length1="1.5" y1="5" x1="11" x2="11"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-90" y="0" x="6" height="9"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="17.2047" y="-8.60233" x="-8.60233"/>
+        <rect width="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-1" x="-3" height="2"/>
+        <ellipse width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-7" x="-1" height="9"/>
+        <ellipse width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-1" x="-1" height="9"/>
+        <terminal y="-10" x="0" orientation="n"/>
     </description>
 </definition>

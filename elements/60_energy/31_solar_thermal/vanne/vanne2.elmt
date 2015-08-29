@@ -1,23 +1,25 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
-<uuid uuid="{BD115594-EE30-4675-BC8C-48BB281D1E46}"/><names>
-        <name lang="ar">صمّام بمسارين</name>
-        <name lang="en">2-way valve</name>
-        <name lang="fr">Vanne 2 voies</name>
-        <name lang="pl">Zawór dwudrożny</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="35">
+    <uuid uuid="{a14fcbf2-429f-4a71-b1b6-39a3eb93bd6f}"/>
+    <names>
         <name lang="cs">Dvoucestný ventil</name>
+        <name lang="pl">Zawór dwudrożny</name>
         <name lang="it">Valvola</name>
+        <name lang="en">2-way valve</name>
         <name lang="nl">klep 2</name>
+        <name lang="ar">صمّام بمسارين</name>
+        <name lang="fr">Vanne 2 voies</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-10" y="-31" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-5" y="-19" size="6" text="V1"/>
-        <line length1="2.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="1" y2="-1" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-1" y2="-1" x2="-1"/>
-        <polygon x4="15" y5="10" x5="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="15" y2="0" x2="0" y3="-10" x3="15" y4="10"/>
-        <polygon x4="0" y5="0" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-10" x2="-15" y3="10" x3="-15" y4="0"/>
-        <terminal x="-15" y="0" orientation="w"/>
-        <terminal x="15" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="10.55" x="-7" text="_"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-31" x="-10" height="20"/>
+        <text size="6" y="-19" x="-5" text="V1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="2.5" y1="-10" x1="1" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="-1" x2="-1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x4="15" antialias="true" y5="10" y1="10" x1="15" x3="15" y3="-10" y4="10" x2="0" x5="15"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x4="0" antialias="true" y5="0" y1="0" x1="0" x3="-15" y3="10" y4="0" x2="-15" x5="0"/>
+        <terminal y="0" x="-15" orientation="w"/>
+        <terminal y="0" x="15" orientation="e"/>
     </description>
 </definition>

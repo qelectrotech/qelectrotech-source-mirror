@@ -1,34 +1,36 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-<uuid uuid="{21080FD8-DD94-49B9-9A74-85E326685AE9}"/><names>
-        <name lang="ar">خزّان F</name>
-        <name lang="en">F bottle</name>
-        <name lang="fr">F bouteille</name>
-        <name lang="pl">F zbiorniki</name>
+<definition width="110" hotspot_x="47" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="37">
+    <uuid uuid="{8205a137-368a-4d61-80af-d625248dd5b2}"/>
+    <names>
         <name lang="cs">F lahvový výměník</name>
+        <name lang="pl">F zbiorniki</name>
         <name lang="it">F Scambiatore</name>
+        <name lang="en">F bottle</name>
         <name lang="nl">type F Pijp wisselaar</name>
+        <name lang="ar">خزّان F</name>
+        <name lang="fr">F bouteille</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-41" y="-21" size="9" text="F"/>
-        <text x="23" y="-24" size="4" text="stock"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="40" y2="30" x2="33"/>
-        <polygon x4="32" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="1" y2="30" x2="1" y3="30" x3="32" y4="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="33" y2="-30" x2="41"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-18" x1="2" y2="-30" x2="2" y3="-30" x3="33"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="14" x2="43" x3="43" x4="47" antialias="false" x5="40" x6="46" x7="40" x8="45" x9="40" closed="false" y1="-17" y2="-17" y10="9" y3="-10" y11="18" y4="-7" y12="18" y5="-5" x10="43" y13="18" y6="-2" x11="43" y7="0" x12="14" y8="3" x13="15" y9="6"/>
-        <rect width="32" x="-16" y="-20" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="26" y2="15" x2="29" y3="21" x3="29" y4="18"/>
-        <polygon x4="-28" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-28" y2="7" x2="-25" y3="13" x3="-25" y4="10"/>
-        <circle x="24" y="14" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <circle x="-30" y="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <rect width="32" x="-16" y="8" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-35" y="2" size="4" text="solaire"/>
-        <text x="39" y="9" size="4" text="chauff."/>
-        <text x="13" y="2" size="4" text="ECS"/>
-        <text x="-20" y="-24" size="4" text="bouteille"/>
-        <polygon x4="-43" y5="5" x5="-33" y6="10" x6="-43" y7="10" x7="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-10" y2="-10" x2="-43" y3="-5" x3="-33" y4="0"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="14" x2="34" x3="24" x4="34" antialias="true" x5="24" x6="34" x7="14" x8="14" closed="false" y1="-10" y2="-10" y3="-5" y4="0" y5="5" y6="10" y7="10" y8="10"/>
+        <text size="9" y="-21" x="-41" text="F"/>
+        <input tagg="label" rotate="true" size="9" y="-44.45" x="-7" text="_"/>
+        <text size="4" y="-24" x="23" text="stock"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" length2="1.5" end1="none" length1="1.5" y1="30" x1="40" x2="33"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" x4="32" antialias="false" y1="17" x1="1" closed="false" x3="32" y3="30" y4="30" x2="1"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-30" x1="33" x2="41"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" y1="-18" x1="2" closed="false" x3="33" y3="-30" x2="2"/>
+        <polygon y3="-10" x7="40" y9="6" closed="false" y8="3" x8="45" x13="15" x12="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y12="18" x6="46" x9="40" y13="18" y4="-7" x1="14" x4="47" y6="-2" y10="9" x5="40" y5="-5" y2="-17" x2="43" x3="43" x11="43" y11="18" y7="0" y1="-17" x10="43"/>
+        <rect width="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" x="-16" height="12"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x4="26" antialias="true" y1="18" x1="26" x3="29" y3="21" y4="18" x2="29"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" x4="-28" antialias="true" y1="10" x1="-28" x3="-25" y3="13" y4="10" x2="-25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="14" x="24"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="6" x="-30"/>
+        <rect width="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="8" x="-16" height="12"/>
+        <text size="4" y="2" x="-35" text="solaire"/>
+        <text size="4" y="9" x="39" text="chauff."/>
+        <text size="4" y="2" x="13" text="ECS"/>
+        <text size="4" y="-24" x="-20" text="bouteille"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x4="-43" x6="-43" antialias="true" y7="10" y6="10" y5="5" y1="-10" x1="-10" closed="false" x3="-33" y3="-5" y4="0" x2="-43" x5="-33" x7="-10"/>
+        <polygon y3="-5" x7="14" closed="false" y8="10" x8="14" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="34" y4="0" x1="14" x4="34" y6="10" x5="24" y5="5" y2="-10" x2="34" x3="24" y7="10" y1="-10"/>
     </description>
 </definition>

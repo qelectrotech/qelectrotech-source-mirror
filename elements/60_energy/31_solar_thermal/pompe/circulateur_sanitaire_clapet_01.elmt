@@ -1,26 +1,27 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{DCE1FD83-FFF3-46E6-8889-DEDD623D7693}"/><names>
-        <name lang="ar">مضخة صرف صحي بصمّام</name>
-        <name lang="en">Sanitary pump and valve</name>
-        <name lang="fr">Circulateur Sanitaire et clapet</name>
-        <name lang="pl">Pompa cyrkulacyjna CWU z zaworem zwrotnym</name>
+<definition width="40" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+    <uuid uuid="{6333eed4-3bb0-4c71-955b-bc281cf80990}"/>
+    <names>
         <name lang="cs">Sanitární cirkulační pumpa se zvratným uzávěrem</name>
+        <name lang="pl">Pompa cyrkulacyjna CWU z zaworem zwrotnym</name>
         <name lang="it">Circolatore e valvola</name>
+        <name lang="en">Sanitary pump and valve</name>
         <name lang="nl">Pomp met terugslagklep</name>
+        <name lang="ar">مضخة صرف صحي بصمّام</name>
+        <name lang="fr">Circulateur Sanitaire et clapet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="13" y2="0" x2="20"/>
-        <polygon x4="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="-3" x2="13" y3="3" x3="13" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="8" y2="6" x2="8"/>
-        <polygon x4="4" y5="0" x5="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="4" y2="-4" x2="-2" y3="4" x3="-2" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10" x1="-8" y2="10" x2="6"/>
-        <circle x="-7" y="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14"/>
-        <input x="-11" y="-12" size="7" text="C1"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="20" y="0" orientation="e"/>
-        <terminal x="0" y="7" orientation="s"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="13" x2="20"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" x4="8" antialias="false" y1="0" x1="8" x3="13" y3="3" y4="0" x2="13"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5" x1="8" x2="8"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" x4="4" antialias="false" y5="0" y1="0" x1="4" x3="-2" y3="4" y4="0" x2="-2" x5="4"/>
+        <line end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="10" x1="-8" x2="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="14" y="-7" x="-7"/>
+        <input tagg="label" size="7" y="-12" x="-11" text="C1"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="7" x="0" orientation="s"/>
     </description>
 </definition>

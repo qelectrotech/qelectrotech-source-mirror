@@ -1,30 +1,32 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="dnnn">
-<uuid uuid="{4A74CE00-6321-4AF2-BDAF-2AD7CFF0D287}"/><names>
-        <name lang="ar">خزّان ذاتي التفريغ Guy  Delsol </name>
-        <name lang="en">Bottle self-emptying Guy Delsol</name>
-        <name lang="fr">Bouteille auto-vidange Guy Delsol</name>
-        <name lang="pl">Samoopróżniający się zasobnik Guy Delsol</name>
+<definition width="50" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="44">
+    <uuid uuid="{74b612f7-8009-42fc-8c2b-845504bc1e3f}"/>
+    <names>
         <name lang="cs">Samočinně se vyprazdňující zásobník Guy Delsol</name>
+        <name lang="pl">Samoopróżniający się zasobnik Guy Delsol</name>
         <name lang="it">Serbatoio Guy Delsol ad auto-svuotamento</name>
+        <name lang="en">Bottle self-emptying Guy Delsol</name>
         <name lang="nl">automatische aftap Guy Delsol</name>
+        <name lang="ar">خزّان ذاتي التفريغ Guy  Delsol </name>
+        <name lang="fr">Bouteille auto-vidange Guy Delsol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="35" x2="0"/>
-        <rect width="8" x="12" y="-21" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-2" y="2" size="4" text="bouteille&#xa;guy Delsol"/>
-        <circle x="-0.414214" y="-33.4142" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.82843"/>
-        <arc width="20" x="-20" y="-41" antialias="true" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-80"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-6" x2="0"/>
-        <arc width="25" x="-12.5" y="-37.5" antialias="true" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="-12" y2="-20" x2="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="-12" y2="14" x2="12"/>
-        <arc width="25" x="-12.5" y="12.5" antialias="true" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-12.5" y2="25" x2="-12.5"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="12.5" y2="25" x2="12.5"/>
-        <terminal x="0" y="40" orientation="s"/>
-        <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="20" y="-20" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="0.55" x="23" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="35" antialias="false" length2="1.5" end1="none" length1="1.5" y1="40" x1="0" x2="0"/>
+        <rect width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-21" x="12" height="1"/>
+        <text size="4" y="2" x="-2" text="bouteille&#xa;guy Delsol"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="2.82843" y="-33.4142" x="-0.414214"/>
+        <arc width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-80" y="-41" x="-20" height="70"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-40" x1="0" x2="0"/>
+        <arc width="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-37.5" x="-12.5" height="25"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="-12" x2="12"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="14" antialias="false" length2="1.5" end1="none" length1="1.5" y1="14" x1="-12" x2="12"/>
+        <arc width="25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="12.5" x="-12.5" height="25"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-25" x1="-12.5" x2="-12.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-25" x1="12.5" x2="12.5"/>
+        <terminal y="-20" x="20" orientation="e"/>
+        <terminal y="40" x="0" orientation="s"/>
+        <terminal y="-40" x="0" orientation="n"/>
     </description>
 </definition>

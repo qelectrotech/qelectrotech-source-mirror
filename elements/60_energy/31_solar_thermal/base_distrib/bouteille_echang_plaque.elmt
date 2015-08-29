@@ -1,40 +1,42 @@
-<definition width="120" version="0.3" hotspot_x="55" hotspot_y="40" height="80" type="element" orientation="dyyy">
-<uuid uuid="{4F472EAB-1CC7-4A64-8C33-33E8723DC43D}"/><names>
-        <name lang="ar">مُبادل بألواح 1F</name>
-        <name lang="en">Plate heat exchanger 1F</name>
-        <name lang="fr">1F echangeur à plaques</name>
-        <name lang="pl">1F wymiennik płytowy</name>
+<definition width="130" hotspot_x="54" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="41">
+    <uuid uuid="{d4bce39b-7db5-4076-b1e3-848350cdc774}"/>
+    <names>
         <name lang="cs">1F deskový výměník</name>
+        <name lang="pl">1F wymiennik płytowy</name>
         <name lang="it">1F Scambiatore</name>
+        <name lang="en">Plate heat exchanger 1F</name>
         <name lang="nl">type 1F plaat warmtewisselaar</name>
+        <name lang="ar">مُبادل بألواح 1F</name>
+        <name lang="fr">1F echangeur à plaques</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-39" x2="-45" x3="-45" x4="-50" antialias="false" x5="-40" x6="-50" x7="-44" x8="-44" x9="-30" closed="false" y1="14" y2="14" y10="-11" y3="10" y4="5" y5="0" x10="-30" y6="-5" y7="-8" y8="-11" y9="-11"/>
-        <rect width="12" x="-23" y="-9" antialias="false" height="21" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <polygon x4="-14" y5="-8" x5="-20" y6="-11" x6="-20" y7="-11" x7="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="14" x1="-30" y2="14" x2="-20" y3="10" x3="-20" y4="2"/>
-        <polygon x4="-20" y5="-8" x5="-14" y6="-11" x6="-14" y7="-11" x7="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="15" x1="0" y2="15" x2="-14" y3="10" x3="-14" y4="1"/>
-        <text x="-31" y="23" size="4" text="échang.&#xa;plaques"/>
-        <polygon x4="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-9" y2="12" x2="-6" y3="18" x3="-6" y4="15"/>
-        <circle x="-11" y="11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <text x="-42" y="-21" size="9" text="1F"/>
-        <text x="37" y="-22.8" size="4" text="stock"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31.2" x1="54" y2="31.2" x2="47"/>
-        <polygon x4="46" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="18.2" x1="15" y2="31.2" x2="15" y3="31.2" x3="46" y4="31.2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28.8" x1="47" y2="-28.8" x2="55"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16.8" x1="16" y2="-28.8" x2="16" y3="-28.8" x3="47"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="28" x2="57" x3="57" x4="61" antialias="false" x5="54" x6="60" x7="54" x8="59" x9="54" closed="false" y1="-15.8" y2="-15.8" y10="10.2" y3="-8.8" y11="19.2" y4="-5.8" y12="19.2" y5="-3.8" x10="57" y13="19.2" y6="-0.8" x11="57" y7="1.2" x12="28" y8="4.2" x13="29" y9="7.2"/>
-        <rect width="32" x="-2" y="-18.8" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.2" x1="40" y2="16.2" x2="43" y3="22.2" x3="43" y4="19.2"/>
-        <polygon x4="-37" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-37" y2="11" x2="-34" y3="17" x3="-34" y4="14"/>
-        <circle x="38" y="15.2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <circle x="-39" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <rect width="32" x="-2" y="9.2" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-43" y="-3" size="4" text="solaire"/>
-        <text x="53" y="10.2" size="4" text="chauff."/>
-        <text x="27" y="3.2" size="4" text="ECS"/>
-        <text x="-6" y="-22.8" size="4" text="bouteille"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="28" x2="48" x3="38" x4="48" antialias="true" x5="38" x6="48" x7="28" x8="28" closed="false" y1="-8.8" y2="-8.8" y3="-3.8" y4="1.2" y5="6.2" y6="11.2" y7="11.2" y8="11.2"/>
+        <polygon y3="10" x7="-44" y9="-11" closed="false" y8="-11" x8="-44" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-50" x9="-30" y4="5" x1="-39" x4="-50" y10="-11" y6="-5" x5="-40" y5="0" y2="14" x2="-45" x3="-45" y7="-8" y1="14" x10="-30"/>
+        <input tagg="label" rotate="true" size="9" y="-49.45" x="-7" text="_"/>
+        <rect width="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-9" x="-23" height="21"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14" x4="-14" x6="-20" antialias="false" y7="-11" y6="-11" y5="-8" y1="14" x1="-30" closed="false" x3="-20" y3="10" y4="2" x2="-20" x5="-20" x7="-30"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x4="-20" x6="-14" antialias="false" y7="-11" y6="-11" y5="-8" y1="15" x1="0" closed="false" x3="-14" y3="10" y4="1" x2="-14" x5="-14" x7="0"/>
+        <text size="4" y="23" x="-31" text="échang.&#xa;plaques"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="12" x4="-9" antialias="true" y1="15" x1="-9" x3="-6" y3="18" y4="15" x2="-6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="11" x="-11"/>
+        <text size="9" y="-21" x="-42" text="1F"/>
+        <text size="4" y="-22.8" x="37" text="stock"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="31.2" antialias="false" length2="1.5" end1="none" length1="1.5" y1="31.2" x1="54" x2="47"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="31.2" x4="46" antialias="false" y1="18.2" x1="15" closed="false" x3="46" y3="31.2" y4="31.2" x2="15"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28.8" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-28.8" x1="47" x2="55"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28.8" antialias="false" y1="-16.8" x1="16" closed="false" x3="47" y3="-28.8" x2="16"/>
+        <polygon y3="-8.8" x7="54" y9="7.2" closed="false" y8="4.2" x8="59" x13="29" x12="28" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y12="19.2" x6="60" x9="54" y13="19.2" y4="-5.8" x1="28" x4="61" y6="-0.8" y10="10.2" x5="54" y5="-3.8" y2="-15.8" x2="57" x3="57" x11="57" y11="19.2" y7="1.2" y1="-15.8" x10="57"/>
+        <rect width="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-18.8" x="-2" height="12"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16.2" x4="40" antialias="true" y1="19.2" x1="40" x3="43" y3="22.2" y4="19.2" x2="43"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="11" x4="-37" antialias="true" y1="14" x1="-37" x3="-34" y3="17" y4="14" x2="-34"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="15.2" x="38"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="10" x="-39"/>
+        <rect width="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="9.2" x="-2" height="12"/>
+        <text size="4" y="-3" x="-43" text="solaire"/>
+        <text size="4" y="10.2" x="53" text="chauff."/>
+        <text size="4" y="3.2" x="27" text="ECS"/>
+        <text size="4" y="-22.8" x="-6" text="bouteille"/>
+        <polygon y3="-3.8" x7="28" closed="false" y8="11.2" x8="28" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="48" y4="1.2" x1="28" x4="48" y6="11.2" x5="38" y5="6.2" y2="-8.8" x2="48" x3="38" y7="11.2" y1="-8.8"/>
     </description>
 </definition>

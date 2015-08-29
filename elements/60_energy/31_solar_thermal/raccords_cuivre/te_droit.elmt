@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{400CED26-D615-4A44-B1FA-31549666598A}"/><names>
-        <name lang="ar">رابط T  مستقيم</name>
-        <name lang="en">Right tees</name>
-        <name lang="fr">Tés Droit</name>
-        <name lang="pl">Złączka T</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+    <uuid uuid="{67745b64-8c2e-4833-9bd0-41c027b0e820}"/>
+    <names>
         <name lang="cs">Spojovací článek T</name>
+        <name lang="pl">Złączka T</name>
         <name lang="it">Raccordo a T</name>
+        <name lang="en">Right tees</name>
         <name lang="nl">T stuk recht</name>
+        <name lang="ar">رابط T  مستقيم</name>
+        <name lang="fr">Tés Droit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="0" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-6" y2="0" x2="6"/>
-        <terminal x="6" y="0" orientation="e"/>
-        <terminal x="-6" y="0" orientation="w"/>
-        <terminal x="0" y="-6" orientation="n"/>
+        <input tagg="label" rotate="true" size="9" y="-10.5" x="-1" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-6" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-6" x2="6"/>
+        <terminal y="-6" x="0" orientation="n"/>
+        <terminal y="0" x="6" orientation="e"/>
+        <terminal y="0" x="-6" orientation="w"/>
     </description>
 </definition>

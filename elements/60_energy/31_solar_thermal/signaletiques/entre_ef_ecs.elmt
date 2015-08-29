@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{63DDF71D-BEF4-4220-B994-CA4F300FC4D7}"/><names>
-        <name lang="ar">مدخل ماء بارد</name>
-        <name lang="el">Είσοδος κρύου νερού</name>
-        <name lang="en">Cold water inlet ECS</name>
-        <name lang="it">Ingresso acqua fredda</name>
-        <name lang="fr">Entrée Eau Froide ECS</name>
-        <name lang="pl">Przyłącze zimnej wody użytkowej</name>
+<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+    <uuid uuid="{370e43cc-a25d-4aff-be2c-090acdc9da8b}"/>
+    <names>
         <name lang="cs">Přívod studené užitkové vody</name>
+        <name lang="it">Ingresso acqua fredda</name>
+        <name lang="pl">Przyłącze zimnej wody użytkowej</name>
+        <name lang="en">Cold water inlet ECS</name>
         <name lang="nl">Koud water aanvoer</name>
+        <name lang="ar">مدخل ماء بارد</name>
+        <name lang="fr">Entrée Eau Froide ECS</name>
+        <name lang="el">Είσοδος κρύου νερού</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-12" y="2" size="5" text="EF"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="3" y2="0" x2="11"/>
-        <polygon x4="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-3" y2="5" x2="-3" y3="0" x3="3" y4="-5"/>
-        <terminal x="10" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="-15.5" x="-12" text="_"/>
+        <text size="5" y="2" x="-12" text="EF"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="3" x2="11"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" x4="-3" antialias="true" y1="-5" x1="-3" x3="3" y3="0" y4="-5" x2="-3"/>
+        <terminal y="0" x="10" orientation="e"/>
     </description>
 </definition>

@@ -1,31 +1,33 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-<uuid uuid="{35AEE90B-3C7F-4554-98D2-1D57A895C55D}"/><names>
-        <name lang="ar">بالون و عوارض D</name>
-        <name lang="en">D ball and baffles</name>
-        <name lang="fr">D ballon et chicanes</name>
-        <name lang="pl">D zasobnik z przegrodami</name>
+<definition width="110" hotspot_x="50" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="44">
+    <uuid uuid="{570ed40b-64c6-466f-8ac4-2b791bde175d}"/>
+    <names>
         <name lang="cs">D zásobník s přehradami</name>
+        <name lang="pl">D zasobnik z przegrodami</name>
         <name lang="it">D Scambiatore</name>
+        <name lang="en">D ball and baffles</name>
         <name lang="nl">type D tank met wisselaar</name>
+        <name lang="ar">بالون و عوارض D</name>
+        <name lang="fr">D ballon et chicanes</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-45" y="-24" size="9" text="D"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-14" y2="6" x2="12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-12" y2="3" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-13" y2="-1" x2="11"/>
-        <rect width="29" x="-15" y="-22" antialias="false" height="52" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="41" x3="41" x4="45" antialias="false" x5="38" x6="44" x7="38" x8="43" x9="38" closed="false" y1="-14.2" y2="-14.2" y10="11.8" y3="-7.2" y11="20.8" y4="-4.2" y12="20.8" y5="-2.2" x10="41" y13="20.8" y6="0.8" x11="41" y7="2.8" x12="12" y8="5.8" x13="13" y9="8.8"/>
-        <polygon x4="24" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.8" x1="24" y2="17.8" x2="27" y3="23.8" x3="27" y4="20.8"/>
-        <polygon x4="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.8" x1="-30" y2="9.8" x2="-27" y3="15.8" x3="-27" y4="12.8"/>
-        <circle x="22" y="16.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <circle x="-32" y="8.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <text x="-37" y="4.8" size="4" text="solaire"/>
-        <text x="37" y="11.8" size="4" text="chauff."/>
-        <text x="15" y="5" size="4" text="ECS"/>
-        <text x="-10" y="-27" size="4" text="bouteille"/>
-        <polygon x4="-45" y5="7.8" x5="-35" y6="12.8" x6="-45" y7="12.8" x7="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.2" x1="-12" y2="-7.2" x2="-45" y3="-2.2" x3="-35" y4="2.8"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="32" x3="22" x4="32" antialias="true" x5="22" x6="32" x7="12" x8="12" closed="false" y1="-7.2" y2="-7.2" y3="-2.2" y4="2.8" y5="7.8" y6="12.8" y7="12.8" y8="12.8"/>
+        <input tagg="label" rotate="true" size="9" y="-43.5" x="-9" text="_"/>
+        <text size="9" y="-24" x="-45" text="D"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="6" x1="-14" x2="12"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="3" antialias="false" length2="1.5" end1="none" length1="1.5" y1="3" x1="-12" x2="11"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-1" x1="-13" x2="11"/>
+        <rect width="29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-22" x="-15" height="52"/>
+        <polygon y3="-7.2" x7="38" y9="8.8" closed="false" y8="5.8" x8="43" x13="13" x12="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y12="20.8" x6="44" x9="38" y13="20.8" y4="-4.2" x1="12" x4="45" y6="0.8" y10="11.8" x5="38" y5="-2.2" y2="-14.2" x2="41" x3="41" x11="41" y11="20.8" y7="2.8" y1="-14.2" x10="41"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17.8" x4="24" antialias="true" y1="20.8" x1="24" x3="27" y3="23.8" y4="20.8" x2="27"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9.8" x4="-30" antialias="true" y1="12.8" x1="-30" x3="-27" y3="15.8" y4="12.8" x2="-27"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="16.8" x="22"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8" y="8.8" x="-32"/>
+        <text size="4" y="4.8" x="-37" text="solaire"/>
+        <text size="4" y="11.8" x="37" text="chauff."/>
+        <text size="4" y="5" x="15" text="ECS"/>
+        <text size="4" y="-27" x="-10" text="bouteille"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7.2" x4="-45" x6="-45" antialias="true" y7="12.8" y6="12.8" y5="7.8" y1="-7.2" x1="-12" closed="false" x3="-35" y3="-2.2" y4="2.8" x2="-45" x5="-35" x7="-12"/>
+        <polygon y3="-2.2" x7="12" closed="false" y8="12.8" x8="12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="32" y4="2.8" x1="12" x4="32" y6="12.8" x5="22" y5="7.8" y2="-7.2" x2="32" x3="22" y7="12.8" y1="-7.2"/>
     </description>
 </definition>

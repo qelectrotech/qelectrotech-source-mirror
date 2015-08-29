@@ -1,24 +1,25 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{3776938A-A32F-47E9-ABF5-7BF1A2F48393}"/><names>
-        <name lang="ar">مضخة صرف صحي</name>
-        <name lang="en">Sanitary pump</name>
-        <name lang="fr">Circulateur Sanitaire</name>
-        <name lang="pl">Pompa cyrkulacyjna CWU</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+    <uuid uuid="{f3c033b4-3ec6-4de8-888f-08d617b9eca9}"/>
+    <names>
         <name lang="cs">Sanitární cirkulační pumpa</name>
+        <name lang="pl">Pompa cyrkulacyjna CWU</name>
         <name lang="it">Circolatore sanitaria</name>
+        <name lang="en">Sanitary pump</name>
         <name lang="nl">Pomp sanitair</name>
+        <name lang="ar">مضخة صرف صحي</name>
+        <name lang="fr">Circulateur Sanitaire</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="4" y5="0" x5="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="4" y2="-4" x2="-2" y3="4" x3="-2" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10" x1="-7" y2="10" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="7"/>
-        <circle x="-7" y="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14"/>
-        <input x="-11" y="-12" size="7" text="C1"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
-        <terminal x="0" y="7" orientation="s"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" x4="4" antialias="false" y5="0" y1="0" x1="4" x3="-2" y3="4" y4="0" x2="-2" x5="4"/>
+        <line end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="10" x1="-7" x2="7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="14" y="-7" x="-7"/>
+        <input tagg="label" size="7" y="-12" x="-11" text="C1"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="7" x="0" orientation="s"/>
     </description>
 </definition>

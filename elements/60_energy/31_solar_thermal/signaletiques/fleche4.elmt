@@ -1,18 +1,20 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{A694B5FD-6537-4DC6-96FF-DAD5194B9DEB}"/><names>
-        <name lang="ar">سهم 4 طويل</name>
-        <name lang="el">Βέλος 4</name>
-        <name lang="en">Arrow 4</name>
-        <name lang="it">Freccia 4</name>
-        <name lang="fr">fleche 4 long</name>
-        <name lang="pl">Kierunek 4 (długa)</name>
+<definition width="50" hotspot_x="16" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="5">
+    <uuid uuid="{64eee05c-8ee5-4057-b85b-9356b0f30342}"/>
+    <names>
         <name lang="cs">Směr 4 (dlouhá šipka)</name>
+        <name lang="it">Freccia 4</name>
+        <name lang="pl">Kierunek 4 (długa)</name>
+        <name lang="en">Arrow 4</name>
         <name lang="nl">Pijl 4</name>
+        <name lang="ar">سهم 4 طويل</name>
+        <name lang="fr">fleche 4 long</name>
+        <name lang="el">Βέλος 4</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="-22" y2="0" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
+        <input tagg="label" rotate="true" size="9" y="-9.45" x="3" text="_"/>
+        <line end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-12" x2="24"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="20" x2="30"/>
     </description>
 </definition>

@@ -1,32 +1,34 @@
-<definition width="60" version="0.3" hotspot_x="25" hotspot_y="60" height="110" type="element" orientation="dyyy">
-<uuid uuid="{4D11E7C3-94CD-4D07-B7B8-8EEE43EE84D0}"/><names>
-        <name lang="ar">جدار تدفئة</name>
-        <name lang="en">Wall heating</name>
-        <name lang="fr">Mur chauffant</name>
-        <name lang="pl">Grzejnik ścienny</name>
+<definition width="50" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="100" hotspot_y="57">
+    <uuid uuid="{5ac1f3a6-518b-4097-a2bb-074f7ca9a4b8}"/>
+    <names>
         <name lang="cs">Nástěnné topné těleso</name>
+        <name lang="pl">Grzejnik ścienny</name>
         <name lang="it">Parete radiante</name>
+        <name lang="en">Wall heating</name>
         <name lang="nl">Muur verwarming</name>
+        <name lang="ar">جدار تدفئة</name>
+        <name lang="fr">Mur chauffant</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-32" x1="2" y2="22" x2="2"/>
-        <circle x="-11.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <polygon x4="22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="39" x1="-1" y2="17" x2="22" y3="-52" x3="22" y4="-52"/>
-        <polygon x4="-2" y5="-35" x5="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="-17" y2="-53" x2="11" y3="-53" x3="22" y4="-35"/>
-        <rect width="15" x="-17" y="-35" antialias="false" height="74" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-38" x1="10" y2="16" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-42" x1="14" y2="12" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-46" x1="18" y2="8" x2="18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-35" x1="6" y2="19" x2="6"/>
-        <circle x="-11.5" y="28.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <circle x="-11.5" y="18.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <circle x="-11.5" y="8.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <circle x="-11.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <circle x="-11.5" y="-22.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <circle x="-11.5" y="-31.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
-        <terminal x="-10" y="30" orientation="e"/>
-        <terminal x="-10" y="-30" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="-29.45" x="23" text="_"/>
+        <line end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="22" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-32" x1="2" x2="2"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="-12.5" x="-11.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" x4="22" antialias="true" y1="39" x1="-1" closed="false" x3="22" y3="-52" y4="-52" x2="22"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-53" x4="-2" antialias="true" y5="-35" y1="-35" x1="-17" x3="22" y3="-53" y4="-35" x2="11" x5="-2"/>
+        <rect width="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-35" x="-17" height="74"/>
+        <line end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="16" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-38" x1="10" x2="10"/>
+        <line end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="12" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-42" x1="14" x2="14"/>
+        <line end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="8" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-46" x1="18" x2="18"/>
+        <line end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="19" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-35" x1="6" x2="6"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="28.5" x="-11.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="18.5" x="-11.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="8.5" x="-11.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="-1.5" x="-11.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="-22.5" x="-11.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="3" y="-31.5" x="-11.5"/>
+        <terminal y="-30" x="-10" orientation="e"/>
+        <terminal y="30" x="-10" orientation="e"/>
     </description>
 </definition>

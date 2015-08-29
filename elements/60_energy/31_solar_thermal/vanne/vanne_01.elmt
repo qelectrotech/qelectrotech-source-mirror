@@ -1,21 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{D2B422CB-3671-48B5-9DAB-FD6054606CBC}"/><names>
-        <name lang="ar">صمّام توقّف</name>
-        <name lang="en">Stop valve</name>
-        <name lang="fr">Vanne d'arret</name>
-        <name lang="pl">Zawór odcinający</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+    <uuid uuid="{bf23616a-47dd-406f-b677-ce82e84a9362}"/>
+    <names>
         <name lang="cs">Uzavírací ventil</name>
+        <name lang="pl">Zawór odcinający</name>
         <name lang="it">Valvola d'intercettazione</name>
+        <name lang="en">Stop valve</name>
         <name lang="nl">klep hand</name>
+        <name lang="ar">صمّام توقّف</name>
+        <name lang="fr">Vanne d'arret</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-10" y="-12" size="7" text="Rx"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-3" y2="-7" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-7" x2="0"/>
-        <polygon x4="10" y5="-5" x5="-10" y6="-5" x6="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10" y3="-5" x3="10" y4="5"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
+        <input tagg="label" size="7" y="-12" x="-10" text="Rx"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-7" x1="-3" x2="3"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" x4="10" x6="-10" antialias="true" y6="-5" y5="-5" y1="-5" x1="-10" x3="10" y3="-5" y4="5" x2="-10" x5="-10"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
     </description>
 </definition>

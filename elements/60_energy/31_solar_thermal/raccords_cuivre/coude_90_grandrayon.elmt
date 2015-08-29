@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{73BA7781-00A7-47BC-8072-3CBB425FEA37}"/><names>
-        <name lang="ar">كوع ب 90 درجة شعاع كبير</name>
-        <name lang="el">Γωνία 90° μεγάλης ακτίνας</name>
-        <name lang="en">Large radius elbow 90</name>
-        <name lang="it">Gomito 90° largo raggio</name>
-        <name lang="fr">Coude à 90 grand rayon</name>
-        <name lang="pl">Kolanko duże 90</name>
+<definition width="30" hotspot_x="12" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="12">
+    <uuid uuid="{b6999848-8653-4421-8891-38eaf1f8d69a}"/>
+    <names>
         <name lang="cs">Velké koleno 90</name>
+        <name lang="it">Gomito 90° largo raggio</name>
+        <name lang="pl">Kolanko duże 90</name>
+        <name lang="en">Large radius elbow 90</name>
         <name lang="nl">Hoek lang 90</name>
+        <name lang="ar">كوع ب 90 درجة شعاع كبير</name>
+        <name lang="fr">Coude à 90 grand rayon</name>
+        <name lang="el">Γωνία 90° μεγάλης ακτίνας</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="16" x="-6" y="-6" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <terminal x="3" y="10" orientation="w"/>
-        <terminal x="10" y="2" orientation="n"/>
+        <arc width="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-90" y="-6" x="-6" height="16"/>
+        <input tagg="label" rotate="true" size="9" y="3.55" x="13" text="_"/>
+        <terminal y="10" x="3" orientation="w"/>
+        <terminal y="2" x="10" orientation="n"/>
     </description>
 </definition>

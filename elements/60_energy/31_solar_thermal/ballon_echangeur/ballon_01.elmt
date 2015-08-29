@@ -1,48 +1,49 @@
-<definition width="150" version="0.3" hotspot_x="75" hotspot_y="120" height="260" type="element" orientation="dyyy">
-<uuid uuid="{4919CDB8-77FD-49BA-A104-105D4D439B53}"/><names>
-        <name lang="ar">بالون مُبادل نسخة 1</name>
-        <name lang="en">Balloon version 1</name>
-        <name lang="fr">ballon version 1</name>
-        <name lang="pl">Zasobnik z wymiennikiem 1</name>
+<definition width="130" hotspot_x="63" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="115">
+    <uuid uuid="{b20fe177-7722-4658-b9a6-a9e0cf41efb2}"/>
+    <names>
         <name lang="cs">Zásobnik s výměníkem 1</name>
+        <name lang="pl">Zasobnik z wymiennikiem 1</name>
         <name lang="it">Scambiatore di calore</name>
+        <name lang="en">Balloon version 1</name>
         <name lang="nl">Boiler 1</name>
+        <name lang="ar">بالون مُبادل نسخة 1</name>
+        <name lang="fr">ballon version 1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="120" x="-58.125" y="-93.25" antialias="true" height="201" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="120" x="-58" y="-111.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <circle x="-51.5" y="88.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
-        <circle x="-1.5" y="118.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
-        <circle x="-1.5" y="-111.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
-        <circle x="-51.5" y="-81.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-75" x1="53" y2="-75" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-55" x1="53" y2="-55" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="53" y2="-14" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="53" y2="6" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="53" y2="26" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86" x1="53" y2="86" x2="59"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="59" y2="105" x2="53"/>
-        <polygon x4="-30" y5="20" x5="46" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="80" x1="46" y2="70" x2="-30" y3="50" x3="30" y4="30"/>
-        <polygon x4="-30" y5="0" x5="46" y6="0" x6="46" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-60" x1="46" y2="-50" x2="-30" y3="-30" x3="30" y4="-10"/>
-        <circle x="46.125" y="-84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="-3.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="16.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.125" y="-64" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="-23.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <input x="-55" y="6" size="7" rotate="true" text="  Ballon&#xa;Echangeurs"/>
-        <circle x="46.25" y="76.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <polygon x4="41.875" y5="120.75" x5="41.875" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="115.75" x1="56.875" y2="130.75" x2="56.875" y3="130.75" x3="41.875" y4="120.75"/>
-        <polygon x4="-38.125" y5="120.75" x5="-38.125" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="115.75" x1="-53.125" y2="130.75" x2="-53.125" y3="130.75" x3="-38.125" y4="120.75"/>
-        <arc width="120" x="-58.125" y="89.25" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <circle x="46.25" y="96.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <terminal x="50" y="100" orientation="e"/>
-        <terminal x="50" y="0" orientation="e"/>
-        <terminal x="50" y="80" orientation="e"/>
-        <terminal x="50" y="20" orientation="e"/>
-        <terminal x="50" y="-80" orientation="e"/>
-        <terminal x="50" y="-60" orientation="e"/>
-        <terminal x="50" y="-20" orientation="e"/>
+        <rect width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-93.25" x="-58.125" height="201"/>
+        <arc width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-111.5" x="-58" height="36"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="3" y="88.5" x="-51.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="3" y="118.5" x="-1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="3" y="-111.5" x="-1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="3" y="-81.5" x="-51.5"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-75" x1="53" x2="59"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" antialias="false" length2="1.5" end1="triangle" length1="1.5" y1="-55" x1="53" x2="59"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14" antialias="false" length2="1.5" end1="triangle" length1="1.5" y1="-14" x1="53" x2="59"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="6" x1="53" x2="59"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="26" antialias="false" length2="1.5" end1="triangle" length1="1.5" y1="26" x1="53" x2="59"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="86" antialias="false" length2="1.5" end1="none" length1="1.5" y1="86" x1="53" x2="59"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="105" antialias="false" length2="1.5" end1="none" length1="1.5" y1="105" x1="59" x2="53"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" x4="-30" antialias="false" y5="20" y1="80" x1="46" closed="false" x3="30" y3="50" y4="30" x2="-30" x5="46"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-50" x4="-30" x6="46" antialias="true" y6="0" y5="0" y1="-60" x1="46" closed="false" x3="30" y3="-30" y4="-10" x2="-30" x5="46"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-84" x="46.125"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-3.75" x="46.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="16.25" x="46.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-64" x="46.125"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-23.75" x="46.25"/>
+        <input tagg="label" rotate="true" size="7" y="6" x="-55" text="  Ballon&#xa;Echangeurs"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="76.25" x="46.25"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="130.75" x4="41.875" antialias="true" y5="120.75" y1="115.75" x1="56.875" x3="41.875" y3="130.75" y4="120.75" x2="56.875" x5="41.875"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="130.75" x4="-38.125" antialias="true" y5="120.75" y1="115.75" x1="-53.125" x3="-38.125" y3="130.75" y4="120.75" x2="-53.125" x5="-38.125"/>
+        <arc width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="89.25" x="-58.125" height="36"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="96.25" x="46.25"/>
+        <terminal y="100" x="50" orientation="e"/>
+        <terminal y="0" x="50" orientation="e"/>
+        <terminal y="80" x="50" orientation="e"/>
+        <terminal y="20" x="50" orientation="e"/>
+        <terminal y="-80" x="50" orientation="e"/>
+        <terminal y="-60" x="50" orientation="e"/>
+        <terminal y="-20" x="50" orientation="e"/>
     </description>
 </definition>

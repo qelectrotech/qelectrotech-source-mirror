@@ -1,47 +1,48 @@
-<definition width="150" version="0.3" hotspot_x="75" hotspot_y="65" height="260" type="element" orientation="ndny">
-<uuid uuid="{44E2E2CF-2B23-4E7D-A2FE-8511B7564789}"/><names>
-        <name lang="ar">خزّان 1000ل</name>
-        <name lang="en">Storage tank 1000L</name>
-        <name lang="fr">Ballon Stockage 1000L</name>
-        <name lang="pl">Zasobnik 1000L</name>
+<definition width="130" hotspot_x="65" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="61">
+    <uuid uuid="{1b695f32-6994-4af2-a0a0-893a4e1fddd6}"/>
+    <names>
         <name lang="cs">Zásobník 1000L</name>
+        <name lang="pl">Zasobnik 1000L</name>
         <name lang="it">Serbatoio 1000L</name>
+        <name lang="en">Storage tank 1000L</name>
         <name lang="nl">Opslagtank 1000L</name>
+        <name lang="ar">خزّان 1000ل</name>
+        <name lang="fr">Ballon Stockage 1000L</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-53.75" y="16.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <rect width="120" x="-60" y="-40" antialias="false" height="201" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="120" x="-60" y="143.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <circle x="46.25" y="-33.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="96.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="-53.75" y="96.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="16.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="46.25" y="146.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <polygon x4="2" y5="180" x5="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="180" x1="-2" y2="183" x2="-2" y3="183" x3="2" y4="180"/>
-        <arc width="120" x="-60" y="-58" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <input x="-31" y="29" size="7" rotate="true" text="  Ballon&#xa;Stockage&#xa;  1000L"/>
-        <circle x="-53.75" y="-33.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="-2" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <circle x="-2.75" y="-52.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
-        <polygon x4="40" y5="174" x5="40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="169" x1="55" y2="184" x2="55" y3="184" x3="40" y4="174"/>
-        <polygon x4="-40" y5="174" x5="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="169" x1="-55" y2="184" x2="-55" y3="184" x3="-40" y4="174"/>
-        <circle x="-53.75" y="146.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
-        <circle x="-2" y="128" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <circle x="-2" y="58" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <terminal x="-50" y="-30" orientation="w"/>
-        <terminal x="-50" y="150" orientation="w"/>
-        <terminal x="0" y="-50" orientation="n"/>
-        <terminal x="0" y="183" orientation="s"/>
-        <terminal x="0" y="-10" orientation="e"/>
-        <terminal x="0" y="60" orientation="e"/>
-        <terminal x="0" y="130" orientation="e"/>
-        <terminal x="50" y="150" orientation="e"/>
-        <terminal x="50" y="-30" orientation="e"/>
-        <terminal x="50" y="20" orientation="e"/>
-        <terminal x="50" y="100" orientation="e"/>
-        <terminal x="-50" y="20" orientation="w"/>
-        <terminal x="-50" y="100" orientation="w"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="16.25" x="-53.75"/>
+        <rect width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-40" x="-60" height="201"/>
+        <arc width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="143.5" x="-60" height="36"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-33.75" x="46.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="96.25" x="46.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="96.25" x="-53.75"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="16.25" x="46.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="146.25" x="46.25"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="183" x4="2" antialias="false" y5="180" y1="180" x1="-2" closed="false" x3="2" y3="183" y4="180" x2="-2" x5="2"/>
+        <arc width="120" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-58" x="-60" height="36"/>
+        <input tagg="label" rotate="true" size="7" y="29" x="-31" text="  Ballon&#xa;Stockage&#xa;  1000L"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="-33.75" x="-53.75"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="4" y="-12" x="-2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5.5" y="-52.75" x="-2.75"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="184" x4="40" antialias="true" y5="174" y1="169" x1="55" x3="40" y3="184" y4="174" x2="55" x5="40"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="184" x4="-40" antialias="true" y5="174" y1="169" x1="-55" x3="-40" y3="184" y4="174" x2="-55" x5="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7.5" y="146.25" x="-53.75"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="4" y="128" x="-2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="4" y="58" x="-2"/>
+        <terminal y="-30" x="-50" orientation="w"/>
+        <terminal y="150" x="-50" orientation="w"/>
+        <terminal y="-50" x="0" orientation="n"/>
+        <terminal y="183" x="0" orientation="s"/>
+        <terminal y="-10" x="0" orientation="e"/>
+        <terminal y="60" x="0" orientation="e"/>
+        <terminal y="130" x="0" orientation="e"/>
+        <terminal y="150" x="50" orientation="e"/>
+        <terminal y="-30" x="50" orientation="e"/>
+        <terminal y="20" x="50" orientation="e"/>
+        <terminal y="100" x="50" orientation="e"/>
+        <terminal y="20" x="-50" orientation="w"/>
+        <terminal y="100" x="-50" orientation="w"/>
     </description>
 </definition>

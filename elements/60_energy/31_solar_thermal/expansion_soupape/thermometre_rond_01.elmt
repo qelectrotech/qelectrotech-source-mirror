@@ -1,29 +1,31 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{14FFD7C9-3905-4218-B3C7-0971005997A1}"/><names>
-        <name lang="ar">ميزان حرارة</name>
-        <name lang="en">Dial Thermometer</name>
-        <name lang="fr">Thermomètre à cadran</name>
-        <name lang="pl">Termometr</name>
+<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="14">
+    <uuid uuid="{7ae977aa-13fc-405a-86c2-739618387763}"/>
+    <names>
         <name lang="cs">Teploměr s číselníkem</name>
+        <name lang="pl">Termometr</name>
         <name lang="it">Termometro</name>
+        <name lang="en">Dial Thermometer</name>
         <name lang="nl">Thermometer rond</name>
+        <name lang="ar">ميزان حرارة</name>
+        <name lang="fr">Thermomètre à cadran</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-4" y2="0" x2="5"/>
-        <circle x="-8.60233" y="-5.85233" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="17.2047"/>
-        <circle x="-10" y="-7.25" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <polygon x4="1" y5="12.75" x5="1" y6="12.75" x6="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="12.75" x1="-1" y2="15.75" x2="-1" y3="15.75" x3="-1" y4="15.75"/>
-        <text x="-3" y="10" size="4" text="°C"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.75" x1="0" y2="16.75" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.75" x1="6" y2="7.75" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.75" x1="-6" y2="7.75" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25" x1="6" y2="-2.25" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25" x1="-6" y2="-2.25" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.25" x1="0" y2="-4.25" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.75" x1="7" y2="2.75" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.75" x1="-8" y2="2.75" x2="-7"/>
-        <terminal x="0" y="16.75" orientation="s"/>
+        <input tagg="label" rotate="true" size="9" y="2.55" x="9" text="_"/>
+        <line end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="5" x1="-4" x2="5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="17.2047" y="-5.85233" x="-8.60233"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="20" y="-7.25" x="-10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15.75" x4="1" x6="1" antialias="false" y6="12.75" y5="12.75" y1="12.75" x1="-1" closed="false" x3="-1" y3="15.75" y4="15.75" x2="-1" x5="1"/>
+        <text size="4" y="10" x="-3" text="°C"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16.75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="15.75" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7.75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="8.75" x1="6" x2="5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7.75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="8.75" x1="-6" x2="-5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2.25" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3.25" x1="6" x2="5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2.25" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-3.25" x1="-6" x2="-5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4.25" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-5.25" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="2.75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="2.75" x1="7" x2="8"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="2.75" antialias="false" length2="1.5" end1="none" length1="1.5" y1="2.75" x1="-8" x2="-7"/>
+        <terminal y="16.75" x="0" orientation="s"/>
     </description>
 </definition>

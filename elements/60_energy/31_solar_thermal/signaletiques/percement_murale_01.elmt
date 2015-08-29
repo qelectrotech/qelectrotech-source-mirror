@@ -1,22 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{F23AFD6E-0D16-4750-9FBE-76C389D778D4}"/><names>
-        <name lang="ar">ممر حائطي</name>
-        <name lang="en">Passage wall</name>
-        <name lang="fr">Passage murale </name>
-        <name lang="pl">Przejście przez ścianę</name>
+<definition width="30" hotspot_x="25" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="24">
+    <uuid uuid="{bcf7300e-4f3d-4bd9-a160-cfa8bee3c07e}"/>
+    <names>
         <name lang="cs">Přechod přes stěnu</name>
+        <name lang="pl">Przejście przez ścianę</name>
         <name lang="it">Passaggio a muro</name>
+        <name lang="en">Passage wall</name>
         <name lang="nl">Doorgang Muur</name>
+        <name lang="ar">ممر حائطي</name>
+        <name lang="fr">Passage murale </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-20" y2="0" x2="-16" y3="-5" x3="-13"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="-4" y3="-10" x3="-10"/>
-        <rect width="12" x="-16" y="-17" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-14.2426" y="-14.2426" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.48528"/>
-        <input x="-3" y="1" size="8" rotate="true" text="A"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="-10" y="-20" orientation="e"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" y1="0" x1="-20" closed="false" x3="-13" y3="-5" x2="-16"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" y1="-20" x1="0" closed="false" x3="-10" y3="-10" x2="-4"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-17" x="-16" height="14"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8.48528" y="-14.2426" x="-14.2426"/>
+        <input tagg="label" rotate="true" size="8" y="1" x="-3" text="A"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="-20" x="-10" orientation="e"/>
     </description>
 </definition>

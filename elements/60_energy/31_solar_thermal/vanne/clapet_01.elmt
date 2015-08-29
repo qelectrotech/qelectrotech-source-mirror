@@ -1,23 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-<uuid uuid="{C859E3AE-0DE3-404D-B751-4DA892035FE9}"/><names>
-        <name lang="ar">صمّام ضدّ الرجع بالجاذبية </name>
-        <name lang="en">Check valve to Gravity</name>
-        <name lang="fr">Clapet anti-retour à Gravité </name>
-        <name lang="pl">Zawór zwrotny grawitacyjny</name>
+<definition width="20" hotspot_x="8" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+    <uuid uuid="{09ad5005-734b-4dcf-8842-b5c5f78f19ae}"/>
+    <names>
         <name lang="cs">Gravitační pojistný ventil</name>
+        <name lang="pl">Zawór zwrotny grawitacyjny</name>
         <name lang="it">Valvola di ritegno a gravità</name>
+        <name lang="en">Check valve to Gravity</name>
         <name lang="nl">terugslagklep zonder veer</name>
+        <name lang="ar">صمّام ضدّ الرجع بالجاذبية </name>
+        <name lang="fr">Clapet anti-retour à Gravité </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="10" y2="-5" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="10" x2="0"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="0" y2="-4" x2="-5" y3="-4" x3="5" y4="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-6" y2="4" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-4" x2="0"/>
-        <input x="-13" y="14" size="7" rotate="true" text="clapet"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="0" y="-10" orientation="n"/>
+        <line end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-5" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="10" x2="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="4" x1="0" x2="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" x4="0" antialias="true" y1="4" x1="0" closed="false" x3="5" y3="-4" y4="4" x2="-5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" antialias="false" length2="1.5" end1="none" length1="1.5" y1="4" x1="-6" x2="6"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="0" x2="0"/>
+        <input tagg="label" rotate="true" size="7" y="14" x="-13" text="clapet"/>
+        <terminal y="10" x="0" orientation="s"/>
+        <terminal y="-10" x="0" orientation="n"/>
     </description>
 </definition>

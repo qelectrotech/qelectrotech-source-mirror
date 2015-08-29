@@ -1,17 +1,19 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="10" type="element" orientation="dyyy">
-<uuid uuid="{170E0C46-1961-4242-A227-D0F6CFBC63F0}"/><names>
-        <name lang="ar">اتجاه</name>
-        <name lang="el">Κατεύθυνση</name>
-        <name lang="en">Direction</name>
-        <name lang="it">Direzione</name>
-        <name lang="fr">Direction</name>
-        <name lang="pl">Kierunek 1</name>
+<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="5">
+    <uuid uuid="{25c72f60-9dcd-4073-be6e-2d6afa5c9140}"/>
+    <names>
         <name lang="cs">Směr 1</name>
+        <name lang="it">Direzione</name>
+        <name lang="pl">Kierunek 1</name>
+        <name lang="en">Direction</name>
         <name lang="nl">Richting</name>
+        <name lang="ar">اتجاه</name>
+        <name lang="fr">Direction</name>
+        <name lang="el">Κατεύθυνση</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="7"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-7" x2="7"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-17" text="_"/>
     </description>
 </definition>

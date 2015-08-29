@@ -1,33 +1,35 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="ndny">
-<uuid uuid="{CA3D1292-71C2-414E-94E0-D3E94B2F90DE}"/><names>
-        <name lang="ar">سخّان ECS</name>
-        <name lang="en">ECS heater</name>
-        <name lang="fr">Réchauffeur ECS</name>
-        <name lang="pl">Ogrzewacz CWU</name>
+<definition width="90" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+    <uuid uuid="{2db7b0bc-d64f-4885-b755-e5d8b14ac15c}"/>
+    <names>
         <name lang="cs">Ohřívač ECS</name>
+        <name lang="pl">Ogrzewacz CWU</name>
         <name lang="it">Riscaldatore ACS</name>
+        <name lang="en">ECS heater</name>
         <name lang="nl">Tank met wisselaar</name>
+        <name lang="ar">سخّان ECS</name>
+        <name lang="fr">Réchauffeur ECS</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="2" y="-25" size="4" text="ECS"/>
-        <text x="26" y="28" size="4" text="EF"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-26.55" y2="20" x2="-19.55"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-27.55" y2="-20" x2="-20.55"/>
-        <text x="17" y="19" size="4" text="réchauffeur ecs"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="-20" y2="25" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="20" y2="25" x2="20"/>
-        <circle x="-21" y="-21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x2="10" x3="-10" x4="10" antialias="true" x5="-10" x6="10" x7="-10" x8="10" x9="-10" closed="false" y1="-20" y2="-20" y10="20" y3="-15" y11="20" y4="-10" y12="20" y5="-6" x10="10" y13="20" y6="0" x11="10" y7="5" x12="-20" y8="10" x13="-20" y9="15"/>
-        <arc width="40" x="-20" y="-30.5" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <circle x="19" y="19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
-        <circle x="-1" y="-31.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
-        <circle x="-21" y="19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
-        <arc width="40" x="-20" y="21.5" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <terminal x="-20" y="-20" orientation="w"/>
-        <terminal x="-20" y="20" orientation="w"/>
-        <terminal x="0" y="-30" orientation="n"/>
-        <terminal x="20" y="20" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="30.55" x="-7" text="_"/>
+        <text size="4" y="-25" x="2" text="ECS"/>
+        <text size="4" y="28" x="26" text="EF"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" length2="1.5" end1="triangle" length1="1.5" y1="20" x1="-26.55" x2="-19.55"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="-27.55" x2="-20.55"/>
+        <text size="4" y="19" x="17" text="réchauffeur ecs"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-26" x1="-20" x2="-20"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-26" x1="20" x2="20"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="2" y="-21" x="-21"/>
+        <polygon y3="-15" x7="-10" y9="15" closed="false" y8="10" x8="10" x13="-20" x12="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y12="20" x6="10" x9="-10" y13="20" y4="-10" x1="-20" x4="10" y6="0" y10="20" x5="-10" y5="-6" y2="-20" x2="10" x3="-10" x11="10" y11="20" y7="5" y1="-20" x10="10"/>
+        <arc width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-30.5" x="-20" height="8"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="2" y="19" x="19"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="2" y="-31.5" x="-1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="2" y="19" x="-21"/>
+        <arc width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="21.5" x="-20" height="8"/>
+        <terminal y="20" x="-20" orientation="w"/>
+        <terminal y="-30" x="0" orientation="n"/>
+        <terminal y="20" x="20" orientation="e"/>
+        <terminal y="-20" x="-20" orientation="w"/>
     </description>
 </definition>

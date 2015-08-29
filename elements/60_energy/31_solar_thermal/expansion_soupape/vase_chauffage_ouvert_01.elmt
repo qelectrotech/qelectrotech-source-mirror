@@ -1,24 +1,25 @@
-<definition width="70" version="0.3" hotspot_x="35" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{6654AD92-681F-47EE-9BEE-BEFB93F5A0E8}"/><names>
-        <name lang="ar">إناء تسخين مفتوح</name>
-        <name lang="en">Heating Open vase 01</name>
-        <name lang="fr">Vase Chauffage Ouvert 01</name>
-        <name lang="pl">Naczynie wzbiorcze otwarte</name>
+<definition width="70" hotspot_x="37" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="19">
+    <uuid uuid="{29c0a828-9b26-4578-a40d-5475fed4713e}"/>
+    <names>
         <name lang="cs">Nádoba, otevřené ohřívání 01</name>
-        <name lang="nl">expansie tank open</name>
+        <name lang="pl">Naczynie wzbiorcze otwarte</name>
         <name lang="it">Vaso aperto</name>
+        <name lang="en">Heating Open vase 01</name>
+        <name lang="nl">expansie tank open</name>
+        <name lang="ar">إناء تسخين مفتوح</name>
+        <name lang="fr">Vase Chauffage Ouvert 01</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-10" y="1.5" size="7" rotate="true" text="xL"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7" x1="-29" y2="-7" x2="29"/>
-        <rect width="2" x="-1" y="10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="2" x="-32" y="-9" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="2" x="-1" y="-12" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="60" x="-30" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-12" orientation="n"/>
-        <terminal x="-32" y="-8" orientation="w"/>
-        <terminal x="0" y="12" orientation="s"/>
+        <input tagg="label" rotate="true" size="7" y="1.5" x="-10" text="xL"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-7" x1="-29" x2="29"/>
+        <rect width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="10" x="-1" height="2"/>
+        <rect width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-9" x="-32" height="2"/>
+        <rect width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-12" x="-1" height="2"/>
+        <rect width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10" x="-30" height="20"/>
+        <terminal y="-12" x="0" orientation="n"/>
+        <terminal y="-8" x="-32" orientation="w"/>
+        <terminal y="12" x="0" orientation="s"/>
     </description>
 </definition>

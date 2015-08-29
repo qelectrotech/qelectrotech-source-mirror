@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
-<uuid uuid="{020D8E5A-11B8-4026-906B-A6CC2C3A1576}"/><names>
-        <name lang="ar">سهم 3 مسارات 01</name>
-        <name lang="en">Arrow 3</name>
-        <name lang="fr">Fléche 3 Voies 01</name>
-        <name lang="pl">Kierunek - trójdrożny 1</name>
+<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="5">
+    <uuid uuid="{8212a401-a660-469c-8fce-f1d80adf53a5}"/>
+    <names>
         <name lang="cs">Šipka 3 směry 1</name>
+        <name lang="pl">Kierunek - trójdrożny 1</name>
         <name lang="it">Freccia 3vie</name>
+        <name lang="en">Arrow 3</name>
         <name lang="nl">Pijl</name>
+        <name lang="ar">سهم 3 مسارات 01</name>
+        <name lang="fr">Fléche 3 Voies 01</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-7" y5="0" x5="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="-3" x2="-7" y3="0" x3="-4" y4="3"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-2" y2="0" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="5" y2="10" x2="5"/>
-        <arc width="18" x="-13" y="0" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <input tagg="label" rotate="true" size="9" y="-12.5" x="-5" text="_"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" x4="-7" antialias="true" y5="0" y1="0" x1="-7" x3="-4" y3="0" y4="3" x2="-7" x5="-7"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="true" length2="1.5" end1="none" length1="1.5" y1="0" x1="-2" x2="13"/>
+        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="true" length2="1.5" end1="none" length1="1.5" y1="6" x1="5" x2="5"/>
+        <arc width="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-90" y="0" x="-13" height="12"/>
     </description>
 </definition>

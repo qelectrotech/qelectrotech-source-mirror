@@ -1,22 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{FE347D7D-0457-4CD3-B1FA-5ADF1A416CDF}"/><names>
-        <name lang="ar">ممر طابق</name>
-        <name lang="en">Passage wall</name>
-        <name lang="fr">Passage wall</name>
-        <name lang="pl">Przejście przez strop</name>
+<definition width="20" hotspot_x="0" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="4">
+    <uuid uuid="{1e4afb0b-ef12-4931-863c-c5d9c0d8142b}"/>
+    <names>
         <name lang="cs">Přechod přes strop</name>
+        <name lang="pl">Przejście przez strop</name>
         <name lang="it">Passaggio a muro</name>
+        <name lang="en">Passage wall</name>
         <name lang="nl">Doorgang Muur</name>
+        <name lang="ar">ممر طابق</name>
+        <name lang="fr">Passage wall</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="-5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-10" x2="-10"/>
-        <rect width="12" x="-16" y="-17" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-14.2426" y="-14.2426" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.48528"/>
-        <input x="-3" y="1" size="8" rotate="true" text="A"/>
-        <terminal x="-10" y="0" orientation="s"/>
-        <terminal x="-10" y="-20" orientation="n"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false" length2="1.5" end1="none" length1="1.5" y1="20" x1="10" x2="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="10"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="3" x="4" height="14"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8.48528" y="5.7574" x="5.7574"/>
+        <input tagg="label" rotate="true" size="8" y="21" x="17" text="A"/>
+        <terminal y="20" x="10" orientation="s"/>
+        <terminal y="0" x="10" orientation="n"/>
     </description>
 </definition>

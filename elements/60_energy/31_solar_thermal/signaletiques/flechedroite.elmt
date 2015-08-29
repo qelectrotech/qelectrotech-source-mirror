@@ -1,18 +1,20 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{A38DF302-6AF3-4C9E-801C-09314572981C}"/><names>
-        <name lang="ar">اتجاه سائل</name>
-        <name lang="en">Sense fluid 2</name>
-        <name lang="fr">Sens fluide</name>
-        <name lang="pl">Kierunek przepływu cieczy</name>
+<definition width="50" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="5">
+    <uuid uuid="{68078a89-e38f-4c1e-a0a2-982841e85043}"/>
+    <names>
         <name lang="cs">Směr průtoku kapaliny</name>
+        <name lang="pl">Kierunek przepływu cieczy</name>
         <name lang="it">Direzione</name>
+        <name lang="en">Sense fluid 2</name>
         <name lang="nl">vloeistof richting</name>
+        <name lang="ar">اتجاه سائل</name>
+        <name lang="fr">Sens fluide</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="1" y2="0" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="1" y2="0" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="14"/>
+        <input tagg="label" rotate="true" size="9" y="-9.45" x="-17" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="true" length2="1.5" end1="none" length1="1.5" y1="3" x1="1" x2="14"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-3" x1="1" x2="14"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-25" x2="14"/>
     </description>
 </definition>

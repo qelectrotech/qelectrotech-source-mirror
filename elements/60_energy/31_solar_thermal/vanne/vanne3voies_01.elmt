@@ -1,27 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
-<uuid uuid="{622D45E8-414A-4ED3-B882-6D6D847BEEC0}"/><names>
-        <name lang="ar">صمّام ب 3 مسارات مُحرّك</name>
-        <name lang="en">3-way motorized valve</name>
-        <name lang="fr">Vanne 3 Voies motorisée</name>
-        <name lang="pl">Zawór trójdrożny z napędem</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="24">
+    <uuid uuid="{1e3ecfb4-54d0-4e8b-b312-7341d851531d}"/>
+    <names>
         <name lang="cs">Trojcestný ventil s pohonem</name>
+        <name lang="pl">Zawór trójdrożny z napędem</name>
         <name lang="it">Valvola 3vie motorizzata</name>
+        <name lang="en">3-way motorized valve</name>
         <name lang="nl">klep motor 3</name>
+        <name lang="ar">صمّام ب 3 مسارات مُحرّك</name>
+        <name lang="fr">Vanne 3 Voies motorisée</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="5" y5="-10" x5="10" y6="-17" x6="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="-10" y2="-10" x2="-10" y3="-9" x3="-5" y4="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="1" y2="-1" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="-1" y2="-1" x2="-1"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="-6" y3="10" x3="6" y4="0"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-6" x2="10" y3="6" x3="10" y4="0"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-6" x2="-10" y3="6" x3="-10" y4="0"/>
-        <arc width="20" x="-10" y="-20" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <input x="-9" y="-28" size="6" text="V0"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="0" y="-20" orientation="n"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x4="5" x6="10" antialias="true" y6="-17" y5="-10" y1="-17" x1="-10" closed="false" x3="-5" y3="-9" y4="-9" x2="-10" x5="10"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-9" x1="1" x2="1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-9" x1="-1" x2="-1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" x4="0" antialias="true" y1="0" x1="0" x3="6" y3="10" y4="0" x2="-6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6" x4="0" antialias="true" y1="0" x1="0" x3="10" y3="6" y4="0" x2="10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6" x4="0" antialias="true" y1="0" x1="0" x3="-10" y3="6" y4="0" x2="-10"/>
+        <arc width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-20" x="-10" height="4"/>
+        <input tagg="label" size="6" y="-28" x="-9" text="V0"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="10" x="0" orientation="s"/>
+        <terminal y="-20" x="0" orientation="n"/>
     </description>
 </definition>

@@ -1,21 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{C5CFF5F2-F938-4C25-8C40-29F5841F0B9D}"/><names>
-        <name lang="ar">"صمّام أمان" يسار</name>
-        <name lang="en">Safety valve "left"</name>
-        <name lang="fr">Soupape Sécurité "gauche"</name>
-        <name lang="pl">Zawór bezpieczeństwa</name>
+<definition width="30" hotspot_x="18" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="22">
+    <uuid uuid="{e628b510-6f84-4ee0-848d-f64a9fea0d54}"/>
+    <names>
         <name lang="cs">Bezpečnostní uzávěr (levý)</name>
+        <name lang="pl">Zawór bezpieczeństwa</name>
         <name lang="it">Valvola di sicurezza SX</name>
+        <name lang="en">Safety valve "left"</name>
         <name lang="nl">Overdrukklep</name>
+        <name lang="ar">"صمّام أمان" يسار</name>
+        <name lang="fr">Soupape Sécurité "gauche"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="0" y2="10" x2="-6" y3="10" x3="6" y4="0"/>
-        <polygon x4="0" y5="0" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="0" y2="-6" x2="-10" y3="6" x3="-10" y4="0"/>
-        <input x="-12" y="-19.5" size="5" text="xBar"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="-3" x4="3" antialias="true" x5="-3" x6="3" x7="-3" x8="3" x9="0" closed="false" y1="0" y2="-4" y10="-17" y3="-6" y11="-17" y4="-8" y12="-17" y5="-9" x10="0" y6="-11" x11="0" y7="-12" x12="0" y8="-14" y9="-15"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="0" y="10" orientation="s"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" x4="0" antialias="true" y1="0" x1="0" closed="false" x3="6" y3="10" y4="0" x2="-6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6" x4="0" antialias="true" y5="0" y1="0" x1="0" closed="false" x3="-10" y3="6" y4="0" x2="-10" x5="0"/>
+        <input tagg="label" size="5" y="-19.5" x="-12" text="xBar"/>
+        <polygon y3="-6" x7="-3" y9="-15" closed="false" y8="-14" x8="3" x12="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y12="-17" x6="3" x9="0" y4="-8" x1="0" x4="3" y10="-17" y6="-11" x5="-3" y5="-9" y2="-4" x2="0" x3="-3" x11="0" y11="-17" y7="-12" y1="0" x10="0"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="10" x="0" orientation="s"/>
     </description>
 </definition>

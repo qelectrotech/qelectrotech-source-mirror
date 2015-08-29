@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{239EC3FC-635A-498B-8778-0595499150D5}"/><names>
-        <name lang="ar">كوع ب 90 درجة</name>
-        <name lang="el">Γωνία 90°</name>
-        <name lang="en">Elbow at 90</name>
-        <name lang="it">Gomito 90°</name>
-        <name lang="fr">Coude à 90</name>
-        <name lang="pl">Kolanko 90</name>
+<definition width="20" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="15">
+    <uuid uuid="{6c9af6fe-cc41-4f86-8b7f-09e6a2254ade}"/>
+    <names>
         <name lang="cs">Koleno 90</name>
+        <name lang="it">Gomito 90°</name>
+        <name lang="pl">Kolanko 90</name>
+        <name lang="en">Elbow at 90</name>
         <name lang="nl">Hoek 90</name>
+        <name lang="ar">كوع ب 90 درجة</name>
+        <name lang="fr">Coude à 90</name>
+        <name lang="el">Γωνία 90°</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="12" x="-12" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <terminal x="-6" y="0" orientation="w"/>
-        <terminal x="0" y="-6" orientation="n"/>
+        <arc width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-90" y="-12" x="-12" height="12"/>
+        <input tagg="label" rotate="true" size="9" y="-8.5" x="-1" text="_"/>
+        <terminal y="0" x="-6" orientation="w"/>
+        <terminal y="-6" x="0" orientation="n"/>
     </description>
 </definition>

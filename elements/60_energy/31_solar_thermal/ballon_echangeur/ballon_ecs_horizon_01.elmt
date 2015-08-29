@@ -1,27 +1,28 @@
-<definition width="230" version="0.3" hotspot_x="125" hotspot_y="75" height="160" type="element" orientation="dyyy">
-<uuid uuid="{6763BCFB-2425-4883-8221-BFEA55510C09}"/><names>
-        <name lang="ar">خزان ماء أفقي</name>
-        <name lang="en">DHW horizontal</name>
-        <name lang="fr">Ballon ECS horizontal</name>
-        <name lang="pl">Zasobnik poziomy CWU</name>
+<definition width="210" hotspot_x="113" type="element" link_type="simple" orientation="dyyy" version="0.5" height="130" hotspot_y="54">
+    <uuid uuid="{f0ecb77e-0827-4b79-b6e5-5eda4157058a}"/>
+    <names>
         <name lang="cs">Vodorovný zásobnik ECS</name>
+        <name lang="pl">Zasobnik poziomy CWU</name>
         <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="en">DHW horizontal</name>
         <name lang="nl">Boiler elektrisch</name>
+        <name lang="ar">خزان ماء أفقي</name>
+        <name lang="fr">Ballon ECS horizontal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="84" y5="-18" x5="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="83" y2="-22" x2="90" y3="-18" x3="90" y4="-18"/>
-        <polygon x4="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="42" x1="83" y2="42" x2="90" y3="38" x3="90" y4="38"/>
-        <rect width="4" x="58" y="60" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="4" x="-92" y="-50" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="165" x="-94" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-60" y="11" size="7" rotate="true" text="Ballon ECS"/>
-        <arc width="28" x="58" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <arc width="28" x="-108" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <terminal x="-90" y="-50" orientation="n"/>
-        <terminal x="60" y="70" orientation="s"/>
-        <terminal x="90" y="-20" orientation="e"/>
-        <terminal x="90" y="40" orientation="e"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-22" x4="84" antialias="true" y5="-18" y1="-22" x1="83" closed="false" x3="90" y3="-18" y4="-18" x2="90" x5="84"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="42" x4="84" antialias="true" y1="42" x1="83" closed="false" x3="90" y3="38" y4="38" x2="90"/>
+        <rect width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="60" x="58" height="10"/>
+        <rect width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-50" x="-92" height="10"/>
+        <rect width="165" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-40" x="-94" height="100"/>
+        <input tagg="label" rotate="true" size="7" y="11" x="-60" text="Ballon ECS"/>
+        <arc width="28" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-180" y="-40" x="58" height="100"/>
+        <arc width="28" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" antialias="true" angle="-180" y="-40" x="-108" height="100"/>
+        <terminal y="-50" x="-90" orientation="n"/>
+        <terminal y="70" x="60" orientation="s"/>
+        <terminal y="-20" x="90" orientation="e"/>
+        <terminal y="40" x="90" orientation="e"/>
     </description>
 </definition>
