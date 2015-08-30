@@ -1,20 +1,21 @@
-<definition width="20" version="0.4" hotspot_x="9" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{EAE91144-E89B-4F9D-B48F-68AB5EBB9FE8}"/><names>
+<definition height="20" hotspot_x="2" width="10" type="element" version="0.5" hotspot_y="12" orientation="dyyy" link_type="simple">
+    <uuid uuid="{09d97b0d-b252-4911-9e13-0b172aa7a64c}"/>
+    <names>
+        <name lang="fr">Reference bobine v</name>
         <name lang="ar">مرجع ملف (عمودي)</name>
         <name lang="en">Reference coil (vertical)</name>
         <name lang="it">Riferimento bonina / (verticale)</name>
-        <name lang="fr">Reference bobine v</name>
-        <name lang="pl">Odsyłacz - cewka (pionowo)</name>
-        <name lang="es">Referencia bobina vertical</name>
         <name lang="cs">Srovnávací cívka (svislá)</name>
         <name lang="nl">referentie spoel</name>
+        <name lang="pl">Odsyłacz - cewka (pionowo)</name>
+        <name lang="es">Referencia bobina vertical</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="2.9667" y2="-6" x2="2.9667"/>
-        <rect width="6" x="-0.0334" y="-4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="2.9667" y2="2" x2="2.9667"/>
-        <input x="-4.0334" y="6.5" size="5" rotate="true" text="/"/>
+        <line x1="2.9667" y1="-4" antialias="false" end2="none" y2="-6" end1="none" length2="1.5" x2="2.9667" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="4" x="-0.0334" width="6" antialias="false" y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="2.9667" y1="1" antialias="false" end2="none" y2="2" end1="none" length2="1.5" x2="2.9667" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-4.0334" text="/" size="5" y="6.5" tagg="label" rotate="true"/>
     </description>
 </definition>

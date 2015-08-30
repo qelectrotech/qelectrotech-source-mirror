@@ -1,19 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="14" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C5260A7B-5DD6-4EE3-BA6C-6C0CC6D24B87}"/><names>
+<definition height="20" hotspot_x="4" width="20" type="element" version="0.5" hotspot_y="4" orientation="dyyy" link_type="simple">
+    <uuid uuid="{e32986ae-7605-46d4-bcb2-2fcab48e0d41}"/>
+    <names>
+        <name lang="fr">Refence voyant h</name>
         <name lang="ar">مرجع مُؤشر ضوئي (أفقي)</name>
         <name lang="en">Reference light (horizontal)</name>
         <name lang="it">Rif. spia luminosa / (orizzontale)</name>
-        <name lang="fr">Refence voyant h</name>
-        <name lang="pl">Odsyłacz - lampka sygnalizacyjna (poziomo)</name>
         <name lang="cs">Srovnávací kontrolní světlo (vodorovné)</name>
         <name lang="nl">Referentie lamp</name>
+        <name lang="pl">Odsyłacz - lampka sygnalizacyjna (poziomo)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-7" y2="3" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="7" x2="-3"/>
-        <circle x="-8.5" y="1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
-        <input x="-2" y="5.5" size="5" rotate="true" text="/"/>
+        <line x1="3" y1="7" antialias="false" end2="none" y2="3" end1="none" length2="1.5" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="3" y1="3" antialias="false" end2="none" y2="7" end1="none" length2="1.5" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="1.5" antialias="true" y="1.5" diameter="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="8" text="/" size="5" y="5.5" tagg="label" rotate="true"/>
     </description>
 </definition>
