@@ -1,29 +1,30 @@
-<definition width="40" version="0.4" hotspot_x="14" hotspot_y="23" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{830C9FF3-ABA6-48D1-A2A2-3C17B6C0331F}"/><names>
-        <name lang="es">Machón 1"</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="16" height="30" hotspot_y="19" link_type="simple">
+    <uuid uuid="{34a5ed5d-87e7-48e1-8c8d-84a48b8ffc17}"/>
+    <names>
         <name lang="it">Maschio 1"</name>
         <name lang="pl">Nypel 1"</name>
         <name lang="cs">Samec 1"</name>
+        <name lang="es">Machón 1"</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="0.204" y2="-12.4226" x2="-1.578"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="18.024" y2="-12.4226" x2="16.242"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="15.648" y2="-12.4226" x2="13.866"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="-2.172" y2="-12.4226" x2="-3.954"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="-7.518" y2="-12.4226" x2="-9.3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="10.302" y2="-12.4226" x2="8.52"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="-5.142" y2="-12.4226" x2="-6.924"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.05629" x1="12.678" y2="-12.4226" x2="10.896"/>
-        <rect width="9.504" x="8.52" y="-11.5986" antialias="false" height="15.655" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <rect width="9.504" x="-9.3" y="-11.5986" antialias="false" height="15.655" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <rect width="11.286" x="6.738" y="-13.2465" antialias="false" height="18.9506" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="11.286" x="-9.3" y="-13.2465" antialias="false" height="18.9506" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="4.752" x="1.986" y="-17.3662" antialias="false" height="26.3662" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.7747" x1="1.986" y2="-10.7747" x2="6.144"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.05629" x1="1.986" y2="4.05629" x2="6.738"/>
-        <input x="-9" y="14" size="4" rotate="true" text="machón1&quot;"/>
-        <terminal x="-9.3" y="-4.1831" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="18.024" y="-4.1831" nameHidden="0" number="" name="" orientation="e"/>
+        <line x2="-1.578" x1="0.204" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="16.242" x1="18.024" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="13.866" x1="15.648" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="-3.954" x1="-2.172" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="-9.3" x1="-7.518" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="8.52" x1="10.302" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="-6.924" x1="-5.142" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <line x2="10.896" x1="12.678" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-12.4226" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="-11.5986" width="9.504" height="15.655" x="8.52" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="-11.5986" width="9.504" height="15.655" x="-9.3" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.2465" width="11.286" height="18.9506" x="6.738" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.2465" width="11.286" height="18.9506" x="-9.3" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-17.3662" width="4.752" height="26.3662" x="1.986" antialias="false"/>
+        <line x2="6.144" x1="1.986" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-10.7747" length2="1.5" y1="-10.7747" end2="none" antialias="false"/>
+        <line x2="6.738" x1="1.986" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="4.05629" length2="1.5" y1="4.05629" end2="none" antialias="false"/>
+        <input text="machón1&quot;" size="4" y="14" tagg="label" rotate="true" x="-9"/>
+        <terminal orientation="w" y="-4.1831" x="-9.3"/>
+        <terminal orientation="e" y="-4.1831" x="18.024"/>
     </description>
 </definition>

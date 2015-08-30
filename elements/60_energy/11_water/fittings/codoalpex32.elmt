@@ -1,27 +1,29 @@
-<definition width="100" version="0.4" hotspot_x="38" hotspot_y="65" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{1108FCA1-F46C-4497-9873-A51E9ED6BF03}"/><names>
-        <name lang="en">Elbow Alpex 32</name>
+<definition orientation="dyyy" type="element" width="100" version="0.5" hotspot_x="38" height="90" hotspot_y="65" link_type="simple">
+    <uuid uuid="{eda37f30-2abc-4030-a6df-dce76f3e73b7}"/>
+    <names>
         <name lang="fr">Coude Alpex 32</name>
-        <name lang="es">Codo Alpex 32</name>
-        <name lang="pl">Kolanko Alpex 32</name>
         <name lang="it">Gomito Alpex 32</name>
+        <name lang="en">Elbow Alpex 32</name>
+        <name lang="pl">Kolanko Alpex 32</name>
         <name lang="cs">Koleno Alpex 32</name>
+        <name lang="es">Codo Alpex 32</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="7.20327" x="10.5998" y="-10.6809" antialias="false" height="18.7958" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30.6139" x="21.4047" y="-56.3644" antialias="false" height="27.6469" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="59.427" x="-11.01" y="-48.2724" antialias="true" height="56.3873" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <rect width="19.809" x="27.8072" y="-59.35" antialias="false" height="2.98565" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21.6098" x="26.8072" y="-25.7175" antialias="false" height="5.63873" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3.45686" x="-29.8946" y="-10.6809" antialias="false" height="18.7958" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="33.0375" x="-26.4377" y="-16.3197" antialias="false" height="30.0732" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="18.0082" x="8.79898" y="-27.5971" antialias="true" height="16.9162" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <text x="15.4486" y="18.9854" size="4" text="codo32"/>
-        <rect width="40" x="16" y="-29" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="3" x="7" y="-19" antialias="false" height="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-29.8946" y="-1.28306" orientation="w"/>
-        <terminal x="35.8112" y="-59.35" orientation="n"/>
+        <input text="_" size="9" y="20.55" tagg="label" rotate="true" x="18"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.6809" width="7.20327" height="18.7958" x="10.5998" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-56.3644" width="30.6139" height="27.6469" x="21.4047" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-48.2724" width="59.427" height="56.3873" start="0" angle="-90" x="-11.01" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-59.35" width="19.809" height="2.98565" x="27.8072" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-25.7175" width="21.6098" height="5.63873" x="26.8072" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.6809" width="3.45686" height="18.7958" x="-29.8946" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-16.3197" width="33.0375" height="30.0732" x="-26.4377" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-27.5971" width="18.0082" height="16.9162" start="0" angle="-90" x="8.79898" antialias="true"/>
+        <text text="codo32" size="4" y="18.9854" x="15.4486"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-29" width="40" height="3" x="16" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-19" width="3" height="35" x="7" antialias="false"/>
+        <terminal orientation="w" y="-1.28306" x="-29.8946"/>
+        <terminal orientation="n" y="-59.35" x="35.8112"/>
     </description>
 </definition>

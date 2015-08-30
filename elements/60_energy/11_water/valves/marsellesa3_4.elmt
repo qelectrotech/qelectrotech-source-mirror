@@ -1,28 +1,29 @@
-<definition width="40" version="0.4" hotspot_x="16" hotspot_y="29" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D69D2B6A-9313-467C-AB09-1D36039D31FE}"/><names>
-        <name lang="es">Marsellesa 3/4</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="16" height="40" hotspot_y="20" link_type="simple">
+    <uuid uuid="{24926d52-d1f6-461b-87b4-6eaaf7d06edc}"/>
+    <names>
         <name lang="it">Raccordo 3/4</name>
         <name lang="pl">WZ 3/4"</name>
         <name lang="cs">Spojení 3/4"</name>
+        <name lang="es">Marsellesa 3/4</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="12.285" x="2.9175" y="5.42182" antialias="true" height="7.39893" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="7.8975" x="-4.98" y="6.16171" antialias="true" height="11.8383" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <rect width="8.775" x="9.06" y="-6.41647" antialias="false" height="11.8383" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="14.9175" x="-12" y="-12.3356" antialias="false" height="24.4165" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.15637" x1="-1.328" y2="-7.15637" x2="-11.2536"/>
-        <arc width="7.02" x="-4.1025" y="-17.5149" antialias="true" height="10.3585" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.16171" x1="-11.1873" y2="6.16171" x2="-1.39983"/>
-        <arc width="6.1425" x="-3.225" y="-7.15637" antialias="true" height="13.3181" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.41647" x1="15.2025" y2="5.42182" x2="13.4475"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.67658" x1="13.4475" y2="4.68192" x2="11.6925"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.41647" x1="16.9575" y2="5.42182" x2="15.2025"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.41647" x1="11.6925" y2="5.42182" x2="9.9375"/>
-        <arc width="12.285" x="2.9175" y="-13.8154" antialias="true" height="7.39893" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
-        <input x="-12" y="-18" size="4" rotate="true" text="3/4&quot;"/>
-        <terminal x="-12" y="-0.497329" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="18.7125" y="-0.497329" nameHidden="1" number="" name="" orientation="e"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="5.42182" width="12.285" height="7.39893" start="-180" angle="-90" x="2.9175" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="6.16171" width="7.8975" height="11.8383" start="90" angle="-90" x="-4.98" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.41647" width="8.775" height="11.8383" x="9.06" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.3356" width="14.9175" height="24.4165" x="-12" antialias="false"/>
+        <line x2="-11.2536" x1="-1.328" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-7.15637" length2="1.5" y1="-7.15637" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-17.5149" width="7.02" height="10.3585" start="0" angle="-90" x="-4.1025" antialias="true"/>
+        <line x2="-1.39983" x1="-11.1873" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6.16171" length2="1.5" y1="6.16171" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7.15637" width="6.1425" height="13.3181" start="90" angle="-180" x="-3.225" antialias="true"/>
+        <line x2="13.4475" x1="15.2025" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5.42182" length2="1.5" y1="-6.41647" end2="none" antialias="false"/>
+        <line x2="11.6925" x1="13.4475" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="4.68192" length2="1.5" y1="-5.67658" end2="none" antialias="false"/>
+        <line x2="15.2025" x1="16.9575" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5.42182" length2="1.5" y1="-6.41647" end2="none" antialias="false"/>
+        <line x2="9.9375" x1="11.6925" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5.42182" length2="1.5" y1="-6.41647" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.8154" width="12.285" height="7.39893" start="-90" angle="-90" x="2.9175" antialias="true"/>
+        <input text="3/4&quot;" size="4" y="-18" tagg="label" rotate="true" x="-12"/>
+        <terminal orientation="w" y="-0.497329" x="-12"/>
+        <terminal orientation="e" y="-0.497329" x="18.7125"/>
     </description>
 </definition>

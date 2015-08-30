@@ -1,25 +1,26 @@
-<definition width="90" version="0.4" hotspot_x="46" hotspot_y="38" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{3BB0ABB9-C4C2-4918-A49B-6CFD7672B617}"/><names>
-        <name lang="es">Rácor Alpex32-1"</name>
+<definition orientation="dyyy" type="element" width="90" version="0.5" hotspot_x="46" height="80" hotspot_y="38" link_type="simple">
+    <uuid uuid="{14d72e4a-1457-45e3-a085-d108e51a5fe2}"/>
+    <names>
         <name lang="it">Raccordo Alpex 32-1"</name>
         <name lang="pl">Złączka Alpex 32-1"</name>
         <name lang="cs">Spojka Alpex 32-1"</name>
+        <name lang="es">Rácor Alpex32-1"</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="14.3831" x="-27.5115" y="13.4698" antialias="true" height="24.2062" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <rect width="8.1869" x="-13.1284" y="-10.7364" antialias="false" height="21.1804" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="27.1681" x="-40.2965" y="-24.3524" antialias="false" height="49.9253" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.7622" x1="-20.8604" y2="-13.7622" x2="-38.9371"/>
-        <arc width="12.785" x="-25.9134" y="-34.9426" antialias="true" height="21.1804" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.4698" x1="-38.8163" y2="13.4698" x2="-20.9912"/>
-        <arc width="11.1869" x="-24.3152" y="-13.7622" antialias="true" height="27.232" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="-23.5162" y="30.8974" size="4" rotate="true" text="rácor 32-1&quot;"/>
-        <rect width="35.3644" x="-1.94151" y="-13.7622" antialias="false" height="27.232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="4.58874" x="33.4228" y="-9.2235" antialias="false" height="18.1547" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3" x="-5" y="-18" antialias="false" height="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-40.2965" y="-0.14619" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="38.0116" y="-0.14619" nameHidden="1" number="" name="" orientation="e"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="13.4698" width="14.3831" height="24.2062" start="90" angle="-90" x="-27.5115" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.7364" width="8.1869" height="21.1804" x="-13.1284" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.3524" width="27.1681" height="49.9253" x="-40.2965" antialias="false"/>
+        <line x2="-38.9371" x1="-20.8604" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-13.7622" length2="1.5" y1="-13.7622" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-34.9426" width="12.785" height="21.1804" start="0" angle="-90" x="-25.9134" antialias="true"/>
+        <line x2="-20.9912" x1="-38.8163" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="13.4698" length2="1.5" y1="13.4698" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.7622" width="11.1869" height="27.232" start="90" angle="-180" x="-24.3152" antialias="true"/>
+        <input text="rácor 32-1&quot;" size="4" y="30.8974" tagg="label" rotate="true" x="-23.5162"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.7622" width="35.3644" height="27.232" x="-1.94151" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.2235" width="4.58874" height="18.1547" x="33.4228" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-18" width="3" height="35" x="-5" antialias="false"/>
+        <terminal orientation="w" y="-0.14619" x="-40.2965"/>
+        <terminal orientation="e" y="-0.14619" x="38.0116"/>
     </description>
 </definition>

@@ -1,23 +1,25 @@
-<definition width="40" version="0.4" hotspot_x="12" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{3C5D516E-F7FB-4852-BB91-72C734D9AC8F}"/><names>
-        <name lang="es">Aspersor riego</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="12" height="40" hotspot_y="22" link_type="simple">
+    <uuid uuid="{d08e980a-1086-47fc-9be6-2c984715d75c}"/>
+    <names>
         <name lang="it">Innaffiatore</name>
         <name lang="pl">Zraszacz</name>
         <name lang="cs">Rozprašovač</name>
+        <name lang="es">Aspersor riego</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="4" x="-2" y="-9" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="7" y2="-17" x2="22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" x1="7" y2="-6" x2="22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="10" y2="-11" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.36923" x1="0" y2="8.6" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-2" y2="-4" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="4" y2="-11" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="3" y2="-11" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-4" y2="-4" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="2.98045" y2="-7" x2="4.93784"/>
-        <terminal x="0" y="10" nameHidden="32" number="" name="" orientation="s"/>
+        <input text="_" size="9" y="-2.45" tagg="label" rotate="true" x="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="4" height="12" x="-2" antialias="false"/>
+        <line x2="22" x1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-17" length2="1.5" y1="-8" end2="none" antialias="false"/>
+        <line x2="22" x1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-6" length2="1.5" y1="-6" end2="none" antialias="false"/>
+        <line x2="21" x1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-11" length2="1.5" y1="-8" end2="none" antialias="false"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="8.6" length2="1.5" y1="3.36923" end2="none" antialias="false"/>
+        <line x2="2" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4" length2="1.5" y1="-4" end2="none" antialias="false"/>
+        <line x2="3" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-11" length2="1.5" y1="-10" end2="none" antialias="false"/>
+        <line x2="-6" x1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-11" length2="1.5" y1="-11" end2="none" antialias="false"/>
+        <line x2="-4" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4" length2="1.5" y1="-12" end2="none" antialias="false"/>
+        <line x2="4.93784" x1="2.98045" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-7" length2="1.5" y1="-7" end2="none" antialias="false"/>
+        <terminal orientation="s" y="10" x="0"/>
     </description>
 </definition>

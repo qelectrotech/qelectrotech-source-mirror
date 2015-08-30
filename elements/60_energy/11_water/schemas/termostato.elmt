@@ -1,16 +1,18 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C2C7FADD-83DF-49A0-B0B1-4B6094BC3EF1}"/><names>
-        <name lang="es">Termostato</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="15" link_type="simple">
+    <uuid uuid="{7f80834a-02f0-4748-92c1-198a9def1532}"/>
+    <names>
         <name lang="it">Termostato</name>
         <name lang="pl">Termostat</name>
         <name lang="cs">Termostat</name>
+        <name lang="es">Termostato</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="10" x2="0"/>
-        <text x="-4" y="1" size="9" text="T"/>
-        <rect width="14" x="-7" y="-12" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="10" nameHidden="0" number="" name="" orientation="s"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="4" end2="none" antialias="false"/>
+        <input text="_" size="9" y="-8.45" tagg="label" rotate="true" x="9"/>
+        <text text="T" size="9" y="1" x="-4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" width="14" height="15" x="-7" antialias="false"/>
+        <terminal orientation="s" y="10" x="0"/>
     </description>
 </definition>

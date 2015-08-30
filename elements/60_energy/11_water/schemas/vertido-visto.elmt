@@ -1,27 +1,29 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{983EBDA9-74F7-4779-B674-7AC7783D3D64}"/><names>
-        <name lang="ar">مجرى صرف</name>
-        <name lang="en">Sewer drain</name>
-        <name lang="it">Scarico</name>
-        <name lang="fr">Vidange égout</name>
-        <name lang="pl">Spust</name>
-        <name lang="es">Vertido desagüe</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="14" height="40" hotspot_y="22" link_type="simple">
+    <uuid uuid="{903cc802-4be0-4600-aca9-b000ded67b01}"/>
+    <names>
         <name lang="nl">Afvoer</name>
+        <name lang="fr">Vidange égout</name>
+        <name lang="it">Scarico</name>
+        <name lang="en">Sewer drain</name>
+        <name lang="pl">Spust</name>
         <name lang="cs">Kohoutek</name>
+        <name lang="ar">مجرى صرف</name>
+        <name lang="es">Vertido desagüe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.6278" x1="0.26" y2="-5.5019" x2="0.26"/>
-        <polygon x4="-4.87" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.87466" x1="-8.29" y2="12" x2="-6.58" y3="8.87466" x3="-4.87" y4="8.87466"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.87412" x1="-6.58" y2="12" x2="-6.58"/>
-        <arc width="2.85" x="-6.58" y="1.99891" antialias="true" height="3.12534" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="2.85" x="-6.01" y="1.99891" antialias="true" height="3.12534" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.37439" x1="-3.16" y2="3.87412" x2="-3.16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.37385" x1="0.26" y2="6.37439" x2="0.26"/>
-        <arc width="2.85" x="-3.16" y="5.12425" antialias="true" height="3.12534" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
-        <arc width="2.85" x="-2.59" y="5.12425" antialias="true" height="3.12534" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <polygon x4="10.52" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.87737" x1="-10" y2="1.37385" x2="0.26" y3="-9.87737" x3="10.52" y4="-9.87737"/>
-        <terminal x="0.26" y="-13.6278" nameHidden="0" number="" name="" orientation="n"/>
+        <input text="_" size="9" y="-3.45" tagg="label" rotate="true" x="9"/>
+        <line x2="0.26" x1="0.26" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-5.5019" length2="1.5" y1="-13.6278" end2="none" antialias="false"/>
+        <polygon x2="-6.58" x3="-4.87" x1="-8.29" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-4.87" y2="12" y4="8.87466" closed="false" y1="8.87466" y3="8.87466" antialias="true"/>
+        <line x2="-6.58" x1="-6.58" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="12" length2="1.5" y1="3.87412" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="1.99891" width="2.85" height="3.12534" start="-180" angle="-90" x="-6.58" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="1.99891" width="2.85" height="3.12534" start="90" angle="-90" x="-6.01" antialias="true"/>
+        <line x2="-3.16" x1="-3.16" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.87412" length2="1.5" y1="6.37439" end2="none" antialias="false"/>
+        <line x2="0.26" x1="0.26" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6.37439" length2="1.5" y1="1.37385" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="5.12425" width="2.85" height="3.12534" start="-90" angle="-90" x="-3.16" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="5.12425" width="2.85" height="3.12534" start="0" angle="-90" x="-2.59" antialias="true"/>
+        <polygon x2="0.26" x3="10.52" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="10.52" y2="1.37385" y4="-9.87737" closed="false" y1="-9.87737" y3="-9.87737" antialias="true"/>
+        <terminal orientation="n" y="-13.6278" x="0.26"/>
     </description>
 </definition>

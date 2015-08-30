@@ -1,16 +1,18 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="6" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{69280B9E-C733-4B12-A68E-7248F60002E7}"/><names>
-        <name lang="es">Vaciado - Vertido</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="20" hotspot_y="6" link_type="simple">
+    <uuid uuid="{fd837760-9afd-482e-9f31-1a2f4ea9f62c}"/>
+    <names>
         <name lang="it">Scarico</name>
         <name lang="pl">Spust</name>
         <name lang="cs">Kohoutek</name>
+        <name lang="es">Vaciado - Vertido</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.208" x1="0" y2="0.808" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="-4" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="-4" x2="-5"/>
-        <terminal x="0" y="9" nameHidden="45" number="" name="" orientation="s"/>
+        <input text="_" size="9" y="0.55" tagg="label" rotate="true" x="1"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0.808" length2="1.5" y1="9.208" end2="none" antialias="false"/>
+        <line x2="5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4" length2="1.5" y1="1" end2="none" antialias="false"/>
+        <line x2="-5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4" length2="1.5" y1="1" end2="none" antialias="false"/>
+        <terminal orientation="s" y="9" x="0"/>
     </description>
 </definition>

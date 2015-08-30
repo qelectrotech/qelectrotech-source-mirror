@@ -1,17 +1,19 @@
-<definition width="20" version="0.4" hotspot_x="8" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{37600B4B-144F-4670-8A97-92BBA4017E78}"/><names>
-        <name lang="es">Grifo de comprobación</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="8" height="30" hotspot_y="13" link_type="simple">
+    <uuid uuid="{f4592a6a-d88f-4737-a614-1c3da715a8cf}"/>
+    <names>
         <name lang="it">Rubinetto di controllo</name>
         <name lang="pl">Zawór do regulacyjny</name>
         <name lang="cs">Ovládací kohoutek</name>
+        <name lang="es">Grifo de comprobación</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-6" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="-4" x2="0"/>
-        <arc width="8" x="0" y="-9" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3.12632" y2="0" x2="3.13684"/>
-        <terminal x="0" y="10" nameHidden="1" number="" name="" orientation="s"/>
+        <line x2="10" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="10" end2="none" antialias="false"/>
+        <input text="_" size="9" y="12.55" tagg="label" rotate="true" x="1"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4" length2="1.5" y1="10" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="8" height="8" start="-180" angle="-180" x="0" antialias="true"/>
+        <line x2="3.13684" x1="-3.12632" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <terminal orientation="s" y="10" x="0"/>
     </description>
 </definition>

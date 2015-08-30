@@ -1,27 +1,28 @@
-<definition width="50" version="0.4" hotspot_x="27" hotspot_y="42" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{EB87D947-661A-4B0A-A479-B9C79F408908}"/><names>
-        <name lang="ar">إناء تسخين 02</name>
-        <name lang="en">Heating Vase 02</name>
-        <name lang="it">Vaso di espansione 50L</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="20" height="70" hotspot_y="31" link_type="simple">
+    <uuid uuid="{ef221fd6-26b6-4447-8cba-dfd9e6563045}"/>
+    <names>
         <name lang="fr">Vase Chauffage 02</name>
+        <name lang="it">Vaso di espansione 50L</name>
+        <name lang="en">Heating Vase 02</name>
         <name lang="pl">Naczynie wzbiorcze</name>
-        <name lang="es">Calderin 3/4H</name>
         <name lang="cs">Nádoba, ohřívání 02</name>
+        <name lang="ar">إناء تسخين 02</name>
+        <name lang="es">Calderin 3/4H</name>
     </names>
     <informations></informations>
     <description>
-        <polygon x4="-0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.2014" x1="-0.5" y2="2.84198" x2="-3.125" y3="2.84198" x3="2.125" y4="-0.2014"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.2014" x1="-18" y2="-0.2014" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.4472" x1="17" y2="20.0878" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.4472" x1="-18" y2="20.0878" x2="-18"/>
-        <polygon x4="0.375" y5="-24.4469" x5="0.375" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-24.4469" x1="-1.375" y2="-26.4759" x2="-1.375" y3="-26.4759" x3="0.375" y4="-24.4469"/>
-        <arc width="35" x="-18" y="-25.0556" antialias="true" height="15.2169" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="35" x="-18" y="12.4793" antialias="true" height="15.2169" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <rect width="10.5" x="-5.4" y="28.1332" antialias="false" height="7.86678" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="7.7" x="-4" y="29.8814" antialias="false" height="6.11861" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="34.2518" x1="-4" y2="33.3777" x2="3.7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="32.5037" x1="-4" y2="31.6296" x2="3.7"/>
-        <input x="-21" y="-32" size="4" rotate="true" text="Calderín__L"/>
-        <terminal x="-0.5" y="-26.5773" nameHidden="0" number="" name="" orientation="n"/>
+        <polygon x2="-3.125" x3="2.125" x1="-0.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-0.5" y2="2.84198" y4="-0.2014" y1="-0.2014" y3="2.84198" antialias="true"/>
+        <line x2="17" x1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-0.2014" length2="1.5" y1="-0.2014" end2="none" antialias="false"/>
+        <line x2="17" x1="17" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="20.0878" length2="1.5" y1="-17.4472" end2="none" antialias="true"/>
+        <line x2="-18" x1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="20.0878" length2="1.5" y1="-17.4472" end2="none" antialias="true"/>
+        <polygon x2="-1.375" x3="0.375" x1="-1.375" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="0.375" y2="-26.4759" y4="-24.4469" closed="false" y5="-24.4469" y1="-24.4469" y3="-26.4759" antialias="false" x5="0.375"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-25.0556" width="35" height="15.2169" start="-180" angle="-180" x="-18" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="12.4793" width="35" height="15.2169" start="0" angle="-180" x="-18" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="28.1332" width="10.5" height="7.86678" x="-5.4" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="29.8814" width="7.7" height="6.11861" x="-4" antialias="false"/>
+        <line x2="3.7" x1="-4" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="33.3777" length2="1.5" y1="34.2518" end2="none" antialias="false"/>
+        <line x2="3.7" x1="-4" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="31.6296" length2="1.5" y1="32.5037" end2="none" antialias="false"/>
+        <input text="Calderín__L" size="4" y="-32" tagg="label" rotate="true" x="-21"/>
+        <terminal orientation="n" y="-26.5773" x="-0.5"/>
     </description>
 </definition>

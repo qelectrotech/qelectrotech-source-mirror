@@ -1,17 +1,19 @@
-<definition width="70" version="0.4" hotspot_x="33" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{045965AB-EA12-4D8C-AEE1-7126640CAE0E}"/><names>
-        <name lang="en">18 Copper Tube</name>
-        <name lang="it">Tubo rame 18</name>
+<definition orientation="dyyy" type="element" width="80" version="0.5" hotspot_x="37" height="20" hotspot_y="10" link_type="simple">
+    <uuid uuid="{9dccac3f-ca40-45c8-b92a-066551c33d34}"/>
+    <names>
         <name lang="fr">Tube cuivre 18</name>
+        <name lang="it">Tubo rame 18</name>
+        <name lang="en">18 Copper Tube</name>
         <name lang="pl">Mufa 18</name>
-        <name lang="es">Tubo Cobre 18</name>
         <name lang="cs">Trubka 18 měď</name>
+        <name lang="es">Tubo Cobre 18</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="61" x="-29" y="-7.15763" antialias="false" height="14.1576" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-10" y="1" size="4" text="Cu15"/>
-        <terminal x="-29" y="0" orientation="w"/>
-        <terminal x="33" y="0" orientation="e"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7.15763" width="61" height="14.1576" x="-29" antialias="false"/>
+        <input text="_" size="9" y="-19.45" tagg="label" rotate="true" x="-22"/>
+        <text text="Cu15" size="4" y="1" x="-10"/>
+        <terminal orientation="w" y="0" x="-29"/>
+        <terminal orientation="e" y="0" x="33"/>
     </description>
 </definition>

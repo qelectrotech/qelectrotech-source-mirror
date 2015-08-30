@@ -1,15 +1,17 @@
-<definition width="30" version="0.4" hotspot_x="17" hotspot_y="5" height="10" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{691F7FE8-0DD0-4019-A474-1138E40AC224}"/><names>
-        <name lang="es">Codo baja</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="17" height="10" hotspot_y="5" link_type="simple">
+    <uuid uuid="{7eef7ba2-7b49-4464-a7a0-649714e2363a}"/>
+    <names>
         <name lang="it">Gomito basso</name>
         <name lang="pl">Kolanko niskie</name>
         <name lang="cs">Nízké koleno</name>
+        <name lang="es">Codo baja</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5.48" y2="0" x2="0.52"/>
-        <circle x="1" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <terminal x="-10" y="0" nameHidden="1" number="" name="" orientation="w"/>
+        <input text="_" size="9" y="-12.45" tagg="label" rotate="true" x="-6"/>
+        <line x2="0.52" x1="-5.48" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" diameter="6" x="1" antialias="true"/>
+        <terminal orientation="w" y="0" x="-10"/>
     </description>
 </definition>

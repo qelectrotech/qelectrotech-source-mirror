@@ -1,15 +1,17 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{81EF68A1-14C8-4073-B0AB-5236C70FE174}"/><names>
-        <name lang="es">Grifo fría</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="16" link_type="simple">
+    <uuid uuid="{854991e3-68c3-4786-b1aa-c3d46394f4b3}"/>
+    <names>
         <name lang="it">Rubinetto freddo</name>
         <name lang="pl">Zawór do wody zimnej</name>
         <name lang="cs">Kohoutek studené vody</name>
+        <name lang="es">Grifo fría</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.97109" x1="-0.02" y2="1.34236" x2="-0.02"/>
-        <polygon x4="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1.46011" x1="7" y2="1.46011" x2="-8" y3="10" x3="-0.5" y4="1.46011"/>
-        <terminal x="0" y="-10" nameHidden="1" number="" name="" orientation="n"/>
+        <input text="_" size="9" y="0.55" tagg="label" rotate="true" x="7"/>
+        <line x2="-0.02" x1="-0.02" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="1.34236" length2="1.5" y1="-7.97109" end2="none" antialias="false"/>
+        <polygon x2="-8" x3="-0.5" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="7" y2="1.46011" y4="1.46011" y1="1.46011" y3="10" antialias="true"/>
+        <terminal orientation="n" y="-10" x="0"/>
     </description>
 </definition>

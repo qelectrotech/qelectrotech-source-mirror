@@ -1,34 +1,35 @@
-<definition width="60" version="0.4" hotspot_x="22" hotspot_y="47" height="60" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9A1CCFF0-91B4-450B-B4EB-81D8BAC16061}"/><names>
-        <name lang="es">Manómetro 3/8M</name>
+<definition orientation="dyyy" type="element" width="50" version="0.5" hotspot_x="24" height="60" hotspot_y="47" link_type="simple">
+    <uuid uuid="{009320c1-dbb3-4e9c-9bcd-bbad165be3d9}"/>
+    <names>
         <name lang="it">Manometro 3/8 M</name>
         <name lang="pl">Manometr 3/8"</name>
         <name lang="cs">Manometr 3/8"</name>
+        <name lang="es">Manómetro 3/8M</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.38824" x1="-4.79" y2="1.45761" x2="4.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.992298" x1="-4.79" y2="0.0616689" x2="4.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.31083" x1="-9.69" y2="-6.91145" x2="-9.69"/>
-        <ellipse width="35.28" x="-17.04" y="-40.4207" antialias="true" height="34.4333" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="8.82" x="-4.79" y="-1.79959" antialias="false" height="7.44504" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.79959" x1="-9.69" y2="-1.79959" x2="8.93"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.20288" x1="8.93" y2="-6.08049" x2="8.93"/>
-        <ellipse width="39.2" x="-19" y="-41.8167" antialias="true" height="37.2252" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.6694" x1="0.11" y2="-32.5104" x2="-11.16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-32.9757" x1="-11.16" y2="-24.1347" x2="0.11"/>
-        <ellipse width="2.94" x="-0.38" y="-24.1347" antialias="true" height="2.79189" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-13.12" y="-12.7345" size="4" rotate="true" text="1"/>
-        <text x="-15.57" y="-22.7388" size="4" text="2"/>
-        <text x="-8.22" y="-32.5104" size="4" text="3"/>
-        <text x="4.52" y="-33.441" size="4" text="4"/>
-        <text x="13.83" y="-23.2041" size="4" text="5"/>
-        <text x="7.95" y="-10.1753" size="4" text="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.18013" x1="-4.79" y2="4.2495" x2="4.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.78419" x1="-4.79" y2="2.85356" x2="4.03"/>
-        <text x="-3" y="-15" size="4" text="bar"/>
-        <input x="14" y="-4" size="4" rotate="true" text="3/8&quot;M"/>
-        <terminal x="-0.38" y="5.64545" nameHidden="1" number="" name="" orientation="s"/>
+        <line x2="4.03" x1="-4.79" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="1.45761" length2="1.5" y1="2.38824" end2="none" antialias="false"/>
+        <line x2="4.03" x1="-4.79" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0.0616689" length2="1.5" y1="0.992298" end2="none" antialias="false"/>
+        <line x2="-9.69" x1="-9.69" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-6.91145" length2="1.5" y1="-2.31083" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40.4207" width="35.28" height="34.4333" x="-17.04" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.79959" width="8.82" height="7.44504" x="-4.79" antialias="false"/>
+        <line x2="8.93" x1="-9.69" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-1.79959" length2="1.5" y1="-1.79959" end2="none" antialias="false"/>
+        <line x2="8.93" x1="8.93" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-6.08049" length2="1.5" y1="-2.20288" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-41.8167" width="39.2" height="37.2252" x="-19" antialias="true"/>
+        <line x2="-11.16" x1="0.11" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-32.5104" length2="1.5" y1="-23.6694" end2="none" antialias="false"/>
+        <line x2="0.11" x1="-11.16" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-24.1347" length2="1.5" y1="-32.9757" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.1347" width="2.94" height="2.79189" x="-0.38" antialias="true"/>
+        <input text="1" size="4" y="-12.7345" tagg="none" rotate="true" x="-13.12"/>
+        <text text="2" size="4" y="-22.7388" x="-15.57"/>
+        <text text="3" size="4" y="-32.5104" x="-8.22"/>
+        <text text="4" size="4" y="-33.441" x="4.52"/>
+        <text text="5" size="4" y="-23.2041" x="13.83"/>
+        <text text="6" size="4" y="-10.1753" x="7.95"/>
+        <line x2="4.03" x1="-4.79" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="4.2495" length2="1.5" y1="5.18013" end2="none" antialias="false"/>
+        <line x2="4.03" x1="-4.79" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="2.85356" length2="1.5" y1="3.78419" end2="none" antialias="false"/>
+        <text text="bar" size="4" y="-15" x="-3"/>
+        <input text="3/8&quot;M" size="4" y="-4" tagg="label" rotate="true" x="14"/>
+        <terminal orientation="s" y="5.64545" x="-0.38"/>
     </description>
 </definition>

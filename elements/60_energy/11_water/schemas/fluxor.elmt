@@ -1,17 +1,19 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{EC833A66-8927-41FE-9158-32FE6BE71542}"/><names>
-        <name lang="es">Fluxor</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="16" link_type="simple">
+    <uuid uuid="{52960fe8-0f65-4f15-935f-4a3c6ab192e0}"/>
+    <names>
         <name lang="it">Scarico</name>
         <name lang="pl">Zawór spłukujący</name>
         <name lang="cs">Splachovací klapka</name>
+        <name lang="es">Fluxor</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <ellipse width="14.08" x="-7" y="-2.68797" antialias="true" height="12.2912" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.26441" x1="0.04" y2="-9.06252" x2="0.04"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.639445" x1="-5.24" y2="7.55467" x2="5.32"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.639445" x1="5.32" y2="7.55467" x2="-5.24"/>
-        <terminal x="0" y="-10" nameHidden="1" number="" name="" orientation="n"/>
+        <input text="_" size="9" y="13.55" tagg="label" rotate="true" x="-7"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.68797" width="14.08" height="12.2912" x="-7" antialias="true"/>
+        <line x2="0.04" x1="0.04" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-9.06252" length2="1.5" y1="-3.26441" end2="none" antialias="false"/>
+        <line x2="5.32" x1="-5.24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="7.55467" length2="1.5" y1="-0.639445" end2="none" antialias="true"/>
+        <line x2="-5.24" x1="5.32" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="7.55467" length2="1.5" y1="-0.639445" end2="none" antialias="true"/>
+        <terminal orientation="n" y="-10" x="0"/>
     </description>
 </definition>

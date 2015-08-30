@@ -1,30 +1,32 @@
-<definition width="160" version="0.4" hotspot_x="14" hotspot_y="27" height="70" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B8FD77E5-7F7F-49DA-9125-4225146E220D}"/><names>
-        <name lang="es">Valvula flotador3/4"</name>
+<definition orientation="dyyy" type="element" width="160" version="0.5" hotspot_x="14" height="70" hotspot_y="27" link_type="simple">
+    <uuid uuid="{29875ae1-a025-4591-8d13-a9eeea4b42dd}"/>
+    <names>
         <name lang="it">Valvola a galleggiante 3/4</name>
         <name lang="pl">Zawór pływakowy 3/4"</name>
         <name lang="cs">Plovákový ventil 3/4"</name>
+        <name lang="es">Valvula flotador3/4"</name>
     </names>
     <informations></informations>
     <description>
-        <arc width="55.3904" x="-10.15" y="-10.2902" antialias="true" height="49.6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.27135" x1="3.09529" y2="3.09878" x2="4.94951"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.27135" x1="6.49468" y2="3.09878" x2="8.34891"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.27135" x1="9.58505" y2="3.09878" x2="11.4393"/>
-        <rect width="12.3614" x="-0.613139" y="-9.40836" antialias="false" height="13.6442" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6.13387" x="11.7483" y="-11.4509" antialias="false" height="18.7607" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.27135" x1="0.00493295" y2="3.09878" x2="1.85915"/>
-        <rect width="19.7152" x="26.464" y="15.3098" antialias="false" height="5.6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="19.7152" x="8.6264" y="6.50982" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.49018" x1="26.464" y2="-9.49018" x2="55.5674"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.70982" x1="43.3627" y2="5.70982" x2="55.5674"/>
-        <arc width="15.9599" x="48.0568" y="-9.49018" antialias="true" height="15.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <ellipse width="4.6941" x="52.7509" y="-7.89018" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.69018" x1="64.0168" y2="12.9098" x2="122.224"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.49018" x1="64.0168" y2="15.3098" x2="120.346"/>
-        <ellipse width="20.654" x="120.346" y="9.70982" antialias="true" height="15.2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="5" y="-17" size="4" text="V. flotador3/4&quot;M"/>
-        <terminal x="-1.23121" y="-2.58629" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="22.2555" y="-2.58629" nameHidden="0" number="" name="" orientation="e"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.2902" width="55.3904" height="49.6" start="90" angle="-90" x="-10.15" antialias="true"/>
+        <input text="_" size="9" y="-19.45" tagg="label" rotate="true" x="73"/>
+        <line x2="4.94951" x1="3.09529" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.09878" length2="1.5" y1="-8.27135" end2="none" antialias="false"/>
+        <line x2="8.34891" x1="6.49468" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.09878" length2="1.5" y1="-8.27135" end2="none" antialias="false"/>
+        <line x2="11.4393" x1="9.58505" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.09878" length2="1.5" y1="-8.27135" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.40836" width="12.3614" height="13.6442" x="-0.613139" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.4509" width="6.13387" height="18.7607" x="11.7483" antialias="false"/>
+        <line x2="1.85915" x1="0.00493295" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.09878" length2="1.5" y1="-8.27135" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="15.3098" width="19.7152" height="5.6" x="26.464" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="6.50982" width="19.7152" height="16" start="90" angle="-90" x="8.6264" antialias="true"/>
+        <line x2="55.5674" x1="26.464" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-9.49018" length2="1.5" y1="-9.49018" end2="none" antialias="false"/>
+        <line x2="55.5674" x1="43.3627" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5.70982" length2="1.5" y1="5.70982" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.49018" width="15.9599" height="15.2" start="90" angle="-180" x="48.0568" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7.89018" width="4.6941" height="4" x="52.7509" antialias="true"/>
+        <line x2="122.224" x1="64.0168" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="12.9098" length2="1.5" y1="-4.69018" end2="none" antialias="false"/>
+        <line x2="120.346" x1="64.0168" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="15.3098" length2="1.5" y1="-1.49018" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="9.70982" width="20.654" height="15.2" x="120.346" antialias="true"/>
+        <text text="V. flotador3/4&quot;M" size="4" y="-17" x="5"/>
+        <terminal orientation="w" y="-2.58629" x="-1.23121"/>
+        <terminal orientation="e" y="-2.58629" x="22.2555"/>
     </description>
 </definition>

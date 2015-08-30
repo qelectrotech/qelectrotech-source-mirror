@@ -1,19 +1,20 @@
-<definition width="60" version="0.4" hotspot_x="26" hotspot_y="31" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A3B5F091-E075-4B73-B8FB-93BFBDC1109F}"/><names>
-        <name lang="es">Valv. retención 1"</name>
+<definition orientation="dyyy" type="element" width="60" version="0.5" hotspot_x="25" height="40" hotspot_y="19" link_type="simple">
+    <uuid uuid="{12bdf491-f29b-4393-8498-d9ea93104237}"/>
+    <names>
         <name lang="it">Valvola di ritegno 1"</name>
         <name lang="pl">Zawór zwrotny 1"</name>
         <name lang="cs">Zpětný ventil 1"</name>
+        <name lang="es">Valv. retención 1"</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="2.56903" x="25.047" y="-13.0542" antialias="false" height="26.2653" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="42.0269" x="-17.0434" y="-14.1898" antialias="true" height="29.3707" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="2.56903" x="-19.9111" y="-13.0542" antialias="false" height="26.2653" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.078426" x1="-4.49686" y2="0.078426" x2="10.9173"/>
-        <polygon x4="10.9173" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-2.83994" x1="10.9173" y2="2.99679" x2="10.9173" y3="0.078426" x3="16.0554" y4="-2.83994"/>
-        <input x="-12" y="-19" size="4" rotate="true" text="retención1&quot;"/>
-        <terminal x="-19.9111" y="0.078426" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="27.6161" y="0.078426" nameHidden="0" number="" name="" orientation="e"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.0542" width="2.56903" height="26.2653" x="25.047" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.1898" width="42.0269" height="29.3707" x="-17.0434" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.0542" width="2.56903" height="26.2653" x="-19.9111" antialias="false"/>
+        <line x2="10.9173" x1="-4.49686" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0.078426" length2="1.5" y1="0.078426" end2="none" antialias="false"/>
+        <polygon x2="10.9173" x3="16.0554" x1="10.9173" style="line-style:normal;line-weight:normal;filling:black;color:black" x4="10.9173" y2="2.99679" y4="-2.83994" y1="-2.83994" y3="0.078426" antialias="false"/>
+        <input text="retención1&quot;" size="4" y="-19" tagg="label" rotate="true" x="-12"/>
+        <terminal orientation="w" y="0.078426" x="-19.9111"/>
+        <terminal orientation="e" y="0.078426" x="27.6161"/>
     </description>
 </definition>

@@ -1,22 +1,24 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="12" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{6148F202-15FF-4942-B11C-D178704D36F9}"/><names>
-        <name lang="es">Llave corte rápido</name>
+<definition orientation="dyyy" type="element" width="50" version="0.5" hotspot_x="25" height="20" hotspot_y="12" link_type="simple">
+    <uuid uuid="{627e7d72-2ebd-4bfb-98c6-f5535e0cdab3}"/>
+    <names>
         <name lang="it">Valvola taglio rapido</name>
         <name lang="pl">Zawór szybkozamykający</name>
         <name lang="cs">Rychlozavírací ventil</name>
+        <name lang="es">Llave corte rápido</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20.8012" y2="0" x2="11.0297"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.9727" x1="-8.8275" y2="-4.89732" x2="-8.8275"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.9727" x1="10.2993" y2="-4.89732" x2="10.2993"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.9225" x1="-8.8275" y2="5" x2="10.0725"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-8.8275" y2="-4.9225" x2="10.0725"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.1975" x1="0.6225" y2="-9.175" x2="0.6225"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.175" x1="-4.1025" y2="-9.175" x2="5.3475"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-9.19881" y2="0" x2="-18.9703"/>
-        <terminal x="-19" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="10.545" y="0.275" nameHidden="1" number="" name="" orientation="e"/>
+        <input text="_" size="9" y="2.55" tagg="label" rotate="true" x="-7"/>
+        <line x2="11.0297" x1="20.8012" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="-8.8275" x1="-8.8275" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4.89732" length2="1.5" y1="4.9727" end2="none" antialias="false"/>
+        <line x2="10.2993" x1="10.2993" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4.89732" length2="1.5" y1="4.9727" end2="none" antialias="false"/>
+        <line x2="10.0725" x1="-8.8275" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5" length2="1.5" y1="-4.9225" end2="none" antialias="false"/>
+        <line x2="10.0725" x1="-8.8275" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-4.9225" length2="1.5" y1="5" end2="none" antialias="false"/>
+        <line x2="0.6225" x1="0.6225" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-9.175" length2="1.5" y1="-0.1975" end2="none" antialias="false"/>
+        <line x2="5.3475" x1="-4.1025" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-9.175" length2="1.5" y1="-9.175" end2="none" antialias="false"/>
+        <line x2="-18.9703" x1="-9.19881" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <terminal orientation="w" y="0" x="-19"/>
+        <terminal orientation="e" y="0.275" x="10.545"/>
     </description>
 </definition>

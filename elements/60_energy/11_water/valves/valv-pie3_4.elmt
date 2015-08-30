@@ -1,38 +1,40 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="16" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5F368000-0B60-44FC-B892-595DE1FA0396}"/><names>
-        <name lang="es">Valv Pié 3/4Hembra</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="19" height="50" hotspot_y="16" link_type="simple">
+    <uuid uuid="{4d98e9a1-9f71-4970-ae28-760e2006c574}"/>
+    <names>
         <name lang="it">Valvola di piede 3/4 F</name>
         <name lang="pl">Zawór nożny 3/4"</name>
         <name lang="cs">Nožní ventil 3/4"</name>
+        <name lang="es">Valv Pié 3/4Hembra</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="26.52" x="-13.0192" y="13.0847" antialias="false" height="1.65384" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="26.52" x="-13.0192" y="18.377" antialias="false" height="1.65384" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.0847" x1="11.9616" y2="12.0924" x2="11.9616"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.1078" x1="11.9616" y2="9.1155" x2="11.9616"/>
-        <rect width="26.52" x="-13.0192" y="15.7308" antialias="false" height="1.65384" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.377" x1="11.9616" y2="17.3847" x2="11.9616"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.0231" x1="11.9616" y2="20.0308" x2="11.9616"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.7308" x1="11.4416" y2="14.7385" x2="11.4416"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.0231" x1="-10.9184" y2="20.0308" x2="-10.9184"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.377" x1="-10.9184" y2="17.3847" x2="-10.9184"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.0847" x1="-10.9184" y2="12.0924" x2="-10.9184"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.7308" x1="-11.4384" y2="14.7385" x2="-11.4384"/>
-        <rect width="17.68" x="-8.8592" y="-11.3921" antialias="false" height="8.26918" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="14.56" x="-7.2992" y="-11.3921" antialias="false" height="6.28457" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <rect width="20.8" x="-10.4192" y="-3.1229" antialias="false" height="3.9692" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="26.52" x="-13.0192" y="0.8463" antialias="false" height="8.26918" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="26.52" x="-13.0192" y="10.4386" antialias="false" height="1.65384" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.1078" x1="-10.9184" y2="9.1155" x2="-10.9184"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.3538" x1="13.5008" y2="21.3538" x2="-13.0192"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.2712" x1="-13.04" y2="22.7664" x2="-13.04"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22.6769" x1="-13.0192" y2="24" x2="-11.4592"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.3538" x1="13.5008" y2="22.6769" x2="13.5008"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.0077" x1="13.5008" y2="24" x2="11.9408"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="-11.4592" y2="24" x2="11.9408"/>
-        <text x="-15" y="29" size="4" text="Valv.pié3/4H"/>
-        <terminal x="-0.0192" y="-11.0613" nameHidden="1" number="" name="" orientation="n"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="13.0847" width="26.52" height="1.65384" x="-13.0192" antialias="false"/>
+        <input text="_" size="9" y="30.55" tagg="label" rotate="true" x="-7"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.377" width="26.52" height="1.65384" x="-13.0192" antialias="false"/>
+        <line x2="11.9616" x1="11.9616" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="12.0924" length2="1.5" y1="13.0847" end2="none" antialias="false"/>
+        <line x2="11.9616" x1="11.9616" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="9.1155" length2="1.5" y1="10.1078" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="15.7308" width="26.52" height="1.65384" x="-13.0192" antialias="false"/>
+        <line x2="11.9616" x1="11.9616" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="17.3847" length2="1.5" y1="18.377" end2="none" antialias="false"/>
+        <line x2="11.9616" x1="11.9616" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="20.0308" length2="1.5" y1="21.0231" end2="none" antialias="false"/>
+        <line x2="11.4416" x1="11.4416" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="14.7385" length2="1.5" y1="15.7308" end2="none" antialias="false"/>
+        <line x2="-10.9184" x1="-10.9184" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="20.0308" length2="1.5" y1="21.0231" end2="none" antialias="false"/>
+        <line x2="-10.9184" x1="-10.9184" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="17.3847" length2="1.5" y1="18.377" end2="none" antialias="false"/>
+        <line x2="-10.9184" x1="-10.9184" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="12.0924" length2="1.5" y1="13.0847" end2="none" antialias="false"/>
+        <line x2="-11.4384" x1="-11.4384" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="14.7385" length2="1.5" y1="15.7308" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.3921" width="17.68" height="8.26918" x="-8.8592" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="-11.3921" width="14.56" height="6.28457" x="-7.2992" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.1229" width="20.8" height="3.9692" x="-10.4192" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="0.8463" width="26.52" height="8.26918" x="-13.0192" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="10.4386" width="26.52" height="1.65384" x="-13.0192" antialias="false"/>
+        <line x2="-10.9184" x1="-10.9184" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="9.1155" length2="1.5" y1="10.1078" end2="none" antialias="false"/>
+        <line x2="-13.0192" x1="13.5008" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="21.3538" length2="1.5" y1="21.3538" end2="none" antialias="false"/>
+        <line x2="-13.04" x1="-13.04" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="22.7664" length2="1.5" y1="21.2712" end2="none" antialias="false"/>
+        <line x2="-11.4592" x1="-13.0192" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="24" length2="1.5" y1="22.6769" end2="none" antialias="false"/>
+        <line x2="13.5008" x1="13.5008" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="22.6769" length2="1.5" y1="21.3538" end2="none" antialias="false"/>
+        <line x2="11.9408" x1="13.5008" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="24" length2="1.5" y1="23.0077" end2="none" antialias="false"/>
+        <line x2="11.9408" x1="-11.4592" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="24" length2="1.5" y1="24" end2="none" antialias="false"/>
+        <text text="Valv.pié3/4H" size="4" y="29" x="-15"/>
+        <terminal orientation="n" y="-11.0613" x="-0.0192"/>
     </description>
 </definition>

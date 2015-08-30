@@ -1,20 +1,22 @@
-<definition width="30" version="0.4" hotspot_x="18" hotspot_y="13" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{14D3FCF7-807B-4F88-A3B0-7A48147017ED}"/><names>
-        <name lang="es">Grifo riego</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="18" height="40" hotspot_y="13" link_type="simple">
+    <uuid uuid="{d62c53ab-02b3-408c-bfcf-994c9ca28277}"/>
+    <names>
         <name lang="it">Rubinetto irrigazione</name>
         <name lang="pl">Zawór do nawadniania</name>
         <name lang="cs">Kohoutek zavlažování</name>
+        <name lang="es">Grifo riego</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.97109" x1="-0.02" y2="1.34236" x2="-0.02"/>
-        <polygon x4="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1.46011" x1="7" y2="1.46011" x2="-8" y3="10" x3="-0.5" y4="1.46011"/>
-        <arc width="12.35" x="-13" y="11.4505" antialias="true" height="12.5495" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-270"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.4852" x1="-0.65" y2="18.2079" x2="-0.65"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.4505" x1="-6.35" y2="13.3812" x2="5.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.4159" x1="4.1" y2="14.3466" x2="6.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.3466" x1="4.1" y2="14.3466" x2="6.95"/>
-        <terminal x="0" y="-9" nameHidden="1" number="" name="" orientation="n"/>
+        <input text="_" size="9" y="6.55" tagg="label" rotate="true" x="7"/>
+        <line x2="-0.02" x1="-0.02" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="1.34236" length2="1.5" y1="-7.97109" end2="none" antialias="false"/>
+        <polygon x2="-8" x3="-0.5" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="7" y2="1.46011" y4="1.46011" y1="1.46011" y3="10" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="11.4505" width="12.35" height="12.5495" start="0" angle="-270" x="-13" antialias="true"/>
+        <line x2="-0.65" x1="-0.65" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="18.2079" length2="1.5" y1="10.4852" end2="none" antialias="false"/>
+        <line x2="5.05" x1="-6.35" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="13.3812" length2="1.5" y1="11.4505" end2="none" antialias="true"/>
+        <line x2="6.95" x1="4.1" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="14.3466" length2="1.5" y1="12.4159" end2="none" antialias="true"/>
+        <line x2="6.95" x1="4.1" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="14.3466" length2="1.5" y1="14.3466" end2="none" antialias="true"/>
+        <terminal orientation="n" y="-9" x="0"/>
     </description>
 </definition>

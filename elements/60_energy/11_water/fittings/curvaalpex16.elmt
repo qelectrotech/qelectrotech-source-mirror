@@ -1,25 +1,27 @@
-<definition width="80" version="0.4" hotspot_x="46" hotspot_y="34" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{8283DDDC-2707-4F33-A8AE-784482680933}"/><names>
-        <name lang="en">Elbow Alpex16</name>
+<definition orientation="dyyy" type="element" width="60" version="0.5" hotspot_x="46" height="60" hotspot_y="34" link_type="simple">
+    <uuid uuid="{a04aef21-4463-4b6c-8322-d405f24a21cf}"/>
+    <names>
         <name lang="fr">Coude Alpex16</name>
-        <name lang="es">CurvaAlpex16</name>
-        <name lang="pl">Kolanko Alpex 16</name>
         <name lang="it">Curva Alpex 16</name>
+        <name lang="en">Elbow Alpex16</name>
+        <name lang="pl">Kolanko Alpex 16</name>
         <name lang="cs">Koleno Alpex 16</name>
+        <name lang="es">CurvaAlpex16</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="52" x="-42" y="-29" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <text x="-22" y="16" size="4" text="Alpex 16"/>
-        <arc width="31" x="-32" y="-19" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.34551" x1="-1" y2="-19.6811" x2="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-0.904" y2="-20" x2="9.896"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.35862" x1="10" y2="-19.669" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-17" y2="11" x2="-29"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-16.8476" y2="21" x2="-29.1406"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-30" y2="11" x2="-30"/>
-        <terminal x="-31" y="16" orientation="w"/>
-        <terminal x="4" y="-21" orientation="n"/>
+        <input text="_" size="9" y="10.55" tagg="label" rotate="true" x="3"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-29" width="52" height="50" start="0" angle="-90" x="-42" antialias="true"/>
+        <text text="Alpex 16" size="4" y="16" x="-22"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-19" width="31" height="30" start="0" angle="-90" x="-32" antialias="true"/>
+        <line x2="-1" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-19.6811" length2="1.5" y1="-4.34551" end2="none" antialias="false"/>
+        <line x2="9.896" x1="-0.904" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-20" length2="1.5" y1="-20" end2="none" antialias="false"/>
+        <line x2="10" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-19.669" length2="1.5" y1="-4.35862" end2="none" antialias="false"/>
+        <line x2="-29" x1="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="11" length2="1.5" y1="11" end2="none" antialias="false"/>
+        <line x2="-29.1406" x1="-16.8476" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="21" length2="1.5" y1="21" end2="none" antialias="false"/>
+        <line x2="-30" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="11" length2="1.5" y1="21" end2="none" antialias="false"/>
+        <terminal orientation="w" y="16" x="-31"/>
+        <terminal orientation="n" y="-21" x="4"/>
     </description>
 </definition>

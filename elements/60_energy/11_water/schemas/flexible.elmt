@@ -1,22 +1,24 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="11" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{76A37C72-D686-4C87-BD33-C484554A6D5E}"/><names>
-        <name lang="es">Flexible</name>
+<definition orientation="dyyy" type="element" width="50" version="0.5" hotspot_x="24" height="20" hotspot_y="11" link_type="simple">
+    <uuid uuid="{616f068f-bd3e-4d45-8dfe-cb1a6b87ae7c}"/>
+    <names>
         <name lang="it">Flessibile</name>
         <name lang="pl">Wąż giętki</name>
         <name lang="cs">Ohebná hadice</name>
+        <name lang="es">Flexible</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="6" y2="2" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.48" x1="8.96" y2="-0.48" x2="17.96"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.48" x1="-18.2" y2="-0.48" x2="-9.86667"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-9" y2="-5" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-6" y2="2" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="2" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="2" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="6" y2="-1" x2="8"/>
-        <terminal x="-20" y="-0.5" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="20" y="-0.5" nameHidden="1" number="" name="" orientation="e"/>
+        <input text="_" size="9" y="-19.45" tagg="label" rotate="true" x="-7"/>
+        <line x2="3" x1="6" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="-5" end2="none" antialias="true"/>
+        <line x2="17.96" x1="8.96" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-0.48" length2="1.5" y1="-0.48" end2="none" antialias="false"/>
+        <line x2="-9.86667" x1="-18.2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-0.48" length2="1.5" y1="-0.48" end2="none" antialias="false"/>
+        <line x2="-6" x1="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-5" length2="1.5" y1="-1" end2="none" antialias="true"/>
+        <line x2="-4" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="-5" end2="none" antialias="true"/>
+        <line x2="-4" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="-5" end2="none" antialias="true"/>
+        <line x2="3" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="-5" end2="none" antialias="true"/>
+        <line x2="8" x1="6" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-1" length2="1.5" y1="-5" end2="none" antialias="true"/>
+        <terminal orientation="e" y="-0.5" x="20"/>
+        <terminal orientation="w" y="-0.5" x="-20"/>
     </description>
 </definition>

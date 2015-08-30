@@ -1,25 +1,27 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A4D3703E-3A74-4631-8DFD-61602A267AA2}"/><names>
-        <name lang="es">Interacambiador calor</name>
+<definition orientation="dyyy" type="element" width="50" version="0.5" hotspot_x="24" height="40" hotspot_y="19" link_type="simple">
+    <uuid uuid="{d5243024-3bd0-42cb-908a-c0189354cbf1}"/>
+    <names>
         <name lang="it">Scambiatore di calore</name>
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Výměník tepla</name>
+        <name lang="es">Interacambiador calor</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-20" y2="10" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-20" y2="-10" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="0" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="10" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="0" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-4" y2="10" x2="10"/>
-        <rect width="26" x="-12" y="-14" antialias="false" height="29" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <terminal x="-20" y="-10" nameHidden="224" number="" name="" orientation="w"/>
-        <terminal x="-20" y="10" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="20" y="-10" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" nameHidden="1" number="" name="" orientation="e"/>
+        <input text="_" size="9" y="10.55" tagg="label" rotate="true" x="-7"/>
+        <line x2="-10" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="10" end2="none" antialias="false"/>
+        <line x2="20" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-10" length2="1.5" y1="-10" end2="none" antialias="false"/>
+        <line x2="-10" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-10" length2="1.5" y1="-10" end2="none" antialias="false"/>
+        <line x2="20" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="10" end2="none" antialias="false"/>
+        <line x2="5" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="-10" end2="none" antialias="true"/>
+        <line x2="-9" x1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="0" end2="none" antialias="true"/>
+        <line x2="-4" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="-10" end2="none" antialias="true"/>
+        <line x2="10" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="0" end2="none" antialias="true"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-14" width="26" height="29" x="-12" antialias="false"/>
+        <terminal orientation="w" y="10" x="-20"/>
+        <terminal orientation="e" y="10" x="20"/>
+        <terminal orientation="w" y="-10" x="-20"/>
+        <terminal orientation="e" y="-10" x="20"/>
     </description>
 </definition>

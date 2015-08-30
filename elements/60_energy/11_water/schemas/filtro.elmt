@@ -1,19 +1,21 @@
-<definition width="30" version="0.4" hotspot_x="13" hotspot_y="7" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{1394C425-288A-4376-95DD-85FBE882FCDB}"/><names>
-        <name lang="es">Filtro</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="13" height="20" hotspot_y="7" link_type="simple">
+    <uuid uuid="{9fd13373-8fdb-4f2b-adf7-43171347d7e5}"/>
+    <names>
         <name lang="it">Filtro</name>
         <name lang="pl">Filtr</name>
         <name lang="cs">Filtr</name>
+        <name lang="es">Filtro</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.23751" x1="10" y2="3.25731" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.23751" x1="-7" y2="3.25731" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5.98947" y2="0" x2="6.90526"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="7" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-2" y2="5" x2="2"/>
-        <terminal x="-8" y="0" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="11" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <input text="_" size="9" y="-10.5" tagg="label" rotate="true" x="-6"/>
+        <line x2="10" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.25731" length2="1.5" y1="-3.23751" end2="none" antialias="false"/>
+        <line x2="-7" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="3.25731" length2="1.5" y1="-3.23751" end2="none" antialias="false"/>
+        <line x2="6.90526" x1="-5.98947" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="0" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="7" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="2" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5" length2="1.5" y1="9" end2="none" antialias="false"/>
+        <terminal orientation="w" y="0" x="-8"/>
+        <terminal orientation="e" y="0" x="11"/>
     </description>
 </definition>

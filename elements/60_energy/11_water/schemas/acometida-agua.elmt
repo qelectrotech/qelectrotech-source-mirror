@@ -1,24 +1,25 @@
-<definition width="40" version="0.4" hotspot_x="15" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C4BC853C-BF01-4DCB-BAE2-9FBB5980BE00}"/><names>
-        <name lang="es">Acometida</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="14" height="20" hotspot_y="7" link_type="simple">
+    <uuid uuid="{7e51d8ba-6956-4c37-b522-916b5e163ade}"/>
+    <names>
         <name lang="it">Presa</name>
         <name lang="pl">Przyłącze</name>
         <name lang="cs">Rozvod</name>
+        <name lang="es">Acometida</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-10" y2="11" x2="10.9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.86251" x1="-10" y2="6.86251" x2="10.9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.41157" x1="-2.3" y2="0.412131" x2="-2.3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0332937" x1="-2.0287" y2="-0.0332937" x2="1.89776"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0332937" x1="9.928" y2="-0.0332937" x2="17.5363"/>
-        <input x="-12" y="-11.1025" size="4" rotate="true" text="Ø_"/>
-        <polygon x4="9" y5="-4" x5="2" y6="-4" x6="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="2" y2="4" x2="2" y3="-4" x3="9" y4="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5.48" y2="-5" x2="5.48"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.97578" x1="14" y2="2.97578" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="18" y2="2.97578" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.95157" x1="18" y2="2.97578" x2="20"/>
-        <terminal x="20" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <line x2="10.9" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="11" length2="1.5" y1="11" end2="none" antialias="false"/>
+        <line x2="10.9" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6.86251" length2="1.5" y1="6.86251" end2="none" antialias="false"/>
+        <line x2="-2.3" x1="-2.3" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="0.412131" length2="1.5" y1="6.41157" end2="none" antialias="false"/>
+        <line x2="1.89776" x1="-2.0287" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-0.0332937" length2="1.5" y1="-0.0332937" end2="none" antialias="false"/>
+        <line x2="17.5363" x1="9.928" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-0.0332937" length2="1.5" y1="-0.0332937" end2="none" antialias="false"/>
+        <input text="Ø_" size="4" y="-11.1025" tagg="label" rotate="true" x="-12"/>
+        <polygon x2="2" x3="9" x1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="2" x4="9" y6="-4" y2="4" y4="4" closed="false" y5="-4" y1="-4" y3="-4" antialias="false" x5="2"/>
+        <line x2="5.48" x1="5.48" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-5" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="20" x1="14" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="2.97578" length2="1.5" y1="2.97578" end2="none" antialias="false"/>
+        <line x2="20" x1="18" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="2.97578" length2="1.5" y1="4" end2="none" antialias="false"/>
+        <line x2="20" x1="18" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="2.97578" length2="1.5" y1="1.95157" end2="none" antialias="false"/>
+        <terminal orientation="e" y="0" x="20"/>
     </description>
 </definition>

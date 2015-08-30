@@ -1,16 +1,18 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{736D4D03-23AF-45B7-830C-B852FB2DAAC9}"/><names>
-        <name lang="es">Termómetro</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="15" link_type="simple">
+    <uuid uuid="{318d6806-53d8-4af7-a36a-05333959d909}"/>
+    <names>
         <name lang="it">Termometro</name>
         <name lang="pl">Termometr</name>
         <name lang="cs">Teploměr</name>
+        <name lang="es">Termómetro</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <ellipse width="16" x="-8" y="-11" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="10" x2="0"/>
-        <text x="-4" y="1" size="9" text="T"/>
-        <terminal x="0" y="10" nameHidden="0" number="" name="" orientation="s"/>
+        <input text="_" size="9" y="-0.45" tagg="label" rotate="true" x="5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" width="16" height="15" x="-8" antialias="true"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="4" end2="none" antialias="false"/>
+        <text text="T" size="9" y="1" x="-4"/>
+        <terminal orientation="s" y="10" x="0"/>
     </description>
 </definition>

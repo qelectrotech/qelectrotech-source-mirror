@@ -1,27 +1,28 @@
-<definition width="40" version="0.4" hotspot_x="18" hotspot_y="12" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A8CFCF7D-5D87-49C6-A6DE-CA374FDF39AB}"/><names>
-        <name lang="es">Machón red. 3/4-1/2</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="15" height="30" hotspot_y="15" link_type="simple">
+    <uuid uuid="{0db82274-89ce-41b0-90b9-499af49ec59c}"/>
+    <names>
         <name lang="it">Riduzione 3/4 - 1/2 M</name>
         <name lang="pl">Nypel 3/4-1/2"</name>
         <name lang="cs">Redukční převod 3/4 - 1/2" samec</name>
+        <name lang="es">Machón red. 3/4-1/2</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97692" x1="-1.49498" y2="-6.16115" x2="-2.90254"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97692" x1="-3.37172" y2="-6.16115" x2="-4.77928"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.90505" x1="10.693" y2="-4.29511" x2="9.3565"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97692" x1="-7.5944" y2="-6.16115" x2="-9.00196"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.90505" x1="8.911" y2="-4.29511" x2="7.5745"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97692" x1="-5.71766" y2="-6.16115" x2="-7.12522"/>
-        <rect width="8.91455" x="-10.4095" y="-6.71802" antialias="false" height="11.7587" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.90505" x1="4.9015" y2="-4.29511" x2="3.565"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.90505" x1="6.6835" y2="-4.29511" x2="5.347"/>
-        <rect width="8.4645" x="2.2285" y="-4.70509" antialias="false" height="8.43012" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3.564" x="-1.3355" y="-10.4823" antialias="false" height="19.4823" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.76817" x1="-0.732451" y2="-5.76817" x2="1.98406"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.17085" x1="-1.50462" y2="6.17085" x2="2.20643"/>
-        <input x="-12" y="15" size="4" rotate="true" text="machón&#xa;3/4-1/2&quot;"/>
-        <terminal x="-10.4395" y="-0.57304" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="10.693" y="-0.195001" nameHidden="0" number="" name="" orientation="e"/>
+        <line x2="-2.90254" x1="-1.49498" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-6.16115" length2="1.5" y1="4.97692" end2="none" antialias="false"/>
+        <line x2="-4.77928" x1="-3.37172" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-6.16115" length2="1.5" y1="4.97692" end2="none" antialias="false"/>
+        <line x2="9.3565" x1="10.693" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-4.29511" length2="1.5" y1="3.90505" end2="none" antialias="false"/>
+        <line x2="-9.00196" x1="-7.5944" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-6.16115" length2="1.5" y1="4.97692" end2="none" antialias="false"/>
+        <line x2="7.5745" x1="8.911" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-4.29511" length2="1.5" y1="3.90505" end2="none" antialias="false"/>
+        <line x2="-7.12522" x1="-5.71766" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-6.16115" length2="1.5" y1="4.97692" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.71802" width="8.91455" height="11.7587" x="-10.4095" antialias="false"/>
+        <line x2="3.565" x1="4.9015" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-4.29511" length2="1.5" y1="3.90505" end2="none" antialias="false"/>
+        <line x2="5.347" x1="6.6835" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="-4.29511" length2="1.5" y1="3.90505" end2="none" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.70509" width="8.4645" height="8.43012" x="2.2285" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.4823" width="3.564" height="19.4823" x="-1.3355" antialias="false"/>
+        <line x2="1.98406" x1="-0.732451" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-5.76817" length2="1.5" y1="-5.76817" end2="none" antialias="false"/>
+        <line x2="2.20643" x1="-1.50462" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6.17085" length2="1.5" y1="6.17085" end2="none" antialias="false"/>
+        <input text="machón&#xa;3/4-1/2&quot;" size="4" y="15" tagg="label" rotate="true" x="-12"/>
+        <terminal orientation="w" y="-0.57304" x="-10.4395"/>
+        <terminal orientation="e" y="-0.195001" x="10.693"/>
     </description>
 </definition>

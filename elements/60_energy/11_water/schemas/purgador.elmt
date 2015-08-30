@@ -1,16 +1,18 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{68E66888-D502-4E77-97E9-EAB2554B5004}"/><names>
-        <name lang="es">Purgador</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="15" link_type="simple">
+    <uuid uuid="{b626e1c8-bcf3-40e0-bf13-2e9321633071}"/>
+    <names>
         <name lang="it">Spurgo</name>
         <name lang="pl">Odpowietrznik</name>
         <name lang="cs">Odvětrávač</name>
+        <name lang="es">Purgador</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <ellipse width="16" x="-8" y="-11" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="10" x2="0"/>
-        <text x="-4" y="1" size="9" text="V"/>
-        <terminal x="0" y="10" nameHidden="0" number="" name="" orientation="s"/>
+        <input text="_" size="9" y="-4.45" tagg="label" rotate="true" x="5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" width="16" height="15" x="-8" antialias="true"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="10" length2="1.5" y1="4" end2="none" antialias="false"/>
+        <text text="V" size="9" y="1" x="-4"/>
+        <terminal orientation="s" y="10" x="0"/>
     </description>
 </definition>

@@ -1,23 +1,25 @@
-<definition width="30" version="0.4" hotspot_x="16" hotspot_y="18" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C86FDA1A-BB99-4100-A4D7-5464999A19EA}"/><names>
-        <name lang="es">Válvula de Boya</name>
+<definition orientation="dyyy" type="element" width="30" version="0.5" hotspot_x="16" height="30" hotspot_y="18" link_type="simple">
+    <uuid uuid="{0e19f99f-f2d3-47d2-8406-e4d2c1cc42df}"/>
+    <names>
         <name lang="it">Valvola a galleggiante</name>
         <name lang="pl">Zawór pływakowy</name>
         <name lang="cs">Plováková klapka</name>
+        <name lang="es">Válvula de Boya</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" x1="-6" y2="2" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-9" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.1043" x1="0" y2="-1.88696" x2="0"/>
-        <circle x="-9" y="-4" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="-5" y2="1" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="-6" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="-6" x2="-2"/>
-        <arc width="6" x="4" y="-2" antialias="true" height="7" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-10" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="10" y2="2" x2="10"/>
-        <circle x="-8" y="-3" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
-        <terminal x="-10" y="-10" nameHidden="1" number="" name="" orientation="w"/>
+        <line x2="10" x1="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="-1" end2="none" antialias="false"/>
+        <input text="_" size="9" y="2.55" tagg="label" rotate="true" x="-8"/>
+        <line x2="0" x1="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-10" length2="1.5" y1="-10" end2="none" antialias="false"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-1.88696" length2="1.5" y1="-10.1043" end2="none" antialias="false"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="-4" diameter="4" x="-9" antialias="true"/>
+        <line x2="10" x1="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="1" length2="1.5" y1="-2" end2="none" antialias="false"/>
+        <line x2="2" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-6" length2="1.5" y1="-2" end2="none" antialias="false"/>
+        <line x2="-2" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-6" length2="1.5" y1="-2" end2="none" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-2" width="6" height="7" start="-10" angle="-180" x="4" antialias="true"/>
+        <line x2="10" x1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y2="2" length2="1.5" y1="1" end2="none" antialias="false"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="-3" diameter="2" x="-8" antialias="true"/>
+        <terminal orientation="w" y="-10" x="-10"/>
     </description>
 </definition>

@@ -1,18 +1,20 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B1A15166-3C0D-4427-967F-619F466F0EB5}"/><names>
-        <name lang="es">Válvula de pie</name>
+<definition orientation="dyyy" type="element" width="20" version="0.5" hotspot_x="10" height="30" hotspot_y="16" link_type="simple">
+    <uuid uuid="{514ef58d-f799-442d-b2dc-ff4087070adb}"/>
+    <names>
         <name lang="it">Valvola filtro</name>
         <name lang="pl">Zawór z filtrem</name>
         <name lang="cs">Ventil s filtrem</name>
+        <name lang="es">Válvula de pie</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <circle x="-4" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-8" y2="6" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="7" y2="6" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.76364" x1="0" y2="6.21818" x2="0"/>
-        <terminal x="0" y="-10" nameHidden="1" number="" name="" orientation="n"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4" diameter="8" x="-4" antialias="true"/>
+        <input text="_" size="9" y="1.55" tagg="label" rotate="true" x="6"/>
+        <line x2="0" x1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="0" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6" length2="1.5" y1="0" end2="none" antialias="false"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-10" length2="1.5" y1="-4" end2="none" antialias="false"/>
+        <line x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="6.21818" length2="1.5" y1="9.76364" end2="none" antialias="false"/>
+        <terminal orientation="n" y="-10" x="0"/>
     </description>
 </definition>

@@ -1,29 +1,30 @@
-<definition width="40" version="0.4" hotspot_x="16" hotspot_y="19" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9673FA13-FBF6-4D3C-8E0D-71C7D84722A4}"/><names>
-        <name lang="es">Machón 3/4</name>
+<definition orientation="dyyy" type="element" width="40" version="0.5" hotspot_x="17" height="30" hotspot_y="15" link_type="simple">
+    <uuid uuid="{55884b1c-5dec-482f-a3fe-ce5557d0c375}"/>
+    <names>
         <name lang="it">Maschio 3/4</name>
         <name lang="pl">Nypel 3/4"</name>
         <name lang="cs">Samec 3/4"</name>
+        <name lang="es">Machón 3/4</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-1.5" y2="-5.8858" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="14" y2="-5.8858" x2="12.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="12" y2="-5.8858" x2="10.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-3.5" y2="-5.8858" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-8" y2="-5.8858" x2="-9.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="7.5" y2="-5.8858" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-6" y2="-5.8858" x2="-7.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="9.5" y2="-5.8858" x2="8"/>
-        <rect width="8.5" x="5.5" y="-5.8858" antialias="false" height="11.1093" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <rect width="8.5" x="-10" y="-5.8858" antialias="false" height="11.1093" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
-        <rect width="10" x="4" y="-8.10766" antialias="false" height="14.9975" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-10" y="-8.10766" antialias="false" height="14.9975" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="4" x="0" y="-13.1068" antialias="false" height="26.1068" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.44126" x1="0" y2="-6.44126" x2="3.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.2235" x1="0" y2="5.2235" x2="4"/>
-        <input x="-14" y="18" size="4" rotate="true" text="machón3/4&quot;"/>
-        <terminal x="-10" y="-0.331151" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="14" y="-0.331151" nameHidden="0" number="" name="" orientation="e"/>
+        <line x2="-3" x1="-1.5" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="12.5" x1="14" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="10.5" x1="12" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="-5" x1="-3.5" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="-9.5" x1="-8" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="6" x1="7.5" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="-7.5" x1="-6" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <line x2="8" x1="9.5" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" end1="none" y2="-5.8858" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="-5.8858" width="8.5" height="11.1093" x="5.5" antialias="false"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:red" y="-5.8858" width="8.5" height="11.1093" x="-10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.10766" width="10" height="14.9975" x="4" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.10766" width="10" height="14.9975" x="-10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.1068" width="4" height="26.1068" x="0" antialias="false"/>
+        <line x2="3.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="-6.44126" length2="1.5" y1="-6.44126" end2="none" antialias="false"/>
+        <line x2="4" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y2="5.2235" length2="1.5" y1="5.2235" end2="none" antialias="false"/>
+        <input text="machón3/4&quot;" size="4" y="18" tagg="label" rotate="true" x="-14"/>
+        <terminal orientation="w" y="-0.331151" x="-10"/>
+        <terminal orientation="e" y="-0.331151" x="14"/>
     </description>
 </definition>
