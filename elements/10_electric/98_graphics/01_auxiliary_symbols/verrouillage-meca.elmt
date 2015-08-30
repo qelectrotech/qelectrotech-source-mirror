@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
-<uuid uuid="{EF99036D-F72E-4B15-882C-90551B771A3F}"/><names>
-        <name lang="ar">قفل ميكانيكي</name>
-        <name lang="el">Μηχανική μανδάλωση</name>
+<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="1" width="20" hotspot_x="7">
+    <uuid uuid="{7d23d234-1736-40be-8423-98280338f775}"/>
+    <names>
         <name lang="en">Mechanical lock</name>
-        <name lang="de">Mechanische Verriegelung</name>
         <name lang="it">blocco meccanico</name>
+        <name lang="de">Mechanische Verriegelung</name>
         <name lang="fr">Verrouillage Mécannique</name>
         <name lang="pl">Blokada mechaniczna</name>
-        <name lang="cs">Mechanický zámek</name>
+        <name lang="ar">قفل ميكانيكي</name>
         <name lang="nl">mechanisch grendel</name>
+        <name lang="el">Μηχανική μανδάλωση</name>
+        <name lang="cs">Mechanický zámek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="8" y2="-7" x2="18" y3="4" x3="13" y4="-7"/>
+        <polygon y4="3" y2="3" x4="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" y1="3" x2="8" antialias="true" y3="14" x3="3"/>
+        <input x="-1" y="13" size="1" tagg="label" rotate="true" text="_"/>
     </description>
 </definition>

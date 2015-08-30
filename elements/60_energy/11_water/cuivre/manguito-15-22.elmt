@@ -1,24 +1,26 @@
-<definition width="40" version="0.4" hotspot_x="15" hotspot_y="18" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{0B39A799-C794-46B5-85EF-BDD68E110B7F}"/><names>
-        <name lang="en">Copper Hose 15-22</name>
-        <name lang="it">Riduzione 15-22</name>
-        <name lang="fr">Cuivre Tuyau 15-22</name>
-        <name lang="pl">Redukcja 15 - 22</name>
+<definition orientation="dyyy" link_type="simple" width="40" hotspot_x="15" type="element" height="30" hotspot_y="18" version="0.5">
+    <uuid uuid="{4848dfef-f442-4a70-bb46-8888af0e0d0c}"/>
+    <names>
         <name lang="es">Manguito cobre 15-22</name>
+        <name lang="fr">Cuivre Tuyau 15-22</name>
+        <name lang="en">Copper Hose 15-22</name>
         <name lang="cs">Redukční převod 15 - 22</name>
+        <name lang="pl">Redukcja 15 - 22</name>
+        <name lang="it">Riduzione 15-22</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="9" y2="8" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="5" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="9" y2="-8" x2="10"/>
-        <rect width="8.8" x="-9.6" y="-5.63888" antialias="false" height="11.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="7.8" x="10.4" y="-8.63888" antialias="false" height="17.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-5" y="-9" size="3" text="Cu15-22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-8" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="1" y2="8" x2="8"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="19" y="0" orientation="e"/>
+        <input tagg="label" y="8.55" text="_" x="-3" rotate="true" size="9"/>
+        <line end1="none" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" length2="1.5" x1="9" antialias="false" length1="1.5" end2="none" y2="8"/>
+        <line end1="none" x2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" x1="0" antialias="false" length1="1.5" end2="none" y2="5"/>
+        <line end1="none" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length2="1.5" x1="9" antialias="false" length1="1.5" end2="none" y2="-8"/>
+        <rect y="-5.63888" width="8.8" x="-9.6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="11.6389" antialias="false"/>
+        <rect y="-8.63888" width="7.8" x="10.4" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17.6389" antialias="false"/>
+        <text y="-9" text="Cu15-22" x="-5" size="3"/>
+        <line end1="none" x2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length2="1.5" x1="0" antialias="false" length1="1.5" end2="none" y2="-5"/>
+        <line end1="none" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length2="1.5" x1="1" antialias="false" length1="1.5" end2="none" y2="-8"/>
+        <line end1="none" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" x1="1" antialias="false" length1="1.5" end2="none" y2="8"/>
+        <terminal orientation="w" y="0" x="-10"/>
+        <terminal orientation="e" y="0" x="19"/>
     </description>
 </definition>

@@ -1,38 +1,39 @@
-<definition width="90" version="0.4" hotspot_x="44" hotspot_y="41" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B95300C1-546C-4DCF-B44A-7406FC392B75}"/><names>
+<definition type="element" height="70" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="41" width="90" hotspot_x="44">
+    <uuid uuid="{85f3ead2-125c-49fa-b012-0ad046d91b28}"/>
+    <names>
         <name lang="en">sink</name>
-        <name lang="fr">Lavabo1</name>
-        <name lang="es">Lavabo1</name>
-        <name lang="pl">Umywalka</name>
         <name lang="it">Lavabo1</name>
+        <name lang="es">Lavabo1</name>
+        <name lang="fr">Lavabo1</name>
+        <name lang="pl">Umywalka</name>
         <name lang="cs">Umyvadlo</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-25" x1="3" y2="-25" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-27" x1="-8" y2="-27" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-27" x1="3" y2="-27" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-25" x1="-8" y2="-25" x2="-5"/>
-        <circle x="-13" y="-29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <arc width="4" x="-7" y="-29" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="-10" y2="-29" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-10" y2="-24" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-28" x1="-8" y2="-28" x2="-5"/>
-        <circle x="-4" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="-29.4373" y2="-33" x2="29.3905"/>
-        <rect width="3" x="-2" y="-29" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="6" y="-29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <arc width="4" x="2" y="-29" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="4" y2="-29" x2="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="4" y2="-24" x2="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-28" x1="3" y2="-28" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="-30" y2="-2" x2="-39"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="30" y2="-2" x2="40"/>
-        <arc width="79" x="-39" y="-26" antialias="true" height="49" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <ellipse width="67" x="-33" y="-17" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-13" y="10" size="4" rotate="true" text="Lavabo" tagg="label"/>
-        <terminal x="-8" y="-34" orientation="n"/>
-        <terminal x="8" y="-34" orientation="n"/>
+        <input x="38" y="-20.5" size="9" tagg="label" rotate="true" text="_"/>
+        <line y2="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="3" y1="-25" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-27" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="-8" y1="-27" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-27" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="3" y1="-27" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="-8" y1="-25" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <circle x="-13" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5"/>
+        <arc height="5" start="90" angle="-180" x="-7" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="4"/>
+        <line y2="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-10" y1="-29" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-10" y1="-24" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-28" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="-8" y1="-28" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <circle x="-4" y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8"/>
+        <line y2="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-29.4373" y1="-33" end2="none" x2="29.3905" antialias="false" end1="none" length2="1.5"/>
+        <rect height="18" x="-2" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="3"/>
+        <circle x="6" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5"/>
+        <arc height="5" start="-90" angle="-180" x="2" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="4"/>
+        <line y2="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="4" y1="-29" end2="none" x2="9" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="4" y1="-24" end2="none" x2="9" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-28" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="3" y1="-28" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-30" y1="-33" end2="none" x2="-39" antialias="true" end1="none" length2="1.5"/>
+        <line y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="30" y1="-33" end2="none" x2="40" antialias="true" end1="none" length2="1.5"/>
+        <arc height="49" start="0" angle="-180" x="-39" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="79"/>
+        <ellipse height="36" x="-33" y="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="67"/>
+        <terminal orientation="n" x="-8" y="-34"/>
+        <terminal orientation="n" x="8" y="-34"/>
     </description>
 </definition>

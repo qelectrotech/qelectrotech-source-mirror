@@ -1,29 +1,31 @@
-<definition width="60" version="0.4" hotspot_x="18" hotspot_y="34" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{0A663780-9AD2-4DC8-96EC-8D784D7828FC}"/><names>
+<definition type="element" height="80" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="34" width="60" hotspot_x="18">
+    <uuid uuid="{436f4029-abaa-44f1-a226-12144fd45caa}"/>
+    <names>
         <name lang="en">Sprinkler irrigation</name>
-        <name lang="fr">irrigation</name>
-        <name lang="es">Aspersor riego</name>
-        <name lang="pl">Zraszacz</name>
         <name lang="it">Irrigatore</name>
+        <name lang="es">Aspersor riego</name>
+        <name lang="fr">irrigation</name>
+        <name lang="pl">Zraszacz</name>
         <name lang="cs">Závlahový postřikovač</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="6" y2="-12" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-13" x1="10.6952" y2="-13" x2="32.3302"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-12" x2="0"/>
-        <rect width="8" x="-4" y="-11" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="16" x="-8" y="-16" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-5" y2="-12" x2="-5"/>
-        <polygon x4="-6.13375" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="14.0459" x1="-6.13375" y2="14.0459" x2="5.6" y3="39.0631" x3="-0.266875" y4="14.0459"/>
-        <rect width="3" x="4" y="6" antialias="false" height="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.6" x1="4.73333" y2="7.6" x2="6.28889"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.524" x1="5" y2="10.524" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-15" x1="10" y2="-28" x2="37"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-11" x1="11" y2="-4" x2="36"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="-11" y2="3" x2="12"/>
+        <line y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="6" y1="-15" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-13" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" x1="10.6952" y1="-13" end2="none" x2="32.3302" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="-15" end2="none" x2="0" antialias="false" end1="none" length2="1.5"/>
+        <rect height="25" x="-4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="8"/>
+        <rect height="5" x="-8" y="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="16"/>
+        <line y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-5" y1="-15" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <polygon y4="14.0459" y2="14.0459" x4="-6.13375" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6.13375" y1="14.0459" x2="5.6" closed="false" antialias="false" y3="39.0631" x3="-0.266875"/>
+        <rect height="6.5" x="4" y="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="3"/>
+        <line y2="7.6" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="4.73333" y1="7.6" end2="none" x2="6.28889" antialias="false" end1="none" length2="1.5"/>
+        <line y2="10.524" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="5" y1="10.524" end2="none" x2="7" antialias="false" end1="none" length2="1.5"/>
+        <line y2="-28" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" x1="10" y1="-15" end2="none" x2="37" antialias="true" end1="none" length2="1.5"/>
+        <line y2="-4" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" x1="11" y1="-11" end2="none" x2="36" antialias="true" end1="none" length2="1.5"/>
+        <line y2="3" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="-11" y1="3" end2="none" x2="12" antialias="false" end1="none" length2="1.5"/>
         <text x="-12" y="-20" size="4" text="Aspersor"/>
-        <terminal x="6" y="9" orientation="e"/>
+        <input x="15" y="15" size="9" tagg="label" rotate="true" text="_"/>
+        <terminal orientation="e" x="6" y="9"/>
     </description>
 </definition>

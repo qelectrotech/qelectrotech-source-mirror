@@ -1,20 +1,20 @@
-<definition width="30" hotspot_x="11" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="4">
-    <uuid uuid="{2464f139-f057-4bd0-8c46-8f7eb1056d86}"/>
+<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="4" width="30" hotspot_x="11">
+    <uuid uuid="{8ef9d490-8db2-450a-ab89-22d2b35c01ed}"/>
     <names>
-        <name lang="cs">Spoj</name>
         <name lang="it">Collegamento</name>
-        <name lang="pl">Połączenie 1</name>
-        <name lang="ru">Соединение</name>
         <name lang="en">Combine</name>
+        <name lang="ru">Соединение</name>
+        <name lang="pl">Połączenie 1</name>
         <name lang="fr">Jonction</name>
+        <name lang="cs">Spoj</name>
     </names>
     <informations></informations>
     <description>
-        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="7" x2="1"/>
-        <input tagg="label" rotate="true" size="9" y="3.55" x="0" text="_"/>
-        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="6" x1="0" x2="6"/>
-        <terminal y="0" x="-4" orientation="w"/>
-        <terminal y="10" x="0" orientation="s"/>
-        <terminal y="0" x="10" orientation="e"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="7" y1="0" end2="none" x2="1" antialias="false" end1="none" length2="1.5"/>
+        <input x="2" y="13.5" size="1" tagg="label" rotate="true" text="_"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="6" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
+        <terminal orientation="w" x="-4" y="0"/>
+        <terminal orientation="s" x="0" y="10"/>
+        <terminal orientation="e" x="10" y="0"/>
     </description>
 </definition>

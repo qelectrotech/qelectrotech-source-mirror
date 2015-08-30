@@ -1,15 +1,17 @@
-<definition width="20" version="0.3" hotspot_x="12" hotspot_y="8" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{36DFFED3-9D7F-41E1-9F8D-44B505E6AA89}"/><names>
+<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="7" width="20" hotspot_x="11">
+    <uuid uuid="{2c6c492e-8d8e-402e-a449-0cf5a7462ced}"/>
+    <names>
         <name lang="en">Corner</name>
         <name lang="it">Angolo</name>
+        <name lang="ru">Угол</name>
         <name lang="fr">Coin</name>
         <name lang="pl">Narożnik</name>
         <name lang="cs">Roh</name>
-	<name lang="ru">Угол</name>
     </names>
     <informations></informations>
     <description>
-        <terminal x="0" y="4" orientation="s"/>
-        <terminal x="-4" y="0" orientation="w"/>
+        <input x="-0.5" y="-0.45" size="1" tagg="label" rotate="true" text="_"/>
+        <terminal orientation="s" x="0" y="4"/>
+        <terminal orientation="w" x="-4" y="0"/>
     </description>
 </definition>

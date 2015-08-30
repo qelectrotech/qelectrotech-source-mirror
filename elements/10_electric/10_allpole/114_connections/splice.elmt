@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="18" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{EADA01D8-0429-45A6-9255-BDA504A8EF77}"/><names>
+<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="4" width="30" hotspot_x="17">
+    <uuid uuid="{0f807068-d5a4-4628-85f4-0644e6d3129f}"/>
+    <names>
         <name lang="en">Splice</name>
         <name lang="it">Spaziatura</name>
+        <name lang="ru">Сращивание</name>
         <name lang="fr">Epissure</name>
         <name lang="pl">Połączenie 3</name>
         <name lang="cs">Spojka</name>
-	<name lang="ru">Сращивание</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="0" y2="0" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="-5"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="4" y="0" orientation="e"/>
+        <input x="1.5" y="3.55" size="1" tagg="label" rotate="true" text="_"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="6" end2="none" x2="-6" antialias="false" end1="none" length2="1.5"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="1" y1="0" end2="none" x2="-5" antialias="false" end1="none" length2="1.5"/>
+        <terminal orientation="s" x="0" y="10"/>
+        <terminal orientation="w" x="-10" y="0"/>
+        <terminal orientation="e" x="4" y="0"/>
     </description>
 </definition>
