@@ -2049,7 +2049,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="200"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Uitilizza le finestre (applicato al prossimo avvio di QElectroTech)</translation>
+        <translation>Utilizza le finestre (applicato al prossimo avvio di QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="201"/>
@@ -2546,7 +2546,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
         <source>Rechercher dans le folio :</source>
-        <translation>Cercare nella pagina:</translation>
+        <translation>Ricerca nella pagina:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="85"/>
@@ -2571,7 +2571,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
         <source>Tous</source>
-        <translation>Tutti</translation>
+        <translation>Tutte le pagine</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="148"/>
