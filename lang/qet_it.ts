@@ -338,22 +338,16 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1408"/>
-        <source>Textes de conducteurs</source>
-        <translation>Testi dei conduttori</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1409"/>
-        <source>Voulez-vous appliquer le nouveau texte 
-à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation>Applicare il nuovo testo a tutti
-i conduttori di questo potenziale?</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1428"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1426"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di un conduttore</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Modifica le proprietà di più conduttori</translation>
     </message>
 </context>
 <context>
@@ -364,7 +358,7 @@ i conduttori di questo potenziale?</translation>
         <translation>Modifica delle proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.ui" line="20"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Applicare le proprietà a tutti i conduttori connessi a questo potenziale</translation>
     </message>
@@ -375,7 +369,7 @@ i conduttori di questo potenziale?</translation>
         <translation>Modifica le proprietà di un solo conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="75"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di più conduttori</translation>
@@ -384,87 +378,100 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="20"/>
-        <source>Type de conducteur</source>
-        <translation>Tipo di conduttore</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="26"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>Multifilaire</source>
         <translation>Multifilare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
+        <source>Taille du texte :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="79"/>
+        <source>Tension / Protocole :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="86"/>
         <source>Texte :</source>
         <translation>Testo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
+        <source>Fonction :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="100"/>
         <source>Texte</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
         <source>Vertical</source>
         <translation>Verticale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Horizontal</source>
         <translation>Orizzontale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="156"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
         <source>Unifilaire</source>
         <translation>Unifilare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="54"/>
         <source>Taille du texte</source>
         <translation>Dimensione del testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
+        <source>Type</source>
+        <translation type="unfinished">Tipo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Texte visible</source>
         <translation>Testo visibile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="127"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>abilitare l&apos;opzione di un solo testo per potenziale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="232"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="175"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Linea continua</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Linea tratteggiata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="177"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Punto e linea</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="269"/>
         <source>terre</source>
         <translation>terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="214"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="218"/>
         <source>neutre</source>
         <translation>neutro</translation>
     </message>
@@ -474,85 +481,75 @@ i conduttori di questo potenziale?</translation>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
-        <source>Taille :</source>
-        <translation>Dimensione:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
-        <source>Visible</source>
-        <translation>Visibile</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="130"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Mostra un solo testo per ogni potenziale nella pagina </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Rotation du texte de conducteur :</source>
         <translation>Rotazione del testo del conduttore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="199"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="243"/>
         <source>Nombre de phase</source>
         <translation>Numero di fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="215"/>
         <source>Neutre</source>
         <translation>Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="229"/>
         <source>Phase</source>
         <translation>Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
         <source>Protective Earth Neutral</source>
         <translation>Neutro con funzione di terra (sistema TN-C)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="255"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="259"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="266"/>
         <source>Terre</source>
         <translation>Terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="280"/>
         <source>TextLabel</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
-        <source>Apparence du conducteur</source>
-        <translation>Aspetto del conduttore</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="319"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="329"/>
         <source>Style du conducteur</source>
         <translation>Stile del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="309"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="336"/>
         <source>Couleur du conducteur</source>
         <translation>Colore del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="303"/>
+        <source>Apparence</source>
+        <translation type="unfinished">Aspetto</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
         <source>Couleur :</source>
         <translation>Colore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="346"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="322"/>
         <source>Style :</source>
         <translation>Stile:</translation>
     </message>
@@ -2934,28 +2931,29 @@ Le modifiche saranno definitive.</translation>
     </message>
 </context>
 <context>
-    <name>PotentialTextsDialog</name>
+    <name>PotentialSelectorDialog</name>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
-        <source>Textes de potentiel</source>
-        <translation>Testo dei conduttori</translation>
+        <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
+        <source>Sélectionner le potentiel éléctrique</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
-        <source>Les textes de ce potentiel électrique ne sont pas identiques.
-Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation>I testi associati a questo potenziale non sono tutti uguali.
-Applicare un testo all&apos;insieme dei conduttori?</translation>
+        <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
+        <source>Vous tentez de lier deux potentiels différents ensemble.
+Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
-        <source>  : est présent </source>
-        <translation>  : è presente </translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
+        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
-        <source> fois.</source>
-        <translation> volte.</translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Modifica le proprietà di più conduttori</translation>
     </message>
 </context>
 <context>
@@ -6149,19 +6147,19 @@ Cosa vuoi fare?</translation>
         <translation>modificare le informazioni dell&apos;elemento: %1</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/linkelementcommand.cpp" line="35"/>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Modificare i riferimenti incrociati</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="94"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="98"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di più conduttori</translation>

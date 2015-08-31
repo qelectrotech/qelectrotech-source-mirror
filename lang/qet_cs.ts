@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -338,22 +338,16 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1408"/>
-        <source>Textes de conducteurs</source>
-        <translation>Texty vodičů</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1409"/>
-        <source>Voulez-vous appliquer le nouveau texte 
-à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation>Chcete nový text použít na všechny
-vodiče s tímto potenciálem?</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1428"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1426"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti vodiče</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Upravit vlastnosti více vodičů</translation>
     </message>
 </context>
 <context>
@@ -364,7 +358,7 @@ vodiče s tímto potenciálem?</translation>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.ui" line="20"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Použít vlastnosti na všechny vodiče o tomto potenciálu</translation>
     </message>
@@ -375,7 +369,7 @@ vodiče s tímto potenciálem?</translation>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="75"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti více vodičů</translation>
@@ -384,87 +378,100 @@ vodiče s tímto potenciálem?</translation>
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="20"/>
-        <source>Type de conducteur</source>
-        <translation>Typ vodiče</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="26"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>Multifilaire</source>
         <translation>Několik vedení</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
+        <source>Taille du texte :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="79"/>
+        <source>Tension / Protocole :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="86"/>
         <source>Texte :</source>
         <translation>Text:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
+        <source>Fonction :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="100"/>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
         <source>Vertical</source>
         <translation>Svisle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Horizontal</source>
         <translation>Vodorovně</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="156"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
         <source>Unifilaire</source>
         <translation>Jednopólově</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="54"/>
         <source>Taille du texte</source>
         <translation>Velikost textu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
+        <source>Type</source>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Texte visible</source>
         <translation>Viditelný text</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="127"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>Zapnout volbu text podle potenciálu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="232"/>
         <source>phase</source>
         <translation>Fáze</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="175"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Plná čára</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Tečkovaná čára</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="177"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Čárky a tečky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="269"/>
         <source>terre</source>
         <translation>uzemnění</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="214"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="218"/>
         <source>neutre</source>
         <translation>nulový</translation>
     </message>
@@ -474,85 +481,75 @@ vodiče s tímto potenciálem?</translation>
         <translation>Formulář</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
-        <source>Taille :</source>
-        <translation>Velikost:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
-        <source>Visible</source>
-        <translation>Viditelný</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="130"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Zobrazit jeden text potenciálu na list.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Rotation du texte de conducteur :</source>
         <translation>Natočení textů vodičů:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="199"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="243"/>
         <source>Nombre de phase</source>
         <translation>Číslo fáze</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="215"/>
         <source>Neutre</source>
         <translation>Nulový</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="229"/>
         <source>Phase</source>
         <translation>Fáze</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
         <source>Protective Earth Neutral</source>
         <translation>Ochranný vodič nulový</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="255"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="259"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="266"/>
         <source>Terre</source>
         <translation>Země</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="280"/>
         <source>TextLabel</source>
         <translation>Textový štítek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
-        <source>Apparence du conducteur</source>
-        <translation>Vzhled vodiče</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="319"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="329"/>
         <source>Style du conducteur</source>
         <translation>Styl vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="309"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="336"/>
         <source>Couleur du conducteur</source>
         <translation>Barva vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="303"/>
+        <source>Apparence</source>
+        <translation type="unfinished">Vzhled</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
         <source>Couleur :</source>
         <translation>Barva: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="346"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="322"/>
         <source>Style :</source>
         <translation>Styl:</translation>
     </message>
@@ -2934,28 +2931,29 @@ Změny budou konečné.</translation>
     </message>
 </context>
 <context>
-    <name>PotentialTextsDialog</name>
+    <name>PotentialSelectorDialog</name>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
-        <source>Textes de potentiel</source>
-        <translation>Označení potenciálu</translation>
+        <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
+        <source>Sélectionner le potentiel éléctrique</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
-        <source>Les textes de ce potentiel électrique ne sont pas identiques.
-Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation>Označení elektrického potenciálu nejsou totožné.
-Použít označení na všechny tyto vodiče?</translation>
+        <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
+        <source>Vous tentez de lier deux potentiels différents ensemble.
+Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
-        <source>  : est présent </source>
-        <translation>: Je toto</translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
+        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
-        <source> fois.</source>
-        <translation> krát.</translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Upravit vlastnosti více vodičů</translation>
     </message>
 </context>
 <context>
@@ -6161,19 +6159,19 @@ Co chcete dělat?</translation>
         <translation>Upravit údaje o prvku: %1</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/linkelementcommand.cpp" line="35"/>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Upravit křížový odkaz</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="94"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="98"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti více vodičů</translation>
