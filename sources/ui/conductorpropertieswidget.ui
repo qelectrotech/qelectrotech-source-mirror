@@ -46,7 +46,11 @@
              </widget>
             </item>
             <item row="2" column="2">
-             <widget class="QLineEdit" name="m_function_le"/>
+             <widget class="QLineEdit" name="m_function_le">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="0" column="2">
              <widget class="QSpinBox" name="m_text_size_sb">
@@ -71,7 +75,11 @@
              </widget>
             </item>
             <item row="3" column="2">
-             <widget class="QLineEdit" name="m_tension_protocol_le"/>
+             <widget class="QLineEdit" name="m_tension_protocol_le">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_9">
