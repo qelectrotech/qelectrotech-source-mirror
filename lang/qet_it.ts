@@ -853,7 +853,7 @@
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Sei sicuro di voler eleminare questo elemento?</translation>
+        <translation>Sei sicuro di voler eliminare questo elemento?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
@@ -1356,15 +1356,15 @@
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation>Sei sicuro di voler eleminare questa collezione?</translation>
+        <translation>Sei sicuro di voler eliminare questa collezione?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
         <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>Sei suicuro di voler eleminare questa categoria?
-Tutti gli elementi e le sotto-categorie contenute in questa categoria, saranno eleminate.</translation>
+        <translation>Sei suicuro di voler eliminare questa categoria?
+Tutti gli elementi e le sotto-categorie contenute in questa categoria, saranno eliminate.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
@@ -2652,7 +2652,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiunge una linea</translation>
+        <translation>Aggiungi una linea</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -3583,12 +3583,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter un folio</source>
-        <translation>Aggiunge una pagina</translation>
+        <translation>Aggiungi una pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Supprimer le folio</source>
-        <translation>Elemina una pagina</translation>
+        <translation>Elimina una pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -7305,7 +7305,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Sei sicuro di voler eleminare questo modello di cartiglio (%1)?</translation>
+        <translation>Sei sicuro di voler eliminare questo modello di cartiglio (%1)?</translation>
     </message>
 </context>
 <context>
