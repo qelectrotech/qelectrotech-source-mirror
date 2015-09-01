@@ -680,8 +680,8 @@ bool QETElementEditor::checkElement()
 		/// Check master, slave, simple and report element
 	if(ce_scene -> elementType() == "master" ||
 	   ce_scene -> elementType() == "slave"  ||
-	   ce_scene -> elementType() == "simple" ||
-	   ce_scene -> elementType().contains("report"))
+	   ce_scene -> elementType() == "simple")
+
 	{
 		bool wrng = true;
 		foreach (CustomElementPart *cep, ce_scene->primitives())
