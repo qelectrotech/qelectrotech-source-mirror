@@ -347,7 +347,7 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Modifica le proprietà di più conduttori</translation>
+        <translation>Modifica le proprietà di più conduttori</translation>
     </message>
 </context>
 <context>
@@ -385,12 +385,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione del testo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="79"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tensione / Protocollo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="86"/>
@@ -400,7 +400,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="100"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="303"/>
         <source>Apparence</source>
-        <translation type="unfinished">Aspetto</translation>
+        <translation>Aspetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
@@ -2935,25 +2935,26 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Selezione del potenziale elettrico</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si sta tentando di unire due potenziali differenti.
+Scegliere le proprietà da applicare al nuovo potenziale.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Il potenziale con numero di filo %1 è presente %2 volte</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Modifica le proprietà di più conduttori</translation>
+        <translation>Modifica le proprietà di più conduttori</translation>
     </message>
 </context>
 <context>
