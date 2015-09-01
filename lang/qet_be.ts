@@ -348,7 +348,7 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig de eigenschappen van meerdere geleiders</translation>
+        <translation>Wijzig de eigenschappen van meerdere geleiders</translation>
     </message>
 </context>
 <context>
@@ -386,12 +386,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoogte van een tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="79"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Spanning / net type</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="86"/>
@@ -401,7 +401,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Functie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="100"/>
@@ -431,7 +431,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
@@ -542,7 +542,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="303"/>
         <source>Apparence</source>
-        <translation type="unfinished">Verschijning</translation>
+        <translation>Weergave</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
@@ -2944,25 +2944,26 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer het elektrisch potentiaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>U probeerd 2 verschillende potentialen te koppelen 
+Selecteer de eigenschappen die moeten worden toegepast op een nieuw potentiaal.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Het potentiaal met draad nr %1 bestaat reeds %2 maal</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig de eigenschappen van meerdere geleiders</translation>
+        <translation>Wijzig de eigenschappen van meerdere geleiders</translation>
     </message>
 </context>
 <context>
