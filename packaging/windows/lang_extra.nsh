@@ -19,7 +19,7 @@
         LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
         
         
-        LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Cancel` aby przerwać aktualizację."
+        LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Anuluj` aby przerwać aktualizację."
         LangString wrongArch         ${LANG_POLISH}  "To oprogramowanie jest przeznaczone wyłącznie dla komputerów 64 bitowych."
         LangString Elements          ${LANG_POLISH}  "Elementy"
         LangString Electric          ${LANG_POLISH}  "Elektryka"
