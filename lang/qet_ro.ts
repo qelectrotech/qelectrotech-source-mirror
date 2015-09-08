@@ -388,42 +388,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="79"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="86"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
         <source>Texte :</source>
         <translation>Text :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Fonction :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="100"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="149"/>
         <source>Vertical</source>
         <translation>Vertical</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
         <source>Horizontal</source>
         <translation>Orizontal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
         <source>Unifilaire</source>
         <translation>Monofilar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="54"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Taille du texte</source>
         <translation>Dimensiune text</translation>
     </message>
@@ -433,17 +433,17 @@
         <translation type="unfinished">Tip</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
         <source>Texte visible</source>
         <translation>Text vizibil</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="127"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>Activează opțiunea un text pe potențial</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="232"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
         <source>phase</source>
         <translation>faza</translation>
     </message>
@@ -466,12 +466,12 @@
         <translation>Puncte și linii</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="269"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="277"/>
         <source>terre</source>
         <translation>împământare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="218"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="226"/>
         <source>neutre</source>
         <translation>nul</translation>
     </message>
@@ -481,75 +481,75 @@
         <translation>Formular</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="130"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Afișează un text pe potențial pe folio.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="169"/>
         <source>Rotation du texte de conducteur :</source>
         <translation>Rotația textului conductorului :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="199"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="243"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="207"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Nombre de phase</source>
         <translation>Număr de faze</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="215"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
         <source>Neutre</source>
         <translation>Neutru</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="229"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="237"/>
         <source>Phase</source>
         <translation>Faze</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>Protective Earth Neutral</source>
         <translation>Împământare neutră de protecție</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="259"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="267"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="266"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>Terre</source>
         <translation>Împământare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="280"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="288"/>
         <source>TextLabel</source>
         <translation>Text etichetă</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="319"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="329"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="337"/>
         <source>Style du conducteur</source>
         <translation>Stil conductor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="309"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="336"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="344"/>
         <source>Couleur du conducteur</source>
         <translation>Culoare conductor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="303"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
         <source>Apparence</source>
         <translation type="unfinished">Aspect</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
         <source>Couleur :</source>
         <translation>Culoare :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="322"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
         <source>Style :</source>
         <translation>Stil :</translation>
     </message>
