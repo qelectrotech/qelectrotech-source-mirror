@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2015 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -75,7 +75,7 @@ QETApp::QETApp(int &argc, char **argv) :
 	initLanguage();
 	QET::Icons::initIcons();
 	initStyle();
-	
+
 	if (!non_interactive_execution_ && isRunning()) {
 		// envoie les arguments a l'instance deja existante
 		non_interactive_execution_ = sendMessage(
@@ -83,42 +83,42 @@ QETApp::QETApp(int &argc, char **argv) :
 			QET::joinWithSpaces(QStringList(qet_arguments_.arguments()))
 		);
 	}
-	
+
 	if (non_interactive_execution_) {
 		std::exit(EXIT_SUCCESS);
 	}
-	
+
 	initSplashScreen();
 	initSystemTray();
-	
+
 	// prise en compte des messages des autres instances
 	connect(this, SIGNAL(messageAvailable(QString)), this, SLOT(messageReceived(const QString&)));
-	
+
 	// nettoyage avant de quitter l'application
 	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
-	
+
 	// connexion pour le signalmapper
 	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-	
+
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
-	
+
 	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
 	if (!collections_cache_) {
 		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
 		collections_cache_->setLocale(langFromSetting());
 	}
-	
+
 	// loads known collections into memory (this does not include items rendering made in elements panels)
 	setSplashScreenStep(tr("Chargement... Lecture des collections d'éléments", "splash screen caption"));
 	foreach(ElementsCollection *collection, availableCollections()) {
 		collection -> reload();
 	}
-	
+
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
-        setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
+		setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
 		new QETDiagramEditor();
 	} else {
 		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));
@@ -159,14 +159,14 @@ QETApp *QETApp::instance() {
 */
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
-	
+
 	// load Qt library translations
 	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
 	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
 		qtTranslator.load("qt_" + desired_language, languages_path);
 	}
 	installTranslator(&qtTranslator);
-	
+
 	// charge les traductions pour l'application QET
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
 		// en cas d'echec, on retombe sur les chaines natives pour le francais
@@ -176,7 +176,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 		}
 	}
 	installTranslator(&qetTranslator);
-	
+
 	QString ltr_special_string = tr(
 		"LTR",
 		"Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR"
@@ -316,18 +316,18 @@ ElementsCollection *QETApp::customElementsCollection() {
 */
 QList<ElementsCollection *> QETApp::availableCollections() {
 	QList<ElementsCollection *> coll_list;
-	
+
 	// collection commune
 	coll_list << commonElementsCollection();
-	
+
 	// collection perso
 	coll_list << customElementsCollection();
-	
+
 	// collections embarquees
 	foreach(QETProject *opened_project, registered_projects_.values()) {
 		coll_list << opened_project -> embeddedCollection();
 	}
-	
+
 	return(coll_list);
 }
 
@@ -349,6 +349,8 @@ QStringList QETApp::elementInfoKeys() {
 			  << "designation"
 			  << "manufacturer"
 			  << "manufacturer-reference"
+			  << "Auxiliary_1-contact-bloc"
+			  << "Auxiliary_2-contact-bloc"
 			  << "machine-manufacturer-reference"
 			  << "location"
 			  << "function";
@@ -368,6 +370,8 @@ QString QETApp::elementTranslatedInfoKey(QString &info) {
 	else if (info == "designation") return tr("Désignation");
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Référence fabricant");
+	else if (info == "Auxiliary_1-contact-bloc") return tr("Bloc auxilliaire 1");
+	else if (info == "Auxiliary_2-contact-bloc") return tr("Bloc auxilliaire 2");
 	else if (info == "machine-manufacturer-reference") return tr("Référence fabricant machine");
 	else if (info == "location") return tr("Localisation");
 	else if (info == "function") return tr("Fonction");
@@ -408,14 +412,14 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 */
 QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
 	QList<TitleBlockTemplatesCollection *> collections_list;
-	
+
 	collections_list << common_tbt_collection_;
 	collections_list << custom_tbt_collection_;
-	
+
 	foreach(QETProject *opened_project, registered_projects_) {
 		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
 	}
-	
+
 	return(collections_list);
 }
 
@@ -630,14 +634,14 @@ QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
 */
 QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 	if (filepath.isEmpty()) return(0);
-	
+
 	QETApp *qet_app(QETApp::instance());
 	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors()) {
 		if (diagram_editor -> viewForFile(filepath)) {
 			return(diagram_editor);
 		}
 	}
-	
+
 	return(0);
 }
 
@@ -748,11 +752,11 @@ bool QETApp::closeEveryEditor() {
 QFont QETApp::diagramTextsFont(qreal size) {
 	// acces a la configuration de l'application
 	QSettings &qet_settings = QETApp::settings();
-	
+
 	// police a utiliser pour le rendu de texte
 	QString diagram_texts_family = qet_settings.value("diagramfont", "Sans Serif").toString();
 	qreal diagram_texts_size     = qet_settings.value("diagramsize", 9.0).toDouble();
-	
+
 	if (size != -1.0) {
 		diagram_texts_size = size;
 	}
@@ -793,14 +797,14 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors() {
 QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProject *project) {
 	QList<QETTitleBlockTemplateEditor *> editors;
 	if (!project) return(editors);
-	
+
 	// foreach known template editor
 	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
 		if (tbt_editor -> location().parentProject() == project) {
 			editors << tbt_editor;
 		}
 	}
-	
+
 	return(editors);
 }
 
@@ -849,20 +853,20 @@ TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() {
 QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 	QList<QETElementEditor *> editors;
 	if (!project) return(editors);
-	
+
 	// pour chaque editeur d'element...
 	foreach(QETElementEditor *elmt_editor, elementEditors()) {
 		// on recupere l'emplacement de l'element qu'il edite
 		ElementsLocation elmt_editor_loc(elmt_editor -> location());
-		
+
 		// il se peut que l'editeur edite un element non enregistre ou un fichier
 		if (elmt_editor_loc.isNull()) continue;
-		
+
 		if (elmt_editor_loc.project() == project) {
 			editors << elmt_editor;
 		}
 	}
-	
+
 	return(editors);
 }
 
@@ -1030,7 +1034,7 @@ void QETApp::messageReceived(const QString &message) {
 
 /**
 	Ouvre les fichiers passes en arguments
-	@param args Objet contenant des arguments ; les fichiers 
+	@param args Objet contenant des arguments ; les fichiers
 	@see openProjectFiles openElementFiles
 */
 void QETApp::openFiles(const QETArguments &args) {
@@ -1049,17 +1053,17 @@ void QETApp::openFiles(const QETArguments &args) {
 */
 void QETApp::openProjectFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
-	
+
 	// liste des editeurs de schema ouverts
 	QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
-	
+
 	// s'il y a des editeur de schemas ouvert, on cherche ceux qui sont visibles
 	if (diagrams_editors.count()) {
 		QList<QETDiagramEditor *> visible_diagrams_editors;
 		foreach(QETDiagramEditor *de, diagrams_editors) {
 			if (de -> isVisible()) visible_diagrams_editors << de;
 		}
-		
+
 		// on choisit soit le premier visible soit le premier tout court
 		QETDiagramEditor *de_open;
 		if (visible_diagrams_editors.count()) {
@@ -1068,7 +1072,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 			de_open = diagrams_editors.first();
 			de_open -> setVisible(true);
 		}
-		
+
 		// ouvre les fichiers dans l'editeur ainsi choisi
 		foreach(QString file, files_list) {
 			de_open -> openAndAddProject(file);
@@ -1086,7 +1090,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 */
 void QETApp::openElementFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
-	
+
 	// evite autant que possible les doublons dans la liste fournie
 	QSet<QString> files_set;
 	foreach(QString file, files_list) {
@@ -1095,10 +1099,10 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 	}
 	// a ce stade, tous les fichiers dans le Set existent et sont a priori differents
 	if (files_set.isEmpty()) return;
-	
+
 	// liste des editeurs d'element ouverts
 	QList<QETElementEditor *> element_editors = elementEditors();
-	
+
 	// on traite les fichiers a la queue leu leu...
 	foreach(QString element_file, files_set) {
 		bool already_opened_in_existing_element_editor = false;
@@ -1127,10 +1131,10 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 */
 void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list) {
 	if (locations_list.isEmpty()) return;
-	
+
 	// liste des editeurs d'element ouverts
 	QList<QETElementEditor *> element_editors = elementEditors();
-	
+
 	// on traite les emplacements  a la queue leu leu...
 	foreach(ElementsLocation element_location, locations_list) {
 		bool already_opened_in_existing_element_editor = false;
@@ -1155,7 +1159,7 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 /**
 	Launch a new title block template editor to edit the given template
 	@param location location of the title block template to be edited
-	
+
 	@param duplicate if true, the template is opened for duplication, which means
 	the user will be prompter for a new template name.
 	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
@@ -1184,7 +1188,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 */
 void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
-	
+
 	// avoid duplicates in the provided files list
 	QSet<QString> files_set;
 	foreach (QString file, files_list) {
@@ -1193,10 +1197,10 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 	}
 	// here, we can assume all files in the set exist and are different
 	if (files_set.isEmpty()) return;
-	
+
 	// opened title block template editors
 	QList<QETTitleBlockTemplateEditor *> tbt_editors = titleBlockTemplateEditors();
-	
+
 	foreach(QString tbt_file, files_set) {
 		bool already_opened_in_existing_tbt_editor = false;
 		foreach(QETTitleBlockTemplateEditor *tbt_editor, tbt_editors) {
@@ -1223,7 +1227,7 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 void QETApp::configureQET() {
 	// determine le widget parent a utiliser pour le dialogue
 	QWidget *parent_widget = activeWindow();
-	
+
 	// cree le dialogue
 	ConfigDialog cd;
 	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
@@ -1231,13 +1235,13 @@ void QETApp::configureQET() {
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
-	
-	
+
+
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
 		cd.setParent(parent_widget, cd.windowFlags());
 	}
-	
+
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
 	cd.setParent(0, cd.windowFlags());
@@ -1253,12 +1257,12 @@ void QETApp::configureQET() {
 void QETApp::aboutQET() {
 	// determine le widget parent a utiliser pour le dialogue
 	QWidget *parent_widget = activeWindow();
-	
+
 	// cree le dialogue si cela n'a pas deja ete fait
 	if (!about_dialog_) {
 		about_dialog_ = new AboutQET();
 	}
-	
+
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
 #ifdef Q_OS_MAC
@@ -1266,7 +1270,7 @@ void QETApp::aboutQET() {
 #endif
 		about_dialog_ -> setParent(parent_widget, about_dialog_ -> windowFlags());
 	}
-	
+
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	about_dialog_ -> exec();
 	about_dialog_ -> setParent(0, about_dialog_ -> windowFlags());
@@ -1302,13 +1306,13 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *wind
 void QETApp::parseArguments() {
 	// recupere les arguments
 	QList<QString> arguments_list(arguments());
-	
+
 	// enleve le premier argument : il s'agit du fichier binaire
 	arguments_list.takeFirst();
-	
+
 	// analyse les arguments
 	qet_arguments_ = QETArguments(arguments_list);
-	
+
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (qet_arguments_.commonElementsDirSpecified()) {
 		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
@@ -1324,11 +1328,11 @@ void QETApp::parseArguments() {
 		overrideConfigDir(qet_arguments_.configDir());
 	}
 #endif
-	
+
 	if (qet_arguments_.langDirSpecified()) {
 		overrideLangDir(qet_arguments_.langDir());
 	}
-	
+
 	if (qet_arguments_.printLicenseRequested()) {
 		printLicense();
 		non_interactive_execution_ = true;
@@ -1385,7 +1389,7 @@ void QETApp::initStyle() {
 //	if (qobject_cast<QPlastiqueStyle *>(style())) {
 //		setStyle(new QETStyle());
 //	}
-	
+
 	// applique ou non les couleurs de l'environnement
 	useSystemPalette(settings().value("usesystemcolors", true).toBool());
 }
@@ -1401,16 +1405,16 @@ void QETApp::initConfiguration() {
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(QETApp::configDir());
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
-	
+
 	QDir custom_elements_dir(QETApp::customElementsDir());
 	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
-	
+
 	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
 	if (!custom_tbt_dir.exists()) custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
-	
+
 	// lit le fichier de configuration
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
-	
+
 	// fichiers recents
 	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
 	projects_recent_files_ = new RecentFiles("projects");
@@ -1426,7 +1430,7 @@ void QETApp::initSystemTray() {
 	setSplashScreenStep(tr("Chargement... icône du systray", "splash screen caption"));
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
-	
+
 	quitter_qet       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                                        this);
 	reduce_appli      = new QAction(QET::Icons::Hide,    tr("&Masquer"),                                        this);
 	restore_appli     = new QAction(QET::Icons::Restore,  tr("&Restaurer"),                                      this);
@@ -1438,11 +1442,11 @@ void QETApp::initSystemTray() {
 	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les éditeurs de cartouche", "systray submenu entry"), this);
 	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur de schéma"),                 this);
 	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur d'élément"),              this);
-	
+
 	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
-	
+
 	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
 	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
 	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
@@ -1454,7 +1458,7 @@ void QETApp::initSystemTray() {
 	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
 	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
 	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
-	
+
 	// initialisation de l'icone du systray
 	qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
@@ -1515,16 +1519,16 @@ QETProject *QETApp::projectFromString(const QString &url) {
 /// construit le menu de l'icone dans le systray
 void QETApp::buildSystemTrayMenu() {
 	menu_systray -> clear();
-	
+
 	// recupere les editeurs
 	QList<QETDiagramEditor *> diagrams = diagramEditors();
 	QList<QETElementEditor *> elements = elementEditors();
 	QList<QETTitleBlockTemplateEditor *> tbtemplates = titleBlockTemplateEditors();
 	fetchWindowStats(diagrams, elements, tbtemplates);
-	
+
 	// ajoute le bouton reduire / restaurer au menu
 	menu_systray -> addAction(every_editor_reduced ? restore_appli : reduce_appli);
-	
+
 	// ajoute les editeurs de schemas dans un sous-menu
 	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("Éditeurs de schémas"));
 	diagrams_submenu -> addAction(reduce_diagrams);
@@ -1533,7 +1537,7 @@ void QETApp::buildSystemTrayMenu() {
 	reduce_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_reduced);
 	restore_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_visible);
 	addWindowsListToMenu<QETDiagramEditor>(diagrams_submenu, diagrams);
-	
+
 	// ajoute les editeurs d'elements au menu
 	QMenu *elements_submenu = menu_systray -> addMenu(tr("Éditeurs d'élément"));
 	elements_submenu -> addAction(reduce_elements);
@@ -1543,7 +1547,7 @@ void QETApp::buildSystemTrayMenu() {
 	restore_elements -> setEnabled(!elements.isEmpty() && !every_element_visible);
 	elements_submenu -> addSeparator();
 	addWindowsListToMenu<QETElementEditor>(elements_submenu, elements);
-	
+
 	// add title block template editors in a submenu
 	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Éditeurs de cartouche", "systray menu entry"));
 	tbtemplates_submenu -> addAction(reduce_templates);
@@ -1551,7 +1555,7 @@ void QETApp::buildSystemTrayMenu() {
 	reduce_templates  -> setEnabled(!tbtemplates.isEmpty() && !every_template_reduced);
 	restore_templates -> setEnabled(!tbtemplates.isEmpty() && !every_template_visible);
 	addWindowsListToMenu<QETTitleBlockTemplateEditor>(tbtemplates_submenu, tbtemplates);
-	
+
 	// ajoute le bouton quitter au menu
 	menu_systray -> addSeparator();
 	menu_systray -> addAction(quitter_qet);
@@ -1568,13 +1572,13 @@ void QETApp::fetchWindowStats(
 	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
 	every_diagram_reduced = !visible_diagrams;
 	every_diagram_visible = visible_diagrams == diagrams.count();
-	
+
 	// compte le nombre de schemas visibles
 	int visible_elements = 0;
 	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
 	every_element_reduced = !visible_elements;
 	every_element_visible = visible_elements == elements.count();
-	
+
 	// count visible template editors
 	int visible_templates = 0;
 	foreach(QMainWindow *window, tbtemplates) {
@@ -1582,7 +1586,7 @@ void QETApp::fetchWindowStats(
 	}
 	every_template_reduced = !visible_templates;
 	every_template_visible = visible_templates == tbtemplates.count();
-	
+
 	// determine si tous les elements sont reduits
 	every_editor_reduced = every_element_reduced && every_diagram_reduced;
 }
@@ -1766,10 +1770,10 @@ QMap<uint, QETProject *> QETApp::registeredProjects() {
 bool QETApp::registerProject(QETProject *project) {
 	// le projet doit sembler valide
 	if (!project) return(false);
-	
+
 	// si le projet est deja enregistre, renvoie false
 	if (projectId(project) != -1) return(false);
-	
+
 	// enregistre le projet
 	registered_projects_.insert(next_project_id ++, project);
 	return(true);
@@ -1783,10 +1787,10 @@ bool QETApp::registerProject(QETProject *project) {
 */
 bool QETApp::unregisterProject(QETProject *project) {
 	int project_id = projectId(project);
-	
+
 	// si le projet n'est pas enregistre, renvoie false
 	if (project_id == -1) return(false);
-	
+
 	// annule l'enregistrement du projet
 	return(registered_projects_.remove(project_id) == 1);
 }

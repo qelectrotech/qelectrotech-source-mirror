@@ -1,17 +1,17 @@
 /*
 		Copyright 2006-2015 The QElectroTech Team
 		This file is part of QElectroTech.
-		
+
 		QElectroTech is free software: you can redistribute it and/or modify
 		it under the terms of the GNU General Public License as published by
 		the Free Software Foundation, either version 2 of the License, or
 		(at your option) any later version.
-		
+
 		QElectroTech is distributed in the hope that it will be useful,
 		but WITHOUT ANY WARRANTY; without even the implied warranty of
 		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 		GNU General Public License for more details.
-		
+
 		You should have received a copy of the GNU General Public License
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,7 +23,7 @@
 
 /**
 		Constructor
-		@param an project (QETProject) of QET file 
+		@param an project (QETProject) of QET file
 */
 nomenclature::nomenclature(QETProject *project, QWidget *parent):
 	QObject(),
@@ -60,7 +60,7 @@ bool nomenclature::saveToCSVFile() {
 									  tr("Impossible de remplacer le fichier!\n\n")+
 									  "Destination: "+filename+"\n");
 				return false;
-			}	
+			}
 		}
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
 			QTextStream stream(&file);
@@ -69,7 +69,7 @@ bool nomenclature::saveToCSVFile() {
 		else return false;
 	}
 	else return false;
-	
+
 	return true;
 }
 
@@ -90,6 +90,8 @@ QString nomenclature::getNomenclature() {
 	""+ tr("Commentaire") +";"
 	""+ tr("Fabricant") +";"
 	""+ tr("Reference") +";"
+	""+ tr("Bloc auxilliaire 1") +";"
+	""+ tr("Bloc auxilliaire 2") +";"
 	""+ tr("Machine-reference") +";"
 	""+ tr("Localisation") +";"
 	""+ tr("Fonction") +"\n";
@@ -132,6 +134,8 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += elmt_info["comment"].toString() + ";";
 	info += elmt_info["manufacturer"].toString() + ";";
 	info += elmt_info["manufacturer-reference"].toString() + ";";
+	info += elmt_info["Auxiliary_1-contact-bloc"].toString() + ";";
+	info += elmt_info["Auxiliary_2-contact-bloc"].toString() + ";";
 	info += elmt_info["machine-manufacturer-reference"].toString() + ";";
 	info += elmt_info["location"].toString() + ";";
 	info += elmt_info["function"].toString() + "\n";
