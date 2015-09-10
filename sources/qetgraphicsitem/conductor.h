@@ -42,6 +42,9 @@ class Conductor : public QObject, public QGraphicsPathItem
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(int animPath READ fakePath WRITE updatePathAnimate)
 	Q_PROPERTY(ConductorProperties properties READ properties WRITE setProperties)
+
+	signals:
+		void propertiesChange();
 	
 		// constructors, destructor
 	public:

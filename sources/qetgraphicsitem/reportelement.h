@@ -27,27 +27,30 @@ class ElementTextItem;
  *this class represent an element that can be linked to an other ReportElement
  * a folio report in a diagram is a element that show a wire go on an other folio
  */
-class ReportElement : public CustomElement {
-
+class ReportElement : public CustomElement
+{
 	Q_OBJECT
 
-	public  :
-	explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = 0, int * = 0);
-	~ReportElement();
-	virtual void linkToElement(Element *);
-	virtual void unlinkAllElements();
-	virtual void unlinkElement(Element *elmt);
+	public :
+		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = 0, int * = 0);
+		~ReportElement();
+		virtual void linkToElement(Element *);
+		virtual void unlinkAllElements();
+		virtual void unlinkElement(Element *elmt);
 
 	private:
-	int              inverse_report;
-	QString          label_;
-	ElementTextItem *m_text_field;
+		int              inverse_report;
+		QString          label_;
+		ElementTextItem *m_text_field;
+		Conductor *m_watched_conductor;
 
-	signals:
+	private:
+		void conductorWasAdded(Conductor *conductor);
+		void conductorWasRemoved(Conductor *conductor);
 
 	private slots:
-	void setLabel (QString label);
-	void updateLabel();
+		void setLabel (QString label);
+		void updateLabel();
 };
 
 #endif // REPORTELEMENT_H

@@ -27,9 +27,15 @@ class Element;
 	This class represents a terminal of an electrical element, i.e. a possible
 	plug point for conductors.
 */
-class Terminal : public QGraphicsItem {
+class Terminal : public QGraphicsObject
+{
+		Q_OBJECT
+
+	signals:
+		void conductorWasAdded(Conductor *conductor);
+		void conductorWasRemoved(Conductor *conductor);
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
 		Terminal(QPointF,      Qet::Orientation, Element * = 0);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = 0);
@@ -39,7 +45,7 @@ class Terminal : public QGraphicsItem {
 	private:
 		Terminal(const Terminal &);
 	
-	// methods
+		// methods
 	public:
 			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a Terminal
 			//@return the QGraphicsItem type
@@ -52,8 +58,8 @@ class Terminal : public QGraphicsItem {
 	
 			// methods to manage conductors attached to the terminal
 		Terminal* alignedWithTerminal () const;
-		bool      addConductor        (Conductor *);
-		void      removeConductor     (Conductor *);
+		bool      addConductor        (Conductor *conductor);
+		void      removeConductor     (Conductor *conductor);
 		int       conductorsCount     () const;
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;

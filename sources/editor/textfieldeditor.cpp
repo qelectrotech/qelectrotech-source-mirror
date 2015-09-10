@@ -66,12 +66,14 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	t -> addWidget(qle_text);
 	main_layout -> addLayout(t);
 
-	//add the tagg combobox
+		//add the tagg combobox
 	QHBoxLayout *tagg_layout = new QHBoxLayout();
 	tagg_layout -> addWidget(new QLabel(tr("tagg :")));
 	tagg_layout -> addWidget(m_tagg_cb = new QComboBox());
 	m_tagg_cb -> addItem(tr("Aucun"), QVariant("none"));
 	m_tagg_cb -> addItem(tr("label"), QVariant("label"));
+	m_tagg_cb -> addItem(tr("Fonction"), QVariant("function"));
+	m_tagg_cb -> addItem(tr("Tension/protocole"), QVariant("tension-protocol"));
 	main_layout -> addLayout(tagg_layout);
 	
 	QHBoxLayout *rotation_angle_layout = new QHBoxLayout();
@@ -184,6 +186,12 @@ void TextFieldEditor::updateTextFieldRotationAngle()
 	}
 	m_locked= false;
 }
+
+/**
+ * @brief TextFieldEditor::updateTagg
+ * Change the tagg of the text field.
+ * Change is apply with a QUndoCommand
+ */
 void TextFieldEditor::updateTagg()
 {
 	if(m_locked) return;

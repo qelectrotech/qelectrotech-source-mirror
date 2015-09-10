@@ -1366,6 +1366,7 @@ void Conductor::setProperties(const ConductorProperties &properties)
 	}
 
 	readProperties();
+	emit propertiesChange();
 }
 
 /**

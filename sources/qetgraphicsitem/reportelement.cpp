@@ -20,10 +20,13 @@
 #include "diagramposition.h"
 #include "qetproject.h"
 #include "diagram.h"
+#include "terminal.h"
+#include "conductor.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, int *state) :
 	CustomElement(location, qgi, state),
-	m_text_field (nullptr)
+	m_text_field (nullptr),
+	m_watched_conductor(nullptr)
 {	
 		/*
 		 * Get text tagged label. This is work for report
@@ -39,10 +42,22 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
+
+		//We make these connections, to be always aware about the conductor properties
+	connect (terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+	connect (terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
 }
 
-ReportElement::~ReportElement() {
+/**
+ * @brief ReportElement::~ReportElement
+ * Destructor
+ */
+ReportElement::~ReportElement()
+{
 	unlinkAllElements();
+	disconnect(terminals().first(), 0, 0, 0);
+	if (m_watched_conductor)
+		disconnect(m_watched_conductor, &Conductor::propertiesChange, this, &ReportElement::updateLabel);
 }
 
 /**
@@ -61,10 +76,8 @@ void ReportElement::linkToElement(Element * elmt)
 
 		//ensure elmt isn't already linked
 	bool i = true;
-	if (!this -> isFree())
-	{
-		if (connected_elements.first() == elmt) i = false;
-	}
+	if (!this -> isFree() && (connected_elements.first() == elmt))
+		i = false;
 
 		//ensure elmt is an inverse report of this element
 	if ((elmt->linkType() == inverse_report) && i)
@@ -76,11 +89,18 @@ void ReportElement::linkToElement(Element * elmt)
 		connect(elmt,                   SIGNAL( yChanged() ),                                       this, SLOT( updateLabel()     ));
 		connect(diagram(),              SIGNAL( reportPropertiesChanged(QString) ),                 this, SLOT( setLabel(QString) ));
 		connect(diagram() -> project(), SIGNAL( projectDiagramsOrderChanged(QETProject*,int,int) ), this, SLOT( updateLabel()     ));
+		connect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+		connect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
 
 		label_ = diagram() -> defaultReportProperties();
-		updateLabel();
+
+		if (!m_watched_conductor && elmt->conductors().size())
+			conductorWasAdded(elmt->conductors().first());
+		else
+			updateLabel();
 
 		elmt -> linkToElement(this);
+
 		emit linkedElementChanged();
 	}
 }
@@ -91,26 +111,30 @@ void ReportElement::linkToElement(Element * elmt)
  */
 void ReportElement::unlinkAllElements()
 {
-	if (!isFree())
+	if (isFree()) return;
+
+	QList <Element *> tmp_elmt = connected_elements;
+
+	foreach(Element *elmt, connected_elements)
 	{
-		QList <Element *> tmp_elmt = connected_elements;
-
-		foreach(Element *elmt, connected_elements)
-		{
-			disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
-			disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
-			disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-		}
-		connected_elements.clear();
-		updateLabel();
-
-		foreach(Element *elmt, tmp_elmt)
-		{
-			elmt -> setHighlighted(false);
-			elmt -> unlinkAllElements();
-		}
-		emit linkedElementChanged();
+		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
+		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+		disconnect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+		disconnect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+		connected_elements.removeAll(elmt);
+			//if elmt is the owner of m_watched_conductor, we remove it
+		if (elmt->conductors().contains(m_watched_conductor))
+			conductorWasRemoved(m_watched_conductor);
 	}
+	updateLabel();
+
+	foreach(Element *elmt, tmp_elmt)
+	{
+		elmt -> setHighlighted(false);
+		elmt -> unlinkAllElements();
+	}
+	emit linkedElementChanged();
 }
 /**
  * @brief ReportElement::unlinkElement
@@ -122,6 +146,44 @@ void ReportElement::unlinkAllElements()
 void ReportElement::unlinkElement(Element *elmt) {
 	Q_UNUSED (elmt);
 	unlinkAllElements();
+}
+
+/**
+ * @brief ReportElement::conductorWasAdded
+ * This method is called when a conduxtor is added to the potential
+ * @param conductor : added conductor
+ */
+void ReportElement::conductorWasAdded(Conductor *conductor)
+{
+	if (m_watched_conductor) return;
+
+	m_watched_conductor = conductor;
+	connect(m_watched_conductor, &Conductor::propertiesChange, this, &ReportElement::updateLabel);
+	updateLabel();
+}
+
+/**
+ * @brief ReportElement::conductorWasRemoved
+ * This method is called when a conductor is removed to the potential
+ * @param conductor : removed conductor
+ */
+void ReportElement::conductorWasRemoved(Conductor *conductor)
+{
+	if (m_watched_conductor != conductor) return;
+
+	disconnect(m_watched_conductor, &Conductor::propertiesChange, this, &ReportElement::updateLabel);
+	m_watched_conductor = nullptr;
+
+		//Get another conductor to be always up to date about the properties of the potential.
+
+		//Get a conducteur docked to this report
+	if (conductors().size())
+		conductorWasAdded(conductors().first());
+		//Else we get a conductor of the linked report (if any)
+	else if (linkedElements().size() && linkedElements().first()->conductors().size())
+		conductorWasAdded(linkedElements().first()->conductors().first());
+	else
+		updateLabel();
 }
 
 /**
@@ -153,7 +215,8 @@ void ReportElement::updateLabel()
 		m_text_field -> setPlainText(label);
 	}
 	else
-	{
 		m_text_field -> setPlainText("/");
-	}
+
+	setTaggedText("function", (m_watched_conductor? m_watched_conductor->properties().m_function : ""));
+	setTaggedText("tension-protocol", (m_watched_conductor? m_watched_conductor->properties().m_tension_protocol : ""));
 }

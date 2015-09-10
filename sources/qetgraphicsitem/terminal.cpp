@@ -78,7 +78,7 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	@param s   Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
-	QGraphicsItem(e),
+	QGraphicsObject(e),
 	m_draw_help_line(false),
 	m_help_line     (nullptr),
 	m_help_line_a   (nullptr),
@@ -97,7 +97,7 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	@param s    Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
-	QGraphicsItem(e),
+	QGraphicsObject(e),
 	m_draw_help_line (false),
 	m_help_line      (nullptr),
 	m_help_line_a    (nullptr),
@@ -118,7 +118,7 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	@param s   Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
-	QGraphicsItem    (e),
+	QGraphicsObject    (e),
 	m_draw_help_line (false),
 	m_help_line      (nullptr),
 	m_help_line_a    (nullptr),
@@ -179,41 +179,41 @@ void Terminal::setName(QString name, bool hiddenName) {
 }
 
 /**
-	Attribue un conductor a la borne
-	@param f Le conducteur a rattacher a cette borne
-*/
-bool Terminal::addConductor(Conductor *f) {
-	// pointeur 0 refuse
-	if (!f) return(false);
+ * @brief Terminal::addConductor
+ * Add a conductor to this terminal
+ * @param conductor : the conductor to add.
+ * @return true if the conductor was successfully added
+ */
+bool Terminal::addConductor(Conductor *conductor)
+{
+	if (!conductor) return(false);
 	
-	// une seule des deux bornes du conducteur doit etre this
-	Q_ASSERT_X(((f -> terminal1 == this) ^ (f -> terminal2 == this)), "Terminal::addConductor", "Le conductor devrait etre relie exactement une fois a la terminal en cours");
+	Q_ASSERT_X(((conductor -> terminal1 == this) ^ (conductor -> terminal2 == this)), "Terminal::addConductor", "The conductor must be linked exactly once to this terminal");
 	
-	// determine l'autre borne a laquelle cette borne va etre relie grace au conducteur
-	Terminal *autre_terminal = (f -> terminal1 == this) ? f -> terminal2 : f -> terminal1;
+		//Get the other terminal where the conductor must be linked
+	Terminal *other_terminal = (conductor -> terminal1 == this) ? conductor->terminal2 : conductor->terminal1;
 	
-	// verifie que la borne n'est pas deja reliee avec l'autre borne
-	bool deja_liees = false;
-	foreach (Conductor* conductor, conductors_) {
-		if (conductor -> terminal1 == autre_terminal || conductor -> terminal2 == autre_terminal) deja_liees = true;
-	}
-	
-	// si les deux bornes sont deja reliees, on refuse d'ajouter le conducteur
-	if (deja_liees) return(false);
-	
-	// sinon on ajoute le conducteur
-	conductors_.append(f);
+		//Check if this terminal isn't already linked with other_terminal
+	foreach (Conductor* cond, conductors_)
+		if (cond -> terminal1 == other_terminal || cond -> terminal2 == other_terminal)
+			return false; //They already a conductor linked to this and other_terminal
+
+	conductors_.append(conductor);
+	emit conductorWasAdded(conductor);
 	return(true);
 }
 
 /**
-	Enleve un conducteur donne a la borne
-	@param f Conducteur a enlever
-*/
-void Terminal::removeConductor(Conductor *f) {
-	int index = conductors_.indexOf(f);
+ * @brief Terminal::removeConductor
+ * Remove a conductor from this terminal
+ * @param conductor : conductor to remove
+ */
+void Terminal::removeConductor(Conductor *conductor)
+{
+	int index = conductors_.indexOf(conductor);
 	if (index == -1) return;
 	conductors_.removeAt(index);
+	emit conductorWasRemoved(conductor);
 }
 
 /**
