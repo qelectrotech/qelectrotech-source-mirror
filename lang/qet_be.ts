@@ -386,12 +386,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation>Hoogte van een tekst</translation>
+        <translation>Hoogte van een tekst:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
-        <translation>Spanning / net type</translation>
+        <translation>Spanning / net type:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
