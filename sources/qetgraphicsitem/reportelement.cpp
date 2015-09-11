@@ -44,8 +44,11 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
 
 		//We make these connections, to be always aware about the conductor properties
-	connect (terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
-	connect (terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+	if (terminals().size())
+	{
+		connect (terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+		connect (terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+	}
 }
 
 /**
@@ -55,7 +58,8 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 ReportElement::~ReportElement()
 {
 	unlinkAllElements();
-	disconnect(terminals().first(), 0, 0, 0);
+	if (terminals().size())
+		disconnect(terminals().first(), 0, 0, 0);
 	if (m_watched_conductor)
 		disconnect(m_watched_conductor, &Conductor::propertiesChange, this, &ReportElement::updateLabel);
 }
