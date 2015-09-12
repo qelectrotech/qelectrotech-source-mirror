@@ -93,8 +93,11 @@ void ReportElement::linkToElement(Element * elmt)
 		connect(elmt,                   SIGNAL( yChanged() ),                                       this, SLOT( updateLabel()     ));
 		connect(diagram(),              SIGNAL( reportPropertiesChanged(QString) ),                 this, SLOT( setLabel(QString) ));
 		connect(diagram() -> project(), SIGNAL( projectDiagramsOrderChanged(QETProject*,int,int) ), this, SLOT( updateLabel()     ));
-		connect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
-		connect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+		if (elmt->terminals().size())
+		{
+			connect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+			connect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+		}
 
 		label_ = diagram() -> defaultReportProperties();
 
@@ -124,8 +127,11 @@ void ReportElement::unlinkAllElements()
 		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
 		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-		disconnect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
-		disconnect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+		if (elmt->terminals().size())
+		{
+			disconnect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+			disconnect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+		}
 		connected_elements.removeAll(elmt);
 			//if elmt is the owner of m_watched_conductor, we remove it
 		if (elmt->conductors().contains(m_watched_conductor))
