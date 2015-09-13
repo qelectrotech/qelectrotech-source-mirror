@@ -362,7 +362,7 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Редактировать свойства нескольких проводников</translation>
+        <translation>Редактировать свойства нескольких проводников</translation>
     </message>
 </context>
 <context>
@@ -400,12 +400,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер текста:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Напряжение / Протокол:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
@@ -415,7 +415,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Функция:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
@@ -445,7 +445,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
@@ -562,7 +562,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
         <source>Apparence</source>
-        <translation type="unfinished">Внешний вид</translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
@@ -2979,25 +2979,26 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите электрический потенциал</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы собираетесь связать вместе два разных потенциала.
+Пожалуйста выберите свойства, которые будут применены к новому потенциалу.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Потенциал провода %1 присутствует %2 раз.&quot;</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Редактировать свойства нескольких проводников</translation>
+        <translation>Редактировать свойства нескольких проводников</translation>
     </message>
 </context>
 <context>
