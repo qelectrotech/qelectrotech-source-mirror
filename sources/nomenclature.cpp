@@ -91,6 +91,8 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
 	""+ QObject::tr("Reference") +";"
+	""+ QObject::tr("Bloc auxilliaire 1") +";"
+	""+ QObject::tr("Bloc auxilliaire 2") +";"
 	""+ QObject::tr("Machine-reference") +";"
 	""+ QObject::tr("Localisation") +";"
 	""+ QObject::tr("Fonction") +"\n";
@@ -133,6 +135,8 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += elmt_info["comment"].toString() + ";";
 	info += elmt_info["manufacturer"].toString() + ";";
 	info += elmt_info["manufacturer-reference"].toString() + ";";
+	info += elmt_info["Auxiliary_1-contact-bloc"].toString() + ";";
+	info += elmt_info["Auxiliary_2-contact-bloc"].toString() + ";";
 	info += elmt_info["machine-manufacturer-reference"].toString() + ";";
 	info += elmt_info["location"].toString() + ";";
 	info += elmt_info["function"].toString() + "\n";
