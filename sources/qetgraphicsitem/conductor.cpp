@@ -34,7 +34,6 @@
 bool Conductor::pen_and_brush_initialized = false;
 QPen Conductor::conductor_pen = QPen();
 QBrush Conductor::conductor_brush = QBrush();
-QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 
 /**
  * @brief Conductor::Conductor
@@ -48,14 +47,12 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2),
 	bMouseOver(false),
-	destroyed_(false),
+	m_handler(10),
 	text_item(0),
 	segments(NULL),
-	moving_point(false),
 	moving_segment(false),
 	modified_path(false),
 	has_to_save_profile(false),
-	segments_squares_scale_(1.0),
 	must_highlight_(Conductor::None)
 {
 		//Set the default conductor properties.
@@ -106,15 +103,13 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 }
 
 /**
-	Destructeur
-	Detruit le conducteur ainsi que ses segments. Il ne detruit pas les bornes
-	mais s'en detache
-*/
-Conductor::~Conductor() {
-	// se detache des bornes
-	if (!isDestroyed()) destroy();
-	
-	// supprime les segments
+ * @brief Conductor::~Conductor
+ * Destructor. The conductor is removed from is terminal
+ */
+Conductor::~Conductor()
+{
+	terminal1->removeConductor(this);
+	terminal2->removeConductor(this);
 	deleteSegments();
 }
 
@@ -437,7 +432,8 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 	@param options Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw) {
+void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw)
+{
 	Q_UNUSED(qw);
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
@@ -458,9 +454,8 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		}
 	}
 	
-	// if mouse over conductor change size
-	if ( bMouseOver )	conductor_pen.setWidthF(3.0);
-	else				conductor_pen.setWidthF(1.0);
+		//Draw the conductor bigger when is hovered
+	conductor_pen.setWidth(bMouseOver? 5 : 1);
 
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
@@ -490,31 +485,9 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
 	
-	// decalage ideal pour le rendu centre d'un carre / cercle de 2.0 px de cote / diametre
-	qreal pretty_offset = 1.0;
-	
-	// dessin des points d'accroche du conducteur si celui-ci est selectionne
-	if (isSelected()) {
-		QList<QPointF> points = segmentsToPoints();
-		QPointF previous_point;
-		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
-			QPointF point = points.at(i);
-				
-			// dessine le carre de saisie du segment
-			if (i > 1) {
-				qp -> fillRect(
-					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset * segments_squares_scale_,
-						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset * segments_squares_scale_,
-						2.0 * segments_squares_scale_,
-						2.0 * segments_squares_scale_
-					),
-					square_brush
-				);
-			}
-			previous_point = point;
-		}
-	}
+		//Draw the squares used to modify the path of conductor when he is selected
+	if (isSelected())
+		m_handler.drawHandler(qp, handlerPoints());
 	
 	// dessine les eventuelles jonctions
 	QList<QPointF> junctions_list = junctions();
@@ -525,19 +498,10 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
-			qp -> drawEllipse(QRectF(point.x() - pretty_offset, point.y() - pretty_offset, 2.0, 2.0));
+			qp -> drawEllipse(QRectF(point.x() - 1, point.y() - 1, 2.0, 2.0));
 		}
 	}
 	qp -> restore();
-}
-
-/**
-	Methode de preparation a la destruction du conducteur ; le conducteur se detache de ses deux bornes
-*/
-void Conductor::destroy() {
-	destroyed_ = true;
-	terminal1 -> removeConductor(this);
-	terminal2 -> removeConductor(this);
 }
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
@@ -578,143 +542,107 @@ bool Conductor::valideXml(QDomElement &e){
 
 /**
  * @brief Conductor::mouseDoubleClickEvent
- * Action at double click on this item
- * @param e
+ * Manage the mouse double click
+ * @param event
  */
-void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
-	e->accept();
+void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+	event->accept();
 	editProperty();
 }
 
 /**
-	Gere les clics sur le conducteur.
-	@param e L'evenement decrivant le clic.
-*/
-void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	// clic gauche
-	if (e -> buttons() & Qt::LeftButton) {
-		// recupere les coordonnees du clic
-		press_point = e -> pos();
-		
-		/*
-			parcourt les segments pour determiner si le clic a eu lieu
-			- sur l'extremite d'un segment
-			- sur le milieu d'un segment
-			- ailleurs
-		*/
-		ConductorSegment *segment = segments;
-		while (segment -> hasNextSegment()) {
-			if (hasClickedOn(press_point, segment -> secondPoint())) {
-				moving_point = true;
-				moving_segment = false;
-				moved_segment = segment;
-				break;
-			} else if (hasClickedOn(press_point, segment -> middle())) {
-				moving_point = false;
-				moving_segment = true;
-				moved_segment = segment;
-				break;
-			}
-			segment = segment -> nextSegment();
-		}
-		if (moving_segment || moving_point) {
-			// en cas de debut de modification de conducteur, on memorise la position du champ de texte
+ * @brief Conductor::mousePressEvent
+ * Manage the mouse press event
+ * @param event
+ */
+void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+		//Left clic
+	if (event->buttons() & Qt::LeftButton)
+	{
+			//If user click on a handler (square used to modify the path of conductor),
+			//we get the segment corresponding to the handler
+		int index = m_handler.pointIsHoverHandler(event->pos(), handlerPoints());
+		if (index > -1)
+		{
+			moving_segment = true;
+			moved_segment = segmentsList().at(index+1);
 			before_mov_text_pos_ = text_item -> pos();
 		}
 	}
-	QGraphicsPathItem::mousePressEvent(e);
-	if (e -> modifiers() & Qt::ControlModifier) {
+
+	QGraphicsPathItem::mousePressEvent(event);
+
+	if (event -> modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
-	}
 }
 
 /**
-	Gere les deplacements de souris sur le conducteur.
-	@param e L'evenement decrivant le deplacement de souris.
-*/
-void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	// clic gauche
-	if (e -> buttons() & Qt::LeftButton) {
-		// position pointee par la souris
-		qreal mouse_x = e -> pos().x();
-		qreal mouse_y = e -> pos().y();
-		
-		bool snap_conductors_to_grid = e -> modifiers() ^ Qt::ShiftModifier;
-		if (snap_conductors_to_grid) {
-			mouse_x = qRound(mouse_x / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
-			mouse_y = qRound(mouse_y / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
-		}
-		
-		if (moving_point) {
-			// la modification par points revient bientot
-			/*
-			// position precedente du point
-			QPointF p = moved_segment -> secondPoint();
-			qreal p_x = p.x();
-			qreal p_y = p.y();
+ * @brief Conductor::mouseMoveEvent
+ * Manage the mouse move event
+ * @param event
+ */
+void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+		//Left clic
+	if ((event->buttons() & Qt::LeftButton) && moving_segment)
+	{
+			//Snap the mouse pos to grid
+		QPointF pos_ = Diagram::snapToGrid(event->pos());
+
+			//Position of the last point
+		QPointF p = moved_segment -> middle();
+
+			//Calcul the movement
+		moved_segment -> moveX(pos_.x() - p.x());
+		moved_segment -> moveY(pos_.y() - p.y());
 			
-			// calcul du deplacement
-			moved_segment -> moveX(mouse_x - p_x());
-			moved_segment -> moveY(mouse_y - p_y());
-			
-			// application du deplacement
-			modified_path = true;
-			updatePoints();
-			segmentsToPath();
-			*/
-		} else if (moving_segment) {
-			// position precedente du point
-			QPointF p = moved_segment -> middle();
-			
-			// calcul du deplacement
-			moved_segment -> moveX(mouse_x - p.x());
-			moved_segment -> moveY(mouse_y - p.y());
-			
-			// application du deplacement
-			modified_path = true;
-			has_to_save_profile = true;
-			segmentsToPath();
-			calculateTextItemPosition();
-		}
+			//Apply the movement
+		modified_path = true;
+		has_to_save_profile = true;
+		segmentsToPath();
+		calculateTextItemPosition();
 	}
-	QGraphicsPathItem::mouseMoveEvent(e);
+
+	QGraphicsPathItem::mouseMoveEvent(event);
 }
 
 /**
-	Gere les relachements de boutons de souris sur le conducteur 
-	@param e L'evenement decrivant le lacher de bouton.
-*/
-void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	// clic gauche
-	moving_point = false;
+ * @brief Conductor::mouseReleaseEvent
+ * Manage the mouse release event
+ * @param event
+ */
+void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
 	moving_segment = false;
-	if (has_to_save_profile) {
+	if (has_to_save_profile)
+	{
 		saveProfile();
 		has_to_save_profile = false;
 	}
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsPathItem::mouseReleaseEvent(e);
-	}
+
+	if (!(event -> modifiers() & Qt::ControlModifier))
+		QGraphicsPathItem::mouseReleaseEvent(event);
 }
 
 /**
-	Gere l'entree de la souris dans la zone du conducteur
-	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
-*/
-void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
-	Q_UNUSED(e);
-	segments_squares_scale_ = 2.0;
+ * @brief Conductor::hoverEnterEvent
+ * Manage the hover enter event
+ * @param event
+ */
+void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
+	Q_UNUSED(event);
 	bMouseOver = true;
 	update();
 }
 
 /**
-	Gere la sortie de la souris de la zone du conducteur
-	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
-*/
-void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
-	Q_UNUSED(e);
-	segments_squares_scale_ = 1.0;
+ * @brief Conductor::hoverLeaveEvent
+ * Manage the mouse leave event
+ * @param event
+ */
+void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+	Q_UNUSED(event);
 	update();
 	bMouseOver = false;
 }
@@ -723,26 +651,26 @@ void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
  * @brief Conductor::hoverMoveEvent conductor
  * @param e QGraphicsSceneHoverEvent describing the event
  */
-void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
-
-	if (isSelected()) {
-		QPointF hover_point = mapFromScene(e -> pos()) + scenePos();
-		ConductorSegment *segment = segments;
-		bool cursor_set = false;
-		while (segment -> hasNextSegment()) {
-			if (hasClickedOn(hover_point, segment -> secondPoint())) {
+void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (isSelected())
+	{
+			//If user hover an handler (square used to modify the path of conductor),
+			//we get the segment corresponding to the handler
+		int index = m_handler.pointIsHoverHandler(event->pos(), handlerPoints());
+		if (index > -1)
+		{
+			ConductorSegment *segment_ = segmentsList().at(index+1);
+			if (m_handler.pointIsInHandler(event->pos(), segment_->secondPoint()))
 				setCursor(Qt::ForbiddenCursor);
-				cursor_set = true;
-			} else if (hasClickedOn(hover_point, segment -> middle())) {
-				setCursor(segment -> isVertical() ? Qt::SplitHCursor : Qt::SplitVCursor);
-				cursor_set = true;
-			}
-			segment = segment -> nextSegment();
+			else if (m_handler.pointIsInHandler(event->pos(), segment_->middle()))
+				setCursor(segmentsList().at(index+1)->isVertical() ? Qt::SplitHCursor : Qt::SplitVCursor);
 		}
-		if (!cursor_set) setCursor(Qt::ArrowCursor);
+		else
+			setCursor(Qt::ArrowCursor);
 	}
 
-	QGraphicsPathItem::hoverMoveEvent(e);
+	QGraphicsPathItem::hoverMoveEvent(event);
 }
 
 /**
@@ -773,122 +701,45 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 }
 
 /**
-	@return Le rectangle delimitant l'espace de dessin du conducteur
-*/
-QRectF Conductor::boundingRect() const {
-	QRectF retour = QGraphicsPathItem::boundingRect();
-	retour.adjust(-11.0, -11.0, 11.0, 11.0);
-	return(retour);
+ * @brief Conductor::boundingRect
+ * @return
+ */
+QRectF Conductor::boundingRect() const
+{
+	QRectF br = shape().boundingRect();
+	return br.adjusted(-10, -10, 10, 10);
 }
 
 /**
-	@return La forme / zone "cliquable" du conducteur (epaisseur : 5.0px).
-	@see variableShape()
-*/
-QPainterPath Conductor::shape() const {
-	return(variableShape(5.0));
+ * @brief Conductor::shape
+ * @return the shape of conductor.
+ * The shape thickness is bigger when conductor is hovered
+ */
+QPainterPath Conductor::shape() const
+{
+	QPainterPathStroker pps;
+	pps.setWidth(bMouseOver? 5 : 1);
+	pps.setJoinStyle(conductor_pen.joinStyle());
+
+	QPainterPath shape_(pps.createStroke(path()));
+
+	if (isSelected())
+		foreach (QRectF rect, m_handler.handlerRect(handlerPoints()))
+			shape_.addRect(rect);
+
+	return shape_;
 }
 
 /**
-	@return la distance en dessous de laquelle on considere qu'un point est a
-	proximite du trajet du conducteur. La valeur est actuellement fixee a
-	60.0px.
-*/
-qreal Conductor::nearDistance() const {
-	return(60.0);
-}
-
-/**
-	@return la zone dans laquelle dont on considere que tous les points sont a
-	proximite du trajet du conducteur.
-	@see nearDistance()
-	@see variableShape()
-*/
-QPainterPath Conductor::nearShape() const {
-	return(variableShape(nearDistance()));
-}
-
-/**
-	@return la forme du conducteur
-	@param thickness la moitie de l'epaisseur voulue pour cette forme
-*/
-QPainterPath Conductor::variableShape(const qreal &thickness) const {
-	qreal my_thickness = qAbs(thickness);
-	
-	QList<QPointF> points = segmentsToPoints();
-	QPainterPath area;
-	QPointF previous_point;
-	QPointF *point1, *point2;
-	foreach(QPointF point, points) {
-		if (!previous_point.isNull()) {
-			if (point.x() == previous_point.x()) {
-				if (point.y() <= previous_point.y()) {
-					point1 = &point;
-					point2 = &previous_point;
-				} else {
-					point1 = &previous_point;
-					point2 = &point;
-				}
-			} else {
-				if (point.x() <= previous_point.x()) {
-					point1 = &point;
-					point2 = &previous_point;
-				} else {
-					point1 = &previous_point;
-					point2 = &point;
-				}
-			}
-			qreal p1_x = point1 -> x();
-			qreal p1_y = point1 -> y();
-			qreal p2_x = point2 -> x();
-			qreal p2_y = point2 -> y();
-			area.setFillRule(Qt::OddEvenFill);
-			area.addRect(p1_x - my_thickness, p1_y - my_thickness, my_thickness * 2.0 + p2_x - p1_x, my_thickness * 2.0  + p2_y - p1_y);
-		}
-		previous_point = point;
-		area.setFillRule(Qt::WindingFill);
-		area.addRect(point.x() - my_thickness, point.y() - my_thickness, my_thickness * 2.0, my_thickness * 2.0 );
-	}
-	return(area);
-}
-
-/**
-	@param point un point, exprime dans les coordonnees du conducteur
-	@return true si le point est a proximite du conducteur, c-a-d a moins de
-	60px du conducteur.
-*/
-bool Conductor::isNearConductor(const QPointF &point) {
-	return(variableShape(60.1).contains(point));
-}
-
-/**
-	Renvoie une valeur donnee apres l'avoir bornee entre deux autres valeurs,
-	en y ajoutant une marge interne.
-	@param tobound valeur a borner
-	@param bound1 borne 1
-	@param bound2 borne 2
-	@param space marge interne ajoutee
-	@return La valeur bornee
-*/
-qreal Conductor::conductor_bound(qreal tobound, qreal bound1, qreal bound2, qreal space) {
-	qDebug() << "will bound" << tobound << "between" << bound1 << "and" << bound2 ;
-	if (bound1 < bound2) {
-		return(qBound(bound1 + space, tobound, bound2 - space));
-	} else {
-		return(qBound(bound2 + space, tobound, bound1 - space));
-	}
-}
-
-/**
-	Renvoie une valeur donnee apres l'avoir bornee avant ou apres une valeur.
-	@param tobound valeur a borner
-	@param bound borne
-	@param positive true pour borner la valeur avant la borne, false sinon
-	@return La valeur bornee
-*/
-qreal Conductor::conductor_bound(qreal tobound, qreal bound, bool positive) {
-	qreal space = 5.0;
-	return(positive ? qMax(tobound, bound + space) : qMin(tobound, bound - space));
+ * @brief Conductor::nearShape
+ * @return : An area in which it is considered a point is near this conductor.
+ */
+QPainterPath Conductor::nearShape() const
+{
+	QPainterPathStroker pps;
+	pps.setWidth(120);
+	pps.setJoinStyle(conductor_pen.joinStyle());
+	return pps.createStroke(path());
 }
 
 /**
@@ -950,22 +801,6 @@ void Conductor::pointsToSegments(QList<QPointF> points_list) {
 }
 
 /**
-	Permet de savoir si un point est tres proche d'un autre. Cela sert surtout
-	pour determiner si un clic a ete effectue pres d'un point donne.
-	@param press_point Point effectivement clique
-	@param point point cliquable
-	@return true si l'on peut considerer que le point a ete clique, false sinon
-*/
-bool Conductor::hasClickedOn(QPointF press_point, QPointF point) const {
-	return (
-		press_point.x() >= point.x() - 5.0 &&\
-		press_point.x() <  point.x() + 5.0 &&\
-		press_point.y() >= point.y() - 5.0 &&\
-		press_point.y() <  point.y() + 5.0
-	);
-}
-
-/**
  * @brief Conductor::fromXml
  * Load the conductor and her information from xml element
  * @param e
@@ -978,8 +813,9 @@ bool Conductor::fromXml(QDomElement &e) {
 	bool return_ = pathFromXml(e);
 
 	text_item -> fromXml(e);
-	properties_. fromXml(e);
-	readProperties();
+	ConductorProperties pr;
+	pr.fromXml(e);
+	setProperties(pr);
 
 	return return_;
 }
@@ -1094,6 +930,30 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 
 	segmentsToPath();
 	return(true);
+}
+
+/**
+ * @brief Conductor::handlerPoints
+ * @return The points used to draw the handler square, used to modify
+ * the path of the conductor.
+ * The points stored in the QVector are the middle point of each segments that compose the conductor,
+ * at exception of the first and last segment because there just here to extend the terminal.
+ */
+QVector<QPointF> Conductor::handlerPoints() const
+{
+	QList <ConductorSegment *> sl = segmentsList();
+	if (sl.size() >= 3)
+	{
+		sl.removeFirst();
+		sl.removeLast();
+	}
+
+	QVector <QPointF> middle_points;
+
+	foreach(ConductorSegment *segment, sl)
+		middle_points.append(segment->middle());
+
+	return middle_points;
 }
 
 /// @return les segments de ce conducteur
@@ -1365,7 +1225,15 @@ void Conductor::setProperties(const ConductorProperties &properties)
 		other_conductor->setProperties(other_properties);
 	}
 
-	readProperties();
+	setText(properties_.text);
+	text_item -> setFontSize(properties_.text_size);
+	if (properties_.type != ConductorProperties::Multi)
+		text_item -> setVisible(false);
+	else
+		text_item -> setVisible(properties_.m_show_text);
+	calculateTextItemPosition();
+	update();
+
 	emit propertiesChange();
 }
 
@@ -1375,22 +1243,6 @@ void Conductor::setProperties(const ConductorProperties &properties)
  */
 ConductorProperties Conductor::properties() const {
 	return(properties_);
-}
-
-/**
- * @brief Conductor::readProperties
- * Read and apply properties
- */
-void Conductor::readProperties() {
-	setText(properties_.text);
-	text_item -> setFontSize(properties_.text_size);
-	if (properties_.type != ConductorProperties::Multi) {
-		text_item -> setVisible(false);
-	} else {
-		text_item -> setVisible(properties_.m_show_text);
-	}
-	calculateTextItemPosition();
-	update();
 }
 
 /**
@@ -1642,21 +1494,6 @@ QList<ConductorBend> Conductor::bends() const {
 		}
 	}
 	return(points);
-}
-
-/**
-	@param p Point, en coordonnees locales
-	@return true si le point p appartient au trajet du conducteur
-*/
-bool Conductor::containsPoint(const QPointF &p) const {
-	if (!segments) return(false);
-	ConductorSegment *segment = segments;
-	while (segment -> hasNextSegment()) {
-		QRectF rect(segment -> firstPoint(), segment -> secondPoint());
-		if (rect.contains(p)) return(true);
-		segment = segment -> nextSegment();
-	}
-	return(false);
 }
 
 /**

@@ -1,17 +1,17 @@
 /*
 		Copyright 2006-2015 The QElectroTech Team
 		This file is part of QElectroTech.
-
+		
 		QElectroTech is free software: you can redistribute it and/or modify
 		it under the terms of the GNU General Public License as published by
 		the Free Software Foundation, either version 2 of the License, or
 		(at your option) any later version.
-
+		
 		QElectroTech is distributed in the hope that it will be useful,
 		but WITHOUT ANY WARRANTY; without even the implied warranty of
 		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 		GNU General Public License for more details.
-
+		
 		You should have received a copy of the GNU General Public License
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,10 +23,9 @@
 
 /**
 		Constructor
-		@param an project (QETProject) of QET file
+		@param an project (QETProject) of QET file 
 */
 nomenclature::nomenclature(QETProject *project, QWidget *parent):
-	QObject(),
 	m_project(project)
 {
 	m_parent = parent;
@@ -44,23 +43,24 @@ nomenclature::~nomenclature() {
 		Save to csv file
 		@param true if success
 */
-bool nomenclature::saveToCSVFile() {
+bool nomenclature::saveToCSVFile()
+{
 	// SAVE IN FILE
-	QString name = tr("nomenclature_") + QString(m_project  -> title());
+	QString name = QObject::tr("nomenclature_") + QString(m_project  -> title());
 	if (!name.endsWith(".csv")) {
 		name += ".csv";
 	}
-	QString filename = QFileDialog::getSaveFileName(this->m_parent, tr("Enregister sous... "), name, tr("Fichiers csv (*.csv)"));
+	QString filename = QFileDialog::getSaveFileName(this->m_parent, QObject::tr("Enregister sous... "), name, QObject::tr("Fichiers csv (*.csv)"));
 	QFile file(filename);
 	if( !filename.isEmpty() ) {
 		if(QFile::exists ( filename )){
 			// if file already exist -> delete it
 			if(!QFile::remove ( filename ) ){
-				QMessageBox::critical(this->m_parent, tr("Erreur"),
-									  tr("Impossible de remplacer le fichier!\n\n")+
+				QMessageBox::critical(this->m_parent, QObject::tr("Erreur"),
+									  QObject::tr("Impossible de remplacer le fichier!\n\n")+
 									  "Destination: "+filename+"\n");
 				return false;
-			}
+			}	
 		}
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
 			QTextStream stream(&file);
@@ -69,7 +69,7 @@ bool nomenclature::saveToCSVFile() {
 		else return false;
 	}
 	else return false;
-
+	
 	return true;
 }
 
@@ -78,23 +78,22 @@ bool nomenclature::saveToCSVFile() {
  * Create and formated a nomenclature to csv file.
  * @return The QString of nomenclature
  */
-QString nomenclature::getNomenclature() {
+QString nomenclature::getNomenclature()
+{
 	//Process...
-	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("N° de folio") +";"
-	""+ tr("Titre de folio") +";"
-	""+ tr("Désignation qet") +";"
-	""+ tr("Position") +";"
-	""+ tr("Label") +";"
-	""+ tr("Désignation") +";"
-	""+ tr("Commentaire") +";"
-	""+ tr("Fabricant") +";"
-	""+ tr("Reference") +";"
-	""+ tr("Bloc auxilliaire 1") +";"
-	""+ tr("Bloc auxilliaire 2") +";"
-	""+ tr("Machine-reference") +";"
-	""+ tr("Localisation") +";"
-	""+ tr("Fonction") +"\n";
+	QString data = QObject::tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
+	data += QObject::tr("N° de folio") +";"
+	""+ QObject::tr("Titre de folio") +";"
+	""+ QObject::tr("Désignation qet") +";"
+	""+ QObject::tr("Position") +";"
+	""+ QObject::tr("Label") +";"
+	""+ QObject::tr("Désignation") +";"
+	""+ QObject::tr("Commentaire") +";"
+	""+ QObject::tr("Fabricant") +";"
+	""+ QObject::tr("Reference") +";"
+	""+ QObject::tr("Machine-reference") +";"
+	""+ QObject::tr("Localisation") +";"
+	""+ QObject::tr("Fonction") +"\n";
 
 
 	if(m_list_diagram.isEmpty()) return data;
@@ -134,8 +133,6 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += elmt_info["comment"].toString() + ";";
 	info += elmt_info["manufacturer"].toString() + ";";
 	info += elmt_info["manufacturer-reference"].toString() + ";";
-	info += elmt_info["Auxiliary_1-contact-bloc"].toString() + ";";
-	info += elmt_info["Auxiliary_2-contact-bloc"].toString() + ";";
 	info += elmt_info["machine-manufacturer-reference"].toString() + ";";
 	info += elmt_info["location"].toString() + ";";
 	info += elmt_info["function"].toString() + "\n";

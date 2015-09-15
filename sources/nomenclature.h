@@ -30,15 +30,12 @@
 class QETProject;
 class Diagram;
 class Element;
-class DiagramContent;
-class CustomeElement;
 
 /**
 		This class represents a nomenclature...
 */
-class nomenclature : public QObject {
-	Q_OBJECT
-	
+class nomenclature
+{
 	private:       
 	QETProject *m_project;
 	QList<Diagram *> m_list_diagram;

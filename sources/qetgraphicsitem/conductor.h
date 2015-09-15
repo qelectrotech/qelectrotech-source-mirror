@@ -20,6 +20,7 @@
 
 #include "conductorproperties.h"
 #include <QGraphicsPathItem>
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class ConductorProfile;
 class ConductorSegmentProfile;
@@ -74,9 +75,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
-	void destroy();
-	/// @return true if this conductor is destroyed
-	bool isDestroyed() const { return(destroyed_); }
 	Diagram *diagram() const;
 	ConductorTextItem *textItem() const;
 	void updatePath(const QRectF & = QRectF());
@@ -89,14 +87,10 @@ class Conductor : public QObject, public QGraphicsPathItem
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;
-	virtual qreal nearDistance() const;
 	virtual QPainterPath nearShape() const;
-	virtual QPainterPath variableShape(const qreal &) const;
-	virtual bool isNearConductor(const QPointF &);
 	qreal length() const;
 	ConductorSegment *middleSegment();
 	QPointF posForText(Qt::Orientations &flag);
-	bool containsPoint(const QPointF &) const;
 	QString text() const;
 	void setText(const QString &);
 
@@ -108,6 +102,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		bool pathFromXml(const QDomElement &);
 
 	public:
+		QVector <QPointF> handlerPoints() const;
 		const QList<ConductorSegment *> segmentsList() const;
 		void setProperties(const ConductorProperties &properties);
 		ConductorProperties properties() const;
@@ -115,7 +110,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 		ConductorProfile profile(Qt::Corner) const;
 		void setProfiles(const ConductorProfilesGroup &);
 		ConductorProfilesGroup profiles() const;
-		void readProperties();
 		void calculateTextItemPosition();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
@@ -127,29 +121,26 @@ class Conductor : public QObject, public QGraphicsPathItem
 	void displayedTextChanged();
 	
 	protected:
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
-	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
+		virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
+		virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	bool				bMouseOver;
 
 	private:
+		QetGraphicsHandlerUtility m_handler;
 	/// Functional properties
 	ConductorProperties properties_;
-	/// Whether this conductor is still valid
-	bool destroyed_;
 	/// Text input for non simple, non-singleline conductors
 	ConductorTextItem *text_item;
 	/// Segments composing the conductor
 	ConductorSegment *segments;
 	/// Attributs related to mouse interaction
-	QPointF press_point;
-	bool moving_point;
 	bool moving_segment;
 	int moved_point;
 	qreal previous_z_value;
@@ -165,10 +156,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	/// QPen et QBrush objects used to draw conductors
 	static QPen conductor_pen;
 	static QBrush conductor_brush;
-	static QBrush square_brush;
 	static bool pen_and_brush_initialized;
-	/// Scale factor to render square used to move segments
-	qreal segments_squares_scale_;
 	/// Define whether and how the conductor should be highlighted
 	Highlight must_highlight_;
 	bool m_valid;
@@ -183,15 +171,12 @@ class Conductor : public QObject, public QGraphicsPathItem
 	QList<ConductorBend> bends() const;
 	QList<QPointF> junctions() const;
 	void pointsToSegments(QList<QPointF>);
-	bool hasClickedOn(QPointF, QPointF) const;
 	Qt::Corner currentPathType() const;
 	void deleteSegments();
 	static int getCoeff(const qreal &, const qreal &);
 	static int getSign(const qreal &);
 	QHash<ConductorSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConductorSegmentProfile *> &, const qreal & = 0.01) const;
 	static QPointF extendTerminal(const QPointF &, Qet::Orientation, qreal = 9.0);
-	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
-	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 };

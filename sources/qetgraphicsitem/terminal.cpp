@@ -637,15 +637,12 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 }
 
 /**
-	Met a jour l'eventuel conducteur relie a la borne.
-	@param newpos Position de l'element parent a prendre en compte
-*/
+ * @brief Terminal::updateConductor
+ * Update the path of conductor docked to this terminal
+ */
 void Terminal::updateConductor() {
-	if (!scene() || !parentItem()) return;
-	foreach (Conductor *conductor, conductors_) {
-		if (conductor -> isDestroyed()) continue;
-		conductor -> updatePath();
-	}
+	foreach (Conductor *conductor, conductors_)
+		conductor->updatePath();
 }
 
 /**
