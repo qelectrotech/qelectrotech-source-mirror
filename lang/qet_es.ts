@@ -340,13 +340,13 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1426"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1279"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1283"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -3136,125 +3136,135 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
+        <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Fabricant</source>
         <translation>Fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="370"/>
+        <location filename="../sources/qetapp.cpp" line="372"/>
         <source>Référence fabricant</source>
         <translation>Referencia del fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="371"/>
+        <location filename="../sources/qetapp.cpp" line="373"/>
+        <source>Bloc auxilliaire 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="374"/>
+        <source>Bloc auxilliaire 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Référence fabricant machine</source>
         <translation>Referencia del fabricante de la maquina</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="372"/>
+        <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Localisation</source>
         <translation>Localización</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="373"/>
+        <location filename="../sources/qetapp.cpp" line="377"/>
         <source>Fonction</source>
         <translation>Función</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1430"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1431"/>
+        <location filename="../sources/qetapp.cpp" line="1435"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Esconder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1432"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Restaurar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1433"/>
+        <location filename="../sources/qetapp.cpp" line="1437"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Esconder todos los editores de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1434"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Restaura todos los editores de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1435"/>
+        <location filename="../sources/qetapp.cpp" line="1439"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Esconder todos los editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1436"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Restaura todos los editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1437"/>
+        <location filename="../sources/qetapp.cpp" line="1441"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Esconder los editores de rótulos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1442"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Restaura los editores de rótulos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1439"/>
+        <location filename="../sources/qetapp.cpp" line="1443"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Nuevo editor de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1440"/>
+        <location filename="../sources/qetapp.cpp" line="1444"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Nuevo editor de elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1442"/>
+        <location filename="../sources/qetapp.cpp" line="1446"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Cierre el programa QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1443"/>
+        <location filename="../sources/qetapp.cpp" line="1447"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimiza QElectroTech a la bandeja del sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1444"/>
+        <location filename="../sources/qetapp.cpp" line="1448"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaura QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1529"/>
+        <location filename="../sources/qetapp.cpp" line="1533"/>
         <source>Éditeurs de schémas</source>
         <translation>Editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1538"/>
+        <location filename="../sources/qetapp.cpp" line="1542"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1548"/>
+        <location filename="../sources/qetapp.cpp" line="1552"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editores de rótulos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1613"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source>Usage : </source>
         <translation>Uso:</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1613"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source> [options] [fichier]...
 
 </source>
@@ -3263,7 +3273,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1614"/>
+        <location filename="../sources/qetapp.cpp" line="1618"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3280,27 +3290,27 @@ Opciones disponibles:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1620"/>
+        <location filename="../sources/qetapp.cpp" line="1624"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>--common-elements-dir=DIR Definir la carpeta de la colección de elementos
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1623"/>
+        <location filename="../sources/qetapp.cpp" line="1627"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>--common-tbt-dir=DIR Definir la carpeta de la colección de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1626"/>
+        <location filename="../sources/qetapp.cpp" line="1630"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Definir la carpeta de configuración
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1628"/>
+        <location filename="../sources/qetapp.cpp" line="1632"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Definir la carpeta con los archivos de idioma
@@ -3347,89 +3357,89 @@ Opciones disponibles:
         <translation>Colección usuario</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="366"/>
+        <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
+        <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Commentaire</source>
         <translation>Comentario</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
+        <location filename="../sources/qetapp.cpp" line="370"/>
         <source>Désignation</source>
         <translation>Designación</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="384"/>
+        <location filename="../sources/qetapp.cpp" line="388"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>Rótulos QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="398"/>
+        <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translatorcomment>Elementos o proyectos de usuario</translatorcomment>
         <translation>Rótulos de usuario</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="821"/>
+        <location filename="../sources/qetapp.cpp" line="825"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="822"/>
+        <location filename="../sources/qetapp.cpp" line="826"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="823"/>
+        <location filename="../sources/qetapp.cpp" line="827"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="824"/>
+        <location filename="../sources/qetapp.cpp" line="828"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Eléctrico</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="825"/>
+        <location filename="../sources/qetapp.cpp" line="829"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1229"/>
+        <location filename="../sources/qetapp.cpp" line="1233"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Configurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1354"/>
+        <location filename="../sources/qetapp.cpp" line="1358"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Cargando...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1426"/>
+        <location filename="../sources/qetapp.cpp" line="1430"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Cargando.... icono de la bandeja del sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1428"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1460"/>
+        <location filename="../sources/qetapp.cpp" line="1464"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -6097,6 +6107,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="153"/>
+        <location filename="../sources/nomenclature.cpp" line="59"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
@@ -6182,6 +6193,103 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="49"/>
+        <source>nomenclature_</source>
+        <translation type="unfinished">nomenclatura_</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Enregister sous... </source>
+        <translation type="unfinished">Guardar como...</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Fichiers csv (*.csv)</source>
+        <translation type="unfinished">Archivo csv (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished">¡Imposible reemplazar el archivo!</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <source>NOMENCLATURE : </source>
+        <translation type="unfinished">NOMENCLATURA:</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <source>N° de folio</source>
+        <translation type="unfinished">N° de folio</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <source>Titre de folio</source>
+        <translation type="unfinished">Título del folio</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <source>Désignation qet</source>
+        <translation type="unfinished">Designación QET</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <source>Position</source>
+        <translation type="unfinished">Posición:</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <source>Label</source>
+        <translation type="unfinished">Etiqueta</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <source>Désignation</source>
+        <translation type="unfinished">Designación</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Comentario</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <source>Fabricant</source>
+        <translation type="unfinished">Fabricante</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <source>Reference</source>
+        <translation type="unfinished">Referencia</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <source>Bloc auxilliaire 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <source>Bloc auxilliaire 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <source>Machine-reference</source>
+        <translation type="unfinished">Referencia de la máquina</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <source>Localisation</source>
+        <translation type="unfinished">Localización</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <source>Fonction</source>
+        <translation type="unfinished">Función</translation>
     </message>
 </context>
 <context>
@@ -6902,32 +7010,42 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>etiqueta</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
+        <source>Fonction</source>
+        <translation type="unfinished">Función</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
+        <source>Tension/protocole</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="151"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="166"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="181"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="195"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="209"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7757,101 +7875,6 @@ Ancho máximo : %2xp</translation>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
         <translation>Seleccionar todo</translation>
-    </message>
-</context>
-<context>
-    <name>nomenclature</name>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="83"/>
-        <source>NOMENCLATURE : </source>
-        <translation>NOMENCLATURA:</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="49"/>
-        <source>nomenclature_</source>
-        <translation>nomenclatura_</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
-        <source>Enregister sous... </source>
-        <translation>Guardar como...</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
-        <source>Fichiers csv (*.csv)</source>
-        <translation>Archivo csv (*.csv)</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="59"/>
-        <source>Erreur</source>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
-        <source>Impossible de remplacer le fichier!
-
-</source>
-        <translation>¡Imposible reemplazar el archivo!</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
-        <source>Position</source>
-        <translation>Posición:</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
-        <source>Désignation</source>
-        <translation>Designación</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
-        <source>Fonction</source>
-        <translation>Función</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
-        <source>Label</source>
-        <translation>Etiqueta</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
-        <source>Commentaire</source>
-        <translation>Comentario</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
-        <source>Fabricant</source>
-        <translation>Fabricante</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
-        <source>Reference</source>
-        <translation>Referencia</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
-        <source>Machine-reference</source>
-        <translation>Referencia de la máquina</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
-        <source>Désignation qet</source>
-        <translation>Designación QET</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>N° de folio</source>
-        <translation>N° de folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
-        <source>Titre de folio</source>
-        <translation>Título del folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
-        <source>Localisation</source>
-        <translation>Localización</translation>
     </message>
 </context>
 <context>

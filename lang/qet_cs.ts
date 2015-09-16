@@ -338,13 +338,13 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1426"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1279"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1430"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1283"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation type="unfinished">Upravit vlastnosti více vodičů</translation>
@@ -3132,100 +3132,100 @@ Chcete uložit změny?</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1430"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1431"/>
+        <location filename="../sources/qetapp.cpp" line="1435"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Skrýt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1432"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ukázat</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1433"/>
+        <location filename="../sources/qetapp.cpp" line="1437"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Skrýt všechny editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1434"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Ukázat všechny editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1435"/>
+        <location filename="../sources/qetapp.cpp" line="1439"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Skrýt všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1436"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Ukázat všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1437"/>
+        <location filename="../sources/qetapp.cpp" line="1441"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Skrýt všechny editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1442"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Ukázat všechny editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1439"/>
+        <location filename="../sources/qetapp.cpp" line="1443"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Nový editor výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1440"/>
+        <location filename="../sources/qetapp.cpp" line="1444"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Nový editor prvku</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1442"/>
+        <location filename="../sources/qetapp.cpp" line="1446"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Uzavřít QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1443"/>
+        <location filename="../sources/qetapp.cpp" line="1447"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Zmenší QElectroTech do systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1444"/>
+        <location filename="../sources/qetapp.cpp" line="1448"/>
         <source>Restaurer QElectroTech</source>
         <translation>Ukázat QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1529"/>
+        <location filename="../sources/qetapp.cpp" line="1533"/>
         <source>Éditeurs de schémas</source>
         <translation>Editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1538"/>
+        <location filename="../sources/qetapp.cpp" line="1542"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1548"/>
+        <location filename="../sources/qetapp.cpp" line="1552"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1613"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source>Usage : </source>
         <translation>Použití: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1614"/>
+        <location filename="../sources/qetapp.cpp" line="1618"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3242,7 +3242,7 @@ Dostupné volby:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1613"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source> [options] [fichier]...
 
 </source>
@@ -3251,43 +3251,43 @@ Dostupné volby:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
+        <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Fabricant</source>
         <translation>Výrobce</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="370"/>
+        <location filename="../sources/qetapp.cpp" line="372"/>
         <source>Référence fabricant</source>
         <translation>Odkaz na výrobce</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="371"/>
+        <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Référence fabricant machine</source>
         <translation>Odkaz na výrobce stroje</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1620"/>
+        <location filename="../sources/qetapp.cpp" line="1624"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Stanovit adresář pro sbírku s prvky
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1623"/>
+        <location filename="../sources/qetapp.cpp" line="1627"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Stanovit adresář pro sbírku se vzory záhlaví výkresů
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1626"/>
+        <location filename="../sources/qetapp.cpp" line="1630"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Stanovit adresář s nastavením
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1628"/>
+        <location filename="../sources/qetapp.cpp" line="1632"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Stanovit adresář s jazykovými soubory
@@ -3334,98 +3334,108 @@ Dostupné volby:
         <translation>Vlastní sbírka</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="366"/>
+        <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Label</source>
         <translation>Štítek</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
+        <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Commentaire</source>
         <translation>Poznámka</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
+        <location filename="../sources/qetapp.cpp" line="370"/>
         <source>Désignation</source>
         <translation>Označení</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="372"/>
+        <location filename="../sources/qetapp.cpp" line="373"/>
+        <source>Bloc auxilliaire 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="374"/>
+        <source>Bloc auxilliaire 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Localisation</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="373"/>
+        <location filename="../sources/qetapp.cpp" line="377"/>
         <source>Fonction</source>
         <translation>Funkce</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="384"/>
+        <location filename="../sources/qetapp.cpp" line="388"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>Záhlaví výkresů QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="398"/>
+        <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Vlastní záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="821"/>
+        <location filename="../sources/qetapp.cpp" line="825"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="822"/>
+        <location filename="../sources/qetapp.cpp" line="826"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="823"/>
+        <location filename="../sources/qetapp.cpp" line="827"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Výkres</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="824"/>
+        <location filename="../sources/qetapp.cpp" line="828"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrický</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="825"/>
+        <location filename="../sources/qetapp.cpp" line="829"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1229"/>
+        <location filename="../sources/qetapp.cpp" line="1233"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Nastavit QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1354"/>
+        <location filename="../sources/qetapp.cpp" line="1358"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1426"/>
+        <location filename="../sources/qetapp.cpp" line="1430"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se... Ikona v systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1428"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1460"/>
+        <location filename="../sources/qetapp.cpp" line="1464"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -6100,6 +6110,7 @@ Co chcete dělat?</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="153"/>
+        <location filename="../sources/nomenclature.cpp" line="59"/>
         <source>Erreur</source>
         <translation>Chyba</translation>
     </message>
@@ -6185,6 +6196,104 @@ Co chcete dělat?</translation>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
         <translation>Přesunout %1 textů prvků</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="49"/>
+        <source>nomenclature_</source>
+        <translation type="unfinished">Číselník_</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Enregister sous... </source>
+        <translation type="unfinished">Uložit jako... </translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Fichiers csv (*.csv)</source>
+        <translation type="unfinished">Soubory csv (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished">Soubor nelze nahradit!
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <source>NOMENCLATURE : </source>
+        <translation type="unfinished">ČÍSELNÍK: </translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <source>N° de folio</source>
+        <translation type="unfinished">Číslo listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <source>Titre de folio</source>
+        <translation type="unfinished">Název listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <source>Désignation qet</source>
+        <translation type="unfinished">Označení qet</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <source>Position</source>
+        <translation type="unfinished">Poloha</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <source>Label</source>
+        <translation type="unfinished">Štítek</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <source>Désignation</source>
+        <translation type="unfinished">Označení</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Poznámka</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <source>Fabricant</source>
+        <translation type="unfinished">Výrobce</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <source>Reference</source>
+        <translation type="unfinished">Odkaz</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <source>Bloc auxilliaire 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <source>Bloc auxilliaire 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <source>Machine-reference</source>
+        <translation type="unfinished">Odkaz na stroj</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <source>Localisation</source>
+        <translation type="unfinished">Umístění</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <source>Fonction</source>
+        <translation type="unfinished">Funkce</translation>
     </message>
 </context>
 <context>
@@ -6919,32 +7028,42 @@ Jiná pole se nepoužívají.</translation>
         <translation>Štítek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
+        <source>Fonction</source>
+        <translation type="unfinished">Funkce</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
+        <source>Tension/protocole</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
         <translation>Upravit obsah textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="151"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
         <translation>Upravit velikost textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="166"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
         <translation>Upravit vlastnosti textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="181"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
         <translation>Upravit úhel otočení textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="195"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
         <translation>Upravit značku textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="209"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
         <translation>Přesunout textové pole</translation>
     </message>
@@ -7774,102 +7893,6 @@ Největší délka: %2px</translation>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
         <translation>Vybrat vše</translation>
-    </message>
-</context>
-<context>
-    <name>nomenclature</name>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="83"/>
-        <source>NOMENCLATURE : </source>
-        <translation>ČÍSELNÍK: </translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="49"/>
-        <source>nomenclature_</source>
-        <translation>Číselník_</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
-        <source>Enregister sous... </source>
-        <translation>Uložit jako... </translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
-        <source>Fichiers csv (*.csv)</source>
-        <translation>Soubory csv (*.csv)</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="59"/>
-        <source>Erreur</source>
-        <translation>Chyba</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
-        <source>Impossible de remplacer le fichier!
-
-</source>
-        <translation>Soubor nelze nahradit!
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
-        <source>Position</source>
-        <translation>Poloha</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
-        <source>Désignation</source>
-        <translation>Označení</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
-        <source>Fonction</source>
-        <translation>Funkce</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
-        <source>Label</source>
-        <translation>Štítek</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
-        <source>Commentaire</source>
-        <translation>Poznámka</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
-        <source>Fabricant</source>
-        <translation>Výrobce</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
-        <source>Reference</source>
-        <translation>Odkaz</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
-        <source>Machine-reference</source>
-        <translation>Odkaz na stroj</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
-        <source>Désignation qet</source>
-        <translation>Označení qet</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>N° de folio</source>
-        <translation>Číslo listu</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
-        <source>Titre de folio</source>
-        <translation>Název listu</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
-        <source>Localisation</source>
-        <translation>Umístění</translation>
     </message>
 </context>
 <context>
