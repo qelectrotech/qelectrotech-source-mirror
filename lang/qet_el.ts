@@ -341,13 +341,13 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1279"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1283"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
     </message>
 </context>
 <context>
@@ -366,13 +366,13 @@
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="71"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="75"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
     </message>
 </context>
 <context>
@@ -385,12 +385,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος κειμένου:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Τάση / Πρωτόκολλο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
@@ -400,7 +400,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Λειτουργία:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
         <source>Apparence</source>
-        <translation type="unfinished">Εμφάνιση</translation>
+        <translation>Εμφάνιση</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
@@ -710,7 +710,7 @@
         <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ιδιοτήτων του αγωγού</translation>
     </message>
 </context>
 <context>
@@ -2268,7 +2268,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους εικόνας</translation>
     </message>
 </context>
 <context>
@@ -2530,7 +2530,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="223"/>
         <location filename="../sources/editor/lineeditor.cpp" line="239"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία μιας γραμμής</translation>
     </message>
 </context>
 <context>
@@ -2843,7 +2843,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="214"/>
         <source>Modifier un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία τόξου</translation>
     </message>
 </context>
 <context>
@@ -2851,7 +2851,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="209"/>
         <source>Modifier une ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία έλλειψης</translation>
     </message>
 </context>
 <context>
@@ -2859,7 +2859,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="160"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία γραμμής</translation>
     </message>
 </context>
 <context>
@@ -2867,7 +2867,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="282"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή πολυγώνου</translation>
     </message>
 </context>
 <context>
@@ -2875,7 +2875,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="280"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή ορθογωνίου</translation>
     </message>
 </context>
 <context>
@@ -2883,7 +2883,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="433"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -2891,7 +2891,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ενος πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -2920,7 +2920,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία πολυγώνου</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
@@ -2940,25 +2940,26 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή του ηλεκτρικού δυναμικού</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσπαθείς να συνδέσεις δυο διαφορετική δυναμικά.
+Παρακαλώ επέλεξε τις ιδιότητες που θα εφαρμοστούν στο νέο δυναμικό.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="156"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="157"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Το δυναμικό με αριθμό αγωγού %1 υπάρχει %2 φορές</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
     </message>
 </context>
 <context>
@@ -6172,97 +6173,97 @@ Que désirez vous faire ?</source>
         <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων πολλών αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="115"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση %1 κειμένων του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">ονοματολογία_</translation>
+        <translation>ονοματολογία_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Αποθήκευση ως...</translation>
+        <translation>Αποθήκευση ως...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Αρχεία csv (*.csv) </translation>
+        <translation>Αρχεία csv (*.csv) </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Αδυναμία αντικατάστασης του αρχείου!
+        <translation>Αδυναμία αντικατάστασης του αρχείου!
 
 </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">ΟΝΟΜΑΤΟΛΟΓΙΑ:</translation>
+        <translation>ΟΝΟΜΑΤΟΛΟΓΙΑ:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° σελίδας</translation>
+        <translation>N° σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Τίτλος σελίδας</translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Désignation qet</source>
-        <translation type="unfinished">Περιγραφή qet</translation>
+        <translation>Περιγραφή qet</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Position</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation</source>
-        <translation type="unfinished">Περιγραφή</translation>
+        <translation>Περιγραφή</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Κατασκευαστής</translation>
+        <translation>Κατασκευαστής</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Reference</source>
-        <translation type="unfinished">Κωδικός</translation>
+        <translation>Κωδικός</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
@@ -6277,17 +6278,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Machine-reference</source>
-        <translation type="unfinished">Κωδικός μηχανής</translation>
+        <translation>Κωδικός μηχανής</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Localisation</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fonction</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
 </context>
 <context>
@@ -6320,7 +6321,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="439"/>
         <source>Modifier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="570"/>
@@ -6363,7 +6364,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ορθογωνίου</translation>
     </message>
 </context>
 <context>
@@ -6885,12 +6886,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του προσανατολισμού ενός ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός ακροδέκτη</translation>
     </message>
 </context>
 <context>
@@ -6945,27 +6946,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του περιεχομένου ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του μεγέθους ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του χρώματος ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία τηε γωνίας ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός πλαισίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -7023,42 +7024,42 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
         <source>Fonction</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
         <source>Tension/protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Τάση/πρωτόκολλο</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση του περιοεχομένου ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του μεγέθους ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γωνίας περιστροφής ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της ετικέτας ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός πλαισίου κειμένου</translation>
     </message>
 </context>
 <context>
