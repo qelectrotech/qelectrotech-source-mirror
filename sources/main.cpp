@@ -16,12 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+
 /**
-	Fonction principale du programme QElectroTech
-	@param argc nombre de parametres
-	@param argv parametres
-*/
-int main(int argc, char **argv) {
-	// Creation et execution de l'application
+ * @brief main
+ * Main function of QElectroTech
+ * @param argc : number of paramètres
+ * @param argv : paramètres
+ * @return
+ */
+int main(int argc, char **argv)
+{
+		//Some setup, notably to use with QSetting.
+	QCoreApplication::setOrganizationName("QElectroTech");
+	QCoreApplication::setOrganizationDomain("qelectrotech.org");
+	QCoreApplication::setApplicationName("QElectroTech");
+		//Creation and execution of the application
 	return(QETApp(argc, argv).exec());
 }

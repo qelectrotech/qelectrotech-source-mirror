@@ -29,7 +29,6 @@
 #include "exportdialog.h"
 #include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
-#include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "terminal.h"
@@ -137,7 +136,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p -> setBrush(Qt::NoBrush);
 
 			//If user allow zoom out beyond of folio, we draw grid outside of border.
-		QRectF rect = QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ?
+		QSettings settings;
+		QRectF rect = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ?
 						  r :
 						  border_and_titleblock.insideBorderRect().intersected(r);
 

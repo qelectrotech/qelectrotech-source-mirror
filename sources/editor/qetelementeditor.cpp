@@ -1356,9 +1356,13 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	slot_updateMenus();
 }
 
-/// Lit les parametres de l'editeur d'element
-void QETElementEditor::readSettings() {
-	QSettings &settings = QETApp::settings();
+/**
+ * @brief QETElementEditor::readSettings
+ * Read settings
+ */
+void QETElementEditor::readSettings()
+{
+	QSettings settings;
 	
 	// dimensions et position de la fenetre
 	QVariant geometry = settings.value("elementeditor/geometry");
@@ -1372,9 +1376,13 @@ void QETElementEditor::readSettings() {
 	ce_scene -> setInformations(settings.value("elementeditor/default-informations", "").toString());
 }
 
-/// Enregistre les parametres de l'editeur d'element
-void QETElementEditor::writeSettings() {
-	QSettings &settings = QETApp::settings();
+/**
+ * @brief QETElementEditor::writeSettings
+ * Write the settings
+ */
+void QETElementEditor::writeSettings()
+{
+	QSettings settings;
 	settings.setValue("elementeditor/geometry", saveGeometry());
 	settings.setValue("elementeditor/state", saveState());
 }

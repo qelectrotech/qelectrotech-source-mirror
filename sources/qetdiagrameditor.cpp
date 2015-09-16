@@ -1666,9 +1666,13 @@ void QETDiagramEditor::setTabbedMode() {
 	slot_updateWindowsMenu();
 }
 
-/// Lit les parametres de l'editeur de schemas
-void QETDiagramEditor::readSettings() {
-	QSettings &settings = QETApp::settings();
+/**
+ * @brief QETDiagramEditor::readSettings
+ * Read the settings
+ */
+void QETDiagramEditor::readSettings()
+{
+	QSettings settings;
 	
 	// dimensions et position de la fenetre
 	QVariant geometry = settings.value("diagrameditor/geometry");
@@ -1687,9 +1691,13 @@ void QETDiagramEditor::readSettings() {
 	}
 }
 
-/// Enregistre les parametres de l'editeur de schemas
-void QETDiagramEditor::writeSettings() {
-	QSettings &settings = QETApp::settings();
+/**
+ * @brief QETDiagramEditor::writeSettings
+ * Write the settings
+ */
+void QETDiagramEditor::writeSettings()
+{
+	QSettings settings;
 	settings.setValue("diagrameditor/geometry", saveGeometry());
 	settings.setValue("diagrameditor/state", saveState());
 }

@@ -189,8 +189,10 @@ void QETApp::setLanguage(const QString &desired_language) {
  * @return the langage found in setting file
  * if nothing was found return the system local.
  */
-QString QETApp::langFromSetting() {
-	QString system_language = settings().value("lang", "system").toString();
+QString QETApp::langFromSetting()
+{
+	QSettings settings;
+	QString system_language = settings.value("lang", "system").toString();
 	if(system_language == "system") {system_language = QLocale::system().name().left(2);}
 	return system_language;
 }
@@ -742,20 +744,19 @@ bool QETApp::closeEveryEditor() {
 }
 
 /**
-	@param size taille voulue - si aucune taille n'est specifiee, la valeur
-	specifiee dans la configuration (diagramsize) est utilisee. La valeur par
-	defaut est 9.
-	@return la police a utiliser pour rendre les textes sur les schemas
-	La famille "Sans Serif" est utilisee par defaut mais peut etre surchargee
-	dans la configuration (diagramfont).
-*/
-QFont QETApp::diagramTextsFont(qreal size) {
-	// acces a la configuration de l'application
-	QSettings &qet_settings = QETApp::settings();
+ * @brief QETApp::diagramTextsFont
+ * The font to use
+ * By default the font is "sans Serif" and size 9.
+ * @param size : the size of font
+ * @return the font to use
+ */
+QFont QETApp::diagramTextsFont(qreal size)
+{
+	QSettings settings;
 
-	// police a utiliser pour le rendu de texte
-	QString diagram_texts_family = qet_settings.value("diagramfont", "Sans Serif").toString();
-	qreal diagram_texts_size     = qet_settings.value("diagramsize", 9.0).toDouble();
+		//Font to use
+	QString diagram_texts_family = settings.value("diagramfont", "Sans Serif").toString();
+	qreal diagram_texts_size     = settings.value("diagramsize", 9.0).toDouble();
 
 	if (size != -1.0) {
 		diagram_texts_size = size;
@@ -1379,8 +1380,9 @@ void QETApp::initLanguage() {
 }
 
 /**
-	Met en place tout ce qui concerne le style graphique de l'application
-*/
+ * @brief QETApp::initStyle
+ * Setup the gui style
+ */
 void QETApp::initStyle() {
 	initial_palette_ = palette();
 
@@ -1389,9 +1391,9 @@ void QETApp::initStyle() {
 //	if (qobject_cast<QPlastiqueStyle *>(style())) {
 //		setStyle(new QETStyle());
 //	}
-
-	// applique ou non les couleurs de l'environnement
-	useSystemPalette(settings().value("usesystemcolors", true).toBool());
+		//Apply or not the system style
+	QSettings settings;
+	useSystemPalette(settings.value("usesystemcolors", true).toBool());
 }
 
 /**
@@ -1411,9 +1413,6 @@ void QETApp::initConfiguration() {
 
 	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
 	if (!custom_tbt_dir.exists()) custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
-
-	// lit le fichier de configuration
-	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
 
 	// fichiers recents
 	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
@@ -1693,11 +1692,6 @@ void QETApp::printLicense() {
 //			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
 //	}
 //}
-
-/// @return une reference vers les parametres de QElectroTEch
-QSettings &QETApp::settings() {
-	return(*(instance() -> qet_settings));
-}
 
 /**
 	@param location adresse virtuelle d'un item (collection, categorie, element, ...)

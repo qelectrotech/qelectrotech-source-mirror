@@ -16,8 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "recentfiles.h"
-#include "qetapp.h"
 #include "qeticons.h"
+#include <QMenu>
 
 /**
 	Constructeur
@@ -111,16 +111,20 @@ void RecentFiles::fileWasOpened(const QString &filepath) {
 }
 
 /**
-	Lit la liste des fichiers recents dans la configuration
-*/
-void RecentFiles::extractFilesFromSettings() {
-	// oublie la liste des fichiers recents
+ * @brief RecentFiles::extractFilesFromSettings
+ * Read the list of recent file from settings
+ */
+void RecentFiles::extractFilesFromSettings()
+{
+		//Forget the list of recent files
 	list_.clear();
 	
-	// recupere les derniers fichiers ouverts dans la configuration
-	for (int i = size_ ; i >= 1  ; -- i) {
+		//Get the last opened file from the settings
+	QSettings settings;
+	for (int i = size_ ; i >= 1  ; -- i)
+	{
 		QString key(identifier_ + "-recentfiles/file" + QString::number(i));
-		QString value(QETApp::settings().value(key, QString()).toString());
+		QString value(settings.value(key, QString()).toString());
 		insertFile(value);
 	}
 }
@@ -144,12 +148,16 @@ void RecentFiles::insertFile(const QString &filepath) {
 }
 
 /**
-	Ecrit la liste des fichiers recents dans la configuration
-*/
-void RecentFiles::saveFilesToSettings() {
-	for (int i = 0 ; i < size_ && i < list_.count() ; ++ i) {
+ * @brief RecentFiles::saveFilesToSettings
+ * Write the list of recent files to settings
+ */
+void RecentFiles::saveFilesToSettings()
+{
+	QSettings settings;
+	for (int i = 0 ; i < size_ && i < list_.count() ; ++ i)
+	{
 		QString key(identifier_ + "-recentfiles/file" + QString::number(i + 1));
-		QETApp::settings().setValue(key, list_[i]);
+		settings.setValue(key, list_[i]);
 	}
 }
 

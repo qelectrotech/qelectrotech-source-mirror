@@ -560,8 +560,10 @@ int ElementsPanel::elementsCollectionItemsCount() {
 /**
 	@return true if freshly integrated elements should be highlighted, false otherwise.
 */
-bool ElementsPanel::mustHighlightIntegratedElements() const {
-	return(QETApp::settings().value("diagrameditor/highlight-integrated-elements", true).toBool());
+bool ElementsPanel::mustHighlightIntegratedElements() const
+{
+	QSettings settings;
+	return(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 }
 
 /**

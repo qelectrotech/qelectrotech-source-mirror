@@ -359,8 +359,10 @@ void DiagramView::zoomIn() {
  * If zoom-out-beyond-of-folio is true in common setting, the zoom out is infinite
  * else zoom out is stopped when the entire folio is visible.
  */
-void DiagramView::zoomOut() {
-	if (QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
+void DiagramView::zoomOut()
+{
+	QSettings settings;
+	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
 		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
 		scale(0.85, 0.85);
 
@@ -380,8 +382,10 @@ void DiagramView::zoomInSlowly() {
  * @brief DiagramView::zoomOutSlowly
  * Like zoomOut but more slowly
  */
-void DiagramView::zoomOutSlowly() {
-	if (QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
+void DiagramView::zoomOutSlowly()
+{
+	QSettings settings;
+	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
 		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
 		scale(0.98, 0.98);
 
@@ -555,8 +559,10 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
  * @brief DiagramView::gestures
  * @return
  */
-bool DiagramView::gestures() const {
-	return(QETApp::settings().value("diagramview/gestures", false).toBool());
+bool DiagramView::gestures() const
+{
+	QSettings settings;
+	return(settings.value("diagramview/gestures", false).toBool());
 }
 
 /**

@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorproperties.h"
-#include "qetapp.h"
+#include <QPainter>
 
 /**
 	Constructeur par defaut
@@ -365,8 +365,9 @@ QString ConductorProperties::typeToString(ConductorType t) {
  * @brief ConductorProperties::defaultProperties
  * @return the default properties stored in the setting file
  */
-ConductorProperties ConductorProperties::defaultProperties() {
-	QSettings &settings = QETApp::settings();
+ConductorProperties ConductorProperties::defaultProperties()
+{
+	QSettings settings;
 
 	ConductorProperties def;
 	def.fromSettings(settings, "diagrameditor/defaultconductor");

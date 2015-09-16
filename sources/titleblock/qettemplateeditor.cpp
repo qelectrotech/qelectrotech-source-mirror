@@ -467,8 +467,9 @@ void QETTitleBlockTemplateEditor::initToolbars() {
 /**
 	Initialize layouts and widgets
 */
-void QETTitleBlockTemplateEditor::initWidgets() {
-	QSettings &settings = QETApp::settings();
+void QETTitleBlockTemplateEditor::initWidgets()
+{
+	QSettings settings;
 	
 	// undo list on the right
 	undo_stack_ = new QUndoStack(this);
@@ -579,10 +580,12 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
 }
 
 /**
-	Load template editor-related parameters.
-*/
-void QETTitleBlockTemplateEditor::readSettings() {
-	QSettings &settings = QETApp::settings();
+ * @brief QETTitleBlockTemplateEditor::readSettings
+ * Read settings
+ */
+void QETTitleBlockTemplateEditor::readSettings()
+{
+	QSettings settings;
 	
 	// window size and position
 	QVariant geometry = settings.value("titleblocktemplateeditor/geometry");
@@ -594,10 +597,12 @@ void QETTitleBlockTemplateEditor::readSettings() {
 }
 
 /**
-	Save template editor-related parameters.
-*/
-void QETTitleBlockTemplateEditor::writeSettings() {
-	QSettings &settings = QETApp::settings();
+ * @brief QETTitleBlockTemplateEditor::writeSettings
+ * Write the settings
+ */
+void QETTitleBlockTemplateEditor::writeSettings()
+{
+	QSettings settings;
 	settings.setValue("titleblocktemplateeditor/geometry", saveGeometry());
 	settings.setValue("titleblocktemplateeditor/state", saveState());
 }
@@ -898,13 +903,16 @@ void QETTitleBlockTemplateEditor::quit() {
 }
 
 /**
-	Save the new preview width to application settings
-	@param former_preview_width Unused, former preview width
-	@param new_preview_width New preview width
-*/
-void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width) {
+ * @brief QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings
+ * Save the new preview width to application settings
+ * @param former_preview_width : former_preview_width Unused, former preview width
+ * @param new_preview_width : new_preview_width New preview width
+ */
+void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width)
+{
 	Q_UNUSED(former_preview_width)
-	QETApp::settings().setValue("titleblocktemplateeditor/preview_width", new_preview_width);
+	QSettings settings;
+	settings.setValue("titleblocktemplateeditor/preview_width", new_preview_width);
 }
 
 /**

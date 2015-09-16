@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "reportproperties.h"
-#include "qetapp.h"
+#include <QSettings>
 
 ReportProperties::ReportProperties()
 {}
@@ -25,7 +25,8 @@ ReportProperties::ReportProperties()
  * @brief ReportProperties::defaultProperties
  * @return the default properties stored in the setting file
  */
-QString ReportProperties::defaultProperties() {
-	QSettings &settings= QETApp::settings();
+QString ReportProperties::defaultProperties()
+{
+	QSettings settings;
 	return(settings.value("diagrameditor/defaultreportlabel", "%f-%l%c").toString());
 }

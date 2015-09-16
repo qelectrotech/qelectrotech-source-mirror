@@ -20,7 +20,6 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
-#include "qetapp.h"
 #include "conductorautonumerotation.h"
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
@@ -229,8 +228,9 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	p -> save();
 	
 #ifndef Q_OS_WIN
-	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
-	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
+		//Fix visual bug on QGraphicsScene that occur only on X11 with default zoom.
+	QSettings settings;
+	static bool must_correct_rendering_bug = settings.value("correct-rendering", false).toBool();
 	if (must_correct_rendering_bug) {
 		Diagram *dia = diagram();
 		if (dia && options -> levelOfDetail == 1.0 && widget) {

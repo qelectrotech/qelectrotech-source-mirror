@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "borderproperties.h"
-#include "qetapp.h"
 
 /**
 	Constructeur. Initialise un objet BorderProperties avec les proprietes par
@@ -126,8 +125,9 @@ void BorderProperties::fromSettings(QSettings &settings, const QString &prefix) 
  * @brief BorderProperties::defaultProperties
  * @return the default properties stored in the setting file
  */
-BorderProperties BorderProperties::defaultProperties() {
-	QSettings &settings = QETApp::settings();
+BorderProperties BorderProperties::defaultProperties()
+{
+	QSettings settings;
 
 	BorderProperties def;
 	def.fromSettings(settings, "diagrameditor/default");

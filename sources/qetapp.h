@@ -93,7 +93,6 @@ class QETApp : public QETSingleApplication {
 	static QETProject *project(const uint &);
 	static int projectId(const QETProject *);
 	static QString configDir();
-	static QSettings &settings();
 	static QString languagesPath();
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
@@ -165,7 +164,6 @@ class QETApp : public QETSingleApplication {
 	bool every_template_reduced;
 	bool every_template_visible;
 	QSignalMapper signal_map;
-	QSettings *qet_settings;
 	QETArguments qet_arguments_;        ///< Comand-line arguments parser
 	bool non_interactive_execution_;    ///< Whether the application will end without any user interaction
 	QPalette initial_palette_;          ///< System color palette

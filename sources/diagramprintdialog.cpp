@@ -20,7 +20,6 @@
 #include <math.h>
 #include "diagramschooser.h"
 #include "exportproperties.h"
-#include "qetapp.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 
@@ -536,8 +535,9 @@ void DiagramPrintDialog::saveReloadDiagramParameters(Diagram *diagram, const Exp
 	configuration. Key/values pairs are associated to the printer for which
 	they have been set.
 */
-void DiagramPrintDialog::savePageSetupForCurrentPrinter() {
-	QSettings &settings = QETApp::settings();
+void DiagramPrintDialog::savePageSetupForCurrentPrinter()
+{
+	QSettings settings;
 	QString printer_section = settingsSectionName(printer_);
 	
 	while (!settings.group().isEmpty()) settings.endGroup();
@@ -571,8 +571,9 @@ void DiagramPrintDialog::savePageSetupForCurrentPrinter() {
 	Load parameters previously set in the "page setup" dialog for the current
 	printer, if any.
 */
-void DiagramPrintDialog::loadPageSetupForCurrentPrinter() {
-	QSettings &settings = QETApp::settings();
+void DiagramPrintDialog::loadPageSetupForCurrentPrinter()
+{
+	QSettings settings;
 	QString printer_section = settingsSectionName(printer_);
 	
 	while (!settings.group().isEmpty()) settings.endGroup();

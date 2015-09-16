@@ -154,8 +154,9 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
  * @brief TitleBlockProperties::defaultProperties
  * Return the default properties stored in the setting file
  */
-TitleBlockProperties TitleBlockProperties::defaultProperties() {
-	QSettings &settings = QETApp::settings();
+TitleBlockProperties TitleBlockProperties::defaultProperties()
+{
+	QSettings settings;
 
 	TitleBlockProperties def;
 	def.fromSettings(settings, "diagrameditor/default");

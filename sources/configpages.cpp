@@ -19,7 +19,6 @@
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "titleblockpropertieswidget.h"
-#include "qetapp.h"
 #include "bordertitleblock.h"
 #include "qeticons.h"
 #include "exportpropertieswidget.h"
@@ -27,6 +26,7 @@
 #include "ui/xrefpropertieswidget.h"
 #include "qetproject.h"
 #include "reportproperties.h"
+#include "qetapp.h"
 
 /**
  * @brief NewDiagramPage::NewDiagramPage
@@ -135,7 +135,7 @@ void NewDiagramPage::applyConf() {
 		}
 
 	} else { //Else we save to the default value
-		QSettings &settings = QETApp::settings();
+		QSettings settings;
 
 		// dimensions des nouveaux schemas
 		bpw -> properties().toSettings(settings, "diagrameditor/default");
@@ -182,10 +182,10 @@ QString NewDiagramPage::title() const {
 	Constructeur
 	@param parent QWidget parent
 */
-GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage(parent) {
-	
-	// acces a la configuration de QElectroTech
-	QSettings &settings = QETApp::settings();
+GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage(parent)
+{
+		//Conf of QElectroTech
+	QSettings settings;
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
@@ -284,8 +284,9 @@ GeneralConfigurationPage::~GeneralConfigurationPage() {
  * @brief GeneralConfigurationPage::applyConf
  * Write all configuration in settings file
  */
-void GeneralConfigurationPage::applyConf() {
-	QSettings &settings = QETApp::settings();
+void GeneralConfigurationPage::applyConf()
+{
+	QSettings settings;
 	
 	bool was_using_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool must_use_system_colors  = use_system_colors_ -> isChecked();
@@ -385,8 +386,9 @@ ExportConfigPage::~ExportConfigPage() {
 /**
 	Applique la configuration de cette page
 */
-void ExportConfigPage::applyConf() {
-	QSettings &settings = QETApp::settings();
+void ExportConfigPage::applyConf()
+{
+	QSettings settings;
 	epw -> exportProperties().toSettings(settings, "export/default");
 }
 
@@ -430,12 +432,14 @@ PrintConfigPage::~PrintConfigPage() {
 }
 
 /**
-	Applique la configuration de cette page
-*/
-void PrintConfigPage::applyConf() {
+ * @brief PrintConfigPage::applyConf
+ * Apply the config of this page
+ */
+void PrintConfigPage::applyConf()
+{
 	QString prefix = "print/default";
 	
-	QSettings &settings = QETApp::settings();
+	QSettings settings;
 	epw -> exportProperties().toSettings(settings, prefix);
 	
 	// annule l'enregistrement de certaines proprietes non pertinentes

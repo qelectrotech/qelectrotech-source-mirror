@@ -103,15 +103,19 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
  * For coil, stored with the string "coil" in the returned QHash.
  * For protection, stored with the string "protection" in the returned QHash.
  */
-QHash<QString, XRefProperties> XRefProperties::defaultProperties() {
+QHash<QString, XRefProperties> XRefProperties::defaultProperties()
+{
 	QHash <QString, XRefProperties> hash;
 	QStringList keys;
 	keys << "coil" << "protection" << "commutator";
 
-	foreach (QString key, keys) {
+	QSettings settings;
+
+	foreach (QString key, keys)
+	{
 		XRefProperties properties;
 		QString str("diagrameditor/defaultxref");
-		properties.fromSettings(QETApp::settings(), str += key);
+		properties.fromSettings(settings, str += key);
 		hash.insert(key, properties);
 	}
 

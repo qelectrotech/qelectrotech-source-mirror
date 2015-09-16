@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportproperties.h"
-#include "qetapp.h"
 
 #include <QStandardPaths>
 
@@ -87,8 +86,9 @@ void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) 
  * @brief ExportProperties::defaultProperties
  * @return the default properties stored in the setting file
  */
-ExportProperties ExportProperties::defaultExportProperties() {
-	QSettings &settings = QETApp::settings();
+ExportProperties ExportProperties::defaultExportProperties()
+{
+	QSettings settings;
 
 	ExportProperties def;
 	def.fromSettings(settings, "export/default");
@@ -100,8 +100,9 @@ ExportProperties ExportProperties::defaultExportProperties() {
  * @brief ExportProperties::defaultPrintProperties
  * @return the default properties stored in the setting file
  */
-ExportProperties ExportProperties::defaultPrintProperties() {
-	QSettings &settings = QETApp::settings();
+ExportProperties ExportProperties::defaultPrintProperties()
+{
+	QSettings settings;
 
 	ExportProperties def;
 	def.fromSettings(settings, "print/default");

@@ -399,8 +399,10 @@ void ElementView::mouseReleaseEvent(QMouseEvent *e) {
  * @brief ElementView::gestures
  * @return
  */
-bool ElementView::gestures() const {
-	return(QETApp::settings().value("diagramview/gestures", false).toBool());
+bool ElementView::gestures() const
+{
+	QSettings settings;
+	return(settings.value("diagramview/gestures", false).toBool());
 }
 
 

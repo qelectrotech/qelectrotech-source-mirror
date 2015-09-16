@@ -179,7 +179,8 @@ QETProject::~QETProject() {
 bool QETProject::integrateElementToProject(const ElementsLocation &location, const QETProject *project)
 {
 		//Integration element must be enable
-	bool auto_integration_enabled = QETApp::settings().value("diagrameditor/integrate-elements", true).toBool();
+	QSettings settings;
+	bool auto_integration_enabled = settings.value("diagrameditor/integrate-elements", true).toBool();
 
 		//the element belongs there a project and if so, is this another project of the project given by parameter?
 	bool elmt_from_project = location.project();

@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
-#include "qetapp.h"
 #include "diagram.h"
 #include "conductor.h"
 #include "elementtextitem.h"
@@ -89,16 +88,18 @@ void Element::displayHelpLine(bool b)
 }
 
 /**
-	Methode principale de dessin de l'element
-	@param painter Le QPainter utilise pour dessiner l'elment
-	@param options Les options de style a prendre en compte
-	@param widget  Le widget sur lequel on dessine
-*/
-void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+ * @brief Element::paint
+ * @param painter
+ * @param options
+ * @param widget
+ */
+void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
 	
 #ifndef Q_OS_WIN
-	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
-	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
+		//Fix visual bug on QGraphicsScene that occur only on X11 with default zoom.
+	QSettings settings;
+	static bool must_correct_rendering_bug = settings.value("correct-rendering", false).toBool();
 	if (must_correct_rendering_bug) {
 		Diagram *dia = diagram();
 		if (dia && options -> levelOfDetail == 1.0 && widget) {
