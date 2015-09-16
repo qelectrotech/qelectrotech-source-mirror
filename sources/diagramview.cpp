@@ -498,7 +498,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e->button() == Qt::MidButton)
 	{
 		rubber_band_origin = e->pos();
-		setCursor(Qt::ClosedHandCursor);
+		viewport()->setCursor(Qt::ClosedHandCursor);
 	}
 
 	else QGraphicsView::mousePressEvent(e);
@@ -550,7 +550,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		}
 	}
 	//Stop drag view
-	if (e -> button() == Qt::MidButton) setCursor(Qt::ArrowCursor);
+	if (e -> button() == Qt::MidButton) viewport()->setCursor(Qt::ArrowCursor);
 
 	else QGraphicsView::mouseReleaseEvent(e);
 }
