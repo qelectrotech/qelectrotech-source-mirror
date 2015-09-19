@@ -77,7 +77,7 @@ class QETDiagramEditor : public QETMainWindow {
 	ProjectView *findProject(QETProject *) const;
 	ProjectView *findProject(const QString &) const;
 	QMdiSubWindow *subWindowForWidget(QWidget *) const;
-	
+
 	public slots:
 		void printDialog();
 		void exportDialog();
@@ -92,17 +92,11 @@ class QETDiagramEditor : public QETMainWindow {
 		void slot_cut();
 		void slot_copy();
 		void slot_paste();
-		void slot_zoomIn();
-		void slot_zoomOut();
-		void slot_zoomFit();
-		void slot_zoomContent();
-		void slot_zoomReset();
-		void slot_selectAll();
-		void slot_selectNothing();
-		void slot_selectInvert();
-		void slot_delete();
-		void slot_rotate();
-		void slot_rotateTexts();
+		void zoomGroupTriggered      (QAction *action);
+		void selectGroupTriggered    (QAction *action);
+		void addItemGroupTriggered   (QAction *action);
+		void selectionGroupTriggered (QAction *action);
+		void rowColumnGroupTriggered (QAction *action);
 		void slot_setSelectionMode();
 		void slot_setVisualisationMode();
 		void slot_updateActions();
@@ -111,20 +105,9 @@ class QETDiagramEditor : public QETMainWindow {
 		void slot_updateComplexActions();
 		void slot_updatePasteAction();
 		void slot_updateWindowsMenu();
-		void slot_addColumn();
-		void slot_removeColumn();
-		void slot_addRow();
-		void slot_removeRow();
 		void editSelectionProperties();
 		void slot_resetConductors();
 		void slot_autoConductor(bool ac);
-		void slot_addText();
-		void slot_addImage();
-		void slot_addLine();
-		void slot_addRectangle();
-		void slot_addEllipse();
-		void slot_addPolyline();
-		void slot_editSelection();
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
@@ -154,12 +137,10 @@ class QETDiagramEditor : public QETMainWindow {
 		void nomenclatureProject();
 		void diagramWasAdded(DiagramView *);
 		void findElementInPanel(const ElementsLocation &);
-		void findSelectedElementInPanel();
 		void editElementInEditor(const ElementsLocation &);
 		void editSelectedElementInEditor();
 		void showError(const QETResult &);
 		void showError(const QString &);
-		void addItemFinish();
 		void subWindowActivated(QMdiSubWindow *subWindows);
 
 	private slots:

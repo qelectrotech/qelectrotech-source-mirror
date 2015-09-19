@@ -161,6 +161,7 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event)
 			//Else (no shape), we set to false the running status
 			//for indicate to the owner of this event that everything is done
 		m_running = false;
+		emit finish();
 		return true;
 	}
 

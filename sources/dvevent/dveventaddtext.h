@@ -22,6 +22,8 @@
 
 class DVEventAddText : public DVEventInterface
 {
+	Q_OBJECT
+
 	public:
 		DVEventAddText(DiagramView *dv);
 		virtual ~DVEventAddText ();

@@ -53,14 +53,17 @@ DVEventAddImage::~DVEventAddImage() {
  * @param event : event of mouse pressed
  * @return : true if this event is managed, otherwise false
  */
-bool DVEventAddImage::mousePressEvent(QMouseEvent *event) {
-	if (m_image && event -> button() == Qt::LeftButton) {
+bool DVEventAddImage::mousePressEvent(QMouseEvent *event)
+{
+	if (m_image && event -> button() == Qt::LeftButton)
+	{
 		QPointF pos = m_dv -> mapToScene(event -> pos());
 		pos.rx() -= m_image->boundingRect().width()/2;
 		pos.ry() -= m_image->boundingRect().height()/2;
 		m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
 		m_dv -> setContextMenuPolicy(Qt::DefaultContextMenu);
 		m_running = false;
+		emit finish();
 		return true;
 	}
 

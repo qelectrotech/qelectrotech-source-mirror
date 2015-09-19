@@ -20,6 +20,7 @@
 #include <QMouseEvent>
 
 DVEventInterface::DVEventInterface(DiagramView *dv) :
+	QObject(dv),
 	m_dv(dv),
 	m_diagram(dv->diagram()),
 	m_running(false),
@@ -57,14 +58,18 @@ bool DVEventInterface::wheelEvent(QWheelEvent *event) {
 
 /**
  * @brief DVEventInterface::keyPressEvent
- * By default, press escape key abort the curent action
+ * By default, press escape key abort the curent action.
+ * isFinish return true, and emit finish
  * @param event
  * @return
  */
-bool DVEventInterface::keyPressEvent(QKeyEvent *event) {
-	if (event->key() == Qt::Key_Escape) {
+bool DVEventInterface::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Escape)
+	{
 		m_running = false;
 		m_abort = true;
+		emit finish();
 		return true;
 	}
 	return false;

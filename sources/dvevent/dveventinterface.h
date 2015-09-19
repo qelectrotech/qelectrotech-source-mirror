@@ -18,6 +18,8 @@
 #ifndef DVEVENTINTERFACE_H
 #define DVEVENTINTERFACE_H
 
+#include <QObject>
+
 class QMouseEvent;
 class QWheelEvent;
 class QKeyEvent;
@@ -33,8 +35,10 @@ class Diagram;
  * isRunning() return true if action is started but not finish. By default return false.
  * isFinish() return true when the action is finish, or not started. By default return true.
  */
-class DVEventInterface
+class DVEventInterface : public QObject
 {
+	Q_OBJECT
+
 	public:
 		DVEventInterface(DiagramView *dv);
 		virtual ~DVEventInterface () = 0;
@@ -47,6 +51,13 @@ class DVEventInterface
 		virtual bool KeyReleaseEvent       (QKeyEvent *event);
 		virtual bool isRunning () const;
 		virtual bool isFinish  () const;
+
+	signals:
+		/**
+		 * @brief finish
+		 * emited when the interface finish is work
+		 */
+		void finish();
 
 	protected:
 		DiagramView *m_dv;

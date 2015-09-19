@@ -28,6 +28,8 @@ class DiagramImageItem;
  */
 class DVEventAddImage : public DVEventInterface
 {
+	Q_OBJECT
+
 	public:
 		DVEventAddImage(DiagramView *dv);
 		virtual ~DVEventAddImage();

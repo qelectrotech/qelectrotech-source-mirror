@@ -477,22 +477,15 @@ void DiagramView::pasteHere() {
 	Manage the events press click :
 	 *  click to add an independent text field
 */
-void DiagramView::mousePressEvent(QMouseEvent *e) {
-
-	if (fresh_focus_in_) {
+void DiagramView::mousePressEvent(QMouseEvent *e)
+{
+	if (fresh_focus_in_)
+	{
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
 
-	if (m_event_interface) {
-		if (m_event_interface -> mousePressEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
 	if (e->button() == Qt::MidButton)
@@ -508,17 +501,9 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
  * @brief DiagramView::mouseMoveEvent
  * Manage the event move mouse
  */
-void DiagramView::mouseMoveEvent(QMouseEvent *e) {
-
-	if (m_event_interface) {
-		if (m_event_interface -> mouseMoveEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+void DiagramView::mouseMoveEvent(QMouseEvent *e)
+{
+	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 		//Drag the view
 	if (e->buttons() == Qt::MidButton)
@@ -538,17 +523,10 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
  * @brief DiagramView::mouseReleaseEvent
  * Manage event release click mouse
  */
-void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
+void DiagramView::mouseReleaseEvent(QMouseEvent *e)
+{
+	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
-	if (m_event_interface) {
-		if (m_event_interface -> mouseReleaseEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
 	//Stop drag view
 	if (e -> button() == Qt::MidButton) viewport()->setCursor(Qt::ArrowCursor);
 
@@ -569,16 +547,9 @@ bool DiagramView::gestures() const
 	Manage wheel event of mouse
 	@param e QWheelEvent
 */
-void DiagramView::wheelEvent(QWheelEvent *e) {
-	if (m_event_interface) {
-		if (m_event_interface -> wheelEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+void DiagramView::wheelEvent(QWheelEvent *e)
+{
+	if (m_event_interface && m_event_interface->wheelEvent(e)) return;
 
 	//Zoom and scrolling
 	if ( gestures() ) {
@@ -633,15 +604,8 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 	mode if needed.
 */
 void DiagramView::keyPressEvent(QKeyEvent *e) {
-	if (m_event_interface) {
-		if (m_event_interface -> keyPressEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->keyPressEvent(e)) return;
+
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
 }
@@ -651,15 +615,8 @@ void DiagramView::keyPressEvent(QKeyEvent *e) {
 	mode if needed.
 */
 void DiagramView::keyReleaseEvent(QKeyEvent *e) {
-	if (m_event_interface) {
-		if (m_event_interface -> KeyReleaseEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->KeyReleaseEvent(e)) return;
+
 	switchToSelectionModeIfNeeded(e);
 	QGraphicsView::keyReleaseEvent(e);
 }
@@ -1083,10 +1040,14 @@ void DiagramView::editSelection() {
 /**
  * @brief DiagramView::setEventInterface
  * Set an event interface to diagram view.
+ * If diagram view already have an event interface, he delete it before.
+ * Diagram view take ownership of event interface and delete it when event interface is finish
  */
-void DiagramView::setEventInterface(DVEventInterface *event_interface) {
+void DiagramView::setEventInterface(DVEventInterface *event_interface)
+{
 	if (m_event_interface) delete m_event_interface;
 	m_event_interface = event_interface;
+	connect(m_event_interface, &DVEventInterface::finish, this, [=](){delete this->m_event_interface; this->m_event_interface = nullptr;}, Qt::QueuedConnection);
 }
 
 /**
@@ -1140,17 +1101,9 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
  * @brief DiagramView::mouseDoubleClickEvent
  * @param e
  */
-void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
-
-	if (m_event_interface) {
-		if (m_event_interface -> mouseDoubleClickEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				emit (itemAdded());
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
+{
+	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
 
 	BorderTitleBlock &bi = scene -> border_and_titleblock;
 	

@@ -25,6 +25,8 @@ class QMouseEvent;
 
 class DVEventAddShape : public DVEventInterface
 {
+	Q_OBJECT
+
 	public:
 		DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_type);
 		virtual ~DVEventAddShape ();

@@ -53,7 +53,6 @@ class DiagramView : public QGraphicsView
 		DVEventInterface *m_event_interface;
 		QMenu            *context_menu;
 		QAction          *paste_here;
-		QAction          *find_element_;
 		QPoint            paste_here_pos;
 		QPointF           rubber_band_origin;
 		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
@@ -121,8 +120,6 @@ class DiagramView : public QGraphicsView
 	void editElementRequired(const ElementsLocation &);
 	/// Signal emitted when users want to edit and/or duplicate an existing title block template
 	void editTitleBlockTemplate(const QString &, bool);
-	/// Signal emitted after an item is added
-	void itemAdded();
 	/// Signal emmitted when diagram must be show
 	void showDiagram (Diagram *);
 	

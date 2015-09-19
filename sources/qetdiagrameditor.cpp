@@ -192,14 +192,38 @@ void QETDiagramEditor::setUpActions()
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
 	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
 
+		//Undo redo
 	undo = undo_group.createUndoAction(this, tr("Annuler"));
-	undo -> setIcon(QET::Icons::EditUndo);
 	redo = undo_group.createRedoAction(this, tr("Refaire"));
+
+	undo -> setIcon(QET::Icons::EditUndo);
 	redo -> setIcon(QET::Icons::EditRedo);
-	cut               = new QAction(QET::Icons::EditCut,               tr("Co&uper"),                              this);
-	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
-	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
+
+	undo -> setShortcut(QKeySequence::Undo);
+	redo -> setShortcut(QKeySequence::Redo);
+
+	undo -> setStatusTip(tr("Annule l'action précédente", "status bar tip"));
+	redo -> setStatusTip(tr("Restaure l'action annulée", "status bar tip"));
+
+		//cut copy past action
+	cut   = new QAction(QET::Icons::EditCut,   tr("Co&uper"), this);
+	copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
+	paste = new QAction(QET::Icons::EditPaste, tr("C&oller"), this);
+
+	cut   -> setShortcut(QKeySequence::Cut);
+	copy  -> setShortcut(QKeySequence::Copy);
+	paste -> setShortcut(QKeySequence::Paste);
+
+	cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
+	copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
+	paste -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
+
+	connect(cut,   SIGNAL(triggered()), this, SLOT(slot_cut()));
+	connect(copy,  SIGNAL(triggered()), this, SLOT(slot_copy()));
+	connect(paste, SIGNAL(triggered()), this, SLOT(slot_paste()));
+
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
+	conductor_reset  -> setShortcut( QKeySequence( tr("Ctrl+K")		) );
 
 	m_auto_conductor = new QAction   (QET::Icons::Autoconnect, tr("Création automatique de conducteur(s)","Tool tip of auto conductor"), this);
 	m_auto_conductor -> setStatusTip (tr("Utiliser la création automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
@@ -216,6 +240,7 @@ void QETDiagramEditor::setUpActions()
 	});
 
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
+	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                    this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                  this);
@@ -231,7 +256,7 @@ void QETDiagramEditor::setUpActions()
 	next_window       = new QAction(                                   tr("Projet suivant"),                       this);
 	prev_window       = new QAction(                                   tr("Projet précédent"),                     this);
 
-	///Files action///
+		//Files action
 	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::ProjectNew,     tr("&Nouveau")						  );
 	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
 	save_file          = m_file_actions_group.addAction( QET::Icons::DocumentSave,    tr("&Enregistrer")					  );
@@ -255,75 +280,74 @@ void QETDiagramEditor::setUpActions()
 	connect(open_file,        SIGNAL( triggered() ), this, SLOT( openProject()		   ) );
 	connect(close_file,       SIGNAL( triggered() ), this, SLOT( closeCurrentProject() ) );
 
-	///Row Column action///
+		//Row and Column actions
 	QAction *add_column    = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne") );
 	QAction *remove_column = m_row_column_actions_group.addAction( QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne") );
 	QAction *add_row       = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne")   );
 	QAction *remove_row    = m_row_column_actions_group.addAction( QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne")   );
 
-	add_column    -> setStatusTip( tr("Ajoute une colonne au folio", "status bar tip")		  );
-	remove_column -> setStatusTip( tr("Enlève une colonne au folio", "status bar tip")	  );
-	add_row       -> setStatusTip( tr("Agrandit le folio en hauteur", "status bar tip")		  );
-	remove_row    -> setStatusTip( tr("Rétrécit le folio en hauteur", "status bar tip") );
+	add_column    -> setStatusTip( tr("Ajoute une colonne au folio", "status bar tip"));
+	remove_column -> setStatusTip( tr("Enlève une colonne au folio", "status bar tip"));
+	add_row       -> setStatusTip( tr("Agrandit le folio en hauteur", "status bar tip"));
+	remove_row    -> setStatusTip( tr("Rétrécit le folio en hauteur", "status bar tip"));
 
-	connect(add_column,    SIGNAL( triggered() ), this, SLOT( slot_addColumn()	  ) );
-	connect(remove_column, SIGNAL( triggered() ), this, SLOT( slot_removeColumn() ) );
-	connect(add_row,       SIGNAL( triggered() ), this, SLOT( slot_addRow()		  ) );
-	connect(remove_row,    SIGNAL( triggered() ), this, SLOT( slot_removeRow()	  ) );
+	add_column   ->setData("add_column");
+	remove_column->setData("remove_column");
+	add_row      ->setData("add_row");
+	remove_row   ->setData("remove_row");
 
-	///Selections Actions (related to a selected item)///
+	connect(&m_row_column_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::rowColumnGroupTriggered);
+
+		//Selections Actions (related to a selected item)
 	delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
 	rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
 	rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
 	find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
 	edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné")  );
 
-#ifndef Q_OS_MAC
-	delete_selection -> setShortcut( QKeySequence( Qt::Key_Delete)    );
-#else
-	delete_selection -> setShortcut( QKeySequence( tr("Backspace")  ) );
-#endif
-
+	delete_selection -> setShortcut( QKeySequence::Delete);
 	rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
 	rotate_texts     -> setShortcut( QKeySequence( tr("Ctrl+Space") ) );
-	conductor_reset  -> setShortcut( QKeySequence( tr("Ctrl+K")		) );
-	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
 	edit_selection	 -> setShortcut( QKeySequence( tr("Ctrl+E")		) );
 
-	delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip") );
-	rotate_selection -> setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip")       );
-	rotate_texts     -> setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip") );
-	find_element     -> setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip")	   );
+	delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
+	rotate_selection -> setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
+	rotate_texts     -> setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
+	find_element     -> setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
 
-	connect(delete_selection,   SIGNAL( triggered() ), this,       SLOT( slot_delete()				  ) );
-	connect(rotate_selection,   SIGNAL( triggered() ), this,       SLOT( slot_rotate()				  ) );
-	connect(rotate_texts,       SIGNAL( triggered() ), this,       SLOT( slot_rotateTexts()			  ) );
-	connect(find_element,       SIGNAL( triggered() ), this,       SLOT( findSelectedElementInPanel() ) );
-	connect(edit_selection,     SIGNAL( triggered() ), this,       SLOT( slot_editSelection()		  ) );
+	delete_selection ->setData("delete_selection");
+	rotate_selection ->setData("rotate_selection");
+	rotate_texts     ->setData("rotate_selected_text");
+	find_element     ->setData("find_selected_element");
+	edit_selection   ->setData("edit_selected_element");
 
-	///Select Action///
+	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
+
+		//Select Action
 	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll, tr("Tout sélectionner")	   );
 	QAction *select_nothing = m_select_actions_group.addAction(                            tr("Désélectionner tout") );
 	QAction *select_invert  = m_select_actions_group.addAction(                            tr("Inverser la sélection")  );
 
-	select_all     -> setShortcut( QKeySequence::SelectAll			  );
-	select_nothing -> setShortcut( QKeySequence( tr("Ctrl+Shift+A") ) );
-	select_invert  -> setShortcut( QKeySequence( tr("Ctrl+I")		) );
+	select_all     -> setShortcut(QKeySequence::SelectAll);
+	select_nothing -> setShortcut(QKeySequence::Deselect);
+	select_invert  -> setShortcut(QKeySequence( tr("Ctrl+I")));
 
 	select_all     -> setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip")																	  );
 	select_nothing -> setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip")															  );
 	select_invert  -> setStatusTip( tr("Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés", "status bar tip") );
 
-	connect(select_all,     SIGNAL( triggered() ), this, SLOT( slot_selectAll()		) );
-	connect(select_nothing, SIGNAL( triggered() ), this, SLOT( slot_selectNothing() ) );
-	connect(select_invert,  SIGNAL( triggered() ), this, SLOT( slot_selectInvert()	) );
+	select_all     -> setData("select_all");
+	select_nothing -> setData("deselect");
+	select_invert  -> setData("invert_selection");
 
-	///Zoom actions///
-	QAction *zoom_in      = m_zoom_actions_group.addAction( QET::Icons::ZoomIn,       tr("Zoom avant")			);
-	QAction *zoom_out     = m_zoom_actions_group.addAction( QET::Icons::ZoomOut,      tr("Zoom arrière")		);
-	QAction *zoom_content = m_zoom_actions_group.addAction( QET::Icons::ZoomDraw,     tr("Zoom sur le contenu") );
-	QAction *zoom_fit     = m_zoom_actions_group.addAction( QET::Icons::ZoomFitBest,  tr("Zoom adapté")		);
-	QAction *zoom_reset   = m_zoom_actions_group.addAction( QET::Icons::ZoomOriginal, tr("Pas de zoom")			);
+	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
+
+		//Zoom actions
+	QAction *zoom_in      = m_zoom_actions_group.addAction( QET::Icons::ZoomIn,       tr("Zoom avant"));
+	QAction *zoom_out     = m_zoom_actions_group.addAction( QET::Icons::ZoomOut,      tr("Zoom arrière"));
+	QAction *zoom_content = m_zoom_actions_group.addAction( QET::Icons::ZoomDraw,     tr("Zoom sur le contenu"));
+	QAction *zoom_fit     = m_zoom_actions_group.addAction( QET::Icons::ZoomFitBest,  tr("Zoom adapté"));
+	QAction *zoom_reset   = m_zoom_actions_group.addAction( QET::Icons::ZoomOriginal, tr("Pas de zoom"));
 	m_zoom_action_toolBar << zoom_content << zoom_fit << zoom_reset;
 
 	zoom_in      -> setShortcut( QKeySequence::ZoomIn         );
@@ -338,40 +362,37 @@ void QETDiagramEditor::setUpActions()
 	zoom_fit     -> setStatusTip(tr("Adapte le zoom exactement sur le cadre du folio", "status bar tip"));
 	zoom_reset   -> setStatusTip(tr("Restaure le zoom par défaut", "status bar tip"));
 
-	connect( zoom_in,      SIGNAL( triggered() ), this,       SLOT( slot_zoomIn()      ) );
-	connect( zoom_out,     SIGNAL( triggered() ), this,       SLOT( slot_zoomOut()     ) );
-	connect( zoom_content, SIGNAL( triggered() ), this,       SLOT( slot_zoomContent() ) );
-	connect( zoom_fit,     SIGNAL( triggered() ), this,       SLOT( slot_zoomFit()     ) );
-	connect( zoom_reset,   SIGNAL( triggered() ), this,       SLOT( slot_zoomReset()   ) );
+	zoom_in     ->setData("zoom_in");
+	zoom_out    ->setData("zoom_out");
+	zoom_content->setData("zoom_content");
+	zoom_fit    ->setData("zoom_fit");
+	zoom_reset  ->setData("zoom_reset");
 
-	///Adding action (add text, image, shape...)///
-	m_add_item_actions_group.setExclusive(true);
+	connect(&m_zoom_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::zoomGroupTriggered);
 
-	QAction *add_text      = m_add_item_actions_group.addAction( QET::Icons::PartTextField, tr("Ajouter un champ de texte")		);
-	QAction *add_image	   = m_add_item_actions_group.addAction( QET::Icons::adding_image,  tr("Ajouter une image")				);
-	QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une ligne droite") );
-	QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter un rectangle")	);
-	QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une ellipse")		);
-	QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une polyligne")    );
+		//Adding action (add text, image, shape...)
+	QAction *add_text      = m_add_item_actions_group.addAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"));
+	QAction *add_image	   = m_add_item_actions_group.addAction(QET::Icons::adding_image,  tr("Ajouter une image"));
+	QAction *add_line	   = m_add_item_actions_group.addAction(QET::Icons::PartLine,      tr("Ajouter une ligne"));
+	QAction *add_rectangle = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"));
+	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
+	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 
-	connect( add_text,      SIGNAL( triggered() ), this, SLOT( slot_addText()      ) );
-	connect( add_image,     SIGNAL( triggered() ), this, SLOT( slot_addImage()     ) );
-	connect( add_line,      SIGNAL( triggered() ), this, SLOT( slot_addLine()      ) );
-	connect( add_rectangle, SIGNAL( triggered() ), this, SLOT( slot_addRectangle() ) );
-	connect( add_ellipse,   SIGNAL( triggered() ), this, SLOT( slot_addEllipse()   ) );
-	connect( add_polyline,  SIGNAL( triggered() ), this, SLOT( slot_addPolyline()  ) );
+	add_text     ->setData("text");
+	add_image    ->setData("image");
+	add_line     ->setData("line");
+	add_rectangle->setData("rectangle");
+	add_ellipse  ->setData("ellipse");
+	add_polyline ->setData("polyline");
 
-	foreach(QAction *action, m_add_item_actions_group.actions()) action->setCheckable(true);
+	foreach (QAction *action, m_add_item_actions_group.actions()) action->setCheckable(true);
+	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 
-	///Keyboard shortcut
+		//Keyboard shortcut
 	export_diagram    -> setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
 	print             -> setShortcut(QKeySequence(QKeySequence::Print));
 	quit_editor       -> setShortcut(QKeySequence(tr("Ctrl+Q")));
-	undo              -> setShortcut(QKeySequence::Undo);
-	redo              -> setShortcut(QKeySequence::Redo);
-	cut               -> setShortcut(QKeySequence::Cut);
-	copy              -> setShortcut(QKeySequence::Copy);
-	paste             -> setShortcut(QKeySequence::Paste);
+
 
 	prj_add_diagram   -> setShortcut(QKeySequence(tr("Ctrl+T")));
 
@@ -382,11 +403,6 @@ void QETDiagramEditor::setUpActions()
 	export_diagram    -> setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
-	undo              -> setStatusTip(tr("Annule l'action précédente", "status bar tip"));
-	redo              -> setStatusTip(tr("Restaure l'action annulée", "status bar tip"));
-	cut               -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
-	copy              -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
-	paste             -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
 
@@ -433,9 +449,6 @@ void QETDiagramEditor::setUpActions()
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
 	connect(export_diagram,     SIGNAL(triggered()), this,       SLOT(exportDialog())              );
-	connect(cut,                SIGNAL(triggered()), this,       SLOT(slot_cut())                  );
-	connect(copy,               SIGNAL(triggered()), this,       SLOT(slot_copy())                 );
-	connect(paste,              SIGNAL(triggered()), this,       SLOT(slot_paste())                );
 	connect(tile_window,        SIGNAL(triggered()), &workspace, SLOT(tileSubWindows())            );
 	connect(cascade_window,     SIGNAL(triggered()), &workspace, SLOT(cascadeSubWindows())         );
 	connect(next_window,        SIGNAL(triggered()), &workspace, SLOT(activateNextSubWindow())     );
@@ -1077,81 +1090,129 @@ void QETDiagramEditor::slot_paste() {
 	if(currentDiagram()) currentDiagram() -> paste();
 }
 
-/**
-	Effectue l'action "zoom avant" sur le diagram en cours
-*/
-void QETDiagramEditor::slot_zoomIn() {
-	if(currentDiagram()) currentDiagram() -> zoomIn();
+void QETDiagramEditor::zoomGroupTriggered(QAction *action)
+{
+	QString value = action->data().toString();
+	DiagramView *dv = currentDiagram();
+
+	if (!dv || value.isEmpty()) return;
+
+	if (value == "zoom_in")
+		dv->zoomIn();
+	else if (value == "zoom_out")
+		dv->zoomOut();
+	else if (value == "zoom_content")
+		dv->zoomContent();
+	else if (value == "zoom_fit")
+		dv->zoomFit();
+	else if (value == "zoom_reset")
+		dv->zoomReset();
 }
 
 /**
-	Effectue l'action "zoom arriere" sur le schema en cours
-*/
-void QETDiagramEditor::slot_zoomOut() {
-	if(currentDiagram()) currentDiagram() -> zoomOut();
+ * @brief QETDiagramEditor::selectGroupTriggered
+ * This slot is called when selection need to change.
+ * @param action : Action that describes what to do.
+ */
+void QETDiagramEditor::selectGroupTriggered(QAction *action)
+{
+	QString value = action->data().toString();
+	DiagramView *dv = currentDiagram();
+
+	if (!dv || value.isEmpty()) return;
+
+	if (value == "select_all")
+		dv->selectAll();
+	else if (value == "deselect")
+		dv->selectNothing();
+	else if (value == "invert_selection")
+		dv->selectInvert();
 }
 
 /**
-	Effectue l'action "zoom arriere" sur le diagram en cours
-*/
-void QETDiagramEditor::slot_zoomFit() {
-	if(currentDiagram()) currentDiagram() -> zoomFit();
+ * @brief QETDiagramEditor::addItemGroupTriggered
+ * This slot is called when an item must be added to the curent diagram,
+ * this slot use the DVEventInterface to add item
+ * @param action : Action that describe the item to add.
+ */
+void QETDiagramEditor::addItemGroupTriggered(QAction *action)
+{
+	QString value = action->data().toString();
+	DiagramView *dv = currentDiagram();
+
+	if (!dv || value.isEmpty()) return;
+
+	DVEventInterface *dvevent = nullptr;
+
+	if (value == "text")
+		dvevent = new DVEventAddText(dv);
+	else if (value == "image")
+	{
+		DVEventAddImage *event = new DVEventAddImage(dv);
+		if (event -> isNull())
+		{
+			delete event;
+			action->setChecked(false);
+			return;
+		}
+		else
+			dvevent = event;
+	}
+	else if (value == "line")
+		dvevent = new DVEventAddShape(dv, QetShapeItem::Line);
+	else if (value == "rectangle")
+		dvevent = new DVEventAddShape(dv, QetShapeItem::Rectangle);
+	else if (value == "ellipse")
+		dvevent = new DVEventAddShape(dv, QetShapeItem::Ellipse);
+	else if (value == "polyline")
+		dvevent = new DVEventAddShape(dv, QetShapeItem::Polygon);
+
+	if (dvevent)
+	{
+		dv->setEventInterface(dvevent);
+		connect(dvevent, &DVEventInterface::finish, [action](){action->setChecked(false);});
+	}
 }
 
 /**
-	Call the "zoom content" action for the current diagram.
-*/
-void QETDiagramEditor::slot_zoomContent() {
-	if(currentDiagram()) currentDiagram() -> zoomContent();
+ * @brief QETDiagramEditor::selectionGroupTriggered
+ * This slot is called when an action should be made on the current selection
+ * @param action : Action that describe the action to do.
+ */
+void QETDiagramEditor::selectionGroupTriggered(QAction *action)
+{
+	QString value = action->data().toString();
+	DiagramView *dv = currentDiagram();
+
+	if (!dv || value.isEmpty()) return;
+
+	if (value == "delete_selection")
+		dv->deleteSelection();
+	else if (value == "rotate_selection")
+		dv->rotateSelection();
+	else if (value == "rotate_selected_text")
+		dv->rotateTexts();
+	else if (value == "find_selected_element" && currentCustomElement())
+		findElementInPanel(currentCustomElement()->location());
+	else if (value == "edit_selected_element")
+		dv->editSelection();
 }
 
-/**
-	Effectue l'action "zoom par defaut" sur le schema en cours
-*/
-void QETDiagramEditor::slot_zoomReset() {
-	if(currentDiagram()) currentDiagram() -> zoomReset();
-}
+void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
+{
+	QString value = action->data().toString();
+	DiagramView *dv = currentDiagram();
 
-/**
-	Effectue l'action "selectionner tout" sur le schema en cours
-*/
-void QETDiagramEditor::slot_selectAll() {
-	if(currentDiagram()) currentDiagram() -> selectAll();
-}
+	if (!dv || value.isEmpty()) return;
 
-/**
-	Effectue l'action "deselectionenr tout" sur le schema en cours
-*/
-void QETDiagramEditor::slot_selectNothing() {
-	if(currentDiagram()) currentDiagram() -> selectNothing();
-}
-
-/**
-	Effectue l'action "inverser la selection" sur le schema en cours
-*/
-void QETDiagramEditor::slot_selectInvert() {
-	if(currentDiagram()) currentDiagram() -> selectInvert();
-}
-
-/**
-	Effectue l'action "supprimer" sur le schema en cours
-*/
-void QETDiagramEditor::slot_delete() {
-	if(currentDiagram()) currentDiagram() -> deleteSelection();
-}
-
-/**
-	Effectue l'action "pivoter" sur le schema en cours
-*/
-void QETDiagramEditor::slot_rotate() {
-	if(currentDiagram()) currentDiagram() -> rotateSelection();
-}
-
-/**
-	Effectue l'action "Orienter les textes selectionnes" sur le schema en cours
-*/
-void QETDiagramEditor::slot_rotateTexts() {
-	if (currentDiagram()) currentDiagram() -> rotateTexts();
+	if (value == "add_column")
+		dv->addColumn();
+	else if (value == "remove_column")
+		dv->removeColumn();
+	else if (value == "add_row")
+		dv->addRow();
+	else if (value == "remove_row")
+		dv->removeRow();
 }
 
 /**
@@ -1514,42 +1575,6 @@ void QETDiagramEditor::editDiagramProperties(Diagram *diagram) {
 }
 
 /**
-	Ajoute une colonne au schema en cours
-*/
-void QETDiagramEditor::slot_addColumn() {
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addColumn();
-	}
-}
-
-/**
-	Enleve une colonne au schema en cours
-*/
-void QETDiagramEditor::slot_removeColumn() {
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> removeColumn();
-	}
-}
-
-/**
-	Allonge le schema en cours en hauteur
-*/
-void QETDiagramEditor::slot_addRow() {
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addRow();
-	}
-}
-
-/**
-	Retrecit le schema en cours en hauteur
-*/
-void QETDiagramEditor::slot_removeRow() {
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> removeRow();
-	}
-}
-
-/**
 	Edite les proprietes des objets selectionnes
 */
 void QETDiagramEditor::editSelectionProperties() {
@@ -1576,76 +1601,6 @@ void QETDiagramEditor::slot_autoConductor(bool ac)
 {
 	if (ProjectView *pv = currentProject())
 		pv -> project() -> setAutoConductor(ac);
-}
-
-/**
- * @brief QETDiagramEditor::slot_addText
- * add text to curent diagram
- */
-void QETDiagramEditor::slot_addText() {
-	if (DiagramView *dv = currentDiagram())
-		dv -> setEventInterface(new DVEventAddText(dv));
-}
-
-/**
- * @brief QETDiagramEditor::slot_addImage
- * add image to curent diagram
- */
-void QETDiagramEditor::slot_addImage() {
-	if (DiagramView *dv = currentDiagram()) {
-		DVEventAddImage *event = new DVEventAddImage(dv);
-		if (event -> isNull()) {
-			delete event;
-			m_add_item_actions_group.checkedAction()->setChecked(false);
-		} else {
-		dv -> setEventInterface(event);
-		}
-	}
-}
-
-/**
- * @brief QETDiagramEditor::slot_addLine
- * add line to curent diagram
- */
-void QETDiagramEditor::slot_addLine() {
-	if (DiagramView *dv = currentDiagram())
-		dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Line));
-}
-
-/**
- * @brief QETDiagramEditor::slot_addRectangle
- * add rectangle to curent diagram
- */
-void QETDiagramEditor::slot_addRectangle() {
-	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Rectangle));
-}
-
-/**
- * @brief QETDiagramEditor::slot_addEllipse
- * add ellipse to curent diagram
- */
-void QETDiagramEditor::slot_addEllipse() {
-	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Ellipse));
-}
-
-/**
- * @brief QETDiagramEditor::slot_addPolyline
- * add polyline to current diagram
- */
-void QETDiagramEditor::slot_addPolyline() {
-	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Polygon));
-}
-
-/**
- * @brief QETDiagramEditor::slot_editSelection
- * edit the selected item if he can be edited and if only  one item is selected
- */
-void QETDiagramEditor::slot_editSelection() {
-	if (DiagramView *dv = currentDiagram()) {
-		DiagramContent dc = dv -> diagram() -> selectedContent();
-		if (dc.count(DiagramContent::SelectedOnly | DiagramContent::All) != 1) return;
-		dv->editSelection();
-	}
 }
 
 /**
@@ -1992,7 +1947,6 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
 	connect(dv, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
-	connect(dv, SIGNAL(itemAdded()),		this, SLOT(addItemFinish()));
 }
 
 /**
@@ -2036,16 +1990,6 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 }
 
 /**
-	Search the panel for the definition for the selected element in the current
-	diagram view.
-*/
-void QETDiagramEditor::findSelectedElementInPanel() {
-	if (CustomElement *selected_element = currentCustomElement()) {
-		findElementInPanel(selected_element -> location());
-	}
-}
-
-/**
 	Lance l'editeur d'element pour l'element filename
 	@param location Emplacement de l'element a editer
 */
@@ -2077,14 +2021,6 @@ void QETDiagramEditor::showError(const QETResult &result) {
 void QETDiagramEditor::showError(const QString &error) {
 	if (error.isEmpty()) return;
 	QET::QetMessageBox::critical(this, tr("Erreur", "message box title"), error);
-}
-
-/**
- * @brief QETDiagramEditor::addItemFinish
- * Uncheck all action in m_add_item_actions_group
- */
-void QETDiagramEditor::addItemFinish() {
-	m_add_item_actions_group.checkedAction()->setChecked(false);
 }
 
 /**

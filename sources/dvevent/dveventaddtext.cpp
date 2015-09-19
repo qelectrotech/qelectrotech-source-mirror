@@ -28,11 +28,15 @@ DVEventAddText::DVEventAddText(DiagramView *dv) :
 
 DVEventAddText::~DVEventAddText() {}
 
-bool DVEventAddText::mousePressEvent(QMouseEvent *event) {
-	if (event->button() == Qt::LeftButton) {
-		m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(new IndependentTextItem("_"),
-																				m_diagram,
-																				m_dv -> mapToScene(event -> pos())));
+bool DVEventAddText::mousePressEvent(QMouseEvent *event)
+{
+	if (event->button() == Qt::LeftButton)
+	{
+		IndependentTextItem *text = new IndependentTextItem();
+		m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(text, m_diagram, m_dv -> mapToScene(event -> pos())));
+		text->setTextInteractionFlags(Qt::TextEditorInteraction);
+		text->setFocus(Qt::MouseFocusReason);
+		emit finish();
 		return true;
 	}
 	return false;
