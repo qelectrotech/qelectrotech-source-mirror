@@ -3345,12 +3345,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Bloc auxilliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestyki pomocnicze 1</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="374"/>
         <source>Bloc auxilliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestyki pomocnicze 2</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="376"/>
@@ -6194,101 +6194,101 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">oznaczenia_</translation>
+        <translation>oznaczenia_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Zapisz jako... </translation>
+        <translation>Zapisz jako... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Plik csv (*.csv)</translation>
+        <translation>Plik csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Nie można zastąpić pliku!
+        <translation>Nie można zastąpić pliku!
 
 </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">OZNACZENIA: </translation>
+        <translation>OZNACZENIA: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Nr arkusza</translation>
+        <translation>Nr arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Tytuł arkusza</translation>
+        <translation>Tytuł arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Désignation qet</source>
-        <translation type="unfinished">Oznaczenia QET</translation>
+        <translation>Oznaczenia QET</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Position</source>
-        <translation type="unfinished">Pozycja</translation>
+        <translation>Pozycja</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation</source>
-        <translation type="unfinished">Oznaczenie</translation>
+        <translation>Oznaczenie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Komentarz</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Producent</translation>
+        <translation>Producent</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Reference</source>
-        <translation type="unfinished">Numer katalogowy</translation>
+        <translation>Numer katalogowy</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxilliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestyki pomocnicze 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxilliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Zestyki pomocnicze 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Machine-reference</source>
-        <translation type="unfinished">Numer maszyny</translation>
+        <translation>Numer maszyny</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Localisation</source>
-        <translation type="unfinished">Lokalizacja</translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkcja</translation>
+        <translation>Funkcja</translation>
     </message>
 </context>
 <context>
@@ -7025,12 +7025,12 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkcja</translation>
+        <translation>Funkcja</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
         <source>Tension/protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Napięcie/protokół</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
