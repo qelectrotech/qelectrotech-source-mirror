@@ -1,0 +1,32 @@
+<definition width="70" type="element" hotspot_x="36" orientation="dyyy" link_type="master" version="0.5" hotspot_y="31" height="60">
+<uuid uuid="{85E1C0DE-B1CA-4D29-BA0A-7928F2312C9E}"/><names>
+        <name lang="en">FAZ-D4/2-NA (102182)</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="22" text="4" y="18" size="6"/>
+        <text x="-30" text="4A(D)" y="-13" size="6"/>
+        <polygon closed="false" y3="20" y1="-10" x3="20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y2="10" x1="15"/>
+        <text x="2" text="2" y="18" size="6"/>
+        <line length1="1.5" y1="-20" end2="none" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length2="1.5" y2="-12" x1="20"/>
+        <polygon closed="false" y3="20" y1="-10" x3="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y2="10" x1="-5"/>
+        <text x="22" text="3" y="-15" size="6"/>
+        <input x="-53" text="_" y="1" tagg="label" size="9"/>
+        <polygon y7="-3" x4="11" y2="-1" y6="-3" x1="4" y1="0" x6="16" antialias="false" y4="-6" closed="false" x5="12" y3="-5" x8="16" y8="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="16" x3="7" y5="-2" x2="8"/>
+        <line length1="1.5" y1="-20" end2="none" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length2="1.5" y2="-12" x1="0"/>
+        <line length1="1.5" y1="5" end2="none" x2="17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length2="1.5" y2="2" x1="5"/>
+        <text x="2" text="1" y="-15" size="6"/>
+        <polygon y7="-3" x4="-9" y2="-1" y6="-3" x1="-16" y1="0" x6="-4" antialias="false" y4="-6" closed="false" x5="-8" y3="-5" x8="-4" y8="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-4" x3="-13" y5="-2" x2="-12"/>
+        <polygon y3="5.84891" x5="4" y1="5.43882" x6="4" y6="5.43882" x3="8.05" y4="5.43882" x2="7.15" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x4="4" y2="2.97827" x1="4" y5="5.43882"/>
+        <line length1="1.5" y1="5" end2="none" x2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length2="1.5" y2="2" x1="-15"/>
+        <polygon y3="5.84891" x5="-16" y1="5.43882" x6="-16" y6="5.43882" x3="-11.95" y4="5.43882" x2="-12.85" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x4="-16" y2="2.97827" x1="-16" y5="5.43882"/>
+        <terminal x="20" y="-20" orientation="n"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

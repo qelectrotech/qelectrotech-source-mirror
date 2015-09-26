@@ -1,0 +1,24 @@
+<definition type="element" hotspot_y="31" link_type="master" version="0.5" width="50" height="60" hotspot_x="39" orientation="dyyy">
+    <uuid uuid="{411db451-4e2e-43c9-b113-3320fa5ed956}"/>
+    <names>
+        <name lang="en">FAZ-C10/1 (278557)</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-13" size="6" x="-36" text="10A(C)"/>
+        <text y="18" size="6" x="2" text="2"/>
+        <polygon x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-10" x2="0" y2="10" closed="false" antialias="true" x3="0"/>
+        <input y="1" size="9" tagg="label" x="-53" text="_"/>
+        <line x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="0" end2="none" y2="-12" length1="1.5" end1="none" antialias="false"/>
+        <text y="-15" size="6" x="2" text="1"/>
+        <polygon y6="-3" x6="-4" y4="-6" x4="-9" x3="-13" x1="-16" y5="-2" x8="-4" y1="0" y8="-3" y2="-1" antialias="false" y3="-5" x2="-12" y7="-3" x5="-8" closed="false" x7="-4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x2="-3" end2="none" y2="2" length1="1.5" end1="none" antialias="false"/>
+        <polygon x1="-16" y6="5.43882" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5.84891" y1="5.43882" y5="5.43882" x2="-12.85" y4="5.43882" x4="-16" x5="-16" y2="2.97827" x6="-16" antialias="false" x3="-11.95"/>
+        <terminal y="-20" x="0" orientation="n"/>
+        <terminal y="20" x="0" orientation="s"/>
+    </description>
+</definition>

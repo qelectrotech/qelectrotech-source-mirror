@@ -1,0 +1,36 @@
+<definition hotspot_x="28" hotspot_y="32" width="70" orientation="dyyy" version="0.5" type="element" height="70" link_type="simple">
+<uuid uuid="{C8C306DD-A100-424F-8C14-1FC2A6647D40}"/><names>
+        <name lang="ar">محرّك ثلاثي الأوجه</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="en">Three-phase engine</name>
+        <name lang="fr">Moteur triphasé</name>
+        <name lang="ru">Трёхфазный эл. мотор</name>
+        <name lang="es">Motor trifásico</name>
+        <name lang="nl">Draaistroommotor</name>
+        <name lang="pt">Motor trifásico</name>
+        <name lang="de">Drehstrom Motor</name>
+        <name lang="it">Motore trifase</name>
+        <name lang="cs">Trojfázový motor</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="PE" x="23" y="28" size="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-15" y="-7" diameter="30"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="20" width="32" angle="-80" x="-14.5" height="32" y="-7.5"/>
+        <text text="W1" x="23" y="-18" size="5"/>
+        <text text="V1" x="3" y="-18" size="5"/>
+        <text text="M" x="-5" y="9" size="9"/>
+        <input text="" x="-44" tagg="label" y="10" size="9"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-22" y2="-7" length1="1.5" length2="1.5" x1="0" x2="0" end1="none" end2="none"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-22" y2="-12" y3="-3" x1="-20" x2="-20" x3="-11" closed="false"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-22" y2="-12" y3="-3" x1="20" x2="20" x3="11" closed="false"/>
+        <text text="U1" x="-17" y="-18" size="5"/>
+        <text text="3 ~" x="-6" y="17" size="7"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="16" y2="20" y3="20" x1="16" y4="20" x2="20" y5="20" x3="30" x4="30" x5="30" closed="false"/>
+        <terminal orientation="n" x="-20" y="-22"/>
+        <terminal orientation="n" x="20" y="-22"/>
+        <terminal orientation="n" x="0" y="-23"/>
+        <terminal orientation="e" x="31" y="20"/>
+    </description>
+</definition>

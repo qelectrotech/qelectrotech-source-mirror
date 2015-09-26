@@ -1,0 +1,16 @@
+<definition link_type="simple" hotspot_x="30" hotspot_y="42" orientation="dyyy" width="60" height="50" type="element" version="0.5">
+<uuid uuid="{036B19AD-8549-4932-B8C2-CD13972E2EEB}"/><names>
+        <name lang="fr">Canal borne</name>
+        <name lang="de">Kanal Anschluss</name>
+        <name lang="en">Channel terminal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" rotate="true" x="-20" size="9" text="_" y="-29"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" antialias="false" diameter="5" y="-2.5"/>
+        <polygon x3="-3" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-25" y3="0" closed="false" x5="-3" y1="-39" x4="-3" y5="0" x1="-25" y4="0"/>
+        <polygon x3="25" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="25" y3="-39" closed="false" x5="25" y1="0" x4="25" y5="-39" x1="3" y4="-39"/>
+        <terminal x="0" orientation="s" y="3"/>
+    </description>
+</definition>

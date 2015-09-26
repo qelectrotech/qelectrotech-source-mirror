@@ -1,0 +1,60 @@
+<definition height="80" link_type="simple" hotspot_x="50" hotspot_y="39" width="100" orientation="dyyy" type="element" version="0.5">
+<uuid uuid="{D82AD720-1B0C-440F-A41B-C970258A8D23}"/><names>
+        <name lang="en">Line choke 3 pole</name>
+        <name lang="fr">Self réseau tripolaire</name>
+        <name lang="de">Netzdrossel 3-polig</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <line y1="-10" y2="10" x1="17" x2="17" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="-10" y2="10" x1="-3" x2="-3" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <arc x="-13.5" y="-10" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <line y1="-10" y2="10" x1="-23" x2="-23" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <circle x="37.5" y="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <arc x="6.5" y="-10" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <text x="4" y="24" size="6" text="W2"/>
+        <arc x="6.5" y="0" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-13.5" y="0" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-13.5" y="5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="6.5" y="5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-33.5" y="-10" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-13.5" y="-5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <text x="-34" y="-19" size="6" text="U1"/>
+        <arc x="6.5" y="-5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-33.5" y="0" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-33.5" y="5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <arc x="-33.5" y="-5" height="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" width="7" angle="-180"/>
+        <line y1="30" y2="30" x1="-7" x2="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="30" y2="30" x1="-27" x2="-13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <text x="-15" y="24" size="6" text="V2"/>
+        <text x="-14" y="-19" size="6" text="V1"/>
+        <circle x="-12.5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="25" y="3" size="6" text="PE"/>
+        <text x="5" y="-19" size="6" text="W1"/>
+        <circle x="7.5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-32.5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-12.5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="-80" y="-20.5" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="-35" y="24" size="6" text="U2"/>
+        <polygon y1="30" y2="30" y3="-29.8785" x1="-33" y4="-29.8785" x2="-45" y5="-29.8785" antialias="false" x3="-45" y6="-29.8785" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-33" x5="-33" x6="-33"/>
+        <line y1="-30" y2="-30" x1="-27" x2="-13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="-30" y2="-30" x1="-7" x2="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <circle x="-32.5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line y1="-16" y2="-10" x1="-30" x2="-30" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="10" y2="15" x1="-30" x2="-30" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="15" y2="10" x1="-10" x2="-10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="15" y2="10" x1="10" x2="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="-10" y2="-16" x1="-10" x2="-10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <line y1="-10" y2="-16" x1="10" x2="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" length2="1.5" end2="none"/>
+        <polygon y1="-30" y2="-30" y3="-3" x1="13" y4="-3" x2="40" y5="-3" antialias="false" x3="40" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="40" x5="40"/>
+        <polygon y1="30" y2="30" y3="3" x1="13" y4="3" x2="40" y5="3" antialias="false" x3="40" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="40" x5="40"/>
+        <terminal x="-10" y="-33" orientation="n"/>
+        <terminal x="-30" y="-33" orientation="n"/>
+        <terminal x="-30" y="33" orientation="s"/>
+        <terminal x="-10" y="33" orientation="s"/>
+        <terminal x="10" y="-33" orientation="n"/>
+        <terminal x="10" y="33" orientation="s"/>
+        <terminal x="43" y="0" orientation="e"/>
+    </description>
+</definition>

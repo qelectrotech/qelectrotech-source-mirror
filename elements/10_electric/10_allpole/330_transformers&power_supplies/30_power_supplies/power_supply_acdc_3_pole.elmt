@@ -1,0 +1,47 @@
+<definition height="80" version="0.5" link_type="simple" type="element" hotspot_x="50" hotspot_y="39" width="100" orientation="dyyy">
+<uuid uuid="{2E658A0D-14DF-4277-B23D-07E049AE0750}"/><names>
+        <name lang="de">Netzteil AC/DC 3-polig</name>
+        <name lang="fr">Alimentation AC/DC tripolaire</name>
+        <name lang="en">Power supply AC/DC 3 poles</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <text x="-28" y="-7" text="AC 3~" size="5"/>
+        <circle x="27.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text x="9" y="24" text="-" size="6"/>
+        <text x="29" y="24" text="-" size="6"/>
+        <text x="-34" y="-19" text="L1" size="6"/>
+        <line length1="1.5" length2="1.5" y1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" end1="none" x1="13" end2="none" x2="27"/>
+        <text x="18" y="12" text="DC" size="5"/>
+        <line length1="1.5" length2="1.5" y1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" end1="none" x1="-7" end2="none" x2="7"/>
+        <line length1="1.5" length2="1.5" y1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" end1="none" x1="-27" end2="none" x2="-13"/>
+        <text x="-12" y="24" text="+" size="6"/>
+        <text x="-14" y="-19" text="L2" size="6"/>
+        <circle x="-12.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text x="25" y="-19" text="PE" size="6"/>
+        <text x="6" y="-19" text="L3" size="6"/>
+        <circle x="7.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-32.5" y="27.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="27.5" y="27.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-12.5" y="27.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="7.5" y="27.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <input x="-80" y="-20.5" rotate="true" text="_" tagg="label" size="9"/>
+        <text x="-32" y="24" text="+" size="6"/>
+        <polygon x6="-33" closed="false" y1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" y3="-29.8785" x1="-33" y4="-29.8785" x2="-45" y5="-29.8785" x3="-45" y6="-29.8785" x4="-33" x5="-33"/>
+        <polygon x6="33" closed="false" y1="-30.1383" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30.1383" antialias="false" y3="30" x1="33" y4="30" x2="45" y5="30" x3="45" y6="30" x4="33" x5="33"/>
+        <line length1="1.5" length2="1.5" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" end1="none" x1="-27" end2="none" x2="-13"/>
+        <line length1="1.5" length2="1.5" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" end1="none" x1="-7" end2="none" x2="7"/>
+        <line length1="1.5" length2="1.5" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" end1="none" x1="13" end2="none" x2="27"/>
+        <rect x="-30" y="-15" height="30" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="60"/>
+        <line length1="1.5" length2="1.5" y1="-15" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" antialias="false" end1="none" x1="30" end2="none" x2="-30"/>
+        <circle x="-32.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal x="-10" y="-33" orientation="n"/>
+        <terminal x="-30" y="-33" orientation="n"/>
+        <terminal x="-30" y="33" orientation="s"/>
+        <terminal x="-10" y="33" orientation="s"/>
+        <terminal x="10" y="-33" orientation="n"/>
+        <terminal x="10" y="33" orientation="s"/>
+        <terminal x="30" y="33" orientation="s"/>
+        <terminal x="30" y="-33" orientation="n"/>
+    </description>
+</definition>

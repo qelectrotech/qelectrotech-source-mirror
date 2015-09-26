@@ -1,0 +1,44 @@
+<definition height="70" type="element" link_type="simple" hotspot_x="40" hotspot_y="39" width="90" orientation="dyyy" version="0.5">
+<uuid uuid="{0AE64E73-A748-4868-8FB3-D2953F779C9A}"/><names>
+        <name lang="de">Netzfilter 3P</name>
+        <name lang="en">Line filter 3P</name>
+        <name lang="fr">Filtre réseau 3P</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <circle x="37.5" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="L3.1" x="13" y="14" size="6"/>
+        <text text="L1" x="-24" y="-19" size="6"/>
+        <line y1="20" y2="20" end1="none" x1="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="17" length1="1.5" length2="1.5"/>
+        <line y1="20" y2="20" end1="none" x1="-17" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-3" length1="1.5" length2="1.5"/>
+        <text text="L2.1" x="-7" y="14" size="6"/>
+        <text text="L2" x="-5" y="-19" size="6"/>
+        <circle x="-2.5" diameter="5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="PE" x="26" y="-2" size="6"/>
+        <text text="L3" x="15" y="-19" size="6"/>
+        <circle x="17.5" diameter="5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-22.5" diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-2.5" diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="17.5" diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <input rotate="true" text="_" x="-70" tagg="label" y="-20.5" size="9"/>
+        <text text="L1.1" x="-28" y="14" size="6"/>
+        <line y1="-30" y2="-30" end1="none" x1="-17" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-3" length1="1.5" length2="1.5"/>
+        <line y1="-30" y2="-30" end1="none" x1="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="17" length1="1.5" length2="1.5"/>
+        <circle x="-22.5" diameter="5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon y1="-30" closed="false" y2="-30" y3="20" x1="-23" y4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-35" y5="20" x3="-35" y6="20" x4="-23" x5="-23" x6="-23"/>
+        <polygon y1="-30" closed="false" y2="-30" y3="-3" x1="23" y4="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="40" y5="-3" x3="40" x4="40" x5="40"/>
+        <polygon y1="3" closed="false" y2="20" y3="20" x1="40" y4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="40" y5="20" x3="23" x4="23" x5="23"/>
+        <line y1="-10" y2="0" end1="none" x1="3" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="-3" length1="1.5" length2="1.5"/>
+        <arc height="8" x="-9" y="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="90" width="10" angle="90"/>
+        <arc height="6" x="-8" y="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="0" width="8" angle="90"/>
+        <arc height="6" x="0" y="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="180" width="8" angle="90"/>
+        <arc height="8" x="-1" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="270" width="10" angle="90"/>
+        <terminal x="0" y="-33" orientation="n"/>
+        <terminal x="-20" y="-33" orientation="n"/>
+        <terminal x="-20" y="23" orientation="s"/>
+        <terminal x="0" y="23" orientation="s"/>
+        <terminal x="20" y="-33" orientation="n"/>
+        <terminal x="20" y="23" orientation="s"/>
+        <terminal x="43" y="0" orientation="e"/>
+    </description>
+</definition>

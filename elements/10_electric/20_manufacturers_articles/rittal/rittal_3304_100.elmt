@@ -1,0 +1,61 @@
+<definition width="240" link_type="simple" type="element" height="130" hotspot_x="117" hotspot_y="60" version="0.5" orientation="dyyy">
+<uuid uuid="{2A00B5B2-0747-4792-ADEE-CBF11B850712}"/><names>
+        <name lang="en">3304.100</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="4" tagg="none" y="33.5" x="-6" text="Türschalter" rotate="true"/>
+        <text size="6" y="-29" x="78" text="4"/>
+        <text size="6" y="45" x="18" text="2"/>
+        <text size="6" y="61" x="-14" text="-X1"/>
+        <text size="6" y="-29" x="58" text="3"/>
+        <text size="6" y="-45" x="46" text="-X1"/>
+        <text size="6" y="-29" x="98" text="5"/>
+        <circle diameter="5" y="-42.5" x="97.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" y="47.5" x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" y="-42.5" x="77.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" y="-42.5" x="57.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text size="6" y="45" x="-2" text="1"/>
+        <circle diameter="5" y="47.5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <input size="4" tagg="none" y="15.5" x="58" text="Sammelstörung" rotate="true"/>
+        <input size="4" tagg="none" y="-23" x="-79" text="Netz" rotate="true"/>
+        <circle diameter="5" y="47.5" x="-92.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text size="6" y="-29" x="-78" text="L2/N"/>
+        <text size="6" y="-29" x="-94" text="L1"/>
+        <text size="6" y="-45" x="-104" text="-X1"/>
+        <text size="6" y="-29" x="-55" text="PE"/>
+        <circle diameter="5" y="-42.5" x="-52.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" y="-42.5" x="-72.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" y="-42.5" x="-92.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <input size="6" tagg="none" y="22" x="-101" text="Klimagerät" rotate="true"/>
+        <line x2="-88" length1="1.5" x1="-92" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="38" y2="38"/>
+        <line x2="-89" length1="1.5" x1="-91" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="36" y2="36"/>
+        <line x2="-86" length1="1.5" x1="-94" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="40" y2="40"/>
+        <input size="9" tagg="label" y="-35" x="-155" text="_" rotate="true"/>
+        <text size="8" y="1" x="-98" text="RITTAL"/>
+        <text size="8" y="13" x="-98" text="3304.100"/>
+        <line x2="-90" length1="1.5" x1="-90" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="40" y2="47"/>
+        <line x2="-73" length1="1.5" x1="-87" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40" y2="-40"/>
+        <line x2="-53" length1="1.5" x1="-67" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40" y2="-40"/>
+        <line x2="77" length1="1.5" x1="63" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40" y2="-40"/>
+        <line x2="97" length1="1.5" x1="83" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40" y2="-40"/>
+        <line x2="-3" length1="1.5" x1="-87" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="50" y2="50"/>
+        <line x2="17" length1="1.5" x1="3" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="50" y2="50"/>
+        <polygon x6="-93" y6="50" x5="-93" x2="-115" y3="50" x1="-93" x3="-115" y5="50" x4="-93" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="50" closed="false" antialias="false" y1="-40" y2="-40"/>
+        <line x2="57" length1="1.5" x1="-47" end1="none" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40" y2="-40"/>
+        <polygon x2="60" y3="8" x1="60" x3="76" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false" y1="-27" y2="8"/>
+        <polygon x2="80" y3="9" x1="80" x3="75" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false" y1="-27" y2="-11"/>
+        <polygon x2="100" y3="-27" x1="84" x3="100" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false" y1="8" y2="8"/>
+        <polygon x2="120" y3="-40" x1="23" x3="120" x4="103" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-40" closed="false" antialias="false" y1="50" y2="50"/>
+        <terminal y="53" x="20" orientation="s"/>
+        <terminal y="-43" x="-90" orientation="n"/>
+        <terminal y="-43" x="-50" orientation="n"/>
+        <terminal y="53" x="0" orientation="s"/>
+        <terminal y="-43" x="60" orientation="n"/>
+        <terminal y="-43" x="-70" orientation="n"/>
+        <terminal y="-43" x="100" orientation="n"/>
+        <terminal y="53" x="-90" orientation="s"/>
+        <terminal y="-43" x="80" orientation="n"/>
+    </description>
+</definition>

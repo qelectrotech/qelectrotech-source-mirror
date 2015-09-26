@@ -1,0 +1,36 @@
+<definition orientation="dyyy" version="0.5" type="element" hotspot_y="38" hotspot_x="35" link_type="simple" width="70" height="70">
+<uuid uuid="{F34A2DDC-306F-4E42-B9B2-C482971CCBB8}"/><names>
+        <name lang="en">Magnet valve with connector</name>
+        <name lang="fr">Electrovanne avec connecteur</name>
+        <name lang="de">Magnetventil mit Stecker</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-9" x="15" text="PE" size="6"/>
+        <arc y="-26" angle="-180" antialias="true" x="-3" width="6" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6"/>
+        <arc y="-26" angle="-180" antialias="true" x="17" width="6" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6"/>
+        <rect y="-23" antialias="false" x="19" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6"/>
+        <text y="-10" x="-22" text="+" size="6"/>
+        <rect y="-23" antialias="false" x="-1" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6"/>
+        <line x2="0" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-26" x1="0"/>
+        <text y="-10" x="-1" text="-" size="6"/>
+        <line x2="20" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-26" x1="20"/>
+        <input tagg="label" y="-15" x="-60" text="_" size="9" rotate="true"/>
+        <line x2="10" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="16" x1="10"/>
+        <polygon x2="20" x3="20" antialias="false" y3="-6" x5="20" y4="-6" closed="false" y1="10" x4="20" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y2="10" x1="10" y5="-6"/>
+        <arc y="-26" angle="-180" antialias="true" x="-23" width="6" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6"/>
+        <rect y="-23" antialias="false" x="-21" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6"/>
+        <rect y="-20" antialias="false" x="-30" width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" height="45"/>
+        <line x2="-20" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-26" x1="-20"/>
+        <polygon x2="-18" x3="-2" x7="-18" antialias="false" y3="12" x5="-18" y4="20" y7="12" x6="-18" y6="12" closed="false" y1="12" x4="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="20" x1="-18" y5="12"/>
+        <rect y="-7" antialias="false" x="-14" width="8" style="line-style:normal;line-weight:thin;filling:none;color:black" height="14"/>
+        <line x2="-14" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="4" x1="-6"/>
+        <polygon x2="-20" x3="-14" antialias="false" y3="0" x5="-14" y4="0" closed="false" y1="-8" x4="-14" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0" x1="-20" y5="0"/>
+        <polygon x2="0" x3="0" antialias="false" y3="-8" x5="0" y4="-8" closed="false" y1="0" x4="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0" x1="-6" y5="-8"/>
+        <line x2="-10" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="7" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="16" x1="-10"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="n" y="-30" x="-20"/>
+        <terminal orientation="n" y="-30" x="20"/>
+    </description>
+</definition>

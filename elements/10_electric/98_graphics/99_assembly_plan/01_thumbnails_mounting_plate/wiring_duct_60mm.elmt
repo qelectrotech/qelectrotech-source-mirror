@@ -1,0 +1,13 @@
+<definition version="0.5" orientation="dyyy" height="70" type="element" link_type="simple" hotspot_x="5" width="110" hotspot_y="5">
+<uuid uuid="{A9EA7BCD-26A4-4C89-9261-EB19362D7593}"/><names>
+        <name lang="de">Verdrahtungskanal 60mm</name>
+        <name lang="en">Wiring duct 60mm</name>
+        <name lang="fr">Goulotte de câblage 60mm</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect y="0" style="line-style:normal;line-weight:normal;filling:lightgray;color:lightgray" height="60" antialias="false" x="0" width="100"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x1="0" x2="100" y2="0" end1="none" end2="none" y1="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x1="0" x2="100" y2="60" end1="none" end2="none" y1="60"/>
+    </description>
+</definition>

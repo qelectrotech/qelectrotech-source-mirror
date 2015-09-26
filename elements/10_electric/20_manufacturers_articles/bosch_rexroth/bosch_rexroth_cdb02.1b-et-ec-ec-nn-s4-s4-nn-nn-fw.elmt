@@ -1,0 +1,77 @@
+<definition width="1050" type="element" height="80" orientation="dyyy" hotspot_y="56" link_type="simple" hotspot_x="405" version="0.5">
+<uuid uuid="{C200213F-73B5-4B19-8520-FCEC636398BD}"/><names>
+        <name lang="en">CDB02.1B-ET-EC-EC-NN-S4-S4-NN-NN-FW (R911338542)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text size="4" y="-23" x="477" text="Safe Motion"/>
+        <text size="6" y="-43" x="-53" text="-X25_P1"/>
+        <text size="4" y="-18" x="267" text="IN"/>
+        <input rotate="true" size="6" y="8" x="-334" text="Steuerteil" tagg="none"/>
+        <text size="4" y="-23" x="257" text="Safe Motion"/>
+        <text size="6" y="-43" x="36" text="-X24_P2"/>
+        <polygon y1="-34.6018" x9="263.069" x8="263.069" y7="-34.6018" x6="263.069" x4="276.005" x3="276.005" closed="false" x1="263.069" y6="-31.4067" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-34.6018" x5="265.656" y3="-36.9982" y5="-29.0104" y2="-36.9982" y9="-34.6018" y4="-29.0104" antialias="false" x7="263.069" x2="265.656"/>
+        <text size="6" y="-43" x="554" text="-X43.2"/>
+        <text size="4" y="-23" x="347" text="Safe Motion"/>
+        <text size="4" y="-19" x="-35" text="Multi Ethernet"/>
+        <text size="6" y="-43" x="245" text="-X42.1"/>
+        <input rotate="true" size="4" y="-15" x="-36" text="(Sercos III)" tagg="none"/>
+        <text size="4" y="-19" x="55" text="Multi Ethernet"/>
+        <text size="6" y="-43" x="335" text="-X43.1"/>
+        <input rotate="true" size="4" y="-15" x="54" text="(Sercos III)" tagg="none"/>
+        <text size="8" y="-13" x="-331" text="BOSCH REXROTH IndraDrive"/>
+        <polygon y1="-34.6018" x9="353.069" x8="353.069" y7="-34.6018" x6="353.069" x4="366.005" x3="366.005" closed="false" x1="353.069" y6="-31.4067" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-34.6018" x5="355.656" y3="-36.9982" y5="-29.0104" y2="-36.9982" y9="-34.6018" y4="-29.0104" antialias="false" x7="353.069" x2="355.656"/>
+        <text size="4" y="-18" x="487" text="IN"/>
+        <text size="4" y="-18" x="355" text="OUT"/>
+        <text size="8" y="-1" x="-331" text="CDB02.1B-ET-EC-EC-NN-S4-S4-NN-NN-FW"/>
+        <rect width="16" height="14" y="-38" x="62" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <text size="4" y="-23" x="567" text="Safe Motion"/>
+        <text size="6" y="-43" x="464" text="-X42.2"/>
+        <rect width="8" height="2" y="-34" x="356" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="76" length1="1.5" length2="1.5" x1="64" end2="none" y2="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <polygon y1="-34.6018" x9="483.069" x8="483.069" y7="-34.6018" x6="483.069" x4="496.005" x3="496.005" closed="false" x1="483.069" y6="-31.4067" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-34.6018" x5="485.656" y3="-36.9982" y5="-29.0104" y2="-36.9982" y9="-34.6018" y4="-29.0104" antialias="false" x7="483.069" x2="485.656"/>
+        <line end1="none" x2="76" length1="1.5" length2="1.5" x1="76" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <polygon y1="-35" x9="352" x8="352" y7="-35" x6="352" x4="367" x3="367" closed="false" x1="352" y6="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-35" x5="355" y3="-38" y5="-28" y2="-38" y9="-35" y4="-28" antialias="false" x7="352" x2="355"/>
+        <polygon y1="-34.6018" x9="573.069" x8="573.069" y7="-34.6018" x6="573.069" x4="586.005" x3="586.005" closed="false" x1="573.069" y6="-31.4067" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-34.6018" x5="575.656" y3="-36.9982" y5="-29.0104" y2="-36.9982" y9="-34.6018" y4="-29.0104" antialias="false" x7="573.069" x2="575.656"/>
+        <line end1="none" x2="64" length1="1.5" length2="1.5" x1="64" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <text size="4" y="-18" x="575" text="OUT"/>
+        <line end1="none" x2="66" length1="1.5" length2="1.5" x1="64" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <rect width="8" height="2" y="-34" x="576" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="66" length1="1.5" length2="1.5" x1="66" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <polygon y1="-35" x9="572" x8="572" y7="-35" x6="572" x4="587" x3="587" closed="false" x1="572" y6="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-35" x5="575" y3="-38" y5="-28" y2="-38" y9="-35" y4="-28" antialias="false" x7="572" x2="575"/>
+        <line end1="none" x2="74" length1="1.5" length2="1.5" x1="76" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <line end1="none" x2="74" length1="1.5" length2="1.5" x1="74" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <rect width="8" height="2" y="-34" x="486" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <polygon y1="-35" x9="482" x8="482" y7="-35" x6="482" x4="497" x3="497" closed="false" x1="482" y6="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-35" x5="485" y3="-38" y5="-28" y2="-38" y9="-35" y4="-28" antialias="false" x7="482" x2="485"/>
+        <line end1="none" x2="72" length1="1.5" length2="1.5" x1="74" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="72" length1="1.5" length2="1.5" x1="72" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="68" length1="1.5" length2="1.5" x1="66" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="68" length1="1.5" length2="1.5" x1="68" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="72" length1="1.5" length2="1.5" x1="68" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-37"/>
+        <input rotate="true" size="9" y="-30" x="-442" text="_" tagg="label"/>
+        <line end1="none" x2="640" length1="1.5" length2="1.5" x1="-400" end2="none" y2="20" style="line-style:normal;line-weight:thin;filling:none;color:gray" antialias="false" y1="20"/>
+        <rect width="16" height="14" y="-38" x="-28" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="-14" length1="1.5" length2="1.5" x1="-26" end2="none" y2="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <line end1="none" x2="-14" length1="1.5" length2="1.5" x1="-14" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <line end1="none" x2="-26" length1="1.5" length2="1.5" x1="-26" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-26"/>
+        <line end1="none" x2="-24" length1="1.5" length2="1.5" x1="-26" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <line end1="none" x2="-24" length1="1.5" length2="1.5" x1="-24" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <line end1="none" x2="-16" length1="1.5" length2="1.5" x1="-14" end2="none" y2="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <line end1="none" x2="-16" length1="1.5" length2="1.5" x1="-16" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-34"/>
+        <line end1="none" x2="-18" length1="1.5" length2="1.5" x1="-16" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="-18" length1="1.5" length2="1.5" x1="-18" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="-22" length1="1.5" length2="1.5" x1="-24" end2="none" y2="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="-22" length1="1.5" length2="1.5" x1="-22" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-36"/>
+        <line end1="none" x2="-18" length1="1.5" length2="1.5" x1="-22" end2="none" y2="-37" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-37"/>
+        <rect width="8" height="2" y="-34" x="266" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <polygon y1="-35" x9="262" x8="262" y7="-35" x6="262" x4="277" x3="277" closed="false" x1="262" y6="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-35" x5="265" y3="-38" y5="-28" y2="-38" y9="-35" y4="-28" antialias="false" x7="262" x2="265"/>
+        <polygon x2="-400" x3="640" y4="20" y3="-40" y5="20" x4="640" x1="-400" closed="false" y2="-40" y6="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x5="640" x6="640" y1="20"/>
+        <terminal orientation="n" y="-40" x="70"/>
+        <terminal orientation="n" y="-40" x="580"/>
+        <terminal orientation="n" y="-40" x="490"/>
+        <terminal orientation="n" y="-40" x="-20"/>
+        <terminal orientation="n" y="-40" x="360"/>
+        <terminal orientation="n" y="-40" x="270"/>
+    </description>
+</definition>

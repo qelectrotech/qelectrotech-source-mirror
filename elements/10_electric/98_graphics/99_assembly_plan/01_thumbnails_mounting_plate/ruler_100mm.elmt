@@ -1,0 +1,21 @@
+﻿<definition link_type="simple" width="100" type="element" orientation="dyyy" version="0.5" height="130" hotspot_y="123" hotspot_x="93">
+<uuid uuid="{1723D608-7004-495E-AF27-8E68020ADA93}"/><names>
+        <name lang="fr">Règle 100mm</name>
+        <name lang="de">Lineal 100mm</name>
+        <name lang="en">Ruler 100mm</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="0" end2="none" x2="-60" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-10" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-20" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-30" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-40" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-50" end2="none" x2="-40" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-50" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-60" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-60" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-70" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-70" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-80" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-80" end1="none" length2="1.5" antialias="false"/>
+        <line y1="-90" end2="none" x2="-30" length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-90" end1="none" length2="1.5" antialias="false"/>
+        <input rotate="true" text="0" y="-9.5" tagg="none" x="-110" size="21"/>
+    </description>
+</definition>

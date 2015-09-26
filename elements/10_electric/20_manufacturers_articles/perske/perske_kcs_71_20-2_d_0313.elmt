@@ -1,0 +1,51 @@
+<definition width="230" height="90" hotspot_x="135" type="element" link_type="simple" version="0.5" orientation="dyyy" hotspot_y="47">
+<uuid uuid="{F522618E-72C4-4156-815C-4F3BC4955AE4}"/><names>
+        <name lang="en">KCS 71.20-2 D_0313</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.5"/>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-52.5"/>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5"/>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-32.5"/>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="47.5"/>
+        <text size="6" y="13" text="14A" x="-107"/>
+        <text size="7" y="-8" text="θ" x="20"/>
+        <text size="6" y="3" text="8,7Nm" x="-116"/>
+        <text size="6" y="23" text="8830min-1" x="-129"/>
+        <text size="6" y="-29" text="U1" x="-74"/>
+        <text size="6" y="-29" text="PE" x="-15"/>
+        <circle diameter="30" antialias="true" y="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-65"/>
+        <text size="6" y="-29" text="W1" x="-35"/>
+        <arc width="35" height="35" antialias="true" y="-22.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="20" angle="-80" x="-67.5"/>
+        <text size="6" y="-29" text="V1" x="-54"/>
+        <text size="6" y="-29" text="TP1" x="23"/>
+        <text size="9" y="-6" text="M" x="-55"/>
+        <input size="9" y="-30" text="_" tagg="label" x="-134"/>
+        <text size="7" y="3" text="3 ~" x="-56"/>
+        <text size="6" y="-29" text="TP2" x="43"/>
+        <text size="8" y="33" text="PERSKE   KCS 71.20-2 D_0313" x="-77"/>
+        <line y1="-27" end1="none" antialias="false" x2="-50" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="-50" length1="1.5" y2="-20" length2="1.5"/>
+        <polygon x3="-62" x5="-62" y3="-14" x4="-62" y1="-27" closed="false" antialias="false" x2="-70" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-70" y2="-20" y4="-14" y5="-14"/>
+        <polygon x3="-38" x5="-38" y3="-14" x4="-38" y1="-27" closed="false" antialias="false" x2="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30" y2="-20" y4="-14" y5="-14"/>
+        <polygon x3="-10" x5="-10" y3="-27" x4="-10" y1="4" closed="false" antialias="false" x2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-35" y2="4" y4="-27" y5="-27"/>
+        <rect width="6" height="17" antialias="false" y="-17" style="line-style:normal;line-weight:thin;filling:none;color:black" x="27"/>
+        <polygon x3="50" x5="50" y6="-27" y3="10" x4="50" y1="0" closed="false" antialias="false" x2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="30" x6="50" y2="10" y4="-27" y5="-27"/>
+        <polygon x3="35.8784" x5="35.8784" y6="-14.7386" y3="-11.5539" x4="35.8784" y1="-2" closed="false" antialias="false" x2="24.2879" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="24.2879" x6="35.8784" y2="-5.18464" y4="-14.7386" y5="-14.7386"/>
+        <line y1="-17" end1="none" antialias="false" x2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="30" length1="1.5" y2="-27" length2="1.5"/>
+        <circle diameter="5" antialias="false" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-72.5"/>
+        <polygon x4="90" x7="53" antialias="false" y3="40" closed="false" x2="-90" y6="-40" x6="53" y5="-40" x5="90" y4="40" y2="-40" x1="-73" style="line-style:normal;line-weight:normal;filling:none;color:black" y8="-40" y1="-40" x3="-90" y7="-40" x8="53"/>
+        <line y1="-40" end1="none" antialias="false" x2="-53" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-67" length1="1.5" y2="-40" length2="1.5"/>
+        <line y1="-40" end1="none" antialias="false" x2="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-47" length1="1.5" y2="-40" length2="1.5"/>
+        <line y1="-40" end1="none" antialias="false" x2="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-27" length1="1.5" y2="-40" length2="1.5"/>
+        <line y1="-40" end1="none" antialias="false" x2="27" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-7" length1="1.5" y2="-40" length2="1.5"/>
+        <line y1="-40" end1="none" antialias="false" x2="47" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="33" length1="1.5" y2="-40" length2="1.5"/>
+        <terminal y="-43" orientation="n" x="-10"/>
+        <terminal y="-43" orientation="n" x="-30"/>
+        <terminal y="-43" orientation="n" x="30"/>
+        <terminal y="-43" orientation="n" x="-70"/>
+        <terminal y="-43" orientation="n" x="50"/>
+        <terminal y="-43" orientation="n" x="-50"/>
+    </description>
+</definition>

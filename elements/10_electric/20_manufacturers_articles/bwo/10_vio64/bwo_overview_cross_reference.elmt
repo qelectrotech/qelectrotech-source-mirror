@@ -1,0 +1,15 @@
+<definition version="0.5" type="element" height="30" hotspot_y="15" link_type="previous_report" width="370" orientation="dyyy" hotspot_x="6">
+<uuid uuid="{CA224F08-A69D-449C-9D53-96B366DA0087}"/><names>
+        <name lang="fr">Vue d'ensemble (référence croisée)</name>
+        <name lang="de">Übersicht (Verweis)</name>
+        <name lang="en">Overview (cross reference)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="-0.5" rotate="true" size="7" tagg="label" text="/" x="20"/>
+        <input y="-0.5" rotate="true" size="7" tagg="none" text="Signaltext" x="60"/>
+        <input y="0" rotate="true" size="9" tagg="none" text="E" x="0"/>
+        <rect antialias="false" y="-10" height="20" width="360" x="0" style="line-style:normal;line-weight:none;filling:none;color:black"/>
+    </description>
+</definition>

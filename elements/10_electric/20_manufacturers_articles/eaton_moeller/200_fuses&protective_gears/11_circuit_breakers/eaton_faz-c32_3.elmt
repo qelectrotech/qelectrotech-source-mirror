@@ -1,0 +1,42 @@
+<definition type="element" hotspot_y="31" link_type="master" version="0.5" width="90" height="60" hotspot_x="50" orientation="dyyy">
+    <uuid uuid="{b5b0f538-38c1-41b5-9ba7-62fe45457515}"/>
+    <names>
+        <name lang="en">FAZ-C32/3 (278876)</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-13" size="6" x="-47" text="32A(C)"/>
+        <polygon y6="-3" x6="6" y4="-6" x4="1" x3="-3" x1="-6" y5="-2" x8="6" y1="0" y8="-3" y2="-1" antialias="false" y3="-5" x2="-2" y7="-3" x5="2" closed="false" x7="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y6="-3" x6="26" y4="-6" x4="21" x3="17" x1="14" y5="-2" x8="26" y1="0" y8="-3" y2="-1" antialias="false" y3="-5" x2="18" y7="-3" x5="22" closed="false" x7="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-15" size="6" x="12" text="3"/>
+        <line x1="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x2="7" end2="none" y2="2" length1="1.5" end1="none" antialias="false"/>
+        <text y="-15" size="6" x="32" text="5"/>
+        <line x1="15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x2="27" end2="none" y2="2" length1="1.5" end1="none" antialias="false"/>
+        <polygon x1="-6" y6="5.43882" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5.84891" y1="5.43882" y5="5.43882" x2="-2.85" y4="5.43882" x4="-6" x5="-6" y2="2.97827" x6="-6" antialias="false" x3="-1.95"/>
+        <polygon x1="14" y6="5.43882" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5.84891" y1="5.43882" y5="5.43882" x2="17.15" y4="5.43882" x4="14" x5="14" y2="2.97827" x6="14" antialias="false" x3="18.05"/>
+        <text y="18" size="6" x="12" text="4"/>
+        <text y="18" size="6" x="-8" text="2"/>
+        <text y="18" size="6" x="32" text="6"/>
+        <polygon x1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-10" x2="-10" y2="10" closed="false" antialias="true" x3="-10"/>
+        <polygon x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-10" x2="30" y2="10" closed="false" antialias="true" x3="30"/>
+        <polygon x1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-10" x2="10" y2="10" closed="false" antialias="true" x3="10"/>
+        <input y="1" size="9" tagg="label" x="-63" text="_"/>
+        <line x1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="-10" end2="none" y2="-12" length1="1.5" end1="none" antialias="false"/>
+        <line x1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="10" end2="none" y2="-12" length1="1.5" end1="none" antialias="false"/>
+        <line x1="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="30" end2="none" y2="-12" length1="1.5" end1="none" antialias="false"/>
+        <text y="-15" size="6" x="-8" text="1"/>
+        <polygon y6="-3" x6="-14" y4="-6" x4="-19" x3="-23" x1="-26" y5="-2" x8="-14" y1="0" y8="-3" y2="-1" antialias="false" y3="-5" x2="-22" y7="-3" x5="-18" closed="false" x7="-14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x2="-13" end2="none" y2="2" length1="1.5" end1="none" antialias="false"/>
+        <polygon x1="-26" y6="5.43882" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5.84891" y1="5.43882" y5="5.43882" x2="-22.85" y4="5.43882" x4="-26" x5="-26" y2="2.97827" x6="-26" antialias="false" x3="-21.95"/>
+        <terminal y="-20" x="-10" orientation="n"/>
+        <terminal y="20" x="-10" orientation="s"/>
+        <terminal y="-20" x="30" orientation="n"/>
+        <terminal y="20" x="30" orientation="s"/>
+        <terminal y="-20" x="10" orientation="n"/>
+        <terminal y="20" x="10" orientation="s"/>
+    </description>
+</definition>
