@@ -25,7 +25,7 @@
 #include "element.h"
 #include "reportelement.h"
 
-//### PRIVATE CLASS ###//
+//### BEGIN PRIVATE CLASS ###//
 
 /**
  * @brief The NewConductorPotentialSelector class
@@ -43,12 +43,11 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			terminal_1->removeConductor(conductor);
 			terminal_2->removeConductor(conductor);
 
-			if (terminal_1->conductors().isEmpty() || terminal_2->conductors().isEmpty()) return;
+			getPotential(terminal_1, m_properties_1, m_conductor_number_1);
+			getPotential(terminal_2, m_properties_2, m_conductor_number_2);
 
-			m_properties_1 = terminal_1->conductors().first()->properties();
-			m_conductor_number_1 = terminal_1->conductors().first()->relatedPotentialConductors().size() + 1;
-			m_properties_2 = terminal_2->conductors().first()->properties();
-			m_conductor_number_2 = terminal_2->conductors().first()->relatedPotentialConductors().size() + 1;
+				//There isn't a potential at terminal 1 or 2.
+			if (m_conductor_number_1 == 0 && m_conductor_number_2 == 0) return;
 
 				//Re-add conductor to his terminals.
 			terminal_1->addConductor(conductor);
@@ -57,6 +56,51 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		}
 
 		bool isValid() const {return m_is_valid;}
+
+		/**
+		 * @brief getPotential
+		 * Get the conductor propertie of the potential at terminal, and the number of wire in this potential.
+		 * @param terminal
+		 * @param properties
+		 * @param number
+		 */
+		void getPotential(Terminal *terminal, ConductorProperties &properties, int &number)
+		{
+			Conductor *conductor_in_potential = nullptr;
+
+				//Terminal have conductor linked to, we get it.
+			if (!terminal->conductors().isEmpty())
+				conductor_in_potential = terminal->conductors().first();
+
+				//Terminal haven't got a conductor, but if parent element is a folio report or a terminal element, we search a potential
+				//through the report or in another terminal of the terminal element.
+			else if (terminal->parentElement()->linkType() & (Element::Terminale | Element::AllReport))
+			{
+				Element *elmt_ = terminal->parentElement();
+
+				if ((elmt_->linkType() & Element::Terminale) && !elmt_->terminals().isEmpty())
+				{
+					foreach(Terminal *t, elmt_->terminals())
+					{
+						if (t->conductors().isEmpty()) continue;
+						conductor_in_potential = t->conductors().first();
+						break;
+					}
+				}
+				else if ((elmt_->linkType() & Element::AllReport) && !elmt_->isFree())
+				{
+					Element *other_report = elmt_->linkedElements().first();
+					if (other_report->terminals().isEmpty()) return;
+					Terminal *t = other_report->terminals().first();
+					if (t->conductors().isEmpty()) return;
+					conductor_in_potential= t->conductors().first();
+				}
+			}
+
+			if (!conductor_in_potential) return;
+			properties = conductor_in_potential->properties();
+			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
+		}
 
 		~NewConductorPotentialSelector() {}
 
@@ -74,7 +118,7 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 		LinkReportPotentialSelector(Element *report) :
 			m_is_valid(false)
 		{
-			if (report->linkType() & Element::AllReport)
+			if ((report->linkType() & Element::AllReport) && !report->isFree())
 			{
 					//We temporarily unlink report to get the two existing potential
 				Element *other_report = report->linkedElements().first();
@@ -101,7 +145,7 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 		bool m_is_valid;
 };
 
-//### PRIVATE CLASS ###//
+//### END PRIVATE CLASS ###//
 
 /**
  * @brief PotentialSelectorDialog::PotentialSelectorDialog

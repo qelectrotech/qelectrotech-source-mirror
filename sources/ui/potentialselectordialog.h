@@ -27,6 +27,7 @@ class Element;
 class AbstractPotentialSelector
 {
 	public:
+		AbstractPotentialSelector() : m_conductor_number_1(0), m_conductor_number_2(0) {}
 		virtual ~AbstractPotentialSelector() {}
 		virtual bool isValid() const = 0;
 
