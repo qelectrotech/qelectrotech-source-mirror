@@ -351,8 +351,8 @@ QStringList QETApp::elementInfoKeys() {
 			  << "designation"
 			  << "manufacturer"
 			  << "manufacturer-reference"
-			  << "Auxiliary_1-contact-bloc"
-			  << "Auxiliary_2-contact-bloc"
+			  << "auxiliary1"
+			  << "auxiliary2"
 			  << "machine-manufacturer-reference"
 			  << "location"
 			  << "function";
@@ -372,8 +372,8 @@ QString QETApp::elementTranslatedInfoKey(QString &info) {
 	else if (info == "designation") return tr("Désignation");
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Référence fabricant");
-	else if (info == "Auxiliary_1-contact-bloc") return tr("Bloc auxilliaire 1");
-	else if (info == "Auxiliary_2-contact-bloc") return tr("Bloc auxilliaire 2");
+	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
+	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	else if (info == "machine-manufacturer-reference") return tr("Référence fabricant machine");
 	else if (info == "location") return tr("Localisation");
 	else if (info == "function") return tr("Fonction");
