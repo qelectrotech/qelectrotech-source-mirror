@@ -1,0 +1,20 @@
+<definition height="20" hotspot_x="4" width="20" type="element" version="0.5" hotspot_y="4" orientation="dyyy" link_type="simple">
+    <uuid uuid="{34c6fe7f-99d0-4b22-9c86-86f99d842e6f}"/>
+    <names>
+        <name lang="fr">Reference voyant v</name>
+        <name lang="ar">مرجع مُؤشر ضوئي (عمودي)</name>
+        <name lang="en">Reference light (vertical)</name>
+        <name lang="it">Rif. spia luminosa / (verticale)</name>
+        <name lang="cs">Srovnávací kontrolní světlo (svislé)</name>
+        <name lang="nl">Referentie lamp</name>
+        <name lang="pl">Odsyłacz - lampka sygnalizacyjna (pionowo)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="3" y1="7" antialias="false" end2="none" y2="3" end1="none" length2="1.5" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="3" y1="3" antialias="false" end2="none" y2="7" end1="none" length2="1.5" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="1.5" antialias="true" y="1.5" diameter="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-4" text="/" size="5" y="12.5" tagg="label" rotate="true"/>
+    </description>
+</definition>

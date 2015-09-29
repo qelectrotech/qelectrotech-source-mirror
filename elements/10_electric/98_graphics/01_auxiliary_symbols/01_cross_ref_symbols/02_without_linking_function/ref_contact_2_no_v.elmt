@@ -1,0 +1,20 @@
+<definition height="10" hotspot_x="3" width="20" type="element" version="0.5" hotspot_y="-1" orientation="dyyy" link_type="simple">
+    <uuid uuid="{5008c762-23b8-4488-af14-ce0aeca5a8c0}"/>
+    <names>
+        <name lang="fr">Reference contact NO v</name>
+        <name lang="ar">مرجع مُلامس NO  (عمودي)</name>
+        <name lang="en">Reference contact NO (vertical)</name>
+        <name lang="it">Rif. contatto NO / (verticale)</name>
+        <name lang="cs">Srovnávací kontakt NO (svislý)</name>
+        <name lang="nl">Referentie contact (NO)</name>
+        <name lang="pl">Odsyłacz - zestyk zwierny (poziomo)</name>
+        <name lang="es">Contacto NA vertical</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="2" y1="7" antialias="true" x3="13" y2="5" y3="5" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y1="5" antialias="false" end2="none" y2="5" end1="none" length2="1.5" x2="2" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-4" text="/" size="5" y="12.5" tagg="label" rotate="true"/>
+    </description>
+</definition>

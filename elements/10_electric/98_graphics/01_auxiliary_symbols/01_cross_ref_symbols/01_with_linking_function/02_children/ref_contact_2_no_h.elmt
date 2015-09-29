@@ -1,0 +1,20 @@
+<definition width="30" version="0.3" hotspot_x="13" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy" link_type="previous_report">
+<uuid uuid="{540FFA5F-4C7F-4A48-9286-1842BEE390A3}"/><names>
+        <name lang="ar">مرجع مُلامس NO  (أفقي)</name>
+        <name lang="en">Reference contact NO (horizontal)</name>
+        <name lang="it">Rif. contatto NO / (orizzontale)</name>
+        <name lang="fr">Reference contact NO h</name>
+        <name lang="pl">Odsyłacz - zestyk zwierny (poziomo)</name>
+        <name lang="cs">Odkaz - kontakt NO (vodorovný)</name>
+        <name lang="nl">Referentie vorig contact (NO)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="-8" y2="5" x2="0" y3="5" x3="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-10" y2="5" x2="-8"/>
+        <input x="2" y="4.5" size="5" rotate="true" text="/"/>
+                <input x="-30" y="-0.5" size="5" rotate="true" text="13"/>
+        <input x="5" y="-0.5" size="5" rotate="true" text="14"/>
+    </description>
+</definition>
