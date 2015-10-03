@@ -110,25 +110,31 @@ QString FileElementDefinition::virtualPath() {
 }
 
 /**
-	Recharge l'element
-*/
-void FileElementDefinition::reload() {
-	if (file_path.isEmpty()) {
+ * @brief FileElementDefinition::reload
+ * Reload this file element definition
+ */
+void FileElementDefinition::reload()
+{
+	if (file_path.isEmpty())
+	{
 		is_null = true;
 		return;
 	}
 	
 	// recupere le chemin du fichier *.elmt correspondant
 	QFileInfo file_info(file_path);
-	if (!file_info.exists() || !file_info.isReadable()) {
+	if (!file_info.exists() || !file_info.isReadable())
+	{
 		is_null = true;
 		return;
 	}
 	file_path = file_info.canonicalFilePath();
 	
-	if (parentCollection()) {
+	if (parentCollection())
+	{
 		ElementsCollectionCache *cache = parentCollection() -> cache();
-		if (cache && cache -> fetchNameFromCache(location().toString(), file_info.lastModified())) {
+		if (cache && cache -> fetchNameFromCache(location().toString(), uuid()))
+		{
 			// the element file has not been modified since the last time
 			// we put its name in cache: we do not need to load it.
 			is_null = false;

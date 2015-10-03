@@ -29,7 +29,8 @@ class ElementDefinition;
 	definitions of elements and building full CustomElement objects when
 	(re)loading the elements panel.
 */
-class ElementsCollectionCache : public QObject {
+class ElementsCollectionCache : public QObject
+{
 	public:
 	// constructor, destructor
 	ElementsCollectionCache(const QString &database_path, QObject * = 0);
@@ -47,10 +48,10 @@ class ElementsCollectionCache : public QObject {
 	QString name() const;
 	QPixmap pixmap() const;
 	bool fetchData(const ElementsLocation &);
-	bool fetchNameFromCache(const QString &, const QDateTime &);
-	bool fetchPixmapFromCache(const QString &, const QDateTime &);
-	bool cacheName(const QString &, const QDateTime & = QDateTime::currentDateTime());
-	bool cachePixmap(const QString &, const QDateTime & = QDateTime::currentDateTime());
+	bool fetchNameFromCache(const QString &path, const QUuid &uuid);
+	bool fetchPixmapFromCache(const QString &path, const QUuid &uuid);
+	bool cacheName(const QString &path, const QUuid &uuid = QUuid::createUuid());
+	bool cachePixmap(const QString &path, const QUuid &uuid = QUuid::createUuid());
 	
 	// attributes
 	private:

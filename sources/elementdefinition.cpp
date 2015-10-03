@@ -29,8 +29,26 @@ bool ElementDefinition::hasParentCategory() {
 }
 
 /**
-	@return la categorie a laquelle appartient cet element
-*/
+ * @brief ElementDefinition::uuid
+ * @return The uuid of this element definition.
+ * If uuid can't be found, return a null QUuid.
+ */
+QUuid ElementDefinition::uuid()
+{
+	if (!m_uuid.isNull()) return m_uuid;
+
+		//Get the uuid of element
+	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
+
+	if (!list_.isEmpty())
+		m_uuid = QUuid(list_.first().attribute("uuid"));
+	else
+		qDebug() << "The element : " << filePath() << "haven't got an uuid, please edit and save this element with element editor to create an uuid";
+
+	return m_uuid;
+
+}
+
 ElementsCategory *ElementDefinition::parentCategory() {
 	return(parent_category_);
 }

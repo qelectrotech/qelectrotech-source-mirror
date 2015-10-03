@@ -22,6 +22,7 @@
 #include "factory/elementfactory.h"
 #include "element.h"
 #include <QImageWriter>
+#include "qet.h"
 
 /**
 	Construct a cache for elements collections.
@@ -38,28 +39,64 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 	QString connection_name = QString("ElementsCollectionCache-%1").arg(cache_instances++);
 	cache_db_ = QSqlDatabase::addDatabase("QSQLITE", connection_name);
 	cache_db_.setDatabaseName(database_path);
-	if (!cache_db_.open()) {
+
+	if (!cache_db_.open())
 		qDebug() << "Unable to open the SQLite database " << database_path << " as " << connection_name << ": " << cache_db_.lastError();
-	} else {
+	else
+	{
 		cache_db_.exec("PRAGMA temp_store = MEMORY");
 		cache_db_.exec("PRAGMA journal_mode = MEMORY");
 		cache_db_.exec("PRAGMA page_size = 4096");
 		cache_db_.exec("PRAGMA cache_size = 16384");
 		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
 		cache_db_.exec("PRAGMA synchronous = OFF");
-		/// @todo the tables could already exist, handle that case.
-		cache_db_.exec("CREATE TABLE names (path VARCHAR(512) NOT NULL, locale VARCHAR(2) NOT NULL, mtime DATETIME NOT NULL, name VARCHAR(128), PRIMARY KEY(path, locale));");
-		cache_db_.exec("CREATE TABLE pixmaps (path VARCHAR(512) NOT NULL UNIQUE, mtime DATETIME NOT NULL, pixmap BLOB, PRIMARY KEY(path), FOREIGN KEY(path) REFERENCES names (path) ON DELETE CASCADE);");
-		
-		// prepare queries
+
+			//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
+			//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+		QSqlQuery table_name(cache_db_);
+		if (table_name.exec("PRAGMA table_info(names)"))
+		{
+			if (table_name.seek(2))
+			{
+				QString str = table_name.value(1).toString();
+				table_name.finish();
+				if (str == "mtime")
+				{
+					QSqlQuery error;
+					error = cache_db_.exec("DROP TABLE names");
+					error = cache_db_.exec("DROP TABLE pixmaps");
+				}
+			}
+			else
+				table_name.finish();
+		}
+
+			//@TODO the tables could already exist, handle that case.
+		cache_db_.exec("CREATE TABLE names"
+					   "("
+					   "path VARCHAR(512) NOT NULL,"
+					   "locale VARCHAR(2) NOT NULL,"
+					   "uuid VARCHAR(512) NOT NULL,"
+					   "name VARCHAR(128),"
+					   "PRIMARY KEY(path, locale)"
+					   ");");
+
+		cache_db_.exec("CREATE TABLE pixmaps"
+					   "("
+					   "path VARCHAR(512) NOT NULL UNIQUE,"
+					   "uuid VARCHAR(512) NOT NULL,"
+					   "pixmap BLOB, PRIMARY KEY(path),"
+					   "FOREIGN KEY(path) REFERENCES names (path) ON DELETE CASCADE);");
+
+			// prepare queries
 		select_name_   = new QSqlQuery(cache_db_);
 		select_pixmap_ = new QSqlQuery(cache_db_);
 		insert_name_   = new QSqlQuery(cache_db_);
 		insert_pixmap_ = new QSqlQuery(cache_db_);
-		select_name_   -> prepare("SELECT name FROM names WHERE path = :path AND locale = :locale AND mtime = :file_mtime");
-		select_pixmap_ -> prepare("SELECT pixmap FROM pixmaps WHERE path = :path AND mtime = :file_mtime");
-		insert_name_   -> prepare("REPLACE INTO names (path, locale, mtime, name) VALUES (:path, :locale, :mtime, :name)");
-		insert_pixmap_ -> prepare("REPLACE INTO pixmaps (path, mtime, pixmap) VALUES (:path, :mtime, :pixmap)");
+		select_name_   -> prepare("SELECT name FROM names WHERE path = :path AND locale = :locale AND uuid = :uuid");
+		select_pixmap_ -> prepare("SELECT pixmap FROM pixmaps WHERE path = :path AND uuid = :uuid");
+		insert_name_   -> prepare("REPLACE INTO names (path, locale, uuid, name) VALUES (:path, :locale, :uuid, :name)");
+		insert_pixmap_ -> prepare("REPLACE INTO pixmaps (path, uuid, pixmap) VALUES (:path, :uuid, :pixmap)");
 	}
 }
 
@@ -150,24 +187,29 @@ void ElementsCollectionCache::endCollection(ElementsCollection *collection) {
 	@see name()
 	@return True if the retrieval succeeded, false otherwise.
 */
-bool ElementsCollectionCache::fetchElement(ElementDefinition *element) {
-	// can we use the cache with this element?
+bool ElementsCollectionCache::fetchElement(ElementDefinition *element)
+{
+		// can we use the cache with this element?
 	bool use_cache = cache_db_.isOpen() && element -> parentCollection() -> isCacheable();
 	
-	// attempt to fetch the element name from the cache database
-	if (!use_cache) {
+		// attempt to fetch the element name from the cache database
+	if (!use_cache)
+	{
 		return(fetchData(element -> location()));
-	} else {
+	}
+	else
+	{
 		QString element_path = element -> location().toString();
-		QDateTime mtime = element -> modificationTime();
-		bool got_name   = fetchNameFromCache(element_path, mtime);
-		bool got_pixmap = fetchPixmapFromCache(element_path, mtime);
-		if (got_name && got_pixmap) {
+		bool got_name   = fetchNameFromCache(element_path, element->uuid());
+		bool got_pixmap = fetchPixmapFromCache(element_path, element->uuid());
+		if (got_name && got_pixmap)
+		{
 			return(true);
 		}
-		if (fetchData(element -> location())) {
-			cacheName(element_path, mtime);
-			cachePixmap(element_path, mtime);
+		if (fetchData(element -> location()))
+		{
+			cacheName(element_path, element->uuid());
+			cachePixmap(element_path, element->uuid());
 		}
 		return(true);
 	}
@@ -208,42 +250,49 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 }
 
 /**
-	Retrieve the name for an element, given its path and last modification
-	time. The value is then available through the name() method.
-	@param path Element path (as obtained using ElementsLocation::toString())
-	@param file_mtime Date and time of last modification of this element. Any
-	older cached value will be ignored.
-	@return True if the retrieval succeeded, false otherwise.
-*/
-bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QDateTime &file_mtime) {
+ * @brief ElementsCollectionCache::fetchNameFromCache
+ * Retrieve the name for an element, given its path and uuid
+ * The value is then available through the name() method.
+ * @param path : Element path (as obtained using ElementsLocation::toString())
+ * @param uuid : Element uuid
+ * @return True if the retrieval succeeded, false otherwise.
+ */
+bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUuid &uuid)
+{
 	select_name_ -> bindValue(":path", path);
 	select_name_ -> bindValue(":locale", locale_);
-	select_name_ -> bindValue(":file_mtime", file_mtime);
-	if (select_name_ -> exec()) {
-		if (select_name_ -> first()) {
+	select_name_ -> bindValue(":uuid", uuid.toString());
+	if (select_name_ -> exec())
+	{
+		if (select_name_ -> first())
+		{
 			current_name_ = select_name_ -> value(0).toString();
 			select_name_ -> finish();
 			return(true);
 		}
-	} else {
-		qDebug() << "select_name_->exec() failed";
 	}
+	else
+		qDebug() << "select_name_->exec() failed";
+
 	return(false);
 }
 
 /**
-	Retrieve the pixmap for an element, given its path and last modification
-	time. It is then available through the pixmap() method.
-	@param path Element path (as obtained using ElementsLocation::toString())
-	@param file_mtime Date and time of last modification of this element. Any
-	older cached pixmap will be ignored.
-	@return True if the retrieval succeeded, false otherwise.
-*/
-bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QDateTime &file_mtime) {
+ * @brief ElementsCollectionCache::fetchPixmapFromCache
+ * Retrieve the pixmap for an element, given its path and uuid.
+ * It is then available through the pixmap() method.
+ * @param path : Element path (as obtained using ElementsLocation::toString())
+ * @param uuid : Element uuid
+ * @return True if the retrieval succeeded, false otherwise.
+ */
+bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QUuid &uuid)
+{
 	select_pixmap_ -> bindValue(":path", path);
-	select_pixmap_ -> bindValue(":file_mtime", file_mtime);
-	if (select_pixmap_ -> exec()) {
-		if (select_pixmap_ -> first()) {
+	select_pixmap_ -> bindValue(":uuid", uuid.toString());
+	if (select_pixmap_ -> exec())
+	{
+		if (select_pixmap_ -> first())
+		{
 			QByteArray ba = select_pixmap_ -> value(0).toByteArray();
 			// avoid returning always the same pixmap (i.e. same cacheKey())
 			current_pixmap_.detach();
@@ -251,26 +300,29 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QD
 			select_pixmap_ -> finish();
 		}
 		return(true);
-	} else {
-		qDebug() << "select_pixmap_->exec() failed";
 	}
+	else
+		qDebug() << "select_pixmap_->exec() failed";
+
 	return(false);
 }
 
 /**
-	Cache the current (i.e. last retrieved) name. The cache entry will use
-	the current date and time and the locale set via setLocale().
-	@param path Element path (as obtained using ElementsLocation::toString())
-	@param mtime Modification time associated with the cache entry -- defaults to current datetime
-	@return True if the caching succeeded, false otherwise.
-	@see name()
-*/
-bool ElementsCollectionCache::cacheName(const QString &path, const QDateTime &mtime) {
+ * @brief ElementsCollectionCache::cacheName
+ * Cache the current (i.e. last retrieved) name The cache entry will use the locale set via setLocale().
+ * @param path : Element path (as obtained using ElementsLocation::toString())
+ * @param uuid :Element uuid
+ * @return True if the caching succeeded, false otherwise.
+ * @see name()
+ */
+bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
+{
 	insert_name_ -> bindValue(":path",   path);
 	insert_name_ -> bindValue(":locale", locale_);
-	insert_name_ -> bindValue(":mtime",  QVariant(mtime));
+	insert_name_ -> bindValue(":uuid",  uuid.toString());
 	insert_name_ -> bindValue(":name",   current_name_);
-	if (!insert_name_ -> exec()) {
+	if (!insert_name_ -> exec())
+	{
 		qDebug() << cache_db_.lastError();
 		return(false);
 	}
@@ -278,22 +330,24 @@ bool ElementsCollectionCache::cacheName(const QString &path, const QDateTime &mt
 }
 
 /**
-	Cache the current (i.e. last retrieved) pixmap. The cache entry will use
-	the current date and time.
-	@param path Element path (as obtained using ElementsLocation::toString())
-	@param mtime Modification time associated with the cache entry -- defaults to current datetime
-	@return True if the caching succeeded, false otherwise.
-	@see pixmap()
-*/
-bool ElementsCollectionCache::cachePixmap(const QString &path, const QDateTime &mtime) {
+ * @brief ElementsCollectionCache::cachePixmap
+ * Cache the current (i.e. last retrieved) pixmap
+ * @param path : Element path (as obtained using ElementsLocation::toString())
+ * @param uuid : Element uuid
+ * @return True if the caching succeeded, false otherwise.
+ * @see pixmap()
+ */
+bool ElementsCollectionCache::cachePixmap(const QString &path, const QUuid &uuid)
+{
 	QByteArray ba;
 	QBuffer buffer(&ba);
 	buffer.open(QIODevice::WriteOnly);
 	current_pixmap_.save(&buffer, qPrintable(pixmap_storage_format_));
 	insert_pixmap_ -> bindValue(":path", path);
-	insert_pixmap_ -> bindValue(":mtime", QVariant(mtime));
+	insert_pixmap_ -> bindValue(":uuid", uuid.toString());
 	insert_pixmap_ -> bindValue(":pixmap", QVariant(ba));
-	if (!insert_pixmap_->exec()) {
+	if (!insert_pixmap_->exec())
+	{
 		qDebug() << cache_db_.lastError();
 		return(false);
 	}

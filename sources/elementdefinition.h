@@ -32,17 +32,19 @@ class ElementDefinition : public ElementsCollectionItem {
 	/**
 		Constructor
 	*/
-	ElementDefinition(ElementsCategory *category = 0, ElementsCollection *collection = 0) : ElementsCollectionItem(category), parent_category_(category), parent_collection_(collection) {};
-	
-	/**
-		Destructor
-	*/
+	ElementDefinition(ElementsCategory *category = 0, ElementsCollection *collection = 0) :
+		ElementsCollectionItem(category),
+		parent_category_(category),
+		parent_collection_(collection)
+	{};
+
 	virtual ~ElementDefinition() {};
 	
 	/**
 		@return the XML definition of a particular element
 	*/
 	virtual QDomElement xml() = 0;
+	virtual QUuid uuid();
 	
 	/**
 		Specify the XML definition of a particular element
@@ -124,5 +126,6 @@ class ElementDefinition : public ElementsCollectionItem {
 	private:
 	ElementsCategory *parent_category_;
 	ElementsCollection *parent_collection_;
+	QUuid m_uuid;
 };
 #endif
