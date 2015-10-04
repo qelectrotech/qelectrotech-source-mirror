@@ -3273,12 +3273,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpblok 1</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpblok 2</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -6266,12 +6266,12 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpblok 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpblok 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
