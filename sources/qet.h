@@ -27,7 +27,7 @@ namespace QET {
 	/// QElectroTech version (as string, used to mark projects and elements XML documents)
 	const QString version = "0.5";
 	/// QElectroTech displayed version
-	const QString displayedVersion = "0.5-dev";
+	const QString displayedVersion = "0.5-b";
 	QString license();
 	
 	/// Oriented movements
