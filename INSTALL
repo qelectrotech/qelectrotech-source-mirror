@@ -1,131 +1,131 @@
 [en]
 Requirements :
-libQt4 (see packages libqt4*)
+libQt5 (see packages libqt5*)
 cupsys-bsd for printing
 
 Howto compile :
-$ qmake (qmake-qt4 for Debian-based systems)
+$ qmake (qmake-qt5 for Debian-based systems)
 $ make
 # umask 0022
 # make install
 
 [fr]
 Pré-requis :
-libQt4 (paquets libqt4*)
+libQt5 (paquets libqt5*)
 cupsys-bsd pour l'impression
 
 Comment compiler :
-$ qmake (qmake-qt4 pour les systèmes basés sur Debian)
+$ qmake (qmake-qt5 pour les systèmes basés sur Debian)
 $ make
 # umask 0022
 # make install
 
 [ru]
 Зависимости:
-libQt4 (пакет libqt4*)
+libQt5 (пакет libqt5*)
 cupsys-bsd для печати
 
 Как компилировать?:
-$ qmake (qmake-qt4 для систем основанных на Debian)
+$ qmake (qmake-qt5 для систем основанных на Debian)
 $ make
 # umask 0022
 # make install
 
 [pt]
 Dependências:
-libQt4 (ver pacotes libqt4*)
+libQt5 (ver pacotes libqt5*)
 cupsys-bsd para impressão
 
 Como compilar:
-$ qmake (qmake-qt4 para sistemas baseados em Debian)
+$ qmake (qmake-qt5 para sistemas baseados em Debian)
 $ make
 # umask 0022
 # make install
 
 [es]
 Dependencias:
-libQt4 (paquetes libqt4*)
+libQt5 (paquetes libqt5*)
 cupsys-bsd para imprimir
 
 Cómo compilar:
-$ qmake (qmake-qt4 para los sistemas basados en Debian)
+$ qmake (qmake-qt5 para los sistemas basados en Debian)
 $ make
 # umask 0022
 # make install
 
 [ca]
 Dependències:
-libQt4 (paquets libqt4*)
+libQt5 (paquets libqt5*)
 cupsys-bsd per imprimir
 
 Com compilar:
-$ qmake (qmake-qt4 pels sistemes basats en Debian)
+$ qmake (qmake-qt5 pels sistemes basats en Debian)
 $ make
 # umask 0022
 # make install
 
 [cs]
 Požadavky :
-libQt4 (viz balíček libqt4*)
+libQt5 (viz balíček libqt5*)
 cupsys-bsd kvůli tisku
 
 Jak program sestavit :
-$ qmake (qmake-qt4 u systémů založených na Debianu)
+$ qmake (qmake-qt5 u systémů založených na Debianu)
 $ make
 # umask 0022
 # make install
 
 [pl]
 Zależności:
-libQt4 (pakiety libqt4 *)
+libQt5 (pakiety libqt5 *)
 cupsys-bsd do druku
 
 Sposób kompilacji:
-$ qmake (qmake-qt4 dla systemów opartych na Debianie)
+$ qmake (qmake-qt5 dla systemów opartych na Debianie)
 $ make
 # umask 0022
 # make install
 
 [it]
 Dipendenze:
-libQt4 (vedi pacchetti libqt4*)
+libQt5 (vedi pacchetti libqt5*)
 cupsys-bsd per la stampa
 
 Come compilare:
-$ qmake (qmake-qt4 per sistemi basati su Debian)
+$ qmake (qmake-qt5 per sistemi basati su Debian)
 $ make
 # umask 0022
 # make install
 
 [el]
 Απαιτήσεις:
-libQt4 (δείτε για πακέτα libqt4*)
+libQt5 (δείτε για πακέτα libqt5*)
 cupsys-bsd για εκτύπωση
 
 Πως να το μεταγλωττίσετε:
-$ qmake (qmake-qt4 για συστήματα βασισμένα σε Debian)
+$ qmake (qmake-qt5 για συστήματα βασισμένα σε Debian)
 $ make
 # umask 0022
 # make install
 
 [nl]
 vereisten:
-libqt4 (zie pakketten libqt4 *)
+libqt5 (zie pakketten libqt5 *)
 cupsys-bsd om af te drukken  
 
 Hoe te compileren:
-     $ Qmake (qmake-qt4 voor Debian-gebaseerde systemen)
+     $ Qmake (qmake-qt5 voor Debian-gebaseerde systemen)
      $ make
      # Umask 0022
      # Make install
 
 [be]
 Vereisten:
-libQt4 (pakketten libqt4*)
+libQt5 (pakketten libqt5*)
 cupsys-bsd voor het afdrukken
 
 Hoe te compileren :
-$ qmake (qmake-qt4 voor systemen op basis van Debian)
+$ qmake (qmake-qt5 voor systemen op basis van Debian)
 $ make
 # umask 0022
 # make install
