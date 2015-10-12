@@ -130,6 +130,10 @@ TARGET = qelectrotech
 unix:QMAKE_LIBS_THREAD -= -lpthread
 
 # Enable C++11
+macx {
+	LIBS += -stdlib=libc++
+	QMAKE_CXXFLAGS += -stdlib=libc++
+}
 QMAKE_CXXFLAGS += -std=c++11
 
 # Description de l'installation

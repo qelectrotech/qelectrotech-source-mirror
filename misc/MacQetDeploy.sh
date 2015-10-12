@@ -196,7 +196,8 @@ if [ ! -d $BUNDLE ] ; then
     echo "ERROR: cannot find application bundle \"$BUNDLE\" in current directory"
     exit
 fi
-/usr/bin/macdeployqt-4.8 $BUNDLE
+#~/Qt/5.5/clang_64/bin/macdeployqt $BUNDLE
+macdeployqt $BUNDLE
 
 ### add file missing #######################################
 
@@ -236,7 +237,7 @@ echo "Create disk image:"
 
 # Direction
 EX_Dir="examples"
-DOC_Dir="docs/doc-en.pdf"
+DOC_Dir="docs/Documentation.webloc"
 imagedir="/tmp/$APPNAME.$$"
 
 # Remove any previous disk folder or DMG
