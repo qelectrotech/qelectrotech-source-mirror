@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_PT">
+<TS version="2.0" language="pt_PT">
 <context>
     <name>AboutQET</name>
     <message>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="76"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Compilação : </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="98"/>
@@ -64,13 +64,13 @@
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>2006-2015 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">2006-2015 Os Desenvolvedores de QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="104"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Contacto : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="118"/>
@@ -134,79 +134,79 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tradução Croata</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="153"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tradução Catalã</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="154"/>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tradução Grega</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tradução Holandesa</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="157"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tradução em Flamengo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes Fedora e Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes Mageia</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
         <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="183"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes OS/2</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacotes Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="189"/>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Documentação</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Colecção de elementos</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conversor DFX</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="179"/>
@@ -226,19 +226,19 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inserir Link</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nome:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">URL:</translation>
     </message>
 </context>
 <context>
@@ -279,17 +279,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto numeração :</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Editar as numerações</translation>
     </message>
 </context>
 <context>
@@ -300,12 +300,14 @@
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
+        <translatorcomment>pixel</translatorcomment>
         <translation type="unfinished">px</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="73"/>
         <source>x</source>
+        <translatorcomment>x</translatorcomment>
         <translation type="unfinished">x</translation>
     </message>
     <message>
@@ -327,12 +329,15 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">form
+form
+form
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dimensões do Diagrama</translation>
     </message>
 </context>
 <context>
@@ -4626,7 +4631,6 @@ Opções disponiveis:
         <comment>errors</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4639,7 +4643,6 @@ Opções disponiveis:
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5822,7 +5825,6 @@ O que deseja fazer?</translation>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5830,7 +5832,6 @@ O que deseja fazer?</translation>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -7835,7 +7836,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="349"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cor do texto</translation>
     </message>
 </context>
 <context>
@@ -7843,7 +7844,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inserir entidade HTML</translation>
     </message>
 </context>
 <context>
