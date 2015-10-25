@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -343,13 +343,13 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1279"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de un conductor</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1283"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de varios conductores</translation>
     </message>
 </context>
 <context>
@@ -368,13 +368,13 @@
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="71"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de un conductor</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="75"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de varios conductores</translation>
     </message>
 </context>
 <context>
@@ -387,12 +387,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño del texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tensión / Protocolo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
@@ -402,7 +402,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Función:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
@@ -432,7 +432,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
         <source>Apparence</source>
-        <translation type="unfinished">Apariencia</translation>
+        <translation>Apariencia</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
@@ -563,7 +563,7 @@
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -714,7 +714,7 @@
         <location filename="../sources/diagramview.cpp" line="891"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar las propiedades de un conductor</translation>
     </message>
 </context>
 <context>
@@ -2266,7 +2266,7 @@ Los cambios serán definitivos.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar el tamaño de una imagen</translation>
     </message>
 </context>
 <context>
@@ -2527,7 +2527,7 @@ Los cambios serán definitivos.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="223"/>
         <location filename="../sources/editor/lineeditor.cpp" line="239"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar una línea</translation>
     </message>
 </context>
 <context>
@@ -2841,7 +2841,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="214"/>
         <source>Modifier un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un arco</translation>
     </message>
 </context>
 <context>
@@ -2849,7 +2849,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="209"/>
         <source>Modifier une ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar una elipse</translation>
     </message>
 </context>
 <context>
@@ -2857,7 +2857,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="160"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar una línea</translation>
     </message>
 </context>
 <context>
@@ -2865,7 +2865,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="282"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un polígono</translation>
     </message>
 </context>
 <context>
@@ -2873,7 +2873,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="280"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un rectangulo</translation>
     </message>
 </context>
 <context>
@@ -2881,7 +2881,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="433"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un campo de texto</translation>
     </message>
 </context>
 <context>
@@ -2889,7 +2889,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un campo de texto</translation>
     </message>
 </context>
 <context>
@@ -2918,7 +2918,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
@@ -2938,25 +2938,26 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione el potencial eléctrico</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Usted intenta vincular dos potenciales diferentes juntos.
+Por favor, seleccione las propiedades que se aplicarán al nuevo potencial.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="201"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>El potencial con número de hilo %1 está presente %2 veces</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="244"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de varios conductores</translation>
     </message>
 </context>
 <context>
@@ -3014,19 +3015,19 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation>Título del proyecto</translation>
+        <translation>Título del proyecto:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation>Este título estará disponible para todos los folios del proyecto como %projecttitle</translation>
+        <translation>Este título estará disponible para todos los folios del proyecto como %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Usted puede definir las propiedas personalizadas que quiere estén disponibles para todos los folios del proyecto</translation>
+        <translation>Usted puede definir las propiedas personalizadas que quiere estén disponibles para todos los folios del proyecto).</translation>
     </message>
 </context>
 <context>
@@ -3064,7 +3065,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>¿Realmente quiere eliminar el folio del proyecto?</translation>
+        <translation>¿Realmente quiere eliminar el folio del proyecto? El cambio es irreversible.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="696"/>
@@ -3364,12 +3365,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloque auxiliar 1</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloque auxiliar 2</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="390"/>
@@ -3527,13 +3528,13 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Color de fondo blanco / gris</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Muestra el color de fondo de la hoja en blanco o gris</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
@@ -4779,8 +4780,8 @@ Las condiciones requeridas no son validas</translation>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
-            <numerusform>%1 error(es)</numerusform>
-            <numerusform></numerusform>
+            <numerusform> %n error</numerusform>
+            <numerusform> %n errores</numerusform>
         </translation>
     </message>
     <message>
@@ -4793,8 +4794,8 @@ Las condiciones requeridas no son validas</translation>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
         <translation>
-            <numerusform>%n advertencia(s)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n advertencia</numerusform>
+            <numerusform>%n advertencias</numerusform>
         </translation>
     </message>
     <message>
@@ -5104,7 +5105,7 @@ Las condiciones requeridas no son validas</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>Si esta opción está activa, el folio será ajustado al tamaño de la hoja</translation>
+        <translation>Si esta opción está marcada, el folio será ampliado o reducido para cubrir toda la superficie imprimible de una sola página.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
@@ -5754,7 +5755,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/graphicspart/partline.h" line="71"/>
         <source>ligne</source>
         <comment>element part name</comment>
-        <translation>linea</translation>
+        <translation>línea</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
@@ -5853,8 +5854,8 @@ Que désirez vous faire ?</source>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n forma(s)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n forma</numerusform>
+            <numerusform>%n formas</numerusform>
         </translation>
     </message>
     <message>
@@ -6162,120 +6163,120 @@ Que désirez vous faire ?</source>
         <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de un conductor</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edite las propiedades de varios conductores</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="115"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover un elemento de texto</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover %1 elementos de texto</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">nomenclatura_</translation>
+        <translation>nomenclatura_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Guardar como...</translation>
+        <translation>Guardar como...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Archivo csv (*.csv)</translation>
+        <translation>Archivo csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">¡Imposible reemplazar el archivo!</translation>
+        <translation>¡Imposible reemplazar el archivo!</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">NOMENCLATURA:</translation>
+        <translation>NOMENCLATURA:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° de folio</translation>
+        <translation>N° de folio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Título del folio</translation>
+        <translation>Título del folio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Désignation qet</source>
-        <translation type="unfinished">Designación QET</translation>
+        <translation>Designación qet</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Position</source>
-        <translation type="unfinished">Posición:</translation>
+        <translation>Posición</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label</source>
-        <translation type="unfinished">Etiqueta</translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation</source>
-        <translation type="unfinished">Designación</translation>
+        <translation>Designación</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentario</translation>
+        <translation>Comentario</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Fabricante</translation>
+        <translation>Fabricante</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Reference</source>
-        <translation type="unfinished">Referencia</translation>
+        <translation>Referencia</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloque auxiliar 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloque auxiliar 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Machine-reference</source>
-        <translation type="unfinished">Referencia de la máquina</translation>
+        <translation>Referencia de la máquina</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Localisation</source>
-        <translation type="unfinished">Localización</translation>
+        <translation>Localización</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fonction</source>
-        <translation type="unfinished">Función</translation>
+        <translation>Función</translation>
     </message>
 </context>
 <context>
@@ -6308,7 +6309,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="439"/>
         <source>Modifier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="570"/>
@@ -6331,7 +6332,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
-        <translation>Arriva a la izquierda</translation>
+        <translation>Arriba a la izquierda:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
@@ -6351,7 +6352,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un rectangulo</translation>
     </message>
 </context>
 <context>
@@ -6458,52 +6459,52 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="22"/>
         <source>Type de trait</source>
-        <translation type="unfinished">Tipo de línea</translation>
+        <translation>Tipo de línea</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="30"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="35"/>
         <source>Tiret</source>
-        <translation type="unfinished">Raya</translation>
+        <translation>Guiones</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Línea de puntos</translation>
+        <translation>Puntos</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="45"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Líneas y puntos</translation>
+        <translation>Líneas y puntos</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="50"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Líneas puntos puntos</translation>
+        <translation>Líneas puntos puntos</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="60"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Bloquear la posición</translation>
+        <translation>Bloquear la posición</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Editar las propiedades de un primitive</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="107"/>
         <source>Modifier le type de trait d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar el tipo de línea de una forma</translation>
     </message>
 </context>
 <context>
@@ -6860,12 +6861,13 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la orientación de una terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Mover un borne</translatorcomment>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -6920,27 +6922,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el contenido de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el tamaño de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el color de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar el ángulo de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover un campo de texto</translation>
     </message>
 </context>
 <context>
@@ -6998,42 +7000,43 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
         <source>Fonction</source>
-        <translation type="unfinished">Función</translation>
+        <translation>Función</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
         <source>Tension/protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Tensión/protocolo</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Editar o modificar</translatorcomment>
+        <translation>Editar el contenido de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el tamaño de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar las propiedades de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el ángulo de rotación de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la etiqueta de un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover un campo de texto</translation>
     </message>
 </context>
 <context>
@@ -7152,7 +7155,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Afficher :</source>
-        <translation>Archivo</translation>
+        <translation>Archivo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="138"/>
