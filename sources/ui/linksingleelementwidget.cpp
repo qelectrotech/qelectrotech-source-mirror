@@ -33,7 +33,7 @@
 LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::LinkSingleElementWidget),
-	esw_(0),
+	esw_(nullptr),
 	unlink_(false),
 	search_field(nullptr)
 {
@@ -269,6 +269,8 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 		//find in all diagram of this project
 	if (i == 0)
 	{
+		if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
+
 		ElementProvider ep(m_element->diagram()->project());
 		if (filter_ & Element::AllReport)
 			elmt_list = ep.freeElement(filter_);
@@ -284,6 +286,8 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 		else
 			elmt_list = ep.find(filter_);
 	}
+
+
 		//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_list.removeAll(m_element->linkedElements().first());
 
