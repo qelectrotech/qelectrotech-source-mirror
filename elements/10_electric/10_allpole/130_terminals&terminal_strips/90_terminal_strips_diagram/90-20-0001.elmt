@@ -1,0 +1,16 @@
+<definition height="80" hotspot_y="67" hotspot_x="15" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+    <uuid uuid="{116e1210-b7f9-4737-a94f-1034ecb45cc4}"/>
+    <names>
+        <name lang="fr">Appareil (connexion en bas)</name>
+        <name lang="de">Gerät (Anschluss unten)</name>
+        <name lang="en">Device (connection on bottom)</name>
+    </names>
+    <informations/>
+    <description>
+        <input tagg="none" x="0" rotation="270" y="2" rotate="true" text="_" size="6"/>
+        <input tagg="none" x="0" rotation="270" y="-20" rotate="true" text="-" size="9"/>
+        <rect height="60" x="-10" y="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="20"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false" y2="4" x1="0" end2="none" length2="1.5" y1="0"/>
+        <terminal x="0" y="4" orientation="s"/>
+    </description>
+</definition>

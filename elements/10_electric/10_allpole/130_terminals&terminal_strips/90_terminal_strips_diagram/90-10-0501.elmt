@@ -1,0 +1,14 @@
+<definition height="10" hotspot_y="5" hotspot_x="5" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+    <uuid uuid="{9a3ee0a0-5a0e-4f0c-93dd-396ddc3d7f11}"/>
+    <names>
+        <name lang="de">Einlegebrücke</name>
+        <name lang="fr">Barette de pontage</name>
+        <name lang="en">Insertion bridge</name>
+    </names>
+    <informations/>
+    <description>
+        <circle x="18" y="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" antialias="false"/>
+        <circle x="-2" y="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" antialias="false"/>
+        <rect height="2" x="0" y="-1" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="20"/>
+    </description>
+</definition>

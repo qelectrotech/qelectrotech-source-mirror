@@ -1,0 +1,20 @@
+<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+    <uuid uuid="{da19301b-f6e7-478f-a6dd-eb72e497883b}"/>
+    <names>
+        <name lang="fr">Borne (terre)</name>
+        <name lang="de">Klemme (Erdung)</name>
+        <name lang="en">Terminal (Grounding)</name>
+    </names>
+    <informations/>
+    <description>
+        <input tagg="none" x="0" rotation="270" y="14" rotate="true" text="" size="9"/>
+        <rect height="80" x="-10" y="-40" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" width="20"/>
+        <rect height="24" x="-8" y="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="16"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="1" antialias="false" y2="25" x1="-1" end2="none" length2="1.5" y1="25"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="3" antialias="false" y2="23" x1="-3" end2="none" length2="1.5" y1="23"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5" antialias="false" y2="21" x1="-5" end2="none" length2="1.5" y1="21"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="0" antialias="false" y2="16" x1="0" end2="none" length2="1.5" y1="21"/>
+        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="0" y="-40" orientation="n"/>
+    </description>
+</definition>

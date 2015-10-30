@@ -1,0 +1,17 @@
+<definition height="70" hotspot_y="34" hotspot_x="4" version="0.5" orientation="dyyy" width="10" link_type="simple" type="element">
+    <uuid uuid="{2ac227dc-33a0-49f5-b8a0-b834d9386b60}"/>
+    <names>
+        <name lang="de">Kabel Bezeichnungsschild</name>
+        <name lang="fr">Cable etiquette</name>
+        <name lang="en">Cable tag</name>
+    </names>
+    <informations/>
+    <description>
+        <input tagg="none" x="20" rotation="270" y="30" rotate="true" text="?m" size="6"/>
+        <input tagg="label" x="-9" rotation="270" y="30" rotate="true" text="-W" size="11"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false" y2="30" x1="0" end2="none" length2="1.5" y1="-30"/>
+        <input tagg="none" x="9" rotation="270" y="30" rotate="true" text="Cable type" size="6"/>
+        <terminal x="0" y="30" orientation="s"/>
+        <terminal x="0" y="-30" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,13 @@
+<definition height="20" hotspot_y="12" hotspot_x="4" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+    <uuid uuid="{ce9e32d1-edd6-4bf2-a6f4-a519b878d80d}"/>
+    <names>
+        <name lang="de">Kabel Ader nach oben</name>
+        <name lang="en">Cable wire towards top</name>
+        <name lang="fr">Cable brin vers le haut</name>
+    </names>
+    <informations/>
+    <description>
+        <polygon y4="-5" x4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" x3="20" antialias="false" y2="0" closed="false" x5="20" x1="0" y1="0" y5="-5" y3="-5"/>
+        <terminal x="20" y="-5" orientation="n"/>
+    </description>
+</definition>

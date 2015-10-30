@@ -1,0 +1,17 @@
+<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+    <uuid uuid="{2d155649-d0f5-419b-b94a-a13d3fcf38c7}"/>
+    <names>
+        <name lang="fr">Borne (continuité)</name>
+        <name lang="de">Klemme (Durchgang)</name>
+        <name lang="en">Terminal (feed-through)</name>
+    </names>
+    <informations/>
+    <description>
+        <input tagg="none" x="0" rotation="270" y="14" rotate="true" text="" size="9"/>
+        <rect height="80" x="-10" y="-40" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" width="20"/>
+        <rect height="24" x="-8" y="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="16"/>
+        <circle x="-3" y="17" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="6" antialias="false"/>
+        <terminal x="0" y="-40" orientation="n"/>
+        <terminal x="0" y="40" orientation="s"/>
+    </description>
+</definition>

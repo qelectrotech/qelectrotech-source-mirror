@@ -1,0 +1,15 @@
+<definition height="80" hotspot_y="39" hotspot_x="17" version="0.5" orientation="dyyy" width="40" link_type="simple" type="element">
+    <uuid uuid="{9d2d8902-b36a-4974-b46d-4de6741f6b9b}"/>
+    <names>
+        <name lang="en">Terminal strip label</name>
+        <name lang="fr">Label de bornier</name>
+        <name lang="de">Klemmleisten-BMK</name>
+    </names>
+    <informations/>
+    <description>
+        <input tagg="label" x="1" rotation="270" y="21" rotate="true" text="_" size="11"/>
+        <rect height="71" x="-15" y="-35" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" width="30"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="20" antialias="false" y2="-30" x1="15" end2="none" length2="1.5" y1="-30"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="20" antialias="false" y2="30" x1="15" end2="none" length2="1.5" y1="30"/>
+    </description>
+</definition>
