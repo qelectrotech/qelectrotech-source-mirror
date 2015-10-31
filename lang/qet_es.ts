@@ -3534,7 +3534,7 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished">Muestra el color de fondo de la hoja en blanco o gris</translation>
+        <translation>Muestra el color de fondo de la hoja en blanco o gris</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
