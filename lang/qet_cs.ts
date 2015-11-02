@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -347,7 +347,7 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1283"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Upravit vlastnosti více vodičů</translation>
+        <translation>Upravit vlastnosti více vodičů</translation>
     </message>
 </context>
 <context>
@@ -385,12 +385,12 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost textu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Tension / Protocole :</source>
-        <translation type="unfinished"></translation>
+        <translation>Napětí/Protokol:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="94"/>
@@ -400,7 +400,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Fonction :</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkce:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
         <source>Apparence</source>
-        <translation type="unfinished">Vzhled</translation>
+        <translation>Vzhled</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
@@ -2935,25 +2935,26 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat elektrický potenciál</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokoušíte se o spojení dvou různých potenciálů dohromady.
+Vyberte, prosím, vlastnosti, které se mají použít na nový potenciál.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="201"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Potenciál s číslem drátu %1 je přítomen %2krát</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="244"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Upravit vlastnosti více vodičů</translation>
+        <translation>Upravit vlastnosti více vodičů</translation>
     </message>
 </context>
 <context>
@@ -3263,12 +3264,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomocný blok 1</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomocný blok 2</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -6186,100 +6187,100 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">Číselník_</translation>
+        <translation>Číselník_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Uložit jako... </translation>
+        <translation>Uložit jako... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Soubory csv (*.csv)</translation>
+        <translation>Soubory csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Soubor nelze nahradit!
+        <translation>Soubor nelze nahradit!
 </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">ČÍSELNÍK: </translation>
+        <translation>ČÍSELNÍK: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Číslo listu</translation>
+        <translation>Číslo listu</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Název listu</translation>
+        <translation>Název listu</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Désignation qet</source>
-        <translation type="unfinished">Označení qet</translation>
+        <translation>Označení qet</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label</source>
-        <translation type="unfinished">Štítek</translation>
+        <translation>Štítek</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation</source>
-        <translation type="unfinished">Označení</translation>
+        <translation>Označení</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Poznámka</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Výrobce</translation>
+        <translation>Výrobce</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Reference</source>
-        <translation type="unfinished">Odkaz</translation>
+        <translation>Odkaz</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomocný blok 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomocný blok 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Machine-reference</source>
-        <translation type="unfinished">Odkaz na stroj</translation>
+        <translation>Odkaz na stroj</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Localisation</source>
-        <translation type="unfinished">Umístění</translation>
+        <translation>Umístění</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkce</translation>
+        <translation>Funkce</translation>
     </message>
 </context>
 <context>
@@ -7016,12 +7017,12 @@ Jiná pole se nepoužívají.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="75"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkce</translation>
+        <translation>Funkce</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="76"/>
         <source>Tension/protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Napětí/Protokol</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
