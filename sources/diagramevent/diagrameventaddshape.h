@@ -15,28 +15,32 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef DVEVENTADDSHAPE_H
-#define DVEVENTADDSHAPE_H
+#ifndef DIAGRAMEVENTADDSHAPE_H
+#define DIAGRAMEVENTADDSHAPE_H
 
-#include "dveventinterface.h"
+#include "diagrameventinterface.h"
 #include "qetshapeitem.h"
 
-class QMouseEvent;
-
-class DVEventAddShape : public DVEventInterface
+/**
+ * @brief The DiagramEventAddShape class
+ * This event manage the creation of a shape.
+ */
+class DiagramEventAddShape : public DiagramEventInterface
 {
-	Q_OBJECT
+		Q_OBJECT
 
 	public:
-		DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_type);
-		virtual ~DVEventAddShape ();
-		virtual bool mousePressEvent       (QMouseEvent *event);
-		virtual bool mouseMoveEvent        (QMouseEvent *event);
-		virtual bool mouseReleaseEvent     (QMouseEvent *event);
-		virtual bool mouseDoubleClickEvent (QMouseEvent *event);
+		DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type);
+
+		virtual ~DiagramEventAddShape();
+		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+		virtual void init();
 
 	private:
-		void updateHelpCross (const QPoint &p);
+		void updateHelpCross (const QPointF &p);
 
 	protected:
 		QetShapeItem::ShapeType  m_shape_type;
@@ -44,4 +48,4 @@ class DVEventAddShape : public DVEventInterface
 		QGraphicsLineItem       *m_help_horiz, *m_help_verti;
 };
 
-#endif // DVEVENTADDSHAPE_H
+#endif // DIAGRAMEVENTADDSHAPE_H

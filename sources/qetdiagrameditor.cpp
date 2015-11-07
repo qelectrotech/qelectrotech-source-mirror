@@ -36,10 +36,10 @@
 #include "diagramfoliolist.h"
 #include "qetshapeitem.h"
 #include "dveventaddimage.h"
-#include "dveventaddshape.h"
 #include "dveventaddtext.h"
 #include "reportproperties.h"
 #include "diagrampropertieseditordockwidget.h"
+#include "diagrameventaddshape.h"
 
 #include "ui/dialogautonum.h"
 
@@ -1158,19 +1158,32 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		else
 			dvevent = event;
 	}
-	else if (value == "line")
-		dvevent = new DVEventAddShape(dv, QetShapeItem::Line);
-	else if (value == "rectangle")
-		dvevent = new DVEventAddShape(dv, QetShapeItem::Rectangle);
-	else if (value == "ellipse")
-		dvevent = new DVEventAddShape(dv, QetShapeItem::Ellipse);
-	else if (value == "polyline")
-		dvevent = new DVEventAddShape(dv, QetShapeItem::Polygon);
 
 	if (dvevent)
 	{
 		dv->setEventInterface(dvevent);
 		connect(dvevent, &DVEventInterface::finish, [action](){action->setChecked(false);});
+		return;
+	}
+
+	if (Q_UNLIKELY (!dv->diagram())) return;
+
+	Diagram *d = dv->diagram();
+	DiagramEventInterface *diagram_event = nullptr;
+
+	if (value == "line")
+		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Line);
+	else if (value == "rectangle")
+		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Rectangle);
+	else if (value == "ellipse")
+		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
+	else if (value == "polyline")
+		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
+
+	if (diagram_event)
+	{
+		d->setEventInterface(diagram_event);
+		connect(diagram_event, &DiagramEventInterface::finish, [action](){action->setChecked(false);});
 	}
 }
 

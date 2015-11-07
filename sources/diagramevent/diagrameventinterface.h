@@ -18,6 +18,8 @@
 #ifndef DIAGRAMEVENTINTERFACE_H
 #define DIAGRAMEVENTINTERFACE_H
 
+#include <QObject>
+
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 class QKeyEvent;
@@ -45,8 +47,10 @@ class Diagram;
  * the bool m_abort is here for that at destruction time.
  *
  */
-class DiagramEventInterface
+class DiagramEventInterface : public QObject
 {
+		Q_OBJECT
+
 	public:
 		DiagramEventInterface(Diagram *diagram);
 		virtual ~DiagramEventInterface() = 0;
@@ -60,6 +64,9 @@ class DiagramEventInterface
 		virtual bool isRunning () const;
 		virtual bool isFinish  () const;
 		virtual void init();
+
+	signals:
+		void finish(); //Emited when the interface finish is job.
 
 	protected:
 		Diagram *m_diagram;

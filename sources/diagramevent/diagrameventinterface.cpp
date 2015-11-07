@@ -66,6 +66,7 @@ bool DiagramEventInterface::keyPressEvent(QKeyEvent *event) {
 	if (event->key() == Qt::Key_Escape) {
 		m_running = false;
 		m_abort = true;
+		emit finish();
 		return true;
 	}
 	return false;

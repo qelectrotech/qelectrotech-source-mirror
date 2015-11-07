@@ -30,6 +30,8 @@ class Element;
  */
 class DiagramEventAddElement : public DiagramEventInterface
 {
+		Q_OBJECT
+
 	public:
 		DiagramEventAddElement(ElementsLocation &location, Diagram *diagram, QPointF pos = QPointF(0,0));
 		virtual ~DiagramEventAddElement();
