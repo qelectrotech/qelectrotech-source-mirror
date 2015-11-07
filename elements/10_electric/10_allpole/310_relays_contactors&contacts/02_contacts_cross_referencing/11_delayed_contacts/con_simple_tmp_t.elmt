@@ -1,32 +1,33 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
-<uuid uuid="{BB831D3A-4BEE-4725-9969-97F816D36CD7}"/><names>
-        <name lang="ar">مُلامس وصل يُغلق متأخرا</name>
-        <name lang="de">Schliesser ansprechverzögert</name>
-        <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
-        <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+<definition link_type="slave" hotspot_y="24" type="element" orientation="dyyy" version="0.5" hotspot_x="21" width="30" height="50">
+    <uuid uuid="{899a0057-0d4d-4eb3-b712-12fb7ea16235}"/>
+    <names>
         <name lang="el">Ανοικτή επαφή, καθυστέρηση ενεργοποίησης</name>
         <name lang="en">Simple contact (switch-on delay timer)</name>
-        <name lang="it">Contatto NO ritardato alla chiusura</name>
-        <name lang="fr">Contact simple (tempo travail)</name>
-        <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
-        <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
         <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
+        <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
+        <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+        <name lang="it">Contatto NO ritardato alla chiusura</name>
+        <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
+        <name lang="fr">Contact simple (tempo repos)</name>
+        <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
+        <name lang="de">Schliesser ansprechverzögert</name>
+        <name lang="ar">مُلامس وصل يُغلق متأخرا</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">delayOn</kindInformation>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-    <kindInformations>
-        <kindInformation name="state" show="1">NO</kindInformation>
-        <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">delayOn</kindInformation>
-   </kindInformations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.5" x1="-14.8" y2="1.5" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.5" x1="-14.8" y2="-1.5" x2="-3"/>
-        <arc width="10" x="-15" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
-        <input x="2.75" y="3" size="9" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="20" orientation="s"/>
+        <polygon y2="10" closed="false" y3="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x2="0" x1="-5" x3="0"/>
+        <line y2="1.5" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y1="1.5" x2="-3" x1="-14.8"/>
+        <line y2="-1.5" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end1="none" y1="-1.5" x2="-3" x1="-14.8"/>
+        <arc antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" width="10" height="10" start="-90" x="-15" y="-5" angle="-180"/>
+        <input size="9" text="_" x="2.75" y="3" tagg="label"/>
+        <line y2="-10" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" y1="-20" x2="0" x1="0"/>
+        <terminal orientation="n" x="0" y="-20"/>
+        <terminal orientation="s" x="0" y="20"/>
     </description>
 </definition>

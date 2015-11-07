@@ -1,32 +1,33 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
-<uuid uuid="{EA3920C9-1170-46F8-9BD4-D0E2E7EB1A7A}"/><names>
+<definition hotspot_x="21" type="element" width="40" link_type="slave" hotspot_y="24" height="50" orientation="dyyy" version="0.5">
+    <uuid uuid="{194877a5-8842-49cc-81a3-9f8fa0f400af}"/>
+    <names>
+        <name lang="fr">Contact simple (tempo repos)</name>
         <name lang="ar">مُلامس مُؤقت للوصل (NO) يُفتح مُتأخرا</name>
-        <name lang="de">Schliesser abfallverzögert</name>
-        <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
-        <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+        <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
         <name lang="el">Ανοικτή επαφή, καθυστέρηση απενεργοποίησης</name>
         <name lang="en">Simple contact (switch-on delay timer)</name>
+        <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
+        <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+        <name lang="de">Schliesser abfallverzögert</name>
         <name lang="it">Contatto NO ritardato alla riapertura</name>
-        <name lang="fr">Contact simple (tempo travail)</name>
         <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
-        <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">delayOff</kindInformation>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-    <kindInformations>
-        <kindInformation name="state" show="1">NO</kindInformation>
-        <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">delayOff</kindInformation>
-   </kindInformations>
     <description>
-        <arc width="10" x="-14" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="10" y3="20" x3="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.5" x1="-4" y2="1.5" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.5" x1="-4" y2="-1.5" x2="7"/>
-        <input x="12.75" y="3" size="9" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-10" x2="10"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="10" y="20" orientation="s"/>
+        <arc start="90" antialias="true" angle="-180" width="10" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-14" y="-5"/>
+        <polygon y1="-10" antialias="true" y3="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" x3="10" x2="10" y2="10"/>
+        <line length2="1.5" length1="1.5" y1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-4" end1="none" x2="7" y2="1.5" end2="none"/>
+        <line length2="1.5" length1="1.5" y1="-1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-4" end1="none" x2="7" y2="-1.5" end2="none"/>
+        <input text="_" size="9" tagg="label" x="12.75" y="3"/>
+        <line length2="1.5" length1="1.5" y1="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" end1="none" x2="10" y2="-10" end2="none"/>
+        <terminal orientation="n" x="10" y="-20"/>
+        <terminal orientation="s" x="10" y="20"/>
     </description>
 </definition>
