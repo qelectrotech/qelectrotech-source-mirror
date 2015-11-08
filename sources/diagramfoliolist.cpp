@@ -128,9 +128,10 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString aut
 	qreal x = row_rect.topLeft().x();
 	qreal y = row_rect.topLeft().y();
 
-	QFontMetrics origFontMetrics(qp -> font());
-	qreal origFontSize = qp -> font().pointSizeF();
-	QFont workingFont(qp -> font());
+
+	QFontMetrics origFontMetrics(QETApp::diagramTextsFont());
+	qreal origFontSize = QETApp::diagramTextsFont().pointSizeF();
+	QFont workingFont(QETApp::diagramTextsFont());
 
 	// reduce the font size if the text entry is long
 	if (origFontMetrics.width(folio) > 0.95*colWidths[0]*row_rect.width())
