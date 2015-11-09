@@ -95,7 +95,7 @@ bool DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 /**
  * @brief DiagramEventAddElement::mouseReleaseEvent
- * Right button finish this event (isRunning = false)
+ * Right button finish this event (isRunning = false) and emit finish.
  * Left button add an element to diagram
  * @param event
  * @return  always true
@@ -109,6 +109,7 @@ bool DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			delete m_element;
 			m_element = nullptr;
 			m_running = false;
+			emit finish();
 		}
 		else if (event->button() == Qt::LeftButton)
 		{
@@ -121,7 +122,7 @@ bool DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 /**
  * @brief DiagramEventAddElement::mouseDoubleClickEvent
- * If mouse left double clic, finish this event (isRunning = false)
+ * If mouse left double clic, finish this event (isRunning = false) and emit finish
  * @param event
  * @return always true
  */
@@ -132,6 +133,7 @@ bool DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 		delete m_element;
 		m_element = nullptr;
 		m_running = false;
+		emit finish();
 	}
 
 	return true;

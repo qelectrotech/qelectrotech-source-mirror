@@ -29,8 +29,7 @@ class Diagram;
  * @brief The DiagramEventInterface class
  * Each method return a bool: True if the methode do something else return false.
  * Each method of DVEventInterface return false;
- * isRunning() return true if action is started but not finish. By default return false.
- * isFinish() return true when the action is finish, or not started. By default return true.
+ * isRunning() return true if action is running (do something). By default return false.
  *
  * ##USE DiagramEventInterface##
  * This class is the basic interface for manage event on a diagram.
@@ -41,8 +40,7 @@ class Diagram;
  * they send the event to the interface (for exemple mousePressEvent).
  * If the interface do something with this event, you need to return true to signal the diagram you work with this event.
  * (if you do nothing by defaut the interface return false, so diagram do nothing)
- * after that, the diagram call interface::isRunning(), if true diagram do nothing, else if false,
- * that mean interface has finish is action (interface::isFinish return true) so the diagram will delete this interface.
+ * When the interface job is done, we need to emit the signal finish(), the diagram use this signal to delete the interface.
  * Be carreful with the destructor, diagram can at any time (even if interface is still running) delete the interface,
  * the bool m_abort is here for that at destruction time.
  *
@@ -62,7 +60,6 @@ class DiagramEventInterface : public QObject
 		virtual bool keyPressEvent         (QKeyEvent *event);
 		virtual bool KeyReleaseEvent       (QKeyEvent *event);
 		virtual bool isRunning () const;
-		virtual bool isFinish  () const;
 		virtual void init();
 
 	signals:

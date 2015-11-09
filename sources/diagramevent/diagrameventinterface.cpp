@@ -81,9 +81,5 @@ bool DiagramEventInterface::isRunning() const {
 	return m_running;
 }
 
-bool DiagramEventInterface::isFinish() const {
-	return !m_running;
-}
-
 void DiagramEventInterface::init()
 {}

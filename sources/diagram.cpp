@@ -169,14 +169,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
  */
 void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> mouseDoubleClickEvent(event)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->mouseDoubleClickEvent(event)) return;
 
 	QGraphicsScene::mouseDoubleClickEvent(event);
 }
@@ -188,14 +181,7 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> mousePressEvent(event)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->mousePressEvent(event)) return;
 
 	QGraphicsScene::mousePressEvent(event);
 }
@@ -207,14 +193,7 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> mouseMoveEvent(event)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->mouseMoveEvent(event)) return;
 
 	QGraphicsScene::mouseMoveEvent(event);
 }
@@ -226,14 +205,7 @@ void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> mouseReleaseEvent(event)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->mouseReleaseEvent(event)) return;
 
 	QGraphicsScene::mouseReleaseEvent(event);
 }
@@ -245,14 +217,9 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> wheelEvent(event)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->wheelEvent(event)) return;
+
+	QGraphicsScene::wheelEvent(event);
 }
 
 /**
@@ -263,14 +230,7 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
  */
 void Diagram::keyPressEvent(QKeyEvent *e)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> keyPressEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->keyPressEvent(e)) return;
 
 	bool transmit_event = true;
 	if (!isReadOnly()) {
@@ -301,14 +261,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
  */
 void Diagram::keyReleaseEvent(QKeyEvent *e)
 {
-	if (m_event_interface) {
-		if (m_event_interface -> KeyReleaseEvent(e)) {
-			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
-			}
-			return;
-		}
-	}
+	if (m_event_interface && m_event_interface->KeyReleaseEvent(e)) return;
 
 	bool transmit_event = true;
 	if (!isReadOnly()) {
@@ -334,6 +287,8 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
  * Diagram become the ownership of event_interface
  * If there is a previous interface, they will be delete before
  * and call init() to the new interface.
+ * The derivated class of DiagramEventInterface need to emit the signal "finish" when the job is done,
+ * diagram use this signal to delete the interface. If the signal isn't send, the interface will never be deleted.
  * @param event_interface
  */
 void Diagram::setEventInterface(DiagramEventInterface *event_interface)
@@ -344,6 +299,7 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 		event_interface -> init();
 	}
 	m_event_interface = event_interface;
+	connect (m_event_interface, &DiagramEventInterface::finish, this, [this]() { delete this->m_event_interface; this->m_event_interface = nullptr;}, Qt::QueuedConnection);
 }
 
 /**
