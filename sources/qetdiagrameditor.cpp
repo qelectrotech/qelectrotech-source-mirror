@@ -35,11 +35,11 @@
 #include "nomenclature.h"
 #include "diagramfoliolist.h"
 #include "qetshapeitem.h"
-#include "dveventaddtext.h"
 #include "reportproperties.h"
 #include "diagrampropertieseditordockwidget.h"
 #include "diagrameventaddshape.h"
 #include "diagrameventaddimage.h"
+#include "diagrameventaddtext.h"
 
 #include "ui/dialogautonum.h"
 
@@ -1138,25 +1138,10 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
-	DiagramView *dv = currentDiagram();
 
-	if (!dv || value.isEmpty()) return;
+	if (Q_UNLIKELY (!currentDiagram() || !currentDiagram()->diagram() || value.isEmpty())) return;
 
-	DVEventInterface *dvevent = nullptr;
-
-	if (value == "text")
-		dvevent = new DVEventAddText(dv);
-
-	if (dvevent)
-	{
-		dv->setEventInterface(dvevent);
-		connect(dvevent, &DVEventInterface::finish, [action](){action->setChecked(false);});
-		return;
-	}
-
-	if (Q_UNLIKELY (!dv->diagram())) return;
-
-	Diagram *d = dv->diagram();
+	Diagram *d = currentDiagram()->diagram();
 	DiagramEventInterface *diagram_event = nullptr;
 
 	if (value == "line")
@@ -1179,6 +1164,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		else
 			diagram_event = deai;
 	}
+	else if (value == "text")
+		diagram_event = new DiagramEventAddText(d);
 
 	if (diagram_event)
 	{
