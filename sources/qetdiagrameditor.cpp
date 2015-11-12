@@ -35,11 +35,11 @@
 #include "nomenclature.h"
 #include "diagramfoliolist.h"
 #include "qetshapeitem.h"
-#include "dveventaddimage.h"
 #include "dveventaddtext.h"
 #include "reportproperties.h"
 #include "diagrampropertieseditordockwidget.h"
 #include "diagrameventaddshape.h"
+#include "diagrameventaddimage.h"
 
 #include "ui/dialogautonum.h"
 
@@ -1146,18 +1146,6 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 
 	if (value == "text")
 		dvevent = new DVEventAddText(dv);
-	else if (value == "image")
-	{
-		DVEventAddImage *event = new DVEventAddImage(dv);
-		if (event -> isNull())
-		{
-			delete event;
-			action->setChecked(false);
-			return;
-		}
-		else
-			dvevent = event;
-	}
 
 	if (dvevent)
 	{
@@ -1179,6 +1167,18 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
 	else if (value == "polyline")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
+	else if (value == "image")
+	{
+		DiagramEventAddImage *deai = new DiagramEventAddImage(d);
+		if (deai->isNull())
+		{
+			delete deai;
+			action->setChecked(false);
+			return;
+		}
+		else
+			diagram_event = deai;
+	}
 
 	if (diagram_event)
 	{

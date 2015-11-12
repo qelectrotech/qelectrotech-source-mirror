@@ -551,15 +551,13 @@ void DiagramView::wheelEvent(QWheelEvent *e)
 {
 	if (m_event_interface && m_event_interface->wheelEvent(e)) return;
 
-	//Zoom and scrolling
-	if ( gestures() ) {
-		if (e -> modifiers() & Qt::ControlModifier)
-			e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
-		else
-			QGraphicsView::wheelEvent(e);
-	} else {
+		//Zoom and scrolling
+	if (gestures() && (e->modifiers() & Qt::ControlModifier))
+		e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
+	else if (e->modifiers() == Qt::NoModifier)
 		e -> delta() > 0 ? zoomIn(): zoomOut();
-	}
+	else
+		QGraphicsView::wheelEvent(e);
 }
 
 
