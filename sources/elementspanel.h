@@ -100,7 +100,6 @@ class ElementsPanel : public GenericPanel {
 	bool matchesFilter(const QTreeWidgetItem *, QString) const;
 	
 	protected slots:
-	void firstActivation();
 	void panelContentChange();
 	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	

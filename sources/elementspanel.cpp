@@ -83,22 +83,15 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	qp.setColor(QPalette::HighlightedText, Qt::black);
 	setPalette(qp);
 	
-	// we handle double click on items ourselves
-	connect(
-		this,
-		SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
-		this,
-		SLOT(slot_doubleClick(QTreeWidgetItem *, int))
-	);
+		// we handle double click on items ourselves
+	connect(this, &ElementsPanel::itemDoubleClicked, this, &ElementsPanel::slot_doubleClick);
+	connect(this, &GenericPanel::firstActivated, [this]() {QTimer::singleShot(250, this, SLOT(reload()));});
+	connect(this, &ElementsPanel::panelContentChanged, this, &ElementsPanel::panelContentChange);
 	
-	connect(this, SIGNAL(firstActivated()), this, SLOT(firstActivation()));
-	connect(this, SIGNAL(panelContentChanged()), this, SLOT(panelContentChange()));
-	
-	// emet un signal au lieu de gerer son menu contextuel
+		//Emit a signal instead au manage is own context menu
 	setContextMenuPolicy(Qt::CustomContextMenu);
 	
-	setElementsCache(QETApp::collectionCache());
-	
+	setElementsCache(QETApp::collectionCache());	
 }
 
 /**
@@ -341,10 +334,6 @@ void ElementsPanel::startTitleBlockTemplateDrag(const TitleBlockTemplateLocation
 	drag -> setMimeData(mime_data);
 	drag -> setPixmap(QET::Icons::TitleBlock.pixmap(22, 16));
 	drag -> start(Qt::CopyAction);
-}
-
-void ElementsPanel::firstActivation() {
-	QTimer::singleShot(250, this, SLOT(reload()));
 }
 
 /**
