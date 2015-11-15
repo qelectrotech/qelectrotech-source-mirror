@@ -89,7 +89,5 @@ class XmlElementsCategory : public ElementsCategory {
 	QHash<QString, XmlElementDefinition *> elements_;
 	/// Nae of this category within the tree
 	QString name_;
-	/// XML description of this category
-	QDomDocument xml_element_;
 };
 #endif

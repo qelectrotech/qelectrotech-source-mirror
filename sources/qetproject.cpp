@@ -74,10 +74,11 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 }
 
 /**
-	Construit un projet a partir du chemin d'un fichier.
-	@param path Chemin du fichier
-	@param parent QObject parent
-*/
+ * @brief QETProject::QETProject
+ * Construct a project from a .qet file
+ * @param path : path of the file
+ * @param parent : parent QObject
+ */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
 	collection_          (0     ),
@@ -88,23 +89,25 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  )
 {
-	// ouvre le fichier
+		//Open the file
 	QFile project_file(path);
-	if (!project_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+	if (!project_file.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
 		state_ = FileOpenFailed;
 		return;
 	}
 	setFilePath(path);
 	
-	// en extrait le contenu XML
-	bool xml_parsing = document_root_.setContent(&project_file);
-	if (!xml_parsing) {
+		//Extract the content of the xml
+	QDomDocument xml_project;
+	if (!xml_project.setContent(&project_file))
+	{
 		state_ = XmlParsingFailed;
 		return;
 	}
-	
-	// et construit le projet
-	readProjectXml();
+
+		//Build the project from the xml
+	readProjectXml(xml_project);
 	
 	setupTitleBlockTemplatesCollection();
 	
@@ -119,53 +122,13 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 }
 
 /**
-	Construit un projet a partir d'un element XML representant le projet.
-	L'element XML fourni est copie et conserve dans la classe.
-*/
-QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
-	QObject              (parent),
-	collection_          (0     ),
-	project_qet_version_ (-1    ),
-	modified_            (false ),
-	read_only_           (false ),
-	titleblocks_         (this  ),
-	folioSheetsQuantity  (0     ),
-	m_auto_conductor     (true  )
+ * @brief QETProject::~QETProject
+ * Destructor
+ */
+QETProject::~QETProject()
 {
-	// copie le contenu XML
-	document_root_.appendChild(document_root_.importNode(xml_element, true));
-	
-	// et construit le projet
-	readProjectXml();
-	
-	setupTitleBlockTemplatesCollection();
-
-	undo_stack_ = new QUndoStack();
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
-}
-
-/**
-	Destructeur
-*/
-QETProject::~QETProject() {
-	// supprime les schemas
-	// qDebug() << "Suppression du projet" << ((void *)this);
-	
-	// supprime la collection
-	// qDebug() << "Suppression de la collection du projet" << ((void *)this);
-	if (collection_) {
-		delete collection_;
-	}
-	// qDebug() << "Collection du projet" << ((void *)this) << "supprimee";
-	
-	// qDebug() << diagrams_;
-	foreach (Diagram *diagram, diagrams_) {
-		diagrams_.removeAll(diagram);
-		delete diagram;
-	}
-
-	folioSheetsQuantity = 0;
-	// qDebug() << diagrams_;
+	if (collection_) delete collection_;
+	qDeleteAll(diagrams_);
 	delete undo_stack_;
 }
 
@@ -637,32 +600,28 @@ bool QETProject::close() {
 }
 
 /**
-	Enregistre le projet vers un fichier.
-	@see filePath()
-	@see setFilePath()
-	@return true si l'enregistrement a reussi, false sinon
-*/
-QETResult QETProject::write() {
-	// this operation requires a filepath
-	if (file_path_.isEmpty()) {
+ * @brief QETProject::write
+ * Save the project in a file
+ * @see filePath()
+ * @see setFilePath()
+ * @return true if the project was successfully saved, else false
+ */
+QETResult QETProject::write()
+{
+		// this operation requires a filepath
+	if (file_path_.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
-	}
 
-	// if the project was opened read-only and the file is still non-writable, do not save the project
-	if (isReadOnly() && !QFileInfo(file_path_).isWritable()) {
+		// if the project was opened read-only and the file is still non-writable, do not save the project
+	if (isReadOnly() && !QFileInfo(file_path_).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
-	}
 
-	// realise l'export en XML du projet dans le document XML interne
-	document_root_.clear();
-	document_root_.appendChild(document_root_.importNode(toXml().documentElement(), true));
-
+		//Get the project in xml
+	QDomDocument xml_project;
+	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
 
 	QString error_message;
-	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
-	if (!writing) {
-		return(error_message);
-	}
+	if (!QET::writeXmlFile(xml_project, file_path_, &error_message)) return(error_message);
 
 	setModified(false);
 	return(QETResult());
@@ -1100,78 +1059,81 @@ ElementsCategory *QETProject::rootCategory() const {
 }
 
 /**
-	(Re)lit le projet depuis sa description XML
-*/
-void QETProject::readProjectXml() {
-	QDomElement root_elmt = document_root_.documentElement();
+ * @brief QETProject::readProjectXml
+ * Read and make the project from an xml description
+ * @param xml_project : the description of the project from an xml
+ */
+void QETProject::readProjectXml(QDomDocument &xml_project)
+{
+	QDomElement root_elmt = xml_project.documentElement();
 	state_ = ProjectParsingRunning;
 	
-	// la racine du document XML est sensee etre un element "project"
-	if (root_elmt.tagName() == "project") {
-
-		// mode d'ouverture normal
-		if (root_elmt.hasAttribute("version")) {
+		//The roots of the xml document must be a "project" element
+	if (root_elmt.tagName() == "project")
+	{
+			//Normal opening mode
+		if (root_elmt.hasAttribute("version"))
+		{
 			bool conv_ok;
 			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
-			if (conv_ok && QET::version.toDouble() < project_qet_version_) {
-				
+
+			if (conv_ok && QET::version.toDouble() < project_qet_version_)
+			{
 				int ret = QET::QetMessageBox::warning(
-					0,
-					tr("Avertissement", "message box title"),
-					tr(
-						"Ce document semble avoir été enregistré avec "
-						"une version ultérieure de QElectroTech. Il est "
-						"possible que l'ouverture de tout ou partie de ce "
-						"document échoue.\n"
-						"Que désirez vous faire ?",
-						"message box content"
-					),
-					QMessageBox::Open | QMessageBox::Cancel
-				);
+							  0,
+							  tr("Avertissement", "message box title"),
+							  tr(
+								  "Ce document semble avoir été enregistré avec "
+								  "une version ultérieure de QElectroTech. Il est "
+								  "possible que l'ouverture de tout ou partie de ce "
+								  "document échoue.\n"
+								  "Que désirez vous faire ?",
+								  "message box content"
+								  ),
+							  QMessageBox::Open | QMessageBox::Cancel
+							  );
 				
-				if (ret == QMessageBox::Cancel) {
+				if (ret == QMessageBox::Cancel)
+				{
 					state_ = FileOpenDiscard;
 					return;
 				}
-				
 			}
 		}
-		
 		setTitle(root_elmt.attribute("title"));
-	} else {
+	}
+	else
+	{
 		state_ = ProjectParsingFailed;
 	}
 	
-	// load the project-wide properties
-	readProjectPropertiesXml();
-	
-	// charge les proprietes par defaut pour les nouveaux schemas
-	readDefaultPropertiesXml();
-	
-	// load the embedded titleblock templates
-	readEmbeddedTemplatesXml();
-	
-	// charge la collection embarquee
-	readElementsCollectionXml();
-	
-	// charge les schemas
-	readDiagramsXml();
+		//Load the project-wide properties
+	readProjectPropertiesXml(xml_project);
+		//Load the default properties for the new diagrams
+	readDefaultPropertiesXml(xml_project);
+		//load the embedded titleblock templates
+	readEmbeddedTemplatesXml(xml_project);
+		//Load the embedded elements collection
+	readElementsCollectionXml(xml_project);
+		//Load the diagrams
+	readDiagramsXml(xml_project);
 
-	// if there is an attribute for folioSheetQuantity, then set it accordingly.
-	// If not, then the value remains at the initial value of zero.
-	if (root_elmt.attribute("folioSheetQuantity","0").toInt()) {
+		// if there is an attribute for folioSheetQuantity, then set it accordingly.
+		// If not, then the value remains at the initial value of zero.
+	if (root_elmt.attribute("folioSheetQuantity","0").toInt())
 		addNewDiagramFolioList();
-	}
 	
 	state_ = Ok;
 }
 
 /**
-	Charge les schemas depuis la description XML du projet.
-	A noter qu'un projet peut parfaitement ne pas avoir de schema.
-*/
-void QETProject::readDiagramsXml() {
-	// map destinee a accueillir les schemas
+ * @brief QETProject::readDiagramsXml
+ * Load the diagrams from the xml description of the project.
+ * Note a project can have 0 diagram
+ * @param xml_project
+ */
+void QETProject::readDiagramsXml(QDomDocument &xml_project)
+{
 	QMultiMap<int, Diagram *> loaded_diagrams;
 	
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
@@ -1181,8 +1143,8 @@ void QETProject::readDiagramsXml() {
 	dlgWaiting -> show();
 	dlgWaiting -> setTitle( tr("<b>Ouverture du projet en cours...</b>") );
 	
-	// recherche les schemas dans le projet
-	QDomNodeList diagram_nodes = document_root_.elementsByTagName("diagram");
+		//Search the diagrams in the project
+	QDomNodeList diagram_nodes = xml_project.elementsByTagName("diagram");
 	dlgWaiting->setProgressBarRange(0, diagram_nodes.length());
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
@@ -1195,7 +1157,7 @@ void QETProject::readDiagramsXml() {
 			if (diagram_loading)
 			{
 				dlgWaiting->setDetail( diagram->title() );
-				// recupere l'attribut order du schema
+					//Get the attribute "order" of the diagram
 				int diagram_order = -1;
 				if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
 				loaded_diagrams.insert(diagram_order, diagram);
@@ -1207,57 +1169,129 @@ void QETProject::readDiagramsXml() {
 		}
 	}
 	
-	// ajoute les schemas dans l'ordre indique par les attributs order
-	foreach(Diagram *diagram, loaded_diagrams.values()) {
+		//Add the diagrams according to there "order" attribute
+	foreach(Diagram *diagram, loaded_diagrams.values())
 		addDiagram(diagram);
-	}
-	// Initialise links between elements in this project
-	foreach (Diagram *d, diagrams()) {
+
+		//Initialise links between elements in this project
+	foreach (Diagram *d, diagrams())
 		d->initElementsLinks();
-	}
 
-
-	//delete dialog object
 	delete dlgWaiting;
 }
 
 /**
-	Loads the embedded template from the XML description of the project
-*/
-void QETProject::readEmbeddedTemplatesXml() {
-	titleblocks_.fromXml(document_root_.documentElement());
+ * @brief QETProject::readEmbeddedTemplatesXml
+ * Loads the embedded template from the XML description of the project
+ * @param xml_project : the xml description of the project
+ */
+void QETProject::readEmbeddedTemplatesXml(QDomDocument &xml_project) {
+	titleblocks_.fromXml(xml_project.documentElement());
 }
 
 /**
-	Charge les schemas depuis la description XML du projet
-*/
-void QETProject::readElementsCollectionXml() {
-	// recupere la collection d'elements integreee au projet
-	QDomNodeList collection_roots = document_root_.elementsByTagName("collection");
+ * @brief QETProject::readElementsCollectionXml
+ * Load the diagrams from the xml description of the project
+ * @param xml_project : the xml description of the project
+ */
+void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
+{
+		//Get the embedded elements collection of the project
+	QDomNodeList collection_roots = xml_project.elementsByTagName("collection");
 	QDomElement collection_root;
-	if (!collection_roots.isEmpty()) {
-		// seule la premiere collection trouvee est prise en compte
+
+	if (!collection_roots.isEmpty())
+	{
+			//Only the first found collection is take
 		collection_root = collection_roots.at(0).toElement();
 	}
 	
-	if (collection_root.isNull()) {
-		// s'il n'y en a pas, cree une collection vide
+	if (collection_root.isNull()) //Make an empty collection
 		collection_ = new XmlElementsCollection();
-	} else {
-		// sinon lit cette collection
+	else //Read the collection
 		collection_ = new XmlElementsCollection(collection_root);
-	}
+
 	collection_ -> setProtocol("embed");
 	collection_ -> setProject(this);
 	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
 }
 
 /**
-	Load project properties from the XML description of the project
-*/
-void QETProject::readProjectPropertiesXml() {
-	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "properties")) {
+ * @brief QETProject::readProjectPropertiesXml
+ * Load project properties from the XML description of the project
+ * @param xml_project : the xml description of the project
+ */
+void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
+{
+	foreach (QDomElement e, QET::findInDomElement(xml_project.documentElement(), "properties"))
 		project_properties_.fromXml(e);
+}
+
+/**
+ * @brief QETProject::readDefaultPropertiesXml
+ * load default properties for new diagram, found in the xml of this project
+ * or by default find in the QElectroTech global conf
+ * @param xml_project : the xml description of the project
+ */
+void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
+{
+		// Find xml element where is stored properties for new diagram
+	QDomNodeList newdiagrams_nodes = xml_project.elementsByTagName("newdiagrams");
+	if (newdiagrams_nodes.isEmpty()) return;
+
+	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
+
+		// By default, use value find in the global conf of QElectroTech
+	default_border_properties_	   = BorderProperties::    defaultProperties();
+	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
+	default_conductor_properties_  = ConductorProperties:: defaultProperties();
+	default_report_properties_	   = ReportProperties::    defaultProperties();
+	m_default_xref_properties	   = XRefProperties::      defaultProperties();
+
+		//Read values indicate in project
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums;
+
+	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
+	{
+		QDomElement child_elmt = child.toElement();
+		if (child_elmt.isNull()) continue;
+
+		if (child_elmt.tagName() == "border")
+			border_elmt = child_elmt;
+		else if (child_elmt.tagName() == "inset")
+			titleblock_elmt = child_elmt;
+		else if (child_elmt.tagName() == "conductors")
+			conductors_elmt = child_elmt;
+		else if (child_elmt.tagName() == "report")
+			report_elmt = child_elmt;
+		else if (child_elmt.tagName() == "xrefs")
+			xref_elmt = child_elmt;
+		else if (child_elmt.tagName() == "conductors_autonums")
+			conds_autonums = child_elmt;
+	}
+
+		// size, titleblock, conductor, report, conductor autonum
+	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
+	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
+	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
+	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
+	if (!xref_elmt.isNull())
+	{
+		foreach(QDomElement elmt, QET::findInDomElement(xref_elmt, "xref"))
+		{
+			XRefProperties xrp;
+			xrp.fromXml(elmt);
+			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
+		}
+	}
+	if (!conds_autonums.isNull())
+	{
+		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum"))
+		{
+			NumerotationContext nc;
+			nc.fromXml(elmt);
+			m_conductor_autonum.insert(elmt.attribute("title"), nc);
+		}
 	}
 }
 
@@ -1267,68 +1301,6 @@ void QETProject::readProjectPropertiesXml() {
 void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 	project_properties_.toXml(xml_element);
 }
-
-/**
- * @brief QETProject::readDefaultPropertiesXml
- * load default properties for new diagram, found in the xml of this project
- * or by default find in the QElectroTech global conf
- */
-void QETProject::readDefaultPropertiesXml() {
-	// Find xml element where is stored properties for new diagram
-	QDomNodeList newdiagrams_nodes = document_root_.elementsByTagName("newdiagrams");
-	if (newdiagrams_nodes.isEmpty()) return;
-	
-	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
-	
-	// By default, use value find in the global conf of QElectroTech
-	default_border_properties_	   = BorderProperties::    defaultProperties();
-	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
-	default_conductor_properties_  = ConductorProperties:: defaultProperties();
-	default_report_properties_	   = ReportProperties::    defaultProperties();
-	m_default_xref_properties	   = XRefProperties::      defaultProperties();
-	
-	//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums;
-	
-	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
-		QDomElement child_elmt = child.toElement();
-		if (child_elmt.isNull()) continue;
-		if (child_elmt.tagName() == "border") {
-			border_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "inset") {
-			titleblock_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "conductors") {
-			conductors_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "report") {
-			report_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "xrefs") {
-			xref_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "conductors_autonums") {
-			conds_autonums = child_elmt;
-		}
-	}
-	
-	// size, titleblock, conductor, report, conductor autonum
-	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
-	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
-	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
-	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
-	if (!xref_elmt.isNull()) {
-		foreach(QDomElement elmt, QET::findInDomElement(xref_elmt, "xref")) {
-			XRefProperties xrp;
-			xrp.fromXml(elmt);
-			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
-		}
-	}
-	if (!conds_autonums.isNull()) {
-		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum")) {
-			NumerotationContext nc;
-			nc.fromXml(elmt);
-			m_conductor_autonum.insert(elmt.attribute("title"), nc);
-		}
-	}
-}
-
 
 /**
  * @brief QETProject::writeDefaultPropertiesXml

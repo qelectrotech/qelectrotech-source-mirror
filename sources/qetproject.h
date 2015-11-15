@@ -17,8 +17,7 @@
 */
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
-#include <QtCore>
-#include <QtXml>
+
 #include "nameslist.h"
 #include "elementslocation.h"
 #include "borderproperties.h"
@@ -54,9 +53,8 @@ class QETProject : public QObject
 	
 		// constructors, destructor
 	public:
-		QETProject (int = 1,             QObject * = 0);
-		QETProject (const QString &,     QObject * = 0);
-		QETProject (const QDomElement &, QObject * = 0);
+		QETProject (int = 1, QObject * = 0);
+		QETProject (const QString &, QObject * = 0);
 		virtual ~QETProject();
 	
 	private:
@@ -181,19 +179,21 @@ class QETProject : public QObject
 	void undoStackChanged (bool a) {if (!a) setModified(true);}
 	
 	private:
-	void setupTitleBlockTemplatesCollection();
-	ElementsCategory *rootCategory() const;
-	void readProjectXml();
-	void readDiagramsXml();
-	void readElementsCollectionXml();
-	void readEmbeddedTemplatesXml();
-	void readProjectPropertiesXml();
-	void writeProjectPropertiesXml(QDomElement &);
-	void readDefaultPropertiesXml();
-	void writeDefaultPropertiesXml(QDomElement &);
-	void addDiagram(Diagram *);
-	NamesList namesListForIntegrationCategory();
-	ElementsLocation copyElementWithHandler(ElementDefinition *, ElementsCategory *, MoveElementsHandler *, QString &);
+		void setupTitleBlockTemplatesCollection();
+		ElementsCategory *rootCategory() const;
+
+		void readProjectXml(QDomDocument &xml_project);
+		void readDiagramsXml(QDomDocument &xml_project);
+		void readEmbeddedTemplatesXml(QDomDocument &xml_project);
+		void readElementsCollectionXml(QDomDocument &xml_project);
+		void readProjectPropertiesXml(QDomDocument &xml_project);
+		void readDefaultPropertiesXml(QDomDocument &xml_project);
+
+		void writeProjectPropertiesXml(QDomElement &);
+		void writeDefaultPropertiesXml(QDomElement &);
+		void addDiagram(Diagram *);
+		NamesList namesListForIntegrationCategory();
+		ElementsLocation copyElementWithHandler(ElementDefinition *, ElementsCategory *, MoveElementsHandler *, QString &);
 	
 	// attributes
 	private:
@@ -201,8 +201,6 @@ class QETProject : public QObject
 	QString file_path_;
 	/// Current state of the project
 	ProjectState state_;
-	/// XML document representing the project
-	QDomDocument document_root_;
 	/// Diagrams carried by the project
 	QList<Diagram *> diagrams_;
 	/// Embedded elements collection
