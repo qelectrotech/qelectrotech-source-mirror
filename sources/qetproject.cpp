@@ -338,53 +338,6 @@ void QETProject::setTitle(const QString &title) {
 }
 
 /**
-	@return the list of the titleblock templates embedded within this project 
-*/
-QList<QString> QETProject::embeddedTitleBlockTemplates() {
-	return(titleblocks_.templates());
-}
-
-/**
-	@param template_name Name of the requested template
-	@return the requested template, or 0 if there is no valid template of this
-	name within the project
-*/
-const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_name) {
-	return(titleblocks_.getTemplate(template_name));
-}
-
-/**
-	@param template_name Name of the requested template
-	@return the XML description of the requested template, or a null QDomElement
-	if the project does not have such an titleblock template
-*/
-QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_name) {
-	return(titleblocks_.getTemplateXmlDescription(template_name));
-}
-
-/**
-	This methods allows adding or modifying a template embedded within the
-	project.
-	@param template_name Name / Identifier of the template - will be used to
-	determine whether the given description will be added or will replace an
-	existing one.
-	@param xml_elmt An \<titleblocktemplate\> XML element describing the
-	template. Its "name" attribute must equal to template_name.
-	@return false if a problem occured, true otherwise
-*/
-bool QETProject::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
-	return(titleblocks_.setTemplateXmlDescription(template_name, xml_elmt));
-}
-
-/**
-	This methods allows removing a template embedded within the project.
-	@param template_name Name of the template to be removed
-*/
-void QETProject::removeTemplateByName(const QString &template_name) {
-	return(titleblocks_.removeTemplate(template_name));
-}
-
-/**
 	@return les dimensions par defaut utilisees lors de la creation d'un
 	nouveau schema dans ce projet.
 */
@@ -839,11 +792,8 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 		}
 	}
 	
-	bool integration = setTemplateXmlDescription(
-		target_name,
-		src_tbt.getTemplateXmlDescription()
-	);
-	if (!integration) {
+	if (!titleblocks_.setTemplateXmlDescription(target_name, src_tbt.getTemplateXmlDescription()))
+	{
 		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'intégration du modèle.", "error message"));
 		target_name = QString();
 	}
@@ -880,13 +830,6 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 		}
 	}
 	return(false);
-}
-
-/**
-	Delete all title block templates not used in the project
-*/
-void QETProject::cleanUnusedTitleBlocKTemplates() {
-	titleblocks_.deleteUnusedTitleBlocKTemplates();
 }
 
 /**
@@ -1112,7 +1055,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
 		//load the embedded titleblock templates
-	readEmbeddedTemplatesXml(xml_project);
+	titleblocks_.fromXml(xml_project.documentElement());
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
 		//Load the diagrams
@@ -1178,15 +1121,6 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		d->initElementsLinks();
 
 	delete dlgWaiting;
-}
-
-/**
- * @brief QETProject::readEmbeddedTemplatesXml
- * Loads the embedded template from the XML description of the project
- * @param xml_project : the xml description of the project
- */
-void QETProject::readEmbeddedTemplatesXml(QDomDocument &xml_project) {
-	titleblocks_.fromXml(xml_project.documentElement());
 }
 
 /**
@@ -1462,16 +1396,6 @@ bool QETProject::embeddedCollectionWasModified() {
 }
 
 /**
-	@return true if the embedded title block templates collection was modified,
-	false otherwise.
-*/
-bool QETProject::titleBlockTemplateCollectionWasModified() {
-	// we do not expect a new project to embed any title block template (this may
-	// change in the future though).
-	return(titleblocks_.templates().count());
-}
-
-/**
 	@return the project-wide properties made available to child diagrams.
 */
 DiagramContext QETProject::projectProperties() {
@@ -1500,7 +1424,7 @@ bool QETProject::projectWasModified() {
 	if ( projectOptionsWereModified()    ||
 		 !undo_stack_ -> isClean()       ||
 		 embeddedCollectionWasModified() ||
-		 titleBlockTemplateCollectionWasModified() )
+		 titleblocks_.templates().count() )
 		return(true);
 	
 	else

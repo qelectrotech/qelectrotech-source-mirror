@@ -929,10 +929,10 @@ void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 	@param template_name Name of the title block template that has changed
 	@param new_template (Optional) Name of the title block template to use instead
 */
-void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template) {
-	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
-	
-	const TitleBlockTemplate *final_template = project_ -> getTemplateByName(new_template);
+void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template)
+{
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;	
+	const TitleBlockTemplate *final_template = project_->embeddedTitleBlockTemplatesCollection()->getTemplate(new_template);
 	border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
 	update();
 }
@@ -941,16 +941,16 @@ void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QStr
 	Set the template to use to render the title block of this diagram.
 	@param template_name Name of the title block template.
 */
-void Diagram::setTitleBlockTemplate(const QString &template_name) {
+void Diagram::setTitleBlockTemplate(const QString &template_name)
+{
 	if (!project_) return;
 	
 	QString current_name = border_and_titleblock.titleBlockTemplateName();
-	const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(template_name);
+	const TitleBlockTemplate *titleblock_template = project_->embeddedTitleBlockTemplatesCollection()->getTemplate(template_name);
 	border_and_titleblock.titleBlockTemplateRemoved(current_name, titleblock_template);
 	
-	if (template_name != current_name) {
+	if (template_name != current_name)
 		emit(usedTitleBlockTemplateChanged(template_name));
-	}
 }
 
 /**

@@ -726,9 +726,10 @@ int ProjectView::cleanProject() {
 	connect(buttons, SIGNAL(rejected()), &clean_dialog, SLOT(reject()));
 	
 	int clean_count = 0;
-	if (clean_dialog.exec() == QDialog::Accepted) {
+	if (clean_dialog.exec() == QDialog::Accepted)
+	{
 		if (clean_tbt -> isChecked()) {
-			project_ -> cleanUnusedTitleBlocKTemplates();
+			project_->embeddedTitleBlockTemplatesCollection()->deleteUnusedTitleBlocKTemplates();
 		}
 		if (clean_elements -> isChecked()) {
 			InteractiveMoveElementsHandler *handler = new InteractiveMoveElementsHandler(this);

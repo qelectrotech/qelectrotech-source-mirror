@@ -93,11 +93,6 @@ class QETProject : public QObject
 		QString title() const;
 		qreal declaredQElectroTechVersion();
 		void setTitle(const QString &);
-		QList<QString> embeddedTitleBlockTemplates();
-		const TitleBlockTemplate *getTemplateByName(const QString &template_name);
-		QDomElement getTemplateXmlDescriptionByName(const QString &);
-		bool setTemplateXmlDescription(const QString &, const QDomElement &);
-		void removeTemplateByName(const QString &);
 
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
@@ -138,13 +133,11 @@ class QETProject : public QObject
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
-		void cleanUnusedTitleBlocKTemplates();
 		void cleanUnusedElements(MoveElementsHandler *);
 		void cleanEmptyCategories(MoveElementsHandler *);
 		bool projectWasModified();
 		bool projectOptionsWereModified();
 		bool embeddedCollectionWasModified();
-		bool titleBlockTemplateCollectionWasModified();
 		DiagramContext projectProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return undo_stack_;}
@@ -184,7 +177,6 @@ class QETProject : public QObject
 
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
-		void readEmbeddedTemplatesXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);

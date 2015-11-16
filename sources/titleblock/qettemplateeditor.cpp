@@ -210,18 +210,22 @@ bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &locatio
 	@param template_name Name of the template to edit within its parent project.
 	@return true if this editor was able to edit the given template, false otherwise
 */
-bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &template_name) {
-	// we require a project we will rattach templates to
+bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &template_name)
+{
+		// we require a project we will rattach templates to
 	if (!project) return(false);
 	
-	// the template name may be empty to create a new one
+		// the template name may be empty to create a new one
 	const TitleBlockTemplate *tb_template_orig;
-	if (template_name.isEmpty()) {
-		// loads the default title block template provided by the application
-		// it will be used as a start point to design the title block
+	if (template_name.isEmpty())
+	{
+			// loads the default title block template provided by the application
+			// it will be used as a start point to design the title block
 		tb_template_orig = QETApp::defaultTitleBlockTemplate();
-	} else {
-		tb_template_orig = project -> getTemplateByName(template_name);
+	}
+	else
+	{
+		tb_template_orig = project->embeddedTitleBlockTemplatesCollection()->getTemplate(template_name);
 	}
 	
 	if (!tb_template_orig) {
