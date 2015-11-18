@@ -132,10 +132,7 @@ class DiagramView : public QGraphicsView
 	void rotateTexts();
 	void setVisualisationMode();
 	void setSelectionMode();
-	void zoomIn();
-	void zoomOut();
-	void zoomInSlowly();
-	void zoomOutSlowly();
+	void zoom(const qreal zoom_factor);
 	void zoomFit();
 	void zoomContent();
 	void zoomReset();

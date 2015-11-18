@@ -244,7 +244,7 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 }
 
 /**
-	Gere les dragleaveevent
+	Gere les dragleave
 	@param e le QDragEnterEvent correspondant au drag'n drop sortant
 */
 void DiagramView::dragLeaveEvent(QDragLeaveEvent *e) {
@@ -345,50 +345,23 @@ void DiagramView::setSelectionMode() {
 }
 
 /**
- * @brief DiagramView::zoomIn
- * Zoom in the current folio
+ * @brief DiagramView::zoom
+ * Zomm the view.
+ * A zoom_factor > 1 zoom in.
+ * A zoom_factor < 1 zoom out
+ * @param zoom_factor
  */
-void DiagramView::zoomIn() {
-	scale(1.15, 1.15);
-	adjustGridToZoom();
-}
-
-/**
- * @brief DiagramView::zoomOut
- * Zoom out the current folio.
- * If zoom-out-beyond-of-folio is true in common setting, the zoom out is infinite
- * else zoom out is stopped when the entire folio is visible.
- */
-void DiagramView::zoomOut()
+void DiagramView::zoom(const qreal zoom_factor)
 {
-	QSettings settings;
-	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
-		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
-		scale(0.85, 0.85);
-
-	adjustGridToZoom();
-}
-
-/**
- * @brief DiagramView::zoomInSlowly
- * Like zoomIn but more slowly
- */
-void DiagramView::zoomInSlowly() {
-	scale(1.02, 1.02);
-	adjustGridToZoom();
-}
-
-/**
- * @brief DiagramView::zoomOutSlowly
- * Like zoomOut but more slowly
- */
-void DiagramView::zoomOutSlowly()
-{
-	QSettings settings;
-	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
-		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
-		scale(0.98, 0.98);
-
+	if (zoom_factor >= 1)
+		scale(zoom_factor, zoom_factor);
+	else
+	{
+		QSettings settings;
+		if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
+			(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
+			scale(zoom_factor, zoom_factor);
+	}
 	adjustGridToZoom();
 }
 
@@ -547,38 +520,50 @@ bool DiagramView::gestures() const
 	Manage wheel event of mouse
 	@param e QWheelEvent
 */
-void DiagramView::wheelEvent(QWheelEvent *e)
+void DiagramView::wheelEvent(QWheelEvent *event)
 {
-	if (m_event_interface && m_event_interface->wheelEvent(e)) return;
+	if (m_event_interface && m_event_interface->wheelEvent(event)) return;
 
 		//Zoom and scrolling
-	if (gestures() && (e->modifiers() & Qt::ControlModifier))
-		e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
-	else if (e->modifiers() == Qt::NoModifier)
-		e -> delta() > 0 ? zoomIn(): zoomOut();
+	QPoint angle = event->angleDelta();
+
+	if (gestures()) //When gesture mode is enable, we suppose the wheel event are made from a trackpad.
+	{
+		if (event->modifiers() == Qt::ControlModifier) //zoom
+		{
+			qreal value = angle.y();
+			zoom(1 + value/1000);
+		}
+		else //scroll
+		{
+			horizontalScrollBar()->setValue(horizontalScrollBar()->value() - angle.x());
+			verticalScrollBar()->setValue(verticalScrollBar()->value() - angle.y());
+		}
+	}
+	else if (event->modifiers() == Qt::NoModifier) //Else we suppose the wheel event are made from a mouse.
+	{
+		qreal value = angle.y();
+		zoom(1 + value/1000);
+	}
 	else
-		QGraphicsView::wheelEvent(e);
+		QGraphicsView::wheelEvent(event);
 }
 
-
 /**
- * Utilise le pincement du trackpad pour zoomer
  * @brief DiagramView::gestureEvent
+ * Use the pinch of the trackpad for zoom
  * @param event
  * @return
  */
-
-
-bool DiagramView::gestureEvent(QGestureEvent *event){
-	if (QGesture *gesture = event->gesture(Qt::PinchGesture)) {
+bool DiagramView::gestureEvent(QGestureEvent *event)
+{
+	if (QGesture *gesture = event->gesture(Qt::PinchGesture))
+	{
 		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);
-		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged){
+		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged)
+		{
 			qreal value = gesture->property("scaleFactor").toReal();
-			if (value > 1){
-				zoomInSlowly();
-			}else{
-				zoomOutSlowly();
-			}
+			value > 1 ? zoom(1.02) : zoom(0.98);
 		}
 	}
 	return true;
