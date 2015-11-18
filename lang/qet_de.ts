@@ -4394,7 +4394,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="266"/>
         <source>Ajouter une ligne</source>
-        <translation>Zeile einfügen</translation>
+        <translation>Linie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="267"/>
