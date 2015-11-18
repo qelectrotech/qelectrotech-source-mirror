@@ -1,0 +1,21 @@
+<definition orientation="dyyy" hotspot_x="44" version="0.5" link_type="simple" type="element" hotspot_y="9" height="50" width="90">
+    <uuid uuid="{fcf44d66-2633-4707-90a9-a56487735ce7}"/>
+    <names>
+        <name lang="en">Mylar Capacitor - Orange Drop</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Mylar Capacitor - Orange Drop
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-30" style="line-style:normal;line-weight:normal;filling:orange;color:black" height="22" antialias="false" y="-6" width="60"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" x1="-40" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x1="30" y1="0" end2="none" antialias="false"/>
+        <input x="-25" size="5" text="Orange Drop" rotate="true" y="-15" tagg="label"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40" x1="-40" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x1="40" y1="0" end2="none" antialias="false"/>
+        <terminal orientation="s" x="40" y="35"/>
+        <terminal orientation="s" x="-40" y="35"/>
+    </description>
+</definition>

@@ -1,0 +1,57 @@
+<definition orientation="dyyy" hotspot_y="35" height="70" hotspot_x="95" type="element" link_type="simple" width="200" version="0.5">
+    <uuid uuid="{015c60d2-baf7-449f-9670-65d4e37afedb}"/>
+    <names>
+        <name lang="en">Jaguar Multi Pickup Switches</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="75" diameter="10"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-53" width="2"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="48" width="2"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-41" width="2"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-41" width="2"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-53" width="2"/>
+        <line x2="70" antialias="false" y2="-30" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="-60" length1="1.5"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="5" width="2"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-41" width="2"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-7" width="2"/>
+        <rect antialias="false" y="-3" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="36" width="2"/>
+        <line x2="-90" antialias="false" y2="0" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="-60" length1="1.5"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-7" width="2"/>
+        <line x2="-60" antialias="false" y2="30" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="-90" length1="1.5"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="36" width="2"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="5" width="2"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="48" width="2"/>
+        <line x2="70" antialias="false" y2="30" y1="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="-60" length1="1.5"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="5" width="2"/>
+        <line x2="100" antialias="false" y2="0" y1="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="70" length1="1.5"/>
+        <rect antialias="false" y="13" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="48" width="2"/>
+        <rect antialias="false" y="-25" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" width="25"/>
+        <rect antialias="false" y="-25" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="31" width="25"/>
+        <line x2="70" antialias="false" y2="-30" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="100" length1="1.5"/>
+        <rect antialias="false" y="-25" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-58" width="25"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="36" width="2"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-7" width="2"/>
+        <rect antialias="false" y="-20" height="6" style="line-style:normal;line-weight:eleve;filling:none;color:black" x="-53" width="2"/>
+        <circle antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-75" diameter="10"/>
+        <input size="5" y="-70" tagg="label" text="Jaguar 3 Switch Pickup Selector" x="-50" rotate="true"/>
+        <terminal orientation="n" y="-20" x="37"/>
+        <terminal orientation="n" y="-2" x="-6"/>
+        <terminal orientation="n" y="-20" x="-40"/>
+        <terminal orientation="n" y="15" x="-6"/>
+        <terminal orientation="n" y="-20" x="50"/>
+        <terminal orientation="n" y="-20" x="-52"/>
+        <terminal orientation="n" y="-2" x="-52"/>
+        <terminal orientation="n" y="15" x="5"/>
+        <terminal orientation="n" y="-5" x="50"/>
+        <terminal orientation="n" y="-19" x="-6"/>
+        <terminal orientation="n" y="-19" x="6"/>
+        <terminal orientation="n" y="15" x="-52"/>
+        <terminal orientation="n" y="-2" x="6"/>
+        <terminal orientation="n" y="15" x="-40"/>
+        <terminal orientation="n" y="-2" x="-40"/>
+        <terminal orientation="n" y="14" x="37"/>
+        <terminal orientation="n" y="-2" x="37"/>
+        <terminal orientation="n" y="14" x="49"/>
+    </description>
+</definition>

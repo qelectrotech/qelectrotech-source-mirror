@@ -1,0 +1,41 @@
+<definition orientation="dyyy" hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="51" height="80" width="160">
+    <uuid uuid="{54cc9df1-ac55-43ff-ab92-cb8fb06d9d3a}"/>
+    <names>
+        <name lang="ar">Single Coil Pickup</name>
+        <name lang="en">Single Coil Pickup</name>
+        <name lang="cs">Single Coil Pickup</name>
+        <name lang="es">Single Coil Pickup</name>
+        <name lang="pl">Single Coil Pickup</name>
+        <name lang="el">Single Coil Pickup</name>
+        <name lang="nl">Single Coil Pickup</name>
+        <name lang="fr">Single Coil Pickup</name>
+        <name lang="it">Single Coil Pickup</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Single Coil 2 Wire Pickup
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <circle diameter="5.65685" x="28.1422" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="-13.1715" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="48.799" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="-14" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="7.4853" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="16" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="-33.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="-53.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <arc x="29" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32"/>
+        <arc x="29" start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" height="31" antialias="true" angle="90" y="-15" width="32"/>
+        <arc x="-67.9338" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32.6587"/>
+        <arc x="-67.9338" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32.6587"/>
+        <input x="-30" size="5" text="Single Coil Pickup" rotate="true" y="-27" tagg="label"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:red" x2="80" x1="65" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:green" x2="80" x1="65" y1="10" end2="none" antialias="false"/>
+        <text x="68" size="9" text="+" y="-12"/>
+        <text x="70" size="9" text="-" y="23"/>
+        <text x="-11" size="5" text="2 Wire" y="-34"/>
+        <terminal orientation="n" x="80" y="-15"/>
+        <terminal orientation="n" x="80" y="15"/>
+    </description>
+</definition>

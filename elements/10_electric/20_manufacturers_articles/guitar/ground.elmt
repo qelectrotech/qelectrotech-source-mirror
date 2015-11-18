@@ -1,0 +1,19 @@
+<definition orientation="dyyy" hotspot_x="13" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
+    <uuid uuid="{939a5c53-668d-40b3-ad4a-56ec6642db8f}"/>
+    <names>
+        <name lang="en">ground</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Ground
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <line end1="none" length1="1.5" length2="1.5" y2="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x1="40" y1="12" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="45" x1="45" y1="-8" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50" x1="50" y1="-4" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x1="0" y1="0" end2="none" antialias="false"/>
+        <input x="4" size="5" text="ground" rotate="true" y="-6" tagg="label"/>
+        <terminal orientation="e" x="0" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,68 @@
+<definition orientation="dyyy" hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="53" height="110" width="160">
+    <uuid uuid="{78d6d2ac-1cd3-4005-bc64-e932cd68a708}"/>
+    <names>
+        <name lang="ar">Double Coil 4 Wire Pickup</name>
+        <name lang="en">Double Coil 4 Wire Pickup</name>
+        <name lang="cs">Double Coil 4 Wire Pickup</name>
+        <name lang="es">Double Coil 4 Wire Pickup</name>
+        <name lang="pl">Double Coil 4 Wire Pickup</name>
+        <name lang="el">Double Coil 4 Wire Pickup</name>
+        <name lang="nl">Double Coil 4 Wire Pickup</name>
+        <name lang="fr">Double Coil 4 Wire Pickup</name>
+        <name lang="it">Double Coil 4 Wire Pickup</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Double Coil 4 Wire Pickup
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+
+</informations>
+    <description>
+        <line end1="none" length1="1.5" length2="1.5" y2="8" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="80" x1="65" y1="3" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="28.1422" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="26" style="line-style:normal;line-weight:normal;filling:none;color:green" x2="80" x1="65" y1="31" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="28.1422" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="44" style="line-style:normal;line-weight:normal;filling:none;color:red" x2="80" x1="65" y1="39" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="-13.1715" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <circle diameter="5.65685" x="-13.1715" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="48.799" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <circle diameter="5.65685" x="48.799" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <text x="69" size="9" text="+" y="51"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="16" end2="none" antialias="false"/>
+        <text x="70" size="9" text="-" y="27"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="-14" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="7.4853" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <circle diameter="5.65685" x="7.4853" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="16" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="46" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="44" x1="-51" y1="46" end2="none" antialias="false"/>
+        <circle diameter="5.65685" x="-33.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="-33.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <circle diameter="5.65685" x="-53.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.8284"/>
+        <circle diameter="5.65685" x="-53.8284" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="27.1716"/>
+        <arc x="29" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="16" width="32"/>
+        <arc x="29" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32"/>
+        <arc x="29" start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" height="31" antialias="true" angle="90" y="15" width="32"/>
+        <arc x="29" start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" height="31" antialias="true" angle="90" y="-15" width="32"/>
+        <arc x="-67.9338" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="16" width="32.6587"/>
+        <arc x="-67.9338" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32.6587"/>
+        <arc x="-67.9338" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="16" width="32.6587"/>
+        <arc x="-67.9338" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="true" angle="90" y="-14" width="32.6587"/>
+        <input x="-33" size="5" text="Double Coil Pickup" rotate="true" y="-28.5" tagg="label"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="80" x1="65" y1="-3" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="9" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="80" x1="65" y1="4" end2="none" antialias="false"/>
+        <text x="68" size="9" text="+" y="15"/>
+        <text x="70" size="9" text="-" y="-8"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="60" x1="60" y1="-10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-43" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="67" x1="60" y1="-25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="75" x1="60" y1="-50" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="75" x1="65" y1="-50" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="75" x1="70" y1="-50" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-68" x1="-68" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="61" x1="61" y1="0" end2="none" antialias="false"/>
+        <text x="-14" size="5" text="Four Wire" y="-38.5"/>
+        <terminal orientation="s" x="80" y="48"/>
+        <terminal orientation="n" x="80" y="22"/>
+        <terminal orientation="s" x="80" y="12"/>
+        <terminal orientation="n" x="80" y="-12"/>
+    </description>
+</definition>

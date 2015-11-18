@@ -1,0 +1,29 @@
+<definition orientation="dyyy" hotspot_x="55" version="0.5" link_type="simple" type="element" hotspot_y="28" height="60" width="80">
+    <uuid uuid="{4042ea90-c9fa-498b-9c15-c703acad0e63}"/>
+    <names>
+        <name lang="en">Output Jack 2</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Output Jack
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40" x1="-50" y1="10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" x1="-40" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" x1="-30" y1="10" end2="none" antialias="false"/>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:brun;color:black" height="30" antialias="false" y="-10" width="5"/>
+        <rect x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" antialias="false" y="-15" width="5"/>
+        <rect x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" y="-5" width="10"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" x1="10" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15" x1="12" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17" x1="14" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="19" x1="16" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" x1="18" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-1" x1="-1" y1="11" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="2" x1="2" y1="-11" end2="none" antialias="false"/>
+        <input x="-45" size="5" text="Output Jack" rotate="true" y="-14" tagg="label"/>
+        <terminal orientation="s" x="-1" y="25"/>
+        <terminal orientation="n" x="2" y="-22"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition orientation="dyyy" hotspot_x="72" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="150">
+    <uuid uuid="{bfe1743e-e006-485e-b0b6-3b8c1ae0e4b6}"/>
+    <names>
+        <name lang="en">.022 uF Paper and Oil Capacitor</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: .022 uF Paper and Oil Capacitor
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-30" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7" width="65"/>
+        <rect x="-20" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" height="15" antialias="false" y="-7" width="45"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-65" x1="-30" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="70" x1="35" y1="0" end2="none" antialias="false"/>
+        <input x="-13" size="5" text=".022uF" rotate="true" y="-0.660819" tagg="label"/>
+        <terminal orientation="w" x="-65" y="0"/>
+        <terminal orientation="e" x="70" y="0"/>
+    </description>
+</definition>

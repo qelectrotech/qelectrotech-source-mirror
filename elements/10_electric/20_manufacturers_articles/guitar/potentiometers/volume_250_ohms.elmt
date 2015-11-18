@@ -1,0 +1,31 @@
+<definition orientation="dyyy" hotspot_x="35" version="0.5" link_type="simple" type="element" hotspot_y="53" height="100" width="70">
+    <uuid uuid="{36a6d5c3-30ff-4e00-91c9-bcf0b1676fe9}"/>
+    <names>
+        <name lang="en">Volume 250k Ohmx</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 250k Ohms Volume Control
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23" x1="-23" y1="-8.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" x1="12" y1="-17" end2="none" antialias="false"/>
+        <circle diameter="7" x="13.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-36.25"/>
+        <circle diameter="7" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-36.25"/>
+        <circle diameter="60" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-19.25"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" x1="-12" y1="-17.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" x1="-5" y1="-39.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="22" x1="22" y1="-10.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="22" x1="13" y1="-39.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-5" x1="-5" y1="-19.25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5" x1="5" y1="-19.25" end2="none" antialias="false"/>
+        <circle diameter="7" x="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-36.25"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-39.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" x1="-22" y1="-39.25" end2="none" antialias="false"/>
+        <text x="-22" size="5" text="250k Ohms" y="9.75"/>
+        <input x="-26" size="5" text="Volume" rotate="true" y="-0.5" tagg="label"/>
+        <terminal orientation="n" x="0" y="-43.25"/>
+        <terminal orientation="n" x="-18" y="-43.25"/>
+        <terminal orientation="n" x="17" y="-43.25"/>
+    </description>
+</definition>

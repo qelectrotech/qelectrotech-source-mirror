@@ -1,0 +1,60 @@
+<definition orientation="dyyy" hotspot_x="87" version="0.5" link_type="simple" type="element" hotspot_y="94" height="100" width="120">
+    <uuid uuid="{27f2918f-7b76-4e50-9934-420efd929712}"/>
+    <names>
+        <name lang="en">5 Way Pickup Selector Switch</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 5 Way Selector Switch
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <circle diameter="5" x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-7.5"/>
+        <rect x="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" y="-66" width="105"/>
+        <rect x="-82.5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false" y="-10" width="110"/>
+        <rect x="-75" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" y="-25" width="105"/>
+        <rect x="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-75" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-81" width="5"/>
+        <rect x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <rect x="15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" antialias="false" y="-40" width="5"/>
+        <circle diameter="5" x="-77.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-7.5"/>
+        <rect x="-70" style="line-style:normal;line-weight:thin;filling:none;color:black" height="3" antialias="false" y="-6.5" width="85"/>
+        <input x="-68" size="5" text="5 Way Pickup Selector" rotate="true" y="12.5" tagg="label"/>
+        <terminal orientation="n" x="18" y="-45"/>
+        <terminal orientation="n" x="8" y="-45"/>
+        <terminal orientation="n" x="-52" y="-45"/>
+        <terminal orientation="n" x="-42" y="-45"/>
+        <terminal orientation="n" x="-22" y="-45"/>
+        <terminal orientation="n" x="-12" y="-45"/>
+        <terminal orientation="n" x="-62" y="-45"/>
+        <terminal orientation="n" x="-32" y="-45"/>
+        <terminal orientation="n" x="-2" y="-45"/>
+        <terminal orientation="n" x="-72" y="-45"/>
+        <terminal orientation="n" x="-43" y="-86"/>
+        <terminal orientation="n" x="-13" y="-86"/>
+        <terminal orientation="n" x="17" y="-86"/>
+        <terminal orientation="n" x="-33" y="-86"/>
+        <terminal orientation="n" x="-23" y="-86"/>
+        <terminal orientation="n" x="-73" y="-86"/>
+        <terminal orientation="n" x="-3" y="-86"/>
+        <terminal orientation="n" x="-63" y="-86"/>
+        <terminal orientation="n" x="7" y="-86"/>
+        <terminal orientation="n" x="-53" y="-86"/>
+    </description>
+</definition>

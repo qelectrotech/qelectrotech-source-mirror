@@ -1,0 +1,20 @@
+<definition orientation="dyyy" hotspot_x="37" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
+    <uuid uuid="{fdac4891-06ce-4e45-af34-5590229b499f}"/>
+    <names>
+        <name lang="en">Output Jack</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Output Jack
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <circle diameter="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-10"/>
+        <circle diameter="10" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5"/>
+        <rect x="-25" style="line-style:normal;line-weight:normal;filling:black;color:black" height="5" antialias="false" y="-2.5" width="20"/>
+        <rect x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" y="-2.5" width="10"/>
+        <input x="-22" size="5" text="Output Jack" rotate="true" y="-16" tagg="label"/>
+        <terminal orientation="e" x="-25" y="0"/>
+        <terminal orientation="w" x="20" y="0"/>
+    </description>
+</definition>

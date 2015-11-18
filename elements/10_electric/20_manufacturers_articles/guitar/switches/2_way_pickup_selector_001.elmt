@@ -1,0 +1,36 @@
+<definition orientation="dyyy" hotspot_x="56" version="0.5" link_type="simple" type="element" hotspot_y="50" height="70" width="130">
+    <uuid uuid="{304265ff-4dc9-43d1-8cb3-4cd386a98ede}"/>
+    <names>
+        <name lang="en">2 Way Pickup Selector 001</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 2 Way Pickup Selector 001
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" y="-30" width="60"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="-25" y1="-25" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="35" x1="35" y1="-25" end2="none" antialias="false"/>
+        <text x="-17" size="5" text="Not Finished" y="-34"/>
+        <input x="-38" size="5" text="2 Way Pickup Selector" rotate="true" y="33" tagg="label"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="-50" y1="-20" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="-50" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="-50" y1="15" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="35" x1="-25" y1="15" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="35" x1="-25" y1="10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="35" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="35" x1="-25" y1="-10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="35" y1="-20" end2="none" antialias="false"/>
+        <rect x="35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false" y="-10" width="10"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x1="40" y1="-10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="58" x1="40" y1="-15" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="58" x1="58" y1="-15" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="70" x1="45" y1="5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50" x1="65" y1="10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="60" x1="55" y1="15" end2="none" antialias="false"/>
+        <terminal orientation="n" x="-50" y="-5"/>
+        <terminal orientation="n" x="-50" y="10"/>
+        <terminal orientation="n" x="-50" y="-25"/>
+    </description>
+</definition>

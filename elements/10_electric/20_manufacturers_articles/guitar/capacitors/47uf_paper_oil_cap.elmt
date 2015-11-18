@@ -1,0 +1,20 @@
+<definition orientation="dyyy" hotspot_x="75" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="150">
+    <uuid uuid="{4ecf1379-6ed1-42e2-9157-33b2f727d6df}"/>
+    <names>
+        <name lang="en">.047 uF Paper and Oil Capacitor</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: .047 uF
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-32.5" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7.5" width="65"/>
+        <rect x="-22.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" height="15" antialias="false" y="-7.5" width="45"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-0.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-67.5" x1="-32.5" y1="-0.5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-0.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="67.5" x1="32.5" y1="-0.5" end2="none" antialias="false"/>
+        <input x="-16" size="5" text=".047  uF" rotate="true" y="0" tagg="label"/>
+        <terminal orientation="w" x="-67.5" y="-0.5"/>
+        <terminal orientation="e" x="67.5" y="-0.5"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition link_type="simple" type="element" width="90" version="0.5" hotspot_x="44" hotspot_y="9" height="50" orientation="dyyy">
+    <uuid uuid="{e8e1aae3-bba1-44f2-8692-8de5e8af451a}"/>
+    <names>
+        <name lang="en">Mylar Capacitor - Blue Drop</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Mylar Capacitor - Blue Drop
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-30" y="-6" width="60" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:cyan;color:black"/>
+        <line x1="-40" y1="0" end1="none" y2="0" length1="1.5" length2="1.5" antialias="false" end2="none" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="30" y1="0" end1="none" y2="0" length1="1.5" length2="1.5" antialias="false" end2="none" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-20" y="-14" size="5" tagg="label" text="Blue Drop" rotate="true"/>
+        <line x1="-40" y1="0" end1="none" y2="30" length1="1.5" length2="1.5" antialias="false" end2="none" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" y1="0" end1="none" y2="30" length1="1.5" length2="1.5" antialias="false" end2="none" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="40" y="35" orientation="s"/>
+        <terminal x="-40" y="35" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition orientation="dyyy" hotspot_y="15" height="30" hotspot_x="67" type="element" link_type="simple" width="140" version="0.5">
+    <uuid uuid="{0d61ef8d-e649-4ecd-b334-6e93ba1c9143}"/>
+    <names>
+        <name lang="en">470k Resistor</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 470k Ohm Resistor
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:brun;color:black" x="-25" width="10"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:yellow;color:black" x="-15" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:brun;color:black" x="-10" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:red;color:black" x="-5" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:brun;color:black" x="0" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:gray;color:black" x="5" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:brun;color:black" x="10" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:gray;color:black" x="15" width="5"/>
+        <rect antialias="false" y="-10" height="20" style="line-style:normal;line-weight:normal;filling:brun;color:black" x="20" width="5"/>
+        <line x2="-25" antialias="false" y2="0" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="-55" length1="1.5"/>
+        <line x2="60" antialias="false" y2="0" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" x1="25" length1="1.5"/>
+        <input size="5" y="23" tagg="label" text="470k Ohms" x="-21" rotate="true"/>
+        <terminal orientation="w" y="0" x="-60"/>
+        <terminal orientation="e" y="0" x="65"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition orientation="dyyy" hotspot_x="34" version="0.5" link_type="simple" type="element" hotspot_y="45" height="60" width="70">
+    <uuid uuid="{dd7fd21d-323d-4c6c-9d3e-0fc876b5962f}"/>
+    <names>
+        <name lang="en">Capacitor Ceramic</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Capacitor Ceramic
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <circle diameter="25" x="-12.5" style="line-style:normal;line-weight:normal;filling:orange;color:black" antialias="false" y="-14.5"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" x1="-10" y1="-10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25" x1="10" y1="-10" end2="none" antialias="false"/>
+        <input x="-28" size="9" text="Capacitor" rotate="true" y="34" tagg="label"/>
+        <terminal orientation="w" x="25" y="-40"/>
+        <terminal orientation="e" x="-25" y="-40"/>
+    </description>
+</definition>

@@ -1,0 +1,34 @@
+<definition link_type="simple" type="element" width="50" version="0.5" hotspot_x="25" hotspot_y="75" height="130" orientation="dyyy">
+    <uuid uuid="{953787c5-e75e-4ff8-be51-c942d84cba96}"/>
+    <names>
+        <name lang="en">Push Pull 002</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect x="-5" y="-70" width="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" y="-50" width="20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:fdiag;color:black"/>
+        <rect x="-20" y="-30" width="40" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-20" y="-25" width="40" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-20" y="-10" width="40" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-5" width="30" antialias="false" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-30" width="5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="-2.5" y="-30" width="5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="10" y="-30" width="5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="-9" y="2" width="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="-9" y="18" width="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="-9" y="35.5" width="5" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="4" y="2" width="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="4" y="18" width="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect x="4" y="35.5" width="5" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-40" y="-80" size="5" tagg="label" text="Push Pull Potentiometer" rotate="true"/>
+        <terminal x="6.5" y="35.5" orientation="n"/>
+        <terminal x="-6.5" y="20" orientation="n"/>
+        <terminal x="6.5" y="20" orientation="n"/>
+        <terminal x="-6.5" y="35.5" orientation="n"/>
+        <terminal x="0" y="-25" orientation="n"/>
+        <terminal x="-12.5" y="-25" orientation="n"/>
+        <terminal x="-6.5" y="2" orientation="n"/>
+        <terminal x="12.5" y="-25" orientation="n"/>
+        <terminal x="6.5" y="2" orientation="n"/>
+    </description>
+</definition>

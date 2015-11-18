@@ -1,0 +1,26 @@
+<definition orientation="dyyy" hotspot_x="59" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="120">
+    <uuid uuid="{2eaf7880-eb95-4995-911f-3bc962271343}"/>
+    <names>
+        <name lang="en">Black Beauty</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: Black Beauty
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-28" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7" width="10"/>
+        <rect x="-18" style="line-style:normal;line-weight:normal;filling:yellow;color:black" height="15" antialias="false" y="-7" width="5"/>
+        <rect x="-13" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7" width="10"/>
+        <rect x="-3" style="line-style:normal;line-weight:normal;filling:yellow;color:black" height="15" antialias="false" y="-7" width="5"/>
+        <rect x="2" style="line-style:normal;line-weight:normal;filling:brun;color:black" height="15" antialias="false" y="-7" width="5"/>
+        <rect x="7" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7" width="5"/>
+        <rect x="12" style="line-style:normal;line-weight:normal;filling:brun;color:black" height="15" antialias="false" y="-7" width="5"/>
+        <rect x="17" style="line-style:normal;line-weight:normal;filling:black;color:black" height="15" antialias="false" y="-7" width="10"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-28" x1="-55" y1="0" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="55" x1="27" y1="0" end2="none" antialias="false"/>
+        <input x="-22" size="5" text="Black Beauty" rotate="true" y="-13" tagg="label"/>
+        <terminal orientation="e" x="55" y="0"/>
+        <terminal orientation="w" x="-55" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition orientation="dyyy" hotspot_x="30" version="0.5" link_type="simple" type="element" hotspot_y="14" height="30" width="60">
+    <uuid uuid="{51fc3490-b6b0-44f6-a8d5-7c03310b5408}"/>
+    <names>
+        <name lang="en">4 Way Switch</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 4 Way Switch
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="9" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="4" width="2"/>
+        <rect x="9" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="-4" width="2"/>
+        <rect x="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="4" width="2"/>
+        <rect x="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" height="26" antialias="false" y="-12" width="50"/>
+        <rect x="19" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="4" width="2"/>
+        <rect x="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="-4" width="2"/>
+        <input x="-24" size="5" text="4 Way Switch" rotate="true" y="-20.5" tagg="label"/>
+        <rect x="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="4" width="2"/>
+        <rect x="19" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="-4" width="2"/>
+        <rect x="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" antialias="false" y="-4" width="2"/>
+        <terminal orientation="s" x="20" y="10"/>
+        <terminal orientation="n" x="20" y="-9"/>
+        <terminal orientation="n" x="-10" y="-9"/>
+        <terminal orientation="s" x="-20" y="10"/>
+        <terminal orientation="s" x="-10" y="10"/>
+        <terminal orientation="n" x="-20" y="-9"/>
+        <terminal orientation="n" x="10" y="-9"/>
+        <terminal orientation="s" x="10" y="10"/>
+    </description>
+</definition>

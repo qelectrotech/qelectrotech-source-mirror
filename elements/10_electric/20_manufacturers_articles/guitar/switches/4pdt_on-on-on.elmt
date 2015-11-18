@@ -1,0 +1,42 @@
+<definition orientation="dyyy" hotspot_x="47" version="0.5" link_type="simple" type="element" hotspot_y="31" height="60" width="150">
+    <uuid uuid="{0f39208b-ceed-4189-927a-a1c269be19e7}"/>
+    <names>
+        <name lang="en">4PDT on-on-on</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 4PDT on - on - on
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <circle diameter="10" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5"/>
+        <circle diameter="10" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="15"/>
+        <circle diameter="10" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5"/>
+        <circle diameter="10" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-25"/>
+        <circle diameter="10" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-25"/>
+        <circle diameter="10" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-25"/>
+        <circle diameter="10" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5"/>
+        <circle diameter="10" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5"/>
+        <circle diameter="10" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-25"/>
+        <circle diameter="10" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="15"/>
+        <circle diameter="10" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="15"/>
+        <circle diameter="10" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="15"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="90" x1="60" y1="2.5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="90" x1="90" y1="-10" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="95" x1="95" y1="-5" end2="none" antialias="false"/>
+        <line end1="none" length1="1.5" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="100" x1="100" y1="0" end2="none" antialias="false"/>
+        <input x="-30" size="5" text="4PDT on-on-on" rotate="true" y="39.5" tagg="label"/>
+        <terminal orientation="n" x="-40" y="-25"/>
+        <terminal orientation="n" x="-40" y="15"/>
+        <terminal orientation="n" x="-15" y="15"/>
+        <terminal orientation="n" x="10" y="-25"/>
+        <terminal orientation="n" x="35" y="-5"/>
+        <terminal orientation="n" x="-15" y="-5"/>
+        <terminal orientation="n" x="35" y="15"/>
+        <terminal orientation="n" x="10" y="15"/>
+        <terminal orientation="n" x="10" y="-5"/>
+        <terminal orientation="n" x="-40" y="-5"/>
+        <terminal orientation="n" x="35" y="-25"/>
+        <terminal orientation="n" x="-15" y="-25"/>
+    </description>
+</definition>

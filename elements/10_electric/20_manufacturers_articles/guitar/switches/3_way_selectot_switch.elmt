@@ -1,0 +1,31 @@
+<definition link_type="simple" type="element" width="40" version="0.5" hotspot_x="20" hotspot_y="75" height="80" orientation="dyyy">
+    <uuid uuid="{d48d023f-1f1d-4549-b27b-2806dcb839ee}"/>
+    <names>
+        <name lang="en">3 Way Pickup Selector Switch</name>
+    </names>
+    <informations>Author: Thomas McMillan Grant Bennett
+Name: 3 Way Pickup Selector
+Purpose:  To assiste in drawing guitar wiring diagrams
+License: see http://qelectrotech.org/wiki/doc/elements_license
+</informations>
+    <description>
+        <rect x="-5" y="-70" width="10" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-62" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-47" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-32" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" y="-17" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" y="-54" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" y="-39" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" y="-24" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="5" y="-9" width="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-26" y="-77" size="5" tagg="label" text="3 Way Selector" rotate="true"/>
+        <terminal x="-10" y="-17" orientation="n"/>
+        <terminal x="-10" y="-47" orientation="n"/>
+        <terminal x="11" y="-9" orientation="n"/>
+        <terminal x="11" y="-24" orientation="n"/>
+        <terminal x="-10" y="-32" orientation="n"/>
+        <terminal x="11" y="-54" orientation="n"/>
+        <terminal x="11" y="-39" orientation="n"/>
+        <terminal x="-10" y="-62" orientation="n"/>
+    </description>
+</definition>
