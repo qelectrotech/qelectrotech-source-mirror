@@ -109,9 +109,11 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
  * @param nc_str the string of NC contacts
  * @param add_prefix must add prefix to text (true) or not (false);
  */
-void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, const bool &add_prefix) const {
-	QString *tmp_str;
-	foreach (Element *elmt, m_element->linkedElements()) {
+void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, const bool &add_prefix) const
+{
+	QString *tmp_str = nullptr;
+	foreach (Element *elmt, m_element->linkedElements())
+	{
 			//We continue if element is a power contact and xref propertie
 			//is set to don't show power contact
 		if (m_properties.displayHas() == XRefProperties::Cross &&
@@ -122,7 +124,8 @@ void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, con
 		QString state = elmt->kindInformations()["state"].toString();
 
 		//NO and NC are displayed in single place in the cross
-		if (state == "NO" || state == "NC") {
+		if (state == "NO" || state == "NC")
+		{
 			if (state == "NO") tmp_str = &no_str;
 			else if (state == "NC") tmp_str = &nc_str;
 
@@ -131,8 +134,10 @@ void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, con
 		}
 
 		//SW are displayed in NC and NO column in the cross
-		else if (state == "SW") {
-			for (int i = 0; i < 2; i++) {
+		else if (state == "SW")
+		{
+			for (int i = 0; i < 2; i++)
+			{
 				tmp_str = i==0? &no_str : &nc_str;
 				if (!tmp_str->isEmpty()) *tmp_str += "\n";
 				*tmp_str += elementPositionText(elmt, add_prefix);
