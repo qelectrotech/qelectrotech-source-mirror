@@ -93,24 +93,9 @@ void Element::displayHelpLine(bool b)
  * @param options
  * @param widget
  */
-void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *)
 {
-	
-#ifndef Q_OS_WIN
-		//Fix visual bug on QGraphicsScene that occur only on X11 with default zoom.
-	QSettings settings;
-	static bool must_correct_rendering_bug = settings.value("correct-rendering", false).toBool();
-	if (must_correct_rendering_bug) {
-		Diagram *dia = diagram();
-		if (dia && options -> levelOfDetail == 1.0 && widget) {
-			// calcule la rotation qu'a subi l'element
-			qreal applied_rotation = 90.0 * orientation();
-			if (applied_rotation == 90.0) painter -> translate(1.0, -1.0);
-			else if (applied_rotation == 180.0) painter -> translate(-1.0, -1.0);
-			else if (applied_rotation == 270.0) painter -> translate(-1.0, 1.0);
-		}
-	}
-#endif
+
 	if (must_highlight_) drawHighlight(painter, options);
 	
 		//Draw the element himself

@@ -221,33 +221,12 @@ void Terminal::removeConductor(Conductor *conductor)
 	@param options Les options de dessin
 	@param widget Le widget sur lequel on dessine
 */
-void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *) {
 	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
 	if (options && options -> levelOfDetail < 0.5) return;
 	
 	p -> save();
-	
-#ifndef Q_OS_WIN
-		//Fix visual bug on QGraphicsScene that occur only on X11 with default zoom.
-	QSettings settings;
-	static bool must_correct_rendering_bug = settings.value("correct-rendering", false).toBool();
-	if (must_correct_rendering_bug) {
-		Diagram *dia = diagram();
-		if (dia && options -> levelOfDetail == 1.0 && widget) {
-			// calcule la rotation qu'a subi l'element
-			qreal applied_rotation = 0.0;
-			if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
-				// orientations actuelle et par defaut de l'element
-				int ori_cur = elt -> orientation();
-				applied_rotation = QET::correctAngle(90.0 * ori_cur);
-			}
-			if (applied_rotation == 90.0) p -> translate(1.0, -1.0);
-			else if (applied_rotation == 180.0) p -> translate(-1.0, -1.0);
-			else if (applied_rotation == 270.0) p -> translate(-1.0, 1.0);
-		}
-	}
-#endif
-	
+
 	//annulation des renderhints
 	p -> setRenderHint(QPainter::Antialiasing,          false);
 	p -> setRenderHint(QPainter::TextAntialiasing,      false);
