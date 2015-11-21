@@ -1,0 +1,72 @@
+<definition version="0.5" link_type="simple" hotspot_x="55" width="890" hotspot_y="37" type="element" height="70" orientation="dyyy">
+    <uuid uuid="{4fccc4af-d33d-42b7-adf7-0f73d2087c21}"/>
+    <names>
+        <name lang="el">TM2 AMI 4LT PT100 (είσοδοι ana)</name>
+        <name lang="pl">TM2 AMI 4LT PT100 (wejścia ana)</name>
+        <name lang="en">TM2 AMI 4LT PT100 (Inputs ana)</name>
+        <name lang="fr">TM2 AMI 4LT PT100 (entrées ana)</name>
+        <name lang="es">TM2 AMI 4LT PT100 (Entradas ana)</name>
+        <name lang="nl">TM2 AMI 4LT PT100 (Ingangen ana)</name>
+        <name lang="cs">TM2 AMI 4LT PT100 (vstupy ana)</name>
+        <name lang="it">TM2 AMI 4LT PT100 (ingressi ana)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="665"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="115" x2="175" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="535" x2="595" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <text y="-15" text="B'" size="5" x="668"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="315"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="105"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="185" x2="245" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="175"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="455"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="805"/>
+        <text y="-15" text="A" size="5" x="108"/>
+        <input y="8.5" text="TWIDO" tagg="none" rotate="true" size="6" x="-47"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="245"/>
+        <text y="-15" text="A" size="5" x="248"/>
+        <text y="-15" text="B" size="5" x="388"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="675" x2="805" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="595"/>
+        <text y="-15" text="B'" size="5" x="528"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="-25" x2="105" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <text y="-13" text="0V" size="5" x="806"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="255" x2="315" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="830" x2="830" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="455"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="605" x2="665" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="385"/>
+        <text y="-15" text="A" size="5" x="599"/>
+        <text y="-13" text="+24V" size="5" x="-40"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="595"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="525"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="325" x2="385" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="465" x2="525" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="395" x2="455" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <text y="-15" text="B'" size="5" x="316"/>
+        <text y="-15" text="A" size="5" x="456"/>
+        <text y="-15" text="B'" size="5" x="176"/>
+        <input y="20.5" text="TM2 AMI 4LT PT100 (Entrée ANA)" tagg="none" rotate="true" size="6" x="-47"/>
+        <input y="19" text="API_" tagg="label" rotate="true" size="9" x="394"/>
+        <text y="24" text="TB1" size="9" x="804"/>
+        <circle y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" x="-35"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="-35" x2="-50" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="-50" x2="-50" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="30" antialias="false" x1="-50" x2="830" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <line y1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x1="815" x2="830" end1="none" end2="none" length1="1.5" length2="1.5"/>
+        <terminal y="-30" orientation="n" x="670"/>
+        <terminal y="-30" orientation="n" x="390"/>
+        <terminal y="-30" orientation="n" x="600"/>
+        <terminal y="-30" orientation="n" x="460"/>
+        <terminal y="-30" orientation="n" x="600"/>
+        <terminal y="-30" orientation="n" x="530"/>
+        <terminal y="-30" orientation="n" x="320"/>
+        <terminal y="-30" orientation="n" x="-30"/>
+        <terminal y="-30" orientation="n" x="810"/>
+        <terminal y="-30" orientation="n" x="250"/>
+        <terminal y="-30" orientation="n" x="180"/>
+        <terminal y="-30" orientation="n" x="110"/>
+    </description>
+</definition>

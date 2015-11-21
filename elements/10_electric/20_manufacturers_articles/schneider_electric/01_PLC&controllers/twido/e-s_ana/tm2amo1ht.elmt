@@ -1,0 +1,74 @@
+<definition link_type="simple" width="890" height="70" hotspot_x="45" type="element" hotspot_y="32" version="0.5" orientation="dyyy">
+    <uuid uuid="{638f2dd2-73d8-4d81-9178-4efe798a60ee}"/>
+    <names>
+        <name lang="es">TM2 AMO 1HT (Salidas ana)</name>
+        <name lang="nl">TM2 AMO 1HT (Uitgangen ana)</name>
+        <name lang="cs">TM2 AMO 1HT (výstupy ana)</name>
+        <name lang="it">TM2 AMO 1HT (uscite ana)</name>
+        <name lang="el">TM2 AMO 1HT (έξοδοι ana)</name>
+        <name lang="pl">TM2 AMO 1HT (wyjścia ana)</name>
+        <name lang="en">TM2 AMO 1HT (Outputs ana)</name>
+        <name lang="fr">TM2 AMO 1HT (Sorties ana)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="NC" x="675" y="20" size="5"/>
+        <text text="NC" x="745" y="20" size="5"/>
+        <text text="0V" x="185" y="20" size="5"/>
+        <text text="NC" x="325" y="20" size="5"/>
+        <circle antialias="false" diameter="10" x="465" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="NC" x="465" y="20" size="5"/>
+        <text text="NC" x="395" y="20" size="5"/>
+        <text text="OUT 1" x="145" y="12" size="5"/>
+        <circle antialias="false" diameter="10" x="395" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="+" x="117" y="20" size="5"/>
+        <circle antialias="false" diameter="10" x="325" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="15" y2="10" x1="115" x2="121" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="10" y2="10" x1="121" x2="144" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="15" y2="10" x1="195" x2="190" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="false" diameter="10" x="675" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="10" x="815" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="10" y2="10" x1="190" x2="167" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="NC" x="46" y="20" size="5"/>
+        <circle antialias="false" diameter="10" x="745" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="10" x="115" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="TWIDO" tagg="none" rotate="true" x="-42" y="-21.5" size="6"/>
+        <circle antialias="false" diameter="10" x="45" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="10" x="185" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="10" x="605" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="0V" x="816" y="20" size="5"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="195" x2="325" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="55" x2="115" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="405" x2="465" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="755" x2="815" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="615" x2="675" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <text text="NC" x="605" y="20" size="5"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="-30" x1="840" x2="840" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="685" x2="745" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="475" x2="605" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="125" x2="185" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="335" x2="395" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <text text="+24V" x="-30" y="20" size="5"/>
+        <input text="TM2 AMO 1HT (Sortie ANA)" tagg="none" rotate="true" x="-42" y="-13.5" size="6"/>
+        <input text="API_" tagg="label" rotate="true" x="337" y="-16" size="9"/>
+        <text text="TB1" x="814" y="-16" size="9"/>
+        <circle antialias="false" diameter="10" x="-25" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="-25" x2="-40" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="-15" x2="45" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="-30" x1="-40" x2="-40" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="-28" y2="-28" x1="-40" x2="840" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" end1="none" end2="none" y1="30" y2="30" x1="825" x2="840" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <terminal x="50" y="30" orientation="s"/>
+        <terminal x="820" y="30" orientation="s"/>
+        <terminal x="120" y="30" orientation="s"/>
+        <terminal x="400" y="30" orientation="s"/>
+        <terminal x="330" y="30" orientation="s"/>
+        <terminal x="470" y="30" orientation="s"/>
+        <terminal x="-20" y="30" orientation="s"/>
+        <terminal x="190" y="30" orientation="s"/>
+        <terminal x="750" y="30" orientation="s"/>
+        <terminal x="680" y="30" orientation="s"/>
+        <terminal x="610" y="30" orientation="s"/>
+    </description>
+</definition>
