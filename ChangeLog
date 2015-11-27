@@ -1,3 +1,21 @@
+====== ChangeLog from 0.4 to 0.5 ======
+In the official collection, there are now  2625 elements, and 418 catégoris for a total of 3043 files.
+
+* Port to Qt 5 framework
+* New QSettings native format for config files.
+* In the diagram editor, the grid is not displayed by default outside the diagram, the minimum zoom is blocked. A button allows you to un-validate this operation.
+* It is now possible to put the tittle block on the right vertical mode.
+* The default tittle block can be defined for the next folios of the project.
+* The summary now takes the font set in the QElectroTech.conf
+* The floating dock is now operational, variables, actions are taken into account on the fly.
+* A transformation tool transforms quickly and finely each primitive by handles.
+* Add UUID tag for element XML.
+* The database enables faster loading a large number of managing symbols in tables changes pixmaps collections, it no longer compares the modification date of the files but their use UUID attributes to update the cache .
+* In terms of basic shapes, the transform tool works directly on vectors, it replaces the reduction tool / enlargement that has just been deleted as unnecessary.
+* Improve Undo command by QPropertyUndoCommand class.
+
+
+
 ====== ChangeLog from 0.3 to 0.4 ======
 In the official collection, there are now 2298 elements, and 376 catégoris for a total of 2674 files.
 
