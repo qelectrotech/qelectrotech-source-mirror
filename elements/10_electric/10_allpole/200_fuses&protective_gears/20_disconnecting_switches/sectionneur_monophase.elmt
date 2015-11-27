@@ -1,0 +1,41 @@
+<definition width="50" link_type="master" height="60" version="0.5" orientation="dyyy" hotspot_y="29" type="element" hotspot_x="35">
+    <uuid uuid="{c52bf3d8-7339-4bcf-babd-a4b7416e88b3}"/>
+    <names>
+        <name lang="fr">Sectionneur monophasé</name>
+        <name lang="en">break isolator</name>
+        <name lang="it">Sezionatore 3P</name>
+        <name lang="de">Lasttrenner 3-polig</name>
+        <name lang="ar">مفتاح عزل</name>
+        <name lang="es">Seccionador</name>
+        <name lang="ru">Разъеденитель</name>
+        <name lang="nl">Lastschakelaar</name>
+        <name lang="pt">Seccionador</name>
+        <name lang="cs">Odpojovač</name>
+        <name lang="pl">Odłącznik</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="-15" x2="-10" y1="-10" antialias="true" x3="-10" y3="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10"/>
+        <polygon y4="7" x1="4" x2="8" x5="4" y1="-6" x4="7" y5="-6" antialias="true" x3="11" y3="6" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7"/>
+        <polygon x1="5" x2="10" y1="-10" antialias="true" x3="10" y3="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10"/>
+        <input y="3" text="_" tagg="label" x="36" size="9"/>
+        <line end2="none" x1="-10" x2="-10" end1="none" y1="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-10"/>
+        <line end2="none" x1="-8" x2="-12" end1="none" y1="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-10"/>
+        <line end2="none" x1="10" x2="10" end1="none" y1="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-10"/>
+        <line end2="none" x1="12" x2="8" end1="none" y1="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-10"/>
+        <polygon y4="7" x1="-16" x2="-12" x5="-16" y1="-6" x4="-13" y5="-6" antialias="true" x3="-9" y3="6" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7"/>
+        <line end2="none" x1="-25" x2="-15" end1="none" y1="0" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="0"/>
+        <line end2="none" x1="-10" x2="5" end1="none" y1="0" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="0"/>
+        <line end2="none" x1="-25" x2="-30" end1="none" y1="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-10"/>
+        <line end2="none" x1="-33" x2="-25" end1="none" y1="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y2="-7"/>
+        <circle y="8.5" diameter="3" antialias="false" x="-26.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal y="-21" orientation="n" x="10"/>
+        <terminal y="21" orientation="s" x="10"/>
+        <terminal y="-21" orientation="n" x="-10"/>
+        <terminal y="21" orientation="s" x="-10"/>
+    </description>
+</definition>
