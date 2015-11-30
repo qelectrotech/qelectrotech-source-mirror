@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{5CC361E2-1FCD-4FB3-99F7-21FAB315FA89}"/><names>
         <name lang="fr">AST B GN</name>
+        <name lang="cs">AST B GN</name>
     </names>
     <informations></informations>
     <description>

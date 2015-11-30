@@ -1,6 +1,7 @@
 <definition width="250" version="0.4" hotspot_x="165" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{4FF616AB-8807-46FD-8263-7CD4E6BE942D}"/><names>
         <name lang="fr">DOCA532/100</name>
+        <name lang="cs">DOCA532/100</name>
     </names>
     <informations>Eurl Bruandet 02/2015</informations>
     <description>

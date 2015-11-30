@@ -1,6 +1,7 @@
 <definition width="30" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{10228D93-E6EA-45B6-AED7-B6613A02A64E}"/><names>
         <name lang="fr">CTX 06 11</name>
+        <name lang="cs">CTX 06 11</name>
     </names>
     <informations></informations>
     <description>

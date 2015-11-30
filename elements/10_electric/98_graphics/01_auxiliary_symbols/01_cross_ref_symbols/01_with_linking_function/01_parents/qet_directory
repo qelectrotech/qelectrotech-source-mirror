@@ -6,5 +6,6 @@
         <name lang="pl">Nadrzędne</name>
         <name lang="de">Eltern</name>
         <name lang="nl">Ouders</name>
+        <name lang="cs">Rodiče</name>
     </names>
 </qet-directory>

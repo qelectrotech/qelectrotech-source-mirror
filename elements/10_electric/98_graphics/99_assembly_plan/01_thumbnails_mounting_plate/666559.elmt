@@ -1,6 +1,7 @@
 <definition width="90" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{3B248260-BF60-4398-91E5-7C8F2DC2D735}"/><names>
         <name lang="fr">AST M 100 20</name>
+        <name lang="cs">AST M 100 20</name>
     </names>
     <informations></informations>
     <description>

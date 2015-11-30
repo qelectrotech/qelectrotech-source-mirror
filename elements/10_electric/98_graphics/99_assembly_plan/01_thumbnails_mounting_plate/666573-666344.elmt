@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{98F581E5-E9EE-4B6F-9FAB-3B08FDE09B1E}"/><names>
         <name lang="fr">AST PL 16 10 GN</name>
+        <name lang="cs">AST PL 16 10 GN</name>
     </names>
     <informations></informations>
     <description>

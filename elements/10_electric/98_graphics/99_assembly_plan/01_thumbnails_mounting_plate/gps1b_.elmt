@@ -1,6 +1,7 @@
 <definition width="130" version="0.4" hotspot_x="65" hotspot_y="105" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{4B875F29-5F6C-488D-93DD-CC236A34A728}"/><names>
         <name lang="fr">GPS1B-</name>
+        <name lang="cs">GPS1B-</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

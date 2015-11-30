@@ -6,5 +6,6 @@
         <name lang="pl">Odsyłacze</name>
         <name lang="de">Ohne Verweisfunktion (manuell)</name>
         <name lang="nl">Zonder link functie</name>
+        <name lang="cs">Bez odkazovací funkce (ručně)</name>
     </names>
 </qet-directory>

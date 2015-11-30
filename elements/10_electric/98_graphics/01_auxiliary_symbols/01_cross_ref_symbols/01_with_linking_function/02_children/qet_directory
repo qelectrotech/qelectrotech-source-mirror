@@ -6,5 +6,6 @@
         <name lang="pl">Podrzędne</name>
         <name lang="de">Kinder</name>
         <name lang="nl">Kinderen</name>
+        <name lang="cs">Potomci</name>
     </names>
 </qet-directory>

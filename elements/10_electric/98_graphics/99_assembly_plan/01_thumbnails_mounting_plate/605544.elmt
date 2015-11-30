@@ -1,6 +1,7 @@
 <definition width="170" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{C1EEC8FF-FA3C-482B-BF17-AB4A0F0D7C41}"/><names>
         <name lang="fr">FPA425/30mA</name>
+        <name lang="cs">FPA425/30mA</name>
     </names>
     <informations></informations>
     <description>
