@@ -585,7 +585,7 @@
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="149"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="150"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
@@ -686,29 +686,29 @@
         <translation>Orijentacija za označeni tekst</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="634"/>
+        <location filename="../sources/diagramview.cpp" line="617"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="834"/>
+        <location filename="../sources/diagramview.cpp" line="817"/>
         <source>Propriétés de la sélection</source>
         <translation>Odabir svojstva</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="836"/>
+        <location filename="../sources/diagramview.cpp" line="819"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Odabir sadrži %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="872"/>
+        <location filename="../sources/diagramview.cpp" line="855"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Izaberi novu boju za ovaj vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="891"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -827,12 +827,12 @@
 <context>
     <name>ElementDefinition</name>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="393"/>
+        <location filename="../sources/elementdefinition.cpp" line="411"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
         <translation>Odredišni element ne može biti napravljen.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="475"/>
+        <location filename="../sources/elementdefinition.cpp" line="493"/>
         <source>La suppression de cet élément a échoué.</source>
         <translation>Nije uspjelo brisanje elementa.</translation>
     </message>
@@ -1484,95 +1484,95 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="418"/>
+        <location filename="../sources/elementspanel.cpp" line="407"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjenje ili povećanje projekta</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="441"/>
+        <location filename="../sources/elementspanel.cpp" line="430"/>
         <source>Cartouches embarqués</source>
         <translation>Uloži naslov bloka</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="442"/>
+        <location filename="../sources/elementspanel.cpp" line="431"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjivanje ili proširenje ugrađene kolekcije</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="463"/>
+        <location filename="../sources/elementspanel.cpp" line="452"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Dvoklik za smanjiti ili raširiti kategoriju elemenata</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="475"/>
+        <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Collection embarquée</source>
         <translation>Uloži kolekciju</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="476"/>
+        <location filename="../sources/elementspanel.cpp" line="465"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjiti ili raširiti ugrađenu kolekciju elemenata</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="451"/>
+        <location filename="../sources/elementspanel.cpp" line="440"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="484"/>
+        <location filename="../sources/elementspanel.cpp" line="473"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="592"/>
+        <location filename="../sources/elementspanel.cpp" line="581"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjenje ili povećanje zbirke predložaka QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="593"/>
+        <location filename="../sources/elementspanel.cpp" line="582"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Zbirka predložaka od QElectroTech-a. Instalirana je kao komponenta sustava, nije ju moguće prilagođavati.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="601"/>
+        <location filename="../sources/elementspanel.cpp" line="590"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjenje ili povećanje kolekcije elemenata QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="602"/>
+        <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Zbirka elemenata od QElectroTech-a. Instalirana je kao komponenta sustava, nije ju moguće prilagođavati.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="610"/>
+        <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjenje ili povećanje osobne kolekcije predložaka</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="611"/>
+        <location filename="../sources/elementspanel.cpp" line="600"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Osobna zbirka predložaka - možete ju stvarati, spremati i uređivati kako želite.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="619"/>
+        <location filename="../sources/elementspanel.cpp" line="608"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Dvoklik za smanjenje ili povećanje osobne kolekcije elemenata</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="620"/>
+        <location filename="../sources/elementspanel.cpp" line="609"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Osobna zbirka elemenata - možete ih stvarati, spremati i uređivati kako želite.</translation>
@@ -3079,12 +3079,12 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Obriši projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="753"/>
+        <location filename="../sources/projectview.cpp" line="754"/>
         <source>Ajouter un folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="767"/>
+        <location filename="../sources/projectview.cpp" line="768"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation type="unfinished"></translation>
@@ -3102,7 +3102,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="842"/>
+        <location filename="../sources/projectview.cpp" line="843"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projekt</translation>
@@ -5110,81 +5110,81 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="304"/>
+        <location filename="../sources/qetproject.cpp" line="267"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="311"/>
+        <location filename="../sources/qetproject.cpp" line="274"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Projekt %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="318"/>
+        <location filename="../sources/qetproject.cpp" line="281"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Projekt bez naslova</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="327"/>
+        <location filename="../sources/qetproject.cpp" line="290"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [samo za čitanje]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="335"/>
+        <location filename="../sources/qetproject.cpp" line="298"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="785"/>
+        <location filename="../sources/qetproject.cpp" line="697"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Nemoguće kreirati kategoriju zavisnu od integracije elementa</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="796"/>
+        <location filename="../sources/qetproject.cpp" line="708"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Nemoguće dohvatiti element za integriranje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="813"/>
+        <location filename="../sources/qetproject.cpp" line="725"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Dogodila se greška tijekom kopiranja kategorije %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="888"/>
+        <location filename="../sources/qetproject.cpp" line="797"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Greška nastala tijekom integracije predloška.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1009"/>
+        <location filename="../sources/qetproject.cpp" line="911"/>
         <source>Liste des Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1120"/>
+        <location filename="../sources/qetproject.cpp" line="1027"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Upozorenje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1121"/>
+        <location filename="../sources/qetproject.cpp" line="1028"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Dokument je vjerojatno spremljen s novijom verzijom QElectroTech-a. Otvaranje cijelog ili dijelova može biti neuspješno. Što želite učiniti?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1182"/>
+        <location filename="../sources/qetproject.cpp" line="1087"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1603"/>
+        <location filename="../sources/qetproject.cpp" line="1499"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Greška nastala tijekom kopiranja elementa %1</translation>
     </message>
@@ -5222,307 +5222,307 @@ Que désirez vous faire ?</source>
         <translation>Za kopiranje predloška, molim imenujte negovu kopiju</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
         <translation>&amp;Novo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
         <translation>&amp;Otvori</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
         <translation>Otvori iz datoteke</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="331"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="335"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation>&amp;Spremi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="336"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation>Spremi kao</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
         <translation>Spremi u datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="338"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation>&amp;Kraj</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
         <translation>I&amp;zreži</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="338"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
         <translation>&amp;Kopiraj</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="339"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
         <translation>&amp;Zalijepi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
         <translation>Uredi znak</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
         <translation>Uredi dodatne informacije</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation>Povećaj</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation>Smanji</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
         <translation>Podesi povećanje</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation>Poništi povećanje</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
         <translation>Dodaj &amp;red</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
         <translation>Dodaj &amp;stupac</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Zalijepi ćelije</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="353"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Razdvoji ćelije</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="360"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="358"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="362"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="359"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="363"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="366"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="375"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="376"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation>&amp;Datoteka</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="401"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation>&amp;Uredi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="402"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation>Ekr&amp;an</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="441"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="445"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Alati</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="449"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="453"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
         <translation>Uredi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="462"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Ekran</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="477"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="481"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>Bez promjena</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="479"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="483"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Poništi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="498"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="502"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation>Svojstva ćelije</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="566"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="570"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Promijenjeno]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="569"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="573"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [Samo za čitanje]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="572"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="576"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
         <translation>%1 %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="655"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation>QElectroTech - Uređivač naslova grupe predložaka</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="670"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="674"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="747"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="751"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
         <translation>Otvori naslov bloka uzorka</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="766"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="770"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Otvori datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="768"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="772"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
         <translation>QElectroTech naslov grupe predložaka (*%1);;XML files (*.xml);; Sve datoteke (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="807"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="811"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation>Spremi predložak kao</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="826"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Spremi kao</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="828"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation>QElectroTech naslov grupe predložaka (*%1)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="930"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
         <translation>Uredi dodatne informacije</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="938"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Možete koristiti ovaj prostor za navođenje autora predloška, njegovu licencu ili bilo koje druge informacije koje smatrate korisnima.</translation>
     </message>
@@ -6040,22 +6040,22 @@ Que désirez vous faire ?</source>
         <translation>vodoravno podešavanje</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="222"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Auteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6066,23 +6066,23 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">Svojstva projekta</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="150"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Selectionner une image...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="150"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="156"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <location filename="../sources/nomenclature.cpp" line="59"/>
         <source>Erreur</source>
         <translation type="unfinished">Greška</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="156"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation type="unfinished"></translation>
     </message>

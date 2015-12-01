@@ -607,7 +607,7 @@
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="149"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="150"/>
         <source>Titre</source>
         <translation>Название</translation>
     </message>
@@ -695,7 +695,7 @@
         <translation>Вставить здесь</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="834"/>
+        <location filename="../sources/diagramview.cpp" line="817"/>
         <source>Propriétés de la sélection</source>
         <translation>Свойства выделения</translation>
     </message>
@@ -713,24 +713,24 @@
         <translation>Выбор направления выделенного текста</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="634"/>
+        <location filename="../sources/diagramview.cpp" line="617"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Без имени</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="836"/>
+        <location filename="../sources/diagramview.cpp" line="819"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Выделение содержит %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="872"/>
+        <location filename="../sources/diagramview.cpp" line="855"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Выберите новый цвет для этого проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="891"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Редактировать свойства проводника</translation>
@@ -854,12 +854,12 @@
 <context>
     <name>ElementDefinition</name>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="393"/>
+        <location filename="../sources/elementdefinition.cpp" line="411"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
         <translation>Целевой элемент не может быть создан.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="475"/>
+        <location filename="../sources/elementdefinition.cpp" line="493"/>
         <source>La suppression de cet élément a échoué.</source>
         <translation>Удаление этого элемента не удалось.</translation>
     </message>
@@ -1522,95 +1522,95 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="441"/>
+        <location filename="../sources/elementspanel.cpp" line="430"/>
         <source>Cartouches embarqués</source>
         <translation>Внедренные штампы</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="442"/>
+        <location filename="../sources/elementspanel.cpp" line="431"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть коллекцию внедренных штампов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="451"/>
+        <location filename="../sources/elementspanel.cpp" line="440"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Чтобы применить шаблон к странице, перетащите егр на нее.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="475"/>
+        <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Collection embarquée</source>
         <translation>Внедренная коллекция</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="476"/>
+        <location filename="../sources/elementspanel.cpp" line="465"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть коллекцию внедренных элементов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="418"/>
+        <location filename="../sources/elementspanel.cpp" line="407"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть проект</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="463"/>
+        <location filename="../sources/elementspanel.cpp" line="452"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть категорию элементов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="484"/>
+        <location filename="../sources/elementspanel.cpp" line="473"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation>Перетащите элемент на страницу, чтобы вставить элемент « %1 », двойнок клик для правки</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="592"/>
+        <location filename="../sources/elementspanel.cpp" line="581"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть коллекцию штампов QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="593"/>
+        <location filename="../sources/elementspanel.cpp" line="582"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Эта колекция штампов предоставлена вместе с QElectroTech. Она установлена как системный компонент и вы не можете изменить её.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="601"/>
+        <location filename="../sources/elementspanel.cpp" line="590"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть коллекцию элементов QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="602"/>
+        <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Эта колекция элементов предоставлена вместе с QElectroTech. Она установлена как системный компонент и вы не можете изменить её.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="610"/>
+        <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть вашу коллекцию штампов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="611"/>
+        <location filename="../sources/elementspanel.cpp" line="600"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Это ваша коллекция шаблонов. Используйте её для создания, хранения и редактирования ваших собственных штампов.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="619"/>
+        <location filename="../sources/elementspanel.cpp" line="608"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Кликните дважды чтобы свернуть или развенуть вашу коллекцию элементов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="620"/>
+        <location filename="../sources/elementspanel.cpp" line="609"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Это ваша коллекция элементов. Используйте её для создания, хранения и редактирования ваших собственных элементов.</translation>
@@ -3137,12 +3137,12 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Очистить проект</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="753"/>
+        <location filename="../sources/projectview.cpp" line="754"/>
         <source>Ajouter un folio</source>
         <translation>Добавить страницу</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="767"/>
+        <location filename="../sources/projectview.cpp" line="768"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Этот проект не содержит страниц</translation>
@@ -3160,7 +3160,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>нет активных проектов</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="842"/>
+        <location filename="../sources/projectview.cpp" line="843"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Проект</translation>
@@ -5177,81 +5177,81 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="311"/>
+        <location filename="../sources/qetproject.cpp" line="274"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Проект %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="318"/>
+        <location filename="../sources/qetproject.cpp" line="281"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Проект без имени</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="327"/>
+        <location filename="../sources/qetproject.cpp" line="290"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [только чтение]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="335"/>
+        <location filename="../sources/qetproject.cpp" line="298"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [изменён]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="785"/>
+        <location filename="../sources/qetproject.cpp" line="697"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Невозможно создать категорию для интеграции элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="796"/>
+        <location filename="../sources/qetproject.cpp" line="708"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Не удалось получить доступ к элементу для интеграции</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1121"/>
+        <location filename="../sources/qetproject.cpp" line="1028"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Похоже, что этот документ был сохранён более новой версией QElectroTech. Открытие может завершиться неудачно. Что вы хотите сделать?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="813"/>
+        <location filename="../sources/qetproject.cpp" line="725"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>При копировании категории произошла ошибка %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="304"/>
+        <location filename="../sources/qetproject.cpp" line="267"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation>Проект « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="888"/>
+        <location filename="../sources/qetproject.cpp" line="797"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Во время интеграции шаблона произошла ошибка.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1009"/>
+        <location filename="../sources/qetproject.cpp" line="911"/>
         <source>Liste des Folios</source>
         <translation>Список страниц</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1120"/>
+        <location filename="../sources/qetproject.cpp" line="1027"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1182"/>
+        <location filename="../sources/qetproject.cpp" line="1087"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt; Открытие проекта ... &lt;/ b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1603"/>
+        <location filename="../sources/qetproject.cpp" line="1499"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>При копировании элемента произошла ошибка %1</translation>
     </message>
@@ -5289,309 +5289,309 @@ Que désirez vous faire ?</source>
         <translation>Для того, чтобы дублировать этот шаблон, пожалуйста, введите имя для этой копии</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
         <translation>&amp;Новый</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
         <translation>&amp;Открыть</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
         <translation>Открыть из файла</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="331"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="335"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation>&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="336"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
         <translation>Сохранить в файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="338"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
         <translation>Управление логотипами</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation>Увеличить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation>Уменьшить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
         <translation>Подогнать размер</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation>Восстановить масштаб</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="826"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="828"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation>Шаблоны штампов QElectroTech (*%1)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Объединить ячейки</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
         <translation>&amp;Вырезать</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="338"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
         <translation>&amp;Копировать</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="339"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
         <translation>Вст&amp;авить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
         <translation>Редактировать дополнительную информацию</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
         <translation>Добавить ст&amp;року</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
         <translation>Добавить &amp;столбец</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="353"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>Раз&amp;делить ячейки</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="360"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="358"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="362"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="359"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="363"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="366"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="375"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="376"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="401"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="402"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="441"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="445"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Инструменты</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="449"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="453"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="462"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="477"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="481"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>Нет изменений</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="479"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="483"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translatorcomment>Отменить</translatorcomment>
         <translation>История</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="498"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="502"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation>Свойства ячейки</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="566"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="570"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Изменено]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="569"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="573"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
         <translation>[Только чтение]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="572"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="576"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
         <translation>%1 %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="655"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translatorcomment>QElectroTech - Редактор шаблонов штампов</translatorcomment>
         <translation>QElectroTech - Редактор штампов</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="670"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="674"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="747"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="751"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
         <translation>Открыть шаблон штампа</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="766"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="770"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="768"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="772"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
         <translation>Шаблоны штампов QElectroTech (*%1);;Файлы XML (*.xml);; Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="807"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="811"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation>Сохранить шаблон как</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="930"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
         <translation>Изменить дополнительную информацию</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="938"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Вы можете использовать это поле, чтобы указать авторов этого шаблона, его лицензию или любую другую информацию, которую вы сочтете полезной.</translation>
     </message>
@@ -6108,23 +6108,23 @@ Que désirez vous faire ?</source>
         <translation>горизонтальная регулировка</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="222"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Auteur</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Titre</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
         <source>Folio</source>
         <translatorcomment>Страница??</translatorcomment>
         <translation>Страница</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
@@ -6135,23 +6135,23 @@ Que désirez vous faire ?</source>
         <translation>Свойства проекта</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="150"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Selectionner une image...</source>
         <translation>Выберите изображение...</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="150"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Файлы Изображений (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="156"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <location filename="../sources/nomenclature.cpp" line="59"/>
         <source>Erreur</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/dvevent/dveventaddimage.cpp" line="156"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation>Невозможно загрузить изображение.</translation>
     </message>
