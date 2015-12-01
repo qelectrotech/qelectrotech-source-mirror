@@ -120,6 +120,7 @@ QWidget *AboutQET::authorsTab() const {
 
 
 
+
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
 
@@ -135,26 +136,26 @@ QWidget *AboutQET::authorsTab() const {
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
-	addAuthor(translators, "Alfredo Carreto",            "electronicos_mx@yahoo.com.mx",tr("Traduction en espagnol"));
-	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",      tr("Traduction en russe"));
+	addAuthor(translators, "Alfredo Carreto",            "electronicos_mx@yahoo.com.mx",   tr("Traduction en espagnol"));
+	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",         tr("Traduction en russe"));
 	addAuthor(translators, "Evgeny Kozlov",              "Evgeny.Kozlov.mailbox@gmail.com",tr("Traduction en russe"));
-	addAuthor(translators, "José Carlos Martins",        "jose@qelectrotech.org",       tr("Traduction en portugais"));
-	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tchèque"));
-	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@gmail.com",        tr("Traduction en polonais"));
-	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
-	addAuthor(translators, "Jonas Stein",                "news@jonasstein.de",          tr("Traduction en allemand"));
-	addAuthor(translators, "Noah Braden",                "",                            tr("Traduction en allemand"));
-	addAuthor(translators, "Nuri",                       "nuri@qelectrotech.org",       tr("Traduction en allemand"));
-	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
-	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
-	addAuthor(translators, "Silvio",                     "silvio@qelectrotech.org",     tr("Traduction en italien"));
-	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",     tr("Traduction en arabe"));
-	addAuthor(translators, "Antun Marakovi&#x0107;",     "antun.marakovic@lolaribar.hr",tr("Traduction en croate"));
-	addAuthor(translators, "Eduard Amorós",              "amoros@marmenuda.com",        tr("Traduction en catalan"));
-	addAuthor(translators, "Nikos Papadopoylos",         "231036448@freemail.gr",       tr("Traduction en grec"));
-	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",              tr("Traduction en grec"));
-	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",             tr("Traduction en néerlandais"));
-	addAuthor(translators, "Ronny Desmedt",              "r.desmedt@live.be",           tr("Traduction en flamand"));
+	addAuthor(translators, "José Carlos Martins",        "jose@qelectrotech.org",          tr("Traduction en portugais"));
+	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",            tr("Traduction en tchèque"));
+	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@gmail.com",           tr("Traduction en polonais"));
+	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",           tr("Traduction en allemand"));
+	addAuthor(translators, "Jonas Stein",                "news@jonasstein.de",             tr("Traduction en allemand"));
+	addAuthor(translators, "Noah Braden",                "",                               tr("Traduction en allemand"));
+	addAuthor(translators, "Nuri",                       "nuri@qelectrotech.org",          tr("Traduction en allemand"));
+	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",          tr("Traduction en roumain"));
+	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",          tr("Traduction en italien"));
+	addAuthor(translators, "Silvio",                     "silvio@qelectrotech.org",        tr("Traduction en italien"));
+	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",        tr("Traduction en arabe"));
+	addAuthor(translators, "Antun Marakovi&#x0107;",     "antun.marakovic@lolaribar.hr",   tr("Traduction en croate"));
+	addAuthor(translators, "Eduard Amorós",              "amoros@marmenuda.com",           tr("Traduction en catalan"));
+	addAuthor(translators, "Nikos Papadopoylos",         "231036448@freemail.gr",          tr("Traduction en grec"));
+	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",                 tr("Traduction en grec"));
+	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",                tr("Traduction en néerlandais"));
+	addAuthor(translators, "Ronny Desmedt",              "r.desmedt@live.be",              tr("Traduction en flamand"));
 
 
 
@@ -174,23 +175,23 @@ QWidget *AboutQET::translatorsTab() const {
 QWidget *AboutQET::contributorsTab() const {
 	QLabel *contributors = new QLabel();
 	
-	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",      tr("Paquets Fedora et Red Hat"));
-	addAuthor(contributors, "Trem",                "trem@mageia.org",             tr("Paquets Mageia"));
-	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
-	addAuthor(contributors, "Denis Briand",        "debian@denis-briand.fr",      tr("Paquets Debian"));
-	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",        tr("Paquets Gentoo"));
-	addAuthor(contributors, "Mbit",                "",                            tr("Paquets Gentoo"));
-	addAuthor(contributors, "Elbert",              "",                            tr("Paquets OS/2"));
-	addAuthor(contributors, "zloidemon",           "",                            tr("Paquets FreeBSD"));
-	addAuthor(contributors, "Yoann Varenne",       "yoann@tuxfamily.org",         tr("Paquets MAC OS X"));
-	addAuthor(contributors, "Chipsterjulien",      "",                            tr("Paquets Archlinux AUR"));
-	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Icônes"));
-	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("Développement"));
-	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
-	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",     tr("Développement"));
-	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",       tr("Collection d'éléments"));
-	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("Convertisseur DXF"));
-	addAuthor(contributors, "Abhishek Bansal",     "abhishek@qelectrotech.org",   tr("Développement"));
+	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",              tr("Paquets Fedora et Red Hat"));
+	addAuthor(contributors, "David Geiger",        "david.david@mageialinux-online.org",  tr("Paquets Mageia"));
+	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",            tr("Paquets Debian"));
+	addAuthor(contributors, "Denis Briand",        "debian@denis-briand.fr",              tr("Paquets Debian"));
+	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",                tr("Paquets Gentoo"));
+	addAuthor(contributors, "Mbit",                "",                                    tr("Paquets Gentoo"));
+	addAuthor(contributors, "Elbert",              "",                                    tr("Paquets OS/2"));
+	addAuthor(contributors, "zloidemon",           "",                                    tr("Paquets FreeBSD"));
+	addAuthor(contributors, "Yoann Varenne",       "yoann@tuxfamily.org",                 tr("Paquets MAC OS X"));
+	addAuthor(contributors, "Chipsterjulien",      "",                                    tr("Paquets Archlinux AUR"));
+	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",                 tr("Icônes"));
+	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",              tr("Développement"));
+	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",               tr("Documentation"));
+	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
+	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
+	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",                   tr("Convertisseur DXF"));
+	addAuthor(contributors, "Abhishek Bansal",     "abhishek@qelectrotech.org",           tr("Développement"));
 
 
 	
