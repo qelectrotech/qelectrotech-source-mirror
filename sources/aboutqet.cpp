@@ -72,7 +72,7 @@ QWidget *AboutQET::title() const {
 	QLabel *icon = new QLabel();
 	icon -> setPixmap(QET::Icons::QETOxygenLogo.pixmap(48, 48));
 	// label "QElectroTech"
-	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
+	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech V " + QET::displayedVersion + "</span>");
 	QString compilation_info = "<br />" + tr("Compilation : ");
 #ifdef __GNUC__
 	compilation_info += "  GCC " + QString(__VERSION__);
