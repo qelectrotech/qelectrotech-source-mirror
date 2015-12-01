@@ -3268,12 +3268,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetapp.cpp" line="375"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό μπλοκ 1</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="376"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό μπλοκ 2</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -6254,12 +6254,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό μπλοκ 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό μπλοκ 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
@@ -6515,7 +6515,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="107"/>
         <source>Modifier le type de trait d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή τύπου γραμμής του σχήματος</translation>
     </message>
 </context>
 <context>
