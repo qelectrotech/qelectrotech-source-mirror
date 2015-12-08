@@ -78,7 +78,8 @@ INCLUDEPATH += sources \
                sources/editor/esevent \
                sources/editor/graphicspart \
                sources/undocommand \
-               sources/diagramevent
+               sources/diagramevent \
+               sources/ElementsCollection
 
 
 # Fichiers sources
@@ -89,7 +90,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/editor/graphicspart/*.h) \
            $$files(sources/dvevent/*.h) \
            $$files(sources/undocommand/*.h) \
-           $$files(sources/diagramevent/*.h)
+           $$files(sources/diagramevent/*.h) \
+           $$files(sources/ElementsCollection/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
@@ -98,7 +100,8 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/editor/graphicspart/*.cpp) \
            $$files(sources/dvevent/*.cpp) \
            $$files(sources/undocommand/*.cpp) \
-           $$files(sources/diagramevent/*.cpp)
+           $$files(sources/diagramevent/*.cpp) \
+           $$files(sources/ElementsCollection/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -130,10 +133,6 @@ TARGET = qelectrotech
 unix:QMAKE_LIBS_THREAD -= -lpthread
 
 # Enable C++11
-macx {
-	LIBS += -stdlib=libc++
-	QMAKE_CXXFLAGS += -stdlib=libc++
-}
 QMAKE_CXXFLAGS += -std=c++11
 
 # Description de l'installation

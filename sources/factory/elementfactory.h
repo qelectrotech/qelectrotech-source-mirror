@@ -19,6 +19,7 @@
 #define ELEMENTFACTORY_H
 
 #include <QMutex>
+#include "elementlocation.h"
 class Element;
 class ElementsLocation;
 class QGraphicsItem;

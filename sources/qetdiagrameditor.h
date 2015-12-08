@@ -31,6 +31,8 @@ class ElementsPanelWidget;
 class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
+class ElementsCollectionWidget;
+
 /**
 	This class represents the main window of the QElectroTech diagram editor and,
 	ipso facto, the most important part of the QElectroTech user interface.
@@ -48,6 +50,7 @@ class QETDiagramEditor : public QETMainWindow {
 
 	private:
 		void setUpElementsPanel ();
+		void setUpElementsCollectionWidget();
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
 		void setUpActions       ();
@@ -208,6 +211,8 @@ class QETDiagramEditor : public QETMainWindow {
 		QDir open_dialog_dir;
 		/// Dock for the elements panel
 		QDockWidget *qdw_pa;
+		QDockWidget *m_qdw_elmt_collection;
+		ElementsCollectionWidget *m_element_collection_widget;
 		/// Dock for the undo list
 		QDockWidget *qdw_undo;
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;

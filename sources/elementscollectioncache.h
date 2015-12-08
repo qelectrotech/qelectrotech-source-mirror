@@ -20,6 +20,7 @@
 #include <QtCore>
 #include <QtSql>
 #include "elementslocation.h"
+#include "elementlocation.h"
 class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
@@ -45,6 +46,7 @@ class ElementsCollectionCache : public QObject
 	void beginCollection(ElementsCollection *);
 	void endCollection(ElementsCollection *);
 	bool fetchElement(ElementDefinition *);
+	bool fetchElement(ElementLocation location);
 	QString name() const;
 	QPixmap pixmap() const;
 	bool fetchData(const ElementsLocation &);

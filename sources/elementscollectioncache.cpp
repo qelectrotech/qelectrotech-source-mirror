@@ -215,6 +215,20 @@ bool ElementsCollectionCache::fetchElement(ElementDefinition *element)
 	}
 }
 
+bool ElementsCollectionCache::fetchElement(ElementLocation location)
+{
+	if (fetchNameFromCache(location.collectionPath(), location.uuid()) &&
+		fetchPixmapFromCache(location.collectionPath(), location.uuid()))
+		return true;
+	else if (fetchData(ElementsLocation(location.collectionPath())))
+	{
+		cacheName(location.collectionPath(), location.uuid());
+		cachePixmap(location.collectionPath(), location.uuid());
+		return true;
+	}
+	return false;
+}
+
 /**
 	@return The last name fetched through fetchElement().
 */

@@ -40,11 +40,14 @@
 #include "diagrameventaddshape.h"
 #include "diagrameventaddimage.h"
 #include "diagrameventaddtext.h"
+#include "elementscollectionwidget.h"
 
 #include "ui/dialogautonum.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
+
+#include "elementscollectionmodel.h"
 
 
 /**
@@ -79,8 +82,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
 	
 	setUpElementsPanel();
+	setUpElementsCollectionWidget();
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
+
 	setUpActions();
 	setUpToolBar();
 	setUpMenu();
@@ -146,6 +151,24 @@ void QETDiagramEditor::setUpElementsPanel() {
 	connect(pa, SIGNAL(requestForDiagramMoveUpTop         (Diagram *)), this, SLOT(moveDiagramUpTop(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveUpx10         (Diagram *)), this, SLOT(moveDiagramUpx10(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveDownx10       (Diagram *)), this, SLOT(moveDiagramDownx10(Diagram *)));
+}
+
+/**
+ * @brief QETDiagramEditor::setUpElementsCollectionWidget
+ * Set up the dock widget of element collection
+ */
+void QETDiagramEditor::setUpElementsCollectionWidget()
+{
+	m_qdw_elmt_collection = new QDockWidget(tr("Collection d'éléments"), this);
+	m_qdw_elmt_collection->setObjectName("elements_collection_widget");
+	m_qdw_elmt_collection->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_qdw_elmt_collection->setFeatures(QDockWidget::AllDockWidgetFeatures);
+
+	m_element_collection_widget = new ElementsCollectionWidget(m_qdw_elmt_collection);
+	m_qdw_elmt_collection->setWidget(m_element_collection_widget);
+	m_element_collection_widget->expandFirstItems();
+
+	addDockWidget(Qt::RightDockWidgetArea, m_qdw_elmt_collection);
 }
 
 /**
