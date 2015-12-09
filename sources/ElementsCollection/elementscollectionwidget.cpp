@@ -40,11 +40,14 @@
  */
 ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	QWidget(parent),
+	m_model(nullptr),
 	m_item_at_context_menu(nullptr)
 {
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
+
+	reload();
 }
 
 /**
@@ -100,11 +103,11 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_main_vlayout->addWidget(m_tree_view);
 
-		//Setup the element collection model
-	m_model = new ElementsCollectionModel(m_tree_view);
-	m_model->addCommonCollection();
-	m_model->addCustomCollection();
-	m_tree_view->setModel(m_model);
+		//Setup the progress bar
+	m_progress_bar = new QProgressBar(this);
+	m_progress_bar->setFormat(tr("Chargement") + " %p%");
+	m_main_vlayout->addWidget(m_progress_bar);
+	m_progress_bar->hide();
 
 	m_context_menu = new QMenu(this);
 }
@@ -345,13 +348,25 @@ void ElementsCollectionWidget::newElement()
  */
 void ElementsCollectionWidget::reload()
 {
+	m_progress_bar->show();
 	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
 	new_model->addCommonCollection();
 	new_model->addCustomCollection();
+
+	QList <ElementCollectionItem *> list = new_model->items();
+	m_progress_bar->setMaximum(list.size());
+	m_progress_bar->setValue(0);
+	foreach (ElementCollectionItem *item, new_model->items())
+	{
+		item->name();
+		m_progress_bar->setValue(m_progress_bar->value() + 1);
+	}
+
 	m_tree_view->setModel(new_model);
-	delete m_model;
+	if (m_model) delete m_model;
 	m_model = new_model;
 	expandFirstItems();
+	m_progress_bar->hide();
 }
 
 /**

@@ -27,6 +27,7 @@ class QVBoxLayout;
 class QMenu;
 class QLineEdit;
 class ElementCollectionItem;
+class QProgressBar;
 
 /**
  * @brief The ElementsCollectionWidget class
@@ -69,6 +70,7 @@ class ElementsCollectionWidget : public QWidget
         QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		ElementCollectionItem *m_item_at_context_menu;
+		QProgressBar *m_progress_bar;
 
 		QAction *m_open_dir,
 				*m_edit_element,

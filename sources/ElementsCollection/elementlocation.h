@@ -27,7 +27,7 @@ class QETProject;
 
 /**
  * @brief The ElementLocation class
- * This class represent the location of an element in the file system
+ * This class represent the location of an element or a directory in the file system
  * or an embedded collection of a project.
  * They also provide common things about an element, like the icon, uuid etc...
  */
@@ -41,6 +41,8 @@ class ElementLocation
         bool setPath(QString path);
 		bool isNull() const;
         void setProject(QETProject *project);
+		bool isElement() const;
+		bool isDirectory() const;
 
         QString collectionPath() const;
         QString fileSystemPath() const;

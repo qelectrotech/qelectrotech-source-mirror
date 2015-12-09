@@ -55,6 +55,7 @@ class ElementCollectionItem
 		virtual bool isDir() const;
 		virtual bool isElement() const;
 		virtual bool isValid() const;
+		virtual QList <ElementCollectionItem *> items() const;
 
 	protected:
         ElementCollectionItem *m_parent_item;

@@ -197,8 +197,19 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 QStringList ElementsCollectionModel::mimeTypes() const
 {
 	QStringList mime_list = QAbstractItemModel::mimeTypes();
-	mime_list << "application/x-qet-element-uri";
+	mime_list << "application/x-qet-element-uri" << "application/x-qet-category-uri";
 	return mime_list;
+}
+
+/**
+ * @brief ElementsCollectionModel::items
+ * @return All items handled by this model. The root item isn't stored in the list
+ */
+QList<ElementCollectionItem *> ElementsCollectionModel::items() const
+{
+	QList <ElementCollectionItem *> list;
+	list.append(m_root_item->items());
+	return list;
 }
 
 /**

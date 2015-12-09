@@ -163,3 +163,17 @@ bool ElementCollectionItem::isElement() const {
 bool ElementCollectionItem::isValid() const {
 	return false;
 }
+
+/**
+ * @brief ElementCollectionItem::items
+ * @return all child and subchild subsubchild... contained by this item
+ * This item isn't stored in the list
+ */
+QList<ElementCollectionItem *> ElementCollectionItem::items() const
+{
+	QList<ElementCollectionItem *> list;
+	list.append(m_child_items);
+	foreach(ElementCollectionItem *eci, m_child_items)
+		list.append(eci->items());
+	return list;
+}

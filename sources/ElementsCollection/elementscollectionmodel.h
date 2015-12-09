@@ -46,6 +46,7 @@ class ElementsCollectionModel : public QAbstractItemModel
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const;
 		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
 		QStringList mimeTypes() const;
+		QList <ElementCollectionItem *> items() const;
 
 		void addCommonCollection();
 		void addCustomCollection();
