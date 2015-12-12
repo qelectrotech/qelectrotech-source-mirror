@@ -45,6 +45,25 @@ void ElementCollectionItem::appendChild(ElementCollectionItem *item) {
 }
 
 /**
+ * @brief ElementCollectionItem::removeChild
+ * Remove and delete count childs starting at position row
+ * @param row
+ * @return true if childs was successfully removed
+ */
+bool ElementCollectionItem::removeChild(int row, int count)
+{
+	if (!(0 <= row+count  && row+count <= m_child_items.size())) return false;
+
+	for (int i=0 ; i<count ; i++)
+	{
+		ElementCollectionItem *eci = m_child_items.takeAt(row);
+		delete eci;
+	}
+
+	return true;
+}
+
+/**
  * @brief ElementCollectionItem::child
  * @param row
  * @return The child at @row of this item.
@@ -176,4 +195,23 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 	foreach(ElementCollectionItem *eci, m_child_items)
 		list.append(eci->items());
 	return list;
+}
+
+/**
+ * @brief ElementCollectionItem::canRemoveContent
+ * @return true if this item can remove the content that he represent
+ * By default return false.
+ */
+bool ElementCollectionItem::canRemoveContent() {
+	return false;
+}
+
+/**
+ * @brief ElementCollectionItem::removeContent
+ * Remove the content that he represent this item (a directory or an element).
+ * This method do nothing and return false. Inherit it, to handle removing
+ * @return true if the content was successfully removed
+ */
+bool ElementCollectionItem::removeContent() {
+	return false;
 }

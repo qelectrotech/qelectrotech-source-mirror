@@ -56,6 +56,9 @@ class FileElementCollectionItem : public ElementCollectionItem
 		virtual bool isValid() const;
 		virtual QString name();
 
+		virtual bool canRemoveContent();
+		virtual bool removeContent();
+
     private:
 		void setPathName(QString path_name);
 		void populate();

@@ -41,6 +41,8 @@ class ElementsCollectionModel : public QAbstractItemModel
 		virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
 		virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
+		virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
+
 		virtual QMimeData *mimeData(const QModelIndexList &indexes) const;
 		virtual Qt::ItemFlags flags(const QModelIndex &index) const;
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const;

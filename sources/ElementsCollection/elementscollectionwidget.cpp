@@ -141,11 +141,11 @@ void ElementsCollectionWidget::setUpConnection()
  */
 void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 {
-	QModelIndex index = m_tree_view->indexAt(point);
-	if (!index.isValid()) return;
+	m_index_at_context_menu = m_tree_view->indexAt(point);
+	if (!m_index_at_context_menu.isValid()) return;
 
 	m_context_menu->clear();
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(index.internalPointer());
+	ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(m_index_at_context_menu.internalPointer());
 	m_item_at_context_menu = eci;
 
 	if (eci->isElement())
@@ -218,29 +218,22 @@ void ElementsCollectionWidget::deleteElement()
 	ElementCollectionItem *eci = m_item_at_context_menu;
 	m_item_at_context_menu = nullptr;
 
-	if (!eci ||
-		!eci->isElement() ||
-		(eci->type() != FileElementCollectionItem::Type)) return;
-
-
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
-		//We can't remove an element in the common collection
-	if (feci->isCommonCollection()) return;
+	if (!eci) return;
+	if (!(eci->isElement() && eci->canRemoveContent())) return;
 
 	if (QET::QetMessageBox::question(this,
 									 tr("Supprimer l'élément ?", "message box title"),
 									 tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n", "message box content"),
 									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
-		QFile file(feci->fileSystemPath());
-		if (!file.remove())
+		if (!eci->removeContent())
 		{
 			QET::QetMessageBox::warning(this,
 										tr("Suppression de l'élément", "message box title"),
 										tr("La suppression de l'élément a échoué.", "message box content"));
 		}
 		else
-			reload();
+			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
 	}
 }
 
@@ -253,13 +246,8 @@ void ElementsCollectionWidget::deleteDirectory()
 	ElementCollectionItem *eci = m_item_at_context_menu;
 	m_item_at_context_menu = nullptr;
 
-	if (!eci ||
-		!eci->isDir() ||
-		(eci->type() != FileElementCollectionItem::Type)) return;
-
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
-		//We can't remove directory int the common collection or remove the elements directory
-	if (feci->isCommonCollection() || feci->isCollectionRoot()) return;
+	if (!eci) return;
+	if (!(eci->isDir() && eci->canRemoveContent())) return;
 
 	if (QET::QetMessageBox::question(this,
 									 tr("Supprimer le dossier?", "message box title"),
@@ -268,15 +256,14 @@ void ElementsCollectionWidget::deleteDirectory()
 										"message box content"),
 									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
-		QDir dir(feci->fileSystemPath());
-		if (!dir.removeRecursively())
+		if (!eci->removeContent())
 		{
 			QET::QetMessageBox::warning(this,
 										tr("Suppression du dossier", "message box title"),
 										tr("La suppression du dossier a échoué.", "message box content"));
 		}
 		else
-			reload();
+			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
 	}
 }
 

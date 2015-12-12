@@ -132,6 +132,31 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 }
 
 /**
+ * @brief ElementsCollectionModel::removeRows
+ * Reimplemented from QAbstractItemModel
+ * @param row
+ * @param count
+ * @param parent
+ * @return true if rows was successfully removed
+ */
+bool ElementsCollectionModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+	ElementCollectionItem *eci = nullptr;
+	if (!parent.isValid())
+		eci = m_root_item;
+	else
+		eci = static_cast<ElementCollectionItem *>(parent.internalPointer());
+
+	if (!(0 <= row+count && row+count <= eci->childCount())) return false;
+
+	beginRemoveRows(parent, row, (row + count -1));
+	bool r = eci->removeChild(row, count);
+	endRemoveRows();
+
+	return r;
+}
+
+/**
  * @brief ElementsCollectionModel::mimeData
  * @param indexes
  * @return the mime data of the items at @indexes

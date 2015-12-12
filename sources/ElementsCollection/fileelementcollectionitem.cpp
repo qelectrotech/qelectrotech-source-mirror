@@ -350,6 +350,40 @@ QString FileElementCollectionItem::name()
 }
 
 /**
+ * @brief FileElementCollectionItem::canRemoveContent
+ * Reimplemented from ElementCollectionItem
+ * @return
+ */
+bool FileElementCollectionItem::canRemoveContent()
+{
+	if (isCommonCollection()) return false;
+	else if (isDir() && isCollectionRoot()) return false;
+	else return true;
+}
+
+/**
+ * @brief FileElementCollectionItem::removeContent
+ * Reimplemented from ElementCollectionItem
+ * @return
+ */
+bool FileElementCollectionItem::removeContent()
+{
+	if (!canRemoveContent()) return false;
+
+	if (isElement())
+	{
+		QFile file(fileSystemPath());
+		return file.remove();
+	}
+	else if (isDir() && !isCollectionRoot())
+	{
+		QDir dir (fileSystemPath());
+		return dir.removeRecursively();
+	}
+	return false;
+}
+
+/**
  * @brief FileElementCollectionItem::setPathName
  * Set the name of this item in the file system path.
  * This item must have a parent, because they should be a child item of another.

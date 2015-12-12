@@ -40,6 +40,7 @@ class ElementCollectionItem
 		virtual int type() const {return Type;}
 
         void appendChild (ElementCollectionItem *item);
+		bool removeChild (int row, int count);
         ElementCollectionItem *child(int row);
         int childCount() const;
         int columnCount() const;
@@ -56,6 +57,9 @@ class ElementCollectionItem
 		virtual bool isElement() const;
 		virtual bool isValid() const;
 		virtual QList <ElementCollectionItem *> items() const;
+
+		virtual bool canRemoveContent();
+		virtual bool removeContent();
 
 	protected:
         ElementCollectionItem *m_parent_item;
