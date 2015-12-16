@@ -63,6 +63,14 @@ bool ElementCollectionItem::removeChild(int row, int count)
 	return true;
 }
 
+bool ElementCollectionItem::insertChild(int row, ElementCollectionItem *item)
+{
+	if (m_child_items.contains(item)) return false;
+
+	m_child_items.insert(row, item);
+	return true;
+}
+
 /**
  * @brief ElementCollectionItem::child
  * @param row

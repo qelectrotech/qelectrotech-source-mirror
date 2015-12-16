@@ -41,6 +41,7 @@ class ElementCollectionItem
 
         void appendChild (ElementCollectionItem *item);
 		bool removeChild (int row, int count);
+		bool insertChild (int row, ElementCollectionItem *item);
         ElementCollectionItem *child(int row);
         int childCount() const;
         int columnCount() const;

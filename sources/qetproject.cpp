@@ -32,6 +32,7 @@
 #include "numerotationcontext.h"
 #include "reportproperties.h"
 #include "integrationmovetemplateshandler.h"
+#include "xmlelementcollection.h"
 
 #include <QStandardPaths>
 
@@ -51,7 +52,8 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	read_only_           (false ),
 	titleblocks_         (this  ),
 	folioSheetsQuantity  (0     ),
-	m_auto_conductor     (true  )
+	m_auto_conductor     (true  ),
+	m_elements_collection (nullptr)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -64,6 +66,8 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	collection_ -> setProtocol("embed");
 	collection_ -> setProject(this);
 	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
+
+	m_elements_collection = new XmlElementCollection(this);
 	
 	// une categorie dediee aux elements integres automatiquement
 	ensureIntegrationCategoryExists();
@@ -87,7 +91,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	read_only_           (false ),
 	titleblocks_         (this  ),
 	folioSheetsQuantity  (0     ),
-	m_auto_conductor     (true  )
+	m_auto_conductor     (true  ),
+	m_elements_collection (nullptr)
 {
 		//Open the file
 	QFile project_file(path);
@@ -202,6 +207,14 @@ int QETProject::folioIndex(const Diagram *diagram) const {
 */
 ElementsCollection *QETProject::embeddedCollection() const {
 	return(collection_);
+}
+
+/**
+ * @brief QETProject::embeddedCollection
+ * @return The embedded collection
+ */
+XmlElementCollection *QETProject::embeddedElementCollection() const {
+	return m_elements_collection;
 }
 
 /**
@@ -1141,9 +1154,15 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 	}
 	
 	if (collection_root.isNull()) //Make an empty collection
+	{
 		collection_ = new XmlElementsCollection();
+		m_elements_collection = new XmlElementCollection(this);
+	}
 	else //Read the collection
+	{
 		collection_ = new XmlElementsCollection(collection_root);
+		m_elements_collection = new XmlElementCollection(collection_root, this);
+	}
 
 	collection_ -> setProtocol("embed");
 	collection_ -> setProject(this);

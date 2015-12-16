@@ -28,6 +28,7 @@ class QMenu;
 class QLineEdit;
 class ElementCollectionItem;
 class QProgressBar;
+class QETProject;
 
 /**
  * @brief The ElementsCollectionWidget class
@@ -44,6 +45,9 @@ class ElementsCollectionWidget : public QWidget
 
         void expandFirstItems();
         ElementsCollectionModel *model() const;
+
+		void addProject (QETProject *project);
+		void removeProject (QETProject *project);
 
 	private:
 		void setUpAction();
@@ -62,6 +66,7 @@ class ElementsCollectionWidget : public QWidget
 		void hideCollection(bool hide = true);
 		void hideItem(bool hide, const QModelIndex &index = QModelIndex(), bool recursive = true);
 		void showAndExpandItem (const QModelIndex &index, bool recursive = true);
+		ElementCollectionItem *elementCollectionItemForIndex (const QModelIndex &index);
 
     private:
         ElementsCollectionModel *m_model;
@@ -69,7 +74,6 @@ class ElementsCollectionWidget : public QWidget
         QTreeView *m_tree_view;
         QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
-		ElementCollectionItem *m_item_at_context_menu;
 		QModelIndex m_index_at_context_menu;
 		QProgressBar *m_progress_bar;
 

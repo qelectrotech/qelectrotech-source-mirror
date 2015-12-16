@@ -26,6 +26,8 @@
 #include "elementscategoryeditor.h"
 #include "newelementwizard.h"
 #include "elementscategory.h"
+#include "xmlprojectelementcollectionitem.h"
+#include "qetproject.h"
 
 #include <QVBoxLayout>
 #include <QTreeView>
@@ -40,8 +42,7 @@
  */
 ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	QWidget(parent),
-	m_model(nullptr),
-	m_item_at_context_menu(nullptr)
+	m_model(nullptr)
 {
 	setUpWidget();
 	setUpAction();
@@ -66,6 +67,19 @@ void ElementsCollectionWidget::expandFirstItems()
  */
 ElementsCollectionModel *ElementsCollectionWidget::model() const {
 	return m_model;
+}
+
+/**
+ * @brief ElementsCollectionWidget::addProject
+ * Add @project to be displayed
+ * @param project
+ */
+void ElementsCollectionWidget::addProject(QETProject *project) {
+	m_model->addProject(project);
+}
+
+void ElementsCollectionWidget::removeProject(QETProject *project) {
+	m_model->removeProject(project);
 }
 
 void ElementsCollectionWidget::setUpAction()
@@ -130,7 +144,7 @@ void ElementsCollectionWidget::setUpConnection()
 	connect(m_new_element,    &QAction::triggered, this, &ElementsCollectionWidget::newElement);
 
 	connect(m_tree_view, &QTreeView::doubleClicked, [this](const QModelIndex &index) {
-		this->m_item_at_context_menu = static_cast<ElementCollectionItem*>(index.internalPointer());
+		this->m_index_at_context_menu = index ;
 		this->editElement();});
 }
 
@@ -145,14 +159,16 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	if (!m_index_at_context_menu.isValid()) return;
 
 	m_context_menu->clear();
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(m_index_at_context_menu.internalPointer());
-	m_item_at_context_menu = eci;
+
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	bool add_open_dir = false;
 
 	if (eci->isElement())
 		m_context_menu->addAction(m_edit_element);
 
 	if (eci->type() == FileElementCollectionItem::Type)
 	{
+		add_open_dir = true;
 		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
 		if (!feci->isCommonCollection())
 		{
@@ -170,9 +186,16 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 				m_context_menu->addAction(m_delete_element);
 		}
 	}
+	if (eci->type() == XmlProjectElementCollectionItem::Type)
+	{
+		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
+		if (xpeci->isCollectionRoot())
+			add_open_dir = true;
+	}
 
 	m_context_menu->addSeparator();
-	m_context_menu->addAction(m_open_dir);
+	if (add_open_dir)
+		m_context_menu->addAction(m_open_dir);
 	m_context_menu->addAction(m_reload);
 
 	m_context_menu->popup(mapToGlobal(m_tree_view->mapToParent(point)));
@@ -184,12 +207,13 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
  */
 void ElementsCollectionWidget::openDir()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	if (!eci) return;
 
-	if (!eci || (eci->type() != FileElementCollectionItem::Type)) return;
-
-	QDesktopServices::openUrl(static_cast<FileElementCollectionItem*>(eci)->dirPath());
+	if (eci->type() == FileElementCollectionItem::Type)
+		QDesktopServices::openUrl(static_cast<FileElementCollectionItem*>(eci)->dirPath());
+	else if (eci->type() == XmlProjectElementCollectionItem::Type)
+		QDesktopServices::openUrl(static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir());
 }
 
 /**
@@ -198,8 +222,7 @@ void ElementsCollectionWidget::openDir()
  */
 void ElementsCollectionWidget::editElement()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (!eci ||
 		!eci->isElement() ||
@@ -215,8 +238,7 @@ void ElementsCollectionWidget::editElement()
  */
 void ElementsCollectionWidget::deleteElement()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (!eci) return;
 	if (!(eci->isElement() && eci->canRemoveContent())) return;
@@ -243,8 +265,7 @@ void ElementsCollectionWidget::deleteElement()
  */
 void ElementsCollectionWidget::deleteDirectory()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (!eci) return;
 	if (!(eci->isDir() && eci->canRemoveContent())) return;
@@ -273,8 +294,7 @@ void ElementsCollectionWidget::deleteDirectory()
  */
 void ElementsCollectionWidget::editDirectory()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
@@ -293,8 +313,7 @@ void ElementsCollectionWidget::editDirectory()
  */
 void ElementsCollectionWidget::newDirectory()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
@@ -313,8 +332,7 @@ void ElementsCollectionWidget::newDirectory()
  */
 void ElementsCollectionWidget::newElement()
 {
-	ElementCollectionItem *eci = m_item_at_context_menu;
-	m_item_at_context_menu = nullptr;
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
@@ -339,6 +357,10 @@ void ElementsCollectionWidget::reload()
 	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
 	new_model->addCommonCollection();
 	new_model->addCustomCollection();
+
+	if (m_model)
+		foreach (QETProject *project, m_model->project())
+			new_model->addProject(project);
 
 	QList <ElementCollectionItem *> list = new_model->items();
 	m_progress_bar->setMaximum(list.size());
@@ -428,4 +450,13 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool 
 
 	m_tree_view->setRowHidden(index.row(), index.parent(), false);
 	m_tree_view->expand(index);
+}
+
+/**
+ * @brief ElementsCollectionWidget::elementCollectionItemForIndex
+ * @param index
+ * @return The internal pointer of index casted to ElementCollectionItem;
+ */
+ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index) {
+	return static_cast<ElementCollectionItem*>(index.internalPointer());
 }

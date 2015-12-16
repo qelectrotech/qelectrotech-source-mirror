@@ -21,10 +21,12 @@
 #include <QAbstractItemModel>
 
 class ElementCollectionItem;
+class QETProject;
+class QList<QETProject>;
 
 /**
  * @brief The ElementsCollectionModel class
- * Provide a data model for collection of elements.
+ * Provide a data model for co;llection of elements.
  */
 class ElementsCollectionModel : public QAbstractItemModel
 {
@@ -52,9 +54,13 @@ class ElementsCollectionModel : public QAbstractItemModel
 
 		void addCommonCollection();
 		void addCustomCollection();
+		bool addProject(QETProject *project);
+		bool removeProject(QETProject *project);
+		QList<QETProject *> project() const;
 
 	private:
 		ElementCollectionItem *m_root_item;
+		QList <QETProject *> m_project_list;
 };
 
 #endif // ELEMENTSCOLLECTIONMODEL_H

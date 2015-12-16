@@ -130,7 +130,7 @@ QString FileElementCollectionItem::collectionPath() const
 QVariant FileElementCollectionItem::data(int column, int role)
 {
 		//element collection have only one column
-	if (column > 1)
+	if (column > 0)
 		return QVariant();
 
 	switch (role)
@@ -169,8 +169,6 @@ QVariant FileElementCollectionItem::data(int column, int role)
 			return QVariant();
 			break;
 	}
-
-	return QVariant();
 }
 
 /**

@@ -931,6 +931,8 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	addProjectView(project_view);
 
 	undo_group.addStack(project -> undoStack());
+
+	m_element_collection_widget->addProject(project);
 	
 	// met a jour le panel d'elements
 	if (update_panel) {
@@ -1720,6 +1722,7 @@ void QETDiagramEditor::projectWasClosed(ProjectView *project_view) {
 	QETProject *project = project_view -> project();
 	if (project) {
 		pa -> elementsPanel().projectWasClosed(project);
+		m_element_collection_widget->removeProject(project);
 		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
 	}

@@ -38,6 +38,7 @@ class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
 class NumerotationContext;
 class QUndoStack;
+class XmlElementCollection;
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -85,6 +86,7 @@ class QETProject : public QObject
 		void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
 		int folioIndex(const Diagram *) const;
 		ElementsCollection *embeddedCollection() const;
+		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
 		QString filePath();
 		void setFilePath(const QString &);
@@ -119,7 +121,6 @@ class QETProject : public QObject
 
 		bool autoConductor    () const;
 		void setAutoConductor (bool ac);
-
 		QDomDocument toXml();
 		bool close();
 		QETResult write();
@@ -230,6 +231,7 @@ class QETProject : public QObject
 	/// Folio List Sheets quantity for this project.
 	int folioSheetsQuantity;
 	bool m_auto_conductor;
+	XmlElementCollection *m_elements_collection;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

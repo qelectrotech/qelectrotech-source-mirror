@@ -19,6 +19,7 @@
 #include "elementcollectionitem.h"
 #include "qetapp.h"
 #include "fileelementcollectionitem.h"
+#include "xmlprojectelementcollectionitem.h"
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -261,4 +262,47 @@ void ElementsCollectionModel::addCustomCollection()
 		m_root_item->appendChild(feci);
 	else
 		delete feci;
+}
+
+/**
+ * @brief ElementsCollectionModel::addProject
+ * Add @project to the disalyed collection
+ * @param project
+ * @return true if project was successfully added. If project is already
+ * handled, return false.
+ */
+bool ElementsCollectionModel::addProject(QETProject *project)
+{
+	if (m_project_list.contains(project)) return false;
+
+	m_project_list.append(project);
+	int row = m_project_list.indexOf(project);
+	beginInsertRows(QModelIndex(), row, row);
+	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem(project, m_root_item);
+	bool r = m_root_item->insertChild(row, xpeci);
+	endInsertRows();
+
+	return r;
+}
+
+bool ElementsCollectionModel::removeProject(QETProject *project)
+{
+	if (!m_project_list.contains(project)) return false;
+
+	int row = m_project_list.indexOf(project);
+	if (removeRows(row, 1, QModelIndex()))
+	{
+		m_project_list.removeOne(project);
+		return true;
+	}
+	else
+		return false;
+}
+
+/**
+ * @brief ElementsCollectionModel::project
+ * @return A list of project handled by this model
+ */
+QList<QETProject *> ElementsCollectionModel::project() const {
+	return m_project_list;
 }
