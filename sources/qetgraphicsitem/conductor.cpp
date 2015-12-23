@@ -1220,6 +1220,8 @@ void Conductor::setProperties(const ConductorProperties &properties)
 	{
 		ConductorProperties other_properties = other_conductor->properties();
 		other_properties.text = properties_.text;
+		other_properties.color = properties_.color;
+		other_properties.cond_size = properties_.cond_size;
 		other_properties.m_function = properties_.m_function;
 		other_properties.m_tension_protocol = properties_.m_tension_protocol;
 		other_conductor->setProperties(other_properties);
