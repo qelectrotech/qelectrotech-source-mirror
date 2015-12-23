@@ -222,6 +222,7 @@ ConductorProperties::ConductorProperties() :
 	color(Qt::black),
 	text("_"),
 	text_size(9),
+	cond_size(1),
 	verti_rotate_text(270),
 	horiz_rotate_text(0),
 	m_show_text(true),
@@ -255,6 +256,7 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension-protocol", m_tension_protocol);
 	e.setAttribute("numsize", text_size);
+	e.setAttribute("condsize", cond_size);
 	e.setAttribute("displaytext", m_show_text);
 	e.setAttribute("onetextperfolio", m_one_text_per_folio);
 	e.setAttribute("vertirotatetext", verti_rotate_text);
@@ -293,6 +295,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension-protocol");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
+	cond_size            = e.attribute("condsize", QString::number(1)).toInt();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
 	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
@@ -317,6 +320,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
+	settings.setValue(prefix + "size", QString::number(cond_size));
 	settings.setValue(prefix + "displaytext", m_show_text);
 	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
@@ -342,6 +346,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
+	cond_size            = settings.value(prefix + "size", "1").toInt();
 	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
@@ -389,6 +394,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const{
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_show_text == m_show_text &&\
 		other.text_size == text_size &&\
+		other.cond_size == cond_size &&\
 		other.verti_rotate_text == verti_rotate_text &&\
 		other.horiz_rotate_text == horiz_rotate_text &&\
 		other.singleLineProperties == singleLineProperties &&\

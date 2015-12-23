@@ -82,6 +82,7 @@ class ConductorProperties
 				m_function,
 				m_tension_protocol;
 		int text_size;
+		int cond_size;
 		double verti_rotate_text;
 		double horiz_rotate_text;
 		bool m_show_text;

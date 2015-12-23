@@ -76,9 +76,10 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
 	ui->m_text_le               -> setText    (m_properties.text);
-	ui->m_function_le           ->setText     (m_properties.m_function);
-	ui->m_tension_protocol_le   ->setText     (m_properties.m_tension_protocol);
+	ui->m_function_le           -> setText    (m_properties.m_function);
+	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
 	ui->m_text_size_sb          -> setValue   (m_properties.text_size);
+	ui->m_cond_size_sb          -> setValue   (m_properties.cond_size);
 	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
 	ui->m_one_text_per_folio_cb -> setChecked (m_properties.m_one_text_per_folio);
 	ui->m_earth_cb              -> setChecked (m_properties.singleLineProperties.hasGround);
@@ -110,6 +111,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_function              = ui -> m_function_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.text_size               = ui -> m_text_size_sb -> value();
+	properties_.cond_size               = ui -> m_cond_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
 	properties_.verti_rotate_text       = m_verti_select -> value();
@@ -250,7 +252,7 @@ void ConductorPropertiesWidget::on_m_earth_cb_toggled(bool checked) {
 void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 	if (checked && ui -> m_earth_cb -> isChecked())
 		ui -> m_pen_cb -> setEnabled(true);
-   else ui -> m_pen_cb -> setDisabled(true);
+	else ui -> m_pen_cb -> setDisabled(true);
 }
 
 /**
