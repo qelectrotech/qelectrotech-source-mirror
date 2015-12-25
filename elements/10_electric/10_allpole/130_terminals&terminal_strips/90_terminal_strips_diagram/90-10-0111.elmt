@@ -4,6 +4,7 @@
         <name lang="fr">Borne (continuité)</name>
         <name lang="de">Klemme (Durchgang)</name>
         <name lang="en">Terminal (feed-through)</name>
+        <name lang="pl">Zacisk</name>
     </names>
     <informations/>
     <description>
