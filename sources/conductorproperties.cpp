@@ -71,6 +71,7 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConductorSegmentType dir
 	pen.setCapStyle(Qt::FlatCap);
 	pen.setJoinStyle(Qt::MiterJoin);
 	pen.setStyle(Qt::SolidLine);
+	pen.setWidthF(1);
 	painter -> setPen(pen);
 	painter -> setRenderHint(QPainter::Antialiasing, true);
 	

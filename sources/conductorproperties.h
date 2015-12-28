@@ -30,7 +30,7 @@ class SingleLineProperties {
 	public:
 	SingleLineProperties();
 	virtual ~SingleLineProperties();
-	
+
 	void setPhasesCount(int);
 	unsigned short int phasesCount();
 	bool isPen() const;

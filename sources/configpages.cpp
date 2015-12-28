@@ -72,7 +72,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
 
-    tab_widget -> addTab (diagram_widget, tr("Folio"));
+	tab_widget -> addTab (diagram_widget, tr("Folio"));
 	tab_widget -> addTab (cpw,            tr("Conducteur"));
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
@@ -197,8 +197,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	appearance_ = new QGroupBox(tr("Apparence"), this);
 	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du système"), appearance_);
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
-    windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
-    tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
+	windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
+	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
@@ -239,7 +239,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
 	projects_view_mode_layout -> addWidget(m_zoom_out_beyond_folio);
-    projects_view_mode_layout -> addWidget(use_trackpad_);
+	projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -253,7 +253,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	lang_group_box = new QGroupBox(tr("Langue"), this);
 	QHBoxLayout *lang_layout = new QHBoxLayout(lang_group_box);
 	lang_combo_box = new QComboBox();
-    lang_label = new QLabel(tr("La nouvelle langue sera prise en compte au prochain lancement de QElectroTech."));
+	lang_label = new QLabel(tr("La nouvelle langue sera prise en compte au prochain lancement de QElectroTech."));
 	lang_layout->addWidget(lang_combo_box);
 	lang_layout->addWidget(lang_label);
 	fillLang(settings);
