@@ -51,6 +51,34 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 	}
 }
 
+ReportElement::ReportElement(ElementLocation &location, QString link_type, QGraphicsItem *parent, int *state) :
+	CustomElement(location, parent, state),
+	m_text_field (nullptr),
+	m_watched_conductor (nullptr)
+{
+		/*
+		* Get text tagged label. This is work for report
+		* create after the revision 3559.
+		* for report create before, we take the first text field
+		* because report haven't got a text field tagged label
+		*/
+	m_text_field = taggedText("label");
+	if (!m_text_field && !texts().isEmpty())
+		m_text_field = texts().first();
+	if (m_text_field)
+		m_text_field -> setNoEditable();
+
+	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
+	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
+
+		//We make these connections, to be always aware about the conductor properties
+	if (terminals().size())
+	{
+		connect (terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
+		connect (terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
+	}
+}
+
 /**
  * @brief ReportElement::~ReportElement
  * Destructor

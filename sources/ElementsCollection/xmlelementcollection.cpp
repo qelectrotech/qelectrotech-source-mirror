@@ -16,12 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "xmlelementcollection.h"
-#include "qdebug.h"
 #include "nameslist.h"
 
 /**
  * @brief XmlElementCollection::XmlElementCollection
- * Build an empty collection
+ * Build an empty collection.
+ * The collection start by :
+ *		<collection>
+ *			<category name="import>
+ *			</category>
+ *		</collection>
+ * All elements and category are stored as child of <category name="import>
  * @param parent
  */
 XmlElementCollection::XmlElementCollection(QObject *parent) :
@@ -129,4 +134,76 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
 	}
 
 	return element_list;
+}
+
+/**
+ * @brief XmlElementCollection::element
+ * @param path : path of element : the path must start by "import/",
+ * because import is the first directory of an xml collection
+ * @return the QDomElement that represent the element at path @path
+ * or a null QDomElement if not found or doesn't represent an element
+ */
+QDomElement XmlElementCollection::element(const QString &path)
+{
+	if (!path.endsWith(".elmt")) return QDomElement();
+
+	QStringList path_list = path.split("/");
+	QString element_name = path_list.last();
+	path_list.removeLast();
+
+	QDomElement dom_element = directory(path_list.join("/"));
+	if (dom_element.isNull()) return QDomElement();
+
+	QDomNodeList node_list = dom_element.elementsByTagName("element");
+	if (node_list.isEmpty()) return QDomElement();
+
+	for (int i=0 ; i <node_list.size() ; i++)
+	{
+		QDomNode node = node_list.at(i);
+		if (node.isElement())
+		{
+			QDomElement qde = node.toElement();
+			if (qde.attribute("name") == element_name)
+				return qde;
+		}
+	}
+
+	return QDomElement();
+}
+
+/**
+ * @brief XmlElementCollection::directory
+ * @param path : path of directory : the path must start by "import/",
+ * because import is the first directory of an xml collection
+ * @return the QDomElement that represent the directory at path @path
+ * or a null QDomElement if not found.
+ */
+QDomElement XmlElementCollection::directory(const QString &path)
+{
+	QStringList path_list = path.split("/");
+	QDomElement dom_element = m_dom_document.documentElement();
+
+	for (int i=0 ; i<path_list.size() ; i++)
+	{
+		QDomNodeList node_list = dom_element.elementsByTagName("category");
+		if (node_list.isEmpty()) return QDomElement();
+
+		for (int j=0 ; j <node_list.size() ; j++)
+		{
+			QDomNode node = node_list.at(j);
+			if (node.isElement())
+			{
+				QDomElement qde = node.toElement();
+				if (qde.attribute("name") == path_list.at(i))
+				{
+					dom_element = node.toElement();
+					j = node_list.size(); //Use to go out of the for loop
+				}
+				else if (j == node_list.size()-1)
+					return QDomElement();
+			}
+		}
+	}
+
+	return dom_element;
 }

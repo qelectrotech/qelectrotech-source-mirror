@@ -19,6 +19,9 @@
 #include "qetapp.h"
 #include "qetproject.h"
 #include "elementscollectioncache.h"
+#include "xmlelementcollection.h"
+#include "elementfactory.h"
+#include "element.h"
 
 /**
  * @brief ElementLocation::ElementLocation
@@ -34,6 +37,7 @@ ElementLocation::ElementLocation(QString path):
 /**
  * @brief ElementLocation::ElementLocation
  * @param path : path of item embedded in @project
+ * The path must be in form : embed://dir/subdir/myElement.elmt
  * @param project : project
  */
 ElementLocation::ElementLocation(QString path, QETProject *project) :
@@ -58,116 +62,148 @@ bool ElementLocation::setPath(QString path)
 {
 	QString tmp_path = path;
 
-		//The path is in file system
-	if (!m_project)
+		//There is a project, the path is for an embedded coolection.
+	if (m_project)
 	{
-			//The given path is relative to common or custom collection
-		if (path.startsWith("common://") || path.startsWith("custom://"))
+		if (path.startsWith("embed://"))
 		{
-			QString p;
-			if (path.startsWith("common://"))
-			{
-				tmp_path.remove("common://");
-				p = QETApp::commonElementsDir() + tmp_path;
-			}
-			else
-			{
-				tmp_path.remove("custom://");
-				p = QETApp::customElementsDir() + tmp_path;
-			}
+			m_collection_path = path;
+			return true;
+		}
+		else
+			return false;
+	}
 
-				//This is an element
-			if (path.endsWith(".elmt"))
+		//The path start with project, we get the project and the path from the string
+	else if (tmp_path.startsWith("project"))
+	{
+		QRegExp rx("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
+		if (rx.exactMatch(tmp_path))
+		{
+			bool conv_ok;
+			uint project_id = rx.capturedTexts().at(1).toUInt(&conv_ok);
+			if (conv_ok)
 			{
-				QFile file(p);
-				if (file.exists())
+				QETProject *project = QETApp::project(project_id);
+				if (project)
 				{
-					m_file_system_path = p;
-					m_collection_path = path;
+					m_collection_path = rx.capturedTexts().at(2);
+					m_project = project;
 					return true;
 				}
-				return false;
-			}
-				//They must be a directory
-			else
-			{
-				QDir dir(p);
-				if(dir.exists())
-				{
-					m_file_system_path = p;
-					m_collection_path = path;
-					return true;
-				}
-				return false;
 			}
 		}
-			//In this case, the path is supposed to be relative to the file system.
+		return false;
+	}
+
+		//The path is in file system, the given path is relative to common or custom collection
+	else if (path.startsWith("common://") || path.startsWith("custom://"))
+	{
+		QString p;
+		if (path.startsWith("common://"))
+		{
+			tmp_path.remove("common://");
+			p = QETApp::commonElementsDir() + tmp_path;
+		}
 		else
 		{
-			if(path.endsWith(".elmt"))
+			tmp_path.remove("custom://");
+			p = QETApp::customElementsDir() + tmp_path;
+		}
+
+			//This is an element
+		if (path.endsWith(".elmt"))
+		{
+			QFile file(p);
+			if (file.exists())
 			{
-				QFile file(path);
-				if (file.exists())
-				{
-					m_file_system_path = path;
-					if (path.startsWith(QETApp::commonElementsDir()))
-					{
-						path.remove(QETApp::commonElementsDir());
-						path.prepend("common://");
-						m_collection_path = path;
-					}
-					else if (path.startsWith(QETApp::customElementsDir()))
-					{
-						path.remove(QETApp::customElementsDir());
-						path.prepend("custom://");
-						m_collection_path = path;
-					}
-					return true;
-				}
-				return false;
+				m_file_system_path = p;
+				m_collection_path = path;
+				return true;
 			}
-			else
+			return false;
+		}
+			//They must be a directory
+		else
+		{
+			QDir dir(p);
+			if(dir.exists())
 			{
-				QDir dir(path);
-				if (dir.exists())
-				{
-					m_file_system_path = path;
-					if (path.startsWith(QETApp::commonElementsDir()))
-					{
-						path.remove(QETApp::commonElementsDir());
-						path.prepend("common://");
-						m_collection_path = path;
-					}
-					else if (path.startsWith(QETApp::customElementsDir()))
-					{
-						path.remove(QETApp::customElementsDir());
-						path.prepend("custom://");
-						m_collection_path = path;
-					}
-					return true;
-				}
-				return false;
+				m_file_system_path = p;
+				m_collection_path = path;
+				return true;
 			}
+			return false;
+		}
+	}
+		//In this case, the path is supposed to be relative to the file system.
+	else
+	{
+		if(path.endsWith(".elmt"))
+		{
+			QFile file(path);
+			if (file.exists())
+			{
+				m_file_system_path = path;
+				if (path.startsWith(QETApp::commonElementsDir()))
+				{
+					path.remove(QETApp::commonElementsDir());
+					path.prepend("common://");
+					m_collection_path = path;
+				}
+				else if (path.startsWith(QETApp::customElementsDir()))
+				{
+					path.remove(QETApp::customElementsDir());
+					path.prepend("custom://");
+					m_collection_path = path;
+				}
+				return true;
+			}
+			return false;
+		}
+		else
+		{
+			QDir dir(path);
+			if (dir.exists())
+			{
+				m_file_system_path = path;
+				if (path.startsWith(QETApp::commonElementsDir()))
+				{
+					path.remove(QETApp::commonElementsDir());
+					path.prepend("common://");
+					m_collection_path = path;
+				}
+				else if (path.startsWith(QETApp::customElementsDir()))
+				{
+					path.remove(QETApp::customElementsDir());
+					path.prepend("custom://");
+					m_collection_path = path;
+				}
+				return true;
+			}
+			return false;
 		}
 	}
 
 	return false;
 }
 
+/**
+ * @brief ElementLocation::isNull
+ * @return True represent nothing
+ */
 bool ElementLocation::isNull() const
 {
-	if (m_file_system_path.isEmpty())
-		return true;
-	else
-		return false;
+	if (!m_file_system_path.isEmpty()) return false;
+	else if (!m_collection_path.isEmpty()) return false;
+	else return true;
 }
 
 /**
  * @brief ElementLocation::setProject
  * @param project : set the project of this location to @project.
  */
-void ElementLocation::setProject(QETProject *project)
-{
+void ElementLocation::setProject(QETProject *project) {
 	m_project = project;
 }
 
@@ -233,6 +269,20 @@ QDomElement ElementLocation::xml()
 		if (docu.setContent(&file))
 			m_xml = docu.documentElement().cloneNode().toElement();
 	}
+	else
+	{
+		QString str = m_collection_path;
+		if (isElement())
+		{
+			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			m_xml = element.firstChildElement("definition");
+		}
+		else
+		{
+			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
+			m_xml = element;
+		}
+	}
 
 	return m_xml;
 }
@@ -254,22 +304,65 @@ QUuid ElementLocation::uuid()
 	return m_uuid;
 }
 
+/**
+ * @brief ElementLocation::icon
+ * @return The icon of the represented element.
+ * If icon can't be set, return a null QIcon
+ */
 QIcon ElementLocation::icon()
 {
 	if (!m_icon.isNull()) return m_icon;
 
-	ElementsCollectionCache *cache = QETApp::collectionCache();
-	if (cache->fetchElement(*this))
-		m_icon = QIcon(cache->pixmap());
+	if (!m_project)
+	{
+		ElementsCollectionCache *cache = QETApp::collectionCache();
+		if (cache->fetchElement(*this))
+			m_icon = QIcon(cache->pixmap());
+	}
+	else
+	{
+		ElementFactory *factory = ElementFactory::Instance();
+		int state;
+		Element *elmt = factory->createElement(*this, 0, &state);
+
+		if (state == 0)
+			m_icon = QIcon(elmt->pixmap());
+	}
 
 	return m_icon;
 }
 
+/**
+ * @brief ElementLocation::name
+ * @return The name of the represented element in the current local
+ */
 QString ElementLocation::name()
 {
-	ElementsCollectionCache *cache = QETApp::collectionCache();
-	if (cache->fetchElement(*this))
-		return cache->name();
+	if (!m_project)
+	{
+		ElementsCollectionCache *cache = QETApp::collectionCache();
+		if (cache->fetchElement(*this))
+			return cache->name();
+		else
+			return QString();
+	}
 	else
-		return QString();
+	{
+		NamesList nl;
+		nl.fromXml(xml());
+		return nl.name(fileName());
+	}
+}
+
+/**
+ * @brief ElementLocation::fileName
+ * @return Return the file name of this element whatever the storage system (file system, xml collection)
+ */
+QString ElementLocation::fileName() const
+{
+	if (m_collection_path.isEmpty()) return QString();
+
+	QStringList qsl = m_collection_path.split("/");
+	if (qsl.isEmpty()) return QString();
+	else return qsl.last();
 }

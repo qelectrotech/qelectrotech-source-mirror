@@ -34,6 +34,7 @@ class MasterElement : public CustomElement
 	
 	public:
 		explicit MasterElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		explicit MasterElement(ElementLocation &location, QGraphicsItem *parent = nullptr, int *state = nullptr);
 		~MasterElement();
 
 		virtual void linkToElement     (Element *elmt);

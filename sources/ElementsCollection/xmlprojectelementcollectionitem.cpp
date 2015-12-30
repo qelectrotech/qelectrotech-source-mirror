@@ -21,6 +21,7 @@
 #include "xmlelementcollection.h"
 #include "nameslist.h"
 #include "qetapp.h"
+#include "elementlocation.h"
 #include <algorithm>
 
 /**
@@ -81,7 +82,14 @@ QVariant XmlProjectElementCollectionItem::data(int column, int role)
 			else if (isDir())
 				return QET::Icons::Folder;
 			else
-				return QET::Icons::Element;
+			{
+				if (m_icon.isNull())
+				{
+					ElementLocation loc(embeddedPath(), m_project);
+					m_icon = loc.icon();
+				}
+				return m_icon;
+			}
             break;
 		case Qt::ToolTipRole:
 			if (isCollectionRoot())
@@ -151,23 +159,8 @@ QString XmlProjectElementCollectionItem::name()
     }
 	else
 	{
-		NamesList nl;
-		if (isDir())
-		{
-			nl.fromXml(m_dom_element);
-			if (nl.name().isEmpty())
-				m_name = m_dom_element.attribute("name");
-			else
-				m_name = nl.name();
-		}
-		else
-		{
-			nl.fromXml(m_dom_element.firstChildElement("definition"));
-			if (nl.name().isEmpty())
-				m_name = m_dom_element.attribute("name");
-			else
-				m_name = nl.name();
-		}
+		ElementLocation location (embeddedPath(), m_project);
+		m_name = location.name();
 		return m_name;
 	}
 }
@@ -210,7 +203,8 @@ bool XmlProjectElementCollectionItem::isElement() const
 
 /**
  * @brief XmlProjectElementCollectionItem::collectionPath
- * @return The collection path of this item
+ * @return The collection path of this item.
+ * The path is in form : project0+embed://dir/subdir/myElement.elmt
  */
 QString XmlProjectElementCollectionItem::collectionPath() const
 {
@@ -227,6 +221,28 @@ QString XmlProjectElementCollectionItem::collectionPath() const
 			return parent->collectionPath() + m_dom_element.attribute("name");
 		else
 			return parent->collectionPath() + "/" + m_dom_element.attribute("name");
+	}
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::embeddedPath
+ * @return The embedde path of this item
+ * The path is in form : embed://dir/subdir/myElement.elmt
+ */
+QString XmlProjectElementCollectionItem::embeddedPath() const
+{
+	if (isCollectionRoot())
+	{
+		return "embed://";
+	}
+	else
+	{
+		XmlProjectElementCollectionItem *parent = static_cast<XmlProjectElementCollectionItem *>(m_parent_item);
+
+		if (parent->isCollectionRoot())
+			return parent->embeddedPath() + m_dom_element.attribute("name");
+		else
+			return parent->embeddedPath() + "/" + m_dom_element.attribute("name");
 	}
 }
 

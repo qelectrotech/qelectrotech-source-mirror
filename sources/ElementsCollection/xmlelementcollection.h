@@ -23,6 +23,10 @@
 
 class QDomElement;
 
+/**
+ * @brief The XmlElementCollection class
+ * This class represent a collection of elements stored to xml
+ */
 class XmlElementCollection : public QObject
 {
 		Q_OBJECT
@@ -33,6 +37,8 @@ class XmlElementCollection : public QObject
 		QDomNodeList childs(const QDomElement &parent_element);
 		QList<QDomElement> directory(const QDomElement &parent_element);
 		QList<QDomElement> elements(const QDomElement &parent_element);
+		QDomElement element(const QString &path);
+		QDomElement directory(const QString &path);
 
 	signals:
 

@@ -91,6 +91,50 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 }
 
 /**
+ * @brief CustomElement::CustomElement
+ * Constructor build an element from the location @location
+ * @param location : location of the element
+ * @param parent : parent of element
+ * @param state : pointeur used to know the encountered error at creation...
+		- 0 : No error
+		- 1 : The location don't represent an element
+		- 2 : The location can't be readable
+		- 3 : The location isn't valid / exploitable / usable
+		- 4 : The xml document wasn't an element "definition"
+		- 5 : The attributes of the defintion aren't present and/or valid
+		- 6 : The defintion is empty
+		- 7 : The analyze of an xml element that describe a part of the drawing was failed
+		- 8 : No part of the drawing can be loaded
+ */
+CustomElement::CustomElement(ElementLocation &location, QGraphicsItem *parent, int *state) :
+	FixedElement(parent),
+	elmt_state(-1),
+	m_location(location),
+	forbid_antialiasing(false)
+
+{
+	if (!location.isElement())
+	{
+		if (state) *state = 1;
+		elmt_state = 1;
+	}
+
+		//Start from empty lists.
+	list_lines_.clear();
+	list_rectangles_.clear();
+	list_circles_.clear();
+	list_polygons_.clear();
+	list_arcs_.clear();
+
+	buildFromXml(location.xml(), &elmt_state);
+	if (state) *state = elmt_state;
+	if (elmt_state) return;
+
+	if (state) *state = 0;
+	elmt_state = 0;
+}
+
+/**
 	Construit l'element personnalise a partir d'un element XML representant sa
 	definition.
 	@param xml_def_elmt

@@ -70,7 +70,8 @@ class ElementFactory
 		~ElementFactory() {}
 
 	public:
-		Element * createElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		Element *createElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		Element *createElement(ElementLocation &location, QGraphicsItem *parent = nullptr, int *state = nullptr);
 };
 //ElementFactory ElementFactory::factory_ = 0;
 #endif // ELEMENTFACTORY_H

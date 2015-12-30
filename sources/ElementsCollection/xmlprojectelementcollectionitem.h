@@ -21,6 +21,7 @@
 #include "elementcollectionitem.h"
 
 #include <QDomElement>
+#include <QIcon>
 
 class QETProject;
 
@@ -51,6 +52,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 		virtual bool isDir() const;
 		virtual bool isElement() const;
 		QString collectionPath() const;
+		QString embeddedPath() const;
 
 	private:
 		void populate();
@@ -58,6 +60,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 	private:
 		QETProject *m_project;
 		QDomElement m_dom_element;
+		QIcon m_icon;
 };
 
 #endif // XMLPROJECTELEMENTCOLLECTIONITEM_H

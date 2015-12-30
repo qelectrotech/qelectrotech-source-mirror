@@ -20,6 +20,7 @@
 #include "fixedelement.h"
 #include "nameslist.h"
 #include "elementslocation.h"
+#include "elementlocation.h"
 #include <QPicture>
 
 class ElementTextItem;
@@ -30,28 +31,32 @@ class Terminal;
 	element, the difference being that the CustomElement reads its description
 	(names, drawing, behavior) from an XML document.
 */
-class CustomElement : public FixedElement {
-	
+class CustomElement : public FixedElement
+{
 	Q_OBJECT
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	CustomElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		CustomElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		CustomElement (ElementLocation &location, QGraphicsItem *parent = nullptr, int *state = nullptr);
+
 	virtual ~CustomElement();
 	
 	private:
-	CustomElement(const CustomElement &);
+		CustomElement(const CustomElement &);
 	
-	// attributes
+		// attributes
 	protected:
-	int elmt_state; // hold the error code in case the instanciation fails, or 0 if everything went well
-	NamesList names;
-	ElementsLocation location_;
-	QPicture drawing;
-	QPicture low_zoom_drawing;
-	QList<Terminal *> list_terminals;
-	QList<ElementTextItem *> list_texts_;
-	bool forbid_antialiasing;
+		int elmt_state; // hold the error code in case the instanciation fails, or 0 if everything went well
+		NamesList names;
+		ElementsLocation location_;
+		ElementLocation m_location;
+		QPicture drawing;
+		QPicture low_zoom_drawing;
+		QList<Terminal *> list_terminals;
+		QList<ElementTextItem *> list_texts_;
+		bool forbid_antialiasing;
+
 
 	QList<QLineF *> list_lines_;
 	QList<QRectF *> list_rectangles_;

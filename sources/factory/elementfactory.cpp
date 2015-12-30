@@ -59,3 +59,31 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 		//default if nothing match for link_type
 	return (new SimpleElement(location, qgi, state));
 }
+
+/**
+ * @brief ElementFactory::createElement
+ * @param location : The location of the element
+ * @param parent : parent item for the new element
+ * @param state : state of the creation
+ * @return : the element or nullptr if the creation failed
+ */
+Element *ElementFactory::createElement(ElementLocation &location, QGraphicsItem *parent, int *state)
+{
+	if (!location.isElement() || location.isNull())
+	{
+		if (state) *state = 1;
+		return nullptr;
+	}
+
+	if (location.xml().hasAttribute("link_type"))
+	{
+		QString link_type = location.xml().attribute("link_type");
+		if (link_type == "next_report" || link_type == "previous_report") return (new ReportElement(location, link_type, parent, state));
+		if (link_type == "master")   return (new MasterElement   (location, parent, state));
+		if (link_type == "slave")    return (new SlaveElement    (location, parent, state));
+		if (link_type == "terminal") return (new TerminalElement (location, parent, state));
+	}
+
+		//default if nothing match for link_type
+	return (new SimpleElement(location, parent, state));
+}

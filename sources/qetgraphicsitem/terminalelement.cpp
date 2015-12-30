@@ -31,4 +31,10 @@ TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem
 	link_type_ = Terminale;
 }
 
+TerminalElement::TerminalElement(ElementLocation &location, QGraphicsItem *parent, int *state) :
+	CustomElement(location, parent, state)
+{
+	link_type_ = Terminale;
+}
+
 TerminalElement::~TerminalElement() {}

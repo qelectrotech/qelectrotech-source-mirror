@@ -33,6 +33,7 @@ class ReportElement : public CustomElement
 
 	public :
 		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = 0, int * = 0);
+		explicit ReportElement(ElementLocation &location, QString link_type, QGraphicsItem *parent = nullptr, int *state = nullptr);
 		~ReportElement();
 		virtual void linkToElement(Element *);
 		virtual void unlinkAllElements();

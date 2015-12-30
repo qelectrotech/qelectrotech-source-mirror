@@ -49,10 +49,11 @@ class ElementLocation
 
         QETProject *project() const;
 
-        QDomElement xml();
+		QDomElement xml();
         QUuid uuid();
 		QIcon icon();
 		QString name();
+		QString fileName() const;
 
     private:
         QString m_collection_path;
