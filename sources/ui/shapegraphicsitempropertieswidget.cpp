@@ -134,10 +134,10 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 
 	if (m_live_edit){
 		connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		connect (ui->m_size_cb, SIGNAL(valueChanged(int)), this, SLOT(apply()));
+		connect (ui->m_size_cb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
 	}else
 		disconnect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		disconnect (ui->m_size_cb, SIGNAL(valueChanged(int)), this, SLOT(apply()));
+		disconnect (ui->m_size_cb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
 	return true;
 }
 

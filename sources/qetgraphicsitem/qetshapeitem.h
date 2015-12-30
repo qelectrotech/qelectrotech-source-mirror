@@ -103,7 +103,7 @@ class QetShapeItem : public QetGraphicsItem
 		bool		 m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
-		int			 shape_size;
+		double		 shape_size;
 		QetGraphicsHandlerUtility m_handler;
 };
 #endif // QETSHAPEITEM_H

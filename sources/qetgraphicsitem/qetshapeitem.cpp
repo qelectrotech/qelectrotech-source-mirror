@@ -459,7 +459,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 
 	is_movable_ = (e.attribute("is_movable").toInt());
 	m_pen.setStyle(Qt::PenStyle(e.attribute("style","0").toInt()));
-	m_pen.setWidthF(e.attribute("shape_size", QString::number(shape_size)).toInt());
+	m_pen.setWidthF(e.attribute("shape_size", QString::number(shape_size)).toDouble());
 
 	QString type = e.attribute("type");
 		//Compatibility for version older than N°4075, shape type was stored with an int
