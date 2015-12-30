@@ -52,9 +52,10 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 	private slots:
 		void on_m_lock_pos_cb_clicked();
 
-	private:
+		private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;
 		QetShapeItem *m_shape;
+		int       shape_size;
 };
 
 #endif // SHAPEGRAPHICSITEMPROPERTIESWIDGET_H

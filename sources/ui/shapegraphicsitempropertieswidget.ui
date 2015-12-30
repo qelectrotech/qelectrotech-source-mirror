@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>195</width>
+    <width>242</width>
     <height>183</height>
    </rect>
   </property>
@@ -54,6 +54,29 @@
      </item>
     </layout>
    </item>
+   <item alignment="Qt::AlignLeft">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Epaisseur de trait</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="m_size_cb">
+     <property name="correctionMode">
+      <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>20</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">
      <property name="text">
@@ -75,6 +98,9 @@
     </spacer>
    </item>
   </layout>
+  <zorder>label_2</zorder>
+  <zorder>m_lock_pos_cb</zorder>
+  <zorder>m_size_cb</zorder>
  </widget>
  <resources/>
  <connections/>

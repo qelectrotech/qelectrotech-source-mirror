@@ -38,13 +38,14 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (p2),
 	m_hovered(false),
 	m_mouse_grab_handler(false),
+	shape_size(1),
 	m_handler(10)
 {
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 	m_pen.setStyle(Qt::DashLine);
-	m_pen.setWidthF(1);
+
 }
 
 QetShapeItem::~QetShapeItem() {}
@@ -458,6 +459,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 
 	is_movable_ = (e.attribute("is_movable").toInt());
 	m_pen.setStyle(Qt::PenStyle(e.attribute("style","0").toInt()));
+	m_pen.setWidthF(e.attribute("shape_size", QString::number(shape_size)).toInt());
 
 	QString type = e.attribute("type");
 		//Compatibility for version older than N°4075, shape type was stored with an int
@@ -506,6 +508,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
 	result.setAttribute("type", me.valueToKey(m_shapeType));
 	result.setAttribute("style", QString::number(m_pen.style()));
+	result.setAttribute("shape_size", QString::number(m_pen.widthF()));
 	result.setAttribute("is_movable", bool(is_movable_));
 	if (m_shapeType != Polygon)
 	{

@@ -96,13 +96,14 @@ class QetShapeItem : public QetGraphicsItem
 
 		///ATTRIBUTES
 	private:
-		ShapeType    m_shapeType;
+		ShapeType	 m_shapeType;
 		QPen		 m_pen;
 		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
 		QPolygonF	 m_polygon, m_old_polygon;
-		bool         m_hovered,
+		bool		 m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
+		int			 shape_size;
 		QetGraphicsHandlerUtility m_handler;
 };
 #endif // QETSHAPEITEM_H

@@ -57,9 +57,12 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 
 	if (m_shape)
 		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect(m_shape, &QetShapeItem::widthChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	m_shape = shape;
 	connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	connect(m_shape, &QetShapeItem::widthChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
 
 	updateUi();
 }
@@ -101,6 +104,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 	QPen old_pen = m_shape->pen();
 	QPen new_pen = old_pen;
 	new_pen.setStyle(Qt::PenStyle(ui->m_style_cb->currentIndex() + 1));
+	new_pen.setWidthF(ui->m_size_cb->value());
 	if (new_pen == old_pen) return nullptr;
 
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
@@ -114,6 +118,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
 	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
+	ui->m_size_cb ->setValue(m_shape->pen().widthF());
 	ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
 }
 
@@ -127,11 +132,12 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 	if (live_edit == m_live_edit) return true;
 	m_live_edit = live_edit;
 
-	if (m_live_edit)
+	if (m_live_edit){
 		connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-	else
+		connect (ui->m_size_cb, SIGNAL(valueChanged(int)), this, SLOT(apply()));
+	}else
 		disconnect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-
+		disconnect (ui->m_size_cb, SIGNAL(valueChanged(int)), this, SLOT(apply()));
 	return true;
 }
 
