@@ -54,37 +54,41 @@
      </item>
     </layout>
    </item>
-   <item alignment="Qt::AlignLeft">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Epaisseur de trait</string>
-     </property>
-    </widget>
-   </item>
-   <item alignment="Qt::AlignRight">
-    <widget class="QDoubleSpinBox" name="m_size_cb">
-     <property name="maximumSize">
-      <size>
-       <width>16777212</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="correctionMode">
-      <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-     </property>
-     <property name="minimum">
-      <double>0.400000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>50.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.200000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Epaisseur de trait</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="m_size_cb">
+       <property name="maximumSize">
+        <size>
+         <width>16777212</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="correctionMode">
+        <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+       </property>
+       <property name="minimum">
+        <double>0.400000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>50.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.200000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">
@@ -107,9 +111,6 @@
     </spacer>
    </item>
   </layout>
-  <zorder>label_2</zorder>
-  <zorder>m_lock_pos_cb</zorder>
-  <zorder>m_size_cb</zorder>
  </widget>
  <resources/>
  <connections/>
