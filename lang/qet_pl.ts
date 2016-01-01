@@ -1390,7 +1390,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="99"/>
         <source>Nom interne : </source>
-        <translation>Nazwa wewnętrzna :</translation>
+        <translation>Nazwa wewnętrzna:</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
@@ -4670,13 +4670,13 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do arkuszy muszą zawierać pole tekstowe posiadające znacznik tagg &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do arkuszy muszą zawierać pole tekstowe posiadające znacznik &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="773"/>
@@ -6374,9 +6374,9 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Tutaj możesz zdefiniować etykietę dla odsyłaczy.
 Utwórz tekst etykiety za pomocą następujących zmiennych:
-%f : numer arkusza 
-%l : numer wiersza
-%c : numer kolumny</translation>
+%f: numer arkusza 
+%l: numer wiersza
+%c: numer kolumny</translation>
     </message>
 </context>
 <context>
@@ -7173,8 +7173,8 @@ Pozostałe pola nie są używane.
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet</source>
         <translation>Następujące zmienne są wykorzystywane w polu Arkusz:
-- %id : numer bieżącego arkusza w schemacie 
-- %total : łączna liczba arkuszy w projekcie</translation>
+- %id: numer bieżącego arkusza w schemacie 
+- %total: łączna liczba arkuszy w projekcie</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
@@ -7189,7 +7189,7 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="229"/>
         <source>Titre :</source>
-        <translation>Tytuł :</translation>
+        <translation>Tytuł:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="257"/>
@@ -7250,7 +7250,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
         <location filename="../sources/titleblocktemplate.cpp" line="1351"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation> %1 : %2</translation>
+        <translation> %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="1353"/>
@@ -7385,7 +7385,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Domyślnie dostępne są następujące zmienne: &lt;ul&gt;&lt;li&gt;%{author} : autor arkusza&lt;/li&gt;&lt;li&gt;%{date} : data arkusza&lt;/li&gt;&lt;li&gt;%{title} : tytuł arkusza&lt;/li&gt;&lt;li&gt;%{filename} : nazwa pliku projektu&lt;/li&gt;&lt;li&gt;%{folio} : względne oznaczenie arkusza&lt;/li&gt;&lt;li&gt;%{folio-id} : numer arkusza w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total} : całkowita liczba arkuszy projektu&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Domyślnie dostępne są następujące zmienne: &lt;ul&gt;&lt;li&gt;%{author}: autor arkusza&lt;/li&gt;&lt;li&gt;%{date}: data arkusza&lt;/li&gt;&lt;li&gt;%{title}: tytuł arkusza&lt;/li&gt;&lt;li&gt;%{filename}: nazwa pliku projektu&lt;/li&gt;&lt;li&gt;%{folio}: względne oznaczenie arkusza&lt;/li&gt;&lt;li&gt;%{folio-id}: numer arkusza w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total}: całkowita liczba arkuszy projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
@@ -7778,7 +7778,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation>Prefiks dla zestyków działających z opóźnieniem :</translation>
+        <translation>Prefiks dla zestyków działających z opóźnieniem:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
