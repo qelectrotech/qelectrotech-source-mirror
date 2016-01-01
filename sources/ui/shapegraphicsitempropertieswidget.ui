@@ -71,6 +71,12 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="wrapping">
+        <bool>true</bool>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="correctionMode">
         <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
        </property>
