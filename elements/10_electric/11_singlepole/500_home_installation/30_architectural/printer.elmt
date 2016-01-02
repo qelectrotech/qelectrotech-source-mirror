@@ -1,21 +1,22 @@
-<definition width="130" version="0.4" hotspot_x="16" hotspot_y="38" height="120" link_type="simple" type="element" orientation="dyyy">
+<definition hotspot_y="38" orientation="dyyy" link_type="simple" type="element" width="130" height="120" hotspot_x="16" version="0.51">
+    <uuid uuid="{e6e34c42-1792-4400-a273-1ba8ecfc6cd9}"/>
     <names>
         <name lang="en">Printer</name>
-        <name lang="fr">Imprimante</name>
         <name lang="pl">Drukarka</name>
+        <name lang="fr">Imprimante</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-10" x2="10"/>
-        <arc width="10" x="80" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <arc width="10" x="10" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <input x="112" y="3" size="9" rotate="true" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="90" y2="-10" x2="90"/>
-        <rect width="100" x="0" y="60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="100" x="0" y="48" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="86" x2="86" x3="14" x4="14" antialias="false" x5="-10" x6="-10" x7="110" x8="110" x9="86" closed="false" y1="-10" y2="10" y3="10" y4="-10" y5="-10" y6="74" y7="74" y8="-10" y9="-10"/>
-        <polygon x4="84" y5="-33" x5="76" y6="-33" x6="16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="16" y2="8" x2="16" y3="8" x3="84" y4="-25"/>
-        <polygon x4="76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="76" y2="-25" x2="76" y3="-25" x3="84" y4="-33"/>
+        <line y1="-17" length1="1.5" x2="10" end1="none" length2="1.5" y2="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="10"/>
+        <arc x="80" y="-23" angle="-90" start="90" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <arc x="10" y="-23" angle="-90" start="-180" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <input x="112" rotate="true" y="3" tagg="label" size="9" text="_"/>
+        <line y1="-17" length1="1.5" x2="90" end1="none" length2="1.5" y2="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="90"/>
+        <rect x="0" y="60" width="100" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="0" y="48" width="100" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon x4="14" y9="-10" closed="false" x9="86" y8="-10" antialias="false" x6="-10" x7="110" x1="86" y1="-10" y5="-10" x8="110" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-10" y7="74" x2="86" x5="-10" y2="10" x3="14" y3="10" y6="74"/>
+        <polygon x3="84" y1="-33" x2="16" y5="-33" x4="84" y4="-25" y3="8" x6="16" y2="8" x5="76" y6="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x1="16"/>
+        <polygon x3="84" y1="-33" x2="76" x4="76" y4="-33" y3="-25" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x1="76"/>
         <terminal x="70" y="74" orientation="s"/>
         <terminal x="50" y="74" orientation="s"/>
         <terminal x="-10" y="40" orientation="w"/>

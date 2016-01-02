@@ -1,25 +1,26 @@
-<definition width="230" version="0.4" hotspot_x="15" hotspot_y="46" height="110" link_type="simple" type="element" orientation="dyyy">
+<definition width="230" height="110" link_type="simple" hotspot_x="15" type="element" orientation="dyyy" version="0.51" hotspot_y="46">
+    <uuid uuid="{02a3c109-a779-434f-954a-78f205763865}"/>
     <names>
         <name lang="en">6ES7 241-1AH32-0XB0</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="179" y="-6" size="7" rotate="true" text="DP" tagg="none"/>
-        <text x="195" y="-33" size="5" text="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30" x1="186" y2="-35" x2="194"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="193" y2="-28" x2="210"/>
-        <input x="0" y="24.5" size="9" rotate="true" text="CM 1241" tagg="none"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="191" y2="-29" x2="191"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="210"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="189" y2="-29" x2="189"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="210" y2="60" x2="210"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="190" y2="-29" x2="190"/>
-        <arc width="6" x="187" y="-32" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="187"/>
-        <input x="0" y="44.5" size="9" rotate="true" text="6ES7 241-1AH32-0XB0" tagg="none"/>
-        <input x="182" y="-18.5" size="5" rotate="true" text="X1" tagg="none"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
-        <input x="212" y="-15.5" size="9" rotate="true" text="_" tagg="label"/>
-        <terminal x="190" y="-35" orientation="n"/>
+        <input size="7" text="DP" y="-6" tagg="none" x="179" rotate="true"/>
+        <text size="5" text="9" y="-33" x="195"/>
+        <line antialias="false" length2="1.5" y1="-30" end1="none" y2="-35" length1="1.5" x1="186" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="194"/>
+        <line antialias="false" length2="1.5" y1="-28" end1="none" y2="-28" length1="1.5" x1="193" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="210"/>
+        <input size="9" text="CM 1241" y="24.5" tagg="none" x="0" rotate="true"/>
+        <line antialias="false" length2="1.5" y1="-35" end1="none" y2="-29" length1="1.5" x1="191" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="191"/>
+        <line antialias="false" length2="1.5" y1="60" end1="none" y2="60" length1="1.5" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="210"/>
+        <line antialias="false" length2="1.5" y1="-35" end1="none" y2="-29" length1="1.5" x1="189" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="189"/>
+        <line antialias="false" length2="1.5" y1="-28" end1="none" y2="60" length1="1.5" x1="210" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="210"/>
+        <line antialias="false" length2="1.5" y1="-35" end1="none" y2="-29" length1="1.5" x1="190" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="190"/>
+        <arc antialias="true" y="-32" width="6" height="6" x="187" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <line antialias="false" length2="1.5" y1="-28" end1="none" y2="-28" length1="1.5" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="187"/>
+        <input size="9" text="6ES7 241-1AH32-0XB0" y="44.5" tagg="none" x="0" rotate="true"/>
+        <input size="5" text="X1" y="-18.5" tagg="none" x="182" rotate="true"/>
+        <line antialias="false" length2="1.5" y1="-28" end1="none" y2="60" length1="1.5" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <input size="9" text="_" y="-15.5" tagg="label" x="212" rotate="true"/>
+        <terminal y="-35" x="190" orientation="n"/>
     </description>
 </definition>

@@ -1,19 +1,20 @@
-<definition width="80" version="0.4" hotspot_x="36" hotspot_y="14" height="30" link_type="simple" type="element" orientation="dyyy">
+<definition hotspot_y="14" link_type="simple" height="30" width="80" hotspot_x="36" orientation="dyyy" version="0.51" type="element">
+    <uuid uuid="{4fa0d72e-fad4-4ef3-bb66-9d196954b64f}"/>
     <names>
+        <name lang="pl">Kamera</name>
         <name lang="en">Camera</name>
         <name lang="fr">Camera</name>
-        <name lang="pl">Kamera</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="50" x="-30" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-21" y="5" size="9" text="CCTV"/>
-        <input x="-30" y="-21" size="9" rotate="true" text="_" tagg="label"/>
-        <rect width="2" x="21" y="-4" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="16" x="24" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="-30" y="0" orientation="w"/>
-        <terminal x="-10" y="10" orientation="s"/>
-        <terminal x="-20" y="10" orientation="s"/>
+        <rect height="20" y="-10" width="50" x="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="5" x="-21" text="CCTV" size="9"/>
+        <input rotate="true" y="-21" tagg="label" x="-30" text="_" size="9"/>
+        <rect height="8" y="-4" width="2" x="21" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect height="12" y="-6" width="16" x="24" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal y="10" orientation="s" x="0"/>
+        <terminal y="0" orientation="w" x="-30"/>
+        <terminal y="10" orientation="s" x="-10"/>
+        <terminal y="10" orientation="s" x="-20"/>
     </description>
 </definition>

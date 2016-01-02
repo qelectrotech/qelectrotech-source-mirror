@@ -1,18 +1,19 @@
-<definition width="50" version="0.4" hotspot_x="20" hotspot_y="34" height="60" link_type="simple" type="element" orientation="dyyy">
+<definition orientation="dyyy" width="50" hotspot_y="34" type="element" height="60" version="0.51" hotspot_x="20" link_type="simple">
+    <uuid uuid="{75938afb-7448-4a6f-9f8e-6453f878b5fd}"/>
     <names>
-        <name lang="en">Microphone</name>
         <name lang="fr">Microphone</name>
         <name lang="pl">Mikrofon</name>
+        <name lang="en">Microphone</name>
     </names>
     <informations></informations>
     <description>
-        <circle x="15" y="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:eleve;filling:none;color:black" y1="-20" x1="15" y2="0" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-1" y2="20" x2="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="20" x2="0"/>
-        <polygon x4="-15" y5="20" x5="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="20" x1="-10" y2="20" x2="8" y3="22" x3="13" y4="22"/>
-        <input x="-22" y="-15" size="9" rotate="true" text="_" tagg="label"/>
-        <terminal x="-5" y="2" orientation="w"/>
-        <terminal x="0" y="10" orientation="e"/>
+        <circle antialias="false" diameter="10" y="-30" x="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" x2="-5" antialias="false" end2="none" x1="15" end1="none" y1="-20" style="line-style:normal;line-weight:eleve;filling:none;color:black" y2="0" length2="1.5"/>
+        <line length1="1.5" x2="-1" antialias="false" end2="none" x1="-1" end1="none" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" length2="1.5"/>
+        <line length1="1.5" x2="0" antialias="false" end2="none" x1="0" end1="none" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" length2="1.5"/>
+        <polygon x2="8" y4="22" antialias="true" x3="13" y5="20" x4="-15" x1="-10" y3="22" y1="20" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="20" x5="-10"/>
+        <input text="_" rotate="true" size="9" y="-15" x="-22" tagg="label"/>
+        <terminal orientation="w" y="2" x="-5"/>
+        <terminal orientation="e" y="10" x="0"/>
     </description>
 </definition>
