@@ -1,0 +1,26 @@
+<definition width="130" version="0.4" hotspot_x="16" hotspot_y="38" height="120" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Printer</name>
+        <name lang="fr">Imprimante</name>
+        <name lang="pl">Drukarka</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-10" x2="10"/>
+        <arc width="10" x="80" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="10" x="10" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <input x="112" y="3" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="90" y2="-10" x2="90"/>
+        <rect width="100" x="0" y="60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="100" x="0" y="48" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="86" x2="86" x3="14" x4="14" antialias="false" x5="-10" x6="-10" x7="110" x8="110" x9="86" closed="false" y1="-10" y2="10" y3="10" y4="-10" y5="-10" y6="74" y7="74" y8="-10" y9="-10"/>
+        <polygon x4="84" y5="-33" x5="76" y6="-33" x6="16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="16" y2="8" x2="16" y3="8" x3="84" y4="-25"/>
+        <polygon x4="76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="76" y2="-25" x2="76" y3="-25" x3="84" y4="-33"/>
+        <terminal x="70" y="74" orientation="s"/>
+        <terminal x="50" y="74" orientation="s"/>
+        <terminal x="-10" y="40" orientation="w"/>
+        <terminal x="-10" y="60" orientation="w"/>
+        <terminal x="30" y="74" orientation="s"/>
+        <terminal x="-10" y="50" orientation="w"/>
+    </description>
+</definition>

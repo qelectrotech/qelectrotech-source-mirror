@@ -1,0 +1,18 @@
+<definition width="50" version="0.4" hotspot_x="20" hotspot_y="34" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Microphone</name>
+        <name lang="fr">Microphone</name>
+        <name lang="pl">Mikrofon</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="15" y="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:eleve;filling:none;color:black" y1="-20" x1="15" y2="0" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-1" y2="20" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="20" x2="0"/>
+        <polygon x4="-15" y5="20" x5="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="20" x1="-10" y2="20" x2="8" y3="22" x3="13" y4="22"/>
+        <input x="-22" y="-15" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="-5" y="2" orientation="w"/>
+        <terminal x="0" y="10" orientation="e"/>
+    </description>
+</definition>

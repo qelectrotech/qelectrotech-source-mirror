@@ -1,0 +1,25 @@
+<definition width="230" version="0.4" hotspot_x="15" hotspot_y="46" height="110" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">6ES7 241-1AH32-0XB0</name>
+    </names>
+    <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="179" y="-6" size="7" rotate="true" text="DP" tagg="none"/>
+        <text x="195" y="-33" size="5" text="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30" x1="186" y2="-35" x2="194"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="193" y2="-28" x2="210"/>
+        <input x="0" y="24.5" size="9" rotate="true" text="CM 1241" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="191" y2="-29" x2="191"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="189" y2="-29" x2="189"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="210" y2="60" x2="210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="190" y2="-29" x2="190"/>
+        <arc width="6" x="187" y="-32" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="187"/>
+        <input x="0" y="44.5" size="9" rotate="true" text="6ES7 241-1AH32-0XB0" tagg="none"/>
+        <input x="182" y="-18.5" size="5" rotate="true" text="X1" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
+        <input x="212" y="-15.5" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="190" y="-35" orientation="n"/>
+    </description>
+</definition>
