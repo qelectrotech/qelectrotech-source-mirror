@@ -42,7 +42,7 @@ QDomElement QETXML::penToXml(QDomDocument &parent_document,QPen pen)
 
 	element.setAttribute("style", style);
 	element.setAttribute("color", pen.color().name());
-	element.setAttribute("widthF", pen.widthF());
+	element.setAttribute("widthF", QString::number(pen.widthF()));
     return element;
 }
 
