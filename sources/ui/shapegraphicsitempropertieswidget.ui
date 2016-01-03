@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>261</width>
-    <height>170</height>
+    <height>185</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,14 +73,17 @@
         <property name="correctionMode">
          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
         </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
         <property name="minimum">
-         <double>0.400000000000000</double>
+         <double>1.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>50.000000000000000</double>
+         <double>49.000000000000000</double>
         </property>
         <property name="singleStep">
-         <double>0.200000000000000</double>
+         <double>1.000000000000000</double>
         </property>
         <property name="value">
          <double>1.000000000000000</double>
