@@ -1539,7 +1539,7 @@ Le modifiche saranno definitive.</translation>
         <location filename="../sources/elementspanel.cpp" line="473"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation>Trascinare questo elemento « %1 » sulla pagina per inserirlo, doppio click sull&apos;elemento per modificarlo.</translation>
+        <translation>Trascinare questo elemento « %1 » sulla pagina per inserirlo, doppio click sull&apos;elemento per modificarlo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="581"/>

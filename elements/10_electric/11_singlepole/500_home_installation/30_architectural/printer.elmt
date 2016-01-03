@@ -2,8 +2,9 @@
     <uuid uuid="{e6e34c42-1792-4400-a273-1ba8ecfc6cd9}"/>
     <names>
         <name lang="en">Printer</name>
-        <name lang="pl">Drukarka</name>
         <name lang="fr">Imprimante</name>
+        <name lang="it">Stampante</name>
+        <name lang="pl">Drukarka</name>
     </names>
     <informations></informations>
     <description>

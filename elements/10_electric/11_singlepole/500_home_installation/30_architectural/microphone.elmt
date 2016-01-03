@@ -1,9 +1,10 @@
 <definition orientation="dyyy" width="50" hotspot_y="34" type="element" height="60" version="0.51" hotspot_x="20" link_type="simple">
     <uuid uuid="{75938afb-7448-4a6f-9f8e-6453f878b5fd}"/>
     <names>
+	<name lang="en">Microphone</name>
         <name lang="fr">Microphone</name>
+        <name lang="it">Microfono</name>
         <name lang="pl">Mikrofon</name>
-        <name lang="en">Microphone</name>
     </names>
     <informations></informations>
     <description>
