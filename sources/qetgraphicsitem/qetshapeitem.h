@@ -47,7 +47,7 @@ class QetShapeItem : public QetGraphicsItem
 		enum ShapeType {Line	  =1,
 						Rectangle =2,
 						Ellipse	  =4,
-						Polygon  =8 };
+						Polygon   =8 };
 
 		enum { Type = UserType + 1008 };
 
@@ -103,7 +103,6 @@ class QetShapeItem : public QetGraphicsItem
 		bool		 m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
-		double		 shape_size;
 		QetGraphicsHandlerUtility m_handler;
 };
 #endif // QETSHAPEITEM_H

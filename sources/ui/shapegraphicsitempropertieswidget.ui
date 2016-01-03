@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>242</width>
-    <height>183</height>
+    <width>261</width>
+    <height>170</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,86 +15,101 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Type de trait</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="m_style_cb">
-       <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Trait</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Normal</string>
+         <string>Épaisseur</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_style_cb">
+        <item>
+         <property name="text">
+          <string>Normal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tiret</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pointillé</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Traits et points</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Traits points points</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="m_size_dsb">
+        <property name="maximumSize">
+         <size>
+          <width>16777212</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="accelerated">
+         <bool>true</bool>
+        </property>
+        <property name="correctionMode">
+         <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+        </property>
+        <property name="minimum">
+         <double>0.400000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.200000000000000</double>
+        </property>
+        <property name="value">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Tiret</string>
+         <string>Type</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Pointillé</string>
+         <string>Couleur</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="m_color_pb">
         <property name="text">
-         <string>Traits et points</string>
+         <string/>
         </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Traits points points</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Epaisseur de trait</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="m_size_cb">
-       <property name="maximumSize">
-        <size>
-         <width>16777212</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="wrapping">
-        <bool>true</bool>
-       </property>
-       <property name="accelerated">
-        <bool>true</bool>
-       </property>
-       <property name="correctionMode">
-        <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-       </property>
-       <property name="minimum">
-        <double>0.400000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>50.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.200000000000000</double>
-       </property>
-       <property name="value">
-        <double>1.000000000000000</double>
-       </property>
-      </widget>
-     </item>
-    </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">

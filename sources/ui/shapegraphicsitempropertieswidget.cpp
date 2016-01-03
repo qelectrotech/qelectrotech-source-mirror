@@ -55,14 +55,13 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 	if (!shape) return;
 	if (shape == m_shape) return;
 
-	if (m_shape)
+	if (m_shape && m_live_edit)
 		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-		disconnect(m_shape, &QetShapeItem::widthChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	m_shape = shape;
-	connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	connect(m_shape, &QetShapeItem::widthChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
+	if (m_live_edit)
+		connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	updateUi();
 }
@@ -73,16 +72,10 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
  * undo stack of the shape diagram.
  */
 void ShapeGraphicsItemPropertiesWidget::apply()
-{
-	if (m_live_edit)
-		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-
+{	
 	if (m_shape->diagram())
 		if (QUndoCommand *undo = associatedUndo())
 			m_shape->diagram()->undoStack().push(undo);
-
-	if (m_live_edit)
-		connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 }
 
 /**
@@ -96,15 +89,18 @@ void ShapeGraphicsItemPropertiesWidget::reset() {
 /**
  * @brief ShapeGraphicsItemPropertiesWidget::associatedUndo
  * @return an undo command that represent the change edited by this widget.
- * The returned undo command is a ChangeShapeStyleCommand.
+ * The returned undo command is a QPropertyUndoCommand with the properties "pen".
  * If there isn't change, return nullptr
  */
 QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 {
 	QPen old_pen = m_shape->pen();
 	QPen new_pen = old_pen;
+
 	new_pen.setStyle(Qt::PenStyle(ui->m_style_cb->currentIndex() + 1));
-	new_pen.setWidthF(ui->m_size_cb->value());
+	new_pen.setWidthF(ui->m_size_dsb->value());
+	new_pen.setColor(ui->m_color_pb->palette().color(QPalette::Button));
+
 	if (new_pen == old_pen) return nullptr;
 
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
@@ -117,9 +113,13 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
  */
 void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
+	bool le = m_live_edit;
+	setLiveEdit(false); //Disable temporally live edit mode to avoid weird behavior
 	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
-	ui->m_size_cb ->setValue(m_shape->pen().widthF());
+	ui->m_size_dsb ->setValue(m_shape->pen().widthF());
+	setColorButton(m_shape->pen().color());
 	ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
+	setLiveEdit(le);
 }
 
 /**
@@ -132,15 +132,46 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 	if (live_edit == m_live_edit) return true;
 	m_live_edit = live_edit;
 
-	if (m_live_edit){
+	if (m_live_edit)
+	{
 		connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		connect (ui->m_size_cb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
-	}else
+		connect (ui->m_size_dsb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
+		connect (m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	}
+	else
+	{
 		disconnect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		disconnect (ui->m_size_cb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
+		disconnect (ui->m_size_dsb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
+		disconnect (m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	}
 	return true;
+}
+
+/**
+ * @brief ShapeGraphicsItemPropertiesWidget::setColorButton
+ * Set the color of the push button to the current color of the shape
+ * @param color
+ */
+void ShapeGraphicsItemPropertiesWidget::setColorButton(const QColor &color)
+{
+	QPalette palette;
+	palette.setColor(QPalette::Button, color);
+	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
 }
 
 void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked() {
 	m_shape->setMovable(!ui->m_lock_pos_cb->isChecked());
+}
+
+/**
+ * @brief ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked
+ * Color button was clicked, we open a QColorDialog for select the color to apply to the shape.
+ */
+void ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked()
+{
+	QColor color = QColorDialog::getColor(m_shape->pen().color(), this);
+	if (color.isValid())
+		setColorButton(color);
+	if(m_live_edit)
+		apply();
 }

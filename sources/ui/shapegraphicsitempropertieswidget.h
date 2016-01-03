@@ -49,8 +49,12 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		virtual void updateUi();
 		virtual bool setLiveEdit(bool live_edit);
 
+	private:
+		void setColorButton(const QColor &color);
+
 	private slots:
 		void on_m_lock_pos_cb_clicked();
+		void on_m_color_pb_clicked();
 
 	private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;

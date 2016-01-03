@@ -22,6 +22,7 @@
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetxml.h"
 
 /**
  * @brief QetShapeItem::QetShapeItem
@@ -38,7 +39,6 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (p2),
 	m_hovered(false),
 	m_mouse_grab_handler(false),
-	shape_size(1),
 	m_handler(10)
 {
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
@@ -201,7 +201,7 @@ QPainterPath QetShapeItem::shape() const
 	}
 
 	QPainterPathStroker pps;
-	pps.setWidth(m_hovered? 10 : 1);
+	pps.setWidth(m_hovered? m_pen.widthF()+10 : m_pen.widthF());
 	pps.setJoinStyle(Qt::RoundJoin);
 	path = pps.createStroke(path);
 
@@ -237,9 +237,8 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	Q_UNUSED(option); Q_UNUSED(widget);
 
 	painter->save();
-	painter -> setRenderHint(QPainter::Antialiasing, false);
-	m_pen.setColor(isSelected()? Qt::red : Qt::black);
-	painter -> setPen(m_pen);
+	painter->setRenderHint(QPainter::Antialiasing, true);
+	painter->setPen(m_pen);
 
 		//Draw hovered shadow
 	if (m_hovered)
@@ -458,11 +457,10 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "shape") return (false);
 
 	is_movable_ = (e.attribute("is_movable").toInt());
-	m_pen.setStyle(Qt::PenStyle(e.attribute("style","0").toInt()));
-	m_pen.setWidthF(e.attribute("size", QString::number(shape_size)).toDouble());
+	m_pen = QETXML::penFromXml(e.firstChildElement("pen"));
 
 	QString type = e.attribute("type");
-		//Compatibility for version older than N°4075, shape type was stored with an int
+		//@TODO Compatibility for version older than N°4075, shape type was stored with an int
 	if (type.size() == 1)
 	{
 		switch(e.attribute("type","0").toInt())
@@ -507,8 +505,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		//write some attribute
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
 	result.setAttribute("type", me.valueToKey(m_shapeType));
-	result.setAttribute("style", QString::number(m_pen.style()));
-	result.setAttribute("size", QString::number(m_pen.widthF()));
+	result.appendChild(QETXML::penToXml(document, m_pen));
 	result.setAttribute("is_movable", bool(is_movable_));
 	if (m_shapeType != Polygon)
 	{
