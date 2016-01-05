@@ -57,7 +57,11 @@ QPen QETXML::penFromXml(const QDomElement &element)
 {
     QPen pen;
 
-	if (!(!element.isNull() && element.tagName() == "pen")) return pen;
+	if (!(!element.isNull() && element.tagName() == "pen"))
+	{
+		pen.setStyle(Qt::DashLine);
+		return pen;
+	}
 
 	QString style = element.attribute("style", "DashLine");
 	if      (style == "SolidLine")      pen.setStyle(Qt::SolidLine);
