@@ -23,6 +23,7 @@
 class ElementCollectionItem;
 class QETProject;
 class QList<QETProject>;
+class XmlProjectElementCollectionItem;
 
 /**
  * @brief The ElementsCollectionModel class
@@ -57,6 +58,10 @@ class ElementsCollectionModel : public QAbstractItemModel
 		bool addProject(QETProject *project);
 		bool removeProject(QETProject *project);
 		QList<QETProject *> project() const;
+
+	private:
+		XmlProjectElementCollectionItem *itemForProject(QETProject *project);
+		void elementIntegratedToCollection (QETProject *project, QString path);
 
 	private:
 		ElementCollectionItem *m_root_item;

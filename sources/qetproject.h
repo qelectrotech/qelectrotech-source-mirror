@@ -164,6 +164,7 @@ class QETProject : public QObject
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);
 	void XRefPropertiesChanged ();
+		void elementIntegratedToCollection(QETProject *project, QString path);
 	
 	private slots:
 	void updateDiagramsFolioData();

@@ -227,8 +227,23 @@ bool ElementLocation::isDirectory() const {
  * @brief ElementLocation::collectionPath
  * @return the colletion relative to the collection
  */
-QString ElementLocation::collectionPath() const {
-	return m_collection_path;
+/**
+ * @brief ElementLocation::collectionPath
+ * Return the path of the represented element relative to collection
+ * if @protocol is true the path is prepended by the collection type (common://, custom:// or embed://)
+ * else if false, only the collection path is returned without the collection type.
+ * @param protocol
+ * @return the path
+ */
+QString ElementLocation::collectionPath(bool protocol) const
+{
+	if (protocol)
+		return m_collection_path;
+	else
+	{
+		QString path = m_collection_path;
+		return path.remove(QRegularExpression("common://|custom://|embed://"));
+	}
 }
 
 /**

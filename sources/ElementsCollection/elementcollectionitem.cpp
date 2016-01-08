@@ -82,6 +82,20 @@ ElementCollectionItem *ElementCollectionItem::child(int row) {
 }
 
 /**
+ * @brief ElementCollectionItem::childWithCollectionName
+ * Return the child with the collection name @name, else return nullptr
+ * @param name
+ * @return
+ */
+ElementCollectionItem *ElementCollectionItem::childWithCollectionName(QString name) const
+{
+	foreach (ElementCollectionItem *eci, m_child_items)
+		if (eci->collectionName() == name) return eci;
+
+	return nullptr;
+}
+
+/**
  * @brief ElementCollectionItem::childCount
  * @return the number of childs of this item
  */
@@ -168,6 +182,14 @@ QString ElementCollectionItem::name() {
 }
 
 /**
+ * @brief ElementCollectionItem::collectionName
+ * @return The collection name of this item
+ */
+QString ElementCollectionItem::collectionName() const {
+	return QString();
+}
+
+/**
  * @brief ElementCollectionItem::isDir
  * @return true if this item represent a directory
  */
@@ -203,6 +225,43 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 	foreach(ElementCollectionItem *eci, m_child_items)
 		list.append(eci->items());
 	return list;
+}
+
+/**
+ * @brief ElementCollectionItem::elementsChild
+ * @return All elements child of this item
+ */
+QList<ElementCollectionItem *> ElementCollectionItem::elementsChild() const
+{
+	QList<ElementCollectionItem *> list;
+	foreach (ElementCollectionItem *eci, m_child_items)
+		if (eci->isElement())
+			list.append(eci);
+
+	return list;
+}
+
+/**
+ * @brief ElementCollectionItem::directoriesChild
+ * @return All directories child of this item
+ */
+QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
+{
+	QList<ElementCollectionItem *> list;
+	foreach (ElementCollectionItem *eci, m_child_items)
+		if (eci->isDir())
+			list.append(eci);
+
+	return list;
+}
+
+/**
+ * @brief ElementCollectionItem::indexOfChild
+ * @param child
+ * @return the index of child or -1 if not found
+ */
+int ElementCollectionItem::indexOfChild(ElementCollectionItem *child) const {
+	return m_child_items.indexOf(child);
 }
 
 /**

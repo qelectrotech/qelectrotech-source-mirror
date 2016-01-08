@@ -17,6 +17,8 @@
 */
 #include "xmlelementcollection.h"
 #include "nameslist.h"
+#include "elementlocation.h"
+#include "qetxml.h"
 
 /**
  * @brief XmlElementCollection::XmlElementCollection
@@ -84,22 +86,62 @@ QDomElement XmlElementCollection::root() const {
 }
 
 /**
+ * @brief XmlElementCollection::importCategory
+ * @return The QDomElement import (the begining of a xml collection) or
+ * a null QDomElement if doesn't exist.
+ */
+QDomElement XmlElementCollection::importCategory() const {
+	return root().firstChildElement("category");
+}
+
+/**
  * @brief XmlElementCollection::childs
  * @param parent_element
  * @return All childs element in the @parent_element tree
  */
-QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element)
+QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element) const
 {
 	if (parent_element.ownerDocument() != m_dom_document) return QDomNodeList();
 	return parent_element.childNodes();
 }
 
 /**
- * @brief XmlElementCollection::directory
+ * @brief XmlElementCollection::child
+ * If parent_element have child element with name "child_name", return it, else return a null QDomElement.
+ * Only search for element with tag-name "category" and "element" (if child_name end with ".elmt")
+ * @param parent_element : the parent DomElement where we search for child.
+ * @parent_element must be a child node of this XmlElementCollection.
+ * @param child_name : name of child to search.
+ * @return The child QDomElement or a null QDomElement if not found
+ */
+QDomElement XmlElementCollection::child(const QDomElement &parent_element, const QString &child_name) const
+{
+	if (parent_element.ownerDocument() != m_dom_document && parent_element.tagName() != "category") return QDomElement();
+
+		//Get all childs element of parent_element
+	QDomNodeList node_list;
+	if (child_name.endsWith(".elmt"))
+		node_list = parent_element.elementsByTagName("element");
+	else
+		node_list = parent_element.elementsByTagName("category");
+
+	if (node_list.isEmpty()) return QDomElement();
+
+	for (int i=0 ; i<node_list.length() ; i++)
+	{
+		QDomElement child_element = node_list.item(i).toElement();
+		if (child_element.attribute("name") == child_name) return child_element;
+	}
+
+	return QDomElement();
+}
+
+/**
+ * @brief XmlElementCollection::directories
  * @param parent_element
  * @return A list of directory stored in @parent_element
  */
-QList<QDomElement> XmlElementCollection::directory(const QDomElement &parent_element)
+QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_element)
 {
 	QList <QDomElement> directory_list;
 	QDomNodeList node_list = childs(parent_element);
@@ -206,4 +248,103 @@ QDomElement XmlElementCollection::directory(const QString &path)
 	}
 
 	return dom_element;
+}
+
+/**
+ * @brief XmlElementCollection::addElement
+ * Add the element at path @path to this xml collection.
+ * The path must be a common or custom collection (a file system element).
+ * @param path, path of the element
+ * @return the xml collection path of the added item or a null QString if element can't be added.
+ */
+QString XmlElementCollection::addElement(const QString &path)
+{
+
+	ElementLocation location(path);
+	if (!location.isElement() || location.fileSystemPath().isEmpty()) return QString();
+	if (exist(QString("import/" + location.collectionPath(false)))) return QString();
+
+
+
+	QDir dir(location.fileSystemPath().remove(location.collectionPath(false)));
+	if (!dir.exists()) return QString();
+
+	QDomElement parent_element = importCategory();
+	if (parent_element.isNull()) return QString();
+
+	QStringList str_list = location.collectionPath(false).split("/");
+	if (str_list.isEmpty()) return QString();
+
+	QString collection_path(parent_element.attribute("name"));
+
+	foreach(QString str, str_list)
+	{
+		QDomElement child_element = child(parent_element, str);
+
+			//Child doesn't exist
+		if (child_element.isNull())
+		{
+			if (str.endsWith(".elmt"))
+			{
+				QFile element_file(dir.filePath(str));
+				if (!element_file.exists()) return QString();
+
+				QDomElement element_dom = QETXML::fileSystemElementToXmlCollectionElement(m_dom_document, element_file);
+				if (element_dom.isNull()) return QString();
+
+				parent_element.appendChild(element_dom);
+				parent_element = element_dom;
+			}
+			else
+			{
+					//Dir doesn't exist.
+				if (!dir.cd(str)) return QString();
+				QDomElement dir_element = QETXML::fileSystemDirToXmlCollectionDir(m_dom_document, dir);
+					//Creation of a xml collection dir failed
+				if (dir_element.isNull()) return QString();
+
+				parent_element.appendChild(dir_element);
+				parent_element = dir_element;
+			}
+		}
+			//Child exist
+		else
+		{
+			if (!dir.cd(str)) return QString();
+			parent_element = child_element;
+		}
+
+		collection_path.append("/"+str);
+	}
+
+	emit elementAdded(collection_path);
+	return collection_path;
+}
+
+/**
+ * @brief XmlElementCollection::exist
+ * Return true if the path @path exist in this collection
+ * @param path
+ * @return
+ */
+bool XmlElementCollection::exist(const QString &path)
+{
+	QStringList str_list = path.split("/");
+	if (str_list.isEmpty()) return false;
+
+		//The first category of a XmlElementCollection is always "import"
+	if (str_list.first() != "import") return false;
+	str_list.removeFirst();
+
+	QDomElement parent_element = importCategory();
+	foreach (QString str, str_list)
+	{
+		QDomElement child_element = child(parent_element, str);
+		if (child_element.isNull())
+			return false;
+		else
+			parent_element = child_element;
+	}
+
+	return true;
 }

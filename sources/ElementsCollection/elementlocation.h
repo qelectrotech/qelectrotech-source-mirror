@@ -43,8 +43,9 @@ class ElementLocation
         void setProject(QETProject *project);
 		bool isElement() const;
 		bool isDirectory() const;
+		bool isFileSystem() const;
 
-        QString collectionPath() const;
+		QString collectionPath(bool protocol = true) const;
         QString fileSystemPath() const;
 
         QETProject *project() const;

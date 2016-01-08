@@ -22,6 +22,7 @@
 #include <QDomElement>
 
 class QDomElement;
+class QFile;
 
 /**
  * @brief The XmlElementCollection class
@@ -34,19 +35,28 @@ class XmlElementCollection : public QObject
 		XmlElementCollection (QObject *parent = nullptr);
 		XmlElementCollection (const QDomElement &dom_element, QObject *parent = nullptr);
 		QDomElement root() const;
-		QDomNodeList childs(const QDomElement &parent_element);
-		QList<QDomElement> directory(const QDomElement &parent_element);
+		QDomElement importCategory() const;
+		QDomNodeList childs(const QDomElement &parent_element) const;
+		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
+		QList<QDomElement> directories(const QDomElement &parent_element);
 		QList<QDomElement> elements(const QDomElement &parent_element);
 		QDomElement element(const QString &path);
 		QDomElement directory(const QString &path);
+		QString addElement (const QString &path);
+		bool exist (const QString &path);
 
 	signals:
+			/**
+			 * @brief elementAdded
+			 * This signal is emited when a element is added to this collection
+			 * @param collection_path, the path of element in this collection
+			 */
+		void elementAdded(QString collection_path);
 
 	public slots:
 
 	private:
 		QDomDocument m_dom_document;
-
 };
 
 #endif // XMLELEMENTCOLLECTION_H

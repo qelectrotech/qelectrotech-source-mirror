@@ -43,6 +43,7 @@ class ElementCollectionItem
 		bool removeChild (int row, int count);
 		bool insertChild (int row, ElementCollectionItem *item);
         ElementCollectionItem *child(int row);
+		ElementCollectionItem *childWithCollectionName(QString name) const;
         int childCount() const;
         int columnCount() const;
 		virtual QVariant data(int column, int role);
@@ -53,11 +54,16 @@ class ElementCollectionItem
         ElementCollectionItem *parent();
         int row() const;
 		virtual QString name();
+		virtual QString collectionName() const;
 
 		virtual bool isDir() const;
 		virtual bool isElement() const;
 		virtual bool isValid() const;
 		virtual QList <ElementCollectionItem *> items() const;
+		QList<ElementCollectionItem *> elementsChild() const;
+		QList<ElementCollectionItem *> directoriesChild() const;
+		int indexOfChild(ElementCollectionItem *child) const;
+
 
 		virtual bool canRemoveContent();
 		virtual bool removeContent();

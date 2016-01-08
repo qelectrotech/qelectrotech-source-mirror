@@ -20,6 +20,7 @@
 #include "qetapp.h"
 #include "fileelementcollectionitem.h"
 #include "xmlprojectelementcollectionitem.h"
+#include "qetproject.h"
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -281,6 +282,8 @@ bool ElementsCollectionModel::addProject(QETProject *project)
 	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem(project, m_root_item);
 	bool r = m_root_item->insertChild(row, xpeci);
 	endInsertRows();
+	connect(project, &QETProject::elementIntegratedToCollection, this, &ElementsCollectionModel::elementIntegratedToCollection);
+
 
 	return r;
 }
@@ -293,6 +296,7 @@ bool ElementsCollectionModel::removeProject(QETProject *project)
 	if (removeRows(row, 1, QModelIndex()))
 	{
 		m_project_list.removeOne(project);
+		disconnect(project, &QETProject::elementIntegratedToCollection, this, &ElementsCollectionModel::elementIntegratedToCollection);
 		return true;
 	}
 	else
@@ -305,4 +309,47 @@ bool ElementsCollectionModel::removeProject(QETProject *project)
  */
 QList<QETProject *> ElementsCollectionModel::project() const {
 	return m_project_list;
+}
+
+/**
+ * @brief ElementsCollectionModel::itemForProject
+ * @param project
+ * @return the root item of project @project, or nullptr if not found.
+ */
+XmlProjectElementCollectionItem *ElementsCollectionModel::itemForProject(QETProject *project)
+{
+	if (!m_project_list.contains(project)) return nullptr;
+	QModelIndex index_ = index(m_project_list.indexOf(project), 0);
+	if (!index_.isValid()) return nullptr;
+
+	XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(index_.internalPointer());
+	if (xpeci)
+		return xpeci;
+	else
+		return nullptr;
+}
+
+/**
+ * @brief ElementsCollectionModel::elementAddedToEmbeddedCollection
+ * When an element is added to embedded collection of a project,
+ * this method create and display the new element
+ * @param project -The project where new element was added.
+ * @param path -The path of the new element in the embedded collection of project
+ */
+void ElementsCollectionModel::elementIntegratedToCollection(QETProject *project, QString path)
+{
+	XmlProjectElementCollectionItem *xpeci = itemForProject(project);
+	if (!xpeci) return;
+
+	QString collection_name;
+	XmlProjectElementCollectionItem *parent_xpeci = xpeci->lastItemForPath(path, collection_name);
+	if (parent_xpeci)
+	{
+		int new_row = parent_xpeci->rowForInsertItem(collection_name);
+		if (new_row <= -1) return;
+		QModelIndex parent_index = createIndex(parent_xpeci->row(), 0, parent_xpeci);
+		beginInsertRows(parent_index, new_row, new_row);
+		parent_xpeci->insertNewItem(collection_name);
+		endInsertRows();
+	}
 }

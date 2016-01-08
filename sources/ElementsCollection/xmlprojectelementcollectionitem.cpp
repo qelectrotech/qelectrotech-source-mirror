@@ -216,7 +216,6 @@ QString XmlProjectElementCollectionItem::collectionPath() const
 	else
 	{
 		XmlProjectElementCollectionItem *parent = static_cast<XmlProjectElementCollectionItem *>(m_parent_item);
-
 		if (parent->isCollectionRoot())
 			return parent->collectionPath() + m_dom_element.attribute("name");
 		else
@@ -240,10 +239,114 @@ QString XmlProjectElementCollectionItem::embeddedPath() const
 		XmlProjectElementCollectionItem *parent = static_cast<XmlProjectElementCollectionItem *>(m_parent_item);
 
 		if (parent->isCollectionRoot())
-			return parent->embeddedPath() + m_dom_element.attribute("name");
+			return parent->embeddedPath() + collectionName();
 		else
-			return parent->embeddedPath() + "/" + m_dom_element.attribute("name");
+			return parent->embeddedPath() + "/" + collectionName();
 	}
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::collectionName
+ * @return The collection name of this item
+ */
+QString XmlProjectElementCollectionItem::collectionName() const {
+	return m_dom_element.attribute("name");
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::lastItemForPath
+ * Return the last existing item in this XmlProjectElementCollectionItem hierarchy according to the given path.
+ * Next_item is the first non existing item in this hierarchy according to the given path.
+ * @param path : The path to find last item. The path must be in form : path/otherPath/myElement.elmt.
+ * @param next_item : The first item that not exist in this hierarchy
+ * @return : The last item that exist in this hierarchy, or nullptr can't find (an error was occurred, or path already exist)
+ */
+XmlProjectElementCollectionItem *XmlProjectElementCollectionItem::lastItemForPath(const QString &path, QString &next_item)
+{
+	QStringList str_list = path.split("/");
+	if (str_list.isEmpty()) return nullptr;
+
+	XmlProjectElementCollectionItem *xpeci = this;
+	foreach (QString str, str_list)
+	{
+		ElementCollectionItem *eci = xpeci->childWithCollectionName(str);
+		if (!eci)
+		{
+			next_item = str;
+			return xpeci;
+		}
+		else
+			xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
+	}
+
+	return nullptr;
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::rowForInsertItem
+ * Return the row for insert a new child item to this item with name @collection_name.
+ * If row can't be found (collection_name is null, or already exist) return -1;
+ * @param path
+ * @return
+ */
+int XmlProjectElementCollectionItem::rowForInsertItem(const QString &collection_name)
+{
+	if (collection_name.isEmpty()) return -1;
+
+	QList <ElementCollectionItem *> child;
+		//The item to insert is an element we search from element child
+	if (collection_name.endsWith(".elmt"))
+	{
+		child = elementsChild();
+			//There isn't element, we insert at last position
+		if (child.isEmpty())
+			return childCount();
+	}
+		//The item is a directory, we search from directory child
+	else
+	{
+		child = directoriesChild();
+			//There isn't directory, we insert at first position
+		if(child.isEmpty())
+			return 0;
+	}
+
+	foreach (ElementCollectionItem *eci, child)
+		if (eci->collectionName() > collection_name)
+			return indexOfChild(eci);
+
+	return childCount();
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::insertNewItem
+ * When this XmlProjectElementCollectionItem is already created, we must to use this method for insert a new item.
+ * Befor use this, see rowForInsertItem and lastItemForPath
+ * @param collection_name : the collection name to search in the child of QDomElement.
+ */
+void XmlProjectElementCollectionItem::insertNewItem(const QString &collection_name)
+{
+	if (collection_name.isEmpty()) return;
+
+	QDomNodeList node_list;
+	if (collection_name.endsWith(".elmt"))
+		node_list = m_dom_element.elementsByTagName("element");
+	else
+		node_list = m_dom_element.elementsByTagName("category");
+
+	QDomElement child_element;
+	for(int i=0 ; i<node_list.count() ; i++)
+	{
+		QDomElement dom_elmt = node_list.at(i).toElement();
+		if (dom_elmt.attribute("name") == collection_name)
+		{
+			child_element = dom_elmt;
+			i = node_list.count();
+		}
+	}
+
+	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem(m_project, child_element, this);
+	insertChild(rowForInsertItem(collection_name), xpeci);
 }
 
 /**
@@ -252,7 +355,7 @@ QString XmlProjectElementCollectionItem::embeddedPath() const
  */
 void XmlProjectElementCollectionItem::populate()
 {
-	QList <QDomElement> dom_category = m_project->embeddedElementCollection()->directory(m_dom_element);
+	QList <QDomElement> dom_category = m_project->embeddedElementCollection()->directories(m_dom_element);
 	std::sort(dom_category.begin(), dom_category.end(), [](QDomElement a, QDomElement b){return (a.attribute("name") < b.attribute("name"));});
 
 	foreach (QDomElement element, dom_category)

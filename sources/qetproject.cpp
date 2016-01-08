@@ -706,7 +706,8 @@ QString QETProject::integrateElement(const QString &elmt_location, QString &erro
 */
 QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandler *handler, QString &error_message) {
 	// on s'assure que le projet a une categorie dediee aux elements importes automatiquement
-	if (!ensureIntegrationCategoryExists()) {
+	if (!ensureIntegrationCategoryExists())
+	{
 		error_message = tr("Impossible de créer la catégorie pour l'intégration des éléments");
 		return(QString());
 	}
@@ -717,7 +718,8 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	// accede a l'element a integrer
 	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation::locationFromString(elmt_path));
 	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
-	if (!integ_item || !integ_elmt) {
+	if (!integ_item || !integ_elmt)
+	{
 		error_message = tr("Impossible d'accéder à l'élément à intégrer");
 		return(QString());
 	}
@@ -725,16 +727,21 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	// recopie l'arborescence de l'element de facon non recursive
 	QList<ElementsCategory *> integ_par_cat = integ_elmt -> parentCategories();
 	ElementsCategory *target_cat = integ_cat;
-	foreach(ElementsCategory *par_cat, integ_par_cat) {
+	foreach(ElementsCategory *par_cat, integ_par_cat)
+	{
 		if (par_cat -> isRootCategory()) continue;
 		
-		if (ElementsCategory *existing_cat = target_cat -> category(par_cat -> pathName())) {
+		if (ElementsCategory *existing_cat = target_cat -> category(par_cat -> pathName()))
+		{
 			// la categorie cible existe deja : on continue la progression
 			target_cat = existing_cat;
-		} else {
+		}
+		else
+		{
 			// la categorie cible n'existe pas : on la cree par recopie
 			ElementsCollectionItem *result_cat = par_cat -> copy(target_cat, handler, false);
-			if (!result_cat || !result_cat -> isCategory()) {
+			if (!result_cat || !result_cat -> isCategory())
+			{
 				error_message = QString(tr("Un problème s'est produit pendant la copie de la catégorie %1")).arg(par_cat -> location().toString());
 				return(QString());
 			}
@@ -744,20 +751,26 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	
 	// recopie l'element
 	ElementsLocation result;
-	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName())) {
+	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName()))
+	{
 		
 		// l'element existe deja - on demande au handler ce que l'on doit faire
 		QET::Action action = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
 		
-		if (action == QET::Ignore) {
+		if (action == QET::Ignore)
+		{
 			// il faut conserver et utiliser l'element deja integre
 			result = existing_elmt -> location();
-		} else if (action == QET::Erase) {
+		}
+		else if (action == QET::Erase)
+		{
 			// il faut ecraser l'element deja integre
 			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
 			result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
 			delete erase_handler;
-		} else if (action == QET::Rename) {
+		}
+		else if (action == QET::Rename)
+		{
 			// il faut faire cohabiter les deux elements en renommant le nouveau 
 			QString integ_element_name = handler -> nameForRenamingOperation();
 			BasicMoveElementsHandler *rename_handler = new BasicMoveElementsHandler();
@@ -765,13 +778,19 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 			rename_handler -> setNameForRenamingOperation(integ_element_name);
 			result = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
 			delete rename_handler;
-		} else {
+		}
+		else
+		{
 			// il faut annuler la pose de l'element
 			result = ElementsLocation();
 		}
-	} else {
+	}
+	else
+	{
 		// integre l'element normalement
 		result = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
+		QString xml_path = m_elements_collection->addElement(elmt_path);
+		if (!xml_path.isNull()) emit elementIntegratedToCollection(this, xml_path);
 	}
 	
 	if (!result.isNull()) emit(elementIntegrated(this, result));
