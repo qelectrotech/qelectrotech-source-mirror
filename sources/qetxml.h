@@ -18,8 +18,12 @@
 #ifndef QETXML_H
 #define QETXML_H
 
-#include <QDomDocument>
+#include <QDomElement>
 #include <QPen>
+
+class QDomDocument;
+class QDir;
+class QFile;
 
 /**
  *This namespace contain some function to use xml with QET.
@@ -28,6 +32,9 @@ namespace QETXML
 {
     QDomElement penToXml(QDomDocument &parent_document, QPen pen);
     QPen penFromXml (const QDomElement &element);
+
+	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir);
+	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file);
 
 }
 
