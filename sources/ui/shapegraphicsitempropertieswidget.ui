@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>261</width>
-    <height>185</height>
+    <height>293</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -115,9 +115,125 @@
     </widget>
    </item>
    <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Remplissage</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Style</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_brush_style_cb">
+        <item>
+         <property name="text">
+          <string>Aucun</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Plein</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Densité 7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Croix</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diagonal arrière</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diagonal avant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diagonal en croix</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Couleur</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="m_brush_color_pb">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">
      <property name="text">
       <string>Verrouiller la position</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_close_polygon">
+     <property name="text">
+      <string>Polygone fermé</string>
      </property>
     </widget>
    </item>

@@ -35,12 +35,16 @@ class QetShapeItem : public QetGraphicsItem
 	Q_OBJECT
 
 		Q_PROPERTY(QPen pen READ pen WRITE setPen NOTIFY penChanged)
+		Q_PROPERTY(QBrush brush READ brush WRITE setBrush NOTIFY brushChanged)
 		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 		Q_PROPERTY(QLineF line READ line WRITE setLine)
 		Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
+		Q_PROPERTY(bool close READ isClosed WRITE setClosed NOTIFY closeChanged)
 
 	signals:
 		void penChanged();
+		void brushChanged();
+		void closeChanged();
 
 	public:
 		Q_ENUMS(ShapeType)
@@ -60,6 +64,8 @@ class QetShapeItem : public QetGraphicsItem
 			///METHODS
 		QPen pen() const {return m_pen;}
 		void setPen(const QPen &pen);
+		QBrush brush() const {return m_brush;}
+		void setBrush(const QBrush &brush);
 		ShapeType shapeType() const {return m_shapeType;}
 
 		virtual bool	    fromXml (const QDomElement &);
@@ -76,6 +82,8 @@ class QetShapeItem : public QetGraphicsItem
 		bool setRect    (const QRectF &rect);
 		QPolygonF polygon() const {return m_polygon;}
 		bool setPolygon (const QPolygonF &polygon);
+		bool isClosed() const {return m_close;}
+		void setClosed (bool close);
 
 			//Methods available for polygon shape
 		int  pointsCount  () const;
@@ -98,11 +106,13 @@ class QetShapeItem : public QetGraphicsItem
 	private:
 		ShapeType	 m_shapeType;
 		QPen		 m_pen;
+		QBrush       m_brush;
 		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool		 m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
 		QetGraphicsHandlerUtility m_handler;
+		bool m_close = false;
 };
 #endif // QETSHAPEITEM_H

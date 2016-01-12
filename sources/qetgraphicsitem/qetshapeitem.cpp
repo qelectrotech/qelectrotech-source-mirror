@@ -64,6 +64,19 @@ void QetShapeItem::setPen(const QPen &pen)
 }
 
 /**
+ * @brief QetShapeItem::setBrush
+ * Set the brush to use for the fill the shape
+ * @param brush
+ */
+void QetShapeItem::setBrush(const QBrush &brush)
+{
+	if (m_brush == brush) return;
+	m_brush = brush;
+	update();
+	emit brushChanged();
+}
+
+/**
  * @brief QetShapeItem::setP2
  * Set the second point of this item.
  * If this item is a polyline,
@@ -133,6 +146,21 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 }
 
 /**
+ * @brief QetShapeItem::setClosed
+ * Close this item, have effect only if this item is a polygon.
+ * @param close
+ */
+void QetShapeItem::setClosed(bool close)
+{
+	if (m_shapeType == Polygon && close != m_close)
+	{
+		prepareGeometryChange();
+		m_close = close;
+		emit closeChanged();
+	}
+}
+
+/**
  * @brief QetShapeItem::pointCount
  * @return the number of point in the polygon
  */
@@ -196,7 +224,8 @@ QPainterPath QetShapeItem::shape() const
 						path.lineTo(m_P2);                   break;
 		case Rectangle: path.addRect(QRectF(m_P1, m_P2));    break;
 		case Ellipse:   path.addEllipse(QRectF(m_P1, m_P2)); break;
-		case Polygon:   path.addPolygon(m_polygon);          break;
+		case Polygon:   path.addPolygon(m_polygon);
+						if (m_close) path.closeSubpath();    break;
 		default:        Q_ASSERT(false);                     break;
 	}
 
@@ -239,6 +268,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	painter->save();
 	painter->setRenderHint(QPainter::Antialiasing, true);
 	painter->setPen(m_pen);
+	painter->setBrush(m_brush);
 
 		//Draw hovered shadow
 	if (m_hovered)
@@ -274,7 +304,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 			break;
 
 		case Polygon:
-			painter->drawPolyline(m_polygon);
+			m_close ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon);
 			if (isSelected())
 				m_handler.drawHandler(painter, m_polygon);
 			break;
@@ -457,7 +487,9 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "shape") return (false);
 
 	is_movable_ = (e.attribute("is_movable").toInt());
+	m_close = e.attribute("closed", "0").toInt();
 	m_pen = QETXML::penFromXml(e.firstChildElement("pen"));
+	m_brush = QETXML::brushFromXml(e.firstChildElement("brush"));
 
 	QString type = e.attribute("type");
 		//@TODO Compatibility for version older than N°4075, shape type was stored with an int
@@ -506,7 +538,10 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
 	result.setAttribute("type", me.valueToKey(m_shapeType));
 	result.appendChild(QETXML::penToXml(document, m_pen));
+	result.appendChild(QETXML::brushToXml(document, m_brush));
 	result.setAttribute("is_movable", bool(is_movable_));
+	result.setAttribute("closed", bool(m_close));
+
 	if (m_shapeType != Polygon)
 	{
 		result.setAttribute("x1", QString::number(mapToScene(m_P1).x()));

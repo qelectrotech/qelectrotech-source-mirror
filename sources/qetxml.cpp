@@ -79,6 +79,78 @@ QPen QETXML::penFromXml(const QDomElement &element)
 }
 
 /**
+ * @brief QETXML::brushToXml
+ * Write attribute of a QBrush in xml element
+ * @param parent_document : parent document for create the QDomElement
+ * @param brush : the brush to store
+ * @return A QDomElement with the attribute stored. The tagName of QDomeElement is "brush".
+ */
+QDomElement QETXML::brushToXml(QDomDocument &parent_document, QBrush brush)
+{
+	QDomElement element = parent_document.createElement("brush");
+
+	QString style;
+	switch (brush.style())
+	{
+		case Qt::NoBrush          : style = "NoBrush";          break;
+		case Qt::SolidPattern     : style = "SolidPattern";     break;
+		case Qt::Dense1Pattern    : style = "Dense1Pattern";    break;
+		case Qt::Dense2Pattern    : style = "Dense2Pattern";    break;
+		case Qt::Dense3Pattern    : style = "Dense3Pattern";    break;
+		case Qt::Dense4Pattern    : style = "Dense4Pattern";    break;
+		case Qt::Dense5Pattern    : style = "Dense5Pattern";    break;
+		case Qt::Dense6Pattern    : style = "Dense6Pattern";    break;
+		case Qt::Dense7Pattern    : style = "Dense7Pattern";    break;
+		case Qt::HorPattern       : style = "HorPattern";       break;
+		case Qt::VerPattern       : style = "VerPattern";       break;
+		case Qt::CrossPattern     : style = "CrossPattern";     break;
+		case Qt::BDiagPattern     : style = "BDiagPattern";     break;
+		case Qt::FDiagPattern     : style = "FDiagPattern";     break;
+		case Qt::DiagCrossPattern : style = "DiagCrossPattern"; break;
+		default                   : style = "Unknow";           break;
+	}
+
+	element.setAttribute("style", style);
+	element.setAttribute("color", brush.color().name());
+	return element;
+}
+
+/**
+ * @brief QETXML::brushFromXml
+ * Build a QBrush from a xml description
+ * @param element, the QDomElement that describe the pen
+ * @return the created brush. If @element is null or tagName isn't "brush"
+ * return a default constructed QBrush
+ */
+QBrush QETXML::brushFromXml(const QDomElement &element)
+{
+	QBrush brush;
+
+	if (!(!element.isNull() && element.tagName() == "brush")) return brush;
+
+	QString style = element.attribute("style", "NoBrush");
+	if      (style == "NoBrush")          brush.setStyle(Qt::NoBrush);
+	else if (style == "SolidPattern")     brush.setStyle(Qt::SolidPattern);
+	else if (style == "Dense1Pattern")    brush.setStyle(Qt::Dense1Pattern);
+	else if (style == "Dense2Pattern")    brush.setStyle(Qt::Dense2Pattern);
+	else if (style == "Dense3Pattern")    brush.setStyle(Qt::Dense3Pattern);
+	else if (style == "Dense4Pattern")    brush.setStyle(Qt::Dense4Pattern);
+	else if (style == "Dense5Pattern")    brush.setStyle(Qt::Dense5Pattern);
+	else if (style == "Dense6Pattern")    brush.setStyle(Qt::Dense6Pattern);
+	else if (style == "Dense7Pattern")    brush.setStyle(Qt::Dense7Pattern);
+	else if (style == "HorPattern")       brush.setStyle(Qt::HorPattern);
+	else if (style == "VerPattern")       brush.setStyle(Qt::VerPattern);
+	else if (style == "CrossPattern")     brush.setStyle(Qt::CrossPattern);
+	else if (style == "BDiagPattern")     brush.setStyle(Qt::BDiagPattern);
+	else if (style == "FDiagPattern")     brush.setStyle(Qt::FDiagPattern);
+	else if (style == "DiagCrossPattern") brush.setStyle(Qt::DiagCrossPattern);
+	else if (style == "Unknow")           brush.setStyle(Qt::NoBrush);
+
+	brush.setColor(QColor(element.attribute("color", "#000000")));
+	return brush;
+}
+
+/**
  * @brief QETXML::fileSystemDirToXmlCollectionDir
  * @param document : owner document of returned QDomElement, use to create the QDomElement.
  * @param dir : file system direcory to convert to QDomElement directory

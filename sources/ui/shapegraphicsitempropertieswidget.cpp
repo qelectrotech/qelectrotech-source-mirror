@@ -52,16 +52,24 @@ ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget()
  */
 void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 {
-	if (!shape) return;
-	if (shape == m_shape) return;
+	if (!shape || shape == m_shape) return;
 
 	if (m_shape && m_live_edit)
+	{
 		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect(m_shape, &QetShapeItem::brushChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect(m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	}
 
 	m_shape = shape;
+	ui->m_close_polygon->setVisible(m_shape->shapeType() == QetShapeItem::Polygon);
 
 	if (m_live_edit)
+	{
 		connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		connect(m_shape, &QetShapeItem::brushChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		connect(m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	}
 
 	updateUi();
 }
@@ -94,6 +102,7 @@ void ShapeGraphicsItemPropertiesWidget::reset() {
  */
 QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 {
+	QPropertyUndoCommand *undo = nullptr;
 	QPen old_pen = m_shape->pen();
 	QPen new_pen = old_pen;
 
@@ -101,10 +110,39 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 	new_pen.setWidthF(ui->m_size_dsb->value());
 	new_pen.setColor(ui->m_color_pb->palette().color(QPalette::Button));
 
-	if (new_pen == old_pen) return nullptr;
+	if (new_pen != old_pen)
+	{
+		undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
+		undo->setText(tr("Modifier le trait d'une forme"));
+	}
 
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
-	undo->setText(tr("Modifier le type de trait d'une forme"));
+	QBrush old_brush = m_shape->brush();
+	QBrush new_brush = old_brush;
+	new_brush.setStyle(Qt::BrushStyle(ui->m_brush_style_cb->currentIndex()));
+	new_brush.setColor(ui->m_brush_color_pb->palette().color(QPalette::Button));
+
+	if (new_brush != old_brush)
+	{
+		if (undo)
+			new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush, undo);
+		else
+		{
+			undo = new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush);
+			undo->setText(tr("Modifier le remplissage d'une forme"));
+		}
+	}
+
+	if (ui->m_close_polygon->isChecked() != m_shape->isClosed())
+	{
+		if (undo)
+			new QPropertyUndoCommand(m_shape, "close", m_shape->isClosed(), ui->m_close_polygon->isChecked(), undo);
+		else
+		{
+			undo = new QPropertyUndoCommand(m_shape, "close", m_shape->isClosed(), ui->m_close_polygon->isChecked(), undo);
+			undo->setText(tr("Fermer le polygone"));
+		}
+	}
+
 	return undo;
 }
 
@@ -115,10 +153,16 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
 	bool le = m_live_edit;
 	setLiveEdit(false); //Disable temporally live edit mode to avoid weird behavior
+		//Pen
 	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 	ui->m_size_dsb ->setValue(m_shape->pen().widthF());
-	setColorButton(m_shape->pen().color());
+	setPenColorButton(m_shape->pen().color());
+		//Brush
+	ui->m_brush_style_cb->setCurrentIndex(static_cast<int>(m_shape->brush().style()));
+	setBrushColorButton(m_shape->brush().color());
+
 	ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
+	ui->m_close_polygon->setChecked(m_shape->isClosed());
 	setLiveEdit(le);
 }
 
@@ -136,27 +180,45 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 	{
 		connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
 		connect (ui->m_size_dsb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
+		connect (ui->m_brush_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
+		connect (ui->m_close_polygon, &QCheckBox::clicked, this, &ShapeGraphicsItemPropertiesWidget::apply);
 		connect (m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		connect (m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 	}
 	else
 	{
 		disconnect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
 		disconnect (ui->m_size_dsb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
+		disconnect (ui->m_brush_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
+		disconnect (ui->m_close_polygon, &QCheckBox::clicked, this, &ShapeGraphicsItemPropertiesWidget::apply);
 		disconnect (m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect (m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 	}
 	return true;
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::setColorButton
- * Set the color of the push button to the current color of the shape
+ * @brief ShapeGraphicsItemPropertiesWidget::setPenColorButton
+ * Set the color of pen push button to the current color of the shape pen
  * @param color
  */
-void ShapeGraphicsItemPropertiesWidget::setColorButton(const QColor &color)
+void ShapeGraphicsItemPropertiesWidget::setPenColorButton(const QColor &color)
 {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
 	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
+}
+
+/**
+ * @brief ShapeGraphicsItemPropertiesWidget::setBrushColorButton
+ * Set the color of brush push button to the current color of shape brush
+ * @param color
+ */
+void ShapeGraphicsItemPropertiesWidget::setBrushColorButton(const QColor &color)
+{
+	QPalette palette;
+	palette.setColor(QPalette::Button, color);
+	ui->m_brush_color_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
 }
 
 void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked() {
@@ -165,13 +227,26 @@ void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked() {
 
 /**
  * @brief ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked
- * Color button was clicked, we open a QColorDialog for select the color to apply to the shape.
+ * Pen color button was clicked, we open a QColorDialog for select the color to apply to the shape pen.
  */
 void ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked()
 {
 	QColor color = QColorDialog::getColor(m_shape->pen().color(), this);
 	if (color.isValid())
-		setColorButton(color);
-	if(m_live_edit)
+		setPenColorButton(color);
+	if (m_live_edit)
+		apply();
+}
+
+/**
+ * @brief ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked
+ * Brush color button was clicked, we open a QColorDialog for select the color to apply to the shape brush.
+ */
+void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked()
+{
+	QColor color = QColorDialog::getColor(m_shape->brush().color(), this);
+	if (color.isValid())
+		setBrushColorButton(color);
+	if (m_live_edit)
 		apply();
 }
