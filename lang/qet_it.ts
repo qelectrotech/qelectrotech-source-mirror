@@ -535,7 +535,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="376"/>
         <source>size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Spessore:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -1503,102 +1503,103 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="87"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished">Aprire la cartella corrispondente</translation>
+        <translation>Aprire la cartella corrispondente</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare l&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Supprimer l&apos;élément</source>
-        <translation type="unfinished">Cancellare l&apos;elemento</translation>
+        <translation>Cancellare l&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
         <source>Supprimer le dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare la cartella</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
         <source>Recharger les collections</source>
-        <translation type="unfinished">Ricaricare le collezioni</translation>
+        <translation>Ricaricare le collezioni</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
         <source>Éditer le dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare la cartella</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
         <source>Nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova cartella</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
         <source>Nouvel élément</source>
-        <translation type="unfinished">Nuovo elemento</translation>
+        <translation>Nuovo elemento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="108"/>
         <source>Rechercher</source>
-        <translation type="unfinished">Cercare</translation>
+        <translation>Cercare</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="122"/>
         <source>Chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>Caricamento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="247"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Cancellare l&apos;elemento?</translation>
+        <translation>Cancellare l&apos;elemento?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="248"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sei sicuro di voler eliminare questo elemento?</translation>
+        <translation>Si è sicuri di voler eliminare questo elemento?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="254"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Cancellazione elemento</translation>
+        <translation>Cancellazione elemento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="255"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">La cancellazione dell&apos;elemento è fallita.</translation>
+        <translation>La cancellazione dell&apos;elemento è fallita.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="274"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare la cartella?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="275"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Si è sicuri di voler eleminiare la cartella?
+Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="283"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cancellazione della cartella</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="284"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>La cancellazione della cartella è fallita.</translation>
     </message>
 </context>
 <context>
@@ -3673,7 +3674,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Collezione di elementi</translation>
+        <translation>Collezione di elementi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
@@ -6387,17 +6388,17 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="311"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Collezione QET</translation>
+        <translation>Collezione QET</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="313"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished">Collezione utente</translation>
+        <translation>Collezione utente</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="315"/>
         <source>Collection inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Collezione sconosciuta</translation>
     </message>
 </context>
 <context>
@@ -6598,12 +6599,12 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Trait</source>
-        <translation type="unfinished"></translation>
+        <translation>Tratto</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <source>Épaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Spessore</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="34"/>
@@ -6633,98 +6634,98 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="96"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="103"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="212"/>
         <source>Couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="120"/>
         <source>Remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>Riempimento</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="126"/>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stile</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="134"/>
         <source>Aucun</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="139"/>
         <source>Plein</source>
-        <translation type="unfinished"></translation>
+        <translation>Pieno</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="144"/>
         <source>Densité 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="149"/>
         <source>Densité 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="154"/>
         <source>Densité 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 3</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="159"/>
         <source>Densité 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 4</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="164"/>
         <source>Densité 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="169"/>
         <source>Densité 6</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 6</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="174"/>
         <source>Densité 7</source>
-        <translation type="unfinished"></translation>
+        <translation>Densità 7</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="179"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Orizzontale</translation>
+        <translation>Orizzontale</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="184"/>
         <source>Vertical</source>
-        <translation type="unfinished">Verticale</translation>
+        <translation>Verticale</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="189"/>
         <source>Croix</source>
-        <translation type="unfinished"></translation>
+        <translation>A croce</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
         <source>Diagonal arrière</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagonale indietro</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
         <source>Diagonal avant</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagonale avanti</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
         <source>Diagonal en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagonale a croce</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="229"/>
@@ -6734,7 +6735,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="236"/>
         <source>Polygone fermé</source>
-        <translation type="unfinished">Poligono chiuso</translation>
+        <translation>Poligono chiuso</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
@@ -6744,17 +6745,17 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="116"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare il tratto di una forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="131"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare il riempimento di una forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="142"/>
         <source>Fermer le polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiudere il poligono</translation>
     </message>
 </context>
 <context>
