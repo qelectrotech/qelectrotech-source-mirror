@@ -21,8 +21,11 @@
 #include "elementdefinition.h"
 #include "factory/elementfactory.h"
 #include "element.h"
-#include <QImageWriter>
 #include "qet.h"
+
+#include <QImageWriter>
+#include <QSqlQuery>
+#include <QSqlError>
 
 /**
 	Construct a cache for elements collections.
@@ -215,12 +218,21 @@ bool ElementsCollectionCache::fetchElement(ElementDefinition *element)
 	}
 }
 
+/**
+ * @brief ElementsCollectionCache::fetchElement
+ * Retrieve the data for a given element, using the cache if available,
+ * filling it otherwise. Data are then available through pixmap() and name() methods
+ * @param location The definition of an element
+ * @see pixmap()
+ * @see name()
+ * @return True if the retrieval succeeded, false otherwise
+ */
 bool ElementsCollectionCache::fetchElement(ElementLocation location)
 {
 	if (fetchNameFromCache(location.collectionPath(), location.uuid()) &&
 		fetchPixmapFromCache(location.collectionPath(), location.uuid()))
 		return true;
-	else if (fetchData(ElementsLocation(location.collectionPath())))
+	else if (fetchData(location))
 	{
 		cacheName(location.collectionPath(), location.uuid());
 		cachePixmap(location.collectionPath(), location.uuid());
@@ -261,6 +273,30 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	}
 	delete custom_elmt;
 	return(!state);
+}
+
+/**
+ * @brief ElementsCollectionCache::fetchData
+ * Retrieve the data by building the full CustomElement object matching the given location,
+ * without using the cache. Data are then available through pixmap() and name() methods
+ * @param location : location of a given element
+ * @return  True if the retrieval succeeded, false otherwise
+ */
+bool ElementsCollectionCache::fetchData(ElementLocation &location)
+{
+	int state;
+	Element *element = ElementFactory::Instance()->createElement(location, 0, &state);
+
+	if(state)
+		qDebug() << "ElementsCollectionCache::fetchData() 2: Le chargement du composant" << qPrintable(location.fileSystemPath()) << "a echoue avec le code d'erreur" << state;
+	else
+	{
+		current_name_ = element->name();
+		current_pixmap_ = element->pixmap();
+	}
+
+	delete element;
+	return (!state);
 }
 
 /**

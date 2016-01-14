@@ -17,10 +17,11 @@
 */
 #ifndef ELEMENTS_COLLECTION_CACHE_H
 #define ELEMENTS_COLLECTION_CACHE_H
-#include <QtCore>
-#include <QtSql>
+
+#include <QSqlDatabase>
 #include "elementslocation.h"
 #include "elementlocation.h"
+
 class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
@@ -50,6 +51,7 @@ class ElementsCollectionCache : public QObject
 	QString name() const;
 	QPixmap pixmap() const;
 	bool fetchData(const ElementsLocation &);
+	bool fetchData(ElementLocation &location);
 	bool fetchNameFromCache(const QString &path, const QUuid &uuid);
 	bool fetchPixmapFromCache(const QString &path, const QUuid &uuid);
 	bool cacheName(const QString &path, const QUuid &uuid = QUuid::createUuid());
