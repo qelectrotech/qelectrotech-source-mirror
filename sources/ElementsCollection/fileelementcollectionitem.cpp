@@ -122,6 +122,16 @@ QString FileElementCollectionItem::collectionPath() const
 }
 
 /**
+ * @brief FileElementCollectionItem::collectionName
+ * @return The collection name of this item
+ */
+QString FileElementCollectionItem::collectionName() const
+{
+	if (isCollectionRoot()) return QString();
+	else return m_path;
+}
+
+/**
  * @brief FileElementCollectionItem::data
  * @param column
  * @param role
@@ -195,9 +205,9 @@ QMimeData *FileElementCollectionItem::mimeData()
  * @param column
  * @return True if the data can be dropped
  */
-bool FileElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropAction action, int column) const
+bool FileElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const
 {
-	Q_UNUSED(action); Q_UNUSED(column);
+	Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
 	if (isCommonCollection()) return false;
 
 	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
@@ -213,9 +223,9 @@ bool FileElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropA
  * @param column
  * @return Handle the drop of a data
  */
-bool FileElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropAction action, int column)
+bool FileElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column)
 {
-	Q_UNUSED(action); Q_UNUSED(column);
+	Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
 	if (isCommonCollection()) return false;
 
 	FileElementCollectionItem *feci = this;
@@ -381,6 +391,15 @@ bool FileElementCollectionItem::removeContent()
 	return false;
 }
 
+void FileElementCollectionItem::insertNewItem(const QString &collection_name)
+{
+	if (collection_name.isEmpty()) return;
+
+	FileElementCollectionItem *feci = new FileElementCollectionItem(this);
+	feci->setPathName(collection_name);
+	insertChild(rowForInsertItem(collection_name), feci);
+}
+
 /**
  * @brief FileElementCollectionItem::setPathName
  * Set the name of this item in the file system path.
@@ -434,7 +453,9 @@ void FileElementCollectionItem::populate()
 bool FileElementCollectionItem::handleElementDrop(const QMimeData *data)
 {
 	ElementLocation location(data->text());
-	return QFile::copy(location.fileSystemPath(), fileSystemPath() + "/" + location.fileSystemPath().split("/").last());
+	bool rb = QFile::copy(location.fileSystemPath(), fileSystemPath() + "/" + location.fileSystemPath().split("/").last());
+	if (rb) insertNewItem(location.fileName());
+	return rb;
 }
 
 /**
@@ -449,7 +470,11 @@ bool FileElementCollectionItem::handleDirectoryDrop(const QMimeData *data)
 	QDir origin_dir(location.fileSystemPath());
 
 	if (origin_dir.exists())
-		return createSubDir(origin_dir, QDir(fileSystemPath()));
+	{
+		bool rb = createSubDir(origin_dir, QDir(fileSystemPath()));
+		if(rb) insertNewItem(location.fileName());
+		return rb;
+	}
 	else
 		return false;
 }

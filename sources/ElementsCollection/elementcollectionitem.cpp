@@ -63,6 +63,13 @@ bool ElementCollectionItem::removeChild(int row, int count)
 	return true;
 }
 
+/**
+ * @brief ElementCollectionItem::insertChild
+ * Insert item at position row in the child item list
+ * @param row
+ * @param item
+ * @return true if item was inserted, if item is already a chil of this item, return false
+ */
 bool ElementCollectionItem::insertChild(int row, ElementCollectionItem *item)
 {
 	if (m_child_items.contains(item)) return false;
@@ -94,6 +101,78 @@ ElementCollectionItem *ElementCollectionItem::childWithCollectionName(QString na
 
 	return nullptr;
 }
+
+/**
+ * @brief ElementCollectionItem::lastItemForPath
+ * Return the last existing item in this ElementCollectionItem hierarchy according to the given path.
+ * Next_item is the first non existing item in this hierarchy according to the given path.
+ * @param path : The path to find last item. The path must be in form : path/otherPath/.../.../myElement.elmt.
+ * @param newt_item : The first item that not exist in this hierarchy
+ * @return : The last item that exist in this hierarchy, or nullptr can't find (an error was occurred, or path already exist)
+ */
+ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &path, QString &newt_item)
+{
+	QStringList str_list = path.split("/");
+	if (str_list.isEmpty()) return nullptr;
+
+	ElementCollectionItem *return_eci = this;
+	foreach (QString str, str_list)
+	{
+		ElementCollectionItem *eci = return_eci->childWithCollectionName(str);
+		if (!eci)
+		{
+			newt_item = str;
+			return return_eci;
+		}
+		else
+			return_eci = eci;
+	}
+
+	return nullptr;
+}
+
+/**
+ * @brief ElementCollectionItem::rowForInsertItem
+ * Return the row for insert a new child item to this item with name @collection_name.
+ * If row can't be found (collection_name is null, or already exist) return -1;
+ * @param collection_name
+ * @return
+ */
+int ElementCollectionItem::rowForInsertItem(const QString &collection_name)
+{
+	if (collection_name.isEmpty()) return -1;
+
+	QList <ElementCollectionItem *> child;
+		//The item to insert is an element we search from element child
+	if (collection_name.endsWith(".elmt"))
+	{
+		child = elementsChild();
+			//There isn't element, we insert at last position
+		if (child.isEmpty())
+			return childCount();
+	}
+		//The item is a directory, we search from directory child
+	else
+	{
+		child = directoriesChild();
+		//There isn't directory, we insert at first position
+		if(child.isEmpty())
+			return 0;
+	}
+
+	foreach (ElementCollectionItem *eci, child)
+		if (eci->collectionName() > collection_name)
+			return indexOfChild(eci);
+
+	return childCount();
+}
+
+/**
+ * @brief ElementCollectionItem::insertNewItem
+ * By defualt do nothing, implement this method in subclass
+ * to handle the insertion of a new item with name collection_name
+ */
+void ElementCollectionItem::insertNewItem(const QString &collection_name) {Q_UNUSED (collection_name);}
 
 /**
  * @brief ElementCollectionItem::childCount
@@ -131,15 +210,15 @@ QMimeData *ElementCollectionItem::mimeData() {
 	return new QMimeData();
 }
 
-bool ElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropAction action, int column) const
+bool ElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const
 {
-	Q_UNUSED(data); Q_UNUSED(action); Q_UNUSED(column);
+	Q_UNUSED(data); Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
 	return false;
 }
 
-bool ElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropAction action, int column)
+bool ElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column)
 {
-	Q_UNUSED(data); Q_UNUSED(action); Q_UNUSED(column);
+	Q_UNUSED(data); Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
 	return false;
 }
 

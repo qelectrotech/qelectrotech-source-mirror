@@ -27,8 +27,7 @@
  * @brief ElementLocation::ElementLocation
  * @param path : path of item in file system
  */
-ElementLocation::ElementLocation(QString path):
-	m_project(nullptr)
+ElementLocation::ElementLocation(QString path)
 {
 	if (!path.isEmpty())
 		setPath(path);
@@ -45,6 +44,19 @@ ElementLocation::ElementLocation(QString path, QETProject *project) :
 {
 	if (!path.isEmpty())
 		setPath(path);
+}
+
+/**
+ * @brief ElementLocation::ElementLocation
+ * Constructor, build an ElementLocation from a QMimeData, the mime data format
+ * must be "application/x-qet-element-uri" or "application/x-qet-category-uri".
+ * This location can be null even if format is valid.
+ * @param data
+ */
+ElementLocation::ElementLocation(const QMimeData *data)
+{
+	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
+		setPath(data->text());
 }
 
 ElementLocation::~ElementLocation()
@@ -194,9 +206,10 @@ bool ElementLocation::setPath(QString path)
  */
 bool ElementLocation::isNull() const
 {
-	if (!m_file_system_path.isEmpty()) return false;
-	else if (!m_collection_path.isEmpty()) return false;
-	else return true;
+	if (isFileSystem() || isProject())
+		return false;
+	else
+		return true;
 }
 
 /**
@@ -221,6 +234,29 @@ bool ElementLocation::isElement() const {
  */
 bool ElementLocation::isDirectory() const {
 	return !isElement();
+}
+
+/**
+ * @brief ElementLocation::isFileSystem
+ * @return True if this location represent a file system item.
+ */
+bool ElementLocation::isFileSystem() const
+{
+	if (m_project) return false;
+	if (m_file_system_path.isEmpty()) return false;
+	return true;
+}
+
+/**
+ * @brief ElementLocation::isProject
+ * @return True if this location represent an item from a project.
+ */
+bool ElementLocation::isProject() const
+{
+	if (m_project && !m_collection_path.isEmpty())
+		return true;
+	else
+		return false;
 }
 
 /**

@@ -193,32 +193,32 @@ Qt::ItemFlags ElementsCollectionModel::flags(const QModelIndex &index) const
 
 bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
 {
-	if (!parent.isValid())
-		return false;
+	if (!(QAbstractItemModel::canDropMimeData(data, action, row, column, parent) && parent.isValid())) return false;
 
-	if (!hasIndex(row, column, parent)) return false;
+	ElementCollectionItem *eci = static_cast <ElementCollectionItem *>(parent.internalPointer());
+	if (!eci) return false;
 
-	QModelIndex item = index(row, column, parent);
-
-	if (item.isValid())
-		return static_cast<ElementCollectionItem*>(item.internalPointer())->canDropMimeData(data, action, column);
-	else
-		return false;
-
+	return eci->canDropMimeData(data, action, row, column);
 }
 
 bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
 {
 	if (!parent.isValid()) return false;
 
-	if (!hasIndex(row, column, parent)) return false;
+	ElementLocation location(data);
+	if (location.isNull()) return false;
 
-	QModelIndex item = index(row, column, parent);
+	ElementCollectionItem *eci =  static_cast<ElementCollectionItem*> (parent.internalPointer());
+	if (!eci) return false;
+	if (eci->isElement()) eci = eci->parent();
 
-	if (item.isValid())
-		return static_cast<ElementCollectionItem*>(item.internalPointer())->dropMimeData(data, action, column);
-	else
-		return false;
+	int i = eci->rowForInsertItem(location.fileName());
+	if (i < 0) return false;
+
+	beginInsertRows(parent, i, i);
+	bool rb = eci->dropMimeData(data, action, row, column);
+	endInsertRows();
+	return rb;
 }
 
 QStringList ElementsCollectionModel::mimeTypes() const
@@ -342,14 +342,13 @@ void ElementsCollectionModel::elementIntegratedToCollection(QETProject *project,
 	if (!xpeci) return;
 
 	QString collection_name;
-	XmlProjectElementCollectionItem *parent_xpeci = xpeci->lastItemForPath(path, collection_name);
-	if (parent_xpeci)
-	{
-		int new_row = parent_xpeci->rowForInsertItem(collection_name);
-		if (new_row <= -1) return;
-		QModelIndex parent_index = createIndex(parent_xpeci->row(), 0, parent_xpeci);
-		beginInsertRows(parent_index, new_row, new_row);
-		parent_xpeci->insertNewItem(collection_name);
-		endInsertRows();
-	}
+	ElementCollectionItem *eci = xpeci->lastItemForPath(path, collection_name);
+	if (!eci) return;
+
+	int new_row = eci->rowForInsertItem(collection_name);
+	if (new_row <= -1) return;
+	QModelIndex parent_index = createIndex(eci->row(), 0, eci);
+	beginInsertRows(parent_index, new_row, new_row);
+	eci->insertNewItem(collection_name);
+	endInsertRows();
 }

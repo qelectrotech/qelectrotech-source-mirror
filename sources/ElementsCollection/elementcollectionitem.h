@@ -19,6 +19,7 @@
 #define ELEMENTCOLLECTIONITEM_H
 
 #include <QVariant>
+#include "elementlocation.h"
 
 class QMimeData;
 class ElementCollectionItem;
@@ -44,12 +45,15 @@ class ElementCollectionItem
 		bool insertChild (int row, ElementCollectionItem *item);
         ElementCollectionItem *child(int row);
 		ElementCollectionItem *childWithCollectionName(QString name) const;
+		ElementCollectionItem *lastItemForPath(const QString &path, QString &newt_item);
+		int rowForInsertItem(const QString &collection_name);
+		virtual void insertNewItem(const QString &collection_name);
         int childCount() const;
         int columnCount() const;
 		virtual QVariant data(int column, int role);
 		virtual QMimeData *mimeData();
-		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int column) const;
-		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int column);
+		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
+		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);
 		virtual Qt::ItemFlags flags();
         ElementCollectionItem *parent();
         int row() const;

@@ -54,11 +54,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 		QString collectionPath() const;
 		QString embeddedPath() const;
 		virtual QString collectionName() const;
-
-		XmlProjectElementCollectionItem *lastItemForPath(const QString &path, QString &next_item);
-		int rowForInsertItem(const QString &collection_name);
 		void insertNewItem(const QString &collection_name);
-
 
 	private:
 		void populate();

@@ -24,6 +24,7 @@
 #include <QIcon>
 
 class QETProject;
+class QMimeData;
 
 /**
  * @brief The ElementLocation class
@@ -36,6 +37,7 @@ class ElementLocation
     public:
         ElementLocation(QString path = QString());
         ElementLocation(QString path, QETProject *project);
+		ElementLocation(const QMimeData *data);
         ~ElementLocation();
 
         bool setPath(QString path);
@@ -44,6 +46,7 @@ class ElementLocation
 		bool isElement() const;
 		bool isDirectory() const;
 		bool isFileSystem() const;
+		bool isProject() const;
 
 		QString collectionPath(bool protocol = true) const;
         QString fileSystemPath() const;
@@ -59,7 +62,7 @@ class ElementLocation
     private:
         QString m_collection_path;
         QString m_file_system_path;
-        QETProject *m_project;
+		QETProject *m_project = nullptr;
         QDomElement m_xml;
         QUuid m_uuid;
 		QIcon m_icon;

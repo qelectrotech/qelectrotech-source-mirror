@@ -42,11 +42,12 @@ class FileElementCollectionItem : public ElementCollectionItem
 		QString dirPath() const;
 
 		QString collectionPath() const;
+		QString collectionName() const;
 
 		virtual QVariant data(int column, int role);
 		virtual QMimeData *mimeData();
-		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int column) const;
-		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int column);
+		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
+		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);
 		virtual Qt::ItemFlags flags();
 
 		virtual bool isDir() const;
@@ -58,6 +59,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 		virtual bool canRemoveContent();
 		virtual bool removeContent();
+		virtual void insertNewItem(const QString &collection_name);
 
     private:
 		void setPathName(QString path_name);
