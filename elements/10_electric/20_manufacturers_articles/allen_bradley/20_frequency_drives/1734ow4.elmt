@@ -1,0 +1,46 @@
+<definition version="0.51" width="70" hotspot_y="164" hotspot_x="4" orientation="dyyy" link_type="simple" type="element" height="310">
+    <uuid uuid="{16967886-59c7-4d95-81c9-6a3f290a64ec}"/>
+    <names>
+        <name lang="fr">Module 4S 1734-OW4</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="14" width="15" antialias="false" height="12.475"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="45" y="14" width="15" antialias="false" height="12.475"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" y="-110" width="10" antialias="false" height="10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="104" width="15" antialias="false" height="12.475"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="74" width="15" antialias="false" height="12.475"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="44" width="15" antialias="false" height="12.475"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="45" y="104" width="15" antialias="false" height="12.475"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" start="-180" y="116.05" width="30" antialias="true" angle="90" height="24.9501"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="45" y="74" width="15" antialias="false" height="12.475"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="30" start="0" y="-159.649" width="30" antialias="true" angle="90" height="24.9501"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" start="-270" y="-159.649" width="30" antialias="true" angle="90" height="24.9501"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="30" start="-90" y="116.05" width="30" antialias="true" angle="90" height="24.9501"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" x2="60" x1="60" y1="-147.173" antialias="false" end2="none" y2="127.277" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" x2="0" x1="0" y1="127.277" antialias="false" end2="none" y2="-147.173" length1="1.5"/>
+        <input x="6" y="-77.5" size="8" rotate="true" tagg="label" text="_"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="45" y="44" width="15" antialias="false" height="12.475"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" x2="45" x1="15" y1="-160" antialias="false" end2="none" y2="-160" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" x2="45" x1="15" y1="141" antialias="false" end2="none" y2="141" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" y="-140" width="10" antialias="false" height="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" x2="60" x1="0" y1="-10" antialias="false" end2="none" y2="-10" length1="1.5"/>
+        <text x="8" y="-12" size="7" text="1734-OW4"/>
+        <text x="18" y="28" size="7" text="0"/>
+        <text x="36" y="28" size="7" text="1"/>
+        <text x="18" y="57" size="7" text="2"/>
+        <text x="37" y="57" size="7" text="3"/>
+        <text x="18" y="87" size="7" text="4"/>
+        <text x="37" y="87" size="7" text="5"/>
+        <text x="18" y="117" size="7" text="6"/>
+        <text x="37" y="117" size="7" text="7"/>
+        <terminal x="60" y="50" orientation="e"/>
+        <terminal x="60" y="110" orientation="e"/>
+        <terminal x="60.03" y="80" orientation="e"/>
+        <terminal x="0" y="110" orientation="w"/>
+        <terminal x="0" y="20" orientation="w"/>
+        <terminal x="0" y="50" orientation="w"/>
+        <terminal x="0" y="80" orientation="w"/>
+        <terminal x="60" y="20" orientation="e"/>
+    </description>
+</definition>
