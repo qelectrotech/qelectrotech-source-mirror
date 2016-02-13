@@ -79,7 +79,8 @@ INCLUDEPATH += sources \
                sources/editor/graphicspart \
                sources/undocommand \
                sources/diagramevent \
-               sources/ElementsCollection
+               sources/ElementsCollection \
+               sources/ElementsCollection/ui
 
 
 # Fichiers sources
@@ -91,7 +92,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/dvevent/*.h) \
            $$files(sources/undocommand/*.h) \
            $$files(sources/diagramevent/*.h) \
-           $$files(sources/ElementsCollection/*.h)
+           $$files(sources/ElementsCollection/*.h) \
+           $$files(sources/ElementsCollection/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
@@ -101,7 +103,8 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/dvevent/*.cpp) \
            $$files(sources/undocommand/*.cpp) \
            $$files(sources/diagramevent/*.cpp) \
-           $$files(sources/ElementsCollection/*.cpp)
+           $$files(sources/ElementsCollection/*.cpp) \
+           $$files(sources/ElementsCollection/ui/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -118,7 +121,8 @@ QT += xml svg network sql widgets printsupport
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
 FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/ui/*.ui) \
-         $$files(sources/editor/ui/*.ui)
+         $$files(sources/editor/ui/*.ui) \
+         $$files(sources/ElementsCollection/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

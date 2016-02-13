@@ -64,9 +64,9 @@ class FileElementCollectionItem : public ElementCollectionItem
     private:
 		void setPathName(QString path_name);
 		void populate();
-		bool handleElementDrop (const QMimeData *data);
-		bool handleDirectoryDrop (const QMimeData *data);
-		bool createSubDir (QDir dir_to_copy, QDir destination);
+//		bool handleElementDrop (const QMimeData *data);
+//		bool handleDirectoryDrop (const QMimeData *data);
+//		bool createSubDir (QDir dir_to_copy, QDir destination);
 
     private:
 		QString m_path;

@@ -85,6 +85,8 @@ class QETApp : public QETSingleApplication {
 	static QString userName();
 	static QString commonElementsDir();
 	static QString customElementsDir();
+	static QString commonElementsDirN();
+	static QString customElementsDirN();
 	static QString commonTitleBlockTemplatesDir();
 	static QString customTitleBlockTemplatesDir();
 	static bool registerProject(QETProject *);

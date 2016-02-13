@@ -16,11 +16,11 @@
         along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "fileelementcollectionitem.h"
-#include "QDir"
 #include "qetapp.h"
 #include "elementslocation.h"
 #include "nameslist.h"
 #include "qeticons.h"
+#include "elementcollectionhandler.h"
 
 /**
  * @brief FileElementCollectionItem::FileElementCollectionItem
@@ -71,10 +71,11 @@ QString FileElementCollectionItem::fileSystemPath() const
     FileElementCollectionItem *parent = static_cast<FileElementCollectionItem*>(m_parent_item);
 
         //Get the path of the parent.
-	if (parent->isCollectionRoot())
-		return parent->fileSystemPath() + m_path;
-	else
-		return parent->fileSystemPath() + "/" + m_path;
+//	if (parent->isCollectionRoot())
+//		return parent->fileSystemPath() + m_path;
+//	else
+//		return parent->fileSystemPath() + "/" + m_path;
+	return parent->fileSystemPath() + "/" + m_path;
 }
 
 /**
@@ -104,7 +105,7 @@ QString FileElementCollectionItem::collectionPath() const
 		//else this item is the root of collection path.
 	if (!m_parent_item || m_parent_item->type() != FileElementCollectionItem::Type)
 	{
-		if (m_path == QETApp::commonElementsDir())
+		if (m_path == QETApp::commonElementsDirN())
 			return "common://";
 		else
 			return "custom://";
@@ -154,7 +155,7 @@ QVariant FileElementCollectionItem::data(int column, int role)
 				//This item have no parent or parent isn't a file element, so it is the root of a collection
 			if (!m_parent_item || m_parent_item->type() != FileElementCollectionItem::Type)
 			{
-				if (m_path == QETApp::commonElementsDir())
+				if (m_path == QETApp::commonElementsDirN())
 					return QIcon(":/ico/16x16/qet.png");
 				else
 					return QIcon(":/ico/16x16/go-home.png");
@@ -211,7 +212,17 @@ bool FileElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropA
 	if (isCommonCollection()) return false;
 
 	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
+	{
+			//Return false if user try to drop a item from a folder to the same folder
+		ElementLocation drop_location(data->text());
+		for (int i=0 ; i<childCount() ; i++)
+		{
+			if (static_cast<FileElementCollectionItem *>(child(i))->collectionPath() == drop_location.collectionPath())
+				return false;
+		}
+
 		return true;
+	}
 	else
 		return false;
 }
@@ -232,10 +243,23 @@ bool FileElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropActi
 	if (isElement() && parent() && parent()->type() == FileElementCollectionItem::Type)
 		feci = static_cast<FileElementCollectionItem *>(parent());
 
-	if (data->hasFormat("application/x-qet-element-uri"))
-		return feci->handleElementDrop(data);
-	else if (data->hasFormat("application/x-qet-category-uri"))
-		return feci->handleDirectoryDrop(data);
+	ElementCollectionHandler ech;
+
+	ElementLocation source(data->text());
+	ElementLocation destination(feci->fileSystemPath());
+	ElementLocation location = ech.copy(source, destination);
+
+	if (location.exist())
+	{
+			//If this item have a child with the same path of location,
+			//we remove the existing child befor insert new child
+		for (int i=0 ; i<childCount() ; i++)
+			if (static_cast<FileElementCollectionItem *>(child(i))->collectionPath() == location.collectionPath())
+				removeChild(i, 1);
+
+		insertNewItem(location.fileName());
+		return true;
+	}
 
 	return false;
 }
@@ -278,7 +302,7 @@ bool FileElementCollectionItem::isElement() const {
  */
 bool FileElementCollectionItem::isCollectionRoot() const
 {
-	if (m_path == QETApp::commonElementsDir() || m_path == QETApp::customElementsDir())
+	if (m_path == QETApp::commonElementsDirN() || m_path == QETApp::customElementsDirN())
 		return true;
 	else
 		return false;
@@ -289,7 +313,7 @@ bool FileElementCollectionItem::isCollectionRoot() const
  * @return True if this item is part of the common element collection item
  */
 bool FileElementCollectionItem::isCommonCollection() const {
-	return fileSystemPath().startsWith(QETApp::commonElementsDir());
+	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
 }
 
 /**
@@ -317,9 +341,9 @@ QString FileElementCollectionItem::name()
 	{
 		if (isCollectionRoot())
 		{
-			if (m_path == QETApp::commonElementsDir())
+			if (m_path == QETApp::commonElementsDirN())
 				m_name = QObject::tr("Collection QET");
-			else if (m_path == QETApp::customElementsDir())
+			else if (m_path == QETApp::customElementsDirN())
 				m_name = QObject::tr("Collection utilisateur");
 			else
 				m_name = QObject::tr("Collection inconnue");
@@ -442,71 +466,4 @@ void FileElementCollectionItem::populate()
 		feci->setPathName(str);
 		appendChild(feci);
 	}
-}
-
-/**
- * @brief FileElementCollectionItem::handleElementDrop
- * Handle a drop data that represente an element.
- * @param data
- * @return true if the data is successfully dropped
- */
-bool FileElementCollectionItem::handleElementDrop(const QMimeData *data)
-{
-	ElementLocation location(data->text());
-	bool rb = QFile::copy(location.fileSystemPath(), fileSystemPath() + "/" + location.fileSystemPath().split("/").last());
-	if (rb) insertNewItem(location.fileName());
-	return rb;
-}
-
-/**
- * @brief FileElementCollectionItem::handleDirectoryDrop
- * Handle a drop data that represent a directory
- * @param data
- * @return true if the data is successfully dropped
- */
-bool FileElementCollectionItem::handleDirectoryDrop(const QMimeData *data)
-{
-	ElementLocation location(data->text());
-	QDir origin_dir(location.fileSystemPath());
-
-	if (origin_dir.exists())
-	{
-		bool rb = createSubDir(origin_dir, QDir(fileSystemPath()));
-		if(rb) insertNewItem(location.fileName());
-		return rb;
-	}
-	else
-		return false;
-}
-
-/**
- * @brief FileElementCollectionItem::createSubDir
- * Copy the directory @ dir_to_copy and the qet_directory file to destination.
- * Also copy all directorys and elements find in @dir_to_copy recursively
- * @param dir_to_copy
- * @param destination
- * @return true if the copy of @dir_to_copy to destination is successfull.
- */
-bool FileElementCollectionItem::createSubDir(QDir dir_to_copy, QDir destination)
-{
-	if (destination.mkdir(dir_to_copy.dirName()))
-	{
-		QDir created_dir(destination.canonicalPath() + "/" + dir_to_copy.dirName());
-
-			//Copy the qet_directory file
-		QFile::copy(dir_to_copy.canonicalPath() + "/qet_directory", created_dir.canonicalPath() +"/qet_directory");
-
-			//Copy all dirs found in dir_to_copy to destination
-		foreach(QString str, dir_to_copy.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
-			createSubDir(QDir(dir_to_copy.canonicalPath() + "/" + str), created_dir);
-
-			//Copy all elements found in dir_to_copy to destination
-		dir_to_copy.setNameFilters(QStringList() << "*.elmt");
-		foreach(QString str, dir_to_copy.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
-			QFile::copy(dir_to_copy.canonicalPath() + "/" + str, created_dir.canonicalPath() + "/" + str);
-
-		return true;
-	}
-	else
-		return false;
 }

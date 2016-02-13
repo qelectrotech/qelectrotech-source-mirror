@@ -38,6 +38,7 @@ class ElementLocation
         ElementLocation(QString path = QString());
         ElementLocation(QString path, QETProject *project);
 		ElementLocation(const QMimeData *data);
+		ElementLocation &operator=(const ElementLocation &other);
         ~ElementLocation();
 
         bool setPath(QString path);
@@ -47,6 +48,7 @@ class ElementLocation
 		bool isDirectory() const;
 		bool isFileSystem() const;
 		bool isProject() const;
+		bool exist() const;
 
 		QString collectionPath(bool protocol = true) const;
         QString fileSystemPath() const;

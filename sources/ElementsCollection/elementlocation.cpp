@@ -59,6 +59,17 @@ ElementLocation::ElementLocation(const QMimeData *data)
 		setPath(data->text());
 }
 
+ElementLocation &ElementLocation::operator=(const ElementLocation &other)
+{
+	m_collection_path = other.m_collection_path;
+	m_file_system_path = other.m_file_system_path;
+	m_project = other.m_project;
+	m_xml = other.m_xml;
+	m_uuid = other.m_uuid;
+	m_icon = other.m_icon;
+	return(*this);
+}
+
 ElementLocation::~ElementLocation()
 {}
 
@@ -115,12 +126,12 @@ bool ElementLocation::setPath(QString path)
 		if (path.startsWith("common://"))
 		{
 			tmp_path.remove("common://");
-			p = QETApp::commonElementsDir() + tmp_path;
+			p = QETApp::commonElementsDirN() + "/" + tmp_path;
 		}
 		else
 		{
 			tmp_path.remove("custom://");
-			p = QETApp::customElementsDir() + tmp_path;
+			p = QETApp::customElementsDirN() + "/" + tmp_path;
 		}
 
 			//This is an element
@@ -153,47 +164,37 @@ bool ElementLocation::setPath(QString path)
 	{
 		if(path.endsWith(".elmt"))
 		{
-			QFile file(path);
-			if (file.exists())
+			m_file_system_path = path;
+			if (path.startsWith(QETApp::commonElementsDirN()))
 			{
-				m_file_system_path = path;
-				if (path.startsWith(QETApp::commonElementsDir()))
-				{
-					path.remove(QETApp::commonElementsDir());
-					path.prepend("common://");
-					m_collection_path = path;
-				}
-				else if (path.startsWith(QETApp::customElementsDir()))
-				{
-					path.remove(QETApp::customElementsDir());
-					path.prepend("custom://");
-					m_collection_path = path;
-				}
-				return true;
+				path.remove(QETApp::commonElementsDirN() + "/");
+				path.prepend("common://");
+				m_collection_path = path;
 			}
-			return false;
+			else if (path.startsWith(QETApp::customElementsDirN()))
+			{
+				path.remove(QETApp::customElementsDirN() + "/");
+				path.prepend("custom://");
+				m_collection_path = path;
+			}
+			return true;
 		}
 		else
 		{
-			QDir dir(path);
-			if (dir.exists())
+			m_file_system_path = path;
+			if (path.startsWith(QETApp::commonElementsDirN()))
 			{
-				m_file_system_path = path;
-				if (path.startsWith(QETApp::commonElementsDir()))
-				{
-					path.remove(QETApp::commonElementsDir());
-					path.prepend("common://");
-					m_collection_path = path;
-				}
-				else if (path.startsWith(QETApp::customElementsDir()))
-				{
-					path.remove(QETApp::customElementsDir());
-					path.prepend("custom://");
-					m_collection_path = path;
-				}
-				return true;
+				path.remove(QETApp::commonElementsDirN() + "/");
+				path.prepend("common://");
+				m_collection_path = path;
 			}
-			return false;
+			else if (path.startsWith(QETApp::customElementsDirN()))
+			{
+				path.remove(QETApp::customElementsDirN()) + "/";
+				path.prepend("custom://");
+				m_collection_path = path;
+			}
+			return true;
 		}
 	}
 
@@ -260,9 +261,27 @@ bool ElementLocation::isProject() const
 }
 
 /**
- * @brief ElementLocation::collectionPath
- * @return the colletion relative to the collection
+ * @brief ElementLocation::exist
+ * @return True if this location represent an existing directory or element.
  */
+bool ElementLocation::exist() const
+{
+	if (isProject())
+		return m_project->embeddedElementCollection()->exist(collectionPath(false));
+	else
+	{
+		if (isDirectory())
+		{
+			QDir dir(fileSystemPath());
+			return dir.exists();
+		}
+		else
+		{
+			return QFile::exists(fileSystemPath());
+		}
+	}
+}
+
 /**
  * @brief ElementLocation::collectionPath
  * Return the path of the represented element relative to collection

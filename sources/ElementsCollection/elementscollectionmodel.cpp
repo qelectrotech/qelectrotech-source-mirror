@@ -246,7 +246,7 @@ QList<ElementCollectionItem *> ElementsCollectionModel::items() const
 void ElementsCollectionModel::addCommonCollection()
 {
 	FileElementCollectionItem *feci = new FileElementCollectionItem(m_root_item);
-	if (feci->setRootPath(QETApp::commonElementsDir()))
+	if (feci->setRootPath(QETApp::commonElementsDirN()))
 		m_root_item->appendChild(feci);
 	else
 		delete feci;
@@ -259,7 +259,7 @@ void ElementsCollectionModel::addCommonCollection()
 void ElementsCollectionModel::addCustomCollection()
 {
 	FileElementCollectionItem *feci = new FileElementCollectionItem(m_root_item);
-	if (feci->setRootPath(QETApp::customElementsDir()))
+	if (feci->setRootPath(QETApp::customElementsDirN()))
 		m_root_item->appendChild(feci);
 	else
 		delete feci;

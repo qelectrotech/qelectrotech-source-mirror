@@ -496,6 +496,30 @@ QString QETApp::customElementsDir() {
 }
 
 /**
+ * @brief QETApp::commonElementsDirN
+ * like QString QETApp::commonElementsDir but without "/" at the end
+ * @return
+ */
+QString QETApp::commonElementsDirN()
+{
+	QString path = commonElementsDir();
+	if (path.endsWith("/")) path.remove(path.length()-1, 1);
+	return path;
+}
+
+/**
+ * @brief QETApp::customElementsDirN
+ * like QString QETApp::customElementsDir but without "/" at the end
+ * @return
+ */
+QString QETApp::customElementsDirN()
+{
+	QString path = customElementsDir();
+	if (path.endsWith("/")) path.remove(path.length()-1, 1);
+	return path;
+}
+
+/**
 	@return the path of the directory containing the common title block
 	templates collection.
 */

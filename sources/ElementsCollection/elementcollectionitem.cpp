@@ -84,7 +84,7 @@ bool ElementCollectionItem::insertChild(int row, ElementCollectionItem *item)
  * @return The child at @row of this item.
  * If there isn't child at @row, return default ElementCollectionItem
  */
-ElementCollectionItem *ElementCollectionItem::child(int row) {
+ElementCollectionItem *ElementCollectionItem::child(int row) const {
 	return m_child_items.value(row);
 }
 

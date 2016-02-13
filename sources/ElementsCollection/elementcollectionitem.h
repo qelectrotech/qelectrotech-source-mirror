@@ -43,7 +43,7 @@ class ElementCollectionItem
         void appendChild (ElementCollectionItem *item);
 		bool removeChild (int row, int count);
 		bool insertChild (int row, ElementCollectionItem *item);
-        ElementCollectionItem *child(int row);
+		ElementCollectionItem *child(int row) const;
 		ElementCollectionItem *childWithCollectionName(QString name) const;
 		ElementCollectionItem *lastItemForPath(const QString &path, QString &newt_item);
 		int rowForInsertItem(const QString &collection_name);
