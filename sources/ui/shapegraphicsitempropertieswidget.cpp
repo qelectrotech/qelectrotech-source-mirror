@@ -63,6 +63,7 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 
 	m_shape = shape;
 	ui->m_close_polygon->setVisible(m_shape->shapeType() == QetShapeItem::Polygon);
+	ui->m_filling_gb->setHidden(m_shape->shapeType() == QetShapeItem::Line);
 
 	if (m_live_edit)
 	{
@@ -157,7 +158,11 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 	ui->m_size_dsb ->setValue(m_shape->pen().widthF());
 	setPenColorButton(m_shape->pen().color());
+
 		//Brush
+	if (m_shape->shapeType() == QetShapeItem::Polygon)
+		ui->m_filling_gb->setVisible(m_shape->isClosed());
+
 	ui->m_brush_style_cb->setCurrentIndex(static_cast<int>(m_shape->brush().style()));
 	setBrushColorButton(m_shape->brush().color());
 
