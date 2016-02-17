@@ -1,6 +1,7 @@
 <definition width="90" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{DAA67954-CE04-4BE1-90DC-5A423162E140}"/><names>
         <name lang="fr">FP280/030</name>
+        <name lang="pl">FP280/030</name>
         <name lang="cs">FP280/030</name>
     </names>
     <informations></informations>
