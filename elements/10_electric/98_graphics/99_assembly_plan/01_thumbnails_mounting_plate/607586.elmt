@@ -1,7 +1,6 @@
 <definition width="210" version="0.4" hotspot_x="125" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{673609C7-DA1E-4506-B0E9-C109C7FEC5B3}"/><names>
         <name lang="fr">DOCA332/300</name>
-        <name lang="pl">DOCA332/300</name>
         <name lang="cs">DOCA332/300</name>
     </names>
     <informations>Eurl Bruandet 02/2015</informations>
@@ -33,7 +32,7 @@
         <rect width="25" x="7" y="91" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <arc width="1" x="8" y="79" antialias="true" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-180" angle="-180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="116" x1="0" y2="116" x2="80"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="49" x2="47" x3="44" x4="46" antialias="false" x5="47" x6="49" x7="50" x8="44" x9="43" closed="false" y1="51" y2="51" y10="55" y3="57" y11="51" y4="57" y12="51" y5="55" x10="47" y6="55" x11="49" y7="53" x12="49" y8="53" y9="55"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="49" x2="47" x3="44" x4="46" antialias="false" x5="47" x6="49" x7="50" x8="44" x9="43" closed="false" y1="51" y10="55" y2="51" y11="51" y3="57" y4="57" y12="51" y5="55" x10="47" y6="55" x11="49" y7="53" x12="49" y8="53" y9="55"/>
         <input x="0" y="124.5" size="4" rotate="true" text="Nom" tagg="none"/>
         <text x="68" y="64" size="2" text="D.O.C."/>
         <text x="9" y="64" size="2" text="Test"/>

@@ -1,7 +1,6 @@
 <definition width="90" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{4554CD5E-2CC1-4643-8CAF-24FFB802F796}"/><names>
         <name lang="fr">FP2100/030</name>
-        <name lang="pl">FP2100/030</name>
         <name lang="cs">FP2100/030</name>
     </names>
     <informations></informations>
