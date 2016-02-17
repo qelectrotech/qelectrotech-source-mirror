@@ -2,6 +2,7 @@
     <uuid uuid="{c760e607-ce0e-4398-8c1a-51c34755de4d}"/>
     <names>
         <name lang="en">GOST title first page</name>
+        <name lang="pl">GOST - strona tytułowa</name>
         <name lang="ru">Штамп ГОСТ большой</name>
     </names>
     <informations>Евгений Козлов &lt;evgeny@qelectrotech.org></informations>

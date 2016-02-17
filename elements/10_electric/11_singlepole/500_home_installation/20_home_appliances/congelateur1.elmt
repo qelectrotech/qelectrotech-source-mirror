@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{30170C06-D03D-4CBB-B2B5-6C1004F8970B}"/><names>
         <name lang="fr">Congélateur</name>
+        <name lang="pl">Zamrażarka</name>
     </names>
     <informations>CBH41</informations>
     <description>

@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{8CCEE9E1-C024-4B1B-BAAE-B65ED3B32706}"/><names>
         <name lang="fr">Bât Ext</name>
+        <name lang="pl">Budynek</name>
     </names>
     <informations>cbh41</informations>
     <description>

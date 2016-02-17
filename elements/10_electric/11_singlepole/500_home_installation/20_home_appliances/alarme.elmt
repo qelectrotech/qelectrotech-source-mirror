@@ -2,6 +2,7 @@
     <uuid uuid="{12f294a8-a786-4695-aca7-ad130fcad19f}"/>
     <names>
         <name lang="fr">Alarme</name>
+        <name lang="pl">Alarm</name>
     </names>
     <informations>cbh41</informations>
     <description>
