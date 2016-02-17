@@ -2,6 +2,7 @@
 <uuid uuid="{0AE64E73-A748-4868-8FB3-D2953F779C9A}"/><names>
         <name lang="de">Netzfilter 3P</name>
         <name lang="en">Line filter 3P</name>
+        <name lang="pl">Trójbiegunowy filtr sieciowy</name>
         <name lang="fr">Filtre réseau 3P</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>

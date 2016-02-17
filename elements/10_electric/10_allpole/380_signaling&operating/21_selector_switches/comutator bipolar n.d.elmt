@@ -1,6 +1,7 @@
 <definition type="element" orientation="dyyy" link_type="simple" hotspot_x="21" hotspot_y="34" version="0.5" width="40" height="50">
 <uuid uuid="{1518186B-7F8F-4A69-A715-937286537ED9}"/><names>
         <name lang="ro">Comutator bipolar n,d.</name>
+        <name lang="pl">Zestyki zwierne o przełączaniu niezawodnym</name>
     </names>
     <informations>Author:titus
 titus0818@yahoo.com</informations>

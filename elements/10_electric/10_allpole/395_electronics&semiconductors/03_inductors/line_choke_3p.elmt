@@ -2,6 +2,7 @@
 <uuid uuid="{D82AD720-1B0C-440F-A41B-C970258A8D23}"/><names>
         <name lang="en">Line choke 3 pole</name>
         <name lang="fr">Self réseau tripolaire</name>
+        <name lang="pl">Dławik trójbiegunowy</name>
         <name lang="de">Netzdrossel 3-polig</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>

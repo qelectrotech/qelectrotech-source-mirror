@@ -2,6 +2,7 @@
 <uuid uuid="{2E658A0D-14DF-4277-B23D-07E049AE0750}"/><names>
         <name lang="de">Netzteil AC/DC 3-polig</name>
         <name lang="fr">Alimentation AC/DC tripolaire</name>
+        <name lang="pl">Zasilacz trójfazowy</name>
         <name lang="en">Power supply AC/DC 3 poles</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>

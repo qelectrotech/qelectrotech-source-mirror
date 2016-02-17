@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="34" height="70" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{FB3E5075-A895-4EB2-B100-52023DD17BE6}"/><names>
         <name lang="ro">piezotransducer</name>
+        <name lang="pl">Przetwornik piezoceramiczny</name>
     </names>
     <informations>Author:titus
 titus0818@yahoo.com</informations>

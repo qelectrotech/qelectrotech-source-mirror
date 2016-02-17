@@ -2,6 +2,7 @@
 <uuid uuid="{F34A2DDC-306F-4E42-B9B2-C482971CCBB8}"/><names>
         <name lang="en">Magnet valve with connector</name>
         <name lang="fr">Electrovanne avec connecteur</name>
+        <name lang="pl">Elektrozawór</name>
         <name lang="de">Magnetventil mit Stecker</name>
     </names>
     <informations>Author: The QElectroTech team
