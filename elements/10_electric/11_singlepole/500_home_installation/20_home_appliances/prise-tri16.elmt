@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{352F6362-C6D0-41C1-B22C-F06C8A5AE581}"/><names>
         <name lang="fr">Prise Tri 16 A</name>
+        <name lang="pl">Gniazdo wtyczkowe czterobiegunowe 3P+E</name>
     </names>
     <informations>cbh41</informations>
     <description>

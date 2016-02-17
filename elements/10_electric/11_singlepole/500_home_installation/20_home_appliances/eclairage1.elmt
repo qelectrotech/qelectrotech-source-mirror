@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{306FAE43-F330-4C9C-A812-8322A0C6CAAA}"/><names>
         <name lang="fr">Éclairage</name>
+        <name lang="pl">Oświetlenie</name>
     </names>
     <informations>cbh41</informations>
     <description>

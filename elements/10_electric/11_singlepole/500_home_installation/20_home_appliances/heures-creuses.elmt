@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{FD2482AC-5F52-44FA-AD63-214FFB0E85F5}"/><names>
         <name lang="fr">Heures Creuses</name>
+        <name lang="pl">Zegar sterujący licznika</name>
     </names>
     <informations>cbh41</informations>
     <description>

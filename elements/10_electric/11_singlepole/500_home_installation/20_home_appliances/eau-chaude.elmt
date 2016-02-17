@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{7672DB56-A8E2-4524-9908-807579CB65D7}"/><names>
         <name lang="fr">Eau Chaude Sanitaire</name>
+        <name lang="pl">Podgrzewacz wody</name>
     </names>
     <informations>cbh41</informations>
     <description>

@@ -1,6 +1,7 @@
 <definition type="element" width="130" link_type="simple" hotspot_x="5" hotspot_y="186" height="190" orientation="dyyy" version="0.5">
 <uuid uuid="{295F06A5-C13E-4419-B6C6-91E0B2223DB6}"/><names>
         <name lang="fr">Prise 4 P+T 230 V</name>
+        <name lang="pl">Gniazdo wtyczkowe pięciobiegunowe 3P+N+E</name>
     </names>
     <informations>cbh41</informations>
     <description>

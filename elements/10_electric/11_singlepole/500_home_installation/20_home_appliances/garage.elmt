@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
 <uuid uuid="{FF7E83B7-BF83-4507-8E81-8DE85953AE3A}"/><names>
         <name lang="fr">Garage</name>
+        <name lang="pl">Garaż</name>
     </names>
     <informations>cbh41</informations>
     <description>
