@@ -164,7 +164,7 @@ int ElementCollectionItem::rowForInsertItem(const QString &collection_name)
 		if (eci->collectionName() > collection_name)
 			return indexOfChild(eci);
 
-	return childCount();
+	return (indexOfChild(child.last())+1);
 }
 
 /**

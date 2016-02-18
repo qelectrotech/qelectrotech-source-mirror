@@ -167,13 +167,13 @@ bool ElementLocation::setPath(QString path)
 			m_file_system_path = path;
 			if (path.startsWith(QETApp::commonElementsDirN()))
 			{
-				path.remove(QETApp::commonElementsDirN() + "/");
+				path.remove(QETApp::commonElementsDirN()+="/");
 				path.prepend("common://");
 				m_collection_path = path;
 			}
 			else if (path.startsWith(QETApp::customElementsDirN()))
 			{
-				path.remove(QETApp::customElementsDirN() + "/");
+				path.remove(QETApp::customElementsDirN()+="/");
 				path.prepend("custom://");
 				m_collection_path = path;
 			}
@@ -184,13 +184,13 @@ bool ElementLocation::setPath(QString path)
 			m_file_system_path = path;
 			if (path.startsWith(QETApp::commonElementsDirN()))
 			{
-				path.remove(QETApp::commonElementsDirN() + "/");
+				path.remove(QETApp::commonElementsDirN()+="/");
 				path.prepend("common://");
 				m_collection_path = path;
 			}
 			else if (path.startsWith(QETApp::customElementsDirN()))
 			{
-				path.remove(QETApp::customElementsDirN()) + "/";
+				path.remove(QETApp::customElementsDirN()+="/");
 				path.prepend("custom://");
 				m_collection_path = path;
 			}
