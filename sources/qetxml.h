@@ -36,8 +36,8 @@ namespace QETXML
 	QDomElement brushToXml (QDomDocument &parent_document, QBrush brush);
 	QBrush brushFromXml (const QDomElement &element);
 
-	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir);
-	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file);
+	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir, QString rename = QString());
+	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file, QString rename = QString());
 
 }
 

@@ -266,7 +266,7 @@ bool ElementLocation::isProject() const
  */
 bool ElementLocation::exist() const
 {
-	if (isProject())
+	if (m_project)
 		return m_project->embeddedElementCollection()->exist(collectionPath(false));
 	else
 	{
@@ -280,6 +280,56 @@ bool ElementLocation::exist() const
 			return QFile::exists(fileSystemPath());
 		}
 	}
+}
+
+/**
+ * @brief ElementLocation::projectCollection
+ * @return If this location represente a item in an embedded project collection, return this collection
+ * else return nullptr.
+ */
+XmlElementCollection *ElementLocation::projectCollection() const
+{
+	if (m_project)
+		return m_project->embeddedElementCollection();
+	else
+		return nullptr;
+}
+
+/**
+ * @brief ElementLocation::nameList
+ * @return the namelist of the represented element or directory.
+ * If namelist can't be set, return a empty namelist
+ */
+NamesList ElementLocation::nameList()
+{
+	NamesList nl;
+
+	if (isElement())
+		nl.fromXml(xml());
+
+	if (isDirectory())
+	{
+		if (m_project)
+			nl.fromXml(m_project->embeddedElementCollection()->directory(collectionPath(false)));
+		else
+		{
+				//Open the qet_directory file, to get the traductions name of this dir
+			QFile dir_conf(fileSystemPath() + "/qet_directory");
+			if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text))
+			{
+					//Get the content of the file
+				QDomDocument document;
+				if (document.setContent(&dir_conf))
+				{
+					QDomElement root = document.documentElement();
+					if (root.tagName() == "qet-directory")
+						nl.fromXml(root);
+				}
+			}
+		}
+	}
+
+	return nl;
 }
 
 /**
@@ -299,6 +349,19 @@ QString ElementLocation::collectionPath(bool protocol) const
 		QString path = m_collection_path;
 		return path.remove(QRegularExpression("common://|custom://|embed://"));
 	}
+}
+
+/**
+ * @brief ElementLocation::projectCollectionPath
+ * @return The path is in form : project0+embed://dir/subdir/myElement.elmt
+ * If this item represent a file system thing, return a null QString;
+ */
+QString ElementLocation::projectCollectionPath() const
+{
+	if (isFileSystem())
+		return QString();
+	else
+		return QString("project" + QString::number(QETApp::projectId(m_project)) + "+" + collectionPath());
 }
 
 /**

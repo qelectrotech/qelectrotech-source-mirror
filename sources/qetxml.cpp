@@ -154,15 +154,17 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
  * @brief QETXML::fileSystemDirToXmlCollectionDir
  * @param document : owner document of returned QDomElement, use to create the QDomElement.
  * @param dir : file system direcory to convert to QDomElement directory
+ * @param rename : by default the attribute "name" of the returned QDomElement is the same name of @dir
+ * but we can override itwith @rename
  * @return A file system directory converted to a QDomElement directory ready to be inserted into a XmlElementCollection.
  * If the QDomElement can't be created, return a null QDomElement.
  */
-QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, const QDir &dir)
+QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, const QDir &dir, QString rename)
 {
 	if (!dir.exists()) return QDomElement();
 
 	QDomElement dir_element = document.createElement("category");
-	dir_element.setAttribute("name", dir.dirName());
+	dir_element.setAttribute("name", rename.isNull()? dir.dirName() : rename);
 
 		//Get the traduction of this directory
 	QFile qet_dir(dir.filePath("qet_directory"));
@@ -190,10 +192,12 @@ QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, cons
  * @brief QETXML::fileSystemElementToXmlCollectionElement
  * @param document : owner document of returned QDomElement, use to create the QDomElement.
  * @param file : file system element file to convert to QDomElement;
+ * @param rename : by default the attribute "name" of the returned QDomElement is the same name of @file
+ * but we can override itwith @rename
  * @return A file system element converted to a QDomElement ready to be inserted into a XmlElementCollection
  * If the QDomElement can't be created, return a null QDomElement
  */
-QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &document, QFile &file)
+QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &document, QFile &file, QString rename)
 {
 	if (file.exists() && file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
@@ -202,7 +206,7 @@ QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &docume
 		{
 			QFileInfo fi(file);
 			QDomElement dom_element = document.createElement("element");
-			dom_element.setAttribute("name", fi.fileName());
+			dom_element.setAttribute("name", rename.isEmpty()? fi.fileName() : rename);
 			dom_element.appendChild(docu.documentElement());
 			file.close();
 			return dom_element;

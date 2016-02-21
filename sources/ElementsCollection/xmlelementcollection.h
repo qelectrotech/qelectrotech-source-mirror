@@ -18,6 +18,7 @@
 #ifndef XMLELEMENTCOLLECTION_H
 #define XMLELEMENTCOLLECTION_H
 
+#include "elementlocation.h"
 #include <QObject>
 #include <QDomElement>
 
@@ -38,12 +39,18 @@ class XmlElementCollection : public QObject
 		QDomElement importCategory() const;
 		QDomNodeList childs(const QDomElement &parent_element) const;
 		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
+		QDomElement child(const QString &path) const;
 		QList<QDomElement> directories(const QDomElement &parent_element);
 		QList<QDomElement> elements(const QDomElement &parent_element);
 		QDomElement element(const QString &path);
 		QDomElement directory(const QString &path);
 		QString addElement (const QString &path);
+		ElementLocation copy (ElementLocation &source, ElementLocation &destination, QString rename = QString(), bool deep_copy = true);
 		bool exist (const QString &path);
+
+	private:
+		ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString(), bool deep_copy = true);
+		ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
 
 	signals:
 			/**

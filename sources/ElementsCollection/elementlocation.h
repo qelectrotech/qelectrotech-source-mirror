@@ -18,6 +18,7 @@
 #ifndef ELEMENTLOCATION_H
 #define ELEMENTLOCATION_H
 
+#include "nameslist.h"
 #include <QString>
 #include <QDomElement>
 #include <QUuid>
@@ -25,6 +26,7 @@
 
 class QETProject;
 class QMimeData;
+class XmlElementCollection;
 
 /**
  * @brief The ElementLocation class
@@ -49,8 +51,11 @@ class ElementLocation
 		bool isFileSystem() const;
 		bool isProject() const;
 		bool exist() const;
+		XmlElementCollection *projectCollection() const;
+		NamesList nameList();
 
 		QString collectionPath(bool protocol = true) const;
+		QString projectCollectionPath() const;
         QString fileSystemPath() const;
 
         QETProject *project() const;

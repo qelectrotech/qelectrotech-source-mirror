@@ -119,21 +119,41 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element, const
 	if (parent_element.ownerDocument() != m_dom_document && parent_element.tagName() != "category") return QDomElement();
 
 		//Get all childs element of parent_element
-	QDomNodeList node_list;
-	if (child_name.endsWith(".elmt"))
-		node_list = parent_element.elementsByTagName("element");
-	else
-		node_list = parent_element.elementsByTagName("category");
-
-	if (node_list.isEmpty()) return QDomElement();
-
-	for (int i=0 ; i<node_list.length() ; i++)
+	QDomNodeList child_list = parent_element.childNodes();
+	QString tag_name(child_name.endsWith(".elmt")? "element" : "category");
+	QList <QDomElement> found_dom_element;
+	for (int i=0 ; i<child_list.length() ; i++)
 	{
-		QDomElement child_element = node_list.item(i).toElement();
-		if (child_element.attribute("name") == child_name) return child_element;
+		QDomElement child_element = child_list.item(i).toElement();
+		if (child_element.tagName() == tag_name) found_dom_element << child_element;
 	}
 
+	if (found_dom_element.isEmpty()) return QDomElement();
+
+	foreach (QDomElement elmt, found_dom_element)
+		if (elmt.attribute("name") == child_name)
+			return elmt;
+
 	return QDomElement();
+}
+
+/**
+ * @brief XmlElementCollection::child
+ * @param path
+ * @return the DomElement at path if exist. Else return a null QDomElement
+ */
+QDomElement XmlElementCollection::child(const QString &path) const
+{
+	QStringList path_list = path.split("/");
+	if (path_list.first() != "import") return QDomElement();
+	path_list.removeFirst();
+
+	QDomElement dom_element = importCategory();
+
+	for (int i=0 ; i<path_list.size() ; i++)
+		dom_element = child(dom_element, path_list.at(i));
+
+	return dom_element;
 }
 
 /**
@@ -254,6 +274,9 @@ QDomElement XmlElementCollection::directory(const QString &path)
  * @brief XmlElementCollection::addElement
  * Add the element at path @path to this xml collection.
  * The path must be a common or custom collection (a file system element).
+ * The element is copied in this collection with the same path of @path, in other word,
+ * if the path is dir1/dir2/dir3/myElement.elmt, myElement is copied to this collection at the path : dir1/dir2/dir3/myElement.elmt
+ * If the path doesn't exist, he was created.
  * @param path, path of the element
  * @return the xml collection path of the added item or a null QString if element can't be added.
  */
@@ -322,6 +345,31 @@ QString XmlElementCollection::addElement(const QString &path)
 }
 
 /**
+ * @brief XmlElementCollection::copy
+ * Copy the content represented by source (an element or a directory) to destination.
+ * Destination must be a directory of this collection.
+ *
+ * WARNING :
+ * for now, only work if source represent a file or directory from filesystem.
+ *
+ * @param source : content to copy
+ * @param destination : destination of the copy, must be a directory of this collection
+ * @param rename : rename the copy with @rename else use the name of source
+ * @param deep_copy : if true copy all childs of source (only if source is directory)
+ * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
+ */
+ElementLocation XmlElementCollection::copy(ElementLocation &source, ElementLocation &destination, QString rename, bool deep_copy)
+{
+	if (!(source.isFileSystem() && destination.isDirectory() && destination.isProject() && destination.projectCollection() == this))
+		return ElementLocation();
+
+	if (source.isElement())
+		return copyElement(source, destination, rename);
+	else
+		return copyDirectory(source, destination, rename, deep_copy);
+}
+
+/**
  * @brief XmlElementCollection::exist
  * Return true if the path @path exist in this collection
  * @param path
@@ -347,4 +395,94 @@ bool XmlElementCollection::exist(const QString &path)
 	}
 
 	return true;
+}
+
+/**
+ * @brief XmlElementCollection::copyDirectory
+ * Copy the directory represented by source to destination.
+ * if destination have a directory with the same name as source, then this directory is removed
+ *
+ * WARNING
+ * for now, only work if source is from files system
+ *
+ * @param source : directory to copy
+ * @param destination : destination of the copy
+ * @param rename : rename the copy with @rename else use the name of source
+ * @param deep_copy :if true copy all childs of source
+ * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
+ */
+ElementLocation XmlElementCollection::copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename, bool deep_copy)
+{
+	QDir source_dir(source.fileSystemPath());
+	if (!source_dir.exists()) return ElementLocation();
+
+	QString new_dir_name = rename.isEmpty() ? source_dir.dirName() : rename;
+
+		//Remove the previous directory with the same path
+	QDomElement element = child(destination.collectionPath(false) + "/" + new_dir_name);
+	if (!element.isNull())
+		element.parentNode().removeChild(element);
+
+	QDir dir(source.fileSystemPath());
+	QDomElement elmt_dom = QETXML::fileSystemDirToXmlCollectionDir(m_dom_document, dir, new_dir_name);
+	if (elmt_dom.isNull()) return ElementLocation();
+
+		//Get the xml directory where the new directory must be added
+	QDomElement parent_dir_dom = directory(destination.collectionPath(false));
+	if (parent_dir_dom.isNull()) return ElementLocation();
+	parent_dir_dom.appendChild(elmt_dom);
+
+	ElementLocation created_location(destination.projectCollectionPath() + "/" + new_dir_name);
+
+	if (deep_copy)
+	{
+		//Append all directories of source to the new created directory
+		foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+		{
+			ElementLocation sub_source(source.fileSystemPath() + "/" + str);
+			copyDirectory(sub_source, created_location);
+		}
+
+		//Append all elements of source to the new created directory
+		source_dir.setNameFilters(QStringList() << "*.elmt");
+		foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+		{
+			ElementLocation sub_source(source.fileSystemPath() + "/" + str);
+			copyElement(sub_source, created_location);
+		}
+	}
+
+	return created_location;
+}
+
+/**
+ * @brief XmlElementCollection::copyElement
+ *
+ * WARNING
+ * for now, only work if source is from files system
+ *
+ * @param source : element to copy
+ * @param destination : destination of the copy
+ * @param rename : rename the copy with @rename else use the name of source
+ * @return
+ */
+ElementLocation XmlElementCollection::copyElement(ElementLocation &source, ElementLocation &destination, QString rename)
+{
+	QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
+
+	QFile file(source.fileSystemPath());
+	QDomElement elmt_dom = QETXML::fileSystemElementToXmlCollectionElement(m_dom_document, file, new_elmt_name);
+	if (elmt_dom.isNull()) return ElementLocation();
+
+		//Remove the previous element with the same path
+	QDomElement element = child(destination.collectionPath(false) + "/" + new_elmt_name);
+	if (!element.isNull())
+		element.parentNode().removeChild(element);
+
+		//Get the xml directory where the new element must be added
+	QDomElement dir_dom = directory(destination.collectionPath(false));
+	if (dir_dom.isNull()) return ElementLocation();
+	dir_dom.appendChild(elmt_dom);
+
+	return ElementLocation(destination.projectCollectionPath() + "/" + new_elmt_name);
 }

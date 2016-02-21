@@ -43,6 +43,8 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 
         virtual QVariant data(int column, int role);
 		virtual QMimeData *mimeData();
+		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
+		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);
 		virtual Qt::ItemFlags flags();
 
         virtual bool isCollectionRoot() const;

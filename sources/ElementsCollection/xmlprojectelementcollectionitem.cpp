@@ -22,6 +22,7 @@
 #include "nameslist.h"
 #include "qetapp.h"
 #include "elementlocation.h"
+#include "elementcollectionhandler.h"
 #include <algorithm>
 
 /**
@@ -120,6 +121,80 @@ QMimeData *XmlProjectElementCollectionItem::mimeData()
 }
 
 /**
+ * @brief XmlProjectElementCollectionItem::canDropMimeData
+ * @param data
+ * @param action
+ * @param row
+ * @param column
+ * @return True if the data can be dropped
+ */
+bool XmlProjectElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const
+{
+	Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
+
+	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
+	{
+			//Return false if user try to drop a item from a folder to the same folder
+		ElementLocation drop_location(data->text());
+		for (int i=0 ; i<childCount() ; i++)
+		{
+			if (static_cast<XmlProjectElementCollectionItem *>(child(i))->collectionPath() == drop_location.collectionPath())
+				return false;
+		}
+
+		return true;
+	}
+	else
+		return false;
+}
+
+/**
+ * @brief XmlProjectElementCollectionItem::dropMimeData
+ * @param data
+ * @param action
+ * @param row
+ * @param column
+ * @return handle a drop of a mime data
+ */
+bool XmlProjectElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column)
+{
+	Q_UNUSED(action); Q_UNUSED(row); Q_UNUSED(column);
+
+	XmlProjectElementCollectionItem *xpeci = this;
+	if (isElement() && parent() && parent()->type() == XmlProjectElementCollectionItem::Type)
+		xpeci = static_cast<XmlProjectElementCollectionItem *>(parent());
+
+		//before do the copy, we get all collection path of child,
+		//for remove it if the copied item have the same path of an existing child.
+		//We can't do this after the copy, because at the copy if the xml collection have a DomElement with the same path,
+		//he was removed before the new xml DomElement is inserted
+		//So the existing child of this will return a null QString when call collectionPath(), because the item
+		//doesn't exist anymore in the xml collection.
+	QList <QString> child_path_list;
+	for (int i=0 ; i<childCount() ; i++)
+		child_path_list.append(static_cast<XmlProjectElementCollectionItem *>(child(i))->collectionPath());
+
+	ElementCollectionHandler ech;
+
+	ElementLocation source(data->text());
+	ElementLocation destination(xpeci->collectionPath());
+	ElementLocation location = ech.copy(source, destination);
+
+	if (location.exist())
+	{
+			//If this item have a child with the same path of location, we remove the existing child before insert new child
+		for (int i=0 ; i<child_path_list.size() ; i++)
+			if (child_path_list.at(i) == location.projectCollectionPath())
+				removeChild(i,1);
+
+		insertNewItem(location.fileName());
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * @brief XmlProjectElementCollectionItem::flags
  * @return The flags of this item
  */
@@ -208,19 +283,8 @@ bool XmlProjectElementCollectionItem::isElement() const
  */
 QString XmlProjectElementCollectionItem::collectionPath() const
 {
-	if (isCollectionRoot())
-	{
-		QString path;
-		return path + "project" + QString::number(QETApp::projectId(m_project)) + "+embed://";
-	}
-	else
-	{
-		XmlProjectElementCollectionItem *parent = static_cast<XmlProjectElementCollectionItem *>(m_parent_item);
-		if (parent->isCollectionRoot())
-			return parent->collectionPath() + m_dom_element.attribute("name");
-		else
-			return parent->collectionPath() + "/" + m_dom_element.attribute("name");
-	}
+	ElementLocation loc (embeddedPath(), m_project);
+	return loc.projectCollectionPath();
 }
 
 /**

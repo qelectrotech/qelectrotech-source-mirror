@@ -36,12 +36,18 @@ class ECHSFileToFile : public ECHStrategy
 {
     public:
         ECHSFileToFile (ElementLocation &source, ElementLocation &destination);
-
         ElementLocation copy();
 
     private:
         ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString());
         ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
+};
+
+class ECHSFileToXml : public ECHStrategy
+{
+	public:
+		ECHSFileToXml (ElementLocation &source, ElementLocation &destination);
+		ElementLocation copy();
 };
 
 /**

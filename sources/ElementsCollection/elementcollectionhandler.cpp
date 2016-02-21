@@ -17,6 +17,8 @@
 */
 #include "elementcollectionhandler.h"
 #include "renamedialog.h"
+#include "xmlelementcollection.h"
+#include "qetxml.h"
 #include <QFile>
 #include <QDir>
 
@@ -124,6 +126,42 @@ ElementLocation ECHSFileToFile::copyElement(ElementLocation &source, ElementLoca
 /******************************************************/
 
 /**
+ * @brief ECHSFileToXml::ECHSFileToXml
+ * @param source
+ * @param destination
+ */
+ECHSFileToXml::ECHSFileToXml(ElementLocation &source, ElementLocation &destination) :
+	ECHStrategy(source, destination)
+{}
+
+/**
+ * @brief ECHSFileToXml::copy
+ * @return
+ */
+ElementLocation ECHSFileToXml::copy()
+{
+	if (!(m_source.isFileSystem() && m_destination.isDirectory() && m_destination.isProject())) return ElementLocation();
+
+		//Check if the destination already have an item with the same name of the item to copy
+	ElementLocation location(m_destination.projectCollectionPath() + "/" + m_source.fileName());
+
+	QString rename;
+	if (location.exist())
+	{
+		RenameDialog rd(location.collectionPath());
+		if(rd.exec() == QDialog::Accepted)
+		{
+			if (rd.selectedAction() == QET::Rename)
+				rename = rd.newName();
+		}
+		else
+			return ElementLocation();
+	}
+
+	return m_destination.projectCollection()->copy(m_source, m_destination, rename);
+}
+
+/**
  * @brief ElementCollectionHandler::ElementCollectionHandler
  * @param widget
  */
@@ -148,6 +186,7 @@ ElementLocation ElementCollectionHandler::copy(ElementLocation &source, ElementL
     if (!source.exist() || !destination.exist() || destination.isElement()) return ElementLocation();
 
     if (source.isFileSystem() && destination.isFileSystem()) m_strategy = new ECHSFileToFile(source, destination);
+	else if (source.isFileSystem() && destination.isProject()) m_strategy = new ECHSFileToXml(source, destination);
 
 	if (m_strategy)
 		return m_strategy->copy();
