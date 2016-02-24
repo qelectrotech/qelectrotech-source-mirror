@@ -30,6 +30,8 @@
  */
 class FileElementCollectionItem : public ElementCollectionItem
 {
+		Q_OBJECT
+
     public:
 		FileElementCollectionItem(ElementCollectionItem *parent = nullptr);
         ~FileElementCollectionItem();

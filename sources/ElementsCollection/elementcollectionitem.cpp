@@ -24,6 +24,7 @@
  * @param parent : the parent item of this item
  */
 ElementCollectionItem::ElementCollectionItem(ElementCollectionItem *parent) :
+	QObject(parent),
 	m_parent_item (parent)
 {}
 
@@ -52,13 +53,20 @@ void ElementCollectionItem::appendChild(ElementCollectionItem *item) {
  */
 bool ElementCollectionItem::removeChild(int row, int count)
 {
-	if (!(0 <= row+count  && row+count <= m_child_items.size())) return false;
+	if (!(1 <= row+count  && row+count <= m_child_items.size())) return false;
+
+	int last_ = row + (count-1);
+	if (last_ < row) return false;
+
+	emit beginRemoveRows(this, row, last_);
 
 	for (int i=0 ; i<count ; i++)
 	{
 		ElementCollectionItem *eci = m_child_items.takeAt(row);
 		delete eci;
 	}
+
+	emit endRemoveRows();
 
 	return true;
 }
@@ -74,7 +82,9 @@ bool ElementCollectionItem::insertChild(int row, ElementCollectionItem *item)
 {
 	if (m_child_items.contains(item)) return false;
 
+	beginInsertRows(this, row, row);
 	m_child_items.insert(row, item);
+	endInsertRows();
 	return true;
 }
 

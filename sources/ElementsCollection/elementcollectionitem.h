@@ -31,8 +31,10 @@ class QList<ElementCollectionItem>;
  * This class must be herited for specialisation.
  * This item is used by ElementsCollectionModel for manage the elements collection
  */
-class ElementCollectionItem
+class ElementCollectionItem : public QObject
 {
+		Q_OBJECT
+
     public:
         ElementCollectionItem(ElementCollectionItem *parent = nullptr);
 		virtual ~ElementCollectionItem();
@@ -71,6 +73,12 @@ class ElementCollectionItem
 
 		virtual bool canRemoveContent();
 		virtual bool removeContent();
+
+	signals:
+		void beginInsertRows(ElementCollectionItem *parent, int first, int last);
+		void endInsertRows();
+		void beginRemoveRows(ElementCollectionItem *parent, int first, int last);
+		void endRemoveRows();
 
 	protected:
         ElementCollectionItem *m_parent_item;

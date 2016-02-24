@@ -31,6 +31,8 @@ class QETProject;
  */
 class XmlProjectElementCollectionItem : public ElementCollectionItem
 {
+		Q_OBJECT
+
     public:
         XmlProjectElementCollectionItem(QETProject *project, ElementCollectionItem *parent = nullptr);
 	private:

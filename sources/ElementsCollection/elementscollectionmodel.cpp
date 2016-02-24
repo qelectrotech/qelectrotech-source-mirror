@@ -149,7 +149,7 @@ bool ElementsCollectionModel::removeRows(int row, int count, const QModelIndex &
 	else
 		eci = static_cast<ElementCollectionItem *>(parent.internalPointer());
 
-	if (!(0 <= row+count && row+count <= eci->childCount())) return false;
+	if (!(1 <= row+count && row+count <= eci->childCount())) return false;
 
 	beginRemoveRows(parent, row, (row + count -1));
 	bool r = eci->removeChild(row, count);
@@ -205,19 +205,16 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 {
 	if (!parent.isValid()) return false;
 
-	ElementLocation location(data);
-	if (location.isNull()) return false;
-
 	ElementCollectionItem *eci =  static_cast<ElementCollectionItem*> (parent.internalPointer());
-	if (!eci) return false;
-	if (eci->isElement()) eci = eci->parent();
+	if (!eci || eci->isElement()) return false;
 
-	int i = eci->rowForInsertItem(location.fileName());
-	if (i < 0) return false;
+	connect(eci, &ElementCollectionItem::beginInsertRows, [this, &parent](ElementCollectionItem *eci, int first, int last){ Q_UNUSED(eci); this->beginInsertRows(parent, first, last); });
+	connect(eci, &ElementCollectionItem::endInsertRows,   [this, &parent](){ this->endInsertRows(); });
+	connect(eci, &ElementCollectionItem::beginRemoveRows, [this, &parent](ElementCollectionItem *eci, int first, int last){ Q_UNUSED(eci); this->beginRemoveRows(parent, first, last); });
+	connect(eci, &ElementCollectionItem::endRemoveRows,   [this, &parent](){ this->endRemoveRows(); });
 
-	beginInsertRows(parent, i, i);
 	bool rb = eci->dropMimeData(data, action, row, column);
-	endInsertRows();
+
 	return rb;
 }
 
