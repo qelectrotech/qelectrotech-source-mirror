@@ -92,6 +92,8 @@ void ElementsCollectionWidget::setUpAction()
 	m_edit_dir =       new QAction(QET::Icons::FolderEdit,    tr("Éditer le dossier"),               this);
 	m_new_directory =  new QAction(QET::Icons::FolderNew,     tr("Nouveau dossier"),                 this);
 	m_new_element =    new QAction(QET::Icons::ElementNew,    tr("Nouvel élément"),                  this);
+	m_show_this_dir =  new QAction(QET::Icons::ZoomDraw,      tr("Afficher uniquement ce dossier"),  this);
+	m_show_all_dir =   new QAction(QET::Icons::ZoomOriginal,  tr("Afficher tous les dossiers"),      this);
 }
 
 /**
@@ -145,6 +147,8 @@ void ElementsCollectionWidget::setUpConnection()
 	connect(m_edit_dir,       &QAction::triggered, this, &ElementsCollectionWidget::editDirectory);
 	connect(m_new_directory,  &QAction::triggered, this, &ElementsCollectionWidget::newDirectory);
 	connect(m_new_element,    &QAction::triggered, this, &ElementsCollectionWidget::newElement);
+	connect(m_show_this_dir,  &QAction::triggered, this, &ElementsCollectionWidget::showThisDir);
+	connect(m_show_all_dir,   &QAction::triggered, this, &ElementsCollectionWidget::resetShowThisDir);
 
 	connect(m_tree_view, &QTreeView::doubleClicked, [this](const QModelIndex &index) {
 		this->m_index_at_context_menu = index ;
@@ -197,6 +201,13 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	}
 
 	m_context_menu->addSeparator();
+	if (eci->isDir())
+	{
+		m_context_menu->addAction(m_show_this_dir);
+			//there is a current filtered dir, add entry to reset it
+		if (m_showed_index.isValid())
+			m_context_menu->addAction(m_show_all_dir);
+	}
 	if (add_open_dir)
 		m_context_menu->addAction(m_open_dir);
 	m_context_menu->addAction(m_reload);
@@ -352,6 +363,52 @@ void ElementsCollectionWidget::newElement()
 }
 
 /**
+ * @brief ElementsCollectionWidget::showThisDir
+ * Hide all directories except the pointed dir;
+ */
+void ElementsCollectionWidget::showThisDir()
+{
+		//Disable the yellow background of the previous index
+	if (m_showed_index.isValid())
+	{
+		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		if (eci)
+			eci->setBackgroundColor(Qt::yellow, false);
+	}
+
+	m_showed_index = m_index_at_context_menu;
+	if (m_showed_index.isValid())
+	{
+		hideCollection(true);
+		showAndExpandItem(m_showed_index, true, true);
+		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		if (eci)
+			eci->setBackgroundColor(Qt::yellow, true);
+		search(m_search_field->text());
+	}
+	else
+		resetShowThisDir();
+}
+
+/**
+ * @brief ElementsCollectionWidget::resetShowThisDir
+ * reset show this dir, all collection are show.
+ * If search field isn't empty, apply the search after show all collection
+ */
+void ElementsCollectionWidget::resetShowThisDir()
+{
+	if (m_showed_index.isValid())
+	{
+		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		if (eci)
+			eci->setBackgroundColor(Qt::yellow, false);
+	}
+
+	m_showed_index = QModelIndex();
+	search(m_search_field->text());
+}
+
+/**
  * @brief ElementsCollectionWidget::reload, the displayed collections.
  */
 void ElementsCollectionWidget::reload()
@@ -393,8 +450,17 @@ void ElementsCollectionWidget::search(const QString &text)
 	if (text.isEmpty())
 	{
 		QModelIndex current_index = m_tree_view->currentIndex();
-		m_tree_view->reset();
-		expandFirstItems();
+
+		if (m_showed_index.isValid())
+		{
+			hideCollection(true);
+			showAndExpandItem(m_showed_index, true, true);
+		}
+		else
+		{
+			m_tree_view->reset();
+			expandFirstItems();
+		}
 
 			//Expand the tree and scroll to the last selected index
 		if (current_index.isValid())
@@ -407,7 +473,8 @@ void ElementsCollectionWidget::search(const QString &text)
 	}
 
 	hideCollection(true);
-	QModelIndexList match_index = m_model->match(m_model->index(0,0), Qt::DisplayRole, QVariant(text), -1, Qt::MatchContains | Qt::MatchRecursive);
+	QModelIndexList match_index = m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
+												 Qt::DisplayRole, QVariant(text), -1, Qt::MatchContains | Qt::MatchRecursive);
 	foreach(QModelIndex index, match_index)
 		showAndExpandItem(index);
 }
@@ -442,16 +509,18 @@ void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, boo
 /**
  * @brief ElementsCollectionWidget::showAndExpandItem
  * Show the item @index and expand it.
- * If recursive is true, ensure parents of @index is show and expanded
+ * If parent is true, ensure parents of @index is show and expanded
+ * If child is true, ensure all childs of @index is show and expended
  * @param index- index to show
- * @param recursive- Apply to parent
+ * @param parent- Apply to parent
+ * @param child- Apply to all childs
  */
-void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool recursive)
+void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool parent, bool child)
 {
-	if (recursive && index.isValid())
-		showAndExpandItem(index.parent(), recursive);
+	if (parent && index.isValid())
+		showAndExpandItem(index.parent(), parent);
 
-	m_tree_view->setRowHidden(index.row(), index.parent(), false);
+	hideItem(false, index, child);
 	m_tree_view->expand(index);
 }
 

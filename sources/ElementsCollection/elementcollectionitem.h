@@ -69,6 +69,7 @@ class ElementCollectionItem : public QObject
 		QList<ElementCollectionItem *> elementsChild() const;
 		QList<ElementCollectionItem *> directoriesChild() const;
 		int indexOfChild(ElementCollectionItem *child) const;
+		void setBackgroundColor(Qt::GlobalColor color, bool show);
 
 
 		virtual bool canRemoveContent();
@@ -84,6 +85,8 @@ class ElementCollectionItem : public QObject
         ElementCollectionItem *m_parent_item;
         QList <ElementCollectionItem *> m_child_items;
 		QString m_name;
+		Qt::GlobalColor m_bg_color;
+		bool m_show_bg_color = false;
 };
 
 #endif // ELEMENTCOLLECTIONITEM_H

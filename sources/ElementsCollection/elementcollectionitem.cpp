@@ -17,6 +17,7 @@
 */
 #include "elementcollectionitem.h"
 #include <QMimeData>
+#include <QBrush>
 
 /**
  * @brief ElementCollectionItem::ElementCollectionItem
@@ -206,9 +207,23 @@ int ElementCollectionItem::columnCount() const {
  * @param role
  * @return the data at @column and @role.
  */
-QVariant ElementCollectionItem::data(int column, int role) {
+QVariant ElementCollectionItem::data(int column, int role)
+{
 	Q_UNUSED(column);
-	Q_UNUSED(role);
+
+	switch (role)
+	{
+		case Qt::BackgroundRole:
+		{
+			if(m_show_bg_color)
+				return QBrush(m_bg_color);
+			else
+				return QVariant();
+		}
+		default:
+			return QVariant();
+	}
+
 	return QVariant();
 }
 
@@ -351,6 +366,19 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
  */
 int ElementCollectionItem::indexOfChild(ElementCollectionItem *child) const {
 	return m_child_items.indexOf(child);
+}
+
+/**
+ * @brief ElementCollectionItem::setBackgroundColor
+ * Set the background color for this item to @color
+ * if @show is true, use the background color, else let's Qt use the appropriate color
+ * @param color
+ * @param show
+ */
+void ElementCollectionItem::setBackgroundColor(Qt::GlobalColor color, bool show)
+{
+	m_bg_color = color;
+	m_show_bg_color = show;
 }
 
 /**

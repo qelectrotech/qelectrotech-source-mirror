@@ -61,11 +61,13 @@ class ElementsCollectionWidget : public QWidget
 		void editDirectory();
 		void newDirectory();
 		void newElement();
+		void showThisDir();
+		void resetShowThisDir();
 		void reload();
 		void search(const QString &text);
 		void hideCollection(bool hide = true);
 		void hideItem(bool hide, const QModelIndex &index = QModelIndex(), bool recursive = true);
-		void showAndExpandItem (const QModelIndex &index, bool recursive = true);
+		void showAndExpandItem (const QModelIndex &index, bool parent = true, bool child = false);
 		ElementCollectionItem *elementCollectionItemForIndex (const QModelIndex &index);
 
     private:
@@ -75,6 +77,7 @@ class ElementsCollectionWidget : public QWidget
         QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;
+		QModelIndex m_showed_index;
 		QProgressBar *m_progress_bar;
 
 		QAction *m_open_dir,
@@ -84,7 +87,9 @@ class ElementsCollectionWidget : public QWidget
 				*m_reload,
 				*m_edit_dir,
 				*m_new_directory,
-				*m_new_element;
+				*m_new_element,
+				*m_show_this_dir,
+				*m_show_all_dir;
 };
 
 #endif // ELEMENTSCOLLECTIONWIDGET_H

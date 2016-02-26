@@ -177,7 +177,7 @@ QVariant FileElementCollectionItem::data(int column, int role)
 			return collectionPath();
 			break;
 		default:
-			return QVariant();
+			return ElementCollectionItem::data(column, role);
 			break;
 	}
 }
