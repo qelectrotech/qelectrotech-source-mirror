@@ -446,10 +446,11 @@ void ElementsCollectionWidget::reload()
  */
 void ElementsCollectionWidget::search(const QString &text)
 {
-		//Reset the tree
+		//Reset the search
 	if (text.isEmpty())
 	{
 		QModelIndex current_index = m_tree_view->currentIndex();
+		m_tree_view->reset();
 
 		if (m_showed_index.isValid())
 		{
@@ -457,10 +458,7 @@ void ElementsCollectionWidget::search(const QString &text)
 			showAndExpandItem(m_showed_index, true, true);
 		}
 		else
-		{
-			m_tree_view->reset();
 			expandFirstItems();
-		}
 
 			//Expand the tree and scroll to the last selected index
 		if (current_index.isValid())
