@@ -1061,10 +1061,9 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
  * @brief QETElementEditor::slot_openDxf
  */
 void QETElementEditor::slot_openDxf (){
-#ifdef Q_OS_WIN
-QString program = (QDir::homePath() + "/qet/DXFtoQET.exe");
-#endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_WIN32
+QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
+#else
 QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
 QStringList arguments;
