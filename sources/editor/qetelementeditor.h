@@ -71,7 +71,7 @@ class QETElementEditor : public QETMainWindow {
 	/// List of primitives
 	QListWidget *parts_list;
 	/// actions for the "file" menu
-	QAction *new_element, *open, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
+	QAction *new_element, *open, *open_dxf, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
 	/// actions for the "edit" menu
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
@@ -135,6 +135,7 @@ class QETElementEditor : public QETMainWindow {
 
 	void slot_new();
 	void slot_open();
+	void slot_openDxf();
 	void slot_openFile();
 	void openRecentFile(const QString &);
 	void openElement(const QString &);

@@ -138,6 +138,7 @@ void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
 	open              = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
 	open_file         = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+	open_dxf          = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier dxf"),             this);
 	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
 	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
 	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
@@ -189,6 +190,7 @@ void QETElementEditor::setupActions() {
 	
 	connect(new_element,     SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,            SIGNAL(triggered()), this,     SLOT(slot_open()));
+	connect(open_dxf,       SIGNAL(triggered()), this,     SLOT(slot_openDxf()));
 	connect(open_file,       SIGNAL(triggered()), this,     SLOT(slot_openFile()));
 	connect(save,            SIGNAL(triggered()), this,     SLOT(slot_save()));
 	connect(save_as,         SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
@@ -351,6 +353,7 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
 	file_menu    -> addAction(open_file);
+	file_menu    -> addAction(open_dxf);
 	QMenu *recentfile = file_menu -> addMenu(QET::Icons::DocumentOpenRecent, tr("&Récemment ouverts"));
 	recentfile->addActions(QETApp::elementsRecentFiles()->menu()->actions());
 	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
@@ -1052,6 +1055,16 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 	// recent file at the same time
 	if (qApp -> activeWindow() != this) return;
 	openElement(filepath);
+}
+
+/**
+ * @brief QETElementEditor::slot_openDxf
+ */
+void QETElementEditor::slot_openDxf (){
+QString program = (QDir::homePath() + "/.qet/DXFtoQET");
+QStringList arguments;
+QProcess *myProcess = new QProcess(qApp);
+myProcess->start(program, arguments);
 }
 
 /**
