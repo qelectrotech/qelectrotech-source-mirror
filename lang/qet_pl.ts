@@ -6671,47 +6671,47 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="144"/>
         <source>Densité 1</source>
-        <translation>Gęstość 1</translation>
+        <translation>Wypełnienie 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="149"/>
         <source>Densité 2</source>
-        <translation>Gęstość 2</translation>
+        <translation>Wypełnienie 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="154"/>
         <source>Densité 3</source>
-        <translation>Gęstość 3</translation>
+        <translation>Wypełnienie 3</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="159"/>
         <source>Densité 4</source>
-        <translation>Gęstość 4</translation>
+        <translation>Wypełnienie 4</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="164"/>
         <source>Densité 5</source>
-        <translation>Gęstość 5</translation>
+        <translation>Wypełnienie 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="169"/>
         <source>Densité 6</source>
-        <translation>Gęstość 6</translation>
+        <translation>Wypełnienie 6</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="174"/>
         <source>Densité 7</source>
-        <translation>Gęstość 7</translation>
+        <translation>Wypełnienie 7</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="179"/>
         <source>Horizontal</source>
-        <translation>Pionowo</translation>
+        <translation>Linie pionowe</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="184"/>
         <source>Vertical</source>
-        <translation>Poziomo</translation>
+        <translation>Linie poziome</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="189"/>
@@ -6721,17 +6721,17 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
         <source>Diagonal arrière</source>
-        <translation>Ukośnie do tyłu</translation>
+        <translation>Linie ukośne (w dół)</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
         <source>Diagonal avant</source>
-        <translation>Ukośnie do przodu</translation>
+        <translation>Linie ukośne (w górę)</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
         <source>Diagonal en croix</source>
-        <translation>Ukośna siatka</translation>
+        <translation>Siatka ukośna</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="229"/>
