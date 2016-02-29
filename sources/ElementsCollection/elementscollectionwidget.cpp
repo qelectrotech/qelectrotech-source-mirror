@@ -432,6 +432,8 @@ void ElementsCollectionWidget::reload()
 	}
 
 	m_tree_view->setModel(new_model);
+	m_index_at_context_menu = QModelIndex();
+	m_showed_index = QModelIndex();
 	if (m_model) delete m_model;
 	m_model = new_model;
 	expandFirstItems();
