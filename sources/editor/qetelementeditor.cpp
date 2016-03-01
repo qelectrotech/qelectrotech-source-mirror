@@ -52,6 +52,11 @@
 #include "eseventaddterminal.h"
 
 #include <QMessageBox>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QFile>
+#include <QModelIndex>
+
 /*
 	Nombre maximum de primitives affichees par la "liste des parties"
 	Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse

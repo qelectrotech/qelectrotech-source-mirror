@@ -23,10 +23,7 @@
 #include "elementscene.h"
 #include "orientationset.h"
 #include "elementslocation.h"
-#include <QTextStream>
-#include <QFileDialog>
-#include <QFile>
-#include <QModelIndex>
+
 
 class ElementItemEditor;
 class ElementView;
