@@ -220,6 +220,13 @@ QVariant ElementCollectionItem::data(int column, int role)
 			else
 				return QVariant();
 		}
+		case Qt::StatusTipRole:
+		{
+			if (isElement())
+				return tr("Glissez-déposez cet élément « %1 » sur un folio pour l'y insérer, double-cliquez dessus pour l'éditer").arg(name());
+			else
+				return tr("Double-cliquez pour réduire ou développer cette catégorie d'éléments");
+		}
 		default:
 			return QVariant();
 	}

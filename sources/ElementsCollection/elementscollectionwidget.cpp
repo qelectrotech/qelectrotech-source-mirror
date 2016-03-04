@@ -119,6 +119,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_tree_view->setAutoExpandDelay(500);
 	m_tree_view->setAnimated(true);
+	m_tree_view->setMouseTracking(true);
 	m_tree_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 	m_main_vlayout->addWidget(m_tree_view);
 
