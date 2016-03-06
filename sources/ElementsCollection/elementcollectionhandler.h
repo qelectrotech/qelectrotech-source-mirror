@@ -22,6 +22,10 @@
 
 class QWidget;
 
+/**
+ * @brief The ECHStrategy class
+ * Abstract class for manage copy of directory or element from a collection to another
+ */
 class ECHStrategy
 {
     public:
@@ -32,6 +36,11 @@ class ECHStrategy
         ElementLocation m_source, m_destination;
 };
 
+/**
+ * @brief The ECHSFileToFile class
+ * Manage the copy of directory or element from a file system collection to another file system collection
+ * (Work only if the source is the common collection and the destination is the custom collection)
+ */
 class ECHSFileToFile : public ECHStrategy
 {
     public:
@@ -43,10 +52,15 @@ class ECHSFileToFile : public ECHStrategy
         ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
 };
 
-class ECHSFileToXml : public ECHStrategy
+/**
+ * @brief The ECHSToXml class
+ * Manage the copy of a directory or element from a collection (no matter if the source is a file system collection or an xml collection)
+ * to an xml collection
+ */
+class ECHSToXml : public ECHStrategy
 {
 	public:
-		ECHSFileToXml (ElementLocation &source, ElementLocation &destination);
+		ECHSToXml (ElementLocation &source, ElementLocation &destination);
 		ElementLocation copy();
 };
 

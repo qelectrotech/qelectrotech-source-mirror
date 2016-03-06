@@ -233,8 +233,9 @@ bool ElementLocation::isElement() const {
  * @brief ElementLocation::isDirectory
  * @return true if this location represent a directory
  */
-bool ElementLocation::isDirectory() const {
-	return !isElement();
+bool ElementLocation::isDirectory() const
+{
+	return (!isElement() && !m_collection_path.isEmpty());
 }
 
 /**
@@ -270,15 +271,17 @@ bool ElementLocation::exist() const
 		return m_project->embeddedElementCollection()->exist(collectionPath(false));
 	else
 	{
+		if (fileSystemPath().isEmpty()) return false;
+
 		if (isDirectory())
 		{
 			QDir dir(fileSystemPath());
 			return dir.exists();
 		}
-		else
-		{
+		else if (isElement())
 			return QFile::exists(fileSystemPath());
-		}
+		else
+			return false;
 	}
 }
 

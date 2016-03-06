@@ -208,12 +208,21 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 	ElementCollectionItem *eci =  static_cast<ElementCollectionItem*> (parent.internalPointer());
 	if (!eci || eci->isElement()) return false;
 
-	connect(eci, &ElementCollectionItem::beginInsertRows, [this, &parent](ElementCollectionItem *eci, int first, int last){ Q_UNUSED(eci); this->beginInsertRows(parent, first, last); });
-	connect(eci, &ElementCollectionItem::endInsertRows,   [this, &parent](){ this->endInsertRows(); });
-	connect(eci, &ElementCollectionItem::beginRemoveRows, [this, &parent](ElementCollectionItem *eci, int first, int last){ Q_UNUSED(eci); this->beginRemoveRows(parent, first, last); });
-	connect(eci, &ElementCollectionItem::endRemoveRows,   [this, &parent](){ this->endRemoveRows(); });
+	m_parent_at_drop = parent;
+
+	connect(eci, &ElementCollectionItem::beginInsertRows, this, &ElementsCollectionModel::bir);
+	connect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
+	connect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
+	connect(eci, &ElementCollectionItem::endRemoveRows,   this, &ElementsCollectionModel::endRemoveRows);
 
 	bool rb = eci->dropMimeData(data, action, row, column);
+
+	disconnect(eci, &ElementCollectionItem::beginInsertRows, this, &ElementsCollectionModel::bir);
+	disconnect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
+	disconnect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
+	disconnect(eci, &ElementCollectionItem::endRemoveRows,   this, &ElementsCollectionModel::endRemoveRows);
+
+	m_parent_at_drop = QModelIndex();
 
 	return rb;
 }
@@ -348,4 +357,18 @@ void ElementsCollectionModel::elementIntegratedToCollection(QETProject *project,
 	beginInsertRows(parent_index, new_row, new_row);
 	eci->insertNewItem(collection_name);
 	endInsertRows();
+}
+
+void ElementsCollectionModel::bir(ElementCollectionItem *eci, int first, int last)
+{
+	Q_UNUSED(eci);
+	if (!m_parent_at_drop.isValid()) return;
+	beginInsertRows(m_parent_at_drop, first, last);
+}
+
+void ElementsCollectionModel::brr(ElementCollectionItem *eci, int first, int last)
+{
+	Q_UNUSED(eci);
+	if (!m_parent_at_drop.isValid()) return;
+	beginRemoveRows(m_parent_at_drop, first, last);
 }
