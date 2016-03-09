@@ -22,6 +22,8 @@
 #include <QFile>
 #include <QDir>
 
+/******************************************************/
+
 ECHStrategy::ECHStrategy(ElementLocation &source, ElementLocation &destination) :
     m_source(source),
     m_destination (destination)
@@ -125,6 +127,115 @@ ElementLocation ECHSFileToFile::copyElement(ElementLocation &source, ElementLoca
 
 /******************************************************/
 
+ECHSXmlToFile::ECHSXmlToFile(ElementLocation &source, ElementLocation &destination) :
+	ECHStrategy(source, destination)
+{}
+
+ElementLocation ECHSXmlToFile::copy()
+{
+		//Check if the destination already have an item with the same name of the item to copy
+	ElementLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
+	QString rename;
+	if (location.exist())
+	{
+		RenameDialog rd(location.fileSystemPath());
+		if (rd.exec() == QDialog::Accepted)
+		{
+			if (rd.selectedAction() == QET::Erase)
+			{
+				if (location.isDirectory())
+				{
+					QDir dir(location.fileSystemPath());
+					dir.removeRecursively();
+				}
+				else
+				{
+					QFile file(location.fileSystemPath());
+					file.remove();
+				}
+			}
+			else if (rd.selectedAction() == QET::Rename)
+			{
+				rename = rd.newName();
+			}
+		}
+		else
+			return ElementLocation();
+	}
+
+	if (m_source.isElement())
+		return copyElement(m_source, m_destination, rename);
+	else
+		return copyDirectory(m_source, m_destination, rename);
+}
+
+ElementLocation ECHSXmlToFile::copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename)
+{
+	QDir destination_dir(destination.fileSystemPath());
+
+	if (!(destination_dir.exists() && source.exist())) return ElementLocation();
+
+	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
+
+		//Create new dir
+	if (destination_dir.mkdir(new_dir_name))
+	{
+		QDir created_dir(destination_dir.canonicalPath() + "/" + new_dir_name);
+		ElementLocation created_location(created_dir.canonicalPath());
+
+			//Create the qet-directory file
+		QDomDocument document;
+		QDomElement root = document.createElement("qet-directory");
+		document.appendChild(root);
+		root.appendChild(source.nameList().toXml(document));
+
+		QString filepath = created_dir.canonicalPath() + "/qet_directory";
+		QET::writeXmlFile(document, filepath);
+
+			//Create all directory found in source to created_dir
+		XmlElementCollection *project_collection = source.projectCollection();
+
+		QStringList directories_names = project_collection->directoriesNames( project_collection->directory(source.collectionPath(false)) );
+		foreach(QString name, directories_names)
+		{
+			ElementLocation sub_source_dir(source.projectCollectionPath() + "/" + name);
+			copyDirectory(sub_source_dir,  created_location);
+		}
+
+			//Create all elements found in source to destination
+		QStringList elements_names = project_collection->elementsNames( project_collection->directory(source.collectionPath(false))) ;
+		foreach (QString name, elements_names)
+		{
+			ElementLocation source_element(source.projectCollectionPath() + "/" + name);
+			copyElement(source_element, created_location);
+		}
+
+		return created_location;
+	}
+
+	return ElementLocation();
+}
+
+ElementLocation ECHSXmlToFile::copyElement(ElementLocation &source, ElementLocation &destination, QString rename)
+{	
+	if (!(destination.exist() && source.exist())) return ElementLocation();
+
+	QString new_element_name = rename.isEmpty() ? source.fileName() : rename;
+
+		//Get the xml descrption of the element
+	QDomDocument document;
+	document.appendChild(document.importNode(source.xml(), true));
+
+		//Create the .elmt file
+	QString filepath = destination.fileSystemPath() + "/" + new_element_name;
+	if (QET::writeXmlFile(document, filepath))
+		return ElementLocation(filepath);
+	else
+		return ElementLocation();
+}
+
+/******************************************************/
+
 ECHSToXml::ECHSToXml(ElementLocation &source, ElementLocation &destination) :
 	ECHStrategy(source, destination)
 {}
@@ -152,6 +263,8 @@ ElementLocation ECHSToXml::copy()
 	return m_destination.projectCollection()->copy(m_source, m_destination, rename);
 }
 
+/******************************************************/
+
 /**
  * @brief ElementCollectionHandler::ElementCollectionHandler
  * @param widget
@@ -177,6 +290,7 @@ ElementLocation ElementCollectionHandler::copy(ElementLocation &source, ElementL
     if (!source.exist() || !destination.exist() || destination.isElement()) return ElementLocation();
 
     if (source.isFileSystem() && destination.isFileSystem()) m_strategy = new ECHSFileToFile(source, destination);
+	if (source.isProject() && destination.isFileSystem()) m_strategy = new ECHSXmlToFile(source, destination);
 	else if (destination.isProject()) m_strategy = new ECHSToXml(source, destination);
 
 	if (m_strategy)

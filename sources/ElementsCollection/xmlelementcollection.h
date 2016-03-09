@@ -41,7 +41,9 @@ class XmlElementCollection : public QObject
 		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
 		QDomElement child(const QString &path) const;
 		QList<QDomElement> directories(const QDomElement &parent_element);
+		QStringList directoriesNames(const QDomElement &parent_element);
 		QList<QDomElement> elements(const QDomElement &parent_element);
+		QStringList elementsNames(const QDomElement &parent_element);
 		QDomElement element(const QString &path);
 		QDomElement directory(const QString &path);
 		QString addElement (const QString &path);

@@ -178,6 +178,26 @@ QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_e
 }
 
 /**
+ * @brief XmlElementCollection::directoriesNames
+ * @param parent_element
+ * @return a list of names for every child directories of @parent_element
+ */
+QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_element)
+{
+	QList <QDomElement> childs = directories(parent_element);
+	QStringList names;
+
+	foreach (QDomElement child, childs)
+	{
+		QString name = child.attribute("name");
+		if (!name.isEmpty())
+			names.append(name);
+	}
+
+	return names;
+}
+
+/**
  * @brief XmlElementCollection::elements
  * @param parent_element
  * @return A list of element stored in @parent_element
@@ -196,6 +216,26 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
 	}
 
 	return element_list;
+}
+
+/**
+ * @brief XmlElementCollection::elementsNames
+ * @param parent_element
+ * @return A list of names fr every childs element of @parent_element
+ */
+QStringList XmlElementCollection::elementsNames(const QDomElement &parent_element)
+{
+	QList <QDomElement> childs = elements(parent_element);
+	QStringList names;
+
+	foreach (QDomElement child, childs)
+	{
+		QString name = child.attribute("name");
+		if (!name.isEmpty())
+			names.append(name);
+	}
+
+	return names;
 }
 
 /**

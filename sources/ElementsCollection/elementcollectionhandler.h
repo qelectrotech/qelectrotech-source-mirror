@@ -39,7 +39,6 @@ class ECHStrategy
 /**
  * @brief The ECHSFileToFile class
  * Manage the copy of directory or element from a file system collection to another file system collection
- * (Work only if the source is the common collection and the destination is the custom collection)
  */
 class ECHSFileToFile : public ECHStrategy
 {
@@ -50,6 +49,21 @@ class ECHSFileToFile : public ECHStrategy
     private:
         ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString());
         ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
+};
+
+/**
+ * @brief The ECHSXmlToFile class
+ * Manage the copy of a directory or element from an xml collection to a file.
+ */
+class ECHSXmlToFile : public ECHStrategy
+{
+	public:
+		ECHSXmlToFile (ElementLocation &source, ElementLocation &destination);
+		ElementLocation copy();
+
+	private:
+		ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString());
+		ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
 };
 
 /**
