@@ -17,7 +17,6 @@
 */
 #include "xmlelementcollection.h"
 #include "nameslist.h"
-#include "elementlocation.h"
 #include "qetxml.h"
 #include "elementslocation.h"
 

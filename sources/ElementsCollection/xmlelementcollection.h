@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QDomElement>
+#include "elementslocation.h"
 
 class QDomElement;
 class QFile;
