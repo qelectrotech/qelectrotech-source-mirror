@@ -79,6 +79,8 @@ XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QObje
 
 /**
  * @brief XmlElementCollection::root
+ * The root is the beginning of the xml collection, the tag name
+ * of the dom element is : collection
  * @return The root QDomElement of the collection
  */
 QDomElement XmlElementCollection::root() const {

@@ -79,7 +79,11 @@ ElementsLocation::ElementsLocation(const QMimeData *data)
 */
 ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 	m_collection_path = other.m_collection_path;
+	m_file_system_path = other.m_file_system_path;
 	m_project = other.m_project;
+	m_xml = other.m_xml;
+	m_uuid = other.m_uuid;
+	m_icon = other.m_icon;
 	return(*this);
 }
 

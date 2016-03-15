@@ -49,7 +49,7 @@ QColor		Diagram::background_color = Qt::white;
  */
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
-	project_                 (nullptr),
+	m_project                 (nullptr),
 	diagram_qet_version_     (-1),
 	draw_grid_               (true),
 	use_border_              (true),
@@ -638,7 +638,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	qreal project_qet_version = declaredQElectroTechVersion(true);
 	bool handle_inputs_rotation = (
 		project_qet_version != -1 && project_qet_version < 0.3 &&
-		project_ -> state() == QETProject::ProjectParsingRunning
+		m_project -> state() == QETProject::ProjectParsingRunning
 	);
 	
 		//Load all elements from the XML
@@ -650,8 +650,13 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		
 		// cree un element dont le type correspond a l'id type
 		QString type_id = element_xml.attribute("type");
-		ElementsLocation element_location = ElementsLocation(type_id);
-		if (type_id.startsWith("embed://")) element_location.setProject(project_);
+		ElementsLocation element_location;
+		if (type_id.startsWith("embed://")) {
+			element_location = ElementsLocation(type_id, m_project);
+		}
+		else {
+			element_location = ElementsLocation(type_id);
+		}
 		
 		int state = 0;
 		Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, 0, &state);
@@ -932,7 +937,7 @@ void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template)
 {
 	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;	
-	const TitleBlockTemplate *final_template = project_->embeddedTitleBlockTemplatesCollection()->getTemplate(new_template);
+	const TitleBlockTemplate *final_template = m_project->embeddedTitleBlockTemplatesCollection()->getTemplate(new_template);
 	border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
 	update();
 }
@@ -943,10 +948,10 @@ void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QStr
 */
 void Diagram::setTitleBlockTemplate(const QString &template_name)
 {
-	if (!project_) return;
+	if (!m_project) return;
 	
 	QString current_name = border_and_titleblock.titleBlockTemplateName();
-	const TitleBlockTemplate *titleblock_template = project_->embeddedTitleBlockTemplatesCollection()->getTemplate(template_name);
+	const TitleBlockTemplate *titleblock_template = m_project->embeddedTitleBlockTemplatesCollection()->getTemplate(template_name);
 	border_and_titleblock.titleBlockTemplateRemoved(current_name, titleblock_template);
 	
 	if (template_name != current_name)
@@ -1266,7 +1271,7 @@ bool Diagram::clipboardMayContainDiagram() {
 	independant.
 */
 QETProject *Diagram::project() const {
-	return(project_);
+	return(m_project);
 }
 
 /**
@@ -1276,19 +1281,19 @@ QETProject *Diagram::project() const {
  */
 void Diagram::setProject(QETProject *project)
 {
-	if (project_ == project) return;
+	if (m_project == project) return;
 
-	if (project_)
+	if (m_project)
 	{
-		disconnect (project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
-		disconnect (project_, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
+		disconnect (m_project, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+		disconnect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 	}
 
-	project_ = project;
+	m_project = project;
 	setParent (project);
 
-	connect (project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
-	connect (project_, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
+	connect (m_project, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+	connect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 }
 
 /**
@@ -1296,8 +1301,8 @@ void Diagram::setProject(QETProject *project)
 	if it is has no parent project
 */
 int Diagram::folioIndex() const {
-	if (!project_) return(-1);
-	return(project_ -> folioIndex(this));
+	if (!m_project) return(-1);
+	return(m_project -> folioIndex(this));
 }
 
 /**
@@ -1310,8 +1315,8 @@ qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
 	if (diagram_qet_version_ != -1) {
 		return diagram_qet_version_;
 	}
-	if (fallback_to_project && project_) {
-		return(project_ -> declaredQElectroTechVersion());
+	if (fallback_to_project && m_project) {
+		return(m_project -> declaredQElectroTechVersion());
 	}
 	return(-1);
 }
@@ -1323,7 +1328,7 @@ qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
  */
 bool Diagram::isReadOnly() const
 {
-	return project_ -> isReadOnly();
+	return m_project -> isReadOnly();
 }
 
 /**

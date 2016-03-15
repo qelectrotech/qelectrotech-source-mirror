@@ -89,7 +89,7 @@ class Diagram : public QGraphicsScene
 		ElementsMover     *elements_mover_;
 		ElementTextsMover *element_texts_mover_;
 		QGIManager        *qgi_manager_;
-		QETProject        *project_;
+		QETProject        *m_project;
 
 		QDomDocument xml_document_;
 
@@ -119,8 +119,8 @@ class Diagram : public QGraphicsScene
 		void setEventInterface (DiagramEventInterface *event_interface);
 
 		//methods related to xref properties
-		QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
-		XRefProperties defaultXRefProperties   (const QString &str) const {return project_ -> defaultXRefProperties(str);}
+		QString		   defaultReportProperties () const {return m_project -> defaultReportProperties();}
+		XRefProperties defaultXRefProperties   (const QString &str) const {return m_project -> defaultXRefProperties(str);}
 
 		//methods related to autonum
 		QString conductorsAutonumName() const;
