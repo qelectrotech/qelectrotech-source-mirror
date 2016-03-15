@@ -33,7 +33,6 @@ class SimpleElement : public CustomElement {
 
 	public  :
 		explicit SimpleElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
-		explicit SimpleElement(ElementLocation &location, QGraphicsItem *parent = nullptr, int *state = nullptr);
 		~SimpleElement();
 
 		virtual void initLink(QETProject *project);

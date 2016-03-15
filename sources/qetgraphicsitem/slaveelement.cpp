@@ -36,13 +36,6 @@ SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi,
 	link_type_ = Slave;
 }
 
-SlaveElement::SlaveElement(ElementLocation &location, QGraphicsItem *parent, int *state) :
-	CustomElement(location, parent, state)
-{
-	Xref_item = nullptr;
-	link_type_ = Slave;
-}
-
 /**
  * @brief SlaveElement::~SlaveElement
  * default destructor

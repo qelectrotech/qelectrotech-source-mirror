@@ -20,7 +20,6 @@
 #include "fixedelement.h"
 #include "nameslist.h"
 #include "elementslocation.h"
-#include "elementlocation.h"
 #include <QPicture>
 
 class ElementTextItem;
@@ -38,7 +37,6 @@ class CustomElement : public FixedElement
 		// constructors, destructor
 	public:
 		CustomElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
-		CustomElement (ElementLocation &location, QGraphicsItem *parent = nullptr, int *state = nullptr);
 
 	virtual ~CustomElement();
 	
@@ -50,7 +48,6 @@ class CustomElement : public FixedElement
 		int elmt_state; // hold the error code in case the instanciation fails, or 0 if everything went well
 		NamesList names;
 		ElementsLocation location_;
-		ElementLocation m_location;
 		QPicture drawing;
 		QPicture low_zoom_drawing;
 		QList<Terminal *> list_terminals;

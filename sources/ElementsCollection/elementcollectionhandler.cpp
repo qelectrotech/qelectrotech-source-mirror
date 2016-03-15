@@ -24,7 +24,7 @@
 
 /******************************************************/
 
-ECHStrategy::ECHStrategy(ElementLocation &source, ElementLocation &destination) :
+ECHStrategy::ECHStrategy(ElementsLocation &source, ElementsLocation &destination) :
     m_source(source),
     m_destination (destination)
 {}
@@ -33,14 +33,14 @@ ECHStrategy::~ECHStrategy() {}
 
 /******************************************************/
 
-ECHSFileToFile::ECHSFileToFile(ElementLocation &source, ElementLocation &destination) :
+ECHSFileToFile::ECHSFileToFile(ElementsLocation &source, ElementsLocation &destination) :
     ECHStrategy(source, destination)
 {}
 
-ElementLocation ECHSFileToFile::copy()
+ElementsLocation ECHSFileToFile::copy()
 {
 		//Check if the destination already have an item with the same name of the item to copy
-	ElementLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
+	ElementsLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
 	QString rename;
 	if (location.exist())
 	{
@@ -66,7 +66,7 @@ ElementLocation ECHSFileToFile::copy()
 			}
 		}
 		else
-			return ElementLocation();
+			return ElementsLocation();
 	}
 
 	if (m_source.isElement())
@@ -75,12 +75,12 @@ ElementLocation ECHSFileToFile::copy()
 		return copyDirectory(m_source, m_destination, rename);
 }
 
-ElementLocation ECHSFileToFile::copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename)
+ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename)
 {
     QDir source_dir(source.fileSystemPath());
     QDir destination_dir(destination.fileSystemPath());
 
-    if (!source_dir.exists() || !destination_dir.exists()) return ElementLocation();
+	if (!source_dir.exists() || !destination_dir.exists()) return ElementsLocation();
 
     QString new_dir_name = rename.isEmpty() ? source_dir.dirName() : rename;
 
@@ -94,10 +94,10 @@ ElementLocation ECHSFileToFile::copyDirectory(ElementLocation &source, ElementLo
         QFile::copy(source_dir.canonicalPath() + "/qet_directory", created_dir.canonicalPath() + "/qet_directory");
 
             //Copy all dirs found in source_dir to destination_dir
-        ElementLocation created_location(created_dir.canonicalPath());
+		ElementsLocation created_location(created_dir.canonicalPath());
         foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
         {
-            ElementLocation sub_source(source.fileSystemPath() + "/" + str);
+			ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
             copyDirectory(sub_source, created_location);
         }
 
@@ -105,36 +105,36 @@ ElementLocation ECHSFileToFile::copyDirectory(ElementLocation &source, ElementLo
         source_dir.setNameFilters(QStringList() << "*.elmt");
         foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
         {
-            ElementLocation sub_source(source.fileSystemPath() + "/" + str);
+			ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
             copyElement(sub_source, created_location);
         }
 
         return created_location;
     }
 
-    return ElementLocation();
+	return ElementsLocation();
 }
 
-ElementLocation ECHSFileToFile::copyElement(ElementLocation &source, ElementLocation &destination, QString rename)
+ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
 {
     QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
     bool rb = QFile::copy(source.fileSystemPath(), destination.fileSystemPath() + "/" + new_elmt_name);
     if (rb)
-        return ElementLocation (destination.fileSystemPath() + "/" + new_elmt_name);
+		return ElementsLocation (destination.fileSystemPath() + "/" + new_elmt_name);
     else
-        return ElementLocation();
+		return ElementsLocation();
 }
 
 /******************************************************/
 
-ECHSXmlToFile::ECHSXmlToFile(ElementLocation &source, ElementLocation &destination) :
+ECHSXmlToFile::ECHSXmlToFile(ElementsLocation &source, ElementsLocation &destination) :
 	ECHStrategy(source, destination)
 {}
 
-ElementLocation ECHSXmlToFile::copy()
+ElementsLocation ECHSXmlToFile::copy()
 {
 		//Check if the destination already have an item with the same name of the item to copy
-	ElementLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
+	ElementsLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
 	QString rename;
 	if (location.exist())
 	{
@@ -160,7 +160,7 @@ ElementLocation ECHSXmlToFile::copy()
 			}
 		}
 		else
-			return ElementLocation();
+			return ElementsLocation();
 	}
 
 	if (m_source.isElement())
@@ -169,11 +169,11 @@ ElementLocation ECHSXmlToFile::copy()
 		return copyDirectory(m_source, m_destination, rename);
 }
 
-ElementLocation ECHSXmlToFile::copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename)
+ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename)
 {
 	QDir destination_dir(destination.fileSystemPath());
 
-	if (!(destination_dir.exists() && source.exist())) return ElementLocation();
+	if (!(destination_dir.exists() && source.exist())) return ElementsLocation();
 
 	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
 
@@ -181,7 +181,7 @@ ElementLocation ECHSXmlToFile::copyDirectory(ElementLocation &source, ElementLoc
 	if (destination_dir.mkdir(new_dir_name))
 	{
 		QDir created_dir(destination_dir.canonicalPath() + "/" + new_dir_name);
-		ElementLocation created_location(created_dir.canonicalPath());
+		ElementsLocation created_location(created_dir.canonicalPath());
 
 			//Create the qet-directory file
 		QDomDocument document;
@@ -198,7 +198,7 @@ ElementLocation ECHSXmlToFile::copyDirectory(ElementLocation &source, ElementLoc
 		QStringList directories_names = project_collection->directoriesNames( project_collection->directory(source.collectionPath(false)) );
 		foreach(QString name, directories_names)
 		{
-			ElementLocation sub_source_dir(source.projectCollectionPath() + "/" + name);
+			ElementsLocation sub_source_dir(source.projectCollectionPath() + "/" + name);
 			copyDirectory(sub_source_dir,  created_location);
 		}
 
@@ -206,19 +206,19 @@ ElementLocation ECHSXmlToFile::copyDirectory(ElementLocation &source, ElementLoc
 		QStringList elements_names = project_collection->elementsNames( project_collection->directory(source.collectionPath(false))) ;
 		foreach (QString name, elements_names)
 		{
-			ElementLocation source_element(source.projectCollectionPath() + "/" + name);
+			ElementsLocation source_element(source.projectCollectionPath() + "/" + name);
 			copyElement(source_element, created_location);
 		}
 
 		return created_location;
 	}
 
-	return ElementLocation();
+	return ElementsLocation();
 }
 
-ElementLocation ECHSXmlToFile::copyElement(ElementLocation &source, ElementLocation &destination, QString rename)
+ElementsLocation ECHSXmlToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
 {	
-	if (!(destination.exist() && source.exist())) return ElementLocation();
+	if (!(destination.exist() && source.exist())) return ElementsLocation();
 
 	QString new_element_name = rename.isEmpty() ? source.fileName() : rename;
 
@@ -229,23 +229,23 @@ ElementLocation ECHSXmlToFile::copyElement(ElementLocation &source, ElementLocat
 		//Create the .elmt file
 	QString filepath = destination.fileSystemPath() + "/" + new_element_name;
 	if (QET::writeXmlFile(document, filepath))
-		return ElementLocation(filepath);
+		return ElementsLocation(filepath);
 	else
-		return ElementLocation();
+		return ElementsLocation();
 }
 
 /******************************************************/
 
-ECHSToXml::ECHSToXml(ElementLocation &source, ElementLocation &destination) :
+ECHSToXml::ECHSToXml(ElementsLocation &source, ElementsLocation &destination) :
 	ECHStrategy(source, destination)
 {}
 
-ElementLocation ECHSToXml::copy()
+ElementsLocation ECHSToXml::copy()
 {
-	if (!(m_source.exist() && m_destination.isDirectory() && m_destination.isProject())) return ElementLocation();
+	if (!(m_source.exist() && m_destination.isDirectory() && m_destination.isProject())) return ElementsLocation();
 
 		//Check if the destination already have an item with the same name of the item to copy
-	ElementLocation location(m_destination.projectCollectionPath() + "/" + m_source.fileName());
+	ElementsLocation location(m_destination.projectCollectionPath() + "/" + m_source.fileName());
 
 	QString rename;
 	if (location.exist())
@@ -257,7 +257,7 @@ ElementLocation ECHSToXml::copy()
 				rename = rd.newName();
 		}
 		else
-			return ElementLocation();
+			return ElementsLocation();
 	}
 
 	return m_destination.projectCollection()->copy(m_source, m_destination, rename);
@@ -285,9 +285,9 @@ ElementCollectionHandler::~ElementCollectionHandler()
  * @param destination
  * @return
  */
-ElementLocation ElementCollectionHandler::copy(ElementLocation &source, ElementLocation &destination)
+ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, ElementsLocation &destination)
 {
-    if (!source.exist() || !destination.exist() || destination.isElement()) return ElementLocation();
+	if (!source.exist() || !destination.exist() || destination.isElement()) return ElementsLocation();
 
     if (source.isFileSystem() && destination.isFileSystem()) m_strategy = new ECHSFileToFile(source, destination);
 	if (source.isProject() && destination.isFileSystem()) m_strategy = new ECHSXmlToFile(source, destination);
@@ -296,5 +296,5 @@ ElementLocation ElementCollectionHandler::copy(ElementLocation &source, ElementL
 	if (m_strategy)
 		return m_strategy->copy();
 	else
-		return ElementLocation();
+		return ElementsLocation();
 }

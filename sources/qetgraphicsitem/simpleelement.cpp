@@ -33,14 +33,6 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 }
 
-SimpleElement::SimpleElement(ElementLocation &location, QGraphicsItem *parent, int *state) :
-	CustomElement(location, parent, state),
-	m_comment_item (nullptr)
-{
-	link_type_ = Simple;
-	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-}
-
 /**
  * @brief SimpleElement::~SimpleElement
  */

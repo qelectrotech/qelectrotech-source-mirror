@@ -35,14 +35,6 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 }
 
-MasterElement::MasterElement(ElementLocation &location, QGraphicsItem *parent, int *state) :
-	CustomElement(location, parent, state),
-	cri_ (nullptr)
-{
-	link_type_ = Master;
-	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-}
-
 /**
  * @brief MasterElement::~MasterElement
  * default destructor

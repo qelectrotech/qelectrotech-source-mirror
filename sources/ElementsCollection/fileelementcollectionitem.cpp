@@ -167,7 +167,7 @@ QVariant FileElementCollectionItem::data(int column, int role)
 			{
 				if (m_icon.isNull())
 				{
-					ElementLocation loc(collectionPath());
+					ElementsLocation loc(collectionPath());
 					m_icon = loc.icon();
 				}
 				return m_icon;
@@ -214,7 +214,7 @@ bool FileElementCollectionItem::canDropMimeData(const QMimeData *data, Qt::DropA
 	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
 	{
 			//Return false if user try to drop a item from a folder to the same folder
-		ElementLocation drop_location(data->text());
+		ElementsLocation drop_location(data->text());
 		for (int i=0 ; i<childCount() ; i++)
 		{
 			if (static_cast<FileElementCollectionItem *>(child(i))->collectionPath() == drop_location.collectionPath())
@@ -245,9 +245,9 @@ bool FileElementCollectionItem::dropMimeData(const QMimeData *data, Qt::DropActi
 
 	ElementCollectionHandler ech;
 
-	ElementLocation source(data->text());
-	ElementLocation destination(feci->fileSystemPath());
-	ElementLocation location = ech.copy(source, destination);
+	ElementsLocation source(data->text());
+	ElementsLocation destination(feci->fileSystemPath());
+	ElementsLocation location = ech.copy(source, destination);
 
 	if (location.exist())
 	{
@@ -375,7 +375,7 @@ QString FileElementCollectionItem::name()
 	}
 	else if (isElement())
 	{		
-		ElementLocation loc(collectionPath());
+		ElementsLocation loc(collectionPath());
 		m_name = loc.name();
 	}
 	return m_name;

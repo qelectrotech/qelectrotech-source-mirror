@@ -18,7 +18,7 @@
 #ifndef ELEMENTCOLLECTIONHANDLER_H
 #define ELEMENTCOLLECTIONHANDLER_H
 
-#include "elementlocation.h"
+#include "elementslocation.h"
 
 class QWidget;
 
@@ -29,11 +29,11 @@ class QWidget;
 class ECHStrategy
 {
     public:
-        ECHStrategy(ElementLocation &source, ElementLocation &destination);
+		ECHStrategy(ElementsLocation &source, ElementsLocation &destination);
         virtual ~ECHStrategy();
-        virtual ElementLocation copy() =0;
+		virtual ElementsLocation copy() =0;
 
-        ElementLocation m_source, m_destination;
+		ElementsLocation m_source, m_destination;
 };
 
 /**
@@ -43,12 +43,12 @@ class ECHStrategy
 class ECHSFileToFile : public ECHStrategy
 {
     public:
-        ECHSFileToFile (ElementLocation &source, ElementLocation &destination);
-        ElementLocation copy();
+		ECHSFileToFile (ElementsLocation &source, ElementsLocation &destination);
+		ElementsLocation copy();
 
     private:
-        ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString());
-        ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
+		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
+		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
 };
 
 /**
@@ -58,12 +58,12 @@ class ECHSFileToFile : public ECHStrategy
 class ECHSXmlToFile : public ECHStrategy
 {
 	public:
-		ECHSXmlToFile (ElementLocation &source, ElementLocation &destination);
-		ElementLocation copy();
+		ECHSXmlToFile (ElementsLocation &source, ElementsLocation &destination);
+		ElementsLocation copy();
 
 	private:
-		ElementLocation copyDirectory(ElementLocation &source, ElementLocation &destination, QString rename = QString());
-		ElementLocation copyElement(ElementLocation &source, ElementLocation &destination, QString rename = QString());
+		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
+		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
 };
 
 /**
@@ -74,8 +74,8 @@ class ECHSXmlToFile : public ECHStrategy
 class ECHSToXml : public ECHStrategy
 {
 	public:
-		ECHSToXml (ElementLocation &source, ElementLocation &destination);
-		ElementLocation copy();
+		ECHSToXml (ElementsLocation &source, ElementsLocation &destination);
+		ElementsLocation copy();
 };
 
 /**
@@ -89,7 +89,7 @@ class ElementCollectionHandler
         ElementCollectionHandler();
         ~ElementCollectionHandler();
 
-        ElementLocation copy(ElementLocation &source, ElementLocation &destination);
+		ElementsLocation copy(ElementsLocation &source, ElementsLocation &destination);
 
     private:
         ECHStrategy *m_strategy = nullptr;

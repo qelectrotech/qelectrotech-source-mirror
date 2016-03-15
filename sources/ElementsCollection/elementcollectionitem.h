@@ -19,7 +19,6 @@
 #define ELEMENTCOLLECTIONITEM_H
 
 #include <QVariant>
-#include "elementlocation.h"
 
 class QMimeData;
 class ElementCollectionItem;

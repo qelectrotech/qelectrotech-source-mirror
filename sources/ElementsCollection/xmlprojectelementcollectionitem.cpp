@@ -21,7 +21,6 @@
 #include "xmlelementcollection.h"
 #include "nameslist.h"
 #include "qetapp.h"
-#include "elementlocation.h"
 #include "elementcollectionhandler.h"
 #include <algorithm>
 
@@ -86,7 +85,7 @@ QVariant XmlProjectElementCollectionItem::data(int column, int role)
 			{
 				if (m_icon.isNull())
 				{
-					ElementLocation loc(embeddedPath(), m_project);
+					ElementsLocation loc(embeddedPath(), m_project);
 					m_icon = loc.icon();
 				}
 				return m_icon;
@@ -135,7 +134,7 @@ bool XmlProjectElementCollectionItem::canDropMimeData(const QMimeData *data, Qt:
 	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
 	{
 			//Return false if user try to drop a item from a folder to the same folder
-		ElementLocation drop_location(data->text());
+		ElementsLocation drop_location(data->text());
 		for (int i=0 ; i<childCount() ; i++)
 		{
 			if (static_cast<XmlProjectElementCollectionItem *>(child(i))->collectionPath() == drop_location.collectionPath())
@@ -176,9 +175,9 @@ bool XmlProjectElementCollectionItem::dropMimeData(const QMimeData *data, Qt::Dr
 
 	ElementCollectionHandler ech;
 
-	ElementLocation source(data->text());
-	ElementLocation destination(xpeci->collectionPath());
-	ElementLocation location = ech.copy(source, destination);
+	ElementsLocation source(data->text());
+	ElementsLocation destination(xpeci->collectionPath());
+	ElementsLocation location = ech.copy(source, destination);
 
 	if (location.exist())
 	{
@@ -234,7 +233,7 @@ QString XmlProjectElementCollectionItem::name()
     }
 	else
 	{
-		ElementLocation location (embeddedPath(), m_project);
+		ElementsLocation location (embeddedPath(), m_project);
 		m_name = location.name();
 		return m_name;
 	}
@@ -283,7 +282,7 @@ bool XmlProjectElementCollectionItem::isElement() const
  */
 QString XmlProjectElementCollectionItem::collectionPath() const
 {
-	ElementLocation loc (embeddedPath(), m_project);
+	ElementsLocation loc (embeddedPath(), m_project);
 	return loc.projectCollectionPath();
 }
 

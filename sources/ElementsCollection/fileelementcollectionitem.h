@@ -19,9 +19,9 @@
 #define FILEELEMENTCOLLECTIONITEM_H
 
 #include "elementcollectionitem.h"
-#include "elementlocation.h"
 #include <QString>
 #include <QDir>
+#include <QIcon>
 
 /**
  * @brief The FileElementCollectionItem class
@@ -69,7 +69,6 @@ class FileElementCollectionItem : public ElementCollectionItem
 
     private:
 		QString m_path;
-		ElementLocation m_location;
 		QIcon m_icon;
 };
 
