@@ -56,9 +56,12 @@ ElementsLocation::~ElementsLocation() {
 */
 ElementsLocation::ElementsLocation(const ElementsLocation &other) :
 	m_collection_path(other.m_collection_path),
-	m_project(other.m_project)
-{
-}
+	m_file_system_path(other.m_file_system_path),
+	m_project(other.m_project),
+	m_xml(other.m_xml),
+	m_uuid(other.m_uuid),
+	m_icon(other.m_icon)
+{}
 
 /**
  * @brief ElementsLocation::ElementLocation
@@ -112,8 +115,12 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const {
 }
 
 /**
-	@return le nom de base de l'element
-*/
+ * @brief ElementsLocation::baseName
+ * @return The base name of the element or directory.
+ * Unlike ElementsLocation::fileName , this method don't return the extension name.
+ * For exemple if this location represent an element they return myElement.
+ * @see fileName()
+ */
 QString ElementsLocation::baseName() const {
 	QRegExp regexp("^.*([^/]+)\\.elmt$");
 	if (regexp.exactMatch(m_collection_path)) {
@@ -631,16 +638,19 @@ QString ElementsLocation::name()
 
 /**
  * @brief ElementLocation::fileName
- * @return Return the file name of this element whatever the storage system (file system, xml collection)
+ * @return Return the file name of the represented item, whatever the storage system (file system, xml collection)
+ * with is file extension.
+ * For example if this location represent an element, they return myElement.elmt.
+ * For a directory return myDirectory.
+ * @see baseName
  */
 QString ElementsLocation::fileName() const
 {
-//	if (m_collection_path.isEmpty()) return QString();
+	if (m_collection_path.isEmpty()) return QString();
 
-//	QStringList qsl = m_collection_path.split("/");
-//	if (qsl.isEmpty()) return QString();
-//	else return qsl.last();
-	return baseName();
+	QStringList qsl = m_collection_path.split("/");
+	if (qsl.isEmpty()) return QString();
+	else return qsl.last();
 }
 
 /**
