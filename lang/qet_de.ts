@@ -840,12 +840,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Ziehen/ablegen, um das Bauteil &quot;%1&quot; auf die Folie einzufügen. Doppelklick, um es zu bearbeiten</translation>
+        <translation>%1 (ziehen/ablegen, um das Bauteil auf die Folie einzufügen. Doppelklick, um es zu bearbeiten)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Doppelklick zum Öffnen oder Schließen der Bauteilkategorie</translation>
+        <translation>Doppelklick zum Öffnen oder Schließen der Bauteilkategorie</translation>
     </message>
 </context>
 <context>
@@ -1559,12 +1559,12 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur diesen Ordner anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher tous les dossiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Ordner anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
@@ -4804,7 +4804,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
         <source>&amp;Ouvrir depuis un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine dxf Datei &amp;öffnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="724"/>
@@ -6506,37 +6506,37 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuer Name:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Überschreiben</translation>
+        <translation>Überschreiben</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Umbenennen</translation>
+        <translation>Umbenennen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished">TextLabel</translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Das Bauteil &quot;%1&quot; ist schon vorhanden. Wie möchten SIe vorgehen?</translation>
+        <translation>Das Bauteil &quot;%1&quot; ist schon vorhanden. Wie möchten Sie vorgehen?</translation>
     </message>
 </context>
 <context>
