@@ -789,7 +789,9 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	{
 		// integre l'element normalement
 		result = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
-		QString xml_path = m_elements_collection->addElement(elmt_path);
+
+		ElementsLocation location(elmt_path);
+		QString xml_path = m_elements_collection->addElement(location);
 		if (!xml_path.isNull()) emit elementIntegratedToCollection(this, xml_path);
 	}
 	

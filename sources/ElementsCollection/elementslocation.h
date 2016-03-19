@@ -49,7 +49,7 @@ class ElementsLocation
 		QString projectCollectionPath() const;
 		QString fileSystemPath() const;
 		QString path() const;
-		bool setPath(const QString &path);
+		void setPath(const QString &path);
 		bool addToPath(const QString &);
 
 		ElementsLocation parent() const;

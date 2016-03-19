@@ -186,12 +186,10 @@ QString ElementsLocation::path() const {
 /**
  * @brief ElementsLocation::setPath
  * Set the path of this item.
- * If the path is for a file collection, the path can be in file system or relative to the beginning
- * of the colection, in this case the path must start with (common:// or custom://).
+ * The path can be relative to a collection (start by common:// , custom:// or embed://) or not.
  * @param path
- * @return true if the element pointed by path exist, else false
  */
-bool ElementsLocation::setPath(const QString &path)
+void ElementsLocation::setPath(const QString &path)
 {
 		QString tmp_path = path;
 #ifdef Q_OS_WIN32
@@ -203,13 +201,11 @@ bool ElementsLocation::setPath(const QString &path)
 		//There is a project, the path is for an embedded coolection.
 	if (m_project)
 	{
-		if (path.startsWith("embed://"))
-		{
-			m_collection_path = path;
-			return true;
-		}
-		else
-			return false;
+		m_collection_path = path;
+			//Add the protocol to the collection path
+		if (!path.startsWith("embed://"))
+			m_collection_path.prepend("embed://");
+
 	}
 
 		//The path start with project, we get the project and the path from the string
@@ -227,11 +223,9 @@ bool ElementsLocation::setPath(const QString &path)
 				{
 					m_collection_path = rx.capturedTexts().at(2);
 					m_project = project;
-					return true;
 				}
 			}
 		}
-		return false;
 	}
 
 		//The path is in file system, the given path is relative to common or custom collection
@@ -257,9 +251,7 @@ bool ElementsLocation::setPath(const QString &path)
 			{
 				m_file_system_path = p;
 				m_collection_path = path;
-				return true;
 			}
-			return false;
 		}
 			//They must be a directory
 		else
@@ -269,9 +261,7 @@ bool ElementsLocation::setPath(const QString &path)
 			{
 				m_file_system_path = p;
 				m_collection_path = path;
-				return true;
 			}
-			return false;
 		}
 	}
 		//In this case, the path is supposed to be relative to the file system.
@@ -293,7 +283,6 @@ bool ElementsLocation::setPath(const QString &path)
 				path_.prepend("custom://");
 				m_collection_path = path_;
 			}
-			return true;
 		}
 		else
 		{
@@ -310,11 +299,8 @@ bool ElementsLocation::setPath(const QString &path)
 				path_.prepend("custom://");
 				m_collection_path = path_;
 			}
-			return true;
 		}
 	}
-
-	return false;
 }
 
 /**
@@ -467,7 +453,9 @@ bool ElementsLocation::isProject() const
 bool ElementsLocation::exist() const
 {
 	if (m_project)
+	{
 		return m_project->embeddedElementCollection()->exist(collectionPath(false));
+	}
 	else
 	{
 		if (fileSystemPath().isEmpty()) return false;
