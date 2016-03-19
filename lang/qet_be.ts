@@ -838,12 +838,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Selecteer en sleep element &quot; %1&quot; naar het gewenste schema, dubbel klik er op om het te bewerken</translation>
+        <translation>Selecteer en sleep het element &quot; %1&quot; naar het gewenste schemaom in te voegen, dubbel klik er op om het te bewerken</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Dubbelklik om samen te vouwen of uit te vouwen van deze categorie van elementen</translation>
+        <translation>Dubbelklik op deze categorie van elementen om open of toe  te vouwen</translation>
     </message>
 </context>
 <context>
@@ -1559,12 +1559,12 @@ de verwijdering is definitief.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkel dit dossier weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher tous les dossiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle dossiers weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
@@ -4690,7 +4690,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
         <source>&amp;Ouvrir depuis un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Open van een DXF bestand</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
@@ -6528,37 +6528,37 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe naam:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Verwijder</translation>
+        <translation>Verwijder</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished"></translation>
+        <translation>Hernoemen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Het element &quot; %1 &quot; bestaat reeds. Wat wilt u doen ?</translation>
+        <translation>Het element &quot; %1 &quot; bestaat reeds. Wat wilt u doen ?</translation>
     </message>
 </context>
 <context>
