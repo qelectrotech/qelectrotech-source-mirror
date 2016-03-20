@@ -57,8 +57,6 @@ class ElementsLocation
 		void setProject(QETProject *);
 		bool isNull() const;
 		QString toString() const;
-		void fromString(const QString &);
-		static ElementsLocation locationFromString(const QString &);
 
 		bool isElement() const;
 		bool isDirectory() const;

@@ -152,7 +152,8 @@ void ElementsPanel::dragEnterEvent(QDragEnterEvent *e) {
 /**
 	Gere le mouvement lors d'un drag'n drop
 */
-void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
+void ElementsPanel::dragMoveEvent(QDragMoveEvent *e)
+{
 	// scrolle lorsque le curseur est pres des bords
 	int limit = 40;
 	QScrollBar *scroll_bar = verticalScrollBar();
@@ -171,8 +172,8 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
 		return;
 	}
 	
-	// recupere la source (categorie ou element) pour le deplacement / la copie
-	ElementsLocation dropped_location = ElementsLocation::locationFromString(e -> mimeData() -> text());
+		// recupere la source (categorie ou element) pour le deplacement / la copie
+	ElementsLocation dropped_location = ElementsLocation(e -> mimeData() -> text());
 	ElementsCollectionItem *source_item = QETApp::collectionItem(dropped_location, false);
 	if (!source_item) {
 		e -> ignore();
@@ -205,16 +206,17 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
 	Gere le depot lors d'un drag'n drop
 	@param e QDropEvent decrivant le depot
 */
-void ElementsPanel::dropEvent(QDropEvent *e) {
-	// recupere la categorie cible pour le deplacement / la copie
+void ElementsPanel::dropEvent(QDropEvent *e)
+{
+		// recupere la categorie cible pour le deplacement / la copie
 	ElementsCategory *target_category = categoryForPos(e -> pos());
 	if (!target_category) {
 		e -> ignore();
 		return;
 	}
 	
-	// recupere la source (categorie ou element) pour le deplacement / la copie
-	ElementsLocation dropped_location = ElementsLocation::locationFromString(e -> mimeData() -> text());
+		// recupere la source (categorie ou element) pour le deplacement / la copie
+	ElementsLocation dropped_location = ElementsLocation(e -> mimeData() -> text());
 	ElementsCollectionItem *source_item = QETApp::collectionItem(dropped_location, false);
 	if (!source_item) {
 		e -> ignore();

@@ -210,7 +210,7 @@ void DiagramEventAddElement::addElement()
 	if (m_integrate_path.isEmpty())
 		element = ElementFactory::Instance() -> createElement(m_location, 0, &state);
 	else
-		element = ElementFactory::Instance() -> createElement(ElementsLocation::locationFromString(m_integrate_path), 0, &state);
+		element = ElementFactory::Instance() -> createElement(ElementsLocation(m_integrate_path), 0, &state);
 
 		//Build failed
 	if (state)

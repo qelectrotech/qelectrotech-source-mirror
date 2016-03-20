@@ -716,7 +716,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	ElementsCategory *integ_cat = integrationCategory();
 	
 	// accede a l'element a integrer
-	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation::locationFromString(elmt_path));
+	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation(elmt_path));
 	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
 	if (!integ_item || !integ_elmt)
 	{

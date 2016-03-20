@@ -372,42 +372,6 @@ QString ElementsLocation::toString() const {
 }
 
 /**
-	Charge l'emplacemant a partir d'une chaine de caractere du type
-	project42+embed://foo/bar/thing.elmt
-	@param string Une chaine de caracteres representant l'emplacement
-*/
-void ElementsLocation::fromString(const QString &string) {
-	QRegExp embedded("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
-	if (embedded.exactMatch(string)) {
-		bool conv_ok = false;
-		uint project_id = embedded.capturedTexts().at(1).toUInt(&conv_ok);
-		if (conv_ok) {
-			QETProject *the_project = QETApp::project(project_id);
-			if (the_project) {
-				m_collection_path = embedded.capturedTexts().at(2);
-				m_project = the_project;
-				return;
-			}
-		}
-	}
-	
-	// fallback : le chemin devient la chaine complete et aucun projet n'est utilise
-	m_collection_path = string;
-	m_project = 0;
-}
-
-/**
-	@param string Une chaine de caracteres representant l'emplacement
-	@return un emplacemant a partir d'une chaine de caractere du type
-	project42+embed://foo/bar/thing.elmt
-*/
-ElementsLocation ElementsLocation::locationFromString(const QString &string) {
-	ElementsLocation location;
-	location.fromString(string);
-	return(location);
-}
-
-/**
  * @brief ElementsLocation::isElement
  * @return true if this location represent an element
  */
