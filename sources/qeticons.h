@@ -175,6 +175,7 @@ namespace QET {
 		extern QIcon catalonia;
 		extern QIcon cs;
 		extern QIcon de;
+		extern QIcon da;
 		extern QIcon gr;
 		extern QIcon en;
 		extern QIcon es;

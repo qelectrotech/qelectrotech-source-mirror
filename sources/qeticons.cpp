@@ -166,6 +166,7 @@ namespace QET {
 		QIcon catalonia;
 		QIcon cs;
 		QIcon de;
+		QIcon da;
 		QIcon gr;
 		QIcon en;
 		QIcon es;
@@ -429,6 +430,7 @@ void QET::Icons::initIcons() {
 	ar                  .addFile(":/ico/24x16/ar.png");
 	catalonia           .addFile(":/ico/24x16/catalonia.png");
 	cs                  .addFile(":/ico/24x16/cs.png");
+	da                  .addFile(":/ico/24x16/dk.png");
 	de                  .addFile(":/ico/24x16/de.png");
 	gr                  .addFile(":/ico/24x16/gr.png");
 	en                  .addFile(":/ico/24x16/en.png");

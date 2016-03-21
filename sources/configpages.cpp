@@ -330,6 +330,7 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 	lang_combo_box->addItem(QET::Icons::catalonia,    tr("Catalan"), "ca");
 	lang_combo_box->addItem(QET::Icons::cs,           tr("Tchèque"), "cs");
 	lang_combo_box->addItem(QET::Icons::de,           tr("Allemand"), "de");
+	lang_combo_box->addItem(QET::Icons::da,           tr("Danois"), "da");
 	lang_combo_box->addItem(QET::Icons::gr,           tr("Grec"), "el");
 	lang_combo_box->addItem(QET::Icons::en,           tr("Anglais"), "en");
 	lang_combo_box->addItem(QET::Icons::es,           tr("Espagnol"), "es");
