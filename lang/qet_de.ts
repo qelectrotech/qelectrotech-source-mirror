@@ -693,29 +693,29 @@
         <translation>Orientierung für marktierten Text auswählen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="617"/>
+        <location filename="../sources/diagramview.cpp" line="618"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="817"/>
+        <location filename="../sources/diagramview.cpp" line="818"/>
         <source>Propriétés de la sélection</source>
         <translation>Auswahl Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="819"/>
+        <location filename="../sources/diagramview.cpp" line="820"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Die Auswahl enthält %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="855"/>
+        <location filename="../sources/diagramview.cpp" line="856"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Neue Leiterfarbe wählen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="874"/>
+        <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Leitereigenschaften ändern</translation>
@@ -1631,95 +1631,95 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="407"/>
+        <location filename="../sources/elementspanel.cpp" line="409"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen des Projekts</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="430"/>
+        <location filename="../sources/elementspanel.cpp" line="432"/>
         <source>Cartouches embarqués</source>
         <translation>eingebettete Zeichnungsköpfe</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="431"/>
+        <location filename="../sources/elementspanel.cpp" line="433"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen dieser Sammlung</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="452"/>
+        <location filename="../sources/elementspanel.cpp" line="454"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Doppelklick zum Öffnen oder Schließen der Bauteilkategorie</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="464"/>
+        <location filename="../sources/elementspanel.cpp" line="466"/>
         <source>Collection embarquée</source>
         <translation>eingebettete Sammlung</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="465"/>
+        <location filename="../sources/elementspanel.cpp" line="467"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen dieser Sammlung</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="440"/>
+        <location filename="../sources/elementspanel.cpp" line="442"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Ziehen/ablegen, um die Zeichnungskopf auf die Folie anzuwenden.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="473"/>
+        <location filename="../sources/elementspanel.cpp" line="475"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation>Ziehen/ablegen, um das Bauteil &quot;%1&quot; auf die Folie einzufügen. Doppelklick, um es zu bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="581"/>
+        <location filename="../sources/elementspanel.cpp" line="583"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Zeichnungsköpfe&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="582"/>
+        <location filename="../sources/elementspanel.cpp" line="584"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Diese Sammlung von Zeichnungsköpfen kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="590"/>
+        <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Bauteile&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="591"/>
+        <location filename="../sources/elementspanel.cpp" line="593"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Diese Sammlung von Bauteilen kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="599"/>
+        <location filename="../sources/elementspanel.cpp" line="601"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Zeichnungskopf-Sammlung</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="600"/>
+        <location filename="../sources/elementspanel.cpp" line="602"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Dies ist Ihre persönliche Zeichnungskopf-Sammlung. Benutzen Sie sie, um Ihre eigenen Zeichnungsköpfe zu erstellen, ablegen und bearbeiten.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="608"/>
+        <location filename="../sources/elementspanel.cpp" line="610"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Bauteil-Sammlung</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="609"/>
+        <location filename="../sources/elementspanel.cpp" line="611"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Dies ist Ihre persönliche Bauteil-Sammlung. Benutzen Sie sie, um Ihre eigenen Bauteile zu erstellen, ablegen und bearbeiten.</translation>
@@ -1922,7 +1922,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="402"/>
+        <location filename="../sources/configpages.cpp" line="403"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportieren</translation>
@@ -2231,66 +2231,71 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
+        <source>Danois</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="334"/>
         <source>Grec</source>
         <translation>Grieschisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="334"/>
+        <location filename="../sources/configpages.cpp" line="335"/>
         <source>Anglais</source>
         <translation>Englisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="335"/>
+        <location filename="../sources/configpages.cpp" line="336"/>
         <source>Espagnol</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="336"/>
+        <location filename="../sources/configpages.cpp" line="337"/>
         <source>Français</source>
         <translation>Französisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="337"/>
+        <location filename="../sources/configpages.cpp" line="338"/>
         <source>Croate</source>
         <translation>Kroatisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="338"/>
+        <location filename="../sources/configpages.cpp" line="339"/>
         <source>Italien</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="339"/>
+        <location filename="../sources/configpages.cpp" line="340"/>
         <source>Polonais</source>
         <translation>Polnisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="340"/>
+        <location filename="../sources/configpages.cpp" line="341"/>
         <source>Portugais</source>
         <translation>Portugesisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="341"/>
+        <location filename="../sources/configpages.cpp" line="342"/>
         <source>Roumains</source>
         <translation>Rumänisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="342"/>
+        <location filename="../sources/configpages.cpp" line="343"/>
         <source>Russe</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="343"/>
+        <location filename="../sources/configpages.cpp" line="344"/>
         <source>Slovène</source>
         <translation>Slowenisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="344"/>
+        <location filename="../sources/configpages.cpp" line="345"/>
         <source>Pays-Bas</source>
         <translation>Niederländisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="345"/>
+        <location filename="../sources/configpages.cpp" line="346"/>
         <source>Belgique-Flemish</source>
         <translation>Belgien-Flandern</translation>
     </message>
@@ -3095,7 +3100,7 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="458"/>
+        <location filename="../sources/configpages.cpp" line="459"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Druck</translation>
@@ -5310,36 +5315,36 @@ les conditions requises ne sont pas valides</source>
         <translation>Ein Problem ist beim Kopieren der Kategorie %1 aufgetretten</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="829"/>
+        <location filename="../sources/qetproject.cpp" line="831"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetretten.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="943"/>
+        <location filename="../sources/qetproject.cpp" line="945"/>
         <source>Liste des Folios</source>
         <translation>Inhaltsverzeichnis</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1059"/>
+        <location filename="../sources/qetproject.cpp" line="1061"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1060"/>
+        <location filename="../sources/qetproject.cpp" line="1062"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Das Dokument wurde vermutlich mit einer nachfolgenden Version von QElectroTech erstellt. Möglicherweise wird das Öffnen ganz oder teilweise scheitern. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1119"/>
+        <location filename="../sources/qetproject.cpp" line="1121"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Projekt wird geöffnet...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1537"/>
+        <location filename="../sources/qetproject.cpp" line="1539"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ein Problem ist beim Kopieren des Bauteils %1 aufgetretten</translation>
     </message>
