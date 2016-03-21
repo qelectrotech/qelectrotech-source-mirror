@@ -2222,7 +2222,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Duński</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
