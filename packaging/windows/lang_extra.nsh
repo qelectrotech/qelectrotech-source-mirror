@@ -312,3 +312,25 @@
         LangString var3              ${LANG_DUTCH_BELGIUM}  "Voorbeel titelhoeken"
         LangString var4              ${LANG_DUTCH_BELGIUM}  "Voorbeeld schema's"
         
+        
+        LangString installed         ${LANG_DANISH} "${SOFT_NAME} er allerede installeret. $\n$\nKlik `Ok` for at fjerne foregående version eller `Annuller` for at annullere opgraderingen." 
+        LangString wrongArch         ${LANG_DANISH} "Dette program er kun for 64 bit systemer."
+        LangString Elements          ${LANG_DANISH}  "Symboler"
+        LangString Electric          ${LANG_DANISH}  "Elektrisk"
+        LangString Logic             ${LANG_DANISH}  "Logisk"
+        LangString Hydraulic         ${LANG_DANISH}  "Hydraulik"
+        LangString Pneumatic         ${LANG_DANISH}  "Pneumatik"
+        LangString Energy            ${LANG_DANISH}  "Energi teknik"
+        LangString water             ${LANG_DANISH}  "VVS teknik"
+        LangString Refrigeration     ${LANG_DANISH}  "Køle teknik"
+        LangString Solar_thermal     ${LANG_DANISH}  "Sol & varme teknik"
+        LangString Lang              ${LANG_DANISH}  "Sprog"
+        LangString Titleblocks       ${LANG_DANISH}  "Titel blokke"
+        LangString Examples          ${LANG_DANISH}  "Eksempler"
+        LangString Check             ${LANG_DANISH}  "Vælg for at starte ${SOFT_NAME}"
+        LangString var1              ${LANG_DANISH}  "Symboler fra officiel samling"
+        LangString var2              ${LANG_DANISH}  "Sprog filer"
+        LangString var3              ${LANG_DANISH}  "Titel blokke eksempler"
+        LangString var4              ${LANG_DANISH}  "Diagram eksempler"
+        
+        
