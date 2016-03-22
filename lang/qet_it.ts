@@ -2229,7 +2229,7 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Danese</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
