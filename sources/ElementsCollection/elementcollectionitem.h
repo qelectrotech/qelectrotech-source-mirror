@@ -52,6 +52,7 @@ class ElementCollectionItem : public QObject
         int childCount() const;
         int columnCount() const;
 		virtual QVariant data(int column, int role);
+		virtual void clearData();
 		virtual QMimeData *mimeData();
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
 		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);

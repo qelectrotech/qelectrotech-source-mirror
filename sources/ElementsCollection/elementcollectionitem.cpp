@@ -235,6 +235,15 @@ QVariant ElementCollectionItem::data(int column, int role)
 }
 
 /**
+ * @brief ElementCollectionItem::clearData
+ * Reset the curent name
+ */
+void ElementCollectionItem::clearData()
+{
+	m_name = QString();
+}
+
+/**
  * @brief ElementCollectionItem::mimeData
  * @return The mime data of this item
  */

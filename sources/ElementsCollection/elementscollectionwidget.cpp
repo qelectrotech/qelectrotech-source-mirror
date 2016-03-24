@@ -28,6 +28,7 @@
 #include "elementscategory.h"
 #include "xmlprojectelementcollectionitem.h"
 #include "qetproject.h"
+#include "qetelementeditor.h"
 
 #include <QVBoxLayout>
 #include <QTreeView>
@@ -244,7 +245,15 @@ void ElementsCollectionWidget::editElement()
 		(eci->type() != FileElementCollectionItem::Type)) return;
 
 	ElementsLocation location(static_cast<FileElementCollectionItem*>(eci)->collectionPath());
-	QETApp::instance()->openElementLocations(QList<ElementsLocation>() << location);
+
+	QETApp *app = QETApp::instance();
+	app->openElementLocations(QList<ElementsLocation>() << location);
+
+	foreach (QETElementEditor *element_editor, app->elementEditors())
+	{
+		if (element_editor->isEditing(location))
+			connect(element_editor, &QETElementEditor::destroyed, eci, &ElementCollectionItem::clearData);
+	}
 }
 
 /**

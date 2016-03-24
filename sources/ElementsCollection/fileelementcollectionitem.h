@@ -47,6 +47,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		QString collectionName() const;
 
 		virtual QVariant data(int column, int role);
+		virtual void clearData();
 		virtual QMimeData *mimeData();
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
 		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);

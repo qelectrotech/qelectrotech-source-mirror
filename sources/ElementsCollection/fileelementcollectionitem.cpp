@@ -183,6 +183,16 @@ QVariant FileElementCollectionItem::data(int column, int role)
 }
 
 /**
+ * @brief FileElementCollectionItem::clearData
+ * Reset the current icon
+ */
+void FileElementCollectionItem::clearData()
+{
+	m_icon = QIcon();
+	ElementCollectionItem::clearData();
+}
+
+/**
  * @brief FileElementCollectionItem::mimeData
  * @return the mime data of this item
  */
