@@ -861,12 +861,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Перетащите элемент на страницу, чтобы вставить элемент « %1 », двойнок клик для правки</translation>
+        <translation>Перетащите элемент на страницу, чтобы вставить элемент « %1 », двойнок клик для правки</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть категорию элементов</translation>
+        <translation>Кликните дважды чтобы свернуть или развенуть категорию элементов</translation>
     </message>
 </context>
 <context>
@@ -1582,12 +1582,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать только эту папку</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher tous les dossiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Прказать все папки</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
@@ -2258,7 +2258,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Датский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
@@ -4736,7 +4736,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
         <source>&amp;Ouvrir depuis un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Открыть из DXF файла</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
@@ -6576,37 +6576,37 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Диалог</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Новое имя :</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Стереть</translation>
+        <translation>Стереть</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Переименовать</translation>
+        <translation>Переименовать</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Текстовая метка</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Элемент « %1 » уже существует. Что вы хотите сделать?</translation>
+        <translation>Элемент « %1 » уже существует. Что вы хотите сделать?</translation>
     </message>
 </context>
 <context>
