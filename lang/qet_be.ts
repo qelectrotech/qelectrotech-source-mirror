@@ -2234,7 +2234,7 @@ Alle elementen in het dossier worden verwijderd.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Deens</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
