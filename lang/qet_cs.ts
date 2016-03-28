@@ -1514,98 +1514,98 @@ Změny budou konečné.</translation>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="87"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Otevřít příslušnou složku</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Éditer l&apos;élément</source>
         <translation>Upravit prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Smazat prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
         <source>Supprimer le dossier</source>
         <translation>Smazat složku</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
         <source>Recharger les collections</source>
         <translation>Nahrát sbírky znovu</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
         <source>Éditer le dossier</source>
         <translation>Upravit složku</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
         <source>Nouveau dossier</source>
         <translation>Nová složka</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Nouvel élément</source>
         <translation>Nový prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
         <source>Rechercher</source>
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Chargement</source>
         <translation>Nahrát</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="262"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="271"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Smazat prvek?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="272"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>Jste si jistý, že chcete smazat tento prvek?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="269"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="278"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Smazání prvku</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="270"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="279"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Prvek se nepodařilo smazat.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="289"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Smazat složku?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="290"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -1613,13 +1613,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Všechny prvky a složky obsažené v této složce budou smazány.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="307"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Smazání složky</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="308"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Složku se nepodařilo smazat.</translation>
@@ -6430,17 +6430,17 @@ Co chcete dělat?</translation>
         <translation>Funkce</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="355"/>
         <source>Collection QET</source>
         <translation>Sbírka QET</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="347"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="357"/>
         <source>Collection utilisateur</source>
         <translation>Vlastní sbírka</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="349"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="359"/>
         <source>Collection inconnue</source>
         <translation>Neznámá sbírka</translation>
     </message>

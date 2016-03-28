@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ar_SA">
+<TS version="2.1" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1540,98 +1540,98 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="87"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>فتح المجلد المتناضر</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Éditer l&apos;élément</source>
         <translation>تحرير العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
         <source>Supprimer l&apos;élément</source>
         <translation>حذف العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
         <source>Supprimer le dossier</source>
         <translation>حذف المجلد</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
         <source>Recharger les collections</source>
         <translation>إعادة تحميل الأصناف</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
         <source>Éditer le dossier</source>
         <translation>تحرير المجلد</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
         <source>Nouveau dossier</source>
         <translation>مجلد جديد</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Nouvel élément</source>
         <translation>عنصر جديد</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
         <translation>عرض هذا السجل فقط</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
         <translation>عرض كلّ السجلات</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
         <source>Rechercher</source>
         <translation>ابحث</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Chargement</source>
         <translation>تحميل</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="262"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="271"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>حذف العنصر ؟</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="272"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>هل أنت مُتأكّد من حذف هذا العنصر ؟</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="269"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="278"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>حذف العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="270"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="279"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>فشل حذف العنصر.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="289"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>حذف المجلد ؟</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="290"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -1639,13 +1639,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 سيتمّ حذف كلّ العناصر الموجودة بالمجلد.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="307"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>حذف مجلد</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="308"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>فشل حذف المجلد.</translation>
@@ -6059,6 +6059,11 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6472,17 +6477,17 @@ Que désirez vous faire ?</source>
         <translation>وظيفة</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="355"/>
         <source>Collection QET</source>
         <translation>تشكيلة QET</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="347"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="357"/>
         <source>Collection utilisateur</source>
         <translation>تشكيلة المستعمل</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="349"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="359"/>
         <source>Collection inconnue</source>
         <translation>تشكيلة غير معروفة </translation>
     </message>

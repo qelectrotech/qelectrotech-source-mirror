@@ -1511,99 +1511,99 @@ Los cambios serán definitivos.</translation>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="87"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Abrir la carpeta correspondiente</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Éditer l&apos;élément</source>
         <translation>Editar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Eliminar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
         <source>Supprimer le dossier</source>
         <translation>Eliminar la carpeta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
         <source>Recharger les collections</source>
         <translatorcomment>Plural</translatorcomment>
         <translation>Recargar las colecciones</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
         <source>Éditer le dossier</source>
         <translation>Editar la carpeta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
         <source>Nouveau dossier</source>
         <translation>Nueva carpeta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Nouvel élément</source>
         <translation>Nuevo elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
         <translation>Mostrar solo esta carpeta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
         <translation>Mostrar todas las carpetas</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
         <source>Rechercher</source>
         <translation>Buscar</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Chargement</source>
         <translation>Cargando</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="262"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="271"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>¿Borrar el elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="272"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>¿Está seguro que desea eliminar este elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="269"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="278"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Borrado del elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="270"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="279"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>El borrado del elemento falló.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="289"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Eliminar la carpeta?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="290"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -1611,13 +1611,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="307"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Eliminar la carpeta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="308"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>El borrado de la carpeta fallo.</translation>
@@ -6427,17 +6427,17 @@ Que désirez vous faire ?</source>
         <translation>Función</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="355"/>
         <source>Collection QET</source>
         <translation>Colección QET</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="347"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="357"/>
         <source>Collection utilisateur</source>
         <translation>Colección de usuario</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="349"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="359"/>
         <source>Collection inconnue</source>
         <translation>Colección desconocida</translation>
     </message>

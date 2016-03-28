@@ -1540,98 +1540,98 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="87"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Открыть директорию</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="88"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редактировать элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Удалить элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
         <source>Supprimer le dossier</source>
         <translation>Удалить папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="91"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
         <source>Recharger les collections</source>
         <translation>Перезагрузить коллекции</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="92"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
         <source>Éditer le dossier</source>
         <translation>Редактировать папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="93"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
         <source>Nouveau dossier</source>
         <translation>Новая папка</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="94"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
         <source>Nouvel élément</source>
         <translation>Новый элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="95"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
         <translation>Показать только эту папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
         <translation>Прказать все папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="110"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
         <source>Rechercher</source>
         <translation>Искать</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Chargement</source>
         <translation>Загрузка</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="262"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="271"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Удалить элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="272"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>Вы действительно хотите удалить этот элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="269"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="278"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Удаление элемента</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="270"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="279"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление элемента не удалось.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="289"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Удалять папку?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="290"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -1639,13 +1639,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Будут удалены все элементы и все содержимое этой папки.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="307"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Удаление папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="308"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление папки не удалось.</translation>
@@ -6480,17 +6480,17 @@ Que désirez vous faire ?</source>
         <translation>Функция</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="355"/>
         <source>Collection QET</source>
         <translation>Коллекция QET</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="347"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="357"/>
         <source>Collection utilisateur</source>
         <translation>Коллекция пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="349"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="359"/>
         <source>Collection inconnue</source>
         <translation>Неизвестная коллекция</translation>
     </message>
