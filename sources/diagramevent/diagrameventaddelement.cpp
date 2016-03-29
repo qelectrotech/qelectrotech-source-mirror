@@ -16,8 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
-#include "elementscollectionitem.h"
-#include "qetapp.h"
 #include "integrationmoveelementshandler.h"
 #include "elementfactory.h"
 #include "diagram.h"
@@ -39,8 +37,7 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 	m_element(nullptr)
 {
 		//Check if there is an element at this location
-	ElementsCollectionItem *item = QETApp::collectionItem(location);
-	if (item)
+	if (location.isElement() && location.exist())
 	{
 			//location is an element, we build it, if build fail,
 			//m_running stay to false (by default), so this interface will be deleted at next event

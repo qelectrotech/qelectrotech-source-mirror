@@ -16,9 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementfactory.h"
-#include "elementdefinition.h"
-#include "elementscollectionitem.h"
-#include "qetapp.h"
 #include "QDomElement"
 #include "simpleelement.h"
 #include "reportelement.h"
@@ -26,7 +23,7 @@
 #include "slaveelement.h"
 #include "terminalelement.h"
 
-ElementFactory* ElementFactory::factory_ = 0;
+ElementFactory* ElementFactory::factory_ = nullptr;
 /**
  * @brief ElementFactory::createElement
  * @param location create element at this location
@@ -36,20 +33,16 @@ ElementFactory* ElementFactory::factory_ = 0;
  */
 Element * ElementFactory::createElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state)
 {
-		// recupere la definition de l'element
-	ElementsCollectionItem *element_item = QETApp::collectionItem(location);
-	ElementDefinition *element_definition;
-	if (!element_item ||\
-		!element_item -> isElement() ||\
-		!(element_definition = qobject_cast<ElementDefinition *>(element_item)))
+	if (Q_UNLIKELY( !(location.isElement() && location.exist()) ))
 	{
-		if (state) *state = 1;
-		return 0;
+		if (state)
+			*state = 1;
+		return nullptr;
 	}
 
-	if (element_definition->xml().hasAttribute("link_type"))
+	if (location.xml().hasAttribute("link_type"))
 	{
-		QString link_type = element_definition->xml().attribute("link_type");
+		QString link_type = location.xml().attribute("link_type");
 		if (link_type == "next_report" || link_type == "previous_report") return (new ReportElement(location, link_type, qgi, state));
 		if (link_type == "master")   return (new MasterElement   (location, qgi, state));
 		if (link_type == "slave")    return (new SlaveElement    (location, qgi, state));

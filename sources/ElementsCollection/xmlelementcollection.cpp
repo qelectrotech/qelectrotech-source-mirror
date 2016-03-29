@@ -285,31 +285,16 @@ QDomElement XmlElementCollection::element(const QString &path)
 QDomElement XmlElementCollection::directory(const QString &path)
 {
 	QStringList path_list = path.split("/");
-	QDomElement dom_element = m_dom_document.documentElement();
+	QDomElement parent_dom = m_dom_document.documentElement();
 
 	for (int i=0 ; i<path_list.size() ; i++)
 	{
-		QDomNodeList node_list = dom_element.elementsByTagName("category");
-		if (node_list.isEmpty()) return QDomElement();
-
-		for (int j=0 ; j <node_list.size() ; j++)
-		{
-			QDomNode node = node_list.at(j);
-			if (node.isElement())
-			{
-				QDomElement qde = node.toElement();
-				if (qde.attribute("name") == path_list.at(i))
-				{
-					dom_element = node.toElement();
-					j = node_list.size(); //Use to go out of the for loop
-				}
-				else if (j == node_list.size()-1)
-					return QDomElement();
-			}
-		}
+		QDomElement child_dom = child(parent_dom, path_list.at(i));
+		if (child_dom.isNull()) return QDomElement();
+		else parent_dom = child_dom;
 	}
 
-	return dom_element;
+	return parent_dom;
 }
 
 /**

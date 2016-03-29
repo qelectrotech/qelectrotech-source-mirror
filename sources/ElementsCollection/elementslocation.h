@@ -67,19 +67,16 @@ class ElementsLocation
 		XmlElementCollection *projectCollection() const;
 		NamesList nameList();
 
-		QDomElement xml();
-		QUuid uuid();
-		QIcon icon();
-		QString name();
+		QDomElement xml() const;
+		QUuid uuid() const;
+		QIcon icon() const;
+		QString name() const;
 		QString fileName() const;
 	
 	private:
 		QString m_collection_path;
 		QString m_file_system_path;
 		QETProject *m_project = nullptr;
-		QDomElement m_xml;
-		QUuid m_uuid;
-		QIcon m_icon;
 	
 	public:
 		static int MetaTypeId; ///< Id of the corresponding Qt meta type

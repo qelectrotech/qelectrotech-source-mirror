@@ -45,7 +45,6 @@ class CustomElement : public FixedElement
 	
 		// attributes
 	protected:
-		int elmt_state; // hold the error code in case the instanciation fails, or 0 if everything went well
 		NamesList names;
 		ElementsLocation location_;
 		QPicture drawing;
@@ -75,8 +74,6 @@ class CustomElement : public FixedElement
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;
 	ElementsLocation location() const;
-	bool isNull() const;
-	int state() const;
 	QString name() const;
 	ElementTextItem* taggedText(const QString &tagg) const;
 	
@@ -112,30 +109,6 @@ inline QString CustomElement::typeId() const {
 */
 inline ElementsLocation CustomElement::location() const {
 	return(location_);
-}
-
-/**
-	@return true if this element is null, i.e. if its XML description could not
-	be loaded.
-*/
-inline bool CustomElement::isNull() const {
-	return(elmt_state);
-}
-
-/**
-	@return An integer representing the state of this element:
-		- 0: instantiation succeeded
-		- 1: the file does not exist
-		- 2: the file could not be opened
-		- 3: The file is not a valid XML document
-		- 4: The XML document does not have a "definition" root element.
-		- 5: The definition attributes are missing or invalid
-		- 6: The definition is empty
-		- 7: The parsing of an XML element describing an element drawing primitive failed
-		- 8: No primitive could be loadedAucune partie du dessin n'a pu etre chargee
-*/
-inline int CustomElement::state() const {
-	return(elmt_state);
 }
 
 /**

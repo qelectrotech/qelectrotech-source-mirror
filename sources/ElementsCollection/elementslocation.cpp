@@ -57,10 +57,7 @@ ElementsLocation::~ElementsLocation() {
 ElementsLocation::ElementsLocation(const ElementsLocation &other) :
 	m_collection_path(other.m_collection_path),
 	m_file_system_path(other.m_file_system_path),
-	m_project(other.m_project),
-	m_xml(other.m_xml),
-	m_uuid(other.m_uuid),
-	m_icon(other.m_icon)
+	m_project(other.m_project)
 {}
 
 /**
@@ -84,9 +81,6 @@ ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 	m_collection_path = other.m_collection_path;
 	m_file_system_path = other.m_file_system_path;
 	m_project = other.m_project;
-	m_xml = other.m_xml;
-	m_uuid = other.m_uuid;
-	m_icon = other.m_icon;
 	return(*this);
 }
 
@@ -491,17 +485,14 @@ NamesList ElementsLocation::nameList()
  * @return The definition of this element.
  * The definition can be null.
  */
-QDomElement ElementsLocation::xml()
+QDomElement ElementsLocation::xml() const
 {
-	if (!m_xml.isNull())
-		return m_xml;
-
 	if (!m_project)
 	{
 		QFile file (m_file_system_path);
 		QDomDocument docu;
 		if (docu.setContent(&file))
-			m_xml = docu.documentElement().cloneNode().toElement();
+			return docu.documentElement().cloneNode().toElement();
 	}
 	else
 	{
@@ -509,33 +500,32 @@ QDomElement ElementsLocation::xml()
 		if (isElement())
 		{
 			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
-			m_xml = element.firstChildElement("definition");
+			return element.firstChildElement("definition");
 		}
 		else
 		{
 			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
-			m_xml = element;
+			return element;
 		}
 	}
 
-	return m_xml;
+	return QDomElement();
 }
 
 /**
  * @brief ElementsLocation::uuid
  * @return The uuid of the pointed element
+ * Uuid can be null
  */
-QUuid ElementsLocation::uuid()
+QUuid ElementsLocation::uuid() const
 {
-	if (!m_uuid.isNull()) return m_uuid;
-
 		//Get the uuid of element
 	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
 
 	if (!list_.isEmpty())
-		m_uuid = QUuid(list_.first().attribute("uuid"));
+		return QUuid(list_.first().attribute("uuid"));
 
-	return m_uuid;
+	return QUuid();
 }
 
 /**
@@ -543,15 +533,14 @@ QUuid ElementsLocation::uuid()
  * @return The icon of the represented element.
  * If icon can't be set, return a null QIcon
  */
-QIcon ElementsLocation::icon()
+QIcon ElementsLocation::icon() const
 {
-	if (!m_icon.isNull()) return m_icon;
-
 	if (!m_project)
 	{
 		ElementsCollectionCache *cache = QETApp::collectionCache();
-		if (cache->fetchElement(*this))
-			m_icon = QIcon(cache->pixmap());
+		ElementsLocation loc(*this); //Make a copy of this to keep this method const
+		if (cache->fetchElement(loc))
+			return QIcon(cache->pixmap());
 	}
 	else
 	{
@@ -560,22 +549,23 @@ QIcon ElementsLocation::icon()
 		Element *elmt = factory->createElement(*this, 0, &state);
 
 		if (state == 0)
-			m_icon = QIcon(elmt->pixmap());
+			return QIcon(elmt->pixmap());
 	}
 
-	return m_icon;
+	return QIcon();
 }
 
 /**
  * @brief ElementLocation::name
  * @return The name of the represented element in the current local
  */
-QString ElementsLocation::name()
+QString ElementsLocation::name() const
 {
 	if (!m_project)
 	{
 		ElementsCollectionCache *cache = QETApp::collectionCache();
-		if (cache->fetchElement(*this))
+		ElementsLocation loc(*this); //Make a copy of this to keep this method const
+		if (cache->fetchElement(loc))
 			return cache->name();
 		else
 			return QString();

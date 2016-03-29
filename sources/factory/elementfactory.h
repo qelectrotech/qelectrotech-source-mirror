@@ -23,7 +23,6 @@
 class Element;
 class ElementsLocation;
 class QGraphicsItem;
-class Diagram;
 
 /**
  * @brief The ElementFactory class

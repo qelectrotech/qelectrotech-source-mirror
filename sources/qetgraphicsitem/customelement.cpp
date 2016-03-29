@@ -46,48 +46,29 @@
 */
 CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	FixedElement(qgi),
-	elmt_state(-1),
 	location_(location),
 	forbid_antialiasing(false)
 {
-	// recupere la definition de l'element
-	ElementsCollectionItem *element_item = QETApp::collectionItem(location);
-	ElementDefinition *element_definition;
-	if (
-		!element_item ||\
-		!element_item -> isElement() ||\
-		!(element_definition = qobject_cast<ElementDefinition *>(element_item))
-	) {
+
+	if(Q_UNLIKELY( !(location.isElement() && location.exist()) ))
+	{
 		if (state) *state = 1;
-		elmt_state = 1;
-		return;
-	}
-	
-	if (!element_definition -> isReadable()) {
-		if (state) *state = 2;
-		elmt_state = 2;
-		return;
-	}
-	
-	if (element_definition -> isNull()) {
-		if (state) *state = 3;
-		elmt_state = 3;
 		return;
 	}
 
-	//Start from empty lists.
+		//Start from empty lists.
 	list_lines_.clear();
 	list_rectangles_.clear();
 	list_circles_.clear();
 	list_polygons_.clear();
 	list_arcs_.clear();
 
-	buildFromXml(element_definition -> xml(), &elmt_state);
+	int elmt_state;
+	buildFromXml(location.xml(), &elmt_state);
 	if (state) *state = elmt_state;
 	if (elmt_state) return;
 	
 	if (state) *state = 0;
-	elmt_state = 0;
 }
 
 /**
@@ -106,7 +87,8 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 */
 bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	
-	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element") {
+	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element")
+	{
 		if (state) *state = 4;
 		return(false);
 	}
