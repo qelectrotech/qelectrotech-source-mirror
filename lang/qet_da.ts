@@ -5127,60 +5127,59 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="39"/>
         <source>QElectroTech : Aperçu avant impression</source>
-        <translation type="unfinished">QElectroTech: Vis udskrift (5093)</translation>
+        <translation>QElectroTech: Vis udskrift</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Vælg alle (5098)</translation>
+        <translation>Vælg alle</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Fravælg alle (5103)</translation>
+        <translation>Vælg ingen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Ark til udskrift: (5108)</translation>
+        <translation>Ark til udskrift:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="366"/>
         <source>Cacher la liste des folios</source>
-        <translation type="unfinished">Skjul ark liste (5114)</translation>
+        <translation>Skjul ark liste</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="382"/>
         <source>Cacher les options d&apos;impression</source>
-        <translation type="unfinished">
-Skjul udskriftsindstillinger (5121)</translation>
+        <translation>Skjul udskriftsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="178"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Tilpas bredde (5126)</translation>
+        <translation>Tilpas bredde</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="179"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Tilpas side (5131)</translation>
+        <translation>Tilpas side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="180"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Forstør (5136)</translation>
+        <translation>Forstør</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="182"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Formindsk (5141)</translation>
+        <translation>Formindsk</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="183"/>
         <source>Paysage</source>
-        <translation type="unfinished">Landskab (5146)</translation>
+        <translation>Landskab</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="184"/>
@@ -5190,57 +5189,57 @@ Skjul udskriftsindstillinger (5121)</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="185"/>
         <source>Première page</source>
-        <translation type="unfinished">Første side (5156)</translation>
+        <translation>Forside</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="186"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Foregående side (5161)</translation>
+        <translation>Foregående side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="187"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Næste side (5166)</translation>
+        <translation>Næste side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="188"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Nyeste side (5171)</translation>
+        <translation>Seneste side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="189"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished">Vis side (5176)</translation>
+        <translation>Vis side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="190"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Vis 2 sider (5181)</translation>
+        <translation>Vis 2 sider</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="191"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Vis eksempel for alle sider (5186)</translation>
+        <translation>Vis eksempel for alle sider</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="192"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Side indstilling (5191)</translation>
+        <translation>Side indstilling</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="209"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation type="unfinished">Side indstilling (ikke tilgængelig i Windows for PDF/PS) (5196)</translation>
+        <translation>Side indstilling (ikke tilgængelig i Windows for PDF/PS)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="237"/>
         <source>Options d&apos;impression</source>
-        <translation type="unfinished">Udskriftsindstillinger (5201)</translation>
+        <translation>Udskriftsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="238"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Brug hele siden (5206)</translation>
+        <translation>Brug hele siden</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="240"/>
@@ -5250,7 +5249,7 @@ Skjul udskriftsindstillinger (5121)</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Tilpas ark til side (5216)</translation>
+        <translation>Tilpas ark til side</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
@@ -5260,22 +5259,22 @@ Skjul udskriftsindstillinger (5121)</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
         <source>Afficher la liste des folios</source>
-        <translation type="unfinished">Vis ark liste (5226)</translation>
+        <translation>Vis ark liste</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="264"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Udskriv (5231)</translation>
+        <translation>Udskriv</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="384"/>
         <source>Afficher les options d&apos;impression</source>
-        <translation type="unfinished">Vis udskriftsindstillinger (5236)</translation>
+        <translation>Vis udskriftsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="411"/>
         <source>%1 %</source>
-        <translation type="unfinished">%1 % (5241)</translation>
+        <translation>%1 %</translation>
     </message>
 </context>
 <context>
@@ -5318,7 +5317,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qetproject.cpp" line="1061"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Advarsel (5284)</translation>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="287"/>
@@ -5336,7 +5335,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qetproject.cpp" line="303"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
-        <translation type="unfinished">%1 [skrivebeskyttet] (5302)</translation>
+        <translation>%1 [skrivebeskyttet]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="311"/>
@@ -5710,11 +5709,11 @@ Hvad skal ske? (5268)</translation>
  - le tiret [-], l&apos;underscore [_] et le point [.]
 </source>
         <comment>tooltip content when editing a filename</comment>
-        <translation type="unfinished">Tilladte karakterer er:
+        <translation>Tilladte karakterer er:
  - tal [0-9]
  - små bogstaver [a-z]
  - bindestreg [-], understreg [_], punktum [.]
- (5679)</translation>
+</translation>
     </message>
 </context>
 <context>
@@ -6450,13 +6449,13 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished">Eks. (6415)</translation>
+        <translation>Eks.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished">Eksempel (6421)</translation>
+        <translation>Eksempel</translation>
     </message>
 </context>
 <context>
@@ -6464,7 +6463,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="608"/>
         <source>une shape</source>
-        <translation type="unfinished">en figur (6429)</translation>
+        <translation>en figur</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="604"/>
@@ -6474,7 +6473,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="469"/>
         <source>Modifier %1</source>
-        <translation type="unfinished">Redigere %1 (6439)</translation>
+        <translation>Rediger %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
@@ -6489,7 +6488,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="607"/>
         <source>une polyligne</source>
-        <translation type="unfinished">en flerkant (6454)</translation>
+        <translation>en flerkant</translation>
     </message>
 </context>
 <context>
@@ -6525,37 +6524,37 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog (6483)</translation>
+        <translation>Dialogboks</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished">Nyt navn: (6484)</translation>
+        <translation>Nyt navn:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Knuse (6485)</translation>
+        <translation>Overskriv</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Omdøbe (6486)</translation>
+        <translation>Omdøb</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished">Annuller (6487)</translation>
+        <translation>Annuller</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket (6488)</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Element « %1 » findes allerede. Hvad skal ske? (6489)</translation>
+        <translation>Symbol « %1 » findes allerede. Hvad skal ske?</translation>
     </message>
 </context>
 <context>
@@ -6594,12 +6593,12 @@ Opret brugertilpasset tekst med brug af følgende variabler:
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="44"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slet variabel nummerering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; (6521)</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slet variabel nummerering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="61"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tilføj variabel nummerering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; (6526)</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tilføj variabel nummerering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="20"/>
@@ -6609,12 +6608,12 @@ Opret brugertilpasset tekst med brug af følgende variabler:
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished">Foregående (6536)</translation>
+        <translation>Foregående</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished">Næste (6541)</translation>
+        <translation>Næste</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6727,87 +6726,87 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="120"/>
         <source>Remplissage</source>
-        <translation type="unfinished">Fylde (6654)</translation>
+        <translation>Fyld</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="126"/>
         <source>Style</source>
-        <translation type="unfinished">Stil (6659)</translation>
+        <translation>Typografi</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="134"/>
         <source>Aucun</source>
-        <translation type="unfinished">Ingen (6664)</translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="139"/>
         <source>Plein</source>
-        <translation type="unfinished">Fuld (6669)</translation>
+        <translation>Fuld</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="144"/>
         <source>Densité 1</source>
-        <translation type="unfinished">Tæthed 1 (6674)</translation>
+        <translation>Tæthed 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="149"/>
         <source>Densité 2</source>
-        <translation type="unfinished">Tæthed 2 (6679)</translation>
+        <translation>Tæthed 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="154"/>
         <source>Densité 3</source>
-        <translation type="unfinished">Tæthed 3 (6684)</translation>
+        <translation>Tæthed 3</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="159"/>
         <source>Densité 4</source>
-        <translation type="unfinished">Tæthed 4 (6689)</translation>
+        <translation>Tæthed 4</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="164"/>
         <source>Densité 5</source>
-        <translation type="unfinished">Tæthed 5 (6694)</translation>
+        <translation>Tæthed 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="169"/>
         <source>Densité 6</source>
-        <translation type="unfinished">Tæthed 6 (6699)</translation>
+        <translation>Tæthed 6</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="174"/>
         <source>Densité 7</source>
-        <translation type="unfinished">Tæthed 7 (6704)</translation>
+        <translation>Tæthed 7</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="179"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Vandret (6709)</translation>
+        <translation>Vandret</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="184"/>
         <source>Vertical</source>
-        <translation type="unfinished">Lodret (6714)</translation>
+        <translation>Lodret</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="189"/>
         <source>Croix</source>
-        <translation type="unfinished">Kryds (6719)</translation>
+        <translation>Kors</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
         <source>Diagonal arrière</source>
-        <translation type="unfinished">Skrå bagerst (6724)</translation>
+        <translation>Skraveret venstre</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
         <source>Diagonal avant</source>
-        <translation type="unfinished">Skrå forrest (6729)</translation>
+        <translation>Skraveret højre</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
         <source>Diagonal en croix</source>
-        <translation type="unfinished">Kryds (6734)</translation>
+        <translation>Kryds</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="229"/>
@@ -6822,7 +6821,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished">Redigere egenskab for oprindelig (6749)</translation>
+        <translation>Rediger egenskab for oprindelig</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
@@ -6837,7 +6836,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="143"/>
         <source>Fermer le polygone</source>
-        <translation type="unfinished">Luk flerkanten (6764)</translation>
+        <translation>Luk flerkant</translation>
     </message>
 </context>
 <context>
@@ -7199,7 +7198,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished">Flyt en klemme (7126)</translation>
+        <translation>Flyt klemme</translation>
     </message>
 </context>
 <context>
@@ -7219,7 +7218,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="47"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished">Rotationsvinkel:</translation>
+        <translation>Rotationsvinkel:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
@@ -7254,17 +7253,17 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished">Redigere tekstfelt (7181)</translation>
+        <translation>Rediger tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Ændre tekstfelt størrelse (7186)</translation>
+        <translation>Rediger tekstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished">Ændre tekstfelt farve (7191)</translation>
+        <translation>Rediger tekstfelt farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
@@ -7274,7 +7273,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Flytte tekstfelt (7201)</translation>
+        <translation>Flyt tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -7287,7 +7286,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="42"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished">Standard rotationsvinkel:</translation>
+        <translation>Standard rotationsvinkel:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
@@ -7342,32 +7341,32 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished">Redigere tekstfelt indhold (7269)</translation>
+        <translation>Rediger tekstfelt indhold</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Redigere teḱstfelt størrelse (7274)</translation>
+        <translation>Rediger teḱstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation type="unfinished">Redigere tekstfelt egenskab (7279)</translation>
+        <translation>Rediger tekstfelt egenskab</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation type="unfinished">Rediger tekstfelt rotationsvinkel</translation>
+        <translation>Rediger tekstfelt rotationsvinkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation type="unfinished">Redigere tekstfelt mærkat (7289)</translation>
+        <translation>Rediger tekstfelt mærke</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Flyt tekstfelt (7294)</translation>
+        <translation>Flyt tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -7376,37 +7375,37 @@ De øvrige felter anvendes ikke.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="118"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Bredde: (7303)</translation>
+        <translation>Bredde:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation type="unfinished">Absolut (7309)</translation>
+        <translation>Absolut</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished">Forhold til samlet (7315)</translation>
+        <translation>Forhold til samlet</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished">Forhold til resterende (7321)</translation>
+        <translation>Forhold til resterende</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">% (7327)</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">piksel (7333)</translation>
+        <translation>piksel</translation>
     </message>
 </context>
 <context>
@@ -7431,7 +7430,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="236"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished">Titelblok skabelon lager (7358)</translation>
+        <translation>Titelblok skabelon lager</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="55"/>
@@ -7610,7 +7609,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
-        <translation type="unfinished">Ingen logo (7537)</translation>
+        <translation>Ingen logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
@@ -7830,7 +7829,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="196"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Erstat (7757)</translation>
+        <translation>Erstat</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
@@ -7881,7 +7880,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="337"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished">Omdøbe logo (7808)</translation>
+        <translation>Omdøb logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="342"/>
@@ -7905,91 +7904,91 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation type="unfinished">Ændre kolonne bredde (7832)</translation>
+        <translation>Ændr kolonne bredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation type="unfinished">Bredde: (7838)</translation>
+        <translation>Bredde:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation type="unfinished">Ændre række højde (7844)</translation>
+        <translation>Ændr række højde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation type="unfinished">Højde: (7850)</translation>
+        <translation>Højde:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Tilføj kolonne (før) (7856)</translation>
+        <translation>Tilføj kolonne (før)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Tilføj række (før) (7862)</translation>
+        <translation>Tilføj række (før)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Tilføj kolonne (efter) (7868)</translation>
+        <translation>Tilføj kolonne (efter)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Tilføj række (efter) (7874)</translation>
+        <translation>Tilføj række (efter)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Redigere kolonne størrelse (7880)</translation>
+        <translation>Rediger kolonne størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Redigere række størrelse (7886)</translation>
+        <translation>Rediger række størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Slet kolonne (7892)</translation>
+        <translation>Slet kolonne</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Slet række (7898)</translation>
+        <translation>Slet række</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Redigere bredde for forhåndsvisning (7904)</translation>
+        <translation>Rediger forhåndsvisningsbredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation type="unfinished">[%1piksel] (7910)</translation>
+        <translation>[%1piksel]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="618"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation type="unfinished">[%1piksel] (7916)</translation>
+        <translation>[%1piksel]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="671"/>
@@ -8000,17 +7999,17 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="733"/>
         <source>%1px</source>
-        <translation type="unfinished">%1piksel (7927)</translation>
+        <translation>%1piksel</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished">Ændre bredde på oversigt (7932)</translation>
+        <translation>Ændr oversigt bredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished">Bredde på forhåndsvisning: (7937)</translation>
+        <translation>Forhåndsvisning bredde på f: (7937):</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -8018,15 +8017,16 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished">Minimum længde: %1px
-Maksimum længde: %2px (7946)</translation>
+        <translation>Minimum længde: %1piksel
+Maksimum længde: %2piksel
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished">Minimum længde: %1px (7953)</translation>
+        <translation>Minimum længde: %1piksel</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
@@ -8041,7 +8041,7 @@ Maksimum længde: %2px (7946)</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="138"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished">Ikke navngivet (id %1) titelblokke (7968)</translation>
+        <translation>Ikke navngivet projekt titelblokke (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="146"/>
@@ -8158,42 +8158,42 @@ Maksimum længde: %2px (7946)</translation>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket (8085)</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Ikke navngivet projekt (8090)</translation>
+        <translation>Ikke navngivet projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation type="unfinished">Projekt: (8095)</translation>
+        <translation>Projekt:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
-        <translation type="unfinished">Vælg (8100)</translation>
+        <translation>Vælg</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
-        <translation type="unfinished">Navn (8105)</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Ikke navngivet ark (8110)</translation>
+        <translation>Ikke navngivet ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished">Fravælg alle (8115)</translation>
+        <translation>Vælg ingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished">Vælg alle (8120)</translation>
+        <translation>Vælg alle</translation>
     </message>
 </context>
 <context>
@@ -8209,7 +8209,7 @@ Maksimum længde: %2px (7946)</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished">Indsætte HTML enhed (8136)</translation>
+        <translation>Indsæt HTML enhed</translation>
     </message>
 </context>
 <context>
@@ -8276,32 +8276,32 @@ Maksimum længde: %2px (7946)</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="480"/>
         <source>Left Align</source>
-        <translation type="unfinished">Venstre justere (8202)</translation>
+        <translation>Venstre juster</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="485"/>
         <source>Center</source>
-        <translation type="unfinished">Centrer (8207)</translation>
+        <translation>Centrer</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="490"/>
         <source>Right Align</source>
-        <translation type="unfinished">Højre justere (8212)</translation>
+        <translation>Højre juster</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="495"/>
         <source>Justify</source>
-        <translation type="unfinished">Justere (8217)</translation>
+        <translation>Juster</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="507"/>
         <source>Superscript</source>
-        <translation type="unfinished">Hævet (8222)</translation>
+        <translation>Hævet</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="513"/>
         <source>Subscript</source>
-        <translation type="unfinished">Sænket (8227)</translation>
+        <translation>Sænket</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
@@ -8311,7 +8311,7 @@ Maksimum længde: %2px (7946)</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished">&amp;Indsætte billede (8237)</translation>
+        <translation>&amp;Indsæt billede</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
