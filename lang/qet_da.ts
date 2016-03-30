@@ -921,20 +921,20 @@
         <location filename="../sources/elementdialog.cpp" line="69"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Åbne kategori (911)</translation>
+        <translation>Åbn kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="70"/>
         <location filename="../sources/elementdialog.cpp" line="73"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Vælg kategori. (918)</translation>
+        <translation>Vælg kategori.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Gem kategori (924)</translation>
+        <translation>Gem kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="245"/>
@@ -5637,7 +5637,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="570"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished">[Ændret] (5603)</translation>
+        <translation>[Ændret]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="573"/>
@@ -7904,7 +7904,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation>Ændr kolonne bredde</translation>
+        <translation>Rediger kolonne bredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
@@ -7916,7 +7916,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation>Ændr række højde</translation>
+        <translation>Rediger række højde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
@@ -8004,7 +8004,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation>Ændr oversigt bredde</translation>
+        <translation>Rediger oversigt bredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
