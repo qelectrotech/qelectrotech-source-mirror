@@ -1974,7 +1974,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/exportdialog.cpp" line="432"/>
         <source>Auteur</source>
-        <translation>Autor</translation>
+        <translation>Bearbeiter</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="433"/>
@@ -6193,7 +6193,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Auteur</source>
-        <translation>Autor</translation>
+        <translation>Bearbeiter</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="224"/>
@@ -7433,7 +7433,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation>Autor: </translation>
+        <translation>Bearbeiter:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="250"/>
