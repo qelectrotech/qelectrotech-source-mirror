@@ -5746,7 +5746,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
         <source>un conducteur</source>
-        <translation type="unfinished">leder (5712)</translation>
+        <translation>en leder</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="62"/>
@@ -5758,56 +5758,56 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/diagramcommands.cpp" line="141"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation type="unfinished">indsæt %1 (5724)</translation>
+        <translation>indsæt %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="226"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation type="unfinished">klip %1 (5730)</translation>
+        <translation>klip %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="270"/>
         <location filename="../sources/diagramcommands.cpp" line="441"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation type="unfinished">flyt %1 (5737)</translation>
+        <translation>flyt %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="462"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">rediger tekst (5743)</translation>
+        <translation>rediger tekst</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="510"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
-        <translation type="unfinished">roter %1 (5749)</translation>
+        <translation>roter %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="628"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished">orientere %1 til %2° (5755)</translation>
+        <translation>roter %1 til %2°</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="652"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">rediger leder (5761)</translation>
+        <translation>rediger leder</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="709"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation type="unfinished">Nulstil %1 (5767)</translation>
+        <translation>Nulstil %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="757"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">rediger titelblok (5773)</translation>
+        <translation>rediger titelblok</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="790"/>
@@ -5819,7 +5819,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
         <source>suppression</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">undertryk (5785)</translation>
+        <translation>slet</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="230"/>
@@ -5837,31 +5837,31 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="318"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">rediger navn (5803)</translation>
+        <translation>rediger navn</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="360"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">flyt forrest (5809)</translation>
+        <translation>flyt forrest</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="363"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">flyt fremad (5815)</translation>
+        <translation>flyt fremad</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="366"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">flyt bagud (5821)</translation>
+        <translation>flyt bagud</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="369"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">flyt bagerst (5827)</translation>
+        <translation>flyt bagerst</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="469"/>
@@ -5873,13 +5873,13 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="583"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished">tilpasse størrelse %1 (5839)</translation>
+        <translation>tilpas størrelse %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="585"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished">tilpasse størrelse %1 foregående (5845)</translation>
+        <translation>tilpas størrelse %1 til oprindelig</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="601"/>
@@ -5982,18 +5982,18 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qet.cpp" line="283"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform>%n tekstfelt (5951)</numerusform>
-            <numerusform>%n tekstfelter (5951)</numerusform>
+        <translation>
+            <numerusform>%n tekstfelt</numerusform>
+            <numerusform>%n tekstfelter</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="298"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform>&amp;n billede (5960)</numerusform>
-            <numerusform>%n billeder (5960)</numerusform>
+        <translation>
+            <numerusform>%n billede</numerusform>
+            <numerusform>%n billeder</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6015,18 +6015,18 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="69"/>
         <source>Borne</source>
         <comment>tooltip</comment>
-        <translation type="unfinished">Klemme (5981)</translation>
+        <translation>Klemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="139"/>
         <source>coller</source>
-        <translation type="unfinished">indsæt (5986)</translation>
+        <translation>indsæt</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="209"/>
         <source>couper des parties</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Klip dele (5992)</translation>
+        <translation>Klip dele</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.h" line="57"/>
@@ -6037,12 +6037,12 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Ikke navngivet ark (6003)</translation>
+        <translation>Ikke navngivet ark</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
         <source>schema</source>
-        <translation type="unfinished">diagram (6008)</translation>
+        <translation>diagram</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1061"/>
@@ -6063,7 +6063,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/dimension.cpp" line="37"/>
         <source>%1px</source>
         <comment>titleblock: absolute width</comment>
-        <translation type="unfinished">%1piksel (6029)</translation>
+        <translation>%1piksel</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="39"/>
@@ -6087,7 +6087,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished">Slet række (6053)</translation>
+        <translation>Slet række</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
@@ -6099,54 +6099,54 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="423"/>
         <source>Suppression d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished">Slet kolonne (6065)</translation>
+        <translation>Slet kolonne</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished">Redigere række (6071)</translation>
+        <translation>Rediger række</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished">Redigere kolonne (6077)</translation>
+        <translation>Rediger kolonne</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation type="unfinished">Fletning af %1 celler (6083)</translation>
+        <translation>Fletning af %1 celler</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished">Adskille celle i %1 (6089)</translation>
+        <translation>Adskille celle i %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Rediger informationer (6095)</translation>
+        <translation>Rediger informationer</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform>Klip %n celle (6104)</numerusform>
-            <numerusform>Klip %n celler (6104)</numerusform>
+        <translation>
+            <numerusform>Klip %n celle</numerusform>
+            <numerusform>Klip %n celler</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform>Indsætte %n celle (6113)</numerusform>
-            <numerusform>Indsætte %n celler (6113)</numerusform>
+        <translation>
+            <numerusform>Indsæt %n celle</numerusform>
+            <numerusform>Indsæt %n celler</numerusform>
         </translation>
     </message>
     <message>
@@ -6159,7 +6159,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblockcell.cpp" line="112"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">navn (6125)</translation>
+        <translation>navn</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="114"/>
@@ -6171,7 +6171,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblockcell.cpp" line="116"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">etiket (6137)</translation>
+        <translation>etiket</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="118"/>
@@ -6183,25 +6183,25 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">Vis værdi (6149)</translation>
+        <translation>Vis værdi</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">justér tekst (6155)</translation>
+        <translation>juster tekst</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">tekststørrelse (6161)</translation>
+        <translation>tekststørrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished">justér vandret (6167)</translation>
+        <translation>juster vandret</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="223"/>
@@ -6370,62 +6370,62 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Désignation qet</source>
-        <translation type="unfinished">QET betegnelse (6336)</translation>
+        <translation>QET betegnelse</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Position</source>
-        <translation type="unfinished">Position (6341)</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label</source>
-        <translation type="unfinished">Etiket (6346)</translation>
+        <translation>Etiket</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation</source>
-        <translation type="unfinished">Betegnelse (6351)</translation>
+        <translation>Betegnelse</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Bemærkning (6356)</translation>
+        <translation>Bemærkning</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Producent (6361)</translation>
+        <translation>Producent</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Reference</source>
-        <translation type="unfinished">Henvisning (6366)</translation>
+        <translation>Henvisning</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Hjælpe blok 1 (6371)</translation>
+        <translation>Ekstra blok 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Hjælpe blok 2 (6376)</translation>
+        <translation>Ekstra blok 2</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Machine-reference</source>
-        <translation type="unfinished">Maskin henvisning (6381)</translation>
+        <translation>Maskin henvisning</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Localisation</source>
-        <translation type="unfinished">Placering (6386)</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktion (6391)</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="345"/>
@@ -6440,7 +6440,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="349"/>
         <source>Collection inconnue</source>
-        <translation type="unfinished">Ukendt samling (6406)</translation>
+        <translation>Ukendt samling</translation>
     </message>
 </context>
 <context>
