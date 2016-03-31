@@ -600,7 +600,7 @@
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="123"/>
         <source>une image</source>
-        <translation type="unfinished">et billede (603)</translation>
+        <translation>et billede</translation>
     </message>
 </context>
 <context>
@@ -637,7 +637,7 @@
         <location filename="../sources/diagramprintdialog.cpp" line="325"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Fil mangler (640)</translation>
+        <translation>Fil mangler</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="326"/>
@@ -666,7 +666,7 @@
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="61"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished">Hold CTRL for fri bevægelighed (669)</translation>
+        <translation>Hold ctrl for fri bevægelse</translation>
     </message>
 </context>
 <context>
@@ -681,7 +681,7 @@
         <location filename="../sources/diagramview.cpp" line="63"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished">Det er det område, hvor diagrammer designes ved at tilføj elementer og placere ledere mellem klemmer. Det er også muligt at tilføj selvstændige tekster. (684)</translation>
+        <translation>Område hvor diagrammer designes ved at tilføje symboler og leder mellem klemmer. Det er også muligt at tilføje selvstændige tekster.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="201"/>
@@ -704,18 +704,18 @@
         <location filename="../sources/diagramview.cpp" line="820"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
-        <translation type="unfinished">Valg indeholder %1. (707)</translation>
+        <translation>Valg indeholder %1.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="856"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished">Vælg ny farve til leder (712)</translation>
+        <translation>Vælg ny farve til leder</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere leder egenskab (718)</translation>
+        <translation>Rediger leder egenskab</translation>
     </message>
 </context>
 <context>
@@ -731,7 +731,7 @@
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished">Diagram forklarende note (734)</translation>
+        <translation>Forklarende note for diagram</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -761,7 +761,7 @@
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerering af valgt ark&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; (764)</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerering af valgt ark&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
@@ -771,7 +771,7 @@
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slet nummerering af valgt ark&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; (774)</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slet nummerering af valgt ark&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -864,7 +864,7 @@
         <location filename="../sources/elementdeleter.cpp" line="56"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Slet element? (854)</translation>
+        <translation>Slet symbol?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
@@ -877,13 +877,13 @@
         <location filename="../sources/elementdeleter.cpp" line="70"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Sletr element (867)</translation>
+        <translation>Sletter symbol</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="71"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Slet af element mislykkedes. (873)</translation>
+        <translation>Slet symbol mislykkedes.</translation>
     </message>
 </context>
 <context>
@@ -1068,7 +1068,7 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished">Kontakt nummer vist (1058)</translation>
+        <translation>Kontaktnummer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
@@ -1078,7 +1078,7 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished">Skifte tilstand (1068)</translation>
+        <translation>Kontakt status</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
@@ -1124,12 +1124,12 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished">Kontakt normal åben (1114)</translation>
+        <translation>Normal åben</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished">Kontakt normal lukt (1119)</translation>
+        <translation>Normal lukket</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
@@ -1144,12 +1144,12 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished">Kontakt forsinket tændt (1134)</translation>
+        <translation>Forsinket tiltræk</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished">Kontakt forsinket slukt (1139)</translation>
+        <translation>Forsinket frafald</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
@@ -1159,12 +1159,12 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
-        <translation type="unfinished">Person beskyttelse (1149)</translation>
+        <translation>Person beskyttelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished">Kontakt / knap (1154)</translation>
+        <translation>Omskifter / kontakt</translation>
     </message>
 </context>
 <context>
@@ -1630,7 +1630,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="432"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished">Indlejrede titelblokke</translation>
+        <translation>Indlejrede titelblokke</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="433"/>
@@ -2676,32 +2676,32 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished">Element er lænket (2653)</translation>
+        <translation>Symbol er allerede lænket</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
         <source>Rechercher dans le folio :</source>
-        <translation type="unfinished">Søg i ark: (2658)</translation>
+        <translation>Søg i ark:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="85"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished">Vis element (2663)</translation>
+        <translation>Se symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="92"/>
         <source>Voir l&apos;élément lié</source>
-        <translation type="unfinished">Vis lænket element (2668)</translation>
+        <translation>Se lænket symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Ark rapport (2673)</translation>
+        <translation>Ark rapport</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Krydsreference (slave) (2678)</translation>
+        <translation>Krydsreference (underordnet)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
@@ -2716,7 +2716,7 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="45"/>
         <source>Délier</source>
-        <translation type="unfinished">Aflænke (2693)</translation>
+        <translation>Aflænk</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="249"/>
@@ -2734,22 +2734,22 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="42"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished">Aflænke valgt element (2711)</translation>
+        <translation>Aflænk valgt symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="59"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished">Lænk valgt element (2716)</translation>
+        <translation>Lænk valgt symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished">Tilgængelig elementer (2721)</translation>
+        <translation>Tilgængelig symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <source>Éléments liés</source>
-        <translation type="unfinished">Element relateret (2726)</translation>
+        <translation>Lænket symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="175"/>
@@ -4014,7 +4014,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation type="unfinished">Vis eller gem omgøre list (3987)</translation>
+        <translation>Vis eller skjul gendan liste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
@@ -5378,13 +5378,13 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="162"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation type="unfinished">ny_skabelon (5345)</translation>
+        <translation>ny_skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished">Duplikér titelblok skabelon (5351)</translation>
+        <translation>Dupliker titelblok skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
