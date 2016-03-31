@@ -104,7 +104,7 @@ class QETElementEditor : public QETMainWindow {
 	void fromFile(const QString &);
 	void fromLocation(const ElementsLocation &);
 	bool toFile(const QString &);
-	bool toLocation(const ElementsLocation &);
+	bool toLocation(const ElementsLocation &location);
 	bool isEditing(const ElementsLocation &);
 	bool isEditing(const QString &);
 	ElementScene *elementScene() const;

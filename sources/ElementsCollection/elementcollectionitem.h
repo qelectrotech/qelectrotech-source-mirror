@@ -61,6 +61,7 @@ class ElementCollectionItem : public QObject
         int row() const;
 		virtual QString name();
 		virtual QString collectionName() const;
+		virtual QString collectionPath() const {return QString();}
 
 		virtual bool isDir() const;
 		virtual bool isElement() const;

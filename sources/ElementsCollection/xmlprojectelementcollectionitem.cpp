@@ -102,6 +102,12 @@ QVariant XmlProjectElementCollectionItem::data(int column, int role)
 	}
 }
 
+void XmlProjectElementCollectionItem::clearData()
+{
+	m_icon = QIcon();
+	ElementCollectionItem::clearData();
+}
+
 /**
  * @brief XmlProjectElementCollectionItem::mimeData
  * @return The mimedata of this item

@@ -39,6 +39,8 @@ namespace QETXML
 	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir, QString rename = QString());
 	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file, QString rename = QString());
 
+	bool writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message = nullptr);
+
 }
 
 #endif // QETXML_H

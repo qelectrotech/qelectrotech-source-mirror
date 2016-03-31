@@ -63,11 +63,13 @@ class ElementsLocation
 		bool isFileSystem() const;
 		bool isProject() const;
 		bool exist() const;
+		bool isWritable() const;
 
 		XmlElementCollection *projectCollection() const;
 		NamesList nameList();
 
 		QDomElement xml() const;
+		bool setXml(const QDomDocument &xml_document) const;
 		QUuid uuid() const;
 		QIcon icon() const;
 		QString name() const;

@@ -240,11 +240,9 @@ void ElementsCollectionWidget::editElement()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
-	if (!eci ||
-		!eci->isElement() ||
-		(eci->type() != FileElementCollectionItem::Type)) return;
+	if ( !(eci && eci->isElement()) ) return;
 
-	ElementsLocation location(static_cast<FileElementCollectionItem*>(eci)->collectionPath());
+	ElementsLocation location(eci->collectionPath());
 
 	QETApp *app = QETApp::instance();
 	app->openElementLocations(QList<ElementsLocation>() << location);

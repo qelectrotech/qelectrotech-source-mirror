@@ -23,7 +23,6 @@
 #include "customelementpart.h"
 #include "newelementwizard.h"
 #include "elementitemeditor.h"
-#include "elementdefinition.h"
 #include "elementdialog.h"
 #include "recentfiles.h"
 #include "qeticons.h"
@@ -107,17 +106,15 @@ QETElementEditor::~QETElementEditor() {
 }
 
 /**
-	@param el Le nouvel emplacement de l'element edite
-*/
-void QETElementEditor::setLocation(const ElementsLocation &el) {
+ * @brief QETElementEditor::setLocation
+ * The new location to edit
+ * @param el
+ */
+void QETElementEditor::setLocation(const ElementsLocation &el)
+{
 	location_ = el;
 	opened_from_file = false;
-	// modifie le mode lecture seule si besoin
-	ElementsCollectionItem *item = QETApp::collectionItem(location_);
-	bool must_be_read_only = item && !item -> isWritable();
-	if (isReadOnly() != must_be_read_only) {
-		setReadOnly(must_be_read_only);
-	}
+	setReadOnly(!location_.isWritable());
 	slot_updateTitle();
 }
 
@@ -845,42 +842,23 @@ bool QETElementEditor::toFile(const QString &fn) {
 	return(writing);
 }
 
+
 /**
-	Enregistre l'element vers un emplacement
-	@param location Emplacement de l'element a enregistrer
-	@return true en cas de reussite, false sinon
-*/
-bool QETElementEditor::toLocation(const ElementsLocation &location) {
-	ElementsCollectionItem *item = QETApp::collectionItem(location);
-	ElementDefinition *element;
-	if (item) {
-		// l'element existe deja
-		element = qobject_cast<ElementDefinition *>(item);
-	} else {
-		// l'element n'existe pas encore, on demande sa creation
-		element = QETApp::createElement(location);
-	}
-	
-	if (!element) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Erreur", "message box title"),
-			tr("Impossible d'atteindre l'élément", "message box content")
-		);
+ * @brief QETElementEditor::toLocation
+ * Save the element to Location
+ * @param location : location where we must save the current element
+ * @return true if succesfully saved
+ */
+bool QETElementEditor::toLocation(const ElementsLocation &location)
+{
+	if (!location.setXml(ce_scene->toXml()))
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Erreur", "message box title"),
+									 tr("Impossible d'enregistrer l'élément", "message box content"));
 		return(false);
 	}
-	
-	// enregistre l'element
-	element -> setXml(ce_scene -> toXml().documentElement());
-	if (!element -> write()) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Erreur", "message box title"),
-			tr("Impossible d'enregistrer l'élément", "message box content")
-		);
-		return(false);
-	}
-	
+
 	return(true);
 }
 
@@ -1101,69 +1079,74 @@ void QETElementEditor::openElement(const QString &filepath) {
 }
 
 /**
-	Recharge l'element edite
-*/
-void QETElementEditor::slot_reload() {
-	// s'il ya des modifications, on demande a l'utilisateur s'il est certain
-	// de vouloir recharger
-	if (!ce_scene -> undoStack().isClean()) {
-		QMessageBox::StandardButton answer = QET::QetMessageBox::question(
-			this,
-			tr("Recharger l'élément", "dialog title"),
-			tr("Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'élément ?", "dialog content"),
-			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-			QMessageBox::Cancel
-		);
+ * @brief QETElementEditor::slot_reload
+ * Reload the element from the file or location
+ */
+void QETElementEditor::slot_reload()
+{
+		//If user already edit the element, ask confirmation to reload
+	if (!ce_scene -> undoStack().isClean())
+	{
+		QMessageBox::StandardButton answer = QET::QetMessageBox::question(this,
+																		  tr("Recharger l'élément", "dialog title"),
+																		  tr("Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'élément ?", "dialog content"),
+																		  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
+																		  QMessageBox::Cancel);
 		if (answer != QMessageBox::Yes) return;
 	}
-	
-	// recharge l'element
-	if (opened_from_file) {
-		// l'element a ete ouvert a partir d'un chemin de fichier
-		ce_scene -> reset();
+
+		//Reload the element
+	ce_scene -> reset();
+	if (opened_from_file)
 		fromFile(filename_);
-	} else {
-		// l'element a ete ouvert a partir d'un emplacement (ElementsLocation)
-		// il peut s'agir aussi bien d'un fichier que d'un element XML
-		if (ElementsCollectionItem *item = QETApp::collectionItem(location_)) {
-			item -> reload();
-			ce_scene -> reset();
-			fromLocation(location_);
-		}
-	}
+	else
+		fromLocation(location_);
 }
 
 /**
-	Enregistre l'element en cours d'edition.
-	Si le nom du fichier en cours n'est pas connu, cette methode equivaut a
-	l'action "Enregistrer sous"
-	@see slot_saveAs()
-*/
-bool QETElementEditor::slot_save() {
-	// Check element befor writing
-	if (checkElement()) {
-		// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
-		if (opened_from_file) {
-			if (filename_.isEmpty()) return(slot_saveAsFile());
-			// sinon on enregistre dans le nom de fichier connu
+ * @brief QETElementEditor::slot_save
+ * Save the current editing element.
+ * If the filepath or location is unknow, use save_as instead
+ * @return true if save with success
+ */
+bool QETElementEditor::slot_save()
+{
+		// Check element befor writing
+	if (checkElement())
+	{
+			//If we don't know the name of the current file, use save as instead
+		if (opened_from_file)
+		{
+			if (filename_.isEmpty())
+				return(slot_saveAsFile());
+
+				//Else wa save to the file at filename_ path
 			bool result_save = toFile(filename_);
 			if (result_save) ce_scene -> undoStack().setClean();
 			return(result_save);
-		} else {
-			if (location_.isNull()) return(slot_saveAs());
-			// sinon on enregistre a l'emplacement connu
+		}
+		else
+		{
+			if (location_.isNull())
+				return(slot_saveAs());
+
+				//Else save to the known location
 			bool result_save = toLocation(location_);
 			if (result_save) ce_scene -> undoStack().setClean();
 			return(result_save);
 		}
 	}
+
 	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return false;
 }
 
 /**
-	Demande une localisation a l'utilisateur et enregistre l'element
-*/
+ * @brief QETElementEditor::slot_saveAs
+ * Ask a location to user and save the current edited element
+ * to this location
+ * @return true if save with success
+ */
 bool QETElementEditor::slot_saveAs() {
 	// Check element befor writing
 	if (checkElement()) {
@@ -1186,8 +1169,10 @@ bool QETElementEditor::slot_saveAs() {
 }
 
 /**
-	Demande un nom de fichier a l'utilisateur et enregistre l'element
-*/
+ * @brief QETElementEditor::slot_saveAsFile
+ * Ask a file to user and save the current edited element to this file
+ * @return true if save with success
+ */
 bool QETElementEditor::slot_saveAsFile() {
 	// Check element befor writing
 	if (checkElement()) {
@@ -1444,53 +1429,48 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
 }
 
 /**
-	@param location Emplacement de l'element a editer
-*/
-void QETElementEditor::fromLocation(const ElementsLocation &location) {
-	
-	// l'element doit exister
-	ElementsCollectionItem *item = QETApp::collectionItem(location);
-	ElementDefinition *element = 0;
-	if (!item) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Élément inexistant.", "message box title"),
-			tr("L'élément n'existe pas.", "message box content")
-		);
+ * @brief QETElementEditor::fromLocation
+ * Location of the element to edit
+ * @param location
+ */
+void QETElementEditor::fromLocation(const ElementsLocation &location)
+{
+	if (!location.isElement())
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Élément inexistant.", "message box title"),
+									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
 		return;
 	}
-	
-	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Élément inexistant.", "message box title"),
-			tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content")
-		);
+	if (!location.exist())
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Élément inexistant.", "message box title"),
+									 tr("L'élément n'existe pas.", "message box content"));
 		return;
 	}
-	
-	// le fichier doit etre un document XML
+
+		//The file must be an xml document
 	QDomDocument document_xml;
-	QDomNode node = document_xml.importNode(element -> xml(), true);
+	QDomNode node = document_xml.importNode(location.xml(), true);
 	document_xml.appendChild(node);
-	
-	// chargement de l'element
+
+		//Load the element
 	ce_scene -> fromXml(document_xml);
 	slot_createPartsList();
-	
-	// gestion de la lecture seule
-	if (!element -> isWritable()) {
-		QET::QetMessageBox::warning(
-			this,
-			tr("Édition en lecture seule", "message box title"),
-			tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content")
-		);
+
+		//location is read only
+	if (!location.isWritable())
+	{
+		QET::QetMessageBox::warning(this,
+									tr("Édition en lecture seule", "message box title"),
+									tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content"));
 		setReadOnly(true);
-	} else {
+	}
+	else {
 		setReadOnly(false);
 	}
-	
-	// memorise le fichier
+
 	setLocation(location);
 	slot_updateMenus();
 }
@@ -1525,40 +1505,37 @@ void QETElementEditor::pasteFromFile() {
 }
 
 /**
-	Denande un element a l'utilisateur, met son contenu dans le presse-papiers,
-	et appelle ElementView::PasteInArea
-*/
-void QETElementEditor::pasteFromElement() {
-	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
+ * @brief QETElementEditor::pasteFromElement
+ * Ask an element to user, copy the xml definition of the element
+ * to the clipboard and call ElementView::PasteInArea
+ */
+void QETElementEditor::pasteFromElement()
+{
+		//Ask for a location
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
-	if (location.isNull()) return;
-	
-	// verifie l'existence de l'element choisi
-	ElementsCollectionItem *item = QETApp::collectionItem(location);
-	ElementDefinition *element = 0;
-	if (!item) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Élément inexistant.", "message box title"),
-			tr("L'élément n'existe pas.", "message box content")
-		);
+	if (location.isNull())
+		return;
+
+	if (!location.isElement())
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Élément inexistant.", "message box title"),
+									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
 		return;
 	}
-	
-	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
-		QET::QetMessageBox::critical(
-			this,
-			tr("Élément inexistant.", "message box title"),
-			tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content")
-		);
+	if (!location.exist())
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Élément inexistant.", "message box title"),
+									 tr("L'élément n'existe pas.", "message box content"));
 		return;
 	}
-	
-	// creation d'un document XML a partir de la description XML de l'element
+
+		//Create an xml document from the location xml
 	QDomDocument document_xml;
-	QDomNode node = document_xml.importNode(element -> xml(), true);
+	QDomNode node = document_xml.importNode(location.xml(), true);
 	document_xml.appendChild(node);
-	
+
 	copyAndPasteXml(document_xml);
 }
 

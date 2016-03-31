@@ -22,6 +22,7 @@
 #include "elementscollectioncache.h"
 #include "elementfactory.h"
 #include "element.h"
+#include "qetxml.h"
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -431,6 +432,24 @@ bool ElementsLocation::exist() const
 }
 
 /**
+ * @brief ElementsLocation::isWritable
+ * @return True if this element can be writable (can use set xml)
+ */
+bool ElementsLocation::isWritable() const
+{
+	if (m_project)
+		return !m_project->isReadOnly();
+	else if (isFileSystem())
+	{
+		if (fileSystemPath().startsWith(QETApp::commonElementsDirN()))
+			return false;
+		else
+			return true;
+	}
+	return false;
+}
+
+/**
  * @brief ElementsLocation::projectCollection
  * @return If this location represente a item in an embedded project collection, return this collection
  * else return nullptr.
@@ -492,7 +511,7 @@ QDomElement ElementsLocation::xml() const
 		QFile file (m_file_system_path);
 		QDomDocument docu;
 		if (docu.setContent(&file))
-			return docu.documentElement().cloneNode().toElement();
+			return docu.documentElement();
 	}
 	else
 	{
@@ -510,6 +529,51 @@ QDomElement ElementsLocation::xml() const
 	}
 
 	return QDomElement();
+}
+
+/**
+ * @brief ElementsLocation::setXml
+ * Replace the current xml description by @xml_element;
+ * The document element of @xml_document must have tagname "definition" to be written
+ * This definition must be writable
+ * @param xml_element
+ * @return true if success
+ */
+bool ElementsLocation::setXml(const QDomDocument &xml_document) const
+{
+	if (!isWritable())
+		return false;
+
+	if (xml_document.documentElement().tagName() != "definition")
+	{
+		qDebug() << "ElementsLocation::setXml : tag name of document element isn't 'definition'";
+		return false;
+	}
+
+	if (isFileSystem())
+	{
+		QString error;
+		QETXML::writeXmlFile(xml_document, fileSystemPath(), &error);
+
+		if (!error.isEmpty())
+		{
+			qDebug() << "ElementsLocation::setXml error : " << error;
+			return false;
+		}
+		else
+			return true;
+	}
+	else if (isProject() && exist())
+	{
+		QDomElement dom_element = xml();
+		QDomNode parent_node = dom_element.parentNode();
+		parent_node.removeChild(dom_element);
+		parent_node.appendChild(xml_document.documentElement().cloneNode(true));
+
+		return true;
+	}
+
+	return false;
 }
 
 /**

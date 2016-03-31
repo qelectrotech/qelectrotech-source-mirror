@@ -220,3 +220,37 @@ QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &docume
 	else
 		return QDomElement();
 }
+
+/**
+ * @brief QETXML::writeXmlFile
+ * 	Export an XML document to an UTF-8 text file indented with 4 spaces, with LF end of lines and no BOM.
+ * @param xml_document : An XML document to be exported
+ * @param file_path : Path to the file to be written
+ * @param error_message : If non-zero, will contain an error message explaining what happened when this function returns false.
+ * @return false if an error occured, true otherwise
+ */
+bool QETXML::writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message)
+{
+	QFile file(file_path);
+
+		// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
+	bool file_opening = file.open(QIODevice::WriteOnly);
+	if (!file_opening)
+	{
+		if (error_message)
+		{
+			*error_message = QString(QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+												 "error message when attempting to write an XML file")
+									 ).arg(file_path).arg(file.error());
+		}
+		return(false);
+	}
+
+	QTextStream out(&file);
+	out.setCodec("UTF-8");
+	out.setGenerateByteOrderMark(false);
+	out << xml_document.toString(4);
+	file.close();
+
+	return(true);
+}
