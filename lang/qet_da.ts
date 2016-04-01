@@ -289,7 +289,7 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Redigere nummerering (292)</translation>
+        <translation>Rediger nummerering</translation>
     </message>
 </context>
 <context>
@@ -341,13 +341,13 @@
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1281"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere leder egenskab (344)</translation>
+        <translation>Rediger leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1285"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere egenskabne for flere ledere (350)</translation>
+        <translation>Rediger egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -366,13 +366,13 @@
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="71"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere leder egenskab (369)</translation>
+        <translation>Rediger leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="75"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere egenskabne for flere ledere (375)</translation>
+        <translation>Rediger egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -440,7 +440,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished">Aktiver tekst ved potentiale (443)</translation>
+        <translation>aktiver tekst ved potentiale</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
@@ -564,7 +564,7 @@
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Flyt til oprindelig (567)</translation>
+        <translation>Flyt til oprindelig</translation>
     </message>
 </context>
 <context>
@@ -643,7 +643,7 @@
         <location filename="../sources/diagramprintdialog.cpp" line="326"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Angiv stien til oprettet PDF/PS fil. (646)</translation>
+        <translation>Angiv stien til oprettet PDF/PS fil.</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="346"/>
@@ -837,12 +837,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Træk « %1 » til ark for at indsætte, dobbel klik for at redigere (834)</translation>
+        <translation>Træk « %1 » til ark for indsæt, dobbel klik for rediger</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Dobbelt klik for at udvide eller reducere denne kategori af elementer (637)</translation>
+        <translation>Dobbelt klik for udfold eller sammenfold kategori af symboler</translation>
     </message>
 </context>
 <context>
@@ -850,12 +850,12 @@
     <message>
         <location filename="../sources/elementdefinition.cpp" line="411"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
-        <translation type="unfinished">Mål element kunne ikke oprettes. (840)</translation>
+        <translation>Mål symbol kunne ikke oprettes.</translation>
     </message>
     <message>
         <location filename="../sources/elementdefinition.cpp" line="493"/>
         <source>La suppression de cet élément a échoué.</source>
-        <translation type="unfinished">Slet af element mislykkedes. (845)</translation>
+        <translation>Slet symbol mislykkedes.</translation>
     </message>
 </context>
 <context>
@@ -871,7 +871,7 @@
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Ønskes element slett? (861)</translation>
+        <translation>Skal symbol slettes?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
@@ -915,7 +915,7 @@
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Vælg element hvor definition skal gems. (905)</translation>
+        <translation>Vælg symbol hvor definition skal gemmes.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="69"/>
@@ -941,45 +941,45 @@
         <location filename="../sources/elementdialog.cpp" line="283"/>
         <source>Pas de sélection</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Ingen valg (931)</translation>
+        <translation>Ingen valg</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="246"/>
         <source>Vous devez sélectionner un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Vælg et element. (937)</translation>
+        <translation>Vælg symbol.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="256"/>
         <location filename="../sources/elementdialog.cpp" line="294"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Ikke eksisterende valg (944)</translation>
+        <translation>Valg eksister ikke</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="257"/>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Valg findes ikke. (951)</translation>
+        <translation>Valg findes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Forkert valg (957)</translation>
+        <translation>Forkert valg</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Valg er ikke et element. (963)</translation>
+        <translation>Valg er ikke symbol.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
         <source>Vous devez sélectionner une catégorie ou un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Vælg kategori eller element. (969)</translation>
+        <translation>Vælg kategori eller symbol.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="307"/>
@@ -991,7 +991,7 @@
         <location filename="../sources/elementdialog.cpp" line="308"/>
         <source>Vous devez entrer un nom pour l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Indtast element navn (981)</translation>
+        <translation>Indtast symbol navn</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="317"/>
@@ -1002,19 +1002,19 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="319"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation type="unfinished">Følgen tegn i navn er ugyldig: %1 (992)</translation>
+        <translation>Følgen tegn i symbol navn er ugyldig: %1</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="345"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Overskriv element? (998)</translation>
+        <translation>Overskriv symbol?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="346"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Element findes, skal det overskrives? (1004)</translation>
+        <translation>Symbol findes, skal det overskrives?</translation>
     </message>
 </context>
 <context>
@@ -1267,7 +1267,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="867"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
-        <translation type="unfinished">XML dokument er ikke et symbol definition. (1257)</translation>
+        <translation>XML dokument er ikke en symbol definition.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="626"/>
@@ -1327,32 +1327,32 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="283"/>
         <source>La copie d&apos;une catégorie vers elle-même ou vers l&apos;une de ses sous-catégories n&apos;est pas gérée.</source>
-        <translation type="unfinished">Kopiering af kategori for sig selv eller til en undermapperne understøttes ikke. (1317)</translation>
+        <translation>Kopiering af kategori for sig selv eller til en undermapper understøttes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="472"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished">Det er ikke muligt at flytte samling. (1322)</translation>
+        <translation>Det er ikke muligt at flytte samling.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="478"/>
         <source>Le déplacement d&apos;une catégorie dans une de ses sous-catégories n&apos;est pas possible.</source>
-        <translation type="unfinished">Flytning af klasse i egen underkategori er ikke mulig. (1327)</translation>
+        <translation>Flytning af klasse i egen underkategori er ikke mulig.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="556"/>
         <source>La suppression de cette catégorie a échoué.</source>
-        <translation type="unfinished">Slet af kategori mislykkedes. (1332)</translation>
+        <translation>Slet af kategori mislykkedes.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
         <source>Impossible de supprimer l&apos;élément</source>
-        <translation type="unfinished">Kan ikke slet element (1337)</translation>
+        <translation>Kan ikke slette symbol</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="604"/>
         <source>Impossible de supprimer la catégorie</source>
-        <translation type="unfinished">Kan ikke slet kategori (1342)</translation>
+        <translation>Kan ikke slette kategori</translation>
     </message>
 </context>
 <context>
@@ -1396,13 +1396,13 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
         <source>Suppression de la catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Kategori sletning (1386)</translation>
+        <translation>Kategori sletning</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="105"/>
         <source>La suppression de la catégorie a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sletning af kategori mislykkedes. (1392)</translation>
+        <translation>Slet af kategori mislykkedes.</translation>
     </message>
 </context>
 <context>
@@ -1421,13 +1421,13 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>Catégorie inexistante</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Ikke eksisterende kategori (1411)</translation>
+        <translation>Ikke eksisterende kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kategori findes ikke. Afbryder. (1417)</translation>
+        <translation>Kategori findes ikke. Afbryder.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
@@ -1451,7 +1451,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Åbnes skrivebeskyttet (1441)</translation>
+        <translation>Åbnes skrivebeskyttet</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
@@ -1463,19 +1463,19 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Mangler internt navn (1453)</translation>
+        <translation>Mangler internt navn</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="130"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Angiv internt navn. (1459)</translation>
+        <translation>Angiv internt navn.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Internt navn allerede brugt (1465)</translation>
+        <translation>Internt navn allerede brugt</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
@@ -1494,13 +1494,13 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke oprette kategori (1484)</translation>
+        <translation>Kan ikke oprette kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
         <source>Impossible d&apos;enregistrer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke gem kategori (1490)</translation>
+        <translation>Kan ikke gemme kategori</translation>
     </message>
 </context>
 <context>
@@ -1508,7 +1508,7 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/elementscollection.cpp" line="151"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished">Det er ikke muligt at flytte en samling. (1498)</translation>
+        <translation>Det er ikke muligt at flytte en samling.</translation>
     </message>
 </context>
 <context>
@@ -1526,7 +1526,7 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="89"/>
         <source>Supprimer l&apos;élément</source>
-        <translation type="unfinished">Slet element (1516)</translation>
+        <translation>Slet symbol</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="90"/>
@@ -1577,26 +1577,26 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="262"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Slet element? (1557)</translation>
+        <translation>Slet symbol?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Ønskes element slett? (1564)</translation>
+        <translation>Skal symbol slettes?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="269"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Sletr element (1570)</translation>
+        <translation>Slet symbol</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="270"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Slet element mislykkedes. (1576)</translation>
+        <translation>Slet symbol mislykkedes.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="289"/>
@@ -1616,13 +1616,13 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="298"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Mappe slett (1596)</translation>
+        <translation>Slet mappe</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="299"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Slet mappe mislykkedes. (1602)</translation>
+        <translation>Slet mappe mislykkedes.</translation>
     </message>
 </context>
 <context>
