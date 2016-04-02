@@ -3073,26 +3073,26 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation type="unfinished">Vælg elektrisk potentiale (3050)</translation>
+        <translation>Vælg elektrisk potentiale</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation type="unfinished">Forsøger at forbinde to forskellige potentialer.
-Vælg egenskab som tilføjs ny potentiale. (3057)</translation>
+        <translation>Forsøger at forbinde to forskellige potentialer.
+Vælg egenskab som tilføjes ny potentiale.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="201"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="unfinished">Potentiale med leder nummer %1 er brugt %2 gange (3063)</translation>
+        <translation>Potentiale med leder nummer %1 er brugt %2 gange</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="244"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere egenskab for flere ledere (3069)</translation>
+        <translation>Rediger egenskab for flere leder</translation>
     </message>
 </context>
 <context>
@@ -3712,7 +3712,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Vinduet viser de forskellige ændringer, der udføres på nuværende ark. Klik på en ænding for at vende tilbage til tidligere tilstand. (3685)</translation>
+        <translation>Vinduet viser de forskellige ændringer, der udføres på nuværende ark. Klik på en ænding for at vende tilbage til tidligere tilstand.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
@@ -4047,7 +4047,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Roter valgt tekst til valgt vinkel (4020)</translation>
+        <translation>Roter tekst til vinkel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
@@ -4063,17 +4063,17 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="714"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished">Project %1 registreret i bibliotek: %2. (4036)</translation>
+        <translation>Projekt %1 registreret i bibliotek: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="869"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation type="unfinished">Skrivebeskyttet fil forsøges åbnet. Kontroller fil rettigheder. (4041)</translation>
+        <translation>Skrivebeskyttet fil forsøgt åbnet. Kontroller fil rettigheder.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="883"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation type="unfinished">Projekt åbnes skrivebeskyttet. (4046)</translation>
+        <translation>Projekt åbnes skrivebeskyttet.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="273"/>
@@ -4104,13 +4104,13 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="896"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Projekt kan ikke åbnes (4077)</translation>
+        <translation>Projekt kan ikke åbnes</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="898"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">%1 er ikke en QElectroTech projekt fil. (4083)</translation>
+        <translation>%1 er ikke en QElectroTech projekt fil.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="80"/>
@@ -4141,7 +4141,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="183"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Klik på en ændring for at komme tilbage i diagram ændringer (4113)</translation>
+        <translation>Klik på en ændring for at komme tilbage i diagram ændringer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
@@ -4223,13 +4223,13 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Vælg elementer modsat (4194)</translation>
+        <translation>Vælger modsat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Find valgt element i vindue (4200)</translation>
+        <translation>Find symbol i panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="429"/>
@@ -4286,7 +4286,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="768"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation type="unfinished">QElectroTech projekter (*.qet);; XML-filer (*.xml);; Alle filer (*) (4257)</translation>
+        <translation>QElectroTech projekter (*.qet);; XML-filer (*.xml);; Alle filer (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="853"/>
@@ -4304,7 +4304,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="882"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Projekt åbnes skrivebeskyttet (4275)</translation>
+        <translation>Projekt åbnes skrivebeskyttet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1368"/>
@@ -4334,7 +4334,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished">Rediger objekt (4305)</translation>
+        <translation>Rediger objekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1562"/>
@@ -4344,17 +4344,17 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1994"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
-        <translation type="unfinished">Kan ikke genoprette punktet i vinduet, da det ser ud til at blive redigeret i et andet vindue (4315)</translation>
+        <translation>Kan ikke genoprette punktet i vinduet, da det ser ud til at blive redigeret i et andet vindue</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2000"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation type="unfinished">Kan ikke genoprette punktet i panelet... indlæser panel... (4320)</translation>
+        <translation>Kan ikke genoprette punktet i panelet... genindlæser panel...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2012"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
-        <translation type="unfinished">Kan ikke genoprette punktet i vinduet (4325)</translation>
+        <translation>Kan ikke gendanne punkt i vindu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2049"/>
@@ -4782,7 +4782,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="724"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished">&lt;br&gt; &lt;b&gt;Fejl&lt;/ b&gt;:&lt;br&gt;Ark rapport skal have en enkel klemme&lt;br&gt; &lt;b&gt;Løsning&lt;/ b&gt;:&lt;br&gt;Kontrollere elementet kun har en klemme (4748)</translation>
+        <translation>&lt;br&gt; &lt;b&gt;Fejl&lt;/ b&gt;:&lt;br&gt;Ark rapport skal have én klemme&lt;br&gt; &lt;b&gt;Løsning&lt;/ b&gt;:&lt;br&gt;Kontroller symbol kun har én klemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="734"/>
@@ -4846,14 +4846,14 @@ Kommandovalg:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1512"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke åbne filen %1. (4812)</translation>
+        <translation>Kan ikke åbne filen %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1516"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Filen er ikke et gyldigt XML dokument (4819)</translation>
+        <translation>Fil er ikke gyldigt XML dokument</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="804"/>
@@ -4867,14 +4867,14 @@ Kommandovalg:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1485"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Skrivebeskyttet redigering (4833)</translation>
+        <translation>Skrivebeskyttet</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1486"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Filen bliver åbnet skrivebeskyttet. Kontrollér fil rettigheder. (4840)</translation>
+        <translation>Fil åbnes skrivebeskyttet. Kontroller fil rettigheder.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="841"/>
@@ -4888,30 +4888,30 @@ Kommandovalg:
         <location filename="../sources/editor/qetelementeditor.cpp" line="842"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke skrive til fil (4854)</translation>
+        <translation>Kan ikke skrive til fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="868"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke finde element (4860)</translation>
+        <translation>Kan ikke finde symbol</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="879"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kan ikke gem element (4866)</translation>
+        <translation>Kan ikke gemme symbol</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1093"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Kan ikke åbne fil (4872)</translation>
+        <translation>Kan ikke åbne fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1095"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished">Fil %1 findes ikke mere. (4877)</translation>
+        <translation>Fil %1 findes ikke mere.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1160"/>
@@ -4932,7 +4932,7 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1335"/>
         <source>Trop de primitives, liste non générée.</source>
-        <translation type="unfinished">For mange dele, list ikke genereret. (4898)</translation>
+        <translation>For mange dele, liste genereres ikke.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1434"/>
@@ -4950,7 +4950,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1112"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Genindlæs element (4916)</translation>
+        <translation>Genindlæs symbol</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="762"/>
@@ -4961,7 +4961,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1113"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Element er ændret. Ved genindlæs vil ændringer gå tabt. Genindlæs element? (4927)</translation>
+        <translation>Symbol er ændret. Ved genindlæs vil ændringer gå tabt. Genindlæs symbol?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1197"/>
@@ -4973,7 +4973,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1199"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
-        <translation type="unfinished">QElectroTech elementer (*.elmt) (4939)</translation>
+        <translation>QElectroTech symboler (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1234"/>
@@ -5008,7 +5008,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1552"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Valgt virtuelle sti svarer ikke til et element. (4974)</translation>
+        <translation>Valgt virtuel sti svarer ikke til et symbol.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
@@ -5052,7 +5052,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="49"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Justér forskellige parametre for QElectroTech (5018)</translation>
+        <translation>Juster forskellige indstillinger for QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
@@ -5097,7 +5097,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">QElectroTech vises i vindue tilstand (5063)</translation>
+        <translation>QElectroTech vises i vindue tilstand</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
@@ -5244,7 +5244,7 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="240"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished">Hvis valgt vil margen blive ignoreret og hele papiret brugt til udskrivning forudsat tilkoblet printer understøttet dette. (5211)</translation>
+        <translation>Margen ignoreres og hele papiret bruges til udskrivning hvis tilkoblet printer understøttet dette.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
@@ -5254,7 +5254,7 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished">Hvis valgt vil ark blive tilpasset én side. (5221)</translation>
+        <translation>Ark tilpasses én side.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
@@ -5288,20 +5288,20 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="711"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
-        <translation type="unfinished">Kan ikke oprette kategori for integration af elementer (5255)</translation>
+        <translation>Kan ikke oprette kategori for integration af symboler</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="745"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
-        <translation type="unfinished">Der opstod et problem under kopiering af kategori %1 (5260)</translation>
+        <translation>Der opstod fejl under kopiering af kategori %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1062"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Dokumentet er gemt med en nyere version af QElectroTech. Det er muligt at åbningen af alle eller nogle objekter vil mislykkes.
-Hvad skal ske? (5268)</translation>
+        <translation>Dokumentet er gemt med en nyere version af QElectroTech. Det er muligt at åbningen af alle eller nogle objekter vil mislykkes.
+Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1121"/>
@@ -5311,7 +5311,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="1539"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
-        <translation type="unfinished">Der opstod et problem under kopiering af element %1 (5278)</translation>
+        <translation>Der opstod fejl under kopiering af symbol %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1061"/>
@@ -5346,13 +5346,13 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="723"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished">Kan ikke få adgang til at integrere element (5313)</translation>
+        <translation>Kan ikke få adgang til at integrere symbol</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="831"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished">Der opstod en fejl under integration af skabelonen. (5319)</translation>
+        <translation>Der opstod fejl under integration af skabelon.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="945"/>
@@ -5366,7 +5366,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="110"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Gem nuværende skabelon? (5333)</translation>
+        <translation>Gem nuværende skabelon?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
@@ -5390,7 +5390,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished">For at duplikér skabelonen indtast et navn for kopien (5357)</translation>
+        <translation>For at duplikér skabelon indtast et navn for kopi</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
@@ -5726,22 +5726,22 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/qet.cpp" line="362"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished">Tekst fil indeholdende GNU/GPL licens kunne ikke findes? (5692)</translation>
+        <translation>Tekst fil indeholdende GNU/GPL licens kunne ikke findes?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="366"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished">Tekst fil indeholdende GNU/GPL licens kunne ikke findes? (5697)</translation>
+        <translation>Tekst fil indeholdende GNU/GPL licens kunne ikke findes?</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/customelement.cpp" line="120"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation type="unfinished">Advarsel: element er gemt med nyere version af QElectroTech. (5702)</translation>
+        <translation>Advarsel: symbol er gemt med nyere version af QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="37"/>
         <source>un champ texte</source>
-        <translation type="unfinished">tekstfelt (5707)</translation>
+        <translation>tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
@@ -5867,7 +5867,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="469"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">ændringsinformation (5833)</translation>
+        <translation>ændringsinformation</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="583"/>
@@ -6001,7 +6001,7 @@ Hvad skal ske? (5268)</translation>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform>%n formaular (5969)</numerusform>
+            <numerusform>%n formular (5969)</numerusform>
             <numerusform>%n formularer (5969)</numerusform>
         </translation>
     </message>
@@ -6009,7 +6009,7 @@ Hvad skal ske? (5268)</translation>
         <location filename="../sources/qet.cpp" line="622"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished">Kan ikke skrive til fil %1, fejl %2 opstået. (5975)</translation>
+        <translation>Kan ikke skrive til fil %1, fejl %2 opstået.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="69"/>
@@ -6248,7 +6248,7 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation type="unfinished">Kan ikke indlæse billede. (6214)</translation>
+        <translation>Kan ikke indlæse billede.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.h" line="51"/>
@@ -6298,35 +6298,35 @@ Hvad skal ske? (5268)</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation type="unfinished">Redigere element informationer: %1 (6264)</translation>
+        <translation>Rediger symbol informationer: %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished">Redigere krydsreference (6270)</translation>
+        <translation>Rediger krydsreference</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere egenskab for leder (6276)</translation>
+        <translation>Rediger egenskab for leder</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Redigere egenskab for flere ledere (6282)</translation>
+        <translation>Rediger egenskab for flere leder</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="115"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished">Flyt element tekst (6287)</translation>
+        <translation>Flyt symbol tekst</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
-        <translation type="unfinished">Flyt %1 element tekst (6292)</translation>
+        <translation>Flyt %1 symbol tekst</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
@@ -6348,9 +6348,9 @@ Hvad skal ske? (5268)</translation>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Kan ikke erstatte filen!
+        <translation>Kan ikke erstatte fil!
 
- (6316)</translation>
+</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
@@ -6826,12 +6826,12 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation type="unfinished">Redigere streg i formular (6754)</translation>
+        <translation type="unfinished">Rediger streg i formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation type="unfinished">Redigere fylde i formular (6759)</translation>
+        <translation type="unfinished">Rediger fyld i formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="143"/>
@@ -7455,7 +7455,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="250"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Fåes som %filename for titelblokke skabeloner (7383)</translation>
+        <translation>Tilgængelig som %filename for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="155"/>
@@ -7470,7 +7470,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Anvend dags dato (7398)</translation>
+        <translation>Anvend dags dato</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="106"/>
@@ -7499,7 +7499,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Fåes som %date for titelblokke skabeloner (7427)</translation>
+        <translation>Tilgængelig som %date for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="196"/>
@@ -7514,7 +7514,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="257"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vis titelblok i bund (vandret) eller til højre (lodret) på ark.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; (7442)</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vis titelblok bund (vandret) eller højre (lodret) på ark.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
@@ -7534,7 +7534,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished">Fåes som %folio for titelblokke skabeloner (7462)</translation>
+        <translation>Tilgægnelig som %folio for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="205"/>
@@ -7544,17 +7544,17 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Fåes som %author for titelblokke skabeloner (7472)</translation>
+        <translation>Tilgængelig som %author for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="222"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Fåes som %title for titelblokke skabeloner (7477)</translation>
+        <translation>Tilgængelig som %title for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="277"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Brugertilpasset</translation>
+        <translation>Brugertilpasset</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
@@ -7824,7 +7824,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="190"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished">Eksisterende logo (7752)</translation>
+        <translation>Eksisterende logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="196"/>
@@ -7834,7 +7834,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished">Andet logo har navnet &quot;%1&quot; i titelblok skabelonen. Erstat eller angive et andet navn for logo? (7762)</translation>
+        <translation>Andet logo har navnet &quot;%1&quot; i titelblok skabelon. Erstat eller angiv et andet navn for logo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="252"/>
@@ -7860,7 +7860,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="278"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished">Kan ikke åbne angiven fil (7788)</translation>
+        <translation>Kan ikke åbne fil</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
@@ -7870,12 +7870,12 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished">Alle filer (*);; Vektorgrafik (* SVG);; Bitmap billeder (* .png * .jpg * .jpeg * .gif * .bmp * .xpm) (7798)</translation>
+        <translation>Alle filer (*);; Vektorgrafik (* SVG);; Bitmap billeder (* .png * .jpg * .jpeg * .gif * .bmp * .xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="310"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished">Kan ikke ekspotér angiven fil (7803)</translation>
+        <translation>Kan ikke ekspoter fil</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="337"/>
@@ -7885,17 +7885,17 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="342"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished">Indtast nyt navn. (7813)</translation>
+        <translation>Indtast nyt navn.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished">Nyt navn kan ikke være tomt. (7818)</translation>
+        <translation>Nyt navn kan ikke være tomt.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="360"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished">Indtastet navn er allerede brugt af anden logo. (7823)</translation>
+        <translation>Navn er allerede brugt af andet logo.</translation>
     </message>
 </context>
 <context>
