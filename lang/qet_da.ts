@@ -483,7 +483,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Vis potentiale tekst på ark</translation>
+        <translation>Vis potentiale tekst på ark.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="169"/>
@@ -1457,7 +1457,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Redigere rettigheder ugyldig, åbnes skrivebeskyttet. (1447)</translation>
+        <translation>Rediger rettighede for kategorir ugyldig, åbnes skrivebeskyttet.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
@@ -1481,7 +1481,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Internt navn bruges af eksisterende kategori. Vælg et andet. (1471)</translation>
+        <translation>Internt navn bruges af eksisterende kategori. Vælg et andet.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -1636,13 +1636,13 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/elementspanel.cpp" line="433"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for sammenfolde eller udfolde indlejret titelblokke samling (1616)</translation>
+        <translation>Dobbel klik for sammenfolde eller udfolde indlejret titelblokke samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="442"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished">Træk og slip titelblok skabelon på ark for at anvende den. (1622)</translation>
+        <translation>Træk og slip titelblok skabelon på ark for at anvende den.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="466"/>
@@ -1653,73 +1653,73 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/elementspanel.cpp" line="467"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for sammenfolde eller udfolde indlejret element samling (1633)</translation>
+        <translation>Dobbel klik for sammenfolde eller udfolde indlejret esymbol samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="409"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for sammenfolde eller udfolde projekt (1639)</translation>
+        <translation>Dobbel klik for sammenfolde eller udfolde projekt</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="454"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished">Dobbel klik for sammenfolde eller udfolde element kategori (1645)</translation>
+        <translation>Dobbel klik for sammenfolde eller udfolde symbol kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="475"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished">Træk og slip element « %1 » på ark for at anvende det, dobbel klik for rediger (1651)</translation>
+        <translation>Træk og slip symbol « %1 » på ark for at anvende det, dobbel klik for rediger</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="583"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for at sammenfolde eller udfolde QElectroTech titelblokke samling (1657)</translation>
+        <translation>Dobbel klik for at sammenfolde eller udfolde QElectroTech titelblokke samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="584"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en samling af QElectroTech titelblokke. Installeret som system komponent kan de normalt ikke redigeres. (1663)</translation>
+        <translation>Dette er en samling af QElectroTech titelblokke. Installeret som system komponent kan de normalt ikke redigeres.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for at sammenfolde eller udfolde QElectroTech element samling (1669)</translation>
+        <translation>Dobbel klik for at sammenfolde eller udfolde QElectroTech symbol samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="593"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en samling af QElectroTech elementer. Installeret som system komponent kan de normalt ikke redigeres. (1675)</translation>
+        <translation>Dette er en samling af QElectroTech symboler. Installeret som system komponent kan de normalt ikke redigeres.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="601"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for at sammenfolde eller udfolde brugertilpasset titelblokke samling (1681)</translation>
+        <translation>Dobbel klik for at sammenfolde eller udfolde brugertilpasset titelblokke samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="602"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en samling af brugertilpasset titelblokke. -- Opret, gem og rediger egne titelblokke. (1687)</translation>
+        <translation>Dette er en samling af brugertilpasset titelblokke. -- Opret, gem og rediger egne titelblokke.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="610"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dobbel klik for at sammenfolde eller udfolde brugertilpasset element samling (1693)</translation>
+        <translation>Dobbel klik for at sammenfolde eller udfolde brugertilpasset symbol samling</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="611"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en samling af brugertilpasset elementer. -- Opret, gem og rediger egne elementer. (1699)</translation>
+        <translation>Dette er en samling af brugertilpasset symboler. -- Opret, gem og rediger egne symboler.</translation>
     </message>
 </context>
 <context>
@@ -1792,7 +1792,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="504"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
-        <translation type="unfinished">Oprette, slet og redigere kategorier. (1773)</translation>
+        <translation>Opret, slet og rediger kategorier.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="672"/>
@@ -1869,12 +1869,12 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
         <source>Déplacer dans cette catégorie</source>
-        <translation type="unfinished">Flyt ind i kategori (1850)</translation>
+        <translation>Flyt ind i kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="82"/>
         <source>Copier dans cette catégorie</source>
-        <translation type="unfinished">Kopiere ind i kategori (1855)</translation>
+        <translation>Kopier ind i kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="83"/>
@@ -1890,7 +1890,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="501"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
-        <translation type="unfinished">Kategori håndtering (1871)</translation>
+        <translation>Kategori håndtering</translation>
     </message>
 </context>
 <context>
@@ -1941,7 +1941,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/exportdialog.cpp" line="827"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Kan ikke skrive til fil (1922)</translation>
+        <translation>Kan ikke skrive til fil</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="70"/>
@@ -2028,13 +2028,13 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/exportdialog.cpp" line="786"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Angiv sti hvor billedfiler skal gems. (2009)</translation>
+        <translation>Angiv sti hvor billede filer skal gemmes.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="829"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Manglende rettigheder for skrive til fil %1. (2015)</translation>
+        <translation>Manglende rettigheder for at skrive til fil %1.</translation>
     </message>
 </context>
 <context>
@@ -2309,19 +2309,19 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/genericpanel.cpp" line="304"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en samling indlejret i projekt fil. Det kan gem og håndtere elementer, der anvendes i diagrammer fra hoved projektet. (2286)</translation>
+        <translation>Dette er en samling indlejret i projekt fil. Det kan gemme og håndter symboler, der anvendes i diagrammer fra hoved projektet.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="309"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Element kategori automatisk, integrere i projektet, ethvert element brugt af et diagram af dette projekt. (2292)</translation>
+        <translation>Symbol kategori integrere automatisk i projekt ethvert symbol brugt af et diagram fra projektet.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dette er en QElectroTech projekt, dvs fil type .qet indeholdende ark. Den indlæser også elementer og titelblokke skabeloner der anvendes i disse ark. (2298)</translation>
+        <translation>Dette er et QElectroTech projekt, dvs filtype .qet indeholdende ark. Den indlæser også symboler og titelblokke skabeloner der anvendes af diagrammer/ark.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
@@ -2350,19 +2350,19 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Titelblok skabelon der kan anvendes på et ark. (2327)</translation>
+        <translation>Titelblok skabelon der kan anvendes på ark.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Kategori af elementer, en simpel beholder til at organisere samlinger af elementer (2333)</translation>
+        <translation>Kategori af symboler, simpel beholder til at organisere samlinger af symboler</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="884"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Element som kan indsætte i et diagram. (2339)</translation>
+        <translation>Symbol som kan indsættes i diagram.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1170"/>
@@ -2412,36 +2412,36 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation type="unfinished">Element er integreret i projekt, men forspurgte version virker anderledes. Hvad skal ske? (2389)</translation>
+        <translation>Symbol er integreret i projekt, men forspurgte version virker anderledes. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Brug allerede integreret element (2395)</translation>
+        <translation>Brug allerede integreret symbol</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="146"/>
         <source>Intégrer l&apos;élément déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Integrer droppet element (2401)</translation>
+        <translation>Integrer droppet symbol</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="156"/>
         <source>Écraser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Overskriv integreret element (2407)</translation>
+        <translation>Overskriv integreret symbol</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Sammenkoble begge elementer (2413)</translation>
+        <translation>Sammenkoble begge symboler</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="121"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Integration af element (2418)</translation>
+        <translation>Integration af symbol</translation>
     </message>
 </context>
 <context>
