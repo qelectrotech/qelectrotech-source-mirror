@@ -72,9 +72,10 @@ XmlElementCollection::XmlElementCollection(QObject *parent) :
 XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QObject *parent) :
 	QObject(parent)
 {
-	QDomElement collection = m_dom_document.createElement("collection");
-	m_dom_document.appendChild(collection);
-	collection.appendChild(dom_element.firstChildElement("category").cloneNode(true));
+	if (dom_element.tagName() == "collection")
+		m_dom_document.appendChild(m_dom_document.importNode(dom_element, true));
+	else
+		qDebug() << "XmlElementCollection : tagName of dom_element is not collection";
 }
 
 /**
@@ -142,20 +143,25 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element, const
 /**
  * @brief XmlElementCollection::child
  * @param path
- * @return the DomElement at path if exist. Else return a null QDomElement
+ * @return the DomElement at path if exist, else return a null QDomElement
  */
 QDomElement XmlElementCollection::child(const QString &path) const
 {
 	QStringList path_list = path.split("/");
-	if (path_list.first() != "import") return QDomElement();
-	path_list.removeFirst();
+	if (path_list.isEmpty()) return QDomElement();
 
-	QDomElement dom_element = importCategory();
+	QDomElement parent_element = root();
+	foreach (QString str, path_list)
+	{
+		QDomElement child_element = child(parent_element, str);
 
-	for (int i=0 ; i<path_list.size() ; i++)
-		dom_element = child(dom_element, path_list.at(i));
+		if (child_element.isNull())
+			return QDomElement();
+		else
+			parent_element = child_element;
+	}
 
-	return dom_element;
+	return parent_element;
 }
 
 /**
@@ -242,8 +248,7 @@ QStringList XmlElementCollection::elementsNames(const QDomElement &parent_elemen
 
 /**
  * @brief XmlElementCollection::element
- * @param path : path of element : the path must start by "import/",
- * because import is the first directory of an xml collection
+ * @param path : path of the element in this collection
  * @return the QDomElement that represent the element at path @path
  * or a null QDomElement if not found or doesn't represent an element
  */
@@ -251,50 +256,28 @@ QDomElement XmlElementCollection::element(const QString &path)
 {
 	if (!path.endsWith(".elmt")) return QDomElement();
 
-	QStringList path_list = path.split("/");
-	QString element_name = path_list.last();
-	path_list.removeLast();
+	QDomElement element = child(path);
 
-	QDomElement dom_element = directory(path_list.join("/"));
-	if (dom_element.isNull()) return QDomElement();
-
-	QDomNodeList node_list = dom_element.elementsByTagName("element");
-	if (node_list.isEmpty()) return QDomElement();
-
-	for (int i=0 ; i <node_list.size() ; i++)
-	{
-		QDomNode node = node_list.at(i);
-		if (node.isElement())
-		{
-			QDomElement qde = node.toElement();
-			if (qde.attribute("name") == element_name)
-				return qde;
-		}
-	}
-
-	return QDomElement();
+	if (element.tagName() == "element")
+		return element;
+	else
+		return QDomElement();
 }
 
 /**
  * @brief XmlElementCollection::directory
- * @param path : path of directory : the path must start by "import/",
- * because import is the first directory of an xml collection
+ * @param path : path of the directory in this collection
  * @return the QDomElement that represent the directory at path @path
  * or a null QDomElement if not found.
  */
 QDomElement XmlElementCollection::directory(const QString &path)
 {
-	QStringList path_list = path.split("/");
-	QDomElement parent_dom = m_dom_document.documentElement();
+	QDomElement directory = child(path);
 
-	for (int i=0 ; i<path_list.size() ; i++)
-	{
-		QDomElement child_dom = child(parent_dom, path_list.at(i));
-		if (child_dom.isNull()) return QDomElement();
-		else parent_dom = child_dom;
-	}
-
-	return parent_dom;
+	if (directory.tagName() == "category")
+		return directory;
+	else
+		return QDomElement();
 }
 
 /**
@@ -437,21 +420,10 @@ ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLo
  */
 bool XmlElementCollection::exist(const QString &path)
 {
-	QStringList str_list = path.split("/");
-	if (str_list.isEmpty()) return false;
-
-	QDomElement parent_element = root();
-	foreach (QString str, str_list)
-	{
-		QDomElement child_element = child(parent_element, str);
-
-		if (child_element.isNull())
-			return false;
-		else
-			parent_element = child_element;
-	}
-
-	return true;
+	if (child(path).isNull())
+		return false;
+	else
+		return true;
 }
 
 /**
