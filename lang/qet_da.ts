@@ -2450,14 +2450,13 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished">Kan ikke få adgang til overordnet kategori (2427)</translation>
+        <translation>Kan ikke få adgang til overordnet kategori</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished">
-Kan ikke få XML beskrivelse af denne model (2434)</translation>
+        <translation>Kan ikke få XML beskrivelse af skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
@@ -2468,37 +2467,37 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished">Integration af titelblok skabelon (2445)</translation>
+        <translation>Integration af titelblok skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished">Skabelon er integreret i projekt, men forspurgte version virker anderledes. Hvad skal ske? (2451)</translation>
+        <translation>Skabelon er integreret i projekt, men forspurgte version virker anderledes. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Brug allerede integreret skabelon (2457)</translation>
+        <translation>Brug allerede integreret skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Integrere registreret skabelon (2463)</translation>
+        <translation>Integrer registreret skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Overskriv allerede integreret skabelon (2469)</translation>
+        <translation>Overskriv allerede integreret skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Samenkoble begge skabeloner (2475)</translation>
+        <translation>Samenkoble begge skabeloner</translation>
     </message>
 </context>
 <context>
@@ -2507,13 +2506,13 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Kategori « %1 » (%2) eksisterer. Hvad skal ske? (2484)</translation>
+        <translation>Kategori « %1 » (%2) eksisterer. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Element « %1 » eksisterer. Hvad skal ske? (2490)</translation>
+        <translation>Symbol « %1 » eksisterer. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -2556,25 +2555,25 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
         <source>La catégorie %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kategori %1 kan ikke læses. (2533)</translation>
+        <translation>Kategori %1 kan ikke læses.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="162"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Element %1 kan ikke læses. (2539)</translation>
+        <translation>Symbol %1 kan ikke læses.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="172"/>
         <source>La catégorie %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Kategori %1 er ikke skrivbar. (2545)</translation>
+        <translation>Kategori %1 er ikke skrivbar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="182"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Element %1 er ikke skrivbar. (2551)</translation>
+        <translation>Symbol %1 er ikke skrivbar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
@@ -2785,7 +2784,7 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Denne liste giver mulighed for at indtaste en kort tekst, så det er oversat til andre sprog. For at gøre dette, det kombinerer ISO 639-1 sprogkoder (f.eks. &quot;da&quot; for dansk) med tekst oversættelser af teksten, til disse sprog. (2762)</translation>
+        <translation>Denne liste giver mulighed for at indtaste en kort tekst, så det er oversat til andre sprog. For at gøre dette kombineres ISO 639-1 sprogkoder (f.eks. &quot;da&quot; for dansk) med tekst oversættelser af teksten, til disse sprog.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2796,19 +2795,19 @@ Kan ikke få XML beskrivelse af denne model (2434)</translation>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Tilføj sprog kombination / oversættelse i ovenstående liste. (2773)</translation>
+        <translation>Tilføj sprog kombination / oversættelse i ovenstående liste.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="88"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Der skal være mindst ét navn. (2779)</translation>
+        <translation>Der skal være mindst ét navn.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="89"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Indtast mindst ét navn. (2785)</translation>
+        <translation>Indtast mindst ét navn.</translation>
     </message>
 </context>
 <context>
