@@ -4343,12 +4343,12 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1994"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
-        <translation>Kan ikke genoprette punktet i vinduet, da det ser ud til at blive redigeret i et andet vindue</translation>
+        <translation>Kan ikke gendanne punktet i vinduet, da det ser ud til at blive redigeret i et andet vindue</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2000"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation>Kan ikke genoprette punktet i panelet... genindlæser panel...</translation>
+        <translation>Kan ikke gendanne punktet i panelet... genindlæser panel...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2012"/>
