@@ -279,7 +279,7 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (282)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (330)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
@@ -478,7 +478,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (481)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
@@ -1022,7 +1022,7 @@
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (1012)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="47"/>
@@ -1040,7 +1040,7 @@
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (1030)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
@@ -1281,7 +1281,7 @@
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (1271)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="177"/>
@@ -2383,7 +2383,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (2360)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
@@ -2670,7 +2670,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (2648)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
@@ -2728,7 +2728,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (2706)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="42"/>
@@ -2942,7 +2942,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (2920)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="33"/>
@@ -5999,9 +5999,9 @@ Hvad skal ske?</translation>
         <location filename="../sources/qet.cpp" line="306"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform>%n formular (5969)</numerusform>
-            <numerusform>%n formularer (5969)</numerusform>
+        <translation>
+            <numerusform>%n form</numerusform>
+            <numerusform>%n forme</numerusform>
         </translation>
     </message>
     <message>
@@ -6561,7 +6561,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (6490)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
@@ -6587,7 +6587,7 @@ Opret brugertilpasset tekst med brug af følgende variabler:
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (6516)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="44"/>
@@ -6674,7 +6674,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (6603)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
@@ -6825,12 +6825,12 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation type="unfinished">Rediger streg i formular</translation>
+        <translation>Rediger streg i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation type="unfinished">Rediger fyld i formular</translation>
+        <translation>Rediger fyld i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="143"/>
@@ -7439,7 +7439,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (7368)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
@@ -8054,7 +8054,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (7982)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
@@ -8152,7 +8152,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular (8080)</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
