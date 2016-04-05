@@ -33,9 +33,9 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
 	setMinimumWidth(680);
-	setMinimumHeight(690);
+	setMinimumHeight(920);
 	setModal(true);
-	
+
 	// Trois onglets
 	QTabWidget *tabs = new QTabWidget(this);
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
@@ -43,7 +43,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
 	tabs -> addTab(contributorsTab(), tr("&Contributeurs",     "tab title"));
 	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
-	
+
 	// Un bouton pour fermer la boite de dialogue
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
 	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -156,6 +156,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",                 tr("Traduction en grec"));
 	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",                tr("Traduction en néerlandais"));
 	addAuthor(translators, "Ronny Desmedt",              "r.desmedt@live.be",              tr("Traduction en flamand"));
+	addAuthor(translators, "OSS au2mation",              "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
 
 
 
