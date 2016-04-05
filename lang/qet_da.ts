@@ -4019,7 +4019,8 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished">Tilføj række (9999)</translation>
+        <translatorcomment>Oversættelse er brugt 2 steder men har forskellig kontekst</translatorcomment>
+        <translation>Tilføj række/streg</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
