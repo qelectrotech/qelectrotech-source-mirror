@@ -317,7 +317,7 @@
         LangString wrongArch         ${LANG_DANISH} "Dette program er kun for 64 bit systemer."
         LangString Elements          ${LANG_DANISH}  "Symboler"
         LangString Electric          ${LANG_DANISH}  "Elektrisk"
-        LangString Logic             ${LANG_DANISH}  "Logisk"
+        LangString Logic             ${LANG_DANISH}  "Logik"
         LangString Hydraulic         ${LANG_DANISH}  "Hydraulik"
         LangString Pneumatic         ${LANG_DANISH}  "Pneumatik"
         LangString Energy            ${LANG_DANISH}  "Energi teknik"
