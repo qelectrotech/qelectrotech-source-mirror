@@ -103,6 +103,7 @@ QWidget *AboutQET::aboutTab() const {
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
 	about -> setTextFormat(Qt::RichText);
+	about -> setFixedSize (690, 610);
 	return(about);
 }
 
