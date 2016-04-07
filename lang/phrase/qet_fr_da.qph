@@ -1,0 +1,175 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="da_DK">
+<phrase>
+    <source>modifié</source>
+    <target>ændret</target>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>projekt</target>
+</phrase>
+<phrase>
+    <source>configuration</source>
+    <target>indstilling</target>
+</phrase>
+<phrase>
+    <source>quitter</source>
+    <target>afslut</target>
+</phrase>
+<phrase>
+    <source>fermer</source>
+    <target>luk</target>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>tekst</target>
+</phrase>
+<phrase>
+    <source>schéma</source>
+    <target>diagram</target>
+</phrase>
+<phrase>
+    <source>nom</source>
+    <target>navn</target>
+</phrase>
+<phrase>
+    <source>horizontal</source>
+    <target>vandret</target>
+</phrase>
+<phrase>
+    <source>centre</source>
+    <target>centrer</target>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>piksel</target>
+</phrase>
+<phrase>
+    <source>abscisse</source>
+    <target>lodret</target>
+</phrase>
+<phrase>
+    <source>vertical</source>
+    <target>lodret</target>
+</phrase>
+<phrase>
+    <source>erreur</source>
+    <target>fejl</target>
+</phrase>
+<phrase>
+    <source>aperçu</source>
+    <target>oversigt</target>
+</phrase>
+<phrase>
+    <source>elément</source>
+    <target>symbol</target>
+</phrase>
+<phrase>
+    <source>ligne</source>
+    <target>streg</target>
+</phrase>
+<phrase>
+    <source>ellipse</source>
+    <target>cirkel</target>
+</phrase>
+<phrase>
+    <source>polygone</source>
+    <target>flerkant</target>
+</phrase>
+<phrase>
+    <source>form</source>
+    <target>form</target>
+</phrase>
+<phrase>
+    <source>tout cocher</source>
+    <target>vælg alle</target>
+</phrase>
+<phrase>
+    <source>tout décocher</source>
+    <target>vælg ingen</target>
+</phrase>
+<phrase>
+    <source>fichier</source>
+    <target>fil</target>
+</phrase>
+<phrase>
+    <source>manquant</source>
+    <target>mangler</target>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>titelblok</target>
+</phrase>
+<phrase>
+    <source>sans titre</source>
+    <target>ikke navngivet</target>
+</phrase>
+<phrase>
+    <source>ajouter</source>
+    <target>tilføj</target>
+</phrase>
+<phrase>
+    <source>traduction</source>
+    <target>oversættelse</target>
+</phrase>
+<phrase>
+    <source>écraser</source>
+    <target>overskriv</target>
+</phrase>
+<phrase>
+    <source>enregistrer</source>
+    <target>gem</target>
+</phrase>
+<phrase>
+    <source>folio</source>
+    <target>ark</target>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>mappe</target>
+</phrase>
+<phrase>
+    <source>modèle</source>
+    <target>skabelon</target>
+</phrase>
+<phrase>
+    <source>normalement</source>
+    <target>normal</target>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>leder</target>
+</phrase>
+<phrase>
+    <source>bibliothèque</source>
+    <target>bibliotek</target>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>klemme</target>
+</phrase>
+<phrase>
+    <source>inverseur</source>
+    <target>omskifter</target>
+</phrase>
+<phrase>
+    <source>temporisé travail</source>
+    <target>forsinket tiltræk</target>
+</phrase>
+<phrase>
+    <source>temporisé repos</source>
+    <target>forsinket frafald</target>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>relæ</target>
+</phrase>
+<phrase>
+    <source>numérotation</source>
+    <target>nummerering</target>
+</phrase>
+<phrase>
+    <source>modifier</source>
+    <target>rediger</target>
+</phrase>
+</QPH>
