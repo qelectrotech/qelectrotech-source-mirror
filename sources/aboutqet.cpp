@@ -24,6 +24,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QTextEdit>
+#include <QScrollArea>
 
 /**
 	Constructeur
@@ -33,7 +34,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
 	setMinimumWidth(680);
-	setMinimumHeight(920);
+	setMinimumHeight(600);
 	setModal(true);
 
 	// Trois onglets
@@ -55,6 +56,13 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	vlayout -> addWidget(tabs);
 	vlayout -> addWidget(buttons);
 	setLayout(vlayout);
+
+	QScrollArea* scrollArea = new QScrollArea(this);
+		scrollArea->setWidgetResizable(true);
+		scrollArea->setFixedSize (690, 610);
+		scrollArea->setWidget(tabs);
+
+
 }
 
 /**
