@@ -31,12 +31,12 @@
 	@param parent The parent of the dialog QWidget
 */
 AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
-	// Titre, taille, comportement...
+	// Title, size, behavior ...
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
 	setFixedSize (690, 610);
 	setModal(true);
 
-	// Trois onglets
+	// Three tabs
 	QTabWidget *tabs = new QTabWidget(this);
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
@@ -45,20 +45,20 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	tabs -> addTab(titleTab(),        tr("&Version",           "tab title"));
 	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
 
-	// Un bouton pour fermer la boite de dialogue
+	// A button to close the dialog box
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
 	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
 	
-	// Le tout dans une disposition verticale
+	// All in a vertical arrangement
 	QVBoxLayout *vlayout = new QVBoxLayout();
 	vlayout -> addWidget(tabs);
 	setLayout(vlayout);
 
-	QScrollArea* scrollArea = new QScrollArea(this);
-		scrollArea->setWidgetResizable(true);
-		scrollArea->setFixedSize (690, 610);
-		scrollArea->setWidget(tabs);
+	QScrollArea *scrollArea = new QScrollArea(this);
+	scrollArea->setWidgetResizable(true);
+	scrollArea->setFixedSize (690, 610);
+	scrollArea->setWidget(tabs);
 
 
 }
@@ -84,6 +84,7 @@ QWidget *AboutQET::titleTab() const {
 	title -> setAlignment(Qt::AlignCenter);
 	title -> setText(title->text() + compilation_info);
 	title -> setTextFormat(Qt::RichText);
+	title ->setTextInteractionFlags(Qt::TextSelectableByMouse);
 	return(title);
 }
 
@@ -208,12 +209,12 @@ QWidget *AboutQET::licenseTab() const {
 	// label
 	QLabel *title_license = new QLabel(tr("Ce programme est sous licence GNU/GPL."));
 	
-	// texte de la GNU/GPL dans une zone de texte scrollable non editable
+	// Text of the GNU/GPL in a scrollable text box not editable
 	QTextEdit *text_license = new QTextEdit();
 	text_license -> setPlainText(QET::license());
 	text_license -> setReadOnly(true);
 	
-	// le tout dans une disposition verticale
+	// All in a vertical arrangement
 	QVBoxLayout *license_layout = new QVBoxLayout();
 	license_layout -> addWidget(title_license);
 	license_layout -> addWidget(text_license);
@@ -233,7 +234,7 @@ void AboutQET::addAuthor(QLabel *label, const QString &name, const QString &emai
 	
 	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;&lrm;<br/><br/>";
 	
-	// ajoute la fonction de la personne
+	// Add the function of the person
 	new_text += author_template.arg(work).arg(name).arg(email);
 	label -> setText(new_text);
 }
