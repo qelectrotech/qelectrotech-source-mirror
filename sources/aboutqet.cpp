@@ -33,8 +33,7 @@
 AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
-	setMinimumWidth(680);
-	setMinimumHeight(600);
+	setFixedSize (690, 610);
 	setModal(true);
 
 	// Trois onglets
@@ -43,6 +42,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
 	tabs -> addTab(contributorsTab(), tr("&Contributeurs",     "tab title"));
+	tabs -> addTab(titleTab(),        tr("&Version",           "tab title"));
 	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
 
 	// Un bouton pour fermer la boite de dialogue
@@ -52,9 +52,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	
 	// Le tout dans une disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout();
-	vlayout -> addWidget(title());
 	vlayout -> addWidget(tabs);
-	vlayout -> addWidget(buttons);
 	setLayout(vlayout);
 
 	QScrollArea* scrollArea = new QScrollArea(this);
@@ -74,11 +72,7 @@ AboutQET::~AboutQET() {
 /**
 	@return The title QElectroTech with its icon
 */
-QWidget *AboutQET::title() const {
-	QWidget *icon_and_title = new QWidget();
-	// icone
-	QLabel *icon = new QLabel();
-	icon -> setPixmap(QET::Icons::QETOxygenLogo.pixmap(48, 48));
+QWidget *AboutQET::titleTab() const {
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech V " + QET::displayedVersion + "</span>");
 	QString compilation_info = "<br />" + tr("Compilation : ");
@@ -87,15 +81,10 @@ QWidget *AboutQET::title() const {
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
 	compilation_info += " - run with Qt "+ QString(qVersion());
 #endif
+	title -> setAlignment(Qt::AlignCenter);
 	title -> setText(title->text() + compilation_info);
 	title -> setTextFormat(Qt::RichText);
-	
-	QHBoxLayout *hlayout = new QHBoxLayout();
-	hlayout -> addWidget(icon);
-	hlayout -> addWidget(title);
-	hlayout -> addStretch();
-	icon_and_title -> setLayout(hlayout);
-	return(icon_and_title);
+	return(title);
 }
 
 /**
@@ -105,7 +94,7 @@ QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
 		tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
 		"<br><br>" +
-		tr("2006-2015 Les développeurs de QElectroTech", "about tab, developers line") +
+		tr("2006-2016 Les développeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
 		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
 		"<br><br>" +

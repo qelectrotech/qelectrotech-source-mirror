@@ -35,7 +35,7 @@ class AboutQET : public QDialog {
 	
 	// methods
 	private:
-	QWidget *title() const;
+	QWidget *titleTab() const;
 	QWidget *aboutTab() const;
 	QWidget *authorsTab() const;
 	QWidget *translatorsTab() const;
