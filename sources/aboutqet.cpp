@@ -96,7 +96,7 @@ QWidget *AboutQET::aboutTab() const {
 		"<br><br>" +
 		tr("2006-2016 Les développeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
-		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
+		"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
 		"<br><br>" +
 		tr("Contact : <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line")
 	);
