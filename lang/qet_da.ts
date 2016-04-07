@@ -1154,7 +1154,7 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Bobine</source>
-        <translation>Spole</translation>
+        <translation>Relæ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
