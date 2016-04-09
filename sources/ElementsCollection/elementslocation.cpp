@@ -299,16 +299,28 @@ void ElementsLocation::setPath(const QString &path)
 }
 
 /**
-	Ajoute une chaine au chemin
-	@param string Chaine a ajouter
-	@return true si l'operation a reussi, false si l'operation n'a pas de sens.
-	Par exemple, il n'y a pas de sens a vouloir ajouter quelque chose apres le
-	chemin d'un element.
-*/
-bool ElementsLocation::addToPath(const QString &string) {
-	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive)) return(false);
-	if (!m_collection_path.endsWith("/") && !string.startsWith("/")) m_collection_path += "/";
-	m_collection_path += string;
+ * @brief ElementsLocation::addToPath
+ * Add a string to the actual path of this location
+ * @param string
+ * @return True if the operation success
+ */
+bool ElementsLocation::addToPath(const QString &string)
+{
+	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive))
+	{
+		qDebug() << "ElementsLocation::addToPath : Can't add string to the path of an element";
+		return(false);
+	}
+
+	QString added_path = string;
+
+	if (!m_collection_path.endsWith("/") && !added_path.startsWith("/"))
+		added_path.prepend("/");
+
+	if (isFileSystem())
+		m_file_system_path += added_path;
+
+	m_collection_path += added_path;
 	return(true);
 }
 
