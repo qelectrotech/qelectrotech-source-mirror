@@ -8,7 +8,6 @@ $ qmake (qmake-qt5 for Debian-based systems)
 $ make
 # umask 0022
 # make install
-
 [fr]
 Pré-requis :
 libQt5 (paquets libqt5*)
@@ -126,6 +125,17 @@ cupsys-bsd voor het afdrukken
 
 Hoe te compileren :
 $ qmake (qmake-qt5 voor systemen op basis van Debian)
+$ make
+# umask 0022
+# make install
+
+[da]
+Krav:
+libQt5 (se pakke libqt5*)
+cupsys-bsd til udskrivning
+
+Hvordan man kompilerer:
+$ qmake (qmake-qt5 for Debian baserede systemer)
 $ make
 # umask 0022
 # make install

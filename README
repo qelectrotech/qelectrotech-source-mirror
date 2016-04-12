@@ -41,3 +41,7 @@ Het maakt gebruik van XML-bestanden voor elementen en diagrammen, en omvat zowel
 [be]
 QElectroTech is een Qt5 toepassing voor het maken en beheren van elektrische schema's.
 QET gebruikt XML voor de elementen en schema's en omvat een schematische editor, itemeditor, en een titel sjabloon editor.
+
+[da]
+QElectroTech er et Qt5 program til at redigere elektriske diagrammer.
+Det bruger XML filer for symboler og diagrammer og inkluderer diagram, symbol og titelblok redigering.
