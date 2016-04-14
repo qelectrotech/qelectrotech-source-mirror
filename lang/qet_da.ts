@@ -8110,7 +8110,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Bobine</source>
-        <translation>Spole</translation>
+        <translation>Relæ</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
