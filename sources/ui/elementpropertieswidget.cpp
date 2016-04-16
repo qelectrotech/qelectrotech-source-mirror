@@ -172,12 +172,15 @@ void ElementPropertiesWidget::updateUi()
 
 		//Purge the tab widget and delete all widget
 	m_tab->clear();
-	qDeleteAll(m_list_editor); m_list_editor.clear();
-	if(m_general_widget) delete m_general_widget; m_general_widget = nullptr;
+	qDeleteAll(m_list_editor);
+	m_list_editor.clear();
+	if(m_general_widget) {
+		delete m_general_widget;
+		m_general_widget = nullptr;
+	}
 
 		//Create editor according to the type of element
-	switch (m_element -> linkType())
-	{
+	switch (m_element -> linkType())	{
 		case Element::Simple:
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;

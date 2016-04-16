@@ -220,13 +220,25 @@ QPainterPath QetShapeItem::shape() const
 
 	switch (m_shapeType)
 	{
-		case Line:      path.moveTo(m_P1);
-						path.lineTo(m_P2);                   break;
-		case Rectangle: path.addRect(QRectF(m_P1, m_P2));    break;
-		case Ellipse:   path.addEllipse(QRectF(m_P1, m_P2)); break;
-		case Polygon:   path.addPolygon(m_polygon);
-						if (m_close) path.closeSubpath();    break;
-		default:        Q_ASSERT(false);                     break;
+		case Line:      
+			path.moveTo(m_P1);
+			path.lineTo(m_P2);                   
+			break;
+		case Rectangle: 
+			path.addRect(QRectF(m_P1, m_P2));
+			break;
+		case Ellipse:
+			path.addEllipse(QRectF(m_P1, m_P2));
+			break;
+		case Polygon:
+			path.addPolygon(m_polygon);
+			if (m_close) {
+				path.closeSubpath();
+			}
+			break;
+		default:
+			Q_ASSERT(false);
+			break;
 	}
 
 	QPainterPathStroker pps;
