@@ -172,4 +172,12 @@
     <source>modifier</source>
     <target>rediger</target>
 </phrase>
+<phrase>
+    <source>existe déjà</source>
+    <target>findes allerede</target>
+</phrase>
+<phrase>
+    <source>n&apos;existe pas</source>
+    <target>findes ikke</target>
+</phrase>
 </QPH>

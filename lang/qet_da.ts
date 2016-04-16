@@ -1014,7 +1014,7 @@
         <location filename="../sources/elementdialog.cpp" line="346"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation>Symbol findes, skal det overskrives?</translation>
+        <translation>Symbol findes allerede. Skal det overskrives?</translation>
     </message>
 </context>
 <context>
@@ -2506,13 +2506,13 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Kategori « %1 » (%2) eksisterer. Hvad skal ske?</translation>
+        <translation>Kategori « %1 » (%2) findes allerede. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Symbol « %1 » eksisterer. Hvad skal ske?</translation>
+        <translation>Symbol « %1 » findes allerede. Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -4298,7 +4298,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="855"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation>Filen %1 der forsøges åbnet eksisterer ikke.</translation>
+        <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="882"/>
@@ -4839,7 +4839,7 @@ Kommandovalg:
         <location filename="../sources/editor/qetelementeditor.cpp" line="781"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation>Filen %1 findes ikke.</translation>
+        <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="789"/>
@@ -4911,7 +4911,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1095"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation>Fil %1 findes ikke mere.</translation>
+        <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1160"/>
@@ -7834,7 +7834,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Andet logo har navnet &quot;%1&quot; i titelblok skabelon. Erstat eller angiv et andet navn for logo?</translation>
+        <translation>Andet logo har navnet &quot;%1&quot; i titelblok skabelon. Erstat eller angiv andet navn for logo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="252"/>
