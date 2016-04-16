@@ -10,5 +10,6 @@
         <name lang="cs">Funkční schéma</name>
         <name lang="nl">Stroomschema</name>
         <name lang="be">Organisatieschema</name>
+        <name lang="da">Rutediagram</name>
     </names>
 </qet-directory>
