@@ -190,18 +190,21 @@ SetOverwrite on
 Section  "$(water)" 
   SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/11_water"
+  File /r "./files/elements/60_energy/"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Refrigeration)" 
   SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/21_refrigeration"
+  File /r "./files/elements/60_energy/"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Solar_thermal)" 
   SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/31_solar_thermal"
+  File /r "./files/elements/60_energy/"
 SectionEnd
 
 SubSectionEnd 
