@@ -229,7 +229,7 @@ void InteractiveMoveElementsHandler::initConflictDialog() {
 	conflict_dialog_ -> setMaximumSize(600, 200);
 	
 	// initialisation du champ de texte
-	rename_label_ = new QLabel("Nouveau nom :");
+	rename_label_ = new QLabel(tr("Nouveau nom :"));
 	rename_textfield_ = new QFileNameEdit();
 	connect(
 		rename_textfield_,
