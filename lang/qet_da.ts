@@ -47,7 +47,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Version</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -157,7 +157,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Dansk oversættelse</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -220,7 +220,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 QElectroTech udviklere {2006-2016 ?}</translation>
+        <translation>2006-2016 QElectroTech udviklere</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
@@ -2525,7 +2525,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished">Nyt navn:</translation>
+        <translation>Nyt navn:</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
