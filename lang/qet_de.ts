@@ -2557,6 +2557,11 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <translation>Keine Schreibrechte für das Bauteil %1.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Neuer Name:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Umbenennen</translation>

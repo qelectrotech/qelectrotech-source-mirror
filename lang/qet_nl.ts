@@ -2575,6 +2575,11 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Element %1 is niet schrijfbaar.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="384"/>
         <source>Erreur</source>

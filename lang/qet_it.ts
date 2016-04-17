@@ -2523,6 +2523,11 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
         <translation>L&apos;elemento « %1 » esiste già. Cosa si vuole fare?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Nuovo nome:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Rinomina</translation>

@@ -2523,6 +2523,11 @@ Alle elementer og fil indhold bliver slettet.</translation>
         <translation>Symbol « %1 » findes allerede. Hvad skal ske?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Nyt navn:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Omdøb</translation>

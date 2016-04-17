@@ -2526,6 +2526,11 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
         <translation>El elemento « %1 » ya existe, ¿que quiere hacer?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Nuevo nombre:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Renombrar</translation>

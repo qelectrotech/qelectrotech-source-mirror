@@ -2587,6 +2587,11 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Элемент %1 не может быть записан.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Новое имя :</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Переименовать</translation>

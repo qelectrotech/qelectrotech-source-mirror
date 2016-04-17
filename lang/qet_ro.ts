@@ -2544,6 +2544,11 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Elementul %1 nu se poate scrie.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Redenumește</translation>

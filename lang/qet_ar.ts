@@ -2580,6 +2580,11 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>لا يُمكن الوصول إلى العنصر  %1 بالكتابة.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">اسم جديد</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>إعادة التسمية</translation>

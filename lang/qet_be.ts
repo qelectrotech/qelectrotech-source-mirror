@@ -2533,6 +2533,11 @@ Geen toegang tot de bovenliggende categorie</translation>
         <translation>Het element &quot; %1 &quot; bestaat reeds. Wat wilt u doen ?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Nieuwe naam:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Hernoemen</translation>

@@ -2555,6 +2555,11 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>No es pot accedir al símbol %1en mode d&apos;escriptura.</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Canviar el nom</translation>

@@ -2524,6 +2524,11 @@ All the elements and contents file in this folder will be deleted.</translation>
         <translation>The element « %1 » already exists. What do you wish to do?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation>New name :</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Rename</translation>

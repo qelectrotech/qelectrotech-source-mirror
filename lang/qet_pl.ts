@@ -2516,6 +2516,11 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <translation>L&apos;element « %1 » już istnieje. Co chcesz zrobić?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished">Nowa nazwa:</translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Zmień nazwę</translation>

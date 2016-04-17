@@ -2523,6 +2523,11 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
         <translation>Prvek « %1 » již existuje. Co si přejete udělat?</translation>
     </message>
     <message>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
+        <source>Nouveau nom :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
         <translation>Přejmenovat</translation>
