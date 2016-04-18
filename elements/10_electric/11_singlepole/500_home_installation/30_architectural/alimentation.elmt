@@ -1,0 +1,13 @@
+<definition hotspot_y="6" type="element" version="0.5" orientation="dyyy" height="20" width="20" link_type="simple" hotspot_x="0">
+    <uuid uuid="{d960dc76-230d-4bd7-862d-9d6782c9049e}"/>
+    <names>
+        <name lang="fr">alimentation</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle diameter="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" y="-3" antialias="false"/>
+        <circle diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" x="8" y="1" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" size="9" x="2" y="17"/>
+        <terminal orientation="n" x="10" y="5"/>
+    </description>
+</definition>
