@@ -1,18 +1,19 @@
-<definition hotspot_y="7" type="element" version="0.5" orientation="dyyy" height="40" width="30" link_type="simple" hotspot_x="15">
-    <uuid uuid="{5dbb871c-7b10-47bb-b5d3-dcd1abd9b418}"/>
+<definition width="30" orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="7" type="element" version="0.51" height="40">
+    <uuid uuid="{0d68344c-340e-461e-9fa5-3adc7a223ae2}"/>
     <names>
         <name lang="fr">détecteur de mouvement</name>
+        <name lang="it">sensore di movimento</name>
     </names>
     <informations></informations>
     <description>
-        <line x2="5" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="14" x1="5" antialias="false"/>
-        <line x2="-5" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="14" x1="-5" antialias="false"/>
-        <input text="_" tagg="label" rotate="true" size="9" x="-7" y="28"/>
-        <line x2="0" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="0" x1="-10" antialias="false"/>
-        <line x2="10" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="10" x1="0" antialias="false"/>
-        <line x2="0" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="20" x1="10" antialias="false"/>
-        <line x2="-10" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="10" x1="0" antialias="false"/>
-        <line x2="7" length1="1.5" length2="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="10" x1="-7" antialias="false"/>
-        <terminal orientation="n" x="0" y="20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="14" x1="5" x2="5" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="14" x1="-5" x2="-5" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <input rotate="true" size="9" x="-7" y="28" text="_" tagg="label"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="0" x1="-10" x2="0" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="10" x1="0" x2="10" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="20" x1="10" x2="0" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="10" x1="0" x2="-10" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="10" x1="-7" x2="7" length1="1.5" antialias="false" length2="1.5" end1="none" end2="none"/>
+        <terminal x="0" y="20" orientation="n"/>
     </description>
 </definition>
