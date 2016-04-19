@@ -238,26 +238,8 @@ void ElementsLocation::setPath(const QString &path)
 			p = QETApp::customElementsDirN() + "/" + tmp_path;
 		}
 
-			//This is an element
-		if (path.endsWith(".elmt"))
-		{
-			QFile file(p);
-			if (file.exists())
-			{
-				m_file_system_path = p;
-				m_collection_path = path;
-			}
-		}
-			//They must be a directory
-		else
-		{
-			QDir dir(p);
-			if(dir.exists())
-			{
-				m_file_system_path = p;
-				m_collection_path = path;
-			}
-		}
+		m_file_system_path = p;
+		m_collection_path = path;
 	}
 		//In this case, the path is supposed to be relative to the file system.
 	else
@@ -567,22 +549,39 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 		QString error;
 		QETXML::writeXmlFile(xml_document, fileSystemPath(), &error);
 
-		if (!error.isEmpty())
-		{
+		if (!error.isEmpty()) {
 			qDebug() << "ElementsLocation::setXml error : " << error;
 			return false;
 		}
-		else
+		else {
 			return true;
+		}
 	}
-	else if (isProject() && exist())
+	else if (isProject())
 	{
-		QDomElement dom_element = xml();
-		QDomNode parent_node = dom_element.parentNode();
-		parent_node.removeChild(dom_element);
-		parent_node.appendChild(xml_document.documentElement().cloneNode(true));
+			//Element exist, we overwrite the existing element.
+		if (exist())
+		{
+			QDomElement dom_element = xml();
+			QDomNode parent_node = dom_element.parentNode();
+			parent_node.removeChild(dom_element);
+			parent_node.appendChild(xml_document.documentElement().cloneNode(true));
+			return true;
+		}
+			//Element doesn't exist, we create the element
+		else
+		{
+			QString path_ = collectionPath(false);
+			QRegExp rx ("^(.*)/(.*\\.elmt)$");
 
-		return true;
+			if (rx.exactMatch(path_)) {
+				return project()->embeddedElementCollection()->addElementDefinition(rx.cap(1), rx.cap(2), xml_document.documentElement());
+			}
+			else {
+				qDebug() << "ElementsLocation::setXml : rx don't match";
+			}
+
+		}
 	}
 
 	return false;

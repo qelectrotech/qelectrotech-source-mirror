@@ -858,7 +858,6 @@ bool QETElementEditor::toLocation(const ElementsLocation &location)
 									 tr("Impossible d'enregistrer l'élément", "message box content"));
 		return(false);
 	}
-
 	return(true);
 }
 

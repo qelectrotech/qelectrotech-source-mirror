@@ -17,17 +17,19 @@
 */
 #ifndef ELEMENT_DIALOG_H
 #define ELEMENT_DIALOG_H
-#include <QtCore>
+
+#include <QDialog>
 #include "elementslocation.h"
-class QDialog;
+
 class QDialogButtonBox;
-class ElementsCategoriesList;
 class QFileNameEdit;
+class QTreeView;
 /**
 	This class provides several dialogs to select an element or a category
 	(e.g. new or existing, for opening or for saving...).
 */
-class ElementDialog : public QObject {
+class ElementDialog : public QDialog
+{
 	Q_OBJECT
 	// enumerations
 	/**
@@ -40,44 +42,36 @@ class ElementDialog : public QObject {
 		SaveCategory = 3  ///< The dialog should select a category for saving
 	};
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	ElementDialog(uint = ElementDialog::OpenElement, QWidget * = 0, QObject * = 0);
-	virtual ~ElementDialog();
+		ElementDialog(uint = ElementDialog::OpenElement, QWidget *parent = nullptr);
 	private:
-	ElementDialog(const ElementDialog &);
-	
-	// methods
+		ElementDialog(const ElementDialog &);
+
 	public:
-	int exec();
-	ElementsLocation location() const;
-	static ElementsLocation getExistingCategoryLocation(QWidget * = 0);
-	static ElementsLocation getNewCategoryLocation(QWidget * = 0);
-	static ElementsLocation getOpenElementLocation(QWidget * = 0);
-	static ElementsLocation getSaveElementLocation(QWidget * = 0);
-	
+		ElementsLocation location() const;
+
 	private:
-	static ElementsLocation execConfiguredDialog(int, QWidget * = 0);
+		void setUpWidget();
+		void setUpConnection();
+		void indexClicked(const QModelIndex &index);
+		void updateWidget();
+		void checkCurrentLocation();
+		void checkAccept();
 	
-	private slots:
-	void locationChanged(const ElementsLocation &);
-	void textFieldChanged(const QString &);
-	void dialogAccepted();
-	void dialogRejected();
-	void checkDialog();
-	
+		// attributes
 	private:
-	void makeInterface();
-	
-	// attributes
+		uint m_mode;
+		ElementsLocation m_location;
+		QDialogButtonBox *m_buttons_box = nullptr;
+		QFileNameEdit *m_text_field     = nullptr;
+		QTreeView *m_tree_view          = nullptr;
+
+	public:
+		static ElementsLocation getOpenElementLocation(QWidget *parent = nullptr);
+		static ElementsLocation getSaveElementLocation(QWidget *parent = nullptr);
 	private:
-	uint mode_;
-	ElementsLocation location_;
-	QString title_;
-	QString label_;
-	QDialog *dialog_;
-	QDialogButtonBox *buttons_;
-	ElementsCategoriesList *list_;
-	QFileNameEdit *textfield_;
+		static ElementsLocation execConfiguredDialog(int, QWidget *parent = nullptr);
+
 };
 #endif

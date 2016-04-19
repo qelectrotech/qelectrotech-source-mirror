@@ -392,6 +392,44 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 }
 
 /**
+ * @brief XmlElementCollection::addElementDefinition
+ * Add the élément defintion @xml_definition in the directory at path @dir_path with the name @elmt_name.
+ * @param dir_path : the path of the directory where we must add the element.
+ * The path must be an existing directory of this collection.
+ * @param elmt_name : The name used to store the element (the name must end with .elmt, if not, .elmt will be append to @elmt_name)
+ * @param xml_definition : The xml definition of the element.
+ * The tag name of @xml_definition must be "definition".
+ * @return True if the element is added with success.
+ */
+bool XmlElementCollection::addElementDefinition(const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition)
+{
+	QDomElement dom_dir = directory(dir_path);
+	if (dom_dir.isNull()) {
+		qDebug() << "XmlElementCollection::addElementDefinition : No directory at path : " << dir_path;
+		return false;
+	}
+
+	if (xml_definition.tagName() != "definition") {
+		qDebug() << "XmlElementCollection::addElementDefinition : xml_defintion tag name is not \"definition\"";
+		return false;
+	}
+
+	QString name = elmt_name;
+	if (!name.endsWith(".elmt")) {
+		name += ".elmt";
+	}
+
+	QDomElement dom_elmt = m_dom_document.createElement("element");
+	dom_elmt.setAttribute("name", name);
+	dom_elmt.appendChild(xml_definition.cloneNode(true));
+	dom_dir.appendChild(dom_elmt);
+
+	emit elementAdded(dir_path + "/" + name);
+
+	return true;
+}
+
+/**
  * @brief XmlElementCollection::copy
  * Copy the content represented by source (an element or a directory) to destination.
  * Destination must be a directory of this collection.

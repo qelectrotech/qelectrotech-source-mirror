@@ -47,6 +47,7 @@ class XmlElementCollection : public QObject
 		QDomElement element(const QString &path);
 		QDomElement directory(const QString &path);
 		QString addElement (ElementsLocation &location);
+		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
 		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
 		bool exist (const QString &path);
 
