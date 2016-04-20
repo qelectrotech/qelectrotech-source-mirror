@@ -1465,7 +1465,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Rediger rettighede for kategorir ugyldig, åbnes skrivebeskyttet.</translation>
+        <translation>Rediger rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
