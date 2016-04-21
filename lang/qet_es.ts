@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -13,7 +13,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 Los desarrolladores de QElectroTech {2006-2016 ?}</translation>
+        <translation>2006-2016 Los desarrolladores de QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="116"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al Danés</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -201,7 +201,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Versión</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -845,7 +845,7 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Arrastre y suelte el elmento « %1 » sobre el folio para insertar, doble click sobre el mismo para editarlo</translation>
+        <translation>Arrastre y suelte el elmento « %1 » sobre la hoja para insertar, doble click sobre el mismo para editarlo</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
@@ -2236,7 +2236,7 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Danés</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
@@ -2528,7 +2528,7 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished">Nuevo nombre:</translation>
+        <translation>Nuevo nombre:</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -6788,12 +6788,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
         <source>Diagonal arrière</source>
-        <translation type="unfinished">Diagonal invertida</translation>
+        <translation>Diagonal invertida</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
         <source>Diagonal avant</source>
-        <translation type="unfinished">Diagonal</translation>
+        <translation>Diagonal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
@@ -6813,7 +6813,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished">Editar las propiedades de un primitive</translation>
+        <translation>Editar las propiedades de un elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
