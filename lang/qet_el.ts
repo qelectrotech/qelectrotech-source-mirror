@@ -47,7 +47,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Έκδοση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -157,7 +157,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Δανική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -220,7 +220,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 Οι προγραμματιστές του QElectroTech {2006-2016 ?}</translation>
+        <translation>Οι προγραμματιστές του QElectroTech 2006-2016</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
@@ -845,12 +845,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Σύρετε και αφήστε το στοιχείο « %1 » μέσα στη σελίδα για να το εισάγετε, ή διπλό πάτημα για επεξεργασία</translation>
+        <translation>Σύρετε και αφήστε το στοιχείο « %1 » μέσα στη σελίδα για να το εισάγετε, ή διπλό πάτημα για επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων</translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων</translation>
     </message>
 </context>
 <context>
@@ -1565,12 +1565,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενφάνιση μόνο αυτού του φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση όλων των φακέλων</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
@@ -2240,7 +2240,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Δανικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
@@ -2531,7 +2531,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -4698,7 +4698,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Ouvrir depuis un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>Άμνοιγμα από αρχείο dxf</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
@@ -6528,37 +6528,37 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Διάλογος</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέο όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Μετονομασία</translation>
+        <translation>Μετονομασία</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished">Αναίρεση</translation>
+        <translation>Αναίρεση</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>ΕτικέταΚειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Το στοιχείο «% 1» (2%) υπάρχει ήδη. Τι θα θέλατε να κάνετε;</translation>
+        <translation>Το στοιχείο «% 1» υπάρχει ήδη. Τι θα θέλατε να κάνετε;</translation>
     </message>
 </context>
 <context>
