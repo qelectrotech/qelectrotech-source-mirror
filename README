@@ -16,7 +16,7 @@ QET utiliza ficheiros XML para os elementos e para os esquemas e inclui um edito
 
 [es]
 QElectroTech es una aplicación Qt5 para diseñar esquemas eléctricos.
-Utiliza archivos XML para los elementos y esquemas, e incluye un editor de esquemas y un editor de elemento.
+Utiliza archivos XML para los elementos y esquemas, e incluye un editor de esquemas y un editor de elementos.
 
 [cs]
 QElectroTech je aplikací Qt5 určenou pro návrh nákresů elektrických obvodů.
