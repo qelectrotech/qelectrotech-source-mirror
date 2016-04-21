@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -47,7 +47,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verze</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -157,7 +157,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do dánštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -220,7 +220,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 vývojáři QElectroTechu {2006-2016 ?}</translation>
+        <translation>2006-2016 vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
@@ -845,12 +845,12 @@
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="226"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
-        <translation type="unfinished">Táhněte a pusťte tento prvek « %1 » na list pro jeho vložení. Dvakrát klepněte pro jeho upravení</translation>
+        <translation>Táhněte a pusťte tento prvek « %1 » na list pro jeho vložení. Dvakrát klepněte pro jeho upravení</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementcollectionitem.cpp" line="228"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
-        <translation type="unfinished">Dvakrát klepněte pro složení nebo rozbalení této sbírky prvků</translation>
+        <translation>Dvakrát klepněte pro složení nebo rozbalení této skupiny prvků</translation>
     </message>
 </context>
 <context>
@@ -1564,12 +1564,12 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="96"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat jen tuto složku</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="97"/>
         <source>Afficher tous les dossiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat všechny složky</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="111"/>
@@ -2237,7 +2237,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
         <source>Danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Dánský</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
@@ -2525,7 +2525,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový název</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -4694,7 +4694,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Ouvrir depuis un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít ze souboru DXF</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
@@ -6533,37 +6533,37 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový název:</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Vymazat</translation>
+        <translation>Vymazat</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Přejmenovat</translation>
+        <translation>Přejmenovat</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished">Zpět</translation>
+        <translation>Zpět</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Textový štítek</translation>
+        <translation>Textový štítek</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="29"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Prvek « %1 » již existuje. Co si přejete udělat?</translation>
+        <translation>Prvek « %1 » již existuje. Co si přejete udělat?</translation>
     </message>
 </context>
 <context>
