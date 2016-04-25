@@ -47,7 +47,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Versie</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -157,7 +157,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>Deense vertaling</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -220,7 +220,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 De ontwikkelaars van QElectroTech {2006-2016 ?}</translation>
+        <translation>2006-2016 De ontwikkelaars van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
@@ -2535,7 +2535,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished">Nieuwe naam:</translation>
+        <translation>Nieuwe naam:</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -2676,7 +2676,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="60"/>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Vierkant</translation>
+        <translation type="unfinished">Vierkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="174"/>
