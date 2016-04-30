@@ -2676,7 +2676,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="60"/>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation type="unfinished">Vierkant</translation>
+        <translation>Vierkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="174"/>
