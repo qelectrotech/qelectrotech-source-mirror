@@ -552,8 +552,8 @@ QDomDocument QETProject::toXml() {
 		}
 	}
 	
-	// collection
-	project_root.appendChild(collection_ -> writeXml(xml_doc));
+		//Write the elements collection.
+	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 	
 	return(xml_doc);
 }
