@@ -70,9 +70,9 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <location filename="../sources/aboutqet.cpp" line="118"/>
-        <location filename="../sources/aboutqet.cpp" line="186"/>
-        <location filename="../sources/aboutqet.cpp" line="188"/>
-        <location filename="../sources/aboutqet.cpp" line="191"/>
+        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Développement</source>
         <translation>Desenvolupament</translation>
     </message>
@@ -155,44 +155,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="175"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
+        <source>Traduction en brézilien</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Paquets Fedora i Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets Mageia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="179"/>
         <location filename="../sources/aboutqet.cpp" line="180"/>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Paquets Gentoo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Paquets OS/2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="182"/>
+        <location filename="../sources/aboutqet.cpp" line="183"/>
         <source>Paquets FreeBSD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="183"/>
+        <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Paquets MAC OS X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="184"/>
+        <location filename="../sources/aboutqet.cpp" line="185"/>
         <source>Paquets Archlinux AUR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="177"/>
         <location filename="../sources/aboutqet.cpp" line="178"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Paquets Debian</source>
         <translation>Paquets Debian</translation>
     </message>
@@ -203,27 +208,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="185"/>
+        <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Icônes</source>
         <translation>Icones</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="188"/>
         <source>Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="190"/>
         <source>Collection d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Convertisseur DXF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="210"/>
+        <location filename="../sources/aboutqet.cpp" line="211"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Aquest programa està subjecte a la llicència GNU/GPL.</translation>
     </message>
@@ -897,129 +902,107 @@
 <context>
     <name>ElementDialog</name>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="63"/>
+        <location filename="../sources/elementdialog.cpp" line="55"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
         <translation>Obrir un símbol</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="64"/>
+        <location filename="../sources/elementdialog.cpp" line="56"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
         <translation>Triï el símbol que vol obrir.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="66"/>
+        <location filename="../sources/elementdialog.cpp" line="59"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
         <translation>Desar un símbol</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="67"/>
+        <location filename="../sources/elementdialog.cpp" line="60"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
         <translation>Triï el símbol al qual es desarà la seva definició.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="69"/>
+        <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
         <translation>Obrir una categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="70"/>
-        <location filename="../sources/elementdialog.cpp" line="73"/>
+        <location filename="../sources/elementdialog.cpp" line="64"/>
+        <location filename="../sources/elementdialog.cpp" line="68"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
         <translation>Triï una categoria.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="72"/>
+        <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
         <translation>Desar una categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="164"/>
-        <source>Nom :</source>
-        <translation>Nom:</translation>
+        <location filename="../sources/elementdialog.cpp" line="71"/>
+        <source>Titre</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="245"/>
-        <location filename="../sources/elementdialog.cpp" line="283"/>
-        <source>Pas de sélection</source>
-        <comment>message box title</comment>
-        <translation>No hi ha cap selecció</translation>
+        <location filename="../sources/elementdialog.cpp" line="72"/>
+        <source>Label</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="246"/>
-        <source>Vous devez sélectionner un élément.</source>
+        <location filename="../sources/elementdialog.cpp" line="103"/>
+        <source>Nom du nouveau dossier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementdialog.cpp" line="103"/>
+        <source>Nom du nouvel élément</source>
+        <translation type="unfinished">Nom del símbol nou</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementdialog.cpp" line="222"/>
+        <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation>Cal seleccionar un símbol.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="256"/>
-        <location filename="../sources/elementdialog.cpp" line="294"/>
+        <location filename="../sources/elementdialog.cpp" line="190"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
         <translation>No hi ha cap selecció</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="257"/>
-        <location filename="../sources/elementdialog.cpp" line="295"/>
+        <location filename="../sources/elementdialog.cpp" line="191"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>La selecció no existeix.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="266"/>
+        <location filename="../sources/elementdialog.cpp" line="197"/>
+        <location filename="../sources/elementdialog.cpp" line="221"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
         <translation>Selecció incorrecta</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="267"/>
+        <location filename="../sources/elementdialog.cpp" line="198"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
         <translation>La selecció no és un símbol.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="284"/>
-        <source>Vous devez sélectionner une catégorie ou un élément.</source>
-        <comment>message box content</comment>
-        <translation>Cal seleccionar una categoria o un símbol.</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="307"/>
-        <source>Nom manquant</source>
-        <comment>message box title</comment>
-        <translation>Falta nom</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="308"/>
-        <source>Vous devez entrer un nom pour l&apos;élément</source>
-        <comment>message box content</comment>
-        <translation>Ha d&apos;entrar un nom pel símbol</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="317"/>
-        <source>Nom invalide</source>
-        <comment>message box title</comment>
-        <translation>Nom no vàlid</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="319"/>
-        <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation>No pot fer servir els caràcters següents en el nom del símbol: %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="345"/>
+        <location filename="../sources/elementdialog.cpp" line="209"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Vol sobrescriure el símbol?</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="346"/>
+        <location filename="../sources/elementdialog.cpp" line="210"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
         <translation>Aquest símbol ja existeix. Vol sobrescriure&apos;l?</translation>
@@ -1923,7 +1906,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="403"/>
+        <location filename="../sources/configpages.cpp" line="404"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportació</translation>
@@ -2217,86 +2200,91 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="330"/>
-        <source>Catalan</source>
+        <source>Brézilien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="331"/>
-        <source>Tchèque</source>
+        <source>Catalan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="332"/>
-        <source>Allemand</source>
+        <source>Tchèque</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="333"/>
-        <source>Danois</source>
+        <source>Allemand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="334"/>
-        <source>Grec</source>
+        <source>Danois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="335"/>
-        <source>Anglais</source>
+        <source>Grec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="336"/>
-        <source>Espagnol</source>
+        <source>Anglais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="337"/>
-        <source>Français</source>
+        <source>Espagnol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="338"/>
-        <source>Croate</source>
+        <source>Français</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
-        <source>Italien</source>
+        <source>Croate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="340"/>
-        <source>Polonais</source>
+        <source>Italien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="341"/>
-        <source>Portugais</source>
+        <source>Polonais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="342"/>
-        <source>Roumains</source>
+        <source>Portugais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="343"/>
-        <source>Russe</source>
+        <source>Roumains</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="344"/>
-        <source>Slovène</source>
+        <source>Russe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="345"/>
-        <source>Pays-Bas</source>
+        <source>Slovène</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="346"/>
+        <source>Pays-Bas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="347"/>
         <source>Belgique-Flemish</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3113,7 +3101,7 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="459"/>
+        <location filename="../sources/configpages.cpp" line="460"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Impressió</translation>
@@ -4884,35 +4872,35 @@ Opcions:
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="786"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1492"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1491"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>No es pot obrir el fitxer %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="795"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1496"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1495"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>El fitxer no conté un document XML vàlid</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1502"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1501"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="813"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1466"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1465"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Edició amb permís de nomès lectura</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="814"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1466"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>No disposa dels privilegis necessaris per modificar aquest símbol. Per tant, serà obert en mode de només lectura.</translation>
@@ -4937,103 +4925,103 @@ Opcions:
         <translation>Impossible desar el símbol</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1071"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1070"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished">Impossible obrir el fitxer</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1073"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1072"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1091"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1090"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Recarregar el símbol</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1092"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1091"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>El símbol ha estat modificat. Si fos recarregat es perdrien els canvis. Segur que vol regarregar el símbol?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1140"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1167"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1204"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1139"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1166"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1203"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1140"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1167"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1204"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1139"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1166"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1203"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1182"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1181"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Anomenar i desar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1184"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1183"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Símbols QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1219"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1218"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Desar el símbol actual?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1221"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Vol desar el símbol %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1320"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1319"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>No s&apos;ha pogut generar la llista.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1419"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1418"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Obrir un fitxer</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1421"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1420"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Símbols QElectroTech (*.elmt);;Fitxers XML (*.xml);;Tots els fitxers (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1441"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1448"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1522"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1529"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1440"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1447"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1521"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1528"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>No existeix el símbol.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1449"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1530"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1448"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1529"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>El símbol no existeix.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1442"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1523"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1522"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>El camí virtual escollit no correspon a cap símbol.</translation>
