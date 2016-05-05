@@ -21,6 +21,7 @@
 #include "fileelementcollectionitem.h"
 #include "xmlprojectelementcollectionitem.h"
 #include "qetproject.h"
+#include "xmlelementcollection.h"
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -273,7 +274,7 @@ void ElementsCollectionModel::addCustomCollection()
 
 /**
  * @brief ElementsCollectionModel::addProject
- * Add @project to the disalyed collection
+ * Add @project to the displayed collection
  * @param project
  * @return true if project was successfully added. If project is already
  * handled, return false.
@@ -288,21 +289,27 @@ bool ElementsCollectionModel::addProject(QETProject *project)
 	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem(project, m_root_item);
 	bool r = m_root_item->insertChild(row, xpeci);
 	endInsertRows();
-	connect(project, &QETProject::elementIntegratedToCollection, this, &ElementsCollectionModel::elementIntegratedToCollection);
-
+	connect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
+	connect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
 
 	return r;
 }
 
+/**
+ * @brief ElementsCollectionModel::removeProject
+ * Remove @project from this model
+ * @param project
+ * @return true if the project was successfully removed, false if not (or project doesn't managed)
+ */
 bool ElementsCollectionModel::removeProject(QETProject *project)
 {
 	if (!m_project_list.contains(project)) return false;
 
 	int row = m_project_list.indexOf(project);
-	if (removeRows(row, 1, QModelIndex()))
-	{
+	if (removeRows(row, 1, QModelIndex())) {
 		m_project_list.removeOne(project);
-		disconnect(project, &QETProject::elementIntegratedToCollection, this, &ElementsCollectionModel::elementIntegratedToCollection);
+		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
+		connect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
 		return true;
 	}
 	else
@@ -339,24 +346,73 @@ XmlProjectElementCollectionItem *ElementsCollectionModel::itemForProject(QETProj
  * @brief ElementsCollectionModel::elementAddedToEmbeddedCollection
  * When an element is added to embedded collection of a project,
  * this method create and display the new element
- * @param project -The project where new element was added.
- * @param path -The path of the new element in the embedded collection of project
+ * @param path -The path of the new element in the embedded collection of a project
  */
-void ElementsCollectionModel::elementIntegratedToCollection(QETProject *project, QString path)
+void ElementsCollectionModel::elementIntegratedToCollection (QString path)
 {
-	XmlProjectElementCollectionItem *xpeci = itemForProject(project);
-	if (!xpeci) return;
+	QObject *object = sender();
+	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	if (!collection) return;
 
-	QString collection_name;
-	ElementCollectionItem *eci = xpeci->lastItemForPath(path, collection_name);
-	if (!eci) return;
+	QETProject *project = nullptr;
 
-	int new_row = eci->rowForInsertItem(collection_name);
-	if (new_row <= -1) return;
-	QModelIndex parent_index = createIndex(eci->row(), 0, eci);
-	beginInsertRows(parent_index, new_row, new_row);
-	eci->insertNewItem(collection_name);
-	endInsertRows();
+		//Get the owner project of the collection
+	foreach (QETProject *prj, m_project_list) {
+		if (prj->embeddedElementCollection() == collection) {
+			project = prj;
+		}
+	}
+
+	if (project) {
+		XmlProjectElementCollectionItem *xpeci = itemForProject(project);
+		if (!xpeci) return;
+
+		QString collection_name;
+		ElementCollectionItem *eci = xpeci->lastItemForPath(path, collection_name);
+		if (!eci) return;
+
+		int new_row = eci->rowForInsertItem(collection_name);
+		if (new_row <= -1) return;
+		QModelIndex parent_index = createIndex(eci->row(), 0, eci);
+		beginInsertRows(parent_index, new_row, new_row);
+		eci->insertNewItem(collection_name);
+		endInsertRows();
+	}
+}
+
+/**
+ * @brief ElementsCollectionModel::updateItem
+ * Update the item at path
+ * @param path
+ */
+void ElementsCollectionModel::updateItem(QString path)
+{
+	QObject *object = sender();
+	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	if (!collection) return;
+
+	QETProject *project = nullptr;
+
+		//Get the owner project of the collection
+	foreach (QETProject *prj, m_project_list) {
+		if (prj->embeddedElementCollection() == collection) {
+			project = prj;
+		}
+	}
+
+	if (project) {
+		XmlProjectElementCollectionItem *xpeci = itemForProject(project);
+		if (!xpeci) {
+			return;
+		}
+
+		ElementCollectionItem *eci = xpeci->itemAtPath(path);
+		if (!eci) {
+			return;
+		}
+
+		eci->clearData();
+	}
 }
 
 void ElementsCollectionModel::bir(ElementCollectionItem *eci, int first, int last)

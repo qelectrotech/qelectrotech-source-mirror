@@ -279,18 +279,18 @@ void DiagramView::dropEvent(QDropEvent *e) {
 	Handle the drop of an element.
 	@param e the QDropEvent describing the current drag'n drop
 */
-void DiagramView::handleElementDrop(QDropEvent *e)
+void DiagramView::handleElementDrop(QDropEvent *event)
 {
-		//fetch the element location from the drop event
-	QString elmt_path = e -> mimeData() -> text();
-	
-	ElementsLocation location(elmt_path);
-	
-		// verifie qu'il existe un element correspondant a cet emplacement
-	ElementsCollectionItem *dropped_item = QETApp::collectionItem(location);
-	if (!dropped_item) return;
+		//Build an element from the text of the mime data
+	ElementsLocation location(event->mimeData()->text());
 
-	diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), mapToScene(e->pos())));
+	if ( !(location.isElement() && location.exist()) )
+	{
+		qDebug() << "DiagramView::handleElementDrop, location can't be use : " << location;
+		return;
+	}
+
+	diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), mapToScene(event->pos())));
 		//Set focus to the view to get event
 	this->setFocus();
 }

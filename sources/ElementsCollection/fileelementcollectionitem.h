@@ -60,8 +60,6 @@ class FileElementCollectionItem : public ElementCollectionItem
 		virtual bool isValid() const;
 		virtual QString name();
 
-		virtual bool canRemoveContent();
-		virtual bool removeContent();
 		virtual void insertNewItem(const QString &collection_name);
 
     private:

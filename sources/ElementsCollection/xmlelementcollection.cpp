@@ -433,6 +433,7 @@ bool XmlElementCollection::addElementDefinition(const QString &dir_path, const Q
  * @brief XmlElementCollection::copy
  * Copy the content represented by source (an element or a directory) to destination.
  * Destination must be a directory of this collection.
+ * If the destination already have an item at the same path of source, he will be replaced by source.
  * @param source : content to copy
  * @param destination : destination of the copy, must be a directory of this collection
  * @param rename : rename the copy with @rename else use the name of source
@@ -545,10 +546,12 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 
 /**
  * @brief XmlElementCollection::copyElement
+ * Copy the element represented by source to destination (must be a directory)
+ * If element already exist in destination he will be replaced by the new.
  * @param source : element to copy
  * @param destination : destination of the copy
  * @param rename : rename the copy with @rename else use the name of source
- * @return
+ * @return The ElementsLocation of the copy
  */
 ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
 {
@@ -575,13 +578,25 @@ ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, Ele
 
 		//Remove the previous element with the same path
 	QDomElement element = child(destination.collectionPath(false) + "/" + new_elmt_name);
-	if (!element.isNull())
+	bool removed = false;
+	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
+		removed = true;
+	}
 
 		//Get the xml directory where the new element must be added
 	QDomElement dir_dom = directory(destination.collectionPath(false));
 	if (dir_dom.isNull()) return ElementsLocation();
 	dir_dom.appendChild(elmt_dom);
 
-	return ElementsLocation(destination.projectCollectionPath() + "/" + new_elmt_name);
+	ElementsLocation copy_loc(destination.projectCollectionPath() + "/" + new_elmt_name);
+
+	if (removed) {
+		emit elementChanged(copy_loc.collectionPath(false));
+	}
+	else {
+		emit elementAdded(copy_loc.collectionPath(false));
+	}
+
+	return copy_loc;
 }

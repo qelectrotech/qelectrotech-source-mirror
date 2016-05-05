@@ -391,40 +391,6 @@ QString FileElementCollectionItem::name()
 	return m_name;
 }
 
-/**
- * @brief FileElementCollectionItem::canRemoveContent
- * Reimplemented from ElementCollectionItem
- * @return
- */
-bool FileElementCollectionItem::canRemoveContent()
-{
-	if (isCommonCollection()) return false;
-	else if (isDir() && isCollectionRoot()) return false;
-	else return true;
-}
-
-/**
- * @brief FileElementCollectionItem::removeContent
- * Reimplemented from ElementCollectionItem
- * @return
- */
-bool FileElementCollectionItem::removeContent()
-{
-	if (!canRemoveContent()) return false;
-
-	if (isElement())
-	{
-		QFile file(fileSystemPath());
-		return file.remove();
-	}
-	else if (isDir() && !isCollectionRoot())
-	{
-		QDir dir (fileSystemPath());
-		return dir.removeRecursively();
-	}
-	return false;
-}
-
 void FileElementCollectionItem::insertNewItem(const QString &collection_name)
 {
 	if (collection_name.isEmpty()) return;

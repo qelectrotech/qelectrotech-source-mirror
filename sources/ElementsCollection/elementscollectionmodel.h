@@ -61,7 +61,8 @@ class ElementsCollectionModel : public QAbstractItemModel
 
 	private:
 		XmlProjectElementCollectionItem *itemForProject(QETProject *project);
-		void elementIntegratedToCollection (QETProject *project, QString path);
+		void elementIntegratedToCollection (QString path);
+		void updateItem (QString path);
 			//Use as slot in method drop mime data
 		void bir(ElementCollectionItem *eci, int first, int last);
 		void brr(ElementCollectionItem *eci, int first, int last);

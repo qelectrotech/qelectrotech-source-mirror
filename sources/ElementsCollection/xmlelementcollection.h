@@ -62,6 +62,12 @@ class XmlElementCollection : public QObject
 			 * @param collection_path, the path of element in this collection
 			 */
 		void elementAdded(QString collection_path);
+			/**
+			 * @brief elementChanged
+			 * This signal is emited when the defintion of the element at path was changed
+			 * @param collection_path, the path of this element in this collection
+			 */
+		void elementChanged (QString collection_path);
 
 	public slots:
 

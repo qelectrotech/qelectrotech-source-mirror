@@ -47,6 +47,7 @@ class ElementCollectionItem : public QObject
 		ElementCollectionItem *child(int row) const;
 		ElementCollectionItem *childWithCollectionName(QString name) const;
 		ElementCollectionItem *lastItemForPath(const QString &path, QString &newt_item);
+		ElementCollectionItem *itemAtPath(const QString &path);
 		int rowForInsertItem(const QString &collection_name);
 		virtual void insertNewItem(const QString &collection_name);
         int childCount() const;
@@ -71,10 +72,6 @@ class ElementCollectionItem : public QObject
 		QList<ElementCollectionItem *> directoriesChild() const;
 		int indexOfChild(ElementCollectionItem *child) const;
 		void setBackgroundColor(Qt::GlobalColor color, bool show);
-
-
-		virtual bool canRemoveContent();
-		virtual bool removeContent();
 
 	signals:
 		void beginInsertRows(ElementCollectionItem *parent, int first, int last);

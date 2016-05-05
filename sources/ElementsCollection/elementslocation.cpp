@@ -677,3 +677,19 @@ QString ElementsLocation::fileName() const
 uint qHash(const ElementsLocation &location) {
 	return(qHash(location.toString()));
 }
+
+QDebug operator<< (QDebug debug, const ElementsLocation &location)
+{
+	QDebugStateSaver saver(debug);
+	debug.noquote();
+
+	QString msg;
+	msg += "ElementsLocation(";
+	msg += (location.isProject()? location.projectCollectionPath() : location.collectionPath(true));
+	msg += location.exist()? ", true" : ", false";
+	msg +=")";
+
+	debug << msg;
+
+	return debug;
+}

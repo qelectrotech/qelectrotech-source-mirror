@@ -127,10 +127,8 @@ class QETProject : public QObject
 		bool isReadOnly() const;
 		void setReadOnly(bool);
 		bool isEmpty() const;
-		bool ensureIntegrationCategoryExists();
 		ElementsCategory *integrationCategory() const;
-		QString integrateElement(const QString &, QString &);
-		QString integrateElement(const QString &, MoveElementsHandler *, QString &);
+		ElementsLocation importElement(ElementsLocation &location);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
@@ -164,7 +162,6 @@ class QETProject : public QObject
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);
 	void XRefPropertiesChanged ();
-		void elementIntegratedToCollection(QETProject *project, QString path);
 	
 	private slots:
 	void updateDiagramsFolioData();

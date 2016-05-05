@@ -172,22 +172,22 @@ bool DiagramEventAddElement::buildElement()
 {
 	if (QETProject::integrateElementToProject(m_location, m_diagram -> project()))
 	{
-		QString error_msg;
-		IntegrationMoveElementsHandler *integ_handler = new IntegrationMoveElementsHandler();
-		m_integrate_path = m_diagram -> project() -> integrateElement(m_location.toString(), integ_handler, error_msg);
-		delete integ_handler;
-		if (m_integrate_path.isEmpty())
-		{
-			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element. Motif : " << qPrintable(error_msg);
+		ElementsLocation loc = m_diagram->project()->importElement(m_location);
+		if (loc.exist()) {
+			m_integrate_path = loc.projectCollectionPath();
+		}
+		else {
+			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element.";
 			return false;
 		}
+
 	}
 
 	int state;
-	m_element = ElementFactory::Instance() -> createElement(m_location, 0, &state);
+	ElementsLocation loc(m_integrate_path);
+	m_element = ElementFactory::Instance() -> createElement(loc, 0, &state);
 		//The creation of element failed, we delete it
-	if (state)
-	{
+	if (state) {
 		delete m_element;
 		return(false);
 	}

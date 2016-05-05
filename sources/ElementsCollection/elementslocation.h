@@ -83,6 +83,9 @@ class ElementsLocation
 	public:
 		static int MetaTypeId; ///< Id of the corresponding Qt meta type
 };
+
+QDebug operator<<(QDebug debug, const ElementsLocation &location);
+
 Q_DECLARE_METATYPE(ElementsLocation)
 uint qHash(const ElementsLocation &);
 #endif

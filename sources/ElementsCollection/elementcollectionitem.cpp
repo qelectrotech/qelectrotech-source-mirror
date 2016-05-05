@@ -143,6 +143,30 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 }
 
 /**
+ * @brief ElementCollectionItem::itemAtPath
+ * @param path
+ * @return the item at path or nullptr if doesn't exist
+ */
+ElementCollectionItem *ElementCollectionItem::itemAtPath(const QString &path)
+{
+	QStringList str_list = path.split("/");
+	if (str_list.isEmpty()) return nullptr;
+
+	ElementCollectionItem *match_eci = this;
+	foreach (QString str, str_list) {
+		ElementCollectionItem *eci = match_eci->childWithCollectionName(str);
+		if (!eci) {
+			return nullptr;
+		}
+		else {
+			match_eci = eci;
+		}
+	}
+
+	return match_eci;
+}
+
+/**
  * @brief ElementCollectionItem::rowForInsertItem
  * Return the row for insert a new child item to this item with name @collection_name.
  * If row can't be found (collection_name is null, or already exist) return -1;
@@ -395,23 +419,4 @@ void ElementCollectionItem::setBackgroundColor(Qt::GlobalColor color, bool show)
 {
 	m_bg_color = color;
 	m_show_bg_color = show;
-}
-
-/**
- * @brief ElementCollectionItem::canRemoveContent
- * @return true if this item can remove the content that he represent
- * By default return false.
- */
-bool ElementCollectionItem::canRemoveContent() {
-	return false;
-}
-
-/**
- * @brief ElementCollectionItem::removeContent
- * Remove the content that he represent this item (a directory or an element).
- * This method do nothing and return false. Inherit it, to handle removing
- * @return true if the content was successfully removed
- */
-bool ElementCollectionItem::removeContent() {
-	return false;
 }

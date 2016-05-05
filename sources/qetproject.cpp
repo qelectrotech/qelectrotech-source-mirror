@@ -33,6 +33,7 @@
 #include "reportproperties.h"
 #include "integrationmovetemplateshandler.h"
 #include "xmlelementcollection.h"
+#include "importelementdialog.h"
 
 #include <QStandardPaths>
 
@@ -68,9 +69,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
 
 	m_elements_collection = new XmlElementCollection(this);
-	
-	// une categorie dediee aux elements integres automatiquement
-	ensureIntegrationCategoryExists();
+
 	setupTitleBlockTemplatesCollection();
 
 	undo_stack_ = new QUndoStack();
@@ -146,17 +145,10 @@ QETProject::~QETProject()
  */
 bool QETProject::integrateElementToProject(const ElementsLocation &location, const QETProject *project)
 {
-		//Integration element must be enable
-	QSettings settings;
-	bool auto_integration_enabled = settings.value("diagrameditor/integrate-elements", true).toBool();
+	if (location.isFileSystem()) {return true;}
+	if (location.isProject() && (location.project() != project)) {return true;}
 
-		//the element belongs there a project and if so, is this another project of the project given by parameter?
-	bool elmt_from_project = location.project();
-	bool elmt_from_another_project = elmt_from_project && location.project() != project;
-
-	bool must_integrate_element = (elmt_from_another_project || (auto_integration_enabled && !elmt_from_project));
-
-	return(must_integrate_element);
+	return false;
 }
 
 /**
@@ -639,24 +631,6 @@ bool QETProject::isEmpty() const {
 }
 
 /**
-	Cree une categorie dediee aux elements integres automatiquement dans le
-	projet si celle-ci n'existe pas deja.
-	@return true si tout s'est bien passe, false sinon
-*/
-bool QETProject::ensureIntegrationCategoryExists() {
-	ElementsCategory *root_cat = rootCategory();
-	if (!root_cat) return(false);
-	
-	if (root_cat -> category(integration_category_name)) return(true);
-	
-	ElementsCategory *integration_category = root_cat -> createCategory(integration_category_name);
-	if (!integration_category) return(false);
-	
-	integration_category -> setNames(namesListForIntegrationCategory());
-	return(true);
-}
-
-/**
 	@return la categorie dediee aux elements integres automatiquement dans le
 	projet ou 0 si celle-ci n'a pu etre creee.
 	@see ensureIntegrationCategoryExists()
@@ -669,134 +643,94 @@ ElementsCategory *QETProject::integrationCategory() const {
 }
 
 /**
-	Integre un element dans le projet.
-	Cette methode delegue son travail a la methode
-	integrateElement(const QString &, MoveElementsHandler *, QString &)
-	en lui passant un MoveElementsHandler approprie.
-	@param elmt_location Emplacement de l'element a integrer
-	@param error_msg Reference vers une chaine de caractere qui contiendra
-	eventuellement un message d'erreur
-	@return L'emplacement de l'element apres integration, ou une chaine vide si
-	l'integration a echoue.
-*/
-QString QETProject::integrateElement(const QString &elmt_location, QString &error_msg) {
-	// handler dedie a l'integration d'element
-	IntegrationMoveElementsHandler *integ_handler = new IntegrationMoveElementsHandler(0);
-	QString integ_path = integrateElement(elmt_location, integ_handler, error_msg);
-	delete integ_handler;
-	
-	return(integ_path);
-}
+ * @brief QETProject::importElement
+ * Import the element represented by @location to the embbeded collection of this project
+ * @param location
+ * @return the location of the imported element, location can be null.
+ */
+ElementsLocation QETProject::importElement(ElementsLocation &location)
+{
+		//Location isn't an element or doesn't exist
+	if (! (location.isElement() && location.exist()) ) {
+		return ElementsLocation();
+	}
 
-/**
-	Integre un element dans le projet.
-	Cette methode prend en parametre l'emplacement d'un element a integrer.
-	Chaque categorie mentionnee dans le chemin de cet element sera copiee de
-	maniere non recursive sous la categorie dediee a l'integration si elle
-	n'existe pas deja.
-	L'element sera ensuite copiee dans cette copie de la hierarchie d'origine.
-	En cas de probleme, error_message sera modifiee de facon a contenir un
-	message decrivant l'erreur rencontree.
-	@param elmt_path Emplacement de l'element a integrer
-	@param handler Gestionnaire a utiliser pour gerer les copies d'elements et categories
-	@param error_message Reference vers une chaine de caractere qui contiendra
-	eventuellement un message d'erreur
-	@return L'emplacement de l'element apres integration, ou une chaine vide si
-	l'integration a echoue.
-*/
-QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandler *handler, QString &error_message) {
-	// on s'assure que le projet a une categorie dediee aux elements importes automatiquement
-	if (!ensureIntegrationCategoryExists())
-	{
-		error_message = tr("Impossible de créer la catégorie pour l'intégration des éléments");
-		return(QString());
+		//Get the path where the element must be imported
+	QString import_path;
+	if (location.isFileSystem()) {
+		import_path = "import/" + location.collectionPath(false);
 	}
-	
-	// accede a la categorie d'integration
-	ElementsCategory *integ_cat = integrationCategory();
-	
-	// accede a l'element a integrer
-	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation(elmt_path));
-	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
-	if (!integ_item || !integ_elmt)
-	{
-		error_message = tr("Impossible d'accéder à l'élément à intégrer");
-		return(QString());
-	}
-	
-	// recopie l'arborescence de l'element de facon non recursive
-	QList<ElementsCategory *> integ_par_cat = integ_elmt -> parentCategories();
-	ElementsCategory *target_cat = integ_cat;
-	foreach(ElementsCategory *par_cat, integ_par_cat)
-	{
-		if (par_cat -> isRootCategory()) continue;
-		
-		if (ElementsCategory *existing_cat = target_cat -> category(par_cat -> pathName()))
-		{
-			// la categorie cible existe deja : on continue la progression
-			target_cat = existing_cat;
+
+	if (location.isProject()) {
+		if (location.project() == this) {
+			return location;
 		}
-		else
-		{
-			// la categorie cible n'existe pas : on la cree par recopie
-			ElementsCollectionItem *result_cat = par_cat -> copy(target_cat, handler, false);
-			if (!result_cat || !result_cat -> isCategory())
-			{
-				error_message = QString(tr("Un problème s'est produit pendant la copie de la catégorie %1")).arg(par_cat -> location().toString());
-				return(QString());
+
+		import_path = location.collectionPath(false);
+	}
+
+		//Element already exist in the embedded collection, we ask what to do to user
+	if (m_elements_collection->exist(import_path)) {
+		ElementsLocation existing_location(import_path, this);
+
+			//@existing_location and @location have the same uuid, so it is the same element
+		if (existing_location.uuid() == location.uuid()) {
+			return existing_location;
+		}
+
+		ImportElementDialog ied;
+		if (ied.exec() == QDialog::Accepted) {
+			QET::Action action = ied.action();
+
+				//Use the exisitng element
+			if (action == QET::Ignore) {
+				return existing_location;
 			}
-			target_cat = result_cat -> toCategory();
-		}
-	}
-	
-	// recopie l'element
-	ElementsLocation result;
-	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName()))
-	{
-		
-		// l'element existe deja - on demande au handler ce que l'on doit faire
-		QET::Action action = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
-		
-		if (action == QET::Ignore)
-		{
-			// il faut conserver et utiliser l'element deja integre
-			result = existing_elmt -> location();
-		}
-		else if (action == QET::Erase)
-		{
-			// il faut ecraser l'element deja integre
-			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
-			result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
-			delete erase_handler;
-		}
-		else if (action == QET::Rename)
-		{
-			// il faut faire cohabiter les deux elements en renommant le nouveau 
-			QString integ_element_name = handler -> nameForRenamingOperation();
-			BasicMoveElementsHandler *rename_handler = new BasicMoveElementsHandler();
-			rename_handler -> setActionIfItemAlreadyExists(QET::Rename);
-			rename_handler -> setNameForRenamingOperation(integ_element_name);
-			result = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
-			delete rename_handler;
-		}
-		else
-		{
-			// il faut annuler la pose de l'element
-			result = ElementsLocation();
-		}
-	}
-	else
-	{
-		// integre l'element normalement
-		result = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
+				//Erase the existing element, and use the newer instead
+			else if (action == QET::Erase) {
+				ElementsLocation parent_loc = existing_location.parent();
+				return m_elements_collection->copy(location, parent_loc);
+			}
+				//Add the new element with an other name.
+			else if (action == QET::Rename) {
+				int a = 0;
+				QString parent_path = existing_location.parent().projectCollectionPath();
+				QString name_ = existing_location.fileName();
+				name_.remove(".elmt");
 
-		ElementsLocation location(elmt_path);
-		QString xml_path = m_elements_collection->addElement(location);
-		if (!xml_path.isNull()) emit elementIntegratedToCollection(this, xml_path);
+				ElementsLocation loc;
+				do
+				{
+					a++;
+					QString new_path = parent_path + "/" + name_ + QString::number(a) + ".elmt";
+					loc = ElementsLocation (new_path);
+				} while (loc.exist());
+
+				ElementsLocation parent_loc = existing_location.parent();
+				return m_elements_collection->copy(location, parent_loc, loc.fileName());
+			}
+			else {
+				return ElementsLocation();
+			}
+		}
+		else {
+			return ElementsLocation();
+		}
 	}
-	
-	if (!result.isNull()) emit(elementIntegrated(this, result));
-	return(result.toString());
+		//Element doesn't exist in the collection, we just import it
+	else {
+		ElementsLocation loc(m_elements_collection->addElement(location), this);
+
+		if (!loc.exist()) {
+			qDebug() << "QETProject::importElement : failed to import location. " << location;
+			return ElementsLocation();
+		}
+		else {
+			return loc;
+		}
+	}
+
+	return ElementsLocation();
 }
 
 /**

@@ -263,21 +263,26 @@ void ElementsCollectionWidget::deleteElement()
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (!eci) return;
-	if (!(eci->isElement() && eci->canRemoveContent())) return;
+
+	ElementsLocation loc(eci->collectionPath());
+	if (! (loc.isElement() && loc.exist() && loc.isFileSystem() && loc.collectionPath().startsWith("custom://")) ) return;
 
 	if (QET::QetMessageBox::question(this,
 									 tr("Supprimer l'élément ?", "message box title"),
 									 tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n", "message box content"),
 									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
-		if (!eci->removeContent())
+		QFile file(loc.fileSystemPath());
+		if (file.remove())
+		{
+			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+		}
+		else
 		{
 			QET::QetMessageBox::warning(this,
 										tr("Suppression de l'élément", "message box title"),
 										tr("La suppression de l'élément a échoué.", "message box content"));
-		}
-		else
-			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+		}	
 	}
 }
 
@@ -290,7 +295,9 @@ void ElementsCollectionWidget::deleteDirectory()
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
 	if (!eci) return;
-	if (!(eci->isDir() && eci->canRemoveContent())) return;
+
+	ElementsLocation loc (eci->collectionPath());
+	if (! (loc.isDirectory() && loc.exist() && loc.isFileSystem() && loc.collectionPath().startsWith("custom://")) ) return;
 
 	if (QET::QetMessageBox::question(this,
 									 tr("Supprimer le dossier?", "message box title"),
@@ -299,14 +306,17 @@ void ElementsCollectionWidget::deleteDirectory()
 										"message box content"),
 									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
-		if (!eci->removeContent())
+		QDir dir (loc.fileSystemPath());
+		if (dir.removeRecursively())
+		{
+			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+		}
+		else
 		{
 			QET::QetMessageBox::warning(this,
 										tr("Suppression du dossier", "message box title"),
 										tr("La suppression du dossier a échoué.", "message box content"));
 		}
-		else
-			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
 	}
 }
 
@@ -344,8 +354,9 @@ void ElementsCollectionWidget::newDirectory()
 
 	ElementsLocation location(feci->collectionPath());
 	ElementsCategoryEditor new_dir_editor(location, false, this);
-	if (new_dir_editor.exec() == QDialog::Accepted)
-		reload();;
+	if (new_dir_editor.exec() == QDialog::Accepted) {
+		reload();
+	}
 }
 
 /**
