@@ -681,7 +681,12 @@ uint qHash(const ElementsLocation &location) {
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {
 	QDebugStateSaver saver(debug);
+
+#if QT_VERSION >= 0x050400
 	debug.noquote();
+#else
+	debug.nospace();
+#endif
 
 	QString msg;
 	msg += "ElementsLocation(";
