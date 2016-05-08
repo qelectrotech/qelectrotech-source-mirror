@@ -327,7 +327,7 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 
 	// all lang available on lang directory
 	lang_combo_box->addItem(QET::Icons::ar,           tr("Arabe"), "ar");
-	lang_combo_box->addItem(QET::Icons::br,           tr("Brézilien"), "br");
+	lang_combo_box->addItem(QET::Icons::br,           tr("Brézilien"), "pt_br");
 	lang_combo_box->addItem(QET::Icons::catalonia,    tr("Catalan"), "ca");
 	lang_combo_box->addItem(QET::Icons::cs,           tr("Tchèque"), "cs");
 	lang_combo_box->addItem(QET::Icons::de,           tr("Allemand"), "de");
