@@ -19,6 +19,7 @@
 #define ELEMENTCOLLECTIONHANDLER_H
 
 #include "elementslocation.h"
+#include "nameslist.h"
 
 class QWidget;
 
@@ -90,6 +91,8 @@ class ElementCollectionHandler
         ~ElementCollectionHandler();
 
 		ElementsLocation copy(ElementsLocation &source, ElementsLocation &destination);
+		ElementsLocation createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list);
+		bool setNames(ElementsLocation &location, const NamesList &name_list);
 
     private:
         ECHStrategy *m_strategy = nullptr;

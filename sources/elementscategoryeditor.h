@@ -17,41 +17,45 @@
 */
 #ifndef ELEMENTS_CATEGORY_EDITOR_H
 #define ELEMENTS_CATEGORY_EDITOR_H
-#include <QtWidgets>
+
+#include <QDialog>
 #include "elementslocation.h"
+
 class ElementsCategory;
 class NamesListWidget;
 class QFileNameEdit;
+class QDialogButtonBox;
+class QLabel;
+
 /**
-	This class provides a dialog to edit an existing category or create a new
-	one.
-*/
-class ElementsCategoryEditor : public QDialog {
+ * @brief The ElementsCategoryEditor class
+ * This class provides a dialog to edit an existing category or create a new one.
+ */
+class ElementsCategoryEditor : public QDialog
+{
 	Q_OBJECT
-	
-	// constructors, destructor
+
 	public:
-	ElementsCategoryEditor(const ElementsLocation &, bool = true, QWidget * = 0);
-	virtual ~ElementsCategoryEditor();
+		ElementsCategoryEditor(const ElementsLocation &location, bool edit = true, QWidget *parent = nullptr);
+		virtual ~ElementsCategoryEditor();
 	
 	private:
-	ElementsCategoryEditor(const ElementsCategoryEditor &);
+		ElementsCategoryEditor(const ElementsCategoryEditor &);
 	
-	// attributes
 	private:
-	ElementsCategory *category;
-	QDialogButtonBox *buttons;
-	NamesListWidget *names_list;
-	QLabel *internal_name_label_;
-	QFileNameEdit *internal_name_;
-	bool mode_edit;
-	
-	// methods
+		ElementsCategory *category;
+		QDialogButtonBox *m_buttons;
+		NamesListWidget *m_names_list;
+		QLabel *m_file_name;
+		QFileNameEdit *m_file_line_edit;
+		bool m_edit_mode;
+		ElementsLocation m_location;
+
 	private:
-	void buildDialog();
+		void setUpWidget();
 	
 	public slots:
-	void acceptCreation();
-	void acceptUpdate();
+		void acceptCreation();
+		void acceptUpdate();
 };
 #endif

@@ -50,6 +50,7 @@ class XmlElementCollection : public QObject
 		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
 		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
 		bool exist (const QString &path);
+		bool createDir (QString path, QString name, const NamesList &name_list);
 
 	private:
 		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
@@ -68,8 +69,12 @@ class XmlElementCollection : public QObject
 			 * @param collection_path, the path of this element in this collection
 			 */
 		void elementChanged (QString collection_path);
-
-	public slots:
+			/**
+			 * @brief directorieAdded
+			 * This signal is emited when a directorie is added to this collection
+			 * @param collection_path, the path of the new directorie
+			 */
+		void directorieAdded(QString collection_path);
 
 	private:
 		QDomDocument m_dom_document;

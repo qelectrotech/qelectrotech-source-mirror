@@ -466,6 +466,40 @@ bool XmlElementCollection::exist(const QString &path)
 }
 
 /**
+ * @brief XmlElementCollection::createDir
+ * Create a child directorie at path @path with the name @name.
+ * Emit directorieAdded if success.
+ * @param path : path of parent diectorie
+ * @param name : name of the directori to create.
+ * @param name_list : translation of the directorie name.
+ * @return true if creation success, if directorie already exist return true.
+ */
+bool XmlElementCollection::createDir(QString path, QString name, const NamesList &name_list)
+{
+	QString new_dir_path = path + "/" + name;
+
+	if (!directory(new_dir_path).isNull()) {
+		return true;
+	}
+
+	QDomElement parent_dir = directory(path);
+	if (parent_dir.isNull()) {
+		qDebug() << "XmlElementCollection::createDir : directorie at path doesn't exist";
+		return false;
+	}
+
+	QDomElement new_dir = m_dom_document.createElement("category");
+	new_dir.setAttribute("name", name);
+	new_dir.appendChild(name_list.toXml(m_dom_document));
+
+	parent_dir.appendChild(new_dir);
+
+	emit directorieAdded(new_dir_path);
+
+	return true;
+}
+
+/**
  * @brief XmlElementCollection::copyDirectory
  * Copy the directory represented by source to destination.
  * if destination have a directory with the same name as source, then this directory is removed

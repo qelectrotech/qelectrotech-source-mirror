@@ -298,3 +298,117 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
 	else
 		return ElementsLocation();
 }
+
+/**
+ * @brief ElementCollectionHandler::createDir
+ * Create a directorie with name @name as child of @parent.
+ * Parent must be a directory
+ * @param parent : parent of the dir to create
+ * @param name : name of directorie to create
+ * @param name_list : translations of the directorie name
+ * @return : ElementsLocation that represent the new directorie, location can be null if an error was occured
+ */
+ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list)
+{
+		//Parent must be a directorie and writable
+	if (!(parent.isDirectory() && parent.isWritable() && parent.exist())) {
+		qDebug() << "ElementCollectionHandler::createDir : the prerequisites are not valid. " << parent;
+		return ElementsLocation();
+	}
+
+		//Directorie to create must not already exist
+	ElementsLocation created_dir = parent;
+	created_dir.addToPath(name);
+	if (created_dir.exist()) {
+		return ElementsLocation();
+	}
+
+		//Location is a file system
+	if (parent.isFileSystem()) {
+
+		QDir parent_dir(parent.fileSystemPath());
+
+		if (parent_dir.mkdir(name)) {
+				//Create the qet-directory file
+			QDomDocument document;
+			QDomElement root = document.createElement("qet-directory");
+			document.appendChild(root);
+			root.appendChild(name_list.toXml(document));
+
+			QString filepath = created_dir.fileSystemPath() + "/qet_directory";
+			if (!QET::writeXmlFile(document, filepath)) {
+				qDebug() << "ElementCollectionHandler::createDir : write qet-directory file failed";
+			}
+			return created_dir;
+		}
+		else {
+			qDebug() << "ElementCollectionHandler::createDir : error was occured at creation of new directories in file system. ";
+			return ElementsLocation();
+		}
+	}
+	else if (parent.isProject()) {
+		XmlElementCollection *xmlec = parent.projectCollection();
+		if (xmlec->createDir(parent.collectionPath(false), name, name_list)) {
+			return created_dir;
+		}
+		else {
+			qDebug() << "ElementCollectionHandler::createDir : error was occured at creation of new directories in embbeded collection.";
+			return ElementsLocation();
+		}
+	}
+
+	return ElementsLocation();
+}
+
+/**
+ * @brief ElementCollectionHandler::setNames
+ * Set the names stored in @name_list as the names of the item represented by location
+ * @param location : location to change the names
+ * @param name_list : NamesList to use
+ * @return return true if success
+ */
+bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesList &name_list)
+{
+	if ( !(location.exist() && location.isWritable()) ) {
+		return false;
+	}
+
+	if (location.isFileSystem()) {
+		if (location.isDirectory()) {
+			QDomDocument document;
+			QDomElement root = document.createElement("qet-directory");
+			document.appendChild(root);
+			root.appendChild(name_list.toXml(document));
+
+			QString filepath = location.fileSystemPath() + "/qet_directory";
+			if (!QET::writeXmlFile(document, filepath)) {
+				qDebug() << "ElementCollectionHandler::setNames : write qet-directory file failed";
+				return false;
+			}
+
+			return true;
+		}
+
+		if (location.isElement()) {
+			QDomDocument document;
+			document.appendChild(document.importNode(location.xml(), true));
+			if (document.isNull()) {
+				qDebug() << "ElementCollectionHandler::setNames : failed to load xml document from file";
+				return false;
+			}
+
+			QDomElement document_element = document.documentElement();
+			document_element.replaceChild(name_list.toXml(document), document_element.firstChildElement("names"));
+			return true;
+		}
+	}
+
+	if (location.isProject()) {
+		QDomElement element = location.xml();
+		QDomDocument document = element.ownerDocument();
+		element.replaceChild(name_list.toXml(document), element.firstChildElement("names"));
+		return true;
+	}
+
+	return false;
+}

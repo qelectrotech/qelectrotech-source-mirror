@@ -495,7 +495,7 @@ NamesList ElementsLocation::nameList()
 
 /**
  * @brief ElementsLocation::xml
- * @return The definition of this element.
+ * @return The definition of this element or directory.
  * The definition can be null.
  */
 QDomElement ElementsLocation::xml() const

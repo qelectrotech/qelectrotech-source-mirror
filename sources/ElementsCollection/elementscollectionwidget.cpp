@@ -335,8 +335,9 @@ void ElementsCollectionWidget::editDirectory()
 
 	ElementsLocation location(feci->collectionPath());
 	ElementsCategoryEditor ece(location, true, this);
+
 	if (ece.exec() == QDialog::Accepted)
-		reload();
+		eci->clearData();
 }
 
 /**
