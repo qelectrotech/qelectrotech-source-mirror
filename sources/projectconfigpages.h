@@ -20,8 +20,6 @@
 #ifndef PROJECTCONFIGPAGES_H
 #define PROJECTCONFIGPAGES_H
 #include "configpage.h"
-#include <QtWidgets>
-
 class QLabel;
 class QLineEdit;
 class QETProject;
@@ -34,7 +32,6 @@ class XRefPropertiesWidget;
 class SelectAutonumW;
 class QComboBox;
 class QPushButton;
-class FolioAutonumberingW;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -131,49 +128,27 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		virtual QString title() const;
 		virtual QIcon   icon() const;
 		virtual void    applyProjectConf();
-		virtual void    changeToTab(int);
+
 	protected:
 		virtual void initWidgets();
 		virtual void initLayout();
 		virtual void readValuesFromProject();
 		virtual void adjustReadOnly();
+
 	private:
 		void buildConnections();
+
 	private slots:
 		void updateContext(QString);
 		void saveContext();
 		void removeContext();
-		void updateContext_2(QString);
-		void saveContext_2();
-		void removeContext_2();
-
-//		void applyAutoNum(); - Needs Further Testing
-
-		void tabChanged(int);
-
-	signals:
-		void setAutoNum(QString);
-		void setAutoNum(int,int);
-		void saveCurrentTbp();
-		void loadSavedTbp();
 
 	//Attributes
 	private:
-		QTabWidget          *tab_widget;
-		QWidget             *element_widget;
-		QWidget             *conductor_tab_widget;
-		QWidget             *folio_tab_widget;
-		QWidget             *autoNumbering_tab_widget;
-		QScrollArea         *scrollArea;
-		QLabel              *m_label;
-		QLabel              *m_label_2;
-		QComboBox           *m_context_cb;
-		QComboBox           *m_context_cb_2;
-		QPushButton	        *m_remove_pb;
-		QPushButton	        *m_remove_pb_2;
-		SelectAutonumW      *m_saw;
-		SelectAutonumW      *m_saw_2;
-		FolioAutonumberingW *m_faw;
+		QLabel         *m_label;
+		QComboBox      *m_context_cb;
+		QPushButton	   *m_remove_pb;
+		SelectAutonumW *m_saw;
 
 };
 

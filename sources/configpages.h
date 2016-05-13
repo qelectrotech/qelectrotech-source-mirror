@@ -19,8 +19,6 @@
 #define CONFIG_PAGES_H
 #include <QtWidgets>
 #include "configpage.h"
-#include "projectpropertiesdialog.h" //davi
-#include "titleblockpropertieswidget.h" //davi
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;
@@ -28,7 +26,6 @@ class ExportPropertiesWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
 class QETProject;
-class TitleBlockProperties;
 
 /**
 	This configuration page enables users to define the properties of new
@@ -38,16 +35,10 @@ class NewDiagramPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	NewDiagramPage(QETProject *project = 0, QWidget * = 0, ProjectPropertiesDialog *teste = NULL);
+	NewDiagramPage(QETProject *project = 0, QWidget * = 0);
 	virtual ~NewDiagramPage();
 	private:
 	NewDiagramPage(const NewDiagramPage &);
-public slots:
-	void changeToAutoFolioTab();
-	void setFolioAutonum(QString);
-	void saveCurrentTbp();
-	void loadSavedTbp();
-
 	
 	// methods
 	public:
@@ -57,14 +48,12 @@ public slots:
 	
 	// attributes
 	private:
-	ProjectPropertiesDialog    *ppd_;
 	QETProject                 *m_project; ///< Project to edit propertie
 	BorderPropertiesWidget     *bpw;       ///< Widget to edit default diagram dimensions
 	TitleBlockPropertiesWidget *ipw;       ///< Widget to edit default title block properties
 	ConductorPropertiesWidget  *cpw;       ///< Widget to edit default conductor properties
 	ReportPropertieWidget      *rpw;       ///< Widget to edit default report label
 	XRefPropertiesWidget       *xrefpw;	   ///< Widget to edit default xref properties
-	TitleBlockProperties       savedTbp;   ///< Used to save current TBP and retrieve later
 
 };
 

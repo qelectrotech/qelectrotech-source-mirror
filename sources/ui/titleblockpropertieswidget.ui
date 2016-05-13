@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
-    <height>590</height>
+    <width>530</width>
+    <height>452</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,316 +33,256 @@
     <number>9</number>
    </property>
    <item>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="widgetResizable">
-      <bool>true</bool>
+    <widget class="QGroupBox" name="m_tbt_gb">
+     <property name="title">
+      <string>Informations des cartouches</string>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents_1">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>552</width>
-        <height>570</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QGroupBox" name="m_tbt_gb">
-         <property name="title">
-          <string>Informations des cartouches</string>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="m_tbt_hlayout" stretch="0,1,0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="m_tbt_label">
+          <property name="text">
+           <string>Modèle :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="m_tbt_cb"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_tbt_pb">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../qelectrotech.qrc">
+            <normaloff>:/ico/16x16/label.png</normaloff>:/ico/16x16/label.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::South</enum>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="elideMode">
+         <enum>Qt::ElideNone</enum>
+        </property>
+        <property name="usesScrollButtons">
+         <bool>true</bool>
+        </property>
+        <property name="tabsClosable">
+         <bool>false</bool>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>Principales</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <layout class="QHBoxLayout" name="m_tbt_hlayout" stretch="0,1,0">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <item>
-             <widget class="QLabel" name="m_tbt_label">
-              <property name="text">
-               <string>Modèle :</string>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="5" column="2">
+             <widget class="QLineEdit" name="m_folio_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %folio pour les modèles de cartouches</string>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QComboBox" name="m_tbt_cb"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="m_tbt_pb">
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_3">
               <property name="text">
-               <string/>
+               <string>Auteur :</string>
               </property>
-              <property name="icon">
-               <iconset resource="../../qelectrotech.qrc">
-                <normaloff>:/ico/16x16/label.png</normaloff>:/ico/16x16/label.png</iconset>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Afficher :</string>
               </property>
-              <property name="flat">
+             </widget>
+            </item>
+            <item row="6" column="2">
+             <widget class="QLabel" name="label_7">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="text">
+               <string>Les variables suivantes sont utilisables dans le champ Folio :
+- %id : numéro du folio courant dans le projet 
+- %total : nombre total de folios dans le projet</string>
+              </property>
+              <property name="scaledContents">
                <bool>false</bool>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1,0">
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="m_no_date_rb">
+                <property name="text">
+                 <string>Pas de date</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QRadioButton" name="m_current_date_rb">
+                <property name="text">
+                 <string>Date courante</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="m_date_now_pb">
+                <property name="toolTip">
+                 <string>Appliquer la date actuelle</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../../qelectrotech.qrc">
+                  <normaloff>:/ico/22x22/start.png</normaloff>:/ico/22x22/start.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDateEdit" name="m_date_edit">
+                <property name="toolTip">
+                 <string>Disponible en tant que %date pour les modèles de cartouches</string>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="m_fixed_date_rb">
+                <property name="text">
+                 <string>Date fixe :</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Date :</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Fichier :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="m_title_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %title pour les modèles de cartouches</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Titre :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="m_author_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %author pour les modèles de cartouches</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Folio :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="QLineEdit" name="m_file_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="2">
+             <widget class="QComboBox" name="m_display_at_cb">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>en bas</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>à droite (expérimental)</string>
+               </property>
+              </item>
              </widget>
             </item>
            </layout>
           </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Personnalisées</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QTabWidget" name="tabWidget">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="tabPosition">
-             <enum>QTabWidget::South</enum>
-            </property>
-            <property name="tabShape">
-             <enum>QTabWidget::Rounded</enum>
-            </property>
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <property name="elideMode">
-             <enum>Qt::ElideNone</enum>
-            </property>
-            <property name="usesScrollButtons">
-             <bool>true</bool>
-            </property>
-            <property name="tabsClosable">
-             <bool>false</bool>
-            </property>
-            <widget class="QWidget" name="tab">
-             <attribute name="title">
-              <string>Principales</string>
-             </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <layout class="QGridLayout" name="gridLayout_4">
-                <item row="4" column="1">
-                 <widget class="QLabel" name="label_5">
-                  <property name="text">
-                   <string>Fichier :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="2">
-                 <widget class="QLabel" name="label_7">
-                  <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
-                  </property>
-                  <property name="text">
-                   <string>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</string>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>false</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string>Date :</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>Folio :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLabel" name="label_2">
-                  <property name="text">
-                   <string>Titre :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="2">
-                 <widget class="QLineEdit" name="m_folio_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %folio pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QLineEdit" name="m_title_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %title pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="2">
-                 <widget class="QComboBox" name="m_display_at_cb">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>en bas</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>à droite (expérimental)</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-                <item row="4" column="2">
-                 <widget class="QLineEdit" name="m_file_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %filename pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLabel" name="label_3">
-                  <property name="text">
-                   <string>Auteur :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="2">
-                 <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1,0">
-                  <item row="0" column="0">
-                   <widget class="QRadioButton" name="m_no_date_rb">
-                    <property name="text">
-                     <string>Pas de date</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QRadioButton" name="m_current_date_rb">
-                    <property name="text">
-                     <string>Date courante</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="2">
-                   <widget class="QPushButton" name="m_date_now_pb">
-                    <property name="toolTip">
-                     <string>Appliquer la date actuelle</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../../qelectrotech.qrc">
-                      <normaloff>:/ico/22x22/start.png</normaloff>:/ico/22x22/start.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QDateEdit" name="m_date_edit">
-                    <property name="toolTip">
-                     <string>Disponible en tant que %date pour les modèles de cartouches</string>
-                    </property>
-                    <property name="frame">
-                     <bool>true</bool>
-                    </property>
-                    <property name="calendarPopup">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QRadioButton" name="m_fixed_date_rb">
-                    <property name="text">
-                     <string>Date fixe :</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QLineEdit" name="m_author_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %author pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="1">
-                 <widget class="QLabel" name="label">
-                  <property name="text">
-                   <string>Afficher :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="2">
-                 <layout class="QGridLayout" name="gridLayout">
-                  <item row="0" column="0">
-                   <widget class="QComboBox" name="auto_page_cb">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="m_edit_autofolionum_pb">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>16</width>
-                      <height>16</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../../qelectrotech.qrc">
-                      <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="7" column="1">
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>Page Num:</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="tab_2">
-             <attribute name="title">
-              <string>Personnalisées</string>
-             </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
-               <layout class="QVBoxLayout" name="m_tab2_vlayout">
-                <item>
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+           <layout class="QVBoxLayout" name="m_tab2_vlayout">
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</string>
               </property>
               <property name="wordWrap">
@@ -357,10 +297,6 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-  </layout>
- </widget>
     </widget>
    </item>
   </layout>

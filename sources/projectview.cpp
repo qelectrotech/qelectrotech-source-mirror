@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2015 The QElectroTech Team
 	This file is part of QElectroTech.
-
+	
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-
+	
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-
+	
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -32,6 +32,7 @@
 #include "qettemplateeditor.h"
 #include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
+
 #include <QTabWidget>
 
 /**
@@ -46,7 +47,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	initActions();
 	initWidgets();
 	initLayout();
-
+	
 	setProject(project);
 }
 
@@ -78,9 +79,8 @@ void ProjectView::setProject(QETProject *project) {
 	if (!project_) {
 		project_ = project;
 		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)), this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(projectModified	(QETProject *, bool)),			this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(readOnlyChanged	(QETProject *, bool)),			this, SLOT(adjustReadOnlyState()));
-		connect(project_, SIGNAL(addAutoNumDiagram()),   this, SLOT(addNewDiagram()));
+		connect(project_, SIGNAL(projectModified    (QETProject *, bool)),            this, SLOT(updateWindowTitle()));
+		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(adjustReadOnlyState()));
 		adjustReadOnlyState();
 		loadDiagrams();
 	}
@@ -112,7 +112,7 @@ QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
 			selection.removeOne(current);
 		}
 	}
-
+	
 	return(selection);
 }
 
@@ -139,83 +139,6 @@ void ProjectView::closeEvent(QCloseEvent *qce) {
 }
 
 /**
-	@brief change current diagramview to next folio
-*/
-void ProjectView::changeTabDown(){
-	DiagramView *nextDiagramView = this->nextDiagram();
-	if (nextDiagramView!=NULL){
-		rebuildDiagramsMap();
-		m_tab -> setCurrentWidget(nextDiagramView);
-	}
-}
-
-/**
-	@return next folio of current diagramview
-*/
-DiagramView *ProjectView::nextDiagram() {
-	int current_tab_index = m_tab -> currentIndex();
-	int next_tab_index = current_tab_index + 1;	//get next tab index
-	if (next_tab_index<diagram_ids_.count()) //if next tab index >= greatest tab the last tab is activated so no need to change tab.
-		return(diagram_ids_[next_tab_index]);
-	else
-		return NULL;
-}
-
-/**
-	@brief change current diagramview to previous tab
-*/
-void ProjectView::changeTabUp(){
-	DiagramView *previousDiagramView = this->previousDiagram();
-	if (previousDiagramView!=NULL){
-		rebuildDiagramsMap();
-		m_tab -> setCurrentWidget(previousDiagramView);
-	}
-}
-
-/**
-	@return previous folio of current diagramview
-*/
-DiagramView *ProjectView::previousDiagram() {
-	int current_tab_index = m_tab -> currentIndex();
-	int previous_tab_index = current_tab_index - 1;	//get previous tab index
-	if (previous_tab_index>=0) //if previous tab index = 0 then the first tab is activated so no need to change tab.
-		return(diagram_ids_[previous_tab_index]);
-	else
-		return NULL;
-}
-
-/**
-	@brief change current diagramview to last tab
-*/
-void ProjectView::changeLastTab(){
-	DiagramView *lastDiagramView = this->lastDiagram();
-	m_tab->setCurrentWidget(lastDiagramView);
-}
-
-/**
-	@return last folio of current project
-*/
-DiagramView *ProjectView::lastDiagram(){
-	return(diagram_ids_.last());
-}
-
-/**
-	@brief change current diagramview to first tab
-*/
-void ProjectView::changeFirstTab(){
-	DiagramView *firstDiagramView = this->firstDiagram();
-	m_tab->setCurrentWidget(firstDiagramView);
-}
-
-/**
-	@return first folio of current project
-*/
-DiagramView *ProjectView::firstDiagram(){
-	return(diagram_ids_.first());
-}
-
-
-/**
 	Cette methode essaye de fermer successivement les editeurs d'element puis
 	les schemas du projet. L'utilisateur peut refuser de fermer un schema ou un
 	editeur.
@@ -225,19 +148,19 @@ DiagramView *ProjectView::firstDiagram(){
 */
 bool ProjectView::tryClosing() {
 	if (!project_) return(true);
-
+	
 	// First step: require external editors closing -- users may either cancel
 	// the whole closing process or save (and therefore add) content into this
 	// project. Of course, they may also discard them.
 	if (!tryClosingElementEditors()) {
 		return(false);
 	}
-
+	
 	// Check how different the current situation is from a brand new, untouched project
 	if (project_ -> filePath().isEmpty() && !project_ -> projectWasModified()) {
 		return(true);
 	}
-
+	
 	// Second step: users are presented with a dialog that enables them to
 	// choose whether they want to:
 	//   - cancel the closing process,
@@ -250,12 +173,12 @@ bool ProjectView::tryClosing() {
 	} else if (user_input == QMessageBox::Discard) {
 		return(true); // all modifications were discarded
 	}
-
+	
 	// Check how different the current situation is from a brand new, untouched project (yes , again)
 	if (project_ -> filePath().isEmpty() && !project_ -> projectWasModified()) {
 		return(true);
 	}
-
+	
 	if (project_ -> filePath().isEmpty()) {
 		QString filepath = askUserForFilePath();
 		if (filepath.isEmpty()) return(false); // users may cancel the closing
@@ -282,7 +205,7 @@ bool ProjectView::tryClosingElementEditors() {
 	foreach(QETElementEditor *editor, editors) {
 		if (!editor -> close()) return(false);
 	}
-
+	
 	QList<QETTitleBlockTemplateEditor *> template_editors = QETApp::titleBlockTemplateEditors(project_);
 	foreach(QETTitleBlockTemplateEditor *template_editor, template_editors) {
 		if (!template_editor -> close()) return(false);
@@ -320,7 +243,7 @@ int ProjectView::tryClosingDiagrams() {
 	if (close_dialog == QMessageBox::Save) {
 		saveDiagrams(project()->diagrams());
 	}
-
+	
 	return(close_dialog);
 }
 
@@ -337,20 +260,20 @@ QString ProjectView::askUserForFilePath(bool assign) {
 		this,
 		tr("Enregistrer sous", "dialog title"),
 		project_ -> currentDir(),
-		tr("Projet QElectroTech (*.qet)", "filetypes allowed when saving a project file")
+        tr("Projet QElectroTech (*.qet)", "filetypes allowed when saving a project file")
 	);
-
+	
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
-
+	
 	// if the name does not end with the .qet extension, append it
 	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
-
+	
 	if (assign) {
 		// assign the provided filepath to the currently edited project
 		project_ -> setFilePath(filepath);
 	}
-
+	
 	return(filepath);
 }
 
@@ -369,7 +292,7 @@ QETResult ProjectView::noProjectResult() const {
  */
 void ProjectView::addNewDiagram() {
 	if (project_ -> isReadOnly()) return;
-
+	
 	Diagram *new_diagram = project_ -> addNewDiagram();
 	DiagramView *new_diagram_view = new DiagramView(new_diagram);
 	addDiagram(new_diagram_view);
@@ -412,7 +335,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 
 	// check diagram isn't present in the project
 	if (diagram_ids_.values().contains(diagram)) return;
-
+	
 	// Add new tab for the diagram
 	m_tab -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
 	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
@@ -425,7 +348,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editTitleBlockTemplate(const QString &, bool)), this, SLOT(editTitleBlockTemplateRequired(const QString &, bool)));
-
+	
 	// signal diagram was added
 	emit(diagramAdded(diagram));
 }
@@ -437,36 +360,36 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	if (!diagram_view) return;
 	if (project_ -> isReadOnly()) return;
-
+	
 	// verifie que le schema est bien present dans le projet
 	if (!diagram_ids_.values().contains(diagram_view)) return;
-
+	
 
 	//Ask confirmation to user.
 	int answer = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer le folio ?", "message box title"),
-		tr("Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
+        tr("Supprimer le folio ?", "message box title"),
+        tr("Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::No
 	);
 	if (answer != QMessageBox::Yes) {
 		return;
 	}
-
+	
 	// enleve le DiagramView des onglets
 	int diagram_tab_id = diagram_ids_.key(diagram_view);
 	m_tab -> removeTab(diagram_tab_id);
 	diagrams_.removeAll(diagram_view);
 	rebuildDiagramsMap();
-
+	
 	// supprime le DiagramView, puis le Diagram
 	project_ -> removeDiagram(diagram_view -> diagram());
 	delete diagram_view;
-
+	
 	// signale le retrait du schema
 	emit(diagramRemoved(diagram_view));
-
+	
 	// rend definitif le retrait du schema
 	project_ -> write();
 }
@@ -477,7 +400,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 */
 void ProjectView::removeDiagram(Diagram *diagram) {
 	if (!diagram) return;
-
+	
 	if (DiagramView *diagram_view = findDiagram(diagram)) {
 		removeDiagram(diagram_view);
 	}
@@ -541,7 +464,7 @@ void ProjectView::editDiagramProperties(Diagram *diagram) {
 */
 void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 	if (!diagram_view) return;
-
+	
 	int diagram_view_position = diagram_ids_.key(diagram_view);
 	if (!diagram_view_position) {
 		// le schema est le premier du projet
@@ -562,7 +485,7 @@ void ProjectView::moveDiagramUp(Diagram *diagram) {
 */
 void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 	if (!diagram_view) return;
-
+	
 	int diagram_view_position = diagram_ids_.key(diagram_view);
 	if (diagram_view_position + 1 == diagram_ids_.count()) {
 		// le schema est le dernier du projet
@@ -649,7 +572,7 @@ void ProjectView::moveDiagramDownx10(Diagram *diagram) {
 */
 void ProjectView::printProject() {
 	if (!project_) return;
-
+	
 	// transforme le titre du projet en nom utilisable pour le document
 	QString doc_name;
 	if (!(project_ -> title().isEmpty())) {
@@ -661,13 +584,13 @@ void ProjectView::printProject() {
 	if (doc_name.isEmpty()) {
 		doc_name = tr("projet", "string used to generate a filename");
 	}
-
+	
 	// recupere le dossier contenant le fichier courant
 	QString dir_path = project_ -> currentDir();
-
+	
 	// determine un chemin pour le pdf / ps
 	QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
-
+	
 	DiagramPrintDialog print_dialog(project_, this);
 	print_dialog.setDocName(doc_name);
 	print_dialog.setFileName(file_name);
@@ -679,7 +602,7 @@ void ProjectView::printProject() {
 */
 void ProjectView::exportProject() {
 	if (!project_) return;
-
+	
 	ExportDialog ed(project_, parentWidget());
 #ifdef Q_OS_MAC
 	ed.setWindowFlags(Qt::Sheet);
@@ -706,7 +629,7 @@ QETResult ProjectView::save() {
 */
 QETResult ProjectView::saveAs(ProjectSaveOptions options) {
 	if (!project_) return(noProjectResult());
-
+	
 	QString filepath = askUserForFilePath();
 	if (filepath.isEmpty()) return(QETResult());
 	return(doSave(options));
@@ -722,16 +645,16 @@ QETResult ProjectView::saveAs(ProjectSaveOptions options) {
 */
 QETResult ProjectView::doSave(ProjectSaveOptions options) {
 	if (!project_) return(noProjectResult());
-
+	
 	if (project_ -> filePath().isEmpty()) {
 		// The project has not been saved to a file yet,
 		// so save() actually means saveAs().
 		return(saveAs(options));
 	}
-
+	
 	// look for diagrams matching the required save options
 	saveDiagrams(getDiagrams(options));
-
+	
 	// write to file
 	QETResult result = project_ -> write();
 	updateWindowTitle();
@@ -765,7 +688,7 @@ void ProjectView::saveDiagrams(const QList<Diagram *> &diagrams) {
 */
 int ProjectView::cleanProject() {
 	if (!project_) return(0);
-
+	
 	// s'assure que le schema n'est pas en lecture seule
 	if (project_ -> isReadOnly()) {
 		QET::QetMessageBox::critical(
@@ -775,22 +698,22 @@ int ProjectView::cleanProject() {
 		);
 		return(0);
 	}
-
+	
 	// construit un petit dialogue pour parametrer le nettoyage
-	QCheckBox *clean_tbt		= new QCheckBox(tr("Supprimer les modèles de cartouche inutilisés dans le projet"));
+	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les modèles de cartouche inutilisés dans le projet"));
 	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les éléments inutilisés dans le projet"));
 	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les catégories vides"));
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-
-	clean_tbt		-> setChecked(true);
+	
+	clean_tbt        -> setChecked(true);
 	clean_elements   -> setChecked(true);
 	clean_categories -> setChecked(true);
-
+	
 	QDialog clean_dialog(parentWidget());
 #ifdef Q_OS_MAC
 	clean_dialog.setWindowFlags(Qt::Sheet);
 #endif
-
+	
 	clean_dialog.setWindowTitle(tr("Nettoyer le projet", "window title"));
 	QVBoxLayout *clean_dialog_layout = new QVBoxLayout();
 	clean_dialog_layout -> addWidget(clean_tbt);
@@ -798,10 +721,10 @@ int ProjectView::cleanProject() {
 	clean_dialog_layout -> addWidget(clean_categories);
 	clean_dialog_layout -> addWidget(buttons);
 	clean_dialog.setLayout(clean_dialog_layout);
-
+	
 	connect(buttons, SIGNAL(accepted()), &clean_dialog, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), &clean_dialog, SLOT(reject()));
-
+	
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted)
 	{
@@ -828,7 +751,7 @@ int ProjectView::cleanProject() {
 	Initialize actions for this widget.
 */
 void ProjectView::initActions() {
-	add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
+    add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
 	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
 }
 
@@ -838,30 +761,30 @@ void ProjectView::initActions() {
 void ProjectView::initWidgets() {
 	setObjectName("ProjectView");
 	setWindowIcon(QET::Icons::ProjectFileGP);
-
+	
 	// initialize the "fallback" widget
 	fallback_widget_ = new QWidget();
 	fallback_label_ = new QLabel(
 		tr(
-			"Ce projet ne contient aucun folio",
+            "Ce projet ne contient aucun folio",
 			"label displayed when a project contains no diagram"
 		)
 	);
 	fallback_label_ -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-
+	
 	// initialize tabs
 	m_tab = new QTabWidget(this);
 	m_tab -> setMovable(true);
-
+	
 	QToolButton *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(add_new_diagram_);
 	add_new_diagram_button -> setAutoRaise(true);
 	m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
-
+	
 	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
 	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)));
-
+	
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
 }
@@ -872,7 +795,7 @@ void ProjectView::initWidgets() {
 void ProjectView::initLayout() {
 	QVBoxLayout *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
 	fallback_widget_layout_ -> addWidget(fallback_label_);
-
+	
 	layout_ = new QVBoxLayout(this);
 #ifdef Q_OS_MAC
 	layout_ -> setContentsMargins(0, 8, 0, 0);
@@ -893,9 +816,9 @@ void ProjectView::initLayout() {
  */
 void ProjectView::loadDiagrams() {
 	if (!project_) return;
-
+	
 	setDisplayFallbackWidget(project_ -> diagrams().isEmpty());
-
+	
 	foreach(Diagram *diagram, project_ -> diagrams()) {
 		DiagramView *sv = new DiagramView(diagram);
 		addDiagram(sv);
@@ -928,12 +851,12 @@ void ProjectView::updateWindowTitle() {
 */
 void ProjectView::adjustReadOnlyState() {
 	bool editable = !(project_ -> isReadOnly());
-
+	
 	// prevent users from moving existing diagrams
 	m_tab -> setMovable(editable);
 	// prevent users from adding new diagrams
 	add_new_diagram_ -> setEnabled(editable);
-
+	
 	// on met a jour le titre du widget, qui reflete l'etat de lecture seule
 	updateWindowTitle();
 }
@@ -956,13 +879,13 @@ void ProjectView::updateTabTitle(DiagramView *diagram, const QString &diagram_ti
 */
 void ProjectView::tabMoved(int from, int to) {
 	if (!project_) return;
-
+	
 	// signale au QETProject le changement d'ordre des schemas
 	project_ -> diagramOrderChanged(from, to);
-
+	
 	// reconstruit la liste associant les index des onglets aux schemas
 	rebuildDiagramsMap();
-
+	
 	// emet un signal pour informer le reste du monde que l'ordre des schemas a change
 	emit(diagramOrderChanged(this, from, to));
 }
@@ -1003,7 +926,7 @@ DiagramView *ProjectView::findDiagram(Diagram *diagram) {
 void ProjectView::rebuildDiagramsMap() {
 	// vide la map
 	diagram_ids_.clear();
-
+	
 	foreach(DiagramView *diagram_view, diagrams_) {
 		int dv_idx = m_tab -> indexOf(diagram_view);
 		if (dv_idx == -1) continue;
@@ -1035,7 +958,7 @@ void ProjectView::tabDoubleClicked(int tab_id) {
 	// repere le schema concerne
 	DiagramView *diagram_view = diagram_ids_[tab_id];
 	if (!diagram_view) return;
-
+	
 	diagram_view -> editDiagramProperties();
 }
 

@@ -27,7 +27,7 @@
 #include "ui/xrefpropertieswidget.h"
 #include "selectautonumw.h"
 #include "numerotationcontext.h"
-#include "folioautonumbering.h"
+
 /**
 	Constructor
 	@param project Project this page is editing.
@@ -141,6 +141,7 @@ void ProjectMainConfigPage::applyProjectConf() {
 		project_ -> setProjectProperties(new_properties);
 		modified_project = true;
 	}
+	
 	if (modified_project) {
 		project_ -> setModified(true);
 	}
@@ -185,8 +186,6 @@ void ProjectMainConfigPage::initLayout() {
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
 	setLayout(main_layout0);
-	this -> setMinimumWidth(630);
-
 }
 
 /**
@@ -251,44 +250,17 @@ void ProjectAutoNumConfigPage::applyProjectConf() {}
  * Init some widget of this page
  */
 void ProjectAutoNumConfigPage::initWidgets() {
+	m_label = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), this);
 
-    tab_widget = new QTabWidget(this);
-    tab_widget->setMinimumWidth(440);
-
-    //Conductor Tab
-    conductor_tab_widget = new QWidget(this);
-
-    m_label = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), conductor_tab_widget);
-
-    m_context_cb = new QComboBox(conductor_tab_widget);
+	m_context_cb = new QComboBox(this);
 	m_context_cb->setEditable(true);
 	m_context_cb->lineEdit()->setClearButtonEnabled(true);
 	m_context_cb->addItem(tr("Nom de la nouvelle numérotation"));
 
-    m_remove_pb = new QPushButton(QET::Icons::EditDelete, QString(), conductor_tab_widget);
+	m_remove_pb = new QPushButton(QET::Icons::EditDelete, QString(), this);
 	m_remove_pb -> setToolTip(tr("Supprimer la numérotation"));
 
-    m_saw = new SelectAutonumW(conductor_tab_widget);
-
-    //Folio Tab
-    folio_tab_widget = new QWidget(this);
-
-    m_label_2 = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), folio_tab_widget);
-
-    m_context_cb_2 = new QComboBox(folio_tab_widget);
-    m_context_cb_2->setEditable(true);
-    m_context_cb_2->lineEdit()->setClearButtonEnabled(true);
-    m_context_cb_2->addItem(tr("Nom de la nouvelle numérotation"));
-
-    m_remove_pb_2 = new QPushButton(QET::Icons::EditDelete, QString(), folio_tab_widget);
-    m_remove_pb_2 -> setToolTip(tr("Supprimer la numérotation"));
-
-    m_saw_2 = new SelectAutonumW(folio_tab_widget);
-
-/*    //AutoNumbering Tab - Needs Further Testing
-    autoNumbering_tab_widget = new QWidget(this);
-    m_faw = new FolioAutonumberingW(project(),autoNumbering_tab_widget);
-*/
+	m_saw = new SelectAutonumW(this);
 }
 
 /**
@@ -296,40 +268,15 @@ void ProjectAutoNumConfigPage::initWidgets() {
  * Init the layout of this page
  */
 void ProjectAutoNumConfigPage::initLayout() {
-    //Conductor tab
-    tab_widget->addTab(conductor_tab_widget, tr("Conductor"));
-
-    QHBoxLayout *context_layout = new QHBoxLayout();
+	QHBoxLayout *context_layout = new QHBoxLayout();
 	context_layout -> addWidget (m_label);
 	context_layout -> addWidget (m_context_cb);
 	context_layout -> addWidget (m_remove_pb);
 
-    QVBoxLayout *main_layout = new QVBoxLayout();
-    QVBoxLayout *aux_layout = new QVBoxLayout();
-    aux_layout->addLayout(context_layout);
-    aux_layout->addWidget(m_saw);
-
-    main_layout->addLayout(aux_layout);
-    conductor_tab_widget -> setLayout (main_layout);
-
-    // Folio Tab
-    tab_widget->addTab(folio_tab_widget, tr("Folio"));
-
-    QHBoxLayout *context_layout_2 = new QHBoxLayout();
-    context_layout_2 -> addWidget (m_label_2);
-    context_layout_2 -> addWidget (m_context_cb_2);
-    context_layout_2 -> addWidget (m_remove_pb_2);
-
-    QVBoxLayout *main_layout_2 = new QVBoxLayout();
-    QVBoxLayout *aux_layout_2 = new QVBoxLayout();
-    aux_layout_2->addLayout(context_layout_2);
-    aux_layout_2->addWidget(m_saw_2);
-
-    main_layout_2->addLayout(aux_layout_2);
-    folio_tab_widget -> setLayout (main_layout_2);
-
-	//Auto Numbering Tab - Needs Further Testing
-//    tab_widget->addTab(autoNumbering_tab_widget,tr ("Folio Auto Numbering"));
+	QVBoxLayout *main_layout = new QVBoxLayout(this);
+	this        -> setLayout (main_layout);
+	main_layout -> addLayout (context_layout);
+	main_layout -> addWidget (m_saw);
 }
 
 /**
@@ -337,20 +284,9 @@ void ProjectAutoNumConfigPage::initLayout() {
  * Read value stored on project, and update display
  */
 void ProjectAutoNumConfigPage::readValuesFromProject() {
-    //Conductor Tab
 	QList <QString> keys = project_->conductorAutoNum().keys();
-	if (!keys.isEmpty()){
+	if (keys.isEmpty()) return;
 	foreach (QString str, keys) { m_context_cb -> addItem(str); }
-	}
-
-	//Folio Tab
-	QList <QString> keys_2 = project_->folioAutoNum().keys();
-	if (!keys_2.isEmpty()){
-	foreach (QString str, keys_2) { m_context_cb_2 -> addItem(str);}
-	}
-
-	//Folio AutoNumbering Tab - Needs Further Testing
-//	m_faw->setContext(keys_2);
 }
 
 /**
@@ -365,28 +301,14 @@ void ProjectAutoNumConfigPage::adjustReadOnly() {
  * setup some connections
  */
 void ProjectAutoNumConfigPage::buildConnections() {
-	
-	connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
-
-	//Conductor Tab
 	connect (m_context_cb, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext(QString)));
 	connect (m_saw,        SIGNAL (applyPressed()),               this, SLOT (saveContext()));
-	connect (m_remove_pb,  SIGNAL (clicked()),                    this, SLOT(removeContext()));
-
-	//Folio Tab
-	connect (m_context_cb_2, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_2(QString)));
-	connect (m_saw_2,        SIGNAL (applyPressed()),               this, SLOT (saveContext_2()));
-	connect (m_remove_pb_2,  SIGNAL (clicked()),                     this, SLOT (removeContext_2()));
-
-/*	//Auto Folio Numbering - Needs Further Testing
-	connect (m_faw, SIGNAL (applyPressed()),                 this, SLOT (applyAutoNum()));
-	connect (m_faw, SIGNAL (m_autonumber_tabs_rb_clicked()), this, SLOT (tabChanged(int)));
-*/
+	connect (m_remove_pb,  SIGNAL(clicked()),                     this, SLOT(removeContext()));
 }
 
 /**
  * @brief ProjectAutoNumConfigPage::updateContext
- * Display the current selected context for conductor
+ * Display the current selected context
  * @param str, key of context stored in project
  */
 void ProjectAutoNumConfigPage::updateContext(QString str) {
@@ -395,18 +317,8 @@ void ProjectAutoNumConfigPage::updateContext(QString str) {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContext_2
- * Display the current selected context for folio
- * @param str, key of context stored in project
- */
-void ProjectAutoNumConfigPage::updateContext_2(QString str) {
-    if (str == tr("Nom de la nouvelle numérotation")) m_saw_2 -> setContext(NumerotationContext());
-    else m_saw_2 ->setContext(project_->folioAutoNum(str));
-}
-
-/**
  * @brief ProjectAutoNumConfigPage::saveContext
- * Save the current displayed conductor context in project
+ * Save the current displayed context in project
  */
 void ProjectAutoNumConfigPage::saveContext() {
 	// If the text is the default text "Name of new numerotation" save the edited context
@@ -427,94 +339,12 @@ void ProjectAutoNumConfigPage::saveContext() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContext_2
- * Save the current displayed folio context in project
- */
-void ProjectAutoNumConfigPage::saveContext_2() {
-    // If the text is the default text "Name of new numerotation" save the edited context
-    // With the the name "No name"
-    if (m_context_cb_2 -> currentText() == tr("Nom de la nouvelle numérotation")) {
-        project_->addFolioAutoNum (tr("Sans nom"), m_saw_2 -> toNumContext());
-        m_context_cb_2 -> addItem(tr("Sans nom"));
-    }
-    // If the text isn't yet to the autonum of the project, add this new item to the combo box.
-    else if ( !project_ -> folioAutoNum().keys().contains( m_context_cb_2->currentText())) {
-        project()->addFolioAutoNum(m_context_cb_2->currentText(), m_saw_2->toNumContext());
-        m_context_cb_2 -> addItem(m_context_cb_2->currentText());
-    }
-    // Else, the text already exist in the autonum of the project, just update the context
-    else {
-        project_->addFolioAutoNum (m_context_cb_2 -> currentText(), m_saw_2 -> toNumContext());
-    }
-}
-
-/**
- * @brief ProjectAutoNumConfigPage::applyAutoNum
- * Apply auto folio numbering, New Folios or Selected Folios
- */
-/*
-void ProjectAutoNumConfigPage::applyAutoNum() {
-
-    if (m_faw->newFolios){
-        int foliosRemaining = m_faw->newFoliosNumber();
-        emit (saveCurrentTbp());
-        emit (setAutoNum(m_faw->autoNumSelected()));
-        while (foliosRemaining > 0){
-            project()->autoFolioNumberingNewFolios();
-            foliosRemaining = foliosRemaining-1;
-        }
-        emit (loadSavedTbp());
-    }
-    else{
-		QString autoNum   = m_faw->autoNumSelected();
-		int fromFolio = m_faw->fromFolio();
-		int toFolio   = m_faw->toFolio();
-		project_->autoFolioNumberingSelectedFolios(fromFolio,toFolio,autoNum);		
-    }
-}
-*/
-
-/**
  * @brief ProjectAutoNumConfigPage::removeContext
- * Remove from project the current conductor numerotation context
+ * Remove from project the current numerotation context
  */
 void ProjectAutoNumConfigPage::removeContext() {
 	//if default text, return
 	if ( m_context_cb -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	project_     -> removeConductorAutonum (m_context_cb -> currentText() );
 	m_context_cb -> removeItem             (m_context_cb -> currentIndex() );
-}
-/**
- * @brief ProjectAutoNumConfigPage::removeContext_2
- * Remove from project the current folio numerotation context
- */
-void ProjectAutoNumConfigPage::removeContext_2() {
-    //if default text, return
-    if ( m_context_cb_2 -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
-	project_       -> removeFolioAutoNum     (m_context_cb_2 -> currentText() );
-	m_context_cb_2 -> removeItem             (m_context_cb_2 -> currentIndex() );
-}
-/**
- * @brief ProjectAutoNumConfigPage::changeToTab
- * @param tab index
- * Change to Selected Tab
- */
-void ProjectAutoNumConfigPage::changeToTab(int i){
-        tab_widget->setCurrentIndex(i);
-}
-
-/**
- * @brief ProjectAutoNumConfigPage::tabChanged
- * @param tab index
- * Used to resize window to correct size
- */
-void ProjectAutoNumConfigPage::tabChanged(int i){
-	if (i>0){
-		if (tab_widget->currentIndex()==2){
-			tab_widget->resize(470,tab_widget->height());
-		}
-		else {
-			tab_widget->adjustSize();
-		}
-	}
 }

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2015 The QElectroTech Team
 	This file is part of QElectroTech.
-
+	
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-
+	
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-
+	
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -31,7 +31,7 @@ class QTabWidget;
 */
 class ProjectView : public QWidget {
 	Q_OBJECT
-
+	
 	public:
 	enum ProjectSaveOption {
 		CurrentDiagram = 2,
@@ -39,15 +39,15 @@ class ProjectView : public QWidget {
 		AllDiagrams = 6
 	};
 	Q_DECLARE_FLAGS(ProjectSaveOptions, ProjectSaveOption)
-
-
+	
+	
 	// constructors, destructor
 	public:
 	ProjectView(QETProject *, QWidget * = 0);
 	virtual ~ProjectView();
 	private:
 	ProjectView(const ProjectView &);
-
+	
 	// methods
 	public:
 	QETProject *project();
@@ -56,11 +56,7 @@ class ProjectView : public QWidget {
 	QList<Diagram *> getDiagrams(ProjectSaveOptions options);
 	DiagramView *currentDiagram() const;
 	void closeEvent(QCloseEvent *);
-	void changeTabUp();
-	void changeTabDown();
-	void changeFirstTab();
-	void changeLastTab();
-
+	
 	public slots:
 	void addNewDiagram();
 	void addNewDiagramFolioList();
@@ -94,7 +90,7 @@ class ProjectView : public QWidget {
 	void updateTabTitle(DiagramView *, const QString &);
 	void tabMoved(int, int);
 	void editTitleBlockTemplateRequired(const QString &, bool);
-
+	
 	signals:
 	void diagramAdded(DiagramView *);
 	void diagramRemoved(DiagramView *);
@@ -106,30 +102,26 @@ class ProjectView : public QWidget {
 	void findElementRequired(const ElementsLocation &);
 	void editElementRequired(const ElementsLocation &);
 	void editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool);
-
+	
 	private:
 	void initActions();
 	void initWidgets();
 	void initLayout();
 	void loadDiagrams();
 	DiagramView *findDiagram(Diagram *);
-	DiagramView *nextDiagram();
-	DiagramView *previousDiagram();
-	DiagramView *firstDiagram();
-	DiagramView *lastDiagram();
 	void rebuildDiagramsMap();
 	bool tryClosing();
 	bool tryClosingElementEditors();
 	int tryClosingDiagrams();
 	QString askUserForFilePath(bool = true);
 	QETResult noProjectResult() const;
-
+	
 	private slots:
 	void tabChanged(int);
 	void tabDoubleClicked(int);
 	void setDisplayFallbackWidget(bool);
 	void adjustReadOnlyState();
-
+	
 	// attributes
 	private:
 	QAction *add_new_diagram_;

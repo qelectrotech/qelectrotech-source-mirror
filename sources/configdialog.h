@@ -36,10 +36,6 @@ class ConfigDialog : public QDialog {
 	virtual ~ConfigDialog();
 	private:
 	ConfigDialog(const ConfigDialog &);
-
-    public:
-	QList<ConfigPage *> pages;
-
 	
 	// methods
 	public slots:
@@ -56,8 +52,6 @@ class ConfigDialog : public QDialog {
 	QListWidget *pages_list;
 	QStackedWidget *pages_widget;
 	QDialogButtonBox *buttons;
-
-
-
+	QList<ConfigPage *> pages;
 };
 #endif

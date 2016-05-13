@@ -243,7 +243,6 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	ip.folio = folio();
 	ip.template_name = titleBlockTemplateName();
 	ip.display_at = m_edge;
-    ip.auto_page_num = autoPageNum();
 	ip.context = additional_fields_;
 	ip.collection = QET::QetCollection::Embedded;
 	
@@ -260,7 +259,6 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setTitle(ip.title);
 	setFileName(ip.filename);
 	setFolio(ip.folio);
-    setAutoPageNum(ip.auto_page_num);
 	if (m_edge != ip.display_at)
 	{
 		m_edge = ip.display_at;
@@ -687,7 +685,6 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	context.addValue("folio",       btb_final_folio_);
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
-	context.addValue("auto_page_num", btb_auto_page_num_);
 	
 	titleblock_template_renderer_ -> setContext(context);
 }
@@ -714,7 +711,7 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 	@param total nombre total de schemas dans le projet
 	@param project_properties Project-wide properties, to be merged with diagram-wide ones.
 */
-void BorderTitleBlock::setFolioData(int index, int total, QString autonum, const DiagramContext &project_properties) {
+void BorderTitleBlock::setFolioData(int index, int total, const DiagramContext &project_properties) {
 	if (index < 1 || total < 1 || index > total) return;
 	
 	// memorise les informations
@@ -723,14 +720,8 @@ void BorderTitleBlock::setFolioData(int index, int total, QString autonum, const
 	
 	// regenere le contenu du champ folio
 	btb_final_folio_ = btb_folio_;
-
-	if (btb_final_folio_.contains("%autonum")){
-	btb_final_folio_.replace("%autonum", autonum);
-	btb_folio_ = btb_final_folio_;
-	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
-
-
+	
 	updateDiagramContextForTitleBlock(project_properties);
 }

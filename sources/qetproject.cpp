@@ -34,8 +34,6 @@
 #include "integrationmovetemplateshandler.h"
 #include "xmlelementcollection.h"
 #include "importelementdialog.h"
-#include "numerotationcontextcommands.h"
-
 
 #include <QStandardPaths>
 
@@ -56,8 +54,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	titleblocks_         (this  ),
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  ),
-	m_elements_collection (nullptr),
-	m_auto_folio         (true  )
+	m_elements_collection (nullptr)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -94,8 +91,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	titleblocks_         (this  ),
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  ),
-	m_elements_collection (nullptr),
-	m_auto_folio         (true  )
+	m_elements_collection (nullptr)
 {
 		//Open the file
 	QFile project_file(path);
@@ -447,16 +443,8 @@ QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
 }
 
 /**
- * @brief QETProject::folioAutoNum
- * @return All value of conductor autonum stored in project
- */
-QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
-	return  m_folio_autonum;
-}
-
-/**
  * @brief QETProject::addConductorAutoNum
- * Add a new conductor numerotation context. If key already exist,
+ * Add a new numerotation context. If key already exist,
  * replace old context by the new context
  * @param key
  * @param context
@@ -466,19 +454,8 @@ void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
 }
 
 /**
- * @brief QETProject::addFolioAutoNum
- * Add a new folio numerotation context. If key already exist,
- * replace old context by the new context
- * @param key
- * @param context
- */
-void QETProject::addFolioAutoNum(QString key, NumerotationContext context) {
-	m_folio_autonum.insert(key, context);
-}
-
-/**
  * @brief QETProject::removeConductorAutonum
- * Remove Conductor Numerotation Context stored with key
+ * Remove the Numerotation Context stored with key
  * @param key
  */
 void QETProject::removeConductorAutonum(QString key) {
@@ -486,33 +463,13 @@ void QETProject::removeConductorAutonum(QString key) {
 }
 
 /**
- * @brief QETProject::removeFolioAutonum
- * Remove Folio Numerotation Context stored with key
- * @param key
- */
-void QETProject::removeFolioAutoNum(QString key) {
-	m_folio_autonum.remove(key);
-}
-
-/**
  * @brief QETProject::conductorAutoNum
- * Return conductor numerotation context stored with @key.
+ * Return the numerotation context stored with @key.
  * If key is not found, return an empty numerotation context
  * @param key
  */
 NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
 	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
-	else return NumerotationContext();
-}
-
-/**
- * @brief QETProject::folioAutoNum
- * Return folio numerotation context stored with @key.
- * If key is not found, return an empty numerotation context
- * @param key
- */
-NumerotationContext QETProject::folioAutoNum (const QString &key) const {
-	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
 	else return NumerotationContext();
 }
 
@@ -527,16 +484,6 @@ bool QETProject::autoConductor() const
 }
 
 /**
- * @brief QETProject::autoFolio
- * @return true if use of auto folio is authorized.
- * See also Q_PROPERTY autoFolio
- */
-bool QETProject::autoFolio() const
-{
-	return m_auto_folio;
-}
-
-/**
  * @brief QETProject::setAutoConductor
  * @param ac
  * Enable the use of auto conductor if true
@@ -546,46 +493,6 @@ void QETProject::setAutoConductor(bool ac)
 {
 	if (ac != m_auto_conductor)
 		m_auto_conductor = ac;
-}
-
-/**
- * @brief QETProject::setAutoFolio
- * @param ac
- * Enable the use of auto folio if true
- * See also Q_PROPERTY autoConductor
- */
-void QETProject::setAutoFolio(bool af)
-{
-	if (af != m_auto_folio)
-		m_auto_folio = af;
-}
-
-/**
- * @brief QETProject::autoFolioNumberingNewFolios
- * emit Signal to add new Diagram with autonum
- * properties
- */
-void QETProject::autoFolioNumberingNewFolios(){
-	emit addAutoNumDiagram();
-}
-
-/**
- * @brief QETProject::autoFolioNumberingNewFolios
- * @param autonum used, index from selected tabs "from" and "to"
- * rename folios with selected autonum
- */
-void QETProject::autoFolioNumberingSelectedFolios(int from, int to, QString autonum){
-	int total_folio = diagrams_.count();
-	DiagramContext project_wide_properties = project_properties_;
-	for (int i=from; i<=to; i++) {
-		QString title = diagrams_[i] -> title();
-		NumerotationContext nC = folioAutoNum(autonum);
-		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		diagrams_[i] -> border_and_titleblock.setFolio("%autonum");
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
-		diagrams_[i] -> project() -> addFolioAutoNum(autonum,nCC.next());
-		diagrams_[i] -> update();
-	}
 }
 
 /**
@@ -1250,7 +1157,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1269,8 +1176,6 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			xref_elmt = child_elmt;
 		else if (child_elmt.tagName() == "conductors_autonums")
 			conds_autonums = child_elmt;
-		else if (child_elmt.tagName()== "folio_autonums")
-			folio_autonums = child_elmt;
 	}
 
 		// size, titleblock, conductor, report, conductor autonum
@@ -1294,15 +1199,6 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_conductor_autonum.insert(elmt.attribute("title"), nc);
-		}
-	}
-	if (!folio_autonums.isNull())
-	{
-		foreach (QDomElement elmt, QET::findInDomElement(folio_autonums, "folio_autonum"))
-	{
-			NumerotationContext nc;
-			nc.fromXml(elmt);
-			m_folio_autonum.insert(elmt.attribute("title"), nc);
 		}
 	}
 }
@@ -1365,15 +1261,6 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 		conds_autonums.appendChild(cond_autonum);
 	}
 	xml_element.appendChild(conds_autonums);
-
-	//Export Folio Autonums
-	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	foreach (QString key, folioAutoNum().keys()) {
-	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
-		folio_autonum.setAttribute("title", key);
-		folio_autonums.appendChild(folio_autonum);
-	}
-	xml_element.appendChild(folio_autonums);
 }
 
 /**
@@ -1529,17 +1416,7 @@ void QETProject::updateDiagramsFolioData() {
 	project_wide_properties.addValue("projecttitle", title());
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		QString title = diagrams_[i] -> title();
-		QString autopagenum = diagrams_[i]->border_and_titleblock.autoPageNum();
-		NumerotationContext nC = folioAutoNum(autopagenum);
-		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		if((diagrams_[i]->border_and_titleblock.folio().contains("%autonum"))&&(!autopagenum.isNull())){
-			diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
-			diagrams_[i]->project()->addFolioAutoNum(autopagenum,nCC.next());
-		}
-		else{
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, NULL, project_wide_properties);
-		}
+		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, project_wide_properties);
 		diagrams_[i] -> update();
 	}
 }

@@ -235,7 +235,6 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		QPointF movement;
-	if (!this->selectedContent().elements.isEmpty()) {
 		switch(e -> key()) {
 			case Qt::Key_Left:  movement = QPointF(-xGrid, 0.0); break;
 			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
@@ -251,7 +250,6 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 	}
 	if (transmit_event) {
 		QGraphicsScene::keyPressEvent(e);
-		}
 	}
 }
 

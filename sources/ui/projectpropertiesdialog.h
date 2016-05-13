@@ -17,7 +17,6 @@
 */
 #ifndef PROJECTPROPERTIESDIALOG_H
 #define PROJECTPROPERTIESDIALOG_H
-#include <QtCore>
 
 class QETProject;
 class QWidget;
@@ -27,7 +26,8 @@ class ConfigDialog;
  * @brief The ProjectPropertiesDialog class
  * this class builds a dialog to edit whole properties of a project
  */
-class ProjectPropertiesDialog : public QObject {
+class ProjectPropertiesDialog
+{
 	public:
 		enum Page {
 			Main    = 0,
@@ -39,7 +39,6 @@ class ProjectPropertiesDialog : public QObject {
 		~ProjectPropertiesDialog();
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
-        void changeToFolio();
 
 	private:
 		ConfigDialog *m_properties_dialog;

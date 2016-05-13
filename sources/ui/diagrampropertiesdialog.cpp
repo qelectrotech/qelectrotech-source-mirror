@@ -55,14 +55,12 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	//Title block widget
 	TitleBlockPropertiesWidget  *titleblock_infos;
 	if (QETProject *parent_project = diagram -> project()) {
-        titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, diagram->project(),  this);
+		titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, this);
 		connect(titleblock_infos, SIGNAL(editTitleBlockTemplate(QString, bool)), diagram->views().first(), SIGNAL(editTitleBlockTemplate(QString, bool)));
 	}
 	else
-        titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, diagram->project(), this);
+		titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, this);
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
-    	connect(titleblock_infos,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(editAutoFolioNum()));
-    	titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
 	//Conductor widget
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors, this);
@@ -126,22 +124,11 @@ void DiagramPropertiesDialog::diagramPropertiesDialog(Diagram *diagram, QWidget 
 
 /**
  * @brief DiagramPropertiesDialog::editAutonum
- * Open conductor autonum editor
+ * Open the autonum editor
  */
 void DiagramPropertiesDialog::editAutonum() {
 	ProjectPropertiesDialog ppd (m_diagram->project(), this);
 	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
 	ppd.exec();
 	m_asw -> setItems (m_diagram -> project() -> conductorAutoNum().keys());
-}
-
-/**
- * @brief DiagramPropertiesDialog::editAutonum
- * Open folio autonum editor
- */
-void DiagramPropertiesDialog::editAutoFolioNum () {
-    ProjectPropertiesDialog ppd (m_diagram->project(), this);
-    ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
-    ppd.changeToFolio();
-    ppd.exec();
 }

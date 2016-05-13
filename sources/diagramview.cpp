@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2015 The QElectroTech Team
 	This file is part of QElectroTech.
-
+	
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-
+	
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-
+	
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -30,7 +30,6 @@
 #include "templatelocation.h"
 #include "qetapp.h"
 #include "qetproject.h"
-#include "projectview.h"
 #include "integrationmoveelementshandler.h"
 #include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
@@ -68,12 +67,12 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		"\"What's this?\" tip"
 	);
 	setWhatsThis(whatsthis);
-
+	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
 	setRenderHint(QPainter::TextAntialiasing, true);
 	setRenderHint(QPainter::SmoothPixmapTransform, true);
-
+	
 	setScene(scene);
 	scene -> undoStack().setClean();
 	setWindowIcon(QET::Icons::QETLogo);
@@ -83,18 +82,18 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setSelectionMode();
 	adjustSceneRect();
 	updateWindowTitle();
-
+	
 	context_menu = new QMenu(this);
 	paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
-
+	
 	connect(scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
 	connect(scene, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
-
+	
 	connect(
 		this, SIGNAL(aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
 		this, SLOT(setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
@@ -147,7 +146,7 @@ void DiagramView::deleteSelection() {
 */
 void DiagramView::rotateSelection() {
 	if (scene -> isReadOnly()) return;
-
+	
 	// recupere les elements et les champs de texte a pivoter
 	QList<Element *> elements_to_rotate;
 	QList<DiagramTextItem *> texts_to_rotate;
@@ -168,7 +167,7 @@ void DiagramView::rotateSelection() {
 			images_to_rotate << dii;
 		}
 	}
-
+	
 	// effectue les rotations s'il y a quelque chose a pivoter
 	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty() && images_to_rotate.isEmpty()) return;
 	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate, images_to_rotate));
@@ -176,7 +175,7 @@ void DiagramView::rotateSelection() {
 
 void DiagramView::rotateTexts() {
 	if (scene -> isReadOnly()) return;
-
+	
 	// recupere les champs de texte a orienter
 	QList<DiagramTextItem *> texts_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
@@ -189,10 +188,10 @@ void DiagramView::rotateTexts() {
 			texts_to_rotate << eti;
 		}
 	}
-
+	
 	// effectue les rotations s'il y a quelque chose a pivoter
 	if (texts_to_rotate.isEmpty()) return;
-
+	
 	// demande un angle a l'utilisateur
 	QDialog ori_text_dialog(diagramEditor());
 	ori_text_dialog.setSizeGripEnabled(false);
@@ -201,27 +200,27 @@ void DiagramView::rotateTexts() {
 #endif
 	ori_text_dialog.setWindowTitle(tr("Orienter les textes sélectionnés", "window title"));
 // 	ori_text_dialog.setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-
+	
+	
 	QTextOrientationSpinBoxWidget *ori_widget = QETApp::createTextOrientationSpinBoxWidget();
 	ori_widget -> setParent(&ori_text_dialog);
 	if (texts_to_rotate.count() == 1) {
 		ori_widget -> setOrientation(texts_to_rotate.at(0) -> rotationAngle());
 	}
 	ori_widget -> spinBox() -> selectAll();
-
+	
 	// boutons
 	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&buttons, SIGNAL(accepted()), &ori_text_dialog, SLOT(accept()));
 	connect(&buttons, SIGNAL(rejected()), &ori_text_dialog, SLOT(reject()));
-
+	
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&ori_text_dialog);
 	layout_v.setSizeConstraint(QLayout::SetFixedSize);
 	layout_v.addWidget(ori_widget);
 	layout_v.addStretch();
 	layout_v.addWidget(&buttons);
-
+	
 	// si le dialogue est accepte
 	if (ori_text_dialog.exec() == QDialog::Accepted) {
 		scene -> undoStack().push(new RotateTextsCommand(texts_to_rotate, ori_widget -> orientation()));
@@ -262,7 +261,7 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 /**
-	Handle the drops accepted on diagram (elements and title block templates).
+	Handle the drops accepted on diagram (elements and title block templates). 
 	@param e the QDropEvent describing the current drag'n drop
 */
 void DiagramView::dropEvent(QDropEvent *e) {
@@ -422,17 +421,17 @@ void DiagramView::copy() {
 */
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (!isInteractive() || scene -> isReadOnly()) return;
-
+	
 	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
 	if ((texte_presse_papier).isEmpty()) return;
-
+	
 	QDomDocument document_xml;
 	if (!document_xml.setContent(texte_presse_papier)) return;
-
+	
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	DiagramContent content_pasted;
 	scene -> fromXml(document_xml, pos, false, &content_pasted);
-
+	
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		scene -> clearSelection();
@@ -590,22 +589,7 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 */
 void DiagramView::keyPressEvent(QKeyEvent *e) {
 	if (m_event_interface && m_event_interface->keyPressEvent(e)) return;
-	ProjectView *current_project = this->diagramEditor()->acessCurrentProject();
-switch(e -> key())
-	{
-		case Qt::Key_PageUp:
-			current_project->changeTabUp();
-			return;
-		case Qt::Key_PageDown:
-			current_project->changeTabDown();
-			return;
-		case Qt::Key_Home:
-			current_project->changeFirstTab();
-			return;
-		case Qt::Key_End:
-			current_project->changeLastTab();
-			return;
-	}
+
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
 }
@@ -767,14 +751,14 @@ void DiagramView::adjustGridToZoom() {
 QRectF DiagramView::viewedSceneRect() const {
 	// recupere la taille du widget viewport
 	QSize viewport_size = viewport() -> size();
-
+	
 	// recupere la transformation viewport -> scene
 	QTransform view_to_scene   = viewportTransform().inverted();
-
+	
 	// mappe le coin superieur gauche et le coin inferieur droit de la viewport sur la scene
 	QPointF scene_left_top     = view_to_scene.map(QPointF(0.0, 0.0));
 	QPointF scene_right_bottom = view_to_scene.map(QPointF(viewport_size.width(), viewport_size.height()));
-
+	
 	// en deduit le rectangle visualise par la scene
 	return(QRectF(scene_left_top, scene_right_bottom));
 }
@@ -789,7 +773,7 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 	// unlike elements, the integration of title block templates is mandatory, so we simply check whether the parent project of the template is also the parent project of the diagram
 	QETProject *tbt_parent_project = tbt_loc.parentProject();
 	if (!tbt_parent_project) return(true);
-
+	
 	return(tbt_parent_project != scene -> project());
 }
 
@@ -799,7 +783,7 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 */
 void DiagramView::applyReadOnly() {
 	if (!scene) return;
-
+	
 	bool is_writable = !scene -> isReadOnly();
 	setInteractive(is_writable);
 	setAcceptDrops(is_writable);
@@ -811,11 +795,11 @@ void DiagramView::applyReadOnly() {
 void DiagramView::editSelectionProperties() {
 	// get selection
 	DiagramContent selection = scene -> selectedContent();
-
+	
 	// if selection contains nothing return
 	int selected_items_count = selection.count(DiagramContent::All | DiagramContent::SelectedOnly);
 	if (!selected_items_count) return;
-
+	
 	// if selection contains one item and this item can be editable, edit this item with an appropriate dialog
 	if (selected_items_count == 1 && selection.items(DiagramContent::Elements |
 													 DiagramContent::AnyConductor |
@@ -827,7 +811,7 @@ void DiagramView::editSelectionProperties() {
 		else if (selection.elements.size())
 			selection.elements.toList().first() -> editProperty();
 	}
-
+	
 	else {
 		QET::QetMessageBox::information(
 			this,
@@ -848,7 +832,7 @@ void DiagramView::editSelectionProperties() {
 void DiagramView::editSelectedConductorColor() {
 	// retrieve selected content
 	DiagramContent selection = scene -> selectedContent();
-
+	
 	// we'll focus on the selected conductor (we do not handle multiple conductors edition)
 	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
 	if (selected_conductors.count() == 1) {
@@ -863,10 +847,10 @@ void DiagramView::editSelectedConductorColor() {
 void DiagramView::editConductorColor(Conductor *edited_conductor)
 {
 	if (scene -> isReadOnly() || !edited_conductor) return;
-
+	
 		// store the initial properties of the provided conductor
 	ConductorProperties initial_properties = edited_conductor -> properties();
-
+	
 		// prepare a color dialog showing the initial conductor color
 	QColorDialog *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
@@ -874,7 +858,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 	color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
 	color_dialog -> setCurrentColor(initial_properties.color);
-
+	
 		// asks the user what color he wishes to apply
 	if (color_dialog -> exec() == QDialog::Accepted)
 	{
@@ -901,7 +885,7 @@ void DiagramView::resetConductors() {
 	if (scene -> isReadOnly()) return;
 	// recupere les conducteurs selectionnes
 	QSet<Conductor *> selected_conductors = scene -> selectedConductors();
-
+	
 	// repere les conducteurs modifies (= profil non nul)
 	QHash<Conductor *, ConductorProfilesGroup> conductors_and_profiles;
 	foreach(Conductor *conductor, selected_conductors) {
@@ -915,7 +899,7 @@ void DiagramView::resetConductors() {
 			conductors_and_profiles.insert(conductor, profile);
 		}
 	}
-
+	
 	if (conductors_and_profiles.isEmpty()) return;
 	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
 }
@@ -1059,7 +1043,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 		if (!qgi -> isSelected()) scene -> clearSelection();
 		qgi -> setSelected(true);
 	}
-
+	
 	if (QETDiagramEditor *qde = diagramEditor()) {
 		context_menu -> clear();
 		if (scene -> selectedItems().isEmpty()) {
@@ -1077,7 +1061,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addSeparator();
 			context_menu -> addActions(qde -> m_selection_actions_group.actions());
 		}
-
+		
 		// affiche le menu contextuel
 		context_menu -> popup(e -> globalPos());
 	}
@@ -1106,10 +1090,10 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
 
 	BorderTitleBlock &bi = scene -> border_and_titleblock;
-
+	
 	//Get the click pos on the diagram
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
-
+	
 	if (bi.titleBlockRect().contains(click_pos) || bi.columnsRect().contains(click_pos) || bi.rowsRect().contains(click_pos)) {
 		e->accept();
 		editDiagramProperties();
@@ -1124,14 +1108,14 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 void DiagramView::setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &tbt) {
 	// fetch the current title block properties
 	TitleBlockProperties titleblock_properties_before = scene -> border_and_titleblock.exportTitleBlock();
-
+	
 	// check the provided template is not already applied
 	QETProject *tbt_parent_project = tbt.parentProject();
 	if (tbt_parent_project && tbt_parent_project == scene -> project()) {
 		// same parent project and same name = same title block template
 		if (tbt.name() == titleblock_properties_before.template_name) return;
 	}
-
+	
 	// integrate the provided template into the project if needed
 	QString integrated_template_name = tbt.name();
 	if (mustIntegrateTitleBlockTemplate(tbt)) {
@@ -1140,7 +1124,7 @@ void DiagramView::setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation 
 		integrated_template_name = scene -> project() -> integrateTitleBlockTemplate(tbt, handler);
 		if (integrated_template_name.isEmpty()) return;
 	}
-
+	
 	// apply the provided title block template
 	if (titleblock_properties_before.template_name == integrated_template_name) return;
 	TitleBlockProperties titleblock_properties_after = titleblock_properties_before;

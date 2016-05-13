@@ -18,15 +18,11 @@
 #ifndef TITLEBLOCKPROPERTIESWIDGET_H
 #define TITLEBLOCKPROPERTIESWIDGET_H
 
-#include "qetproject.h"
 #include <QWidget>
 #include "titleblockproperties.h"
 #include "diagramcontextwidget.h"
 #include "qet.h"
-#include "numerotationcontext.h"
 
-class NumerotationContext;
-class QETProject;
 class QMenu;
 class TitleBlockTemplatesCollection;
 
@@ -39,15 +35,13 @@ class TitleBlockPropertiesWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
-		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
-		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
 		~TitleBlockPropertiesWidget();
 
 		void setProperties(const TitleBlockProperties &properties);
 		TitleBlockProperties properties() const;
-		TitleBlockProperties propertiesAutoNum(QString autoNum) const;
-		void setPropertiesWithAutoNum(const TitleBlockProperties &properties, QString autoNum);
 
 		void setTitleBlockTemplatesVisible(const bool &visible);
 		void setReadOnly (const bool &ro);
@@ -55,7 +49,7 @@ class TitleBlockPropertiesWidget : public QWidget
 	private:
 		void addCollection (TitleBlockTemplatesCollection *tbt_collection);
 		QString currentTitleBlockTemplateName () const;
-		void initDialog(const bool &current_date, QETProject *project);
+		void initDialog(const bool &current_date);
 		int getIndexFor (const QString &tbt_name, const QET::QetCollection collection) const;
 
 	private slots:
@@ -64,12 +58,9 @@ class TitleBlockPropertiesWidget : public QWidget
 		void updateTemplateList();
 		void changeCurrentTitleBlockTemplate(int);
 		void on_m_date_now_pb_clicked();
-		void on_m_edit_autofolionum_pb_clicked();
 
 	signals:
 		void editTitleBlockTemplate(const QString &, bool);
-		void set_auto_page_num() const;
-		void openAutoNumFolioEditor (QString);
 
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;
@@ -78,7 +69,6 @@ class TitleBlockPropertiesWidget : public QWidget
 		QMenu *m_tbt_menu;
 		QList <TitleBlockTemplatesCollection *> m_tbt_collection_list;
 		QList <QET::QetCollection> m_map_index_to_collection_type;
-		QList <QString> keys_2;
 };
 
 #endif // TITLEBLOCKPROPERTIESWIDGET_H
