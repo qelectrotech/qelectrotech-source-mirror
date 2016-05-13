@@ -48,6 +48,7 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.date == date &&\
 		ip.filename == filename &&\
 		ip.folio == folio &&\
+		ip.auto_page_num == auto_page_num &&\
 		ip.template_name == template_name &&\
 		ip.context == context &&\
 		ip.display_at == display_at &&\
@@ -73,6 +74,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
 	e.setAttribute("folio",    folio);
+	e.setAttribute("auto_page_num", auto_page_num);
 	e.setAttribute("date",     exportDate());
 	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	if (!template_name.isEmpty())
@@ -98,6 +100,7 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
+	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
 	if (e.hasAttribute("displayAt")) display_at = (e.attribute("displayAt") == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	
@@ -126,6 +129,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "folio",    folio);
+	settings.setValue(prefix + "auto_page_num",    auto_page_num);
 	settings.setValue(prefix + "date",     exportDate());
 	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	settings.setValue(prefix + "titleblocktemplate", template_name.isEmpty()? QString() : template_name);
@@ -143,6 +147,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
+	auto_page_num = settings.value(prefix + "auto_page_num").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
 	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	template_name = settings.value(prefix + "titleblocktemplate").toString();

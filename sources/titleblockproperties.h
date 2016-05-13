@@ -53,6 +53,7 @@ class TitleBlockProperties {
 	QDate date;               ///< Date (displayed by the default template)
 	QString filename;         ///< Filename (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
+    QString auto_page_num;
 	DateManagement useDate;   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields

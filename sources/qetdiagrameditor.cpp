@@ -1525,6 +1525,34 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 }
 
 /**
+ * @brief QETDiagramEditor::acessCurrentProject
+ * Retrieve current Project open in diagram editor
+ */
+ProjectView *QETDiagramEditor::acessCurrentProject (){
+	QMdiSubWindow *current_window = workspace.activeSubWindow();
+	if (!current_window) return(0);
+
+	QWidget *current_widget = current_window -> widget();
+	if (!current_widget) return(0);
+
+	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
+	return(project_view);
+	}
+	return(0);
+}
+
+/**
+ * @brief QETDiagramEditor::acessCurrentDiagramView
+ * Retrieve current DiagramView used in diagram editor
+ */
+DiagramView *QETDiagramEditor::acessCurrentDiagramView () {
+	if (ProjectView *project_view = currentProject()) {
+		return(project_view -> currentDiagram());
+	}
+	return(0);
+}
+
+/**
 	met a jour le menu "Fenetres"
 */
 void QETDiagramEditor::slot_updateWindowsMenu() {

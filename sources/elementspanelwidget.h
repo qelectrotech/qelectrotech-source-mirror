@@ -110,6 +110,9 @@ class ElementsPanelWidget : public QWidget {
 	void updateProgressBar(int, int);
 	void loadingFinished();
 	void filterEdited(const QString &);
+
+	protected:
+	virtual void keyPressEvent   (QKeyEvent *e);
 	
 	private:
 	void launchElementEditor(const ElementsLocation &);
