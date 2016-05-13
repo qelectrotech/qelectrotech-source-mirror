@@ -81,6 +81,7 @@ void ProjectView::setProject(QETProject *project) {
 		connect(project_, SIGNAL(projectModified	(QETProject *, bool)),			this, SLOT(updateWindowTitle()));
 		connect(project_, SIGNAL(readOnlyChanged	(QETProject *, bool)),			this, SLOT(adjustReadOnlyState()));
 		connect(project_, SIGNAL(addAutoNumDiagram()),   this, SLOT(addNewDiagram()));
+		connect(project_, SIGNAL(addAutoNumDiagram()),   this, SLOT(addNewDiagram()));
 		adjustReadOnlyState();
 		loadDiagrams();
 	}

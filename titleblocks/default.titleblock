@@ -87,7 +87,7 @@
         </field>
         <field valign="center" row="1" hadjust="true" col="2" name="folio" displaylabel="true" align="left">
             <value>
-                <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                <translation lang="en">%folio</translation>
             </value>
             <label>
                 <translation lang="ar">صفحة</translation>
