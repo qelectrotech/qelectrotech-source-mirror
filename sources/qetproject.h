@@ -115,12 +115,21 @@ class QETProject : public QObject
 		void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
 
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
+		QHash <QString, NumerotationContext> folioAutoNum() const;
 		void addConductorAutoNum (QString key, NumerotationContext context);
+		void addFolioAutoNum    (QString key, NumerotationContext context);
 		void removeConductorAutonum (QString key);
+		void removeFolioAutoNum (QString key);
 		NumerotationContext conductorAutoNum(const QString &key) const;
+		NumerotationContext folioAutoNum(const QString &key)    const;
 
 		bool autoConductor    () const;
+		bool autoFolio  () const;
 		void setAutoConductor (bool ac);
+		void setAutoFolio (bool af);
+		void autoFolioNumberingNewFolios ();
+		void autoFolioNumberingSelectedFolios(int, int, QString);
+
 		QDomDocument toXml();
 		bool close();
 		QETResult write();
@@ -162,6 +171,7 @@ class QETProject : public QObject
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);
 	void XRefPropertiesChanged ();
+	void addAutoNumDiagram();
 	
 	private slots:
 	void updateDiagramsFolioData();
@@ -226,10 +236,12 @@ class QETProject : public QObject
 	QUndoStack *undo_stack_;
 	/// Conductor auto numerotation
 	QHash <QString, NumerotationContext> m_conductor_autonum;
+	QHash <QString, NumerotationContext> m_folio_autonum;
 	/// Folio List Sheets quantity for this project.
 	int folioSheetsQuantity;
 	bool m_auto_conductor;
 	XmlElementCollection *m_elements_collection;
+	bool m_auto_folio;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

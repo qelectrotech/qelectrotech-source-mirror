@@ -35,8 +35,9 @@
  * else edit the properties by default of QElectroTech
  * @param parent, parent widget
  */
-NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
+NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectPropertiesDialog *ppd) :
 	ConfigPage (parent),
+	ppd_ (ppd),
 	m_project  (project)
 {
 	//By default we set the global default properties
@@ -47,7 +48,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	QList <TitleBlockTemplatesCollection *> c;
 	c << QETApp::commonTitleBlockTemplatesCollection() << QETApp::customTitleBlockTemplatesCollection();
 	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
-	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true);
+	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true, project, parent);
 	// default conductor properties
 	cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
 	// default propertie of report label
@@ -63,6 +64,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 		rpw	   -> setReportProperties (m_project -> defaultReportProperties());
 		xrefpw -> setProperties		  (m_project -> defaultXRefProperties());
 	}
+
+	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 
 	// main tab widget
 	QTabWidget *tab_widget      = new QTabWidget(this);
@@ -87,6 +90,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
  * @brief NewDiagramPage::~NewDiagramPage
  */
 NewDiagramPage::~NewDiagramPage() {
+	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 }
 
 /**
@@ -173,10 +177,48 @@ QIcon NewDiagramPage::icon() const {
  * @return title of this page
  */
 QString NewDiagramPage::title() const {
-    if (m_project) return(tr("Nouveau folio", "configuration page title"));
+	if (m_project) return(tr("Nouveau folio", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
 
+/**
+ * @brief NewDiagramPage::changeToAutoFolioTab
+ * Set the current tab to Autonum
+ */
+void NewDiagramPage::changeToAutoFolioTab(){
+	if (m_project){
+		ppd_->setCurrentPage(ProjectPropertiesDialog::Autonum);
+		ppd_->changeToFolio();
+		ppd_->exec();
+	}
+}
+
+/**
+ * @brief NewDiagramPage::setFolioAutonum
+ * Set temporary TBP to use in auto folio num
+ */
+void NewDiagramPage::setFolioAutonum(QString autoNum){
+	TitleBlockProperties tbptemp = ipw->propertiesAutoNum(autoNum);
+	ipw->setProperties(tbptemp);
+	applyConf();
+}
+
+/**
+ * @brief NewDiagramPage::saveCurrentTbp
+ * Save current TBP to retrieve after auto folio num
+ */
+void NewDiagramPage::saveCurrentTbp(){
+	savedTbp = ipw->properties();
+}
+
+/**
+ * @brief NewDiagramPage::loadSavedTbp
+ * Retrieve saved auto folio num
+ */
+void NewDiagramPage::loadSavedTbp(){
+	ipw->setProperties(savedTbp);
+	applyConf();
+}
 
 /**
 	Constructeur

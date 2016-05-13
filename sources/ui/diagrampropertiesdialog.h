@@ -37,6 +37,7 @@ class DiagramPropertiesDialog : public QDialog {
 
 	public slots:
 		void editAutonum ();
+        void editAutoFolioNum ();
 
 	private:
 		Diagram               *m_diagram;

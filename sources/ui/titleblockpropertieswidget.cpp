@@ -29,13 +29,13 @@
  * @param current_date if true, display the radio button "current date"
  * @param parent parent widget
  */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
-	initDialog(current_date);
-	setProperties(titleblock);
+    	initDialog(current_date, project);
+    	setProperties(titleblock);
 }
 
 /**
@@ -46,12 +46,12 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
  * @param current_date if true, display the radio button "current date"
  * @param parent parent widget
  */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
-	initDialog(current_date);
+    initDialog(current_date,project);
 	addCollection(tbt_collection);
 	updateTemplateList();
 	setProperties(titleblock);
@@ -65,12 +65,12 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollec
  * @param current_date if true, display the radio button "current date"
  * @param parent parent widget
  */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
-	initDialog(current_date);
+	initDialog(current_date,project);
 	foreach (TitleBlockTemplatesCollection *c, tbt_collection)
 		addCollection(c);
 	updateTemplateList();
@@ -96,6 +96,7 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_file_le   -> setText (properties.filename);
 	ui -> m_folio_le  -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
+	ui->auto_page_cb->setCurrentText(properties.auto_page_num);
 
 	//About date	
 	ui -> m_date_now_pb -> setDisabled(true);
@@ -172,6 +173,46 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 
 	prop.context = m_dcw -> context();
 
+    prop.auto_page_num = ui->auto_page_cb->currentText();
+
+	return prop;
+}
+
+/**
+ * @brief TitleBlockPropertiesWidget::properties
+ * @return return properties to enable folio autonum
+ */
+TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoNum) const {
+	TitleBlockProperties prop;
+	prop.title    = ui -> m_title_le  -> text();
+	prop.author   = ui -> m_author_le -> text();
+	prop.filename = ui -> m_file_le   -> text();
+	prop.folio    = "%autonum";
+	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
+
+	if (ui->m_no_date_rb->isChecked()) {
+		prop.useDate = TitleBlockProperties::UseDateValue;
+		prop.date = QDate();
+	}
+	else if (ui -> m_fixed_date_rb -> isChecked()) {
+		prop.useDate = TitleBlockProperties::UseDateValue;
+		prop.date = ui->m_date_edit->date();
+	}
+	else if (ui->m_current_date_rb->isVisible() && ui->m_current_date_rb->isChecked()) {
+		prop.useDate = TitleBlockProperties::CurrentDate;
+		prop.date = QDate::currentDate();
+	}
+
+	if (!currentTitleBlockTemplateName().isEmpty())
+	{
+		prop.template_name = currentTitleBlockTemplateName();
+		prop.collection = m_map_index_to_collection_type.at(ui->m_tbt_cb->currentIndex());
+	}
+
+	prop.context = m_dcw -> context();
+
+	prop.auto_page_num = autoNum;
+
 	return prop;
 }
 
@@ -220,7 +261,7 @@ void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tb
  * Init this dialog
  * @param current_date true for display current date radio button
  */
-void TitleBlockPropertiesWidget::initDialog(const bool &current_date) {
+void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProject *project) {
 	m_dcw = new DiagramContextWidget();
 	ui -> m_tab2_vlayout -> addWidget(m_dcw);
 
@@ -239,6 +280,19 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date) {
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
 	connect(ui->m_tbt_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentTitleBlockTemplate(int)));
+
+	if (project!= NULL){
+		keys_2 = project -> folioAutoNum().keys();
+		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
+		if (ui->auto_page_cb->currentText()==NULL)
+			ui->auto_page_cb->addItem("Create an Auto Folio Numbering");
+	}
+	else{
+		ui->auto_page_cb->hide();
+		ui->m_edit_autofolionum_pb->hide();
+		ui->label_9->hide();
+	}
+
 }
 
 /**
@@ -341,4 +395,16 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
  */
 void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
 	ui -> m_date_edit -> setDate(QDate::currentDate());
+}
+
+/**
+ * @brief TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked
+ * Open Auto Folio Num dialog
+ */
+void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked() {
+    emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
+    if (ui->auto_page_cb->currentText()!="Create an Auto Folio Numbering")
+    {
+		//still to implement: load current auto folio num settings
+    }
 }

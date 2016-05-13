@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QRectF>
 #include <QDate>
+#include "numerotationcontext.h"
 class QPainter;
 class DiagramPosition;
 class TitleBlockTemplate;
@@ -106,6 +107,8 @@ class BorderTitleBlock : public QObject
 	bool rowsAreDisplayed() const { return(display_rows_); }
 	/// @return true si la bordure est affichee, false sinon
 	bool borderIsDisplayed() const { return(display_border_); }
+
+	QString autoPageNum() const { return(btb_auto_page_num_); }
 	
 	// methods to set dimensions
 	void setColumnsCount(int);
@@ -132,9 +135,11 @@ class BorderTitleBlock : public QObject
 	}
 	/// @param author the new value of the "Folio" field
 	void setFolio(const QString &folio) { btb_folio_ = folio; }
-	void setFolioData(int, int, const DiagramContext & = DiagramContext());
+	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
+	/// @param author the new value of the "Auto Page Num" field
+	void setAutoPageNum(const QString &auto_page_num) { btb_auto_page_num_ = auto_page_num;}
 	
 	void titleBlockToXml(QDomElement &);
 	void titleBlockFromXml(const QDomElement &);
@@ -203,6 +208,7 @@ class BorderTitleBlock : public QObject
 		QString btb_title_;
 		QString btb_folio_;
 		QString btb_final_folio_;
+		QString btb_auto_page_num_;
 		int folio_index_;
 		int folio_total_;
 		QString btb_filename_;
