@@ -376,13 +376,8 @@ void ElementsPanelWidget::removeTitleBlockTemplate() {
 /**
 	Appelle l'assistant de creation de nouvel element
 */
-void ElementsPanelWidget::newElement() {
-	ElementsCategory *selected_category = writableSelectedCategory();
-	
+void ElementsPanelWidget::newElement() {	
 	NewElementWizard new_element_wizard(this);
-	if (selected_category) {
-		new_element_wizard.preselectCategory(selected_category);
-	}
 	new_element_wizard.exec();
 }
 

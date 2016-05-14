@@ -148,7 +148,6 @@ namespace QET {
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();
 	QString forbiddenCharactersString(bool = false);
-	bool containsForbiddenCharacters(const QString &);
 	QString stringToFileName(const QString &);
 	QString escapeSpaces(const QString &);
 	QString unescapeSpaces(const QString &);

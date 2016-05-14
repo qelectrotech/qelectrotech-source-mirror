@@ -17,11 +17,14 @@
 */
 #ifndef NEW_ELEMENT_WIZARD_H
 #define NEW_ELEMENT_WIZARD_H
-#include <QtWidgets>
-class ElementsCategoriesWidget;
-class ElementsCategory;
+
+#include <QWizard>
+#include "elementslocation.h"
+
 class NamesListWidget;
 class QFileNameEdit;
+class QTreeView;
+
 /**
 	This class provides a wizard dialog enabling users to to specify the basic
 	parameters of the electrical elements they intend to draw.
@@ -42,20 +45,14 @@ class NewElementWizard : public QWizard {
 	private:
 	NewElementWizard(const NewElementWizard &);
 	
-	// methods
-	public:
-	ElementsCategory *selectedCategory() const;
-	bool preselectCategory(ElementsCategory *);
-	
 	// attributes
 	private:
 	enum WizardState { Category, Filename, Names };
-	ElementsCategoriesWidget *categories_list;
-	QFileNameEdit *qle_filename;
-	NamesListWidget *element_names;
-	WizardState current_state;
-	QString chosen_file;
-	ElementsCategory *chosen_category;
+	QFileNameEdit *m_qle_filename;
+	NamesListWidget *m_names_list;
+	QString m_chosen_file;
+	QTreeView *m_tree_view = nullptr;
+	ElementsLocation m_chosen_location;
 	
 	// methods
 	private:

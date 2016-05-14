@@ -378,7 +378,6 @@ void ElementsCollectionWidget::newElement()
 	if (!selected_category) return;
 
 	NewElementWizard elmt_wizard(this);
-	elmt_wizard.preselectCategory(selected_category);
 	elmt_wizard.exec();
 }
 

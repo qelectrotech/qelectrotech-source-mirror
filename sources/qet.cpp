@@ -386,38 +386,6 @@ QList<QChar> QET::forbiddenCharacters() {
 }
 
 /**
-	@return une chaine listant les caracteres interdits dans les noms de fichiers sous
-	Windows
-	@param escape true pour remplacer les caracteres < et > par leurs entites HTML
-*/
-QString QET::forbiddenCharactersString(bool escape) {
-	QString result;
-	foreach(QChar c, QET::forbiddenCharacters()) {
-		if (escape) {
-			if (c == '<')      result += "&lt;";
-			else if (c == '>') result += "&gt;";
-			else               result += QString(c);
-		} else {
-			result += QString(c);
-		}
-		result += " ";
-	}
-	return(result);
-}
-
-/**
-	@param string une chaine de caracteres
-	@return true si string contient un caractere interdit dans les noms de
-	fichiers sous Windows
-*/
-bool QET::containsForbiddenCharacters(const QString &string) {
-	foreach(QChar c, QET::forbiddenCharacters()) {
-		if (string.contains(c)) return(true);
-	}
-	return(false);
-}
-
-/**
 	Cette fonction transforme une chaine de caracteres (typiquement : un nom de
 	schema, de projet, d'element) en un nom de fichier potable.
 	Par nom de fichier potable, on entend un nom :
