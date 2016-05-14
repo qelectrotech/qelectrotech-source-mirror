@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
-#include "integrationmoveelementshandler.h"
 #include "elementfactory.h"
 #include "diagram.h"
 #include "element.h"

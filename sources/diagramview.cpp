@@ -31,7 +31,6 @@
 #include "qetapp.h"
 #include "qetproject.h"
 #include "projectview.h"
-#include "integrationmoveelementshandler.h"
 #include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"

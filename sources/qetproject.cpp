@@ -23,7 +23,6 @@
 #include "elementscategory.h"
 #include "qetapp.h"
 #include "qetresult.h"
-#include "integrationmoveelementshandler.h"
 #include "movetemplateshandler.h"
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
