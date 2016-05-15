@@ -21,6 +21,7 @@
                 <translation lang="ro">Autor</translation>
                 <translation lang="ca">Autor</translation>
                 <translation lang="cs">Autor</translation>
+                <translation lang="da">Forfatter</translation>
             </label>
         </field>
         <field valign="center" rowspan="1" row="0" hadjust="true" col="1" name="title" displaylabel="false" align="center">
@@ -41,6 +42,7 @@
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ca">Títol</translation>
                 <translation lang="cs">Název</translation>
+                <translation lang="da">Titel</translation>
             </label>
         </field>
         <field valign="center" row="0" hadjust="true" col="2" name="file" displaylabel="true" align="left">
@@ -62,6 +64,7 @@
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
+                <translation lang="da">Filnavn</translation>
             </label>
         </field>
         <field valign="center" row="1" hadjust="true" col="0" name="date" displaylabel="true" align="left">
@@ -83,6 +86,7 @@
                 <translation lang="ro">Data</translation>
                 <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
+                <translation lang="da">Dato</translation>
             </label>
         </field>
         <field valign="center" row="1" hadjust="true" col="2" name="folio" displaylabel="true" align="left">
@@ -104,6 +108,7 @@
                 <translation lang="ro">Pagina</translation>
                 <translation lang="ca">Folio</translation>
                 <translation lang="cs">Folio</translation>
+                <translation lang="da">Ark</translation>
             </label>
         </field>
     </grid>
