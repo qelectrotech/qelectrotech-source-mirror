@@ -61,10 +61,22 @@ QModelIndex ElementsCollectionModel::index(int row, int column, const QModelInde
 		parent_item = static_cast<ElementCollectionItem*>(parent.internalPointer());
 
 	ElementCollectionItem *child_item = parent_item->child(row);
-	if (child_item->isValid())
-		return createIndex(row, column, child_item);
-	else
+	if (child_item->isValid()) {
+		if (m_hide_element) {
+			if (child_item->isDir()) {
+				return createIndex(row, column, child_item);
+			}
+			else {
+				return QModelIndex();
+			}
+		}
+		else {
+			return createIndex(row, column, child_item);
+		}
+	}
+	else {
 		return QModelIndex();
+	}
 }
 
 /**
@@ -102,7 +114,21 @@ int ElementsCollectionModel::rowCount(const QModelIndex &parent) const
 	else
 		parent_item = static_cast<ElementCollectionItem*> (parent.internalPointer());
 
-	return parent_item->childCount();
+	if (m_hide_element) {
+		int count_ = 0;
+
+		for (int i = 0 ; i<parent_item->childCount() ; i++)
+		{
+			if (parent_item->child(i)->isDir()) {
+				count_ ++;
+			}
+		}
+
+		return count_;
+	}
+	else {
+		return parent_item->childCount();
+	}
 }
 
 /**
@@ -322,6 +348,62 @@ bool ElementsCollectionModel::removeProject(QETProject *project)
  */
 QList<QETProject *> ElementsCollectionModel::project() const {
 	return m_project_list;
+}
+
+/**
+ * @brief ElementsCollectionModel::index
+ * @param location
+ * @return Return the index of the item represented by location.
+ * index can be no valid
+ */
+QModelIndex ElementsCollectionModel::index(const ElementsLocation &location) const
+{
+	if (!location.exist()) {
+		return QModelIndex();
+	}
+
+	QList <ElementCollectionItem *> child_list;
+
+	for (int i=0 ; i<m_root_item->childCount() ; i++) {
+		child_list.append(m_root_item->child(i));
+	}
+
+		foreach(ElementCollectionItem *eci, child_list) {
+
+			ElementCollectionItem *match_eci = nullptr;
+
+			if (eci->type() == FileElementCollectionItem::Type) {
+				FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci);
+				if (feci) {
+					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
+						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
+						match_eci = feci->itemAtPath(location.collectionPath(false));
+					}
+				}
+			}
+			else if (eci->type() == XmlProjectElementCollectionItem::Type) {
+				XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
+				if (xpeci) {
+					match_eci = xpeci->itemAtPath(location.collectionPath(false));
+				}
+			}
+
+			if (match_eci) {
+				return createIndex(match_eci->row(), 0, match_eci);
+			}
+		}
+
+		return QModelIndex();
+}
+
+/**
+ * @brief ElementsCollectionModel::hideElement
+ * Hide element.
+ * Only directory is provided by the model
+ */
+void ElementsCollectionModel::hideElement()
+{
+	m_hide_element = true;
 }
 
 /**

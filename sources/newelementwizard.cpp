@@ -55,10 +55,25 @@ NewElementWizard::~NewElementWizard() {
 }
 
 /**
+ * @brief NewElementWizard::preselectedLocation
+ * Select item in the tree view represented by location,
+ * @param location
+ */
+void NewElementWizard::preselectedLocation(const ElementsLocation &location)
+{
+	QModelIndex index = m_model->index(location);
+	if (index.isValid()) {
+		m_tree_view->scrollTo(index);
+		m_tree_view->setCurrentIndex(index);
+	}
+}
+
+/**
  * @brief NewElementWizard::buildStep1
  * @return
  */
-QWizardPage *NewElementWizard::buildStep1() {
+QWizardPage *NewElementWizard::buildStep1()
+{
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
 	page -> setTitle(tr("Étape 1/3 : Catégorie parente", "wizard page title"));
@@ -66,14 +81,17 @@ QWizardPage *NewElementWizard::buildStep1() {
 	QVBoxLayout *layout = new QVBoxLayout();
 
 	m_tree_view = new QTreeView(this);
-	ElementsCollectionModel *model_ = new ElementsCollectionModel(m_tree_view);
-	model_->addCustomCollection();
-	m_tree_view->setModel(model_);
-	m_tree_view->setHeaderHidden(true);
-	layout->addWidget(m_tree_view);
 
+	m_model = new ElementsCollectionModel(m_tree_view);
+	m_model->hideElement();
+	m_model->addCustomCollection();
+
+	m_tree_view->setModel(m_model);
+	m_tree_view->setHeaderHidden(true);
+	m_tree_view->setAnimated(true);
+	layout->addWidget(m_tree_view);
 	
-	page -> setLayout(layout);
+	page->setLayout(layout);
 	return(page);
 }
 

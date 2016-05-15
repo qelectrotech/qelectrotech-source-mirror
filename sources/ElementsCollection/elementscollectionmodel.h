@@ -19,6 +19,7 @@
 #define ELEMENTSCOLLECTIONMODEL_H
 
 #include <QAbstractItemModel>
+#include "elementslocation.h"
 
 class ElementCollectionItem;
 class QETProject;
@@ -58,6 +59,8 @@ class ElementsCollectionModel : public QAbstractItemModel
 		bool addProject(QETProject *project);
 		bool removeProject(QETProject *project);
 		QList<QETProject *> project() const;
+		QModelIndex index(const ElementsLocation &location) const;
+		void hideElement();
 
 	private:
 		XmlProjectElementCollectionItem *itemForProject(QETProject *project);
@@ -71,6 +74,7 @@ class ElementsCollectionModel : public QAbstractItemModel
 		ElementCollectionItem *m_root_item;
 		QList <QETProject *> m_project_list;
 		QModelIndex m_parent_at_drop;
+		bool m_hide_element = false;
 };
 
 #endif // ELEMENTSCOLLECTIONMODEL_H

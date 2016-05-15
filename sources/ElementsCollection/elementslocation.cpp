@@ -388,6 +388,24 @@ bool ElementsLocation::isFileSystem() const
 }
 
 /**
+ * @brief ElementsLocation::isCommonCollection
+ * @return True if this location represent an item from the common collection
+ */
+bool ElementsLocation::isCommonCollection() const
+{
+	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+}
+
+/**
+ * @brief ElementsLocation::isCustomCollection
+ * @return True if this location represent an item from the custom collection
+ */
+bool ElementsLocation::isCustomCollection() const
+{
+	return fileSystemPath().startsWith(QETApp::customElementsDirN());
+}
+
+/**
  * @brief ElementsLocation::isProject
  * @return True if this location represent an item from a project.
  */

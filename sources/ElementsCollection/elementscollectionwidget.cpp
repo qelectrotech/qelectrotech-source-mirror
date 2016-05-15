@@ -25,7 +25,6 @@
 #include "qetmessagebox.h"
 #include "elementscategoryeditor.h"
 #include "newelementwizard.h"
-#include "elementscategory.h"
 #include "xmlprojectelementcollectionitem.h"
 #include "qetproject.h"
 #include "qetelementeditor.h"
@@ -368,16 +367,18 @@ void ElementsCollectionWidget::newElement()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
-	if (eci->type() != FileElementCollectionItem::Type) return;
+	if (eci->type() != FileElementCollectionItem::Type) {
+		return;
+	}
 
 	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
-	if(feci->isCommonCollection()) return;
-
-	ElementsCollectionItem *category = QETApp::collectionItem(ElementsLocation(feci->collectionPath()), false);
-	ElementsCategory *selected_category = category -> toCategory();
-	if (!selected_category) return;
+	if(feci->isCommonCollection()) {
+		return;
+	}
 
 	NewElementWizard elmt_wizard(this);
+	ElementsLocation loc(feci->collectionPath());
+	elmt_wizard.preselectedLocation(loc);
 	elmt_wizard.exec();
 }
 

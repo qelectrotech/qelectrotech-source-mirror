@@ -24,6 +24,7 @@
 class NamesListWidget;
 class QFileNameEdit;
 class QTreeView;
+class ElementsCollectionModel;
 
 /**
 	This class provides a wizard dialog enabling users to to specify the basic
@@ -34,34 +35,38 @@ class QTreeView;
 	  - the filename the element should be saved to
 	  - localized names
 */
-class NewElementWizard : public QWizard {
+class NewElementWizard : public QWizard
+{
 	Q_OBJECT
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	NewElementWizard(QWidget * = 0, Qt::WindowFlags = 0);
-	virtual ~NewElementWizard();
+		NewElementWizard(QWidget * = 0, Qt::WindowFlags = 0);
+		virtual ~NewElementWizard();
+
+		void preselectedLocation(const ElementsLocation &location);
 	
 	private:
-	NewElementWizard(const NewElementWizard &);
+		NewElementWizard(const NewElementWizard &);
 	
-	// attributes
+		// attributes
 	private:
-	enum WizardState { Category, Filename, Names };
-	QFileNameEdit *m_qle_filename;
-	NamesListWidget *m_names_list;
-	QString m_chosen_file;
-	QTreeView *m_tree_view = nullptr;
-	ElementsLocation m_chosen_location;
+		enum WizardState { Category, Filename, Names };
+		QFileNameEdit *m_qle_filename;
+		NamesListWidget *m_names_list;
+		QString m_chosen_file;
+		QTreeView *m_tree_view = nullptr;
+		ElementsLocation m_chosen_location;
+		ElementsCollectionModel *m_model = nullptr;
 	
-	// methods
+		// methods
 	private:
-	QWizardPage *buildStep1();
-	QWizardPage *buildStep2();
-	QWizardPage *buildStep3();
-	bool validStep1();
-	bool validStep2();
-	bool validateCurrentPage();
-	void createNewElement();
+		QWizardPage *buildStep1();
+		QWizardPage *buildStep2();
+		QWizardPage *buildStep3();
+		bool validStep1();
+		bool validStep2();
+		bool validateCurrentPage();
+		void createNewElement();
 };
 #endif
