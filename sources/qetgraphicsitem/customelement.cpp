@@ -197,6 +197,8 @@ CustomElement::~CustomElement() {
 	qDeleteAll (list_circles_);
 	qDeleteAll (list_polygons_);
 	qDeleteAll (list_arcs_);
+	qDeleteAll (list_texts_);
+	qDeleteAll (list_terminals);
 }
 
 /// @return la liste des bornes de cet element
