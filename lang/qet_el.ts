@@ -162,7 +162,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Βραζιλιάνικη μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -948,22 +948,22 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Τίτλος</translation>
+        <translation>Τίτλος</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα του νέου φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Όνομα του νέου στοιχείου</translation>
+        <translation>Όνομα του νέου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
@@ -2208,7 +2208,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/configpages.cpp" line="330"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Βραζιλιάνικα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="331"/>
