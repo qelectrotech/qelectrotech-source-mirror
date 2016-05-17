@@ -19,8 +19,8 @@
 #define CONFIG_PAGES_H
 #include <QtWidgets>
 #include "configpage.h"
-#include "projectpropertiesdialog.h" //davi
-#include "titleblockpropertieswidget.h" //davi
+#include "projectpropertiesdialog.h"
+#include "titleblockpropertieswidget.h"
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;

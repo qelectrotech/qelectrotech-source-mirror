@@ -41,7 +41,7 @@ class NumPartEditorW : public QWidget
 	NumPartEditorW (NumerotationContext &, int, QWidget *parent=0);
 	~NumPartEditorW();
 
-	enum type {unit,ten,hundred,string,folio};
+	enum type {unit,ten,hundred,string,idfolio,folio};
 	NumerotationContext toNumContext();
 	bool isValid ();
 

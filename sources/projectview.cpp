@@ -77,11 +77,10 @@ QETProject *ProjectView::project() {
 void ProjectView::setProject(QETProject *project) {
 	if (!project_) {
 		project_ = project;
-		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)), this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(projectModified	(QETProject *, bool)),			this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(readOnlyChanged	(QETProject *, bool)),			this, SLOT(adjustReadOnlyState()));
-		connect(project_, SIGNAL(addAutoNumDiagram()),   this, SLOT(addNewDiagram()));
-		connect(project_, SIGNAL(addAutoNumDiagram()),   this, SLOT(addNewDiagram()));
+		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)),	this, SLOT(updateWindowTitle()));
+		connect(project_, SIGNAL(projectModified	(QETProject *, bool)),				this, SLOT(updateWindowTitle()));
+		connect(project_, SIGNAL(readOnlyChanged	(QETProject *, bool)),				this, SLOT(adjustReadOnlyState()));
+		connect(project_, SIGNAL(addAutoNumDiagram()),									this, SLOT(addNewDiagram()));
 		adjustReadOnlyState();
 		loadDiagrams();
 	}

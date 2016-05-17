@@ -147,7 +147,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void saveContext_2();
 		void removeContext_2();
 
-//		void applyAutoNum(); - Needs Further Testing
+		void applyAutoNum();
 
 		void tabChanged(int);
 

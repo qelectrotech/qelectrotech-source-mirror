@@ -129,7 +129,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>New Tabs</string>
+             <string>New Folios</string>
             </property>
            </widget>
           </item>
@@ -212,7 +212,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Create New Tabs</string>
+             <string>Create New Folios</string>
             </property>
            </widget>
           </item>
@@ -225,7 +225,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Autonumber Selected Tabs</string>
+             <string>Autonumber Selected Folios</string>
             </property>
            </widget>
           </item>
@@ -284,7 +284,7 @@
       </sizepolicy>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Apply|QDialogButtonBox::Help|QDialogButtonBox::Reset</set>
+      <set>QDialogButtonBox::Apply</set>
      </property>
     </widget>
    </item>

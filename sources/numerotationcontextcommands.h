@@ -96,6 +96,15 @@ class StringNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
+class IdFolioNum: public NumStrategy
+{
+	public:
+	IdFolioNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
 class FolioNum: public NumStrategy
 {
 	public:
@@ -104,5 +113,4 @@ class FolioNum: public NumStrategy
 	NumerotationContext next     (const NumerotationContext &, const int) const;
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
-
 #endif // NUMEROTATIONCONTEXTCOMMANDS_H

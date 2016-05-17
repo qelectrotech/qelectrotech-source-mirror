@@ -20,23 +20,22 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QtWidgets>
-#include "qdebug.h"
 #include "qetproject.h"
 #include "diagram.h"
 /**
  * Constructor
  */
 FolioAutonumberingW::FolioAutonumberingW(QETProject *project, QWidget *parent) :
-    QWidget(parent),
-    project_(project),
-    ui(new Ui::FolioAutonumberingW)
+	QWidget(parent),
+	project_(project),
+	ui(new Ui::FolioAutonumberingW)
 
 {
-    ui->setupUi(this);
-    applyEnable(false);
-    ui->m_from_cb->setEnabled(false);
-    ui->m_new_tabs_sb->setEnabled(false);
-    ui->m_to_cb->setEnabled(false);
+	ui->setupUi(this);
+	applyEnable(false);
+	ui->m_from_cb->setEnabled(false);
+	ui->m_new_tabs_sb->setEnabled(false);
+	ui->m_to_cb->setEnabled(false);
 }
 
 /**
@@ -52,7 +51,7 @@ FolioAutonumberingW::~FolioAutonumberingW()
  * construct autonums in the comboBox selected in the @autonum_chooser QcomboBox
  */
 void FolioAutonumberingW::setContext(QList <QString> autonums) {
-    foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
+	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
 }
 
 /**
@@ -60,7 +59,7 @@ void FolioAutonumberingW::setContext(QList <QString> autonums) {
  * returns the current autonum selected
  */
 QString FolioAutonumberingW::autoNumSelected(){
-    return ui->m_autonums_cb->currentText();
+	return ui->m_autonums_cb->currentText();
 }
 
 /**
@@ -84,7 +83,7 @@ int FolioAutonumberingW::toFolio(){
  * returns the number of folios to create
  */
 int FolioAutonumberingW::newFoliosNumber(){
-    return ui->m_new_tabs_sb->value();
+	return ui->m_new_tabs_sb->value();
 }
 
 /**
@@ -92,9 +91,9 @@ int FolioAutonumberingW::newFoliosNumber(){
  * update Folio List in From and To ComboBox
  */
 void FolioAutonumberingW::updateFolioList(){
-    ui   -> m_from_cb->clear();
-    ui   -> m_to_cb->clear();
-    if (newFolios){
+	ui   -> m_from_cb->clear();
+	ui   -> m_to_cb->clear();
+	if (newFolios){
 		this -> on_m_create_new_tabs_rb_clicked();
 	} else {
 		this -> on_m_autonumber_tabs_rb_clicked();
@@ -106,11 +105,11 @@ void FolioAutonumberingW::updateFolioList(){
  *	Enable New Tabs SpinBox
  */
 void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
-    ui->m_from_cb->setEnabled(false);
-    ui->m_to_cb->setEnabled(false);
-    ui->m_new_tabs_sb->setEnabled(true);
-    applyEnable();
-    newFolios = true;
+	ui->m_from_cb->setEnabled(false);
+	ui->m_to_cb->setEnabled(false);
+	ui->m_new_tabs_sb->setEnabled(true);
+	applyEnable();
+	newFolios = true;
 }
 
 /**
@@ -118,18 +117,18 @@ void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
  *	Enable From ComboBox, fill From ComboBox
  */
 void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
-    ui->m_new_tabs_sb->setEnabled(false);
-    ui->m_from_cb->setEnabled(true);
-    ui->m_to_cb->setEnabled(true);
-    if (ui->m_from_cb->count()<=0){
-        ui->m_from_cb->clear();
-        ui->m_from_cb->addItem("");
-        foreach (Diagram *diagram, project_->diagrams()){
-            ui->m_from_cb->addItem(diagram->title());
-        }
-    }
-    applyEnable();
-    newFolios = false;
+	ui->m_new_tabs_sb->setEnabled(false);
+	ui->m_from_cb->setEnabled(true);
+	ui->m_to_cb->setEnabled(true);
+	if (ui->m_from_cb->count()<=0){
+		ui->m_from_cb->clear();
+		ui->m_from_cb->addItem("");
+		foreach (Diagram *diagram, project_->diagrams()){
+			ui->m_from_cb->addItem(diagram->title());
+		}
+	}
+	applyEnable();
+	newFolios = false;
 }
 
 /**
@@ -137,8 +136,8 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
  *	Enable Apply if any new folio is to be created
  */
 void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(){
-    if (ui->m_new_tabs_sb->value()>0) applyEnable(true);
-    else applyEnable(false);
+	if (ui->m_new_tabs_sb->value()>0) applyEnable(true);
+	else applyEnable(false);
 }
 
 /**
@@ -146,17 +145,17 @@ void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(){
  *	Enable To ComboBox
  */
 void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(){
-    int index = ui->m_from_cb->currentIndex();
-    ui->m_to_cb->clear();
-    if (index > 0){
-        ui->m_to_cb->setEnabled(true);
-        for (int i=index;i<project_->diagrams().size();i++)
-            ui->m_to_cb->addItem(project_->diagrams().at(i)->title());
-        applyEnable(true);
-    }
-    else{
-        applyEnable();
-    }
+	int index = ui->m_from_cb->currentIndex();
+	ui->m_to_cb->clear();
+	if (index > 0){
+		ui->m_to_cb->setEnabled(true);
+		for (int i=index;i<project_->diagrams().size();i++)
+			ui->m_to_cb->addItem(project_->diagrams().at(i)->title());
+		applyEnable(true);
+	}
+	else{
+		applyEnable();
+	}
 
 }
 
@@ -165,35 +164,34 @@ void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(){
  * Action on @buttonBox clicked
  */
 void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
-    //transform button to int
+	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 
-    switch (answer) {
+	switch (answer) {
 			//help dialog - not implemented yet -
 		case QDialogButtonBox::HelpRole:
-			break;
-			/*QMessageBox::information (this, tr("Folio Autonumbering", "title window"),
-																	tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
+			QMessageBox::information (this, tr("Folio Autonumbering", "title window"),
+																	tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.\n"
 																	   "-Une numérotation est composée d'une variable minimum.\n"
 																	   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
 																	   "-Une variable de numérotation comprant: un type, une valeur et une incrémentation.\n"
 
 																	   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représente un type numérique définie dans le champs \"Valeur\", "
-																	   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
+																	   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
 																	   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représenté sur le schéma par deux et trois digits minimum.\n"
 																	   "Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,"
 																	   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-																	   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n"
-
-																	   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.",
-																	   "help dialog about the autonumerotation"));	*/		
-        case QDialogButtonBox::ApplyRole:
-            applyEnable(true);
-			emit applyPressed();
-            updateFolioList();
+																	   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n",
+																	   "help dialog about the folio autonumerotation"
+																	   ));
 			break;
-    }
+		case QDialogButtonBox::ApplyRole:
+			applyEnable(true);
+			emit applyPressed();
+			updateFolioList();
+			break;
+	}
 }
 
 /**
@@ -201,18 +199,18 @@ void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
  * enable/disable the apply button
  */
 void FolioAutonumberingW::applyEnable(bool b) {
-   if (b){
-        bool valid = true;
-        if (ui->m_create_new_tabs_rb->isChecked()){
-            if (ui->m_new_tabs_sb->value()==0) valid = false;
-            ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
-        }
-        else{
-            if (ui->m_to_cb->currentText()=="") valid = false;
-            ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
-        }
-   }
-    else{
-        ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
-        }
+	if (b){
+		bool valid = true;
+		if (ui->m_create_new_tabs_rb->isChecked()){
+			if (ui->m_new_tabs_sb->value()==0) valid = false;
+			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+		}
+		else{
+			if (ui->m_to_cb->currentText()=="") valid = false;
+			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+		}
+	}
+	else{
+		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+		}
 }

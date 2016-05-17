@@ -19,7 +19,6 @@
 #include "ui_selectautonumw.h"
 #include "numparteditorw.h"
 #include <QMessageBox>
-#include "qdebug.h"
 #include "numerotationcontextcommands.h"
 
 /**
@@ -125,7 +124,6 @@ void SelectAutonumW::on_remove_button_clicked() {
 void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
-
 	switch (answer) {
 			//Reset the curent context
 		case QDialogButtonBox::ResetRole:
@@ -133,23 +131,46 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 			break;
 			//help dialog
 		case QDialogButtonBox::HelpRole:
-			QMessageBox::information (this, tr("Autonumérotation", "title window"),
-																	tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
-																	   "-Une numérotation est composée d'une variable minimum.\n"
-																	   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-																	   "-Une variable de numérotation comprant: un type, une valeur et une incrémentation.\n"
+			if (this->parentWidget() -> objectName()=="FolioTab"){
+				QMessageBox::information (this, tr("Folio Autonumérotation", "title window"),
+																		tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.\n"
+																		   "-Une numérotation est composée d'une variable minimum.\n"
+																		   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+																		   "-Une variable de numérotation comprant: un type, une valeur et une incrémentation.\n"
 
-																	   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représente un type numérique définie dans le champs \"Valeur\", "
-																	   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
-																	   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représenté sur le schéma par deux et trois digits minimum.\n"
-																	   "Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,"
-																	   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+																		   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représente un type numérique définie dans le champs \"Valeur\", "
+																		   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
+																		   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représenté sur le schéma par deux et trois digits minimum.\n"
+																		   "Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,"
+																		   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-																	   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n"
+																		   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n",
+																		   "help dialog about the folio autonumerotation"
+																		   ));
+				break;
+			}
+			else{
+				QMessageBox::information (this, tr("Conductor Autonumérotation", "title window"),
+																		tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
+																		   "-Une numérotation est composée d'une variable minimum.\n"
+																		   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+																		   "-Une variable de numérotation comprant: un type, une valeur et une incrémentation.\n"
 
-																	   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.",
-																	   "help dialog about the autonumerotation"));
+																		   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représente un type numérique définie dans le champs \"Valeur\", "
+																		   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
+																		   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représenté sur le schéma par deux et trois digits minimum.\n"
+																		   "Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,"
+																		   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
+																		   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n"
+
+																		   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
+
+																		   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
+																		   "help dialog about the conductor autonumerotation"
+																		   ));
+				break;
+			}
 			//apply the context in the diagram displayed by @diagram_chooser.
 		case QDialogButtonBox::ApplyRole:
 			applyEnable(false);

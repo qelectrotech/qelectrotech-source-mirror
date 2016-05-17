@@ -104,7 +104,11 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new StringNum (diagram_);
 		return;
 	}
-	else if (str == "folio") {
+	else if (str == "idfolio") {
+		strategy_ = new IdFolioNum (diagram_);
+		return;
+	}
+	else if (str=="folio"){
 		strategy_ = new FolioNum (diagram_);
 		return;
 	}
@@ -291,6 +295,37 @@ NumerotationContext StringNum::previous(const NumerotationContext &nc, const int
 	return (nextString(nc, i));
 }
 
+/**
+ * Constructor
+ */
+IdFolioNum::IdFolioNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief IdFolioNum::toRepresentedString
+ * @return the represented string of num
+ */
+QString IdFolioNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return (QString::number(diagram_ -> folioIndex() + 1));
+}
+
+/**
+ * @brief IdFolioNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext IdFolioNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief IdFolioNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext IdFolioNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
 
 /**
  * Constructor
@@ -301,11 +336,11 @@ FolioNum::FolioNum (Diagram *d):
 
 /**
  * @brief FolioNum::toRepresentedString
- * @return the represented string of num
+ * @return the represented string of folio
  */
 QString FolioNum::toRepresentedString(const QString str) const {
 	Q_UNUSED(str);
-	return (QString::number(diagram_ -> folioIndex() + 1));
+	return (diagram_->border_and_titleblock.folio());
 }
 
 /**

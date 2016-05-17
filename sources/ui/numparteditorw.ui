@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>259</width>
-    <height>42</height>
+    <width>308</width>
+    <height>45</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,6 +27,9 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
      </property>
      <item>
       <property name="text">
@@ -51,6 +54,11 @@
      <item>
       <property name="text">
        <string>N° folio</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Folio</string>
       </property>
      </item>
     </widget>

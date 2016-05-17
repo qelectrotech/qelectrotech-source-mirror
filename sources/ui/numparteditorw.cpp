@@ -28,6 +28,7 @@ NumPartEditorW::NumPartEditorW(QWidget *parent) :
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
+	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(4);
 	setType(NumPartEditorW::unit, true);
 }
 
@@ -41,7 +42,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
-
+	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(5);
 	//if @context contains nothing build with default value
 	if(context.size()==0) setType(NumPartEditorW::unit, true);
 
@@ -51,7 +52,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten, true);
 		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred, true);
 		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
-		else if (strl.at(0)== "folio") setType(NumPartEditorW::folio);
+		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
+		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
 	}
@@ -86,6 +88,9 @@ NumerotationContext NumPartEditorW::toNumContext() {
 		case string:
 			type_str = "string";
 			break;
+		case idfolio:
+			type_str = "idfolio";
+			break;
 		case folio:
 			type_str = "folio";
 			break;
@@ -99,8 +104,9 @@ NumerotationContext NumPartEditorW::toNumContext() {
  * @return true if value field isn't empty or if type is folio
  */
 bool NumPartEditorW::isValid() {
-	if (type_ != folio && ui -> value_field -> text().isEmpty()) return false;
-	return true;
+	if (type_ == folio||type_ == idfolio) {return true;}
+	else if(ui -> value_field -> text().isEmpty()) {return false;}
+	else return true;
 }
 
 /**
@@ -120,6 +126,9 @@ void NumPartEditorW::on_type_combo_activated(int index) {
 			break;
 		case string:
 			setType(string);
+			break;
+		case idfolio:
+			setType(idfolio);
 			break;
 		case folio:
 			setType(folio);
@@ -155,7 +164,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
-	if ( ((t==unit || t==ten || t==hundred) && (type_==string || type_==folio)) || fnum) {
+	if ( ((t==unit || t==ten || t==hundred) && (type_==string || type_==folio || type_==idfolio)) || fnum) {
 		ui -> value_field -> clear();
 		ui -> value_field -> setEnabled(true);
 		ui -> value_field -> setValidator(intValidator);
@@ -163,7 +172,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setValue(1);
 	}
 	//@t isn't a numeric type
-	else if (t==string || t==folio) {
+	else if (t==string || t==folio || t==idfolio) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
@@ -171,6 +180,10 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> value_field -> setEnabled(true);
 		}
 		else if (t==folio) {
+			ui -> value_field -> setDisabled(true);
+			ui -> increase_spinBox -> setDisabled(true);
+		}
+		else if (t==idfolio) {
 			ui -> value_field -> setDisabled(true);
 			ui -> increase_spinBox -> setDisabled(true);
 		}
