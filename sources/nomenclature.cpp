@@ -84,6 +84,7 @@ QString nomenclature::getNomenclature()
 	QString data = QObject::tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
 	data += QObject::tr("N° de folio") +";"
 	""+ QObject::tr("Titre de folio") +";"
+	""+ QObject::tr("Label de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
@@ -128,6 +129,7 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 
 	info += QString::number(diagram -> folioIndex()+1) + ";";
 	info += diagram -> title() + ";";
+	info += diagram -> border_and_titleblock.folio() + ";";
 	info += elmt -> name() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += elmt_info["label"].toString() + ";";
