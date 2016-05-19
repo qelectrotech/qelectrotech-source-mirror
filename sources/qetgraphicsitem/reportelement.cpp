@@ -220,6 +220,7 @@ void ReportElement::updateLabel()
 		Element *elmt = connected_elements.at(0);
 		QString label = label_;
 		label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
+		label.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
 		label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
 		label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
 		m_text_field -> setPlainText(label);

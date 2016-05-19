@@ -35,6 +35,7 @@
            <string>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
+%F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</string>
           </property>
