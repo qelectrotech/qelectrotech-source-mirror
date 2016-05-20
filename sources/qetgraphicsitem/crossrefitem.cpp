@@ -89,8 +89,16 @@ QPainterPath CrossRefItem::shape() const{
  * if @add_prefix is true, prefix (for power and delay contact) is added to the poistion text.
  */
 QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_prefix) const{
+
 	QString txt;
-	txt += QString::number(elmt->diagram()->folioIndex() + 1);
+	XRefProperties::ViewMode vw = m_properties.viewMode();
+	if (vw == XRefProperties::Index)
+	{
+		txt += QString::number(elmt->diagram()->folioIndex() + 1);
+	}
+	else if (vw == XRefProperties::FolioLabel){
+		txt += elmt->diagram()->border_and_titleblock.folio();
+	}
 	txt += "-";
 	txt += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 	if (add_prefix) {

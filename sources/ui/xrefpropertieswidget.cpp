@@ -110,6 +110,8 @@ void XRefPropertiesWidget::saveProperties(int index) {
 
 	if		(ui->m_display_has_cross_rb->isChecked())	 xrp.setDisplayHas(XRefProperties::Cross);
 	else if (ui->m_display_has_contacts_rb->isChecked()) xrp.setDisplayHas(XRefProperties::Contacts);
+	if		(ui->m_display_folio_index_rb->isChecked())  xrp.setViewMode  (XRefProperties::Index);
+	else if (ui->m_display_folio_label_rb->isChecked())  xrp.setViewMode  (XRefProperties::FolioLabel);
 	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
 		 xrp.setSnapTo(XRefProperties::Bottom);
 	else xrp.setSnapTo(XRefProperties::Label);
@@ -135,6 +137,14 @@ void XRefPropertiesWidget::updateDisplay() {
 	}
 	else if (dh == XRefProperties::Contacts) {
 		ui->m_display_has_contacts_rb->setChecked(true);
+	}
+
+	XRefProperties::ViewMode vw = xrp.viewMode();
+	if		(vw == XRefProperties::Index)	{
+		ui->m_display_folio_index_rb->setChecked(true);
+	}
+	else if (vw == XRefProperties::FolioLabel) {
+		ui->m_display_folio_label_rb->setChecked(true);
 	}
 
 	if (xrp.snapTo() == XRefProperties::Bottom)
