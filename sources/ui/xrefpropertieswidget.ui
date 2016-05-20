@@ -49,56 +49,19 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="m_display_has_contacts_rb">
-            <property name="text">
-             <string>Afficher en contacts</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="m_display_has_cross_rb">
-            <property name="text">
-             <string>Afficher en croix</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="title">
-           <string>View Mode</string>
+         <widget class="QRadioButton" name="m_display_has_cross_rb">
+          <property name="text">
+           <string>Afficher en croix</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <widget class="QRadioButton" name="m_display_folio_label_rb">
-             <property name="text">
-              <string>View Folio Label</string>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="m_display_folio_index_rb">
-             <property name="text">
-              <string>View Folio Index</string>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="m_display_has_contacts_rb">
+          <property name="text">
+           <string>Afficher en contacts</string>
+          </property>
          </widget>
         </item>
        </layout>

@@ -27,7 +27,6 @@ XRefProperties::XRefProperties()
 	m_show_power_ctc = true;
 	m_display = Cross;
 	m_snap_to = Bottom;
-	m_view_mode = Index;
 	m_prefix_keys << "power" << "delay" << "switch";
 }
 
@@ -41,8 +40,6 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
-	QString view_mode = m_view_mode == Index? "index" : "foliolabel";
-	settings.setValue(prefix + "viewmode", view_mode);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	settings.setValue(prefix + "snapto", snap);
 	foreach (QString key, m_prefix.keys()) {
@@ -60,8 +57,6 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString view_mode = settings.value(prefix + "viewmode", "index").toString();
-	view_mode == "index"? m_view_mode = Index : m_view_mode = FolioLabel;
 	QString snap = settings.value(prefix + "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	foreach (QString key, m_prefix_keys) {
@@ -78,8 +73,6 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
-	QString view_mode = m_view_mode == Index? "index" : "foliolabel";
-	xml_element.setAttribute("viewmode", view_mode);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
 	foreach (QString key, m_prefix.keys()) {
@@ -96,8 +89,6 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString view_mode = xml_element.attribute("viewmode", "index");
-	view_mode == "index"? m_view_mode = Index : m_view_mode = FolioLabel;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	foreach (QString key, m_prefix_keys) {
@@ -134,7 +125,6 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc &&
 			m_display == xrp.m_display &&
-			m_view_mode == xrp.m_view_mode &&
 			m_snap_to == xrp.m_snap_to &&
 			m_prefix == xrp.m_prefix);
 }
