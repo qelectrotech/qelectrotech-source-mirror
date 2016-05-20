@@ -331,7 +331,7 @@ void ProjectAutoNumConfigPage::initLayout() {
 	//Auto Numbering Tab
 	tab_widget->addTab(autoNumbering_tab_widget,tr ("Folio Auto Numbering"));
 
-	tab_widget->resize(440,590);
+	tab_widget->resize(455,590);
 }
 
 /**
@@ -514,7 +514,7 @@ void ProjectAutoNumConfigPage::tabChanged(int i){
 			tab_widget->resize(470,tab_widget->height());
 		}
 		else {
-			tab_widget->resize(440,tab_widget->height());
+			tab_widget->resize(455,tab_widget->height());
 		}
 	}
 }
