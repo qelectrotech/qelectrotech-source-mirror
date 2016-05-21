@@ -19,6 +19,7 @@
 #define SLAVEELEMENT_H
 
 #include "customelement.h"
+#include"properties/xrefproperties.h"
 
 class SlaveElement : public CustomElement
 {
@@ -37,6 +38,7 @@ class SlaveElement : public CustomElement
 
 	private:
 	QGraphicsTextItem *Xref_item;
+	//XRefProperties     m_properties;
 
 };
 

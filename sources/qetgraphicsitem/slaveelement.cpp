@@ -129,9 +129,16 @@ void SlaveElement::updateLabel() {
 		no_editable = true;
 		Element *elmt = linkedElements().first();
 		label = elmt -> elementInformations()["label"].toString();
-
+		XRefProperties m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 		Xreflabel = "(";
-		Xreflabel += QString::number(elmt->diagram()->folioIndex()+1);
+		XRefProperties::ViewMode vw = m_properties.viewMode();
+		if (vw == XRefProperties::Index)
+		{
+			Xreflabel += QString::number(elmt->diagram()->folioIndex()+1);
+		}
+		else if (vw == XRefProperties::FolioLabel){
+			Xreflabel += elmt->diagram()->border_and_titleblock.folio();
+		}
 		Xreflabel += "-";
 		Xreflabel += elmt->diagram() -> convertPosition(elmt -> scenePos()).toString();
 		Xreflabel += ")";
