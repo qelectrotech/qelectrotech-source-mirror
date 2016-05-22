@@ -237,6 +237,11 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 
 	m_parent_at_drop = parent;
 
+		//We temporarily disconnect for avoid double insertion of item
+	foreach (QETProject *project, m_project_list)
+		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
+
+
 	connect(eci, &ElementCollectionItem::beginInsertRows, this, &ElementsCollectionModel::bir);
 	connect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
 	connect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
@@ -248,6 +253,9 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 	disconnect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
 	disconnect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
 	disconnect(eci, &ElementCollectionItem::endRemoveRows,   this, &ElementsCollectionModel::endRemoveRows);
+
+	foreach(QETProject *project, m_project_list)
+		connect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
 
 	m_parent_at_drop = QModelIndex();
 
