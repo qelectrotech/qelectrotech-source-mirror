@@ -103,6 +103,7 @@ void SlaveElement::unlinkElement(Element *elmt)
 		disconnect(elmt,                 SIGNAL(elementInfoChange(DiagramContext, DiagramContext)),this, SLOT(updateLabel()));
 		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		disconnect(diagram()->project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
+		disconnect(elmt -> diagram(),    SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateLabel()));
 
 		delete Xref_item; Xref_item = NULL;
 
