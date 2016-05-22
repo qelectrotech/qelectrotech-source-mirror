@@ -114,9 +114,10 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 		drag->setPixmap(elmt_pixmap);
 		drag->setHotSpot(elmt_hotspot);
 
+
 		delete temp_elmt;
 	}
 
 	drag->setMimeData(mime_data);
-	drag->exec(Qt::MoveAction | Qt::CopyAction);
+	drag->exec(Qt::CopyAction);
 }
