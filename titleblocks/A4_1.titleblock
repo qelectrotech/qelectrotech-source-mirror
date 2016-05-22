@@ -41,6 +41,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Data</translation>
                 <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
+                <translation lang="da">Dato</translation>
             </label>
         </field>
         <field valign="center" row="0" fontsize="6" hadjust="true" col="1" name="" displaylabel="false" align="center">
@@ -61,6 +62,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Autor</translation>
                 <translation lang="ca">Autor</translation>
                 <translation lang="cs">Autor</translation>
+                <translation lang="da">Forfatter</translation>
             </label>
         </field>
         <field valign="center" row="0" colspan="1" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
@@ -214,6 +216,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ca">Títol</translation>
                 <translation lang="cs">Název</translation>
+                <translation lang="da">Titel</translation>
             </label>
         </field>
         <field valign="center" row="4" colspan="2" fontsize="6" hadjust="true" col="0" name="design" displaylabel="true" align="left">
@@ -258,6 +261,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
+                <translation lang="da">Filnavn</translation>
             </label>
         </field>
         <field valign="center" rowspan="1" row="4" fontsize="6" hadjust="true" col="13" name="folio" displaylabel="false" align="center">
@@ -278,6 +282,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Pagina</translation>
                 <translation lang="ca">Folio</translation>
                 <translation lang="cs">Folio</translation>
+                <translation lang="da">Ark</translation>
             </label>
         </field>
         <field valign="center" row="5" colspan="4" fontsize="6" hadjust="true" col="0" name="file" displaylabel="true" align="left">
@@ -298,6 +303,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
+                <translation lang="da">Filnavn</translation>
             </label>
         </field>
         <field valign="center" row="5" colspan="3" fontsize="9" hadjust="true" col="5" name="" displaylabel="true" align="center">

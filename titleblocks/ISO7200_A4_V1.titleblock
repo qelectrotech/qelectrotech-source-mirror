@@ -510,6 +510,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="nl">auteur</translation>
                 <translation lang="cs">Soubor</translation>
+                <translation lang="da">Forfatter</translation>
             </label>
         </field>
         <field valign="center" row="0" colspan="1" fontsize="9" hadjust="true" col="5" name="approval" displaylabel="false" align="center">
@@ -537,6 +538,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
+                <translation lang="da">Filnavn</translation>
             </label>
         </field>
         <field valign="center" row="1" fontsize="9" hadjust="true" col="1" name="email" displaylabel="false" align="center">
@@ -595,6 +597,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="ro">Titlu</translation>
                 <translation lang="ca">Títol</translation>
                 <translation lang="cs">Název</translation>
+                <translation lang="da">Titel</translation>
             </label>
         </field>
         <field valign="center" row="2" colspan="3" fontsize="9" hadjust="true" col="5" name="drawingname" displaylabel="false" align="center">
@@ -634,6 +637,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="en">Sheet</translation>
                 <translation lang="fr">Folio</translation>
                 <translation lang="nl">Pagina</translation>
+                <translation lang="da">Ark</translation>
             </label>
         </field>
     </grid>
