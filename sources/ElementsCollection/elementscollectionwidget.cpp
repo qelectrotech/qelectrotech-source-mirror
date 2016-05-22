@@ -28,9 +28,9 @@
 #include "xmlprojectelementcollectionitem.h"
 #include "qetproject.h"
 #include "qetelementeditor.h"
+#include "elementstreeview.h"
 
 #include <QVBoxLayout>
-#include <QTreeView>
 #include <QMenu>
 #include <QDesktopServices>
 #include <QUrl>
@@ -112,7 +112,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_main_vlayout->addWidget(m_search_field);
 
 		//Setup the tree view
-	m_tree_view = new QTreeView(this);
+	m_tree_view = new ElementsTreeView(this);
 	m_tree_view->setHeaderHidden(true);
 	m_tree_view->setIconSize(QSize(50, 50));
 	m_tree_view->setDragDropMode(QAbstractItemView::DragDrop);

@@ -140,21 +140,6 @@ QETProject::~QETProject()
 }
 
 /**
- * @brief QETProject::integrateElementToProject
- * Return true if we must to integarte the element to the project otherwise false
- * @param location : element location
- * @param project : project to test
- * @return
- */
-bool QETProject::integrateElementToProject(const ElementsLocation &location, const QETProject *project)
-{
-	if (location.isFileSystem()) {return true;}
-	if (location.isProject() && (location.project() != project)) {return true;}
-
-	return false;
-}
-
-/**
 	Cette methode peut etre utilisee pour tester la bonne ouverture d'un projet
 	@return l'etat du projet
 	@see ProjectState
@@ -752,8 +737,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	if (location.isFileSystem()) {
 		import_path = "import/" + location.collectionPath(false);
 	}
-
-	if (location.isProject()) {
+	else if (location.isProject()) {
 		if (location.project() == this) {
 			return location;
 		}

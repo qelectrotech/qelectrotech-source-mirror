@@ -22,13 +22,13 @@
 #include <QModelIndex>
 
 class ElementsCollectionModel;
-class QTreeView;
 class QVBoxLayout;
 class QMenu;
 class QLineEdit;
 class ElementCollectionItem;
 class QProgressBar;
 class QETProject;
+class ElementsTreeView;
 
 /**
  * @brief The ElementsCollectionWidget class
@@ -73,7 +73,7 @@ class ElementsCollectionWidget : public QWidget
     private:
         ElementsCollectionModel *m_model;
 		QLineEdit *m_search_field;
-        QTreeView *m_tree_view;
+		ElementsTreeView *m_tree_view;
         QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;

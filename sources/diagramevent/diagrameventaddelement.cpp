@@ -169,17 +169,13 @@ void DiagramEventAddElement::init()
  */
 bool DiagramEventAddElement::buildElement()
 {
-	if (QETProject::integrateElementToProject(m_location, m_diagram -> project()))
-	{
-		ElementsLocation loc = m_diagram->project()->importElement(m_location);
-		if (loc.exist()) {
-			m_integrate_path = loc.projectCollectionPath();
-		}
-		else {
-			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element.";
-			return false;
-		}
-
+	ElementsLocation import_loc = m_diagram->project()->importElement(m_location);
+	if (import_loc.exist()) {
+		m_integrate_path = import_loc.projectCollectionPath();
+	}
+	else {
+		qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element.";
+		return false;
 	}
 
 	int state;
