@@ -163,7 +163,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na brazylijski</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -948,28 +948,29 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa nowego katalogu</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Nazwa nowego elementu</translation>
+        <translation>Nazwa nowego elementu</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Musisz wybrać element lub kategorię i nazwę dla elementu.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1406,13 +1407,14 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>To nie jest kategoria</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Żadna pozycja nie jest kategorią, Zaniechanie.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2122,53 +2124,55 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje numeracji</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy arkusz</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Do</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Od</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybór:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Tworzenie nowych arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne numerowanie zaznaczonych arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2185,7 +2189,18 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe arkusze.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego arkusza o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+</translation>
     </message>
 </context>
 <context>
@@ -2275,7 +2290,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Brazylijski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2477,32 +2492,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Łączenie elementów</translation>
+        <translation>Łączenie elementów</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Element został już włączony do projektu. Wydaje się jednak, że wersja, którą chcesz dołączyć jest inna. Co chcesz zrobić?</translation>
+        <translation>Element został już włączony do projektu. Wydaje się jednak, że wersja, którą chcesz dołączyć jest inna. Co chcesz zrobić?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj wykorzystywany element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Użyj przeciągany element</translation>
+        <translation>Użyj przeciągany element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń istniejący element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Wstaw drugi element jako współistniejący</translation>
+        <translation>Wstaw drugi element jako współistniejący</translation>
     </message>
 </context>
 <context>
@@ -2999,7 +3014,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Element o tej nazwie już istnieje</translation>
     </message>
 </context>
 <context>
@@ -3037,7 +3052,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished">Arkusz</translation>
+        <translation>Arkusz</translation>
     </message>
 </context>
 <context>
@@ -3196,17 +3211,17 @@ Wybierz właściwości i zastosuj nowy potencjał..</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished">Arkusz</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6445,7 +6460,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etykieta arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6657,7 +6672,13 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Można zdefiniować niestandardowe odsyłacze do stron.
+Utwórz tekst używając następujących zmiennych :
+%f : numer arkusza
+%F: etykieta arkusza
+%l : numer wiersza
+%c : numer kolumny</translation>
     </message>
 </context>
 <context>
@@ -6711,7 +6732,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6728,13 +6749,24 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe arkusze.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego arkusza o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -6756,7 +6788,17 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe przewody.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego przewodu o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     </message>
 </context>
 <context>
@@ -7525,7 +7567,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Tworzenie automatycznej numeracji arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7558,7 +7600,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Poniższe zmienne są używane w polu Arkusz
+- %id : numer danego arkusza w projekcie
+- %total: liczba arkuszy w projekcie
+- %autonum : automatyczna numeracja arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7648,7 +7693,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>Num str:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8182,17 +8227,18 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Mode d&apos;affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb wyświetlania</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="84"/>
         <source> Label de Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etykiety arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="94"/>
         <source>Index de Folio </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Spis arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
