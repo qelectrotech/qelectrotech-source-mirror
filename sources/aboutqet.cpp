@@ -190,6 +190,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
 	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",                   tr("Convertisseur DXF"));
 	addAuthor(contributors, "Abhishek Bansal",     "abhishek@qelectrotech.org",           tr("Développement"));
+	addAuthor(contributors, "Davi Fochi",          "davi@fochi.com.br",                   tr("Développement"));
 
 
 	
