@@ -6661,7 +6661,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan definere brugerdefineret etiket for ark rapport.
+Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%l: række nummer
+%c: kolonne nummer</translation>
     </message>
 </context>
 <context>
@@ -7562,7 +7567,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Følgende variabler anvendes i ark området:
+- %id: aktuel ark nummer i projektet
+- %total: samlet antal ark i projektet
+- %autonum: Ark autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
