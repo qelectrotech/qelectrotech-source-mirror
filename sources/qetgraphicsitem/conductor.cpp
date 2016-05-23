@@ -61,8 +61,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	else if (p2->diagram())
 		properties_ = p2->diagram()->defaultConductorProperties;
 
-		//set Zvalue at 9 to be upper than the DiagramImageItem and bottom of element(10)
-	setZValue(9);
+		//set Zvalue at 11 to be upper than the DiagramImageItem and element
+	setZValue(11);
 	previous_z_value = zValue();
 
 		//Add this conductor to the list of conductor of each of the two terminal
