@@ -110,8 +110,6 @@ void XRefPropertiesWidget::saveProperties(int index) {
 
 	if		(ui->m_display_has_cross_rb->isChecked())	 xrp.setDisplayHas(XRefProperties::Cross);
 	else if (ui->m_display_has_contacts_rb->isChecked()) xrp.setDisplayHas(XRefProperties::Contacts);
-	if		(ui->m_display_folio_index_rb->isChecked())  xrp.setViewMode  (XRefProperties::Index);
-	else if (ui->m_display_folio_label_rb->isChecked())  xrp.setViewMode  (XRefProperties::FolioLabel);
 	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
 		 xrp.setSnapTo(XRefProperties::Bottom);
 	else xrp.setSnapTo(XRefProperties::Label);
@@ -119,6 +117,8 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
+	xrp.setMasterLabel(ui->m_master_le->text());
+	xrp.setSlaveLabel(ui->m_slave_le->text());
 
 	m_properties.insert(type, xrp);
 }
@@ -139,13 +139,11 @@ void XRefPropertiesWidget::updateDisplay() {
 		ui->m_display_has_contacts_rb->setChecked(true);
 	}
 
-	XRefProperties::ViewMode vw = xrp.viewMode();
-	if		(vw == XRefProperties::Index)	{
-		ui->m_display_folio_index_rb->setChecked(true);
-	}
-	else if (vw == XRefProperties::FolioLabel) {
-		ui->m_display_folio_label_rb->setChecked(true);
-	}
+	QString master = xrp.masterLabel();
+	ui->m_master_le->setText(master);
+
+	QString slave = xrp.slaveLabel();
+	ui->m_slave_le->setText(slave);
 
 	if (xrp.snapTo() == XRefProperties::Bottom)
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));

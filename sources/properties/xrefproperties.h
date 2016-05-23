@@ -35,11 +35,6 @@ class XRefProperties : public PropertiesInterface
 		Contacts
 	};
 
-	enum ViewMode {
-		Index,
-		FolioLabel
-	};
-
 	enum SnapTo {
 		Bottom,
 		Label
@@ -61,22 +56,26 @@ class XRefProperties : public PropertiesInterface
 	void setDisplayHas	  (const DisplayHas dh) {m_display = dh;}
 	DisplayHas displayHas () const				{return m_display;}
 
-	void setViewMode	  (const ViewMode vm) {m_view_mode = vm;}
-	ViewMode viewMode ()   const			  {return m_view_mode;}
-
 	void setSnapTo (const SnapTo st) {m_snap_to = st;}
 	SnapTo snapTo  () const			 {return m_snap_to;}
 
 	void setPrefix (const QString &key, const QString &value) {m_prefix.insert(key, value);}
 	QString prefix (const QString &key) const {return m_prefix.value(key);}
 
+	void setMasterLabel (const QString master) {m_master_label = master;}
+	QString masterLabel () const			   {return m_master_label;}
+
+	void setSlaveLabel(const QString slave) {m_slave_label = slave;}
+	QString slaveLabel () const				{return m_slave_label;}
+
 	private:
 	bool m_show_power_ctc;
 	DisplayHas m_display;
-	ViewMode   m_view_mode;
 	SnapTo m_snap_to;
 	QHash <QString, QString> m_prefix;
 	QStringList m_prefix_keys;
+	QString m_master_label;
+	QString m_slave_label;
 };
 
 #endif // XREFPROPERTIES_H

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>484</width>
-    <height>475</height>
+    <height>649</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,26 +75,84 @@
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>Mode d'affichage</string>
+           <string>Cross Reference Labels</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
-            <widget class="QRadioButton" name="m_display_folio_label_rb">
-             <property name="text">
-              <string> Label de Folio</string>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>48</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Master</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="m_master_le">
+               <property name="inputMask">
+                <string/>
+               </property>
+               <property name="text">
+                <string>%f-%l%c</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QRadioButton" name="m_display_folio_index_rb">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>48</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Slave</string>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="m_slave_le">
+               <property name="text">
+                <string>(%f-%l%c)</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Index de Folio </string>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
+              <string>You can use variables for the displayed label of XRef: 
+ The variables are:
+ %f:  Folio Index
+ %F: Folio label
+ %l:  Line
+ %c: Colunm</string>
              </property>
             </widget>
            </item>

@@ -122,6 +122,7 @@ void SlaveElement::unlinkElement(Element *elmt)
  * and add a qgraphicstextitem for show the position of the master
  */
 void SlaveElement::updateLabel() {
+
 	QString label("_");
 	QString Xreflabel;
 	bool no_editable = false;
@@ -131,19 +132,12 @@ void SlaveElement::updateLabel() {
 		no_editable = true;
 		Element *elmt = linkedElements().first();
 		label = elmt -> elementInformations()["label"].toString();
-		XRefProperties m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
-		Xreflabel = "(";
-		XRefProperties::ViewMode vw = m_properties.viewMode();
-		if (vw == XRefProperties::Index)
-		{
-			Xreflabel += QString::number(elmt->diagram()->folioIndex()+1);
-		}
-		else if (vw == XRefProperties::FolioLabel){
-			Xreflabel += elmt->diagram()->border_and_titleblock.folio();
-		}
-		Xreflabel += "-";
-		Xreflabel += elmt->diagram() -> convertPosition(elmt -> scenePos()).toString();
-		Xreflabel += ")";
+		XRefProperties xrp = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
+		Xreflabel = xrp.slaveLabel();
+		Xreflabel.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
+		Xreflabel.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
+		Xreflabel.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
+		Xreflabel.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
 	}
 
 	// set the new label

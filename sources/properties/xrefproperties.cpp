@@ -27,8 +27,9 @@ XRefProperties::XRefProperties()
 	m_show_power_ctc = true;
 	m_display = Cross;
 	m_snap_to = Bottom;
-	m_view_mode = Index;
 	m_prefix_keys << "power" << "delay" << "switch";
+	m_master_label = "%f-%l%c";
+	m_slave_label = "(%f-%l%c)";
 }
 
 /**
@@ -41,10 +42,12 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
-	QString view_mode = m_view_mode == Index? "index" : "foliolabel";
-	settings.setValue(prefix + "viewmode", view_mode);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	settings.setValue(prefix + "snapto", snap);
+	QString master_label = m_master_label;
+	settings.setValue(prefix + "master_label", master_label);
+	QString slave_label = m_slave_label;
+	settings.setValue(prefix + "slave_label", slave_label);
 	foreach (QString key, m_prefix.keys()) {
 		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
 	}
@@ -60,10 +63,10 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString view_mode = settings.value(prefix + "viewmode", "index").toString();
-	view_mode == "index"? m_view_mode = Index : m_view_mode = FolioLabel;
 	QString snap = settings.value(prefix + "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+	m_master_label = settings.value(prefix + "master_label", "%f-%l%c").toString();
+	m_slave_label = settings.value(prefix + "slave_label", "(%f-%l%c)").toString();
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
@@ -78,10 +81,12 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
-	QString view_mode = m_view_mode == Index? "index" : "foliolabel";
-	xml_element.setAttribute("viewmode", view_mode);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
+	QString master_label = m_master_label;
+	xml_element.setAttribute("master_label", master_label);
+	QString slave_label = m_slave_label;
+	xml_element.setAttribute("slave_label", slave_label);
 	foreach (QString key, m_prefix.keys()) {
 		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
 	}
@@ -96,10 +101,10 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString view_mode = xml_element.attribute("viewmode", "index");
-	view_mode == "index"? m_view_mode = Index : m_view_mode = FolioLabel;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
+	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
@@ -134,9 +139,10 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc &&
 			m_display == xrp.m_display &&
-			m_view_mode == xrp.m_view_mode &&
 			m_snap_to == xrp.m_snap_to &&
-			m_prefix == xrp.m_prefix);
+			m_prefix == xrp.m_prefix &&
+			m_master_label == xrp.m_master_label &&
+			m_slave_label == xrp.m_slave_label);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const {

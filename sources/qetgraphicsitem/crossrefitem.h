@@ -62,6 +62,8 @@ class CrossRefItem : public QGraphicsObject
 	virtual QPainterPath shape	() const;
 	QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
 	void allElementsPositionText (QString &no_str, QString &nc_str,const bool &add_prefix = false) const;
+	void setTextLabel(QString label);
+
 
 	signals:
 

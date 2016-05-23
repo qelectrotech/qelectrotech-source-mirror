@@ -38,8 +38,6 @@ class SlaveElement : public CustomElement
 
 	private:
 	QGraphicsTextItem *Xref_item;
-	//XRefProperties     m_properties;
-
 };
 
 #endif // SLAVEELEMENT_H

@@ -91,16 +91,13 @@ QPainterPath CrossRefItem::shape() const{
 QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_prefix) const{
 
 	QString txt;
-	XRefProperties::ViewMode vw = m_properties.viewMode();
-	if (vw == XRefProperties::Index)
-	{
-		txt += QString::number(elmt->diagram()->folioIndex() + 1);
-	}
-	else if (vw == XRefProperties::FolioLabel){
-		txt += elmt->diagram()->border_and_titleblock.folio();
-	}
-	txt += "-";
-	txt += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
+	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	txt = xrp.masterLabel();
+	txt.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
+	txt.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
+	txt.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
+	txt.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
+
 	if (add_prefix) {
 		if      (elmt->kindInformations()["type"].toString() == "power")        txt.prepend(m_properties.prefix("power"));
 		else if (elmt->kindInformations()["type"].toString().contains("delay")) txt.prepend(m_properties.prefix("delay"));
