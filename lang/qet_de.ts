@@ -159,7 +159,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Brasilianische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -951,28 +951,28 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Betriebsmittelkennzeichen</translation>
+        <translation>Betriebsmittelkennzeichen</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Name vom neuen Ordner</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Name des neuen Bauteils</translation>
+        <translation>Name vom neuen Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sie müssen ein Bauteil oder eine Kategorie auswählen.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1406,13 +1406,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Auswahl ist keine Kategorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Auswahl ist keine Kategorie. Abbruch.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2132,53 +2132,53 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummerierungsoptionen</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folien</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>bis</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>von</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktion auswählen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folien anlegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgewählte Folien nummerieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Regel für die Foliennummerierung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Foliennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2195,7 +2195,7 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2285,7 +2285,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Brasilianisch</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2487,32 +2487,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Bauteil einbetten</translation>
+        <translation>Bauteil einbetten</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Das Bauteil wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
+        <translation>Das Bauteil wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Bereits eingebettetes Bauteil verwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Das neu angelegte Bauteil einbetten</translation>
+        <translation>Das neu angelegte Bauteil einbetten</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Das bereits eingebettete Bauteil überschreiben</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Beide Bauteile beibehalten</translation>
+        <translation>Beide Bauteile beibehalten</translation>
     </message>
 </context>
 <context>
@@ -3009,7 +3009,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Bauteil mit dem gleichen Namen existiert bereits</translation>
     </message>
 </context>
 <context>
@@ -3047,7 +3047,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished">Folie</translation>
+        <translation>Folie</translation>
     </message>
 </context>
 <context>
@@ -3206,17 +3206,17 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiter</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished">Folie</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Folien-Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6436,7 +6436,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienname</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6648,7 +6648,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können ihr eigenes Format für die Querverweistexte definieren.
+Folgende Variablen stehen zur Verfügung:
+%f: die Foliennummer
+%F: der Folienname
+%l: die Zeilennummer
+%c: die Spaltennummer</translation>
     </message>
 </context>
 <context>
@@ -6702,7 +6707,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folien-Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6719,13 +6724,13 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Leiter-Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -6747,7 +6752,7 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -7516,7 +7521,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue auto-nummerierte Folie anlegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7549,7 +7554,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Variablen stehen im Feld Folie zur Verfügung:
+%id: aktuelle Foliennummer
+%total: gesamte Folienanzahl
+%autonum: aktueller Folienname</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7639,7 +7647,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummerierung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8176,17 +8184,17 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Mode d&apos;affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeige nach</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="84"/>
         <source> Label de Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienname</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="94"/>
         <source>Index de Folio </source>
-        <translation type="unfinished"></translation>
+        <translation>Foliennummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
