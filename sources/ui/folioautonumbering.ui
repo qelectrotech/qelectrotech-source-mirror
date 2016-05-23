@@ -76,7 +76,7 @@
         <x>0</x>
         <y>0</y>
         <width>448</width>
-        <height>497</height>
+        <height>498</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -104,7 +104,7 @@
           </sizepolicy>
          </property>
          <property name="title">
-          <string>Numbering Options</string>
+          <string> Options de numérotation</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="2" column="1">
@@ -129,7 +129,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>New Folios</string>
+             <string>Nouveaux Folios</string>
             </property>
            </widget>
           </item>
@@ -171,7 +171,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>To</string>
+             <string>À</string>
             </property>
            </widget>
           </item>
@@ -184,7 +184,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>From</string>
+             <string>De</string>
             </property>
            </widget>
           </item>
@@ -200,7 +200,7 @@
           </sizepolicy>
          </property>
          <property name="title">
-          <string>Select:</string>
+          <string>Sélection:</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
@@ -212,7 +212,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Create New Folios</string>
+             <string>Créer de nouveaux Folios</string>
             </property>
            </widget>
           </item>
@@ -225,7 +225,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Autonumber Selected Folios</string>
+             <string>NumAuto des folios séléctionnés</string>
             </property>
            </widget>
           </item>
@@ -241,7 +241,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Folio Auto Numbering:</string>
+          <string>Numérotation automatique de Folio :</string>
          </property>
         </widget>
        </item>

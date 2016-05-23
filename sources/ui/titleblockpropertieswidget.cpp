@@ -285,7 +285,7 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 		keys_2 = project -> folioAutoNum().keys();
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==NULL)
-			ui->auto_page_cb->addItem("Create an Auto Folio Numbering");
+			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
 	}
 	else{
 		ui->auto_page_cb->hide();
@@ -403,7 +403,7 @@ void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
  */
 void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked() {
     emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
-    if (ui->auto_page_cb->currentText()!="Create an Auto Folio Numbering")
+	if (ui->auto_page_cb->currentText()!=tr("Créer un Folio Numérotation Auto"))
     {
 		//still to implement: load current auto folio num settings
     }
