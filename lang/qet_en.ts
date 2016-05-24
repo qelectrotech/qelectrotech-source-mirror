@@ -8218,47 +8218,70 @@ Maximum length : %2px</translation>
         <translation>View cross</translation>
     </message>
     <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
+        <source>Label des références croisées</source>
+        <translation>Label cross reference</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <source>Maitre</source>
+        <translation>Master</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
+        <source>%f-%l%c</source>
+        <translation>%f-%l%c</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
+        <source>Esclave</source>
+        <translation>Slave</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
+        <source>(%f-%l%c)</source>
+        <translation>(%f-%l%c)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
+        <source>Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%l : le numéro de ligne
+%c : le numéro de colonne</source>
+        <translation>Create your own text by helping you of the following variables:
+%f: the folio number
+%F: folio label
+%l : the line number
+%c: column number</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Afficher en contacts</source>
         <translation>View contacts</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
-        <source>Mode d&apos;affichage</source>
-        <translation>Display mode</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="84"/>
-        <source> Label de Folio</source>
-        <translation>Label folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="94"/>
-        <source>Index de Folio </source>
-        <translation>Folio index</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="169"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Option display cross</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Show the power contacts in the cross</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="127"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Prefix of power contacts :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="191"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Prefix delayed contacts :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="204"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Prefix changeover contacts :</translation>
     </message>

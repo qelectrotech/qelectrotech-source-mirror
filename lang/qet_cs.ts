@@ -8183,47 +8183,66 @@ Největší délka: %2px</translation>
         <translation>Zobrazit křížek</translation>
     </message>
     <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
+        <source>Label des références croisées</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <source>Maitre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
+        <source>%f-%l%c</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
+        <source>Esclave</source>
+        <translation type="unfinished">Podřízený</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
+        <source>(%f-%l%c)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
+        <source>Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%l : le numéro de ligne
+%c : le numéro de colonne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Afficher en contacts</source>
         <translation>Zobrazit kontakty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
-        <source>Mode d&apos;affichage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="84"/>
-        <source> Label de Folio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="94"/>
-        <source>Index de Folio </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="169"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Volba pro zobrazení křížku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Zobrazit výkonové kontakty v křížku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="127"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Předpona výkonových kontaktů:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="191"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Předpona zpožděných kontaktů:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="204"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Předpona přepínacích kontaktů:</translation>
     </message>

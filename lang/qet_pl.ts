@@ -8220,48 +8220,66 @@ Długość maksymalna: %2px</translation>
         <translation>Pokaż krzyż</translation>
     </message>
     <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
+        <source>Label des références croisées</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <source>Maitre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
+        <source>%f-%l%c</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
+        <source>Esclave</source>
+        <translation type="unfinished">Podrzędny</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
+        <source>(%f-%l%c)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
+        <source>Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%l : le numéro de ligne
+%c : le numéro de colonne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Afficher en contacts</source>
         <translation>Pokaż zestyki</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
-        <source>Mode d&apos;affichage</source>
-        <translation>Tryb wyświetlania</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="84"/>
-        <source> Label de Folio</source>
-        <translation>Etykiety arkuszy</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="94"/>
-        <source>Index de Folio </source>
-        <translatorcomment>niepewne</translatorcomment>
-        <translation>Spis arkuszy</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="169"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Opcje wyświetlania krzyża</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Pokaż zestyki i krzyż</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="127"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Prefiks dla zestyków obwodów głównych:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="191"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Prefiks dla zestyków działających z opóźnieniem:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="204"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Prefiks dla zestyków przełącznych:</translation>
     </message>
