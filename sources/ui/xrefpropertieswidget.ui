@@ -75,7 +75,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>Cross Reference Labels</string>
+           <string>Label des références croisées</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
@@ -95,7 +95,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Master</string>
+                <string>Maitre</string>
                </property>
               </widget>
              </item>
@@ -128,7 +128,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>Slave</string>
+                <string>Esclave</string>
                </property>
                <property name="scaledContents">
                 <bool>false</bool>
@@ -147,12 +147,11 @@
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>You can use variables for the displayed label of XRef: 
- The variables are:
- %f:  Folio Index
- %F: Folio label
- %l:  Line
- %c: Colunm</string>
+              <string>Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%l : le numéro de ligne
+%c : le numéro de colonne</string>
              </property>
             </widget>
            </item>
