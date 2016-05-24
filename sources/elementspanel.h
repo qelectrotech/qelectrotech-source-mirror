@@ -63,7 +63,6 @@ class ElementsPanel : public GenericPanel {
 	
 	void reloadCollections();
 	int elementsCollectionItemsCount();
-	bool mustHighlightIntegratedElements() const;
 	
 	signals:
 	void requestForProject(QETProject *);
@@ -87,7 +86,6 @@ class ElementsPanel : public GenericPanel {
 	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
 	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
 	void scrollToSelectedItem();
-	void highlightItems(const QList<QTreeWidgetItem *> &, const QObject * = 0, const char * = 0);
 	
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
@@ -101,7 +99,6 @@ class ElementsPanel : public GenericPanel {
 	
 	protected slots:
 	void panelContentChange();
-	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	
 	private:
 	virtual QTreeWidgetItem *addProject   (QETProject *);

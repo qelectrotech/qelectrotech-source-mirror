@@ -164,7 +164,6 @@ class QETProject : public QObject
 	void diagramRemoved(QETProject *, Diagram *);
 	void projectModified(QETProject *, bool);
 	void projectDiagramsOrderChanged(QETProject *, int, int);
-	void elementIntegrated(QETProject *, const ElementsLocation &);
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);

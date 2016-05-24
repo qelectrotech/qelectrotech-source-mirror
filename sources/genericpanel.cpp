@@ -265,10 +265,6 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 				project, SIGNAL(projectDiagramsOrderChanged(QETProject *, int, int)),
 				this,    SLOT  (projectDiagramsOrderChanged(QETProject *, int, int))
 			);
-			connect(
-				project, SIGNAL(elementIntegrated(QETProject *, const ElementsLocation &)),
-				this,    SLOT(elementIntegrated(QETProject *, const ElementsLocation &))
-			);
 		} else {
 			// remove diagrams unknown to the project (presumably removed)
 			removeObsoleteItems(project -> diagrams(), project_qtwi, QET::Diagram, false);
@@ -787,44 +783,6 @@ QTreeWidgetItem *GenericPanel::fillElementsCategoryItem(QTreeWidgetItem *categor
 }
 
 /**
-	Refresh elements category at \a location.
-	@return the refreshed tree item
-*/
-QTreeWidgetItem *GenericPanel::refreshElementsCategory(const ElementsLocation &location) {
-	QTreeWidgetItem *item = itemForElementsLocation(location);
-	if (!item) return(0);
-	if (item -> type() != QET::ElementsCategory && item -> type() != QET::ElementsCollection) return(0);
-	QTreeWidgetItem *result = fillElementsCategoryItem(
-		item,
-		QETApp::collectionItem(location) -> toCategory(),
-		PanelOptions(QFlag(item -> data(0, GenericPanel::PanelFlags).toInt())),
-		false
-	);
-	return(result);
-}
-
-/**
-	Refresh element at \a location.
-	@return the refreshed tree item
-*/
-QTreeWidgetItem *GenericPanel::refreshElement(const ElementsLocation &location) {
-	QTreeWidgetItem *item = itemForElementsLocation(location);
-	if (!item) return(0);
-	if (item -> type() != QET::Element) return(0);
-	
-	QTreeWidgetItem *parent = item -> parent();
-	if (!parent) return(0);
-	
-	QTreeWidgetItem *result = updateElementItem(
-		item,
-		QETApp::collectionItem(location) -> toElement(),
-		PanelOptions(QFlag(parent -> data(0, GenericPanel::PanelFlags).toInt())),
-		false
-	);
-	return(result);
-}
-
-/**
 	
 */
 QTreeWidgetItem *GenericPanel::addElement(ElementDefinition *element, QTreeWidgetItem *parent_item, PanelOptions options) {
@@ -1004,40 +962,6 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 		setCurrentItem(moved_qtwi_diagram);
 
 	emit(panelContentChanged());
-}
-
-/**
-	Inform this panel the project \a project has integrated the element at \a location
-*/
-QList<ElementsLocation> GenericPanel::elementIntegrated(QETProject *project, const ElementsLocation &location) {
-	Q_UNUSED(project)
-	QList<ElementsLocation> added_locations;
-	
-	int i = 0;
-	ElementsLocation loc = location;
-	// starting from the provided location, goes up into the tree until a displayed location is reached
-	while (i < 100 && !(itemForElementsLocation(loc))) {
-		added_locations << loc;
-		loc = loc.parent();
-		++ i;
-	}
-	if (added_locations.count()) {
-		refreshElementsCategory(loc);
-	} else {
-		if (refreshElement(location)) {
-			added_locations << location;
-		}
-	}
-	
-	// Since we have refreshed the panel before the element is actually used by
-	// the diagram, it will appear as unused; we force it as used.
-	// FIXME a better solution would be to get warned when an element gets used
-	// or unused.
-	if (QTreeWidgetItem *integrated_element_qtwi = itemForElementsLocation(location)) {
-		integrated_element_qtwi -> setToolTip(0, location.toString());
-		integrated_element_qtwi -> setBackground(0, QBrush());
-	}
-	return(added_locations);
 }
 
 /**
