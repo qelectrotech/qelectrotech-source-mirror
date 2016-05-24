@@ -18,6 +18,7 @@
 #include "simpleelement.h"
 #include "commentitem.h"
 #include "elementtextitem.h"
+
 /**
  * @brief SimpleElement::SimpleElement
  * @param location
@@ -31,6 +32,8 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 {
 	link_type_ = Simple;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
+	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
 }
 
 /**
@@ -52,16 +55,33 @@ void SimpleElement::initLink(QETProject *project) {
 }
 
 /**
+ * @brief SimpleElement::changeElementInfo()
+ * Update label if it contains %c, %l, %f or %F variables
+ */
+void SimpleElement::changeElementInfo(){
+	QString temp_label = this->elementInformations()["label"].toString();
+	if (temp_label.contains("\%l")||temp_label.contains("\%c")||temp_label.contains("\%f")||temp_label.contains("\%F")) {
+		if (this->diagram()!=NULL)
+			this->updateLabel(this->elementInformations(),this->elementInformations());
+	}
+}
+
+/**
  * @brief SimpleElement::updateLabel
  * update label of this element
  */
 void SimpleElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
+	QString label = new_info["label"].toString();
+	Element *elmt = this;
+	label = assignVariables(label,elmt);
+
 	//Label of element
-	if (old_info["label"].toString() != new_info["label"].toString()) {
+	if (old_info["label"].toString() != label) {
 		if (new_info["label"].toString().isEmpty())
 			setTaggedText("label", "_", false);
-		else
-			setTaggedText("label", new_info["label"].toString(), true);
+		else {
+			setTaggedText("label", label, true);
+		}
 	}
 
 	if (ElementTextItem *eti = taggedText("label")) {

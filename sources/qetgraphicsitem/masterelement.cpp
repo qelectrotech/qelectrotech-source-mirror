@@ -33,6 +33,8 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 {
 	link_type_ = Master;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
+	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
 }
 
 /**
@@ -118,17 +120,34 @@ void MasterElement::initLink(QETProject *project) {
 }
 
 /**
+ * @brief MasterElement::changeElementInfo()
+ * Update label if it contains %c, %l, %f or %F variables
+ */
+void MasterElement::changeElementInfo(){
+	QString temp_label = this->elementInformations()["label"].toString();
+	if (temp_label.contains("\%l")||temp_label.contains("\%c")||temp_label.contains("\%f")||temp_label.contains("\%F")) {
+		if (this->diagram()!=NULL)
+			this->updateLabel(this->elementInformations(),this->elementInformations());
+	}
+}
+
+/**
  * @brief MasterElement::updateLabel
  * update label of this element
  * and the comment item if he's displayed.
  */
 void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
+	QString newstr = new_info["label"].toString();
+	Element	*elmt = this;
+	newstr = assignVariables(newstr, elmt);
+
 	//Label of element
-	if (old_info["label"].toString() != new_info["label"].toString()) {
+	if (old_info["label"].toString() != newstr) {
 		if (new_info["label"].toString().isEmpty())
 			setTaggedText("label", "_", false);
-		else
-			setTaggedText("label", new_info["label"].toString(), true);
+		else {
+			setTaggedText("label", newstr, true);
+		}
 	}
 
 	if (ElementTextItem *eti = taggedText("label")) {

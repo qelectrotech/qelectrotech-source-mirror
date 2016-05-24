@@ -45,6 +45,7 @@ class MasterElement : public CustomElement
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
+		void changeElementInfo();
 
 	private:
 		bool aboutDeleteXref ();

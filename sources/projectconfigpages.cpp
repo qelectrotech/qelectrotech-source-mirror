@@ -382,7 +382,6 @@ void ProjectAutoNumConfigPage::buildConnections() {
 
 	//	Auto Folio Numbering
 	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
-	connect (m_faw, SIGNAL (m_autonumber_tabs_rb_clicked()), this, SLOT (tabChanged(int)));
 }
 
 /**

@@ -134,10 +134,8 @@ void SlaveElement::updateLabel() {
 		label = elmt -> elementInformations()["label"].toString();
 		XRefProperties xrp = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 		Xreflabel = xrp.slaveLabel();
-		Xreflabel.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
-		Xreflabel.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
-		Xreflabel.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
-		Xreflabel.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
+		Xreflabel = assignVariables(Xreflabel, elmt);
+		label = assignVariables(label, elmt);
 	}
 
 	// set the new label
