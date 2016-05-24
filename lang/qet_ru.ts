@@ -161,7 +161,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Бразильский перевод</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -972,22 +972,22 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Название</translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Метка</translation>
+        <translation>Метка</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Назовите новую папку</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Имя нового элемента</translation>
+        <translation>Имя нового элемента</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
@@ -1429,13 +1429,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Этот элемент - не категория</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Запрашиваемый элемент не категория. Отмена.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2311,7 +2311,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Бразильский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -3049,7 +3049,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Элемент с таким именем уже существует</translation>
     </message>
 </context>
 <context>
@@ -3088,7 +3088,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished">Страница</translation>
+        <translation>Страница</translation>
     </message>
 </context>
 <context>
@@ -6501,7 +6501,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Метка страницы</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -7581,7 +7581,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать Автонумерацию страниц</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7685,7 +7685,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Переменные, использукмые в поле Страница:
+-% Id: номер текущей страницы в проекте
+-% Total: общее количество страниц в проекте
+-% Autonum: Автонумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="193"/>
@@ -7705,7 +7708,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>№ стр.:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8234,12 +8237,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Метка перекрестной ссылки</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Родительский</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
@@ -8249,7 +8252,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Дочерний</translation>
+        <translation>Дочерний</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
@@ -8263,7 +8266,11 @@ Longueur maximale : %2px
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Создайте собственный текст при помощи следующих переменных:
+%f: номер страницы
+%F: метка страницы
+%l : номер линии
+%c: номер столбца</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
