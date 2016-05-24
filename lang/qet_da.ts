@@ -2192,7 +2192,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Her indstilles hvordan nye ark nummereres.
+-Nummerering består af minumum en variabel.
+-Tilføj eller fjern variabel nummerering med - og + knapperne.
+-Variabel nummerering omfatter: type, værdi og forøgelse.
+
+-Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+
+-Type &quot;Tekst&quot; er en fast tekst.
+Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     </message>
 </context>
 <context>
@@ -6737,7 +6747,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Her indstilles hvordan nye ark nummereres.
+-Nummerering består af minumum en variabel.
+-Tilføj eller fjern variabel nummerering med - og + knapperne.
+-Variabel nummerering omfatter: type, værdi og forøgelse.
+
+-Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+
+-Type &quot;Tekst&quot; er en fast tekst.
+Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
@@ -6765,7 +6785,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Her indstilles hvordan nye leder nummereres.
+-Nummerering består af minumum en variabel.
+-Tilføj eller fjern variabel nummerering med - og + knapperne.
+-Variabel nummerering omfatter: type, værdi og forøgelse.
+
+-Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+
+-Type &quot;Tekst&quot; er en fast tekst.
+Feltet &quot;Forøg&quot; anvendes ikke.
+
+-Type &quot;Nr ark&quot; repræsenterer nummeret på nuværende ark.
+De øvrige felter anvendes ikke.
+
+-Type &quot;Ark&quot; er navnet på nuværende ark.
+De øvrige felter anvendes ikke.</translation>
     </message>
 </context>
 <context>
@@ -8191,27 +8227,27 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Krydsreference etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Overordnet</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Underordnet</translation>
+        <translation>Underordnet</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8220,7 +8256,11 @@ Maksimum længde: %2piksel
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%l: række nummer
+%c: kolonne nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
