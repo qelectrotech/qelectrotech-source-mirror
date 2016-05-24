@@ -8222,27 +8222,27 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Etykieta oznaczenia referencyjnego</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadrzędny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Podrzędny</translation>
+        <translation>Podrzędny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8251,7 +8251,11 @@ Długość maksymalna: %2px</translation>
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Utwórz tekst używając następujących zmiennych :
+%f : numer arkusza
+%F: etykieta arkusza
+%l : numer wiersza
+%c : numer kolumny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
