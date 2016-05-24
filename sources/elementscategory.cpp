@@ -559,55 +559,6 @@ void ElementsCategory::move(MoveElementsDescription *mvt_desc) {
 }
 
 /**
-	Cette methode supprime recursivement les elements inutilises dans le projet.
-	Si cette categorie n'est pas rattachee a un projet, elle ne fait rien
-	@param handler Gestionnaire d'erreurs a utiliser pour effectuer le
-	nettoyage. Si handler vaut 0, les erreurs, problemes et questions sont
-	purement et simplement ignores.
-*/
-void ElementsCategory::deleteUnusedElements(MoveElementsHandler *handler) {
-	// si cette categorie n'est pas rattachee a un projet, elle ne fait rien
-	QETProject *parent_project = project();
-	if (!parent_project) return;
-	
-	// supprime les elements inutilises dans les sous-categories
-	foreach(ElementsCategory *sub_category, categories()) {
-		sub_category -> deleteUnusedElements(handler);
-	}
-	
-	// supprime les elements inutilises dans cette categorie
-	foreach(ElementDefinition *element, elements()) {
-		if (!parent_project -> usesElement(element -> location())) {
-			bool element_deletion = element -> remove();
-			if (!element_deletion && handler) {
-				handler -> errorWithAnElement(element, tr("Impossible de supprimer l'élément"));
-			}
-		}
-	}
-}
-
-/**
-	Cette methode supprime toutes les sous-categories de cette categories qui
-	ne contiennent pas d'elements ou de categories contenant des elements.
-	@param handler Gestionnaire d'erreurs a utiliser pour effectuer le
-	nettoyage. Si handler vaut 0, les erreurs, problemes et questions sont
-	purement et simplement ignores.
-*/
-void ElementsCategory::deleteEmptyCategories(MoveElementsHandler *handler) {
-	// supprime les sous-categories qui ne comportent pas d'elements
-	foreach(ElementsCategory *sub_category, categories()) {
-		sub_category -> deleteEmptyCategories(handler);
-		sub_category -> reload();
-		if (!sub_category -> isEmpty()) {
-			bool category_deletion = sub_category -> remove();
-			if (!category_deletion && handler) {
-				handler -> errorWithACategory(sub_category, tr("Impossible de supprimer la catégorie"));
-			}
-		}
-	}
-}
-
-/**
 	@return true si cette collection est vide (pas de sous-categorie, pas
 	d'element), false sinon.
 */

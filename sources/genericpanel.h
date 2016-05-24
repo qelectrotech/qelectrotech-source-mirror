@@ -130,7 +130,6 @@ class GenericPanel : public QTreeWidget {
 	public:
 	virtual QTreeWidgetItem *itemForElementsLocation(const ElementsLocation &);
 	virtual QTreeWidgetItem *addElementsCollection(ElementsCollection *, QTreeWidgetItem *, PanelOptions = AddAllChild);
-	virtual QTreeWidgetItem *itemForElementsCollection(ElementsCollection *);
 	protected:
 	virtual QTreeWidgetItem *getItemForElementsCollection(ElementsCollection *, bool * = 0);
 	virtual QTreeWidgetItem *updateElementsCollectionItem(QTreeWidgetItem *, ElementsCollection *, PanelOptions = AddAllChild, bool = false);

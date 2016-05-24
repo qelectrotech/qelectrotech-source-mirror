@@ -325,11 +325,6 @@ QList<ElementsCollection *> QETApp::availableCollections() {
 	// collection perso
 	coll_list << customElementsCollection();
 
-	// collections embarquees
-	foreach(QETProject *opened_project, registered_projects_.values()) {
-		coll_list << opened_project -> embeddedCollection();
-	}
-
 	return(coll_list);
 }
 
@@ -1723,17 +1718,15 @@ void QETApp::printLicense() {
 	chemin correspond aussi bien a une collection qu'a sa categorie racine
 	@return l'item correspondant a l'adresse virtuelle path, ou 0 si celui-ci n'a pas ete trouve
 */
-ElementsCollectionItem *QETApp::collectionItem(const ElementsLocation &location, bool prefer_collections) {
-	if (QETProject *target_project = location.project()) {
-		return(target_project -> embeddedCollection() -> item(location.path(), prefer_collections));
-	} else {
-		QString path(location.path());
-		if (path.startsWith("common://")) {
-			return(common_collection -> item(path, prefer_collections));
-		} else if (path.startsWith("custom://")) {
-			return(custom_collection -> item(path, prefer_collections));
-		}
+ElementsCollectionItem *QETApp::collectionItem(const ElementsLocation &location, bool prefer_collections)
+{
+	QString path(location.path());
+	if (path.startsWith("common://")) {
+		return(common_collection -> item(path, prefer_collections));
+	} else if (path.startsWith("custom://")) {
+		return(custom_collection -> item(path, prefer_collections));
 	}
+
 	return(0);
 }
 
@@ -1741,17 +1734,15 @@ ElementsCollectionItem *QETApp::collectionItem(const ElementsLocation &location,
 	@param location adresse virtuelle de la categorie a creer
 	@return la categorie creee, ou 0 en cas d'echec
 */
-ElementsCategory *QETApp::createCategory(const ElementsLocation &location) {
-	if (QETProject *target_project = location.project()) {
-		return(target_project -> embeddedCollection() -> createCategory(location.path()));
-	} else {
-		QString path(location.path());
-		if (path.startsWith("common://")) {
-			return(common_collection -> createCategory(path));
-		} else if (path.startsWith("custom://")) {
-			return(custom_collection -> createCategory(path));
-		}
+ElementsCategory *QETApp::createCategory(const ElementsLocation &location)
+{
+	QString path(location.path());
+	if (path.startsWith("common://")) {
+		return(common_collection -> createCategory(path));
+	} else if (path.startsWith("custom://")) {
+		return(custom_collection -> createCategory(path));
 	}
+
 	return(0);
 }
 
@@ -1759,17 +1750,15 @@ ElementsCategory *QETApp::createCategory(const ElementsLocation &location) {
 	@param location adresse virtuelle de l'element a creer
 	@return l'element cree, ou 0 en cas d'echec
 */
-ElementDefinition *QETApp::createElement(const ElementsLocation &location) {
-	if (QETProject *target_project = location.project()) {
-		return(target_project -> embeddedCollection() -> createElement(location.path()));
-	} else {
-		QString path(location.path());
-		if (path.startsWith("common://")) {
-			return(common_collection -> createElement(path));
-		} else if (path.startsWith("custom://")) {
-			return(custom_collection -> createElement(path));
-		}
+ElementDefinition *QETApp::createElement(const ElementsLocation &location)
+{
+	QString path(location.path());
+	if (path.startsWith("common://")) {
+		return(common_collection -> createElement(path));
+	} else if (path.startsWith("custom://")) {
+		return(custom_collection -> createElement(path));
 	}
+
 	return(0);
 }
 

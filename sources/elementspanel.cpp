@@ -370,13 +370,6 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 		}
 	}
 	
-	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
-		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
-
-			if (first_add) elmt_collection_qtwi -> setExpanded(true);
-		}
-	}
-	
 	qtwi_project -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer ce projet", "Status tip"));
 	
 	return(qtwi_project);
@@ -492,13 +485,6 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, QString filter) c
 void ElementsPanel::reloadCollections() {
 	QETApp::commonElementsCollection() -> reload();
 	QETApp::customElementsCollection() -> reload();
-	
-	// reloads collection of every project displayed in this panel
-	foreach(QETProject *project, projects_to_display_) {
-		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
-			project_collection -> reload();
-		}
-	}
 }
 
 /**
@@ -511,11 +497,7 @@ int ElementsPanel::elementsCollectionItemsCount() {
 	int items_count = 0;
 	items_count += QETApp::commonElementsCollection() -> count();
 	items_count += QETApp::customElementsCollection() -> count();
-	foreach(QETProject *project, projects_to_display_.values()) {
-		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
-			items_count += project_collection -> count();
-		}
-	}
+
 	return(items_count);
 }
 

@@ -63,8 +63,6 @@ class ElementsCategory : public ElementsCollectionItem {
 	virtual ElementDefinition *toElement();
 	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true);
 	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *);
-	virtual void deleteUnusedElements(MoveElementsHandler *handler);
-	virtual void deleteEmptyCategories(MoveElementsHandler *handler);
 	virtual bool isEmpty();
 	virtual int count();
 	

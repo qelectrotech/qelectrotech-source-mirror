@@ -290,23 +290,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 			options
 		);
 	}
-	
-	if (options & AddChildElementsCollections) {
-		QTreeWidgetItem *collection_qtwi = addElementsCollection(
-			project -> embeddedCollection(),
-			project_qtwi,
-			options
-		);
-		QString collection_whatsthis = tr("Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.", "\"What's this\" tip");
-		collection_qtwi -> setWhatsThis(0, collection_whatsthis);
-		
-		// special instructions for the integration category
-		if (QTreeWidgetItem *integration_qtwi = itemForElementsCategory(project -> integrationCategory())) {
-			QString integration_whats_this = tr("Cette catégorie d'éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.", "\"What's this\" tip");
-			integration_qtwi -> setWhatsThis(0, integration_whats_this);
-		}
-		
-	}
+
 	return(fillItem(project_qtwi, options, freshly_created));
 }
 
@@ -589,14 +573,6 @@ QTreeWidgetItem *GenericPanel::addElementsCollection(ElementsCollection *collect
 	fillElementsCollectionItem(collection_qtwi, collection, options, creation_required);
 	
 	return(collection_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::itemForElementsCollection(ElementsCollection *collection) {
-	if (!collection) return(0);
-	return(elements_.value(collection -> rootCategory() -> location(), 0));
 }
 
 /**

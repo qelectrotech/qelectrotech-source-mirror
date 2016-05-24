@@ -83,7 +83,6 @@ class QETProject : public QObject
 		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
 		void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
 		int folioIndex(const Diagram *) const;
-		ElementsCollection *embeddedCollection() const;
 		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
 		QString filePath();
@@ -134,16 +133,12 @@ class QETProject : public QObject
 		bool isReadOnly() const;
 		void setReadOnly(bool);
 		bool isEmpty() const;
-		ElementsCategory *integrationCategory() const;
 		ElementsLocation importElement(ElementsLocation &location);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
-		void cleanUnusedElements(MoveElementsHandler *);
-		void cleanEmptyCategories(MoveElementsHandler *);
 		bool projectWasModified();
 		bool projectOptionsWereModified();
-		bool embeddedCollectionWasModified();
 		DiagramContext projectProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return undo_stack_;}
@@ -179,7 +174,6 @@ class QETProject : public QObject
 	
 	private:
 		void setupTitleBlockTemplatesCollection();
-		ElementsCategory *rootCategory() const;
 
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);

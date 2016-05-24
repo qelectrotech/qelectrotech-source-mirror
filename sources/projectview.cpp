@@ -808,18 +808,6 @@ int ProjectView::cleanProject() {
 		if (clean_tbt -> isChecked()) {
 			project_->embeddedTitleBlockTemplatesCollection()->deleteUnusedTitleBlocKTemplates();
 		}
-		if (clean_elements -> isChecked()) {
-			InteractiveMoveElementsHandler *handler = new InteractiveMoveElementsHandler(this);
-			project_ -> cleanUnusedElements(handler);
-			delete handler;
-			++ clean_count;
-		}
-		if (clean_categories -> isChecked()) {
-			InteractiveMoveElementsHandler *handler = new InteractiveMoveElementsHandler(this);
-			project_ -> cleanEmptyCategories(handler);
-			delete handler;
-			++ clean_count;
-		}
 	}
 	return(clean_count);
 }

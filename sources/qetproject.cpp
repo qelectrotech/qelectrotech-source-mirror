@@ -183,13 +183,6 @@ int QETProject::folioIndex(const Diagram *diagram) const {
 }
 
 /**
-	@return la collection embarquee de ce projet
-*/
-ElementsCollection *QETProject::embeddedCollection() const {
-	return(collection_);
-}
-
-/**
  * @brief QETProject::embeddedCollection
  * @return The embedded collection
  */
@@ -695,8 +688,7 @@ bool QETProject::isEmpty() const {
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
 	
-	// si la collection du projet n'est pas vide, alors le projet n'est pas vide
-	if (!collection_ -> isEmpty()) return(false);
+	//@TODO check if the embedded element collection is empty
 	
 	// compte le nombre de schemas non vides
 	int pertinent_diagrams = 0;
@@ -705,18 +697,6 @@ bool QETProject::isEmpty() const {
 	}
 	
 	return(pertinent_diagrams > 0);
-}
-
-/**
-	@return la categorie dediee aux elements integres automatiquement dans le
-	projet ou 0 si celle-ci n'a pu etre creee.
-	@see ensureIntegrationCategoryExists()
-*/
-ElementsCategory *QETProject::integrationCategory() const {
-	ElementsCategory *root_cat = rootCategory();
-	if (!root_cat) return(0);
-	
-	return(root_cat -> category(integration_category_name));
 }
 
 /**
@@ -877,29 +857,6 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 }
 
 /**
-	Supprime tous les elements inutilises dans le projet
-	@param handler Gestionnaire d'erreur
-*/
-void QETProject::cleanUnusedElements(MoveElementsHandler *handler) {
-	ElementsCategory *root_cat = rootCategory();
-	if (!root_cat) return;
-	
-	root_cat -> deleteUnusedElements(handler);
-}
-
-/**
-	Supprime tous les categories vides (= ne contenant aucun element ou que des
-	categories vides) dans le projet
-	@param handler Gestionnaire d'erreur
-*/
-void QETProject::cleanEmptyCategories(MoveElementsHandler *handler) {
-	ElementsCategory *root_cat = rootCategory();
-	if (!root_cat) return;
-	
-	root_cat -> deleteEmptyCategories(handler);
-}
-
-/**
 	Gere la reecriture du projet
 */
 void QETProject::componentWritten() {
@@ -1032,17 +989,6 @@ void QETProject::setupTitleBlockTemplatesCollection() {
 		this,
 		SLOT(removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
 	);
-}
-
-/**
-	@return un pointeur vers la categorie racine de la collection embarquee, ou
-	0 si celle-ci n'est pas accessible.
-*/
-ElementsCategory *QETProject::rootCategory() const {
-	if (!collection_) return(0);
-	
-	ElementsCategory *root_cat = collection_ -> rootCategory();
-	return(root_cat);
 }
 
 /**
@@ -1434,38 +1380,6 @@ bool QETProject::projectOptionsWereModified() {
 }
 
 /**
-	Cette methode sert a reperer un projet vide, c-a-d un projet identique a ce
-	que l'on obtient en faisant Fichier > Nouveau.
-	@return true si la collection d'elements embarquee a ete modifiee.
-	Concretement, cette methode retourne true si la collection embarquee
-	contient 0 element et 1 categorie vide qui s'avere etre la categorie dediee
-	aux elements integres automatiquement dans le projet.
-*/
-bool QETProject::embeddedCollectionWasModified() {
-	ElementsCategory *root_cat = rootCategory();
-	if (!root_cat) return(false);
-	
-	// la categorie racine doit comporter 0 element et 1 categorie
-	if (root_cat -> categories().count() != 1) return(true);
-	if (root_cat -> elements().count()   != 0) return(true);
-	
-	// la categorie d'integration doit exister
-	ElementsCategory *integ_cat = integrationCategory();
-	if (!integ_cat) return(true);
-	
-	// la categorie d'integration doit avoir les noms par defaut
-	if (integ_cat -> categoryNames() != namesListForIntegrationCategory()) {
-		return(true);
-	}
-	
-	// the integration category must be empty
-	if (integ_cat -> categories().count()) return(true);
-	if (integ_cat -> elements().count()) return(true);
-	
-	return(false);
-}
-
-/**
 	@return the project-wide properties made available to child diagrams.
 */
 DiagramContext QETProject::projectProperties() {
@@ -1493,7 +1407,6 @@ bool QETProject::projectWasModified() {
 
 	if ( projectOptionsWereModified()    ||
 		 !undo_stack_ -> isClean()       ||
-		 embeddedCollectionWasModified() ||
 		 titleblocks_.templates().count() )
 		return(true);
 	
