@@ -131,6 +131,7 @@ class Element : public QetGraphicsItem {
 		DiagramContext  kindInformations       () const             {return kind_informations_;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
+		QString assignVariables (QString, Element *);
 
 	//ATTRIBUTES
 	protected:

@@ -987,11 +987,3 @@ ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
 	}
 	return NULL;
 }
-
-QString CustomElement::assignVariables(QString label, Element *elmt){
-	label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
-	label.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
-	label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
-	label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
-	return label;
-}

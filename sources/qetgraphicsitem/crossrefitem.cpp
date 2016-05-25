@@ -535,7 +535,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
  */
 void CrossRefItem::AddExtraInfo(QPainter &painter)
 {
-	QString comment = m_element -> elementInformations()["comment"].toString();
+	QString comment = m_element -> assignVariables(m_element -> elementInformations()["comment"].toString(), m_element);
 	bool must_show  = m_element -> elementInformations().keyMustShow("comment");
 
 	if (!comment.isEmpty() && must_show)

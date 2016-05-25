@@ -56,7 +56,7 @@ class nomenclature
 	
 	private:
 	QString getNomenclature ();
-	QString getElementInfo  (const Element *elmt);
+	QString getElementInfo  (Element *elmt);
 	
 };
 

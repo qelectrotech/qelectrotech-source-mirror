@@ -121,7 +121,7 @@ QString nomenclature::getNomenclature()
  * @param elmt : the element to getinfo
  * @return : QString with information about element formated to csv file
  */
-QString nomenclature::getElementInfo(const Element *elmt) {
+QString nomenclature::getElementInfo(Element *elmt) {
 	QString info;
 
 	Diagram *diagram = elmt -> diagram();
@@ -132,16 +132,15 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += diagram -> border_and_titleblock.folio() + ";";
 	info += elmt -> name() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
-	info += elmt_info["label"].toString() + ";";
-	info += elmt_info["designation"].toString() + ";";
-	info += elmt_info["comment"].toString() + ";";
-	info += elmt_info["manufacturer"].toString() + ";";
-	info += elmt_info["manufacturer-reference"].toString() + ";";
-	info += elmt_info["auxiliary1"].toString() + ";";
-	info += elmt_info["auxiliary2"].toString() + ";";
-	info += elmt_info["machine-manufacturer-reference"].toString() + ";";
-	info += elmt_info["location"].toString() + ";";
-	info += elmt_info["function"].toString() + "\n";
-
+	info += elmt->assignVariables(elmt_info["label"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["designation"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["comment"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["manufacturer"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["manufacturer-reference"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["auxiliary1"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["auxiliary2"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["machine-manufacturer-reference"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["location"].toString(), elmt) + ";";
+	info += elmt->assignVariables(elmt_info["function"].toString(), elmt) + "\n";
 	return info;
 }

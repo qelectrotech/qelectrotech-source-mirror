@@ -635,3 +635,17 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	m_mouse_over = false;
 	update();
 }
+
+/**
+ * @brief Element::assignVariables()
+ * Assign variables values
+ * @param label, string to be changed
+ * @param elmt, element to extract variables values
+ */
+QString Element::assignVariables(QString label, Element *elmt){
+	label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
+	label.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
+	label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
+	label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
+	return label;
+}
