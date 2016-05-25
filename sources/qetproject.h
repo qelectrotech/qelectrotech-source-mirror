@@ -30,7 +30,6 @@ class Diagram;
 class ElementsLocation;
 class QETResult;
 class TitleBlockTemplate;
-class XmlElementsCollection;
 class MoveTitleBlockTemplatesHandler;
 class NumerotationContext;
 class QUndoStack;

@@ -96,7 +96,6 @@ class ElementsPanelWidget : public QWidget {
 	void deleteElement();
 	void updateButtons();
 	void setElementsActionEnabled(bool);
-	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
 	void handleCollectionRequest(const ElementsLocation &);
 	void collectionsRead();

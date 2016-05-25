@@ -17,7 +17,6 @@
 */
 #include "elementspanelwidget.h"
 #include "newelementwizard.h"
-#include "elementscategorieswidget.h"
 #include "elementscollectionitem.h"
 #include "qetelementeditor.h"
 #include "elementdeleter.h"
@@ -395,9 +394,6 @@ void ElementsPanelWidget::newCategory() {
 		if (new_category_dialog.exec() == QDialog::Accepted) {
 			elements_panel -> reload();
 		}
-	} else {
-		launchCategoriesManager();
-		elements_panel -> reload();
 	}
 }
 
@@ -470,31 +466,6 @@ void ElementsPanelWidget::setElementsActionEnabled(bool enable) {
 	new_element       -> setEnabled(enable);
 	edit_element      -> setEnabled(enable);
 	delete_element    -> setEnabled(enable);
-}
-
-/**
-	Lance le gestionnaire de categories. Il s'agit d'un petit dialogue listant
-	les categories accessibles en ecriture et permettant de les editer, de les
-	supprimer et d'en creer de nouvelles.
-*/
-int ElementsPanelWidget::launchCategoriesManager() {
-	QDialog new_category_dialog(this);
-	new_category_dialog.setMinimumSize(480, 280);
-	new_category_dialog.setWindowTitle(tr("Gestionnaire de catégories", "window title"));
-	
-	QVBoxLayout *layout = new QVBoxLayout(&new_category_dialog);
-	QLabel *explication = new QLabel(tr("Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories."));
-	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
-	explication -> setWordWrap(true);
-	layout -> addWidget(explication);
-	
-	layout -> addWidget(new ElementsCategoriesWidget());
-	
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
-	connect(buttons, SIGNAL(rejected()), &new_category_dialog, SLOT(accept()));
-	layout -> addWidget(buttons);
-	
-	return(new_category_dialog.exec());
 }
 
 /**
