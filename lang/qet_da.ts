@@ -2197,9 +2197,9 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Tilføj eller fjern variabel nummerering med - og + knapperne.
 -Variabel nummerering omfatter: type, værdi og forøgelse.
 
--Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
--&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
-Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+-Typer &quot;Nummer format 1&quot;, &quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis tal angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
 
 -Type &quot;Tekst&quot; er en fast tekst.
 Feltet &quot;Forøg&quot; anvendes ikke.</translation>
@@ -2783,7 +2783,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
-        <translation>Krydsreference (underordnet)</translation>
+        <translation>Referencekors (underordnet)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
@@ -2848,7 +2848,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
         <source>Référence croisée (maitre)</source>
-        <translation>Krydsreference (overordnet)</translation>
+        <translation>Referencekors (overordnet)</translation>
     </message>
 </context>
 <context>
@@ -2913,7 +2913,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="81"/>
         <source>Références croisées</source>
-        <translation>Krydsreference</translation>
+        <translation>Referencekors</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="180"/>
@@ -6393,7 +6393,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation>Rediger krydsreference</translation>
+        <translation>Rediger referencekors</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
@@ -6752,9 +6752,9 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Tilføj eller fjern variabel nummerering med - og + knapperne.
 -Variabel nummerering omfatter: type, værdi og forøgelse.
 
--Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
--&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
-Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+-Typer &quot;Nummer format 1&quot;, &quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis tal angivet i feltet har cifre end den valgte type, vil en eller to 0 tilføjes.
 
 -Type &quot;Tekst&quot; er en fast tekst.
 Feltet &quot;Forøg&quot; anvendes ikke.</translation>
@@ -6790,9 +6790,9 @@ Les autres champs ne sont pas utilisés.</source>
 -Tilføj eller fjern variabel nummerering med - og + knapperne.
 -Variabel nummerering omfatter: type, værdi og forøgelse.
 
--Typer &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hver nyt ark med værdien af &quot;Forøg&quot;.
--&quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
-Hvis ciffer angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
+-Typer &quot;Nummer format 1&quot;, &quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; repræsenterer en numerisk type defineret i &quot;Værdi&quot; feltet, som øges med hvert nyt ark med værdien af &quot;Forøg&quot;.
+-&quot;Nummer format 01&quot; og &quot;Nummer format 001&quot; vises i diagrammet med henholdsvis to og tre cifre.
+Hvis tal angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
 
 -Type &quot;Tekst&quot; er en fast tekst.
 Feltet &quot;Forøg&quot; anvendes ikke.
@@ -8227,7 +8227,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation>Krydsreference etiket</translation>
+        <translation>Referencekors etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
