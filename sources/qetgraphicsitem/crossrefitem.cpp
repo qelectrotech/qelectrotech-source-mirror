@@ -479,7 +479,7 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 			}
 		}
 
-		painter.drawText(20, offset, 30, 10, Qt::AlignRight | Qt::AlignVCenter, str);
+		painter.drawText(30, offset, 50, 10, Qt::AlignLeft | Qt::AlignVCenter, str);
 		++m_drawed_contacts;
 	}
 
