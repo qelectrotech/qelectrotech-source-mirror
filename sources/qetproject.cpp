@@ -18,13 +18,9 @@
 #include "qetproject.h"
 #include "diagram.h"
 #include "diagramfoliolist.h"
-#include "elementdefinition.h"
-#include "xmlelementscollection.h"
-#include "elementscategory.h"
 #include "qetapp.h"
 #include "qetresult.h"
 #include "movetemplateshandler.h"
-#include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
@@ -38,8 +34,6 @@
 
 #include <QStandardPaths>
 
-QString QETProject::integration_category_name = "import";
-
 /**
 	Constructeur par defaut - cree un schema contenant une collection
 	d'elements vide et un schema vide.
@@ -48,7 +42,6 @@ QString QETProject::integration_category_name = "import";
 */
 QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject              (parent),
-	collection_          (0     ),
 	project_qet_version_ (-1    ),
 	modified_            (false ),
 	read_only_           (false ),
@@ -63,12 +56,6 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	for (int i = 0 ; i < diagrams_count ; ++ i) {
 		addNewDiagram();
 	}
-
-	// une collection d'elements vide
-	collection_ = new XmlElementsCollection();
-	collection_ -> setProtocol("embed");
-	collection_ -> setProject(this);
-	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
 
 	m_elements_collection = new XmlElementCollection(this);
 
@@ -86,7 +73,6 @@ QETProject::QETProject(int diagrams, QObject *parent) :
  */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
-	collection_          (0     ),
 	project_qet_version_ (-1    ),
 	modified_            (false ),
 	read_only_           (false ),
@@ -134,7 +120,6 @@ QETProject::QETProject(const QString &path, QObject *parent) :
  */
 QETProject::~QETProject()
 {
-	if (collection_) delete collection_;
 	qDeleteAll(diagrams_);
 	delete undo_stack_;
 }
@@ -1129,21 +1114,14 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 			//Only the first found collection is take
 		collection_root = collection_roots.at(0).toElement();
 	}
-	
-	if (collection_root.isNull()) //Make an empty collection
-	{
-		collection_ = new XmlElementsCollection();
+		//Make an empty collection
+	if (collection_root.isNull())  {
 		m_elements_collection = new XmlElementCollection(this);
 	}
-	else //Read the collection
-	{
-		collection_ = new XmlElementsCollection(collection_root);
+		//Read the collection
+	else {
 		m_elements_collection = new XmlElementCollection(collection_root, this);
 	}
-
-	collection_ -> setProtocol("embed");
-	collection_ -> setProject(this);
-	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
 }
 
 /**
@@ -1473,24 +1451,4 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 	emit(diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name));
-}
-
-/**
-	Copie l'element integ_elmt dans la categorie target_cat en utilisant le
-	gestionnaire handler ; en cas d'erreur, error_message est rempli.
-	@return l'emplacement de l'element cree
-*/
-ElementsLocation QETProject::copyElementWithHandler(
-	ElementDefinition *integ_elmt,
-	ElementsCategory *target_cat,
-	MoveElementsHandler *handler,
-	QString &error_message
-) {
-	ElementsCollectionItem *result_item = integ_elmt -> copy(target_cat, handler);
-	ElementDefinition *result_elmt = result_item ? result_item -> toElement() : 0;
-	if (!result_item || !result_elmt) {
-		error_message = QString(tr("Un problème s'est produit pendant la copie de l'élément %1")).arg(integ_elmt -> location().toString());
-		return(ElementsLocation());
-	}
-	return(result_elmt -> location());
 }

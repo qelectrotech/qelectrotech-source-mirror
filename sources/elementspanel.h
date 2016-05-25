@@ -68,7 +68,6 @@ class ElementsPanel : public GenericPanel {
 	void requestForProject(QETProject *);
 	void requestForDiagram(Diagram *);
 	void requestForCollectionItem(const ElementsLocation &);
-	void requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint);
 	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void readingAboutToBegin();
 	void readingFinished();
@@ -90,7 +89,6 @@ class ElementsPanel : public GenericPanel {
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
-	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);
 	void startElementDrag(const ElementsLocation &);
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);

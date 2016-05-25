@@ -202,48 +202,6 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e)
 }
 
 /**
-	Gere le depot lors d'un drag'n drop
-	@param e QDropEvent decrivant le depot
-*/
-void ElementsPanel::dropEvent(QDropEvent *e)
-{
-		// recupere la categorie cible pour le deplacement / la copie
-	ElementsCategory *target_category = categoryForPos(e -> pos());
-	if (!target_category) {
-		e -> ignore();
-		return;
-	}
-	
-		// recupere la source (categorie ou element) pour le deplacement / la copie
-	ElementsLocation dropped_location = ElementsLocation(e -> mimeData() -> text());
-	ElementsCollectionItem *source_item = QETApp::collectionItem(dropped_location, false);
-	if (!source_item) {
-		e -> ignore();
-		return;
-	}
-	
-#ifdef ENABLE_PANEL_DND_CHECKS
-	// ne prend pas en consideration le drop d'un item sur lui-meme ou une categorie imbriquee
-	if (
-		source_item -> location() == target_category -> location() ||\
-		target_category -> isChildOf(source_item)
-	) {
-		e -> ignore();
-		return;
-	}
-	
-	// s'assure que la categorie cible est accessible en ecriture
-	if (!target_category -> isWritable()) {
-		e -> ignore();
-		return;
-	}
-#endif
-	
-	e -> accept();
-	emit(requestForMoveElements(source_item, target_category, e -> pos()));
-}
-
-/**
 	Gere le debut des drag'n drop
 	@param supportedActions Les actions supportees
 */

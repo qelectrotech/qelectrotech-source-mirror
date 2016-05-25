@@ -27,14 +27,10 @@
 #include "properties/xrefproperties.h"
 
 class Diagram;
-class ElementsCollection;
-class ElementsCategory;
-class ElementDefinition;
 class ElementsLocation;
 class QETResult;
 class TitleBlockTemplate;
 class XmlElementsCollection;
-class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
 class NumerotationContext;
 class QUndoStack;
@@ -185,7 +181,6 @@ class QETProject : public QObject
 		void writeDefaultPropertiesXml(QDomElement &);
 		void addDiagram(Diagram *);
 		NamesList namesListForIntegrationCategory();
-		ElementsLocation copyElementWithHandler(ElementDefinition *, ElementsCategory *, MoveElementsHandler *, QString &);
 	
 	// attributes
 	private:
@@ -195,8 +190,6 @@ class QETProject : public QObject
 	ProjectState state_;
 	/// Diagrams carried by the project
 	QList<Diagram *> diagrams_;
-	/// Embedded elements collection
-	XmlElementsCollection *collection_;
 	/// Project title
 	QString project_title_;
 	/// QElectroTech version declared in the XML document at opening time
@@ -207,8 +200,6 @@ class QETProject : public QObject
 	bool read_only_;
 	/// Filepath for which this project is considered read only
 	QString read_only_file_path_;
-	/// Name of the category used when automatically integrating elements within the embedded collection
-	static QString integration_category_name;
 	/// Default dimensions and properties for new diagrams created within the project
 	BorderProperties default_border_properties_;
 	/// Default conductor properties for new diagrams created within the project

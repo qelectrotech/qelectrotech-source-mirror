@@ -23,7 +23,6 @@
 #include "exportdialog.h"
 #include "qetapp.h"
 #include "qetelementeditor.h"
-#include "interactivemoveelementshandler.h"
 #include "borderpropertieswidget.h"
 #include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"

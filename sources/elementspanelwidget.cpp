@@ -24,7 +24,6 @@
 #include "elementscategoryeditor.h"
 #include "elementscategorydeleter.h"
 #include "qetapp.h"
-#include "interactivemoveelementshandler.h"
 #include "qetproject.h"
 #include "diagram.h"
 #include "qeticons.h"
@@ -78,9 +77,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
-	move_elements_        = new QAction(QET::Icons::IC_MoveFile,                  tr("Déplacer dans cette catégorie"), this);
-	copy_elements_        = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier dans cette catégorie"),      this);
-	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
 
 	reload            -> setShortcut(Qt::Key_F5);
 
@@ -125,8 +121,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
 	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
 	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
-	connect(move_elements_,        SIGNAL(triggered()), this,           SLOT(moveElements()));
-	connect(copy_elements_,        SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
 	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
 	
@@ -134,13 +128,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
 	connect(elements_panel,        SIGNAL(requestForDiagram(Diagram*)),                              this, SIGNAL(requestForDiagram(Diagram*)));
 	connect(elements_panel,        SIGNAL(requestForCollectionItem(const ElementsLocation &)),       this, SLOT(handleCollectionRequest(const ElementsLocation &)));
-	connect(
-		elements_panel,
-		SIGNAL(requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint)),
-		this,
-		SLOT(handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint &)),
-		Qt::QueuedConnection
-	);
 	connect(
 		elements_panel,
 		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
@@ -592,71 +579,6 @@ void ElementsPanelWidget::handleCollectionRequest(const ElementsLocation &item_l
 }
 
 /**
-	Gere le drop d'un collectionItem sur un autre.
-	Elle memorise dans les attributs de cette classe l'item source et l'item
-	destination du drag'n drop.
-	Un menu est ensuite affiche pour demander a l'utilisateur ce qu'il
-	souhaite faire (deplacer, copier ou annuler).
-	@param src Item source
-	@param dst Item cible
-	@param pos Position ou le menu contextuel a ete demande
-*/
-void ElementsPanelWidget::handleMoveElementsRequest(ElementsCollectionItem *src, ElementsCollectionItem *dst, const QPoint &pos) {
-	if (!src || !dst || !dst -> isCategory()) return;
-	
-	// memorise les items source et cible du drag'n drop
-	dnd_item_src_ = src;
-	dnd_item_dst_ = dst;
-	
-#ifdef ENABLE_PANEL_WIDGET_DND_CHECKS
-	// active ou desactive les actions selon la source et la cible
-	copy_elements_ -> setEnabled(src -> isReadable() && dst -> isWritable());
-	move_elements_ -> setEnabled(!src -> isRootCategory() && src -> isWritable() && dst -> isWritable());
-#endif
-	
-	// affiche un menu contextuel pour que l'utilisateur indique s'il souhaite
-	// effectuer un deplacement ou une copie
-	context_menu -> clear();
-	context_menu -> addAction(copy_elements_);
-	context_menu -> addAction(move_elements_);
-	context_menu -> addSeparator();
-	context_menu -> addAction(cancel_elements_);
-	
-	context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));
-}
-
-/**
-	Cette classe memorise l'item source et l'item destination du dernier drag'n
-	drop. Cette methode effectue le deplacement de l'item source memorise dans
-	l'item destination memorise.
-	@see handleMoveElementsRequest
-*/
-void ElementsPanelWidget::moveElements() {
-	moveElements(dnd_item_src_, dnd_item_dst_);
-}
-
-/**
-	Deplace l'item src dans l'item dst
-*/
-void ElementsPanelWidget::moveElements(ElementsCollectionItem *src, ElementsCollectionItem *dst) {
-	InteractiveMoveElementsHandler *interactive_handler = new InteractiveMoveElementsHandler();
-	src -> move(dst -> toCategory(), interactive_handler);
-	delete interactive_handler;
-	elements_panel -> reload(true);
-}
-
-/**
-	Cette classe memorise l'item source et l'item destination du dernier drag'n
-	drop. Cette methode effectue la copie de l'item source memorise dans l'item
-	destination memorise.
-	@see handleMoveElementsRequest
-*/
-void ElementsPanelWidget::copyElements() {
-	copyElements(dnd_item_src_, dnd_item_dst_);
-	elements_panel -> reload(true);
-}
-
-/**
 	Reflects the fact that collections are being read (i.e from filesystem) in
 	the progress bar.
 */
@@ -715,15 +637,6 @@ void ElementsPanelWidget::filterEdited(const QString &next_text) {
 		elements_panel -> filter(next_text, QET::RegularFilter);
 	}
 	previous_filter_ = next_text;
-}
-
-/**
-	Copie l'item src dans l'item dst
-*/
-void ElementsPanelWidget::copyElements(ElementsCollectionItem *src, ElementsCollectionItem *dst) {
-	InteractiveMoveElementsHandler *interactive_handler = new InteractiveMoveElementsHandler();
-	src -> copy(dst -> toCategory(), interactive_handler, true);
-	delete interactive_handler;
 }
 
 /**

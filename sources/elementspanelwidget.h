@@ -17,8 +17,9 @@
 */
 #ifndef ELEMENTS_PANEL_WIDGET_H
 #define ELEMENTS_PANEL_WIDGET_H
-#include <QtWidgets>
+
 #include "elementspanel.h"
+
 /**
 	This class embeds an elements panel under a toolbar providing various actions
 	to manage elements.
@@ -46,10 +47,8 @@ class ElementsPanelWidget : public QWidget {
 	QAction *new_element, *edit_element, *delete_element, *open_element;
 	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_top, *prj_move_diagram_down, *prj_move_diagram_upx10, *prj_move_diagram_downx10;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
-	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
 	QLineEdit *filter_textfield;
-	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
 	QProgressBar *progress_bar_;
 	
 	// methods
@@ -100,11 +99,6 @@ class ElementsPanelWidget : public QWidget {
 	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
 	void handleCollectionRequest(const ElementsLocation &);
-	void handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint & = QPoint());
-	void moveElements();
-	void moveElements(ElementsCollectionItem *, ElementsCollectionItem *);
-	void copyElements();
-	void copyElements(ElementsCollectionItem *, ElementsCollectionItem *);
 	void collectionsRead();
 	void collectionsReadFinished();
 	void updateProgressBar(int, int);
