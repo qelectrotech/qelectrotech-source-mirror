@@ -306,7 +306,7 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation>Numerierung bearbeiten</translation>
+        <translation>Nummerierung bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -3201,7 +3201,7 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
         <location filename="../sources/projectconfigpages.cpp" line="268"/>
         <location filename="../sources/projectconfigpages.cpp" line="284"/>
         <source>Supprimer la numérotation</source>
-        <translation>Numerierung löschen</translation>
+        <translation>Nummerierung löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
@@ -8179,27 +8179,27 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Querverweistexte</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Master</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Slave</translation>
+        <translation>Slave</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8208,7 +8208,12 @@ Maximale Länge: %2px
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können ihr eigenes Format für die Querverweistexte definieren.
+Folgende Variablen stehen zur Verfügung:
+%f: die Foliennummer
+%F: der Folienname
+%l: die Zeilennummer
+%c: die Spaltennummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
