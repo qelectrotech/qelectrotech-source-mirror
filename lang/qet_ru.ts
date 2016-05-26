@@ -993,7 +993,7 @@
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны выбрать элемент или именованную категорию для элемента.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -3247,17 +3247,17 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Проводник</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished">Страница</translation>
+        <translation>Страница</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Автонумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6767,7 +6767,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Автонумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6784,7 +6784,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Здесь вы можете задать как будут нумероваться страницы.
+-нумерация содержит минимум переменных.
+-вы можете добавить или удалить переменные из нумерации при помощи кнопок + и -.
+-регулировки переменных: тип, значение и приращение.
+
+-типы &quot;Нумерация 1&quot;, &quot;Цифровой 01&quot; и &quot;Цифровой 001&quot; представляют собой типы нумерации, задаваемые в поле &quot;Значение&quot;, которое увеличивается с каждой новой страницей на величину &quot;Приращения&quot;.
+- &quot;Цифровой 01&quot; и &quot;Цифровой 001&quot; представлены на странице минимум двумя или тремя цифрами соответственно.
+Если цифра, заданная в поле Значение имеет меньше знаков, чем выбранный тип, то она будет дополнена спереди необходимым количеством 0.
+
+-Тип &quot;Текст&quot; - фиксированный текст.
+Поле &quot;Приращение&quot; не используется.</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
@@ -8247,7 +8257,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
@@ -8257,7 +8267,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
