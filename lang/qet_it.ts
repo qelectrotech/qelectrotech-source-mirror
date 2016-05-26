@@ -163,7 +163,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in brasiliano</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -948,28 +948,28 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Etichetta</translation>
+        <translation>Etichetta</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della nuova cartella</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Nome del nuovo elemento</translation>
+        <translation>Nome del nuovo elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>È necessario selezionare un elemento o una categoria con un nome per l&apos;elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1413,13 +1413,13 @@ Le modifiche saranno definitive.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;oggetto non è una categaria</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;oggetto richiesto non è una catogoria. Abbandono.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2129,53 +2129,53 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzioni per le numerazione automatica</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuove pagine</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>A</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>Da</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Selezione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Creazione di nuove pagine</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Autonumerazione delle pagine selezionate</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerazione automatica della pagina:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumerazione pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2192,7 +2192,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Qui è possibile definire il modo in cui verranno numerate le nuove pagine.
+-La numerazione automatica è composta da almeno una variabile.
+-È possibile aggiungere o rimuovere variabili dalla composizione attraverso i pulsanti - e +.
+-Una variabile di numerazione comprende: un tipo, un valore ed un incremento.
+
+-il tipo &quot;1 Cifra (1)&quot;, &quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot; rappresenta un tipo numerico definito nel campo &quot;Valore&quot;, che viene incrementato ad ogni nuova pagina del valore del campo &quot;incremento&quot;.
+- &quot;2 Cifre&quot; e &quot;3 Cifre&quot; sono rispettivamente rappresentate nello schema da due e tre cifre.
+Se il numero specificato nel valore del campo ha meno cifre del tipo scelto, sarà preceduto da uno o due 0 per rispettare il suo tipo.
+
+-Il Tipo &quot;Testo&quot;, è un testo fisso.
+Il campo &quot;Incremento&quot; non è utilizzato.</translation>
     </message>
 </context>
 <context>
@@ -2282,7 +2292,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Brasiliano</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2484,32 +2494,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Integrazione di un elemento</translation>
+        <translation>Integrazione di un elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">L&apos;elemento è già stato integrato nel progetto. Tuttavia, la versione che si vuole inserire sembra differente. Cosa fare ?</translation>
+        <translation>L&apos;elemento è già stato integrato nel progetto. Tuttavia, la versione che si vuole inserire sembra differente. Cosa fare ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizzare l&apos;elemento già integrato</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Inserire il nuovo elemento</translation>
+        <translation>Integrare l&apos;elemento memorizzato</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare l&apos;elemento già integrato</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Facendo coesistere i due elementi</translation>
+        <translation>Fare coesistere i due elementi</translation>
     </message>
 </context>
 <context>
@@ -3006,7 +3016,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Unelemento con lo stesso nome esiste già</translation>
     </message>
 </context>
 <context>
@@ -3044,7 +3054,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
 </context>
 <context>
@@ -3203,17 +3213,17 @@ Scegliere le proprietà da applicare al nuovo potenziale.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Conduttore</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto Numerazione Pagina</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6440,7 +6450,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta della pagina</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6652,7 +6662,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>È possibile definire un&apos;etichetta personalizzata per i riferimenti di pagina.
+Creare il proprio testo con l&apos;uso delle seguenti variabili:
+%f : numero di pagina
+%F : etichetta della pagina
+%l : riga
+%c : colonna</translation>
     </message>
 </context>
 <context>
@@ -6706,7 +6721,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumerazione Pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6723,13 +6738,23 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Qui è possibile definire il modo in cui verranno numerate le nuove pagine.
+-La numerazione automatica è composta da almeno una variabile.
+-È possibile aggiungere o rimuovere variabili dalla composizione attraverso i pulsanti - e +.
+-Una variabile di numerazione comprende: un tipo, un valore ed un incremento.
+
+-il tipo &quot;1 Cifra (1)&quot;, &quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot; rappresenta un tipo numerico definito nel campo &quot;Valore&quot;, che viene incrementato ad ogni nuova pagina del valore del campo &quot;incremento&quot;.
+- &quot;2 Cifre&quot; e &quot;3 Cifre&quot; sono rispettivamente rappresentate nello schema da due e tre cifre.
+Se il numero specificato nel valore del campo ha meno cifre del tipo scelto, sarà preceduto da uno o due 0 per rispettare il suo tipo.
+
+-Il Tipo &quot;Testo&quot;, è un testo fisso.
+Il campo &quot;Incremento&quot; non è utilizzato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumerazione Conduttori</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -6751,7 +6776,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Qui è possibile definire il modo in cui verranno numerati i nuovi conduttori.
+-La numerazione automatica è composta da almeno una variabile.
+-È possibile aggiungere o rimuovere variabili dalla composizione attraverso i pulsanti - e +.
+-Una variabile di numerazione comprende: un tipo, un valore ed un incremento.
+
+-il tipo &quot;1 Cifra (1)&quot;, &quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot; rappresenta un tipo numerico definito nel campo &quot;Valore&quot;, che viene incrementato ad ogni nuova pagina del valore del campo &quot;incremento&quot;.
+- &quot;2 Cifre&quot; e &quot;3 Cifre&quot; sono rispettivamente rappresentate nello schema da due e tre cifre.
+Se il numero specificato nel valore del campo ha meno cifre del tipo scelto, sarà preceduto da uno o due 0 per rispettare il suo tipo.
+
+-Il Tipo &quot;Testo&quot;, è un testo fisso.
+Il campo &quot;Incremento&quot; non è utilizzato.
+
+-Il Tipo &quot;N° pagina&quot; rappresenta il n° della pagina corrente.
+Gli altri campi non sono utilizzati
+
+- Il tipo &quot;Pagina&quot; rappresenta il nome della pagina corrente.
+Gli altri campi non sono utilizzati.</translation>
     </message>
 </context>
 <context>
@@ -7520,7 +7561,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Creare una numerazione automatica</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7553,7 +7594,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Le seguenti variabili sono utilizzate nel campo Pagina:
+- %id : nemero di pagina nel progetto 
+- %total : numero di pagine totali nel progetto 
+- %autonum : Numerazione automatica di pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7643,7 +7687,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pag. numero:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8171,27 +8215,27 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta dei riferimenti incrociati</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Master</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Slave</translation>
+        <translation>Slave</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8200,7 +8244,11 @@ Lunghezza massima : %2px</translation>
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Creare il proprio testo con l&apos;aiuto delle seguenti variabili:
+%f : numero di pagina
+%F : etichetta della pagina
+%l : riga
+%c : colonna</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
