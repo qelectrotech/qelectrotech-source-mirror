@@ -16,12 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
-#include "newelementwizard.h"
 #include "elementscollectionitem.h"
 #include "qetelementeditor.h"
-#include "elementdeleter.h"
 #include "elementscategoryeditor.h"
-#include "elementscategorydeleter.h"
 #include "qetapp.h"
 #include "qetproject.h"
 #include "diagram.h"
@@ -54,14 +51,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	open_directory        = new QAction(QET::Icons::DocumentOpen,              tr("Ouvrir le dossier correspondant"),     this);
 	copy_path             = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier le chemin"),                    this);
 	reload                = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
-	new_category          = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle catégorie"),               this);
-	edit_category         = new QAction(QET::Icons::FolderEdit,                tr("Éditer la catégorie"),           this);
-	delete_category       = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la catégorie"),           this);
-	delete_collection     = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
-	new_element           = new QAction(QET::Icons::ElementNew,                tr("Nouvel élément"),                this);
-	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("Éditer l'élément"),           this);
-	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'élément"),           this);
-	open_element          = new QAction(QET::Icons::DocumentImport,            tr("Ouvrir un fichier élément"),     this);
 	prj_activate          = new QAction(QET::Icons::ProjectFile,               tr("Basculer vers ce projet"),             this);
 	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
 	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du projet"),          this);
@@ -98,14 +87,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
 	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
 	connect(reload,                SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
-	connect(new_category,          SIGNAL(triggered()), this,           SLOT(newCategory()));
-	connect(edit_category,         SIGNAL(triggered()), this,           SLOT(editCategory()));
-	connect(delete_category,       SIGNAL(triggered()), this,           SLOT(deleteCategory()));
-	connect(delete_collection,     SIGNAL(triggered()), this,           SLOT(deleteCategory()));
-	connect(new_element,           SIGNAL(triggered()), this,           SLOT(newElement()));
-	connect(edit_element,          SIGNAL(triggered()), this,           SLOT(editElement()));
-	connect(delete_element,        SIGNAL(triggered()), this,           SLOT(deleteElement()));
-	connect(open_element,          SIGNAL(triggered()), this,           SLOT(openElementFromFile()));
 	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
 	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
 	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
@@ -138,26 +119,10 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(elements_panel, SIGNAL(readingFinished()),            this, SLOT(collectionsReadFinished()));
 	connect(elements_panel, SIGNAL(loadingFinished()),            this, SLOT(loadingFinished()));
 	
-	// initialise la barre d'outils
-	toolbar = new QToolBar(this);
-	toolbar -> setMovable(false);
-	toolbar -> addAction(reload);
-	toolbar -> addSeparator();
-	toolbar -> addAction(new_category);
-	toolbar -> addAction(edit_category);
-	toolbar -> addAction(delete_category);
-	toolbar -> addSeparator();
-	toolbar -> addAction(new_element);
-	toolbar -> addAction(edit_element);
-	toolbar -> addAction(delete_element);
-	toolbar -> addSeparator();
-	toolbar -> addAction(open_element);
-	
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout -> setMargin(0);
 	vlayout -> setSpacing(0);
-	vlayout -> addWidget(toolbar);
 	vlayout -> addWidget(filter_textfield);
 	vlayout -> addWidget(elements_panel);
 	vlayout -> addWidget(progress_bar_);
@@ -360,67 +325,15 @@ void ElementsPanelWidget::removeTitleBlockTemplate() {
 }
 
 /**
-	Appelle l'assistant de creation de nouvel element
-*/
-void ElementsPanelWidget::newElement() {	
-	NewElementWizard new_element_wizard(this);
-	new_element_wizard.exec();
-}
-
-/**
-	Open an element from a file freely chosen by the user.
-*/
-void ElementsPanelWidget::openElementFromFile() {
-	QString fileName = QETElementEditor::getOpenElementFileName(this);
-	
-	// Ouverture de l'element dans l'editeur pour pouvoir ensuite l'enregistrer dans la categorie voulue
-	if (!fileName.isEmpty()) {
-		QETApp::instance() -> openElementFiles(QStringList() << fileName);
-	}
-}
-
-/**
-	Si une categorie accessible en ecriture est selectionnee, cette methode
-	affiche directement un formulaire de creation de categorie en utilisant la
-	selection comme categorie parente.
-	Sinon, elle affiche un gestionnaire de categories, permettant ainsi a
-	l'utilisateur de choisir une categorie parente.
-*/
-void ElementsPanelWidget::newCategory() {
-	ElementsCategory *selected_category = writableSelectedCategory();
-	
-	if (selected_category) {
-		ElementsCategoryEditor new_category_dialog(selected_category -> location(), false, this);
-		if (new_category_dialog.exec() == QDialog::Accepted) {
-			elements_panel -> reload();
-		}
-	}
-}
-
-/**
 	Met a jour les boutons afin d'assurer la coherence de l'interface
 */
 void ElementsPanelWidget::updateButtons() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	int current_type = elements_panel -> currentItemType();
 	
-	bool collection_selected = current_type == QET::ElementsCollection;
-	bool category_selected   = current_type & QET::ElementsContainer;
-	bool element_selected    = current_type == QET::Element;
-	
-	if (collection_selected || category_selected || element_selected) {
-		bool element_writable = elements_panel -> selectedItemIsWritable();
-		delete_collection -> setEnabled(collection_selected && element_writable);
-		new_category      -> setEnabled(category_selected && element_writable);
-		edit_category     -> setEnabled(category_selected && !collection_selected);
-		delete_category   -> setEnabled(category_selected && element_writable);
-		new_element       -> setEnabled(category_selected && element_writable);
-		edit_element      -> setEnabled(element_selected);
-		delete_element    -> setEnabled(element_selected && element_writable);
-	} else if (current_type == QET::Project) {
+	if (current_type == QET::Project) {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
-		setElementsActionEnabled(false);
 	} else if (current_type == QET::Diagram) {
 		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
 		QETProject *selected_diagram_project = selected_diagram -> project();
@@ -435,13 +348,11 @@ void ElementsPanelWidget::updateButtons() {
 		prj_move_diagram_top   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_upx10   -> setEnabled(is_writable && diagram_position > 10);
 		prj_move_diagram_downx10 -> setEnabled(is_writable && diagram_position < project_diagrams_count - 10);
-		setElementsActionEnabled(false);
 	} else if (current_type == QET::TitleBlockTemplatesCollection) {
 		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(current_item);
 		tbt_add    -> setEnabled(!location.isReadOnly());
 		tbt_edit   -> setEnabled(false); // would not make sense
 		tbt_remove -> setEnabled(false); // would not make sense
-		setElementsActionEnabled(false);
 	} else if (current_type == QET::TitleBlockTemplate) {
 		QTreeWidgetItem *item = elements_panel -> currentItem();
 		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(item);
@@ -449,23 +360,7 @@ void ElementsPanelWidget::updateButtons() {
 		tbt_edit   -> setEnabled(true); // the tbt editor has a read-only mode
 		// deleting a tbt requires its parent collection to be writable
 		tbt_remove -> setEnabled(location.parentCollection() && !(location.parentCollection() -> isReadOnly()));
-		setElementsActionEnabled(false);
 	}
-}
-
-/**
-	Enable or disable elements-related actions (i.e. new/edit/delete
-	categories/elements).
-	@param bool true to enable actions, false to disable them
-*/
-void ElementsPanelWidget::setElementsActionEnabled(bool enable) {
-	delete_collection -> setEnabled(enable);
-	new_category      -> setEnabled(enable);
-	edit_category     -> setEnabled(enable);
-	delete_category   -> setEnabled(enable);
-	new_element       -> setEnabled(enable);
-	edit_element      -> setEnabled(enable);
-	delete_element    -> setEnabled(enable);
 }
 
 /**
@@ -479,6 +374,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	
 	updateButtons();
 	context_menu -> clear();
+	context_menu->addAction(reload);
 	
 	QString dir_path = elements_panel -> dirPathForItem(item);
 	if (!dir_path.isEmpty()) {
@@ -488,21 +384,6 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	}
 	
 	switch(item -> type()) {
-		case QET::ElementsCategory:
-			context_menu -> addAction(new_category);
-			context_menu -> addAction(edit_category);
-			context_menu -> addAction(delete_category);
-			context_menu -> addAction(new_element);
-			break;
-		case QET::Element:
-			context_menu -> addAction(edit_element);
-			context_menu -> addAction(delete_element);
-			break;
-		case QET::ElementsCollection:
-			context_menu -> addAction(new_category);
-			context_menu -> addAction(delete_collection);
-			context_menu -> addAction(new_element);
-			break;
 		case QET::Project:
 			context_menu -> addAction(prj_activate);
 			context_menu -> addAction(prj_edit_prop);
@@ -611,52 +492,6 @@ void ElementsPanelWidget::filterEdited(const QString &next_text) {
 }
 
 /**
-	Edite la categorie selectionnee
-*/
-void ElementsPanelWidget::editCategory() {
-	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
-		if (selected_item -> isCategory()) {
-			launchCategoryEditor(selected_item -> location());
-		}
-	}
-}
-
-/**
-	Edite l'element selectionne
-*/
-void ElementsPanelWidget::editElement() {
-	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
-		if (selected_item -> isElement()) {
-			launchElementEditor(selected_item -> location());
-		}
-	}
-}
-
-/**
-	Supprime la categorie selectionnee
-*/
-void ElementsPanelWidget::deleteCategory() {
-	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
-		if (selected_item -> isCategory() || selected_item -> isCollection()) {
-			ElementsCategoryDeleter cat_deleter(selected_item -> location(), this);
-			if (cat_deleter.exec()) elements_panel -> reload(true);
-		}
-	}
-}
-
-/**
-	Supprime l'element selectionne
-*/
-void ElementsPanelWidget::deleteElement() {
-	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
-		if (selected_item -> isElement()) {
-			ElementDeleter elmt_deleter(selected_item -> location(), this);
-			if (elmt_deleter.exec()) elements_panel -> reload(true);
-		}
-	}
-}
-
-/**
 	Treat key press event inside elements panel widget
 */
 void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
@@ -686,27 +521,4 @@ void ElementsPanelWidget::launchCategoryEditor(const ElementsLocation &location)
 	if (ece.exec() == QDialog::Accepted) {
 		elements_panel -> reload();
 	}
-}
-
-/**
-	@return la categorie selectionnee s'il y en a une et que celle-ci est
-	accessible en ecriture ; sinon retourne 0
-	@see ElementsPanel::categoryForItem(QTreeWidgetItem *)
-*/
-ElementsCategory *ElementsPanelWidget::writableSelectedCategory() {
-	// recupere l'element selectionne
-	QTreeWidgetItem *selected_qtwi = elements_panel -> currentItem();
-	if (!selected_qtwi) return(0);
-	
-	// l'element selectionne doit pouvoir correspondre a une categorie
-	if (!(selected_qtwi -> type() & QET::ElementsContainer)) return(0);
-	ElementsLocation category_location = elements_panel -> elementLocationForItem(selected_qtwi);
-	ElementsCollectionItem *category = QETApp::collectionItem(category_location, false);
-	ElementsCategory *selected_category = category -> toCategory();
-	if (!selected_category) return(0);
-	
-	// la categorie doit etre accessible en ecriture
-	if (!selected_category -> isWritable()) return(0);
-	
-	return(selected_category);
 }

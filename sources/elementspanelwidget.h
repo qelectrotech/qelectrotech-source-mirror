@@ -39,12 +39,8 @@ class ElementsPanelWidget : public QWidget {
 	// attributes
 	private:
 	ElementsPanel *elements_panel;
-	QToolBar *toolbar;
 	QAction *open_directory, *copy_path;
 	QAction *reload;
-	QAction *new_category, *edit_category, *delete_category;
-	QAction *delete_collection;
-	QAction *new_element, *edit_element, *delete_element, *open_element;
 	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_top, *prj_move_diagram_down, *prj_move_diagram_upx10, *prj_move_diagram_downx10;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QMenu *context_menu;
@@ -87,15 +83,7 @@ class ElementsPanelWidget : public QWidget {
 	void addTitleBlockTemplate();
 	void editTitleBlockTemplate();
 	void removeTitleBlockTemplate();
-	void newCategory();
-	void newElement();
-	void openElementFromFile();
-	void editCategory();
-	void editElement();
-	void deleteCategory();
-	void deleteElement();
 	void updateButtons();
-	void setElementsActionEnabled(bool);
 	void handleContextMenu(const QPoint &);
 	void handleCollectionRequest(const ElementsLocation &);
 	void collectionsRead();
@@ -110,7 +98,6 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	void launchElementEditor(const ElementsLocation &);
 	void launchCategoryEditor(const ElementsLocation &);
-	ElementsCategory *writableSelectedCategory();
 	QString previous_filter_;
 };
 
