@@ -150,7 +150,7 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 				break;
 			}
 			else{
-				QMessageBox::information (this, tr("Conductor Autonumérotation", "title window"),
+				QMessageBox::information (this, tr("Conducteur Autonumérotation", "title window"),
 																		tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
 																		   "-Une numérotation est composée d'une variable minimum.\n"
 																		   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
