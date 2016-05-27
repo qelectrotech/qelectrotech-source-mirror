@@ -17,12 +17,20 @@
 */
 #ifndef QET_APP_H
 #define QET_APP_H
-#include "qetsingleapplication.h"
+
 #include <QTranslator>
-#include <QtWidgets>
+#include <QSystemTrayIcon>
+#include <QPalette>
+
+#include "qetsingleapplication.h"
 #include "elementslocation.h"
 #include "templatelocation.h"
 #include "qetarguments.h"
+
+class QSplashScreen;
+class QMenu;
+class QAction;
+class QMainWindow;
 
 #define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
 #define QETAPP_CUSTOM_TBT_PROTOCOL "customtbt"

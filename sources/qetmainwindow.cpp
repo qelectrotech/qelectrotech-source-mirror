@@ -15,6 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QAction>
+#include <QWhatsThis>
+#include <QMenu>
+#include <QMenuBar>
+#include <QDragEnterEvent>
+
 #include "qetmainwindow.h"
 #include "qeticons.h"
 #include "qetapp.h"
