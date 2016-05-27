@@ -19,14 +19,9 @@
 #include <QTreeWidgetItem>
 #include "qetproject.h"
 #include "diagram.h"
-#include "elementscollection.h"
-#include "elementscategory.h"
-#include "elementdefinition.h"
 #include "titleblock/templatescollection.h"
 #include "titleblock/templatelocation.h"
-#include "elementslocation.h"
 #include "qeticons.h"
-#include "elementscollectioncache.h"
 #include "qetapp.h"
 
 /**
@@ -35,7 +30,6 @@
 */
 GenericPanel::GenericPanel(QWidget *parent) :
 	QTreeWidget(parent),
-	cache_(0),
 	first_activation_(true)
 {
 	header() -> hide();
@@ -46,28 +40,6 @@ GenericPanel::GenericPanel(QWidget *parent) :
 	Destructor
 */
 GenericPanel::~GenericPanel() {
-}
-
-/**
-	@return the elements cache currently used, or 0 if none has been set.
-*/
-ElementsCollectionCache *GenericPanel::elementsCache() {
-	return(cache_);
-}
-
-/**
-	@return the elements cache to be used to render elements collection. If no
-	cache has been explicitly set using setElementsCache(), this method builds
-	a basic cache named "genericpanel.sqlite" in the current working directory.
-*/
-ElementsCollectionCache *GenericPanel::getElementsCache() {
-	if (!cache_) {
-		// build a default cache
-		QString cache_path = "./genericpanel.sqlite";
-		cache_ = new ElementsCollectionCache(cache_path, this);
-		cache_->setLocale(QETApp::langFromSetting());
-	}
-	return(cache_);
 }
 
 /**
@@ -110,16 +82,6 @@ TitleBlockTemplateLocation GenericPanel::templateLocationForItem(QTreeWidgetItem
 /**
 	
 */
-ElementsLocation GenericPanel::elementLocationForItem(QTreeWidgetItem *item) const {
-	if (item && item -> type() & QET::ElementsCollectionItem) {
-		return(valueForItem<ElementsLocation>(item));
-	}
-	return(ElementsLocation());
-}
-
-/**
-	
-*/
 QETProject *GenericPanel::selectedProject() const {
 	return(projectForItem(currentItem()));
 }
@@ -136,28 +98,6 @@ Diagram *GenericPanel::selectedDiagram() const {
 */
 TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const {
 	return(templateLocationForItem(currentItem()));
-}
-
-/**
-	
-*/
-ElementsLocation GenericPanel::selectedElementLocation() const {
-	return(elementLocationForItem(currentItem()));
-}
-
-/**
-	@param cache New cache to be used to render elements.
-	@param previous if non-zero, this pointer will be set to the previously used cache
-	@return true if the cache was changed, false otherwise (it may happen if the
-	provided cache is already the one being used).
-*/
-bool GenericPanel::setElementsCache(ElementsCollectionCache *cache, ElementsCollectionCache **previous) {
-	if (cache == cache_) return(false);
-	if (previous) {
-		*previous = cache_;
-	}
-	cache_ = cache;
-	return(true);
 }
 
 /**
@@ -557,301 +497,6 @@ QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtw
 }
 
 /**
-	Add an elements category to the panel.
-	@param parent_item Parent for the created QTreeWidgetItem
-	@param collection Collection to be added to the panel
-	@param options Control the creation of child items
-	@return the created QTreeWidgetItem
-*/
-QTreeWidgetItem *GenericPanel::addElementsCollection(ElementsCollection *collection, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!collection) return(0);
-	bool creation_required;
-	
-	QTreeWidgetItem *collection_qtwi = getItemForElementsCollection(collection, &creation_required);
-	updateElementsCollectionItem(collection_qtwi, collection, options, creation_required);
-	reparent(collection_qtwi, parent_item);
-	fillElementsCollectionItem(collection_qtwi, collection, options, creation_required);
-	
-	return(collection_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::getItemForElementsCollection(ElementsCollection *collection, bool *created) {
-	if (!collection) return(0);
-	
-	QTreeWidgetItem *collection_item = elements_.value(collection -> rootCategory() -> location(), 0);
-	if (collection_item) {
-		if (created) *created = false;
-		return(collection_item);
-	}
-	
-	collection_item  = makeItem(QET::ElementsCollection);
-	if (created) *created = true;
-	return(collection_item);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::updateElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
-	if (!collection) return(0);
-	
-	QString collection_title = collection -> title();
-	QIcon collection_icon    = collection -> icon();
-	
-	if (!collection_title.isEmpty()) collection_qtwi -> setText(0, collection_title);
-	if (!collection_icon.isNull())   collection_qtwi -> setIcon(0, collection_icon);
-	
-	if (freshly_created) {
-		collection_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(collection -> rootCategory() -> location()));
-		elements_.insert(collection -> rootCategory() -> location(), collection_qtwi);
-		
-		connect(
-			collection, SIGNAL(elementsCollectionChanged(ElementsCollection*)),
-			this,       SLOT(elementsCollectionChanged(ElementsCollection*))
-		);
-	}
-	
-	return(updateItem(collection_qtwi, options, freshly_created));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::fillElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
-	// use the cache from the provided collection, if any
-	bool restore_previous_cache = false;
-	ElementsCollectionCache *previous_cache = 0;
-	ElementsCollectionCache *collection_cache = collection -> cache();
-	if (collection_cache) {
-		restore_previous_cache = setElementsCache(collection_cache, &previous_cache);
-	}
-	
-	ElementsCollectionCache *cache = getElementsCache();
-	cache -> beginCollection(collection);
-	fillElementsCategoryItem(collection_qtwi, collection -> rootCategory(), options, freshly_created);
-	cache -> endCollection(collection);
-	
-	// restore the former cache
-	if (restore_previous_cache) {
-		setElementsCache(previous_cache);
-	}
-	return(fillItem(collection_qtwi, options, freshly_created));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::itemForElementsLocation(const ElementsLocation &location) {
-	return(elements_.value(location, 0));
-}
-
-/**
-	Add an elements category to the panel.
-	@param category Category to be added to the panel
-	@param parent_item Parent for the created QTreeWidgetItem
-	@param options Control the creation of child items
-	@return the created QTreeWidgetItem
-*/
-QTreeWidgetItem *GenericPanel::addElementsCategory(ElementsCategory *category, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!category) return(0);
-	bool creation_required;
-	
-	QTreeWidgetItem *category_qtwi = getItemForElementsCategory(category, &creation_required);
-	updateElementsCategoryItem(category_qtwi, category, options, creation_required);
-	reparent(category_qtwi, parent_item);
-	fillElementsCategoryItem(category_qtwi, category, options, creation_required);
-	
-	return(category_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::itemForElementsCategory(ElementsCategory *category) {
-	if (!category) return(0);
-	return(elements_.value(category -> location()));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::getItemForElementsCategory(ElementsCategory *category, bool *created) {
-	if (!category) return(0);
-	
-	QTreeWidgetItem *category_item = elements_.value(category -> location(), 0);
-	if (category_item) {
-		if (created) *created = false;
-		return(category_item);
-	}
-	
-	category_item = makeItem(QET::ElementsCategory);
-	if (created) *created = true;
-	return(category_item);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::updateElementsCategoryItem(QTreeWidgetItem *category_qtwi, ElementsCategory *category, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
-	if (!category || !category_qtwi) return(0);
-	QString category_whatsthis = tr(
-		"Ceci est une catégorie d'éléments, un simple container permettant d'organiser les collections d'éléments",
-		"\"What's this\" tip"
-	);
-	category_qtwi -> setWhatsThis(0, category_whatsthis);
-	QString category_tooltip = category -> location().toString();
-	category_qtwi -> setToolTip(0, category_tooltip);
-	category_qtwi -> setText(0, category -> name());
-	markItemAsContainer(category_qtwi);
-	
-	if (freshly_created) {
-		category_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(category -> location()));
-		elements_.insert(category -> location(), category_qtwi);
-	}
-	return(updateItem(category_qtwi, options, freshly_created));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::fillElementsCategoryItem(QTreeWidgetItem *category_qtwi, ElementsCategory *category, PanelOptions options, bool freshly_created) {
-	if (!category || !category_qtwi) return(0);
-	
-	int index = 0;
-	
-	category_qtwi -> setData(0, GenericPanel::PanelFlags, (int)options);
-	
-	if (options & AddChildElementsCategories) {
-		if (!freshly_created) {
-			QList<ElementsLocation> sub_categories;
-			foreach(ElementsCategory *sub_category, category -> categories()) {
-				sub_categories << sub_category -> location();
-			}
-			removeObsoleteItems(sub_categories, category_qtwi, QET::ElementsCategory, false);
-		}
-		
-		foreach (ElementsCategory *sub_category, category -> categories()) {
-			QTreeWidgetItem *sub_category_qtwi = addElementsCategory(sub_category, 0, options);
-			category_qtwi -> insertChild(index ++, sub_category_qtwi);
-		}
-	}
-	
-	if (options & AddChildElements) {
-		if (!freshly_created) {
-			QList<ElementsLocation> sub_elements;
-			foreach(ElementDefinition *sub_element, category -> elements()) {
-				sub_elements << sub_element -> location();
-			}
-			removeObsoleteItems(sub_elements, category_qtwi, QET::Element, false);
-		}
-		foreach (ElementDefinition *sub_element, category -> elements()) {
-			QTreeWidgetItem *sub_element_qtwi = addElement(sub_element, 0, options);
-			category_qtwi -> insertChild(index ++, sub_element_qtwi);
-		}
-	}
-	
-	return(fillItem(category_qtwi, options, freshly_created));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::addElement(ElementDefinition *element, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!element) return(0);
-	bool creation_required;
-	
-	QTreeWidgetItem *element_qtwi = getItemForElement(element, &creation_required);
-	updateElementItem(element_qtwi, element, options, creation_required);
-	reparent(element_qtwi, parent_item);
-	fillElementItem(element_qtwi, element, options, creation_required);
-	
-	return(element_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::itemForElement(ElementDefinition *element) {
-	if (!element) return(0);
-	return(elements_.value(element -> location(), 0));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::getItemForElement(ElementDefinition *element, bool *created) {
-	if (!element) return(0);
-	
-	QTreeWidgetItem *element_qtwi = elements_.value(element -> location(), 0);
-	if (element_qtwi) {
-		if (created) *created = false;
-		return(element_qtwi);
-	}
-	
-	element_qtwi = makeItem(QET::Element);
-	if (created) *created = true;
-	return(element_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::updateElementItem(QTreeWidgetItem *element_qtwi, ElementDefinition *element, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
-	Q_UNUSED(freshly_created)
-	if (!element_qtwi || !element) {
-		return(updateItem(element_qtwi, options, freshly_created));
-	}
-	
-	ElementsCollectionCache *cache = getElementsCache();
-	if (!cache -> fetchElement(element)) {
-		return(updateItem(element_qtwi, options, freshly_created));
-	}
-	
-	ElementsLocation element_location = element -> location();
-	element_qtwi -> setText(0, cache -> name());
-	QString element_whatsthis = tr("Ceci est un élément que vous pouvez insérer dans un schéma.", "\"What's this\" tip");
-	element_qtwi -> setWhatsThis(0, element_whatsthis);
-	if (options & DisplayElementsPreview) {
-		element_qtwi -> setIcon(0, QIcon(cache -> pixmap()));
-	}
-	
-	// note the following lines are technically marking the element as used
-	element_qtwi -> setToolTip(0, element_location.toString());
-	element_qtwi -> setBackground(0, QBrush());
-	// actions speciales pour les elements appartenant a un projet
-	if (QETProject *element_project = element_location.project()) {
-		// affiche en rouge les elements inutilises dans un projet
-		if (!element_project -> usesElement(element -> location())) {
-			markItemAsUnused(element_qtwi);
-		}
-	}
-	
-	if (freshly_created) {
-		element_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(element_location));
-		elements_.insert(element_location, element_qtwi);
-	}
-	
-	return(updateItem(element_qtwi, options, freshly_created));
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::fillElementItem (QTreeWidgetItem *element_qtwi, ElementDefinition *element, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(element_qtwi)
-	Q_UNUSED(element)
-	Q_UNUSED(options)
-	Q_UNUSED(freshly_created)
-	return(fillItem(element_qtwi, options, freshly_created));
-}
-
-/**
 	This generic method is called at the end of each update*Item method. Its
 	only purpose is being reimplemented in a subclass. The default
 	implementation does nothing.
@@ -966,14 +611,6 @@ void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection
 	Q_UNUSED(collection)
 	Q_UNUSED(name)
 	addTemplatesCollection(collection);
-	emit(panelContentChanged());
-}
-
-/**
-	
-*/
-void GenericPanel::elementsCollectionChanged(ElementsCollection *collection) {
-	addElementsCollection(collection, 0, 0);
 	emit(panelContentChanged());
 }
 
@@ -1143,9 +780,7 @@ void GenericPanel::unregisterItem(QTreeWidgetItem *item) {
 	if (!item) return;
 	
 	int type = item ->type();
-	if (type & QET::ElementsCollectionItem) {
-		elements_.remove(valueForItem<ElementsLocation>(item));
-	} else if (type & QET::TitleBlockTemplatesCollectionItem) {
+	if (type & QET::TitleBlockTemplatesCollectionItem) {
 		tb_templates_.remove(valueForItem<TitleBlockTemplateLocation>(item));
 	} else if (type == QET::Diagram) {
 		diagrams_.remove(valueForItem<Diagram *>(item));
@@ -1162,7 +797,6 @@ void GenericPanel::clearPanel() {
 	projects_.clear();
 	diagrams_.clear();
 	tb_templates_.clear();
-	elements_.clear();
 }
 
 /**

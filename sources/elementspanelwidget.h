@@ -45,7 +45,6 @@ class ElementsPanelWidget : public QWidget {
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QMenu *context_menu;
 	QLineEdit *filter_textfield;
-	QProgressBar *progress_bar_;
 	
 	// methods
 	public:
@@ -85,19 +84,12 @@ class ElementsPanelWidget : public QWidget {
 	void removeTitleBlockTemplate();
 	void updateButtons();
 	void handleContextMenu(const QPoint &);
-	void handleCollectionRequest(const ElementsLocation &);
-	void collectionsRead();
-	void collectionsReadFinished();
-	void updateProgressBar(int, int);
-	void loadingFinished();
 	void filterEdited(const QString &);
 
 	protected:
 	virtual void keyPressEvent   (QKeyEvent *e);
 	
 	private:
-	void launchElementEditor(const ElementsLocation &);
-	void launchCategoryEditor(const ElementsLocation &);
 	QString previous_filter_;
 };
 

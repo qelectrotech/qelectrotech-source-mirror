@@ -30,12 +30,7 @@
 class AboutQET;
 class QETDiagramEditor;
 class QETElementEditor;
-class ElementsCollection;
 class ElementsCollectionCache;
-class ElementsCollectionItem;
-class FileElementsCollection;
-class ElementsCategory;
-class ElementDefinition;
 class TitleBlockTemplate;
 class TitleBlockTemplatesCollection;
 class TitleBlockTemplatesFilesCollection;
@@ -67,12 +62,6 @@ class QETApp : public QETSingleApplication {
 	static void printVersion();
 	static void printLicense();
 	
-	static ElementsCollectionItem *collectionItem(const ElementsLocation &, bool = true);
-	static ElementsCategory *createCategory(const ElementsLocation &);
-	static ElementDefinition *createElement(const ElementsLocation &);
-	static ElementsCollection *commonElementsCollection();
-	static ElementsCollection *customElementsCollection();
-	static QList<ElementsCollection *> availableCollections();
 	static ElementsCollectionCache *collectionCache();
 	static QStringList elementInfoKeys();
 	static QString elementTranslatedInfoKey(QString &);
@@ -170,8 +159,6 @@ class QETApp : public QETSingleApplication {
 	bool non_interactive_execution_;    ///< Whether the application will end without any user interaction
 	QPalette initial_palette_;          ///< System color palette
 	
-	static FileElementsCollection *common_collection;
-	static FileElementsCollection *custom_collection;
 	static TitleBlockTemplatesFilesCollection *common_tbt_collection_;
 	static TitleBlockTemplatesFilesCollection *custom_tbt_collection_;
 	static ElementsCollectionCache *collections_cache_;
@@ -236,19 +223,4 @@ class QETApp : public QETSingleApplication {
 	static QETProject *projectFromString(const QString &);
 };
 
-//TODO remove code below
-///**
-//	This class represents the custom QElectroTech style.
-//	It implements simple modification such as extra standard icons.
-//*/
-//class QETStyle : public QPlastiqueStyle {
-//	Q_OBJECT
-//	public:
-//	QETStyle();
-//	virtual ~QETStyle();
-//	virtual int styleHint(StyleHint hint, const QStyleOption * = 0, const QWidget * = 0, QStyleHintReturn * = 0) const;
-	
-//	protected slots:
-//	virtual QIcon standardIconImplementation(StandardPixmap, const QStyleOption * = 0, const QWidget * = 0) const;
-//};
 #endif

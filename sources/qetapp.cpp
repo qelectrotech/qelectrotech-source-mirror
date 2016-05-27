@@ -21,9 +21,7 @@
 #include "configpages.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
-#include "elementscollectionitem.h"
 #include "elementscollectioncache.h"
-#include "fileelementscollection.h"
 #include "titleblocktemplate.h"
 #include "qettemplateeditor.h"
 #include "qetproject.h"
@@ -48,8 +46,6 @@ QString QETApp::common_tbt_dir_ = QString();
 QString QETApp::config_dir = QString();
 #endif
 QString QETApp::lang_dir = QString();
-FileElementsCollection *QETApp::common_collection = 0;
-FileElementsCollection *QETApp::custom_collection = 0;
 TitleBlockTemplatesFilesCollection *QETApp::common_tbt_collection_;
 TitleBlockTemplatesFilesCollection *QETApp::custom_tbt_collection_;
 ElementsCollectionCache *QETApp::collections_cache_ = 0;
@@ -110,12 +106,6 @@ QETApp::QETApp(int &argc, char **argv) :
 		collections_cache_->setLocale(langFromSetting());
 	}
 
-	// loads known collections into memory (this does not include items rendering made in elements panels)
-	setSplashScreenStep(tr("Chargement... Lecture des collections d'éléments", "splash screen caption"));
-	foreach(ElementsCollection *collection, availableCollections()) {
-		collection -> reload();
-	}
-
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
 		setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
@@ -139,8 +129,6 @@ QETApp::~QETApp() {
 		delete about_dialog_;
 	}
 	delete qsti;
-	delete custom_collection;
-	delete common_collection;
 	if (custom_tbt_collection_) delete custom_tbt_collection_;
 	if (common_tbt_collection_) delete common_tbt_collection_;
 	ElementFactory::dropInstance();
@@ -281,51 +269,6 @@ void QETApp::newDiagramEditor() {
 /// lance un nouvel editeur d'element
 void QETApp::newElementEditor() {
 	new QETElementEditor();
-}
-
-/**
-	@return la collection commune
-*/
-ElementsCollection *QETApp::commonElementsCollection() {
-	if (!common_collection) {
-		common_collection = new FileElementsCollection(QETApp::commonElementsDir());
-		common_collection -> setTitle(tr("Collection QET"));
-		common_collection -> setIcon(QIcon(":/ico/16x16/qet.png"));
-		common_collection -> setProtocol("common");
-		common_collection -> setCache(collections_cache_);
-	}
-	return(common_collection);
-}
-
-/**
-	@return la collection utilisateur
-*/
-ElementsCollection *QETApp::customElementsCollection() {
-	if (!custom_collection) {
-		custom_collection = new FileElementsCollection(QETApp::customElementsDir());
-		custom_collection -> setTitle(tr("Collection utilisateur"));
-		custom_collection -> setIcon(QIcon(":/ico/16x16/go-home.png"));
-		custom_collection -> setProtocol("custom");
-		custom_collection -> setCache(collections_cache_);
-	}
-	return(custom_collection);
-}
-
-/**
-	@return la liste des collections disponibles
-	Cela inclut typiquement la collection commune, la collection perso
-	ainsi que les collections embarquees dans les projets.
-*/
-QList<ElementsCollection *> QETApp::availableCollections() {
-	QList<ElementsCollection *> coll_list;
-
-	// collection commune
-	coll_list << commonElementsCollection();
-
-	// collection perso
-	coll_list << customElementsCollection();
-
-	return(coll_list);
 }
 
 /**
@@ -1664,102 +1607,6 @@ void QETApp::printVersion() {
 */
 void QETApp::printLicense() {
 	std::cout << qPrintable(QET::license()) << std::endl;
-}
-
-//@TODO remove code below
-///// Constructeur
-//QETStyle::QETStyle() : QPlastiqueStyle() {
-//}
-
-///// Destructeur
-//QETStyle::~QETStyle() {
-//}
-
-///// Gere les parametres de style
-//int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidget *widget, QStyleHintReturn *returndata) const {
-//	if (hint == QStyle::SH_DialogButtonBox_ButtonsHaveIcons) {
-//		return(int(true));
-//	} else {
-//		return(QPlastiqueStyle::styleHint(hint, option, widget, returndata));
-//	}
-//}
-
-///// Gere les icones standard
-//QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
-//	switch(standardIcon) {
-//		case QStyle::SP_DialogSaveButton:
-//			return(QET::Icons::DocumentSave);
-//		case QStyle::SP_DialogOpenButton:
-//			return(QET::Icons::DocumentOpen);
-//		case QStyle::SP_DialogCancelButton:
-//			return(QET::Icons::DialogCancel);
-//		case QStyle::SP_DialogOkButton:
-//		case QStyle::SP_DialogApplyButton:
-//			return(QET::Icons::DialogOk);
-//		case QStyle::SP_DialogCloseButton:
-//			return(QET::Icons::DocumentClose);
-//		case QStyle::SP_DialogYesButton:
-//			return(QET::Icons::Allowed);
-//		case QStyle::SP_DialogNoButton:
-//			return(QET::Icons::Forbidden);
-//		case QStyle::SP_DialogResetButton:
-//			return(QET::Icons::EditUndo);
-//		case QStyle::SP_DialogHelpButton:
-//		case QStyle::SP_DialogDiscardButton:
-//			return(QIcon());
-//		default:
-//			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
-//	}
-//}
-
-/**
-	@param location adresse virtuelle d'un item (collection, categorie, element, ...)
-	@param prefer_collections true pour renvoyer la collection lorsque le
-	chemin correspond aussi bien a une collection qu'a sa categorie racine
-	@return l'item correspondant a l'adresse virtuelle path, ou 0 si celui-ci n'a pas ete trouve
-*/
-ElementsCollectionItem *QETApp::collectionItem(const ElementsLocation &location, bool prefer_collections)
-{
-	QString path(location.path());
-	if (path.startsWith("common://")) {
-		return(common_collection -> item(path, prefer_collections));
-	} else if (path.startsWith("custom://")) {
-		return(custom_collection -> item(path, prefer_collections));
-	}
-
-	return(0);
-}
-
-/**
-	@param location adresse virtuelle de la categorie a creer
-	@return la categorie creee, ou 0 en cas d'echec
-*/
-ElementsCategory *QETApp::createCategory(const ElementsLocation &location)
-{
-	QString path(location.path());
-	if (path.startsWith("common://")) {
-		return(common_collection -> createCategory(path));
-	} else if (path.startsWith("custom://")) {
-		return(custom_collection -> createCategory(path));
-	}
-
-	return(0);
-}
-
-/**
-	@param location adresse virtuelle de l'element a creer
-	@return l'element cree, ou 0 en cas d'echec
-*/
-ElementDefinition *QETApp::createElement(const ElementsLocation &location)
-{
-	QString path(location.path());
-	if (path.startsWith("common://")) {
-		return(common_collection -> createElement(path));
-	} else if (path.startsWith("custom://")) {
-		return(custom_collection -> createElement(path));
-	}
-
-	return(0);
 }
 
 /**

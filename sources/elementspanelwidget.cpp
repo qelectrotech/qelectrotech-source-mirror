@@ -40,10 +40,6 @@
 	@param parent Le QWidget parent de ce widget
 */
 ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
-	// initialize the progress bar (hidden by default)
-	progress_bar_ = new QProgressBar(this);
-	progress_bar_ -> setVisible(false);
-	progress_bar_ -> setTextVisible(true);
 	// initalise le panel d'elements
 	elements_panel = new ElementsPanel(this);
 	
@@ -107,17 +103,12 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
 	connect(elements_panel,        SIGNAL(requestForDiagram(Diagram*)),                              this, SIGNAL(requestForDiagram(Diagram*)));
-	connect(elements_panel,        SIGNAL(requestForCollectionItem(const ElementsLocation &)),       this, SLOT(handleCollectionRequest(const ElementsLocation &)));
 	connect(
 		elements_panel,
 		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
 		QETApp::instance(),
 		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
-	connect(elements_panel, SIGNAL(loadingProgressed(int, int)),  this, SLOT(updateProgressBar(int, int)));
-	connect(elements_panel, SIGNAL(readingAboutToBegin()),        this, SLOT(collectionsRead()));
-	connect(elements_panel, SIGNAL(readingFinished()),            this, SLOT(collectionsReadFinished()));
-	connect(elements_panel, SIGNAL(loadingFinished()),            this, SLOT(loadingFinished()));
 	
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -125,12 +116,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(filter_textfield);
 	vlayout -> addWidget(elements_panel);
-	vlayout -> addWidget(progress_bar_);
 	vlayout -> setStretchFactor(elements_panel, 75000);
 	setLayout(vlayout);
-	
-	// by default, the reload button is disabled
-	reload -> setEnabled(false);
 }
 
 /**
@@ -173,9 +160,6 @@ void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
 	reload -> setEnabled(false);
 	elements_panel -> reload(true);
-	
-	// the reload button was enabled again through loadingFinished()
-	reload -> setEnabled(false);
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
@@ -414,69 +398,6 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	}
 }
 
-/**
-	Gere les demandes d'edition de categories ou d'elements
-	@param item Item de la collection a editer
-*/
-void ElementsPanelWidget::handleCollectionRequest(const ElementsLocation &item_location) {
-	if (item_location.isNull()) return;
-	ElementsCollectionItem *item = QETApp::collectionItem(item_location);
-	if (!item) return;
-	if (item -> isElement()) {
-		// il s'agit d'un element
-		launchElementEditor(item -> location());
-	}
-	// we could edit it categories, but instead people prefer the double-clic to
-	// expand/collapse them
-}
-
-/**
-	Reflects the fact that collections are being read (i.e from filesystem) in
-	the progress bar.
-*/
-void ElementsPanelWidget::collectionsRead() {
-	progress_bar_ -> setMinimum(0);
-	progress_bar_ -> setMaximum(1);
-	progress_bar_ -> setValue(0);
-	progress_bar_ -> setFormat(tr("Lecture...", "Reading of elements/categories files"));
-	progress_bar_ -> setVisible(true);
-}
-
-/**
-	Reflects the fact that collections have been read (i.e from filesystem) in
-	the progress bar.
-*/
-void ElementsPanelWidget::collectionsReadFinished() {
-	// we do not hide the progress bar because it will be used by updateProgressBar
-}
-
-/**
-	Updates the progress bar
-	@param current value that should be displayed
-	@param maximum maximum expected value; -1 means "use the previously known one"
-*/
-void ElementsPanelWidget::updateProgressBar(int current, int maximum) {
-	int provided_maximum = maximum == -1 ? progress_bar_ -> maximum() : maximum;
-	if (provided_maximum != progress_bar_ -> maximum()) {
-		progress_bar_ -> setMaximum(maximum);
-	}
-	if (!current) {
-		progress_bar_ -> setFormat(tr("Chargement : %p%", "Visual rendering of elements/categories files - %p is the progress percentage"));
-		progress_bar_ -> setVisible(true);
-	}
-	progress_bar_ -> setValue(current);
-}
-
-/**
-	Reflects the fact the whole panel content was loaded by hiding the progress
-	bar and enabling again the reload button.
-*/
-void ElementsPanelWidget::loadingFinished() {
-	QTimer::singleShot(500, progress_bar_, SLOT(hide()));
-	reload -> setEnabled(true);
-	
-}
-
 void ElementsPanelWidget::filterEdited(const QString &next_text) {
 	if (previous_filter_.isEmpty() && next_text.length() == 1) {
 		// the field is not empty anymore: begin filtering
@@ -502,23 +423,4 @@ void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
 					}
 				}
 	return;
-}
-
-/**
-	Lance l'editeur d'element pour l'element filename
-	@param location Emplacement de l'element a editer
-*/
-void ElementsPanelWidget::launchElementEditor(const ElementsLocation &location) {
-	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
-}
-
-/**
-	Lance l'editeur de categorie pour la categorie path
-	@param location Emplacement de la categorie a editer
-*/
-void ElementsPanelWidget::launchCategoryEditor(const ElementsLocation &location) {
-	ElementsCategoryEditor ece(location, true);
-	if (ece.exec() == QDialog::Accepted) {
-		elements_panel -> reload();
-	}
 }

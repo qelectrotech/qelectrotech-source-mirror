@@ -2008,39 +2008,8 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 	d'elements.
 */
 void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
-	bool element_found = pa -> elementsPanel().scrollToElement(location);
-	if (!element_found) {
-		// l'element n'a pas ete trouve
-		
-		ElementsCollectionItem *element = QETApp::collectionItem(location);
-		if (element) {
-			// mais il semble exister tout de meme
-			
-			// peut-etre vient-il d'un projet ouvert dans un autre editeur ?
-			if (location.project() && !findProject(location.project())) {
-				statusBar() -> showMessage(
-					tr("Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre"),
-					10000
-				);
-			} else {
-				// il devrait etre affiche : on tente de recharger le panel
-				statusBar() -> showMessage(
-					tr("Impossible de retrouver cet élément dans le panel... rechargement du panel..."),
-					10000
-				);
-				pa -> reloadAndFilter();
-				statusBar() -> clearMessage();
-				element_found = pa -> elementsPanel().scrollToElement(location);
-			}
-		}
-	}
-	
-	if (!element_found) {
-		statusBar() -> showMessage(
-			tr("Impossible de retrouver cet élément dans le panel"),
-			10000
-		);
-	}
+	//@TODO implement this method for the new element panel
+	Q_UNUSED (location);
 }
 
 /**

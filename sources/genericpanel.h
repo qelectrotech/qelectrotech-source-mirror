@@ -19,16 +19,12 @@
 #define GENERIC_PANEL_H
 #include "qet.h"
 #include <QTreeWidget>
-#include "elementslocation.h"
+
 class QTreeWidgetItem;
 class QETProject;
 class Diagram;
-class ElementsCollection;
-class ElementsCategory;
-class ElementDefinition;
 class TitleBlockTemplatesCollection;
 class TitleBlockTemplateLocation;
-class ElementsCollectionCache;
 
 /**
 	The generic panel is a QTreeWidget subclass providing extra methods
@@ -45,13 +41,7 @@ class GenericPanel : public QTreeWidget {
 		AddChildTemplatesCollection   =   2,
 		AddChildTemplates             =   4,
 		AddAllChildTemplates          =   6,
-		AddChildElementsCollections   =   8,
-		AddChildElementsCategories    =  16,
-		AddChildElementsContainers    =  24,
-		AddChildElements              =  32,
-		AddAllChildElements           =  56,
 		AddAllChild                   =  63,
-		DisplayElementsPreview        =  64,
 		All                           = 127
 	};
 	Q_DECLARE_FLAGS(PanelOptions, PanelOption)
@@ -68,27 +58,17 @@ class GenericPanel : public QTreeWidget {
 	GenericPanel(QWidget * = 0);
 	virtual ~GenericPanel();
 	
-	// cache-related methods
-	public:
-	virtual ElementsCollectionCache *elementsCache();
-	virtual bool setElementsCache(ElementsCollectionCache *, ElementsCollectionCache ** = 0);
-	
-	protected:
-	virtual ElementsCollectionCache *getElementsCache();
-	
 	public:
 	// convenience methods to obtain what an item represents
 	virtual int currentItemType();
 	virtual QETProject *projectForItem(QTreeWidgetItem *) const;
 	virtual Diagram *diagramForItem(QTreeWidgetItem *) const;
 	virtual TitleBlockTemplateLocation templateLocationForItem(QTreeWidgetItem *) const;
-	virtual ElementsLocation elementLocationForItem(QTreeWidgetItem *) const;
 	
 	// convenience methods to obtain what the selected item represents
 	virtual QETProject *selectedProject() const;
 	virtual Diagram *selectedDiagram() const;
 	virtual TitleBlockTemplateLocation selectedTemplateLocation() const;
-	virtual ElementsLocation selectedElementLocation() const;
 	
 	// project-related methods
 	public:
@@ -126,33 +106,6 @@ class GenericPanel : public QTreeWidget {
 	virtual QTreeWidgetItem *updateTemplateItem(QTreeWidgetItem *, const TitleBlockTemplateLocation &, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillTemplateItem  (QTreeWidgetItem *, const TitleBlockTemplateLocation &, PanelOptions = AddAllChild, bool = false);
 	
-	// elements collections methods
-	public:
-	virtual QTreeWidgetItem *itemForElementsLocation(const ElementsLocation &);
-	virtual QTreeWidgetItem *addElementsCollection(ElementsCollection *, QTreeWidgetItem *, PanelOptions = AddAllChild);
-	protected:
-	virtual QTreeWidgetItem *getItemForElementsCollection(ElementsCollection *, bool * = 0);
-	virtual QTreeWidgetItem *updateElementsCollectionItem(QTreeWidgetItem *, ElementsCollection *, PanelOptions = AddAllChild, bool = false);
-	virtual QTreeWidgetItem *fillElementsCollectionItem  (QTreeWidgetItem *, ElementsCollection *, PanelOptions = AddAllChild, bool = false);
-	
-	// elements categories methods
-	public:
-	virtual QTreeWidgetItem *addElementsCategory(ElementsCategory *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
-	virtual QTreeWidgetItem *itemForElementsCategory(ElementsCategory *);
-	protected:
-	virtual QTreeWidgetItem *getItemForElementsCategory(ElementsCategory *, bool * = 0);
-	virtual QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
-	virtual QTreeWidgetItem *fillElementsCategoryItem  (QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
-	
-	// elements methods
-	public:
-	virtual QTreeWidgetItem *addElement(ElementDefinition *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
-	virtual QTreeWidgetItem *itemForElement(ElementDefinition *);
-	protected:
-	virtual QTreeWidgetItem *getItemForElement(ElementDefinition *, bool * = 0);
-	virtual QTreeWidgetItem *updateElementItem(QTreeWidgetItem *, ElementDefinition *, PanelOptions = AddAllChild, bool = false);
-	virtual QTreeWidgetItem *fillElementItem  (QTreeWidgetItem *, ElementDefinition *, PanelOptions = AddAllChild, bool = false);
-	
 	// generic methods
 	protected:
 	virtual QTreeWidgetItem *updateItem(QTreeWidgetItem *, PanelOptions = AddAllChild, bool = false);
@@ -167,7 +120,6 @@ class GenericPanel : public QTreeWidget {
 	virtual void diagramTitleChanged(Diagram *, const QString &);
 	virtual void templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &);
 	virtual void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
-	virtual void elementsCollectionChanged(ElementsCollection *);
 	
 	// various other methods
 	protected:
@@ -193,14 +145,10 @@ class GenericPanel : public QTreeWidget {
 	private slots:
 	void emitFirstActivated();
 	
-	protected:
-	ElementsCollectionCache *cache_; ///< Cache used to render elements
-	
 	private:
 	bool first_activation_; ///< boolean used to track the first time this widget is activated/shown
 	QHash<QETProject *, QTreeWidgetItem *>               projects_;     ///< Allow quick retrieval of the item representing a given project
 	QHash<Diagram *, QTreeWidgetItem *>                  diagrams_;     ///< Allow quick retrieval of the item representing a given diagram
 	QHash<TitleBlockTemplateLocation, QTreeWidgetItem *> tb_templates_; ///< Allow quick retrieval of the item representing a title block template
-	QHash<ElementsLocation, QTreeWidgetItem *>           elements_;     ///< Allow quick retrieval of the item representing an element
 };
 #endif
