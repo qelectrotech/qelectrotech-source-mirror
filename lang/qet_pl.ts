@@ -4885,7 +4885,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="721"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b&gt; :&lt;br&gt;Odsyłacze do arkuszy muszą zawierać jeden terminal.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Sprawdź czy element zawiera tylko jeden terminal</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b&gt;:&lt;br&gt;Odsyłacze do arkuszy muszą zawierać jeden terminal.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt;:&lt;br&gt;Sprawdź czy element zawiera tylko jeden terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
@@ -4932,7 +4932,7 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do arkuszy muszą zawierać pole tekstowe posiadające znacznik &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt;:&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do arkuszy muszą zawierać pole tekstowe posiadające znacznik &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt;:&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="750"/>
@@ -6674,11 +6674,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translatorcomment>niepewne</translatorcomment>
         <translation>Można zdefiniować niestandardowe odsyłacze do stron.
-Utwórz tekst używając następujących zmiennych :
-%f : numer arkusza
+Utwórz tekst używając następujących zmiennych:
+%f: numer arkusza
 %F: etykieta arkusza
-%l : numer wiersza
-%c : numer kolumny</translation>
+%l: numer wiersza
+%c: numer kolumny</translation>
     </message>
 </context>
 <context>
@@ -7601,9 +7601,9 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
         <translation>Poniższe zmienne są używane w polu Arkusz
-- %id : numer danego arkusza w projekcie
+- %id: numer danego arkusza w projekcie
 - %total: liczba arkuszy w projekcie
-- %autonum : automatyczna numeracja arkusza</translation>
+- %autonum: automatyczna numeracja arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -8251,11 +8251,11 @@ Długość maksymalna: %2px</translation>
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Utwórz tekst używając następujących zmiennych :
-%f : numer arkusza
+        <translation>Utwórz tekst używając następujących zmiennych:
+%f: numer arkusza
 %F: etykieta arkusza
-%l : numer wiersza
-%c : numer kolumny</translation>
+%l: numer wiersza
+%c: numer kolumny</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
