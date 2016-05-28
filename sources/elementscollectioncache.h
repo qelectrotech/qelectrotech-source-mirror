@@ -21,9 +21,6 @@
 #include <QSqlDatabase>
 #include "elementslocation.h"
 
-class ElementsCollection;
-class ElementsCategory;
-class ElementDefinition;
 /**
 	This class implements a SQLite cache for data related to elements
 	collections, mainly names and pixmaps. This avoids the cost of parsing XML
@@ -43,9 +40,6 @@ class ElementsCollectionCache : public QObject
 	QString locale() const;
 	bool setPixmapStorageFormat(const QString &);
 	QString pixmapStorageFormat() const;
-	void beginCollection(ElementsCollection *);
-	void endCollection(ElementsCollection *);
-	bool fetchElement(ElementDefinition *);
 	bool fetchElement(ElementsLocation &location);
 	QString name() const;
 	QPixmap pixmap() const;

@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
-#include "elementscollectionitem.h"
 #include "qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"

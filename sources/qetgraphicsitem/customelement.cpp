@@ -20,7 +20,6 @@
 #include "diagram.h"
 #include "qetapp.h"
 #include "partline.h"
-#include "elementdefinition.h"
 #include <iostream>
 #include "terminal.h"
 #include "diagramposition.h"

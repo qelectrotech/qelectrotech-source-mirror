@@ -16,9 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectioncache.h"
-#include "elementscollection.h"
-#include "elementscategory.h"
-#include "elementdefinition.h"
 #include "factory/elementfactory.h"
 #include "element.h"
 #include "qet.h"
@@ -149,73 +146,6 @@ bool ElementsCollectionCache::setPixmapStorageFormat(const QString &format) {
 */
 QString ElementsCollectionCache::pixmapStorageFormat() const {
 	return(pixmap_storage_format_);
-}
-
-/**
-	Indicate the cache a new collection is about to be browsed. This is mainly
-	used to delimit database transactions.
-	@param collection The elements collection about to be browsed.
-*/
-void ElementsCollectionCache::beginCollection(ElementsCollection *collection) {
-	bool use_cache = cache_db_.isOpen() && collection -> isCacheable();
-	if (use_cache) {
-		bool transaction_started = cache_db_.transaction();
-		qDebug() << (transaction_started ? "transaction began for " : "transaction not started for ") << collection -> protocol();
-	}
-}
-
-/**
-	Indicate the cache the currently browsed collection end has been reached. This
-	is mainly used to delimit database transactions.
-	@param collection The elements collection being browsed.
-*/
-void ElementsCollectionCache::endCollection(ElementsCollection *collection) {
-	bool use_cache = cache_db_.isOpen() && collection -> isCacheable();
-	if (use_cache) {
-		bool transaction_commited = cache_db_.commit();
-		if (transaction_commited) {
-			qDebug() << "transaction commited for " << collection -> protocol();
-		} else {
-			qDebug() << "transaction not commited for " << collection -> protocol() << ":" << cache_db_.lastError();
-		}
-	}
-}
-
-/**
-	Retrieve the data for a given element, using the cache if available,
-	filling it otherwise. Data are then available through pixmap() and name()
-	methods.
-	@param element The definition of an element.
-	@see pixmap()
-	@see name()
-	@return True if the retrieval succeeded, false otherwise.
-*/
-bool ElementsCollectionCache::fetchElement(ElementDefinition *element)
-{
-		// can we use the cache with this element?
-	bool use_cache = cache_db_.isOpen() && element -> parentCollection() -> isCacheable();
-	
-		// attempt to fetch the element name from the cache database
-	if (!use_cache)
-	{
-		return(fetchData(element -> location()));
-	}
-	else
-	{
-		QString element_path = element -> location().toString();
-		bool got_name   = fetchNameFromCache(element_path, element->uuid());
-		bool got_pixmap = fetchPixmapFromCache(element_path, element->uuid());
-		if (got_name && got_pixmap)
-		{
-			return(true);
-		}
-		if (fetchData(element -> location()))
-		{
-			cacheName(element_path, element->uuid());
-			cachePixmap(element_path, element->uuid());
-		}
-		return(true);
-	}
 }
 
 /**
