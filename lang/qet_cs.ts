@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do brazilštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -948,28 +948,28 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Štítek</translation>
+        <translation>Štítek</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Název nové složky</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Nový název prvku</translation>
+        <translation>Název nového prvku</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Musíte vybrat prvek nebo skupinu s názvem pro prvek.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1413,13 +1413,13 @@ Změny budou konečné.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Položka není skupinou</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Požadovaná položka není skupinou. Zrušit.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2129,53 +2129,53 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Volby pro číslování</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové listy</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>Od</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>Do</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Výběr:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit nové listy</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslovat vybrané listy automaticky</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování listů:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2282,7 +2282,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Brazilština</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2484,32 +2484,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Začlenění prvku</translation>
+        <translation>Začlenění prvku</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Prvek již byl začleněn do projektu. Nicméně se zdá, že verze, kterou hodláte upustit, je jiná. Co si přejete, aby se udělalo?</translation>
+        <translation>Prvek již byl začleněn do projektu. Nicméně se zdá, že verze, kterou hodláte upustit, je jiná. Co si přejete, aby se udělalo?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít již začleněný prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Začlenit upuštěný prvek</translation>
+        <translation>Začlenit upuštěný prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepsat již začleněný prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Nechat oba dva prvky žít vedle sebe</translation>
+        <translation>Nechat oba dva prvky žít vedle sebe</translation>
     </message>
 </context>
 <context>
@@ -2981,7 +2981,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
-        <translation>Nový název prvku</translation>
+        <translation>Název nového prvku</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="185"/>
@@ -3006,7 +3006,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Již existuje prvek se stejným názvem</translation>
     </message>
 </context>
 <context>
@@ -3044,7 +3044,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished">List</translation>
+        <translation>List</translation>
     </message>
 </context>
 <context>
@@ -3203,17 +3203,17 @@ Vyberte, prosím, vlastnosti, které se mají použít na nový potenciál.</tra
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished">List</translation>
+        <translation>List</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6451,7 +6451,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Štítek listu</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6663,7 +6663,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro hlášení listu můžete stanovit vlastní štítek.
+Vytvořte vlastní text s pomocí následujících proměnných:
+% f: číslo listu
+% F: štítek listu
+% l: číslo řádku
+% c: číslo sloupce</translation>
     </message>
 </context>
 <context>
@@ -6717,7 +6722,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6740,7 +6745,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování vodičů</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -7531,7 +7536,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7564,7 +7569,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>V poli List se používají následující proměnné:
+-% Id: číslo nynějšího listu v projektu
+-% Total: celkový počet listů v projektu
+-% Autonum: automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7654,7 +7662,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo strany:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8185,27 +8193,27 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Štítek křížových odkazů</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadřízený</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Podřízený</translation>
+        <translation>Podřízený</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8214,7 +8222,11 @@ Největší délka: %2px</translation>
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořte vlastní text s pomocí následujících proměnných:
+% f: číslo listu
+% F: štítek listu
+% l: číslo řádku
+% c: číslo sloupce</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
