@@ -6655,7 +6655,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείτε να ορίσετε μια προσαρμοσμένη ετικέτα για τις αναφορές σελίδας.
+Δημιουργήστε το δικό σας κείμενο με τη βοήθεια των παρακάτω μεταβλητών:
+% F: αριθμός σελίδας
+% F: ετικέτα σελίδας
+% S: αριθμός γραμμής
+% C: αριθμός στήλης</translation>
     </message>
 </context>
 <context>
@@ -7556,7 +7561,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι παρακάτω μεταβλητές χρησιμοποιούνται στο πεδίο Σελίδα:
+-% Id: τρέχων αριθμός σελίδας στο έργο
+-% Total: συνολικός αριθμός σελίδων στο έργο
+-% Autonum: Αυτόματη αρίθμηση Σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -8177,27 +8185,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα διασταυρούμενων αναφορών</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Κύριο</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Βοηθητικό</translation>
+        <translation>Βοηθητικό</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%f-%l%c)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8206,7 +8214,11 @@ Longueur maximale : %2px
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργήστε τα δικά σας κείμενα με την βοήθεια των παρακάτω μεταβλητών:
+%f: αριθμός σελίδας
+%F: ετικέτα σελίδας
+%l : αριθμός γραμμής
+%c: αριθμός στήλης</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
