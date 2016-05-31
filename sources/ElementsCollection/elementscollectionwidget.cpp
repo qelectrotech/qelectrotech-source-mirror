@@ -493,8 +493,14 @@ void ElementsCollectionWidget::search(const QString &text)
 	}
 
 	hideCollection(true);
-	QModelIndexList match_index = m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
-												 Qt::DisplayRole, QVariant(text), -1, Qt::MatchContains | Qt::MatchRecursive);
+
+	QStringList text_list = text.split("+", QString::SkipEmptyParts);
+	QModelIndexList match_index;
+	foreach (QString txt, text_list) {
+		match_index << m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
+									  Qt::DisplayRole, QVariant(txt), -1, Qt::MatchContains | Qt::MatchRecursive);
+	}
+
 	foreach(QModelIndex index, match_index)
 		showAndExpandItem(index);
 }
