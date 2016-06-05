@@ -65,12 +65,15 @@ class ElementsCollectionWidget : public QWidget
 		void newElement();
 		void showThisDir();
 		void resetShowThisDir();
-		void reload();
 		void search(const QString &text);
 		void hideCollection(bool hide = true);
 		void hideItem(bool hide, const QModelIndex &index = QModelIndex(), bool recursive = true);
 		void showAndExpandItem (const QModelIndex &index, bool parent = true, bool child = false);
 		ElementCollectionItem *elementCollectionItemForIndex (const QModelIndex &index);
+
+	private slots:
+		void reload();
+
 
 	private:
 		ElementsCollectionModel *m_model;

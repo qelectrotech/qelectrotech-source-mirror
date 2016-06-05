@@ -80,7 +80,7 @@ bool ElementsCollectionWidget::event(QEvent *event)
 {
 	if (m_first_show && event->type() == QEvent::WindowActivate) {
 		m_first_show = false;
-		QTimer::singleShot(250, this, &ElementsCollectionWidget::reload);
+		QTimer::singleShot(250, this, SLOT(reload()));
 	}
 
 	return QWidget::event(event);
