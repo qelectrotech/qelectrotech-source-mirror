@@ -128,21 +128,10 @@ UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 
 # Configuration de la compilation
-CONFIG += debug_and_release warn_on
+CONFIG += c++11 debug_and_release warn_on
 
 # Nom du binaire genere par la compilation
 TARGET = qelectrotech
-
-# Ajustement des bibliotheques utilisees lors de l'edition des liens
-unix:QMAKE_LIBS_THREAD -= -lpthread
-
-macx {
-       LIBS += -stdlib=libc++
-       QMAKE_CXXFLAGS += -stdlib=libc++
-}
-
-# Enable C++11
-QMAKE_CXXFLAGS += -std=c++11
 
 # Description de l'installation
 target.path        = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
