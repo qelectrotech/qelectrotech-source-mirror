@@ -23,6 +23,7 @@
 #include "element.h"
 
 #include <QDrag>
+#include <QStandardItemModel>
 
 static int MAX_DND_PIXMAP_WIDTH = 500;
 static int MAX_DND_PIXMAP_HEIGHT = 375;
@@ -49,18 +50,16 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 		return;
 	}
 
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(index.internalPointer());
-
-	if (!eci) {
-		QTreeView::startDrag(supportedActions);
-		return;
+	if (QStandardItemModel *qsim = static_cast<QStandardItemModel *>(model())) {
+		if (ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsim->itemFromIndex(index))) {
+			ElementsLocation loc (eci->collectionPath());
+			if (loc.exist()) {
+				startElementDrag(loc);
+				return;
+			}
+		}
 	}
-
-	ElementsLocation loc (eci->collectionPath());
-	if (loc.exist())
-		startElementDrag(loc);
-	else
-		QTreeView::startDrag(supportedActions);
+	QTreeView::startDrag(supportedActions);
 }
 
 /**

@@ -17,251 +17,76 @@
 */
 #include "elementscollectionmodel.h"
 #include "elementcollectionitem.h"
-#include "qetapp.h"
 #include "fileelementcollectionitem.h"
 #include "xmlprojectelementcollectionitem.h"
-#include "qetproject.h"
+#include "qetapp.h"
 #include "xmlelementcollection.h"
+#include "qetproject.h"
+#include "elementcollectionhandler.h"
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
- * Defaut constructor
- * @param parent : parent QObject
+ * Constructor
+ * @param parent
  */
 ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
-	QAbstractItemModel (parent)
+	QStandardItemModel(parent)
 {
-	m_root_item = new ElementCollectionItem();
-}
-
-ElementsCollectionModel::~ElementsCollectionModel()
-{
-	delete m_root_item;
-}
-
-/**
- * @brief ElementsCollectionModel::index
- * Create a index for child of parent at row @row and column @column.
- * If there isn't child return default QModelIndex
- * @param row : the wanted row
- * @param column : the wanted column
- * @param parent : the parent index
- * @return the wanted index or a unvalid index.
- */
-QModelIndex ElementsCollectionModel::index(int row, int column, const QModelIndex &parent) const
-{
-	if (!hasIndex(row, column, parent))
-		return QModelIndex();
-
-	ElementCollectionItem *parent_item = nullptr;
-
-	if (!parent.isValid())
-		parent_item = m_root_item;
-	else
-		parent_item = static_cast<ElementCollectionItem*>(parent.internalPointer());
-
-	ElementCollectionItem *child_item = parent_item->child(row);
-	if (child_item->isValid()) {
-		if (m_hide_element) {
-			if (child_item->isDir()) {
-				return createIndex(row, column, child_item);
-			}
-			else {
-				return QModelIndex();
-			}
-		}
-		else {
-			return createIndex(row, column, child_item);
-		}
-	}
-	else {
-		return QModelIndex();
-	}
-}
-
-/**
- * @brief ElementsCollectionModel::parent
- * @param child :
- * @return the parent index of child if have parent.
- * If child haven't got parent or parent is the root_item, return default index
- */
-QModelIndex ElementsCollectionModel::parent(const QModelIndex &child) const
-{
-	if (!child.isValid())
-		return QModelIndex();
-
-	ElementCollectionItem *child_item = static_cast<ElementCollectionItem*> (child.internalPointer());
-	ElementCollectionItem *parent_item = child_item->parent();
-
-	if (parent_item == m_root_item)
-		return QModelIndex();
-
-	return createIndex(parent_item->row(), 0, parent_item);
-}
-
-/**
- * @brief ElementsCollectionModel::rowCount
- * @param parent
- * @return the number of row for @parent.
- * If @parent is unvalid, return the number of row of the root_item
- */
-int ElementsCollectionModel::rowCount(const QModelIndex &parent) const
-{
-	ElementCollectionItem *parent_item = nullptr;
-
-	if (!parent.isValid())
-		parent_item = m_root_item;
-	else
-		parent_item = static_cast<ElementCollectionItem*> (parent.internalPointer());
-
-	if (m_hide_element) {
-		int count_ = 0;
-
-		for (int i = 0 ; i<parent_item->childCount() ; i++)
-		{
-			if (parent_item->child(i)->isDir()) {
-				count_ ++;
-			}
-		}
-
-		return count_;
-	}
-	else {
-		return parent_item->childCount();
-	}
-}
-
-/**
- * @brief ElementsCollectionModel::columnCount
- * @param parent
- * @return the number of column for @parent.
- * If @parent is unvalid, return the number of column of the root_item
- */
-int ElementsCollectionModel::columnCount(const QModelIndex &parent) const
-{
-	if (parent.isValid())
-		return static_cast<ElementCollectionItem*>(parent.internalPointer())->columnCount();
-	else
-		return m_root_item->columnCount();
 }
 
 /**
  * @brief ElementsCollectionModel::data
+ * Reimplemented from QStandardItemModel
  * @param index
  * @param role
- * @return the data of index for the given role or a default QVariant if no data.
+ * @return
  */
 QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
-	if (!index.isValid())
-		return QVariant();
+	if (role == Qt::DecorationRole) {
+		QStandardItem *item = itemFromIndex(index);
 
-	ElementCollectionItem *item = static_cast<ElementCollectionItem*>(index.internalPointer());
-	return item->data(index.column(), role);
-}
+		if (item->type() == FileElementCollectionItem::Type)
+			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
+		else if (item->type() == XmlProjectElementCollectionItem::Type)
+			static_cast<XmlProjectElementCollectionItem*>(item)->setUpIcon();
+	}
 
-/**
- * @brief ElementsCollectionModel::removeRows
- * Reimplemented from QAbstractItemModel
- * @param row
- * @param count
- * @param parent
- * @return true if rows was successfully removed
- */
-bool ElementsCollectionModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-	ElementCollectionItem *eci = nullptr;
-	if (!parent.isValid())
-		eci = m_root_item;
-	else
-		eci = static_cast<ElementCollectionItem *>(parent.internalPointer());
-
-	if (!(1 <= row+count && row+count <= eci->childCount())) return false;
-
-	beginRemoveRows(parent, row, (row + count -1));
-	bool r = eci->removeChild(row, count);
-	endRemoveRows();
-
-	return r;
+	return QStandardItemModel::data(index, role);
 }
 
 /**
  * @brief ElementsCollectionModel::mimeData
+ * Reimplemented from QStandardItemModel
  * @param indexes
- * @return the mime data of the items at @indexes
+ * @return
  */
 QMimeData *ElementsCollectionModel::mimeData(const QModelIndexList &indexes) const
 {
 	QModelIndex index = indexes.first();
 	if (index.isValid())
 	{
-		ElementCollectionItem *item = static_cast<ElementCollectionItem*>(index.internalPointer());
-		return item->mimeData();
+		ElementCollectionItem *item = static_cast<ElementCollectionItem*>(itemFromIndex(index));
+
+		QMimeData *mime_data = new QMimeData();
+		mime_data->setText(item->collectionPath());
+
+		if (item->isElement())
+			mime_data->setData("application/x-qet-element-uri", item->collectionPath().toLatin1());
+		else
+			mime_data->setData("application/x-qet-category-uri", item->collectionPath().toLatin1());
+
+		return mime_data;
 	}
 	else
 		return new QMimeData();
 }
 
 /**
- * @brief ElementsCollectionModel::flags
- * @param index
- * @return the flags of the item at @index
+ * @brief ElementsCollectionModel::mimeTypes
+ * Reimplemented from QStandardItemModel
+ * @return
  */
-Qt::ItemFlags ElementsCollectionModel::flags(const QModelIndex &index) const
-{
-	if (index.isValid())
-	{
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(index.internalPointer());
-		return eci->flags();
-	}
-	else
-		return Qt::NoItemFlags;
-}
-
-bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
-{
-	if (!(QAbstractItemModel::canDropMimeData(data, action, row, column, parent) && parent.isValid())) return false;
-
-	ElementCollectionItem *eci = static_cast <ElementCollectionItem *>(parent.internalPointer());
-	if (!eci) return false;
-
-	return eci->canDropMimeData(data, action, row, column);
-}
-
-bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
-{
-	if (!parent.isValid()) return false;
-
-	ElementCollectionItem *eci =  static_cast<ElementCollectionItem*> (parent.internalPointer());
-	if (!eci || eci->isElement()) return false;
-
-	m_parent_at_drop = parent;
-
-		//We temporarily disconnect for avoid double insertion of item
-	foreach (QETProject *project, m_project_list)
-		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
-
-
-	connect(eci, &ElementCollectionItem::beginInsertRows, this, &ElementsCollectionModel::bir);
-	connect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
-	connect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
-	connect(eci, &ElementCollectionItem::endRemoveRows,   this, &ElementsCollectionModel::endRemoveRows);
-
-	bool rb = eci->dropMimeData(data, action, row, column);
-
-	disconnect(eci, &ElementCollectionItem::beginInsertRows, this, &ElementsCollectionModel::bir);
-	disconnect(eci, &ElementCollectionItem::endInsertRows,   this, &ElementsCollectionModel::endInsertRows);
-	disconnect(eci, &ElementCollectionItem::beginRemoveRows, this, &ElementsCollectionModel::brr);
-	disconnect(eci, &ElementCollectionItem::endRemoveRows,   this, &ElementsCollectionModel::endRemoveRows);
-
-	foreach(QETProject *project, m_project_list)
-		connect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
-
-	m_parent_at_drop = QModelIndex();
-
-	return rb;
-}
-
 QStringList ElementsCollectionModel::mimeTypes() const
 {
 	QStringList mime_list = QAbstractItemModel::mimeTypes();
@@ -270,25 +95,132 @@ QStringList ElementsCollectionModel::mimeTypes() const
 }
 
 /**
- * @brief ElementsCollectionModel::items
- * @return All items handled by this model. The root item isn't stored in the list
+ * @brief ElementsCollectionModel::canDropMimeData
+ * Reimplemented from QStandardItemModel
+ * @param data
+ * @param action
+ * @param row
+ * @param column
+ * @param parent
+ * @return
  */
-QList<ElementCollectionItem *> ElementsCollectionModel::items() const
+bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
 {
-	QList <ElementCollectionItem *> list;
-	list.append(m_root_item->items());
-	return list;
+	if (!(QStandardItemModel::canDropMimeData(data, action, row, column, parent) && parent.isValid()))
+		return false;
+
+	QStandardItem *qsi = itemFromIndex(parent.child(row, column));
+	if (!qsi)
+		qsi = itemFromIndex(parent);
+
+		//Drop in the common collection is forbiden
+	if (qsi->type() == FileElementCollectionItem::Type)
+		if (static_cast<FileElementCollectionItem *>(qsi)->isCommonCollection())
+			return false;
+
+	ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
+
+	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri")) {
+		return true;
+			//Return false if user try to drop a item from a folder to the same folder
+		ElementsLocation drop_location(data->text());
+		for (int i=0 ; i<eci->rowCount() ; i++)
+			if (static_cast<ElementCollectionItem *>(eci->child(i))->collectionPath() == drop_location.collectionPath())
+				return false;
+
+		return true;
+	}
+	else
+		return false;
+}
+
+/**
+ * @brief ElementsCollectionModel::dropMimeData
+ * Reimplemented from QStandardItemModel
+ * @param data
+ * @param action
+ * @param row
+ * @param column
+ * @param parent
+ * @return
+ */
+bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
+{
+	Q_UNUSED(action);
+
+	QStandardItem *qsi = itemFromIndex(parent.child(row, column));
+	if (!qsi)
+		qsi = itemFromIndex(parent);
+
+	if (qsi->type() == FileElementCollectionItem::Type) {
+		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(qsi);
+
+		if (feci->isCommonCollection())
+			return false;
+
+		if (feci->isElement() && feci->parent() && feci->parent()->type() == FileElementCollectionItem::Type)
+			feci = static_cast<FileElementCollectionItem *>(feci->parent());
+
+		ElementCollectionHandler ech;
+
+		ElementsLocation source(data->text());
+		ElementsLocation destination(feci->fileSystemPath());
+		ElementsLocation location = ech.copy(source, destination);
+
+		if (location.exist())
+		{
+				//If feci have a child with the same path of location,
+				//we remove the existing child befor insert new child
+			for (int i=0 ; i<feci->rowCount() ; i++) {
+				if (static_cast<FileElementCollectionItem *>(feci->child(i))->collectionPath() == location.collectionPath())
+					feci->removeRow(i);
+			}
+			feci->addChildAtPath(location.fileName());
+			return true;
+		}
+
+		return false;
+	}
+	else if (qsi->type() == XmlProjectElementCollectionItem::Type) {
+		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem*>(qsi);
+
+		if (xpeci->isElement() && xpeci->parent() && xpeci->parent()->type() == XmlProjectElementCollectionItem::Type)
+			xpeci = static_cast<XmlProjectElementCollectionItem *>(xpeci->parent());
+
+			//before do the copy, we get all collection path of xpeci child,
+			//for remove it if the copied item have the same path of an existing child.
+			//We can't do this after the copy, because at the copy if the xml collection have a DomElement with the same path,
+			//he was removed before the new xml DomElement is inserted
+			//So the existing child of this will return a null QString when call collectionPath(), because the item
+			//doesn't exist anymore in the xml collection.
+		QList <QString> child_path_list;
+		for (int i=0 ; i<xpeci->rowCount() ; i++)
+			child_path_list.append(static_cast<XmlProjectElementCollectionItem *>(xpeci->child(i, 0))->collectionPath());
+
+		ElementCollectionHandler ech;
+
+		ElementsLocation source(data->text());
+		ElementsLocation destination(xpeci->collectionPath());
+		ElementsLocation location = ech.copy(source, destination);
+
+		return location.exist();
+	}
+
+	return false;
 }
 
 /**
  * @brief ElementsCollectionModel::addCommonCollection
  * Add the common elements collection to this model
  */
-void ElementsCollectionModel::addCommonCollection()
+void ElementsCollectionModel::addCommonCollection(bool set_data)
 {
-	FileElementCollectionItem *feci = new FileElementCollectionItem(m_root_item);
-	if (feci->setRootPath(QETApp::commonElementsDirN()))
-		m_root_item->appendChild(feci);
+	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	if (feci->setRootPath(QETApp::commonElementsDirN(), set_data, m_hide_element)) {
+		invisibleRootItem()->appendRow(feci);
+		if (set_data)
+			feci->setUpData();
+	}
 	else
 		delete feci;
 }
@@ -297,92 +229,124 @@ void ElementsCollectionModel::addCommonCollection()
  * @brief ElementsCollectionModel::addCustomCollection
  * Add the custom elements collection to this model
  */
-void ElementsCollectionModel::addCustomCollection()
+void ElementsCollectionModel::addCustomCollection(bool set_data)
 {
-	FileElementCollectionItem *feci = new FileElementCollectionItem(m_root_item);
-	if (feci->setRootPath(QETApp::customElementsDirN()))
-		m_root_item->appendChild(feci);
+	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	if (feci->setRootPath(QETApp::customElementsDirN(), set_data, m_hide_element)) {
+		invisibleRootItem()->appendRow(feci);
+		if (set_data)
+			feci->setUpData();
+	}
 	else
 		delete feci;
 }
 
 /**
  * @brief ElementsCollectionModel::addProject
- * Add @project to the displayed collection
- * @param project
- * @return true if project was successfully added. If project is already
- * handled, return false.
+ * Add project to this model
+ * @param project : project to add.
+ * @param set_data : if true, setUpData is called for every ElementCollectionItem of project
  */
-bool ElementsCollectionModel::addProject(QETProject *project)
+void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 {
-	if (m_project_list.contains(project)) return false;
+	if (m_project_list.contains(project))
+		return;
 
 	m_project_list.append(project);
 	int row = m_project_list.indexOf(project);
-	beginInsertRows(QModelIndex(), row, row);
-	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem(project, m_root_item);
-	bool r = m_root_item->insertChild(row, xpeci);
-	endInsertRows();
+	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
+	m_project_hash.insert(project, xpeci);
+
+	xpeci->setProject(project);
+	insertRow(row, xpeci);
+	if (set_data)
+		xpeci->setUpData();
 	connect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
 	connect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
-
-	return r;
 }
 
 /**
  * @brief ElementsCollectionModel::removeProject
- * Remove @project from this model
+ * Remove project from this model
  * @param project
- * @return true if the project was successfully removed, false if not (or project doesn't managed)
  */
-bool ElementsCollectionModel::removeProject(QETProject *project)
+void ElementsCollectionModel::removeProject(QETProject *project)
 {
-	if (!m_project_list.contains(project)) return false;
+	if (!m_project_list.contains(project))
+		return;
 
 	int row = m_project_list.indexOf(project);
 	if (removeRows(row, 1, QModelIndex())) {
 		m_project_list.removeOne(project);
+		m_project_hash.remove(project);
 		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
-		connect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
-		return true;
+		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
 	}
-	else
-		return false;
 }
 
 /**
  * @brief ElementsCollectionModel::project
- * @return A list of project handled by this model
+ * @return every project added to this model
  */
-QList<QETProject *> ElementsCollectionModel::project() const {
+QList<QETProject *> ElementsCollectionModel::project() const
+{
 	return m_project_list;
 }
 
 /**
- * @brief ElementsCollectionModel::index
- * @param location
- * @return Return the index of the item represented by location.
- * index can be no valid
+ * @brief ElementsCollectionModel::items
+ * @return every ElementCollectionItem owned by this model
  */
-QModelIndex ElementsCollectionModel::index(const ElementsLocation &location) const
+QList <ElementCollectionItem *> ElementsCollectionModel::items() const
 {
-	if (!location.exist()) {
-		return QModelIndex();
+	QList <ElementCollectionItem *> list;
+
+	for (int i=0 ; i<rowCount() ; i++) {
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(item(i));
+		list.append(eci);
+		list.append(eci->items());
 	}
+
+	return list;
+}
+
+/**
+ * @brief ElementsCollectionModel::hideElement
+ * Hide element in this model, only directory is managed
+ */
+void ElementsCollectionModel::hideElement()
+{
+	m_hide_element = true;
+	foreach(ElementCollectionItem *eci, items()) {
+		if (eci->isElement()) {
+			removeRow(eci->row(), indexFromItem(eci).parent());
+		}
+	}
+}
+
+/**
+ * @brief ElementsCollectionModel::indexFromLocation
+ * Return the index who represent @location.
+ * Index can be non valid
+ * @param location
+ * @return
+ */
+QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &location)
+{
+	if (!location.exist())
+		return QModelIndex();
 
 	QList <ElementCollectionItem *> child_list;
 
-	for (int i=0 ; i<m_root_item->childCount() ; i++) {
-		child_list.append(m_root_item->child(i));
-	}
+	for (int i=0 ; i<rowCount() ; i++)
+		child_list.append(static_cast<ElementCollectionItem *>(item(i)));
 
 		foreach(ElementCollectionItem *eci, child_list) {
 
 			ElementCollectionItem *match_eci = nullptr;
 
 			if (eci->type() == FileElementCollectionItem::Type) {
-				FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci);
-				if (feci) {
+				if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
 					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
 						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
 						match_eci = feci->itemAtPath(location.collectionPath(false));
@@ -390,59 +354,30 @@ QModelIndex ElementsCollectionModel::index(const ElementsLocation &location) con
 				}
 			}
 			else if (eci->type() == XmlProjectElementCollectionItem::Type) {
-				XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
-				if (xpeci) {
+				if (XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci)) {
 					match_eci = xpeci->itemAtPath(location.collectionPath(false));
 				}
 			}
 
-			if (match_eci) {
-				return createIndex(match_eci->row(), 0, match_eci);
-			}
+			if (match_eci)
+				return indexFromItem(match_eci);
 		}
 
 		return QModelIndex();
 }
 
 /**
- * @brief ElementsCollectionModel::hideElement
- * Hide element.
- * Only directory is provided by the model
- */
-void ElementsCollectionModel::hideElement()
-{
-	m_hide_element = true;
-}
-
-/**
- * @brief ElementsCollectionModel::itemForProject
- * @param project
- * @return the root item of project @project, or nullptr if not found.
- */
-XmlProjectElementCollectionItem *ElementsCollectionModel::itemForProject(QETProject *project)
-{
-	if (!m_project_list.contains(project)) return nullptr;
-	QModelIndex index_ = index(m_project_list.indexOf(project), 0);
-	if (!index_.isValid()) return nullptr;
-
-	XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(index_.internalPointer());
-	if (xpeci)
-		return xpeci;
-	else
-		return nullptr;
-}
-
-/**
- * @brief ElementsCollectionModel::elementAddedToEmbeddedCollection
+ * @brief ElementsCollectionModel::elementIntegratedToCollection
  * When an element is added to embedded collection of a project,
  * this method create and display the new element
  * @param path -The path of the new element in the embedded collection of a project
  */
-void ElementsCollectionModel::elementIntegratedToCollection (QString path)
+void ElementsCollectionModel::elementIntegratedToCollection(QString path)
 {
 	QObject *object = sender();
 	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
-	if (!collection) return;
+	if (!collection)
+		return;
 
 	QETProject *project = nullptr;
 
@@ -454,19 +389,14 @@ void ElementsCollectionModel::elementIntegratedToCollection (QString path)
 	}
 
 	if (project) {
-		XmlProjectElementCollectionItem *xpeci = itemForProject(project);
-		if (!xpeci) return;
+		XmlProjectElementCollectionItem *xpeci = m_project_hash.value(project);
 
 		QString collection_name;
 		ElementCollectionItem *eci = xpeci->lastItemForPath(path, collection_name);
-		if (!eci) return;
+		if (!eci)
+			return;
 
-		int new_row = eci->rowForInsertItem(collection_name);
-		if (new_row <= -1) return;
-		QModelIndex parent_index = createIndex(eci->row(), 0, eci);
-		beginInsertRows(parent_index, new_row, new_row);
-		eci->insertNewItem(collection_name);
-		endInsertRows();
+		eci->addChildAtPath(collection_name);
 	}
 }
 
@@ -479,7 +409,8 @@ void ElementsCollectionModel::updateItem(QString path)
 {
 	QObject *object = sender();
 	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
-	if (!collection) return;
+	if (!collection)
+		return;
 
 	QETProject *project = nullptr;
 
@@ -491,30 +422,11 @@ void ElementsCollectionModel::updateItem(QString path)
 	}
 
 	if (project) {
-		XmlProjectElementCollectionItem *xpeci = itemForProject(project);
-		if (!xpeci) {
+		ElementCollectionItem *eci = m_project_hash.value(project)->itemAtPath(path);
+		if (!eci)
 			return;
-		}
-
-		ElementCollectionItem *eci = xpeci->itemAtPath(path);
-		if (!eci) {
-			return;
-		}
 
 		eci->clearData();
+		eci->setUpData();
 	}
-}
-
-void ElementsCollectionModel::bir(ElementCollectionItem *eci, int first, int last)
-{
-	Q_UNUSED(eci);
-	if (!m_parent_at_drop.isValid()) return;
-	beginInsertRows(m_parent_at_drop, first, last);
-}
-
-void ElementsCollectionModel::brr(ElementCollectionItem *eci, int first, int last)
-{
-	Q_UNUSED(eci);
-	if (!m_parent_at_drop.isValid()) return;
-	beginRemoveRows(m_parent_at_drop, first, last);
 }

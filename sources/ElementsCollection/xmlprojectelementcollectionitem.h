@@ -1,27 +1,25 @@
 /*
-        Copyright 2006-2016 The QElectroTech Team
-        This file is part of QElectroTech.
+		Copyright 2006-2016 The QElectroTech Team
+		This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+		QElectroTech is free software: you can redistribute it and/or modify
+		it under the terms of the GNU General Public License as published by
+		the Free Software Foundation, either version 2 of the License, or
+		(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-        GNU General Public License for more details.
+		QElectroTech is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+		GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
+		You should have received a copy of the GNU General Public License
+		along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef XMLPROJECTELEMENTCOLLECTIONITEM_H
-#define XMLPROJECTELEMENTCOLLECTIONITEM_H
+#ifndef XMLPROJECTELEMENTCOLLECTIONITEM2_H
+#define XMLPROJECTELEMENTCOLLECTIONITEM2_H
 
 #include "elementcollectionitem.h"
-
 #include <QDomElement>
-#include <QIcon>
 
 class QETProject;
 
@@ -31,43 +29,33 @@ class QETProject;
  */
 class XmlProjectElementCollectionItem : public ElementCollectionItem
 {
-		Q_OBJECT
-
-    public:
-        XmlProjectElementCollectionItem(QETProject *project, ElementCollectionItem *parent = nullptr);
-	private:
-		XmlProjectElementCollectionItem (QETProject *project, const QDomElement &dom_element, ElementCollectionItem *parent = nullptr);
 	public:
-        ~XmlProjectElementCollectionItem();
+		XmlProjectElementCollectionItem();
 
-        enum {Type = UserType + 2};
-        virtual int type() const {return Type;}
+		enum {Type = UserType+3};
+		virtual int type() const { return Type; }
 
-        virtual QVariant data(int column, int role);
-		virtual void clearData();
-		virtual QMimeData *mimeData();
-		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column) const;
-		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column);
-		virtual Qt::ItemFlags flags();
-
-        virtual bool isCollectionRoot() const;
-        virtual QString name();
-        virtual bool isValid() const;
-		QETProject *project() const;
 		virtual bool isDir() const;
 		virtual bool isElement() const;
-		QString collectionPath() const;
-		QString embeddedPath() const;
-		virtual QString collectionName() const;
-		void insertNewItem(const QString &collection_name);
+		virtual QString localName();
+		virtual QString name() const;
+		virtual QString collectionPath() const;
+		virtual QString embeddedPath() const;
+		virtual bool isCollectionRoot() const;
+		virtual void addChildAtPath(const QString &collection_name);
+		QETProject * project() const;
+
+		void setProject (QETProject *project, bool set_data = true, bool hide_element = false);
+		void setUpData();
+		void setUpIcon();
 
 	private:
-		void populate();
+		void populate(bool set_data = true, bool hide_element = false);
+		void setXmlElement(QDomElement element, QETProject *project, bool set_data = true, bool hide_element = false);
 
 	private:
-		QETProject *m_project;
+		QETProject *m_project = nullptr;
 		QDomElement m_dom_element;
-		QIcon m_icon;
 };
 
-#endif // XMLPROJECTELEMENTCOLLECTIONITEM_H
+#endif // XMLPROJECTELEMENTCOLLECTIONITEM2_H

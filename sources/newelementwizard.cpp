@@ -61,7 +61,7 @@ NewElementWizard::~NewElementWizard() {
  */
 void NewElementWizard::preselectedLocation(const ElementsLocation &location)
 {
-	QModelIndex index = m_model->index(location);
+	QModelIndex index = m_model->indexFromLocation(location);
 	if (index.isValid()) {
 		m_tree_view->scrollTo(index);
 		m_tree_view->setCurrentIndex(index);
@@ -170,7 +170,7 @@ bool NewElementWizard::validStep1()
 	QModelIndex index = m_tree_view->currentIndex();
 	if (index.isValid()) {
 
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(index.internalPointer());
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
 		if (eci && eci->isDir()) {
 			ElementsLocation loc(eci->collectionPath());
 			if (loc.exist()) {

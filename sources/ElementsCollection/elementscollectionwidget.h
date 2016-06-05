@@ -44,10 +44,12 @@ class ElementsCollectionWidget : public QWidget
         ElementsCollectionWidget(QWidget *parent = nullptr);
 
         void expandFirstItems();
-        ElementsCollectionModel *model() const;
 
 		void addProject (QETProject *project);
 		void removeProject (QETProject *project);
+
+	protected:
+		virtual bool event(QEvent *event);
 
 	private:
 		void setUpAction();
@@ -70,11 +72,11 @@ class ElementsCollectionWidget : public QWidget
 		void showAndExpandItem (const QModelIndex &index, bool parent = true, bool child = false);
 		ElementCollectionItem *elementCollectionItemForIndex (const QModelIndex &index);
 
-    private:
-        ElementsCollectionModel *m_model;
+	private:
+		ElementsCollectionModel *m_model;
 		QLineEdit *m_search_field;
 		ElementsTreeView *m_tree_view;
-        QVBoxLayout *m_main_vlayout;
+		QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;
 		QModelIndex m_showed_index;
@@ -90,6 +92,8 @@ class ElementsCollectionWidget : public QWidget
 				*m_new_element,
 				*m_show_this_dir,
 				*m_show_all_dir;
+
+		bool m_first_show = true;
 };
 
 #endif // ELEMENTSCOLLECTIONWIDGET_H

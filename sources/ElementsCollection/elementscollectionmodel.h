@@ -15,66 +15,51 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef ELEMENTSCOLLECTIONMODEL_H
-#define ELEMENTSCOLLECTIONMODEL_H
+#ifndef ELEMENTSCOLLECTIONMODEL2_H
+#define ELEMENTSCOLLECTIONMODEL2_H
 
-#include <QAbstractItemModel>
+#include <QStandardItemModel>
 #include "elementslocation.h"
 
-class ElementCollectionItem;
-class QETProject;
 class QList<QETProject>;
 class XmlProjectElementCollectionItem;
+class QHash<QETProject, XmlProjectElementCollectionItem>;
+class ElementCollectionItem;
+class QList<ElementCollectionItem>;
 
-/**
- * @brief The ElementsCollectionModel class
- * Provide a data model for co;llection of elements.
- */
-class ElementsCollectionModel : public QAbstractItemModel
+class ElementsCollectionModel : public QStandardItemModel
 {
-		Q_OBJECT
+	Q_OBJECT
 
 	public:
-		ElementsCollectionModel(QObject *parent = nullptr);
-		~ElementsCollectionModel();
+		ElementsCollectionModel(QObject *parent = Q_NULLPTR);
 
-		virtual QModelIndex index (int row, int column, const QModelIndex &parent = QModelIndex()) const;
-		virtual QModelIndex parent (const QModelIndex &child) const;
-
-		virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
-		virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-		virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-
-		virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
-
+		virtual QVariant data(const QModelIndex &index, int role) const;
 		virtual QMimeData *mimeData(const QModelIndexList &indexes) const;
-		virtual Qt::ItemFlags flags(const QModelIndex &index) const;
+		virtual QStringList mimeTypes() const;
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const;
 		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
-		QStringList mimeTypes() const;
-		QList <ElementCollectionItem *> items() const;
 
-		void addCommonCollection();
-		void addCustomCollection();
-		bool addProject(QETProject *project);
-		bool removeProject(QETProject *project);
+		void addCommonCollection(bool set_data = true);
+		void addCustomCollection(bool set_data = true);
+
+		void addProject(QETProject *project, bool set_data = true);
+		void removeProject(QETProject *project);
 		QList<QETProject *> project() const;
-		QModelIndex index(const ElementsLocation &location) const;
+
+		QList <ElementCollectionItem *> items() const;
 		void hideElement();
+		bool isHideElement() {return m_hide_element;}
+		QModelIndex indexFromLocation(const ElementsLocation &location);
 
 	private:
-		XmlProjectElementCollectionItem *itemForProject(QETProject *project);
 		void elementIntegratedToCollection (QString path);
 		void updateItem (QString path);
-			//Use as slot in method drop mime data
-		void bir(ElementCollectionItem *eci, int first, int last);
-		void brr(ElementCollectionItem *eci, int first, int last);
 
 	private:
-		ElementCollectionItem *m_root_item;
 		QList <QETProject *> m_project_list;
-		QModelIndex m_parent_at_drop;
+		QHash <QETProject *, XmlProjectElementCollectionItem *> m_project_hash;
 		bool m_hide_element = false;
 };
 
-#endif // ELEMENTSCOLLECTIONMODEL_H
+#endif // ELEMENTSCOLLECTIONMODEL2_H

@@ -85,14 +85,14 @@ void ElementDialog::setUpWidget()
 
 	m_tree_view = new QTreeView(this);
 
-	ElementsCollectionModel *model = new ElementsCollectionModel(m_tree_view);
-	if (m_mode == OpenElement) {model->addCommonCollection();}
-	model->addCustomCollection();
+	m_model = new ElementsCollectionModel(m_tree_view);
+	if (m_mode == OpenElement) {m_model->addCommonCollection();}
+	m_model->addCustomCollection();
 	foreach (QETProject *project, QETApp::registeredProjects()) {
-		model->addProject(project);
+		m_model->addProject(project);
 	}
 
-	m_tree_view->setModel(model);
+	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);
 	layout->addWidget(m_tree_view);
 
@@ -138,7 +138,7 @@ void ElementDialog::setUpConnection()
  */
 void ElementDialog::indexClicked(const QModelIndex &index)
 {
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem*> (index.internalPointer());
+	ElementCollectionItem *eci = static_cast<ElementCollectionItem*> (m_model->itemFromIndex(index));
 	m_location = ElementsLocation(eci->collectionPath());
 	checkCurrentLocation();
 }

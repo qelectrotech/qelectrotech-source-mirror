@@ -24,6 +24,8 @@
 class QDialogButtonBox;
 class QFileNameEdit;
 class QTreeView;
+class ElementsCollectionModel;
+
 /**
 	This class provides several dialogs to select an element or a category
 	(e.g. new or existing, for opening or for saving...).
@@ -66,6 +68,7 @@ class ElementDialog : public QDialog
 		QDialogButtonBox *m_buttons_box = nullptr;
 		QFileNameEdit *m_text_field     = nullptr;
 		QTreeView *m_tree_view          = nullptr;
+		ElementsCollectionModel *m_model= nullptr;
 
 	public:
 		static ElementsLocation getOpenElementLocation(QWidget *parent = nullptr);

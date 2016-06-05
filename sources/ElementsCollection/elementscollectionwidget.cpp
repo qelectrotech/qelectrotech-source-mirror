@@ -34,6 +34,7 @@
 #include <QMenu>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QTimer>
 
 /**
  * @brief ElementsCollectionWidget::ElementsCollectionWidget
@@ -47,8 +48,6 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
-
-	reload();
 }
 
 /**
@@ -57,16 +56,11 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
  */
 void ElementsCollectionWidget::expandFirstItems()
 {
+	if (!m_model)
+		return;
+
 	for (int i=0; i < m_model->rowCount() ; i++)
 		showAndExpandItem(m_model->index(i, 0), false);
-}
-
-/**
- * @brief ElementsCollectionWidget::model
- * @return The ElementsCollectionModel used by the tree view
- */
-ElementsCollectionModel *ElementsCollectionWidget::model() const {
-	return m_model;
 }
 
 /**
@@ -80,6 +74,16 @@ void ElementsCollectionWidget::addProject(QETProject *project) {
 
 void ElementsCollectionWidget::removeProject(QETProject *project) {
 	m_model->removeProject(project);
+}
+
+bool ElementsCollectionWidget::event(QEvent *event)
+{
+	if (m_first_show && event->type() == QEvent::WindowActivate) {
+		m_first_show = false;
+		QTimer::singleShot(250, this, &ElementsCollectionWidget::reload);
+	}
+
+	return QWidget::event(event);
 }
 
 void ElementsCollectionWidget::setUpAction()
@@ -249,7 +253,7 @@ void ElementsCollectionWidget::editElement()
 	foreach (QETElementEditor *element_editor, app->elementEditors())
 	{
 		if (element_editor->isEditing(location))
-			connect(element_editor, &QETElementEditor::destroyed, eci, &ElementCollectionItem::clearData);
+			connect(element_editor, &QETElementEditor::destroyed, [eci](){ eci->clearData(); eci->setUpData();});
 	}
 }
 
@@ -393,7 +397,7 @@ void ElementsCollectionWidget::showThisDir()
 	{
 		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
 		if (eci)
-			eci->setBackgroundColor(Qt::yellow, false);
+			eci->setBackground(QBrush());
 	}
 
 	m_showed_index = m_index_at_context_menu;
@@ -403,7 +407,7 @@ void ElementsCollectionWidget::showThisDir()
 		showAndExpandItem(m_showed_index, true, true);
 		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
 		if (eci)
-			eci->setBackgroundColor(Qt::yellow, true);
+			eci->setBackground(QBrush(Qt::yellow));
 		search(m_search_field->text());
 	}
 	else
@@ -421,7 +425,7 @@ void ElementsCollectionWidget::resetShowThisDir()
 	{
 		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
 		if (eci)
-			eci->setBackgroundColor(Qt::yellow, false);
+			eci->setBackground(QBrush());
 	}
 
 	m_showed_index = QModelIndex();
@@ -435,19 +439,19 @@ void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
 	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
-	new_model->addCommonCollection();
-	new_model->addCustomCollection();
+	new_model->addCommonCollection(false);
+	new_model->addCustomCollection(false);
 
 	if (m_model)
 		foreach (QETProject *project, m_model->project())
-			new_model->addProject(project);
+			new_model->addProject(project, false);
 
 	QList <ElementCollectionItem *> list = new_model->items();
 	m_progress_bar->setMaximum(list.size());
 	m_progress_bar->setValue(0);
 	foreach (ElementCollectionItem *item, new_model->items())
 	{
-		item->name();
+		item->setUpData();
 		m_progress_bar->setValue(m_progress_bar->value() + 1);
 	}
 
@@ -493,7 +497,6 @@ void ElementsCollectionWidget::search(const QString &text)
 	}
 
 	hideCollection(true);
-
 	QStringList text_list = text.split("+", QString::SkipEmptyParts);
 	QModelIndexList match_index;
 	foreach (QString txt, text_list) {
@@ -543,11 +546,13 @@ void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, boo
  */
 void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool parent, bool child)
 {
-	if (parent && index.isValid())
-		showAndExpandItem(index.parent(), parent);
+	if (index.isValid()) {
+		if (parent)
+			showAndExpandItem(index.parent(), parent);
 
-	hideItem(false, index, child);
-	m_tree_view->expand(index);
+		hideItem(false, index, child);
+		m_tree_view->expand(index);
+	}
 }
 
 /**
@@ -556,5 +561,5 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool 
  * @return The internal pointer of index casted to ElementCollectionItem;
  */
 ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index) {
-	return static_cast<ElementCollectionItem*>(index.internalPointer());
+	return static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
 }
