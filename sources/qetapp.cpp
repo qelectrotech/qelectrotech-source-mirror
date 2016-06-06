@@ -1316,7 +1316,7 @@ void QETApp::parseArguments() {
 */
 void QETApp::initSplashScreen() {
 	if (non_interactive_execution_) return;
-	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"), Qt::WindowStaysOnTopHint);
+	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"));
 	splash_screen_ -> show();
 	setSplashScreenStep(tr("Chargement...", "splash screen caption"));
 }
