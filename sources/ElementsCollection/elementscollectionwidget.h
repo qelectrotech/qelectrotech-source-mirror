@@ -97,6 +97,7 @@ class ElementsCollectionWidget : public QWidget
 				*m_show_all_dir;
 
 		bool m_first_show = true;
+		QList<QETProject *> m_waiting_project;
 };
 
 #endif // ELEMENTSCOLLECTIONWIDGET_H

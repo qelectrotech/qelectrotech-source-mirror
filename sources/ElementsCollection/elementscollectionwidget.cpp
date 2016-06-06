@@ -70,11 +70,15 @@ void ElementsCollectionWidget::expandFirstItems()
  * @param project
  */
 void ElementsCollectionWidget::addProject(QETProject *project) {
-	m_model->addProject(project);
+	if (m_model)
+		m_model->addProject(project);
+	else
+		m_waiting_project.append(project);
 }
 
 void ElementsCollectionWidget::removeProject(QETProject *project) {
-	m_model->removeProject(project);
+	if (m_model)
+		m_model->removeProject(project);
 }
 
 bool ElementsCollectionWidget::event(QEvent *event)
@@ -442,6 +446,12 @@ void ElementsCollectionWidget::reload()
 	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
 	new_model->addCommonCollection(false);
 	new_model->addCustomCollection(false);
+
+	if (!m_waiting_project.isEmpty()) {
+		foreach(QETProject *prj, m_waiting_project)
+			new_model->addProject(prj, false);
+		m_waiting_project.clear();
+	}
 
 	if (m_model)
 		foreach (QETProject *project, m_model->project())
