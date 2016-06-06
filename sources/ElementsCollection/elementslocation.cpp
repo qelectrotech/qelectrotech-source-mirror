@@ -654,21 +654,21 @@ QIcon ElementsLocation::icon() const
  */
 QString ElementsLocation::name() const
 {
-	if (!m_project)
-	{
-		ElementsCollectionCache *cache = QETApp::collectionCache();
-		ElementsLocation loc(*this); //Make a copy of this to keep this method const
-		if (cache->fetchElement(loc))
-			return cache->name();
-		else
-			return QString();
-	}
-	else
-	{
+//	if (!m_project)
+//	{
+//		ElementsCollectionCache *cache = QETApp::collectionCache();
+//		ElementsLocation loc(*this); //Make a copy of this to keep this method const
+//		if (cache->fetchElement(loc))
+//			return cache->name();
+//		else
+//			return QString();
+//	}
+//	else
+//	{
 		NamesList nl;
 		nl.fromXml(xml());
 		return nl.name(fileName());
-	}
+//	}
 }
 
 /**

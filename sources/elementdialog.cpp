@@ -20,6 +20,7 @@
 #include <QTreeView>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QtConcurrent>
 
 #include "elementdialog.h"
 #include "qetapp.h"
@@ -86,11 +87,15 @@ void ElementDialog::setUpWidget()
 	m_tree_view = new QTreeView(this);
 
 	m_model = new ElementsCollectionModel(m_tree_view);
-	if (m_mode == OpenElement) {m_model->addCommonCollection();}
-	m_model->addCustomCollection();
-	foreach (QETProject *project, QETApp::registeredProjects()) {
-		m_model->addProject(project);
-	}
+	if (m_mode == OpenElement)
+		m_model->addCommonCollection(false);
+	m_model->addCustomCollection(false);
+
+	foreach (QETProject *project, QETApp::registeredProjects())
+		m_model->addProject(project, false);
+
+	QList <ElementCollectionItem *> list = m_model->items();
+	QtConcurrent::blockingMap(list, setUpData);
 
 	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);

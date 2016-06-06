@@ -35,6 +35,7 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QTimer>
+#include <QtConcurrent>
 
 /**
  * @brief ElementsCollectionWidget::ElementsCollectionWidget
@@ -447,12 +448,11 @@ void ElementsCollectionWidget::reload()
 			new_model->addProject(project, false);
 
 	QList <ElementCollectionItem *> list = new_model->items();
-	m_progress_bar->setMaximum(list.size());
-	m_progress_bar->setValue(0);
-	foreach (ElementCollectionItem *item, new_model->items())
-	{
-		item->setUpData();
-		m_progress_bar->setValue(m_progress_bar->value() + 1);
+	QFuture<void> futur = QtConcurrent::map(list, setUpData);
+	m_progress_bar->setMinimum(futur.progressMinimum());
+	m_progress_bar->setMaximum(futur.progressMaximum());
+	while (futur.isRunning()) {
+		m_progress_bar->setValue(futur.progressValue());
 	}
 
 	m_tree_view->setModel(new_model);

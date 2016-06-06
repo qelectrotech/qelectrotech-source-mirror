@@ -208,3 +208,8 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 
 	return list;
 }
+
+void setUpData(ElementCollectionItem *eci)
+{
+	eci->setUpData();
+}

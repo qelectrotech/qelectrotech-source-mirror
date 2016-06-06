@@ -56,4 +56,6 @@ class ElementCollectionItem : public QStandardItem
 		QList<ElementCollectionItem *> items() const;
 };
 
+void setUpData(ElementCollectionItem *eci);
+
 #endif // ELEMENTCOLLECTIONITEM2_H
