@@ -30,6 +30,7 @@ XRefProperties::XRefProperties()
 	m_prefix_keys << "power" << "delay" << "switch";
 	m_master_label = "%f-%l%c";
 	m_slave_label = "(%f-%l%c)";
+	m_offset = 0;
 }
 
 /**
@@ -44,6 +45,8 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	settings.setValue(prefix + "snapto", snap);
+	int offset = m_offset;
+	settings.setValue(prefix + "offset", offset);
 	QString master_label = m_master_label;
 	settings.setValue(prefix + "master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -65,6 +68,7 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix + "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+	m_offset = settings.value(prefix + "offset", "0").toInt();
 	m_master_label = settings.value(prefix + "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix + "slave_label", "(%f-%l%c)").toString();
 	foreach (QString key, m_prefix_keys) {
@@ -83,6 +87,8 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
+	int offset = m_offset;
+	xml_element.setAttribute("offset", offset);
 	QString master_label = m_master_label;
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -103,6 +109,7 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
 	foreach (QString key, m_prefix_keys) {
@@ -142,7 +149,8 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			m_snap_to == xrp.m_snap_to &&
 			m_prefix == xrp.m_prefix &&
 			m_master_label == xrp.m_master_label &&
-			m_slave_label == xrp.m_slave_label);
+			m_slave_label == xrp.m_slave_label &&
+			m_offset == xrp.m_offset);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const {

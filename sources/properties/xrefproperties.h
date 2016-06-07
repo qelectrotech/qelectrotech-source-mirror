@@ -68,6 +68,9 @@ class XRefProperties : public PropertiesInterface
 	void setSlaveLabel(const QString slave) {m_slave_label = slave;}
 	QString slaveLabel () const				{return m_slave_label;}
 
+	void setOffset(const int offset) {m_offset = offset;}
+	int offset() const				 {return m_offset;}
+
 	private:
 	bool m_show_power_ctc;
 	DisplayHas m_display;
@@ -76,6 +79,7 @@ class XRefProperties : public PropertiesInterface
 	QStringList m_prefix_keys;
 	QString m_master_label;
 	QString m_slave_label;
+	int     m_offset;
 };
 
 #endif // XREFPROPERTIES_H
