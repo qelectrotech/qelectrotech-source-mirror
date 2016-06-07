@@ -134,13 +134,13 @@ void ElementSelectorWidget::buildInterface() {
 			DiagramContext dc = elmt -> elementInformations();
 
 			if (!dc["label"].toString().isEmpty())
-				button_text = dc["label"].toString() + " ";
+				button_text = elmt->assignVariables(dc["label"].toString(), elmt) + " ";
 
 			if (!dc["comment"].toString().isEmpty())
-				button_text += dc["comment"].toString();
+				button_text += elmt->assignVariables(dc["comment"].toString(), elmt);
 
 			if (!dc["location"].toString().isEmpty())
-				button_text += dc["location"].toString();
+				button_text += elmt->assignVariables(dc["location"].toString(), elmt);
 
 			if (!button_text.isEmpty())
 				button_text += "\n";

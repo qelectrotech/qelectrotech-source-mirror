@@ -459,7 +459,6 @@ void ProjectAutoNumConfigPage::applyAutoNum() {
 		emit (saveCurrentTbp());
 		emit (setAutoNum(m_faw->autoNumSelected()));
 		while (foliosRemaining > 0){
-					qDebug() << foliosRemaining;
 			project()->autoFolioNumberingNewFolios();
 			foliosRemaining = foliosRemaining-1;
 		}
