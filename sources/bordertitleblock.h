@@ -97,6 +97,10 @@ class BorderTitleBlock : public QObject
 	QString folio() const { return(btb_folio_); }
 	/// @return the value of the title block "File" field
 	QString fileName() const { return(btb_filename_); }
+	/// @return the value of the title block Additional Fields
+	DiagramContext additionalFields() const { return (additional_fields_); }
+	/// @return the value of the title block
+	QString autoPageNum() const { return(btb_auto_page_num_); }
 	
 	// methods to get display options
 	/// @return true si le cartouche est affiche, false sinon
@@ -107,8 +111,6 @@ class BorderTitleBlock : public QObject
 	bool rowsAreDisplayed() const { return(display_rows_); }
 	/// @return true si la bordure est affichee, false sinon
 	bool borderIsDisplayed() const { return(display_border_); }
-
-	QString autoPageNum() const { return(btb_auto_page_num_); }
 	
 	// methods to set dimensions
 	void setColumnsCount(int);

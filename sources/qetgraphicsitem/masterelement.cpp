@@ -161,9 +161,12 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 	}
 	else {
 		QString comment   = elementInformations()["comment"].toString();
-		bool    must_show = elementInformations().keyMustShow("comment");
+		bool    must_show_comment = elementInformations().keyMustShow("comment");
 
-		if (! (comment.isEmpty() || !must_show)) {
+		QString location  = elementInformations()["location"].toString();
+		bool	must_show_location = elementInformations().keyMustShow("location");
+
+		if (! (comment.isEmpty() || !must_show_comment) || !(location.isEmpty() || !must_show_location)) {
 			cri_ = new CrossRefItem(this);
 		}
 	}

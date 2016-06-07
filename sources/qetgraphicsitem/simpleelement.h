@@ -45,6 +45,7 @@ class SimpleElement : public CustomElement {
 
 	private:
 		CommentItem *m_comment_item;
+		CommentItem *m_location_item;
 
 };
 

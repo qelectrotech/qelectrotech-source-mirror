@@ -99,7 +99,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(subWindowActivated(QMdiSubWindow*)));
 	connect (QApplication::clipboard(), SIGNAL(dataChanged()),                       this, SLOT(slot_updatePasteAction()));
 	connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
-	
+
 	readSettings();
 	show();
 	

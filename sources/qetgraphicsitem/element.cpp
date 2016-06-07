@@ -643,6 +643,18 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
  * @param elmt, element to extract variables values
  */
 QString Element::assignVariables(QString label, Element *elmt){
+
+	for (int i = 0; i < elmt->diagram()->border_and_titleblock.additionalFields().count(); i++)
+	{
+		QString folio_variable = elmt->diagram()->border_and_titleblock.additionalFields().keys().at(i);
+		QVariant folio_value = elmt->diagram()->border_and_titleblock.additionalFields().operator [](folio_variable);
+
+		if (label.contains(folio_variable)) {
+			label.replace("%{" + folio_variable + "}", folio_value.toString());
+			label.replace("%"  + folio_variable      , folio_value.toString());
+		}
+	}
+
 	label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
 	label.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
 	label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));

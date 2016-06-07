@@ -203,7 +203,8 @@ void CrossRefItem::updateLabel() {
 			drawHasContacts(qp);
 	}
 
-	AddExtraInfo(qp);
+	AddExtraInfo(qp, "comment");
+	AddExtraInfo(qp, "location");
 	qp.end();
 
 	autoPos();
@@ -532,30 +533,33 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
  * @brief CrossRefItem::AddExtraInfo
  * Add the comment info of the parent item if needed.
  * @param painter painter to use for draw the text
+ * @param type type of Info do be draw e.g. comment, location.
  */
-void CrossRefItem::AddExtraInfo(QPainter &painter)
+void CrossRefItem::AddExtraInfo(QPainter &painter, QString type)
 {
-	QString comment = m_element -> assignVariables(m_element -> elementInformations()["comment"].toString(), m_element);
-	bool must_show  = m_element -> elementInformations().keyMustShow("comment");
+	QString text = m_element -> assignVariables(m_element -> elementInformations()[type].toString(), m_element);
+	bool must_show  = m_element -> elementInformations().keyMustShow(type);
 
-	if (!comment.isEmpty() && must_show)
+	if (!text.isEmpty() && must_show)
 	{
 		painter.save();
 		painter.setFont(QETApp::diagramTextsFont(6));
 
 		QRectF r, text_bounding;
 		qreal center = boundingRect().center().x();
+
 		r = QRectF(QPointF(center - 35, boundingRect().bottom()),
 				   QPointF(center + 35, boundingRect().bottom() + 1));
-		text_bounding = painter.boundingRect(r, Qt::TextWordWrap | Qt::AlignHCenter, comment);
-		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, comment);
+
+		text_bounding = painter.boundingRect(r, Qt::TextWordWrap | Qt::AlignHCenter, text);
+		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, text);
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 
 		m_shape_path.addRect(text_bounding);
 		prepareGeometryChange();
 		m_bounding_rect = m_bounding_rect.united(text_bounding);
-		painter.drawRoundedRect(text_bounding, 2, 2);
+		if (type == "comment") painter.drawRoundedRect(text_bounding, 2, 2);
 		painter.restore();
 	}
 }

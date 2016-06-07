@@ -183,9 +183,10 @@ void PasteDiagramCommand::redo()
 				if (e->texts().size())
 					e->texts().first()->setPlainText("/");
 			} else {
-				//Reset the information about the label and the comment
+				//Reset the information about the label, the comment and location
 				e -> rElementInformations().addValue("label", "");
 				e -> rElementInformations().addValue("comment", "");
+				e -> rElementInformations().addValue("location", "");
 
 				//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))

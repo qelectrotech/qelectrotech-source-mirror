@@ -195,7 +195,7 @@ void ElementInfoWidget::updateUi()
 
 			//If the current eipw is for label or comment and the text is empty
 			//we force the checkbox to ckecked
-		if (eipw -> key() == "label" || eipw -> key() == "comment") {
+		if (eipw -> key() == "label" || eipw -> key() == "comment" || eipw -> key() == "location" ) {
 			if (element_info[eipw->key()].toString().isEmpty())
 				eipw->setShow(true);
 		}

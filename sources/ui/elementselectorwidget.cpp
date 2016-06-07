@@ -139,6 +139,9 @@ void ElementSelectorWidget::buildInterface() {
 			if (!dc["comment"].toString().isEmpty())
 				button_text += dc["comment"].toString();
 
+			if (!dc["location"].toString().isEmpty())
+				button_text += dc["location"].toString();
+
 			if (!button_text.isEmpty())
 				button_text += "\n";
 

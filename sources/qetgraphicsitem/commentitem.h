@@ -48,10 +48,15 @@ class CommentItem : public QGraphicsObject
 		virtual bool setTextParent ();
 
 	private:
+		void addInfo(QPainter &, QString);
+
+	private:
 		Element *m_element;
 		QPicture m_picture;
 		QRectF   m_bounding_rect;
 		QString  m_comment;
+		QString  m_location;
+		QPainterPath m_shape_path;
 		bool     m_text_parent;
 };
 

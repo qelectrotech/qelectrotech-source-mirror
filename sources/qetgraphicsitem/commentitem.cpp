@@ -107,31 +107,78 @@ bool CommentItem::setTextParent() {
  */
 void CommentItem::updateLabel()
 {
-	QString comment = m_element -> elementInformations()["comment"].toString();
+	QString comment  = m_element -> elementInformations()["comment"]. toString();
 
-	if (comment == m_comment && !m_text_parent) return;
+	QString location = m_element -> elementInformations()["location"].toString();
+
+	QPainterPath m_shape_path_ = QPainterPath();
+	prepareGeometryChange();
+	m_bounding_rect = QRectF();
+
+	QPainter painter_;
+	painter_.begin(&m_picture);
+
+	if (comment == m_comment && !m_text_parent && location == m_location)
+		return;
 
 	if (comment != m_comment)
 	{
 		m_comment = comment;
-
-		QPen pen(Qt::black);
-			 pen.setWidthF (0.5);
-
-		QPainter painter(&m_picture);
-				 painter.setPen  (pen);
-				 painter.setFont (QETApp::diagramTextsFont(6));
-
-		QRectF text_bounding = painter.boundingRect(QRectF(QPointF(0,0), QSizeF(70, 1)), Qt::TextWordWrap | Qt::AlignHCenter, m_comment);
-
-		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, m_comment);
-
-		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
-		painter.drawRoundedRect(text_bounding, 2, 2);
-
-		prepareGeometryChange();
-		m_bounding_rect = text_bounding;
+		addInfo(painter_, "comment");
 	}
+	else if (comment == m_comment)
+		addInfo(painter_, "comment");
+
+	if (location != m_location)
+	{
+		m_location = location;
+		addInfo(painter_, "location");
+	}
+	else if (location == m_location){
+		addInfo(painter_, "location");
+	}
+	painter_.end();
 
 	autoPos();
+}
+
+/**
+ * @brief CommentItem::addInfo
+ * @param painter
+ * @param type e.g. comment, location
+ * Draw Info to item text.
+ * (draw this item in a QPicture)
+ */
+void CommentItem::addInfo(QPainter &painter, QString type){
+
+	QString text = m_element -> assignVariables(m_element -> elementInformations()[type].toString(), m_element);
+	bool must_show  = m_element -> elementInformations().keyMustShow(type);
+
+	if (!text.isEmpty() && must_show)
+	{
+		painter.save();
+		painter.setFont (QETApp::diagramTextsFont(6));
+
+		QPen pen(Qt::black);
+		pen.setWidthF (0.5);
+
+		painter.setPen  (pen);
+
+		QRectF r, text_bounding;
+		qreal center = boundingRect().center().x();
+
+		r = QRectF(QPointF(center - 35, boundingRect().bottom()),
+				   QPointF(center + 35, boundingRect().bottom() + 1));
+
+		text_bounding = painter.boundingRect(r, Qt::TextWordWrap | Qt::AlignHCenter, text);
+		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, text);
+
+		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
+
+		m_shape_path.addRect(text_bounding);
+		prepareGeometryChange();
+		m_bounding_rect = m_bounding_rect.united(text_bounding);
+		if (type == "comment") painter.drawRoundedRect(text_bounding, 2, 2);
+		painter.restore();
+	}
 }

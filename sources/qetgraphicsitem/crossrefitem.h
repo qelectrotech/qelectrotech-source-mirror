@@ -83,7 +83,7 @@ class CrossRefItem : public QGraphicsObject
 	void drawHasContacts		(QPainter &painter);
 	void drawContact			(QPainter &painter, int flags, QString str = QString());
 	void fillCrossRef			(QPainter &painter);
-	void AddExtraInfo			(QPainter &painter);
+	void AddExtraInfo			(QPainter &painter, QString);
 	void setTextParent			();
 
 	//Attributes
