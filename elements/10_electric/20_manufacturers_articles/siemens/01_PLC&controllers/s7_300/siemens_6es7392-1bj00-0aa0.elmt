@@ -1,0 +1,13 @@
+<definition height="30" orientation="dyyy" type="element" hotspot_x="15" link_type="simple" hotspot_y="15" version="0.51" width="30">
+    <uuid uuid="{2e7ae1ec-a063-4528-bbb2-45ecce7fe4d8}"/>
+    <names>
+        <name lang="de">Siemens;6ES7392-1BJ00-0AA0;6ES7392-1BJ00-0AA0;Simatic S7 Frontstecker für Signalbaugruppen, Federklemmen, 20-polig;7080032</name>
+        <name lang="fr">Siemens;6ES7392-1BJ00-0AA0;6ES7392-1BJ00-0AA0;Simatic S7 connecteur frontal pour cartes de signaux, bornes à ressort, 20 poles;7080032</name>
+        <name lang="en">Siemens;6ES7392-1BJ00-0AA0;6ES7392-1BJ00-0AA0;Simatic S7 front connector for signal cards, spring terminals, 20 poles;7080032</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" size="4" x="-5" y="5"/>
+        <rect height="20" antialias="false" style="line-style:normal;line-weight:none;filling:white;color:black" x="-10" width="20" y="-10"/>
+    </description>
+</definition>

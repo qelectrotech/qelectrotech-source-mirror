@@ -1,0 +1,13 @@
+<definition width="30" hotspot_x="15" orientation="dyyy" type="element" link_type="simple" height="30" hotspot_y="15" version="0.51">
+    <uuid uuid="{5666f719-8977-45e6-bba1-0b1cba1df826}"/>
+    <names>
+        <name lang="fr">Siemens;6ES7390-1AE80-0AA0;6ES7390-1AE80-0AA0;Simatic S7 rail de montage L=480mm;7080021</name>
+        <name lang="en">Siemens;6ES7390-1AE80-0AA0;6ES7390-1AE80-0AA0;Simatic S7 mounting rail L=480mm;7080021</name>
+        <name lang="de">Siemens;6ES7390-1AE80-0AA0;6ES7390-1AE80-0AA0;Simatic S7 Profilschiene L=480mm;7080021</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <input rotate="true" y="5" tagg="label" size="4" x="-5" text="_"/>
+        <rect width="20" y="-10" style="line-style:normal;line-weight:none;filling:white;color:black" height="20" antialias="false" x="-10"/>
+    </description>
+</definition>

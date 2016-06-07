@@ -1,0 +1,50 @@
+<definition orientation="dyyy" version="0.51" height="70" link_type="simple" type="element" hotspot_x="55" hotspot_y="36" width="110">
+    <uuid uuid="{bb693d5c-fdc6-4c98-b77a-de5f0ac848f6}"/>
+    <names>
+        <name lang="en">PEV-1/4-B-M12 (395540)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc height="6" x="6.985" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="2" x="28" y="-9" size="6"/>
+        <arc height="6" x="26.985" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="26.985" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y4="-5" x2="30" y2="-3" x4="33" x1="27" x3="30" antialias="false" closed="false" y3="-5" y1="-3" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="n.c." x="-14" y="-2" size="4"/>
+        <rect height="6" x="29" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="29.985" y2="-25.8018" x1="29.985" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="+" x="-31" y="-2" size="4"/>
+        <rect height="50" x="-50" y="-20" antialias="false" width="100" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" x="-10" y="5" antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="P" x="-8" y="13" size="6"/>
+        <text text="4" x="8" y="-9" size="6"/>
+        <input rotate="true" text="_" tagg="label" x="-80" y="-13" size="9"/>
+        <arc height="6" x="6.985" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y4="-5" x2="10" y2="-3" x4="13" x1="7" x3="10" antialias="false" closed="false" y3="-5" y1="-3" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect height="6" x="9" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="0" y2="10" x1="31" length1="1.5" end2="none" antialias="false" y1="10" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line length2="1.5" end1="none" x2="9.985" y2="-25.8018" x1="9.985" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-13.015" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-13.015" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6" x="-11" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="-10.015" y2="-25.8018" x1="-10.015" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="M12" x="-43" y="-14" size="4"/>
+        <text text="1" x="-32" y="-9" size="6"/>
+        <text text="3" x="-12" y="-9" size="6"/>
+        <arc height="6" x="-33.015" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-33.015" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6" x="-31" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle diameter="2" x="9" y="22" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="-30.015" y2="-25.8018" x1="-30.015" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="10" y2="15" x1="7" x3="10" antialias="false" closed="false" y3="23" y1="5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x2="30" y2="15" x1="30" x3="33" antialias="false" closed="false" y3="5" y1="23" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length2="1.5" end1="none" x2="10" y2="5" x1="10" length1="1.5" end2="none" antialias="false" y1="0" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x2="30" y2="5" x1="30" x3="34" antialias="false" closed="false" y3="5" y1="0" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x2="-30" y2="23" x1="-30" x3="30" antialias="false" closed="false" y3="23" y1="0" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="n" x="-30" y="-30"/>
+        <terminal orientation="n" x="-10" y="-30"/>
+        <terminal orientation="n" x="10" y="-30"/>
+        <terminal orientation="n" x="30" y="-30"/>
+    </description>
+</definition>

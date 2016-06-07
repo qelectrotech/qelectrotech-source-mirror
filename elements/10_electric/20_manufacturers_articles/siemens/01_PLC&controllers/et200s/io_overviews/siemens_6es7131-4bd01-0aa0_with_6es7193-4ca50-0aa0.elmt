@@ -1,0 +1,64 @@
+<definition width="70" hotspot_y="145" height="300" hotspot_x="34" type="element" orientation="dyyy" link_type="simple" version="0.51">
+    <uuid uuid="{5a608bd4-2d5f-4d67-b78e-09101dcf84ed}"/>
+    <names>
+        <name lang="en">6ES7131-4BD01-0AA0 with 6ES7193-4CA50-0AA0</name>
+        <name lang="fr">6ES7131-4BD01-0AA0 avec 6ES7193-4CA50-0AA0</name>
+        <name lang="de">6ES7131-4BD01-0AA0 mit 6ES7193-4CA50-0AA0</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="AUX1" x="-6" size="4" y="62"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="107.5" antialias="false" diameter="5"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-32.5" antialias="false" diameter="5"/>
+        <text text="AUX1" x="-6" size="4" y="132"/>
+        <text text="AUX1" x="-6" size="4" y="-8"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="37.5" antialias="false" diameter="5"/>
+        <text text="AUX1" x="-6" size="4" y="-78"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-102.5" antialias="false" diameter="5"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-52.5" antialias="false" diameter="5"/>
+        <text text="L+" x="1" size="4" y="112"/>
+        <text text="L+" x="1" size="4" y="-28"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" antialias="false" diameter="5"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="87.5" antialias="false" diameter="5"/>
+        <text text="L+" x="1" size="4" y="42"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="127.5" antialias="false" diameter="5"/>
+        <text text="DI1" x="-1" size="4" y="-48"/>
+        <text text="DI2" x="-1" size="4" y="22"/>
+        <text text="7" x="20" size="6" y="-27"/>
+        <text text="DI3" x="-1" size="4" y="92"/>
+        <text text="A8" x="15" size="6" y="-7"/>
+        <text text="L+" x="1" size="4" y="-98"/>
+        <text text="8" x="20" size="6" y="113"/>
+        <text text="A7" x="15" size="6" y="133"/>
+        <text text="5" x="20" size="6" y="-47"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-122.5" antialias="false" diameter="5"/>
+        <line length1="1.5" end1="none" y2="-33" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <text text="6" x="20" size="6" y="93"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" antialias="false" diameter="5"/>
+        <line length1="1.5" end1="none" y2="-13" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="107" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="93" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-82.5" antialias="false" diameter="5"/>
+        <line length1="1.5" end1="none" y2="127" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="113" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <circle x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" antialias="false" diameter="5"/>
+        <text text="4" x="20" size="6" y="43"/>
+        <text text="A3" x="15" size="6" y="63"/>
+        <text text="2" x="20" size="6" y="23"/>
+        <text text="3" x="20" size="6" y="-97"/>
+        <text text="A4" x="15" size="6" y="-77"/>
+        <line length1="1.5" end1="none" y2="37" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="57" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <text text="1" x="20" size="6" y="-117"/>
+        <line length1="1.5" end1="none" y2="-103" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-117" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="-83" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-97" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <input rotate="true" text="_" x="-30" size="9" y="-148" tagg="label"/>
+        <line length1="1.5" end1="none" y2="-53" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-77" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="17" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="87" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="63" x1="30" length2="1.5" antialias="false" x2="30"/>
+        <text text="DI0" x="-1" size="4" y="-118"/>
+        <polygon x5="30" closed="false" y4="150" x6="30" y2="-140" x4="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="-123" y6="133" y3="-140" x1="30" y5="150" antialias="false" x2="30"/>
+        <line length1="1.5" end1="none" y2="-7" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-53" x1="10" length2="1.5" antialias="false" x2="10"/>
+        <line length1="1.5" end1="none" y2="63" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="17" x1="10" length2="1.5" antialias="false" x2="10"/>
+        <line length1="1.5" end1="none" y2="133" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="87" x1="10" length2="1.5" antialias="false" x2="10"/>
+        <line length1="1.5" end1="none" y2="-77" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-123" x1="10" length2="1.5" antialias="false" x2="10"/>
+    </description>
+</definition>

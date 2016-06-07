@@ -1,0 +1,45 @@
+<definition width="90" hotspot_x="35" orientation="dyyy" type="element" link_type="simple" height="90" hotspot_y="36" version="0.51">
+    <uuid uuid="{0ec7e035-5779-42d8-99e0-5579abd7c684}"/>
+    <names>
+        <name lang="en">PN3001</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-9" size="6" x="18" text="4"/>
+        <text y="-2" size="4" x="-1" text="-"/>
+        <text y="-9" size="6" x="38" text="2"/>
+        <text y="-2" size="4" x="-21.2038" text="+"/>
+        <arc width="6" start="180" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-180" x="37"/>
+        <arc width="6" start="180" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-180" x="-3"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="39"/>
+        <arc width="6" start="180" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-180" x="17"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="19"/>
+        <line y1="-30" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-26" length2="1.5" x2="40"/>
+        <text y="-9" size="6" x="-22.3107" text="1"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-1"/>
+        <line y1="-30" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-26" length2="1.5" x2="0"/>
+        <text y="-9" size="6" x="-2" text="3"/>
+        <line y1="-30" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-26" length2="1.5" x2="20"/>
+        <input rotate="true" y="-8" tagg="label" size="9" x="-60" text="_"/>
+        <arc width="6" start="180" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-180" x="-23"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-21"/>
+        <rect width="80" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false" x="-30"/>
+        <line y1="-30" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-26" length2="1.5" x2="-20"/>
+        <rect width="51" y="10" style="line-style:normal;line-weight:thin;filling:none;color:black" height="30" antialias="false" x="-15"/>
+        <line y1="40" x1="-15" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="10" length2="1.5" x2="36"/>
+        <text y="21" size="9" x="-12" text="E"/>
+        <text y="36" size="9" x="24" text="P"/>
+        <text y="46" size="4" x="-1" text="0...250bar"/>
+        <input rotate="true" y="6.5" tagg="none" size="4" x="-14" text="0...20mA / 0...10V"/>
+        <polygon y1="-2" x4="24" y3="-5" x1="16" y4="-5" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="20" antialias="false" y2="-2" x2="20"/>
+        <polygon y1="-7" y3="0" x1="37" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="44" antialias="false" y2="0" x2="37"/>
+        <arc width="13" start="290" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" height="10" antialias="true" angle="60" x="29"/>
+        <polygon y1="-5" y3="-5" x1="36" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="38" antialias="false" y2="-7" x2="37"/>
+        <polygon y1="-1" y3="1" x1="42" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="42" antialias="false" y2="0" x2="44"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="n" y="-30" x="-20"/>
+        <terminal orientation="n" y="-30" x="20"/>
+        <terminal orientation="n" y="-30" x="40"/>
+    </description>
+</definition>

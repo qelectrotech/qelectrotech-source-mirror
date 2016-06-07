@@ -1,0 +1,40 @@
+<definition width="80" hotspot_x="39" orientation="dyyy" type="element" link_type="simple" height="70" hotspot_y="36" version="0.51">
+    <uuid uuid="{2e243396-efba-4bb7-9f53-0ca9b1bfb934}"/>
+    <names>
+        <name lang="en">VUVG-L18-B52-T-G14-1R8L (8031533)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="8" size="4" x="17" text="+/-"/>
+        <arc width="6" start="-180" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="16.985"/>
+        <text y="8" size="4" x="-3" text="+/-"/>
+        <text y="-2" size="4" x="-24" text="n.c."/>
+        <rect width="71" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" antialias="false" x="-35"/>
+        <text y="-9" size="6" x="18" text="4"/>
+        <input rotate="true" y="-13" tagg="label" size="9" x="-60" text="_"/>
+        <arc width="6" start="83" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="16.985"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="19"/>
+        <line y1="-29.8018" x1="19.985" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-25.8018" length2="1.5" x2="19.985"/>
+        <arc width="6" start="-180" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-3.015"/>
+        <arc width="6" start="83" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-3.015"/>
+        <polygon y1="15" x4="18" y3="15" x1="2" y4="23" x5="2" x7="2" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="18" y5="15" x6="2" antialias="false" y2="23" x2="2" y6="15" y7="15"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-1"/>
+        <rect width="8" y="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" height="14" antialias="false" x="6"/>
+        <line y1="-29.8018" x1="-0.015" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-25.8018" length2="1.5" x2="-0.015"/>
+        <line y1="-1" x1="14" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="7" length2="1.5" x2="6"/>
+        <text y="-14" size="4" x="-31" text="M8"/>
+        <text y="-9" size="6" x="-22" text="1"/>
+        <text y="-9" size="6" x="-2" text="3"/>
+        <line y1="10" x1="10" style="line-style:dashed;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="19" length2="1.5" x2="10"/>
+        <arc width="6" start="-180" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-23.015"/>
+        <arc width="6" start="83" y="-25.8018" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-23.015"/>
+        <rect width="2" y="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-21"/>
+        <line y1="-29.8018" x1="-20.015" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-25.8018" length2="1.5" x2="-20.015"/>
+        <polygon y1="-7" y3="3" x1="0" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="6" antialias="false" y2="3" x2="0"/>
+        <polygon y1="3" y3="-7" x1="14" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="20" antialias="false" y2="3" x2="20"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="n" y="-30" x="20"/>
+        <terminal orientation="n" y="-30" x="-20"/>
+    </description>
+</definition>

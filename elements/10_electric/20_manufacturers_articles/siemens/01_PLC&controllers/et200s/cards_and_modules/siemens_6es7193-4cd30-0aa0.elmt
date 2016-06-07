@@ -1,0 +1,61 @@
+<definition height="140" orientation="dyyy" type="element" hotspot_x="24" link_type="simple" hotspot_y="79" version="0.51" width="50">
+    <uuid uuid="{80b76706-94d1-4dbd-a44b-f8536c64772f}"/>
+    <names>
+        <name lang="en">6ES7193-4CD30-0AA0</name>
+    </names>
+    <informations>
+     Author: The QElectroTech team
+     License: see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version: V2.0
+
+</informations>
+    <description>
+        <text text="A" size="6" x="5" y="-49"/>
+        <rect height="15" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="4" width="7" y="-56"/>
+        <text text="A" size="6" x="-19" y="33"/>
+        <rect height="2" antialias="false" style="line-style:normal;line-weight:none;filling:gray;color:black" x="-3" width="6" y="-1"/>
+        <text text="AUX1" size="6" x="-10" y="-62"/>
+        <text text="2" size="6" x="-18" y="-25"/>
+        <rect height="2" antialias="false" style="line-style:normal;line-weight:none;filling:gray;color:black" x="-3" width="6" y="30"/>
+        <text text="4" size="6" x="-19" y="40"/>
+        <text text="8" size="6" x="5" y="-42"/>
+        <text text="A" size="6" x="-10" y="-49"/>
+        <input text="_" tagg="label" rotate="true" size="9" x="-20" y="72"/>
+        <text text="A" size="6" x="14" y="33"/>
+        <text text="4" size="6" x="-10" y="-42"/>
+        <text text="3" size="6" x="-18" y="7"/>
+        <text text="8" size="6" x="14" y="40"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" y="-37"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" y="-5"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" width="10" y="-22"/>
+        <text text="6" size="6" x="14" y="-25"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" width="10" y="10"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" y="-37"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" y="26"/>
+        <text text="7" size="6" x="14" y="7"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="3" width="10" y="41"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" width="10" y="-22"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-17" width="2" y="-22"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="15" width="2" y="-22"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" y="26"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" width="10" y="41"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-17" width="2" y="41"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="15" width="2" y="41"/>
+        <circle diameter="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" y="-5"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13" width="10" y="10"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-17" width="2" y="10"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="15" width="2" y="10"/>
+        <rect height="134" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" width="40" y="-76"/>
+        <polygon y5="-64" y2="-64" x5="-17" x1="20" x2="17" x3="17" x6="-20" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-64" x4="-17" y6="-64" y4="-71" y3="-71"/>
+        <rect height="15" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-11" width="7" y="-56"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-17" width="2" y="-53"/>
+        <rect height="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="15" width="2" y="-53"/>
+        <line y2="-6" x1="20" end1="none" length2="1.5" x2="-20" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" y1="-6"/>
+        <rect height="2" antialias="false" style="line-style:normal;line-weight:none;filling:gray;color:black" x="-3" width="6" y="-33"/>
+        <line y2="-48" x1="-4" end1="none" length2="1.5" x2="4" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" y1="-48"/>
+        <arc height="6" angle="90" start="90" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="13" width="6" y="-62"/>
+        <arc height="6" angle="90" start="180" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="13" width="6" y="-62"/>
+        <polygon y2="-59" x1="13" x2="0" x3="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-59" y3="-48"/>
+        <circle diameter="1" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-0.5" y="-48.5"/>
+    </description>
+</definition>

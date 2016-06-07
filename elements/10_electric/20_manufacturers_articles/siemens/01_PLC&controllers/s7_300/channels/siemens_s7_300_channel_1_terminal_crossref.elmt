@@ -1,0 +1,15 @@
+<definition link_type="next_report" hotspot_y="4" type="element" hotspot_x="45" orientation="dyyy" version="0.51" height="20" width="90">
+    <uuid uuid="{28be96a6-e3ef-4c12-85ee-051b7365e808}"/>
+    <names>
+        <name lang="de">S7 300 Kanal 1 Klemme (Verweis)</name>
+        <name lang="fr">S7 300 canal 1 borne (référence croisée)</name>
+        <name lang="en">S7 300 channel 1 terminal (cross reference)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-17" y="5.5" text="/" size="7" rotate="true" tagg="label"/>
+        <input x="-25" y="-8.5" text="_" size="7" rotate="true" tagg="none"/>
+        <polygon x2="-40" y4="10" y1="10" x3="40" y3="0" y2="0" antialias="false" x1="-40" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="40"/>
+    </description>
+</definition>

@@ -1,0 +1,13 @@
+<definition width="70" hotspot_x="35" orientation="dyyy" type="element" link_type="simple" height="30" hotspot_y="15" version="0.51">
+    <uuid uuid="{a33cc5e3-b4c9-4cb8-bf13-e0e075abeb76}"/>
+    <names>
+        <name lang="en">RST260-1 (103004318)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="-5" tagg="label" size="9" x="-60" text="_"/>
+        <input rotate="true" y="0" tagg="none" size="6" x="-19" text="Betätiger"/>
+        <rect width="60" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-30"/>
+    </description>
+</definition>

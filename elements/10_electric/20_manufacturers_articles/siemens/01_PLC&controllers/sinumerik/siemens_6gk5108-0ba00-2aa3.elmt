@@ -1,0 +1,70 @@
+<definition width="120" hotspot_x="54" orientation="dyyy" type="element" link_type="simple" height="290" hotspot_y="144" version="0.51">
+    <uuid uuid="{c3e6adab-e025-4fd1-880f-1f3dfe9bd2d4}"/>
+    <names>
+        <name lang="en">6GK5108-0BA00-2AA3</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text y="123" size="6" x="-25" text="L2+"/>
+        <text y="52" size="4" x="-31" text="DC24V"/>
+        <text y="83" size="6" x="-25" text="M1"/>
+        <text y="123" size="6" x="35" text="F2"/>
+        <text y="23" size="6" x="20" text="P8"/>
+        <text y="-17" size="6" x="20" text="P7"/>
+        <text y="-122" size="6" x="38" text="X108"/>
+        <text y="-57" size="6" x="20" text="P6"/>
+        <rect width="24" y="-114" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="32"/>
+        <text y="-97" size="6" x="20" text="P5"/>
+        <rect width="24" y="-74" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="32"/>
+        <circle y="117.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="-32.5"/>
+        <text y="-97" size="6" x="-20" text="P1"/>
+        <circle y="77.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="-32.5"/>
+        <rect width="24" y="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="32"/>
+        <rect width="24" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="32"/>
+        <text y="-57" size="6" x="-20" text="P2"/>
+        <text y="92" size="4" x="28" text="FAULT"/>
+        <circle y="117.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="27.5"/>
+        <text y="23" size="6" x="-20" text="P4"/>
+        <text y="-17" size="6" x="-20" text="P3"/>
+        <text y="103" size="6" x="-25" text="M2"/>
+        <rect width="24" y="-74" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="-46"/>
+        <rect width="24" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="-46"/>
+        <circle y="97.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="-32.5"/>
+        <rect width="24" y="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="-46"/>
+        <polygon x10="-39" y10="14" x11="-42" x13="-44" y12="17" x5="-39" x2="-44" y11="14" y3="23" y9="9" y5="26" y7="31" closed="false" y2="23" y1="17" x7="-25" x12="-42" y13="17" antialias="false" x9="-39" x8="-25" x4="-42" x3="-42" x6="-39" y4="26" x1="-44" y6="31" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="9"/>
+        <polygon x10="-39" y10="-66" x11="-42" x13="-44" y12="-63" x5="-39" x2="-44" y11="-66" y3="-57" y9="-71" y5="-54" y7="-49" closed="false" y2="-57" y1="-63" x7="-25" x12="-42" y13="-63" antialias="false" x9="-39" x8="-25" x4="-42" x3="-42" x6="-39" y4="-54" x1="-44" y6="-49" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-71"/>
+        <polygon x10="-39" y10="-26" x11="-42" x13="-44" y12="-23" x5="-39" x2="-44" y11="-26" y3="-17" y9="-31" y5="-14" y7="-9" closed="false" y2="-17" y1="-23" x7="-25" x12="-42" y13="-23" antialias="false" x9="-39" x8="-25" x4="-42" x3="-42" x6="-39" y4="-14" x1="-44" y6="-9" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-31"/>
+        <polygon x10="52" y10="-26" x11="49" x13="35" y12="-31" x5="52" x2="35" y11="-26" y3="-9" y9="-23" y5="-14" y7="-17" closed="false" y2="-9" y1="-31" x7="54" x12="49" y13="-31" antialias="false" x9="52" x8="54" x4="49" x3="49" x6="52" y4="-14" x1="35" y6="-17" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-23"/>
+        <polygon x10="52" y10="-66" x11="49" x13="35" y12="-71" x5="52" x2="35" y11="-66" y3="-49" y9="-63" y5="-54" y7="-57" closed="false" y2="-49" y1="-71" x7="54" x12="49" y13="-71" antialias="false" x9="52" x8="54" x4="49" x3="49" x6="52" y4="-54" x1="35" y6="-57" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-63"/>
+        <polygon x10="52" y10="14" x11="49" x13="35" y12="9" x5="52" x2="35" y11="14" y3="31" y9="17" y5="26" y7="23" closed="false" y2="31" y1="9" x7="54" x12="49" y13="9" antialias="false" x9="52" x8="54" x4="49" x3="49" x6="52" y4="26" x1="35" y6="23" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="17"/>
+        <text y="103" size="6" x="35" text="F1"/>
+        <circle y="97.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="27.5"/>
+        <rect width="23" y="94" style="line-style:normal;line-weight:thin;filling:none;color:black" height="32" antialias="false" x="24"/>
+        <input rotate="true" y="-128" tagg="label" size="9" x="-80" text="_"/>
+        <text y="-130" size="6" x="13" text="SCALANCE"/>
+        <text y="63" size="6" x="-25" text="L1+"/>
+        <circle y="57.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="5" x="-32.5"/>
+        <text y="138" size="4" x="20" text="108-0BA00-2AA3"/>
+        <rect width="42" y="-134" style="line-style:normal;line-weight:thin;filling:none;color:black" height="10.45" antialias="false" x="-36"/>
+        <text y="-126" size="6" x="-33" text="SIEMENS"/>
+        <rect width="24" y="-114" style="line-style:normal;line-weight:thin;filling:none;color:black" height="28" antialias="false" x="-46"/>
+        <polygon x10="-39" y10="-106" x11="-42" x13="-44" y12="-103" x5="-39" x2="-44" y11="-106" y3="-97" y9="-111" y5="-94" y7="-89" closed="false" y2="-97" y1="-103" x7="-25" x12="-42" y13="-103" antialias="false" x9="-39" x8="-25" x4="-42" x3="-42" x6="-39" y4="-94" x1="-44" y6="-89" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-111"/>
+        <polygon x10="52" y10="-106" x11="49" x13="35" y12="-111" x5="52" x2="35" y11="-106" y3="-89" y9="-103" y5="-94" y7="-97" closed="false" y2="-89" y1="-111" x7="54" x12="49" y13="-111" antialias="false" x9="52" x8="54" x4="49" x3="49" x6="52" y4="-94" x1="35" y6="-97" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-103"/>
+        <rect width="110" y="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" height="280" antialias="false" x="-50"/>
+        <rect width="27" y="54" style="line-style:normal;line-weight:thin;filling:none;color:black" height="72" antialias="false" x="-36"/>
+        <terminal orientation="e" y="-100" x="60"/>
+        <terminal orientation="w" y="-100" x="-50"/>
+        <terminal orientation="w" y="120" x="-33"/>
+        <terminal orientation="w" y="-60" x="-50"/>
+        <terminal orientation="w" y="-20" x="-50"/>
+        <terminal orientation="w" y="80" x="-33"/>
+        <terminal orientation="w" y="100" x="27"/>
+        <terminal orientation="w" y="100" x="-33"/>
+        <terminal orientation="e" y="20" x="60"/>
+        <terminal orientation="w" y="120" x="27"/>
+        <terminal orientation="e" y="-60" x="60"/>
+        <terminal orientation="w" y="20" x="-50"/>
+        <terminal orientation="e" y="-20" x="60"/>
+        <terminal orientation="w" y="60" x="-33"/>
+    </description>
+</definition>

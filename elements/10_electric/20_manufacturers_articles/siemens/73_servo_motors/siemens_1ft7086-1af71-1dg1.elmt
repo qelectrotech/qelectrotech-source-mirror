@@ -1,0 +1,66 @@
+<definition width="340" hotspot_x="195" orientation="dyyy" type="element" link_type="simple" height="100" hotspot_y="56" version="0.51">
+    <uuid uuid="{567d6f34-03fb-4826-96ca-b7f7abdea88d}"/>
+    <names>
+        <name lang="en">1FT7086-1AF71-1DG1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="6" start="-180" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-113"/>
+        <text y="20" size="9" x="52" text="E"/>
+        <text y="-5" size="6" x="84" text="interface"/>
+        <text y="13" size="6" x="-169" text="11A"/>
+        <arc width="6" start="-180" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-93"/>
+        <rect width="17" y="-23" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" antialias="false" x="47"/>
+        <text y="3" size="6" x="-176" text="18Nm"/>
+        <text y="-13" size="6" x="81" text="Drive CLiQ"/>
+        <text y="23" size="6" x="-190" text="3000min-1"/>
+        <arc width="6" start="-180" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-73"/>
+        <text y="-29" size="6" x="-133" text="U"/>
+        <arc width="6" start="83" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-113"/>
+        <text y="-9" size="7" x="49" text="θ"/>
+        <text y="-29" size="6" x="-75" text="PE"/>
+        <arc width="6" start="83" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-93"/>
+        <arc width="6" start="83" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-73"/>
+        <circle y="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" diameter="30" x="-125"/>
+        <text y="-29" size="6" x="-94" text="W"/>
+        <rect width="2" y="-43.198" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-90.985"/>
+        <arc width="35" start="20" y="-22.5" style="line-style:normal;line-weight:thin;filling:none;color:black" height="35" antialias="true" angle="-80" x="-127.5"/>
+        <rect width="2" y="-43.198" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-110.985"/>
+        <rect width="2" y="-43.198" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-70.985"/>
+        <line y1="-46" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-50" length2="1.5" x2="-70"/>
+        <line y1="-46" x1="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-50" length2="1.5" x2="-90"/>
+        <text y="-29" size="6" x="-113" text="V"/>
+        <line y1="-46" x1="-110" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-50" length2="1.5" x2="-110"/>
+        <text y="-7" size="9" x="-115" text="M"/>
+        <input y="-30" tagg="label" size="9" x="-194" text="_"/>
+        <text y="1" size="7" x="-116" text="3 ~"/>
+        <arc width="6" start="0" y="-43" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-180" x="97"/>
+        <rect width="2" y="-46" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="99"/>
+        <arc width="6" start="-180" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-133"/>
+        <arc width="6" start="83" y="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" antialias="true" angle="-84" x="-133"/>
+        <rect width="2" y="-43.1982" style="line-style:normal;line-weight:normal;filling:black;color:black" height="6" antialias="false" x="-130.985"/>
+        <text y="33" size="8" x="-137" text="SIEMENS   1FT7086-1AF71-1DG1"/>
+        <line y1="-46" x1="-130" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-50" length2="1.5" x2="-130"/>
+        <rect width="8" y="3" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" antialias="false" x="-114"/>
+        <rect width="4" y="3" style="line-style:normal;line-weight:thin;filling:black;color:black" height="2" antialias="false" x="-114"/>
+        <line y1="-27" x1="-110" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-20" length2="1.5" x2="-110"/>
+        <polygon y1="-27" x4="-122" y3="-14" x1="-130" y4="-14" x5="-122" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-122" y5="-14" antialias="false" y2="-20" x2="-130"/>
+        <polygon y1="-27" x4="-98" y3="-14" x1="-90" y4="-14" x5="-98" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-98" y5="-14" antialias="false" y2="-20" x2="-90"/>
+        <polygon y1="4" x4="-70" y3="-27" x1="-95" y4="-27" x5="-70" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-70" y5="-27" antialias="false" y2="4" x2="-70"/>
+        <rect width="44" y="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" height="26" antialias="false" x="78"/>
+        <polygon y1="-40" x4="140" y3="40" x1="97" y4="40" x5="140" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-150" y5="-40" x6="103" antialias="false" y2="-40" x2="-150" y6="-40"/>
+        <line y1="-25" x1="100" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-37" length2="1.5" x2="100"/>
+        <circle y="5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" diameter="22" x="45"/>
+        <polygon y1="10" y3="16" x1="-110" closed="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" x3="45" antialias="false" y2="16" x2="-110"/>
+        <polygon y1="-26" x4="62" y3="-14" x1="49" y4="-14" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="59" antialias="false" y2="-26" x2="52"/>
+        <line y1="-20" x1="64" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-20" length2="1.5" x2="78"/>
+        <polygon y1="-20" x4="78" y3="-4" x1="47" y4="-4" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="40" antialias="false" y2="-20" x2="40"/>
+        <polygon y1="16" y3="1" x1="67" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="100" antialias="false" y2="16" x2="100"/>
+        <terminal orientation="n" y="-50" x="-110"/>
+        <terminal orientation="n" y="-50" x="-70"/>
+        <terminal orientation="n" y="-50" x="-90"/>
+        <terminal orientation="n" y="-50" x="100"/>
+        <terminal orientation="n" y="-50" x="-130"/>
+    </description>
+</definition>

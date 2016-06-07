@@ -1,0 +1,28 @@
+<definition width="90" hotspot_y="38" height="80" hotspot_x="45" type="element" orientation="dyyy" link_type="simple" version="0.51">
+    <uuid uuid="{9b21bd0b-a29e-4fab-b3be-fd7022f5c4f7}"/>
+    <names>
+        <name lang="en">ET 200S channel 3 terminals (connections)</name>
+        <name lang="fr">ET 200S canal 3 bornes (connexions)</name>
+        <name lang="de">ET 200S Kanal 3 Klemmen (Anschlüsse)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input rotate="true" text="_" x="-10" size="9" y="-8" tagg="label"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" antialias="false" diameter="5"/>
+        <circle x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" antialias="false" diameter="5"/>
+        <input rotate="true" text="A4" x="11" size="6" y="21" tagg="none"/>
+        <input rotate="true" text="3" x="-6" size="6" y="21" tagg="none"/>
+        <circle x="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" antialias="false" diameter="5"/>
+        <text text="SIEMENS ET 200S" x="-35" size="6" y="-22"/>
+        <input rotate="true" text="1" x="-26" size="6" y="21" tagg="none"/>
+        <polygon closed="false" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-23" y1="-30" y3="30" x1="-40" antialias="false" x2="-40"/>
+        <polygon closed="false" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="40" y1="30" y3="-30" x1="23" antialias="false" x2="40"/>
+        <line length1="1.5" end1="none" y2="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-17" length2="1.5" antialias="false" x2="-3"/>
+        <line length1="1.5" end1="none" y2="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="3" length2="1.5" antialias="false" x2="17"/>
+        <line length1="1.5" end1="none" y2="-30" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30" x1="-40" length2="1.5" antialias="false" x2="40"/>
+        <line length1="1.5" end1="none" y2="-20" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="40" length2="1.5" antialias="false" x2="-40"/>
+        <terminal x="-20" orientation="s" y="33"/>
+        <terminal x="0" orientation="s" y="33"/>
+        <terminal x="20" orientation="s" y="33"/>
+    </description>
+</definition>

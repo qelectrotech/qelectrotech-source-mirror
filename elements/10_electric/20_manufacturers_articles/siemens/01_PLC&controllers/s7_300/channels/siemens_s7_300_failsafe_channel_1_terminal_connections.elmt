@@ -1,0 +1,21 @@
+<definition type="element" width="90" hotspot_x="45" hotspot_y="38" version="0.51" height="80" link_type="simple" orientation="dyyy">
+    <uuid uuid="{fbb87161-8091-479c-b10f-7e1ce905046b}"/>
+    <names>
+        <name lang="de">S7 300 fehlersicherer Kanal 1 Klemme (Anschlüsse)</name>
+        <name lang="en">S7 300 failsafe channel 1 terminal (connections)</name>
+        <name lang="fr">S7 300 canal de sécurité 1 borne (connexions)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text size="6" y="-15" x="-19" text="FAILSAFE"/>
+        <input size="9" y="-8" rotate="true" x="-10" tagg="label" text="_"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" antialias="false" x="-2.5" diameter="5"/>
+        <input size="6" y="21" rotate="true" x="-6" tagg="none" text="2"/>
+        <text size="6" y="-23" x="-32" text="SIEMENS S7 300"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x3="-3" closed="false" y2="30" y3="30" x1="-40" y1="-30" x2="-40"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x3="40" closed="false" y2="30" y3="-30" x1="3" y1="30" x2="40"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" length2="1.5" end2="none" y2="-30" length1="1.5" x1="-40" y1="-30" x2="40"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" length2="1.5" end2="none" y2="-14" length1="1.5" x1="40" y1="-14" x2="-40"/>
+        <terminal y="33" x="0" orientation="s"/>
+    </description>
+</definition>

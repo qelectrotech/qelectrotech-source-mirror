@@ -1,0 +1,20 @@
+<definition link_type="simple" hotspot_y="38" type="element" hotspot_x="45" orientation="dyyy" version="0.51" height="80" width="90">
+    <uuid uuid="{4edd35be-6691-4fdf-945f-b6ad8a35e0f1}"/>
+    <names>
+        <name lang="de">S7 300 Kanal 1 Klemme (Anschlüsse)</name>
+        <name lang="fr">S7 300 canal 1 borne (connexions)</name>
+        <name lang="en">S7 300 channel 1 terminal (connections)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="-10" y="-8" text="_" size="9" rotate="true" tagg="label"/>
+        <circle x="-2.5" y="27.5" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-6" y="21" text="2" size="6" rotate="true" tagg="none"/>
+        <text x="-32" y="-22" text="SIEMENS S7 300" size="6"/>
+        <polygon x2="-40" y1="-30" x3="-3" y3="30" y2="30" antialias="false" x1="-40" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="40" y1="30" x3="40" y3="-30" y2="30" antialias="false" x1="3" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length2="1.5" length1="1.5" x2="40" y1="-30" end2="none" y2="-30" end1="none" antialias="false" x1="-40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length2="1.5" length1="1.5" x2="-40" y1="-20" end2="none" y2="-20" end1="none" antialias="false" x1="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="0" y="33" orientation="s"/>
+    </description>
+</definition>

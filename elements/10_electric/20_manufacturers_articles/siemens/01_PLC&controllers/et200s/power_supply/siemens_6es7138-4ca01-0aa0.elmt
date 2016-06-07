@@ -1,0 +1,36 @@
+<definition width="70" height="90" orientation="dyyy" link_type="simple" hotspot_x="29" hotspot_y="35" type="element" version="0.51">
+    <uuid uuid="{289ca1bc-4168-43ab-94a6-eb3cf69e1887}"/>
+    <names>
+        <name lang="de">Terminalmodul 6ES7138-4CA01-0AA0</name>
+        <name lang="en">Terminal module 6ES7138-4CA01-0AA0</name>
+        <name lang="fr">Module d'alimentation 6ES7138-4CA01-0AA0</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="2" y="-7" size="6" x="-15"/>
+        <text text="3" y="13" size="6" x="-15"/>
+        <text text="A4" y="33" size="6" x="-15"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-12.5" diameter="5" x="-22.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="7.5" diameter="5" x="-22.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="7.5" diameter="5" x="27.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="27.5" diameter="5" x="-22.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-12.5" diameter="5" x="27.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="27.5" diameter="5" x="27.5"/>
+        <text text="7" y="13" size="6" x="20"/>
+        <text text="A8" y="33" size="6" x="15"/>
+        <text text="6" y="-7" size="6" x="20"/>
+        <line y1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" end2="none" y2="7" antialias="false" length1="1.5" x2="30" length2="1.5" end1="none"/>
+        <line y1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" end2="none" y2="27" antialias="false" length1="1.5" x2="30" length2="1.5" end1="none"/>
+        <input rotate="true" tagg="label" text="_" y="-38" size="9" x="-20"/>
+        <line y1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" end2="none" y2="7" antialias="false" length1="1.5" x2="-20" length2="1.5" end1="none"/>
+        <line y1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" end2="none" y2="27" antialias="false" length1="1.5" x2="-20" length2="1.5" end1="none"/>
+        <polygon x3="30" y1="-13" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x4="30" y2="-30" antialias="false" x2="-20" y3="-30" y4="-13"/>
+        <polygon x3="30" y1="33" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x4="30" y2="50" antialias="false" x2="-20" y3="50" y4="33"/>
+        <terminal orientation="e" y="30" x="33"/>
+        <terminal orientation="w" y="-10" x="-23"/>
+        <terminal orientation="w" y="30" x="-23"/>
+        <terminal orientation="e" y="10" x="33"/>
+        <terminal orientation="e" y="-10" x="33"/>
+        <terminal orientation="w" y="10" x="-23"/>
+    </description>
+</definition>

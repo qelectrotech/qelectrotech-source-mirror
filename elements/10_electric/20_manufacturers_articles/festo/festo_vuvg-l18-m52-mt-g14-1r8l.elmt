@@ -1,0 +1,40 @@
+<definition orientation="dyyy" version="0.51" height="70" link_type="simple" type="element" hotspot_x="39" hotspot_y="36" width="80">
+    <uuid uuid="{be9f4d1a-49aa-4f78-866b-406a785661f6}"/>
+    <names>
+        <name lang="en">VUVG-L18-M52-MT-G14-1R8L (8031532)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="+/-" x="17" y="8" size="4"/>
+        <arc height="6" x="16.985" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="+/-" x="-3" y="8" size="4"/>
+        <text text="n.c." x="-24" y="-2" size="4"/>
+        <rect height="50" x="-35" y="-20" antialias="false" width="71" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="4" x="18" y="-9" size="6"/>
+        <input rotate="true" text="_" tagg="label" x="-60" y="-13" size="9"/>
+        <arc height="6" x="16.985" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6" x="19" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="19.985" y2="-25.8018" x1="19.985" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-3.015" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-3.015" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y5="15" y4="23" y7="15" y6="15" x2="2" y2="23" x4="18" x6="2" x1="2" x3="18" antialias="false" x5="2" closed="false" y3="15" x7="2" y1="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect height="6" x="-1" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect height="14" x="6" y="-4" antialias="false" width="8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length2="1.5" end1="none" x2="-0.015" y2="-25.8018" x1="-0.015" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length2="1.5" end1="none" x2="6" y2="7" x1="14" length1="1.5" end2="none" antialias="false" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="M8" x="-31" y="-14" size="4"/>
+        <text text="1" x="-22" y="-9" size="6"/>
+        <text text="3" x="-2" y="-9" size="6"/>
+        <line length2="1.5" end1="none" x2="10" y2="19" x1="10" length1="1.5" end2="none" antialias="false" y1="10" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" x="-23.015" y="-25.8018" angle="-84" antialias="true" width="6" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="6" x="-23.015" y="-25.8018" angle="-84" antialias="true" width="6" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6" x="-21" y="-23" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length2="1.5" end1="none" x2="-20.015" y2="-25.8018" x1="-20.015" length1="1.5" end2="none" antialias="false" y1="-29.8018" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="0" y2="3" x1="0" x3="6" antialias="false" closed="false" y3="3" y1="-7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x2="20" y2="3" x1="14" x3="20" antialias="false" closed="false" y3="-7" y1="3" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="n" x="0" y="-30"/>
+        <terminal orientation="n" x="20" y="-30"/>
+        <terminal orientation="n" x="-20" y="-30"/>
+    </description>
+</definition>

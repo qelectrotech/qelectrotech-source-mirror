@@ -1,0 +1,30 @@
+<definition width="70" hotspot_x="34" orientation="dyyy" type="element" link_type="simple" height="70" hotspot_y="32" version="0.51">
+    <uuid uuid="{29eb17ad-181b-43b6-bfd7-f25b5174ceff}"/>
+    <names>
+        <name lang="en">9612.000</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle y="19" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="2" x="19"/>
+        <circle y="-1" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="2" x="-1"/>
+        <input rotate="true" y="29.5" tagg="label" size="9" x="-52" text="_"/>
+        <input rotate="true" y="-29.5" tagg="none" size="4" x="-30" text="Anschlussadapter 250A"/>
+        <line y1="-20" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="-20" length2="1.5" x2="30"/>
+        <line y1="0" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="0" length2="1.5" x2="30"/>
+        <line y1="20" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="20" length2="1.5" x2="30"/>
+        <line y1="-20" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="30" length2="1.5" x2="-20"/>
+        <line y1="30" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="0" length2="1.5" x2="0"/>
+        <line y1="20" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="30" length2="1.5" x2="20"/>
+        <circle y="-21" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="2" x="-21"/>
+        <rect width="52" y="-26" style="line-style:dashed;line-weight:thin;filling:none;color:black" height="52" antialias="false" x="-26"/>
+        <terminal orientation="s" y="30" x="0"/>
+        <terminal orientation="w" y="-20" x="-30"/>
+        <terminal orientation="e" y="20" x="30"/>
+        <terminal orientation="w" y="0" x="-30"/>
+        <terminal orientation="s" y="30" x="-20"/>
+        <terminal orientation="w" y="20" x="-30"/>
+        <terminal orientation="e" y="-20" x="30"/>
+        <terminal orientation="e" y="0" x="30"/>
+        <terminal orientation="s" y="30" x="20"/>
+    </description>
+</definition>
