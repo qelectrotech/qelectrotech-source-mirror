@@ -100,6 +100,7 @@ class DiagramView : public QGraphicsView
 	void handleElementDrop(QDropEvent *);
 	void handleTitleBlockDrop(QDropEvent *);
 	void handleTextDrop(QDropEvent *);
+	void scrollOnMovement(QKeyEvent *);
 	bool gestureEvent(QGestureEvent *event);
 	QRectF viewedSceneRect() const;
 	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;

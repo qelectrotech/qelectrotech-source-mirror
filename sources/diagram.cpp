@@ -235,11 +235,28 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		QPointF movement;
+		qreal top_position = 0;
+		qreal left_position = 0;
+		QList<Element*> selected_elmts = this->selectedContent().elements.toList();
 	if (!this->selectedContent().elements.isEmpty()) {
 		switch(e -> key()) {
-			case Qt::Key_Left:  movement = QPointF(-xGrid, 0.0); break;
+			case Qt::Key_Left:
+				foreach (QGraphicsItem *item, selected_elmts) {
+					left_position = item->mapRectFromScene(item->boundingRect()).x();
+					if (left_position >= this->sceneRect().left() - item->boundingRect().width())
+					return;
+			}
+				movement = QPointF(-xGrid, 0.0);
+				break;
 			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
-			case Qt::Key_Up:    movement = QPointF(0.0, -yGrid); break;
+			case Qt::Key_Up:
+				foreach (QGraphicsItem *item, selected_elmts) {
+					top_position = item->mapRectFromScene(item->boundingRect()).y();
+						if (top_position >= this->sceneRect().top() - item->boundingRect().height())
+						return;
+				}
+				movement = QPointF(0.0, -yGrid);
+				break;
 			case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 		}
 		if (!movement.isNull() && !focusItem()) {

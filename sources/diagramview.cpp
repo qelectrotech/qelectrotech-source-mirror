@@ -354,8 +354,9 @@ void DiagramView::setSelectionMode() {
  */
 void DiagramView::zoom(const qreal zoom_factor)
 {
-	if (zoom_factor >= 1)
+	if (zoom_factor >= 1){
 		scale(zoom_factor, zoom_factor);
+	}
 	else
 	{
 		QSettings settings;
@@ -363,6 +364,7 @@ void DiagramView::zoom(const qreal zoom_factor)
 			(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
 			scale(zoom_factor, zoom_factor);
 	}
+	scene->adjustSceneRect();
 	adjustGridToZoom();
 }
 
@@ -604,6 +606,28 @@ switch(e -> key())
 		case Qt::Key_End:
 			current_project->changeLastTab();
 			return;
+		case Qt::Key_Minus:
+			zoom(0.85);
+			return;
+		case Qt::Key_Plus:
+			zoom(1.15);
+			return;
+		case Qt::Key_Up:
+			if(!scene->selectedContent().elements.isEmpty()){
+				scrollOnMovement(e);
+			}
+		case Qt::Key_Down:
+			if(!scene->selectedContent().elements.isEmpty()){
+				scrollOnMovement(e);
+			}
+		case Qt::Key_Left:
+			if(!scene->selectedContent().elements.isEmpty()){
+				scrollOnMovement(e);
+			}
+		case Qt::Key_Right:
+			if(!scene->selectedContent().elements.isEmpty()){
+				scrollOnMovement(e);
+			}
 	}
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
@@ -619,6 +643,57 @@ void DiagramView::keyReleaseEvent(QKeyEvent *e) {
 	switchToSelectionModeIfNeeded(e);
 	QGraphicsView::keyReleaseEvent(e);
 }
+
+/**
+	Handles element movement when editor is zoomed in and scrolls vertical
+	and horizontal bar. If element is moved to the right side of the editor
+	or below the editor SceneRect is expanded
+*/
+void DiagramView::scrollOnMovement(QKeyEvent *e){
+			QList<QGraphicsItem *> selected_elmts = scene ->selectedItems();
+			QRectF viewed_scene = viewedSceneRect();
+			foreach (QGraphicsItem *qgi, selected_elmts){
+				qreal x = qgi->pos().x();
+				qreal y = qgi->pos().y();
+				qreal bottom = viewed_scene.bottom();
+				qreal top = viewed_scene.top();
+				qreal left = viewed_scene.left();
+				qreal right = viewed_scene.right();
+				qreal elmt_top = y + qgi->boundingRect().top();
+				qreal elmt_bottom = y + qgi->boundingRect().bottom();
+				qreal elmt_right = x + qgi->boundingRect().right();
+				qreal elmt_left = x + qgi->boundingRect().left();
+				bool elmt_right_of_left_margin = elmt_left>=left;
+				bool elmt_left_of_right_margin = elmt_right<=right;
+				bool elmt_below_top_margin = elmt_top>=top;
+				bool elmt_above_bottom_margin = elmt_bottom<=bottom;
+				if (!(elmt_right_of_left_margin && elmt_left_of_right_margin) ||
+					!(elmt_below_top_margin    && elmt_above_bottom_margin )  ) {
+						QScrollBar *h = horizontalScrollBar();
+						QScrollBar *v = verticalScrollBar();
+						int h_increment=0;
+						int v_increment=0;
+						if (e->key()==Qt::Key_Up && elmt_above_bottom_margin)
+							v_increment = 2*qgi->boundingRect().top();
+						else if(e->key()==Qt::Key_Down && elmt_below_top_margin){
+							v_increment = 2*qgi->boundingRect().bottom();
+						}
+						else if (e->key()==Qt::Key_Left && elmt_left_of_right_margin)
+							h_increment = 2*qgi->boundingRect().left();
+						else if (e->key()==Qt::Key_Right && elmt_right_of_left_margin){
+							h_increment = 2*qgi->boundingRect().right();
+						}
+						if (((elmt_right  >= scene->sceneRect().right() -  qgi->boundingRect().right())  ||
+							(elmt_bottom >= scene->sceneRect().bottom() - qgi->boundingRect().bottom())) &&
+							(e->key()==Qt::Key_Right || e->key()==Qt::Key_Down)){
+							scene->adjustSceneRect();
+						}
+						h -> setValue(h -> value() + h_increment);
+						v -> setValue(v -> value() + v_increment);
+				}
+			}
+}
+
 
 /**
 	@return le titre de cette vue ; cela correspond au titre du schema
