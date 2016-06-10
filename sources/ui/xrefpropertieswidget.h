@@ -49,6 +49,7 @@ class XRefPropertiesWidget : public QWidget
 	private slots:
 	void updateDisplay();
 	void typeChanged();
+	void enableOffsetSB(int i);
 
 
 	private:

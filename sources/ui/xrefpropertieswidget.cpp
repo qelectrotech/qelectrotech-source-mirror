@@ -34,6 +34,7 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 	buildUi();
 	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
 	connect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
+	connect(ui->m_snap_to_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(enableOffsetSB(int)));
 	updateDisplay();
 }
 
@@ -45,6 +46,7 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 {
 	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
 	disconnect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
+	disconnect(ui->m_snap_to_cb,           SIGNAL(currentIndexChanged(int)), this,                      SLOT(enableOffsetSB(int)));
 	delete ui;
 }
 
@@ -149,9 +151,14 @@ void XRefPropertiesWidget::updateDisplay() {
 	int offset = xrp.offset();
 	ui->m_offset_sb->setValue(offset);
 
-	if (xrp.snapTo() == XRefProperties::Bottom)
+	if (xrp.snapTo() == XRefProperties::Bottom){
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
-	else ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
+		 ui->m_offset_sb->setEnabled(true);
+	}
+	else {
+		ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
+		ui->m_offset_sb->setEnabled(false);
+	}
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));
@@ -172,4 +179,15 @@ void XRefPropertiesWidget::typeChanged() {
 	//everything is done
 	//previous index is now the current index
 	m_previous_type_index = ui->m_type_cb->currentIndex();
+}
+
+/**
+ * @brief XRefPropertiesWidget::enableOffsetSB
+ * Enable Offset SB only if Snap to Footer is selected
+ */
+void XRefPropertiesWidget::enableOffsetSB(int i){
+	if (i)
+		ui->m_offset_sb->setEnabled(false);
+	else
+		ui->m_offset_sb->setEnabled(true);
 }
