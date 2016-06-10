@@ -49,6 +49,12 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
+
+		//Timer is used to avoid launching a new search for each letter typed by user
+		//Timer is started or restarted at every time user type a new letter.
+		//When the timer emit timeout, we start the search.
+	m_search_timer.setInterval(500);
+	m_search_timer.setSingleShot(true);
 }
 
 /**
@@ -148,7 +154,8 @@ void ElementsCollectionWidget::setUpWidget()
 void ElementsCollectionWidget::setUpConnection()
 {
 	connect(m_tree_view,      &QTreeView::customContextMenuRequested, this, &ElementsCollectionWidget::customContextMenu);
-	connect(m_search_field,   &QLineEdit::textEdited, this, &ElementsCollectionWidget::search);
+	connect(m_search_field,   &QLineEdit::textEdited, [this]() {m_search_timer.start();});
+	connect(&m_search_timer,   &QTimer::timeout,   this, &ElementsCollectionWidget::search);
 	connect(m_open_dir,       &QAction::triggered, this, &ElementsCollectionWidget::openDir);
 	connect(m_edit_element,   &QAction::triggered, this, &ElementsCollectionWidget::editElement);
 	connect(m_delete_element, &QAction::triggered, this, &ElementsCollectionWidget::deleteElement);
@@ -413,7 +420,7 @@ void ElementsCollectionWidget::showThisDir()
 		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
 		if (eci)
 			eci->setBackground(QBrush(Qt::yellow));
-		search(m_search_field->text());
+		search();
 	}
 	else
 		resetShowThisDir();
@@ -434,7 +441,7 @@ void ElementsCollectionWidget::resetShowThisDir()
 	}
 
 	m_showed_index = QModelIndex();
-	search(m_search_field->text());
+	search();
 }
 
 /**
@@ -476,12 +483,12 @@ void ElementsCollectionWidget::reload()
 
 /**
  * @brief ElementsCollectionWidget::search
- * Search every item (directory or element) that match the string @text
+ * Search every item (directory or element) that match the text of m_search_field
  * and display it, other item who does not match @text is hidden
- * @param text
  */
-void ElementsCollectionWidget::search(const QString &text)
+void ElementsCollectionWidget::search()
 {
+	QString text = m_search_field->text();
 		//Reset the search
 	if (text.isEmpty())
 	{

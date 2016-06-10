@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QModelIndex>
+#include <QTimer>
 
 class ElementsCollectionModel;
 class QVBoxLayout;
@@ -65,7 +66,7 @@ class ElementsCollectionWidget : public QWidget
 		void newElement();
 		void showThisDir();
 		void resetShowThisDir();
-		void search(const QString &text);
+		void search();
 		void hideCollection(bool hide = true);
 		void hideItem(bool hide, const QModelIndex &index = QModelIndex(), bool recursive = true);
 		void showAndExpandItem (const QModelIndex &index, bool parent = true, bool child = false);
@@ -78,6 +79,7 @@ class ElementsCollectionWidget : public QWidget
 	private:
 		ElementsCollectionModel *m_model;
 		QLineEdit *m_search_field;
+		QTimer m_search_timer;
 		ElementsTreeView *m_tree_view;
 		QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
