@@ -1416,13 +1416,13 @@ de verwijdering is definitief.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit item is geen categorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Het gevraagde item is geen categorie. Afbreken.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2134,53 +2134,53 @@ Alle elementen in het dossier worden verwijderd.</translation>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto nummering oties</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>tot</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>van</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak de nieuwe bladzijden aan</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Hernummer de geslecteerde bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bladzijde nummering :</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonummering baldzijden</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2197,7 +2197,14 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kan je instellen hoe nieuwe folio&apos;s genummerd worden.
+- De nummering bestaat uit een minimum waarde.
+- U kan waarden toevoegen of verwijderen met de - en + knoppen.
+- Een waarde bevat numer &quot;1&quot;, &quot;01&quot; of &quot;001&quot; een numeriek type gedefinieerd in het veld &quot;Waarde&quot;, die wordt geïncrementeerd bij elke nieuwe bladzijde
+- De waarden &quot;01t&quot; of &quot;001&quot; geven het aantal gebruike cijfers om de waarden weer te geven
+Indien de in het waardeveld getal minder cijfers heeft dan het gekozen, wordt deze voorafgegaan door een of twee 0.
+-Type &quot;Text&quot;  wordt bebruikt bij een vaste tekst.
+Field &quot;Raise&quot; wordt hier  niet gebruikt.</translation>
     </message>
 </context>
 <context>
@@ -2492,32 +2499,32 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Maak er één element van</translation>
+        <translation>Element toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Dit element bestaat reeds in dit project, Echter deze versie verschilt. Wat wilt u doen?</translation>
+        <translation>Dit element bestaat reeds in dit project, Echter deze versie verschilt. Wat wilt u doen?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik het reeds aanwezige element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Gebruik het gewijzigde element</translation>
+        <translation>Gebruik het gewijzigde element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder het reeds aanwezige element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Gebruik beide elementen</translation>
+        <translation>Gebruik beide elementen</translation>
     </message>
 </context>
 <context>
@@ -3016,7 +3023,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit element gebruikt reeds een bestaande naam</translation>
     </message>
 </context>
 <context>
@@ -3054,7 +3061,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde</translation>
     </message>
 </context>
 <context>
@@ -3213,17 +3220,17 @@ Selecteer de eigenschappen die moeten worden toegepast op een nieuw potentiaal.<
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bladzijde nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6458,7 +6465,7 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket van de bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6670,7 +6677,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>U kan uw etiket personaliseren voor het bladzijden overzicht.
+Creer uw eigen tekst eventueel gebruikmakend van :
+%f : Bladzijde nummering
+%F : Etiket naam van de bladzijde
+%l : Lijn nummer
+%c : Kolom nummer</translation>
     </message>
 </context>
 <context>
@@ -6724,7 +6736,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bladzijde nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6741,13 +6753,13 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit is waar je kunt instellen hoe zal het nieuwe folio&apos;s genummerd.-a Dial bestaat uit een variabele minimum.-U Kunt toevoegen of verwijderen van een variabele nummering door de - en + knoppen.-Een Variabele comprant kiezen: een type, waarde en increment.-de typen &quot;Number 1&quot;, &quot;01 Digit&quot; en &quot;001 sales&quot; een numeriek type gedefinieerd in het veld &quot;Waarde&quot;, die wordt geïncrementeerd bij elke nieuwe folio van de waarde van de &quot;heffen&quot;.- &quot;01 Digit&quot; en &quot;001 sales&quot; worden respectievelijk vertegenwoordigd in het diagram door twee en drie minimale cijfers.Indien de in het waardeveld getal minder cijfers heeft dan het gekozen, wordt deze voorafgegaan door een of twee 0 van type respecteren.-De &quot;Text&quot; type, is een vaste tekst. Type&quot;increment&quot; wordt niet gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummering geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -6769,7 +6781,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kan je bepalen hoe geleiders worden genummerd.
+-Deze bestaat uit minimum één waarde..
+-U Kunt toevoegen of verwijderen van een variabele nummering door de - en + knoppen.
+-Een waarde bevat: een type, waarde en increment.
+
+-de typen &quot;1&quot;, &quot;01&quot; of &quot;001&quot; een numeriek type gedefinieerd in het veld &quot;Waarde&quot;, die wordt geïncrementeerd bij elke nieuwe geleider van de waarde van de &quot;increment&quot;.
+- &quot;01&quot; of &quot;001&quot; worden respectievelijk vertegenwoordigd in hetschema door twee en drie cijfers.
+Indien de in het waardeveld getal minder cijfers heeft dan het gekozen, wordt deze voorafgegaan door een of twee 0 van in functie van het geselecteerde type.
+
+-De &quot;Text&quot; type, is een vaste tekst.
+Het veld &quot;increment&quot; wordt niet gebruikt.
+
+-De Type &quot;Nr bladzijde&quot; staat voor het nummer van de huidige bladzijde.
+De andere velden worden niet gebruikt.
+
+-De Type &quot;Folio&quot; is de naam van de huidige bladzijde.
+De andere velden worden niet gebruikt.</translation>
     </message>
 </context>
 <context>
@@ -7540,7 +7568,7 @@ Positie vergrendelen</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak bladzijden aan met automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7573,7 +7601,10 @@ Positie vergrendelen</translation>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>De volgende variabelen gebruikt worden in het veld Folio :
+- %id : huidige bladzijde nummer van het huidige project
+- %total : totaal aantal bladzijden in het huidige project
+-. %autonum : Automatisch bladzijde nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7664,7 +7695,7 @@ Breng de huidige datum aan</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde nummer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8197,27 +8228,27 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Weergave kruisverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>Master</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">Slave</translation>
+        <translation>Slave</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8226,7 +8257,11 @@ Maximale lengte : %2px
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Creere uw eigen tekst eventueel gebruik makend van onderstaande variabelen :
+%f : Bladzijde nummer
+%F : Bladzijde naam
+%l : Lijn nummer
+%c : Kolom nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
