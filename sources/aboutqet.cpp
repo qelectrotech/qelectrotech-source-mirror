@@ -45,10 +45,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	tabs -> addTab(titleTab(),        tr("&Version",           "tab title"));
 	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
 
-	// A button to close the dialog box
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
-	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
+
 	
 	// All in a vertical arrangement
 	QVBoxLayout *vlayout = new QVBoxLayout();
@@ -59,6 +56,17 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	scrollArea->setWidgetResizable(true);
 	scrollArea->setFixedSize (690, 610);
 	scrollArea->setWidget(tabs);
+
+	// A button to close the dialog box
+	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
+	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
+
+	QHBoxLayout *hlayout = new QHBoxLayout();
+	vlayout -> addStretch();
+	vlayout -> addWidget(buttons);
+	setLayout(hlayout);
+
 
 
 }
