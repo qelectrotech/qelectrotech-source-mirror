@@ -367,9 +367,8 @@ void ElementsCollectionWidget::newDirectory()
 
 	ElementsLocation location(feci->collectionPath());
 	ElementsCategoryEditor new_dir_editor(location, false, this);
-	if (new_dir_editor.exec() == QDialog::Accepted) {
-		reload();
-	}
+	if (new_dir_editor.exec() == QDialog::Accepted)
+		m_model->addLocation(new_dir_editor.createdLocation());
 }
 
 /**
@@ -393,6 +392,9 @@ void ElementsCollectionWidget::newElement()
 	ElementsLocation loc(feci->collectionPath());
 	elmt_wizard.preselectedLocation(loc);
 	elmt_wizard.exec();
+
+	foreach (QETElementEditor *element_editor, QETApp::instance()->elementEditors())
+		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
 }
 
 /**

@@ -37,6 +37,8 @@ class ElementsCategoryEditor : public QDialog
 	public:
 		ElementsCategoryEditor(const ElementsLocation &location, bool edit = true, QWidget *parent = nullptr);
 		virtual ~ElementsCategoryEditor();
+
+		ElementsLocation createdLocation() const;
 	
 	private:
 		ElementsCategoryEditor(const ElementsCategoryEditor &);
@@ -48,6 +50,7 @@ class ElementsCategoryEditor : public QDialog
 		QFileNameEdit *m_file_line_edit;
 		bool m_edit_mode;
 		ElementsLocation m_location;
+		ElementsLocation m_created_location;
 
 	private:
 		void setUpWidget();

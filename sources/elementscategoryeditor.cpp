@@ -86,6 +86,15 @@ ElementsCategoryEditor::~ElementsCategoryEditor() {
 }
 
 /**
+ * @brief ElementsCategoryEditor::createdLocation
+ * @return the location of the created directory
+ */
+ElementsLocation ElementsCategoryEditor::createdLocation() const
+{
+	return m_created_location;
+}
+
+/**
  * @brief ElementsCategoryEditor::setUpWidget
  */
 void ElementsCategoryEditor::setUpWidget()
@@ -150,8 +159,8 @@ void ElementsCategoryEditor::acceptCreation()
 
 	ElementCollectionHandler ech_;
 	NamesList nl = m_names_list->names();
-	ElementsLocation loc = ech_.createDir(m_location, dirname, nl);
-	if (loc.isNull()) {
+	m_created_location = ech_.createDir(m_location, dirname, nl);
+	if (m_created_location.isNull()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Erreur", "message box title"),
 									 tr("Impossible de créer la catégorie", "message box content"));
