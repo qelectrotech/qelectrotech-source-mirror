@@ -263,10 +263,7 @@ void ElementsCollectionWidget::editElement()
 	app->openElementLocations(QList<ElementsLocation>() << location);
 
 	foreach (QETElementEditor *element_editor, app->elementEditors())
-	{
-		if (element_editor->isEditing(location))
-			connect(element_editor, &QETElementEditor::destroyed, [eci](){ eci->clearData(); eci->setUpData();});
-	}
+		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
 }
 
 /**
@@ -479,6 +476,33 @@ void ElementsCollectionWidget::reload()
 	m_model = new_model;
 	expandFirstItems();
 	m_progress_bar->hide();
+}
+
+/**
+ * @brief ElementsCollectionWidget::locationWasSaved
+ * This method is connected with the signal savedToLocation of Element editor (see ElementsCollectionWidget::editElement())
+ * Update or add the item represented by location to m_model
+ * @param location
+ */
+void ElementsCollectionWidget::locationWasSaved(ElementsLocation location)
+{
+		//Because this method update an item in the model, location must
+		//represente an existing element (in file system of project)
+	if (!location.exist())
+		return;
+
+	QModelIndex index = m_model->indexFromLocation(location);
+
+	if (index.isValid()) {
+		QStandardItem *item = m_model->itemFromIndex(index);
+		if (item) {
+			static_cast<ElementCollectionItem *>(item)->clearData();
+			static_cast<ElementCollectionItem *>(item)->setUpData();
+		}
+	}
+	else {
+		m_model->addLocation(location);
+	}
 }
 
 /**

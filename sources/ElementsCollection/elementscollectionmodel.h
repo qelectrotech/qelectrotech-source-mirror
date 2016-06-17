@@ -42,6 +42,7 @@ class ElementsCollectionModel : public QStandardItemModel
 
 		void addCommonCollection(bool set_data = true);
 		void addCustomCollection(bool set_data = true);
+		void addLocation(ElementsLocation location);
 
 		void addProject(QETProject *project, bool set_data = true);
 		void removeProject(QETProject *project);

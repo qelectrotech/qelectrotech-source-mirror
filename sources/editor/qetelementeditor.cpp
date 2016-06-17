@@ -1131,7 +1131,10 @@ bool QETElementEditor::slot_save()
 
 				//Else save to the known location
 			bool result_save = toLocation(location_);
-			if (result_save) ce_scene -> undoStack().setClean();
+			if (result_save) {
+				ce_scene -> undoStack().setClean();
+				emit saveToLocation(location_);
+			}
 			return(result_save);
 		}
 	}
@@ -1147,20 +1150,19 @@ bool QETElementEditor::slot_save()
  * @return true if save with success
  */
 bool QETElementEditor::slot_saveAs() {
-	// Check element befor writing
+		// Check element befor writing
 	if (checkElement()) {
-		// demande une localisation a l'utilisateur
+			//Ask a location to user
 		ElementsLocation location = ElementDialog::getSaveElementLocation(this);
 		if (location.isNull()) return(false);
-	
-		// tente l'enregistrement
+
 		bool result_save = toLocation(location);
 		if (result_save) {
 			setLocation(location);
 			ce_scene -> undoStack().setClean();
+			emit saveToLocation(location);
 		}
-	
-		// retourne un booleen representatif de la reussite de l'enregistrement
+
 		return(result_save);
 	}
 	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
@@ -1173,9 +1175,9 @@ bool QETElementEditor::slot_saveAs() {
  * @return true if save with success
  */
 bool QETElementEditor::slot_saveAsFile() {
-	// Check element befor writing
+		// Check element befor writing
 	if (checkElement()) {
-		// demande un nom de fichier a l'utilisateur pour enregistrer l'element
+			//Ask a filename to user, for save the element
 		QString fn = QFileDialog::getSaveFileName(
 			this,
 			tr("Enregistrer sous", "dialog title"),
@@ -1185,19 +1187,22 @@ bool QETElementEditor::slot_saveAsFile() {
 				"filetypes allowed when saving an element file"
 			)
 		);
-		// si aucun nom n'est entre, renvoie faux.
-		if (fn.isEmpty()) return(false);
-		// si le nom ne se termine pas par l'extension .elmt, celle-ci est ajoutee
-		if (!fn.endsWith(".elmt", Qt::CaseInsensitive)) fn += ".elmt";
-		// tente d'enregistrer le fichier
+
+		if (fn.isEmpty())
+			return(false);
+
+			//If the name doesn't end by .elmt, we add it
+		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
+			fn += ".elmt";
+
 		bool result_save = toFile(fn);
-		// si l'enregistrement reussit, le nom du fichier est conserve
+			//If the save success, the filename is keep
 		if (result_save) {
 			setFileName(fn);
 			QETApp::elementsRecentFiles() -> fileWasOpened(fn);
 			ce_scene -> undoStack().setClean();
 		}
-		// retourne un booleen representatif de la reussite de l'enregistrement
+
 		return(result_save);
 	}
 	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));

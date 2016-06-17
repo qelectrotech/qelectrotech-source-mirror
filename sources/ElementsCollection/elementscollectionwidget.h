@@ -18,6 +18,8 @@
 #ifndef ELEMENTSCOLLECTIONWIDGET_H
 #define ELEMENTSCOLLECTIONWIDGET_H
 
+#include "elementslocation.h"
+
 #include <QWidget>
 #include <QModelIndex>
 #include <QTimer>
@@ -74,6 +76,9 @@ class ElementsCollectionWidget : public QWidget
 
 	private slots:
 		void reload();
+
+	private:
+		void locationWasSaved(ElementsLocation location);
 
 
 	private:

@@ -242,6 +242,54 @@ void ElementsCollectionModel::addCustomCollection(bool set_data)
 }
 
 /**
+ * @brief ElementsCollectionModel::addLocation
+ * Add the element or directory to this model.
+ * If the location is already managed by this model, do nothing.
+ * @param location
+ */
+void ElementsCollectionModel::addLocation(ElementsLocation location)
+{
+	QModelIndex index = indexFromLocation(location);
+	if (index.isValid())
+		return;
+
+	ElementCollectionItem *last_item = nullptr;
+	QString collection_name;
+
+	if (location.isProject()) {
+		QETProject *project = location.project();
+
+		if (project) {
+			XmlProjectElementCollectionItem *xpeci = m_project_hash.value(project);
+
+			last_item = xpeci->lastItemForPath(location.collectionPath(false), collection_name);
+		}
+	}
+	else if (location.isCustomCollection()) {
+		QList <ElementCollectionItem *> child_list;
+
+		for (int i=0 ; i<rowCount() ; i++)
+			child_list.append(static_cast<ElementCollectionItem *>(item(i)));
+
+		foreach(ElementCollectionItem *eci, child_list) {
+
+			if (eci->type() == FileElementCollectionItem::Type) {
+				FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci);
+
+				if (feci->isCustomCollection()) {
+					last_item = feci->lastItemForPath(location.collectionPath(false), collection_name);
+					if(last_item)
+						break;
+				}
+			}
+		}
+	}
+
+	if (last_item)
+		last_item->addChildAtPath(collection_name);
+}
+
+/**
  * @brief ElementsCollectionModel::addProject
  * Add project to this model
  * @param project : project to add.

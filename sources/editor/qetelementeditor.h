@@ -114,6 +114,9 @@ class QETElementEditor : public QETMainWindow {
 	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
 	void contextMenu(QPoint p);
 
+	signals:
+		void saveToLocation(ElementsLocation loc);
+
 	protected:
 	void closeEvent(QCloseEvent *);
 	virtual void firstActivation(QEvent *);

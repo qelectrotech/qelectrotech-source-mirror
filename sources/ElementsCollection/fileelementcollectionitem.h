@@ -44,6 +44,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		virtual QString collectionPath() const;
 		virtual bool isCollectionRoot() const;
 		bool isCommonCollection() const;
+		bool isCustomCollection() const;
 		virtual void addChildAtPath(const QString &collection_name);
 
 		void setUpData();

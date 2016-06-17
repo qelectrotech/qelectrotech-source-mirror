@@ -204,6 +204,15 @@ bool FileElementCollectionItem::isCommonCollection() const
 }
 
 /**
+ * @brief FileElementCollectionItem::isCustomCollection
+ * @return True if this item represent the custom collection
+ */
+bool FileElementCollectionItem::isCustomCollection() const
+{
+	return fileSystemPath().startsWith(QETApp::customElementsDirN());
+}
+
+/**
  * @brief FileElementCollectionItem::addChildAtPath
  * Ask to this item item to add a child with collection name @collection_name
  * @param collection_name
