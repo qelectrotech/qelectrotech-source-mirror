@@ -21,10 +21,13 @@
 #include <QStandardItemModel>
 #include "elementslocation.h"
 
+template<>
 class QList<QETProject>;
 class XmlProjectElementCollectionItem;
+template<>
 class QHash<QETProject, XmlProjectElementCollectionItem>;
 class ElementCollectionItem;
+template<>
 class QList<ElementCollectionItem>;
 
 class ElementsCollectionModel : public QStandardItemModel
