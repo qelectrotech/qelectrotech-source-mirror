@@ -230,7 +230,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	QSettings settings;
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
-	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
 	bool zoom_out_folio = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool();
 	bool use_trackpad = settings.value("diagramview/gestures", false).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
@@ -245,7 +244,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
-	integrate_elements_ = new QCheckBox(tr("Intégrer automatiquement les éléments dans les projets (recommandé)"));
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
 	default_element_infos_label_ = new QLabel(
 		tr(
@@ -269,7 +267,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 
 	m_zoom_out_beyond_folio -> setChecked(zoom_out_folio);
 	
-	integrate_elements_ -> setChecked(integrate_elements);
 	highlight_integrated_elements_ -> setChecked(highlight_integrated_elements);
 	default_element_infos_textfield_ -> setPlainText(default_element_informations);
 	
@@ -285,7 +282,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
-	elements_management_layout -> addWidget(integrate_elements_);
 	elements_management_layout -> addWidget(highlight_integrated_elements_);
 	elements_management_layout -> addWidget(default_element_infos_label_);
 	elements_management_layout -> addWidget(default_element_infos_textfield_);
@@ -342,7 +338,6 @@ void GeneralConfigurationPage::applyConf()
 	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
 	
-	settings.setValue("diagrameditor/integrate-elements", integrate_elements_ -> isChecked());
 	settings.setValue("diagrameditor/highlight-integrated-elements", highlight_integrated_elements_ -> isChecked());
 	settings.setValue("elementeditor/default-informations", default_element_infos_textfield_ -> toPlainText());
 	settings.setValue("diagramview/gestures", use_trackpad_ -> isChecked());
