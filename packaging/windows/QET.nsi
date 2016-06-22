@@ -148,9 +148,6 @@ File "Lancer QET.bat"
 SetOutPath "$INSTDIR"
 File /r "./files/ico"
 
-SetOutPath "$INSTDIR"
-File /r "./files/conf"
-
 SectionEnd
 
 ;---------------------------
