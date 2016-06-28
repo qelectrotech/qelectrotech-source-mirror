@@ -1,0 +1,59 @@
+<definition hotspot_y="85" orientation="dyyy" height="130" version="0.5" width="220" type="element" link_type="simple" hotspot_x="125">
+    <uuid uuid="{ca56fef5-6e15-4b73-9d1c-fa1fc1819d3a}"/>
+    <names>
+        <name lang="fr">Zumtobel LM-3DLIS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="Grp2" x="38" y="-27" rotation="270" size="5"/>
+        <circle x="67.5" y="-72.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="Grp3" x="69" y="-26" rotation="270" size="5"/>
+        <circle x="37.5" y="-72.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="7.5" y="-72.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="27.5" y="-52.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="47.5" y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-82.5" y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="67.5" y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="57.5" y="-52.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-92.5" y="-72.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line y1="-80" x1="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="90" end2="none" y2="-80" end1="none" length1="1.5" length2="1.5"/>
+        <circle x="-2.5" y="-52.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle x="-102.5" y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line y1="14" x1="72" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="72" end2="none" y2="8" end1="none" length1="1.5" length2="1.5"/>
+        <line y1="-80" x1="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-120" end2="none" y2="40" end1="none" length1="1.5" length2="1.5"/>
+        <line y1="40" x1="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="90" end2="none" y2="40" end1="none" length1="1.5" length2="1.5"/>
+        <line y1="40" x1="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="90" end2="none" y2="-80" end1="none" length1="1.5" length2="1.5"/>
+        <circle x="-112.5" y="-72.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <input text="DA" x="10" tagg="none" y="-68" rotate="true" size="5"/>
+        <input text="DA" x="0" tagg="none" y="-51" rotate="true" size="5"/>
+        <input text="DA" x="30" tagg="none" y="-51" rotate="true" size="5"/>
+        <input text="DA" x="60" tagg="none" y="-51" rotate="true" size="5"/>
+        <input text="DA" x="70" tagg="none" y="-71" rotate="true" size="5"/>
+        <input text="DA" x="40" tagg="none" y="-71" rotate="true" size="5"/>
+        <input text="L" x="-106" tagg="none" y="10" rotate="true" size="5"/>
+        <input text="N" x="-86" tagg="none" y="13" rotate="true" size="5"/>
+        <input text="T" x="41" tagg="none" y="11" rotate="true" size="5"/>
+        <input text="T" x="61" tagg="none" y="11" rotate="true" size="5"/>
+        <input text="B1" x="-118" tagg="none" y="-62" rotate="true" size="5"/>
+        <input text="B2" x="-98" tagg="none" y="-62" rotate="true" size="5"/>
+        <line y1="14" x1="52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="52" end2="none" y2="8" end1="none" length1="1.5" length2="1.5"/>
+        <polygon y4="8" closed="false" y3="10" x4="52" y1="8" x1="52" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" x2="50" y2="10" x3="54"/>
+        <polygon y4="14" closed="false" y3="12" x4="72" y1="14" x1="72" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="70" y2="12" x3="74"/>
+        <text text="ZUMTOBEL" x="-110" y="-30" size="9"/>
+        <text text="LM-3DLIS" x="-110" y="-10" size="9"/>
+        <input text="_" x="12" tagg="label" y="-6" rotate="true" size="9"/>
+        <text text="Grp1" x="14" y="-27" rotation="270" size="5"/>
+        <terminal x="-110" orientation="n" y="-74"/>
+        <terminal x="50" orientation="s" y="24"/>
+        <terminal x="70" orientation="s" y="24"/>
+        <terminal x="-100" orientation="s" y="24"/>
+        <terminal x="-80" orientation="s" y="24"/>
+        <terminal x="-90" orientation="n" y="-74"/>
+        <terminal x="60" orientation="n" y="-54"/>
+        <terminal x="40" orientation="n" y="-74"/>
+        <terminal x="30" orientation="n" y="-54"/>
+        <terminal x="70" orientation="n" y="-74"/>
+        <terminal x="0" orientation="n" y="-54"/>
+        <terminal x="10" orientation="n" y="-74"/>
+    </description>
+</definition>

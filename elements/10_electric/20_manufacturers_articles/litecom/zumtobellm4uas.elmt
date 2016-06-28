@@ -1,0 +1,43 @@
+<definition version="0.5" type="element" hotspot_y="45" width="170" link_type="simple" orientation="dyyy" hotspot_x="105" height="130">
+    <uuid uuid="{bf5fb5d1-5547-4abe-9300-63312e5a24ef}"/>
+    <names>
+        <name lang="fr">Zumtobel LM-4UAS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="7.5" y="57.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-31.5" y="57.5"/>
+        <text text="L" size="5" x="-31" y="55"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-12.5" y="57.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="27.5" y="57.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-62.5" y="57.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="47.5" y="57.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-72.5" y="-32.5"/>
+        <line length2="1.5" y1="-40" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="60" length1="1.5" antialias="false" end1="none" end2="none" x1="-100"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-82.5" y="57.5"/>
+        <line length2="1.5" y1="-40" y2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-100" length1="1.5" antialias="false" end1="none" end2="none" x1="-100"/>
+        <line length2="1.5" y1="80" y2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="60" length1="1.5" antialias="false" end1="none" end2="none" x1="-100"/>
+        <line length2="1.5" y1="80" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="60" length1="1.5" antialias="false" end1="none" end2="none" x1="60"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-92.5" y="-32.5"/>
+        <input text="N" size="5" rotate="true" x="-86" y="52" tagg="none"/>
+        <input text="L" size="5" rotate="true" x="-66" y="52" tagg="none"/>
+        <input text="B1" size="5" rotate="true" x="-98" y="-22" tagg="none"/>
+        <input text="B2" size="5" rotate="true" x="-78" y="-22" tagg="none"/>
+        <text text="ZUMTOBEL" size="9" x="-90" y="10"/>
+        <text text="LM-4UAS" size="9" x="-90" y="30"/>
+        <input text="_" size="9" rotate="true" x="-3" y="20" tagg="label"/>
+        <text text="S4" size="5" x="-14" y="55"/>
+        <text text="S3" size="5" x="6" y="55"/>
+        <text text="S2" size="5" x="26" y="55"/>
+        <text text="S1" size="5" x="46" y="55"/>
+        <terminal orientation="s" x="30" y="64"/>
+        <terminal orientation="n" x="-90" y="-34"/>
+        <terminal orientation="s" x="-60" y="64"/>
+        <terminal orientation="s" x="50" y="64"/>
+        <terminal orientation="n" x="-70" y="-34"/>
+        <terminal orientation="s" x="-80" y="64"/>
+        <terminal orientation="s" x="10" y="64"/>
+        <terminal orientation="s" x="-10" y="64"/>
+        <terminal orientation="s" x="-29" y="64"/>
+    </description>
+</definition>
