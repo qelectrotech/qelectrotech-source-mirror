@@ -76,8 +76,10 @@ void ElementsCollectionWidget::expandFirstItems()
  * @param project
  */
 void ElementsCollectionWidget::addProject(QETProject *project) {
-	if (m_model)
+	if (m_model) {
 		m_model->addProject(project);
+		m_model->highlightUnusedElement();
+	}
 	else
 		m_waiting_project.append(project);
 }
@@ -85,6 +87,16 @@ void ElementsCollectionWidget::addProject(QETProject *project) {
 void ElementsCollectionWidget::removeProject(QETProject *project) {
 	if (m_model)
 		m_model->removeProject(project);
+}
+
+/**
+ * @brief ElementsCollectionWidget::highlightUnusedElement
+ * highlight the unused element
+ * @See ElementsCollectionModel::highlightUnusedElement()
+ */
+void ElementsCollectionWidget::highlightUnusedElement()
+{
+	m_model->highlightUnusedElement();
 }
 
 bool ElementsCollectionWidget::event(QEvent *event)
@@ -471,6 +483,7 @@ void ElementsCollectionWidget::reload()
 		m_progress_bar->setValue(futur.progressValue());
 	}
 
+	new_model->highlightUnusedElement();
 	m_tree_view->setModel(new_model);
 	m_index_at_context_menu = QModelIndex();
 	m_showed_index = QModelIndex();

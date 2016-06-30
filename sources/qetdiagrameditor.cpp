@@ -691,6 +691,7 @@ void QETDiagramEditor::save() {
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()-> showMessage(tr("Projet %1 enregistré dans le repertoire: %2.").arg(title).arg (filePath), 2000);
+			m_element_collection_widget->highlightUnusedElement();
 		}
 		else {
 			showError(saved);
@@ -712,6 +713,7 @@ void QETDiagramEditor::saveAs() {
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()->showMessage(tr("Projet %1 enregistré dans le repertoire: %2.").arg(title).arg (filePath), 2000);
+			m_element_collection_widget->highlightUnusedElement();
 		}
 		else {
 			showError(save_file);

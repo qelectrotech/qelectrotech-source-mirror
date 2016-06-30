@@ -130,7 +130,8 @@ class QETProject : public QObject
 		bool isEmpty() const;
 		ElementsLocation importElement(ElementsLocation &location);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
-		bool usesElement(const ElementsLocation &);
+		bool usesElement(const ElementsLocation &) const;
+		QList <ElementsLocation> unusedElements() const;
 		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 		bool projectWasModified();
 		bool projectOptionsWereModified();

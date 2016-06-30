@@ -815,13 +815,32 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 	@return true si l'element location est utilise sur au moins un des schemas
 	de ce projet, false sinon
 */
-bool QETProject::usesElement(const ElementsLocation &location) {
+bool QETProject::usesElement(const ElementsLocation &location) const
+{
 	foreach(Diagram *diagram, diagrams()) {
 		if (diagram -> usesElement(location)) {
 			return(true);
 		}
 	}
 	return(false);
+}
+
+/**
+ * @brief QETProject::unusedElements
+ * @return the list of unused element (exactly her location)
+ * An unused element, is an element present in the embedded collection but not present in a diagram of this project.
+ * Be aware that an element can be not present in a diagram,
+ * but managed by an undo command (delete an element), so an unused element can be used after an undo.
+ */
+QList<ElementsLocation> QETProject::unusedElements() const
+{
+	QList <ElementsLocation> unused_list;
+
+	foreach(ElementsLocation location, m_elements_collection->elementsLocation())
+		if (location.isElement() && !usesElement(location))
+			unused_list << location;
+
+	return unused_list;
 }
 
 /**

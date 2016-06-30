@@ -342,6 +342,32 @@ QList<QETProject *> ElementsCollectionModel::project() const
 }
 
 /**
+ * @brief ElementsCollectionModel::highlightUnusedElement
+ * Highlight every unused element of managed project.
+ * @See QETProject::unusedElements()
+ */
+void ElementsCollectionModel::highlightUnusedElement()
+{
+	QList <ElementsLocation> unused;
+
+	foreach (QETProject *project, m_project_list)
+		unused.append(project->unusedElements());
+
+	QBrush brush;
+	brush.setStyle(Qt::Dense4Pattern);
+	brush.setColor(Qt::red);
+
+	foreach (ElementsLocation location, unused) {
+		QModelIndex index = indexFromLocation(location);
+		if (index.isValid()) {
+			QStandardItem *qsi = itemFromIndex(index);
+			if (qsi)
+				qsi->setBackground(brush);
+		}
+	}
+}
+
+/**
  * @brief ElementsCollectionModel::items
  * @return every ElementCollectionItem owned by this model
  */

@@ -24,6 +24,7 @@
 
 class QDomElement;
 class QFile;
+class QETProject;
 
 /**
  * @brief The XmlElementCollection class
@@ -32,25 +33,29 @@ class QFile;
 class XmlElementCollection : public QObject
 {
 		Q_OBJECT
+
 	public:
-		XmlElementCollection (QObject *parent = nullptr);
-		XmlElementCollection (const QDomElement &dom_element, QObject *parent = nullptr);
+		XmlElementCollection (QETProject *project);
+		XmlElementCollection (const QDomElement &dom_element, QETProject *project);
 		QDomElement root() const;
 		QDomElement importCategory() const;
 		QDomNodeList childs(const QDomElement &parent_element) const;
 		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
 		QDomElement child(const QString &path) const;
-		QList<QDomElement> directories(const QDomElement &parent_element);
-		QStringList directoriesNames(const QDomElement &parent_element);
-		QList<QDomElement> elements(const QDomElement &parent_element);
-		QStringList elementsNames(const QDomElement &parent_element);
-		QDomElement element(const QString &path);
-		QDomElement directory(const QString &path);
+		QList<QDomElement> directories(const QDomElement &parent_element) const;
+		QStringList directoriesNames(const QDomElement &parent_element) const;
+		QList<QDomElement> elements(const QDomElement &parent_element) const;
+		QStringList elementsNames(const QDomElement &parent_element) const;
+		QDomElement element(const QString &path) const;
+		QDomElement directory(const QString &path) const;
 		QString addElement (ElementsLocation &location);
 		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
 		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
-		bool exist (const QString &path);
+		bool exist (const QString &path) const;
 		bool createDir (QString path, QString name, const NamesList &name_list);
+
+		QList <ElementsLocation> elementsLocation (QDomElement dom_element = QDomElement(), bool childs = true) const;
+		ElementsLocation domToLocation(QDomElement dom_element) const;
 
 	private:
 		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
@@ -78,6 +83,7 @@ class XmlElementCollection : public QObject
 
 	private:
 		QDomDocument m_dom_document;
+		QETProject *m_project = nullptr;
 };
 
 #endif // XMLELEMENTCOLLECTION_H

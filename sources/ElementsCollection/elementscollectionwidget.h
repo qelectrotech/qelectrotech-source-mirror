@@ -50,6 +50,7 @@ class ElementsCollectionWidget : public QWidget
 
 		void addProject (QETProject *project);
 		void removeProject (QETProject *project);
+		void highlightUnusedElement();
 
 	protected:
 		virtual bool event(QEvent *event);

@@ -17,14 +17,20 @@
 */
 #ifndef PROJECT_VIEW_H
 #define PROJECT_VIEW_H
-#include <QtWidgets>
+
+#include <QWidget>
+
 #include "templatelocation.h"
 #include "qetresult.h"
+
 class QETProject;
 class DiagramView;
 class Diagram;
 class ElementsLocation;
 class QTabWidget;
+class QLabel;
+class QVBoxLayout;
+
 /**
 	This class provides a widget displaying the diagrams of a particular
 	project using tabs.
@@ -133,7 +139,7 @@ class ProjectView : public QWidget {
 	// attributes
 	private:
 	QAction *add_new_diagram_;
-	QETProject *project_;
+	QETProject *m_project;
 	QVBoxLayout *layout_;
 	QWidget *fallback_widget_;
 	QLabel *fallback_label_;

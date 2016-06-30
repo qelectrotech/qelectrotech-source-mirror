@@ -21,14 +21,13 @@
 #include <QStandardItemModel>
 #include "elementslocation.h"
 
-template<>
-class QList<QETProject>;
 class XmlProjectElementCollectionItem;
-template<>
-class QHash<QETProject, XmlProjectElementCollectionItem>;
 class ElementCollectionItem;
-template<>
-class QList<ElementCollectionItem>;
+template<> class QList<QETProject>;
+template<> class QHash<QETProject, XmlProjectElementCollectionItem>;
+template<> class QList<ElementCollectionItem>;
+
+
 
 class ElementsCollectionModel : public QStandardItemModel
 {
@@ -50,6 +49,8 @@ class ElementsCollectionModel : public QStandardItemModel
 		void addProject(QETProject *project, bool set_data = true);
 		void removeProject(QETProject *project);
 		QList<QETProject *> project() const;
+		void highlightUnusedElement();
+
 
 		QList <ElementCollectionItem *> items() const;
 		void hideElement();

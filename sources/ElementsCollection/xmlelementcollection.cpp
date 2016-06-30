@@ -19,6 +19,7 @@
 #include "nameslist.h"
 #include "qetxml.h"
 #include "elementslocation.h"
+#include "qetproject.h"
 
 /**
  * @brief XmlElementCollection::XmlElementCollection
@@ -29,10 +30,11 @@
  *			</category>
  *		</collection>
  * All elements and category are stored as child of <category name="import>
- * @param parent
+ * @param project : the project of this collection
  */
-XmlElementCollection::XmlElementCollection(QObject *parent) :
-	QObject(parent)
+XmlElementCollection::XmlElementCollection(QETProject *project) :
+	QObject(project),
+	m_project(project)
 {
 	QDomElement collection = m_dom_document.createElement("collection");
 	m_dom_document.appendChild(collection);
@@ -67,10 +69,11 @@ XmlElementCollection::XmlElementCollection(QObject *parent) :
  * @brief XmlElementCollection::XmlElementCollection
  * Constructor with an collection. The tagName of @dom_element must be "collection"
  * @param dom_element -the collection in a dom_element (the dom element in cloned)
- * @param parent -parent QObject
+ * @param project : the project of this collection
  */
-XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QObject *parent) :
-	QObject(parent)
+XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QETProject *project) :
+	QObject(project),
+	m_project(project)
 {
 	if (dom_element.tagName() == "collection")
 		m_dom_document.appendChild(m_dom_document.importNode(dom_element, true));
@@ -169,7 +172,7 @@ QDomElement XmlElementCollection::child(const QString &path) const
  * @param parent_element
  * @return A list of directory stored in @parent_element
  */
-QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_element)
+QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_element) const
 {
 	QList <QDomElement> directory_list;
 	QDomNodeList node_list = childs(parent_element);
@@ -190,7 +193,7 @@ QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_e
  * @param parent_element
  * @return a list of names for every child directories of @parent_element
  */
-QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_element)
+QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = directories(parent_element);
 	QStringList names;
@@ -210,7 +213,7 @@ QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_ele
  * @param parent_element
  * @return A list of element stored in @parent_element
  */
-QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_element)
+QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_element) const
 {
 	QList <QDomElement> element_list;
 	QDomNodeList node_list = childs(parent_element);
@@ -231,7 +234,7 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
  * @param parent_element
  * @return A list of names fr every childs element of @parent_element
  */
-QStringList XmlElementCollection::elementsNames(const QDomElement &parent_element)
+QStringList XmlElementCollection::elementsNames(const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = elements(parent_element);
 	QStringList names;
@@ -252,7 +255,7 @@ QStringList XmlElementCollection::elementsNames(const QDomElement &parent_elemen
  * @return the QDomElement that represent the element at path @path
  * or a null QDomElement if not found or doesn't represent an element
  */
-QDomElement XmlElementCollection::element(const QString &path)
+QDomElement XmlElementCollection::element(const QString &path) const
 {
 	if (!path.endsWith(".elmt")) return QDomElement();
 
@@ -270,7 +273,7 @@ QDomElement XmlElementCollection::element(const QString &path)
  * @return the QDomElement that represent the directory at path @path
  * or a null QDomElement if not found.
  */
-QDomElement XmlElementCollection::directory(const QString &path)
+QDomElement XmlElementCollection::directory(const QString &path) const
 {
 	QDomElement directory = child(path);
 
@@ -457,7 +460,7 @@ ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLo
  * @param path
  * @return
  */
-bool XmlElementCollection::exist(const QString &path)
+bool XmlElementCollection::exist(const QString &path) const
 {
 	if (child(path).isNull())
 		return false;
@@ -497,6 +500,75 @@ bool XmlElementCollection::createDir(QString path, QString name, const NamesList
 	emit directorieAdded(new_dir_path);
 
 	return true;
+}
+
+/**
+ * @brief XmlElementCollection::elementsLocation
+ * Return all locations stored in dom_element (element and directory).
+ * If dom_element is null, return all location owned by this collection
+ * dom_element must be a child of this collection.
+ * @param dom_element : dom_element where we must to search location.
+ * @param childs = if true return all childs location of dom_element, if false, only return the direct childs location of dom_element.
+ * @return
+ */
+QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_element, bool childs) const
+{
+	QList <ElementsLocation> location_list;
+
+	if (dom_element.isNull())
+		dom_element = m_dom_document.documentElement();
+
+	if (dom_element.ownerDocument() != m_dom_document)
+		return location_list;
+
+		//get element childs
+	QList <QDomElement> element_list = elements(dom_element);
+
+	foreach (QDomElement elmt, element_list) {
+		ElementsLocation location = domToLocation(elmt);
+		if (location.exist())
+			location_list << location;
+	}
+
+		//get directory childs
+	QList <QDomElement> directory_list = directories(dom_element);
+
+	foreach (QDomElement dir, directory_list) {
+		ElementsLocation location = domToLocation(dir);
+		if (location.exist())
+			location_list << location;
+
+		if (childs)
+			location_list.append(elementsLocation(dir, childs));
+	}
+
+	return location_list;
+}
+
+/**
+ * @brief XmlElementCollection::domToLocation
+ * Return the element location who represent the xml element : dom_element
+ * dom_element must be owned by this collection
+ * @param dom_element : the dom_element of this collection that represent an element.
+ * The tag name of dom_element must be "element"
+ * @return the element location, location can be null if fail.
+ */
+ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) const
+{
+	if (dom_element.ownerDocument() == m_dom_document) {
+		QString path = dom_element.attribute("name");
+
+		while (!dom_element.parentNode().isNull() && dom_element.parentNode().isElement()) {
+			dom_element = dom_element.parentNode().toElement();
+
+			if (dom_element.tagName() == "category")
+				path.prepend(dom_element.attribute("name") + "/");
+		}
+
+		return ElementsLocation(path, m_project);
+	}
+	else
+		return ElementsLocation();
 }
 
 /**
