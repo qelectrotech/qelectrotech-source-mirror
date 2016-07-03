@@ -455,27 +455,27 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 			// for delay on contact
 			if (flags &DelayOn) {
 				if (flags &NO) {
-					painter.drawLine(12, offset+4, 12, offset+6);
-					QRectF r(9.5, offset+1, 5, 3);
-					painter.drawArc(r, 180*16, 180*16);
+                    painter.drawLine(12, offset+8, 12, offset+11);
+                    QRectF r(9.5, offset+9, 5, 3);
+                    painter.drawArc(r, 180*16, 180*16);
 				}
-				if (flags &NC) {
-					painter.drawLine(QPointF(13.5, offset+2), QPointF(13.5, offset+3.5));
-					QRectF r(11, offset-1, 5, 3);
-					painter.drawArc(r, 180*16, 180*16);
+                if (flags &NC) {
+                    painter.drawLine(QPointF(12.5, offset+5), QPointF(12.5, offset+8));
+                    QRectF r(10, offset+6, 5, 3);
+                    painter.drawArc(r, 180*16, 180*16);
 				}
 			}
 			// for delay off contact
 			else {
 				if (flags &NO) {
-					painter.drawLine(12, offset+3, 12, offset+6);
-					QRectF r(9.5, offset+2, 5, 3);
-					painter.drawArc(r, 0, 180*16);
-				}
+                    painter.drawLine(12, offset+8, 12, offset+9.5);
+                    QRectF r(9.5, offset+9.5, 5, 3);
+                    painter.drawArc(r, 0, 180*16);
+                }
 				if (flags &NC) {
-					painter.drawLine(QPointF(13.5, offset+1), QPointF(13.5, offset+3.5));
-					QRectF r(11, offset, 5, 3);
-					painter.drawArc(r, 0, 180*16);
+                    painter.drawLine(QPointF(12.5, offset+5), QPointF(12.5, offset+7));
+                    QRectF r(10, offset+7.5, 5, 3);
+                    painter.drawArc(r, 0, 180*16);
 				}
 			}
 		}
