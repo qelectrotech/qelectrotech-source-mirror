@@ -15,58 +15,50 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef FOLIOAUTONUMBERING_H
-#define FOLIOAUTONUMBERING_H
+#ifndef ELEMENTAUTONUMBERINGW_H
+#define ELEMENTAUTONUMBERINGW_H
 
 #include <QWidget>
-#include "numerotationcontext.h"
 
-class NumPartEditorW;
 class QAbstractButton;
-class QETProject;
 
 namespace Ui {
-		class FolioAutonumberingW;
+		class ElementAutonumberingW;
 }
 
-class FolioAutonumberingW : public QWidget
+/**
+	This class implements the element autonumbering widget.
+	It loads the current formula applied to new elements and allows
+	the user to overwrite it with a new formula. Formula is added
+	while parsing label in customelement.cpp
+*/
+class ElementAutonumberingW : public QWidget
 {
 	Q_OBJECT
 	
 	//METHODS
 	public:
-		explicit FolioAutonumberingW(QETProject *project, QWidget *parent = 0);
-		~FolioAutonumberingW();
+		explicit ElementAutonumberingW(QWidget *parent = 0);
+		~ElementAutonumberingW();
+		QString formula();
+		void setContext(QString);
 
-		void setContext (QList <QString> autonums);
-		NumerotationContext toNumContext() const;
-		QString autoNumSelected();
-		int newFoliosNumber();
-		bool newFolios;
-		int fromFolio();
-		int toFolio();
+
+	private:
 
 	// SIGNALS
 	signals:
 		void applyPressed();
-		void m_autonumber_tabs_rb_clicked();
 
 	//SLOTS
 	private slots:
-		void on_m_create_new_tabs_rb_clicked();
-		void on_m_autonumber_tabs_rb_clicked();
-		void on_m_new_tabs_sb_valueChanged(int);
+		void on_m_formula_le_textChanged();
 		void on_buttonBox_clicked(QAbstractButton *);
-		void on_m_from_cb_currentIndexChanged(int);
 		void applyEnable (bool = true);
 
 	//ATTRIBUTES
 	private:
-		QETProject *project_;
-		Ui::FolioAutonumberingW *ui;
-		QList <NumPartEditorW *> num_part_list_;
-		NumerotationContext m_context;
-		void updateFolioList();
+		Ui::ElementAutonumberingW *ui;
 };
 
-#endif // FOLIOAUTONUMBERING_H
+#endif // ELEMENTAUTONUMBERINGW_H

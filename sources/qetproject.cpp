@@ -409,6 +409,14 @@ QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
 }
 
 /**
+ * @brief QETProject::elementAutoNum
+ * @return Formula of element autonum stored in project
+ */
+QString QETProject::elementAutoNum() const {
+	return m_element_autonum;
+}
+
+/**
  * @brief QETProject::folioAutoNum
  * @return All value of conductor autonum stored in project
  */
@@ -425,6 +433,15 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
  */
 void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
 	m_conductor_autonum.insert(key, context);
+}
+
+/**
+ * @brief QETProject::addElementAutoNum
+ * Add the new formula
+ * @param formula
+ */
+void QETProject::addElementAutoNum(QString formula) {
+	m_element_autonum = formula;
 }
 
 /**
@@ -1176,7 +1193,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1197,9 +1214,11 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			conds_autonums = child_elmt;
 		else if (child_elmt.tagName()== "folio_autonums")
 			folio_autonums = child_elmt;
+		else if (child_elmt.tagName()== "element_autonums")
+			element_autonums = child_elmt;
 	}
 
-		// size, titleblock, conductor, report, conductor autonum
+		// size, titleblock, conductor, report, conductor autonum, folio autonum, element autonum
 	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
 	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
@@ -1230,6 +1249,10 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			nc.fromXml(elmt);
 			m_folio_autonum.insert(elmt.attribute("title"), nc);
 		}
+	}
+	if (!element_autonums.isNull())
+	{
+		m_element_autonum = element_autonums.attribute("formula");
 	}
 }
 
@@ -1300,6 +1323,11 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 		folio_autonums.appendChild(folio_autonum);
 	}
 	xml_element.appendChild(folio_autonums);
+
+	//Export Element Autonums
+	QDomElement element_autonums = xml_document.createElement("element_autonums");
+	element_autonums.setAttribute("formula", m_element_autonum);
+	xml_element.appendChild(element_autonums);
 }
 
 /**

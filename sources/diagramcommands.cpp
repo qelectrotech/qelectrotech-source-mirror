@@ -190,7 +190,7 @@ void PasteDiagramCommand::redo()
 
 				//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))
-					eti -> setPlainText("_");
+				eti -> setPlainText("_");
 			}
 		}
 

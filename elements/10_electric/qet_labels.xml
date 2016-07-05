@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This xml is used for retrieving elements default labels according to ISO/IEC 81346-12
+    A prefix is assigned for each directory. Every element inside that directory
+    will be assigned the directory prefix unless it has a text with tag "label"
+    different than "_" inside its .elmt file. If a directory does not have a prefix the
+    element will assign its parent directory prefix and so on.
+    Prefix tag MUST be located AFTER its child categorys
+    Example:
+    <category name="310_relays_contactors&amp;contacts">
+      <category name="01_coils">
+        <prefix>K</prefix>
+      </category>
+      <category name="02_contacts_cross_referencing">
+        <category name="01_auxiliary_contacts"></category>
+        <category name="02_power_contacts"></category>
+        <category name="11_delayed_contacts"></category>
+        <category name="15_protection_contacts"></category>
+        <prefix>S</prefix>
+      </category>
+    Every Coil will be assigned "K" as a label
+    Auxiliary, power, delayed and protection contacts will be assigned "S" as a label.
+-->
+<labels>
+  <category name="10_allpole">
+    <category name="100_sheet_referencing"></category>
+    <category name="110_network_supplies"></category>
+    <category name="114_connections"></category>
+    <category name="120_cables&amp;wiring"></category>
+    <category name="130_terminals&amp;terminal_strips">
+      <category name="90_terminal_strips_diagram"></category>
+      <prefix>X</prefix>
+    </category>
+    <category name="140_connectors&amp;plugs">
+      <category name="01_connectors_pins"></category>
+      <category name="10_connectors_circular"></category>
+      <category name="15_connectors_dsub"></category>
+      <category name="20_socket_outlets"></category>
+      <category name="60_connectors_electronics"></category>
+      <prefix>X</prefix>
+    </category>
+    <category name="200_fuses&amp;protective_gears">
+      <category name="10_fuses">
+        <prefix>F</prefix>
+      </category>
+      <category name="11_circuit_breakers">
+        <prefix>F</prefix>
+      </category>
+      <category name="12_magneto_thermal_circuit_breakers">
+        <prefix>Q</prefix>
+      </category>
+      <category name="20_disconnecting_switches">
+        <prefix>Q</prefix>
+      </category>
+      <category name="30_thermal_relays">
+        <prefix>F</prefix>
+      </category>
+      <category name="50_residual_current_circuit_breaker">
+        <prefix>Q</prefix>
+      </category>
+      <category name="90_overvoltage_protections">
+        <prefix>F</prefix>
+      </category>
+    </category>
+    <category name="310_relays_contactors&amp;contacts">
+      <category name="01_coils">
+        <prefix>K</prefix>
+      </category>
+      <category name="02_contacts_cross_referencing">
+        <category name="01_auxiliary_contacts"></category>
+        <category name="02_power_contacts"></category>
+        <category name="11_delayed_contacts"></category>
+        <category name="15_protection_contacts"></category>
+        <prefix>S</prefix>
+      </category>
+      <category name="03_contacts">
+        <prefix>S</prefix>
+      </category>
+    </category>
+    <category name="330_transformers&amp;power_supplies">
+      <category name="10_transformers">
+        <prefix>T</prefix>
+      </category>
+      <category name="30_power_supplies">
+        <prefix>G</prefix>
+      </category>
+      <category name="40_uninterruptible_power_supply">
+        <prefix>RB</prefix>
+      </category>
+    </category>
+    <category name="340_converters&amp;inverters">
+      <category name="10_converters">
+        <prefix>T</prefix>
+      </category>
+      <category name="15_measuring_transducers"></category>
+      <category name="20_current_tansformers">
+        <prefix>L</prefix>
+      </category>
+      <category name="90_filters">
+        <prefix>KF</prefix>
+      </category>
+    </category>
+    <category name="380_signaling&amp;operating">
+      <category name="01_human_machine_interface"></category>
+      <category name="11_optical_signaling">
+        <prefix>H</prefix>
+      </category>
+      <category name="12_acoustic_signaling">
+        <prefix>H</prefix>
+      </category>
+      <category name="20_push_buttons">
+        <prefix>S</prefix>
+      </category>
+      <category name="21_selector_switches">
+        <prefix>S</prefix>
+      </category>
+      <category name="25_lever_switches">
+        <prefix>S</prefix>
+      </category>
+    </category>
+    <category name="390_sensors&amp;instruments">
+      <category name="01_sensors_capacitive"></category>
+      <category name="02_sensors_inductive"></category>
+      <category name="03_sensors_magnetic"></category>
+      <category name="04_sensors_optical"></category>
+      <category name="11_sensors_flow"></category>
+      <category name="12_sensors_level"></category>
+      <category name="13_sensors_pressure"></category>
+      <category name="14_sensors_humidity"></category>
+      <category name="15_sensors_temperature"></category>
+      <category name="16_sensors_ultrasonic"></category>
+      <category name="41_limit_switches">
+        <prefix>S</prefix>
+      </category>
+      <category name="60_timers">
+        <prefix>H</prefix>
+      </category>
+      <category name="70_meters&amp;measuring_indicators"></category>
+      <prefix>P</prefix>
+    </category>
+    <category name="391_consumers&amp;actuators">
+      <category name="10_engines">
+        <prefix>M</prefix>
+      </category>
+      <category name="20_valves">
+        <prefix>Y</prefix>
+      </category>
+      <category name="30_brakes">
+        <prefix>YB</prefix>
+      </category>
+      <category name="50_heatings">
+        <prefix>R</prefix>
+      </category>
+      <category name="60_lightings">
+        <prefix>EH</prefix>
+      </category>
+    </category>
+    <category name="392_generators&amp;sources">
+      <category name="10_generators">
+        <prefix>B</prefix>
+      </category>
+      <category name="20_power_units"></category>
+      <category name="30_batteries"></category>
+      <category name="70_voltage_current_sources">
+        <prefix>B</prefix>
+      </category>
+    </category>
+    <category name="395_electronics&amp;semiconductors">
+      <category name="01_resistors">
+        <prefix>R</prefix>
+      </category>
+      <category name="02_capacitors">
+        <prefix>C</prefix>
+      </category>
+      <category name="03_inductors">
+        <prefix>L</prefix>
+      </category>
+      <category name="09_disturbances"></category>
+      <category name="11_diodes">
+        <prefix>V</prefix>
+      </category>
+      <category name="12_transistors"></category>
+      <category name="13_thyristors"></category>
+      <category name="24piezo"></category>
+      <category name="31_integrated_circuits"></category>
+      <category name="41_PLC&amp;controllers"></category>
+      <category name="91_computer_science"></category>
+    </category>
+    <category name="450_high_voltage"></category>
+  </category>
+  <category name="11_singlepole">
+    <category name="140_connectors&amp;plugs">
+      <prefix>X</prefix>
+    </category>
+    <category name="200_fuses&amp;protective_gears">
+      <category name="10_fuses">
+        <prefix>F</prefix>
+      </category>
+      <category name="11_circuit_breakers">
+        <prefix>F</prefix>
+      </category>
+      <category name="12_magneto_thermal_circuit_breakers">
+        <prefix>Q</prefix>
+      </category>
+      <category name="20_disconnecting_switches">
+        <prefix>Q</prefix>
+      </category>
+      <category name="30_thermal_relays">
+        <prefix>F</prefix>
+      </category>
+      <category name="50_residual_current_circuit_breaker">
+        <prefix>Q</prefix>
+      </category>
+    </category>
+    <category name="330_transformers&amp;power_supplies">
+      <category name="10_transformers">
+        <prefix>T</prefix>
+      </category>
+      <category name="20_current_tansformers">
+        <prefix>L</prefix>
+      </category>
+    </category>
+    <category name="340_converters&amp;inverters">
+      <category name="10_converters">
+        <prefix>T</prefix>
+      </category>
+    </category>
+    <category name="392_generators&amp;sources">
+      <category name="10_generators"></category>
+    </category>
+    <category name="395_electronics&amp;semiconductors">
+      <category name="10_resistors">
+        <prefix>R</prefix>
+      </category>
+      <category name="20_capacitors">
+        <prefix>C</prefix>
+      </category>
+      <category name="30_inductors">
+        <prefix>L</prefix>
+      </category>
+    </category>
+    <category name="500_home_installation">
+      <category name="20_home_appliances"></category>
+      <category name="30_architectural"></category>
+      <category name="40_meters"></category>
+    </category>
+  </category>
+  <category name="20_manufacturers_articles">
+    <category name="abb">
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="allen_bradley">
+      <category name="01_PLC&amp;controllers"></category>
+      <category name="09_safety_modules">
+        <category name="10_delayed_outputs"></category>
+      </category>
+      <category name="11_safety_switches"></category>
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="april">
+      <category name="5000"></category>
+    </category>
+    <category name="arduino"></category>
+    <category name="aucom">
+      <category name="10_softstarter"></category>
+    </category>
+    <category name="balluff">
+      <category name="02_sensors_inductive"></category>
+      <category name="04_sensors_optical"></category>
+      <category name="51_transformers&amp;power_supply"></category>
+    </category>
+    <category name="bamo"></category>
+    <category name="becker"></category>
+    <category name="beckhoff">
+      <category name="80building_management"></category>
+    </category>
+    <category name="beka"></category>
+    <category name="bosch_rexroth"></category>
+    <category name="bti">
+      <category name="11_safety_switches"></category>
+    </category>
+    <category name="bwo">
+      <category name="09_vektor_c"></category>
+      <category name="10_vio64"></category>
+    </category>
+    <category name="campbell"></category>
+    <category name="chauvin_arnoux"></category>
+    <category name="citec">
+      <category name="06_sensors_pressure"></category>
+    </category>
+    <category name="crouzet">
+      <category name="01_PLC&amp;controllers"></category>
+    </category>
+    <category name="danfoss">
+      <category name="10_softstarter"></category>
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="dold"></category>
+    <category name="eaton_moeller">
+      <category name="01_PLC&amp;controllers"></category>
+      <category name="200_fuses&amp;protective_gears">
+        <category name="11_circuit_breakers"></category>
+        <category name="12_magneto_thermal_circuit_breakers"></category>
+        <category name="20_disconnecting_switches"></category>
+      </category>
+    </category>
+    <category name="eliwel"></category>
+    <category name="endress_hauser"></category>
+    <category name="euchner">
+      <category name="09_safety_modules"></category>
+      <category name="11_safety_switches"></category>
+    </category>
+    <category name="eurotherm">
+      <category name="10_softstarters"></category>
+    </category>
+    <category name="festo"></category>
+    <category name="finder">
+      <category name="99_assembly_plan"></category>
+    </category>
+    <category name="fuji_electric">
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="gce"></category>
+    <category name="geindustrial">
+      <category name="10_sofstarters"></category>
+    </category>
+    <category name="guitar">
+      <category name="capacitors"></category>
+      <category name="ouputjacks"></category>
+      <category name="pickups"></category>
+      <category name="potentiometers"></category>
+      <category name="special_purpose"></category>
+      <category name="switches"></category>
+    </category>
+    <category name="hiquel">
+      <category name="99_assembly_plan"></category>
+    </category>
+    <category name="ifm">
+      <category name="06_sensors_pressure"></category>
+      <category name="10_connection_technology"></category>
+    </category>
+    <category name="johnson_controls">
+      <category name="dx">
+        <category name="modules_extension"></category>
+      </category>
+    </category>
+    <category name="jumo"></category>
+    <category name="keyence">
+      <category name="100_safety_light_curtain"></category>
+    </category>
+    <category name="knx">
+      <category name="actionneur"></category>
+      <category name="capteurs"></category>
+      <category name="divers"></category>
+      <category name="poussoirs"></category>
+      <category name="powersupplies"></category>
+      <category name="recepteurs"></category>
+      <category name="transmetteurs"></category>
+    </category>
+    <category name="leroy_somer">
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="leuze">
+      <category name="09_safety_modules"></category>
+    </category>
+    <category name="litecom"></category>
+    <category name="murr_elektronik">
+      <category name="370_fuses&amp;protective_gears"></category>
+    </category>
+    <category name="national_instrument">
+      <category name="01_PLC&amp;controllers">
+        <category name="crio"></category>
+      </category>
+    </category>
+    <category name="network"></category>
+    <category name="omron">
+      <category name="01_PLC&amp;controllers">
+        <category name="cj1">
+          <category name="taille1"></category>
+          <category name="taille2"></category>
+        </category>
+        <category name="cj2"></category>
+        <category name="cqm1">
+          <category name="taille1"></category>
+          <category name="taille2"></category>
+        </category>
+      </category>
+      <category name="03_relays"></category>
+      <category name="09_safety_modules"></category>
+      <category name="20_frequency_drives"></category>
+      <category name="99_assembly_plan"></category>
+    </category>
+    <category name="parker"></category>
+    <category name="perske"></category>
+    <category name="phoenix_contact"></category>
+    <category name="pic"></category>
+    <category name="pilz">
+      <category name="09_safety_modules">
+        <category name="pnoz"></category>
+      </category>
+      <category name="15_safety_switches">
+        <category name="psen"></category>
+      </category>
+    </category>
+    <category name="pro-face"></category>
+    <category name="raspberry"></category>
+    <category name="rittal"></category>
+    <category name="rockwell">
+      <category name="10_softstarters"></category>
+    </category>
+    <category name="satchwell"></category>
+    <category name="schaffner">
+      <category name="99_assembly_plan"></category>
+    </category>
+    <category name="schmersal"></category>
+    <category name="schneider_electric">
+      <category name="01_PLC&amp;controllers">
+        <category name="241"></category>
+        <category name="extension_tm3">
+          <category name="ana"></category>
+          <category name="tor"></category>
+        </category>
+        <category name="m221"></category>
+        <category name="m251"></category>
+        <category name="m340"></category>
+        <category name="magelis"></category>
+        <category name="telefast"></category>
+        <category name="tsx">
+          <category name="config"></category>
+          <category name="input"></category>
+          <category name="output"></category>
+        </category>
+        <category name="twido">
+          <category name="e-s_ana"></category>
+        </category>
+        <category name="zelio"></category>
+      </category>
+      <category name="08_control_relays"></category>
+      <category name="09_motor_starters"></category>
+      <category name="10_softstarter"></category>
+      <category name="20_frequency_drives"></category>
+      <category name="81_safety_switches"></category>
+      <category name="90_TAC_Xenta">
+        <category name="boitier_mural"></category>
+        <category name="ecran"></category>
+        <category name="module_ai"></category>
+        <category name="module_ao"></category>
+        <category name="module_di"></category>
+        <category name="module_repetiteur"></category>
+        <category name="module_serveur_web"></category>
+        <category name="module_ui_ao"></category>
+        <category name="module_ui_tor"></category>
+        <category name="peripheriques"></category>
+        <category name="regulateurs"></category>
+      </category>
+      <category name="99_assembly_plan"></category>
+      <category name="preventa">
+        <category name="09_safety_modules"></category>
+      </category>
+    </category>
+    <category name="sew">
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="sfere"></category>
+    <category name="sick">
+      <category name="008_safety_controllers"></category>
+      <category name="009_safety_modules"></category>
+      <category name="100_safety_light_curtain"></category>
+      <category name="101_safety_switches"></category>
+    </category>
+    <category name="siemens">
+      <category name="01_PLC&amp;controllers">
+        <category name="6es5">
+          <category name="6es5_95"></category>
+          <category name="carte_entree"></category>
+          <category name="carte_sortie"></category>
+          <category name="cpu"></category>
+        </category>
+        <category name="6es7">
+          <category name="alimentations"></category>
+          <category name="cartes_ana_entree"></category>
+          <category name="cartes_ana_entree_sortie"></category>
+          <category name="cartes_ana_sortie"></category>
+          <category name="cartes_entree"></category>
+          <category name="cartes_sortie"></category>
+        </category>
+        <category name="6es7-1200">
+          <category name="communication_cards"></category>
+          <category name="cpu"></category>
+          <category name="digital_inputs_cards"></category>
+          <category name="digital_inputs-outputs_cards"></category>
+        </category>
+        <category name="6es7-200"></category>
+        <category name="6es7-312"></category>
+        <category name="6es7-313"></category>
+        <category name="6se7-300"></category>
+        <category name="config"></category>
+        <category name="cp_343-2"></category>
+        <category name="et200s">
+          <category name="cards_and_modules"></category>
+          <category name="channels"></category>
+          <category name="io_overviews"></category>
+          <category name="power_supply"></category>
+        </category>
+        <category name="interface_modules"></category>
+        <category name="logo"></category>
+        <category name="s7_300">
+          <category name="cards_and_modules"></category>
+          <category name="channels"></category>
+          <category name="io_overviews"></category>
+        </category>
+        <category name="sinumerik"></category>
+      </category>
+      <category name="02_human_machine_interface">
+        <category name="terminal_operateur"></category>
+      </category>
+      <category name="10_softstarter"></category>
+      <category name="20_frequency_drives"></category>
+      <category name="23_sinamics_drives"></category>
+      <category name="71_asynchronous_motors"></category>
+      <category name="73_servo_motors"></category>
+      <category name="80_building_management"></category>
+    </category>
+    <category name="sofrel">
+      <category name="01_PLC&amp;controllers">
+        <category name="s500"></category>
+      </category>
+    </category>
+    <category name="telemecanique">
+      <category name="20_frequency_drives"></category>
+    </category>
+    <category name="unitronics_plc"></category>
+    <category name="vega"></category>
+    <category name="vipa"></category>
+    <category name="wago">
+      <category name="01_PLC&amp;controllers"></category>
+    </category>
+    <category name="west"></category>
+    <category name="wit"></category>
+  </category>
+  <category name="90_american_standards">
+    <category name="15_allpole">
+      <category name="140_connectors&amp;plugs">
+        <category name="01_connectors_pins"></category>
+      </category>
+      <category name="200_fuses&amp;protective_gears">
+        <category name="11_circuit_breakers"></category>
+      </category>
+    </category>
+    <category name="16_singlepole"></category>
+  </category>
+  <category name="98_graphics">
+    <category name="01_auxiliary_symbols">
+      <category name="01_cross_ref_symbols">
+        <category name="01_with_linking_function">
+          <category name="01_parents"></category>
+          <category name="02_children"></category>
+        </category>
+        <category name="02_without_linking_function"></category>
+      </category>
+      <category name="20_switch_positions"></category>
+    </category>
+    <category name="11_tags&amp;comments"></category>
+    <category name="21_forms&amp;tabs"></category>
+    <category name="99_assembly_plan">
+      <category name="01_thumbnails_mounting_plate"></category>
+      <category name="21_signaling&amp;operating">
+        <category name="21_size_2x2"></category>
+        <category name="31_size_4x4"></category>
+      </category>
+    </category>
+  </category>
+  <category name="99_miscellaneous&amp;unsorted"></category>
+  <report>
+    <directories>361</directories>
+  </report>
+</labels>

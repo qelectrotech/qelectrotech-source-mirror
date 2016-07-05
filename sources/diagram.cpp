@@ -855,9 +855,19 @@ void Diagram::addItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			const Element *elmt = static_cast<const Element*>(item);
+			Element *elmt = static_cast<Element*>(item);
 			foreach(ElementTextItem *eti, elmt->texts())
 				connect (eti, &ElementTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
+			Element::kind linkType = elmt->linkType();
+			if ((linkType == Element::Simple) ||
+				(linkType == Element::Master) ||
+				(linkType == Element::Slave)  ||
+				(linkType == Element::Terminale)) {
+				CustomElement *celmt = static_cast<CustomElement*>(item);
+				celmt->parseLabels();
+			}
+
+			elmt->updateLabel();
 		}
 			break;
 

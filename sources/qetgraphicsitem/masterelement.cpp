@@ -33,8 +33,9 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 {
 	link_type_ = Master;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
-	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(xChanged()),    this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(yChanged()),    this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(updateLabel()), this, SLOT(changeElementInfo()));
 }
 
 /**
@@ -61,8 +62,9 @@ void MasterElement::linkToElement(Element *elmt)
 
 		if (!cri_) cri_ = new CrossRefItem(this); //create cross ref item if not yet
 
-		connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(xChanged()),    cri_, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(yChanged()),    cri_, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(updateLabel()), cri_, SLOT(updateLabel()));
 		cri_ -> updateLabel();
 		emit linkedElementChanged();
 	}
@@ -98,8 +100,9 @@ void MasterElement::unlinkElement(Element *elmt)
 		elmt -> setHighlighted (false);
 
 			//update the graphics cross ref
-		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(xChanged()),    cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(yChanged()),    cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(updateLabel()), cri_, SLOT(updateLabel()));
 
 		cri_ -> updateLabel();
 		aboutDeleteXref();

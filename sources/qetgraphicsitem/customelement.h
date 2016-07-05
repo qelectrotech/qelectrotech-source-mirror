@@ -72,6 +72,7 @@ class CustomElement : public FixedElement
 	virtual QList<QVector<qreal> *> arcs() const;
 	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
+	virtual void parseLabels();
 	QString typeId() const;
 	ElementsLocation location() const;
 	QString name() const;
@@ -93,6 +94,7 @@ class CustomElement : public FixedElement
 	virtual bool validOrientationAttribute(const QDomElement &);
 	virtual void setPainterStyle(QDomElement &, QPainter &);
 	ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
+
 };
 
 /**

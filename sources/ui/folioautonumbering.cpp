@@ -135,7 +135,7 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
  * @brief FolioAutonumberingW::on_m_new_tabs_sb_valueChanged
  *	Enable Apply if any new folio is to be created
  */
-void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(){
+void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int){
 	if (ui->m_new_tabs_sb->value()>0) applyEnable(true);
 	else applyEnable(false);
 }
@@ -144,7 +144,7 @@ void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(){
  * @brief FolioAutonumberingW::on_m_from_cb_currentIndexChanged
  *	Enable To ComboBox
  */
-void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(){
+void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
 	int index = ui->m_from_cb->currentIndex();
 	ui->m_to_cb->clear();
 	if (index > 0){

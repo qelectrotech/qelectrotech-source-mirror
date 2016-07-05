@@ -28,6 +28,7 @@
 #include "selectautonumw.h"
 #include "numerotationcontext.h"
 #include "folioautonumbering.h"
+#include "elementautonumberingw.h"
 /**
 	Constructor
 	@param project Project this page is editing.
@@ -269,6 +270,10 @@ void ProjectAutoNumConfigPage::initWidgets() {
 
 	m_saw = new SelectAutonumW(conductor_tab_widget);
 
+	//Element Tab
+	element_tab_widget = new QWidget(this);
+	m_eaw = new ElementAutonumberingW(element_tab_widget);
+
 	//Folio Tab
 	folio_tab_widget = new QWidget(this);
 	folio_tab_widget->setObjectName("FolioTab");
@@ -296,7 +301,7 @@ void ProjectAutoNumConfigPage::initWidgets() {
  */
 void ProjectAutoNumConfigPage::initLayout() {
 
-	//Conductor tab
+	//Conductor Tab
 	tab_widget->addTab(conductor_tab_widget, tr("Conductor"));
 
 	QHBoxLayout *context_layout = new QHBoxLayout();
@@ -311,6 +316,9 @@ void ProjectAutoNumConfigPage::initLayout() {
 
 	main_layout->addLayout(aux_layout);
 	conductor_tab_widget -> setLayout (main_layout);
+
+	//Element Tab
+	tab_widget->addTab(element_tab_widget,tr ("Element"));
 
 	// Folio Tab
 	tab_widget->addTab(folio_tab_widget, tr("Folio"));
@@ -345,6 +353,10 @@ void ProjectAutoNumConfigPage::readValuesFromProject() {
 	foreach (QString str, keys) { m_context_cb -> addItem(str); }
 	}
 
+	//Element Tab
+	if (!project_->elementAutoNum().isEmpty())
+		m_eaw->setContext(project_->elementAutoNum());
+
 	//Folio Tab
 	QList <QString> keys_2 = project_->folioAutoNum().keys();
 	if (!keys_2.isEmpty()){
@@ -374,6 +386,9 @@ void ProjectAutoNumConfigPage::buildConnections() {
 	connect (m_context_cb, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext(QString)));
 	connect (m_saw, SIGNAL (applyPressed()), this, SLOT (saveContext()));
 	connect (m_remove_pb, SIGNAL (clicked()), this, SLOT(removeContext()));
+
+	//Element Tab
+	connect (m_eaw, SIGNAL (applyPressed()), this, SLOT (saveContext_3()));
 
 	//Folio Tab
 	connect (m_context_cb_2, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_2(QString)));
@@ -449,6 +464,14 @@ void ProjectAutoNumConfigPage::saveContext_2() {
 }
 
 /**
+ * @brief ProjectAutoNumConfigPage::saveContext_3
+ * Save the current displayed Element formula in project
+ */
+void ProjectAutoNumConfigPage::saveContext_3() {
+	project()->addElementAutoNum (m_eaw->formula());
+}
+
+/**
  * @brief ProjectAutoNumConfigPage::applyAutoNum
  * Apply auto folio numbering, New Folios or Selected Folios
  */
@@ -508,7 +531,7 @@ void ProjectAutoNumConfigPage::changeToTab(int i){
  */
 void ProjectAutoNumConfigPage::tabChanged(int i){
 	if (i>0){
-		if (tab_widget->currentIndex()==2){
+		if (tab_widget->currentIndex()==3){
 			tab_widget->resize(470,tab_widget->height());
 		}
 		else {

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2016 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,6 +23,7 @@
 #include <iostream>
 #include "terminal.h"
 #include "diagramposition.h"
+#include "diagramcontent.h"
 
 /**
 	Constructeur de la classe CustomElement. Permet d'instancier un element
@@ -67,7 +68,7 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	buildFromXml(location.xml(), &elmt_state);
 	if (state) *state = elmt_state;
 	if (elmt_state) return;
-	
+
 	if (state) *state = 0;
 }
 
@@ -86,13 +87,13 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	@return true si le chargement a reussi, false sinon
 */
 bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
-	
+
 	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element")
 	{
 		if (state) *state = 4;
 		return(false);
 	}
-	
+
 	// verifie basiquement que la version actuelle est capable de lire ce fichier
 	if (xml_def_elmt.hasAttribute("version")) {
 		bool conv_ok;
@@ -105,7 +106,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 			) << std::endl;
 		}
 	}
-	
+
 	// ces attributs doivent etre presents et valides
 	int w, h, hot_x, hot_y;
 	if (
@@ -118,35 +119,35 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		if (state) *state = 5;
 		return(false);
 	}
-	
+
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
-	
+
 		//the definition must have childs
 	if (xml_def_elmt.firstChild().isNull())
 	{
 		if (state) *state = 6;
 		return(false);
 	}
-	
+
 	// initialisation du QPainter (pour dessiner l'element)
 	QPainter qp;
 	qp.begin(&drawing);
-	
+
 	QPainter low_zoom_qp;
 	low_zoom_qp.begin(&low_zoom_drawing);
 	QPen tmp;
 	tmp.setWidthF(1.0); // ligne vaudou pour prise en compte du setCosmetic - ne pas enlever
 	tmp.setCosmetic(true);
 	low_zoom_qp.setPen(tmp);
-	
+
 	// extrait les noms de la definition XML
 	names.fromXml(xml_def_elmt);
 	setToolTip(name());
 
 	//load kind informations
 	kind_informations_.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
-	
+
 	// parcours des enfants de la definition : parties du dessin
 	int parsed_elements_count = 0;
 	for (QDomNode node = xml_def_elmt.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
@@ -173,11 +174,11 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 			}
 		}
 	}
-	
+
 	// fin du dessin
 	qp.end();
 	low_zoom_qp.end();
-	
+
 	// il doit y avoir au moins un element charge
 	if (!parsed_elements_count) {
 		if (state) *state = 8;
@@ -264,6 +265,89 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 }
 
 /**
+	Retrieves the element label stored in file ./elements/ * /qet_labels.xml
+	The labels are applied to all elements inside a folder. If an element
+	has a specific label, it will be applied. See qet_labels.xml for more
+	instructions.
+*/
+void CustomElement::parseLabels() {
+	if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) && (this->taggedText("label")->toPlainText()=="_")) { //element is being added
+		QXmlStreamReader rxml;
+		QString path[10];
+		QString prefix;
+		int i = -1;
+		ElementsLocation current_location = location();
+		int dirLevel = -1;
+
+		//Add location name to path array
+		while(current_location.parent().name()!="Imported elements" ) {
+			i++;
+			path[i]=current_location.fileName();
+			current_location = current_location.parent();
+			dirLevel++;
+		}
+
+		// Only Electric labels created so far
+		if (current_location.name()!= "Electric") return;
+		QString qet_labels = "10_electric/qet_labels.xml";
+		QString filepath = QETApp::commonElementsDir().append(qet_labels);
+		QFile file(filepath);
+		file.isReadable();
+		if (!file.open(QFile::ReadOnly | QFile::Text)) return;
+		rxml.setDevice(&file);
+		rxml.readNext();
+
+		while(!rxml.atEnd()) {
+				if (rxml.attributes().value("name").toString() == path[i]) {
+					rxml.readNext();
+					i=i-1;
+					//reached element directory
+					if (i==0) {
+						for (int j=i; j<= dirLevel; j = j +1){
+							//if there is a prefix available apply prefix
+							if(rxml.name()=="prefix") {
+								prefix = rxml.readElementText();
+								DiagramContext &dc = this->rElementInformations();
+								//if there is a formula to assign, assign it
+								if (!location().project()->elementAutoNum().isEmpty() && this->linkType()!=Element::Slave) {
+									QString formula = location().project()->elementAutoNum();
+									formula.replace("%prefix", prefix);
+									dc.addValue("label", formula);
+									this->setTaggedText("label",formula);
+								} else { //assign only prefix
+									dc.addValue("label", prefix);
+									this->setTaggedText("label", prefix);
+								}
+								this->setElementInformations(dc);
+								return;
+							}
+							//if there isn't a prefix available, find parent prefix in parent folder
+							else {
+								while (rxml.readNextStartElement() && rxml.name()!="prefix") {
+									rxml.skipCurrentElement();
+									rxml.readNext();
+								}
+							}
+						}
+					}
+				}
+				rxml.readNext();
+		}
+	}
+	//apply formula to specific label
+	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
+			 (!location().project()->elementAutoNum().isEmpty()) && (this->linkType()!=Element::Slave)) {
+		QString formula = location().project()->elementAutoNum();
+		DiagramContext &dc = this->rElementInformations();
+		QString prefix = this->taggedText("label")->toPlainText();
+		formula.replace("%prefix", prefix);
+		dc.addValue("label", formula);
+		this->setTaggedText("label",formula);
+		this->setElementInformations(dc);
+	}
+}
+
+/**
 	Analyse et prend en compte un element XML decrivant une partie du dessin
 	de l'element perso. Si l'analyse reussit, la partie est ajoutee au dessin.
 	Cette partie peut etre une borne, une ligne, une ellipse, un cercle, un arc
@@ -294,7 +378,7 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
 	La ligne est definie par les attributs suivants :
 		- x1, y1 : reels, coordonnees d'une extremite de la ligne
 		- x2, y2 : reels, coordonnees de l'autre extremite de la ligne
-		
+
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -306,19 +390,19 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("y1"), &y1)) return(false);
 	if (!QET::attributeIsAReal(e, QString("x2"), &x2)) return(false);
 	if (!QET::attributeIsAReal(e, QString("y2"), &y2)) return(false);
-	
+
 	Qet::EndType first_end = Qet::endTypeFromString(e.attribute("end1"));
 	Qet::EndType second_end = Qet::endTypeFromString(e.attribute("end2"));
 	qreal length1, length2;
 	if (!QET::attributeIsAReal(e, QString("length1"), &length1)) length1 = 1.5;
 	if (!QET::attributeIsAReal(e, QString("length2"), &length2)) length2 = 1.5;
-	
+
 	qp.save();
 	setPainterStyle(e, qp);
 	QPen t = qp.pen();
 	t.setJoinStyle(Qt::MiterJoin);
 	qp.setPen(t);
-	
+
 	QLineF line(x1, y1, x2, y2);
 
 	//Add line to the list
@@ -327,10 +411,10 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 
 	QPointF point1(line.p1());
 	QPointF point2(line.p2());
-	
+
 	qreal line_length(line.length());
 	qreal pen_width = qp.pen().widthF();
-	
+
 	// determine s'il faut dessiner les extremites
 	bool draw_1st_end, draw_2nd_end;
 	qreal reduced_line_length = line_length - (length1 * PartLine::requiredLengthForEndType(first_end));
@@ -341,7 +425,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 		reduced_line_length = line_length - (length2 * PartLine::requiredLengthForEndType(second_end));
 	}
 	draw_2nd_end = second_end && reduced_line_length >= 0;
-	
+
 	// dessine la premiere extremite
 	QPointF start_point, stop_point;
 	if (draw_1st_end) {
@@ -355,12 +439,12 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 		} else if (first_end == Qet::Simple) {
 			qp.drawPolyline(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
 			start_point = point1;
-			
+
 		} else if (first_end == Qet::Triangle) {
 			qp.drawPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3]);
 			start_point = four_points1[0];
 		}
-		
+
 		// ajuste le depart selon l'epaisseur du trait
 		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle)) {
 			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
@@ -368,7 +452,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	} else {
 		start_point = point1;
 	}
-	
+
 	// dessine la seconde extremite
 	if (draw_2nd_end) {
 		QList<QPointF> four_points2(PartLine::fourEndPoints(point2, point1, length2));
@@ -385,7 +469,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 			qp.drawPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
 			stop_point = four_points2[0];
 		}
-		
+
 		// ajuste l'arrivee selon l'epaisseur du trait
 		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle)) {
 			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
@@ -393,9 +477,9 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	} else {
 		stop_point = point2;
 	}
-	
+
 	qp.drawLine(start_point, stop_point);
-	
+
 	qp.restore();
 	return(true);
 }
@@ -408,7 +492,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 		- y : ordonnee du coin superieur gauche du rectangle
 		- width : largeur du rectangle
 		- height : hauteur du rectangle
-		
+
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -427,12 +511,12 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 
 	qp.save();
 	setPainterStyle(e, qp);
-	
+
 	// force le type de jointures pour les rectangles
 	QPen p = qp.pen();
 	p.setJoinStyle(Qt::MiterJoin);
 	qp.setPen(p);
-	
+
 	qp.drawRect(QRectF(rect_x, rect_y, rect_w, rect_h));
 	qp.restore();
 	return(true);
@@ -445,7 +529,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 		- x : abscisse du coin superieur gauche de la quadrature du cercle
 		- y : ordonnee du coin superieur gauche de la quadrature du cercle
 		- diameter : diametre du cercle
-		
+
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -477,7 +561,7 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 		- y : ordonnee du coin superieur gauche du rectangle dans lequel s'inscrit l'ellipse
 		- width : dimension de la diagonale horizontale de l'ellipse
 		- height : dimension de la diagonale verticale de l'ellipse
-		
+
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -515,7 +599,7 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 		- start : angle de depart : l'angle "0 degre" est a trois heures
 		- angle : etendue (en degres) de l'arc de cercle ; une valeur positive
 		va dans le sens contraire des aiguilles d'une montre
-		
+
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -529,7 +613,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("height"),  &arc_h))  return(false);
 	if (!QET::attributeIsAReal(e, QString("start"),   &arc_s))  return(false);
 	if (!QET::attributeIsAReal(e, QString("angle"),   &arc_a))  return(false);
-	
+
 	qp.save();
 	setPainterStyle(e, qp);
 
@@ -612,15 +696,15 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 		!QET::attributeIsAnInteger(e, "size", &size) ||\
 		!e.hasAttribute("text")
 	) return(false);
-	
+
 	qp.save();
 	setPainterStyle(e, qp);
-	
+
 	// determine la police a utiliser et en recupere les metriques associees
 	QFont used_font = QETApp::diagramTextsFont(size);
 	QFontMetrics qfm(used_font);
 	QColor text_color = (e.attribute("color") != "white"? Qt::black : Qt::white);
-	
+
 	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
 	// generer le rendu graphique du texte
 	QTextDocument text_document;
@@ -638,18 +722,18 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	eti -> setRotationAngle(original_rotation_angle);
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 	list_texts_ << eti;
-	
-	// Se positionne aux coordonnees indiquees dans la description du texte	
+
+	// Se positionne aux coordonnees indiquees dans la description du texte
 	qp.setTransform(QTransform(), false);
 	qp.translate(pos_x, pos_y);
-	
+
 	// Pivote le systeme de coordonnees du QPainter pour effectuer le rendu
 	// dans le bon sens
 	qreal default_rotation_angle = 0.0;
 	if (QET::attributeIsAReal(e, "rotation", &default_rotation_angle)) {
 		qp.rotate(default_rotation_angle);
 	}
-	
+
 	/*
 		Deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
 		bon endroit ; note : on soustrait l'ascent() de la police pour
@@ -657,12 +741,12 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 		indiquee correspond a la baseline.
 	*/
 	QPointF qpainter_offset(0.0, -qfm.ascent());
-	
+
 		//adjusts the offset by the margin of the text document
 	text_document.setDocumentMargin(0.0);
-	
+
 	qp.translate(qpainter_offset);
-	
+
 	// force the palette used to render the QTextDocument
 	QAbstractTextDocumentLayout::PaintContext ctx;
 	ctx.palette.setColor(QPalette::Text, text_color);
@@ -691,26 +775,38 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 		!QET::attributeIsAReal(e, "y", &pos_y) ||\
 		!QET::attributeIsAnInteger(e, "size", &size)
 	) return(0);
-	
+
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
 	eti -> setTagg(e.attribute("tagg", "other"));
-	
+
+	if (e.attribute("tagg")=="label") {
+		DiagramContext &dc = this->rElementInformations();
+		dc.addValue("label", e.attribute("text"));
+		this->setElementInformations(dc);
+		this->setTaggedText("label", e.attribute("text"));
+	}
+	else if (e.attribute("tagg")=="function") {
+		DiagramContext &dc = this->rElementInformations();
+		dc.addValue("function", e.attribute("text"));
+		this->setElementInformations(dc);
+	}
+
 	// position the text field
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	eti -> setPos(pos_x, pos_y);
-	
+
 	// rotation of the text field
 	qreal original_rotation_angle = 0.0;
 	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
 	eti -> setOriginalRotationAngle(original_rotation_angle);
 	eti -> setRotationAngle(original_rotation_angle);
-	
+
 	// behavior when the parent element is rotated
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
-	
+
 	list_texts_ << eti;
-	
+
 	return(eti);
 }
 
@@ -720,7 +816,7 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	Une borne est definie par les attributs suivants :
 		- x, y : coordonnees de la borne
 		- orientation  : orientation de la borne = Nord (n), Sud (s), Est (e) ou Ouest (w)
-		
+
 	@param e L'element XML a analyser
 	@return Un pointeur vers l'objet Terminal ainsi cree, 0 sinon
 */
@@ -762,12 +858,12 @@ void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 		- une pour l'Est
 		- une pour le Sud
 		- une pour l'Ouest
-	 
+
 	Pour chaque orientation, on indique si elle est :
 		- l'orientation par defaut : d
 		- une orientation autorisee : y
 		- une orientation interdire : n
-		
+
 	Exemple : "dnny" represente un element par defaut oriente vers le nord et qui
 	peut etre oriente vers l'ouest mais pas vers le sud ou vers l'est.
 	@param e Element XML
@@ -826,7 +922,7 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- hachures gauche
 			- hachures  droite
 			- none : pas de contour
-			
+
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
 	@param qp Le QPainter a modifier en fonction des styles
@@ -835,14 +931,14 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	// recupere le QPen et la QBrush du QPainter
 	QPen pen = qp.pen();
 	QBrush brush = qp.brush();
-	
+
 	// attributs par defaut
 	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
-	
+
 	// recupere la liste des couples style / valeur
 	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
-	
+
 	// agit sur le QPen et la QBrush en fonction des valeurs rencontrees
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
 	foreach (QString style, styles) {
@@ -949,11 +1045,11 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			}
 		}
 	}
-	
-	// affectation du QPen et de la QBrush modifies au QPainter 
+
+	// affectation du QPen et de la QBrush modifies au QPainter
 	qp.setPen(pen);
 	qp.setBrush(brush);
-	
+
 	// mise en place (ou non) de l'antialiasing
 	setQPainterAntiAliasing(qp, e.attribute("antialias") == "true");
 }

@@ -44,6 +44,7 @@ class ElementsLocation
 	
 	public:
 		QString baseName() const;
+		int projectId() const;
 
 		QString collectionPath(bool protocol = true) const;
 		QString projectCollectionPath() const;

@@ -125,6 +125,16 @@ QString ElementsLocation::baseName() const {
 }
 
 /**
+ * @brief ElementsLocation::projectId
+ * This method is used to know if an element belongs to
+ * a project or not.
+ * @return Element Project Id
+ */
+int ElementsLocation::projectId() const {
+	return QETApp::projectId(m_project);
+}
+
+/**
  * @brief ElementsLocation::collectionPath
  * Return the path of the represented element relative to collection
  * if @protocol is true the path is prepended by the collection type (common://, custom:// or embed://)

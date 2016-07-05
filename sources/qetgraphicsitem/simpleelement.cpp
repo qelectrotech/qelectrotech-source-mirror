@@ -35,6 +35,7 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
 	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(updateLabel()),this,SLOT(changeElementInfo()));
 }
 
 /**

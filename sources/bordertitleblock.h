@@ -101,7 +101,9 @@ class BorderTitleBlock : public QObject
 	DiagramContext additionalFields() const { return (additional_fields_); }
 	/// @return the value of the title block
 	QString autoPageNum() const { return(btb_auto_page_num_); }
-	
+	/// @return the value of the total number of folios
+	int folioTotal() const { return(folio_total_);}
+
 	// methods to get display options
 	/// @return true si le cartouche est affiche, false sinon
 	bool titleBlockIsDisplayed() const { return(display_titleblock_); }

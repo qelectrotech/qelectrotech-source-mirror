@@ -49,7 +49,7 @@ class NumPartEditorW : public QWidget
 	private slots:
 	void on_type_combo_activated(int);
 	void on_value_field_textEdited();
-	void on_increase_spinBox_valueChanged();
+	void on_increase_spinBox_valueChanged(int);
 	void setType (NumPartEditorW::type t, bool=false);
 
 	signals:

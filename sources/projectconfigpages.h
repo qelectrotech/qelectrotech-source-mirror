@@ -35,6 +35,7 @@ class SelectAutonumW;
 class QComboBox;
 class QPushButton;
 class FolioAutonumberingW;
+class ElementAutonumberingW;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -142,10 +143,11 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	private slots:
 		void updateContext(QString);
 		void saveContext();
-		void removeContext();
+		void removeContext(); //conductor
 		void updateContext_2(QString);
-		void saveContext_2();
+		void saveContext_2(); //folio
 		void removeContext_2();
+		void saveContext_3(); //element
 
 		void applyAutoNum();
 
@@ -159,21 +161,22 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Attributes
 	private:
-		QTabWidget          *tab_widget;
-		QWidget             *element_widget;
-		QWidget             *conductor_tab_widget;
-		QWidget             *folio_tab_widget;
-		QWidget             *autoNumbering_tab_widget;
-		QScrollArea         *scrollArea;
-		QLabel              *m_label;
-		QLabel              *m_label_2;
-		QComboBox           *m_context_cb;
-		QComboBox           *m_context_cb_2;
-		QPushButton	        *m_remove_pb;
-		QPushButton	        *m_remove_pb_2;
-		SelectAutonumW      *m_saw;
-		SelectAutonumW      *m_saw_2;
-		FolioAutonumberingW *m_faw;
+		QTabWidget            *tab_widget;
+		QWidget               *conductor_tab_widget;
+		QWidget               *element_tab_widget;
+		QWidget               *folio_tab_widget;
+		QWidget               *autoNumbering_tab_widget;
+		QScrollArea           *scrollArea;
+		QLabel                *m_label;
+		QLabel                *m_label_2;
+		QComboBox             *m_context_cb;
+		QComboBox             *m_context_cb_2;
+		QPushButton           *m_remove_pb;
+		QPushButton           *m_remove_pb_2;
+		SelectAutonumW        *m_saw;
+		SelectAutonumW        *m_saw_2;
+		FolioAutonumberingW   *m_faw;
+		ElementAutonumberingW *m_eaw;
 
 };
 

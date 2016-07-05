@@ -254,6 +254,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 			if (m_first_move) {
 				//We signal the beginning of movement to the parent diagram
 				int moved_texts_count = diagram_ptr -> beginMoveElementTexts(this);
+				parent_element_ -> setHighlighted(true);
 
 				//If there is one texte to move, we highlight the parent element.
 				if (moved_texts_count == 1 && parent_element_) {

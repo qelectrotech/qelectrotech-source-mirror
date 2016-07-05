@@ -149,7 +149,7 @@ void NumPartEditorW::on_value_field_textEdited() {
  * @brief NumPartEditorW::on_increase_spinBox_valueChanged
  * emit changed when @increase_spinBox value changed
  */
-void NumPartEditorW::on_increase_spinBox_valueChanged() {
+void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 

@@ -120,8 +120,9 @@ class Element : public QetGraphicsItem {
 		kind              link_type_;
 
 	signals:
-		void linkedElementChanged(); //This signal is emtied when the linked elements with this element change
+		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
+		void updateLabel(); //This signal is emited to update element's label
 
 		//METHODS related to information
 	public:
@@ -162,7 +163,7 @@ class Element : public QetGraphicsItem {
 	
 	// selection-related methods
 	void select();
-	void deselect();	
+	void deselect();
 	
 	virtual void rotateBy(const qreal &);
 	virtual void editProperty();

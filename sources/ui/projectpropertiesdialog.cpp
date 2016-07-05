@@ -72,5 +72,5 @@ void ProjectPropertiesDialog::setCurrentPage(ProjectPropertiesDialog::Page p) {
  */
 void ProjectPropertiesDialog::changeToFolio() {
    ProjectAutoNumConfigPage *autoNumPage = static_cast <ProjectAutoNumConfigPage*>(m_properties_dialog->pages.at(2));
-   autoNumPage->changeToTab(1);
+   autoNumPage->changeToTab(2);
 }
