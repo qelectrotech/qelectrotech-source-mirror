@@ -271,6 +271,7 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	instructions.
 */
 void CustomElement::parseLabels() {
+	return;
 	if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) && (this->taggedText("label")->toPlainText()=="_")) { //element is being added
 		QXmlStreamReader rxml;
 		QString path[10];
