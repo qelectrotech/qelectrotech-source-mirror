@@ -271,7 +271,6 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	instructions.
 */
 void CustomElement::parseLabels() {
-	return;
 	if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) && (this->taggedText("label")->toPlainText()=="_")) { //element is being added
 		QXmlStreamReader rxml;
 		QString path[10];
@@ -281,7 +280,7 @@ void CustomElement::parseLabels() {
 		int dirLevel = -1;
 
 		//Add location name to path array
-		while(current_location.parent().name()!="Imported elements" ) {
+		while(current_location.parent().fileName() != "import") {
 			i++;
 			path[i]=current_location.fileName();
 			current_location = current_location.parent();
@@ -289,7 +288,7 @@ void CustomElement::parseLabels() {
 		}
 
 		// Only Electric labels created so far
-		if (current_location.name()!= "Electric") return;
+		if (current_location.fileName() != "10_electric") return;
 		QString qet_labels = "10_electric/qet_labels.xml";
 		QString filepath = QETApp::commonElementsDir().append(qet_labels);
 		QFile file(filepath);
