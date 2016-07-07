@@ -137,7 +137,7 @@
           <item row="1" column="0" rowspan="2" colspan="3">
            <widget class="QLabel" name="label">
             <property name="locale">
-             <locale language="English" country="UnitedKingdom"/>
+             <locale language="French" country="France"/>
             </property>
             <property name="text">
              <string>You can use the following variables to your formula:
