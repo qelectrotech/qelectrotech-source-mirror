@@ -28,7 +28,6 @@ template<> class QHash<QETProject, XmlProjectElementCollectionItem>;
 template<> class QList<ElementCollectionItem>;
 
 
-
 class ElementsCollectionModel : public QStandardItemModel
 {
 	Q_OBJECT
@@ -59,6 +58,7 @@ class ElementsCollectionModel : public QStandardItemModel
 
 	private:
 		void elementIntegratedToCollection (QString path);
+		void itemRemovedFromCollection (QString path);
 		void updateItem (QString path);
 
 	private:

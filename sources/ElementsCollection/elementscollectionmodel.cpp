@@ -311,6 +311,8 @@ void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 		xpeci->setUpData();
 	connect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
 	connect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
+	connect(project->embeddedElementCollection(), &XmlElementCollection::elementRemoved, this, &ElementsCollectionModel::itemRemovedFromCollection);
+	connect(project->embeddedElementCollection(), &XmlElementCollection::directoryRemoved, this, &ElementsCollectionModel::itemRemovedFromCollection);
 }
 
 /**
@@ -329,6 +331,8 @@ void ElementsCollectionModel::removeProject(QETProject *project)
 		m_project_hash.remove(project);
 		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementAdded, this, &ElementsCollectionModel::elementIntegratedToCollection);
 		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementChanged, this, &ElementsCollectionModel::updateItem);
+		disconnect(project->embeddedElementCollection(), &XmlElementCollection::elementRemoved, this, &ElementsCollectionModel::itemRemovedFromCollection);
+		disconnect(project->embeddedElementCollection(), &XmlElementCollection::directoryRemoved, this, &ElementsCollectionModel::itemRemovedFromCollection);
 	}
 }
 
@@ -407,9 +411,6 @@ void ElementsCollectionModel::hideElement()
  */
 QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &location)
 {
-	if (!location.exist())
-		return QModelIndex();
-
 	QList <ElementCollectionItem *> child_list;
 
 	for (int i=0 ; i<rowCount() ; i++)
@@ -471,6 +472,34 @@ void ElementsCollectionModel::elementIntegratedToCollection(QString path)
 			return;
 
 		eci->addChildAtPath(collection_name);
+	}
+}
+
+/**
+ * @brief ElementsCollectionModel::itemRemovedFromCollection
+ * This method must be called by a signal, to get a sender.
+ * @param path
+ */
+void ElementsCollectionModel::itemRemovedFromCollection(QString path)
+{
+	QObject *object = sender();
+	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	if (!collection)
+		return;
+
+	QETProject *project = nullptr;
+
+		//Get the owner project of the collection
+	foreach (QETProject *prj, m_project_list) {
+		if (prj->embeddedElementCollection() == collection) {
+			project = prj;
+		}
+	}
+
+	if (project) {
+		QModelIndex index = indexFromLocation(ElementsLocation(path, project));
+		if (index.isValid())
+			removeRow(index.row(), index.parent());
 	}
 }
 

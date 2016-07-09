@@ -50,12 +50,17 @@ class XmlElementCollection : public QObject
 		QDomElement directory(const QString &path) const;
 		QString addElement (ElementsLocation &location);
 		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
+		bool removeElement(QString path);
 		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
 		bool exist (const QString &path) const;
 		bool createDir (QString path, QString name, const NamesList &name_list);
+		bool removeDir (QString path);
 
 		QList <ElementsLocation> elementsLocation (QDomElement dom_element = QDomElement(), bool childs = true) const;
 		ElementsLocation domToLocation(QDomElement dom_element) const;
+
+		void cleanUnusedElement();
+		void cleanUnusedDirectory();
 
 	private:
 		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
@@ -75,11 +80,23 @@ class XmlElementCollection : public QObject
 			 */
 		void elementChanged (QString collection_path);
 			/**
+			 * @brief elementRemoved
+			 * This signal is emited when an element is removed to this collection
+			 * @param collection_path, the path of the removed element in this collection
+			 */
+		void elementRemoved(QString collection_path);
+			/**
 			 * @brief directorieAdded
 			 * This signal is emited when a directorie is added to this collection
 			 * @param collection_path, the path of the new directorie
 			 */
 		void directorieAdded(QString collection_path);
+			/**
+			 * @brief directoryRemoved
+			 * This signal is emited when a directory is removed to this collection
+			 * @param collection_path, the path of the removed directory
+			 */
+		void directoryRemoved(QString collection_path);
 
 	private:
 		QDomDocument m_dom_document;

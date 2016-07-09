@@ -31,6 +31,7 @@
 #include "qettemplateeditor.h"
 #include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
+#include "xmlelementcollection.h"
 
 /**
 	Constructeur
@@ -805,6 +806,12 @@ int ProjectView::cleanProject() {
 	{
 		if (clean_tbt -> isChecked()) {
 			m_project->embeddedTitleBlockTemplatesCollection()->deleteUnusedTitleBlocKTemplates();
+		}
+		if (clean_elements->isChecked()) {
+			m_project->embeddedElementCollection()->cleanUnusedElement();
+		}
+		if (clean_categories->isChecked()) {
+			m_project->embeddedElementCollection()->cleanUnusedDirectory();
 		}
 	}
 

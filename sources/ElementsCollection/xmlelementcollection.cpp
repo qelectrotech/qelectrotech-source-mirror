@@ -433,6 +433,26 @@ bool XmlElementCollection::addElementDefinition(const QString &dir_path, const Q
 }
 
 /**
+ * @brief XmlElementCollection::removeElement
+ * Remove the element at path @path.
+ * @param path
+ * @return True if element is removed and emit the signal elementRemoved.
+ * else false.
+ */
+bool XmlElementCollection::removeElement(QString path)
+{
+	QDomElement elmt = element(path);
+
+	if (!elmt.isNull()) {
+		elmt.parentNode().removeChild(elmt);
+		emit elementRemoved(path);
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * @brief XmlElementCollection::copy
  * Copy the content represented by source (an element or a directory) to destination.
  * Destination must be a directory of this collection.
@@ -503,6 +523,24 @@ bool XmlElementCollection::createDir(QString path, QString name, const NamesList
 }
 
 /**
+ * @brief XmlElementCollection::removeDir
+ * Remove the directory at path @path.
+ * @param path
+ * @return true if successfuly removed and emit directoryRemoved(QString),
+ * else false.
+ */
+bool XmlElementCollection::removeDir(QString path)
+{
+	QDomElement dir = directory(path);
+	if (!dir.isNull()) {
+		dir.parentNode().removeChild(dir);
+		emit directoryRemoved(path);
+		return true;
+	}
+	return false;
+}
+
+/**
  * @brief XmlElementCollection::elementsLocation
  * Return all locations stored in dom_element (element and directory).
  * If dom_element is null, return all location owned by this collection
@@ -569,6 +607,34 @@ ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) co
 	}
 	else
 		return ElementsLocation();
+}
+
+/**
+ * @brief XmlElementCollection::cleanUnusedElement
+ * Remove elements in this collection which is not used in the owner project
+ */
+void XmlElementCollection::cleanUnusedElement()
+{
+	foreach (ElementsLocation loc, m_project->unusedElements())
+		removeElement(loc.collectionPath(false));
+}
+
+/**
+ * @brief XmlElementCollection::cleanUnusedDirectory
+ * Remove the empty directories of this collection
+ */
+void XmlElementCollection::cleanUnusedDirectory()
+{
+	QDomNodeList lst = importCategory().elementsByTagName("category");
+
+	for(int i=0 ; i<lst.size() ; i++) {
+		QDomElement dir = lst.item(i).toElement();
+			//elmt haven't got child node "element" or "category", so he is emty, we can remove it
+		if (dir.elementsByTagName("element").isEmpty() && dir.elementsByTagName("category").isEmpty()) {
+			if (removeDir(domToLocation(dir).collectionPath(false)))
+				i=-1;
+		}
+	}
 }
 
 /**
