@@ -141,13 +141,15 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	private:
 		void buildConnections();
 	private slots:
-		void updateContext(QString);
-		void saveContext();
-		void removeContext(); //conductor
-		void updateContext_2(QString);
-		void saveContext_2(); //folio
-		void removeContext_2();
-		void saveContext_3(); //element
+		void updateContext_conductor(QString);//conductor
+		void saveContext_conductor();
+		void removeContext_conductor();
+		void updateContext_folio(QString);//folio
+		void saveContext_folio();
+		void removeContext_folio();
+		void updateContext_element(QString);//element
+		void saveContext_element();
+		void removeContext_element();
 
 		void applyAutoNum();
 
@@ -167,14 +169,18 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		QWidget               *folio_tab_widget;
 		QWidget               *autoNumbering_tab_widget;
 		QScrollArea           *scrollArea;
-		QLabel                *m_label;
-		QLabel                *m_label_2;
-		QComboBox             *m_context_cb;
-		QComboBox             *m_context_cb_2;
-		QPushButton           *m_remove_pb;
-		QPushButton           *m_remove_pb_2;
-		SelectAutonumW        *m_saw;
-		SelectAutonumW        *m_saw_2;
+		QLabel                *m_label_conductor;
+		QLabel                *m_label_folio;
+		QLabel                *m_label_element;
+		QComboBox             *m_context_cb_conductor;
+		QComboBox             *m_context_cb_folio;
+		QComboBox             *m_context_cb_element;
+		QPushButton           *m_remove_pb_conductor;
+		QPushButton           *m_remove_pb_folio;
+		QPushButton           *m_remove_pb_element;
+		SelectAutonumW        *m_saw_conductor;
+		SelectAutonumW        *m_saw_folio;
+		SelectAutonumW        *m_saw_element;
 		FolioAutonumberingW   *m_faw;
 		ElementAutonumberingW *m_eaw;
 

@@ -6,19 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>308</width>
-    <height>45</height>
+    <width>368</width>
+    <height>33</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <property name="spacing">
+    <number>3</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
    <property name="rightMargin">
     <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
    </property>
    <item>
     <widget class="QComboBox" name="type_combo">
@@ -59,6 +68,21 @@
      <item>
       <property name="text">
        <string>Folio</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Element Line</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Element Column</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Element Prefix</string>
       </property>
      </item>
     </widget>

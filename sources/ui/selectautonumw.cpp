@@ -20,6 +20,9 @@
 #include "numparteditorw.h"
 #include <QMessageBox>
 #include "numerotationcontextcommands.h"
+#include "elementautonumberingw.h"
+#include "ui_elementautonumberingw.h"
+#include "qdebug.h"
 
 /**
  * Constructor
@@ -28,7 +31,13 @@ SelectAutonumW::SelectAutonumW(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW)
 {
+
 	ui->setupUi(this);
+	if (this->parentWidget() -> objectName()=="ElementTab"){
+		m_eaw = new ElementAutonumberingW();
+		connect(m_eaw,SIGNAL(textChanged(QString)),this,SLOT(formula_textChanged(QString)));
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
+	}
 	setContext(NumerotationContext());
 }
 
@@ -36,6 +45,11 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context, QWidget *pare
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW)
 {
+	if (this->parentWidget() -> objectName()=="ElementTab"){
+		m_eaw = new ElementAutonumberingW();
+		connect(m_eaw,SIGNAL(textChanged(QString)),this,SLOT(formula_textChanged(QString)));
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
+	}
 	ui->setupUi(this);
 	setContext(context);
 }
@@ -118,6 +132,14 @@ void SelectAutonumW::on_remove_button_clicked() {
 }
 
 /**
+ * @brief SelectAutonumW::elementFormula
+ * @return element autonumbering widget formula
+ */
+QString SelectAutonumW::elementFormula() {
+	return m_eaw->formula();
+}
+
+/**
  * @brief SelectAutonumW::on_buttonBox_clicked
  * Action on @buttonBox clicked
  */
@@ -189,8 +211,56 @@ void SelectAutonumW::applyEnable(bool b) {
 		foreach (NumPartEditorW *npe, num_part_list_) if (!npe -> isValid()) valid= false;
 		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(valid);
 	}
-	else
+	else {
 		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+	}
+	if (this->parentWidget() -> objectName()=="ElementTab")
+		contextToFormula();
+}
+
+/**
+ * @brief SelectAutonumW::contextToFormula
+ * Apply formula to ElementAutonumbering Widget
+ */
+void SelectAutonumW::contextToFormula() {
+	m_eaw->clearContext();
+	int count_unit = 0;
+	int count_ten = 0;
+	int count_hundred = 0;
+	foreach (NumPartEditorW *npe, num_part_list_) {
+		if (npe->isValid()) {
+			if (npe->type_ == NumPartEditorW::idfolio) {
+				m_eaw->setContext("%id");
+			}
+			else if (npe->type_ == NumPartEditorW::folio) {
+				m_eaw->setContext("%F");
+			}
+			else if (npe->type_ == NumPartEditorW::elementcolumn) {
+				m_eaw->setContext("%c");
+			}
+			else if (npe->type_ == NumPartEditorW::elementline) {
+				m_eaw->setContext("%l");
+			}
+			else if (npe->type_ == NumPartEditorW::elementprefix) {
+				m_eaw->setContext("%prefix");
+			}
+			else if (npe->type_ == NumPartEditorW::string) {
+				m_eaw->setContext(npe->toNumContext().itemAt(0).at(1));
+			}
+			else if (npe->type_ == NumPartEditorW::unit) {
+				count_unit++;
+				m_eaw->setContext("%sequ_"+QString::number(count_unit));
+			}
+			else if (npe->type_ == NumPartEditorW::ten) {
+				count_ten++;
+				m_eaw->setContext("%seqt_"+QString::number(count_ten));
+			}
+			else if (npe->type_ == NumPartEditorW::hundred) {
+				count_hundred++;
+				m_eaw->setContext("%seqh_"+QString::number(count_hundred));
+			}
+		}
+	}
 }
 
 /**

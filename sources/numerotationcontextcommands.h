@@ -113,4 +113,33 @@ class FolioNum: public NumStrategy
 	NumerotationContext next     (const NumerotationContext &, const int) const;
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
+
+class ElementLineNum: public NumStrategy
+{
+	public:
+	ElementLineNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+class ElementColumnNum: public NumStrategy
+{
+	public:
+	ElementColumnNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+class ElementPrefixNum: public NumStrategy
+{
+	public:
+	ElementPrefixNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+
 #endif // NUMEROTATIONCONTEXTCOMMANDS_H

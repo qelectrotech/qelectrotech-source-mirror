@@ -30,7 +30,7 @@ ElementAutonumberingW::ElementAutonumberingW(QWidget *parent) :
 
 {
 	ui->setupUi(this);
-	applyEnable(false);
+	setContext(formula_);
 }
 
 /**
@@ -50,6 +50,14 @@ void ElementAutonumberingW::setContext(QString formula) {
 }
 
 /**
+ * @brief ElementAutonumberingW::clearContext
+ * @param clear formula line edit text
+ */
+void ElementAutonumberingW::clearContext() {
+	ui->m_formula_le->clear();
+}
+
+/**
  * @brief ElementAutonumberingW::formula
  * @return formula to be stored into project
  */
@@ -61,32 +69,6 @@ QString ElementAutonumberingW::formula() {
  * @brief ElementAutonumberingW::on_m_formula_le_textChanged
  * Update Apply Button
  */
-void ElementAutonumberingW::on_m_formula_le_textChanged() {
-	if (!ui->m_formula_le->text().isEmpty())
-		applyEnable(true);
-	else applyEnable(false);
-}
-
-/**
- * @brief ElementAutonumberingW::on_buttonBox_clicked
- * Action on @buttonBox clicked
- */
-void ElementAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
-	//transform button to int
-	int answer = ui -> buttonBox -> buttonRole(button);
-
-	switch (answer) {
-		case QDialogButtonBox::ApplyRole:
-			applyEnable(true);
-			emit applyPressed();
-			break;
-	}
-}
-
-/**
- * @brief ElementAutonumberingW::applyEnable
- * enable/disable the apply button
- */
-void ElementAutonumberingW::applyEnable(bool b) {
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+void ElementAutonumberingW::on_m_formula_le_textChanged(QString text) {
+	emit (textChanged(text));
 }

@@ -866,7 +866,6 @@ void Diagram::addItem(QGraphicsItem *item)
 				CustomElement *celmt = static_cast<CustomElement*>(item);
 				celmt->parseLabels();
 			}
-
 			elmt->updateLabel();
 		}
 			break;

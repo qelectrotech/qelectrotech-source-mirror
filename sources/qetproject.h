@@ -107,19 +107,28 @@ class QETProject : public QObject
 		void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
 
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
+		QHash <QString, NumerotationContext> elementAutoNum() const;
+		QHash <QString, QString>             elementAutoNum_2();
 		QHash <QString, NumerotationContext> folioAutoNum() const;
 		void addConductorAutoNum (QString key, NumerotationContext context);
-		void addElementAutoNum   (QString formula);
+		void addElementAutoNum (QString key, NumerotationContext context);
+		void addElementAutoNumFormula (QString key, QString formula);
+		void addElementAutoNumCurrentFormula (QString formula);
 		void addFolioAutoNum     (QString key, NumerotationContext context);
-		void removeConductorAutonum (QString key);
+		void removeConductorAutoNum (QString key);
+		void removeElementAutoNum (QString key);
 		void removeFolioAutoNum (QString key);
 		NumerotationContext conductorAutoNum(const QString &key) const;
-		NumerotationContext folioAutoNum(const QString &key)    const;
-		QString elementAutoNum() const;
+		NumerotationContext folioAutoNum(const QString &key)     const;
+		NumerotationContext elementAutoNum(const QString &key)   const;
+		QString elementAutoNumFormula(const QString key) const; //returns Formula
+		QString elementAutoNumFormula() const;
 
-		bool autoConductor    () const;
-		bool autoFolio  () const;
+		bool autoConductor () const;
+		bool autoElement () const;
+		bool autoFolio () const;
 		void setAutoConductor (bool ac);
+		void setAutoElement (bool ae);
 		void setAutoFolio (bool af);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, QString);
@@ -223,7 +232,9 @@ class QETProject : public QObject
 	/// Folio auto numbering
 	QHash <QString, NumerotationContext> m_folio_autonum;
 	/// Element Auto Numbering
-	QString m_element_autonum;
+	QHash <QString, QString> m_element_autonum_formula; //Title and Formula hash
+	QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
+	QString m_current_element_formula;
 	/// Folio List Sheets quantity for this project.
 	int folioSheetsQuantity;
 	bool m_auto_conductor;

@@ -29,6 +29,7 @@ NumPartEditorW::NumPartEditorW(QWidget *parent) :
 {
 	ui -> setupUi(this);
 	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(4);
+	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") ui->type_combo->setMaxCount(6);
 	setType(NumPartEditorW::unit, true);
 }
 
@@ -42,7 +43,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
-	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(5);
+	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(4);
+	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") ui->type_combo->setMaxCount(6);
 	//if @context contains nothing build with default value
 	if(context.size()==0) setType(NumPartEditorW::unit, true);
 
@@ -54,6 +56,9 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
 		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
+		else if (strl.at(0)=="elementline") setType(NumPartEditorW::elementline);
+		else if (strl.at(0)=="elementcolumn") setType(NumPartEditorW::elementcolumn);
+		else if (strl.at(0)=="elementprefix") setType(NumPartEditorW::elementprefix);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
 	}
@@ -94,6 +99,15 @@ NumerotationContext NumPartEditorW::toNumContext() {
 		case folio:
 			type_str = "folio";
 			break;
+		case elementline:
+			type_str = "elementline";
+			break;
+		case elementcolumn:
+			type_str = "elementcolumn";
+			break;
+		case elementprefix:
+			type_str = "elementprefix";
+			break;
 	}
 	nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value());
 	return nc;
@@ -104,7 +118,8 @@ NumerotationContext NumPartEditorW::toNumContext() {
  * @return true if value field isn't empty or if type is folio
  */
 bool NumPartEditorW::isValid() {
-	if (type_ == folio||type_ == idfolio) {return true;}
+	if (type_ == folio || type_ == idfolio || type_ == elementline ||
+		type_ == elementcolumn || type_ == elementprefix) {return true;}
 	else if(ui -> value_field -> text().isEmpty()) {return false;}
 	else return true;
 }
@@ -132,6 +147,15 @@ void NumPartEditorW::on_type_combo_activated(int index) {
 			break;
 		case folio:
 			setType(folio);
+			break;
+		case elementline:
+			setType(elementline);
+			break;
+		case elementcolumn:
+			setType(elementcolumn);
+			break;
+		case elementprefix:
+			setType(elementprefix);
 			break;
 	};
 	emit changed();
@@ -164,7 +188,10 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
-	if ( ((t==unit || t==ten || t==hundred) && (type_==string || type_==folio || type_==idfolio)) || fnum) {
+	if ( ((t==unit || t==ten || t==hundred) &&
+		  (type_==string || type_==folio || type_==idfolio ||
+		   type_==elementcolumn || type_==elementline || type_==elementprefix))
+		 || fnum) {
 		ui -> value_field -> clear();
 		ui -> value_field -> setEnabled(true);
 		ui -> value_field -> setValidator(intValidator);
@@ -172,7 +199,8 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setValue(1);
 	}
 	//@t isn't a numeric type
-	else if (t==string || t==folio || t==idfolio) {
+	else if (t == string || t == folio || t == idfolio || t == elementline ||
+			 t == elementcolumn || t == elementprefix) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
@@ -184,6 +212,18 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> increase_spinBox -> setDisabled(true);
 		}
 		else if (t==idfolio) {
+			ui -> value_field -> setDisabled(true);
+			ui -> increase_spinBox -> setDisabled(true);
+		}
+		else if (t==elementcolumn) {
+			ui -> value_field -> setDisabled(true);
+			ui -> increase_spinBox -> setDisabled(true);
+		}
+		else if (t==elementline) {
+			ui -> value_field -> setDisabled(true);
+			ui -> increase_spinBox -> setDisabled(true);
+		}
+		else if (t==elementprefix) {
 			ui -> value_field -> setDisabled(true);
 			ui -> increase_spinBox -> setDisabled(true);
 		}

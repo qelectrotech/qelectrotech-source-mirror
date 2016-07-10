@@ -62,7 +62,7 @@ void SimpleElement::initLink(QETProject *project) {
  */
 void SimpleElement::changeElementInfo(){
 	QString temp_label = this->elementInformations()["label"].toString();
-	if (temp_label.contains("\%l")||temp_label.contains("\%c")||temp_label.contains("\%f")||temp_label.contains("\%F")) {
+	if (temp_label.contains("\%")) {
 		if (this->diagram()!=NULL)
 			this->updateLabel(this->elementInformations(),this->elementInformations());
 	}

@@ -26,6 +26,7 @@
 #include "terminal.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "elementpropertieswidget.h"
+#include "numerotationcontextcommands.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -677,3 +678,69 @@ QString Element::assignVariables(QString label, Element *elmt){
 	label.replace("%total", QString::number(elmt->diagram()->border_and_titleblock.folioTotal()));
 	return label;
 }
+
+/**
+ * @brief Element::assignSeq()
+ * Assign sequential values to element label
+ */
+void Element::assignSeq() {
+	DiagramContext &dc = this->rElementInformations();
+	QString formula = diagram()->project()->elementAutoNumFormula();
+	QHash <QString,QString> hash = diagram()->project()->elementAutoNum_2();
+	QString formula_name = hash.key(formula);
+	QString label = dc["label"].toString();
+	qDebug() << "Label" << label;
+	NumerotationContext nc = diagram()->project()->elementAutoNum(formula_name);
+	NumerotationContextCommands ncc (nc);
+	if (!nc.isEmpty()) {
+		if (label.contains("%sequ_")) {
+			int count = 1;
+			for (int i = 0; i < nc.size(); i++) {
+				if (nc.itemAt(i).at(0) == "unit") {
+					label.replace("%sequ_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
+					count++;
+				}
+			}
+		}
+		if (label.contains("%seqt_")) {
+			int count = 1;
+			for (int i = 0; i < nc.size(); i++) {
+				if (nc.itemAt(i).at(0) == "ten") {
+					label.replace("%seqt_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
+					count++;
+				}
+			}
+		}
+		if (label.contains("%seqh_")) {
+			int count = 1;
+			for (int i = 0; i < nc.size(); i++) {
+				if (nc.itemAt(i).at(0) == "hundred") {
+					label.replace("%seqh_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
+					count++;
+				}
+			}
+		}
+	}
+	dc.addValue("label",label);
+	this->diagram()->project()->addElementAutoNum(formula_name,ncc.next());
+	this->setElementInformations(dc);
+	this->setTaggedText("label", label);
+}
+
+/**
+ * @brief ElementTextItem::setTaggedText
+ * Set text @newstr to the text tagged with @tagg.
+ * If tagg is found return the text item, else return NULL.
+ * @param tagg required tagg
+ * @param newstr new label
+ * @param noeditable set editable or not (by default, set editable)
+ */
+ElementTextItem* Element::setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable) {
+	ElementTextItem *eti = taggedText(tagg);
+	if (eti) {
+		eti -> setPlainText(newstr);
+		eti -> setNoEditable(noeditable);
+	}
+	return eti;
+}
+

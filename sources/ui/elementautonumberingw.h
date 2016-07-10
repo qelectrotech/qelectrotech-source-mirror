@@ -42,23 +42,24 @@ class ElementAutonumberingW : public QWidget
 		~ElementAutonumberingW();
 		QString formula();
 		void setContext(QString);
-
+		void clearContext();
+		Ui::ElementAutonumberingW *ui;
 
 	private:
 
 	// SIGNALS
 	signals:
 		void applyPressed();
+		void textChanged(QString);
 
 	//SLOTS
 	private slots:
-		void on_m_formula_le_textChanged();
-		void on_buttonBox_clicked(QAbstractButton *);
-		void applyEnable (bool = true);
+		void on_m_formula_le_textChanged(QString);
 
 	//ATTRIBUTES
 	private:
-		Ui::ElementAutonumberingW *ui;
+		QString formula_;
+
 };
 
 #endif // ELEMENTAUTONUMBERINGW_H

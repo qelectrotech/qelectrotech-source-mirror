@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include "numerotationcontext.h"
+#include "elementautonumberingw.h"
 
 class NumPartEditorW;
 class QAbstractButton;
@@ -40,6 +41,8 @@ class SelectAutonumW : public QWidget
 
 		void setContext (const NumerotationContext &context);
 		NumerotationContext toNumContext() const;
+		void contextToFormula ();
+		QString elementFormula();
 
 	signals:
 		void applyPressed();
@@ -51,15 +54,15 @@ class SelectAutonumW : public QWidget
 		void on_buttonBox_clicked(QAbstractButton *);
 		void applyEnable (bool = true);
 
-	//ATTRIBUTS
+	//ATTRIBUTES
 		void on_m_next_pb_clicked();
-
 		void on_m_previous_pb_clicked();
 
 	private:
 		Ui::SelectAutonumW *ui;
 		QList <NumPartEditorW *> num_part_list_;
 		NumerotationContext m_context;
+		ElementAutonumberingW *m_eaw;
 };
 
 #endif // SELECTAUTONUMW_H

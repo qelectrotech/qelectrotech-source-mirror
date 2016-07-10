@@ -41,10 +41,10 @@ class NumPartEditorW : public QWidget
 	NumPartEditorW (NumerotationContext &, int, QWidget *parent=0);
 	~NumPartEditorW();
 
-	enum type {unit,ten,hundred,string,idfolio,folio};
+	enum type {unit,ten,hundred,string,idfolio,folio,elementline,elementcolumn,elementprefix};
 	NumerotationContext toNumContext();
 	bool isValid ();
-
+	type type_;
 
 	private slots:
 	void on_type_combo_activated(int);
@@ -58,7 +58,7 @@ class NumPartEditorW : public QWidget
 	private:
 	Ui::NumPartEditorW *ui;
 	QValidator *intValidator;
-	type type_;
+
 
 };
 

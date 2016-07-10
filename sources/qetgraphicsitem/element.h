@@ -118,6 +118,7 @@ class Element : public QetGraphicsItem {
 		QList <QUuid>     tmp_uuids_link;
 		QUuid             uuid_;
 		kind              link_type_;
+		ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
 
 	signals:
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
@@ -133,6 +134,7 @@ class Element : public QetGraphicsItem {
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 		QString assignVariables (QString, Element *);
+		void assignSeq ();
 
 	//ATTRIBUTES
 	protected:

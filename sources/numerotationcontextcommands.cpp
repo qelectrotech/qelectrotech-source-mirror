@@ -112,6 +112,18 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new FolioNum (diagram_);
 		return;
 	}
+	else if (str=="elementline"){
+		strategy_ = new ElementLineNum (diagram_);
+		return;
+	}
+	else if (str=="elementcolumn"){
+		strategy_ = new ElementColumnNum (diagram_);
+		return;
+	}
+	else if (str=="elementprefix"){
+		strategy_ = new ElementPrefixNum (diagram_);
+		return;
+	}
 }
 
 
@@ -356,6 +368,102 @@ NumerotationContext FolioNum::next (const NumerotationContext &nc, const int i) 
  * @return the previous NumerotationContext nc at posiiton i
  */
 NumerotationContext FolioNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * Constructor
+ */
+ElementLineNum::ElementLineNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief ElementLineNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString ElementLineNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%l";
+}
+
+/**
+ * @brief ElementLineNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext ElementLineNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief ElementLineNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext ElementLineNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * Constructor
+ */
+ElementColumnNum::ElementColumnNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief ElementColumnNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString ElementColumnNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%c";
+}
+
+/**
+ * @brief ElementColumnNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext ElementColumnNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief ElementColumnNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext ElementColumnNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * Constructor
+ */
+ElementPrefixNum::ElementPrefixNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief ElementPrefixNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString ElementPrefixNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%prefix";
+}
+
+/**
+ * @brief ElementPrefixNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext ElementPrefixNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief ElementPrefixNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext ElementPrefixNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 
