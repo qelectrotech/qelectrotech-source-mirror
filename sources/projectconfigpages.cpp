@@ -513,7 +513,7 @@ void ProjectAutoNumConfigPage::saveContext_element() {
 	// With the the name "No name"
 	if (m_context_cb_element -> currentText() == tr("Nom de la nouvelle numérotation")) {
 		project_->addElementAutoNum (tr("Sans nom"), m_saw_element -> toNumContext());
-		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->elementFormula()); //add hash <title, formula>
+		project()->addElementAutoNumFormula (tr("Sans nom"), m_saw_element->elementFormula()); //add hash <title, formula>
 		project()->addElementAutoNumCurrentFormula (m_saw_element->elementFormula()); //add last added element formula to current formula
 		m_context_cb_element -> addItem(tr("Sans nom"));
 	}

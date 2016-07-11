@@ -689,7 +689,6 @@ void Element::assignSeq() {
 	QHash <QString,QString> hash = diagram()->project()->elementAutoNum_2();
 	QString formula_name = hash.key(formula);
 	QString label = dc["label"].toString();
-	qDebug() << "Label" << label;
 	NumerotationContext nc = diagram()->project()->elementAutoNum(formula_name);
 	NumerotationContextCommands ncc (nc);
 	if (!nc.isEmpty()) {
@@ -706,7 +705,8 @@ void Element::assignSeq() {
 			int count = 1;
 			for (int i = 0; i < nc.size(); i++) {
 				if (nc.itemAt(i).at(0) == "ten") {
-					label.replace("%seqt_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
+					QString number = QString("%1").arg(nc.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
+					label.replace("%seqt_" + QString::number(count), number);
 					count++;
 				}
 			}
@@ -715,7 +715,8 @@ void Element::assignSeq() {
 			int count = 1;
 			for (int i = 0; i < nc.size(); i++) {
 				if (nc.itemAt(i).at(0) == "hundred") {
-					label.replace("%seqh_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
+					QString number = QString("%1").arg(nc.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
+					label.replace("%seqh_" + QString::number(count), number);
 					count++;
 				}
 			}
