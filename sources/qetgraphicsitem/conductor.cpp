@@ -498,7 +498,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
-			qp -> drawEllipse(QRectF(point.x() - 1, point.y() - 1, 2.0, 2.0));
+			qp -> drawEllipse(QRectF(point.x() - 1, point.y() - 1, 3.0, 3.0));
 		}
 	}
 	qp -> restore();

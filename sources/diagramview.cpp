@@ -606,10 +606,10 @@ switch(e -> key())
 		case Qt::Key_End:
 			current_project->changeLastTab();
 			return;
-        case Qt::Key_ZoomOut:
+		case Qt::Key_ZoomOut:
 			zoom(0.85);
 			return;
-        case Qt::Key_ZoomIn:
+		case Qt::Key_ZoomIn:
 			zoom(1.15);
 			return;
 		case Qt::Key_Up:
