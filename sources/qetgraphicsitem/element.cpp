@@ -403,6 +403,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//uuid of this element
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
+	//load prefix
+	m_prefix = e.attribute("prefix");
+
 	//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 
@@ -438,6 +441,8 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("type", typeId());
 	// uuid
 	element.setAttribute("uuid", uuid().toString());
+	// prefix
+	element.setAttribute("prefix", m_prefix);
 	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));
