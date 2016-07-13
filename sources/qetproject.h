@@ -113,7 +113,7 @@ class QETProject : public QObject
 		void addConductorAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNumFormula (QString key, QString formula);
-		void addElementAutoNumCurrentFormula (QString formula);
+		void setElementAutoNumCurrentFormula (QString formula);
 		void addFolioAutoNum     (QString key, NumerotationContext context);
 		void removeConductorAutoNum (QString key);
 		void removeElementAutoNum (QString key);
@@ -171,6 +171,15 @@ class QETProject : public QObject
 	void reportPropertiesChanged(QString);
 	void XRefPropertiesChanged ();
 	void addAutoNumDiagram();
+	void elementAutoNumAdded();
+	void elementAutoNumRemoved();
+	void conductorAutoNumAdded();
+	void conductorAutoNumRemoved();
+	void folioAutoNumAdded();
+	void folioAutoNumRemoved();
+	void folioAutoNumChanged(QString);
+	void defaultTitleBlockPropertiesChanged();
+	void conductorAutoNumChanged();
 	
 	private slots:
 	void updateDiagramsFolioData();

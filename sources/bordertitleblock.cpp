@@ -260,7 +260,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setTitle(ip.title);
 	setFileName(ip.filename);
 	setFolio(ip.folio);
-    setAutoPageNum(ip.auto_page_num);
+	setAutoPageNum(ip.auto_page_num);
 	if (m_edge != ip.display_at)
 	{
 		m_edge = ip.display_at;
@@ -392,6 +392,15 @@ void BorderTitleBlock::displayBorder(bool db) {
 	bool change = (db != display_border_);
 	display_border_  = db;
 	if (change) emit(displayChanged());
+}
+
+/**
+ * @brief BorderTitleBlock::slot_setAutoPageNum
+ * @param pageAutoNum
+ * Set Page (Folio) Auto Num
+ */
+void BorderTitleBlock::slot_setAutoPageNum(QString pageAutoNum) {
+	btb_auto_page_num_=pageAutoNum;
 }
 
 /**

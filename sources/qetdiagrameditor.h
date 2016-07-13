@@ -32,6 +32,7 @@ class ElementsLocation;
 class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
+class AutoNumberingDockWidget;
 
 /**
 	This class represents the main window of the QElectroTech diagram editor and,
@@ -53,6 +54,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void setUpElementsCollectionWidget();
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
+		void setUpAutonumberingWidget();
 		void setUpActions       ();
 		void setUpToolBar       ();
 		void setUpMenu          ();
@@ -110,6 +112,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void slot_updateComplexActions();
 		void slot_updatePasteAction();
 		void slot_updateWindowsMenu();
+		void slot_updateAutoNumDock();
 		void editSelectionProperties();
 		void slot_resetConductors();
 		void slot_autoConductor(bool ac);
@@ -151,7 +154,7 @@ class QETDiagramEditor : public QETMainWindow {
 	private slots:
 		void selectionChanged();
 		void activeUndoStackCleanChanged (bool clean);
-	
+
 		// attributes
 	public:
 		// Actions reachable through menus within QElectroTech
@@ -226,5 +229,8 @@ class QETDiagramEditor : public QETMainWindow {
 		QToolBar *diagram_bar;
 		QToolBar *m_add_item_toolBar;
 		QUndoGroup undo_group;
+		// AutoNumbering Selection Dock
+		AutoNumberingDockWidget *m_autonumbering_dock;
+		int activeSubWindowIndex;
 };
 #endif

@@ -41,6 +41,7 @@
 #include "diagrameventaddimage.h"
 #include "diagrameventaddtext.h"
 #include "elementscollectionwidget.h"
+#include "autonumberingdockwidget.h"
 
 #include "ui/dialogautonum.h"
 
@@ -66,7 +67,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))
 {
-		//Setup the mdi area at center of application
+	activeSubWindowIndex = 0;
+	//Setup the mdi area at center of application
 	setCentralWidget(&workspace);
 	
 		//Set object name to be retrieved by the stylesheets
@@ -85,6 +87,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpElementsCollectionWidget();
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
+	setUpAutonumberingWidget();
 
 	setUpActions();
 	setUpToolBar();
@@ -203,6 +206,18 @@ void QETDiagramEditor::setUpSelectionPropertiesEditor()
 	m_selection_properties_editor = new DiagramPropertiesEditorDockWidget(this);
 	m_selection_properties_editor -> setObjectName("diagram_properties_editor_dock_widget");
 	addDockWidget(Qt::RightDockWidgetArea, m_selection_properties_editor);
+}
+
+/**
+ * @brief QETDiagramEditor::setUpAutonumberingWidget
+ * Setup the dock for AutoNumbering Selection
+ */
+void QETDiagramEditor::setUpAutonumberingWidget()
+{
+	m_autonumbering_dock = new AutoNumberingDockWidget(this);
+	m_autonumbering_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_autonumbering_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	addDockWidget(Qt::RightDockWidgetArea, m_autonumbering_dock);
 }
 
 /**
@@ -939,6 +954,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// met a jour le panel d'elements
 	if (update_panel) {
 		pa -> elementsPanel().projectWasOpened(project);
+		m_autonumbering_dock->setProject(project, project_view);
 	}
 	
 	return(true);
@@ -1300,6 +1316,20 @@ void QETDiagramEditor::slot_updateActions()
 	slot_updateModeActions();
 	slot_updatePasteAction();
 	slot_updateComplexActions();
+	slot_updateAutoNumDock();
+}
+
+/**
+ * @brief QETDiagramEditor::slot_updateAutoNumDock
+ * Update Auto Num Dock Widget when changing Project
+ */
+void QETDiagramEditor::slot_updateAutoNumDock() {
+	if ( workspace.subWindowList().indexOf(workspace.activeSubWindow()) != activeSubWindowIndex) {
+			activeSubWindowIndex = workspace.subWindowList().indexOf(workspace.activeSubWindow());
+			if (currentProject()!=NULL) {
+				m_autonumbering_dock->setProject(currentProject()->project(),currentProject());
+			}
+	}
 }
 
 /**

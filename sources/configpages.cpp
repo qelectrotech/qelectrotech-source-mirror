@@ -161,6 +161,7 @@ void NewDiagramPage::applyConf() {
 			xrp.toSettings(settings, str += key);
 		}
 	}
+	emit (m_project->defaultTitleBlockPropertiesChanged());
 }
 
 /**

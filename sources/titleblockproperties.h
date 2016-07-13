@@ -43,6 +43,8 @@ class TitleBlockProperties {
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 
+	void setAutoPageNum(QString autonum) {auto_page_num = autonum;}
+
 	static TitleBlockProperties defaultProperties();
 	
 	QDate finalDate() const ;
@@ -53,13 +55,13 @@ class TitleBlockProperties {
 	QDate date;               ///< Date (displayed by the default template)
 	QString filename;         ///< Filename (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
-    QString auto_page_num;
+	QString auto_page_num;
 	DateManagement useDate;   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
 	Qt::Edge display_at;       ///< Edge to display the titleblock
 	QET::QetCollection collection; ///<Specify the location of the title block
-	
+
 	private:
 	QString exportDate() const;
 	void setDateFromString(const QString &);

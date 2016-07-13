@@ -168,6 +168,7 @@ class BorderTitleBlock : public QObject
 	void displayColumns(bool);
 	void displayRows(bool);
 	void displayBorder(bool);
+	void slot_setAutoPageNum (QString);
 	
 	private:
 	void updateRectangles();

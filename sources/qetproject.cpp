@@ -362,6 +362,7 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 		QScopedPointer<IntegrationMoveTitleBlockTemplatesHandler> m(new IntegrationMoveTitleBlockTemplatesHandler);
 		integrateTitleBlockTemplate(collection -> location(titleblock.template_name), m.data());
 	}
+	emit defaultTitleBlockPropertiesChanged();
 }
 
 /**
@@ -472,11 +473,11 @@ void QETProject::addElementAutoNumFormula(QString key, QString formula) {
 }
 
 /**
- * @brief QETProject::addElementAutoNumCurrentFormula
+ * @brief QETProject::setElementAutoNumCurrentFormula
  * Add the formula to the current formula
  * @param formula
  */
-void QETProject::addElementAutoNumCurrentFormula(QString formula) {
+void QETProject::setElementAutoNumCurrentFormula(QString formula) {
 	m_current_element_formula = formula;
 }
 

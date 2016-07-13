@@ -110,6 +110,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		// Conductor autonum name
 		if (m_asw -> text() != diagram -> conductorsAutonumName()) {
 			diagram -> setConductorsAutonumName (m_asw -> text());
+			diagram->project()->conductorAutoNumChanged();
 		}
 	}
 }
