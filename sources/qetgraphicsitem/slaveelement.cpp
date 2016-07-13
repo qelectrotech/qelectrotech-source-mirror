@@ -34,6 +34,7 @@ SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi,
 {
 	Xref_item = nullptr;
 	link_type_ = Slave;
+	connect(this, SIGNAL(updateLabel()), this, SLOT(updateLabel()));
 }
 
 /**
@@ -56,6 +57,7 @@ void SlaveElement::linkToElement(Element *elmt)
 	if (elmt->linkType() == Master && !connected_elements.contains(elmt))
 	{
 		if(!isFree()) unlinkAllElements();
+		this->disconnect();
 		connected_elements << elmt;
 
 		connect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
@@ -125,7 +127,7 @@ void SlaveElement::unlinkElement(Element *elmt)
  */
 void SlaveElement::updateLabel() {
 
-	QString label("_");
+	QString label = this->taggedText("label")->toPlainText();
 	QString Xreflabel;
 	bool no_editable = false;
 
@@ -139,6 +141,7 @@ void SlaveElement::updateLabel() {
 		Xreflabel = assignVariables(Xreflabel, elmt);
 		label = assignVariables(label, elmt);
 	}
+	else label = assignVariables(label, this);
 
 	// set the new label
 	ElementTextItem *eti = setTaggedText("label", label, no_editable);

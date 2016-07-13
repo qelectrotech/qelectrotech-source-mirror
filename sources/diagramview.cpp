@@ -612,6 +612,12 @@ switch(e -> key())
 		case Qt::Key_ZoomIn:
 			zoom(1.15);
 			return;
+		case Qt::Key_Minus:
+			if (e->modifiers() & Qt::ControlModifier)
+				zoom(0.85);
+		case Qt::Key_Plus:
+			if (e->modifiers() & Qt::ControlModifier)
+				zoom(1.15);
 		case Qt::Key_Up:
 			if(!scene->selectedContent().elements.isEmpty()){
 				scrollOnMovement(e);

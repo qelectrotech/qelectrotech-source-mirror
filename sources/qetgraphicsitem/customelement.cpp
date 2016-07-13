@@ -311,12 +311,13 @@ void CustomElement::parseLabels() {
 								//if there is a formula to assign, assign it
 								if (!location().project()->elementAutoNumFormula().isEmpty() && this->linkType()!=Element::Slave) {
 									QString formula = location().project()->elementAutoNumFormula();
-									formula.replace("%prefix", prefix);
+									this->setPrefix(prefix);
 									dc.addValue("label", formula);
 									this->setTaggedText("label",formula);
 								} else { //assign only prefix
-									dc.addValue("label", prefix);
-									this->setTaggedText("label", prefix);
+									this->setPrefix(prefix);
+									dc.addValue("label", "%prefix");
+									this->setTaggedText("label", "%prefix");
 								}
 								this->setElementInformations(dc);
 								return;
@@ -340,7 +341,7 @@ void CustomElement::parseLabels() {
 		QString formula = location().project()->elementAutoNumFormula();
 		DiagramContext &dc = this->rElementInformations();
 		QString prefix = this->taggedText("label")->toPlainText();
-		formula.replace("%prefix", prefix);
+		this->setPrefix(prefix);
 		dc.addValue("label", formula);
 		this->setTaggedText("label",formula);
 		this->setElementInformations(dc);

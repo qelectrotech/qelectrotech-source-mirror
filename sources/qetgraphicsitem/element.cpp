@@ -676,6 +676,9 @@ QString Element::assignVariables(QString label, Element *elmt){
 	label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
 	label.replace("%id", QString::number(elmt->diagram()->folioIndex()+1));
 	label.replace("%total", QString::number(elmt->diagram()->border_and_titleblock.folioTotal()));
+	label.replace("%prefix", elmt->getPrefix());
+	if (label.contains("%prefix"))
+		label.replace("%prefix",this->getPrefix());
 	return label;
 }
 
@@ -745,3 +748,18 @@ ElementTextItem* Element::setTaggedText(const QString &tagg, const QString &news
 	return eti;
 }
 
+/**
+ * @brief Element::getPrefix
+ * get Element Prefix
+ */
+QString Element::getPrefix() {
+	return m_prefix;
+}
+
+/**
+ * @brief Element::setPrefix
+ * set Element Prefix
+ */
+void Element::setPrefix(QString prefix) {
+	m_prefix = prefix;
+}

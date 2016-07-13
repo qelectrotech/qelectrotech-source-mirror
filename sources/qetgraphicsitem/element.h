@@ -135,6 +135,8 @@ class Element : public QetGraphicsItem {
 																									// kind of contact (simple tempo) or number of contact show by the element.
 		QString assignVariables (QString, Element *);
 		void assignSeq ();
+		void setPrefix(QString);
+		QString getPrefix();
 
 	//ATTRIBUTES
 	protected:
@@ -196,6 +198,7 @@ class Element : public QetGraphicsItem {
 
 	private:
 		bool m_mouse_over;
+		QString m_prefix;
 
 };
 
