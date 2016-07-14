@@ -24,6 +24,8 @@
 #include "qetproject.h"
 #include "elementcollectionhandler.h"
 
+#include <QtConcurrent>
+
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
  * Constructor
@@ -210,6 +212,35 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 }
 
 /**
+ * @brief ElementsCollectionModel::loadCollections
+ * Load the several collections in this model.
+ * Prefer use this method instead of addCommonCollection, addCustomCollection and addProject,
+ * because it use multithreading to speed up the loading.
+ * This method emit loadingMaxValue(int) for know the maximum progress value
+ * This method emit loadingProgressValue(int) for know the current progress value
+ * @param common_collection : true for load the common collection
+ * @param custom_collection : true for load the custom collection
+ * @param projects : list of projects to load
+ */
+void ElementsCollectionModel::loadCollections(bool common_collection, bool custom_collection, QList<QETProject *> projects)
+{
+	if (common_collection)
+		addCommonCollection(false);
+	if (custom_collection)
+		addCustomCollection(false);
+
+	foreach (QETProject *project, projects)
+		addProject(project, false);
+
+	QList <ElementCollectionItem *> list = items();
+	QFuture<void> futur = QtConcurrent::map(list, setUpData);
+	emit loadingMaxValue(futur.progressMaximum());
+	while (futur.isRunning()) {
+		emit loadingProgressValue(futur.progressValue());
+	}
+}
+
+/**
  * @brief ElementsCollectionModel::addCommonCollection
  * Add the common elements collection to this model
  */
@@ -305,7 +336,7 @@ void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
 	m_project_hash.insert(project, xpeci);
 
-	xpeci->setProject(project);
+	xpeci->setProject(project, set_data);
 	insertRow(row, xpeci);
 	if (set_data)
 		xpeci->setUpData();

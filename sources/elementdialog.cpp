@@ -87,20 +87,19 @@ void ElementDialog::setUpWidget()
 	m_tree_view = new QTreeView(this);
 
 	m_model = new ElementsCollectionModel(m_tree_view);
+
+	QList <QETProject *> prjs;
+	foreach(QETProject *prj, QETApp::registeredProjects())
+			prjs.append(prj);
+
 	if (m_mode == OpenElement)
-		m_model->addCommonCollection(false);
-	m_model->addCustomCollection(false);
-
-	foreach (QETProject *project, QETApp::registeredProjects())
-		m_model->addProject(project, false);
-
-	QList <ElementCollectionItem *> list = m_model->items();
-	QtConcurrent::blockingMap(list, setUpData);
+		m_model->loadCollections(true, true, prjs);
+	else
+		m_model->loadCollections(false, true, prjs);
 
 	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);
 	layout->addWidget(m_tree_view);
-
 
 	m_buttons_box = new QDialogButtonBox(this);
 

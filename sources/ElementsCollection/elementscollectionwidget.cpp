@@ -35,7 +35,6 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QTimer>
-#include <QtConcurrent>
 
 /**
  * @brief ElementsCollectionWidget::ElementsCollectionWidget
@@ -77,7 +76,14 @@ void ElementsCollectionWidget::expandFirstItems()
  */
 void ElementsCollectionWidget::addProject(QETProject *project) {
 	if (m_model) {
-		m_model->addProject(project);
+		QList <QETProject *> prj; prj.append(project);
+		m_progress_bar->show();
+		connect(m_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
+		connect(m_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
+		m_model->loadCollections(false,false, prj);
+		disconnect(m_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
+		disconnect(m_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
+		m_progress_bar->hide();
 		m_model->highlightUnusedElement();
 	}
 	else
@@ -462,26 +468,21 @@ void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
 	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
-	new_model->addCommonCollection(false);
-	new_model->addCustomCollection(false);
 
-	if (!m_waiting_project.isEmpty()) {
-		foreach(QETProject *prj, m_waiting_project)
-			new_model->addProject(prj, false);
-		m_waiting_project.clear();
-	}
-
+	QList <QETProject *> project_list;
+	project_list.append(m_waiting_project);
+	m_waiting_project.clear();
 	if (m_model)
-		foreach (QETProject *project, m_model->project())
-			new_model->addProject(project, false);
+		project_list.append(m_model->project());
 
-	QList <ElementCollectionItem *> list = new_model->items();
-	QFuture<void> futur = QtConcurrent::map(list, setUpData);
-	m_progress_bar->setMinimum(futur.progressMinimum());
-	m_progress_bar->setMaximum(futur.progressMaximum());
-	while (futur.isRunning()) {
-		m_progress_bar->setValue(futur.progressValue());
-	}
+
+	connect(new_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
+	connect(new_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
+
+	new_model->loadCollections(true, true, project_list);
+
+	disconnect(new_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
+	disconnect(new_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
 
 	new_model->highlightUnusedElement();
 	m_tree_view->setModel(new_model);

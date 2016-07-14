@@ -41,6 +41,8 @@ class ElementsCollectionModel : public QStandardItemModel
 		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const;
 		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
 
+		void loadCollections(bool common_collection, bool custom_collection, QList<QETProject *> projects);
+
 		void addCommonCollection(bool set_data = true);
 		void addCustomCollection(bool set_data = true);
 		void addLocation(ElementsLocation location);
@@ -55,6 +57,10 @@ class ElementsCollectionModel : public QStandardItemModel
 		void hideElement();
 		bool isHideElement() {return m_hide_element;}
 		QModelIndex indexFromLocation(const ElementsLocation &location);
+
+	signals:
+		void loadingMaxValue(int);
+		void loadingProgressValue(int);
 
 	private:
 		void elementIntegratedToCollection (QString path);
