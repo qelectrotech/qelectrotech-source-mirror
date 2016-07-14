@@ -148,6 +148,7 @@ void AutoNumberingDockWidget::setActive() {
 	ui->m_conductor_cb->setCurrentIndex(conductor_index);
 
 	//Element
+	QString current_element_autonum = project_->elementCurrentAutoNum();
 	QString element_formula = project_->elementAutoNumFormula();
 	QString active_element_autonum = project_->elementAutoNum_2().key(element_formula);
 	int el_index = ui->m_element_cb->findText(active_element_autonum);
@@ -209,9 +210,10 @@ void AutoNumberingDockWidget::elementAutoNumChanged() {
  */
 void AutoNumberingDockWidget::on_m_element_cb_activated(int) {
 	QString current_autonum = ui->m_element_cb->currentText();
-	QString current_formula = project_->elementAutoNumFormula(current_autonum);
-	if (current_formula!=NULL)
-		project_->setElementAutoNumCurrentFormula(current_formula);
+	QString current_formula = project_->elementAutoNumFormula();
+	if (current_formula!=NULL) {
+		project_->setElementAutoNumCurrentFormula(current_formula, current_autonum);
+	}
 }
 
 /**

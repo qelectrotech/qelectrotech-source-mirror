@@ -202,6 +202,14 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
+ * @brief SelectAutonumW::applyEnableOnContextChanged
+ * enable/disable the apply button after changing the autonum name
+ */
+void SelectAutonumW::applyEnableOnContextChanged(QString) {
+	applyEnable(true);
+}
+
+/**
  * @brief SelectAutonumW::applyEnable
  * enable/disable the apply button
  */

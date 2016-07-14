@@ -113,7 +113,7 @@ class QETProject : public QObject
 		void addConductorAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNumFormula (QString key, QString formula);
-		void setElementAutoNumCurrentFormula (QString formula);
+		void setElementAutoNumCurrentFormula (QString formula, QString title);
 		void addFolioAutoNum     (QString key, NumerotationContext context);
 		void removeConductorAutoNum (QString key);
 		void removeElementAutoNum (QString key);
@@ -123,6 +123,7 @@ class QETProject : public QObject
 		NumerotationContext elementAutoNum(const QString &key)   const;
 		QString elementAutoNumFormula(const QString key) const; //returns Formula
 		QString elementAutoNumFormula() const;
+		QString elementCurrentAutoNum () const;
 
 		bool autoConductor () const;
 		bool autoElement () const;
@@ -244,6 +245,7 @@ class QETProject : public QObject
 	QHash <QString, QString> m_element_autonum_formula; //Title and Formula hash
 	QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 	QString m_current_element_formula;
+	QString m_current_element_autonum;
 	/// Folio List Sheets quantity for this project.
 	int folioSheetsQuantity;
 	bool m_auto_conductor;

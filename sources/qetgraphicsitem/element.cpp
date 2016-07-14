@@ -406,11 +406,32 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//load prefix
 	m_prefix = e.attribute("prefix");
 
+	//Load Unit Sequential Values
+	int i = 0;
+	while (!e.attribute("sequ_" + QString::number(i+1)).isEmpty()) {
+			seq_unit.append(e.attribute("sequ_" + QString::number(i+1)));
+			i++;
+	}
+
+	//Load Ten Sequential Values
+	i = 0;
+	while (!e.attribute("seqt_" + QString::number(i+1)).isEmpty()) {
+			seq_ten.append(e.attribute("seqt_" + QString::number(i+1)));
+			i++;
+	}
+
+	//Load Hundred Sequential Values
+	i = 0;
+	while (!e.attribute("seqh_" + QString::number(i+1)).isEmpty()) {
+			seq_hundred.append(e.attribute("seqh_" + QString::number(i+1)));
+			i++;
+	}
+
 	//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 
-		//Position and selection.
-		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
+	//Position and selection.
+	//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
 	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	
@@ -443,6 +464,21 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("uuid", uuid().toString());
 	// prefix
 	element.setAttribute("prefix", m_prefix);
+
+	//Save Unit Sequential Values
+	for (int i = 0; i < seq_unit.size(); i++) {
+			element.setAttribute("sequ_" + QString::number(i+1),seq_unit.at(i));
+	}
+
+	//Save Ten Sequential Values
+	for (int i = 0; i < seq_ten.size(); i++) {
+			element.setAttribute("seqt_" + QString::number(i+1),seq_ten.at(i));
+	}
+
+	//Save Hundred Sequential Values
+	for (int i = 0; i < seq_hundred.size(); i++) {
+			element.setAttribute("seqh_" + QString::number(i+1),seq_hundred.at(i));
+	}
 	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));
@@ -684,56 +720,71 @@ QString Element::assignVariables(QString label, Element *elmt){
 	label.replace("%prefix", elmt->getPrefix());
 	if (label.contains("%prefix"))
 		label.replace("%prefix",this->getPrefix());
+	label = assignSeq(label);
 	return label;
 }
 
 /**
- * @brief Element::assignSeq()
- * Assign sequential values to element label
+ * @brief Element::setSeq()
+ * Set sequential values to element
  */
-void Element::assignSeq() {
+void Element::setSeq() {
 	DiagramContext &dc = this->rElementInformations();
+	QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
 	QString formula = diagram()->project()->elementAutoNumFormula();
-	QHash <QString,QString> hash = diagram()->project()->elementAutoNum_2();
-	QString formula_name = hash.key(formula);
 	QString label = dc["label"].toString();
-	NumerotationContext nc = diagram()->project()->elementAutoNum(formula_name);
+	NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
 	NumerotationContextCommands ncc (nc);
 	if (!nc.isEmpty()) {
+		//Unit Format
 		if (label.contains("%sequ_")) {
-			int count = 1;
 			for (int i = 0; i < nc.size(); i++) {
 				if (nc.itemAt(i).at(0) == "unit") {
-					label.replace("%sequ_" + QString::number(count), QString::number(nc.itemAt(i).at(1).toInt()));
-					count++;
+					seq_unit.append(QString::number(nc.itemAt(i).at(1).toInt()));
 				}
 			}
 		}
+		//Ten Format
 		if (label.contains("%seqt_")) {
-			int count = 1;
 			for (int i = 0; i < nc.size(); i++) {
 				if (nc.itemAt(i).at(0) == "ten") {
-					QString number = QString("%1").arg(nc.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-					label.replace("%seqt_" + QString::number(count), number);
-					count++;
+					QString number = QString ("%1").arg(nc.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
+					seq_ten.append(number);
 				}
 			}
 		}
+		//Hundred Format
 		if (label.contains("%seqh_")) {
-			int count = 1;
 			for (int i = 0; i < nc.size(); i++) {
 				if (nc.itemAt(i).at(0) == "hundred") {
-					QString number = QString("%1").arg(nc.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-					label.replace("%seqh_" + QString::number(count), number);
-					count++;
+					QString number = QString ("%1").arg(nc.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
+					seq_hundred.append(number);
 				}
 			}
 		}
 	}
-	dc.addValue("label",label);
-	this->diagram()->project()->addElementAutoNum(formula_name,ncc.next());
-	this->setElementInformations(dc);
-	this->setTaggedText("label", label);
+	this->diagram()->project()->addElementAutoNum(element_currentAutoNum,ncc.next());
+}
+
+/**
+ * @brief Element::assignSeq
+ * Replace sequential values to element label
+ * @param label to be replaced
+ * @return replaced label
+ */
+QString Element::assignSeq(QString label) {
+	for (int i = 1; i <= qMax(seq_unit.size(),qMax(seq_hundred.size(),seq_ten.size())); i++) {
+		if (label.contains("%sequ_" + QString::number(i))) {
+			label.replace("%sequ_" + QString::number(i),seq_unit.at(i-1));
+		}
+		if (label.contains("%seqt_" + QString::number(i))) {
+			label.replace("%seqt_" + QString::number(i),seq_ten.at(i-1));
+		}
+		if (label.contains("%seqh_" + QString::number(i))) {
+			label.replace("%seqh_" + QString::number(i),seq_hundred.at(i-1));
+		}
+	}
+	return label;
 }
 
 /**

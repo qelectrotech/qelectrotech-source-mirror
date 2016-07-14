@@ -233,6 +233,6 @@ void DiagramEventAddElement::addElement()
 		can.numerate();
 	};
 	m_diagram -> undoStack().push(undo_object);
-	element->assignSeq();
+	element->setSeq();
 	element->updateLabel();
 }

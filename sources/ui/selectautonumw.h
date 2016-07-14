@@ -48,6 +48,9 @@ class SelectAutonumW : public QWidget
 		void applyPressed();
 
 	//SLOT
+	public slots:
+		void applyEnableOnContextChanged(QString);
+
 	private slots:
 		void on_add_button_clicked();
 		void on_remove_button_clicked();

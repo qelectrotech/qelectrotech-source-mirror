@@ -134,7 +134,8 @@ class Element : public QetGraphicsItem {
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 		QString assignVariables (QString, Element *);
-		void assignSeq ();
+		QString assignSeq (QString);
+		void setSeq ();
 		void setPrefix(QString);
 		QString getPrefix();
 
@@ -199,6 +200,9 @@ class Element : public QetGraphicsItem {
 	private:
 		bool m_mouse_over;
 		QString m_prefix;
+		QStringList seq_unit;
+		QStringList seq_ten;
+		QStringList seq_hundred;
 
 };
 

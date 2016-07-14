@@ -445,6 +445,14 @@ QString QETProject::elementAutoNumFormula () const {
 }
 
 /**
+ * @brief QETProject::elementCurrentAutoNum
+ * @return current element autonum title
+ */
+QString QETProject::elementCurrentAutoNum () const {
+	return m_current_element_autonum;
+}
+
+/**
  * @brief QETProject::folioAutoNum
  * @return All value of folio autonum stored in project
  */
@@ -474,13 +482,14 @@ void QETProject::addElementAutoNumFormula(QString key, QString formula) {
 
 /**
  * @brief QETProject::setElementAutoNumCurrentFormula
- * Add the formula to the current formula
+ * Add the formula and title to the current formula and current autonum
  * @param formula
+ * @param title
  */
-void QETProject::setElementAutoNumCurrentFormula(QString formula) {
+void QETProject::setElementAutoNumCurrentFormula(QString formula, QString title) {
 	m_current_element_formula = formula;
+	m_current_element_autonum = title;
 }
-
 
 /**
  * @brief QETProject::addElementAutoNum
@@ -1321,6 +1330,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	}
 	if (!element_autonums.isNull())
 	{
+		m_current_element_autonum = element_autonums.attribute("current_autonum");
 		m_current_element_formula = element_autonums.attribute("current_formula");
 		foreach (QDomElement elmt, QET::findInDomElement(element_autonums, "element_autonum"))
 		{
@@ -1402,6 +1412,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 
 	//Export Element Autonums
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
+	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("current_formula", m_current_element_formula);
 	foreach (QString key, elementAutoNum().keys()) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");

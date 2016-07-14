@@ -411,16 +411,19 @@ void ProjectAutoNumConfigPage::buildConnections() {
 	connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 
 	//Conductor Tab
+	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  m_saw_conductor, SLOT(applyEnableOnContextChanged(QString)));
 	connect (m_context_cb_conductor, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_conductor(QString)));
 	connect (m_saw_conductor,        SIGNAL (applyPressed()),               this, SLOT (saveContext_conductor()));
 	connect (m_remove_pb_conductor,  SIGNAL (clicked()),                    this, SLOT (removeContext_conductor()));
 
 	//Element Tab
+	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  m_saw_element, SLOT(applyEnableOnContextChanged(QString)));
 	connect (m_context_cb_element, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_element(QString)));
 	connect (m_saw_element,        SIGNAL (applyPressed()),               this, SLOT (saveContext_element()));
 	connect (m_remove_pb_element,  SIGNAL (clicked()),                    this, SLOT (removeContext_element()));
 
 	//Folio Tab
+	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  m_saw_folio, SLOT(applyEnableOnContextChanged(QString)));
 	connect (m_context_cb_folio, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_folio(QString)));
 	connect (m_saw_folio,        SIGNAL (applyPressed()),               this, SLOT (saveContext_folio()));
 	connect (m_remove_pb_folio,  SIGNAL (clicked()),                    this, SLOT (removeContext_folio()));
@@ -516,21 +519,21 @@ void ProjectAutoNumConfigPage::saveContext_element() {
 	if (m_context_cb_element -> currentText() == tr("Nom de la nouvelle numérotation")) {
 		project_->addElementAutoNum (tr("Sans nom"), m_saw_element -> toNumContext());
 		project()->addElementAutoNumFormula (tr("Sans nom"), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula()); //add last added element formula to current formula
+		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(),tr("Sans nom")); //add last added element formula to current formula
 		m_context_cb_element -> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
 	else if ( !project_ -> elementAutoNum().keys().contains( m_context_cb_element->currentText())) {
 		project()->addElementAutoNum(m_context_cb_element->currentText(), m_saw_element->toNumContext()); //add hash <title, numcontext>
 		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula()); //add last added element formula to current formula
+		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(),m_context_cb_element->currentText()); //add last added element formula to current formula
 		m_context_cb_element -> addItem(m_context_cb_element->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
 	else {
 		project_->addElementAutoNum (m_context_cb_element -> currentText(), m_saw_element -> toNumContext()); //add hash <title, numcontext>
 		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula()); //add last added element formula to current formula
+		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(), m_context_cb_element->currentText()); //add last added element formula to current formula
 	}
 	project()->elementAutoNumAdded();
 }
