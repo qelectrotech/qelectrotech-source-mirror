@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ar_SA">
+<TS version="2.0" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -42,7 +42,7 @@
         <location filename="../sources/aboutqet.cpp" line="45"/>
         <source>&amp;Version</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;نسخة</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="46"/>
@@ -159,12 +159,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished"></translation>
+        <translation>الترجمة الدنماركية</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>الترجمة البرازيلية</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -212,7 +212,7 @@
         <location filename="../sources/aboutqet.cpp" line="98"/>
         <source>2006-2016 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2015 مُصممو برنامج QElectrotech {2006-2016 ?}</translation>
+        <translation>2006-2016 مُصممو برنامج QElectrotech </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="186"/>
@@ -965,28 +965,28 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">العنوان</translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">علامة</translation>
+        <translation>علامة</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم المجلّد الجديد</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">اسم العنصر الجديد</translation>
+        <translation>اسم العنصر الجديد</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>يُمكنك تحديد عنصر أو صنف باسم العنصر.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1423,13 +1423,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>البند ليس بصنف</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>البند المطلوب ليس بصنف . ترك .</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -2149,53 +2149,53 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>خيارات الترقيم</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحات جديدة</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>إلى</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>من</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>إحداث صفحات جديدة</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>ترقيم آلي للصفحات المُحدّدة</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>ترقيم آلي للصفحة :</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>صفحة ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2212,7 +2212,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
+- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
+يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
+- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
+- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
+- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
+إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
+
+-الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
+حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
+</translation>
     </message>
 </context>
 <context>
@@ -2302,7 +2312,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>البرازيلي</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2504,32 +2514,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">إدماج عنصر</translation>
+        <translation>إدماج عنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">أُدمج العنصر في المشروع.غير أنّ النسخة التي تـُحاول وضعها تبدو مُختلفة. ماذا تُريد فعله ؟</translation>
+        <translation>أُدمج العنصر في المشروع.غير أنّ النسخة التي تـُحاول وضعها تبدو مُختلفة. ماذا تُريد فعله ؟</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم العنصر الذي أُدمج</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">دمج العنصر الذي تمّ إيداعه</translation>
+        <translation>دمج العنصر الذي تمّ إيداعه</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>سحق العنصر الذي تمّ إدماجه</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">عقد العنصرين</translation>
+        <translation>عقد العنصرين</translation>
     </message>
 </context>
 <context>
@@ -2636,7 +2646,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="232"/>
         <source>Nouveau nom :</source>
-        <translation type="unfinished">اسم جديد</translation>
+        <translation>اسم جديد:</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -3026,7 +3036,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>عنصر يحمل نفس الإسم موجود فعلا</translation>
     </message>
 </context>
 <context>
@@ -3064,7 +3074,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="61"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة</translation>
     </message>
 </context>
 <context>
@@ -3222,17 +3232,17 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="300"/>
         <source>Conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>موصل</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="316"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="332"/>
         <source>Folio Auto Numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="416"/>
@@ -6131,11 +6141,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6492,7 +6497,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة صفحة</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6656,7 +6661,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation>اسم جديد</translation>
+        <translation>اسم جديد :</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
@@ -6704,7 +6709,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>يُمكنك تعريف علامة خاصة للإحالة على صفحة
+إنشاء النصّ الخاص بك باستخدام المُتغيّرات التالية
+%f : رقم الصفحة 
+%F: علامة الصفحة
+%l : رقم السطر
+%c : رقم العمود</translation>
     </message>
 </context>
 <context>
@@ -6758,7 +6768,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/ui/selectautonumw.cpp" line="135"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>صفحة ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
@@ -6775,13 +6785,23 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
+- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
+يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
+- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
+- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
+- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
+إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
+
+-الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
+حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="153"/>
         <source>Conductor Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>موصل ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="154"/>
@@ -6803,7 +6823,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
+- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
+يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
+- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
+
+- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
+- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
+إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
+
+-الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
+حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
+
+الصنف &quot;  رقم الصغحة &quot; يُمثّل رقم الصفحة الحالية.
+الحقول الأخرى غير مستخدمة.
+
+الصنف &quot; صفحة &quot; يُمثّل إسم الصفحة الحالية.
+الحقول الأخرى غير مستخدمة.</translation>
     </message>
 </context>
 <context>
@@ -7572,7 +7608,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="288"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="406"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>إنشاء صفحة ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7605,7 +7641,10 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>المتغبرات التالية مستخدمة في حقل &quot; صفحة &quot;
+-%id . ترقيم الصفحة الحالية في المشروع
+-%مجموع  .العدد الكلّي لصفحات المشروع
+-%ترقيم آلي  .صفحة بترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -7695,7 +7734,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
         <source>Page Num:</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة ترقيم :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="343"/>
@@ -8224,27 +8263,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="78"/>
         <source>Label des références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة المراجع المتقاطعة</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>Maitre</source>
-        <translation type="unfinished"></translation>
+        <translation>قائد</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="108"/>
         <source>%f-%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Esclave</source>
-        <translation type="unfinished">مُنقاد</translation>
+        <translation>مُنقاد</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>(%f-%l%c)</source>
-        <translation type="unfinished"></translation>
+        <translation>%f-%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -8253,7 +8292,11 @@ Longueur maximale : %2px
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>انشئ نصك الخاص باستخدام المتغيرات التالية 
+-%f : رقم الصفحة
+-%F:علامة الصفحة
+-%l: رقم السطر
+-%C:رقم العمود </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
