@@ -125,9 +125,11 @@ void SlaveElement::unlinkElement(Element *elmt)
  * the label show the string tagged by "label" of the master
  * and add a qgraphicstextitem for show the position of the master
  */
-void SlaveElement::updateLabel() {
-
-	QString label = this->taggedText("label")->toPlainText();
+void SlaveElement::updateLabel()
+{
+	QString label;
+	if (ElementTextItem *eti = this->taggedText("label"))
+		label = eti->toPlainText();
 	QString Xreflabel;
 	bool no_editable = false;
 
