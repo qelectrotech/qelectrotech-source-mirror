@@ -34,6 +34,8 @@
 #include "terminal.h"
 #include "elementtextsmover.h"
 #include "diagrameventinterface.h"
+#include "qetapp.h"
+#include "elementcollectionhandler.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -466,6 +468,12 @@ QDomDocument Diagram::toXml(bool whole_content) {
 			racine.setAttribute("conductorAutonum", m_conductors_autonum_name);
 		}
 	}
+	else {
+			//this method with whole_content to false,
+			//is often use to copy and paste the current selection
+			//so we add the id of the project where copy occur.
+		racine.setAttribute("projectId", QETApp::projectId(m_project));
+	}
 	document.appendChild(racine);
 	
 	// si le schema ne contient pas d'element (et donc pas de conducteurs), on retourne de suite le document XML
@@ -659,7 +667,28 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		project_qet_version != -1 && project_qet_version < 0.3 &&
 		m_project -> state() == QETProject::ProjectParsingRunning
 	);
-	
+
+		//If paste from another project
+	if (root.hasAttribute("projectId")) {
+		QETProject *other_project = QETApp::project(root.attribute("projectId", "-1").toInt());
+
+			//We try to paste from another project, then befor paste elements,
+			//we must to import the definition of the pasted elements (owned by other project)
+			//in the embedded collection of this project
+		if (other_project && other_project != m_project) {
+			ElementCollectionHandler ech;
+			foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) {
+				if (!Element::valideXml(element_xml)) continue;
+
+				QString type_id = element_xml.attribute("type");
+
+				if (type_id.startsWith("embed://")) {
+					ElementsLocation location(type_id, other_project);
+					ech.importFromProject(m_project, location);
+				}
+			}
+		}
+	}
 		//Load all elements from the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;

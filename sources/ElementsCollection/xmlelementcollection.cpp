@@ -657,10 +657,10 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 
 		//Remove the previous directory with the same path
 	QDomElement element = child(destination.collectionPath(false) + "/" + new_dir_name);
-	if (!element.isNull())
+	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
-
-
+		emit directoryRemoved(destination.collectionPath(false) + "/" + new_dir_name);
+	}
 
 	ElementsLocation created_location;
 
@@ -703,7 +703,15 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 	{
 		if (!source.projectCollection()) return ElementsLocation();
 
-		QDomNode other_collection_node = source.projectCollection()->child(source.collectionPath(false)).cloneNode(true);
+		QDomNode other_collection_node = source.projectCollection()->child(source.collectionPath(false)).cloneNode(deep_copy);
+
+			//We don't make a deep copy, but we must to get the local names of the copied directory
+		if (!deep_copy) {
+			QDomNode names = source.projectCollection()->child(source.collectionPath(false)).namedItem("names");
+			if (!names.isNull() && names.isElement())
+				other_collection_node.appendChild(names.cloneNode(true));
+		}
+
 		if (other_collection_node.isNull()) return ElementsLocation();
 
 		QDomElement other_collection_dom_dir = other_collection_node.toElement();
@@ -713,6 +721,7 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 		created_location.setPath(destination.projectCollectionPath() + "/" + new_dir_name);
 	}
 
+	emit directorieAdded(created_location.collectionPath(false));
 	return created_location;
 }
 

@@ -92,6 +92,7 @@ class ElementCollectionHandler
 
 		ElementsLocation copy(ElementsLocation &source, ElementsLocation &destination);
 		ElementsLocation createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list);
+		bool importFromProject (QETProject *project, ElementsLocation &location);
 		bool setNames(ElementsLocation &location, const NamesList &name_list);
 
     private:

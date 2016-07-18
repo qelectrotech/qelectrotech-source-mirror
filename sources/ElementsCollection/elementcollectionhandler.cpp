@@ -18,6 +18,7 @@
 #include "elementcollectionhandler.h"
 #include "renamedialog.h"
 #include "xmlelementcollection.h"
+#include "qetproject.h"
 #include "qetxml.h"
 #include <QFile>
 #include <QDir>
@@ -358,6 +359,49 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 	}
 
 	return ElementsLocation();
+}
+
+/**
+ * @brief ElementCollectionHandler::importFromProject
+ * Import the element represented by @location to the embedded collection of @project at the same path.
+ * @location must represente an element owned by a project embedded collection
+ * @param project : project where copy the element
+ * @param location : location to copy
+ * @return true if import with success
+ */
+bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLocation &location)
+{
+	if (!(location.isElement() && location.exist() && location.isProject())) return false;
+
+	ElementsLocation destination(location.collectionPath(false), project);
+	if (destination.exist()) return true;
+
+	QList <QString> names;
+
+		//Get the parent of location and find if exist in embedded collection of project
+	ElementsLocation source = location.parent();
+	names.append(location.fileName());
+
+	destination = ElementsLocation(source.collectionPath(), project);
+
+		//Go back until to find an existing directory in destination
+	while (!destination.exist()) {
+		names.append(source.fileName());
+		source = source.parent();
+		destination = ElementsLocation(source.collectionPath(), project);
+	}
+
+	XmlElementCollection *collection = project->embeddedElementCollection();
+
+	while (!names.isEmpty()) {
+		source.addToPath(names.takeLast());
+		destination = collection->copy(source, destination, QString(), false);
+
+		if (!destination.exist())
+			return false;
+	}
+
+	return true;
 }
 
 /**
