@@ -1416,9 +1416,11 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	element_autonums.setAttribute("current_formula", m_current_element_formula);
 	foreach (QString key, elementAutoNum().keys()) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
-		element_autonum.setAttribute("title", key);
-		element_autonum.setAttribute("formula", elementAutoNumFormula(key));
-		element_autonums.appendChild(element_autonum);
+		if (key != "" && elementAutoNumFormula(key) != "") {
+			element_autonum.setAttribute("title", key);
+			element_autonum.setAttribute("formula", elementAutoNumFormula(key));
+			element_autonums.appendChild(element_autonum);
+		}
 	}
 	xml_element.appendChild(element_autonums);
 }

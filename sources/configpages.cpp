@@ -114,6 +114,7 @@ void NewDiagramPage::applyConf() {
 		if (m_project -> defaultTitleBlockProperties() != new_tbt_prop) {
 			m_project -> setDefaultTitleBlockProperties(ipw -> properties());
 			modified_project = true;
+			emit (m_project->defaultTitleBlockPropertiesChanged());
 		}
 
 		ConductorProperties new_conductor_prop = cpw -> properties();
@@ -161,7 +162,7 @@ void NewDiagramPage::applyConf() {
 			xrp.toSettings(settings, str += key);
 		}
 	}
-	emit (m_project->defaultTitleBlockPropertiesChanged());
+
 }
 
 /**
