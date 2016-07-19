@@ -21,7 +21,6 @@
 #include "qetmainwindow.h"
 #include "qet.h"
 #include "elementscene.h"
-#include "orientationset.h"
 #include "elementslocation.h"
 
 
@@ -94,7 +93,6 @@ class QETElementEditor : public QETMainWindow {
 	// methods
 	public:
 	void setNames(const NamesList &);
-	OrientationSet orientations() const;
 	void setLocation(const ElementsLocation &);
 	ElementsLocation location() const;
 	void setFileName(const QString &);
