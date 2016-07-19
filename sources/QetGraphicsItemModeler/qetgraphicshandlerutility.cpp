@@ -24,8 +24,7 @@
  * @param size : the size of the handler
  */
 QetGraphicsHandlerUtility::QetGraphicsHandlerUtility(qreal size) :
-	m_size (size),
-	m_zoom_factor(1)
+	m_size (size)
 {}
 
 /**
@@ -34,19 +33,15 @@ QetGraphicsHandlerUtility::QetGraphicsHandlerUtility(qreal size) :
  * @param painter : painter to use for drawing the handler
  * @param point : point to draw the handler
  */
-void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point, bool color2)
+void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point)
 {
-		//Color of handler
-	QColor inner(0xFF, 0xFF, 0xFF);
-	QColor outer(0x00, 0x61, 0xFF);
-	if(color2) outer = QColor(0x1A, 0x5C, 0x14);
 		//Setup the zoom factor to draw the handler in the same size at screen,
 		//no matter the zoom of the QPainter
 	m_zoom_factor = 1.0/painter->transform().m11();
 
 	painter->save();
-	painter->setBrush(QBrush(inner));
-	QPen square_pen(QBrush(outer), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+	painter->setBrush(QBrush(m_inner_color));
+	QPen square_pen(QBrush(m_outer_color), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
 	square_pen.setCosmetic(true);
 	painter->setPen(square_pen);
 	painter->drawRect(getRect(point));
@@ -55,14 +50,14 @@ void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &po
 
 /**
  * @brief QetGraphicsHandlerUtility::drawHandler
- * Conveniance method for void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point, bool color2)
+ * Conveniance method for void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point)
  * @param painter
  * @param points
  * @param color2
  */
-void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QVector<QPointF> &points, bool color2) {
+void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QVector<QPointF> &points) {
 	foreach(QPointF point, points)
-		drawHandler(painter, point, color2);
+		drawHandler(painter, point);
 }
 
 /**
@@ -105,6 +100,14 @@ QVector<QRectF> QetGraphicsHandlerUtility::handlerRect(const QVector<QPointF> &v
 		rect_vector << getRect(point);
 
 	return rect_vector;
+}
+
+void QetGraphicsHandlerUtility::setInnerColor(QColor color) {
+	m_inner_color = color;
+}
+
+void QetGraphicsHandlerUtility::setOuterColor(QColor color) {
+	m_outer_color = color;
 }
 
 /**
@@ -189,6 +192,64 @@ QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, cons
 	else if (index == 6) rect.setBottom(pos.y());
 	else if (index == 7) rect.setBottomRight(pos);
 
+	return rect;
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::mirrorRectForPosAtIndex
+ * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
+ * the opposite edge is modified inversely (like a mirror)
+ * @param old_rect : the rectangle befor modification
+ * @param pos : the new position of a key point
+ * @param index : the index of the key point to modifie see QetGraphicsHandlerUtility::pointsForRect to know
+ * the index of each keys points of a rectangle)
+ * @return : the rectangle with modification. If index is lower than 0 or higher than 7, this method return old_rect.
+ */
+QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
+{
+	if (index < 0 || index > 7) return old_rect;
+
+	QRectF rect = old_rect;
+	QPointF center = rect.center();
+
+	if (index == 0) {
+		qreal x = pos.x() + (pos.x() - rect.topLeft().x());
+		qreal y = pos.y() + (pos.y() - rect.topLeft().y());
+		rect.setTopLeft(QPointF(x,y));
+	}
+	else if (index == 1) {
+		qreal y = pos.y() + (pos.y() - rect.topLeft().y());
+		rect.setTop(y);
+	}
+	else if (index == 2) {
+		qreal x = pos.x() + (pos.x() - rect.topRight().x());
+		qreal y = pos.y() + (pos.y() - rect.topLeft().y());
+		rect.setTopRight(QPointF(x,y));
+	}
+	else if (index == 3) {
+		qreal x = pos.x() + (pos.x() - rect.left());
+		rect.setLeft(x);
+	}
+	else if (index == 4) {
+		qreal x = pos.x() + (pos.x() - rect.right());
+		rect.setRight(x);
+	}
+	else if (index == 5) {
+		qreal x = pos.x() + (pos.x() - rect.bottomLeft().x());
+		qreal y = pos.y() + (pos.y() - rect.bottomLeft().y());
+		rect.setBottomLeft(QPointF(x,y));
+	}
+	else if (index == 6) {
+		qreal y = pos.y() + (pos.y() - rect.bottom());
+		rect.setBottom(y);
+	}
+	else if (index == 7) {
+		qreal x = pos.x() + (pos.x() - rect.bottomRight().x());
+		qreal y = pos.y() + (pos.y() - rect.bottomRight().y());
+		rect.setBottomRight(QPointF(x,y));
+	}
+
+	rect.moveCenter(center);
 	return rect;
 }
 

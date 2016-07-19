@@ -102,6 +102,9 @@ class QetShapeItem : public QetGraphicsItem
 		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 
+	private:
+		void switchResizeMode();
+
 		///ATTRIBUTES
 	private:
 		ShapeType	 m_shapeType;
@@ -114,5 +117,6 @@ class QetShapeItem : public QetGraphicsItem
 		int			 m_vector_index;
 		QetGraphicsHandlerUtility m_handler;
 		bool m_close = false;
+		int m_resize_mode = 1;
 };
 #endif // QETSHAPEITEM_H

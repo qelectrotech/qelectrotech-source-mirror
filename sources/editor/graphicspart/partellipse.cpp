@@ -227,7 +227,11 @@ void PartEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	{
 		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
 		prepareGeometryChange();
-		setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
+
+		if (m_resize_mode == 1)
+			setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
+		else
+			setRect(m_handler.mirrorRectForPosAtIndex(m_rect, pos_, m_handler_index));
 	}
 	else
 		CustomElementGraphicPart::mouseMoveEvent(event);
@@ -240,8 +244,11 @@ void PartEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton)
+	if (event->button() == Qt::LeftButton) {
 		setCursor(Qt::OpenHandCursor);
+		if (event->buttonDownPos(Qt::LeftButton) == event->pos())
+			switchResizeMode();
+	}
 
 	if (m_handler_index >= 0 && m_handler_index <= 7)
 	{
@@ -255,4 +262,17 @@ void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 	else
 		CustomElementGraphicPart::mouseReleaseEvent(event);
+}
+
+void PartEllipse::switchResizeMode()
+{
+	if (m_resize_mode == 1) {
+		m_resize_mode = 2;
+		m_handler.setOuterColor(Qt::darkGreen);
+	}
+	else {
+		m_resize_mode = 1;
+		m_handler.setOuterColor(Qt::blue);
+	}
+	update();
 }

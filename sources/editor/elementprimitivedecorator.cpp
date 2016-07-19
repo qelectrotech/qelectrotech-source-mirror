@@ -21,11 +21,9 @@
 #include "editorcommands.h"
 #include "qet.h"
 #include <QPainter>
-#include <QDebug>
 #include <QGraphicsSceneHoverEvent>
 #include <QStyleOptionGraphicsItem>
 #include <QGraphicsScene>
-#include <QTransform>
 
 /**
 	Constructor
@@ -36,6 +34,7 @@ ElementPrimitiveDecorator::ElementPrimitiveDecorator(QGraphicsItem *parent):
 	m_handler(10)
 {
 	init();
+	m_handler.setOuterColor(Qt::darkGreen);
 }
 
 /**
@@ -97,8 +96,9 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 	pen.setCosmetic(true);
 	painter -> setPen(pen);
 	painter -> drawRect(modified_bounding_rect_);
+
 		//Draw the handlers
-	m_handler.drawHandler(painter, getResizingsPoints(), decorated_items_.size()-1);
+	m_handler.drawHandler(painter, getResizingsPoints());
 	
 	// uncomment to draw the real bouding rect (=adjusted internal bounding rect)
 	// painter -> setBrush(QBrush(QColor(240, 0, 0, 127)));

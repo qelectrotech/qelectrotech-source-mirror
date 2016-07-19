@@ -67,8 +67,12 @@ class PartEllipse : public  AbstractPartEllipse
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 	private:
+		void switchResizeMode();
+
+	private:
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
 		QPropertyUndoCommand *m_undo_command;
+		int m_resize_mode = 1;
 };
 #endif

@@ -79,6 +79,9 @@ class PartRectangle :  public CustomElementGraphicPart
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+	private:
+		void switchResizeMode();
 	
 	private:
 		QRectF m_rect;
@@ -86,5 +89,6 @@ class PartRectangle :  public CustomElementGraphicPart
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
 		QPropertyUndoCommand *m_undo_command;
+		int m_resize_mode = 1;
 };
 #endif

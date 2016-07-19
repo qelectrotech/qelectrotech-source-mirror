@@ -435,8 +435,24 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
 				break;
 
-			case Rectangle: setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
-			case Ellipse:   setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
+			case Rectangle:
+				if (m_resize_mode == 1) {
+					setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+					break;
+				}
+				else {
+					setRect(m_handler.mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+					break;
+				}
+			case Ellipse:
+				if (m_resize_mode == 1) {
+					setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+					break;
+				}
+				else {
+					setRect(m_handler.mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+					break;
+				}
 
 			case Polygon:
 				prepareGeometryChange();
@@ -456,6 +472,9 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if ((m_shapeType & (Rectangle | Ellipse)) && event->buttonDownPos(Qt::LeftButton) == event->pos())
+		switchResizeMode();
+
 	if (m_mouse_grab_handler)
 	{
 		m_mouse_grab_handler = false;
@@ -486,6 +505,19 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	QetGraphicsItem::mouseReleaseEvent(event);
+}
+
+void QetShapeItem::switchResizeMode()
+{
+	if (m_resize_mode == 1) {
+		m_resize_mode = 2;
+		m_handler.setOuterColor(Qt::darkGreen);
+	}
+	else {
+		m_resize_mode = 1;
+		m_handler.setOuterColor(Qt::blue);
+	}
+	update();
 }
 
 /**
