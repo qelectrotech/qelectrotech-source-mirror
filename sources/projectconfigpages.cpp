@@ -29,6 +29,9 @@
 #include "numerotationcontext.h"
 #include "folioautonumbering.h"
 #include "elementautonumberingw.h"
+#include "autonumberingmanagementw.h"
+#include "ui_autonumberingmanagementw.h"
+
 /**
 	Constructor
 	@param project Project this page is editing.
@@ -255,6 +258,9 @@ void ProjectAutoNumConfigPage::initWidgets() {
 
 	tab_widget = new QTabWidget(this);
 
+	management_tab_widget = new QWidget(this);
+	m_amw = new AutoNumberingManagementW(project(), management_tab_widget);
+
 	//Conductor Tab
 	conductor_tab_widget = new QWidget(this);
 	conductor_tab_widget->setObjectName("ConductorTab");
@@ -314,6 +320,9 @@ void ProjectAutoNumConfigPage::initWidgets() {
  */
 void ProjectAutoNumConfigPage::initLayout() {
 
+	//Management Tab
+	tab_widget->addTab(management_tab_widget, tr("Management"));
+
 	//Conductor Tab
 	tab_widget->addTab(conductor_tab_widget, tr("Conductor"));
 
@@ -365,7 +374,7 @@ void ProjectAutoNumConfigPage::initLayout() {
 	//Auto Numbering Tab
 	tab_widget->addTab(autoNumbering_tab_widget,tr ("Folio Auto Numbering"));
 
-	tab_widget->resize(465,590);
+	tab_widget->resize(540,590);
 }
 
 /**
@@ -410,20 +419,26 @@ void ProjectAutoNumConfigPage::buildConnections() {
 	
 	connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 
+	//Management Tab
+	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
+
 	//Conductor Tab
-	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  m_saw_conductor, SLOT(applyEnableOnContextChanged(QString)));
+	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  m_saw_conductor, SLOT (applyEnableOnContextChanged(QString)));
+	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_conductor(QString)));
 	connect (m_context_cb_conductor, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_conductor(QString)));
 	connect (m_saw_conductor,        SIGNAL (applyPressed()),               this, SLOT (saveContext_conductor()));
 	connect (m_remove_pb_conductor,  SIGNAL (clicked()),                    this, SLOT (removeContext_conductor()));
 
 	//Element Tab
 	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  m_saw_element, SLOT(applyEnableOnContextChanged(QString)));
+	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_element(QString)));
 	connect (m_context_cb_element, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_element(QString)));
 	connect (m_saw_element,        SIGNAL (applyPressed()),               this, SLOT (saveContext_element()));
 	connect (m_remove_pb_element,  SIGNAL (clicked()),                    this, SLOT (removeContext_element()));
 
 	//Folio Tab
 	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  m_saw_folio, SLOT(applyEnableOnContextChanged(QString)));
+	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_folio(QString)));
 	connect (m_context_cb_folio, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_folio(QString)));
 	connect (m_saw_folio,        SIGNAL (applyPressed()),               this, SLOT (saveContext_folio()));
 	connect (m_remove_pb_folio,  SIGNAL (clicked()),                    this, SLOT (removeContext_folio()));
@@ -563,6 +578,84 @@ void ProjectAutoNumConfigPage::applyAutoNum() {
 }
 
 /**
+ * @brief ProjectAutoNumConfigPage::applyAutoManagement
+ * Apply Management Options in Selected Folios
+ */
+void ProjectAutoNumConfigPage::applyManagement() {
+	int from;
+	int to;
+	//Apply to Entire Project
+	if (m_amw->ui->m_apply_project_rb->isChecked()) {
+		from = 0;
+		to = project()->diagrams().size() - 1;
+	}
+	//Apply to selected Folios
+	else {
+		from = m_amw->ui->m_from_folios_cb->itemData(m_amw->ui->m_from_folios_cb->currentIndex()).toInt();
+		to = m_amw->ui->m_to_folios_cb->itemData(m_amw->ui->m_to_folios_cb->currentIndex()).toInt();
+	}
+
+	//Conductor Autonumbering Status
+	if (m_amw->ui->m_both_conductor_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_new_conductor_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_existent_conductor_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_disable_conductor_rb->isChecked()) {
+
+	}
+
+	//Element Autonumbering Update Policy
+	//Allow Both Existent and New Elements
+	if (m_amw->ui->m_both_element_rb->isChecked()) {
+		//Unfreeze Existent and New Elements
+		project()->unfreezeExistentElementLabel(from,to);
+		project()->unfreezeNewElementLabel(from,to);
+		project()->setFreezeNewElements(false);
+	}
+	//Allow Only New
+	else if (m_amw->ui->m_new_element_rb->isChecked()) {
+		//Freeze Existent and Unfreeze New Elements
+		project()->freezeExistentElementLabel(from,to);
+		project()->unfreezeNewElementLabel(from,to);
+		project()->setFreezeNewElements(false);
+	}
+	//Allow Only Existent
+	else if (m_amw->ui->m_existent_element_rb->isChecked()) {
+		//Freeze New and Unfreeze Existent Elements, Set Freeze Element Project Wide
+		project()->unfreezeExistentElementLabel(from,to);
+		project()->freezeNewElementLabel(from,to);
+		project()->setFreezeNewElements(true);
+	}
+	//Disable
+	else if (m_amw->ui->m_disable_element_rb->isChecked()) {
+		//Freeze Existent and New Elements, Set Freeze Element Project Wide
+		project()->freezeExistentElementLabel(from,to);
+		project()->freezeNewElementLabel(from,to);
+		project()->setFreezeNewElements(true);
+	}
+
+	//Folio Autonumbering Status
+	if (m_amw->ui->m_both_folio_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_new_folio_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_existent_folio_rb->isChecked()) {
+
+	}
+	else if (m_amw->ui->m_disable_folio_rb->isChecked()) {
+
+	}
+
+}
+
+/**
  * @brief ProjectAutoNumConfigPage::removeContext
  * Remove from project the current conductor numerotation context
  */
@@ -613,12 +706,15 @@ void ProjectAutoNumConfigPage::changeToTab(int i){
  * Used to resize window to correct size
  */
 void ProjectAutoNumConfigPage::tabChanged(int i){
-	if (i>0){
-		if (tab_widget->currentIndex()==3){
-			tab_widget->resize(470,tab_widget->height());
+	if (i>=1){
+		if (tab_widget->currentIndex() == 4){
+			tab_widget->resize(480,tab_widget->height());
 		}
 		else {
-			tab_widget->resize(465,tab_widget->height());
+			tab_widget->resize(475,tab_widget->height());
 		}
+	}
+	else {
+		tab_widget->resize(540,tab_widget->height());
 	}
 }

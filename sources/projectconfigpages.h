@@ -36,6 +36,7 @@ class QComboBox;
 class QPushButton;
 class FolioAutonumberingW;
 class ElementAutonumberingW;
+class AutoNumberingManagementW;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -152,6 +153,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void removeContext_element();
 
 		void applyAutoNum();
+		void applyManagement();
 
 		void tabChanged(int);
 
@@ -164,6 +166,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	//Attributes
 	private:
 		QTabWidget            *tab_widget;
+		QWidget               *management_tab_widget;
 		QWidget               *conductor_tab_widget;
 		QWidget               *element_tab_widget;
 		QWidget               *folio_tab_widget;
@@ -182,7 +185,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;
 		FolioAutonumberingW   *m_faw;
-		ElementAutonumberingW *m_eaw;
+		AutoNumberingManagementW *m_amw;
 
 };
 

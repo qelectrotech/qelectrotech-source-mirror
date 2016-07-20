@@ -27,6 +27,7 @@
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "elementpropertieswidget.h"
 #include "numerotationcontextcommands.h"
+#include "diagramcontext.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -818,4 +819,47 @@ QString Element::getPrefix() {
  */
 void Element::setPrefix(QString prefix) {
 	m_prefix = prefix;
+}
+
+/**
+ * @brief Element::freezeLabel
+ * Freeze this element label
+ */
+void Element::freezeLabel() {
+	DiagramContext &dc = this->rElementInformations();
+	QString freezelabel = dc["label"].toString();
+	QString label = assignVariables(freezelabel,this);
+	if (!(label == freezelabel)) {
+		dc.addValue("frozenlabel", freezelabel);
+		dc.addValue("label",label);
+		this->setTaggedText("label", label);
+		this->setElementInformations(dc);
+	}
+}
+
+/**
+ * @brief Element::unfreezeLabel
+ * Unfreeze this element label
+ */
+void Element::unfreezeLabel() {
+	DiagramContext &dc = this->rElementInformations();
+	QString label = dc["label"].toString();
+	QString frozenlabel = dc["frozenlabel"].toString();
+	if (frozenlabel == "") return;
+	dc.addValue("frozenlabel", "");
+	dc.addValue("label",frozenlabel);
+	frozenlabel = assignVariables(frozenlabel,this);
+	this->setTaggedText("label", frozenlabel);
+	this->setElementInformations(dc);
+}
+
+/**
+ * @brief Element::freezeNewAddedElement
+ * Freeze this label if needed
+ */
+void Element::freezeNewAddedElement() {
+	if (this->diagram()->freezeNewElements() || this->diagram()->project()->freezeNewElements()) {
+		freezeLabel();
+	}
+	else return;
 }

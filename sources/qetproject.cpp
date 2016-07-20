@@ -49,7 +49,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  ),
 	m_elements_collection (nullptr),
-	m_auto_folio         (true  )
+	m_freeze_new_elements (false)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -79,8 +79,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	titleblocks_         (this  ),
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  ),
-	m_elements_collection (nullptr),
-	m_auto_folio         (true  )
+	m_elements_collection (nullptr)
 {
 		//Open the file
 	QFile project_file(path);
@@ -418,10 +417,10 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
 }
 
 /**
- * @brief QETProject::elementAutoNum_2
+ * @brief QETProject::elementAutoNumHash
  * @return Title and Formula Hash
  */
-QHash <QString, QString> QETProject::elementAutoNum_2() {
+QHash <QString, QString> QETProject::elementAutoNumHash() {
 	return m_element_autonum_formula;
 }
 
@@ -574,6 +573,70 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
 }
 
 /**
+ * @brief QETProject::freezeExistentElementLabel
+ * Freeze Existent Elements in the selected folios
+ * @param from - first folio index to apply freeze
+ * @param to - last folio index to apply freeze
+ */
+void QETProject::freezeExistentElementLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->freezeElements();
+	}
+}
+
+/**
+ * @brief QETProject::unfreezeExistentElementLabel
+ * Unfreeze Existent Elements in the selected folios
+ * @param from - first folio index to apply unfreeze
+ * @param to - last folio index to apply unfreeze
+ */
+void QETProject::unfreezeExistentElementLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->unfreezeElements();
+	}
+}
+
+/**
+ * @brief QETProject::freezeNewElementLabel
+ * Freeze New Elements in the selected folios
+ * @param from - first folio index to apply freeze
+ * @param to - last folio index to apply freeze
+ */
+void QETProject::freezeNewElementLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->freezeNew();
+	}
+}
+
+/**
+ * @brief QETProject::unfreezeNewElementLabel
+ * Unfreeze New Elements in the selected folios
+ * @param from - first folio index to apply unfreeze
+ * @param to - last folio index to apply unfreeze
+ */
+void QETProject::unfreezeNewElementLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->unfreezeNew();
+	}
+}
+
+/**
+ * @brief QETProject::freezeNewElements
+ * @return freeze new elements Project Wide status
+ */
+bool QETProject::freezeNewElements() {
+	return m_freeze_new_elements;
+}
+
+/**
+ * @brief QETProject::setfreezeNewElements
+ * Set Project Wide freeze new elements
+ */
+void QETProject::setFreezeNewElements(bool set) {
+	m_freeze_new_elements = set;
+}
+
+/**
  * @brief QETProject::autoConductor
  * @return true if use of auto conductor is authorized.
  * See also Q_PROPERTY autoConductor
@@ -581,16 +644,6 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
 bool QETProject::autoConductor() const
 {
 	return m_auto_conductor;
-}
-
-/**
- * @brief QETProject::autoFolio
- * @return true if use of auto folio is authorized.
- * See also Q_PROPERTY autoConductor
- */
-bool QETProject::autoFolio() const
-{
-	return m_auto_folio;
 }
 
 /**
@@ -603,18 +656,6 @@ void QETProject::setAutoConductor(bool ac)
 {
 	if (ac != m_auto_conductor)
 		m_auto_conductor = ac;
-}
-
-/**
- * @brief QETProject::setAutoFolio
- * @param ac
- * Enable the use of auto folio if true
- * See also Q_PROPERTY autoFolio
- */
-void QETProject::setAutoFolio(bool af)
-{
-	if (af != m_auto_folio)
-		m_auto_folio = af;
 }
 
 /**
@@ -1332,6 +1373,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_element_autonum = element_autonums.attribute("current_autonum");
 		m_current_element_formula = element_autonums.attribute("current_formula");
+		m_freeze_new_elements = element_autonums.attribute("freeze_new_elements").toInt();
 		foreach (QDomElement elmt, QET::findInDomElement(element_autonums, "element_autonum"))
 		{
 			NumerotationContext nc;
@@ -1414,6 +1456,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("current_formula", m_current_element_formula);
+	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
 	foreach (QString key, elementAutoNum().keys()) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {

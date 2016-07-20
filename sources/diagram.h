@@ -102,6 +102,8 @@ class Diagram : public QGraphicsScene
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
+
+		bool m_freeze_new_elements_;
 	
 	// METHODS
 	protected:
@@ -200,6 +202,12 @@ class Diagram : public QGraphicsScene
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	
+	void freezeElements();
+	void unfreezeElements();
+	void freezeNew();
+	void unfreezeNew();
+	bool freezeNewElements();
+
 	public slots:
 		void adjustSceneRect ();
 		void titleChanged(const QString &);

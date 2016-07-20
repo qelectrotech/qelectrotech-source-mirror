@@ -138,6 +138,9 @@ class Element : public QetGraphicsItem {
 		void setSeq ();
 		void setPrefix(QString);
 		QString getPrefix();
+		void freezeLabel();
+		void unfreezeLabel();
+		void freezeNewAddedElement();
 
 	//ATTRIBUTES
 	protected:

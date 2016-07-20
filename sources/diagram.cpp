@@ -36,6 +36,7 @@
 #include "diagrameventinterface.h"
 #include "qetapp.h"
 #include "elementcollectionhandler.h"
+#include "element.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -57,7 +58,8 @@ Diagram::Diagram(QETProject *project) :
 	use_border_              (true),
 	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
-	m_event_interface (nullptr)
+	m_event_interface (nullptr),
+	m_freeze_new_elements_   (false)
 {
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
@@ -467,6 +469,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		if (!m_conductors_autonum_name.isEmpty()) {
 			racine.setAttribute("conductorAutonum", m_conductors_autonum_name);
 		}
+
+		//Default New Element
+		racine.setAttribute("freezeNewElement", m_freeze_new_elements_ ? "true" : "false");
 	}
 	else {
 			//this method with whole_content to false,
@@ -649,6 +654,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 		// Load the autonum
 		m_conductors_autonum_name = root.attribute("conductorAutonum");
+
+		// Load Freeze New Element
+		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
 	}
 	
 	// if child haven't got a child, loading is finish (diagram is empty)
@@ -1154,6 +1162,50 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 */
 bool Diagram::usesTitleBlockTemplate(const QString &name) {
 	return(name == border_and_titleblock.titleBlockTemplateName());
+}
+
+/**
+ * @brief Diagram::freezeElements
+ * Freeze every existent element label.
+ */
+void Diagram::freezeElements() {
+	foreach (Element *elmt, elements()) {
+		elmt->freezeLabel();
+	}
+}
+
+/**
+ * @brief Diagram::unfreezeElements
+ * Unfreeze every existent element label.
+ */
+void Diagram::unfreezeElements() {
+	foreach (Element *elmt, elements()) {
+		elmt->unfreezeLabel();
+	}
+}
+
+/**
+ * @brief Diagram::freezeNew
+ * Set new element label to be frozen.
+ */
+void Diagram::freezeNew() {
+	m_freeze_new_elements_ = true;
+}
+
+/**
+ * @brief Diagram::unfreezeNew
+ * Set new element label to not be frozen.
+ */
+void Diagram::unfreezeNew() {
+	m_freeze_new_elements_ = false;
+}
+
+/**
+ * @brief Diagram::freezeNewElements
+ * @return current freeze new element status .
+ */
+bool Diagram::freezeNewElements() {
+	return m_freeze_new_elements_;
 }
 
 /**

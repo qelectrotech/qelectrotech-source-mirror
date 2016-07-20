@@ -108,7 +108,7 @@ class QETProject : public QObject
 
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
 		QHash <QString, NumerotationContext> elementAutoNum() const;
-		QHash <QString, QString>             elementAutoNum_2();
+		QHash <QString, QString>             elementAutoNumHash();
 		QHash <QString, NumerotationContext> folioAutoNum() const;
 		void addConductorAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNum (QString key, NumerotationContext context);
@@ -125,12 +125,18 @@ class QETProject : public QObject
 		QString elementAutoNumFormula() const;
 		QString elementCurrentAutoNum () const;
 
+		void freezeExistentElementLabel(int,int);
+		void freezeNewElementLabel(int,int);
+		void unfreezeExistentElementLabel(int,int);
+		void unfreezeNewElementLabel(int,int);
+		bool freezeNewElements();
+		void setFreezeNewElements(bool);
+
 		bool autoConductor () const;
 		bool autoElement () const;
 		bool autoFolio () const;
 		void setAutoConductor (bool ac);
 		void setAutoElement (bool ae);
-		void setAutoFolio (bool af);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, QString);
 
@@ -250,7 +256,7 @@ class QETProject : public QObject
 	int folioSheetsQuantity;
 	bool m_auto_conductor;
 	XmlElementCollection *m_elements_collection;
-	bool m_auto_folio;
+	bool m_freeze_new_elements;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

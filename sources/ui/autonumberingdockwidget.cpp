@@ -153,7 +153,7 @@ void AutoNumberingDockWidget::setActive() {
 		//Element
 		QString current_element_autonum = project_->elementCurrentAutoNum();
 		QString element_formula = project_->elementAutoNumFormula();
-		QString active_element_autonum = project_->elementAutoNum_2().key(element_formula);
+		QString active_element_autonum = project_->elementAutoNumHash().key(element_formula);
 		int el_index = ui->m_element_cb->findText(active_element_autonum);
 		ui->m_element_cb->setCurrentIndex(el_index);
 
