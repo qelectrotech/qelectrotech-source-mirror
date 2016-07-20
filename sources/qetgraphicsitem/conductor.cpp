@@ -1191,8 +1191,49 @@ ConductorProfile Conductor::profile(Qt::Corner path_type) const {
 
 /// @return le texte du conducteur
 QString Conductor::text() const {
-	return(text_item -> toPlainText());
+	QString label = text_item->toPlainText();
+	return(label);
 }
+
+/**
+ * @brief Conductor::assignVariables
+ * Apply variables to conductor label
+ * @param label to be processed
+ * @return label with variables assigned
+ */
+QString Conductor::assignVariables(QString label) {
+	//Titleblock Variables
+		for (int i = 0; i < diagram()->border_and_titleblock.additionalFields().count(); i++)
+	{
+		QString folio_variable = diagram()->border_and_titleblock.additionalFields().keys().at(i);
+		QVariant folio_value = diagram()->border_and_titleblock.additionalFields().operator [](folio_variable);
+
+		if (label.contains(folio_variable)) {
+			label.replace("%{" + folio_variable + "}", folio_value.toString());
+			label.replace("%"  + folio_variable      , folio_value.toString());
+		}
+	}
+
+	//Project Variables
+	for (int i = 0; i < diagram()->project()->projectProperties().count(); i++)
+	{
+		QString folio_variable = diagram()->project()->projectProperties().keys().at(i);
+		QVariant folio_value = diagram()->project()->projectProperties().operator [](folio_variable);
+
+		if (label.contains(folio_variable)) {
+			label.replace("%{" + folio_variable + "}", folio_value.toString());
+			label.replace("%"  + folio_variable      , folio_value.toString());
+		}
+	}
+
+	//Default Variables
+	label.replace("%f", QString::number(diagram()->folioIndex()+1));
+	label.replace("%F", diagram() -> border_and_titleblock.folio());
+	label.replace("%id", QString::number(diagram()->folioIndex()+1));
+	label.replace("%total", QString::number(diagram()->border_and_titleblock.folioTotal()));
+	return label;
+}
+
 
 /**
  * @brief Conductor::setText
@@ -1200,7 +1241,8 @@ QString Conductor::text() const {
  * @param t
  */
 void Conductor::setText(const QString &t) {
-	text_item -> setPlainText(t);
+	QString label = assignVariables(t);
+	text_item -> setPlainText(label);
 }
 
 /**
@@ -1269,7 +1311,7 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
  */
 void Conductor::displayedTextChanged()
 {
-	if ((text_item->toPlainText() == properties_.text) || !diagram()) return;
+	if ((text_item->toPlainText() == assignVariables(properties_.text)) || !diagram()) return;
 
 	QVariant old_value, new_value;
 	old_value.setValue(properties_);

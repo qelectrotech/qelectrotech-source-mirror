@@ -138,7 +138,10 @@ class BorderTitleBlock : public QObject
 		}
 	}
 	/// @param author the new value of the "Folio" field
-	void setFolio(const QString &folio) { btb_folio_ = folio; }
+	void setFolio(const QString &folio) {
+		btb_folio_ = folio;
+		emit (titleBlockFolioChanged());
+	}
 	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
@@ -191,6 +194,12 @@ class BorderTitleBlock : public QObject
 		Signal emitted after the title has changed
 	*/
 	void diagramTitleChanged(const QString &);
+
+	/**
+	 @brief titleBlockFolioChanged
+		Signal emitted after Folio has changed
+	*/
+	void titleBlockFolioChanged();
 	
 	/**
 		Signal emitted when the title block requires its data to be updated in order

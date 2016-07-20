@@ -215,12 +215,13 @@ class Diagram : public QGraphicsScene
 		void titleBlockTemplateChanged(const QString &);
 		void titleBlockTemplateRemoved(const QString &, const QString & = QString());
 		void setTitleBlockTemplate(const QString &);
+		void updateLabels();
 	
 		// methods related to graphics items selection
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
-	
+
 	signals:
 		void showDiagram (Diagram *);
 		void written();

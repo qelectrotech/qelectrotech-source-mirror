@@ -92,6 +92,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	ConductorSegment *middleSegment();
 	QPointF posForText(Qt::Orientations &flag);
 	QString text() const;
+	QString assignVariables(QString) ;
 	void setText(const QString &);
 
 	public:

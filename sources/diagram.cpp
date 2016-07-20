@@ -78,6 +78,7 @@ Diagram::Diagram(QETProject *project) :
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
+	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged()), this, SLOT(updateLabels()));
 	adjustSceneRect();
 }
 
@@ -1054,6 +1055,22 @@ void Diagram::invertSelection() {
 	foreach (QGraphicsItem *item, items()) item -> setSelected(!item -> isSelected());
 	blockSignals(false);
 	emit(selectionChanged());
+}
+
+/**
+ * @brief Diagram::updateLabels
+ * Update elements and conductors that reference folio field
+ * in their labels.
+ */
+void Diagram::updateLabels() {
+	foreach (Element *elmt, elements()) {
+		if (elmt->elementInformations()["label"].toString().contains(("%F")))
+			elmt->updateLabel();
+	}
+	foreach (Conductor *cnd, content().conductors()) {
+		if (cnd->properties().text.contains("%F"))
+			cnd->setText(cnd->properties().text);
+	}
 }
 
 /**
