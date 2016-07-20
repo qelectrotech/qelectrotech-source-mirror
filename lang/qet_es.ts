@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al brasileño</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -948,28 +948,28 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <source>Titre</source>
-        <translation type="unfinished">Titulo</translation>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Label</source>
-        <translation type="unfinished">Etiqueta</translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouveau dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la nueva carpeta</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="103"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Nombre del nuevo elemento</translation>
+        <translation>Nombre del nuevo elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="222"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Debe seleccionar un elemento o una categoría con un nombre para el elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="190"/>
@@ -1416,13 +1416,13 @@ Los cambios serán definitivos.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>El elemento no es una categoría</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>El elemento solicitado no es una categoría. Abandonar.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="49"/>
@@ -2128,53 +2128,53 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Opciones de numeración</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevos Folios</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
-        <translation type="unfinished"></translation>
+        <translation>A</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
-        <translation type="unfinished"></translation>
+        <translation>De</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
-        <translation type="unfinished"></translation>
+        <translation>selección:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Creación de nuevos folios</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeración automatica de folios seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeración automática de folio:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numeración de Folio automatica</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
@@ -2191,7 +2191,17 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aquí es donde puede establecer cómo se numerarán los nuevos folios.
+-Una numeración se compone de una variable mínima.
+-Usted puede Agregar o quitar una variable de numeración a través de los botones - y +.
+-Una variable de numeración comprende: un tipo, un valor y un incremento.
+
+-Los tipos &quot;Número 1&quot;, Número &quot;01&quot; y &quot;Número 001&quot;, representa un tipo numérico definido en el campo &quot;Valor&quot;,Que se incrementa en cada nuevo folio del campo valor. &quot;Incremento&quot;.
+-&quot;01&quot; y &quot;001&quot; están representados respectivamente en el diagrama por dos y tres cifras mínimo.
+Si el número especificado en el campo valor tiene menos dígitos que el tipo elegido, será precedido por uno o dos 0 a fin de respetar su tipo.
+
+El tipo &quot;Texto&quot;, representa un texto fijo.
+El campos &quot;Incrementación&quot; no se utiliza.</translation>
     </message>
 </context>
 <context>
@@ -2281,7 +2291,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="372"/>
         <source>Brézilien</source>
-        <translation type="unfinished"></translation>
+        <translation>Brasileño</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="373"/>
@@ -2485,32 +2495,32 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Integración de un elemento</translation>
+        <translation>Integración de un elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">El elemento ya fue incluido en el proyecto. Sin embargo, la versión que trata de poner parece ser diferente. ¿Que quiere hacer?</translation>
+        <translation>El elemento ya fue incluido en el proyecto. Sin embargo, la versión que trata de poner parece ser diferente. ¿Que quiere hacer?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar el elemento ya integrado</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Integra el elemento colocado</translation>
+        <translation>Integrar el elemento colocado</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobrescribir el elemento ya integrado</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Hacer que dos elementos coexistan</translation>
+        <translation>Hacer que dos elementos coexistan</translation>
     </message>
 </context>
 <context>
