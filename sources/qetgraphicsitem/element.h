@@ -193,6 +193,7 @@ class Element : public QetGraphicsItem {
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
+		void etiToElementLabels(ElementTextItem*);
 
 	protected:
 		virtual void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event );

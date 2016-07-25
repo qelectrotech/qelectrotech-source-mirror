@@ -726,6 +726,18 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 	list_texts_ << eti;
 
+	if (e.attribute("tagg")=="label") {
+		DiagramContext &dc = this->rElementInformations();
+		dc.addValue("label", e.attribute("text"));
+			this->setElementInformations(dc);
+			this->setTaggedText("label", e.attribute("text"));
+		}
+		else if (e.attribute("tagg")=="function") {
+			DiagramContext &dc = this->rElementInformations();
+			dc.addValue("function", e.attribute("text"));
+			this->setElementInformations(dc);
+		}
+
 	// Se positionne aux coordonnees indiquees dans la description du texte
 	qp.setTransform(QTransform(), false);
 	qp.translate(pos_x, pos_y);
@@ -782,18 +794,6 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
 	eti -> setTagg(e.attribute("tagg", "other"));
-
-	if (e.attribute("tagg")=="label") {
-		DiagramContext &dc = this->rElementInformations();
-		dc.addValue("label", e.attribute("text"));
-		this->setElementInformations(dc);
-		this->setTaggedText("label", e.attribute("text"));
-	}
-	else if (e.attribute("tagg")=="function") {
-		DiagramContext &dc = this->rElementInformations();
-		dc.addValue("function", e.attribute("text"));
-		this->setElementInformations(dc);
-	}
 
 	// position the text field
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));

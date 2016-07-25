@@ -308,6 +308,25 @@ void Element::updatePixmap() {
 }
 
 /**
+	This class is used to retrieve label and function information from element
+	and add it to Diagram Context. Used to make older versions work correctly
+	@param Element Text item to check information
+*/
+void Element::etiToElementLabels(ElementTextItem *eti) {
+	if (eti->tagg() == "label" && eti->toPlainText()!= "_") {
+		DiagramContext &dc = this->rElementInformations();
+		dc.addValue("label", eti->toPlainText());
+		this->setElementInformations(dc);
+		this->setTaggedText("label", eti->toPlainText());
+	}
+	else if(eti->tagg() == "function" && eti->toPlainText() != "_") {
+		DiagramContext &dc = this->rElementInformations();
+		dc.addValue("function", eti->toPlainText());
+		this->setElementInformations(dc);
+	}
+}
+
+/**
 	Permet de savoir si un element XML (QDomElement) represente bien un element
 	@param e Le QDomElement a valide
 	@return true si l'element XML est un Element, false sinon
@@ -393,7 +412,10 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
 	foreach(QGraphicsItem *qgi, childItems()) {
 		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
-			foreach(QDomElement input, inputs) eti -> fromXml(input);
+			foreach(QDomElement input, inputs) {
+				eti -> fromXml(input);
+				etiToElementLabels(eti);
+			}
 		}
 	}
 
