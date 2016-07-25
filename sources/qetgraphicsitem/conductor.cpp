@@ -1202,6 +1202,7 @@ QString Conductor::text() const {
  * @return label with variables assigned
  */
 QString Conductor::assignVariables(QString label) {
+	if (diagram() == NULL) return label;
 	//Titleblock Variables
 		for (int i = 0; i < diagram()->border_and_titleblock.additionalFields().count(); i++)
 	{

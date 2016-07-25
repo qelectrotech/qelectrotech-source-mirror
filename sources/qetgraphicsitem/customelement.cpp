@@ -309,7 +309,8 @@ void CustomElement::parseLabels() {
 								prefix = rxml.readElementText();
 								DiagramContext &dc = this->rElementInformations();
 								//if there is a formula to assign, assign it
-								if (!(location().project()->elementAutoNumFormula().isEmpty()) && (location().project()->elementAutoNumFormula() != "") && (this->linkType()!=Element::Slave)) {
+								if (!(location().project()->elementAutoNumFormula().isEmpty()) && (location().project()->elementAutoNumFormula() != "") &&
+										(this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
 									QString formula = location().project()->elementAutoNumFormula();
 									this->setPrefix(prefix);
 									dc.addValue("label", formula);
@@ -317,7 +318,7 @@ void CustomElement::parseLabels() {
 								} else { //assign only prefix
 									this->setPrefix(prefix);
 									dc.addValue("label", "%prefix");
-									this->setTaggedText("label", "%prefix");
+									this->setTaggedText("label", prefix);
 								}
 								this->setElementInformations(dc);
 								return;
@@ -337,7 +338,8 @@ void CustomElement::parseLabels() {
 	}
 	//apply formula to specific label
 	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
-			 (!location().project()->elementAutoNumFormula().isEmpty()) && (this->linkType()!=Element::Slave)) {
+			 (!location().project()->elementAutoNumFormula().isEmpty()) &&
+			 (this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
 		QString formula = location().project()->elementAutoNumFormula();
 		DiagramContext &dc = this->rElementInformations();
 		QString prefix = this->taggedText("label")->toPlainText();
