@@ -83,6 +83,10 @@ class Diagram : public QGraphicsScene
 		static const qreal margin;
 		/// background color of diagram
 		static QColor background_color;
+		/// Hash containing max values for folio sequential autonums in this diagram
+		QHash <QString, QStringList> m_elmt_unitfolio_max;
+		QHash <QString, QStringList> m_elmt_tenfolio_max;
+		QHash <QString, QStringList> m_elmt_hundredfolio_max;
 
 	private:
 		QGraphicsLineItem *conductor_setter_;
@@ -153,8 +157,10 @@ class Diagram : public QGraphicsScene
 	void write(const QDomElement &);
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
-	
-		// methods related to graphics items addition/removal on the diagram
+	void elementFolioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString);
+	void elementFolioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString);
+
+	// methods related to graphics items addition/removal on the diagram
 	void initElementsLinks();
 	virtual void addItem    (QGraphicsItem *item);
 	virtual void removeItem (QGraphicsItem *item);
@@ -202,11 +208,16 @@ class Diagram : public QGraphicsScene
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	
+	//methods related to element label Update Policy
 	void freezeElements();
 	void unfreezeElements();
 	void freezeNew();
 	void unfreezeNew();
 	bool freezeNewElements();
+
+	//methods related to insertion and loading of element folio sequential
+	void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc);
+	void loadElmtFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc);
 
 	public slots:
 		void adjustSceneRect ();
@@ -216,6 +227,7 @@ class Diagram : public QGraphicsScene
 		void titleBlockTemplateRemoved(const QString &, const QString & = QString());
 		void setTitleBlockTemplate(const QString &);
 		void updateLabels();
+		void loadElmtFolioSeq();
 	
 		// methods related to graphics items selection
 		void selectAll();
@@ -231,6 +243,7 @@ class Diagram : public QGraphicsScene
 		void editElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to edit an element from the diagram
 		void reportPropertiesChanged(QString);
 		void XRefPropertiesChanged();
+		void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)
 

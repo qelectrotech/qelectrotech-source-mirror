@@ -45,13 +45,13 @@ void NumerotationContext::clear () {
  * @param increase the increase number of value
  * @return true if value is append
  */
-bool NumerotationContext::addValue(const QString &type, const QVariant &value, const int increase) {
+bool NumerotationContext::addValue(const QString &type, const QVariant &value, const int increase, const int initialvalue) {
 	if (!keyIsAcceptable(type) && !value.canConvert(QVariant::String)) return false;
 	if (keyIsNumber(type) && !value.canConvert(QVariant::Int)) return false;
 
 	QString valuestr = value.toString();
 	valuestr.remove("|");
-	content_ << type + "|" + valuestr + "|" + QString::number(increase);
+	content_ << type + "|" + valuestr + "|" + QString::number(increase) + "|" + QString::number(initialvalue);
 	return true;
 }
 
@@ -99,7 +99,7 @@ QStringList NumerotationContext::itemAt(const int i) const {
  * @return all type use to numerotation
  */
 QString NumerotationContext::validRegExpNum () const {
-	return ("unit|ten|hundred|string|idfolio|folio|elementline|elementcolumn|elementprefix");
+	return ("unit|unitfolio|ten|hundred|string|idfolio|folio|elementline|elementcolumn|elementprefix");
 }
 
 /**
@@ -107,7 +107,7 @@ QString NumerotationContext::validRegExpNum () const {
  * @return all type represents a number
  */
 QString NumerotationContext::validRegExpNumber() const {
-	return ("unit|ten|hundred");
+	return ("unit|unitfolio|ten|hundred");
 }
 
 /**
@@ -138,6 +138,11 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, QString str) {
 		part.setAttribute("type", strl.at(0));
 		part.setAttribute("value", strl.at(1));
 		part.setAttribute("increase", strl.at(2));
+		if (strl.at(0) == ("unitfolio") ||
+			strl.at(0) == ("tenfolio")  ||
+			strl.at(0) == ("hundredfolio")) {
+			part.setAttribute("initialvalue", strl.at(3));
+		}
 		num_auto.appendChild(part);
 	}
 	return num_auto;
@@ -149,5 +154,20 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, QString str) {
  */
 void NumerotationContext::fromXml(QDomElement &e) {
 	clear();
-	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt());
+	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt(), qde.attribute("initialvalue").toInt());
+}
+
+/**
+ * @brief NumerotationContext::replaceValue
+ * This class replaces the current NC field value with content
+ * @param index of NC Item
+ * @param QString content to replace current value
+ */
+void NumerotationContext::replaceValue(int index, QString content) {
+	QString sep = "|";
+	QString type = content_[index].split("|").at(0);
+	QString value = content;
+	QString increase = content_[index].split("|").at(2);
+	QString initvalue = content_[index].split("|").at(3);
+	content_[index].replace(content_[index], type + "|" + value + "|" + increase + "|" + initvalue);
 }

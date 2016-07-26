@@ -120,7 +120,7 @@ class QETProject : public QObject
 		void removeFolioAutoNum (QString key);
 		NumerotationContext conductorAutoNum(const QString &key) const;
 		NumerotationContext folioAutoNum(const QString &key)     const;
-		NumerotationContext elementAutoNum(const QString &key)   const;
+		NumerotationContext elementAutoNum(const QString &key);
 		QString elementAutoNumFormula(const QString key) const; //returns Formula
 		QString elementAutoNumFormula() const;
 		QString elementCurrentAutoNum () const;

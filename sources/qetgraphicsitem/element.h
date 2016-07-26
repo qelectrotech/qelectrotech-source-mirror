@@ -26,6 +26,7 @@ class ElementTextItem;
 class QETProject;
 class Terminal;
 class Conductor;
+class NumerotationContext;
 
 /**
 	This is the base class for electrical elements.
@@ -135,7 +136,9 @@ class Element : public QetGraphicsItem {
 																									// kind of contact (simple tempo) or number of contact show by the element.
 		QString assignVariables (QString, Element *);
 		QString assignSeq (QString);
-		void setSeq ();
+		void setSequential ();
+		void setSequentialToList(QStringList*, NumerotationContext*, QString);
+		void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
 		void setPrefix(QString);
 		QString getPrefix();
 		void freezeLabel();
@@ -194,6 +197,7 @@ class Element : public QetGraphicsItem {
 		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
 		void etiToElementLabels(ElementTextItem*);
+		void loadSequential(QDomElement* e, QString seq, QStringList* list);
 
 	protected:
 		virtual void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event );
@@ -205,8 +209,11 @@ class Element : public QetGraphicsItem {
 		bool m_mouse_over;
 		QString m_prefix;
 		QStringList seq_unit;
+		QStringList seq_unitfolio;
 		QStringList seq_ten;
+		QStringList seq_tenfolio;
 		QStringList seq_hundred;
+		QStringList seq_hundredfolio;
 
 };
 

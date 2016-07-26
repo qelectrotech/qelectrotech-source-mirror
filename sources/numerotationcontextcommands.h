@@ -69,6 +69,15 @@ class UnitNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
+class UnitFNum: public NumStrategy
+{
+	public:
+	UnitFNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
 class TenNum: public NumStrategy
 {
 	public:
@@ -78,10 +87,28 @@ class TenNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
+class TenFNum: public NumStrategy
+{
+	public:
+	TenFNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
 class HundredNum: public NumStrategy
 {
 	public:
 	HundredNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+class HundredFNum: public NumStrategy
+{
+	public:
+	HundredFNum (Diagram *);
 	QString toRepresentedString(const QString) const;
 	NumerotationContext next     (const NumerotationContext &, const int) const;
 	NumerotationContext previous (const NumerotationContext &, const int) const;

@@ -33,7 +33,7 @@ class NumerotationContext
 	NumerotationContext ();
 	NumerotationContext (QDomElement &);
 	void clear();
-	bool addValue(const QString &, const QVariant & = QVariant(1), const int = 1);
+	bool addValue(const QString &, const QVariant & = QVariant(1), const int = 1, const int = 0);
 	QString operator[] (const int &) const;
 	void operator << (const NumerotationContext &);
 	int size() const;
@@ -45,6 +45,7 @@ class NumerotationContext
 	bool keyIsNumber(const QString &) const;
 	QDomElement toXml(QDomDocument &, QString);
 	void fromXml(QDomElement &);
+	void replaceValue(int, QString);
 
 	private:
 	QStringList content_;

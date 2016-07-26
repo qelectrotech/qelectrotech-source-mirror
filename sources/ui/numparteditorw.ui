@@ -30,7 +30,7 @@
     <number>2</number>
    </property>
    <item>
-    <widget class="QComboBox" name="type_combo">
+    <widget class="QComboBox" name="type_cb">
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -40,51 +40,6 @@
      <property name="editable">
       <bool>true</bool>
      </property>
-     <item>
-      <property name="text">
-       <string>Chiffre 1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Chiffre 01</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Chiffre 001</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Texte</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>N° folio</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Folio</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Element Line</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Element Column</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Element Prefix</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item>

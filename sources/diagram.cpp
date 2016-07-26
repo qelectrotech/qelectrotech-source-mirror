@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2016 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -37,6 +37,7 @@
 #include "qetapp.h"
 #include "elementcollectionhandler.h"
 #include "element.h"
+#include "diagramview.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -79,6 +80,7 @@ Diagram::Diagram(QETProject *project) :
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged()), this, SLOT(updateLabels()));
+	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadElmtFolioSeq()));
 	adjustSceneRect();
 }
 
@@ -473,6 +475,28 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 		//Default New Element
 		racine.setAttribute("freezeNewElement", m_freeze_new_elements_ ? "true" : "false");
+
+		//Folio Sequential Variables
+		if (!m_elmt_unitfolio_max.isEmpty() || !m_elmt_tenfolio_max.isEmpty() || !m_elmt_hundredfolio_max.isEmpty()) {
+			QDomElement folioContainedAutonum = document.createElement("elementautonumfoliosequentials");
+			QHash<QString, QStringList>::iterator i;
+			if (!m_elmt_unitfolio_max.isEmpty()) {
+				QDomElement elmtfolioseq = document.createElement("elementunitfolioseq");
+				elementFolioSequentialsToXml(&m_elmt_unitfolio_max, &elmtfolioseq, "sequf_");
+				folioContainedAutonum.appendChild(elmtfolioseq);	
+			}
+			if (!m_elmt_tenfolio_max.isEmpty()) {
+				QDomElement elmtfolioseq = document.createElement("elementtenfolioseq");
+				elementFolioSequentialsToXml(&m_elmt_tenfolio_max, &elmtfolioseq, "seqtf_");
+				folioContainedAutonum.appendChild(elmtfolioseq);
+			}
+			if (!m_elmt_hundredfolio_max.isEmpty()) {
+				QDomElement elmtfolioseq = document.createElement("elementhundredfolioseq");
+				elementFolioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_");
+				folioContainedAutonum.appendChild(elmtfolioseq);
+			}
+			racine.appendChild(folioContainedAutonum);
+		}
 	}
 	else {
 			//this method with whole_content to false,
@@ -570,6 +594,23 @@ QDomDocument Diagram::toXml(bool whole_content) {
 }
 
 /**
++ * @brief Diagram::elementFolioSequentialsToXml
++ * Add element folio sequential to QDomElement
++ * @param domElement to add attributes
++ * @param hash to retrieve content with content
++ * @param sequential type
++ */
+void Diagram::elementFolioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type) {
+	QHash<QString, QStringList>::iterator i;
+	for (i = hash->begin(); i != hash->end(); i++) {
+		domElement->setAttribute("title", i.key());
+		for (int j = 0; j < i.value().size(); j++) {
+			domElement->setAttribute(seq_type + QString::number(j+1), i.value().at(j));
+		}
+	}
+}
+
+/**
 	Importe le schema decrit dans un document XML. Si une position est
 	precisee, les elements importes sont positionnes de maniere a ce que le
 	coin superieur gauche du plus petit rectangle pouvant les entourant tous
@@ -658,8 +699,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 		// Load Freeze New Element
 		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
+
+		elementFolioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_");
+		elementFolioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_");
+		elementFolioSequentialsFromXml(root, &m_elmt_hundredfolio_max, "elementhundredfolioseq","seqhf_");
 	}
-	
+
 	// if child haven't got a child, loading is finish (diagram is empty)
 	if (root.firstChild().isNull()) {
 		write(document);
@@ -829,6 +874,27 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	}
 	adjustSceneRect();
 	return(true);
+}
+
+/**
+ * @brief Diagram::elementFolioSequentialsFromXml
+ * Load element folio sequential from QDomElement
+ * @param root containing all folio sequentials
+ * @param hash to be loaded with content
+ * @param folioSeq type
+ * @param seq type
+ */
+void Diagram::elementFolioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq) {
+	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, "elementautonumfoliosequentials", folioSeq)) {
+		QString title = folioSeqAutoNum.attribute("title");
+		QStringList unit;
+		int i = 1;
+		while (folioSeqAutoNum.hasAttribute(seq + QString::number(i))) {
+			unit << folioSeqAutoNum.attribute(seq + QString::number(i));
+			i++;
+		}
+		hash->insert(title,unit);
+	}
 }
 
 /**
@@ -1070,6 +1136,93 @@ void Diagram::updateLabels() {
 	foreach (Conductor *cnd, content().conductors()) {
 		if (cnd->properties().text.contains("%F"))
 			cnd->setText(cnd->properties().text);
+	}
+}
+
+/**
+ * @brief Diagram::insertFolioSeqHash
+ * This class inserts a stringlist containing all
+ * sequential variables related to an autonum in a QHash
+ * @param Hash to be accessed
+ * @param autonum title
+ * @param sequential to be treated
+ * @param type to be treated
+ * @param Numerotation Context to be manipulated
+ */
+void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc) {
+	if (project()->elementAutoNumFormula().contains(seq)) {
+		QStringList max;
+		for (int i = 0; i < nc->size(); i++) {
+				if (nc->itemAt(i).at(0) == type) {
+					nc->replaceValue(i, QString::number(nc->itemAt(i).at(3).toInt()));
+					max.append(QString::number(nc->itemAt(i).at(3).toInt() - nc->itemAt(i).at(2).toInt()));
+				}
+		}
+		hash->insert(title,max);
+		project()->addElementAutoNum(title,*nc);
+	}
+}
+
+/**
+ * @brief Diagram::loadElmtFolioSeqHash
+ * This class loads all folio sequential variables
+ * related to the current autonum
+ * @param Hash to be accessed
+ * @param autonum title
+ * @param sequential to be treated
+ * @param type to be treated
+ * @param Numerotation Context to be manipulated
+ */
+void Diagram::loadElmtFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc) {
+	if (project()->elementAutoNumFormula().contains(seq)) {
+		int j = 0;
+		for (int i = 0; i < nc->size(); i++) {
+			if (nc->itemAt(i).at(0) == type) {
+				QString new_value;
+				new_value = QString::number(hash->value(title).at(j).toInt() + nc->itemAt(i).at(2).toInt());
+				nc->replaceValue(i,new_value);
+				j++;
+			}
+		}
+		project()->addElementAutoNum(title,*nc);
+	}
+}
+
+/**
+ * @brief Diagram::loadElmtFolioSeq
+ * This class loads all folio sequential variables related
+ * to the current autonum
+ */
+void Diagram::loadElmtFolioSeq() {
+	//Element
+	QString title = project()->elementCurrentAutoNum();
+	NumerotationContext nc = project()->elementAutoNum(title);
+	//Unit Folio
+	if (m_elmt_unitfolio_max.isEmpty() || !m_elmt_unitfolio_max.contains(title)) {
+		//Insert Initial Value
+		insertFolioSeqHash(&m_elmt_unitfolio_max,title,"%sequf_","unitfolio",&nc);
+	}
+	else if (m_elmt_unitfolio_max.contains(title)) {
+		//Load Folio Current Value
+		loadElmtFolioSeqHash(&m_elmt_unitfolio_max,title,"%sequf_","unitfolio",&nc);
+	}
+	//Ten Folio
+	if (m_elmt_tenfolio_max.isEmpty() || !m_elmt_tenfolio_max.contains(title)) {
+		//Insert Initial Value
+		insertFolioSeqHash(&m_elmt_tenfolio_max,title,"%seqtf_","tenfolio",&nc);
+	}
+	else if (m_elmt_tenfolio_max.contains(title)) {
+		//Load Folio Current Value
+		loadElmtFolioSeqHash(&m_elmt_tenfolio_max,title,"%seqtf_","tenfolio",&nc);
+	}
+	//Hundred Folio
+	if (m_elmt_hundredfolio_max.isEmpty() || !m_elmt_hundredfolio_max.contains(title)) {
+		//Insert Initial Value
+		insertFolioSeqHash(&m_elmt_hundredfolio_max,title,"%seqhf_","hundredfolio",&nc);
+	}
+	else if (m_elmt_hundredfolio_max.contains(title)) {
+		//Load Folio Current Value
+		loadElmtFolioSeqHash(&m_elmt_hundredfolio_max,title,"%seqhf_","hundredfolio",&nc);
 	}
 }
 

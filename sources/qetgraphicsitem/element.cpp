@@ -429,26 +429,13 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//load prefix
 	m_prefix = e.attribute("prefix");
 
-	//Load Unit Sequential Values
-	int i = 0;
-	while (!e.attribute("sequ_" + QString::number(i+1)).isEmpty()) {
-			seq_unit.append(e.attribute("sequ_" + QString::number(i+1)));
-			i++;
-	}
-
-	//Load Ten Sequential Values
-	i = 0;
-	while (!e.attribute("seqt_" + QString::number(i+1)).isEmpty()) {
-			seq_ten.append(e.attribute("seqt_" + QString::number(i+1)));
-			i++;
-	}
-
-	//Load Hundred Sequential Values
-	i = 0;
-	while (!e.attribute("seqh_" + QString::number(i+1)).isEmpty()) {
-			seq_hundred.append(e.attribute("seqh_" + QString::number(i+1)));
-			i++;
-	}
+	//Load Sequential Values
+	loadSequential(&e,"sequ_",&seq_unit);
+	loadSequential(&e,"sequf_",&seq_unitfolio);
+	loadSequential(&e,"seqt_",&seq_ten);
+	loadSequential(&e,"seqtf_",&seq_tenfolio);
+	loadSequential(&e,"seqh_",&seq_hundred);
+	loadSequential(&e,"seqhf_",&seq_hundredfolio);
 
 	//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
@@ -471,6 +458,21 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 }
 
 /**
+	Load Sequentials to display on element label
+	@param element QDomElement to set Attributes
+	@param Qstring seq to be retrieved
+	@param QStringList list to be inserted values
+*/
+void Element::loadSequential(QDomElement* e, QString seq, QStringList* list) {
+	//Load Sequential Values
+	int i = 0;
+	while (!e->attribute(seq + QString::number(i+1)).isEmpty()) {
+			list->append(e->attribute(seq + QString::number(i+1)));
+			i++;
+	}
+}
+
+/**
 	Permet d'exporter l'element en XML
 	@param document Document XML a utiliser
 	@param table_adr_id Table de correspondance entre les adresses des bornes
@@ -488,19 +490,35 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	// prefix
 	element.setAttribute("prefix", m_prefix);
 
-	//Save Unit Sequential Values
+	// Save Element sequential values to Xml
+	// Save Unit Sequential Values
 	for (int i = 0; i < seq_unit.size(); i++) {
 			element.setAttribute("sequ_" + QString::number(i+1),seq_unit.at(i));
 	}
 
-	//Save Ten Sequential Values
+	// Save UnitFolio Sequential Values
+	for (int i = 0; i < seq_unitfolio.size(); i++) {
+			element.setAttribute("sequf_" + QString::number(i+1),seq_unitfolio.at(i));
+	}
+
+	// Save Ten Sequential Values
 	for (int i = 0; i < seq_ten.size(); i++) {
 			element.setAttribute("seqt_" + QString::number(i+1),seq_ten.at(i));
 	}
 
-	//Save Hundred Sequential Values
+	// Save TenFolio Sequential Values
+	for (int i = 0; i < seq_tenfolio.size(); i++) {
+			element.setAttribute("seqtf_" + QString::number(i+1),seq_tenfolio.at(i));
+	}
+
+	// Save Hundred Sequential Values
 	for (int i = 0; i < seq_hundred.size(); i++) {
 			element.setAttribute("seqh_" + QString::number(i+1),seq_hundred.at(i));
+	}
+
+	// Save Hundred Sequential Values
+	for (int i = 0; i < seq_hundredfolio.size(); i++) {
+			element.setAttribute("seqhf_" + QString::number(i+1),seq_hundredfolio.at(i));
 	}
 	
 	// position, selection et orientation
@@ -748,10 +766,10 @@ QString Element::assignVariables(QString label, Element *elmt){
 }
 
 /**
- * @brief Element::setSeq()
+ * @brief Element::setSequential
  * Set sequential values to element
  */
-void Element::setSeq() {
+void Element::setSequential() {
 	DiagramContext &dc = this->rElementInformations();
 	QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
 	QString formula = diagram()->project()->elementAutoNumFormula();
@@ -759,34 +777,75 @@ void Element::setSeq() {
 	NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
 	NumerotationContextCommands ncc (nc);
 	if (!nc.isEmpty()) {
-		//Unit Format
-		if (label.contains("%sequ_")) {
-			for (int i = 0; i < nc.size(); i++) {
-				if (nc.itemAt(i).at(0) == "unit") {
-					seq_unit.append(QString::number(nc.itemAt(i).at(1).toInt()));
-				}
-			}
+		if (label.contains("%sequ_"))
+			setSequentialToList(&seq_unit,&nc,"unit");
+		if (label.contains("%sequf_")) {
+			setSequentialToList(&seq_unitfolio,&nc,"unitfolio");
+			setFolioSequentialToHash(&seq_unitfolio,&diagram()->m_elmt_unitfolio_max,element_currentAutoNum);
 		}
-		//Ten Format
-		if (label.contains("%seqt_")) {
-			for (int i = 0; i < nc.size(); i++) {
-				if (nc.itemAt(i).at(0) == "ten") {
-					QString number = QString ("%1").arg(nc.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-					seq_ten.append(number);
-				}
-			}
+		if (label.contains("%seqt_"))
+			setSequentialToList(&seq_ten,&nc,"ten");
+		if (label.contains("%seqtf_")) {
+			setSequentialToList(&seq_tenfolio,&nc,"tenfolio");
+			setFolioSequentialToHash(&seq_tenfolio,&diagram()->m_elmt_tenfolio_max,element_currentAutoNum);
 		}
-		//Hundred Format
-		if (label.contains("%seqh_")) {
-			for (int i = 0; i < nc.size(); i++) {
-				if (nc.itemAt(i).at(0) == "hundred") {
-					QString number = QString ("%1").arg(nc.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-					seq_hundred.append(number);
-				}
+		if (label.contains("%seqh_"))
+			setSequentialToList(&seq_hundred,&nc,"hundred");
+		if (label.contains("%seqhf_")) {
+			setSequentialToList(&seq_hundredfolio,&nc,"hundredfolio");
+			setFolioSequentialToHash(&seq_hundredfolio,&diagram()->m_elmt_hundredfolio_max,element_currentAutoNum);
+		}
+	this->diagram()->project()->addElementAutoNum(element_currentAutoNum,ncc.next());
+	}
+}
+
+/**
+ * @brief Element::setSequentialToList
+ * This class appends all sequential to selected list
+ * @param list to have values inserted
+ * @param nc to retrieve values from
+ * @param sequential type
+ */
+void Element::setSequentialToList(QStringList* list, NumerotationContext* nc, QString type) {
+	for (int i = 0; i < nc->size(); i++) {
+		if (nc->itemAt(i).at(0) == type) {
+			QString number;
+			if (type == "ten" || type == "tenfolio")
+				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
+			else if (type == "hundred" || type == "hundredfolio")
+				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
+			else number = QString::number(nc->itemAt(i).at(1).toInt());
+				list->append(number);
+		}
+	}
+}
+
+/**
+ * @brief Element::setFolioSequentialToHash
+ * This class inserts all elements from list to hash
+ * @param list to retrieve values from
+ * @param hash to have values inserted
+ * @param current element autonum to insert on hash
+ */
+void Element::setFolioSequentialToHash(QStringList* list, QHash<QString, QStringList> *hash, QString element_currentAutoNum) {
+	if (hash->isEmpty() || (!(hash->contains(element_currentAutoNum)))) {
+		QStringList max;
+		for (int i = 0; i < list->size(); i++) {
+			max.append(list->at(i));
+		}
+		hash->insert(element_currentAutoNum,max);
+	}
+	else if (hash->contains(element_currentAutoNum)) {
+		//Load the String List and update it
+		QStringList max = hash->value(element_currentAutoNum);
+		for (int i = 0; i < list->size(); i++) {
+			if ((list->at(i).toInt()) > max.at(i).toInt()) {
+				max.replace(i,list->at(i));
+				hash->remove(element_currentAutoNum);
+				hash->insert(element_currentAutoNum,max);
 			}
 		}
 	}
-	this->diagram()->project()->addElementAutoNum(element_currentAutoNum,ncc.next());
 }
 
 /**
@@ -796,7 +855,7 @@ void Element::setSeq() {
  * @return replaced label
  */
 QString Element::assignSeq(QString label) {
-	for (int i = 1; i <= qMax(seq_unit.size(),qMax(seq_hundred.size(),seq_ten.size())); i++) {
+	for (int i = 1; i <= qMax(qMax(qMax(seq_unitfolio.size(), seq_tenfolio.size()),qMax(seq_hundredfolio.size(),seq_unit.size())),qMax(seq_hundred.size(),seq_ten.size())); i++) {
 		if (label.contains("%sequ_" + QString::number(i))) {
 			label.replace("%sequ_" + QString::number(i),seq_unit.at(i-1));
 		}
@@ -805,6 +864,15 @@ QString Element::assignSeq(QString label) {
 		}
 		if (label.contains("%seqh_" + QString::number(i))) {
 			label.replace("%seqh_" + QString::number(i),seq_hundred.at(i-1));
+		}
+		if (label.contains("%sequf_" + QString::number(i))) {
+			label.replace("%sequf_" + QString::number(i),seq_unitfolio.at(i-1));
+		}
+		if (label.contains("%seqtf_" + QString::number(i))) {
+			label.replace("%seqtf_" + QString::number(i),seq_tenfolio.at(i-1));
+		}
+		if (label.contains("%seqhf_" + QString::number(i))) {
+			label.replace("%seqhf_" + QString::number(i),seq_hundredfolio.at(i-1));
 		}
 	}
 	return label;

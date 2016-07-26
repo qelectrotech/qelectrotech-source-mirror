@@ -233,8 +233,11 @@ void SelectAutonumW::applyEnable(bool b) {
 void SelectAutonumW::contextToFormula() {
 	m_eaw->clearContext();
 	int count_unit = 0;
+	int count_unitf = 0;
 	int count_ten = 0;
+	int count_tenf = 0;
 	int count_hundred = 0;
+	int count_hundredf = 0;
 	foreach (NumPartEditorW *npe, num_part_list_) {
 		if (npe->isValid()) {
 			if (npe->type_ == NumPartEditorW::idfolio) {
@@ -259,13 +262,25 @@ void SelectAutonumW::contextToFormula() {
 				count_unit++;
 				m_eaw->setContext("%sequ_"+QString::number(count_unit));
 			}
+			else if (npe->type_ == NumPartEditorW::unitfolio) {
+				count_unitf++;
+				m_eaw->setContext("%sequf_"+QString::number(count_unitf));
+			}
 			else if (npe->type_ == NumPartEditorW::ten) {
 				count_ten++;
 				m_eaw->setContext("%seqt_"+QString::number(count_ten));
 			}
+			else if (npe->type_ == NumPartEditorW::tenfolio) {
+				count_tenf++;
+				m_eaw->setContext("%seqtf_"+QString::number(count_tenf));
+			}
 			else if (npe->type_ == NumPartEditorW::hundred) {
 				count_hundred++;
 				m_eaw->setContext("%seqh_"+QString::number(count_hundred));
+			}
+			else if (npe->type_ == NumPartEditorW::hundredfolio) {
+				count_hundredf++;
+				m_eaw->setContext("%seqhf_"+QString::number(count_hundredf));
 			}
 		}
 	}

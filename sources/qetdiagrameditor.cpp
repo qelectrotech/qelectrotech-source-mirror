@@ -954,6 +954,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// met a jour le panel d'elements
 	if (update_panel) {
 		pa -> elementsPanel().projectWasOpened(project);
+		if (currentDiagram() != NULL)
 		m_autonumbering_dock->setProject(project, project_view);
 	}
 	
@@ -1326,7 +1327,7 @@ void QETDiagramEditor::slot_updateActions()
 void QETDiagramEditor::slot_updateAutoNumDock() {
 	if ( workspace.subWindowList().indexOf(workspace.activeSubWindow()) != activeSubWindowIndex) {
 			activeSubWindowIndex = workspace.subWindowList().indexOf(workspace.activeSubWindow());
-			if (currentProject()!=NULL) {
+			if (currentProject() != NULL && currentDiagram() != NULL) {
 				m_autonumbering_dock->setProject(currentProject()->project(),currentProject());
 			}
 	}

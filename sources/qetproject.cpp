@@ -556,7 +556,7 @@ NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
  * If key is not found, return an empty numerotation context
  * @param key
  */
-NumerotationContext QETProject::elementAutoNum (const QString &key) const {
+NumerotationContext QETProject::elementAutoNum (const QString &key) {
 	if (m_element_autonum.contains(key)) return m_element_autonum[key];
 	else return NumerotationContext();
 }

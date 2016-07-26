@@ -223,6 +223,7 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int) {
 	}
 	else
 		project_->setElementAutoNumCurrentFormula("","");
+	projectview_->currentDiagram()->diagram()->loadElmtFolioSeq();
 }
 
 /**

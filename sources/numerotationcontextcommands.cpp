@@ -92,12 +92,24 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new UnitNum(diagram_);
 		return;
 	}
+	else if (str == "unitfolio") {
+		strategy_ = new UnitFNum (diagram_);
+		return;
+	}
 	else if (str == "ten") {
 		strategy_ = new TenNum (diagram_);
 		return;
 	}
+	else if (str == "tenfolio") {
+		strategy_ = new TenFNum (diagram_);
+		return;
+	}
 	else if (str == "hundred") {
 		strategy_ = new HundredNum (diagram_);
+		return;
+	}
+	else if (str == "hundredfolio") {
+		strategy_ = new HundredFNum (diagram_);
 		return;
 	}
 	else if (str == "string") {
@@ -156,7 +168,7 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc, cons
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) + (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
 	return (newnc);
 }
 
@@ -168,7 +180,7 @@ NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc, c
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) - (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
 	return (newnc);
 }
 
@@ -200,6 +212,37 @@ NumerotationContext UnitNum::next (const NumerotationContext &nc, const int i) c
  * @return the previous NumerotationContext nc at posiiton i
  */
 NumerotationContext UnitNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
+}
+
+/**
+ * Constructor
+ */
+UnitFNum::UnitFNum(Diagram *d):
+	NumStrategy(d)
+{}
+
+/**
+ * @brief UnitFNum::toRepresentedString
+ * @return the represented string of num
+ */
+QString UnitFNum::toRepresentedString(const QString num) const {
+	return (num);
+}
+
+/**
+ * @brief UnitFNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext UnitFNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextNumber(nc, i));
+}
+
+/**
+ * @brief UnitFNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext UnitFNum::previous(const NumerotationContext &nc, const int i) const {
 	return (previousNumber(nc, i));
 }
 
@@ -240,6 +283,41 @@ NumerotationContext TenNum::previous(const NumerotationContext &nc, const int i)
 /**
  * Constructor
  */
+TenFNum::TenFNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief TenFNum::toRepresentedString
+ * @return the represented string of num
+ */
+QString TenFNum::toRepresentedString(const QString num) const {
+	int numint = num.toInt();
+	QString numstr = num;
+	if (numint<10) numstr.prepend("0");
+	return (numstr);
+}
+
+/**
+ * @brief TenFNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext TenFNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextNumber(nc, i));
+}
+
+/**
+ * @brief TenFNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext TenFNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
+}
+
+
+/**
+ * Constructor
+ */
 HundredNum::HundredNum (Diagram *d):
 	NumStrategy (d)
 {}
@@ -273,6 +351,45 @@ NumerotationContext HundredNum::next (const NumerotationContext &nc, const int i
  * @return the previous NumerotationContext nc at posiiton i
  */
 NumerotationContext HundredNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
+}
+
+/**
+ * Constructor
+ */
+HundredFNum::HundredFNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief HundredFNum::toRepresentedString
+ * @return the represented string of num
+ */
+QString HundredFNum::toRepresentedString(const QString num) const {
+	int numint = num.toInt();
+	QString numstr = num;
+	if (numint<100) {
+		if (numint<10) {
+			numstr.prepend("00");
+		}
+		else numstr.prepend("0");
+	}
+	return (numstr);
+}
+
+/**
+ * @brief HundredFNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext HundredFNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextNumber(nc, i));
+}
+
+/**
+ * @brief HundredFNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext HundredFNum::previous(const NumerotationContext &nc, const int i) const {
 	return (previousNumber(nc, i));
 }
 
@@ -352,7 +469,7 @@ FolioNum::FolioNum (Diagram *d):
  */
 QString FolioNum::toRepresentedString(const QString str) const {
 	Q_UNUSED(str);
-	return (diagram_->border_and_titleblock.folio());
+	return ("%F");
 }
 
 /**

@@ -1019,6 +1019,8 @@ void ProjectView::tabChanged(int tab_id) {
 		setDisplayFallbackWidget(false);
 
 	emit(diagramActivated(diagram_ids_[tab_id]));
+	if (diagram_ids_[tab_id] != nullptr)
+		diagram_ids_[tab_id]->diagram()->diagramActivated();
 }
 
 /**

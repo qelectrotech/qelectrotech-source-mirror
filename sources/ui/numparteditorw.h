@@ -41,13 +41,20 @@ class NumPartEditorW : public QWidget
 	NumPartEditorW (NumerotationContext &, int, QWidget *parent=0);
 	~NumPartEditorW();
 
-	enum type {unit,ten,hundred,string,idfolio,folio,elementline,elementcolumn,elementprefix};
+	enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
+			   string,idfolio,folio,
+			   elementline,elementcolumn,elementprefix,
+			  };
 	NumerotationContext toNumContext();
 	bool isValid ();
 	type type_;
 
+	private:
+	void setVisibleItems();
+	void disableItem(int index);
+
 	private slots:
-	void on_type_combo_activated(int);
+	void on_type_cb_activated(int);
 	void on_value_field_textEdited();
 	void on_increase_spinBox_valueChanged(int);
 	void setType (NumPartEditorW::type t, bool=false);

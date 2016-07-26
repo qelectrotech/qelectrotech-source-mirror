@@ -28,8 +28,7 @@ NumPartEditorW::NumPartEditorW(QWidget *parent) :
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
-	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(4);
-	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") ui->type_combo->setMaxCount(6);
+	setVisibleItems();
 	setType(NumPartEditorW::unit, true);
 }
 
@@ -43,16 +42,17 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
-	if (parentWidget()->parentWidget()->objectName()=="FolioTab") ui->type_combo->setMaxCount(4);
-	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") ui->type_combo->setMaxCount(6);
-	//if @context contains nothing build with default value
+	setVisibleItems();
 	if(context.size()==0) setType(NumPartEditorW::unit, true);
 
 	else {
 		QStringList strl = context.itemAt(i);
 		if (strl.at(0)=="unit") setType(NumPartEditorW::unit, true);
+		else if (strl.at(0)=="unitfolio") setType(NumPartEditorW::unitfolio, true);
 		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten, true);
+		else if (strl.at(0)=="tenfolio") setType(NumPartEditorW::tenfolio, true);
 		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred, true);
+		else if (strl.at(0)=="hundredfolio") setType(NumPartEditorW::hundredfolio, true);
 		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
 		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
@@ -73,6 +73,27 @@ NumPartEditorW::~NumPartEditorW()
 	delete ui;
 }
 
+void NumPartEditorW::setVisibleItems() {
+	ui->type_cb->setInsertPolicy(QComboBox::InsertAtBottom);
+	QStringList items;
+	if (parentWidget()->parentWidget()->objectName()=="FolioTab") {
+		items	<< tr("Chiffre 1") << tr("Chiffre 01")
+				<< tr("Chiffre 001")
+				<< tr("Texte") << tr("N° folio");
+	}
+	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") {
+		items	<< tr("Chiffre 1") << tr("Chiffre 01")
+				<< tr("Chiffre 001")
+				<< tr("Texte") << tr("N° folio") << tr("Folio");
+	}
+	else
+		items << tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
+			  << tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
+			  << tr("Texte") << tr("N° folio") << tr("Folio")
+			  << tr("Element Line") << tr("Element Column") << tr("Element Prefix");
+	ui->type_cb->insertItems(0,items);
+}
+
 /**
  * @brief NumPartEditorW::toNumContext
  * @return the display to NumerotationContext
@@ -84,11 +105,20 @@ NumerotationContext NumPartEditorW::toNumContext() {
 		case unit:
 			type_str = "unit";
 			break;
+		case unitfolio:
+			type_str = "unitfolio";
+			break;
 		case ten:
 			type_str = "ten";
 			break;
+		case tenfolio:
+			type_str = "tenfolio";
+			break;
 		case hundred:
 			type_str = "hundred";
+			break;
+		case hundredfolio:
+			type_str = "hundredfolio";
 			break;
 		case string:
 			type_str = "string";
@@ -109,6 +139,9 @@ NumerotationContext NumPartEditorW::toNumContext() {
 			type_str = "elementprefix";
 			break;
 	}
+	if (type_str == "unitfolio" || type_str == "tenfolio" || type_str == "hundredfolio")
+		nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value(), ui->value_field->displayText().toInt());
+	else
 	nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value());
 	return nc;
 }
@@ -125,39 +158,34 @@ bool NumPartEditorW::isValid() {
 }
 
 /**
- * @brief NumPartEditorW::on_type_combo_activated
+ * @brief NumPartEditorW::on_type_cb_activated
  * Action when user change the type comboBox
  */
-void NumPartEditorW::on_type_combo_activated(int index) {
-	switch (index) {
-		case unit:
-			setType(unit);
-			break;
-		case ten:
-			setType(ten);
-			break;
-		case hundred:
-			setType(hundred);
-			break;
-		case string:
-			setType(string);
-			break;
-		case idfolio:
-			setType(idfolio);
-			break;
-		case folio:
-			setType(folio);
-			break;
-		case elementline:
-			setType(elementline);
-			break;
-		case elementcolumn:
-			setType(elementcolumn);
-			break;
-		case elementprefix:
-			setType(elementprefix);
-			break;
-	};
+void NumPartEditorW::on_type_cb_activated(int) {
+	if (ui->type_cb->currentText() == tr("Chiffre 1"))
+		setType(unit);
+	else if (ui->type_cb->currentText() == tr("Chiffre 1 - Folio"))
+		setType(unitfolio);
+	else if (ui->type_cb->currentText() ==  tr("Chiffre 01"))
+		setType(ten);
+	else if (ui->type_cb->currentText() == tr("Chiffre 01 - Folio"))
+		setType(tenfolio);
+	else if (ui->type_cb->currentText() == tr("Chiffre 001"))
+		setType(hundred);
+	else if (ui->type_cb->currentText() == tr("Chiffre 001 - Folio"))
+		setType(hundredfolio);
+	else if (ui->type_cb->currentText() == tr("Texte"))
+		setType(string);
+	else if (ui->type_cb->currentText() == tr("N° folio"))
+		setType(idfolio);
+	else if (ui->type_cb->currentText() == tr("Folio"))
+		setType(folio);
+	else if (ui->type_cb->currentText() == tr("Element Line"))
+		setType(elementline);
+	else if (ui->type_cb->currentText() == tr("Element Column"))
+		setType(elementcolumn);
+	else if (ui->type_cb->currentText() == tr("Element Prefix"))
+		setType(elementprefix);
 	emit changed();
 }
 
@@ -184,11 +212,11 @@ void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
  * @param fnum, force the behavior of numeric type
  */
 void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
-	ui -> type_combo -> setCurrentIndex(t);
+//	ui -> type_cb -> setCurrentIndex(t);
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
-	if ( ((t==unit || t==ten || t==hundred) &&
+	if ( ((t==unit || t==unitfolio || t==ten || t==tenfolio || t==hundred || t==hundredfolio) &&
 		  (type_==string || type_==folio || type_==idfolio ||
 		   type_==elementcolumn || type_==elementline || type_==elementprefix))
 		 || fnum) {
