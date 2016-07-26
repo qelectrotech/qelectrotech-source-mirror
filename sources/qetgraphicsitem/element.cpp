@@ -856,22 +856,24 @@ void Element::setFolioSequentialToHash(QStringList* list, QHash<QString, QString
  */
 QString Element::assignSeq(QString label) {
 	for (int i = 1; i <= qMax(qMax(qMax(seq_unitfolio.size(), seq_tenfolio.size()),qMax(seq_hundredfolio.size(),seq_unit.size())),qMax(seq_hundred.size(),seq_ten.size())); i++) {
-		if (label.contains("%sequ_" + QString::number(i))) {
+		// "&& !seq.isEmpty()" introduced in the methods below to avoid crash when copying and paste elements
+		// that contain folio sequential in their labels. Needs further debugging.
+		if (label.contains("%sequ_" + QString::number(i)) && !seq_unit.isEmpty()) {
 			label.replace("%sequ_" + QString::number(i),seq_unit.at(i-1));
 		}
-		if (label.contains("%seqt_" + QString::number(i))) {
+		if (label.contains("%seqt_" + QString::number(i)) && !seq_ten.isEmpty()) {
 			label.replace("%seqt_" + QString::number(i),seq_ten.at(i-1));
 		}
-		if (label.contains("%seqh_" + QString::number(i))) {
+		if (label.contains("%seqh_" + QString::number(i)) && !seq_hundred.isEmpty()) {
 			label.replace("%seqh_" + QString::number(i),seq_hundred.at(i-1));
 		}
-		if (label.contains("%sequf_" + QString::number(i))) {
+		if (label.contains("%sequf_" + QString::number(i)) && !seq_unitfolio.isEmpty()) {
 			label.replace("%sequf_" + QString::number(i),seq_unitfolio.at(i-1));
 		}
-		if (label.contains("%seqtf_" + QString::number(i))) {
+		if (label.contains("%seqtf_" + QString::number(i)) && !seq_tenfolio.isEmpty()) {
 			label.replace("%seqtf_" + QString::number(i),seq_tenfolio.at(i-1));
 		}
-		if (label.contains("%seqhf_" + QString::number(i))) {
+		if (label.contains("%seqhf_" + QString::number(i)) && !seq_hundredfolio.isEmpty()) {
 			label.replace("%seqhf_" + QString::number(i),seq_hundredfolio.at(i-1));
 		}
 	}

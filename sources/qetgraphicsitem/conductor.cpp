@@ -1202,6 +1202,8 @@ QString Conductor::text() const {
  * @return label with variables assigned
  */
 QString Conductor::assignVariables(QString label) {
+	//The check below was introduced to avoid crash caused by the addition of terminal elements
+	//Needs further debbugging.
 	if (diagram() == NULL) return label;
 	//Titleblock Variables
 		for (int i = 0; i < diagram()->border_and_titleblock.additionalFields().count(); i++)
