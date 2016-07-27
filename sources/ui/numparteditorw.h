@@ -52,6 +52,7 @@ class NumPartEditorW : public QWidget
 	private:
 	void setVisibleItems();
 	void disableItem(int index);
+	void setCurrentIndex(NumPartEditorW::type);
 
 	private slots:
 	void on_type_cb_activated(int);

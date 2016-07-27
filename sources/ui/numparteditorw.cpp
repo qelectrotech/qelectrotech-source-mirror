@@ -212,7 +212,7 @@ void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
  * @param fnum, force the behavior of numeric type
  */
 void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
-//	ui -> type_cb -> setCurrentIndex(t);
+	setCurrentIndex(t);
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
@@ -257,4 +257,38 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		}
 	}
 	type_= t;
+}
+
+/**
+ * @brief NumPartEditorW::setCurrentIndex
+ * Set Current Index of type_cb
+ * @param t, type used
+ */
+void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
+	int i;
+	if (t == unit)
+		i = ui->type_cb->findText(tr("Chiffre 1"));
+	else if (t == unitfolio)
+		i = ui->type_cb->findText(tr("Chiffre 1 - Folio"));
+	else if (t == ten)
+		i = ui->type_cb->findText(tr("Chiffre 01"));
+	else if (t == tenfolio)
+		i = ui->type_cb->findText(tr("Chiffre 01 - Folio"));
+	else if (t == hundred)
+		i = ui->type_cb->findText(tr("Chiffre 001"));
+	else if (t == hundredfolio)
+		i = ui->type_cb->findText(tr("Chiffre 001 - Folio"));
+	else if (t == string)
+		i = ui->type_cb->findText(tr("Texte"));
+	else if (t == idfolio)
+		i = ui->type_cb->findText(tr("N° folio"));
+	else if (t == folio)
+		i = ui->type_cb->findText(tr("Folio"));
+	else if (t == elementline)
+		i = ui->type_cb->findText(tr("Element Line"));
+	else if (t == elementcolumn)
+		i = ui->type_cb->findText(tr("Element Column"));
+	else if (t == elementprefix)
+		i = ui->type_cb->findText(tr("Element Prefix"));
+	ui->type_cb->setCurrentIndex(i);
 }
