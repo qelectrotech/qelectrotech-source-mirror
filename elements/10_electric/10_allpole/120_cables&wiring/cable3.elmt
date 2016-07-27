@@ -1,0 +1,22 @@
+<definition hotspot_y="3" orientation="dyyy" version="0.51" hotspot_x="39" link_type="simple" width="80" type="element" height="20">
+    <uuid uuid="{408ddc21-5f6a-48a4-ac26-80a9992b4964}"/>
+    <names>
+        <name lang="It">Cavo ? 4G</name>
+        <name lang="fr">Cable 4G</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" x1="-33.05" y1="7.95" x2="-29.05" length1="1.5" y2="11.95" antialias="true" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-13.05" y1="7.95" x2="-9.05" length1="1.5" y2="11.95" antialias="true" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="3" size="4" y="9" x="31"/>
+        <line end1="none" x1="27" y1="8" x2="31" length1="1.5" y2="12" antialias="true" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="1" size="4" y="9" x="-10"/>
+        <text text="2" size="4" y="9" x="11"/>
+        <line end1="none" x1="7" y1="8" x2="11" length1="1.5" y2="12" antialias="true" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="type?&#xa;4G_ mm²" size="6" rotate="true" y="2.5" x="-82" tagg="label"/>
+        <line end1="none" x1="-31" y1="10" x2="29" length1="1.5" y2="10" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="GNYE" size="4" y="9" x="-31"/>
+        <input text="" size="5" rotate="true" y="1" x="-62" tagg="none"/>
+    </description>
+</definition>

@@ -1,0 +1,39 @@
+<definition hotspot_y="46" orientation="dyyy" version="0.51" hotspot_x="22" link_type="simple" width="40" type="element" height="100">
+    <uuid uuid="{6708e5d3-de40-4144-b274-8bca49aa61ef}"/>
+    <names>
+        <name lang="fr">Amperemetre digital</name>
+        <name lang="it">Amperometro digitale</name>
+        <name lang="en">Digital ammeter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="A~" size="3" y="12" x="9"/>
+        <rect y="-40" x="-20" width="36" antialias="false" height="87" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="4" size="3" y="-26" x="9"/>
+        <text text="3" size="3" y="-26" x="1"/>
+        <text text="2" size="3" y="-26" x="-7"/>
+        <circle y="-35.5" x="-8.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-35.5" x="7.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="7.7049" y1="-33" x2="12.3197" length1="1.5" y2="-33" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-8.29514" y1="-33" x2="-3.68027" length1="1.5" y2="-33" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-35.5" x="-0.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-35.5" x="-16.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-16.2951" y1="-33" x2="-11.6803" length1="1.5" y2="-33" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-0.2951" y1="-33" x2="4.3197" length1="1.5" y2="-33" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-4" y1="12" x2="-4" length1="1.5" y2="14" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:white"/>
+        <line end1="none" x1="-2.11725" y1="13" x2="-1.78964" length1="1.5" y2="13" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:white"/>
+        <circle y="12" x="0" diameter="2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:white"/>
+        <polygon x1="4" y1="12" x5="2.65811" y4="14" y5="14" x2="4" y2="14" y3="12" antialias="false" x3="2.65811" closed="false" x4="2.65811" style="line-style:normal;line-weight:thin;filling:none;color:white"/>
+        <rect y="0" x="-16" width="24" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="AMP" size="4" y="25" x="-19"/>
+        <text text="1" size="3" y="-26" x="-15"/>
+        <input text="_" size="9" rotate="true" y="30" x="30" tagg="label"/>
+        <line end1="none" x1="-20" y1="-18" x2="16" length1="1.5" y2="-18" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-20" y1="27" x2="16" length1="1.5" y2="27" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" y="-35" x="10"/>
+        <terminal orientation="n" y="-35" x="2"/>
+        <terminal orientation="n" y="-35" x="-6"/>
+        <terminal orientation="n" y="-35" x="-14"/>
+    </description>
+</definition>

@@ -1,0 +1,61 @@
+<definition hotspot_y="50" orientation="dyyy" version="0.51" hotspot_x="50" link_type="simple" width="100" type="element" height="100">
+    <uuid uuid="{f33cc8e6-eb58-4bb0-8835-0079c654f5ab}"/>
+    <names>
+        <name lang="de">PM3200</name>
+        <name lang="cs">PM3200</name>
+        <name lang="el">PM3200</name>
+        <name lang="pt">PM3200</name>
+        <name lang="be">PM3200</name>
+        <name lang="pl">PM3200</name>
+        <name lang="es">PM3200</name>
+        <name lang="ru">PM3200</name>
+        <name lang="fr">PM3200</name>
+        <name lang="en">PM3200</name>
+        <name lang="it">PM3200</name>
+        <name lang="ar">PM3200</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect y="-17" x="30" width="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="2" x="30" width="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="12" x="30" width="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-8" x="30" width="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="S2" size="2" y="36" x="22"/>
+        <text text="S1" size="2" y="36" x="30"/>
+        <text text="S2" size="2" y="36" x="38"/>
+        <rect y="-44" x="-45" width="90" antialias="false" height="88" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-30" x="-45" width="90" antialias="true" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="" size="2" rotate="true" y="-32" x="45" tagg="none"/>
+        <rect y="-27" x="-26" width="71" antialias="false" height="4" style="line-style:normal;line-weight:none;filling:green;color:black"/>
+        <text text="V1" size="2" y="36" x="-42"/>
+        <text text="V2" size="2" y="36" x="-32"/>
+        <text text="V3" size="2" y="36" x="-22"/>
+        <text text="Vn" size="2" y="36" x="-12"/>
+        <text text="L1" size="2" y="28" x="-27"/>
+        <text text="L2" size="2" y="28" x="-18"/>
+        <text text="S1" size="2" y="36" x="-2"/>
+        <text text="S2" size="2" y="36" x="6"/>
+        <text text="S1" size="2" y="36" x="14"/>
+        <rect y="-17" x="-21" width="42" antialias="true" height="34" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect y="-20" x="-26" width="52" antialias="true" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="ESC" size="2" y="-13.4366" x="32"/>
+        <text text="OK" size="2" y="-4.43662" x="33"/>
+        <polygon x1="32.9614" y1="12.995" x5="32.9614" y4="12.995" y5="12.995" x6="32.9614" x2="35.0194" y6="12.995" y2="16" y3="12.995" antialias="true" x3="37.0774" x4="37.0774" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y4="3" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="35" y1="3" antialias="false" y5="3" x1="35" x7="35" y3="6" y2="6" y8="3" y7="3" y6="3" x3="37" x6="35" x8="35" x2="33" x4="35"/>
+        <text text="Schneider" size="3" y="-24" x="-44"/>
+        <text text="Electric" size="2" y="-21" x="-39"/>
+        <input text="_" size="9" rotate="true" y="-40" x="-45" tagg="label"/>
+        <terminal orientation="s" y="42" x="-20"/>
+        <terminal orientation="s" y="33" x="-25"/>
+        <terminal orientation="s" y="42" x="24"/>
+        <terminal orientation="s" y="42" x="40"/>
+        <terminal orientation="s" y="42" x="-40"/>
+        <terminal orientation="s" y="42" x="-30"/>
+        <terminal orientation="s" y="42" x="16"/>
+        <terminal orientation="s" y="42" x="32"/>
+        <terminal orientation="s" y="42" x="8"/>
+        <terminal orientation="s" y="42" x="-10"/>
+        <terminal orientation="s" y="42" x="0"/>
+        <terminal orientation="s" y="33" x="-16"/>
+    </description>
+</definition>
