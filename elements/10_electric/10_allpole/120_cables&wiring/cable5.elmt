@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Cable 5G</name>
         <name lang="it">Cavo Type 5G</name>
+        <name lang="pl">Przewód pięciożyłowy</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
