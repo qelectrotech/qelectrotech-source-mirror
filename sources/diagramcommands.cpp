@@ -173,16 +173,26 @@ void PasteDiagramCommand::redo()
 	if (first_redo) {
 		first_redo = false;
 
-		//this is the first paste, we do some actions for the new element
+			//this is the first paste, we do some actions for the new element
 		foreach(Element *e, content.elements) {
-			//make new uuid, because old uuid are the uuid of the copied element
+				//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
 
-			//Reset the text of report element
+				//Reset the text of report element
 			if (e -> linkType() & Element::AllReport) {
-				if (e->texts().size())
+
+					//Befor commit 3559 there isn't text field tagged label,
+					//so if not found we take the first text field
+				if (ElementTextItem *eti = e->taggedText("label"))
+					eti->setPlainText("/");
+				else if (e->texts().size())
 					e->texts().first()->setPlainText("/");
-			} else {
+
+				if (ElementTextItem *eti = e->taggedText("function"))
+					eti->setPlainText("_");
+				if (ElementTextItem *eti = e->taggedText("tension-protocol"))
+					eti->setPlainText("_");
+			} /*else {
 				//Reset the information about the label, the comment and location
 				e -> rElementInformations().addValue("label", "");
 				e -> rElementInformations().addValue("comment", "");
@@ -191,22 +201,23 @@ void PasteDiagramCommand::redo()
 				//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))
 				eti -> setPlainText("_");
-			}
+			}*/
 		}
 
-		//Reset the text of conductors
+			//Reset the text of conductors
 		foreach (Conductor *c, content.conductorsToMove) {
 			ConductorProperties cp = c -> properties();
 			cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
 			c -> setProperties(cp);
 		}
 	}
-	else
-	{
+	else {
 		foreach (QGraphicsItem *item, content.items(filter))
 			diagram->addItem(item);
 	}
-	foreach (QGraphicsItem *qgi, content.items()) qgi -> setSelected(true);
+
+	foreach (QGraphicsItem *qgi, content.items())
+		qgi -> setSelected(true);
 }
 
 /**

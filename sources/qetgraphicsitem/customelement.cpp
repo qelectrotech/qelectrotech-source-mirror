@@ -1077,6 +1077,8 @@ ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString
 /**
  * @brief CustomElement::taggedText
  * return the text field tagged with @tagg or NULL if text field isn't found
+ * Some of available taggs :
+ * function, tension-protocol, label, comment, location
  * @param tagg
  */
 ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
