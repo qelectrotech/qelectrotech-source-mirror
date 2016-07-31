@@ -82,6 +82,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setSelectionMode();
 	adjustSceneRect();
 	updateWindowTitle();
+	scene->loadElmtFolioSeq();
 
 	context_menu = new QMenu(this);
 	paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
@@ -432,6 +433,7 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	DiagramContent content_pasted;
+	this->diagram()->item_paste = true;
 	scene -> fromXml(document_xml, pos, false, &content_pasted);
 
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
@@ -440,6 +442,7 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 		scene -> undoStack().push(new PasteDiagramCommand(scene, content_pasted));
 		adjustSceneRect();
 	}
+	this->diagram()->item_paste = false;
 }
 
 /**

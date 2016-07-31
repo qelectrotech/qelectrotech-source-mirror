@@ -336,10 +336,13 @@ void CustomElement::parseLabels() {
 				rxml.readNext();
 		}
 	}
-	//apply formula to specific label
+	//apply formula to specific label - This condition specify elements which have different labels e.g KM
+	//that are already specified in the element label (inside .elmt file). This method is not called if elements
+	//are being loaded at first time or being pasted
 	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
 			 (!location().project()->elementAutoNumFormula().isEmpty()) &&
-			 (this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
+			 (this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale) &&
+			 !this->diagram()->item_paste) {
 		QString formula = location().project()->elementAutoNumFormula();
 		DiagramContext &dc = this->rElementInformations();
 		QString prefix = this->taggedText("label")->toPlainText();

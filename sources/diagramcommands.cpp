@@ -212,8 +212,11 @@ void PasteDiagramCommand::redo()
 		}
 	}
 	else {
-		foreach (QGraphicsItem *item, content.items(filter))
+		foreach (QGraphicsItem *item, content.items(filter)) {
+			diagram->item_paste = true;
 			diagram->addItem(item);
+			diagram->item_paste = false;
+		}
 	}
 
 	foreach (QGraphicsItem *qgi, content.items())

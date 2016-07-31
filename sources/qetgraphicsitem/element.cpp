@@ -759,8 +759,6 @@ QString Element::assignVariables(QString label, Element *elmt){
 	label.replace("%id", QString::number(elmt->diagram()->folioIndex()+1));
 	label.replace("%total", QString::number(elmt->diagram()->border_and_titleblock.folioTotal()));
 	label.replace("%prefix", elmt->getPrefix());
-	if (label.contains("%prefix"))
-		label.replace("%prefix",this->getPrefix());
 	label = assignSeq(label);
 	return label;
 }
