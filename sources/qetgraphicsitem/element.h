@@ -135,7 +135,7 @@ class Element : public QetGraphicsItem {
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 		QString assignVariables (QString, Element *);
-		QString assignSeq (QString);
+		QString assignSeq (QString, Element*);
 		void setSequential ();
 		void setSequentialToList(QStringList*, NumerotationContext*, QString);
 		void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
@@ -184,10 +184,18 @@ class Element : public QetGraphicsItem {
 	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	QUuid uuid() const;
-	
+
 	// orientation-related methods
 	int orientation() const;
 	
+	// Lists containing Sequentials
+	QStringList seq_unit;
+	QStringList seq_unitfolio;
+	QStringList seq_ten;
+	QStringList seq_tenfolio;
+	QStringList seq_hundred;
+	QStringList seq_hundredfolio;
+
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 	
@@ -208,12 +216,6 @@ class Element : public QetGraphicsItem {
 	private:
 		bool m_mouse_over;
 		QString m_prefix;
-		QStringList seq_unit;
-		QStringList seq_unitfolio;
-		QStringList seq_ten;
-		QStringList seq_tenfolio;
-		QStringList seq_hundred;
-		QStringList seq_hundredfolio;
 
 };
 
