@@ -203,15 +203,15 @@ void PasteDiagramCommand::redo()
 				//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))
 				eti -> setPlainText("_");
+			
+				//Reset the text of conductors
+				foreach (Conductor *c, content.conductorsToMove) {
+					ConductorProperties cp = c -> properties();
+					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+					c -> setProperties(cp);
 			}
 		}
-
-			//Reset the text of conductors
-		foreach (Conductor *c, content.conductorsToMove) {
-			ConductorProperties cp = c -> properties();
-			cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
-			c -> setProperties(cp);
-		}
+}
 	}
 	else {
 		foreach (QGraphicsItem *item, content.items(filter)) {
