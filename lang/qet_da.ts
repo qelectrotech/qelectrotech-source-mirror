@@ -2843,7 +2843,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="176"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="191"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation>Ark  %1 (%2), position %3.</translation>
+        <translation>Ark %1 (%2), position %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
@@ -3656,7 +3656,7 @@ Kommandovalg:
         <location filename="../sources/qetapp.cpp" line="1258"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Indstille QElectroTech</translation>
+        <translation>Indstil QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1383"/>
@@ -5149,7 +5149,7 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="48"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Indstille QElectroTech</translation>
+        <translation>&amp;Indstil QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="49"/>
