@@ -35,7 +35,6 @@ SelectAutonumW::SelectAutonumW(QWidget *parent) :
 	ui->setupUi(this);
 	if (this->parentWidget() -> objectName()=="ElementTab"){
 		m_eaw = new ElementAutonumberingW();
-		connect(m_eaw,SIGNAL(textChanged(QString)),this,SLOT(formula_textChanged(QString)));
 		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
 	}
 	setContext(NumerotationContext());
@@ -47,7 +46,6 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context, QWidget *pare
 {
 	if (this->parentWidget() -> objectName()=="ElementTab"){
 		m_eaw = new ElementAutonumberingW();
-		connect(m_eaw,SIGNAL(textChanged(QString)),this,SLOT(formula_textChanged(QString)));
 		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
 	}
 	ui->setupUi(this);

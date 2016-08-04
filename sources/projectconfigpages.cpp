@@ -424,21 +424,18 @@ void ProjectAutoNumConfigPage::buildConnections() {
 
 	//Conductor Tab
 	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  m_saw_conductor, SLOT (applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_conductor(QString)));
 	connect (m_context_cb_conductor, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_conductor(QString)));
 	connect (m_saw_conductor,        SIGNAL (applyPressed()),               this, SLOT (saveContext_conductor()));
 	connect (m_remove_pb_conductor,  SIGNAL (clicked()),                    this, SLOT (removeContext_conductor()));
 
 	//Element Tab
 	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  m_saw_element, SLOT(applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_element(QString)));
 	connect (m_context_cb_element, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_element(QString)));
 	connect (m_saw_element,        SIGNAL (applyPressed()),               this, SLOT (saveContext_element()));
 	connect (m_remove_pb_element,  SIGNAL (clicked()),                    this, SLOT (removeContext_element()));
 
 	//Folio Tab
 	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  m_saw_folio, SLOT(applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  this, SLOT (updateContext_folio(QString)));
 	connect (m_context_cb_folio, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_folio(QString)));
 	connect (m_saw_folio,        SIGNAL (applyPressed()),               this, SLOT (saveContext_folio()));
 	connect (m_remove_pb_folio,  SIGNAL (clicked()),                    this, SLOT (removeContext_folio()));
