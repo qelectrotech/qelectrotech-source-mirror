@@ -169,6 +169,7 @@ void PasteDiagramCommand::undo()
 void PasteDiagramCommand::redo()
 {
 	diagram -> showMe();
+	QSettings settings;
 
 	if (first_redo) {
 		first_redo = false;
@@ -192,7 +193,8 @@ void PasteDiagramCommand::redo()
 					eti->setPlainText("_");
 				if (ElementTextItem *eti = e->taggedText("tension-protocol"))
 					eti->setPlainText("_");
-			} /*else {
+			}
+				if (settings.value("diagramcommands/save-label", true).toBool()){
 				//Reset the information about the label, the comment and location
 				e -> rElementInformations().addValue("label", "");
 				e -> rElementInformations().addValue("comment", "");
@@ -201,7 +203,7 @@ void PasteDiagramCommand::redo()
 				//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))
 				eti -> setPlainText("_");
-			}*/
+			}
 		}
 
 			//Reset the text of conductors
