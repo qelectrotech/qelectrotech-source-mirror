@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="type">
       <attribute name="title">
@@ -378,12 +378,18 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QSpinBox" name="m_cond_size_sb">
+        <widget class="QDoubleSpinBox" name="m_cond_size_sb">
          <property name="minimum">
-          <number>1</number>
+          <double>0.400000000000000</double>
          </property>
          <property name="maximum">
-          <number>10</number>
+          <double>10.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.200000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>

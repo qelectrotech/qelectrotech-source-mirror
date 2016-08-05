@@ -296,7 +296,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension-protocol");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
-	cond_size            = e.attribute("condsize", QString::number(1)).toInt();
+	cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
 	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
