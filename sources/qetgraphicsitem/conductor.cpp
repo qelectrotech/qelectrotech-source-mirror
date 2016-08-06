@@ -455,7 +455,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	}
 	
 		//Draw the conductor bigger when is hovered
-	conductor_pen.setWidth(bMouseOver? (properties_.cond_size) +4 : (properties_.cond_size));
+	conductor_pen.setWidthF(bMouseOver? (properties_.cond_size) +4 : (properties_.cond_size));
 
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
