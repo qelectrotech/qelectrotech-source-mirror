@@ -39,8 +39,8 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	qle_x = new QDoubleSpinBox();
 	qle_y = new QDoubleSpinBox();
 	
-	qle_x -> setRange(-1000, 1000);
-	qle_y -> setRange(-1000, 1000);
+	qle_x -> setRange(-5000, 5000);
+	qle_y -> setRange(-5000, 5000);
 	
 	orientation = new QComboBox();
 	orientation -> addItem(QET::Icons::North, tr("Nord"),  Qet::North);

@@ -41,10 +41,10 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	x2 = new QDoubleSpinBox();
 	y2 = new QDoubleSpinBox();
 	
-	x1 -> setRange(-1000, 1000);
-	y1 -> setRange(-1000, 1000);
-	x2 -> setRange(-1000, 1000);
-	y2 -> setRange(-1000, 1000);
+	x1 -> setRange(-5000, 5000);
+	y1 -> setRange(-5000, 5000);
+	x2 -> setRange(-5000, 5000);
+	y2 -> setRange(-5000, 5000);
 	
 	end1_type = new QComboBox();
 	end1_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 1st end of a line"), Qet::None    );

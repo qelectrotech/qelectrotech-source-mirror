@@ -43,8 +43,8 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	rotation_angle_label -> setWordWrap(true);
 	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
 	
-	qle_x -> setRange (-1000, 1000);
-	qle_y -> setRange (-1000, 1000);
+	qle_x -> setRange (-5000, 5000);
+	qle_y -> setRange (-5000, 5000);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));

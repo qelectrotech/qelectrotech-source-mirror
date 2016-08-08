@@ -42,10 +42,10 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	start_angle -> setRange(-360, 360);
 	angle       -> setRange(-360, 360);
 	
-	x->setRange(-1000, 1000);
-	y->setRange(-1000, 1000);
-	h->setRange(-1000, 1000);
-	v->setRange(-1000, 1000);
+	x->setRange(-5000, 5000);
+	y->setRange(-5000, 5000);
+	h->setRange(-5000, 5000);
+	v->setRange(-5000, 5000);
 	
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	

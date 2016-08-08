@@ -39,10 +39,10 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	h = new QDoubleSpinBox();
 	v = new QDoubleSpinBox();
 	
-	x->setRange(-1000, 1000);
-	y->setRange(-1000, 1000);
-	h->setRange(-1000, 1000);
-	v->setRange(-1000, 1000);
+	x->setRange(-5000, 5000);
+	y->setRange(-5000, 5000);
+	h->setRange(-5000, 5000);
+	v->setRange(-5000, 5000);
 	
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
