@@ -72,6 +72,7 @@ class DiagramView : public QGraphicsView
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
 	bool hasCopiableItems();
+	bool hasTextItems();
 	bool hasDeletableItems();
 	void editSelection();
 	void setEventInterface (DVEventInterface *event_interface);

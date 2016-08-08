@@ -604,11 +604,31 @@ switch(e -> key())
 			current_project->changeTabDown();
 			return;
 		case Qt::Key_Home:
-			current_project->changeFirstTab();
-			return;
+			if (!hasTextItems()) {
+				if (
+					qgraphicsitem_cast<IndependentTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<ElementTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<ConductorTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<DiagramTextItem *>(scene->focusItem())
+					)
+					break;
+				current_project->changeFirstTab();
+				return;
+			}
+			else break;
 		case Qt::Key_End:
-			current_project->changeLastTab();
-			return;
+			if (!hasTextItems()) {
+				if (
+					qgraphicsitem_cast<IndependentTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<ElementTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<ConductorTextItem *>(scene->focusItem()) ||
+					qgraphicsitem_cast<DiagramTextItem *>(scene->focusItem())
+					)
+					break;
+				current_project->changeLastTab();
+				return;
+			}
+			else break;
 		case Qt::Key_ZoomOut:
 			zoom(0.85);
 			return;
@@ -622,19 +642,19 @@ switch(e -> key())
 			if (e->modifiers() & Qt::ControlModifier)
 				zoom(1.15);
 		case Qt::Key_Up:
-			if(!scene->selectedContent().elements.isEmpty()){
+			if(!(scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Down:
-			if(!scene->selectedContent().elements.isEmpty()){
+			if(!(scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Left:
-			if(!scene->selectedContent().elements.isEmpty()){
+			if(!(scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Right:
-			if(!scene->selectedContent().elements.isEmpty()){
+			if(!(scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 	}
@@ -659,7 +679,7 @@ void DiagramView::keyReleaseEvent(QKeyEvent *e) {
 	or below the editor SceneRect is expanded
 */
 void DiagramView::scrollOnMovement(QKeyEvent *e){
-			QList<QGraphicsItem *> selected_elmts = scene ->selectedItems();
+			QList<QGraphicsItem *> selected_elmts = scene->selectedContent().items(255);
 			QRectF viewed_scene = viewedSceneRect();
 			foreach (QGraphicsItem *qgi, selected_elmts){
 				qreal x = qgi->pos().x();
@@ -682,15 +702,21 @@ void DiagramView::scrollOnMovement(QKeyEvent *e){
 						QScrollBar *v = verticalScrollBar();
 						int h_increment=0;
 						int v_increment=0;
-						if (e->key()==Qt::Key_Up && elmt_above_bottom_margin)
+						if (e->key()==Qt::Key_Up && elmt_above_bottom_margin) {
 							v_increment = 2*qgi->boundingRect().top();
-						else if(e->key()==Qt::Key_Down && elmt_below_top_margin){
-							v_increment = 2*qgi->boundingRect().bottom();
+							if (v_increment == 0) v_increment = -2*qgi->boundingRect().height();
 						}
-						else if (e->key()==Qt::Key_Left && elmt_left_of_right_margin)
+						else if(e->key()==Qt::Key_Down && elmt_below_top_margin) {
+							v_increment = 2*qgi->boundingRect().bottom();
+							if (v_increment == 0) v_increment = -2*qgi->boundingRect().height();
+						}
+						else if (e->key()==Qt::Key_Left && elmt_left_of_right_margin) {
 							h_increment = 2*qgi->boundingRect().left();
-						else if (e->key()==Qt::Key_Right && elmt_right_of_left_margin){
+							if (h_increment == 0) h_increment = -2*qgi->boundingRect().width();
+						}
+						else if (e->key()==Qt::Key_Right && elmt_right_of_left_margin) {
 							h_increment = 2*qgi->boundingRect().right();
+							if (h_increment == 0) h_increment = -2*qgi->boundingRect().width();
 						}
 						if (((elmt_right  >= scene->sceneRect().right() -  qgi->boundingRect().right())  ||
 							(elmt_bottom >= scene->sceneRect().bottom() - qgi->boundingRect().bottom())) &&
@@ -747,6 +773,23 @@ bool DiagramView::hasCopiableItems() {
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
 			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramImageItem *>(qgi)
+		) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
+	@return true if there is any Text Item selected
+*/
+bool DiagramView::hasTextItems() {
+	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+		if (
+			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+			qgraphicsitem_cast<ElementTextItem *>(qgi) ||
+			qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
+			qgraphicsitem_cast<DiagramTextItem *>(qgi)
 		) {
 			return(true);
 		}
