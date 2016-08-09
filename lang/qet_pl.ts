@@ -438,7 +438,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>W tym menu możesz określić czy automatyczna numeracja ma być aktualizowana czy nie. Dla automatycznej numeracji elementów są 4 opcje aktualizacji zasad:
+-Oba: etykiety zarówno wstawianych jak i istniejących elementów będą aktualizowane.
+-Wstawiane: tylko nowe elementy będą aktualizowane. Istniejące etykiety zostaną zamrożone.
+-Istniejące: tylko istniejące elementy zostaną zaktualizowane. Elementy wstawiane zostaną przypisane ich wzorowi i nie będą aktualizowane po wstawieniu.
+-Wyłączone: Etykiety wstawianych i stniejących elementów nie będą aktualizowane. Dotyczy to również nowych arkuszy.
+Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ustalają zasady aktualizacji.</translation>
     </message>
 </context>
 <context>
@@ -1004,22 +1009,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wzór automatycznego nazewnictwa:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw formułę tutaj np.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formuła:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="85"/>
@@ -1033,7 +1038,16 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Możesz użyć następujących zmiennych w formule:
+ -%prefix: Domyślny Element - Prefix
+ -%l: Element - Wiersz
+ -%c: Element - Kolmna
+ -%F: Arkusz - Nazwa
+ -%f or %id: Arkusz ID
+ -%total: Ilość arkuszy
+Możesz również ustalić inną dowolną zmienną tabliczki 
+rysunkowej, to Ty tworzysz. Definiowanie tekstów 
+i numerów jest również dostępne.</translation>
     </message>
 </context>
 <context>
@@ -2156,7 +2170,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie przechowywać etykiet elementów podczas wklejania kopii</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
@@ -2867,42 +2881,42 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
         <location filename="../sources/ui/numparteditorw.cpp" line="167"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="272"/>
         <source>Chiffre 1 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer 1 - Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="171"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="276"/>
         <source>Chiffre 01 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer 01 - Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="175"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="280"/>
         <source>Chiffre 001 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer 001 - Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="183"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="288"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Element - Wiersz</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="185"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="290"/>
         <source>Element Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Element - Kolumna</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="187"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="292"/>
         <source>Element Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Element - Prefix</translation>
     </message>
 </context>
 <context>
@@ -3063,7 +3077,7 @@ Wybierz właściwości i zastosuj nowy potencjał..</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="324"/>
         <source>Management</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarządzanie</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
@@ -3073,7 +3087,7 @@ Wybierz właściwości i zastosuj nowy potencjał..</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="343"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="359"/>
@@ -6374,12 +6388,12 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Projekt bez tytułu</translation>
+        <translation>Projekt bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja</translation>
     </message>
 </context>
 <context>
@@ -6610,7 +6624,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
         <location filename="../sources/ui/selectautonumw.cpp" line="173"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numerfacja przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="174"/>
@@ -7452,7 +7466,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="202"/>
         <source>à droite </source>
-        <translation type="unfinished"></translation>
+        <translation>w prawo</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -8061,22 +8075,22 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef Pionowe przesunięcie:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10px odpowiada 1 części siatki</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw przesunięcie pionowe dla odsyłaczy. 10px odpowiada 1 części siatki.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślnie - dopasowanie do wysokości XRef</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="107"/>
