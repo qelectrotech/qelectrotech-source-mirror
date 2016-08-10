@@ -54,15 +54,15 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	//Title block widget
 	TitleBlockPropertiesWidget  *titleblock_infos;
-	if (QETProject *parent_project = diagram -> project()) {
-        titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, diagram->project(),  this);
-		connect(titleblock_infos, SIGNAL(editTitleBlockTemplate(QString, bool)), diagram->views().first(), SIGNAL(editTitleBlockTemplate(QString, bool)));
-	}
+
+	if (QETProject *parent_project = diagram -> project())
+		titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, diagram->project(),  this);
 	else
-        titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, diagram->project(), this);
+		titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, diagram->project(), this);
+
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
-    	connect(titleblock_infos,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(editAutoFolioNum()));
-    	titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
+	connect(titleblock_infos,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(editAutoFolioNum()));
+	titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
 	//Conductor widget
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors, this);

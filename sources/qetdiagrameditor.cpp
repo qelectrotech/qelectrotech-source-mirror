@@ -1501,7 +1501,6 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		//Manage request for edit or find element and titleblock
 	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)),                    this,               SLOT(findElementInPanel(const ElementsLocation &)));
 	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)),                    this,               SLOT(editElementInEditor(const ElementsLocation &)));
-	connect(project_view, SIGNAL(editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool)), QETApp::instance(), SLOT(openTitleBlockTemplate(TitleBlockTemplateLocation, bool)));
 	
 		// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));

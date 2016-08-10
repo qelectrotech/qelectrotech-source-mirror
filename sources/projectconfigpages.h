@@ -1,5 +1,3 @@
-
-
 /*
 	Copyright 2006-2016 The QElectroTech Team
 	This file is part of QElectroTech.
@@ -20,13 +18,11 @@
 #ifndef PROJECTCONFIGPAGES_H
 #define PROJECTCONFIGPAGES_H
 #include "configpage.h"
-#include <QtWidgets>
 
 class QLabel;
 class QLineEdit;
 class QETProject;
 class BorderPropertiesWidget;
-class TitleBlockPropertiesWidget;
 class ConductorPropertiesWidget;
 class DiagramContextWidget;
 class ReportPropertieWidget;
@@ -37,6 +33,8 @@ class QPushButton;
 class FolioAutonumberingW;
 class ElementAutonumberingW;
 class AutoNumberingManagementW;
+class QTabWidget;
+class QScrollArea;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton

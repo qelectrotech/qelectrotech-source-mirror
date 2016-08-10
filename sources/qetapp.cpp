@@ -1194,6 +1194,7 @@ void QETApp::configureQET() {
 	// cree le dialogue
 	ConfigDialog cd;
 	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
+	cd.setWindowModality(Qt::WindowModal);
 	cd.addPage(new GeneralConfigurationPage());
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());

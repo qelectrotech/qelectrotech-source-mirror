@@ -54,6 +54,7 @@ ProjectPropertiesDialog::~ProjectPropertiesDialog () {
  * execute this dialog.
  */
 void ProjectPropertiesDialog::exec() {
+	m_properties_dialog->setWindowModality(Qt::WindowModal);
 	m_properties_dialog -> exec();
 }
 

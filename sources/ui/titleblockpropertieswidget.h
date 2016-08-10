@@ -47,6 +47,7 @@ class TitleBlockPropertiesWidget : public QWidget
 		void setProperties(const TitleBlockProperties &properties);
 		TitleBlockProperties properties() const;
 		TitleBlockProperties propertiesAutoNum(QString autoNum) const;
+		TitleBlockTemplateLocation currentTitleBlockLocation () const;
 		void setPropertiesWithAutoNum(const TitleBlockProperties &properties, QString autoNum);
 
 		void setTitleBlockTemplatesVisible(const bool &visible);
@@ -67,7 +68,6 @@ class TitleBlockPropertiesWidget : public QWidget
 		void on_m_edit_autofolionum_pb_clicked();
 
 	signals:
-		void editTitleBlockTemplate(const QString &, bool);
 		void set_auto_page_num() const;
 		void openAutoNumFolioEditor (QString);
 

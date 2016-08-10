@@ -20,6 +20,7 @@
 #include "templatescollection.h"
 #include "qeticons.h"
 #include "titleblocktemplate.h"
+#include "qetapp.h"
 #include <QMenu>
 
 /**
@@ -216,6 +217,20 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoN
 	return prop;
 }
 
+TitleBlockTemplateLocation TitleBlockPropertiesWidget::currentTitleBlockLocation() const
+{
+	QET::QetCollection qc = m_map_index_to_collection_type.at(ui->m_tbt_cb->currentIndex());
+	TitleBlockTemplatesCollection *collection = nullptr;
+	foreach (TitleBlockTemplatesCollection *c, m_tbt_collection_list)
+		if (c -> collection() == qc)
+			collection = c;
+
+	if (!collection)
+		return TitleBlockTemplateLocation();
+
+	return collection->location(currentTitleBlockTemplateName());
+}
+
 /**
  * @brief TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible
  * if true, title block template combo box and menu button is visible
@@ -313,11 +328,11 @@ int TitleBlockPropertiesWidget::getIndexFor(const QString &tbt_name, const QET::
 }
 
 void TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate() {
-	emit(editTitleBlockTemplate(currentTitleBlockTemplateName(), false));
+	QETApp::instance()->openTitleBlockTemplate(currentTitleBlockLocation(), false);
 }
 
 void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
-	emit(editTitleBlockTemplate(currentTitleBlockTemplateName(), true));
+	QETApp::instance()->openTitleBlockTemplate(currentTitleBlockLocation(), true);
 }
 
 /**

@@ -120,8 +120,6 @@ class DiagramView : public QGraphicsView
 	void findElementRequired(const ElementsLocation &);
 	/// Signal emitted when users wish to edit an element from the diagram
 	void editElementRequired(const ElementsLocation &);
-	/// Signal emitted when users want to edit and/or duplicate an existing title block template
-	void editTitleBlockTemplate(const QString &, bool);
 	/// Signal emmitted when diagram must be show
 	void showDiagram (Diagram *);
 	

@@ -99,7 +99,6 @@ class ProjectView : public QWidget {
 	void updateWindowTitle();
 	void updateTabTitle(DiagramView *, const QString &);
 	void tabMoved(int, int);
-	void editTitleBlockTemplateRequired(const QString &, bool);
 
 	signals:
 	void diagramAdded(DiagramView *);
@@ -111,7 +110,6 @@ class ProjectView : public QWidget {
 	// relayed signals
 	void findElementRequired(const ElementsLocation &);
 	void editElementRequired(const ElementsLocation &);
-	void editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool);
 
 	private:
 	void initActions();
@@ -145,7 +143,7 @@ class ProjectView : public QWidget {
 	QLabel *fallback_label_;
 	QTabWidget *m_tab;
 	QMap<int, DiagramView *> diagram_ids_;
-	QList<DiagramView *> diagrams_;
+	QList<DiagramView *> m_diagram_view_list;
 };
 Q_DECLARE_OPERATORS_FOR_FLAGS(ProjectView::ProjectSaveOptions)
 #endif

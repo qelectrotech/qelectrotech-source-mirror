@@ -89,7 +89,7 @@ void ProjectView::setProject(QETProject *project) {
 	@return la liste des schemas ouverts dans le projet
 */
 QList<DiagramView *> ProjectView::diagrams() const {
-	return(diagrams_);
+	return(m_diagram_view_list);
 }
 
 /**
@@ -406,27 +406,26 @@ void ProjectView::addNewDiagramFolioList() {
  * @param front: true add page at front
  *				 false add page at back
  */
-void ProjectView::addDiagram(DiagramView *diagram) {
-	if (!diagram) return;
+void ProjectView::addDiagram(DiagramView *diagram_view) {
+	if (!diagram_view) return;
 
 	// check diagram isn't present in the project
-	if (diagram_ids_.values().contains(diagram)) return;
+	if (diagram_ids_.values().contains(diagram_view)) return;
 
 	// Add new tab for the diagram
-	m_tab -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
-	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
+	m_tab -> addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
+	diagram_view -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
-	diagrams_ << diagram;
+	m_diagram_view_list << diagram_view;
 
 	rebuildDiagramsMap();
-	connect(diagram, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
-	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
-	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
-	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
-	connect(diagram, SIGNAL(editTitleBlockTemplate(const QString &, bool)), this, SLOT(editTitleBlockTemplateRequired(const QString &, bool)));
+	connect(diagram_view, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
+	connect(diagram_view, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
+	connect(diagram_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
+	connect(diagram_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
 
 	// signal diagram was added
-	emit(diagramAdded(diagram));
+	emit(diagramAdded(diagram_view));
 }
 
 /**
@@ -456,7 +455,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	// enleve le DiagramView des onglets
 	int diagram_tab_id = diagram_ids_.key(diagram_view);
 	m_tab -> removeTab(diagram_tab_id);
-	diagrams_.removeAll(diagram_view);
+	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
 
 	// supprime le DiagramView, puis le Diagram
@@ -962,22 +961,6 @@ void ProjectView::tabMoved(int from, int to) {
 }
 
 /**
-	Require the edition of the \a template_name title blocke template.
-	@param template_name Name of the tempalte to be edited
-	@param duplicate If true, this methd will ask the user for a template name
-	in order to duplicate the \a template_name template
-*/
-void ProjectView::editTitleBlockTemplateRequired(const QString &template_name, bool duplicate) {
-	if (!m_project) return;
-	emit(
-		editTitleBlockTemplate(
-			m_project -> embeddedTitleBlockTemplatesCollection() -> location(template_name),
-			duplicate
-		)
-	);
-}
-
-/**
 	@param diagram Schema a trouver
 	@return le DiagramView correspondant au schema passe en parametre, ou 0 si
 	le schema n'est pas trouve
@@ -998,7 +981,7 @@ void ProjectView::rebuildDiagramsMap() {
 	// vide la map
 	diagram_ids_.clear();
 
-	foreach(DiagramView *diagram_view, diagrams_) {
+	foreach(DiagramView *diagram_view, m_diagram_view_list) {
 		int dv_idx = m_tab -> indexOf(diagram_view);
 		if (dv_idx == -1) continue;
 		diagram_ids_.insert(dv_idx, diagram_view);
