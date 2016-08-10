@@ -293,22 +293,22 @@
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Autonumerotation Séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Autonummerering valgt</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="44"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="57"/>
         <source>Conductor</source>
-        <translation type="unfinished">Leder</translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Folio</source>
-        <translation type="unfinished">Ark</translation>
+        <translation>Ark</translation>
     </message>
 </context>
 <context>
@@ -316,119 +316,119 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="113"/>
         <source>Project Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt status:</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Område</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="159"/>
         <source>Apply to Selected Locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Anvend på valgt placeringer</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="166"/>
         <source>Apply to Selected Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Anvend på valgte ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Anvend på projektet</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="192"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>Fra</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="215"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>Til</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="238"/>
         <source>Update Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Opdater retningslinjer</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="253"/>
         <source>Conductor</source>
-        <translation type="unfinished">Leder</translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="260"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="344"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="409"/>
         <source>Only New</source>
-        <translation type="unfinished"></translation>
+        <translation>Kun ny</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="270"/>
         <source>Existent and New</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksisterende og ny</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="280"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="328"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="429"/>
         <source>Both</source>
-        <translation type="unfinished"></translation>
+        <translation>Begge</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="290"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="376"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="439"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiver</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="315"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Kun eksisterende</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
         <source>Folio</source>
-        <translation type="unfinished">Ark</translation>
+        <translation>Ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksisterende</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Under Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Under edvikling</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation>Installerer</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="64"/>
         <source>Built</source>
-        <translation type="unfinished"></translation>
+        <translation>Bygget</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="185"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonummerering håndtering</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="186"/>
@@ -438,7 +438,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>I denne menu kan man angive om autonummereringer skal opdateres eller ej. For symbol autonummerering er der 4 muligheder for opdaterings retningslinjer:
+-Begge: ny og eksisterende symbol etiketter bliver opdateret. Dette er standardindstillingen.
+-Opdater kun ny: kun ny oprettede symboler bliver opdateret. Eksisterende symbol etiketter vil blive fastfrosset.
+-Opdater kun eksisterende: kun eksisterende symboler bliver opdateret. Nye symboler bliver tildelt deres formel men vil ikke opdatere når de først er oprettet.
+-Deaktiver: ny og eksisterende symbol etiketter bliver ikke opdateret. Dette gælder også for nye ark.
+Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun deres opdaterings retningslinjer.</translation>
     </message>
 </context>
 <context>
@@ -1004,22 +1009,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Autonavngiv mønster:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>Indsæt formel hereks.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formel:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="85"/>
@@ -1033,7 +1038,16 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Man kan bruge følgende variabler i en formel:
+ -%prefix: Standard symbol præfiks
+ -%l: Symbol linje
+ -%c: Symbol kolonne
+ -%F: Ark navn
+ -%f or %id: Ark ID
+ -%total: Samlet antal ark
+Man kan også anvende alle titelblok variabler
+som er oprettet. Tekst og tal indtastninger er
+også tilgængelig.</translation>
     </message>
 </context>
 <context>
@@ -2158,7 +2172,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Opbevar ikke symbol etiketter i kopi og indsæt</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
@@ -2869,42 +2883,42 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="167"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="272"/>
         <source>Chiffre 1 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer format 1 - Ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="171"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="276"/>
         <source>Chiffre 01 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer format 01 - Ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="175"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="280"/>
         <source>Chiffre 001 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer format 001 - Ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="183"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="288"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol linje</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="185"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="290"/>
         <source>Element Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol kolonne</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="187"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="292"/>
         <source>Element Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol præfiks</translation>
     </message>
 </context>
 <context>
@@ -3066,7 +3080,7 @@ nummerering</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="324"/>
         <source>Management</source>
-        <translation type="unfinished"></translation>
+        <translation>Håndtering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
@@ -3076,7 +3090,7 @@ nummerering</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="343"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="359"/>
@@ -6373,12 +6387,12 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Ikke navngivet projekt</translation>
+        <translation>Ikke navngivet projekt</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Samling</translation>
     </message>
 </context>
 <context>
@@ -6607,7 +6621,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
         <location filename="../sources/ui/selectautonumw.cpp" line="173"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Leder autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="174"/>
@@ -7455,7 +7469,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="202"/>
         <source>à droite </source>
-        <translation type="unfinished"></translation>
+        <translation>højre</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -8066,22 +8080,22 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef lodret forskydning:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10piksel svarer til 1 flise forskydning</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt lodret forskydning for krydsreference. 10piksel svarer til 1 flise forskydning.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard - Tilpas til XRef højde</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="107"/>
