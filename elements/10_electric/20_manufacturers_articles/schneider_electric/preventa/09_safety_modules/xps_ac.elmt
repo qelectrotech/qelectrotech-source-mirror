@@ -64,7 +64,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc style="line-style:normal;line-weight:normal;filling:black;color:black" width="5" height="5" x="-52.25" y="40" angle="-180" start="90" antialias="true"/>
         <arc style="line-style:normal;line-weight:normal;filling:black;color:black" width="5" height="5" x="-52.25" y="50" angle="-180" start="90" antialias="true"/>
         <arc style="line-style:normal;line-weight:normal;filling:black;color:black" width="5" height="5" x="-52.25" y="45" angle="-180" start="90" antialias="true"/>
-        <text size="7" x="225" text="24" y="-16.6667"/>
+        <text size="7" x="225" text="33" y="-16.6667"/>
         <text size="4" x="138" text="K2" y="44.3333"/>
         <text size="4" x="139" text="K1" y="16.3333"/>
         <text size="7" x="224" text="34" y="83.3333"/>
