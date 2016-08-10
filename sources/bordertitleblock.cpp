@@ -240,10 +240,11 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	ip.date = date();
 	ip.title = title();
 	ip.filename = fileName();
+	ip.version = version();
 	ip.folio = folio();
 	ip.template_name = titleBlockTemplateName();
 	ip.display_at = m_edge;
-    ip.auto_page_num = autoPageNum();
+	ip.auto_page_num = autoPageNum();
 	ip.context = additional_fields_;
 	ip.collection = QET::QetCollection::Embedded;
 	
@@ -259,6 +260,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setDate(ip.date);
 	setTitle(ip.title);
 	setFileName(ip.filename);
+	setVersion(QET::displayedVersion);
 	setFolio(ip.folio);
 	setAutoPageNum(ip.auto_page_num);
 	if (m_edge != ip.display_at)
@@ -693,6 +695,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	context.addValue("date",        btb_date_.toString(Qt::SystemLocaleShortDate));
 	context.addValue("title",       btb_title_);
 	context.addValue("filename",    btb_filename_);
+	context.addValue("version",     btb_version_);
 	context.addValue("folio",       btb_final_folio_);
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);

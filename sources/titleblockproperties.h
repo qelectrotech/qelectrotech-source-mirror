@@ -54,6 +54,7 @@ class TitleBlockProperties {
 	QString author;           ///< Author of the diagram/folio (displayed by the default template)
 	QDate date;               ///< Date (displayed by the default template)
 	QString filename;         ///< Filename (displayed by the default template)
+	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
 	QString location;

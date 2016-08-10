@@ -47,6 +47,7 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.author == author &&\
 		ip.date == date &&\
 		ip.filename == filename &&\
+		ip.version == version &&\
 		ip.folio == folio &&\
 		ip.auto_page_num == auto_page_num &&\
 		ip.template_name == template_name &&\
@@ -73,6 +74,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
+	e.setAttribute("version", version);
 	e.setAttribute("folio",    folio);
 	e.setAttribute("auto_page_num", auto_page_num);
 	e.setAttribute("date",     exportDate());
@@ -99,6 +101,7 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("author"))      author   = e.attribute("author");
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
+	if (e.hasAttribute("version"))    version   = e.attribute("version");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
@@ -128,6 +131,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
+	settings.setValue(prefix + "version", version);
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "auto_page_num",    auto_page_num);
 	settings.setValue(prefix + "date",     exportDate());
@@ -146,6 +150,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
+	version = settings.value(prefix + "version").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	auto_page_num = settings.value(prefix + "auto_page_num").toString();
 	setDateFromString(settings.value(prefix + "date").toString());

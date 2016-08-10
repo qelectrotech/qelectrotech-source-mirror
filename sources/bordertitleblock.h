@@ -98,6 +98,8 @@ class BorderTitleBlock : public QObject
 	/// @return the value of the title block "File" field
 	QString fileName() const { return(btb_filename_); }
 	/// @return the value of the title block Additional Fields
+	QString version() const { return(btb_version_); }
+	/// @return the value of the title block Additional Fields
 	DiagramContext additionalFields() const { return (additional_fields_); }
 	/// @return the value of the title block
 	QString autoPageNum() const { return(btb_auto_page_num_); }
@@ -145,7 +147,9 @@ class BorderTitleBlock : public QObject
 	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
-	/// @param author the new value of the "Auto Page Num" field
+	/// @param author the new value of the "Version" field
+	void setVersion(const QString &version) { btb_version_ = version; }
+	/// @param author the new value of the "Auto Page Num" field	
 	void setAutoPageNum(const QString &auto_page_num) { btb_auto_page_num_ = auto_page_num;}
 	
 	void titleBlockToXml(QDomElement &);
@@ -226,6 +230,7 @@ class BorderTitleBlock : public QObject
 		int folio_index_;
 		int folio_total_;
 		QString btb_filename_;
+		QString btb_version_;
 		DiagramContext additional_fields_;
 		Qt::Edge m_edge;
 	
