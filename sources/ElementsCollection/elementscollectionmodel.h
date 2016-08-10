@@ -54,6 +54,7 @@ class ElementsCollectionModel : public QStandardItemModel
 
 
 		QList <ElementCollectionItem *> items() const;
+		QList <ElementCollectionItem *> projectItems(QETProject *project) const;
 		void hideElement();
 		bool isHideElement() {return m_hide_element;}
 		QModelIndex indexFromLocation(const ElementsLocation &location);

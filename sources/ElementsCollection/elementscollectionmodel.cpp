@@ -224,15 +224,22 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
  */
 void ElementsCollectionModel::loadCollections(bool common_collection, bool custom_collection, QList<QETProject *> projects)
 {
+	QList <ElementCollectionItem *> list;
+
 	if (common_collection)
 		addCommonCollection(false);
 	if (custom_collection)
 		addCustomCollection(false);
 
-	foreach (QETProject *project, projects)
-		addProject(project, false);
+	if (common_collection || custom_collection)
+		list.append(items());
 
-	QList <ElementCollectionItem *> list = items();
+
+	foreach (QETProject *project, projects) {
+		addProject(project, false);
+		list.append(projectItems(project));
+	}
+
 	QFuture<void> futur = QtConcurrent::map(list, setUpData);
 	emit loadingMaxValue(futur.progressMaximum());
 	while (futur.isRunning()) {
@@ -412,6 +419,24 @@ QList <ElementCollectionItem *> ElementsCollectionModel::items() const
 
 	for (int i=0 ; i<rowCount() ; i++) {
 		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(item(i));
+		list.append(eci);
+		list.append(eci->items());
+	}
+
+	return list;
+}
+
+/**
+ * @brief ElementsCollectionModel::projectItems
+ * @param project
+ * @return return all items for project @project. the list can be empty
+ */
+QList<ElementCollectionItem *> ElementsCollectionModel::projectItems(QETProject *project) const
+{
+	QList <ElementCollectionItem *> list;
+
+	if (m_project_list.contains(project)) {
+		ElementCollectionItem *eci = m_project_hash.value(project);
 		list.append(eci);
 		list.append(eci->items());
 	}
