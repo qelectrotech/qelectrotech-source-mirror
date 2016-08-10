@@ -8085,12 +8085,12 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation>10piksel svarer til 1 flise forskydning</translation>
+        <translation>10piksel svarer til 1 side om side forskydning</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation>Sæt lodret forskydning for krydsreference. 10piksel svarer til 1 flise forskydning.</translation>
+        <translation>Sæt lodret forskydning for referencekors. 10piksel svarer til 1 side om side forskydning.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
