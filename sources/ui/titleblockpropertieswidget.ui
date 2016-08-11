@@ -42,8 +42,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>552</width>
-        <height>570</height>
+        <width>538</width>
+        <height>608</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -123,32 +123,6 @@
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
                <layout class="QGridLayout" name="gridLayout_4">
-                <item row="4" column="1">
-                 <widget class="QLabel" name="label_5">
-                  <property name="text">
-                   <string>Fichier :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="2">
-                 <widget class="QLabel" name="label_7">
-                  <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
-                  </property>
-                  <property name="text">
-                   <string>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</string>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>false</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                 </widget>
-                </item>
                 <item row="3" column="1">
                  <widget class="QLabel" name="label_4">
                   <property name="text">
@@ -159,55 +133,54 @@
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="1">
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>Folio :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLabel" name="label_2">
-                  <property name="text">
-                   <string>Titre :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="2">
-                 <widget class="QLineEdit" name="m_folio_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %folio pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QLineEdit" name="m_title_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %title pour les modèles de cartouches</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="2">
-                 <widget class="QComboBox" name="m_display_at_cb">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>en bas</string>
-                   </property>
+                <item row="10" column="3">
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="0">
+                   <widget class="QComboBox" name="auto_page_cb">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                   </widget>
                   </item>
-                  <item>
-                   <property name="text">
-                    <string>à droite </string>
-                   </property>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="m_edit_autofolionum_pb">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>16</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../../qelectrotech.qrc">
+                      <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
+                    </property>
+                   </widget>
                   </item>
+                 </layout>
+                </item>
+                <item row="12" column="1">
+                 <widget class="QLabel" name="label">
+                  <property name="text">
+                   <string>Afficher :</string>
+                  </property>
                  </widget>
                 </item>
-                <item row="4" column="2">
-                 <widget class="QLineEdit" name="m_file_le">
-                  <property name="toolTip">
-                   <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+                <item row="9" column="1">
+                 <widget class="QLabel" name="label_12">
+                  <property name="text">
+                   <string>Indice Rev</string>
                   </property>
                  </widget>
                 </item>
@@ -218,7 +191,48 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="2">
+                <item row="8" column="3">
+                 <widget class="QLineEdit" name="m_loc"/>
+                </item>
+                <item row="6" column="3">
+                 <widget class="QLineEdit" name="m_mach"/>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLineEdit" name="m_title_le">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %title pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLabel" name="label_6">
+                  <property name="text">
+                   <string>Folio :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>Fichier :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="m_author_le">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %author pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLineEdit" name="m_file_le">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
                  <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1,0">
                   <item row="0" column="0">
                    <widget class="QRadioButton" name="m_no_date_rb">
@@ -270,58 +284,21 @@
                   </item>
                  </layout>
                 </item>
-                <item row="2" column="2">
-                 <widget class="QLineEdit" name="m_author_le">
+                <item row="5" column="3">
+                 <widget class="QLineEdit" name="m_folio_le">
                   <property name="toolTip">
-                   <string>Disponible en tant que %author pour les modèles de cartouches</string>
+                   <string>Disponible en tant que %folio pour les modèles de cartouches</string>
                   </property>
                  </widget>
                 </item>
-                <item row="8" column="1">
-                 <widget class="QLabel" name="label">
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_2">
                   <property name="text">
-                   <string>Afficher :</string>
+                   <string>Titre :</string>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="2">
-                 <layout class="QGridLayout" name="gridLayout">
-                  <item row="0" column="0">
-                   <widget class="QComboBox" name="auto_page_cb">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="m_edit_autofolionum_pb">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>16</width>
-                      <height>16</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../../qelectrotech.qrc">
-                      <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="7" column="1">
+                <item row="10" column="1">
                  <widget class="QLabel" name="label_9">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -333,6 +310,59 @@
                    <string>Page Num:</string>
                   </property>
                  </widget>
+                </item>
+                <item row="12" column="3">
+                 <widget class="QComboBox" name="m_display_at_cb">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>en bas</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>à droite </string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="11" column="3">
+                 <widget class="QLabel" name="label_7">
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <property name="text">
+                   <string>Les variables suivantes sont utilisables dans le champ Folio :
+- %id : numéro du folio courant dans le projet 
+- %total : nombre total de folios dans le projet 
+- %autonum : Folio Auto Numeration</string>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string>Machine :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="1">
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>Localisation</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="3">
+                 <widget class="QLineEdit" name="m_indice"/>
                 </item>
                </layout>
               </item>

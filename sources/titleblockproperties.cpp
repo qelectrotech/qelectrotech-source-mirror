@@ -47,6 +47,9 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.author == author &&\
 		ip.date == date &&\
 		ip.filename == filename &&\
+		ip.machine == machine &&\
+		ip.loc == loc &&\
+		ip.indexrev == indexrev &&\
 		ip.version == version &&\
 		ip.folio == folio &&\
 		ip.auto_page_num == auto_page_num &&\
@@ -74,6 +77,9 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
+	e.setAttribute("machine", machine);
+	e.setAttribute("loc", loc);
+	e.setAttribute("indexrev",indexrev);
 	e.setAttribute("version", version);
 	e.setAttribute("folio",    folio);
 	e.setAttribute("auto_page_num", auto_page_num);
@@ -101,6 +107,9 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("author"))      author   = e.attribute("author");
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
+	if (e.hasAttribute("machine"))    machine   = e.attribute("machine");
+	if (e.hasAttribute("loc"))        loc       = e.attribute("loc");
+	if (e.hasAttribute("indexrev"))   indexrev  = e.attribute("indexrev");
 	if (e.hasAttribute("version"))    version   = e.attribute("version");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
@@ -131,6 +140,9 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
+	settings.setValue(prefix + "machine", machine);
+	settings.setValue(prefix + "loc", loc);
+	settings.setValue(prefix + "indexrev", indexrev);
 	settings.setValue(prefix + "version", version);
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "auto_page_num",    auto_page_num);
@@ -150,7 +162,10 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
-	version = settings.value(prefix + "version").toString();
+	machine  = settings.value(prefix + "machine").toString();
+	loc      = settings.value(prefix + "loc").toString();
+	indexrev = settings.value(prefix + "indexrev").toString();
+	version  = settings.value(prefix + "version").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	auto_page_num = settings.value(prefix + "auto_page_num").toString();
 	setDateFromString(settings.value(prefix + "date").toString());

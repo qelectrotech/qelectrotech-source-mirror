@@ -1039,7 +1039,7 @@ QList <Diagram *> QETProject::addNewDiagramFolioList() {
 		setFolioSheetsQuantity(0);
 
 		int diagCount = diagrams().size();
-		for (int i = 0; i <= diagCount/58; i++) {
+		for (int i = 0; i <= diagCount/29; i++) {
 
 			//create new diagram
 			Diagram *diagram_folio_list = new DiagramFolioList(this);

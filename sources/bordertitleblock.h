@@ -95,6 +95,13 @@ class BorderTitleBlock : public QObject
 	QString title() const { return(btb_title_); }
 	/// @return the value of the title block "Folio" field
 	QString folio() const { return(btb_folio_); }
+	/// @return the value of the title block "Machine" field
+	QString machine() const { return(btb_machine_); }
+	/// @return the value of the title block "Folio" field
+	QString loc() const { return(btb_loc_); }
+	/// @return the value of the revision index block "Folio" field
+	QString indexrev() const { return(btb_indexrev_); }
+	
 	/// @return the value of the title block "File" field
 	QString fileName() const { return(btb_filename_); }
 	/// @return the value of the title block Additional Fields
@@ -146,6 +153,9 @@ class BorderTitleBlock : public QObject
 	}
 	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
+	void setMachine(const QString &machine) { btb_machine_ = machine; }
+	void setLoc(const QString &loc) { btb_loc_ = loc; }
+	void setIndicerev(const QString &indexrev){ btb_indexrev_ = indexrev; }
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
 	/// @param author the new value of the "Version" field
 	void setVersion(const QString &version) { btb_version_ = version; }
@@ -225,6 +235,9 @@ class BorderTitleBlock : public QObject
 		QDate   btb_date_;
 		QString btb_title_;
 		QString btb_folio_;
+		QString btb_machine_;
+		QString btb_loc_;
+		QString btb_indexrev_;
 		QString btb_final_folio_;
 		QString btb_auto_page_num_;
 		int folio_index_;
