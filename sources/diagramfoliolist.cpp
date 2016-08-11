@@ -250,7 +250,7 @@ void DiagramFolioList::fillHeader(QPainter *qp, const QRectF &row_RectF) {
 	QString authorTranslatable(QObject::tr("Auteur"));
 	QString titleTranslatable(QObject::tr("Titre"));
 	QString folioTranslatable(QObject::tr("ID"));
-	QString machineTranslatable(QObject::tr("Machine"));
+	QString machineTranslatable(QObject::tr("Installation"));
 	QString locTranslatable(QObject::tr("Localisation"));
 	QString indexrevTranslatable(QObject::tr("Rev"));
 	QString labelTranslatable(QObject::tr("Folio"));
