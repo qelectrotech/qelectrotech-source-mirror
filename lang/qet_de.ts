@@ -296,22 +296,22 @@
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Autonumerotation Séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl der automatischen Nummerierungsregel</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="44"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="57"/>
         <source>Conductor</source>
-        <translation type="unfinished">Leiter</translation>
+        <translation>Leiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Folio</source>
-        <translation type="unfinished">Folie</translation>
+        <translation>Folie</translation>
     </message>
 </context>
 <context>
@@ -319,119 +319,119 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="113"/>
         <source>Project Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stand des Projekts:</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Bereich</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="159"/>
         <source>Apply to Selected Locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf ausgewählte Orte anwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="166"/>
         <source>Apply to Selected Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf ausgewählte Folien anwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf ganzes Projekt anwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="192"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>von</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="215"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>bis</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="238"/>
         <source>Update Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Richtlinie zur Aktualisierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="253"/>
         <source>Conductor</source>
-        <translation type="unfinished">Leiter</translation>
+        <translation>Leiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="260"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="344"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="409"/>
         <source>Only New</source>
-        <translation type="unfinished"></translation>
+        <translation>nur Neue</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="270"/>
         <source>Existent and New</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorhandene und Neue</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="280"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="328"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="429"/>
         <source>Both</source>
-        <translation type="unfinished"></translation>
+        <translation>Beide</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="290"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="376"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="439"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>nicht aktualisieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="315"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>nur Vorhandene</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
         <source>Folio</source>
-        <translation type="unfinished">Folie</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorhandene</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Under Development</source>
-        <translation type="unfinished"></translation>
+        <translation>in Entwicklung</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation>zur Montage/Installation</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="64"/>
         <source>Built</source>
-        <translation type="unfinished"></translation>
+        <translation>As-Built</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="185"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verwaltung der automatischen Nummerierungen</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="186"/>
@@ -441,7 +441,13 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>In diesem Menü können Sie die Richtlinien zur Aktualisierung der automatischen Nummerierungen festlegen.
+Für Betriebsmittelkennzeichen (BMK) von Bauteilen gibt es 4 Richtlinien:
+- Beide: neue und vorhandene BMK werden aktualisiert. Das ist die Standardoption.
+- nur Neue: nur BMK von neu angelegten Bauteilen werden aktualisiert. Vorhandene BMK bleiben bestehend.
+- nur Vorhandene: nur BMK von vorhandenen Bauteilen werden aktualisiert. Neuen Bauteilen werden ihr BMK-Muster zugewiesen, werden aber im Nachhinein nicht aktualisiert.
+- nicht aktualisieren: neue und vorhandene BMK werden nicht aktualisiert. Dies gilt auch für neu angelegte Folien.
+Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</translation>
     </message>
 </context>
 <context>
@@ -1007,22 +1013,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Nummerierung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>Muster hier aufschreiben, z.B.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished"></translation>
+        <translation>Muster:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="85"/>
@@ -1036,7 +1042,16 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können die folgenden Variablen für Ihr eigenes Muster verwenden:
+- %prefix: standard Bauteil-Präfix
+- %l: Nummer der Zeile, in der das Bauteil sich befindet
+- %c: Nummer der Spalte, in der das Bauteil sich befindet
+- %F: Folienname
+- %f oder %id: Foliennummer (durchnummeriert)
+- %total: gesamte Folienanzahl
+Sie können auch alle Variablen verwenden, die Sie in den
+Folieneigenschaften (Reiter &quot;Benutzer-Eigenschaften&quot;) kreiert haben.
+Zahlen und Buchstaben können auch verwendet werden.</translation>
     </message>
 </context>
 <context>
@@ -2151,7 +2166,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Betriebsmittelkennzeichen von Bauteilen beim Kopieren/Einfügen nicht beibehalten</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
@@ -2862,42 +2877,42 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/ui/numparteditorw.cpp" line="167"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="272"/>
         <source>Chiffre 1 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 1 - Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="171"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="276"/>
         <source>Chiffre 01 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 01 - Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="91"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="175"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="280"/>
         <source>Chiffre 001 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 001 - Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="183"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="288"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeile vom Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="185"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="290"/>
         <source>Element Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalte vom Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="187"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="292"/>
         <source>Element Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Präfix vom Bauteil</translation>
     </message>
 </context>
 <context>
@@ -3058,7 +3073,7 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="324"/>
         <source>Management</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisierungsrichtlinien</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
@@ -3068,7 +3083,7 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="343"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="359"/>
@@ -6350,12 +6365,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Projekt ohne Titel</translation>
+        <translation>Projekt ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Sammlung</translation>
     </message>
 </context>
 <context>
@@ -6574,7 +6589,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/ui/selectautonumw.cpp" line="173"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Nummerierung der Leiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="174"/>
@@ -7406,7 +7421,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="202"/>
         <source>à droite </source>
-        <translation type="unfinished"></translation>
+        <translation>rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -8018,22 +8033,22 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abstand zum Zeichnungskopf:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10px entsprechen einer Rastereinheit</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lege den Abstand vom Kontaktspiegel fest. 10px entsprechen einer Rastereinheit.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard - ganz unten</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="107"/>
