@@ -94,7 +94,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 				QString::number(diagram_list[i] ->folioIndex()+1),
 				diagram_list[i] -> border_and_titleblock.folio(),
 				diagram_list[i] -> border_and_titleblock.machine(),
-				diagram_list[i] -> border_and_titleblock.loc(),
+				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
 	}

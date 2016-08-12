@@ -438,7 +438,7 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 		"<li>%{title} : titre du folio</li>"
 		"<li>%{filename} : nom de fichier du projet</li>"
 		"<li>%{machine} : nom du groupe fonctionnel du projet</li>"
-		"<li>%{loc} : nom de la localisation dans le groupe fonctionnel du projet</li>"
+		"<li>%{locmach} : nom de la localisation dans le groupe fonctionnel du projet</li>"
 		"<li>%{indexrev} : indice de révision du folio</li>"
 		"<li>%{version} : version du logiciel</li>"
 		"<li>%{folio} : indications relatives au folio</li>"

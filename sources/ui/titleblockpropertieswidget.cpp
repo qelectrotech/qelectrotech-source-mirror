@@ -96,7 +96,7 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_author_le -> setText (properties.author);
 	ui -> m_file_le   -> setText (properties.filename);
 	ui -> m_mach      -> setText (properties.machine);
-	ui -> m_loc       -> setText (properties.loc);
+	ui -> m_loc   -> setText (properties.locmach);
 	ui -> m_indice    -> setText (properties.indexrev);
 	ui -> m_folio_le  -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
@@ -154,7 +154,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
 	prop.machine  = ui -> m_mach      -> text();
-	prop.loc      = ui -> m_loc       -> text();
+	prop.locmach  = ui -> m_loc   -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = ui -> m_folio_le  -> text();
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -195,7 +195,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoN
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
 	prop.machine  = ui -> m_mach      -> text();
-	prop.loc      = ui -> m_loc       -> text();
+	prop.locmach  = ui -> m_loc       -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;

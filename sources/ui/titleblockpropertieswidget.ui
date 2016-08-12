@@ -194,7 +194,7 @@
                 <item row="8" column="3">
                  <widget class="QLineEdit" name="m_loc">
                   <property name="toolTip">
-                   <string>Disponible en tant que %loc pour les modèles de cartouches</string>
+                   <string>Disponible en tant que %locmach pour les modèles de cartouches</string>
                   </property>
                  </widget>
                 </item>
