@@ -192,10 +192,18 @@
                  </widget>
                 </item>
                 <item row="8" column="3">
-                 <widget class="QLineEdit" name="m_loc"/>
+                 <widget class="QLineEdit" name="m_loc">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %loc pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
                 </item>
                 <item row="6" column="3">
-                 <widget class="QLineEdit" name="m_mach"/>
+                 <widget class="QLineEdit" name="m_mach">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %machine pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="3">
                  <widget class="QLineEdit" name="m_title_le">
@@ -362,7 +370,11 @@
                  </widget>
                 </item>
                 <item row="9" column="3">
-                 <widget class="QLineEdit" name="m_indice"/>
+                 <widget class="QLineEdit" name="m_indice">
+                  <property name="toolTip">
+                   <string>Disponible en tant que %indexrev pour les modèles de cartouches</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
