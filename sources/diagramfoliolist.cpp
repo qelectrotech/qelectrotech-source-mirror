@@ -19,7 +19,7 @@
 #include <QPainter>
 #include "qetapp.h"
 
-qreal DiagramFolioList::colWidths[8] = {0.05, 0.05, 0.50, 0.10, 0.10, 0.05, 0.05, 0.05};
+qreal DiagramFolioList::colWidths[8] = {0.05, 0.05, 0.45, 0.10, 0.10, 0.05, 0.10, 0.10};
 
 /**
  * @brief DiagramFolioList::DiagramFolioList
@@ -205,15 +205,15 @@ void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int
 	qDeleteAll (list_rectangles_);
 	list_rectangles_.clear();
 
-//	qreal sum = 0;
-//	for (int i = 0; i < 8; i++ )
-//		sum += colWidths[i];
-//	if ( sum < 0.99 || sum > 1.01 ) {
-//		qDebug() << "Invalid input: Column widths do not sum to 1";
-//		return;
-//	}
+    qreal sum = 0;
+    for (int i = 0; i < 8; i++ )
+        sum += colWidths[i];
+    if ( sum < 0.99 || sum > 1.01 ) {
+        qDebug() << "Invalid input: Column widths do not sum to 1";
+        return;
+    }
 
-	qreal tablesSpacing = rect.height() * 0.02;
+    qreal tablesSpacing = rect.height() * 0.02;
 	qreal tableWidth = (rect.width() - tablesSpacing*(tables+1) ) / tables;
 	qreal rowHeight = (rect.height() - 2*tablesSpacing) / rows;
 	int cols = 8;//colWidths.size();
