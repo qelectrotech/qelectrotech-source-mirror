@@ -244,6 +244,14 @@ void SelectAutonumW::contextToFormula() {
 			else if (npe->type_ == NumPartEditorW::folio) {
 				m_eaw->setContext("%F");
 			}
+			else if (npe->type_ == NumPartEditorW::machine) {
+				m_eaw->setContext("%M");
+			}
+			else if (npe->type_ == NumPartEditorW::locmach) {
+				m_eaw->setContext("%LM");
+			}
+			
+			
 			else if (npe->type_ == NumPartEditorW::elementcolumn) {
 				m_eaw->setContext("%c");
 			}

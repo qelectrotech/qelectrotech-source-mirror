@@ -141,6 +141,25 @@ class FolioNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
+class MachineNum: public NumStrategy
+{
+	public:
+	MachineNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+class LocmachNum: public NumStrategy
+{
+	public:
+	LocmachNum (Diagram *);
+	QString toRepresentedString(const QString) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
+};
+
+
 class ElementLineNum: public NumStrategy
 {
 	public:

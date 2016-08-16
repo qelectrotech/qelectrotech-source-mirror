@@ -124,6 +124,14 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new FolioNum (diagram_);
 		return;
 	}
+	else if (str=="machine"){
+		strategy_ = new MachineNum (diagram_);
+		return;
+	}
+	else if (str=="locmach"){
+		strategy_ = new LocmachNum (diagram_);
+		return;
+	}
 	else if (str=="elementline"){
 		strategy_ = new ElementLineNum (diagram_);
 		return;
@@ -487,6 +495,72 @@ NumerotationContext FolioNum::next (const NumerotationContext &nc, const int i) 
 NumerotationContext FolioNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
+
+/**
+ * Constructor
+ */
+MachineNum::MachineNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief MachineNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString MachineNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%M";
+}
+
+/**
+ * @brief MachineNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext MachineNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief MachineNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext MachineNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+
+/**
+ * Constructor
+ */
+LocmachNum::LocmachNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief LocmachNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString LocmachNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%LM";
+}
+
+/**
+ * @brief LocmachNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext LocmachNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief LocmachNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext LocmachNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
 
 /**
  * Constructor
