@@ -296,98 +296,121 @@ QDomElement XmlElementCollection::directory(const QString &path) const
 QString XmlElementCollection::addElement(ElementsLocation &location)
 {
 		//location must be an element and exist
-	if (!(location.exist() && location.isElement())) return QString();
+	if (!(location.exist() && location.isElement()))
+		return QString();
+
 		//Add an element from this collection to this collection have no sense
-	if (location.isProject() && location.projectCollection() == this) return QString();
+	if (location.isProject() && location.projectCollection() == this)
+		return QString();
 
 		//First we check if this location exist in this collection if so, we do nothing
 	if ( exist("import/" + location.collectionPath(false)) )
 		return QString();
 
-		//Get the root dir of the filesystem collection
-	QDir dir(location.fileSystemPath().remove(location.collectionPath(false)));
-	if (location.isFileSystem() && !dir.exists()) return QString();
-
 		//Get the import dir of this collection
 	QDomElement parent_element = importCategory();
-	if (parent_element.isNull()) return QString();
+	if (parent_element.isNull())
+		return QString();
 
 	QString integrated_path = parent_element.attribute("name");
 
 		//Split the path
 	QStringList splitted_path = location.collectionPath(false).split("/");
-	if (splitted_path.isEmpty()) return QString();
+	if (splitted_path.isEmpty())
+		return QString();
 
-	foreach(QString str, splitted_path)
-	{
-		QDomElement child_element = child(parent_element, str);
+	if (location.isFileSystem()) {
+			//Get the root dir of the filesystem collection
+		QDir dir(location.fileSystemPath().remove(location.collectionPath(false)));
+		if (!dir.exists())
+			return QString();
 
-			//Child doesn't exist, we create it
-		if (child_element.isNull())
-		{
-			QDomElement created_child;
+		foreach(QString str, splitted_path) {
+			QDomElement child_element = child(parent_element, str);
 
-				//str is the path of an element, we integrate an element
-			if (str.endsWith(".elmt"))
-			{
-					//The location represent a file system element
-				if (location.isFileSystem())
-				{
+				//Child doesn't exist, we create it
+			if (child_element.isNull()) {
+				QDomElement created_child;
+
+					//str is the path of an element, we integrate an element
+				if (str.endsWith(".elmt")) {
 					QFile element_file(dir.filePath(str));
-					if (!element_file.exists()) return QString();
+					if (!element_file.exists())
+						return QString();
 
 					created_child = QETXML::fileSystemElementToXmlCollectionElement(m_dom_document, element_file);
 				}
-					//The location represent a xml collection element
-				else
-				{
-					created_child = m_dom_document.createElement("element");
-					created_child.setAttribute("name", str);
 
-					ElementsLocation element_location(integrated_path + str, location.project());
-					QDomElement imported_element = element_location.xml();
-					created_child.appendChild(imported_element.cloneNode());
-				}
-			}
-
-				//str is the path of a directory, we integrate a directory.
-			else
-			{
-					//The location represent a file system directory
-				if (location.isFileSystem())
-				{
+					//str is the path of a directory, we integrate a directory.
+				else {
 						//Dir doesn't exist.
-					if (!dir.cd(str)) return QString();
+					if (!dir.cd(str))
+						return QString();
 
 					created_child = QETXML::fileSystemDirToXmlCollectionDir(m_dom_document, dir);
 				}
-					//The location represent a xml collection directory
-				else
-				{
+
+				if(created_child.isNull())
+					return QString();
+
+				parent_element.appendChild(created_child);
+				parent_element = created_child;
+			}
+				//Child exist
+			else {
+				if (!dir.cd(str))
+					return QString();
+
+				parent_element = child_element;
+			}
+
+			integrated_path.append("/"+str);
+		}
+	}
+	else if (location.isProject()) {
+		QString path;
+		foreach(QString str, splitted_path) {
+			if (path.isEmpty())
+				path = str;
+			else
+				path = path + "/" + str;
+
+			QDomElement child_element = child(parent_element, str);
+
+				//Child doesn't exist, we create it
+			if (child_element.isNull()) {
+				QDomElement created_child;
+
+					//str is the path of an element, we integrate an element
+				if (str.endsWith(".elmt")) {
+					created_child = m_dom_document.createElement("element");
+					created_child.setAttribute("name", str);
+
+					created_child.appendChild(location.xml().cloneNode(true));
+				}
+
+					//str is the path of a directory, we integrate a directory.
+				else {
 					created_child = m_dom_document.createElement("category");
 					created_child.setAttribute("name", str);
 
-					ElementsLocation sub_dir_location(integrated_path + str, location.project());
+					ElementsLocation sub_dir_location(path, location.project());
 					QDomElement names_element = sub_dir_location.nameList().toXml(m_dom_document);
 					created_child.appendChild(names_element);
 				}
+
+				if(created_child.isNull())
+					return QString();
+
+				parent_element.appendChild(created_child);
+				parent_element = created_child;
 			}
+				//Child exist
+			else
+				parent_element = child_element;
 
-			if(created_child.isNull()) return QString();
-
-			parent_element.appendChild(created_child);
-			parent_element = created_child;
+			integrated_path.append("/"+str);
 		}
-			//Child exist
-		else
-		{
-			if (location.isFileSystem())
-				if (!dir.cd(str)) return QString();
-
-			parent_element = child_element;
-		}
-
-		integrated_path.append("/"+str);
 	}
 
 	emit elementAdded(integrated_path);

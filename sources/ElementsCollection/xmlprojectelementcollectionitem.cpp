@@ -129,35 +129,29 @@ bool XmlProjectElementCollectionItem::isCollectionRoot() const
 
 /**
  * @brief XmlProjectElementCollectionItem::addChildAtPath
- * Ask to this item item to add a child with collection name @collection_name
- * @param collection_name
+ * Ask to this item item to add a new child with collection name @collection_name
+ * (the child must exist in the xml element collection)
+ * @param collection_name : name of the child item to add.
  */
 void XmlProjectElementCollectionItem::addChildAtPath(const QString &collection_name)
 {
 	if (collection_name.isEmpty())
 		return;
 
-	QDomNodeList node_list;
-	if (collection_name.endsWith(".elmt"))
-		node_list = m_dom_element.elementsByTagName("element");
-	else
-		node_list = m_dom_element.elementsByTagName("category");
+	QString str (collection_name.endsWith(".elmt")? "element" : "category");
+	QDomElement child_element = m_dom_element.firstChildElement(str);
 
-	QDomElement child_element;
-	for(int i=0 ; i<node_list.count() ; i++)
-	{
-		QDomElement dom_elmt = node_list.at(i).toElement();
-		if (dom_elmt.attribute("name") == collection_name)
-		{
-			child_element = dom_elmt;
-			i = node_list.count();
+	while (!child_element.isNull()) {
+		if (child_element.attribute("name") == collection_name) {
+			XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem ();
+			insertRow(rowForInsertItem(collection_name), xpeci);
+			xpeci->setXmlElement(child_element, m_project);
+			xpeci->setUpData();
+			return;
 		}
+		else
+			child_element = child_element.nextSiblingElement(str);
 	}
-
-	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem ();
-	insertRow(rowForInsertItem(collection_name), xpeci);
-	xpeci->setXmlElement(child_element, m_project);
-	xpeci->setUpData();
 }
 
 /**
