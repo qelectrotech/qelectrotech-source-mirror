@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>507</width>
-    <height>649</height>
+    <height>744</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>744</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -193,7 +199,9 @@
 %f : le numéro de folio 
 %F: le label de folio
 %l : le numéro de ligne
-%c : le numéro de colonne</string>
+%c : le numéro de colonne
+%M: Installation (esclave seulement)
+%LM: localisation (esclave seulement)</string>
              </property>
             </widget>
            </item>
