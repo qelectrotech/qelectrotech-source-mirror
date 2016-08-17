@@ -36,6 +36,8 @@
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
+%M:  Machine (Plant)
+%LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</string>
           </property>
