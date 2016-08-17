@@ -145,19 +145,20 @@ void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
 void AutoNumberingDockWidget::setActive() {
 
 	if (projectview_!=NULL) {
-		//Conductor
-		QString conductor_autonum = projectview_->currentDiagram()->diagram()->conductorsAutonumName();
-		int conductor_index = ui->m_conductor_cb->findText(conductor_autonum);
-		ui->m_conductor_cb->setCurrentIndex(conductor_index);
+			//Conductor
+		if (projectview_->currentDiagram()) {
+			QString conductor_autonum = projectview_->currentDiagram()->diagram()->conductorsAutonumName();
+			int conductor_index = ui->m_conductor_cb->findText(conductor_autonum);
+			ui->m_conductor_cb->setCurrentIndex(conductor_index);
+		}
 
-		//Element
-		QString current_element_autonum = project_->elementCurrentAutoNum();
+			//Element
 		QString element_formula = project_->elementAutoNumFormula();
 		QString active_element_autonum = project_->elementAutoNumHash().key(element_formula);
 		int el_index = ui->m_element_cb->findText(active_element_autonum);
 		ui->m_element_cb->setCurrentIndex(el_index);
 
-		//Folio
+			//Folio
 		if (project_->defaultTitleBlockProperties().folio == "%autonum") {
 			QString page_autonum = project_->defaultTitleBlockProperties().auto_page_num;
 			int folio_index = ui->m_folio_cb->findText(page_autonum);

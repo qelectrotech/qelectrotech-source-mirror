@@ -116,10 +116,13 @@ QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
 }
 
 /**
-	@return le schema actuellement active
-*/
+ * @brief ProjectView::currentDiagram
+ * @return The current active diagram view or nullptr if there isn't diagramView in this project view.
+ */
 DiagramView *ProjectView::currentDiagram() const {
 	int current_tab_index = m_tab -> currentIndex();
+	if (current_tab_index == -1)
+		return nullptr;
 	return(diagram_ids_[current_tab_index]);
 }
 
