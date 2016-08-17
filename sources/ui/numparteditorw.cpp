@@ -81,7 +81,7 @@ void NumPartEditorW::setVisibleItems() {
 	if (parentWidget()->parentWidget()->objectName()=="FolioTab") {
 		items	<< tr("Chiffre 1") << tr("Chiffre 01")
 				<< tr("Chiffre 001")
-				<< tr("Texte") << tr("N° folio");
+				<< tr("Texte");
 	}
 	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") {
 		items	<< tr("Chiffre 1") << tr("Chiffre 01")
