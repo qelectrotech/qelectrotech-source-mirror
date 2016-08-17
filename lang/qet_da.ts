@@ -938,7 +938,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation>Forklarende note (alpha)</translation>
+        <translation>Forklarende note</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
@@ -966,7 +966,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation>Skal ledere information slettes:
+        <translation>Skal leder information slettes:
 
 %1?</translation>
     </message>
@@ -975,7 +975,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation>Skal ledere informationtilføjes:
+        <translation>Skal leder information tilføjes:
 
 %1?</translation>
     </message>
