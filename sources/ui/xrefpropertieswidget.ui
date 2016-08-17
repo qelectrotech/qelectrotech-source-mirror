@@ -200,8 +200,8 @@
 %F: le label de folio
 %l : le numéro de ligne
 %c : le numéro de colonne
-%M: Installation (esclave seulement)
-%LM: localisation (esclave seulement)</string>
+%M: Installation 
+%LM: Localisation </string>
              </property>
             </widget>
            </item>

@@ -95,6 +95,8 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 	txt = xrp.masterLabel();
 	txt.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
 	txt.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
+	txt.replace("%M", elmt->diagram() -> border_and_titleblock.machine());
+	txt.replace("%LM", elmt->diagram() -> border_and_titleblock.locmach());
 	txt.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
 	txt.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
 
