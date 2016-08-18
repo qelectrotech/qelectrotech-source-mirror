@@ -69,6 +69,7 @@ class QETDiagramEditor : public QETMainWindow {
 		ProjectView         *viewForFile       (const QString &) const;
 		ProjectView         *acessCurrentProject ();
 		DiagramView         *acessCurrentDiagramView ();
+		bool drawGrid() const;
 
 	protected:
 	virtual bool event(QEvent *);
@@ -156,7 +157,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void activeUndoStackCleanChanged (bool clean);
 
 		// attributes
-	public:
+	private:
 		// Actions reachable through menus within QElectroTech
 		QActionGroup *grp_visu_sel;  ///< Action group for visualisation vs edition mode
 		QActionGroup *grp_view_mode; ///< Action group for project
@@ -169,14 +170,17 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *quit_editor;        ///< Quit the diagram editor
 		QAction *undo;               ///< Cancel the latest action
 		QAction *redo;               ///< Redo the latest cancelled operation
+	public:
+		QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
+		QAction *conductor_reset;    ///< Reset paths of selected conductors
 		QAction *cut;                ///< Cut selection to clipboard
 		QAction *copy;               ///< Copy selection to clipboard
+	private:
 		QAction *paste;              ///< Paste clipboard content on the current diagram
-		QAction *conductor_reset;    ///< Reset paths of selected conductors
 		QAction *m_auto_conductor;   ///< Enable/Disable the use of auto conductor
 		QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
 		QAction *m_grey_background;  ///< Switch the background color in white or grey
-		QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
+		QAction *m_draw_grid;        ///< Switch the background grid display or not
 		QAction *prj_edit_prop;      ///< Edit the properties of the current project.
 		QAction *prj_add_diagram;    ///< Add a diagram to the current project.
 		QAction *prj_del_diagram;    ///< Delete a diagram from the current project
@@ -196,20 +200,20 @@ class QETDiagramEditor : public QETMainWindow {
 
 		QActionGroup m_select_actions_group; ///Action related to global selections
 
+	public:
+		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
 		QActionGroup m_selection_actions_group; ///Action related to edit a selected item
+	private:
 		QAction *delete_selection;				///< Delete selection
 		QAction *rotate_selection;				///< Rotate selected elements and text items by 90 degrees
 		QAction *rotate_texts;					///< Direct selected text items to a specific angle
 		QAction *find_element;					///< Find the selected element in the panel
-
-		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
 
 		QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
 		QAction *close_file;			   ///< Close current project file
 		QAction *save_file;				   ///< Save current project
 		QAction *save_file_as;			   ///< Save current project as a specific file
 
-	private:
 		QMdiArea workspace;
 		QSignalMapper windowMapper;
 		/// Directory to use for file dialogs such as File > save

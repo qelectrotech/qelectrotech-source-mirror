@@ -884,7 +884,10 @@ void DiagramView::updateWindowTitle() {
 */
 void DiagramView::adjustGridToZoom() {
 	QRectF viewed_scene = viewedSceneRect();
-	scene -> setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
+	if (diagramEditor()->drawGrid())
+		scene->setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
+	else
+		scene->setDisplayGrid(false);
 }
 
 /**

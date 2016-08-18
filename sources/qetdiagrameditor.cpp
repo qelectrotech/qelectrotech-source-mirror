@@ -277,6 +277,18 @@ void QETDiagramEditor::setUpActions()
 			this->currentDiagram()->diagram()->update();
 	});
 
+	m_draw_grid = new QAction (tr("Afficher la grille"), this);
+	m_draw_grid->setStatusTip(tr("Affiche ou masque la grille des folios"));
+	m_draw_grid->setCheckable(true);
+	m_draw_grid->setChecked(true);
+	connect(m_draw_grid, &QAction::triggered, [this](bool checked) {
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (Diagram *d, prjv->project()->diagrams()) {
+				d->setDisplayGrid(checked);
+				d->update();
+			}
+	});
+
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
 	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
@@ -525,6 +537,7 @@ void QETDiagramEditor::setUpToolBar() {
 	view_bar -> addAction(mode_selection);
 	view_bar -> addAction(mode_visualise);
 	view_bar -> addSeparator();
+	view_bar -> addAction(m_draw_grid);
 	view_bar -> addAction (m_grey_background);
 	view_bar -> addSeparator();
 	view_bar -> addActions(m_zoom_action_toolBar);
@@ -617,6 +630,7 @@ void QETDiagramEditor::setUpMenu() {
 	menu_affichage -> addAction(mode_selection);
 	menu_affichage -> addAction(mode_visualise);
 	menu_affichage -> addSeparator();
+	menu_affichage -> addAction(m_draw_grid);
 	menu_affichage -> addAction(m_grey_background);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -1571,6 +1585,14 @@ ProjectView *QETDiagramEditor::acessCurrentProject (){
 	return(project_view);
 	}
 	return(0);
+}
+
+/**
+ * @brief QETDiagramEditor::drawGrid
+ * @return true if the grid of folio must be displayed
+ */
+bool QETDiagramEditor::drawGrid() const {
+	return m_draw_grid->isChecked();
 }
 
 /**
