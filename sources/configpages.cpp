@@ -234,6 +234,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool zoom_out_folio = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool();
 	bool use_trackpad = settings.value("diagramview/gestures", false).toBool();
 	bool save_label_paste = settings.value("diagramcommands/save-label", true).toBool();
+	bool panel_folio = settings.value("genericpanel/folio", true).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
@@ -244,6 +245,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
 	save_label_paste_ = new QCheckBox(tr("Ne pas conserver les labels des éléments lors des copier coller"), projects_view_mode_);
+	folio_panel_ = new QCheckBox(tr("utiliser les labels de folio à la place de leurs ID"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
@@ -262,6 +264,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 
 	use_trackpad_ -> setChecked(use_trackpad);
 	save_label_paste_ -> setChecked(save_label_paste);
+	folio_panel_     ->setChecked(panel_folio);
 
 	if (tabbed) {
 		tabbed_mode_ -> setChecked(true);
@@ -284,6 +287,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(m_zoom_out_beyond_folio);
 	projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_layout -> addWidget(save_label_paste_);
+	projects_view_mode_layout -> addWidget(folio_panel_);
+	
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -348,6 +353,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagramview/gestures", use_trackpad_ -> isChecked());
 	settings.setValue("diagramcommands/save-label", save_label_paste_ -> isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", m_zoom_out_beyond_folio->isChecked());
+	settings.setValue("genericpanel/folio",folio_panel_->isChecked());
 }
 
 /// @return l'icone de cette page

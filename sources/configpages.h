@@ -98,6 +98,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	QCheckBox *use_system_colors_;
 	QCheckBox *use_trackpad_;
 	QCheckBox *save_label_paste_;
+	QCheckBox *folio_panel_;
 	QGroupBox *projects_view_mode_;
 	QRadioButton *windowed_mode_;
 	QRadioButton *tabbed_mode_;

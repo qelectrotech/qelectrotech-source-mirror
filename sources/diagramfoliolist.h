@@ -31,13 +31,13 @@ class DiagramFolioList : public Diagram
 	void setId(int i) {id = i;}
 	int getId() const {return id;}
 
-	static qreal colWidths[8];
+	static qreal colWidths[7];
 
 	protected:
 	void drawBackground(QPainter *, const QRectF &);
 
 	private:
-	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString, QString, QString, QString, QString);
+	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString, QString, QString, QString);
 	void buildGrid(QPainter *, const QRectF &, int, int, qreal[]);
 	void fillHeader(QPainter *, const QRectF &);
 
