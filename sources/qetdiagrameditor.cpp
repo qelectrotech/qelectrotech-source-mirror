@@ -277,7 +277,7 @@ void QETDiagramEditor::setUpActions()
 			this->currentDiagram()->diagram()->update();
 	});
 
-	m_draw_grid = new QAction (tr("Afficher la grille"), this);
+	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Afficher la grille"), this);
 	m_draw_grid->setStatusTip(tr("Affiche ou masque la grille des folios"));
 	m_draw_grid->setCheckable(true);
 	m_draw_grid->setChecked(true);

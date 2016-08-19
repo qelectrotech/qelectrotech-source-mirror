@@ -247,5 +247,6 @@
         <file>ico/22x22/diagram_bg.png</file>
         <file>ico/24x16/dk.png</file>
         <file>ico/24x16/br.png</file>
+        <file>ico/22x22/grid.png</file>
     </qresource>
 </RCC>

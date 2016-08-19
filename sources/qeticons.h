@@ -47,7 +47,7 @@ namespace QET {
 		extern QIcon DefaultConductor;
 		extern QIcon DiagramAdd;
 		extern QIcon Diagram;
-        extern QIcon DiagramBg;
+		extern QIcon DiagramBg;
 		extern QIcon DiagramDelete;
 		extern QIcon DialogCancel;
 		extern QIcon DialogInformation;
@@ -104,6 +104,7 @@ namespace QET {
 		extern QIcon GoDown;
 		extern QIcon GoUp;
 		extern QIcon Ground;
+		extern QIcon Grid;
 		extern QIcon Hide;
 		extern QIcon Home;
 		extern QIcon HotSpot;

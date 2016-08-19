@@ -97,6 +97,7 @@ namespace QET {
 		QIcon GoDown;
 		QIcon GoUp;
 		QIcon Ground;
+		QIcon Grid;
 		QIcon Hide;
 		QIcon Home;
 		QIcon HotSpot;
@@ -222,8 +223,8 @@ void QET::Icons::initIcons() {
 	DefaultConductor    .addFile(":/ico/22x22/conductor3.png");
 	DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
 	Diagram             .addFile(":/ico/diagram.png");
-    DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
-    DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
+	DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
+	DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
 	DialogCancel        .addFile(":/ico/16x16/dialog-cancel.png");
 	DialogCancel        .addFile(":/ico/22x22/dialog-cancel.png");
 	DialogInformation   .addFile(":/ico/22x22/dialog-information.png");
@@ -256,7 +257,7 @@ void QET::Icons::initIcons() {
 	East                .addFile(":/ico/16x16/east.png");
 	EditClear           .addFile(":/ico/16x16/edit-clear.png");
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
-    EditText            .addFile(":/ico/22x22/names.png");
+	EditText            .addFile(":/ico/22x22/names.png");
 	adding_image        .addFile(":/ico/22x22/insert-image.png");
 	
 	if (rtl) {
@@ -335,6 +336,7 @@ void QET::Icons::initIcons() {
 	GoUp                .addFile(":/ico/16x16/go-up.png");
 	GoUp                .addFile(":/ico/22x22/go-up.png");
 	Ground              .addFile(":/ico/16x16/ground.png");
+	Grid                .addFile(":/ico/22x22/grid.png");
 	Hide                .addFile(":/ico/16x16/masquer.png");
 	Home                .addFile(":/ico/16x16/go-home.png");
 	Home                .addFile(":/ico/22x22/go-home.png");
