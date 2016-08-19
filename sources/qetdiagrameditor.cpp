@@ -62,8 +62,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_add_item_actions_group   (this),
 	m_zoom_actions_group       (this),
 	m_select_actions_group     (this),
-	m_selection_actions_group  (this),
 	m_row_column_actions_group (this),
+	m_selection_actions_group  (this),
 	m_file_actions_group       (this),
 	open_dialog_dir            (QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))
 {
