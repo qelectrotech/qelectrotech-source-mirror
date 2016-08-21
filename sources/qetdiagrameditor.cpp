@@ -131,7 +131,7 @@ QETDiagramEditor::~QETDiagramEditor() {
  */
 void QETDiagramEditor::setUpElementsPanel() {
 	//Add the element panel as a QDockWidget
-	qdw_pa = new QDockWidget(tr("Panel projets", "dock title"), this);
+	qdw_pa = new QDockWidget(tr("Projets", "dock title"), this);
 
 	qdw_pa -> setObjectName   ("projects panel");
 	qdw_pa -> setAllowedAreas (Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
@@ -162,7 +162,7 @@ void QETDiagramEditor::setUpElementsPanel() {
  */
 void QETDiagramEditor::setUpElementsCollectionWidget()
 {
-	m_qdw_elmt_collection = new QDockWidget(tr("Collection d'éléments"), this);
+	m_qdw_elmt_collection = new QDockWidget(tr("Collections"), this);
 	m_qdw_elmt_collection->setObjectName("elements_collection_widget");
 	m_qdw_elmt_collection->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	m_qdw_elmt_collection->setFeatures(QDockWidget::AllDockWidgetFeatures);
