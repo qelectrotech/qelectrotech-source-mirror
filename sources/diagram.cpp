@@ -78,8 +78,9 @@ Diagram::Diagram(QETProject *project) :
 
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
+	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged()), this, SLOT(updateLabels()));
+	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged(const QString &)), this, SLOT(updateLabels()));
 	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadElmtFolioSeq()));
 	adjustSceneRect();
 }

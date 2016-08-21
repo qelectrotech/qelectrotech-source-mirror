@@ -149,7 +149,7 @@ class BorderTitleBlock : public QObject
 	/// @param author the new value of the "Folio" field
 	void setFolio(const QString &folio) {
 		btb_folio_ = folio;
-		emit (titleBlockFolioChanged());
+		emit (titleBlockFolioChanged(folio));
 	}
 	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
@@ -213,7 +213,7 @@ class BorderTitleBlock : public QObject
 	 @brief titleBlockFolioChanged
 		Signal emitted after Folio has changed
 	*/
-	void titleBlockFolioChanged();
+	void titleBlockFolioChanged(const QString &);
 	
 	/**
 		Signal emitted when the title block requires its data to be updated in order
