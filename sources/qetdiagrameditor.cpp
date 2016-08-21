@@ -131,9 +131,9 @@ QETDiagramEditor::~QETDiagramEditor() {
  */
 void QETDiagramEditor::setUpElementsPanel() {
 	//Add the element panel as a QDockWidget
-	qdw_pa = new QDockWidget(tr("Panel d'éléments", "dock title"), this);
+	qdw_pa = new QDockWidget(tr("Panel projets", "dock title"), this);
 
-	qdw_pa -> setObjectName   ("elements panel");
+	qdw_pa -> setObjectName   ("projects panel");
 	qdw_pa -> setAllowedAreas (Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	qdw_pa -> setFeatures     (QDockWidget::AllDockWidgetFeatures);
 	qdw_pa -> setMinimumWidth (160);
