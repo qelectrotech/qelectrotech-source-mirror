@@ -1040,7 +1040,18 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Man kan bruge følgende variabler i formel:
+ -%prefix: standard symbol præfiks
+ -%l: symbol række
+ -%c: symbol kolonne
+ -%F: ark navn
+ -%f eller %id: ark ID
+-%M:  maskine (anlæg)
+-%LM: placering
+ -%total: samlet antal ark
+Man kan tildele enhver titelblok variabel
+som er oprettet. Tekst og nummer indtastning er
+også tilgængelig.</translation>
     </message>
 </context>
 <context>
@@ -2170,7 +2181,7 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>brug ark etiketter i stedet for ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
@@ -2902,14 +2913,14 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Maskine</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Maskine placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
@@ -3713,12 +3724,12 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis gitter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis eller skjul ark gitter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -4236,12 +4247,12 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Projekter</translation>
+        <translation>Projekter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Samlinger</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -6180,12 +6191,12 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Installeret</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Revision</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6564,7 +6575,13 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%M:  maskine (anlæg)
+%LM: placering
+%l: række nummer
+%c: kolonne nummer</translation>
     </message>
 </context>
 <context>
@@ -7534,17 +7551,17 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Revision indeks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilgængelig som %locmach for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilgængelig som %machine for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
@@ -7604,17 +7621,17 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Installeret:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilgængelig som %indexrev for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7770,7 +7787,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Som standard er følgende variabler tilgængelige: &lt;ul&gt;&lt;li&gt;%{author}: Ark forfatter&lt;/li&gt;&lt;li&gt;%{date}: Ark dato&lt;/li&gt;&lt;li&gt;%{title}: Ark titel&lt;/li&gt;&lt;li&gt;%{filename}: projekt fil navn&lt;/li&gt;&lt;li&gt;%{machine}: funktionel gruppenavn for projekt&lt;/li&gt;&lt;li&gt;%{locmach}: placeringsnavn for funktionel gruppe for projekt&lt;/li&gt;&lt;li&gt;%{indexrev}: revisionsindeks for ark&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: ark betegnelser&lt;/li&gt;&lt;li&gt;%{folio-id}: ark placering for projekt&lt;/li&gt;&lt;li&gt;%{folio-total} : samlet antal ark for projekt&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8201,7 +8218,13 @@ Maksimum længde: %2piksel
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%l: række nummer
+%c: kolonne nummer
+%M: installering
+%LM: placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
