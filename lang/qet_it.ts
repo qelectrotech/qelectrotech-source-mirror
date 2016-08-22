@@ -1040,7 +1040,18 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Variabili utilizzabili nella formula:
+ -%prefix: Prefisso predefinito per l&apos;elemento
+ -%l: Riga dell&apos;elemento
+ -%c: Colonna dell&apos;elemento
+ -%F: Nome della pagina
+ -%f oppure %id: ID della pagina
+-%M: Macchina (impianto)
+-%LM: Posizione
+ -%total: Numero totale di pagine
+Si possono anche assegnare ogni altra variabile al cartiglio 
+di propria creazione. Sono utilizzabili anche
+caratteri e numeri.</translation>
     </message>
 </context>
 <context>
@@ -2170,7 +2181,7 @@ Il campo &quot;Incremento&quot; non è utilizzato.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>utilizzare le etichette della pagina, al posto dei loro ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
@@ -2902,14 +2913,14 @@ Il campo &quot;Incremento&quot; non è utilizzato.</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Macchina</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Locmach</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
@@ -3711,12 +3722,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra la griglia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualizzare o nasacondere la griglia delle pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -4231,12 +4242,12 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Progetti</translation>
+        <translation>Progetti</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Collezioni</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -6172,12 +6183,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Installazione</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Rev</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6556,7 +6567,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>È possibile definire un&apos;etichetta personalizzata per i riferimenti di pagina.
+Creare un testo utilizzando le variabili seguenti:
+%f : numero di pagina 
+%F: etichetta della pagina
+%M:  Macchina (Impianto)
+%LM: Posizione
+%l : numero di riga
+%c : numero di colonna</translation>
     </message>
 </context>
 <context>
@@ -7526,17 +7544,17 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Indice-Rev</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponibile come %locmach per i modelli di cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponibile come %machine per i modelli di cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
@@ -7596,17 +7614,17 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Installazione</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished">Posizione</translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponibile come %indexrev per i modelli di cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7761,7 +7779,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Le variabili predefinite, sono le seguenti: &lt;ul&gt;&lt;li&gt;%{author} : autore della pagina&lt;/li&gt;&lt;li&gt;%{date} : data della pagina&lt;/li&gt;&lt;li&gt;%{title} : titolo della pagina&lt;/li&gt;&lt;li&gt;%{filename} : nome del file di progetto&lt;/li&gt;&lt;li&gt;%{machine} : nome del gruppo funzionale del progetto&lt;/li&gt;&lt;li&gt;%{locmach} : nome della posizione del gruppo funzionale del pprogetto&lt;/li&gt;&lt;li&gt;%{indexrev} : indice di revisione della pagina&lt;/li&gt;&lt;li&gt;%{version} : versione del programma&lt;/li&gt;&lt;li&gt;%{folio} : indicazioni relativa alla pagina&lt;/li&gt;&lt;li&gt;%{folio-id} : posizione della pagina nel progetto&lt;/li&gt;&lt;li&gt;%{folio-total} : numero totale di pagine nel progetto&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8190,7 +8208,13 @@ Lunghezza massima : %2px</translation>
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Creare un testo personalizzato utilizzando le variabili seguenti:
+%f : numero di pagina 
+%F: etichetta della pagina
+%l : numero di riga
+%c : numero di colonna
+%M: Installazione
+%LM: Posizione </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
