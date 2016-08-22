@@ -7615,7 +7615,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation>Plants</translation>
+        <translation>Plants :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
@@ -7780,7 +7780,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>The following variables are available by default: &lt;ul&gt;&lt;li&gt;%{author}: folio author&lt;/li&gt;&lt;li&gt;%{date}: folio date&lt;/li&gt;&lt;li&gt;%{title}: folio title&lt;/li&gt;&lt;li&gt;%{filename}: project filename&lt;/li&gt;&lt;li&gt;%{machine} : Plant&lt;/li&gt;&lt;li&gt;%{locmach} :Location&lt;/li&gt;&lt;li&gt;%{indexrev} : Revision index&lt;/li&gt;&lt;li&gt;%{version} : version of software&lt;/li&gt;&lt;li&gt;%{folio}: folio-related information&lt;/li&gt;&lt;li&gt;%{folio-id}: folio index within the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of folios within the project&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
