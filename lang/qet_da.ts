@@ -494,7 +494,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="39"/>
         <source>Lignes :</source>
-        <translation>Rækker:</translation>
+        <translation>Linje:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
@@ -1042,7 +1042,7 @@ that you create. Text and number inputs are
  also available.</source>
         <translation>Man kan bruge følgende variabler i formel:
  -%prefix: standard symbol præfiks
- -%l: symbol række
+ -%l: symbol linje
  -%c: symbol kolonne
  -%F: ark navn
  -%f eller %id: ark ID
@@ -4025,8 +4025,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Ajouter une ligne</source>
-        <translatorcomment>Oversættelse er brugt 2 steder men har forskellig kontekst</translatorcomment>
-        <translation>Tilføj række/streg</translation>
+        <translation>Tilføj linje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="356"/>
@@ -4036,7 +4035,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Enlever une ligne</source>
-        <translation>Slet række</translation>
+        <translation>Slet linje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="447"/>
@@ -5497,7 +5496,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation>Tilføj &amp;række</translation>
+        <translation>Tilføj &amp;linje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
@@ -6051,13 +6050,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Indsæt række</translation>
+        <translation>Indsæt linje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Slet række</translation>
+        <translation>Slet linje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
@@ -6075,7 +6074,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Rediger række</translation>
+        <translation>Rediger linje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
@@ -6580,7 +6579,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %F: ark etiket
 %M:  maskine (anlæg)
 %LM: placering
-%l: række nummer
+%l: linje nummer
 %c: kolonne nummer</translation>
     </message>
 </context>
@@ -7998,7 +7997,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation>Rediger række højde</translation>
+        <translation>Rediger linje højde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
@@ -8016,7 +8015,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>Tilføj række (før)</translation>
+        <translation>Tilføj linje (før)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
@@ -8028,7 +8027,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation>Tilføj række (efter)</translation>
+        <translation>Tilføj linje (efter)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
@@ -8040,7 +8039,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Rediger række størrelse</translation>
+        <translation>Rediger linje størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
@@ -8052,7 +8051,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation>Slet række</translation>
+        <translation>Slet linje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
@@ -8221,7 +8220,7 @@ Maksimum længde: %2piksel
         <translation>Opret tekst ved hjælp af følgende variabler:
 %f: ark nummer
 %F: ark etiket
-%l: række nummer
+%l: linje nummer
 %c: kolonne nummer
 %M: installering
 %LM: placering</translation>
