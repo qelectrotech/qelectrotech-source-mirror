@@ -1044,7 +1044,18 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Variablen können im Muster verwendet werden:
+%prefix: Gerätekennbuchstabe
+%l: Zeilennummer
+%c: Spaltennummer
+%F: Folienname
+%f oder %id: Folien-ID
+%M: Anlage
+%LM: Ort
+%total: gesamte Folienanzahl
+Sie können auch beliebige Variable verwenden, die Sie
+im Zeichnungskopf angelegt haben (Folieneigenschaften, Reiter &quot;Benutzer-Eigenschaften&quot;).
+Zahlen und Buchstaben sind ebenso erlaubt.</translation>
     </message>
 </context>
 <context>
@@ -2164,7 +2175,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienname anstelle von Folien-ID verwenden</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
@@ -2896,14 +2907,14 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlage</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Ort</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
@@ -4070,12 +4081,12 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Projekte</translation>
+        <translation>Projekte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Sammlungen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -4086,12 +4097,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige den Hintergrundsraster der Folien an</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
@@ -6158,12 +6169,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlage</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Rev</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6542,7 +6553,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Zur Bildung der Querweistexte können folgende Variablen
+verwendet werden:
+%f: Folien-ID
+%F: Folienname
+%M: Anlage
+%LM: Ort
+%l: Zeilennummer
+%c: Spaltennummer</translation>
     </message>
 </context>
 <context>
@@ -7415,7 +7433,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
         <source>Modèle :</source>
-        <translation>Vorlage:</translation>
+        <translation>Vorlage</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
@@ -7425,12 +7443,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="218"/>
         <source>Folio :</source>
-        <translation>Folie: </translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="190"/>
         <source>Auteur :</source>
-        <translation>Bearbeiter:</translation>
+        <translation>Bearbeiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="239"/>
@@ -7481,22 +7499,22 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
         <source>Afficher :</source>
-        <translation>Anzeigen:</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisionsindex</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %locmach verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %machine verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
@@ -7511,7 +7529,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="305"/>
         <source>Titre :</source>
-        <translation>Titel: </translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
@@ -7526,7 +7544,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="225"/>
         <source>Fichier :</source>
-        <translation>Datei: </translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
@@ -7536,7 +7554,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="129"/>
         <source>Date :</source>
-        <translation>Datum: </translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="232"/>
@@ -7551,22 +7569,22 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
         <source>Page Num:</source>
-        <translation>Nummerierung:</translation>
+        <translation>Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlage</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished">Ort</translation>
+        <translation>Ort</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %indexrev verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7734,7 +7752,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardmäßig sind folgende Variablen verfügbar:&lt;ul&gt;&lt;li&gt;%{author}: Bearbeiter&lt;/li&gt;&lt;li&gt;%{date}: Datum&lt;/li&gt;&lt;li&gt;%{title}: Folientitel&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{machine}: Anlagenkennzeichen&lt;/li&gt;&lt;li&gt;%{locmach}: Ortskennzeichen&lt;/li&gt;&lt;li&gt;%{indexrev}: Revisionsindex&lt;/li&gt;&lt;li&gt;%{version}: Software Versionsnummer&lt;/li&gt;&lt;li&gt;%{folio}: Folienname&lt;/li&gt;&lt;li&gt;%{folio-id}: Folien-ID (Reihenfolge im Projekt)&lt;/li&gt;&lt;li&gt;%{folio-total}: Gesamte Folienanzahl im Projekt&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8154,7 +8172,13 @@ Maximale Länge: %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Variablen sind verfügbar:
+%f: Folien-ID
+%F: Folienname
+%l: Zeilennummer
+%c: Spaltennummer
+%M: Anlage
+%LM: Ort</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
