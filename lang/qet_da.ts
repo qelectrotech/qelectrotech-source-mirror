@@ -341,7 +341,7 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
-        <translation>Anvend på projektet</translation>
+        <translation>Anvend på projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="192"/>
@@ -3178,7 +3178,7 @@ nummerering</translation>
         <location filename="../sources/projectconfigpages.cpp" line="168"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Indstil følgende brugertilpasset egenskab der vil være til rådighed for alle ark i projektet (typisk for titelblokke).</translation>
+        <translation>Indstil følgende brugertilpasset egenskab der vil være til rådighed for alle ark i projekt (typisk for titelblok).</translation>
     </message>
 </context>
 <context>
@@ -3197,7 +3197,7 @@ nummerering</translation>
         <location filename="../sources/projectview.cpp" line="316"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation>Projektet er ændret.
+        <translation>Projekt er ændret.
 Skal ændringer gemmes?</translation>
     </message>
     <message>
@@ -3229,7 +3229,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/projectview.cpp" line="775"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
-        <translation>Projektet er skrivebeskyttet og er derfor ikke muligt at rydde op i.</translation>
+        <translation>Projekt er skrivebeskyttet og er derfor ikke muligt at rydde op i.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="781"/>
@@ -3251,7 +3251,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/projectview.cpp" line="841"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>Projektet indeholder ingen ark</translation>
+        <translation>Projekt indeholder ingen ark</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="340"/>
@@ -7508,9 +7508,9 @@ De øvrige felter anvendes ikke.</translation>
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
         <translation>Følgende variabler anvendes i ark området:
-- %id: aktuel ark nummer i projektet
-- %total: samlet antal ark i projektet
-- %autonum: Ark autonummerering</translation>
+- %id: aktuel ark nummer i projekt
+- %total: samlet antal ark i projekt
+- %autonum: ark autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="334"/>
