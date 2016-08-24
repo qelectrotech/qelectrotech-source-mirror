@@ -189,7 +189,7 @@ void ProjectMainConfigPage::initLayout() {
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
 	setLayout(main_layout0);
-	this -> setMinimumWidth(630);
+	this -> setMinimumWidth(780);
 
 }
 
@@ -374,7 +374,7 @@ void ProjectAutoNumConfigPage::initLayout() {
 	//Auto Numbering Tab
 	tab_widget->addTab(autoNumbering_tab_widget,tr ("Folio Auto Numbering"));
 
-	tab_widget->resize(540,590);
+	tab_widget->resize(850,590);
 }
 
 /**
@@ -712,6 +712,6 @@ void ProjectAutoNumConfigPage::tabChanged(int i){
 		}
 	}
 	else {
-		tab_widget->resize(540,tab_widget->height());
+		tab_widget->resize(850,tab_widget->height());
 	}
 }
