@@ -397,7 +397,7 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation>Seuls les existant</translation>
+        <translation type="unfinished">Seuls ceux existants</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation>Existant</translation>
+        <translation type="unfinished">Existants</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
@@ -1036,7 +1036,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation>Vous pouvez utiliser les variables suivantes dans votre formule:
+        <translation type="unfinished">Vous pouvez utiliser les variables suivantes dans votre formule:
   -%prefix:Prefix élémént,  Par défaut 
   -%l: Ligne 
   -%c: Colonne
@@ -1046,7 +1046,7 @@ that you create. Text and number inputs are
   -%LM: Localisation
   -%total: total de folios
 Vous pouvez également affecter toute autre variable de cartouche
-que vous créez,. entrées de texte et le nombres sont
+que vous créez,. entrées de texte et nombres sont
 aussi disponiblent.
 </translation>
     </message>
@@ -6525,7 +6525,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation></translation>
+        <translation type="unfinished">Vous pouvez définir un label personnalisé pour les reports de folio.
+Créer votre propre texte en vous aidant des variables suivantes :
+%f : le numéro de folio 
+%F: le label de folio
+%M:  Machine 
+%LM: Location
+%l : le numéro de ligne
+%c : le numéro de colonne</translation>
     </message>
 </context>
 <context>
