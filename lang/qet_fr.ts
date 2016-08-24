@@ -397,7 +397,7 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation type="unfinished">Seuls ceux existants</translation>
+        <translation>Seuls ceux existants</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
@@ -407,12 +407,12 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation type="unfinished">Existants</translation>
+        <translation>Existants</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Under Development</source>
-        <translation>En cours d&apos;élaboration</translation>
+        <translation>Projet en cours d&apos;élaboration</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="63"/>
@@ -422,7 +422,7 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="64"/>
         <source>Built</source>
-        <translation>Construit</translation>
+        <translation>Projet construit</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="185"/>
@@ -1010,7 +1010,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom auto motifs:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementautonumberingw.ui" line="59"/>
@@ -1036,7 +1036,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished">Vous pouvez utiliser les variables suivantes dans votre formule:
+        <translation>Vous pouvez utiliser les variables suivantes dans votre formule:
   -%prefix:Prefix élémént,  Par défaut 
   -%l: Ligne 
   -%c: Colonne
@@ -6525,7 +6525,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished">Vous pouvez définir un label personnalisé pour les reports de folio.
+        <translation>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
