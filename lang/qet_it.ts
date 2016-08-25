@@ -1040,7 +1040,18 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Variabili utilizzabili nella formula:
+ -%prefix: Prefisso predefinito per l&apos;elemento
+ -%l: Riga dell&apos;elemento
+ -%c: Colonna dell&apos;elemento
+ -%F: Nome della pagina
+ -%f oppure %id: ID della pagina
+-%M: Macchina
+-%LM: Posizione
+ -%total: Numero totale di pagine
+Si possono anche assegnare ogni altra variabile al cartiglio 
+di propria creazione. Sono utilizzabili anche
+caratteri e numeri.</translation>
     </message>
     <message>
         <source>You can use the following variables to your formula:
@@ -2160,7 +2171,7 @@ Il campo &quot;Incremento&quot; non è utilizzato.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizzare le etichette della pagina, al posto dei loro ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -3812,13 +3823,13 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Elimina una riga</translation>
+        <translation>Elimina una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
@@ -3889,7 +3900,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
@@ -6601,7 +6612,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>È possibile definire un&apos;etichetta personalizzata per i riferimenti di pagina.
+Creare un testo utilizzando le variabili seguenti:
+%f : numero di pagina 
+%F: etichetta della pagina
+%M:  Macchina
+%LM: Posizione
+%l : numero di riga
+%c : numero di colonna</translation>
     </message>
     <message>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
