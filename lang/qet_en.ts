@@ -1040,7 +1040,18 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>You can use the following variables to your formula:
+ -%prefix: Default Element Prefix
+ -%l: Element Line
+ -%c: Element Column
+ -%F: Folio Name
+ -%f or %id: Folio ID
+-%M: Plant
+-%LM: Location
+ -%total: Total of folios
+You can also assign any other titleblock variable 
+that you create. Text and number inputs are
+ also available.</translation>
     </message>
     <message>
         <source>You can use the following variables to your formula:
@@ -2161,7 +2172,7 @@ The fields &quot;;Raise&quot;; is not used.
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Use labels of folio instead of their ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -3812,13 +3823,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add row</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Remove a row</translation>
+        <translation>Remove a row</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
@@ -3889,7 +3900,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add line</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
@@ -6601,7 +6612,15 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>You can define a custom label for report folio.
+Create your own text by helping you of the following variables:
+% f: the folio number
+% F: folio label
+% M: Plant
+% LM: Location
+% l: the line number
+% c: column number
+</translation>
     </message>
     <message>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
