@@ -88,7 +88,7 @@
  -%c: Element Column
  -%F: Folio Name
  -%f or %id: Folio ID
--%M:  Machine (Plant)
+-%M:  Machine 
 -%LM: Location
  -%total: Total of folios
 You can also assign any other titleblock variable 

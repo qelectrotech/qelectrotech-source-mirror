@@ -245,7 +245,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
 	save_label_paste_ = new QCheckBox(tr("Ne pas conserver les labels des éléments lors des copier coller"), projects_view_mode_);
-	folio_panel_ = new QCheckBox(tr("utiliser les labels de folio à la place de leurs ID"), projects_view_mode_);
+	folio_panel_ = new QCheckBox(tr("Utiliser les labels de folio à la place de leurs ID"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
