@@ -480,20 +480,19 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		//Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty() || !m_elmt_tenfolio_max.isEmpty() || !m_elmt_hundredfolio_max.isEmpty()) {
 			QDomElement folioContainedAutonum = document.createElement("elementautonumfoliosequentials");
-			QHash<QString, QStringList>::iterator i;
 			if (!m_elmt_unitfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementunitfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_unitfolio_max, &elmtfolioseq, "sequf_");
-				folioContainedAutonum.appendChild(elmtfolioseq);	
+				elementFolioSequentialsToXml(&m_elmt_unitfolio_max, &elmtfolioseq, "sequf_", "unitfolioseq", &document);
+				folioContainedAutonum.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_tenfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementtenfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_tenfolio_max, &elmtfolioseq, "seqtf_");
+				elementFolioSequentialsToXml(&m_elmt_tenfolio_max, &elmtfolioseq, "seqtf_", "tenfolioseq", &document);
 				folioContainedAutonum.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_hundredfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementhundredfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_");
+				elementFolioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_", "hundredfolioseq", &document);
 				folioContainedAutonum.appendChild(elmtfolioseq);
 			}
 			racine.appendChild(folioContainedAutonum);
@@ -601,13 +600,15 @@ QDomDocument Diagram::toXml(bool whole_content) {
 + * @param hash to retrieve content with content
 + * @param sequential type
 + */
-void Diagram::elementFolioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type) {
+void Diagram::elementFolioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type, QString type, QDomDocument *doc) {
 	QHash<QString, QStringList>::iterator i;
 	for (i = hash->begin(); i != hash->end(); i++) {
-		domElement->setAttribute("title", i.key());
+		QDomElement folioseq = doc->createElement(type);
+		folioseq.setAttribute("title", i.key());
 		for (int j = 0; j < i.value().size(); j++) {
-			domElement->setAttribute(seq_type + QString::number(j+1), i.value().at(j));
+			folioseq.setAttribute(seq_type + QString::number(j+1), i.value().at(j));
 		}
+		domElement->appendChild(folioseq);
 	}
 }
 
@@ -701,9 +702,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		// Load Freeze New Element
 		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
 
-		elementFolioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_");
-		elementFolioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_");
-		elementFolioSequentialsFromXml(root, &m_elmt_hundredfolio_max, "elementhundredfolioseq","seqhf_");
+		elementFolioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_","unitfolioseq");
+		elementFolioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_", "tenfolioseq");
+		elementFolioSequentialsFromXml(root, &m_elmt_hundredfolio_max, "elementhundredfolioseq","seqhf_", "hundredfolioseq");
 	}
 
 	// if child haven't got a child, loading is finish (diagram is empty)
@@ -884,17 +885,20 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
  * @param hash to be loaded with content
  * @param folioSeq type
  * @param seq type
+ * @param type of sequential
  */
-void Diagram::elementFolioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq) {
+void Diagram::elementFolioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq, QString type) {
 	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, "elementautonumfoliosequentials", folioSeq)) {
-		QString title = folioSeqAutoNum.attribute("title");
-		QStringList unit;
-		int i = 1;
-		while (folioSeqAutoNum.hasAttribute(seq + QString::number(i))) {
-			unit << folioSeqAutoNum.attribute(seq + QString::number(i));
-			i++;
+		for(QDomElement folioseq = folioSeqAutoNum.firstChildElement(type); !folioseq.isNull(); folioseq = folioseq.nextSiblingElement(type)) {
+			QString title = folioseq.attribute("title");
+			QStringList list;
+			int i = 1;
+			while (folioseq.hasAttribute(seq + QString::number(i))) {
+				list << folioseq.attribute(seq + QString::number(i));
+				i++;
+			}
+			hash->insert(title,list);
 		}
-		hash->insert(title,unit);
 	}
 }
 

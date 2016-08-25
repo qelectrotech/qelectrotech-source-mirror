@@ -158,8 +158,8 @@ class Diagram : public QGraphicsScene
 	void write(const QDomElement &);
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
-	void elementFolioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString);
-	void elementFolioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString);
+	void elementFolioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
+	void elementFolioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString);
 
 	// methods related to graphics items addition/removal on the diagram
 	void initElementsLinks();
