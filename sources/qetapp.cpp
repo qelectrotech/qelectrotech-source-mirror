@@ -1349,12 +1349,7 @@ void QETApp::initLanguage() {
 void QETApp::initStyle() {
 	initial_palette_ = palette();
 
-	//@TODO remove the code below
-//	// lorsque le style Plastique est active, on le remplace par une version amelioree
-//	if (qobject_cast<QPlastiqueStyle *>(style())) {
-//		setStyle(new QETStyle());
-//	}
-		//Apply or not the system style
+	//Apply or not the system style
 	QSettings settings;
 	useSystemPalette(settings.value("usesystemcolors", true).toBool());
 }

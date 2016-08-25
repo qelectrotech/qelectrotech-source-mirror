@@ -31,7 +31,7 @@ class QPrinter;
 */
 class DiagramPrintDialog : public QWidget
 {
-		//@TODO Remove definitely the commented lines in this class related to post script
+
 
 	Q_OBJECT
 	// Constructors, destructor
@@ -82,11 +82,9 @@ class DiagramPrintDialog : public QWidget
 	QHBoxLayout *hlayout0_;
 	QLabel *printer_icon_;
 	QLabel *pdf_icon_;
-//	QLabel *ps_icon_;
 	QButtonGroup *printtype_choice_;
 	QRadioButton *printer_choice_;
 	QRadioButton *pdf_choice_;
-//	QRadioButton *ps_choice_;
 	QLineEdit *filepath_field_;
 	QPushButton *browse_button_;
 	QDialogButtonBox *buttons_;

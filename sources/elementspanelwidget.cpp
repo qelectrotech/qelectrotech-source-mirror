@@ -68,15 +68,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	filter_textfield -> setClearButtonEnabled(true);
 	filter_textfield -> setPlaceholderText(tr("Filtrer"));
 
-	
-	//@TODO remove the commented code below
-	// ajoute une petite marge a la droite du champ pour filtrer lorsque le style CleanLooks est utilise
-//	if (qobject_cast<QCleanlooksStyle *>(QApplication::style())) {
-//		int l, t, r, b;
-//		filter_toolbar -> getContentsMargins(&l, &t, &r, &b);
-//		filter_toolbar -> setContentsMargins (l, t, r + 4, b);
-//	}
-	
+
 	context_menu = new QMenu(this);
 	
 	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
