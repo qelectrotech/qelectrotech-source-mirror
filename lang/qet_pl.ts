@@ -143,7 +143,7 @@
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <location filename="../sources/aboutqet.cpp" line="160"/>
         <source>Traduction en grec</source>
-        <translation>Tłumaczenie na grecki</translation>
+        <translation>Tłumaczenie na grecki</translation> 
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="161"/>
@@ -1040,7 +1040,18 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Możesz użyć następujących zmiennych w formule:
+ -%prefix: Domyślny prefix elementu
+ -%l: Element line
+ -%c: Element Column
+ -%F: Numer strony
+ -%f or %id: ID strony
+-%M:  Maszyna 
+-%LM: Lokalizacja
+ -%total: Ilość stron
+Możesz również przypisać dowolną inną zmienną
+do tworzonej. tabliczki rysunkowej. Tekst i cyfry
+są również dostępne.</translation>
     </message>
 </context>
 <context>
@@ -2132,7 +2143,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj ID zamiast etykiet arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -2900,14 +2911,14 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Maszyna</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
@@ -3710,12 +3721,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl siatkę</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż lub ukryj sietkę arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -3781,13 +3792,13 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw linię</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Usuń wiersz</translation>
+        <translation>Usuń wiersz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
@@ -3858,7 +3869,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw linię</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
@@ -4245,12 +4256,12 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Projekty</translation>
+        <translation>Projekty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -6196,12 +6207,12 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalacja</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Rew</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6580,7 +6591,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Możesz zdefiniować niestandardową etykietę odnośnika do arkusza.
+Stwórz własny tekst używając następujących zmiennych:
+%f: le numer arkusza 
+%F: le etykieta arkusza 
+%M:  Maszyna 
+%LM: Lokalizacja 
+%l: le oznaczenie linii 
+%c: le oznaczenie kolumny</translation>
     </message>
 </context>
 <context>
@@ -7545,17 +7563,17 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenie Rew</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępny dla %locmach szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępny dla %machine szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
@@ -7615,17 +7633,17 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalacja:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished">Lokalizacja</translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępny dla %indexrev szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7781,7 +7799,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślnie dostępne są następujące zmienne:&lt;ul&gt;&lt;li&gt;%{author}: autor arkusza&lt;/li&gt;&lt;li&gt;%{date}: data arkusza&lt;/li&gt;&lt;li&gt;%{title}: tyyuł arkusza&lt;/li&gt;&lt;li&gt;%{filename}: nazwa wyświetlanego projektu&lt;/li&gt;&lt;li&gt;%{machine}: nazwa obszaru roboczego projektu&lt;/li&gt;&lt;li&gt;%{locmach}: nazwa położenia w obszarze roboczym projektu&lt;/li&gt;&lt;li&gt;%{indexrev}: oznaczenie rewizji arkusza&lt;/li&gt;&lt;li&gt;%{version}: wersja oprogramowania&lt;/li&gt;&lt;li&gt;%{folio}: położenie arkusza&lt;/li&gt;&lt;li&gt;%{folio-id}: położenie arkusza w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total}: ilość arkuszy w projekcie&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8210,7 +8228,13 @@ Długość maksymalna: %2px</translation>
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Stwórz własny tekst używając następujących zmiennych:
+%f: le numer arkusza 
+%F: le etykieta arkusza
+%l: le oznaczenie linii
+%c: le oznaczenie kolumny
+%M: instalacja 
+%LM: lokalizacja </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
