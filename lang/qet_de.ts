@@ -1044,7 +1044,18 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Variablen können im Muster verwendet werden:
+%prefix: Gerätekennbuchstabe
+%l: Zeilennummer
+%c: Spaltennummer
+%F: Folienname
+%f oder %id: Folien-ID
+%M: Anlage
+%LM: Ort
+%total: gesamte Folienanzahl
+Sie können auch beliebige Variable verwenden, die Sie
+im Zeichnungskopf angelegt haben (Folieneigenschaften, Reiter &quot;Benutzer-Eigenschaften&quot;).
+Zahlen und Buchstaben sind ebenso erlaubt.</translation>
     </message>
     <message>
         <source>You can use the following variables to your formula:
@@ -2154,7 +2165,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienname anstelle von Folien-ID verwenden</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -4129,13 +4140,13 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zeile einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Zeile entfernen</translation>
+        <translation>Zeile entfernen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
@@ -4147,7 +4158,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
@@ -6587,7 +6598,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Zur Bildung der Querweistexte können folgende Variablen
+verwendet werden:
+%f: Folien-ID
+%F: Folienname
+%M: Anlage
+%LM: Ort
+%l: Zeilennummer
+%c: Spaltennummer</translation>
     </message>
     <message>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
