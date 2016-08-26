@@ -1042,13 +1042,13 @@ that you create. Text and number inputs are
  also available.</source>
         <translation>Możesz użyć następujących zmiennych w formule:
  -%prefix: Domyślny prefix elementu
- -%l: Element line
- -%c: Element Column
- -%F: Numer strony
- -%f or %id: ID strony
+ -%l: Linia elementu
+ -%c: Kolumna elementu
+ -%F: Numer arkusza
+ -%f or %id: ID arkusza
 -%M:  Maszyna 
 -%LM: Lokalizacja
- -%total: Ilość stron
+ -%total: Ilość arkuszy
 Możesz również przypisać dowolną inną zmienną
 do tworzonej. tabliczki rysunkowej. Tekst i cyfry
 są również dostępne.</translation>
@@ -2924,7 +2924,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="195"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="312"/>
-        <source>Element Line</source>
+        <source>Linia elementu</source>
         <translation>Element - Wiersz</translation>
     </message>
     <message>
@@ -2932,14 +2932,14 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
         <location filename="../sources/ui/numparteditorw.cpp" line="197"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="314"/>
         <source>Element Column</source>
-        <translation>Element - Kolumna</translation>
+        <translation>Kolumna elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="199"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="316"/>
         <source>Element Prefix</source>
-        <translation>Element - Prefix</translation>
+        <translation>Prefix elementu</translation>
     </message>
 </context>
 <context>
