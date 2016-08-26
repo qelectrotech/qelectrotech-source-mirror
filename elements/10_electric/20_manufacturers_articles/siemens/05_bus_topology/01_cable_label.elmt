@@ -1,0 +1,13 @@
+<definition orientation="dyyy" version="0.51" width="200" height="50" type="element" hotspot_x="5" link_type="simple" hotspot_y="45">
+    <uuid uuid="{e379b24b-b1f0-4947-9588-b9c6af23b50a}"/>
+    <names>
+        <name lang="en">Cable label</name>
+        <name lang="fr">Etiquette de câble</name>
+        <name lang="de">Kabel-BMK</name>
+    </names>
+    <informations/>
+    <description>
+        <rect y="-40" width="190" height="40" x="0" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <input y="-20" text="-W" tagg="none" x="0" size="30" rotate="true"/>
+    </description>
+</definition>

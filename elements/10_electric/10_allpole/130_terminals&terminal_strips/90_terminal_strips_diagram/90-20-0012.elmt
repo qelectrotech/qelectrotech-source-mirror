@@ -1,0 +1,17 @@
+<definition orientation="dyyy" version="0.51" width="30" height="80" type="element" hotspot_x="15" link_type="simple" hotspot_y="67">
+    <uuid uuid="{57a6e367-5c77-4d2b-bb60-0ca0651bdd31}"/>
+    <names>
+        <name lang="fr">Appareil (connexion en bas) - milieu</name>
+        <name lang="de">Gerät (Anschluss unten) - Mitte</name>
+        <name lang="en">Device (connection on bottom) - middle</name>
+    </names>
+    <informations/>
+    <description>
+        <input y="2" text="_" rotation="270" tagg="none" x="0" size="6" rotate="true"/>
+        <input y="-20" text="-" rotation="270" tagg="none" x="0" size="9" rotate="true"/>
+        <line length1="1.5" x2="0" length2="1.5" y1="0" y2="4" end1="none" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="-60" y2="-60" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="0" y2="0" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal orientation="s" y="4" x="0"/>
+    </description>
+</definition>

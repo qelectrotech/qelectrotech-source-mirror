@@ -1,0 +1,30 @@
+<definition orientation="dyyy" version="0.51" width="50" height="110" type="element" hotspot_x="15" link_type="simple" hotspot_y="54">
+    <uuid uuid="{387b403b-d81d-45ca-957d-e9014fe009a7}"/>
+    <names>
+        <name lang="fr">Borne double-étage (continuité)</name>
+        <name lang="de">Klemme Doppelstock (Durchgang)</name>
+        <name lang="en">Terminal double-level (feed-through)</name>
+    </names>
+    <informations/>
+    <description>
+        <input y="14" text="" rotation="270" tagg="none" x="20" size="9" rotate="true"/>
+        <circle y="27" x="17" diameter="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <rect y="-12" width="16" height="24" x="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <input y="14" text="" rotation="270" tagg="none" x="0" size="9" rotate="true"/>
+        <rect y="-12" width="16" height="24" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <circle y="17" x="-3" diameter="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="-40" y2="40" end1="none" end2="none" x1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="-40" y2="-40" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="-40" y2="-50" end1="none" end2="none" x1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="30" length2="1.5" y1="-50" y2="-50" end1="none" end2="none" x1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-10" length2="1.5" y1="-40" y2="40" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="40" y2="40" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="10" length2="1.5" y1="40" y2="50" end1="none" end2="none" x1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="30" length2="1.5" y1="50" y2="50" end1="none" end2="none" x1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="30" length2="1.5" y1="50" y2="-50" end1="none" end2="none" x1="30" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <terminal orientation="s" y="50" x="20"/>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="n" y="-50" x="20"/>
+        <terminal orientation="s" y="40" x="0"/>
+    </description>
+</definition>

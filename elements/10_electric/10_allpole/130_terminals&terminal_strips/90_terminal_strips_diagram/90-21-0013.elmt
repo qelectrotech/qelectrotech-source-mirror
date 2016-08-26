@@ -1,0 +1,16 @@
+<definition orientation="dyyy" version="0.51" width="30" height="80" type="element" hotspot_x="15" link_type="simple" hotspot_y="13">
+    <uuid uuid="{4aea9d8c-0dc6-4be7-b988-7ee87ae439fc}"/>
+    <names>
+        <name lang="fr">Appareil (connexion en haut) - fin</name>
+        <name lang="de">Gerät (Anschluss oben) - Ende</name>
+        <name lang="en">Device (connection on top) - end</name>
+    </names>
+    <informations/>
+    <description>
+        <input y="15" text="_" rotation="270" tagg="none" x="0" size="6" rotate="true"/>
+        <input y="60" text="-" rotation="270" tagg="none" x="0" size="9" rotate="true"/>
+        <line length1="1.5" x2="0" length2="1.5" y1="-4" y2="0" end1="none" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon x2="10" y4="60" y1="0" y2="0" x3="10" y3="60" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-10" closed="false" antialias="false"/>
+        <terminal orientation="n" y="-4" x="0"/>
+    </description>
+</definition>

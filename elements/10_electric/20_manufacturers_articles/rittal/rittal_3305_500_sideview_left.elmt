@@ -1,0 +1,81 @@
+<definition orientation="dyyy" version="0.51" width="240" height="960" type="element" hotspot_x="112" link_type="simple" hotspot_y="479">
+    <uuid uuid="{99d7635b-864d-4e9d-a9bb-5e9a197d56f5}"/>
+    <names>
+        <name lang="en">Rittal 3305.500 (side view: left)</name>
+    </names>
+    <informations/>
+    <description>
+        <input y="-505" text="_" tagg="label" x="-27" size="21" rotate="true"/>
+        <line length1="1.5" x2="91.79" length2="1.5" y1="477.455" y2="477.455" end1="none" end2="none" x1="-1.99" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="477.455" y2="477.515" end1="none" end2="none" x1="91.79" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="111.84" length2="1.5" y1="477.515" y2="477.515" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.19" length2="1.5" y1="477.515" y2="477.325" end1="none" end2="none" x1="111.84" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.42" length2="1.5" y1="477.325" y2="477.135" end1="none" end2="none" x1="112.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.57" length2="1.5" y1="477.135" y2="476.815" end1="none" end2="none" x1="112.42" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.63" length2="1.5" y1="476.815" y2="476.545" end1="none" end2="none" x1="112.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.41" length2="1.5" y1="476.545" y2="438.465" end1="none" end2="none" x1="112.63" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="121.98" length2="1.5" y1="438.465" y2="175.995" end1="none" end2="none" x1="114.41" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.59" length2="1.5" y1="175.995" y2="77.525" end1="none" end2="none" x1="121.98" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.57" length2="1.5" y1="77.525" y2="-86.615" end1="none" end2="none" x1="122.59" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.53" length2="1.5" y1="-86.615" y2="-109.795" end1="none" end2="none" x1="122.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.36" length2="1.5" y1="-109.795" y2="-133.445" end1="none" end2="none" x1="122.53" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.19" length2="1.5" y1="-133.445" y2="-154.515" end1="none" end2="none" x1="122.36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="121.98" length2="1.5" y1="-154.515" y2="-172.935" end1="none" end2="none" x1="122.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.41" length2="1.5" y1="-172.935" y2="-435.525" end1="none" end2="none" x1="121.98" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.15" length2="1.5" y1="-435.525" y2="-440.775" end1="none" end2="none" x1="114.41" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="113.47" length2="1.5" y1="-440.775" y2="-455.555" end1="none" end2="none" x1="114.15" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.81" length2="1.5" y1="-455.555" y2="-469.425" end1="none" end2="none" x1="113.47" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.66" length2="1.5" y1="-469.425" y2="-473.735" end1="none" end2="none" x1="112.81" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.43" length2="1.5" y1="-473.735" y2="-474.155" end1="none" end2="none" x1="112.66" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.19" length2="1.5" y1="-474.155" y2="-474.425" end1="none" end2="none" x1="112.43" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="111.75" length2="1.5" y1="-474.425" y2="-474.565" end1="none" end2="none" x1="112.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="-474.565" y2="-474.565" end1="none" end2="none" x1="111.75" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.15" length2="1.5" y1="-474.565" y2="-472.655" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-1.99" length2="1.5" y1="-472.655" y2="-472.555" end1="none" end2="none" x1="94.15" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-104.06" length2="1.5" y1="-472.555" y2="-472.555" end1="none" end2="none" x1="-1.99" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-94.36" length2="1.5" y1="-472.555" y2="-472.555" end1="none" end2="none" x1="-104.06" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-108.24" length2="1.5" y1="-472.555" y2="-472.255" end1="none" end2="none" x1="-94.36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-1.99" length2="1.5" y1="477.665" y2="477.455" end1="none" end2="none" x1="-108.24" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="91.79" length2="1.5" y1="477.455" y2="477.455" end1="none" end2="none" x1="-1.99" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="477.455" y2="477.515" end1="none" end2="none" x1="91.79" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="111.84" length2="1.5" y1="477.515" y2="477.515" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.19" length2="1.5" y1="477.515" y2="477.325" end1="none" end2="none" x1="111.84" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.42" length2="1.5" y1="477.325" y2="477.135" end1="none" end2="none" x1="112.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.57" length2="1.5" y1="477.135" y2="476.815" end1="none" end2="none" x1="112.42" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.63" length2="1.5" y1="476.815" y2="476.545" end1="none" end2="none" x1="112.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.41" length2="1.5" y1="476.545" y2="438.465" end1="none" end2="none" x1="112.63" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="121.98" length2="1.5" y1="438.465" y2="175.995" end1="none" end2="none" x1="114.41" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.59" length2="1.5" y1="175.995" y2="77.525" end1="none" end2="none" x1="121.98" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.57" length2="1.5" y1="77.525" y2="-86.615" end1="none" end2="none" x1="122.59" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.53" length2="1.5" y1="-86.615" y2="-109.795" end1="none" end2="none" x1="122.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.36" length2="1.5" y1="-109.795" y2="-133.445" end1="none" end2="none" x1="122.53" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.19" length2="1.5" y1="-133.445" y2="-154.515" end1="none" end2="none" x1="122.36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="121.98" length2="1.5" y1="-154.515" y2="-172.935" end1="none" end2="none" x1="122.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.41" length2="1.5" y1="-172.935" y2="-435.525" end1="none" end2="none" x1="121.98" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="114.15" length2="1.5" y1="-435.525" y2="-440.775" end1="none" end2="none" x1="114.41" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="113.47" length2="1.5" y1="-440.775" y2="-455.555" end1="none" end2="none" x1="114.15" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.81" length2="1.5" y1="-455.555" y2="-469.425" end1="none" end2="none" x1="113.47" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.66" length2="1.5" y1="-469.425" y2="-473.735" end1="none" end2="none" x1="112.81" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.43" length2="1.5" y1="-473.735" y2="-474.155" end1="none" end2="none" x1="112.66" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="112.19" length2="1.5" y1="-474.155" y2="-474.425" end1="none" end2="none" x1="112.43" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="111.75" length2="1.5" y1="-474.425" y2="-474.565" end1="none" end2="none" x1="112.19" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="-474.565" y2="-474.565" end1="none" end2="none" x1="111.75" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.15" length2="1.5" y1="-474.565" y2="-472.655" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-1.99" length2="1.5" y1="-472.655" y2="-472.555" end1="none" end2="none" x1="94.15" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-104.06" length2="1.5" y1="-472.555" y2="-472.555" end1="none" end2="none" x1="-1.99" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-94.36" length2="1.5" y1="-472.555" y2="-472.555" end1="none" end2="none" x1="-104.06" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-108.24" length2="1.5" y1="-472.555" y2="-472.255" end1="none" end2="none" x1="-94.36" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-1.99" length2="1.5" y1="477.665" y2="477.455" end1="none" end2="none" x1="-108.24" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-108.22" length2="1.5" y1="-472.255" y2="477.455" end1="none" end2="none" x1="-108.22" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-8.23" length2="1.5" y1="477.455" y2="477.455" end1="none" end2="none" x1="-108.22" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-5.12" length2="1.5" y1="-444.425" y2="477.455" end1="none" end2="none" x1="-5.12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-5.12" length2="1.5" y1="-472.555" y2="477.455" end1="none" end2="none" x1="-5.12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="-472.055" y2="-474.575" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.59" length2="1.5" y1="51.565" y2="51.565" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="122.57" length2="1.5" y1="-48.665" y2="-48.665" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="-5.12" length2="1.5" y1="-472.575" y2="-444.445" end1="none" end2="none" x1="-5.12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="91.77" length2="1.5" y1="-444.445" y2="477.425" end1="none" end2="none" x1="91.77" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="91.79" length2="1.5" y1="-472.575" y2="-444.445" end1="none" end2="none" x1="91.79" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="94.52" length2="1.5" y1="-472.065" y2="476.675" end1="none" end2="none" x1="94.52" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

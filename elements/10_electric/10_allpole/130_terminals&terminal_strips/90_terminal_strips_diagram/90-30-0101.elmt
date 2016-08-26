@@ -1,0 +1,14 @@
+<definition orientation="dyyy" version="0.51" width="130" height="20" type="element" hotspot_x="15" link_type="simple" hotspot_y="12">
+    <uuid uuid="{079ef7df-a292-4e16-a6a2-dd813f7f1e41}"/>
+    <names>
+        <name lang="de">Verdrahtungsdefinition</name>
+        <name lang="en">Wire definition</name>
+        <name lang="fr">Définition de filerie</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <input y="-5" text="DBU  0,75mm²" tagg="none" x="-2" size="6" rotate="true"/>
+        <line length1="1.5" x2="2" length2="1.5" y1="-2" y2="2" end1="none" end2="none" x1="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <rect y="-10" width="120" height="15" x="-10" style="line-style:normal;line-weight:none;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

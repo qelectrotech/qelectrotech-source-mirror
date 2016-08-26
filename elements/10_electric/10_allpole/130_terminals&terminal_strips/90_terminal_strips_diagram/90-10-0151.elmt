@@ -1,0 +1,14 @@
+<definition orientation="dyyy" version="0.51" width="110" height="20" type="element" hotspot_x="55" link_type="simple" hotspot_y="13">
+    <uuid uuid="{17db296d-b50e-47ea-9125-aa9c1837b523}"/>
+    <names>
+        <name lang="fr">Interruption bornier</name>
+        <name lang="de">Unterbrechung Klemmleiste</name>
+        <name lang="en">Discontinuation terminal strip</name>
+    </names>
+    <informations/>
+    <description>
+        <line length1="1.5" x2="-40" length2="1.5" y1="-10" y2="0" end1="none" end2="none" x1="-40" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" x2="40" length2="1.5" y1="0" y2="-10" end1="none" end2="none" x1="40" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <polygon x4="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="4" y3="-4" x7="31" closed="false" y1="-2" x9="50" x1="-50" x2="-40" x8="42" y7="-4" y5="-2" x6="8" y6="3" y8="2" antialias="false" y9="-2" x5="-3" x3="-27" y2="1"/>
+    </description>
+</definition>

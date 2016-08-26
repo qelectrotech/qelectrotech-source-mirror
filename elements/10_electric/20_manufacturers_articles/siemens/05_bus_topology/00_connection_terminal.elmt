@@ -1,0 +1,13 @@
+<definition orientation="dyyy" version="0.51" width="10" height="20" type="element" hotspot_x="4" link_type="simple" hotspot_y="7">
+    <uuid uuid="{d6fe51e5-e571-4216-a958-94372a60ea6c}"/>
+    <names>
+        <name lang="de">Anschluss</name>
+        <name lang="en">Connection</name>
+        <name lang="fr">Connexion</name>
+    </names>
+    <informations/>
+    <description>
+        <input y="0" text="-X..." rotation="270" tagg="none" x="-30" size="21" rotate="true"/>
+        <terminal orientation="n" y="0" x="0"/>
+    </description>
+</definition>
