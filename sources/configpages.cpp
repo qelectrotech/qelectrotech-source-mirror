@@ -206,7 +206,7 @@ void NewDiagramPage::setFolioAutonum(QString autoNum){
 
 /**
  * @brief NewDiagramPage::saveCurrentTbp
- * Save current TBP to retrieve after auto folio num
+ * Save current TBP to retrieve after auto folio	num
  */
 void NewDiagramPage::saveCurrentTbp(){
 	savedTbp = ipw->properties();

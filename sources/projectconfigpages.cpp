@@ -28,7 +28,7 @@
 #include "selectautonumw.h"
 #include "numerotationcontext.h"
 #include "folioautonumbering.h"
-#include "elementautonumberingw.h"
+#include "formulaautonumberingw.h"
 #include "autonumberingmanagementw.h"
 #include "ui_autonumberingmanagementw.h"
 
@@ -483,15 +483,21 @@ void ProjectAutoNumConfigPage::saveContext_conductor() {
 	// With the the name "No name"
 	if (m_context_cb_conductor-> currentText() == tr("Nom de la nouvelle numérotation")) {
 		project_->addConductorAutoNum (tr("Sans nom"), m_saw_conductor -> toNumContext());
+		project()->addConductorAutoNumFormula (tr("Sans nom"), m_saw_conductor->formula()); //add hash <title, formula>
+		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(),tr("Sans nom")); //add last added conductor formula to current formula
 		m_context_cb_conductor-> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
 	else if ( !project_ -> conductorAutoNum().keys().contains( m_context_cb_conductor->currentText())) {
 		project()->addConductorAutoNum(m_context_cb_conductor->currentText(), m_saw_conductor->toNumContext());
+		project()->addConductorAutoNumFormula (m_context_cb_conductor->currentText(), m_saw_conductor->formula()); //add hash <title, formula>
+		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(),m_context_cb_conductor->currentText()); //add last added conductor formula to current formula
 		m_context_cb_conductor-> addItem(m_context_cb_conductor->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
 	else {
+		project()->addConductorAutoNumFormula (m_context_cb_conductor->currentText(), m_saw_conductor->formula()); //add hash <title, formula>
+		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(), m_context_cb_conductor->currentText()); //add last added conductor formula to current formula
 		project_->addConductorAutoNum (m_context_cb_conductor-> currentText(), m_saw_conductor -> toNumContext());
 	}
 	project()->conductorAutoNumAdded();
@@ -530,22 +536,22 @@ void ProjectAutoNumConfigPage::saveContext_element() {
 	// With the the name "No name"
 	if (m_context_cb_element -> currentText() == tr("Nom de la nouvelle numérotation")) {
 		project_->addElementAutoNum (tr("Sans nom"), m_saw_element -> toNumContext());
-		project()->addElementAutoNumFormula (tr("Sans nom"), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(),tr("Sans nom")); //add last added element formula to current formula
+		project()->addElementAutoNumFormula (tr("Sans nom"), m_saw_element->formula()); //add hash <title, formula>
+		project()->setElementAutoNumCurrentFormula (m_saw_element->formula(),tr("Sans nom")); //add last added element formula to current formula
 		m_context_cb_element -> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
 	else if ( !project_ -> elementAutoNum().keys().contains( m_context_cb_element->currentText())) {
 		project()->addElementAutoNum(m_context_cb_element->currentText(), m_saw_element->toNumContext()); //add hash <title, numcontext>
-		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(),m_context_cb_element->currentText()); //add last added element formula to current formula
+		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->formula()); //add hash <title, formula>
+		project()->setElementAutoNumCurrentFormula (m_saw_element->formula(),m_context_cb_element->currentText()); //add last added element formula to current formula
 		m_context_cb_element -> addItem(m_context_cb_element->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
 	else {
 		project_->addElementAutoNum (m_context_cb_element -> currentText(), m_saw_element -> toNumContext()); //add hash <title, numcontext>
-		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->elementFormula()); //add hash <title, formula>
-		project()->setElementAutoNumCurrentFormula (m_saw_element->elementFormula(), m_context_cb_element->currentText()); //add last added element formula to current formula
+		project()->addElementAutoNumFormula (m_context_cb_element->currentText(), m_saw_element->formula()); //add hash <title, formula>
+		project()->setElementAutoNumCurrentFormula (m_saw_element->formula(), m_context_cb_element->currentText()); //add last added element formula to current formula
 	}
 	project()->elementAutoNumAdded();
 }
@@ -705,11 +711,12 @@ void ProjectAutoNumConfigPage::changeToTab(int i){
 void ProjectAutoNumConfigPage::tabChanged(int i){
 	if (i>=1){
 		if (tab_widget->currentIndex() == 4){
-			tab_widget->resize(480,tab_widget->height());
+			tab_widget->resize(520,tab_widget->height());
 		}
-		else {
-			tab_widget->resize(475,tab_widget->height());
+		else if (tab_widget->currentIndex() == 1 || tab_widget->currentIndex() == 2 ){
+			tab_widget->resize(495,tab_widget->height());
 		}
+		else tab_widget->resize(475,tab_widget->height());
 	}
 	else {
 		tab_widget->resize(850,tab_widget->height());

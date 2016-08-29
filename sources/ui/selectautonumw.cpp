@@ -20,8 +20,8 @@
 #include "numparteditorw.h"
 #include <QMessageBox>
 #include "numerotationcontextcommands.h"
-#include "elementautonumberingw.h"
-#include "ui_elementautonumberingw.h"
+#include "formulaautonumberingw.h"
+#include "ui_formulaautonumberingw.h"
 #include "qdebug.h"
 
 /**
@@ -34,8 +34,13 @@ SelectAutonumW::SelectAutonumW(QWidget *parent) :
 
 	ui->setupUi(this);
 	if (this->parentWidget() -> objectName()=="ElementTab"){
-		m_eaw = new ElementAutonumberingW();
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
+		m_feaw = new FormulaAutonumberingW();
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_feaw);
+	}
+	else if (this->parentWidget() -> objectName()=="ConductorTab"){
+		m_fcaw = new FormulaAutonumberingW();
+		m_fcaw->ui->label->setHidden(true);
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_fcaw);
 	}
 	setContext(NumerotationContext());
 }
@@ -45,8 +50,13 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context, QWidget *pare
 	ui(new Ui::SelectAutonumW)
 {
 	if (this->parentWidget() -> objectName()=="ElementTab"){
-		m_eaw = new ElementAutonumberingW();
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_eaw);
+		m_feaw = new FormulaAutonumberingW();
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_feaw);
+	}
+	else if (this->parentWidget() -> objectName()=="ConductorTab"){
+		m_fcaw = new FormulaAutonumberingW();
+		m_fcaw->ui->label->setHidden(true);
+		ui->scrollAreaWidgetContents->layout()->addWidget(m_fcaw);
 	}
 	ui->setupUi(this);
 	setContext(context);
@@ -130,11 +140,15 @@ void SelectAutonumW::on_remove_button_clicked() {
 }
 
 /**
- * @brief SelectAutonumW::elementFormula
- * @return element autonumbering widget formula
+ * @brief SelectAutonumW::formula
+ * @return autonumbering widget formula
  */
-QString SelectAutonumW::elementFormula() {
-	return m_eaw->formula();
+QString SelectAutonumW::formula() {
+	if (this->parentWidget() -> objectName()=="ElementTab")
+	return m_feaw->formula();
+	else if (this->parentWidget() ->objectName()=="ConductorTab")
+	return m_fcaw->formula();
+	else return "";
 }
 
 /**
@@ -222,6 +236,8 @@ void SelectAutonumW::applyEnable(bool b) {
 	}
 	if (this->parentWidget() -> objectName()=="ElementTab")
 		contextToFormula();
+	if (this->parentWidget()->objectName()=="ConductorTab")
+		contextToFormula();
 }
 
 /**
@@ -229,7 +245,12 @@ void SelectAutonumW::applyEnable(bool b) {
  * Apply formula to ElementAutonumbering Widget
  */
 void SelectAutonumW::contextToFormula() {
-	m_eaw->clearContext();
+	FormulaAutonumberingW* m_faw;
+	if (this->parentWidget() -> objectName()=="ElementTab")
+		m_faw = m_feaw;
+	if (this->parentWidget()->objectName()=="ConductorTab")
+		m_faw = m_fcaw;
+	m_faw->clearContext();
 	int count_unit = 0;
 	int count_unitf = 0;
 	int count_ten = 0;
@@ -239,54 +260,54 @@ void SelectAutonumW::contextToFormula() {
 	foreach (NumPartEditorW *npe, num_part_list_) {
 		if (npe->isValid()) {
 			if (npe->type_ == NumPartEditorW::idfolio) {
-				m_eaw->setContext("%id");
+				m_faw->setContext("%id");
 			}
 			else if (npe->type_ == NumPartEditorW::folio) {
-				m_eaw->setContext("%F");
+				m_faw->setContext("%F");
 			}
 			else if (npe->type_ == NumPartEditorW::machine) {
-				m_eaw->setContext("%M");
+				m_faw->setContext("%M");
 			}
 			else if (npe->type_ == NumPartEditorW::locmach) {
-				m_eaw->setContext("%LM");
+				m_faw->setContext("%LM");
 			}
 			
 			
 			else if (npe->type_ == NumPartEditorW::elementcolumn) {
-				m_eaw->setContext("%c");
+				m_faw->setContext("%c");
 			}
 			else if (npe->type_ == NumPartEditorW::elementline) {
-				m_eaw->setContext("%l");
+				m_faw->setContext("%l");
 			}
 			else if (npe->type_ == NumPartEditorW::elementprefix) {
-				m_eaw->setContext("%prefix");
+				m_faw->setContext("%prefix");
 			}
 			else if (npe->type_ == NumPartEditorW::string) {
-				m_eaw->setContext(npe->toNumContext().itemAt(0).at(1));
+				m_faw->setContext(npe->toNumContext().itemAt(0).at(1));
 			}
 			else if (npe->type_ == NumPartEditorW::unit) {
 				count_unit++;
-				m_eaw->setContext("%sequ_"+QString::number(count_unit));
+				m_faw->setContext("%sequ_"+QString::number(count_unit));
 			}
 			else if (npe->type_ == NumPartEditorW::unitfolio) {
 				count_unitf++;
-				m_eaw->setContext("%sequf_"+QString::number(count_unitf));
+				m_faw->setContext("%sequf_"+QString::number(count_unitf));
 			}
 			else if (npe->type_ == NumPartEditorW::ten) {
 				count_ten++;
-				m_eaw->setContext("%seqt_"+QString::number(count_ten));
+				m_faw->setContext("%seqt_"+QString::number(count_ten));
 			}
 			else if (npe->type_ == NumPartEditorW::tenfolio) {
 				count_tenf++;
-				m_eaw->setContext("%seqtf_"+QString::number(count_tenf));
+				m_faw->setContext("%seqtf_"+QString::number(count_tenf));
 			}
 			else if (npe->type_ == NumPartEditorW::hundred) {
 				count_hundred++;
-				m_eaw->setContext("%seqh_"+QString::number(count_hundred));
+				m_faw->setContext("%seqh_"+QString::number(count_hundred));
 			}
 			else if (npe->type_ == NumPartEditorW::hundredfolio) {
 				count_hundredf++;
-				m_eaw->setContext("%seqhf_"+QString::number(count_hundredf));
+				m_faw->setContext("%seqhf_"+QString::number(count_hundredf));
 			}
 		}
 	}

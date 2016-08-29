@@ -96,6 +96,7 @@ class ConductorProperties
 		void toSettings(QSettings &, const QString & = QString()) const;
 		void fromSettings(QSettings &, const QString & = QString());
 		static QString typeToString(ConductorType);
+		void setText(QString);
 
 		static ConductorProperties defaultProperties();
 	

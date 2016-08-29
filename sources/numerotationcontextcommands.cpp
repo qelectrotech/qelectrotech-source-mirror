@@ -445,7 +445,7 @@ IdFolioNum::IdFolioNum (Diagram *d):
  */
 QString IdFolioNum::toRepresentedString(const QString str) const {
 	Q_UNUSED(str);
-	return (QString::number(diagram_ -> folioIndex() + 1));
+	return ("%id");
 }
 
 /**

@@ -21,6 +21,7 @@
 #include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
 #include "conductorautonumerotation.h"
+#include "conductortextitem.h"
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
@@ -594,25 +595,35 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	{
 		use_properties = true;
 		others_properties = (*conductors_list.begin())->properties();
-		foreach (Conductor *conductor, conductors_list)
+		foreach (Conductor *conductor, conductors_list) {
 			if (conductor->properties() != others_properties)
 				use_properties = false;
+		}
 	}
 
 
 	QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, diagram());
 
-	if (use_properties)
+	if (use_properties) {
+		Conductor *other = conductors_list.toList().first();
+		new_conductor->setSeq = false;
+		new_conductor->setOthersSequential(other);
 		new_conductor->setProperties(others_properties);
+	}
 	else
 	{
-			//Autonum it
+		//Autonum it
 		ConductorAutoNumerotation can (new_conductor, diagram(), undo);
 		can.numerate();
+		new_conductor->setSeq = true;
 	}
-
-		//Add undo command to the parent diagram
+	//Add undo command to the parent diagram
 	diagram() -> undoStack().push(undo);
+	if (use_properties) {
+		Conductor *other = conductors_list.toList().first();
+		new_conductor->setText("");
+		new_conductor->setText(other->properties().text);
+	}
 }
 
 /**

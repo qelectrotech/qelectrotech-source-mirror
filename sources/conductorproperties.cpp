@@ -368,6 +368,15 @@ QString ConductorProperties::typeToString(ConductorType t) {
 }
 
 /**
+ * @brief ConductorProperties::setText
+ * This method sets the current conductor text
+ * @param text to be setted
+ */
+void ConductorProperties::setText(QString text) {
+	text = text;
+}
+
+/**
  * @brief ConductorProperties::defaultProperties
  * @return the default properties stored in the setting file
  */

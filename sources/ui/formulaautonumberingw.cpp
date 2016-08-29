@@ -15,8 +15,8 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "elementautonumberingw.h"
-#include "ui_elementautonumberingw.h"
+#include "formulaautonumberingw.h"
+#include "ui_formulaautonumberingw.h"
 #include <QMessageBox>
 #include <QPushButton>
 #include <QtWidgets>
@@ -24,9 +24,9 @@
 /**
  * Constructor
  */
-ElementAutonumberingW::ElementAutonumberingW(QWidget *parent) :
+FormulaAutonumberingW::FormulaAutonumberingW(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::ElementAutonumberingW)
+	ui(new Ui::FormulaAutonumberingW)
 
 {
 	ui->setupUi(this);
@@ -36,39 +36,39 @@ ElementAutonumberingW::ElementAutonumberingW(QWidget *parent) :
 /**
  * Destructor
  */
-ElementAutonumberingW::~ElementAutonumberingW()
+FormulaAutonumberingW::~FormulaAutonumberingW()
 {
 	delete ui;
 }
 
 /**
- * @brief ElementAutonumberingW::setContext
+ * @brief FormulaAutonumberingW::setContext
  * @param formula to be inserted into context
  */
-void ElementAutonumberingW::setContext(QString formula) {
+void FormulaAutonumberingW::setContext(QString formula) {
 	ui->m_formula_le->insert(formula);
 }
 
 /**
- * @brief ElementAutonumberingW::clearContext
+ * @brief FormulaAutonumberingW::clearContext
  * @param clear formula line edit text
  */
-void ElementAutonumberingW::clearContext() {
+void FormulaAutonumberingW::clearContext() {
 	ui->m_formula_le->clear();
 }
 
 /**
- * @brief ElementAutonumberingW::formula
+ * @brief FormulaAutonumberingW::formula
  * @return formula to be stored into project
  */
-QString ElementAutonumberingW::formula() {
+QString FormulaAutonumberingW::formula() {
 	return ui->m_formula_le->text();
 }
 
 /**
- * @brief ElementAutonumberingW::on_m_formula_le_textChanged
+ * @brief FormulaAutonumberingW::on_m_formula_le_textChanged
  * Update Apply Button
  */
-void ElementAutonumberingW::on_m_formula_le_textChanged(QString text) {
+void FormulaAutonumberingW::on_m_formula_le_textChanged(QString text) {
 	emit (textChanged(text));
 }

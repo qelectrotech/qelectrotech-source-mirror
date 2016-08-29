@@ -15,15 +15,15 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef ELEMENTAUTONUMBERINGW_H
-#define ELEMENTAUTONUMBERINGW_H
+#ifndef FORMULAAUTONUMBERINGW_H
+#define FORMULAAUTONUMBERINGW_H
 
 #include <QWidget>
 
 class QAbstractButton;
 
 namespace Ui {
-		class ElementAutonumberingW;
+		class FormulaAutonumberingW;
 }
 
 /**
@@ -32,18 +32,18 @@ namespace Ui {
 	the user to overwrite it with a new formula. Formula is added
 	while parsing label in customelement.cpp
 */
-class ElementAutonumberingW : public QWidget
+class FormulaAutonumberingW : public QWidget
 {
 	Q_OBJECT
 	
 	//METHODS
 	public:
-		explicit ElementAutonumberingW(QWidget *parent = 0);
-		~ElementAutonumberingW();
+		explicit FormulaAutonumberingW(QWidget *parent = 0);
+		~FormulaAutonumberingW();
 		QString formula();
 		void setContext(QString);
 		void clearContext();
-		Ui::ElementAutonumberingW *ui;
+		Ui::FormulaAutonumberingW *ui;
 
 	private:
 
@@ -62,4 +62,4 @@ class ElementAutonumberingW : public QWidget
 
 };
 
-#endif // ELEMENTAUTONUMBERINGW_H
+#endif // FORMULAAUTONUMBERINGW_H

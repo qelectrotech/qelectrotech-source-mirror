@@ -109,8 +109,11 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
 		QHash <QString, NumerotationContext> elementAutoNum() const;
 		QHash <QString, QString>             elementAutoNumHash();
+		QHash <QString, QString>             conductorAutoNumHash();
 		QHash <QString, NumerotationContext> folioAutoNum() const;
 		void addConductorAutoNum (QString key, NumerotationContext context);
+		void addConductorAutoNumFormula (QString key, QString formula);
+		void setConductorAutoNumCurrentFormula (QString formula, QString title);
 		void addElementAutoNum (QString key, NumerotationContext context);
 		void addElementAutoNumFormula (QString key, QString formula);
 		void setElementAutoNumCurrentFormula (QString formula, QString title);
@@ -121,9 +124,14 @@ class QETProject : public QObject
 		NumerotationContext conductorAutoNum(const QString &key) const;
 		NumerotationContext folioAutoNum(const QString &key)     const;
 		NumerotationContext elementAutoNum(const QString &key);
+
+		QString conductorAutoNumFormula(const QString key) const; //returns Formula
+		QString conductorAutoNumCurrentFormula() const;
+		QString conductorCurrentAutoNum() const;
+
 		QString elementAutoNumFormula(const QString key) const; //returns Formula
-		QString elementAutoNumFormula() const;
-		QString elementCurrentAutoNum () const;
+		QString elementAutoNumCurrentFormula() const;
+		QString elementCurrentAutoNum() const;
 
 		void freezeExistentElementLabel(int,int);
 		void freezeNewElementLabel(int,int);
@@ -244,12 +252,15 @@ class QETProject : public QObject
 	/// undo stack for this project
 	QUndoStack *undo_stack_;
 	/// Conductor auto numerotation
-	QHash <QString, NumerotationContext> m_conductor_autonum;
+	QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
+	QHash <QString, QString> m_conductor_autonum_formula;//Title and Formula hash
+	QString m_current_conductor_formula;
+	QString m_current_conductor_autonum;
 	/// Folio auto numbering
 	QHash <QString, NumerotationContext> m_folio_autonum;
 	/// Element Auto Numbering
-	QHash <QString, QString> m_element_autonum_formula; //Title and Formula hash
 	QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
+	QHash <QString, QString> m_element_autonum_formula; //Title and Formula hash
 	QString m_current_element_formula;
 	QString m_current_element_autonum;
 	/// Folio List Sheets quantity for this project.

@@ -121,6 +121,5 @@ void ConductorAutoNumerotation::numerateNewConductor() {
 	if (context.isEmpty()) return;
 
 	NumerotationContextCommands ncc (context, m_diagram);
-	applyText(ncc.toRepresentedString());
-	m_diagram->project()->addConductorAutoNum(m_diagram -> conductorsAutonumName(), ncc.next());
+	applyText(m_diagram->project()->conductorAutoNumCurrentFormula());
 }

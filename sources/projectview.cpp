@@ -898,6 +898,7 @@ void ProjectView::loadDiagrams() {
 	}
 
 	this->currentDiagram()->diagram()->loadElmtFolioSeq();
+	this->currentDiagram()->diagram()->loadCndFolioSeq();
 
 	// If project have the folios list, move it at the beginning of the project
 	if (m_project -> getFolioSheetsQuantity()) {

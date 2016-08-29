@@ -82,6 +82,7 @@ Diagram::Diagram(QETProject *project) :
 	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged(const QString &)), this, SLOT(updateLabels()));
 	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadElmtFolioSeq()));
+	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadCndFolioSeq()));
 	adjustSceneRect();
 }
 
@@ -477,25 +478,46 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		//Default New Element
 		racine.setAttribute("freezeNewElement", m_freeze_new_elements_ ? "true" : "false");
 
-		//Folio Sequential Variables
+		//Element Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty() || !m_elmt_tenfolio_max.isEmpty() || !m_elmt_hundredfolio_max.isEmpty()) {
-			QDomElement folioContainedAutonum = document.createElement("elementautonumfoliosequentials");
+			QDomElement elmtfoliosequential = document.createElement("elementautonumfoliosequentials");
 			if (!m_elmt_unitfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementunitfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_unitfolio_max, &elmtfolioseq, "sequf_", "unitfolioseq", &document);
-				folioContainedAutonum.appendChild(elmtfolioseq);
+				folioSequentialsToXml(&m_elmt_unitfolio_max, &elmtfolioseq, "sequf_", "unitfolioseq", &document);
+				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_tenfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementtenfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_tenfolio_max, &elmtfolioseq, "seqtf_", "tenfolioseq", &document);
-				folioContainedAutonum.appendChild(elmtfolioseq);
+				folioSequentialsToXml(&m_elmt_tenfolio_max, &elmtfolioseq, "seqtf_", "tenfolioseq", &document);
+				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_hundredfolio_max.isEmpty()) {
 				QDomElement elmtfolioseq = document.createElement("elementhundredfolioseq");
-				elementFolioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_", "hundredfolioseq", &document);
-				folioContainedAutonum.appendChild(elmtfolioseq);
+				folioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_", "hundredfolioseq", &document);
+				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
-			racine.appendChild(folioContainedAutonum);
+			racine.appendChild(elmtfoliosequential);
+		}
+		//Conductor Folio Sequential Variables
+		if (!m_cnd_unitfolio_max.isEmpty() || !m_cnd_tenfolio_max.isEmpty() || !m_cnd_hundredfolio_max.isEmpty()) {
+			QDomElement cndfoliosequential = document.createElement("conductorautonumfoliosequentials");
+			QHash<QString, QStringList>::iterator i;
+			if (!m_cnd_unitfolio_max.isEmpty()) {
+				QDomElement cndfolioseq = document.createElement("conductorunitfolioseq");
+				folioSequentialsToXml(&m_cnd_unitfolio_max, &cndfolioseq, "sequf_", "unitfolioseq", &document);
+				cndfoliosequential.appendChild(cndfolioseq);
+			}
+			if (!m_cnd_tenfolio_max.isEmpty()) {
+				QDomElement cndfolioseq = document.createElement("conductortenfolioseq");
+				folioSequentialsToXml(&m_cnd_tenfolio_max, &cndfolioseq, "seqtf_", "tenfolioseq", &document);
+				cndfoliosequential.appendChild(cndfolioseq);
+			}
+			if (!m_cnd_hundredfolio_max.isEmpty()) {
+				QDomElement cndfolioseq = document.createElement("conductorhundredfolioseq");
+				folioSequentialsToXml(&m_cnd_hundredfolio_max, &cndfolioseq, "seqhf_", "hundredfolioseq", &document);
+				cndfoliosequential.appendChild(cndfolioseq);
+			}
+			racine.appendChild(cndfoliosequential);
 		}
 	}
 	else {
@@ -594,13 +616,13 @@ QDomDocument Diagram::toXml(bool whole_content) {
 }
 
 /**
-+ * @brief Diagram::elementFolioSequentialsToXml
-+ * Add element folio sequential to QDomElement
++ * @brief Diagram::folioSequentialsToXml
++ * Add folio sequential to QDomElement
 + * @param domElement to add attributes
 + * @param hash to retrieve content with content
 + * @param sequential type
 + */
-void Diagram::elementFolioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type, QString type, QDomDocument *doc) {
+void Diagram::folioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type, QString type, QDomDocument *doc) {
 	QHash<QString, QStringList>::iterator i;
 	for (i = hash->begin(); i != hash->end(); i++) {
 		QDomElement folioseq = doc->createElement(type);
@@ -702,9 +724,15 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		// Load Freeze New Element
 		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
 
-		elementFolioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_","unitfolioseq");
-		elementFolioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_", "tenfolioseq");
-		elementFolioSequentialsFromXml(root, &m_elmt_hundredfolio_max, "elementhundredfolioseq","seqhf_", "hundredfolioseq");
+		//Load Element Folio Sequential
+		folioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_","unitfolioseq", "elementautonumfoliosequentials");
+		folioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_", "tenfolioseq", "elementautonumfoliosequentials");
+		folioSequentialsFromXml(root, &m_elmt_hundredfolio_max, "elementhundredfolioseq","seqhf_", "hundredfolioseq", "elementautonumfoliosequentials");
+
+		//Load Conductor Folio Sequential
+		folioSequentialsFromXml(root, &m_cnd_unitfolio_max, "conductorunitfolioseq","sequf_","unitfolioseq", "conductorautonumfoliosequentials");
+		folioSequentialsFromXml(root, &m_cnd_tenfolio_max, "conductortenfolioseq","seqtf_","tenfolioseq", "conductorautonumfoliosequentials");
+		folioSequentialsFromXml(root, &m_cnd_hundredfolio_max, "conductorhundredfolioseq","seqhf_","hundredfolioseq", "conductorautonumfoliosequentials");
 	}
 
 	// if child haven't got a child, loading is finish (diagram is empty)
@@ -879,16 +907,16 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 }
 
 /**
- * @brief Diagram::elementFolioSequentialsFromXml
- * Load element folio sequential from QDomElement
+ * @brief Diagram::folioSequentialsFromXml
+ * Load folio sequential from QDomElement
  * @param root containing all folio sequentials
  * @param hash to be loaded with content
  * @param folioSeq type
  * @param seq type
  * @param type of sequential
  */
-void Diagram::elementFolioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq, QString type) {
-	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, "elementautonumfoliosequentials", folioSeq)) {
+void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq, QString type, QString autonumFolioSeqType) {
+	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
 		for(QDomElement folioseq = folioSeqAutoNum.firstChildElement(type); !folioseq.isNull(); folioseq = folioseq.nextSiblingElement(type)) {
 			QString title = folioseq.attribute("title");
 			QStringList list;
@@ -1154,22 +1182,19 @@ void Diagram::updateLabels() {
  * @param type to be treated
  * @param Numerotation Context to be manipulated
  */
-void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc) {
-	if (project()->elementAutoNumFormula().contains(seq)) {
-		QStringList max;
-		for (int i = 0; i < nc->size(); i++) {
-				if (nc->itemAt(i).at(0) == type) {
-					nc->replaceValue(i, QString::number(nc->itemAt(i).at(3).toInt()));
-					max.append(QString::number(nc->itemAt(i).at(3).toInt() - nc->itemAt(i).at(2).toInt()));
-				}
+void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString type, NumerotationContext *nc) {
+	QStringList max;
+	for (int i = 0; i < nc->size(); i++) {
+		if (nc->itemAt(i).at(0) == type) {
+			nc->replaceValue(i, QString::number(nc->itemAt(i).at(3).toInt()));
+			max.append(QString::number(nc->itemAt(i).at(3).toInt() - nc->itemAt(i).at(2).toInt()));
 		}
-		hash->insert(title,max);
-		project()->addElementAutoNum(title,*nc);
 	}
+	hash->insert(title,max);
 }
 
 /**
- * @brief Diagram::loadElmtFolioSeqHash
+ * @brief Diagram::loadFolioSeqHash
  * This class loads all folio sequential variables
  * related to the current autonum
  * @param Hash to be accessed
@@ -1178,8 +1203,7 @@ void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString titl
  * @param type to be treated
  * @param Numerotation Context to be manipulated
  */
-void Diagram::loadElmtFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc) {
-	if (project()->elementAutoNumFormula().contains(seq)) {
+void Diagram::loadFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString type, NumerotationContext *nc) {
 		int j = 0;
 		for (int i = 0; i < nc->size(); i++) {
 			if (nc->itemAt(i).at(0) == type) {
@@ -1189,8 +1213,6 @@ void Diagram::loadElmtFolioSeqHash(QHash<QString, QStringList> *hash, QString ti
 				j++;
 			}
 		}
-		project()->addElementAutoNum(title,*nc);
-	}
 }
 
 /**
@@ -1199,35 +1221,114 @@ void Diagram::loadElmtFolioSeqHash(QHash<QString, QStringList> *hash, QString ti
  * to the current autonum
  */
 void Diagram::loadElmtFolioSeq() {
-	//Element
 	QString title = project()->elementCurrentAutoNum();
 	NumerotationContext nc = project()->elementAutoNum(title);
+
 	//Unit Folio
 	if (m_elmt_unitfolio_max.isEmpty() || !m_elmt_unitfolio_max.contains(title)) {
 		//Insert Initial Value
-		insertFolioSeqHash(&m_elmt_unitfolio_max,title,"%sequf_","unitfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%sequf_")) {
+			insertFolioSeqHash(&m_elmt_unitfolio_max,title,"unitfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
 	}
 	else if (m_elmt_unitfolio_max.contains(title)) {
 		//Load Folio Current Value
-		loadElmtFolioSeqHash(&m_elmt_unitfolio_max,title,"%sequf_","unitfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%sequf_")) {
+			loadFolioSeqHash(&m_elmt_unitfolio_max,title,"unitfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
 	}
+
 	//Ten Folio
 	if (m_elmt_tenfolio_max.isEmpty() || !m_elmt_tenfolio_max.contains(title)) {
 		//Insert Initial Value
-		insertFolioSeqHash(&m_elmt_tenfolio_max,title,"%seqtf_","tenfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%seqtf_")) {
+			insertFolioSeqHash(&m_elmt_tenfolio_max,title,"tenfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
 	}
 	else if (m_elmt_tenfolio_max.contains(title)) {
 		//Load Folio Current Value
-		loadElmtFolioSeqHash(&m_elmt_tenfolio_max,title,"%seqtf_","tenfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%seqtf_")) {
+			loadFolioSeqHash(&m_elmt_tenfolio_max,title,"tenfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
 	}
+
 	//Hundred Folio
 	if (m_elmt_hundredfolio_max.isEmpty() || !m_elmt_hundredfolio_max.contains(title)) {
 		//Insert Initial Value
-		insertFolioSeqHash(&m_elmt_hundredfolio_max,title,"%seqhf_","hundredfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%seqhf_")) {
+			insertFolioSeqHash(&m_elmt_hundredfolio_max,title,"hundredfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
 	}
 	else if (m_elmt_hundredfolio_max.contains(title)) {
 		//Load Folio Current Value
-		loadElmtFolioSeqHash(&m_elmt_hundredfolio_max,title,"%seqhf_","hundredfolio",&nc);
+		if (project()->elementAutoNumCurrentFormula().contains("%seqhf_")) {
+			loadFolioSeqHash(&m_elmt_hundredfolio_max,title,"hundredfolio",&nc);
+			project()->addElementAutoNum(title,nc);
+		}
+	}
+}
+
+/**
+ * @brief Diagram::loadCndFolioSeq
+ * This class loads all conductor folio sequential variables related
+ * to the current autonum
+ */
+void Diagram::loadCndFolioSeq() {
+	//Conductor
+	QString title = project()->conductorCurrentAutoNum();
+	NumerotationContext nc = project()->conductorAutoNum(title);
+
+	//Unit Folio
+	if (m_cnd_unitfolio_max.isEmpty() || !m_cnd_unitfolio_max.contains(title)) {
+		//Insert Initial Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%sequf_")) {
+			insertFolioSeqHash(&m_cnd_unitfolio_max,title,"unitfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
+	}
+	else if (m_cnd_unitfolio_max.contains(title)) {
+		//Load Folio Current Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%sequf_")) {
+			loadFolioSeqHash(&m_cnd_unitfolio_max,title,"unitfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
+	}
+
+	//Ten Folio
+	if (m_cnd_tenfolio_max.isEmpty() || !m_cnd_tenfolio_max.contains(title)) {
+		//Insert Initial Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%seqtf_")) {
+			insertFolioSeqHash(&m_cnd_tenfolio_max,title,"tenfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
+	}
+	else if (m_cnd_tenfolio_max.contains(title)) {
+		//Load Folio Current Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%seqtf_")) {
+			loadFolioSeqHash(&m_cnd_tenfolio_max,title,"tenfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
+	}
+
+	//Hundred Folio
+	if (m_cnd_hundredfolio_max.isEmpty() || !m_cnd_hundredfolio_max.contains(title)) {
+		//Insert Initial Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%seqhf_")) {
+			insertFolioSeqHash(&m_cnd_hundredfolio_max,title,"hundredfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
+	}
+	else if (m_cnd_hundredfolio_max.contains(title)) {
+		//Load Folio Current Value
+		if (project()->conductorAutoNumCurrentFormula().contains("%seqhf_")) {
+			loadFolioSeqHash(&m_cnd_hundredfolio_max,title,"hundredfolio",&nc);
+			project()->addConductorAutoNum(title,nc);
+		}
 	}
 }
 

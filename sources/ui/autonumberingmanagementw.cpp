@@ -20,8 +20,8 @@
 #include "numparteditorw.h"
 #include <QMessageBox>
 #include "numerotationcontextcommands.h"
-#include "elementautonumberingw.h"
-#include "ui_elementautonumberingw.h"
+#include "formulaautonumberingw.h"
+#include "ui_formulaautonumberingw.h"
 #include "qdebug.h"
 #include "qetproject.h"
 #include "diagram.h"

@@ -83,6 +83,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	adjustSceneRect();
 	updateWindowTitle();
 	scene->loadElmtFolioSeq();
+	scene->loadCndFolioSeq();
 
 	context_menu = new QMenu(this);
 	paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);

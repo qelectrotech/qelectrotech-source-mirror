@@ -87,6 +87,10 @@ class Diagram : public QGraphicsScene
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
 		QHash <QString, QStringList> m_elmt_tenfolio_max;
 		QHash <QString, QStringList> m_elmt_hundredfolio_max;
+		/// Hash containing max values for folio sequential autonums in this diagram
+		QHash <QString, QStringList> m_cnd_unitfolio_max;
+		QHash <QString, QStringList> m_cnd_tenfolio_max;
+		QHash <QString, QStringList> m_cnd_hundredfolio_max;
 		bool item_paste;
 
 	private:
@@ -158,8 +162,8 @@ class Diagram : public QGraphicsScene
 	void write(const QDomElement &);
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
-	void elementFolioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
-	void elementFolioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString);
+	void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
+	void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
 
 	// methods related to graphics items addition/removal on the diagram
 	void initElementsLinks();
@@ -216,9 +220,10 @@ class Diagram : public QGraphicsScene
 	void unfreezeNew();
 	bool freezeNewElements();
 
-	//methods related to insertion and loading of element folio sequential
-	void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc);
-	void loadElmtFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, QString type, NumerotationContext *nc);
+	//methods related to insertion and loading of folio sequential
+	void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
+	void loadFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
+
 
 	public slots:
 		void adjustSceneRect ();
@@ -229,6 +234,7 @@ class Diagram : public QGraphicsScene
 		void setTitleBlockTemplate(const QString &);
 		void updateLabels();
 		void loadElmtFolioSeq();
+		void loadCndFolioSeq();
 	
 		// methods related to graphics items selection
 		void selectAll();

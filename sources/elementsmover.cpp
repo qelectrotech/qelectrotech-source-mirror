@@ -178,6 +178,7 @@ void ElementsMover::endMovement()
 					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
 				can.numerate();
+				conductor->setSeq = true;
 			}
 		};
 	}

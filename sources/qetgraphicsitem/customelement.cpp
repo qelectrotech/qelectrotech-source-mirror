@@ -309,9 +309,9 @@ void CustomElement::parseLabels() {
 								prefix = rxml.readElementText();
 								DiagramContext &dc = this->rElementInformations();
 								//if there is a formula to assign, assign it
-								if (!(location().project()->elementAutoNumFormula().isEmpty()) && (location().project()->elementAutoNumFormula() != "") &&
+								if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
 										(this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
-									QString formula = location().project()->elementAutoNumFormula();
+									QString formula = location().project()->elementAutoNumCurrentFormula();
 									this->setPrefix(prefix);
 									dc.addValue("label", formula);
 									this->setTaggedText("label",formula);
@@ -340,10 +340,10 @@ void CustomElement::parseLabels() {
 	//that are already specified in the element label (inside .elmt file). This method is not called if elements
 	//are being loaded at first time or being pasted
 	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
-			 (!location().project()->elementAutoNumFormula().isEmpty()) &&
+			 (!location().project()->elementAutoNumCurrentFormula().isEmpty()) &&
 			 (this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale) &&
 			 !this->diagram()->item_paste) {
-		QString formula = location().project()->elementAutoNumFormula();
+		QString formula = location().project()->elementAutoNumCurrentFormula();
 		DiagramContext &dc = this->rElementInformations();
 		QString prefix = this->taggedText("label")->toPlainText();
 		this->setPrefix(prefix);

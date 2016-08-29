@@ -31,7 +31,7 @@ class SelectAutonumW;
 class QComboBox;
 class QPushButton;
 class FolioAutonumberingW;
-class ElementAutonumberingW;
+class FormulaAutonumberingW;
 class AutoNumberingManagementW;
 class QTabWidget;
 class QScrollArea;

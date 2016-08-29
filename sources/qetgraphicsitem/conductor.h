@@ -30,6 +30,7 @@ class ConductorSegment;
 class ConductorTextItem;
 class Element;
 class QETDiagramEditor;
+class NumerotationContext;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**
@@ -94,6 +95,11 @@ class Conductor : public QObject, public QGraphicsPathItem
 	QString text() const;
 	QString assignVariables(QString) ;
 	void setText(const QString &);
+	QString assignSeq (QString, Conductor*);
+	void setSequential ();
+	void setOthersSequential (Conductor *);
+	void setSequentialToList(QStringList*, NumerotationContext*, QString);
+	void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
 
 	public:
 		static bool valideXml (QDomElement &);
@@ -117,6 +123,14 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
+		// Lists containing Sequentials
+		QStringList seq_unit;
+		QStringList seq_unitfolio;
+		QStringList seq_ten;
+		QStringList seq_tenfolio;
+		QStringList seq_hundred;
+		QStringList seq_hundredfolio;
+		bool setSeq;
 	
 	public slots:
 	void displayedTextChanged();
@@ -180,6 +194,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	static QPointF extendTerminal(const QPointF &, Qet::Orientation, qreal = 9.0);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
+	void loadSequential(QDomElement* e, QString seq, QStringList* list);
 };
 
 Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);

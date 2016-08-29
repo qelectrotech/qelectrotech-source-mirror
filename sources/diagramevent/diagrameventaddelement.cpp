@@ -231,6 +231,7 @@ void DiagramEventAddElement::addElement()
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
+		conductor->setSeq = true;
 	};
 	m_diagram -> undoStack().push(undo_object);
 	element->setSequential();

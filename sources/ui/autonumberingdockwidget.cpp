@@ -153,7 +153,7 @@ void AutoNumberingDockWidget::setActive() {
 		}
 
 			//Element
-		QString element_formula = project_->elementAutoNumFormula();
+		QString element_formula = project_->elementAutoNumCurrentFormula();
 		QString active_element_autonum = project_->elementCurrentAutoNum();
 		int el_index = ui->m_element_cb->findText(active_element_autonum);
 		ui->m_element_cb->setCurrentIndex(el_index);
@@ -191,7 +191,14 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
  */
 void AutoNumberingDockWidget::on_m_conductor_cb_activated(int) {
 	QString current_autonum = ui->m_conductor_cb->currentText();
+	QString current_formula = project_->conductorAutoNumFormula(current_autonum);
+	if (current_autonum != "") {
+		project_->setConductorAutoNumCurrentFormula(current_formula, current_autonum);
+	}
+	else
+		project_->setConductorAutoNumCurrentFormula("","");
 	projectview_->currentDiagram()->diagram()->setConductorsAutonumName(current_autonum);
+	projectview_->currentDiagram()->diagram()->loadCndFolioSeq();
 }
 
 /**

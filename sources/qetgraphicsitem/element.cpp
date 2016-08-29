@@ -772,7 +772,7 @@ QString Element::assignVariables(QString label, Element *elmt){
 void Element::setSequential() {
 	DiagramContext &dc = this->rElementInformations();
 	QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
-	QString formula = diagram()->project()->elementAutoNumFormula();
+	QString formula = diagram()->project()->elementAutoNumCurrentFormula();
 	QString label = dc["label"].toString();
 	NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
 	NumerotationContextCommands ncc (nc);
