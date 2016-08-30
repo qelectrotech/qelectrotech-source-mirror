@@ -2179,7 +2179,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation>Nie przechowywać etykiet elementów podczas wklejania kopii</translation>
+        <translation>Nie przechowuj etykiet elementów podczas wklejania kopii</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
@@ -6593,11 +6593,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Możesz zdefiniować niestandardową etykietę odnośnika do arkusza.
 Stwórz własny tekst używając następujących zmiennych:
-%f: le numer arkusza 
-%F: le etykieta arkusza 
+%f: numer arkusza 
+%F: etykieta arkusza 
 %M:  Maszyna 
 %LM: Lokalizacja 
-%l: le oznaczenie linii 
+%l: oznaczenie linii 
 %c: le oznaczenie kolumny</translation>
     </message>
 </context>
@@ -8229,10 +8229,10 @@ Długość maksymalna: %2px</translation>
 %M: Installation 
 %LM: Localisation </source>
         <translation>Stwórz własny tekst używając następujących zmiennych:
-%f: le numer arkusza 
-%F: le etykieta arkusza
-%l: le oznaczenie linii
-%c: le oznaczenie kolumny
+%f: numer arkusza 
+%F: etykieta arkusza
+%l: oznaczenie linii
+%c: oznaczenie kolumny
 %M: instalacja 
 %LM: lokalizacja </translation>
     </message>
