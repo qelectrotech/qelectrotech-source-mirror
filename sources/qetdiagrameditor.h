@@ -117,6 +117,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void editSelectionProperties();
 		void slot_resetConductors();
 		void slot_autoConductor(bool ac);
+		void slot_generateTerminalBlock();
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
@@ -187,6 +188,7 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *prj_clean;          ///< Clean the content of the curent project by removing useless items
 		QAction *prj_diagramList;    ///< Sommaire des schemas
 		QAction *prj_nomenclature;   ///< generate nomenclature
+		QAction *prj_terminalBloc;   ///< generate terminal block
 		QAction *tile_window;        ///< Show MDI subwindows as tile
 		QAction *cascade_window;     ///< Show MDI subwindows as cascade
 		QAction *prev_window;        ///< Switch to the previous document

@@ -248,5 +248,6 @@
         <file>ico/24x16/dk.png</file>
         <file>ico/24x16/br.png</file>
         <file>ico/22x22/grid.png</file>
+        <file>ico/22x22/terminalstrip.png</file>
     </qresource>
 </RCC>

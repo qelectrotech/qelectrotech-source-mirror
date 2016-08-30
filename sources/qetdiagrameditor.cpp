@@ -289,14 +289,15 @@ void QETDiagramEditor::setUpActions()
 			}
 	});
 
-	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
+	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                  this);
 	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
-	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                    this);
-	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                  this);
+	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                     this);
+	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                   this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentSpreadsheet,   tr("Exporter une nomenclature"),            this);
+	prj_terminalBloc  = new QAction(QET::Icons::TerminalStrip,         tr("Lancer le plugin de creation de bornier"), this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
 	windowed_view_mode= new QAction(                                   tr("en utilisant des fenêtres"),            this);
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
@@ -497,6 +498,7 @@ void QETDiagramEditor::setUpActions()
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
 	connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addDiagramFolioListToProject()));
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
+	connect(prj_terminalBloc,   SIGNAL(triggered()), this,       SLOT(slot_generateTerminalBlock()));
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
 	connect(export_diagram,     SIGNAL(triggered()), this,       SLOT(exportDialog())              );
 	connect(tile_window,        SIGNAL(triggered()), &workspace, SLOT(tileSubWindows())            );
@@ -613,12 +615,14 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addSeparator();
 	menu_project -> addAction(prj_diagramList);
 	menu_project -> addAction(prj_nomenclature);
+	menu_project -> addAction(prj_terminalBloc);
 
-	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
-	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
-	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Schéma"));
-	qdw_pa      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
-	qdw_undo    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la liste des modifications"));
+	main_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
+	view_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
+	diagram_bar      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Schéma"));
+	qdw_pa           -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
+	qdw_undo         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la liste des modifications"));
+	
 
 	// menu Affichage
 	QMenu *projects_view_mode = menu_affichage -> addMenu(tr("Afficher les projets"));
@@ -2137,3 +2141,51 @@ void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
 		save_file -> setEnabled(true);
 	}
 }
+
+
+/**
+ * @brief QETDiagramEditor::slot_generateTerminalBlock
+ */
+//void QETDiagramEditor::slot_generateTerminalBlock(){
+
+//QString path,program;
+//QStringList args;
+//path=(QDir("/bin/bash").absolutePath());
+//program="gksudo";
+//args << "pip3 install --upgrade qet_tb_generator";
+//QProcess *process = new QProcess(qApp);
+//process->start(program,args);
+//process->waitForFinished();
+//}
+
+void QETDiagramEditor::slot_generateTerminalBlock() {
+bool success;
+QProcess *process = new QProcess(qApp);
+// If launched under control:
+//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
+//process->start("qet_tb_generator");
+success = process->startDetached("qet_tb_generator");
+if ( !success ) {
+QMessageBox::warning(0,
+"Error launching plugin", 
+"To install the plugin qet_tb_generator\nVisit https://pypi.python.org/pypi/qet-tb-generator/\n"
+					 "\n"
+					 "Requires python 3.5 or above.\n"
+					 ">> First install on Linux\n"
+					 "1. check you have pip3 installed: pip3 --version.\n"
+					 "If not install with: sudo apt-get install python3-pip\n"
+					 "2. Install the program: sudo pip3 install qet_tb_generator\n"
+					 "3. Run the program: qet_tb_generator\n"
+					 ">> Update on Linux\n"
+					 "sudo pip3 install --upgrade qet_tb_generator\n"
+					 "\n"
+					 ">> First install on Windows\n"
+					 "1. Install, if required, python 3.5 or above\n"
+					 "2. pip install qet_generator\n"
+					 ">> Update on Windows\n"
+					 "python -m pip install --upgrade qet_tb_generator\n"
+					 );
+}
+
+}
+

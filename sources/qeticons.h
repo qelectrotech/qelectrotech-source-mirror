@@ -194,6 +194,7 @@ namespace QET {
 		extern QIcon translation;
 		extern QIcon listDrawings;
 		extern QIcon AutoNum;
+		extern QIcon TerminalStrip;
 	}
 }
 #endif

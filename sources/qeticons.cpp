@@ -185,6 +185,7 @@ namespace QET {
 		QIcon translation;
 		QIcon listDrawings;
 		QIcon AutoNum;
+		QIcon TerminalStrip;
 	}
 }
 
@@ -452,4 +453,5 @@ void QET::Icons::initIcons() {
 	translation         .addFile(":/ico/22x22/applications-development-translation.png");
 	listDrawings        .addFile(":/ico/48x48/view-pim-journal.png");
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");
+	TerminalStrip       .addFile(":/ico/22x22/terminalstrip.png");
 }
