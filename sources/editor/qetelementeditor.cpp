@@ -1043,33 +1043,15 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
  * @brief QETElementEditor::slot_openDxf
  */
 void QETElementEditor::slot_openDxf (){
-bool success;
+
 #ifdef Q_OS_WIN32
 QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
 #else
 QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
-
+QStringList arguments;
 QProcess *DXF = new QProcess(qApp);
-success = DXF->startDetached(program);
-if ( !success ) {
-QMessageBox::warning(0,
-					 "Error launching plugin DXF", 
-					 "To install the plugin DXF\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install plugin on Linux\n"
-					 "\n"
-					 "cd ~/.qet/\n"
-					 "wget http://download.tuxfamily.org/qet/builds/dxf_to_elmt/linux_x86-64_qt5.5.1/DXFtoQET\n"
-					 "\n"
-					 "chmod +x DXFtoQET\n"
-					 "\n"
-					 "\n"
-					 ">> Install plugin on Windows\n"
-					 "Download http://download.tuxfamily.org/qet/builds/dxf_to_elmt/windows_64/DXFtoQET.exe\n"
-					 "Move or past this exe to your C:\\Users\\username\\AppData\\Roaming\\qet\\ directory\n"
-					 );
-}
+DXF->start(program,arguments);
 
 }
 
