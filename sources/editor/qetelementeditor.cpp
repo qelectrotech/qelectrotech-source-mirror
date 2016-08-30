@@ -140,25 +140,25 @@ void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
 	open              = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
 	open_file         = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-	open_dxf          = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier dxf"),             this);
+	open_dxf          = new QAction(QET::Icons::DocumentOpen,         tr("&Lancer le plugin convertisseur DXF"),       this);
 	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
 	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
 	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
 	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
 	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
-	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                      this);
-	deselectall       = new QAction(                                  tr("Désélectionner tout"),                 this);
+	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                         this);
+	deselectall       = new QAction(                                  tr("Désélectionner tout"),                       this);
 	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
 	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
 	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
 	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
 	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
-	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                          this);
-	inv_select        = new QAction(                                  tr("Inverser la sélection"),                  this);
+	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                                this);
+	inv_select        = new QAction(                                  tr("Inverser la sélection"),                     this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("Éditer le nom et les traductions de l'élément"), this);
-	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),   this);
-	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"), this);
+	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),      this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"),        this);
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -1043,14 +1043,34 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
  * @brief QETElementEditor::slot_openDxf
  */
 void QETElementEditor::slot_openDxf (){
+bool success;
 #ifdef Q_OS_WIN32
 QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
 #else
 QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
-QStringList arguments;
+
 QProcess *DXF = new QProcess(qApp);
-DXF->start(program, arguments);
+success = DXF->startDetached(program);
+if ( !success ) {
+QMessageBox::warning(0,
+					 "Error launching plugin DXF", 
+					 "To install the plugin DXF\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+					 "\n"
+					 ">> Install plugin on Linux\n"
+					 "\n"
+					 "cd ~/.qet/\n"
+					 "wget http://download.tuxfamily.org/qet/builds/dxf_to_elmt/linux_x86-64_qt5.5.1/DXFtoQET\n"
+					 "\n"
+					 "chmod +x DXFtoQET\n"
+					 "\n"
+					 "\n"
+					 ">> Install plugin on Windows\n"
+					 "Download http://download.tuxfamily.org/qet/builds/dxf_to_elmt/windows_64/DXFtoQET.exe\n"
+					 "Move or past this exe to your C:\\Users\\username\\AppData\\Roaming\\qet\\ directory\n"
+					 );
+}
+
 }
 
 /**

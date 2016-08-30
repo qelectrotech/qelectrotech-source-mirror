@@ -2146,24 +2146,14 @@ void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
 /**
  * @brief QETDiagramEditor::slot_generateTerminalBlock
  */
-//void QETDiagramEditor::slot_generateTerminalBlock(){
-
-//QString path,program;
-//QStringList args;
-//path=(QDir("/bin/bash").absolutePath());
-//program="gksudo";
-//args << "pip3 install --upgrade qet_tb_generator";
-//QProcess *process = new QProcess(qApp);
-//process->start(program,args);
-//process->waitForFinished();
-//}
-
 void QETDiagramEditor::slot_generateTerminalBlock() {
 bool success;
 QProcess *process = new QProcess(qApp);
+
 // If launched under control:
 //connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 //process->start("qet_tb_generator");
+
 success = process->startDetached("qet_tb_generator");
 if ( !success ) {
 QMessageBox::warning(0,
