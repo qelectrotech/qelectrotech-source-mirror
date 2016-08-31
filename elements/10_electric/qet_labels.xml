@@ -273,6 +273,7 @@
     <category name="beckhoff">
       <category name="80building_management"></category>
     </category>
+        <category name="automation"></category>
     <category name="beka"></category>
     <category name="bosch_rexroth"></category>
     <category name="bti">
@@ -320,6 +321,7 @@
       <category name="20_frequency_drives"></category>
     </category>
     <category name="gce"></category>
+    <category name="gefran"></category>
     <category name="geindustrial">
       <category name="10_sofstarters"></category>
     </category>
@@ -513,6 +515,7 @@
       <category name="02_human_machine_interface">
         <category name="terminal_operateur"></category>
       </category>
+        <category name="05_bus_topology"></category>
       <category name="10_softstarter"></category>
       <category name="20_frequency_drives"></category>
       <category name="23_sinamics_drives"></category>
@@ -571,6 +574,6 @@
   </category>
   <category name="99_miscellaneous&amp;unsorted"></category>
   <report>
-    <directories>361</directories>
+    <directories>364</directories>
   </report>
 </labels>

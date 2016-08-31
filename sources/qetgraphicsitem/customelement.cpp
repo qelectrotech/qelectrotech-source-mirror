@@ -288,7 +288,7 @@ void CustomElement::parseLabels() {
 		}
 
 		// Only Electric labels created so far
-		if (current_location.fileName() != "10_electric") return;
+		//if (current_location.fileName() != "10_electric")
 		QString qet_labels = "10_electric/qet_labels.xml";
 		QString filepath = QETApp::commonElementsDir().append(qet_labels);
 		QFile file(filepath);
@@ -334,6 +334,16 @@ void CustomElement::parseLabels() {
 					}
 				}
 				rxml.readNext();
+		}
+		if (prefix == "") {
+			if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
+					(this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
+				QString formula = location().project()->elementAutoNumCurrentFormula();
+				this->setPrefix(prefix);
+				DiagramContext &dc = this->rElementInformations();
+				dc.addValue("label", formula);
+				this->setTaggedText("label",formula);
+			}
 		}
 	}
 	//apply formula to specific label - This condition specify elements which have different labels e.g KM
