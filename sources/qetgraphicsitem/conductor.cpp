@@ -48,6 +48,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2),
 	setSeq(true),
+	freeze_label(false),
 	bMouseOver(false),
 	m_handler(10),
 	text_item(0),
@@ -826,6 +827,8 @@ bool Conductor::fromXml(QDomElement &e) {
 	loadSequential(&e,"seqh_",&seq_hundred);
 	loadSequential(&e,"seqhf_",&seq_hundredfolio);
 
+	m_frozen_label = e.attribute("frozenlabel");
+
 	setProperties(pr);
 
 	return return_;
@@ -905,6 +908,8 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	for (int i = 0; i < seq_hundredfolio.size(); i++) {
 			e.setAttribute("seqhf_" + QString::number(i+1),seq_hundredfolio.at(i));
 	}
+
+	if (m_frozen_label != "") e.setAttribute("frozenlabel", m_frozen_label);
 	
 	// Export the properties and text
 	properties_. toXml(e);
@@ -1466,6 +1471,12 @@ void Conductor::setProperties(const ConductorProperties &properties)
 	}
 	setText(properties_.text);
 	text_item -> setFontSize(properties_.text_size);
+	if (terminal1->diagram()->item_paste)
+		m_frozen_label = "";
+	else
+	m_frozen_label = properties_.text;
+	if (freeze_label)
+		freezeLabel();
 	if (properties_.type != ConductorProperties::Multi)
 		text_item -> setVisible(false);
 	else
@@ -1866,4 +1877,24 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
 	other_conductors_list << conductor -> terminal2->conductors();
 	other_conductors_list.removeAll(const_cast<Conductor *> (conductor));
 	return(other_conductors_list);
+}
+
+/**
+ * @brief Conductor::freezeLabel
+ * Freeze this conductor label
+ */
+void Conductor::freezeLabel() {
+	QString freezelabel = this->text_item->toPlainText();
+	m_frozen_label = properties_.text;
+	this->setText(freezelabel);
+	this->properties_.text = freezelabel;
+}
+
+/**
+ * @brief Conductor::unfreezeLabel
+ * Unfreeze this conductor label
+ */
+void Conductor::unfreezeLabel() {
+	this->setText(m_frozen_label);
+	properties_.text = m_frozen_label;
 }

@@ -133,12 +133,21 @@ class QETProject : public QObject
 		QString elementAutoNumCurrentFormula() const;
 		QString elementCurrentAutoNum() const;
 
+		//Element
 		void freezeExistentElementLabel(int,int);
 		void freezeNewElementLabel(int,int);
 		void unfreezeExistentElementLabel(int,int);
 		void unfreezeNewElementLabel(int,int);
 		bool freezeNewElements();
 		void setFreezeNewElements(bool);
+
+		//Conductor
+		void freezeExistentConductorLabel(int,int);
+		void unfreezeExistentConductorLabel(int,int);
+		void freezeNewConductorLabel(int,int);
+		void unfreezeNewConductorLabel(int,int);
+		bool freezeNewConductors();
+		void setFreezeNewConductors(bool);
 
 		bool autoConductor () const;
 		bool autoElement () const;
@@ -268,6 +277,7 @@ class QETProject : public QObject
 	bool m_auto_conductor;
 	XmlElementCollection *m_elements_collection;
 	bool m_freeze_new_elements;
+	bool m_freeze_new_conductors;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

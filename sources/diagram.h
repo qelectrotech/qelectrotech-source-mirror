@@ -113,6 +113,7 @@ class Diagram : public QGraphicsScene
 		DiagramEventInterface *m_event_interface;
 
 		bool m_freeze_new_elements_;
+		bool m_freeze_new_conductors_;
 	
 	// METHODS
 	protected:
@@ -194,6 +195,7 @@ class Diagram : public QGraphicsScene
 	
 	QList<CustomElement *> customElements() const;
 	QList<Element *> elements() const;
+	QList<Conductor *> conductors() const;
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<ConductorTextItem *> selectedConductorTexts() const;
 	QSet<ElementTextItem*> selectedElementTexts() const;
@@ -216,9 +218,14 @@ class Diagram : public QGraphicsScene
 	//methods related to element label Update Policy
 	void freezeElements();
 	void unfreezeElements();
-	void freezeNew();
-	void unfreezeNew();
+	void setFreezeNewElements(bool);
 	bool freezeNewElements();
+
+	//methods related to conductor label Update Policy
+	void freezeConductors();
+	void unfreezeConductors();
+	void setFreezeNewConductors(bool);
+	bool freezeNewConductors();
 
 	//methods related to insertion and loading of folio sequential
 	void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);

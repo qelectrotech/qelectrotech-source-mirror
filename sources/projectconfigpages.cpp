@@ -598,18 +598,34 @@ void ProjectAutoNumConfigPage::applyManagement() {
 		to = m_amw->ui->m_to_folios_cb->itemData(m_amw->ui->m_to_folios_cb->currentIndex()).toInt();
 	}
 
-	//Conductor Autonumbering Status
+	//Conductor Autonumbering Update Policy
+	//Allow Both Existent and New Conductors
 	if (m_amw->ui->m_both_conductor_rb->isChecked()) {
-
+		//Unfreeze Existent and New Conductors
+		project()->unfreezeExistentConductorLabel(from,to);
+		project()->unfreezeNewConductorLabel(from,to);
+		project()->setFreezeNewConductors(false);
 	}
+	//Allow Only New
 	else if (m_amw->ui->m_new_conductor_rb->isChecked()) {
-
+		//Freeze Existent and Unfreeze New Conductors
+		project()->freezeExistentConductorLabel(from,to);
+		project()->unfreezeNewConductorLabel(from,to);
+		project()->setFreezeNewConductors(false);
 	}
+	//Allow Only Existent
 	else if (m_amw->ui->m_existent_conductor_rb->isChecked()) {
-
+		//Freeze Existent and Unfreeze New Conductors
+		project()->unfreezeExistentConductorLabel(from,to);
+		project()->freezeNewConductorLabel(from,to);
+		project()->setFreezeNewConductors(true);
 	}
+	//Disable
 	else if (m_amw->ui->m_disable_conductor_rb->isChecked()) {
-
+		//Freeze Existent and New Elements, Set Freeze Element Project Wide
+		project()->freezeExistentConductorLabel(from,to);
+		project()->freezeNewConductorLabel(from,to);
+		project()->setFreezeNewConductors(true);
 	}
 
 	//Element Autonumbering Update Policy

@@ -49,7 +49,8 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	folioSheetsQuantity  (0     ),
 	m_auto_conductor     (true  ),
 	m_elements_collection (nullptr),
-	m_freeze_new_elements (false)
+	m_freeze_new_elements (false),
+	m_freeze_new_conductors (false)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -628,6 +629,70 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
 }
 
 /**
+ * @brief QETProject::freezeExistentConductorLabel
+ * Freeze Existent Conductors in the selected folios
+ * @param from - first folio index to apply freeze
+ * @param to - last folio index to apply freeze
+ */
+void QETProject::freezeExistentConductorLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->freezeConductors();
+	}
+}
+
+/**
+ * @brief QETProject::unfreezeExistentConductorLabel
+ * Unfreeze Existent Conductors in the selected folios
+ * @param from - first folio index to apply unfreeze
+ * @param to - last folio index to apply unfreeze
+ */
+void QETProject::unfreezeExistentConductorLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->unfreezeConductors();
+	}
+}
+
+/**
+ * @brief QETProject::freezeNewConductorLabel
+ * Freeze New Conductors in the selected folios
+ * @param from - first folio index to apply freeze
+ * @param to - last folio index to apply freeze
+ */
+void QETProject::freezeNewConductorLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->setFreezeNewConductors(true);
+	}
+}
+
+/**
+ * @brief QETProject::unfreezeNewElementLabel
+ * Unfreeze New Conductors in the selected folios
+ * @param from - first folio index to apply unfreeze
+ * @param to - last folio index to apply unfreeze
+ */
+void QETProject::unfreezeNewConductorLabel(int from, int to) {
+	for (int i = from; i <= to; i++) {
+		diagrams_.at(i)->setFreezeNewConductors(false);
+	}
+}
+
+/**
+ * @brief QETProject::freezeNewConductors
+ * @return freeze new conductors Project Wide status
+ */
+bool QETProject::freezeNewConductors() {
+	return m_freeze_new_conductors;
+}
+
+/**
+ * @brief QETProject::setfreezeNewConductors
+ * Set Project Wide freeze new conductors
+ */
+void QETProject::setFreezeNewConductors(bool set) {
+	m_freeze_new_conductors = set;
+}
+
+/**
  * @brief QETProject::freezeExistentElementLabel
  * Freeze Existent Elements in the selected folios
  * @param from - first folio index to apply freeze
@@ -659,7 +724,7 @@ void QETProject::unfreezeExistentElementLabel(int from, int to) {
  */
 void QETProject::freezeNewElementLabel(int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->freezeNew();
+		diagrams_.at(i)->setFreezeNewElements(true);
 	}
 }
 
@@ -671,7 +736,7 @@ void QETProject::freezeNewElementLabel(int from, int to) {
  */
 void QETProject::unfreezeNewElementLabel(int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->unfreezeNew();
+		diagrams_.at(i)->setFreezeNewElements(false);
 	}
 }
 
@@ -1410,6 +1475,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_conductor_autonum = conds_autonums.attribute("current_autonum");
 		m_current_conductor_formula = conds_autonums.attribute("current_formula");
+		m_freeze_new_conductors = conds_autonums.attribute("freeze_new_conductors") == "true";
 		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum"))
 		{
 			NumerotationContext nc;
@@ -1431,7 +1497,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_element_autonum = element_autonums.attribute("current_autonum");
 		m_current_element_formula = element_autonums.attribute("current_formula");
-		m_freeze_new_elements = element_autonums.attribute("freeze_new_elements").toInt();
+		m_freeze_new_elements = element_autonums.attribute("freeze_new_elements") == "true";
 		foreach (QDomElement elmt, QET::findInDomElement(element_autonums, "element_autonum"))
 		{
 			NumerotationContext nc;
@@ -1496,6 +1562,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("current_formula", m_current_conductor_formula);
+	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
 	foreach (QString key, conductorAutoNum().keys()) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {

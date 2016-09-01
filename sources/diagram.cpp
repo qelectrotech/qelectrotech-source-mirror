@@ -60,7 +60,8 @@ Diagram::Diagram(QETProject *project) :
 	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
 	m_event_interface (nullptr),
-	m_freeze_new_elements_   (false)
+	m_freeze_new_elements_   (false),
+	m_freeze_new_conductors_ (false)
 {
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
@@ -478,6 +479,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		//Default New Element
 		racine.setAttribute("freezeNewElement", m_freeze_new_elements_ ? "true" : "false");
 
+		//Default New Conductor
+		racine.setAttribute("freezeNewConductor", m_freeze_new_conductors_ ? "true" : "false");
+
 		//Element Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty() || !m_elmt_tenfolio_max.isEmpty() || !m_elmt_hundredfolio_max.isEmpty()) {
 			QDomElement elmtfoliosequential = document.createElement("elementautonumfoliosequentials");
@@ -724,6 +728,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		// Load Freeze New Element
 		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
 
+		// Load Freeze New Conductor
+		m_freeze_new_conductors_ = root.attribute("freezeNewConductor").toInt();
+
 		//Load Element Folio Sequential
 		folioSequentialsFromXml(root, &m_elmt_unitfolio_max, "elementunitfolioseq","sequf_","unitfolioseq", "elementautonumfoliosequentials");
 		folioSequentialsFromXml(root, &m_elmt_tenfolio_max, "elementtenfolioseq","seqtf_", "tenfolioseq", "elementautonumfoliosequentials");
@@ -861,6 +868,10 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					addItem(c);
 					c -> fromXml(f);
 					added_conductors << c;
+					if (item_paste) {
+						c->m_frozen_label = f.attribute("frozenlabel");
+						qDebug() << "Frozen Label" << f.attribute("frozenlabel");
+					}
 				}
 				else
 					delete c;
@@ -1362,6 +1373,19 @@ QList <Element *> Diagram::elements() const {
 }
 
 /**
+ * @brief Diagram::conductors
+ * Return the list containing all conductors
+ */
+QList <Conductor *> Diagram::conductors() const {
+	QList<Conductor *> cnd_list;
+	foreach (QGraphicsItem *qgi, items()) {
+		if (Conductor *cnd = qgraphicsitem_cast<Conductor *>(qgi))
+			cnd_list <<cnd;
+	}
+	return (cnd_list);
+}
+
+/**
 	Initialise un deplacement d'elements, conducteurs et champs de texte sur le
 	schema.
 	@param driver_item Item deplace par la souris et ne necessitant donc pas
@@ -1461,19 +1485,11 @@ void Diagram::unfreezeElements() {
 }
 
 /**
- * @brief Diagram::freezeNew
+ * @brief Diagram::freezeNewElements
  * Set new element label to be frozen.
  */
-void Diagram::freezeNew() {
-	m_freeze_new_elements_ = true;
-}
-
-/**
- * @brief Diagram::unfreezeNew
- * Set new element label to not be frozen.
- */
-void Diagram::unfreezeNew() {
-	m_freeze_new_elements_ = false;
+void Diagram::setFreezeNewElements(bool b) {
+	m_freeze_new_elements_ = b;
 }
 
 /**
@@ -1482,6 +1498,42 @@ void Diagram::unfreezeNew() {
  */
 bool Diagram::freezeNewElements() {
 	return m_freeze_new_elements_;
+}
+
+/**
+ * @brief Diagram::freezeConductors
+ * Freeze every existent conductor label.
+ */
+void Diagram::freezeConductors() {
+	foreach (Conductor *cnd, conductors()) {
+		cnd->freezeLabel();
+	}
+}
+
+/**
+ * @brief Diagram::unfreezeConductors
+ * Unfreeze every existent conductor label.
+ */
+void Diagram::unfreezeConductors() {
+	foreach (Conductor *cnd, conductors()) {
+		cnd->unfreezeLabel();
+	}
+}
+
+/**
+ * @brief Diagram::setfreezeNewConductors
+ * Set new conductor label to be frozen.
+ */
+void Diagram::setFreezeNewConductors(bool b) {
+	m_freeze_new_conductors_ = b;
+}
+
+/**
+ * @brief Diagram::freezeNewConductors
+ * @return current freeze new conductor status .
+ */
+bool Diagram::freezeNewConductors() {
+	return m_freeze_new_conductors_;
 }
 
 /**

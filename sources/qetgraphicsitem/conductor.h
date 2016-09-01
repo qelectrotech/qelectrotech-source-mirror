@@ -131,6 +131,10 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QStringList seq_hundred;
 		QStringList seq_hundredfolio;
 		bool setSeq;
+		bool freeze_label;
+		void freezeLabel();
+		void unfreezeLabel();
+		QString m_frozen_label;
 	
 	public slots:
 	void displayedTextChanged();

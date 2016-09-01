@@ -37,7 +37,6 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project, QWidget 
 	ui->setupUi(this);
 	ui->m_apply_locations_rb->setHidden(true);
 	ui->m_selected_locations_le->setHidden(true);
-	ui->conductorWidget->setHidden(true);
 	ui->folioWidget->setHidden(true);
 	ui->m_selected_folios_widget->setDisabled(true);
 	ui->m_selected_folios_le->setDisabled(true);

@@ -232,6 +232,8 @@ void DiagramEventAddElement::addElement()
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
 		conductor->setSeq = true;
+		if (m_diagram->freezeNewConductors() || m_diagram->project()->freezeNewConductors() )
+			conductor->freeze_label = true;
 	};
 	m_diagram -> undoStack().push(undo_object);
 	element->setSequential();
