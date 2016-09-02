@@ -20,12 +20,26 @@
 
 #include "customelement.h"
 
+class CommentItem;
+class QETProject;
+
 class TerminalElement : public CustomElement
 {
 		Q_OBJECT
 	public:
 		TerminalElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
 		~TerminalElement();
+		virtual void initLink(QETProject *project);
+		
+		signals:
+
+	public slots:
+		void updateLabel(DiagramContext old_info, DiagramContext new_info);
+		void changeElementInfo();
+
+	private:
+		CommentItem *m_comment_item;
+		CommentItem *m_location_item;
 };
 
 #endif // TERMINALELEMENT_H

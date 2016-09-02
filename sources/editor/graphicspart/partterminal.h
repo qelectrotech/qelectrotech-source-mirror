@@ -19,6 +19,9 @@
 #define PART_TERMINAL_H
 
 #include "customelementgraphicpart.h"
+#include "customelementpart.h"
+class TextFieldEditor;
+class QETElementEditor;
 
 /**
 	This class represents a terminal which may be used to compose the drawing of
@@ -30,6 +33,11 @@ class PartTerminal : public CustomElementGraphicPart
 
 		Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
 
+	// tagg of text
+	Q_PROPERTY(QString tagg READ tagg WRITE setTagg)
+		QString tagg() const {return m_tagg;}
+		void setTagg(const QString &tagg) {m_tagg = tagg;}
+		
 	public:
 		// constructors, destructor
 		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = 0);
@@ -44,6 +52,7 @@ class PartTerminal : public CustomElementGraphicPart
 	private:
 		Qet::Orientation m_orientation;
 		QPointF second_point;
+		QString m_tagg;
 	
 		// methods
 	public:

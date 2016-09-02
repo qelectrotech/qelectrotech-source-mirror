@@ -105,7 +105,7 @@ QString nomenclature::getNomenclature()
 		//Get only simple, master and unlinked slave element.
 		ElementProvider ep(d);
 		QList <Element *> list_elements;
-		list_elements << ep.find(Element::Simple | Element::Master);
+		list_elements << ep.find(Element::Simple | Element::Master | Element::Terminale);
 		list_elements << ep.freeElement(Element::Slave);
 
 		foreach (Element *elmt, list_elements) {

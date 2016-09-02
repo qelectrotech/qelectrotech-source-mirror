@@ -198,6 +198,7 @@ void ElementPropertiesWidget::updateUi()
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
 		case Element::Terminale:
+			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		default:
 			break;

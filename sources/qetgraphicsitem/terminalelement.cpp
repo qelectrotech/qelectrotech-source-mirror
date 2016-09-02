@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalelement.h"
+#include "commentitem.h"
+#include "elementtextitem.h"
 
 /**
  * @brief TerminalElement::TerminalElement
@@ -26,9 +28,76 @@
  * @param state int used to know if the creation of element have error
  */
 TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	CustomElement(location, qgi, state),
+	m_comment_item (nullptr),
+	m_location_item (nullptr)
 {
 	link_type_ = Terminale;
+	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
+	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
+	connect(this, SIGNAL(updateLabel()),this,SLOT(changeElementInfo()));
 }
 
-TerminalElement::~TerminalElement() {}
+TerminalElement::~TerminalElement() {
+if (m_comment_item) delete m_comment_item;
+}
+
+/**
+ * @brief TerminalElement::initLink
+ * @param project
+ */
+void TerminalElement::initLink(QETProject *project) {
+	CustomElement::initLink(project);
+	updateLabel(DiagramContext(), elementInformations());
+}
+
+/**
+ * @brief SimpleElement::changeElementInfo()
+ * Update label if it contains %c, %l, %f or %F variables
+ */
+void TerminalElement::changeElementInfo(){
+	QString temp_label = this->elementInformations()["label"].toString();
+	if (temp_label.contains("\%")) {
+		if (this->diagram()!=NULL)
+			this->updateLabel(this->elementInformations(),this->elementInformations());
+	}
+}
+
+/**
+ * @brief SimpleElement::updateLabel
+ * update label of this element
+ */
+void TerminalElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
+	QString label = new_info["label"].toString();
+	Element *elmt = this;
+	label = assignVariables(label,elmt);
+
+	//Label of element
+	if (old_info["label"].toString() != label) {
+		if (new_info["label"].toString().isEmpty())
+			setTaggedText("label", "_", false);
+		else {
+			setTaggedText("label", label, true);
+		}
+	}
+
+	if (ElementTextItem *eti = taggedText("label")) {
+		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
+	}
+
+	//Comment and Location of element
+	QString comment   = new_info["comment"].toString();
+	bool    must_show = new_info.keyMustShow("comment");
+	QString location  = new_info["location"].toString();
+	bool must_show_location = new_info.keyMustShow("location");
+
+	if ((!(comment.isEmpty() || !must_show) && !m_comment_item)||(!(location.isEmpty() || !must_show_location) && !m_comment_item)) {
+		m_comment_item = new CommentItem(this);
+	}
+	else if (((comment.isEmpty() || !must_show) && m_comment_item) && ((location.isEmpty() || !must_show_location) && m_comment_item)) {
+		delete m_comment_item;
+		m_comment_item = nullptr;
+	}
+}
+
