@@ -310,7 +310,7 @@ void CustomElement::parseLabels() {
 								DiagramContext &dc = this->rElementInformations();
 								//if there is a formula to assign, assign it
 								if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
-										(this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
+										(this->linkType()!=Element::Slave)) {
 									QString formula = location().project()->elementAutoNumCurrentFormula();
 									this->setPrefix(prefix);
 									dc.addValue("label", formula);
