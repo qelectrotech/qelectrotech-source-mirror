@@ -1,0 +1,27 @@
+<definition width="20" hotspot_y="14" height="20" hotspot_x="14" version="0.51" orientation="dyyy" link_type="terminal" type="element">
+    <uuid uuid="{2ed786aa-0583-4058-aad6-af7eb76fad47}"/>
+    <names>
+        <name lang="ar">طرف توصيل</name>
+        <name lang="pl">Zacisk</name>
+        <name lang="de">Klemme</name>
+        <name lang="pt">Terminal de combinação</name>
+        <name lang="es">Terminal de unión</name>
+        <name lang="ru">Клеммное соединение</name>
+        <name lang="fr">Borne continuité</name>
+        <name lang="nl">klem doorgang</name>
+        <name lang="en">Terminal block</name>
+        <name lang="it">Terminale di unione</name>
+        <name lang="cs">Spojovací svorka</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" length2="1.5" x2="0" y2="-3" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <circle diameter="5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.5"/>
+        <line x1="-3" length2="1.5" x2="-10" y2="0" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <input rotate="true" x="-1" text="_" y="-8" tagg="label" size="6"/>
+        <line x1="-3" length2="1.5" x2="3" y2="-3" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" length1="1.5" end2="none"/>
+        <terminal x="0" y="-10" orientation="n" tagg="none"/>
+        <terminal x="-10" y="0" orientation="w" tagg="none"/>
+    </description>
+</definition>
