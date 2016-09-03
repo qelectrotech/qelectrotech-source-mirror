@@ -26,7 +26,6 @@
 */
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
-	m_tagg("none"),
 	m_orientation(Qet::North)
 {
 	updateSecondPoint();
@@ -65,7 +64,7 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	// ecrit la position de la borne
 	xml_element.setAttribute("x", QString("%1").arg(scenePos().x()));
 	xml_element.setAttribute("y", QString("%1").arg(scenePos().y()));
-	xml_element.setAttribute("tagg", m_tagg);
+	
 	
 	// ecrit l'orientation de la borne
 	xml_element.setAttribute("orientation", Qet::orientationToString(m_orientation));
