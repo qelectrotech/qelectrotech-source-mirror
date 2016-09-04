@@ -1471,10 +1471,13 @@ void Conductor::setProperties(const ConductorProperties &properties)
 	}
 	setText(properties_.text);
 	text_item -> setFontSize(properties_.text_size);
-	if (terminal1->diagram()->item_paste)
-		m_frozen_label = "";
-	else
-	m_frozen_label = properties_.text;
+
+	 if (terminal1 != NULL && terminal1->diagram() != NULL) {
+		if (terminal1->diagram()->item_paste)
+			m_frozen_label = "";
+		else
+			m_frozen_label = properties_.text;
+	}
 	if (freeze_label)
 		freezeLabel();
 	if (properties_.type != ConductorProperties::Multi)
@@ -1896,5 +1899,6 @@ void Conductor::freezeLabel() {
  */
 void Conductor::unfreezeLabel() {
 	this->setText(m_frozen_label);
+	if (m_frozen_label == "") return;
 	properties_.text = m_frozen_label;
 }
