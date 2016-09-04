@@ -104,8 +104,18 @@ QString nomenclature::getNomenclature()
 	foreach (Diagram *d, m_list_diagram) {
 		//Get only simple, master and unlinked slave element.
 		ElementProvider ep(d);
+		QSettings settings;
 		QList <Element *> list_elements;
+		
+		if (settings.value("nomenclature/terminal-exportlist", true).toBool()){
 		list_elements << ep.find(Element::Simple | Element::Master | Element::Terminale);
+		
+		}else{
+		
+		list_elements << ep.find(Element::Simple | Element::Master);
+		
+		}
+		
 		list_elements << ep.freeElement(Element::Slave);
 
 		foreach (Element *elmt, list_elements) {

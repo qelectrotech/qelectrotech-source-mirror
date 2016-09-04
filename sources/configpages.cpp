@@ -236,6 +236,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool save_label_paste = settings.value("diagramcommands/save-label", true).toBool();
 	bool panel_folio = settings.value("genericpanel/folio", true).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
+	bool terminal_exportlist = settings.value("nomenclature-exportlist", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
 	appearance_ = new QGroupBox(tr("Apparence"), this);
@@ -246,6 +247,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
 	save_label_paste_ = new QCheckBox(tr("Ne pas conserver les labels des éléments lors des copier coller"), projects_view_mode_);
 	folio_panel_ = new QCheckBox(tr("Utiliser les labels de folio à la place de leurs ID"), projects_view_mode_);
+	terminal_exportlist_ = new QCheckBox(tr("Exporter les bornes dans la nomenclature"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
@@ -265,6 +267,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	use_trackpad_ -> setChecked(use_trackpad);
 	save_label_paste_ -> setChecked(save_label_paste);
 	folio_panel_     ->setChecked(panel_folio);
+	terminal_exportlist_ ->setChecked(terminal_exportlist);
 
 	if (tabbed) {
 		tabbed_mode_ -> setChecked(true);
@@ -288,6 +291,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_layout -> addWidget(save_label_paste_);
 	projects_view_mode_layout -> addWidget(folio_panel_);
+	projects_view_mode_layout -> addWidget(terminal_exportlist_);
 	
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
@@ -354,6 +358,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagramcommands/save-label", save_label_paste_ -> isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("genericpanel/folio",folio_panel_->isChecked());
+	settings.setValue("nomenclature/terminal-exportlist",terminal_exportlist_->isChecked());
 }
 
 /// @return l'icone de cette page
