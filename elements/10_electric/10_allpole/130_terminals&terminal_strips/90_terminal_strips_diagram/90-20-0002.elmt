@@ -3,7 +3,8 @@
     <names>
         <name lang="fr">Appareil (connexion en bas)</name>
         <name lang="de">Gerät (Anschluss unten)</name>
-        <name lang="en">Device (connection on bottom)</name>
+        <name lang="en">Device (connection on top)</name>
+        <name lang="it">Dispositivo (connessione in alto)</name>
     </names>
     <informations/>
     <description>
