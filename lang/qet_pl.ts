@@ -2069,22 +2069,22 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Wzór automatycznego nazewnictwa:</translation>
+        <translation>Wzór automatycznego nazewnictwa:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">Wstaw formułę tutaj np.: %prefix%l%c</translation>
+        <translation>Wstaw formułę tutaj np.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished">Formuła:</translation>
+        <translation>Formuła:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
@@ -2098,7 +2098,16 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Możesz użyć następujących zmiennych w formule:
+ -%prefix: domyślny prefiks elementu
+ -%l: linia elementu
+ -%c: kolumna elementu
+ -%F: nazwa arkusza
+ -%f lub %id: ID arkusza
+ -%total: ilość arkuszy
+You can also assign any other titleblock variable 
+that you create. Text and number inputs are
+ also available.</translation>
     </message>
 </context>
 <context>
@@ -2167,7 +2176,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekspotr oznaczeń zacisków do dokumentacji</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -2878,7 +2887,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/numparteditorw.cpp" line="195"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="312"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Linia elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="87"/>
@@ -8177,7 +8186,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż ze&amp;styki</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
