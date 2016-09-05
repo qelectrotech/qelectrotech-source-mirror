@@ -92,7 +92,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		if (settings.value("genericpanel/folio", true).toBool()){
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
 				diagram_list[i] -> title(),
-				diagram_list[i] -> border_and_titleblock.folio(),
+				diagram_list[i] -> border_and_titleblock.finalfolio(),
 				diagram_list[i] -> border_and_titleblock.machine(),
 				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),

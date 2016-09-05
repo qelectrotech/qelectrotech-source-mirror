@@ -44,6 +44,7 @@
 #include "dveventinterface.h"
 #include "diagrameventaddelement.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetshapeitem.h"
 
 /**
 	Constructeur
@@ -683,6 +684,8 @@ void DiagramView::scrollOnMovement(QKeyEvent *e){
 			QList<QGraphicsItem *> selected_elmts = scene->selectedContent().items(255);
 			QRectF viewed_scene = viewedSceneRect();
 			foreach (QGraphicsItem *qgi, selected_elmts){
+				if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
+				if (qgraphicsitem_cast<QetShapeItem *>(qgi)) continue;
 				qreal x = qgi->pos().x();
 				qreal y = qgi->pos().y();
 				qreal bottom = viewed_scene.bottom();

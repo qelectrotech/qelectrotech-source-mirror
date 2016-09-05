@@ -251,7 +251,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 		if (!this->selectedContent().items(255).isEmpty()) {
 		switch(e -> key()) {
 			case Qt::Key_Left:
-				foreach (QGraphicsItem *item, selected_elmts) {
+				foreach (Element *item, selectedContent().elements) {
 					left_position = item->mapRectFromScene(item->boundingRect()).x();
 					if (left_position >= this->sceneRect().left() - item->boundingRect().width())
 					return;
@@ -260,7 +260,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 				break;
 			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
 			case Qt::Key_Up:
-				foreach (QGraphicsItem *item, selected_elmts) {
+				foreach (Element *item, selectedContent().elements) {
 					top_position = item->mapRectFromScene(item->boundingRect()).y();
 					if (top_position >= this->sceneRect().top() - item->boundingRect().height())
 						return;

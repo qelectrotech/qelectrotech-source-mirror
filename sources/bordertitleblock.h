@@ -95,6 +95,8 @@ class BorderTitleBlock : public QObject
 	QString title() const { return(btb_title_); }
 	/// @return the value of the title block "Folio" field
 	QString folio() const { return(btb_folio_); }
+	/// @return the value of the title block "Folio" field as displayed
+	QString finalfolio() const { return(btb_final_folio_); }
 	/// @return the value of the title block "Machine" field
 	QString machine() const { return(btb_machine_); }
 	/// @return the value of the title block "Locmach" field
