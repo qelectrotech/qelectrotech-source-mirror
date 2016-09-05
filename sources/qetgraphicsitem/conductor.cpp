@@ -1298,6 +1298,8 @@ QString Conductor::assignVariables(QString label) {
 	label.replace("%F", diagram() -> border_and_titleblock.folio());
 	label.replace("%id", QString::number(diagram()->folioIndex()+1));
 	label.replace("%total", QString::number(diagram()->border_and_titleblock.folioTotal()));
+	label.replace("%M",  diagram() -> border_and_titleblock.machine());
+	label.replace("%LM",  diagram() -> border_and_titleblock.locmach());
 	label = assignSeq(label, this);
 	return label;
 }

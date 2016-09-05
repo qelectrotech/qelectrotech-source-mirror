@@ -86,7 +86,7 @@ void NumPartEditorW::setVisibleItems() {
 	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") {
 		items	<< tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
 				<< tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-				<< tr("Texte") << tr("N° folio") << tr("Folio");
+				<< tr("Texte") << tr("N° folio") << tr("Folio") << tr("Machine") << tr("Locmach");
 	}
 	else
 		items << tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
