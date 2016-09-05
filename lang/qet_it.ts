@@ -2071,22 +2071,22 @@ Il campo &quot;Incremento&quot; non è utilizzato.</translation>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Schema di creazione automatica del nome:</translation>
+        <translation>Schema di creazione automatica del nome:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">Inserire qui la formula: es. %prefix%l%c</translation>
+        <translation>Inserire qui la formula: es. %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished">Formula</translation>
+        <translation>Formula:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
@@ -2100,7 +2100,15 @@ Il campo &quot;Incremento&quot; non è utilizzato.</translation>
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>È possibile creare una formula utilizzando le variabili seguenti:
+ -%prefix: Prefisso elemento predefinito
+ -%l: riga dell&apos;elemento
+ -%c: colonna dell&apos;elemento
+%F: nome della pagina
+%f o %id: ID della pagina
+%total : numero totale di pagine
+È possibile assegnare qualsiasi altra variabile al cartiglio 
+che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     </message>
 </context>
 <context>
@@ -2133,7 +2141,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta le morsettiere dalla nomenclatura</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -2813,7 +2821,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation>Unelemento con lo stesso nome esiste già</translation>
+        <translation>Un elemento con lo stesso nome esiste già</translation>
     </message>
 </context>
 <context>
@@ -3740,7 +3748,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Lancia il plugin di creazione della nomenclatura</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -4815,7 +4823,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lancia il plugin di conversione DXF</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
@@ -8172,7 +8180,7 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Most&amp;ra a fianco del contatto</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
