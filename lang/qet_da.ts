@@ -2071,22 +2071,22 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Autonavngiv mønster:</translation>
+        <translation>Autonavngiv mønster:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">Indsæt formel hereks.: %prefix%l%c</translation>
+        <translation>Indsæt formel her eks.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished">Formel:</translation>
+        <translation>Formel:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
@@ -2100,7 +2100,15 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Brug følgende variabler i formel:
+ -%prefix: standard symbol præfiks
+ -%l: symbol linje
+ -%c: symbol kolonne
+ -%F: ark navn
+ -%f eller %id: ark ID
+ -%total: samlet antal ark
+Tildel enhver anden oprettet titelblok variabel.
+Tekst og nummer inddata er også tilgængelig.</translation>
     </message>
 </context>
 <context>
@@ -2128,12 +2136,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Brug ark etiketter i stedet for ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksport terminaler i BOM</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -3742,7 +3750,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Staet opret klemmerække tilføjelse</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -3793,13 +3801,13 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj linje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Slet linje</translation>
+        <translation>Slet linje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
@@ -3870,7 +3878,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj linje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
@@ -4821,7 +4829,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Start DXF konverter tilføjelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
@@ -6579,7 +6587,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Opret brugerdefineret ark etiket for rapport.
+Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%M: installering
+%LM: placering
+%l: linje nummer
+%c: kolonne nummer</translation>
     </message>
 </context>
 <context>
@@ -8175,7 +8190,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis kontakte&amp;r</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
