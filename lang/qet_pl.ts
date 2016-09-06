@@ -2098,16 +2098,16 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished">Możesz użyć następujących zmiennych w formule:
+        <translation>Możesz użyć następujących zmiennych w formule:
  -%prefix: domyślny prefiks elementu
  -%l: linia elementu
  -%c: kolumna elementu
  -%F: nazwa arkusza
  -%f lub %id: ID arkusza
  -%total: ilość arkuszy
-You can also assign any other titleblock variable 
-that you create. Text and number inputs are
- also available.</translation>
+Można równiż przypisać inną zmienną do tworzonej
+tabliczki rysunkowej.
+Litery i cyfry mogą być używane.</translation>
     </message>
 </context>
 <context>
@@ -3748,7 +3748,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Lancer do tworzenia listw zaciskowych</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -4826,7 +4826,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Konwersja DXF wtyczki Lancer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
@@ -6597,7 +6597,7 @@ Stwórz własny tekst używając następujących zmiennych:
 %M:  Maszyna 
 %LM: Lokalizacja 
 %l: oznaczenie linii 
-%c: le oznaczenie kolumny</translation>
+%c: oznaczenie kolumny</translation>
     </message>
 </context>
 <context>
