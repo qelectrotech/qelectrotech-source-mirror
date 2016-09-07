@@ -61,7 +61,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
 
-	reload            -> setShortcut(Qt::Key_F5);
 
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	filter_textfield = new QLineEdit(this);
@@ -349,7 +348,6 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	
 	updateButtons();
 	context_menu -> clear();
-	context_menu->addAction(reload);
 	
 	QString dir_path = elements_panel -> dirPathForItem(item);
 	if (!dir_path.isEmpty()) {
