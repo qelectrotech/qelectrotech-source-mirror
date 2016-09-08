@@ -337,7 +337,7 @@ void CustomElement::parseLabels() {
 		}
 		if (prefix == "") {
 			if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
-					(this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale)) {
+					(this->linkType()!=Element::Slave)) {
 				QString formula = location().project()->elementAutoNumCurrentFormula();
 				this->setPrefix(prefix);
 				DiagramContext &dc = this->rElementInformations();
@@ -351,8 +351,7 @@ void CustomElement::parseLabels() {
 	//are being loaded at first time or being pasted
 	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
 			 (!location().project()->elementAutoNumCurrentFormula().isEmpty()) &&
-			 (this->linkType()!=Element::Slave) && (this->linkType()!=Element::Terminale) &&
-			 !this->diagram()->item_paste) {
+			 (this->linkType()!=Element::Slave) && !this->diagram()->item_paste) {
 		QString formula = location().project()->elementAutoNumCurrentFormula();
 		DiagramContext &dc = this->rElementInformations();
 		QString prefix = this->taggedText("label")->toPlainText();
