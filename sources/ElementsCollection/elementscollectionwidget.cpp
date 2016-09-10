@@ -260,9 +260,9 @@ void ElementsCollectionWidget::openDir()
 	if (!eci) return;
 
 	if (eci->type() == FileElementCollectionItem::Type)
-		QDesktopServices::openUrl(static_cast<FileElementCollectionItem*>(eci)->dirPath());
+		QDesktopServices::openUrl(QUrl("file:///" + static_cast<FileElementCollectionItem*>(eci)->dirPath()));
 	else if (eci->type() == XmlProjectElementCollectionItem::Type)
-		QDesktopServices::openUrl(static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir());
+		QDesktopServices::openUrl(QUrl("file:///" + static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir()));
 }
 
 /**
