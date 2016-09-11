@@ -7805,7 +7805,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Titelblok celler har en værdi og eventuelt en etiket. Begge kan oversættes til andre sprog. &lt;br/&gt;Dette er en titelblok &lt;em&gt;skabelon&lt;/em&gt; der redigeres i og det bør undgåes at indtast fast tekst: brug istedet indsæt af variabler %{variable-name}, som vil blive erstattet af passende værdier fra arket.</translation>
+        <translation>Titelblok celler har en værdi og eventuel en etiket. Begge kan oversættes til andre sprog. &lt;br/&gt;Dette er en titelblok &lt;em&gt;skabelon&lt;/em&gt; der redigeres i og det bør undgåes at indtaste fast tekst: brug istedet indsæt af variabler %{variable-name}, som vil blive erstattet af passende værdier fra arket.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
