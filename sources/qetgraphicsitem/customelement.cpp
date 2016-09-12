@@ -286,6 +286,13 @@ void CustomElement::parseLabels() {
 			current_location = current_location.parent();
 			dirLevel++;
 		}
+		//User Element without folder treatment
+		if (i == -1) {
+			i = 0;
+			path[i]=current_location.fileName();
+			current_location = current_location.parent();
+			dirLevel = 0;
+		}
 
 		// Only Electric labels created so far
 		//if (current_location.fileName() != "10_electric")
