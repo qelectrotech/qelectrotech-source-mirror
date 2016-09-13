@@ -43,9 +43,10 @@ bool centerToParentBottom(QGraphicsItem *item) {
 
 /**
  * @brief centerToBottomDiagram
- * Set item pos to the bottom of diagram and centered vertically to element_to_follow
+ * Set item pos to the bottom of diagram and centered vertically to element_to_follow, and add offset.
  * @param item_to_center
  * @param element_to_follow
+ * @param offset
  * @return true if element is centered else false (element_to_follow have not diagram)
  */
 bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, int offset) {
@@ -57,10 +58,7 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 	QRectF  border = element_to_follow -> diagram() -> border_and_titleblock.insideBorderRect();
 	QPointF point  = element_to_follow -> sceneBoundingRect().center();
 
-	if (offset >= 40) //applies offset
-	point.setY(border.bottom() - offset );
-	else //applies default
-	point.setY(border.bottom() - item_to_center -> boundingRect().height() - 5);
+	point.setY(border.bottom() - item_to_center -> boundingRect().height() - offset );
 	point.rx() -= (item_to_center -> boundingRect().width()/2 +
 				   item_to_center -> boundingRect().left()); //< we add boundingrect.left because this value can be négative
 

@@ -217,9 +217,9 @@ void CrossRefItem::updateLabel() {
  * Calculate and set position automaticaly.
  */
 void CrossRefItem::autoPos() {
-	//We calcul the position according to the @snapTo of the xrefproperties
+		//We calcul the position according to the @snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
-		centerToBottomDiagram(this, m_element, m_properties.offset());
+		centerToBottomDiagram(this, m_element, m_properties.offset() <= 40 ? 5 : m_properties.offset());
 	else
 		centerToParentBottom(this);
 }
