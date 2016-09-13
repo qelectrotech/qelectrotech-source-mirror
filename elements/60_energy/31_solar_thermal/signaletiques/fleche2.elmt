@@ -1,19 +1,20 @@
-<definition width="-10" hotspot_x="-5" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
-    <uuid uuid="{5ec4af4c-7f15-4d20-b694-b9811312fe1e}"/>
+<definition height="70" hotspot_x="16" width="30" hotspot_y="34" type="element" version="0.51" link_type="simple" orientation="dyyy">
+    <uuid uuid="{132252fc-ddab-4d55-8f45-65e4778d59dc}"/>
     <names>
-        <name lang="cs">Směr 2</name>
-        <name lang="it">Freccia 2</name>
-        <name lang="pl">Kierunek 2</name>
-        <name lang="en">Arrow 2</name>
-        <name lang="nl">Pijl 2</name>
-        <name lang="ar">اسم عنصر جديد</name>
         <name lang="fr">Fleche 2</name>
+        <name lang="en">Arrow 2</name>
         <name lang="el">Βέλος 2</name>
+        <name lang="it">Freccia 2</name>
+        <name lang="nl">Pijl 2</name>
+        <name lang="pl">Kierunek 2</name>
+        <name lang="cs">Směr 2</name>
+        <name lang="ar">اسم عنصر جديد</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-31" x1="10" x2="-11"/>
-        <input tagg="label" rotate="true" size="9" y="-2.45" x="16" text="_"/>
+        <line y1="-31" x2="-11" end2="none" end1="none" length1="1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" x1="10" length2="1.5"/>
+        <input text="_" size="9" rotate="true" tagg="label" y="-2.45" x="16"/>
+        <polygon x4="-12.488" y1="29.57" x2="-9.46067" y3="32.3615" y4="29.57" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30.8598" x1="-12.488" x3="-11.9385"/>
     </description>
 </definition>
