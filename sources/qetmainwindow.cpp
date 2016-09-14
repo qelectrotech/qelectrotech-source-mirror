@@ -24,6 +24,7 @@
 #include "qetmainwindow.h"
 #include "qeticons.h"
 #include "qetapp.h"
+#include "qetdiagrameditor.h"
 
 /**
 	Constructor
@@ -53,7 +54,13 @@ void QETMainWindow::initCommonActions() {
 	
 	configure_action_ = new QAction(QET::Icons::Configure, tr("&Configurer QElectroTech"), this);
 	configure_action_ -> setStatusTip(tr("Permet de régler différents paramètres de QElectroTech", "status bar tip"));
-	connect(configure_action_,  SIGNAL(triggered()), qet_app, SLOT(configureQET()));
+	connect(configure_action_, &QAction::triggered, [qet_app]() {
+		qet_app->configureQET();
+		//TODO we use reloadOldElementPanel only to keep up to date the string of the folio in the old element panel.
+		//then, if user change the option "Use labels of folio instead of their ID" the string of folio in the old element panel is up to date
+		foreach (QETDiagramEditor *qde, qet_app->diagramEditors())
+			qde->reloadOldElementPanel();
+	});
 	
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();

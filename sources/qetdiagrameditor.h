@@ -144,6 +144,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void moveDiagramUpx10(Diagram *);
 		void moveDiagramDownx10(Diagram *);
 		void cleanCurrentProject();
+		void reloadOldElementPanel();
 		void nomenclatureProject();
 		void diagramWasAdded(DiagramView *);
 		void findElementInPanel(const ElementsLocation &);

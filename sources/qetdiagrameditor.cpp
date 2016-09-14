@@ -2005,6 +2005,10 @@ void QETDiagramEditor::cleanCurrentProject() {
 	}
 }
 
+void QETDiagramEditor::reloadOldElementPanel() {
+	pa->reloadAndFilter();
+}
+
 /**
  * @brief export nomemclature of schema
  */
