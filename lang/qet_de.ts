@@ -2065,22 +2065,22 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Automatische Nummerierung:</translation>
+        <translation>Automatische Nummerierung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">Muster hier aufschreiben, z.B.: %prefix%l%c</translation>
+        <translation>Muster hier aufschreiben, z.B.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished">Muster:</translation>
+        <translation>Muster:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
@@ -2094,7 +2094,16 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Im Muster können folgende Variablen verwendet werden:
+ - %prefix: Gerätekennbuchstabe
+ - %l: Zeilennummer
+ - %c: Spaltennummer
+ - %F: Foliennummer (Benutzer definiert)
+ - %f oder %id: Foliennummer (Durchnummerierung)
+ - %total: gesamte Folienanzahl
+Sie können auch beliebige Variable verwenden,
+die Sie im Zeichnungskopf kreiert haben.
+Texte und Zahlen sind ebenso erlaubt.</translation>
     </message>
 </context>
 <context>
@@ -2127,7 +2136,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen in die Stückliste exportieren</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -4094,7 +4103,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenplan-Plugin ausführen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
@@ -4408,7 +4417,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF Konverter-P&amp;lugin ausführen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
@@ -8136,7 +8145,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>als &amp;Kontakte anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
