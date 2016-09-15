@@ -214,7 +214,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin Python Generatore qet tb</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="128"/>
@@ -5070,46 +5070,46 @@ le condizioni richieste non sono validi</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="76"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuale On-Line</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
+        <translation>Canale Youtube</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished"></translation>
+        <translation>Caricare una nuova versione (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lancia il navigatore predefinito per il manuale on-line di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="87"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lancia il navigatore predefinito per il canale Youtube di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lancia il navigatore predefinito per la versione Nightly on-line di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished"></translation>
+        <translation>Sostieni il progetto con una donazione</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sostenere il progetto QElectroTech con una donazione</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="110"/>
