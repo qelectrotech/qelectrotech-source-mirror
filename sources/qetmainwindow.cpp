@@ -81,6 +81,14 @@ void QETMainWindow::initCommonActions() {
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
+	donate_ = new QAction(QET::Icons::QETDonate, tr("Faire un don"), this);
+	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
+	
+	connect(donate_, &QAction::triggered, [this](bool) {
+	QString link = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZHC9D7C3MDPC";
+	QDesktopServices::openUrl(QUrl(link));
+	});
+	
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, SIGNAL(triggered()), qet_app, SLOT(aboutQt()));
@@ -101,6 +109,7 @@ void QETMainWindow::initCommonMenus() {
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(about_qet_);
 	help_menu_ -> addAction(manual_online_);
+	help_menu_ -> addAction(donate_);
 	help_menu_ -> addAction(about_qt_);
 	
 	insertMenu(0, settings_menu_);
