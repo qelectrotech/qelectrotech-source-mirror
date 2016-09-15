@@ -20,6 +20,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QDragEnterEvent>
+#include <QDesktopServices>
 
 #include "qetmainwindow.h"
 #include "qeticons.h"
@@ -72,6 +73,14 @@ void QETMainWindow::initCommonActions() {
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
 	
+	manual_online_ = new QAction(QET::Icons::QETLogo, tr("Manuel QElectroTech en ligne"), this);
+	manual_online_ -> setStatusTip(tr("Lance le navigateur par defaut vers le manuel en ligne de QElectroTech", "status bar tip"));
+	
+	connect(manual_online_, &QAction::triggered, [this](bool) {
+	QString link = "http://download.tuxfamily.org/qet/joshua/html/QET.html";
+	QDesktopServices::openUrl(QUrl(link));
+	});
+	
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, SIGNAL(triggered()), qet_app, SLOT(aboutQt()));
@@ -91,6 +100,7 @@ void QETMainWindow::initCommonMenus() {
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(about_qet_);
+	help_menu_ -> addAction(manual_online_);
 	help_menu_ -> addAction(about_qt_);
 	
 	insertMenu(0, settings_menu_);
