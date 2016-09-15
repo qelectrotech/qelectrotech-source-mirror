@@ -70,135 +70,135 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <location filename="../sources/aboutqet.cpp" line="126"/>
-        <location filename="../sources/aboutqet.cpp" line="195"/>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <location filename="../sources/aboutqet.cpp" line="129"/>
+        <location filename="../sources/aboutqet.cpp" line="198"/>
         <location filename="../sources/aboutqet.cpp" line="200"/>
-        <location filename="../sources/aboutqet.cpp" line="201"/>
         <source>Développement</source>
         <translation>Razvoj</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="149"/>
         <source>Traduction en espagnol</source>
         <translation>Španjolski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
-        <location filename="../sources/aboutqet.cpp" line="148"/>
+        <location filename="../sources/aboutqet.cpp" line="150"/>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en russe</source>
         <translation>Ruski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="149"/>
+        <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en portugais</source>
         <translation>Portugalski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="150"/>
+        <location filename="../sources/aboutqet.cpp" line="153"/>
         <source>Traduction en tchèque</source>
         <translation>Češki prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <location filename="../sources/aboutqet.cpp" line="154"/>
         <source>Traduction en polonais</source>
         <translation>Poljski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="152"/>
-        <location filename="../sources/aboutqet.cpp" line="153"/>
+        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en allemand</source>
         <translation>Njemački prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="154"/>
+        <location filename="../sources/aboutqet.cpp" line="157"/>
         <source>Traduction en roumain</source>
         <translation>Rumunjski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="158"/>
         <source>Traduction en italien</source>
         <translation>Talijanski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="156"/>
+        <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Traduction en arabe</source>
         <translation>Arapski prijevod</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="157"/>
+        <location filename="../sources/aboutqet.cpp" line="160"/>
         <source>Traduction en croate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="158"/>
+        <location filename="../sources/aboutqet.cpp" line="161"/>
         <source>Traduction en catalan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="159"/>
-        <location filename="../sources/aboutqet.cpp" line="160"/>
+        <location filename="../sources/aboutqet.cpp" line="162"/>
+        <location filename="../sources/aboutqet.cpp" line="163"/>
         <source>Traduction en grec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="161"/>
+        <location filename="../sources/aboutqet.cpp" line="164"/>
         <source>Traduction en néerlandais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="162"/>
+        <location filename="../sources/aboutqet.cpp" line="165"/>
         <source>Traduction en flamand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="163"/>
+        <location filename="../sources/aboutqet.cpp" line="166"/>
         <source>Traduction en danois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="164"/>
+        <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Traduction en brézilien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="184"/>
+        <location filename="../sources/aboutqet.cpp" line="187"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="185"/>
+        <location filename="../sources/aboutqet.cpp" line="188"/>
         <source>Paquets Mageia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="188"/>
-        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="191"/>
+        <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Paquets Gentoo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="193"/>
         <source>Paquets OS/2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="191"/>
+        <location filename="../sources/aboutqet.cpp" line="194"/>
         <source>Paquets FreeBSD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="192"/>
+        <location filename="../sources/aboutqet.cpp" line="195"/>
         <source>Paquets MAC OS X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="193"/>
+        <location filename="../sources/aboutqet.cpp" line="196"/>
         <source>Paquets Archlinux AUR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="186"/>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="190"/>
         <source>Paquets Debian</source>
         <translation>Debian paket</translation>
     </message>
@@ -209,27 +209,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="194"/>
+        <location filename="../sources/aboutqet.cpp" line="197"/>
         <source>Icônes</source>
         <translation>Ikone</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="196"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="198"/>
+        <location filename="../sources/aboutqet.cpp" line="201"/>
         <source>Collection d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="128"/>
         <source>Convertisseur DXF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="220"/>
+        <location filename="../sources/aboutqet.cpp" line="202"/>
+        <source>Python plugin qet-tb-generator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="219"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Program je izdan pod GNU/GPL licencom.</translation>
     </message>
@@ -501,13 +506,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1532"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1534"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1536"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1538"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -835,48 +840,48 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="63"/>
+        <location filename="../sources/diagramview.cpp" line="64"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translatorcomment>&quot;Što je to?&quot; savjet</translatorcomment>
         <translation>Područje u kojem ste dizajnirali shemu dodavanjem novih elemenata traži vodiče između svojih priključaka. Također možete dodati neovisan tekst.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="89"/>
+        <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Zalijepi ovdje</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="203"/>
+        <location filename="../sources/diagramview.cpp" line="204"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Orijentacija za označeni tekst</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="744"/>
+        <location filename="../sources/diagramview.cpp" line="747"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="964"/>
+        <location filename="../sources/diagramview.cpp" line="967"/>
         <source>Propriétés de la sélection</source>
         <translation>Odabir svojstva</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="966"/>
+        <location filename="../sources/diagramview.cpp" line="969"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Odabir sadrži %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="1005"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Izaberi novu boju za ovaj vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1021"/>
+        <location filename="../sources/diagramview.cpp" line="1024"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -1715,7 +1720,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Filtrer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2874,6 +2879,7 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
@@ -2881,6 +2887,7 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
@@ -3717,7 +3724,7 @@ Dostupne opcije:
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dodaj liniju</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
@@ -4163,7 +4170,7 @@ Dostupne opcije:
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dodaj liniju</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
@@ -4355,7 +4362,7 @@ Dostupne opcije:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2104"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2108"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
@@ -5001,79 +5008,123 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETMainWindow</name>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="54"/>
+        <location filename="../sources/qetmainwindow.cpp" line="56"/>
         <source>&amp;Configurer QElectroTech</source>
         <translation>Po&amp;dešavanje QElectroTech-a</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="55"/>
+        <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Dozvoli određivanje različitih parametara za QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="64"/>
+        <location filename="../sources/qetmainwindow.cpp" line="72"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>&amp;O QElectroTech-u</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="65"/>
+        <location filename="../sources/qetmainwindow.cpp" line="73"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Prikaži informacije o QElectroTech-u</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="68"/>
+        <location filename="../sources/qetmainwindow.cpp" line="76"/>
+        <source>Manuel en ligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="77"/>
+        <source>Lance le navigateur par defaut vers le manuel en ligne de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="86"/>
+        <source>Chaine Youtube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="87"/>
+        <source>Lance le navigateur par defaut vers la chaine Youtube de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="94"/>
+        <source>Télécharger une nouvelle version (dev)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="95"/>
+        <source>Lance le navigateur par defaut vers le dépot Nighlty en ligne de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="102"/>
+        <source>Soutenir le projet par un don</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="103"/>
+        <source>Soutenir le projet QElectroTech par un don</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="110"/>
         <source>À propos de &amp;Qt</source>
         <translation>O &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="69"/>
+        <location filename="../sources/qetmainwindow.cpp" line="111"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Prikaži informacije o Qt knjižnici</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="77"/>
+        <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
         <translation>&amp;Podešavanje</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="83"/>
+        <location filename="../sources/qetmainwindow.cpp" line="125"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
         <translation>&amp;Pomoć</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="129"/>
+        <location filename="../sources/qetmainwindow.cpp" line="181"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Napusti cijeli &amp;ekran</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="131"/>
+        <location filename="../sources/qetmainwindow.cpp" line="183"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Pokreni QElectroTech u prozoru</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="133"/>
+        <location filename="../sources/qetmainwindow.cpp" line="185"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>&amp;Cijeli ekran</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="135"/>
+        <location filename="../sources/qetmainwindow.cpp" line="187"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Pokreni QElectroTech na cijelom ekranu</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="137"/>
+        <location filename="../sources/qetmainwindow.cpp" line="189"/>
         <source>Ctrl+Shift+F</source>
         <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="149"/>
+        <location filename="../sources/qetmainwindow.cpp" line="201"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation>Prikaz</translation>
@@ -8069,82 +8120,82 @@ Longueur maximale : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="6"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Type :</source>
         <translation type="unfinished">Vrsta:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="40"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="26"/>
         <source>Représentation:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Positionner :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="62"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="72"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
         <source>Afficher en croix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="126"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
         <source>Label des références croisées</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="146"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="132"/>
         <source>Maitre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="156"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="142"/>
         <source>%f-%l%c</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="179"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="165"/>
         <source>Esclave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="189"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
         <source>(%f-%l%c)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="198"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -8155,27 +8206,27 @@ Longueur maximale : %2px
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
         <source>Option d&apos;affichage en croix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="225"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="211"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="234"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="220"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="241"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="254"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation type="unfinished"></translation>
     </message>
