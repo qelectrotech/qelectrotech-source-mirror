@@ -92,7 +92,7 @@ void QETMainWindow::initCommonActions() {
 	});
 	
 	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
-	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nighltly en ligne de QElectroTech", "status bar tip"));
+	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 	
 	connect(upgrade_, &QAction::triggered, [this](bool) {
 	QString link = "http://download.tuxfamily.org/qet/builds/nightly/";
