@@ -198,6 +198,7 @@ namespace QET {
 		extern QIcon QETManual;
 		extern QIcon QETDonate;
 		extern QIcon QETDownload;
+		extern QIcon QETVideo;
 	}
 }
 #endif

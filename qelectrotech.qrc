@@ -252,5 +252,6 @@
         <file>ico/16x16/help-contents.svg</file>
         <file>ico/16x16/help-donate.svg</file>
         <file>ico/16x16/edit-download.svg</file>
+        <file>ico/16x16/kdenlive-show-video.svg</file>
     </qresource>
 </RCC>

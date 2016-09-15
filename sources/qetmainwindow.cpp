@@ -83,7 +83,7 @@ void QETMainWindow::initCommonActions() {
 	
 	manual_online_            -> setShortcut(Qt::Key_F1);
 	
-	youtube_ = new QAction(QET::Icons::QETManual, tr("Chaine Youtube"), this);
+	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par defaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 	
 	connect(youtube_, &QAction::triggered, [this](bool) {
@@ -99,7 +99,7 @@ void QETMainWindow::initCommonActions() {
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
-	donate_ = new QAction(QET::Icons::QETDonate, tr("Faire un don"), this);
+	donate_ = new QAction(QET::Icons::QETDonate, tr("Soutenir le projet par un don"), this);
 	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
 	
 	connect(donate_, &QAction::triggered, [this](bool) {

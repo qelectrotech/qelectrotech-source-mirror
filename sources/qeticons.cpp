@@ -189,6 +189,7 @@ namespace QET {
 		QIcon QETManual;
 		QIcon QETDonate;
 		QIcon QETDownload;
+		QIcon QETVideo;
 	}
 }
 
@@ -395,6 +396,7 @@ void QET::Icons::initIcons() {
 	QETOxygenLogo       .addFile(":/ico/oxygen-icons/32x32/apps/qelectrotech.png");
 	QETOxygenLogo       .addFile(":/ico/oxygen-icons/48x48/apps/qelectrotech.png");
 	QETOxygenLogo       .addFile(":/ico/oxygen-icons/64x64/apps/qelectrotech.png");
+	QETVideo            .addFile(":/ico/16x16/kdenlive-show-video.svg");
 	QtLogo              .addFile(":/ico/32x32/qt.png");
 	Raise               .addFile(":/ico/22x22/raise.png");
 	Remove              .addFile(":/ico/16x16/list-remove.png");

@@ -124,6 +124,9 @@ QWidget *AboutQET::authorsTab() const {
 	addAuthor(authors, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
 	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Développement"));
 	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("Développement"));
+	addAuthor(authors, "Davi Fochi",          "davi@fochi.com.br",          tr("Développement"));
+	addAuthor(authors, "Ronny Desmedt",       "r.desmedt@live.be",          tr("Convertisseur DXF"));
+	addAuthor(authors, "Abhishek Bansal",     "abhishek@qelectrotech.org",  tr("Développement"));
 
 
 
@@ -196,11 +199,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",               tr("Documentation"));
 	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
 	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
-	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",                   tr("Convertisseur DXF"));
-	addAuthor(contributors, "Abhishek Bansal",     "abhishek@qelectrotech.org",           tr("Développement"));
-	addAuthor(contributors, "Davi Fochi",          "davi@fochi.com.br",                   tr("Développement"));
-
-
+	addAuthor(contributors, "Raul Roda",           "",                                    tr("Python plugin qet-tb-generator"));
 	
 	contributors -> setOpenExternalLinks(true);
 	contributors -> setTextFormat(Qt::RichText);
