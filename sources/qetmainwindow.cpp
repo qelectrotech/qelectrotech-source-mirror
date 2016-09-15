@@ -74,7 +74,7 @@ void QETMainWindow::initCommonActions() {
 	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
 	
 	manual_online_ = new QAction(QET::Icons::QETManual, tr("Manuel en ligne"), this);
-	manual_online_ -> setStatusTip(tr("Lance le navigateur par defaut vers le manuel en ligne de QElectroTech", "status bar tip"));
+	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
 	
 	connect(manual_online_, &QAction::triggered, [this](bool) {
 	QString link = "http://download.tuxfamily.org/qet/joshua/html/QET.html";
@@ -84,7 +84,7 @@ void QETMainWindow::initCommonActions() {
 	manual_online_            -> setShortcut(Qt::Key_F1);
 	
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
-	youtube_ -> setStatusTip(tr("Lance le navigateur par defaut vers la chaine Youtube de QElectroTech", "status bar tip"));
+	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 	
 	connect(youtube_, &QAction::triggered, [this](bool) {
 	QString link = "https://www.youtube.com/user/scorpio8101/videos";
@@ -92,7 +92,7 @@ void QETMainWindow::initCommonActions() {
 	});
 	
 	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
-	upgrade_ -> setStatusTip(tr("Lance le navigateur par defaut vers le dépot Nighlty en ligne de QElectroTech", "status bar tip"));
+	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nighltly en ligne de QElectroTech", "status bar tip"));
 	
 	connect(upgrade_, &QAction::triggered, [this](bool) {
 	QString link = "http://download.tuxfamily.org/qet/builds/nightly/";
