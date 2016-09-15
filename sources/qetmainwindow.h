@@ -57,6 +57,8 @@ class QETMainWindow : public QMainWindow {
 	QAction *whatsthis_action_;              ///< Toggle "What's this" mode
 	QAction *about_qet_;                     ///< Launch the "About QElectroTech" dialog
 	QAction *manual_online_;                 ///< Launch browser on QElectroTech online manual
+	QAction *youtube_;                       ///< Launch browser on QElectroTech Youtube channel
+	QAction *upgrade_;                        ///< Launch browser on QElectroTech Windows Nightly builds
 	QAction *donate_;                        ///< Launch browser to donate link 
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
 	QMenu *settings_menu_;                   ///< Settings menu

@@ -188,6 +188,7 @@ namespace QET {
 		QIcon TerminalStrip;
 		QIcon QETManual;
 		QIcon QETDonate;
+		QIcon QETDownload;
 	}
 }
 
@@ -381,6 +382,7 @@ void QET::Icons::initIcons() {
 	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");
 	QETDonate           .addFile(":/ico/16x16/help-donate.svg");
+	QETDownload         .addFile(":/ico/16x16/edit-download.svg");
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
 	ProjectFileGP       .addFile(":/ico/16x16/project-WH.png");
 	QETLogo             .addFile(":/ico/16x16/qet.png");

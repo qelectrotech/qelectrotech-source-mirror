@@ -81,6 +81,24 @@ void QETMainWindow::initCommonActions() {
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
+	manual_online_            -> setShortcut(Qt::Key_F1);
+	
+	youtube_ = new QAction(QET::Icons::QETManual, tr("Chaine Youtube"), this);
+	youtube_ -> setStatusTip(tr("Lance le navigateur par defaut vers la chaine Youtube de QElectroTech", "status bar tip"));
+	
+	connect(youtube_, &QAction::triggered, [this](bool) {
+	QString link = "https://www.youtube.com/user/scorpio8101/videos";
+	QDesktopServices::openUrl(QUrl(link));
+	});
+	
+	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	upgrade_ -> setStatusTip(tr("Lance le navigateur par defaut vers le dépot Nighlty en ligne de QElectroTech", "status bar tip"));
+	
+	connect(upgrade_, &QAction::triggered, [this](bool) {
+	QString link = "http://download.tuxfamily.org/qet/builds/nightly/";
+	QDesktopServices::openUrl(QUrl(link));
+	});
+	
 	donate_ = new QAction(QET::Icons::QETDonate, tr("Faire un don"), this);
 	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
 	
@@ -109,8 +127,16 @@ void QETMainWindow::initCommonMenus() {
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(about_qet_);
 	help_menu_ -> addAction(manual_online_);
+	help_menu_ -> addAction(youtube_);
+	help_menu_ -> addAction(upgrade_);
 	help_menu_ -> addAction(donate_);
 	help_menu_ -> addAction(about_qt_);
+	
+#ifdef Q_OS_WIN32
+upgrade_ -> setVisible(true);
+#else
+upgrade_ -> setVisible(false);
+#endif
 	
 	insertMenu(0, settings_menu_);
 	insertMenu(0, help_menu_);

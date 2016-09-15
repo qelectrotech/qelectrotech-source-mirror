@@ -197,6 +197,7 @@ namespace QET {
 		extern QIcon TerminalStrip;
 		extern QIcon QETManual;
 		extern QIcon QETDonate;
+		extern QIcon QETDownload;
 	}
 }
 #endif
