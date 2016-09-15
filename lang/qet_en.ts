@@ -5066,21 +5066,9 @@ the conditions are not valid</translation>
         <translation>Online manual</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="77"/>
-        <source>Lance le navigateur par defaut vers le manuel en ligne de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Launches the default browser to the online manual QElectroTech</translation>
-    </message>
-    <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
         <translation>Youtube channel</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetmainwindow.cpp" line="87"/>
-        <source>Lance le navigateur par defaut vers la chaine Youtube de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Launches the browser default to the Youtube channel of QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
@@ -5088,10 +5076,22 @@ the conditions are not valid</translation>
         <translation>Download a new version (dev)</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="95"/>
-        <source>Lance le navigateur par defaut vers le dépot Nighlty en ligne de QElectroTech</source>
+        <location filename="../sources/qetmainwindow.cpp" line="77"/>
+        <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Launches the browser default to the Nightly repository online QElectroTech</translation>
+        <translation>Launches the default browser to the online manual QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="87"/>
+        <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation>Launches the default browser on the Youtube channel of QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="95"/>
+        <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation>Launches the default browser to the online repository Nightly QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>

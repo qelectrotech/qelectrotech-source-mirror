@@ -5062,20 +5062,8 @@ les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="77"/>
-        <source>Lance le navigateur par defaut vers le manuel en ligne de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetmainwindow.cpp" line="87"/>
-        <source>Lance le navigateur par defaut vers la chaine Youtube de QElectroTech</source>
-        <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5084,8 +5072,20 @@ les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetmainwindow.cpp" line="77"/>
+        <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="87"/>
+        <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
-        <source>Lance le navigateur par defaut vers le dépot Nighlty en ligne de QElectroTech</source>
+        <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
