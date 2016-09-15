@@ -56,7 +56,7 @@ class QETMainWindow : public QMainWindow {
 	QAction *fullscreen_action_;             ///< Toggle full screen
 	QAction *whatsthis_action_;              ///< Toggle "What's this" mode
 	QAction *about_qet_;                     ///< Launch the "About QElectroTech" dialog
-	QAction *manual_online_;                 ///< Launch browser on QElectroTech manual on line
+	QAction *manual_online_;                 ///< Launch browser on QElectroTech online manual
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
 	QMenu *settings_menu_;                   ///< Settings menu
 	QMenu *help_menu_;                       ///< Help menu

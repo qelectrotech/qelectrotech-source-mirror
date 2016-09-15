@@ -249,5 +249,6 @@
         <file>ico/24x16/br.png</file>
         <file>ico/22x22/grid.png</file>
         <file>ico/22x22/terminalstrip.png</file>
+        <file>ico/16x16/help-contents.svg</file>
     </qresource>
 </RCC>
