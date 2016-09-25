@@ -68,9 +68,11 @@ class PartArc : public AbstractPartEllipse
 		void switchResizeMode();
 
 	private:
-		QetGraphicsHandlerUtility m_handler;
-		int m_handler_index;
-		QPropertyUndoCommand *m_undo_command;
+		QetGraphicsHandlerUtility m_handler = 10;
+		int m_handler_index = -1;
+		QPropertyUndoCommand *m_undo_command = nullptr;
+		QPropertyUndoCommand *m_undo_command2 = nullptr;
 		int m_resize_mode = 1;
+		QPointF m_span_point;
 };
 #endif

@@ -135,7 +135,7 @@ void ArcEditor::updateArcS()
 {
 	if (m_locked) return;
 	m_locked = true;
-	double value = ((start_angle -> value() * -1) + 90) * 16;
+	double value = start_angle->value() * 16;
 
 	if (value != part->property("startAngle"))
 	{
@@ -156,7 +156,7 @@ void ArcEditor::updateArcA()
 {
 	if (m_locked) return;
 	m_locked = true;
-	double value = angle -> value() * -16;
+	double value = angle->value() * 16;
 
 	if (value != part->property("spanAngle"))
 	{
@@ -204,8 +204,8 @@ void ArcEditor::updateForm()
 	y->setValue(part->mapToScene(rect.topLeft()).y() + (rect.height()/2));
 	h->setValue(rect.width());
 	v->setValue(rect.height());
-	start_angle -> setValue(((part->property("startAngle").toInt() / 16) - 90) * -1);
-	angle -> setValue(part->property("spanAngle").toInt() / -16);
+	start_angle->setValue(part->property("startAngle").toInt()/16);
+	angle->setValue(part->property("spanAngle").toInt()/16);
 	activeConnections(true);
 }
 

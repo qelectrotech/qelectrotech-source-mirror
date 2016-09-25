@@ -54,6 +54,7 @@ class QetGraphicsHandlerUtility
 	public:
 		static QVector <QPointF> pointsForRect (const QRectF &rect);
 		static QVector <QPointF> pointsForLine (const QLineF &line);
+		static QVector <QPointF> pointsForArc  (const QRectF &rect, qreal start_angle, qreal span_angle);
 		static QRectF rectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QRectF mirrorRectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QLineF lineForPosAtIndex (const QLineF &old_line, const QPointF &pos, int index);

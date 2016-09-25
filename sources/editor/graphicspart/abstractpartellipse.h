@@ -73,8 +73,8 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 	protected:
 		QList<QPointF> saved_points_;
 		QRectF m_rect;
-		int m_start_angle;
-		int m_span_angle;
+		qreal m_start_angle;
+		qreal m_span_angle;
 };
 
 #endif // ABSTRACTPARTELLIPSE_H

@@ -169,6 +169,28 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForLine(const QLineF &line) {
 	return (QVector<QPointF> {line.p1(), line.p2()});
 }
 
+#include <QDebug>
+/**
+ * @brief QetGraphicsHandlerUtility::pointsForArc
+ * Return the points for the given arc.
+ * The first value in the vector is the start point, the second the end point.
+ * @param rect
+ * @param start_angle : start angle in degree
+ * @param span_angle : span angle in degree;
+ * @return
+ */
+QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qreal start_angle, qreal span_angle)
+{
+	QVector<QPointF> vector;
+	QPainterPath path;
+	path.arcTo(rect, start_angle, 0);
+	vector.append(path.currentPosition());
+	path.arcTo(rect, start_angle, span_angle);
+	vector.append(path.currentPosition());
+	return vector;
+
+}
+
 /**
  * @brief QetGraphicsHandlerUtility::rectForPosAtIndex
  * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
