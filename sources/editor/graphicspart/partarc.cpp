@@ -196,7 +196,7 @@ void PartArc::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 		}
 	}
 	else if (m_resize_mode == 3) {
-		if (m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle/16, m_span_angle/16)) >= 0) {
+		if (m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16)) >= 0) {
 			setCursor(Qt::SizeAllCursor);
 			return;
 		}
