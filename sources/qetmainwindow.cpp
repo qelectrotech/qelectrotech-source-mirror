@@ -94,8 +94,16 @@ void QETMainWindow::initCommonActions() {
 	upgrade_ = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
 	upgrade_ -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 	
+	upgrade_M = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
+	upgrade_M -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
+	
 	connect(upgrade_, &QAction::triggered, [this](bool) {
 	QString link = "http://download.tuxfamily.org/qet/builds/nightly/";
+	QDesktopServices::openUrl(QUrl(link));
+	});
+	
+	connect(upgrade_M, &QAction::triggered, [this](bool) {
+	QString link = "http://download.tuxfamily.org/qet/builds/MAC_OS_X/";
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
@@ -129,6 +137,7 @@ void QETMainWindow::initCommonMenus() {
 	help_menu_ -> addAction(manual_online_);
 	help_menu_ -> addAction(youtube_);
 	help_menu_ -> addAction(upgrade_);
+	help_menu_ -> addAction(upgrade_M);
 	help_menu_ -> addAction(donate_);
 	help_menu_ -> addAction(about_qt_);
 	
@@ -137,7 +146,13 @@ upgrade_ -> setVisible(true);
 #else
 upgrade_ -> setVisible(false);
 #endif
-	
+
+#ifdef Q_OS_MAC
+upgrade_M -> setVisible(true);
+#else
+upgrade_M -> setVisible(false);
+#endif
+
 	insertMenu(0, settings_menu_);
 	insertMenu(0, help_menu_);
 }

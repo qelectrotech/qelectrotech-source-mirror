@@ -86,7 +86,7 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		drawCross(m_rect.center(), painter);
 		if (scene()->selectedItems().size() == 1) {
 			if (m_resize_mode == 3)
-				m_handler.drawHandler(painter, m_handler.pointsForArc(m_rect, m_start_angle/16, m_span_angle/16));
+				m_handler.drawHandler(painter, m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16));
 			else
 				m_handler.drawHandler(painter, m_handler.pointsForRect(m_rect));
 		}
@@ -147,7 +147,7 @@ QPainterPath PartArc::shape() const
 {
 	QPainterPath shape;
 	shape.arcMoveTo(m_rect, m_start_angle/16);
-	shape.arcTo(m_rect, m_start_angle/16, m_span_angle/16);
+	shape.arcTo(m_rect, m_start_angle /16, m_span_angle /16);
 
 	QPainterPathStroker pps;
 	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
@@ -164,7 +164,7 @@ QPainterPath PartArc::shadowShape() const
 {
 	QPainterPath shape;
 	shape.arcMoveTo(m_rect, m_start_angle/16);
-	shape.arcTo(m_rect, m_start_angle/16, m_span_angle/16);
+	shape.arcTo(m_rect, m_start_angle /16, m_span_angle /16);
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
@@ -231,9 +231,9 @@ void PartArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			}
 				//resize angle
 			if (m_resize_mode == 3) {
-				m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle/16, m_span_angle/16));
+				m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16));
 				if (m_handler_index == 0) {
-					m_span_point = m_handler.pointsForArc(m_rect, m_start_angle/16, m_span_angle/16).at(1);
+					m_span_point = m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16).at(1);
 
 					m_undo_command = new QPropertyUndoCommand(this, "startAngle", QVariant(m_start_angle));
 					m_undo_command->setText(tr("Modifier un arc"));
