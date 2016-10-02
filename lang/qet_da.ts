@@ -3757,7 +3757,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation>Staet opret klemmerække tilføjelse</translation>
+        <translation>Start udvidelsesmodul for opret klemrække</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -4836,7 +4836,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation>&amp;Start DXF konverter tilføjelse</translation>
+        <translation>&amp;Start udvidelsesmodul for DXF konvertering</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
