@@ -708,7 +708,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="376"/>
         <source>size:</source>
-        <translation>Taille:</translation>
+        <translation>Width:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
