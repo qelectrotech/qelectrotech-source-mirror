@@ -100,8 +100,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	
 		// Add the text field
 	text_item = new ConductorTextItem(properties_.text, this);
-	text_item -> setFlag(QGraphicsItem::ItemStacksBehindParent);
-
 	connect(text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
 }
 
