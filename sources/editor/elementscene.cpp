@@ -779,14 +779,13 @@ void ElementScene::getPasteArea(const QRectF &to_paste) {
 }
 
 /**
-	Supprime les parties de l'element et les objets d'annulations.
-	Les autres caracteristiques sont conservees.
-*/
+ * @brief ElementScene::reset
+ * Remove all QGraphicsItems in the scene and clear the undo stack.
+ */
 void ElementScene::reset() {
-	// supprime les objets d'annulation
+	clearSelection();
 	undoStack().clear();
 
-	// enleve les elements de la scene
 	foreach (QGraphicsItem *qgi, items()) {	
 		removeItem(qgi);
 		qgiManager().release(qgi);

@@ -323,7 +323,7 @@ void QETElementEditor::setupActions() {
 	addToolBar(Qt::TopToolBarArea, view_toolbar);
 	addToolBar(Qt::TopToolBarArea, element_toolbar);
 	
-	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()));
+	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()), Qt::QueuedConnection);
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
 	connect(QApplication::clipboard(),  SIGNAL(dataChanged()),      this, SLOT(slot_updateMenus()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateMenus()));
