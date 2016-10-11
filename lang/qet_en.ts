@@ -2139,7 +2139,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Export terminals in the nomenclature</translation>
+        <translation>Export terminals in the parts list</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -4271,7 +4271,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Exporter une nomenclature</source>
-        <translation>Export a nomenclature</translation>
+        <translation>Export parts list</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="414"/>
@@ -6359,7 +6359,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation>nomenclature_</translation>
+        <translation>parts list_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
@@ -6383,7 +6383,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>NOMENCLATURE : </source>
-        <translation>NOMENCLATURE:</translation>
+        <translation>PART LIST :</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="85"/>
@@ -7626,7 +7626,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="305"/>
         <source>Titre :</source>
-        <translation type="unfinished">Title :</translation>
+        <translation>Title :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
@@ -8484,7 +8484,7 @@ Maximum length : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation>Insert line</translation>
+        <translation>Insert link</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
