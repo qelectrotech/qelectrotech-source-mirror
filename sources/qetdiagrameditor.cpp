@@ -2158,7 +2158,11 @@ QProcess *process = new QProcess(qApp);
 //connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 //process->start("qet_tb_generator");
 
+#ifdef Q_OS_MAC
+success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator");
+#else
 success = process->startDetached("qet_tb_generator");
+#endif
 if ( !success ) {
 QMessageBox::warning(0,
 "Error launching plugin", 
@@ -2178,6 +2182,13 @@ QMessageBox::warning(0,
 					 "2. pip install qet_generator\n"
 					 ">> Update on Windows\n"
 					 "python -m pip install --upgrade qet_tb_generator\n"
+					 ">> First install on macOSX\n"
+					 "1. Install, if required, python 3.5 or above\n"
+					 "2. Install tkinter with Tcl/Tk\n"
+					 "3. Visit https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674\n"
+					 "2. pip3 install qet_generator\n"
+					 ">> Update on macOSX\n"
+					 "pip3 install --upgrade qet_tb_generator\n"
 					 );
 }
 
