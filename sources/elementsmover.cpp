@@ -125,12 +125,15 @@ void ElementsMover::endMovement()
 {
 		// A movement must be inited
 	if (!movement_running_) return;
-	
-	QUndoCommand *undo_object = nullptr;
+
+		//empty command to be used has parent of commands below
+	QUndoCommand *undo_object = new QUndoCommand();
 
 		//Create undo move if there is a movement
-	if (!current_movement_.isNull())
-		undo_object = new MoveElementsCommand(diagram_, moved_content_, current_movement_);
+	if (!current_movement_.isNull()) {
+		QUndoCommand *quc = new MoveElementsCommand(diagram_, moved_content_, current_movement_, undo_object);
+		undo_object->setText(quc->text());
+	}
 
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
@@ -141,18 +144,18 @@ void ElementsMover::endMovement()
 	{
 		Element *elmt = moved_content_.elements.toList().first();
 
+		int acc = elmt->AlignedFreeTerminals().size();
+
 		while (!elmt -> AlignedFreeTerminals().isEmpty())
 		{
 			QPair <Terminal *, Terminal *> pair = elmt -> AlignedFreeTerminals().takeFirst();
 
 			Conductor *conductor = new Conductor(pair.first, pair.second);
 
-				//Create an undo object for each new auto conductor, with undo_object for parent if exist
-				//Else the first undo for this auto conductor become the undo_object
-			if (undo_object)
-				new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
-			else
-				undo_object = new AddItemCommand<Conductor *>(conductor, diagram_, QPointF());
+				//Create an undo object for each new auto conductor, with undo_object for parent
+			new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
+				if (undo_object->text().isEmpty())
+					undo_object->setText(QObject::tr("Ajouter %n conducteur(s)", "add a numbers of conductor one or more", acc));
 
 				//Get all conductors at the same potential of conductor
 			QSet <Conductor *> conductors_list = conductor->relatedPotentialConductors();
@@ -183,9 +186,11 @@ void ElementsMover::endMovement()
 		};
 	}
 
-		//Add undo_object if exist
-	if (undo_object)
+		//Add undo_object if have child
+	if (undo_object->childCount() >= 1)
 		diagram_ -> undoStack().push(undo_object);
+	else
+		delete undo_object;
 	
 		// There is no movement in progress now
 	movement_running_ = false;
