@@ -14,6 +14,7 @@
     
     # You should have received a copy of the GNU General Public License
     # along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+ # Need homebrew and coreutils installed see <http://brew.sh>.
 
 # configuration
 APPNAME='qelectrotech'
@@ -212,7 +213,7 @@ QET_LANG_DIR="${current_dir}/lang/"
 
 
 # Add new folder for Qt dialog translation see
-## //download.tuxfamily.org/qet/Qt_lang/
+## see <https://download.tuxfamily.org/qet/Qt_lang/>.
 
 LANG_DIR="${current_dir}/lang1/"
 
@@ -230,14 +231,15 @@ fi
 
 if [ -d "${QET_LANG_DIR}" ]; then
     echo "Copying translations in the bundle... "
-    #mkdir $BUNDLE/Contents/Resources/lang
-    cp -R ${QET_LANG_DIR} $BUNDLE/Contents/Resources/lang
+    mkdir $BUNDLE/Contents/Resources/lang
+    gcp -R ${current_dir}/lang/*.qm $BUNDLE/Contents/Resources/lang
 fi
 
 if [ -d "${LANG_DIR}" ]; then
 echo "Copying translations in the bundle... "
 #mkdir $BUNDLE/Contents/Resources/lang
-cp -R ${LANG_DIR} $BUNDLE/Contents/Resources/lang
+gcp -R ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
+
 fi
 
 
