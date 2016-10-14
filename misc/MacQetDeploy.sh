@@ -210,6 +210,12 @@ QET_ELMT_DIR="${current_dir}/elements/"
 QET_TBT_DIR="${current_dir}/titleblocks/"
 QET_LANG_DIR="${current_dir}/lang/"
 
+
+# Add new folder for Qt dialog translation see
+## //download.tuxfamily.org/qet/Qt_lang/
+
+LANG_DIR="${current_dir}/lang1/"
+
 if [ -d "${QET_ELMT_DIR}" ]; then
     echo "Copying add elements in the bundle..."
     #mkdir $BUNDLE/Contents/Resources/elements
@@ -226,6 +232,12 @@ if [ -d "${QET_LANG_DIR}" ]; then
     echo "Copying translations in the bundle... "
     #mkdir $BUNDLE/Contents/Resources/lang
     cp -R ${QET_LANG_DIR} $BUNDLE/Contents/Resources/lang
+fi
+
+if [ -d "${LANG_DIR}" ]; then
+echo "Copying translations in the bundle... "
+#mkdir $BUNDLE/Contents/Resources/lang
+cp -R ${LANG_DIR} $BUNDLE/Contents/Resources/lang
 fi
 
 
