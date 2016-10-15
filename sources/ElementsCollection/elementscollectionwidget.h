@@ -69,6 +69,7 @@ class ElementsCollectionWidget : public QWidget
 		void newElement();
 		void showThisDir();
 		void resetShowThisDir();
+		void dirProperties();
 		void search();
 		void hideCollection(bool hide = true);
 		void hideItem(bool hide, const QModelIndex &index = QModelIndex(), bool recursive = true);
@@ -102,7 +103,8 @@ class ElementsCollectionWidget : public QWidget
 				*m_new_directory,
 				*m_new_element,
 				*m_show_this_dir,
-				*m_show_all_dir;
+				*m_show_all_dir,
+				*m_dir_propertie;
 
 		bool m_first_show = true;
 		QList<QETProject *> m_waiting_project;

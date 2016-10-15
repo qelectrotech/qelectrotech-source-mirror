@@ -53,6 +53,8 @@ class ElementCollectionItem : public QStandardItem
 
 		QList<ElementCollectionItem *> elementsDirectChild() const;
 		QList<ElementCollectionItem *> directoriesDirectChild() const;
+		QList<ElementCollectionItem *> elementsChild() const;
+		QList<ElementCollectionItem *> directoriesChild() const;
 		QList<ElementCollectionItem *> items() const;
 };
 

@@ -127,6 +127,7 @@ void ElementsCollectionWidget::setUpAction()
 	m_new_element =    new QAction(QET::Icons::ElementNew,    tr("Nouvel élément"),                  this);
 	m_show_this_dir =  new QAction(QET::Icons::ZoomDraw,      tr("Afficher uniquement ce dossier"),  this);
 	m_show_all_dir =   new QAction(QET::Icons::ZoomOriginal,  tr("Afficher tous les dossiers"),      this);
+	m_dir_propertie =  new QAction(QET::Icons::Folder,        tr("Propriété du dossier"),            this);
 }
 
 /**
@@ -184,6 +185,7 @@ void ElementsCollectionWidget::setUpConnection()
 	connect(m_new_element,    &QAction::triggered, this, &ElementsCollectionWidget::newElement);
 	connect(m_show_this_dir,  &QAction::triggered, this, &ElementsCollectionWidget::showThisDir);
 	connect(m_show_all_dir,   &QAction::triggered, this, &ElementsCollectionWidget::resetShowThisDir);
+	connect(m_dir_propertie,  &QAction::triggered, this, &ElementsCollectionWidget::dirProperties);
 
 	connect(m_tree_view, &QTreeView::doubleClicked, [this](const QModelIndex &index) {
 		this->m_index_at_context_menu = index ;
@@ -242,6 +244,8 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 			//there is a current filtered dir, add entry to reset it
 		if (m_showed_index.isValid())
 			m_context_menu->addAction(m_show_all_dir);
+
+		m_context_menu->addAction(m_dir_propertie);
 	}
 	if (add_open_dir)
 		m_context_menu->addAction(m_open_dir);
@@ -473,6 +477,28 @@ void ElementsCollectionWidget::resetShowThisDir()
 }
 
 /**
+ * @brief ElementsCollectionWidget::dirProperties
+ * Open an informative dialog about the curent index
+ */
+void ElementsCollectionWidget::dirProperties()
+{
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	if (eci && eci->isDir()) {
+		QString txt1 = tr("Le dossier %1 contient").arg(eci->localName());
+		QString txt2 = tr("%n élément(s), répartie(s)", "", eci->elementsChild().size());
+		QString txt3 = tr("dans %n dossier(s).", "" , eci->directoriesChild().size());
+		QString txt4 = tr("Chemin de la collection :  %1").arg(eci->collectionPath());
+		QString txt5;
+		if (eci->type() == FileElementCollectionItem::Type) {
+			txt5 = tr("Chemin dans le système de fichiers :  %1").arg(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
+		}
+		QMessageBox::information(this,
+								 tr("Propriété du dossier %1").arg(eci->localName()),
+								 txt1 + " " + txt2 + " " + txt3 + "\n\n" + txt4 + "\n" + txt5);
+	}
+}
+
+/**
  * @brief ElementsCollectionWidget::reload, the displayed collections.
  */
 void ElementsCollectionWidget::reload()
@@ -629,5 +655,8 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool 
  * @return The internal pointer of index casted to ElementCollectionItem;
  */
 ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index) {
+	if (!index.isValid())
+		return nullptr;
+
 	return static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
 }

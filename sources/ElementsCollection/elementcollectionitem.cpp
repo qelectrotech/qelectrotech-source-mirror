@@ -193,6 +193,36 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesDirectChild() c
 }
 
 /**
+ * @brief ElementCollectionItem::elementsChild
+ * @return Every elements child (direct and indirect) of this item
+ */
+QList<ElementCollectionItem *> ElementCollectionItem::elementsChild() const
+{
+	QList <ElementCollectionItem *> list = elementsDirectChild();
+
+	foreach (ElementCollectionItem *eci, directoriesChild())
+		list.append(eci->elementsDirectChild());
+
+	return list;
+}
+
+/**
+ * @brief ElementCollectionItem::directoriesChild
+ * @return Every directories child (direct and indirect) of this item
+ */
+QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
+{
+	QList<ElementCollectionItem *> list = directoriesDirectChild();
+	QList<ElementCollectionItem *> child_list;
+	foreach (ElementCollectionItem *eci, list) {
+		child_list.append(eci->directoriesChild());
+	}
+
+	list.append(child_list);
+	return list;
+}
+
+/**
  * @brief ElementCollectionItem::items
  * @return every childs of this item (direct and indirect childs)
  */
