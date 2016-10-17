@@ -56,7 +56,7 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 	if (diagram)
 	{
 		m_diagram = diagram;
-		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()), Qt::QueuedConnection);
 		connect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
 		selectionChanged();
 	}
