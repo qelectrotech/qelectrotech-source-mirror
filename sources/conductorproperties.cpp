@@ -256,12 +256,12 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("num", text);
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension-protocol", m_tension_protocol);
-	e.setAttribute("numsize", text_size);
-	e.setAttribute("condsize", cond_size);
+	e.setAttribute("numsize", QString::number(text_size));
+	e.setAttribute("condsize", QString::number(cond_size));
 	e.setAttribute("displaytext", m_show_text);
 	e.setAttribute("onetextperfolio", m_one_text_per_folio);
-	e.setAttribute("vertirotatetext", verti_rotate_text);
-	e.setAttribute("horizrotatetext", horiz_rotate_text);
+	e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
+	e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
 	
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
