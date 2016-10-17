@@ -18,6 +18,7 @@
 #include "masterelement.h"
 #include "crossrefitem.h"
 #include "elementtextitem.h"
+#include "diagram.h"
 
 /**
  * @brief MasterElement::MasterElement
@@ -123,6 +124,15 @@ void MasterElement::initLink(QETProject *project) {
 }
 
 /**
+ * @brief MasterElement::folioIdChange
+ * Used to update the label of this item when the folio id change
+ */
+void MasterElement::folioIdChange() {
+	DiagramContext dc =elementInformations();
+	setTaggedText("label", assignVariables(dc["label"].toString(), this), true);
+}
+
+/**
  * @brief MasterElement::changeElementInfo()
  * Update label if it contains %c, %l, %f or %F variables
  */
@@ -144,12 +154,22 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 	Element	*elmt = this;
 	newstr = assignVariables(newstr, elmt);
 
-	//Label of element
+		//Label of element
 	if (old_info["label"].toString() != newstr) {
 		if (new_info["label"].toString().isEmpty())
 			setTaggedText("label", "_", false);
 		else {
 			setTaggedText("label", newstr, true);
+		}
+
+			//If autonum formula have %id we connect the change of folio position, to keep up to date the label.
+		if (diagram() && diagram()->project()) {
+			if (old_info["label"].toString().contains("%id") && !new_info["label"].toString().contains("%id")) {
+				disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
+			}
+			else if (new_info["label"].toString().contains("%id")) {
+				connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
+			}
 		}
 	}
 

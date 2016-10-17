@@ -39,6 +39,9 @@ class SimpleElement : public CustomElement {
 
 	signals:
 
+	private:
+		void folioIdChange();
+
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
 		void changeElementInfo();
@@ -46,7 +49,6 @@ class SimpleElement : public CustomElement {
 	private:
 		CommentItem *m_comment_item;
 		CommentItem *m_location_item;
-
 };
 
 #endif // SIMPLEELEMENT_H

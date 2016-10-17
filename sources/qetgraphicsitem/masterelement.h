@@ -43,6 +43,9 @@ class MasterElement : public CustomElement
 	
 	signals:
 
+	private:
+		void folioIdChange();
+
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
 		void changeElementInfo();

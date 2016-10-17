@@ -18,6 +18,7 @@
 #include "simpleelement.h"
 #include "commentitem.h"
 #include "elementtextitem.h"
+#include "diagram.h"
 
 /**
  * @brief SimpleElement::SimpleElement
@@ -57,6 +58,15 @@ void SimpleElement::initLink(QETProject *project) {
 }
 
 /**
+ * @brief SimpleElement::folioIdChange
+ * Use to update the label of this item when the foio id change
+ */
+void SimpleElement::folioIdChange() {
+	DiagramContext dc =elementInformations();
+	setTaggedText("label", assignVariables(dc["label"].toString(), this), true);
+}
+
+/**
  * @brief SimpleElement::changeElementInfo()
  * Update label if it contains %c, %l, %f or %F variables
  */
@@ -77,13 +87,23 @@ void SimpleElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 	Element *elmt = this;
 	label = assignVariables(label,elmt);
 
-	//Label of element
+		//Label of element
 	if (old_info["label"].toString() != label) {
 		if (new_info["label"].toString().isEmpty())
 			setTaggedText("label", "_", false);
 		else {
 			setTaggedText("label", label, true);
 		}
+
+		//If autonum formula have %id we connect the change of folio position, to keep up to date the label.
+	if (diagram() && diagram()->project()) {
+		if (old_info["label"].toString().contains("%id") && !new_info["label"].toString().contains("%id")) {
+			disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &SimpleElement::folioIdChange);
+		}
+		else if (new_info["label"].toString().contains("%id")) {
+			connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &SimpleElement::folioIdChange);
+		}
+	}
 	}
 
 	if (ElementTextItem *eti = taggedText("label")) {
