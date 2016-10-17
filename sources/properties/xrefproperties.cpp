@@ -88,7 +88,7 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
 	int offset = m_offset;
-	xml_element.setAttribute("offset", offset);
+	xml_element.setAttribute("offset", QString::number(offset));
 	QString master_label = m_master_label;
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;

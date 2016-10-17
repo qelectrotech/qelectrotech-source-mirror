@@ -600,8 +600,8 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		{
 			QDomElement point = document.createElement("point");
 			QPointF pf = mapToScene(p);
-			point.setAttribute("x", pf.x());
-			point.setAttribute("y", pf.y());
+			point.setAttribute("x", QString::number(pf.x()));
+			point.setAttribute("y", QString::number(pf.y()));
 			points.appendChild(point);
 		}
 		result.appendChild(points);

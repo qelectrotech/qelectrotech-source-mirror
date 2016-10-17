@@ -857,8 +857,8 @@ void Conductor::loadSequential(QDomElement* e, QString seq, QStringList* list) {
 QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
 	QDomElement e = d.createElement("conductor");
 
-	e.setAttribute("x", pos().x());
-	e.setAttribute("y", pos().y());
+	e.setAttribute("x", QString::number(pos().x()));
+	e.setAttribute("y", QString::number(pos().y()));
 	e.setAttribute("terminal1", table_adr_id.value(terminal1));
 	e.setAttribute("terminal2", table_adr_id.value(terminal2));
 	
