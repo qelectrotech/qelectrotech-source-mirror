@@ -983,9 +983,19 @@ QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
 	return(new_node.toElement());
 }
 
-void Diagram::initElementsLinks() {
+/**
+ * @brief Diagram::refreshContents
+ * refresh all content of diagram.
+ * - refresh conductor text.
+ * - linking the elements waiting to be linked
+ */
+void Diagram::refreshContents() {
+
 	foreach (Element *elmt, elements())
 		elmt->initLink(project());
+
+	foreach (Conductor *conductor, conductors())
+		conductor->refreshText();
 }
 
 /**
@@ -1506,7 +1516,7 @@ bool Diagram::freezeNewElements() {
  */
 void Diagram::freezeConductors() {
 	foreach (Conductor *cnd, conductors()) {
-		cnd->freezeLabel();
+		cnd->setFreezeLabel(true);
 	}
 }
 
@@ -1516,7 +1526,7 @@ void Diagram::freezeConductors() {
  */
 void Diagram::unfreezeConductors() {
 	foreach (Conductor *cnd, conductors()) {
-		cnd->unfreezeLabel();
+		cnd->setFreezeLabel(false);
 	}
 }
 

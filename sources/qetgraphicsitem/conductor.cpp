@@ -48,7 +48,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2),
 	setSeq(true),
-	freeze_label(false),
 	bMouseOver(false),
 	m_handler(10),
 	text_item(0),
@@ -1447,6 +1446,15 @@ void Conductor::setText(const QString &t) {
 }
 
 /**
+ * @brief Conductor::refreshText
+ * Refresh the text of this conductor.
+ * recalcule and set the text according to the formula.
+ */
+void Conductor::refreshText() {
+	setText(m_freeze_label? text_item->toPlainText() : properties().text);
+}
+
+/**
  * @brief Conductor::setProperties
  * Set new properties for this conductor
  * Also change the common properties for every conductors at the same potential.
@@ -1478,8 +1486,8 @@ void Conductor::setProperties(const ConductorProperties &properties)
 		else
 			m_frozen_label = properties_.text;
 	}
-	if (freeze_label)
-		freezeLabel();
+
+	setFreezeLabel(m_freeze_label);
 	if (properties_.type != ConductorProperties::Multi)
 		text_item -> setVisible(false);
 	else
@@ -1883,22 +1891,23 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
 }
 
 /**
- * @brief Conductor::freezeLabel
- * Freeze this conductor label
+ * @brief Conductor::setFreezeLabel
+ * Freeze this conductor label if true
+ * Unfreeze this conductor label if false
+ * @param freeze
  */
-void Conductor::freezeLabel() {
-	QString freezelabel = this->text_item->toPlainText();
-	m_frozen_label = properties_.text;
-	this->setText(freezelabel);
-	this->properties_.text = freezelabel;
-}
+void Conductor::setFreezeLabel(bool freeze) {
+	m_freeze_label = freeze;
 
-/**
- * @brief Conductor::unfreezeLabel
- * Unfreeze this conductor label
- */
-void Conductor::unfreezeLabel() {
-	this->setText(m_frozen_label);
-	if (m_frozen_label == "") return;
-	properties_.text = m_frozen_label;
+	if (m_freeze_label) {
+		QString freezelabel = this->text_item->toPlainText();
+		m_frozen_label = properties_.text;
+		this->setText(freezelabel);
+		this->properties_.text = freezelabel;
+	}
+	else {
+		this->setText(m_frozen_label);
+		if (m_frozen_label == "") return;
+		properties_.text = m_frozen_label;
+	}
 }

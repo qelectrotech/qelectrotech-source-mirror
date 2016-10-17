@@ -166,8 +166,9 @@ class Diagram : public QGraphicsScene
 	void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
 	void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
 
-	// methods related to graphics items addition/removal on the diagram
-	void initElementsLinks();
+	void refreshContents();
+
+		// methods related to graphics items addition/removal on the diagram
 	virtual void addItem    (QGraphicsItem *item);
 	virtual void removeItem (QGraphicsItem *item);
 	

@@ -1367,8 +1367,9 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		addDiagram(diagram);
 
 		//Initialise links between elements in this project
+		//and refresh the text of conductor
 	foreach (Diagram *d, diagrams())
-		d->initElementsLinks();
+		d->refreshContents();
 
 	delete dlgWaiting;
 }

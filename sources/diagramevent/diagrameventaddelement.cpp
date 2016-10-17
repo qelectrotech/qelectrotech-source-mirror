@@ -217,7 +217,8 @@ void DiagramEventAddElement::addElement()
 	element -> setRotation(m_element -> rotation());
 	m_diagram -> addItem(element);
 
-	QUndoCommand *undo_object = new AddItemCommand<Element *>(element, m_diagram, m_element -> pos());
+	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
+	new AddItemCommand<Element *>(element, m_diagram, m_element -> pos(), undo_object);
 
 	while (!element -> AlignedFreeTerminals().isEmpty() && m_diagram -> project() -> autoConductor())
 	{
@@ -232,8 +233,9 @@ void DiagramEventAddElement::addElement()
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
 		conductor->setSeq = true;
-		if (m_diagram->freezeNewConductors() || m_diagram->project()->freezeNewConductors() )
-			conductor->freeze_label = true;
+		if (m_diagram->freezeNewConductors() || m_diagram->project()->freezeNewConductors()) {
+			conductor->setFreezeLabel(true);
+		}
 	};
 	m_diagram -> undoStack().push(undo_object);
 	element->setSequential();

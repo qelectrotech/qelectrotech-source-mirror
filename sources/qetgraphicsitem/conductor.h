@@ -95,6 +95,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	QString text() const;
 	QString assignVariables(QString) ;
 	void setText(const QString &);
+	void refreshText();
 	QString assignSeq (QString, Conductor*);
 	void setSequential ();
 	void setOthersSequential (Conductor *);
@@ -131,9 +132,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QStringList seq_hundred;
 		QStringList seq_hundredfolio;
 		bool setSeq;
-		bool freeze_label;
-		void freezeLabel();
-		void unfreezeLabel();
+		void setFreezeLabel(bool freeze);
 		QString m_frozen_label;
 	
 	public slots:
@@ -153,32 +152,33 @@ class Conductor : public QObject, public QGraphicsPathItem
 
 	private:
 		QetGraphicsHandlerUtility m_handler;
-	/// Functional properties
+		/// Functional properties
 	ConductorProperties properties_;
-	/// Text input for non simple, non-singleline conductors
+		/// Text input for non simple, non-singleline conductors
 	ConductorTextItem *text_item;
-	/// Segments composing the conductor
+		/// Segments composing the conductor
 	ConductorSegment *segments;
-	/// Attributs related to mouse interaction
+		/// Attributs related to mouse interaction
 	bool moving_segment;
 	int moved_point;
 	qreal previous_z_value;
 	ConductorSegment *moved_segment;
 	QPointF before_mov_text_pos_;
-	/// Whether the conductor was manually modified by users
+		/// Whether the conductor was manually modified by users
 	bool modified_path;
-	/// Whether the current profile should be saved as soon as possible
+		/// Whether the current profile should be saved as soon as possible
 	bool has_to_save_profile;
-	/// conductor profile: "photography" of what the conductor is supposed to look
-	/// like - there is one profile per kind of traject
+		/// conductor profile: "photography" of what the conductor is supposed to look
+		/// like - there is one profile per kind of traject
 	ConductorProfilesGroup conductor_profiles;
-	/// QPen et QBrush objects used to draw conductors
+		/// QPen et QBrush objects used to draw conductors
 	static QPen conductor_pen;
 	static QBrush conductor_brush;
 	static bool pen_and_brush_initialized;
-	/// Define whether and how the conductor should be highlighted
+		/// Define whether and how the conductor should be highlighted
 	Highlight must_highlight_;
 	bool m_valid;
+	bool m_freeze_label = false;
 	
 	private:
 	void segmentsToPath();
