@@ -4512,7 +4512,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="677"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt; In the absence of terminal, the element may be connected to other elements via conductors.</translation>
+        <translation type="unfinished">&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="698"/>
