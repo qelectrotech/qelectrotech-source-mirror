@@ -63,6 +63,7 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 	else
 	{
 		m_diagram = nullptr;
+		m_edited_qgi_type = -1;
 		clear();
 	}
 }
@@ -135,5 +136,6 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 void DiagramPropertiesEditorDockWidget::diagramWasDeleted()
 {
 	m_diagram = nullptr;
+	m_edited_qgi_type = -1;
 	clear();
 }
