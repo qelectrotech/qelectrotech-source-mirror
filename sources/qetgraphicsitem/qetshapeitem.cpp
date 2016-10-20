@@ -246,27 +246,23 @@ QPainterPath QetShapeItem::shape() const
 	pps.setJoinStyle(Qt::RoundJoin);
 	path = pps.createStroke(path);
 
-		/**
-		  Code below is commented to avoid weird bug see : QPainterPath Conductor::shape() const
-		  for more information
-		**/
-//	if (isSelected())
-//	{
-//		QVector <QPointF> vector;
+	if (isSelected())
+	{
+		QVector <QPointF> vector;
 
-//		if (m_shapeType == Line)
-//			vector << m_P1 << m_P2;
-//		else if (m_shapeType == Rectangle || m_shapeType == Ellipse) {
-//			QRectF rect (m_P1, m_P2);
-//			vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
-//		}
-//		else
-//			vector = m_polygon;
+		if (m_shapeType == Line)
+			vector << m_P1 << m_P2;
+		else if (m_shapeType == Rectangle || m_shapeType == Ellipse) {
+			QRectF rect (m_P1, m_P2);
+			vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
+		}
+		else
+			vector = m_polygon;
 
-//		foreach(QRectF r, m_handler.handlerRect(vector))
-//			path.addRect(r);
-//	}
-
+		foreach(QRectF r, m_handler.handlerRect(vector))
+			path.addRect(r);
+	}
+	path.addRect(path.boundingRect());
 	return (path);
 }
 
