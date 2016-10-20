@@ -501,6 +501,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 			qp -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
 		}
 	}
+
 	qp -> restore();
 }
 
@@ -723,9 +724,21 @@ QPainterPath Conductor::shape() const
 
 	QPainterPath shape_(pps.createStroke(path()));
 
-	if (isSelected())
-		foreach (QRectF rect, m_handler.handlerRect(handlerPoints()))
-			shape_.addRect(rect);
+	/**
+		Add handle rect to path, occur a weird bug.
+		when the conductor is removed from the scene he continue to be painted in the scene and make artefact.
+		If we save (exactly when we clear the undo stack of project when saving), Qet crash,
+		Don't add the handle rect to the path seem to work well.
+		More information here :
+		https://qelectrotech.org/bugtracker/view.php?id=107
+		https://qelectrotech.org/forum/viewtopic.php?pid=5619#p5619
+		https://qelectrotech.org/forum/viewtopic.php?pid=5067#p5067
+	**/
+//	if (isSelected()) {
+//		foreach (QRectF rect, m_handler.handlerRect(handlerPoints())) {
+//			shape_.addRect(rect);
+//		}
+//	}
 
 	return shape_;
 }
