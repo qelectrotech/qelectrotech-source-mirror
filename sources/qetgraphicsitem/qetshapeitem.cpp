@@ -262,7 +262,7 @@ QPainterPath QetShapeItem::shape() const
 		foreach(QRectF r, m_handler.handlerRect(vector))
 			path.addRect(r);
 	}
-	path.addRect(path.boundingRect());
+
 	return (path);
 }
 
