@@ -97,11 +97,6 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 
-	connect(
-		this, SIGNAL(aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
-		this, SLOT(setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
-		Qt::QueuedConnection
-	);
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
 	connect(edit_conductor_color_shortcut, SIGNAL(activated()), this, SLOT(editSelectedConductorColor()));
 }
@@ -299,15 +294,51 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 }
 
 /**
-	Handle the drop of an element.
-	@param e the QDropEvent describing the current drag'n drop
-*/
+ * @brief DiagramView::handleTitleBlockDrop
+ * Handle the dropEvent that contain data of a titleblock
+ * @param e
+ */
 void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
-	// fetch the title block template location from the drop event
+		// fetch the title block template location from the drop event
 	TitleBlockTemplateLocation tbt_loc;
-	tbt_loc.fromString(e -> mimeData() -> text());
-	if (tbt_loc.isValid()) {
-		emit(aboutToSetDroppedTitleBlockTemplate(tbt_loc));
+	tbt_loc.fromString(e->mimeData()->text());
+
+
+	if (tbt_loc.isValid())
+	{
+			// fetch the current title block properties
+		TitleBlockProperties titleblock_properties_before = scene->border_and_titleblock.exportTitleBlock();
+
+			// check the provided template is not already applied
+		QETProject *tbt_parent_project = tbt_loc.parentProject();
+		if (tbt_parent_project && tbt_parent_project == scene -> project())
+		{
+				// same parent project and same name = same title block template
+			if (tbt_loc.name() == titleblock_properties_before.template_name)
+				return;
+		}
+
+			// integrate the provided template into the project if needed
+		QString integrated_template_name = tbt_loc.name();
+		if (mustIntegrateTitleBlockTemplate(tbt_loc))
+		{
+			IntegrationMoveTitleBlockTemplatesHandler *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
+			//QString error_message;
+			integrated_template_name = scene->project()->integrateTitleBlockTemplate(tbt_loc, handler);
+
+			if (integrated_template_name.isEmpty())
+				return;
+		}
+
+			// apply the provided title block template
+		if (titleblock_properties_before.template_name == integrated_template_name)
+			return;
+
+		TitleBlockProperties titleblock_properties_after = titleblock_properties_before;
+		titleblock_properties_after.template_name = integrated_template_name;
+		scene->undoStack().push(new ChangeTitleBlockCommand(scene, titleblock_properties_before, titleblock_properties_after));
+
+		adjustSceneRect();
 	}
 }
 
@@ -1249,35 +1280,4 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 		return;
 	}
 	QGraphicsView::mouseDoubleClickEvent(e);
-}
-
-/**
-	@param tbt TitleBlockTemplateLocation
-*/
-void DiagramView::setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &tbt) {
-	// fetch the current title block properties
-	TitleBlockProperties titleblock_properties_before = scene -> border_and_titleblock.exportTitleBlock();
-
-	// check the provided template is not already applied
-	QETProject *tbt_parent_project = tbt.parentProject();
-	if (tbt_parent_project && tbt_parent_project == scene -> project()) {
-		// same parent project and same name = same title block template
-		if (tbt.name() == titleblock_properties_before.template_name) return;
-	}
-
-	// integrate the provided template into the project if needed
-	QString integrated_template_name = tbt.name();
-	if (mustIntegrateTitleBlockTemplate(tbt)) {
-		IntegrationMoveTitleBlockTemplatesHandler *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
-		//QString error_message;
-		integrated_template_name = scene -> project() -> integrateTitleBlockTemplate(tbt, handler);
-		if (integrated_template_name.isEmpty()) return;
-	}
-
-	// apply the provided title block template
-	if (titleblock_properties_before.template_name == integrated_template_name) return;
-	TitleBlockProperties titleblock_properties_after = titleblock_properties_before;
-	titleblock_properties_after.template_name = integrated_template_name;
-	scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock_properties_before, titleblock_properties_after));
-	adjustSceneRect();
 }
