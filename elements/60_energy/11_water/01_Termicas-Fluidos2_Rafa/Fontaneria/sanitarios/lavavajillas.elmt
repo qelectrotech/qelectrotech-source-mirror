@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Lavavajillas</name>
+        <name lang="ca">Rentaplats</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="7.48442" x="9.14135" y="2.28816" antialias="true" height="16.4321" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="1.49688" x="9.51558" y="-8.30144" antialias="true" height="1.46063" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.49688" x="6.89603" y="-8.30144" antialias="true" height="1.46063" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.49688" x="4.27648" y="-8.30144" antialias="true" height="1.46063" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.97449" x="-15.3702" y="-10.1852" antialias="false" height="3.73776" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10.5814" x="-7.33096" y="-3.74415" antialias="false" height="1.4454" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29.8088" x="-16.9252" y="-12.9593" antialias="false" height="7.95735" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29.8088" x="-16.9252" y="-5.00198" antialias="false" height="25.287" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.953" x1="-16.6799" y2="-11.953" x2="12.8836"/>
+        <ellipse width="1.49688" x="1.28271" y="-8.30144" antialias="true" height="1.46063" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.61332" x="10.264" y="3.01847" antialias="true" height="14.9715" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="1.49688" x="15.5031" y="9.59133" antialias="false" height="0.730317" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-9.94393" y="11.7823" size="4" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.3068" x1="5.00995" y2="14.0927" x2="5.00995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.3384" x1="4.09008" y2="14.3384" x2="5.97529"/>
+        <polygon x4="3.15382" y5="8.49585" x5="3.52804" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.49585" x1="3.15382" y2="11.052" x2="5.02492" y3="8.49585" x3="7.27025" y4="8.49585"/>
+        <terminal x="16.2516" y="10.3216" orientation="n"/>
+    </description>
+</definition>

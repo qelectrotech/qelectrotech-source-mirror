@@ -1,0 +1,27 @@
+<definition width="50" hotspot_y="15" hotspot_x="38" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Conector Bajante</name>
+        <name lang="ca">Connector baixant</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon y1="4.91304" x3="-2.82558" y4="12.1786" x4="-3.85077" x1="-2.82558" closed="false" y3="11.5732" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="0.25" antialias="false" y2="7.94037"/>
+        <line y1="10.4669" end1="none" x1="-3.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.5" antialias="false" y2="15.7077" length2="1.5"/>
+        <line y1="4.95446" end1="none" x1="-11" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15.5" antialias="false" y2="3.64098" length2="1.5"/>
+        <line y1="3.64098" end1="none" x1="-16.0206" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-19.4618" antialias="false" y2="3.64098" length2="1.5"/>
+        <rect width="6" y="-2.92645" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26" antialias="false" height="7.22417"/>
+        <line y1="12.1786" end1="none" x1="-3.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-11" antialias="false" y2="4.95446" length2="1.5"/>
+        <rect width="9.75" y="16.0893" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" antialias="false" height="4.5972"/>
+        <rect width="9.75" y="-10.1506" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" antialias="false" height="4.5972"/>
+        <line y1="4.29772" end1="none" x1="-3.54125" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8.77812" antialias="false" y2="0.357265" length2="1.5"/>
+        <line y1="0.357265" end1="none" x1="-8.77812" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15.5113" antialias="false" y2="-2.26971" length2="1.5"/>
+        <line y1="-2.26971" end1="none" x1="-15.5113" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-20" antialias="false" y2="-2.26971" length2="1.5"/>
+        <line y1="-5.55342" end1="none" x1="4.75" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="4.75" antialias="false" y2="15.134" length2="1.5"/>
+        <line y1="3.81611" end1="none" x1="-3.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.5" antialias="false" y2="-5.05834" length2="1.5"/>
+        <input size="4" text="_" y="11.5" tagg="label" x="9" rotate="true"/>
+        <terminal y="-10.1506" orientation="n" x="0.25"/>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="0" orientation="w" x="-30"/>
+    </description>
+</definition>

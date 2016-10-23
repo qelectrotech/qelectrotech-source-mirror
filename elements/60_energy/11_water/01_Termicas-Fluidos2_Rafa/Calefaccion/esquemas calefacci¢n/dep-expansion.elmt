@@ -1,0 +1,16 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="22" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito expansión</name>
+        <name lang="ca">Dipósit esxpansió</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="12" x="0" y="-8" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <ellipse width="23" x="-11" y="-16" antialias="true" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="0" y2="10" x2="0"/>
+        <arc width="11" x="-11" y="-8" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <input x="-4" y="-24.1826" size="4" rotate="true" text="_L" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,40 @@
+<definition hotspot_x="49" link_type="simple" height="90" orientation="dyyy" hotspot_y="55" width="120" version="0.5" type="element">
+    <names>
+        <name lang="es">Sala fría</name>
+        <name lang="ca">Sala freda</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input rotate="true" text="ºC:_" size="4" x="-45" tagg="label" y="-48"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29" length1="1.5" end1="none" length2="1.5" x1="23" x2="24" y2="-22" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38.45" length1="1.5" end1="none" length2="1.5" x1="11.9524" x2="29.7619" y2="-30.2" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="9.9" width="4.85714" x="21.6667" antialias="true" y="-30.2"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="1.95" width="1.2381" x="35" antialias="true" y="-21.2"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6" length1="1.5" end1="none" length2="1.5" x1="3" x2="3" y2="10" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.6" length1="1.5" end1="none" length2="1.5" x1="11.9524" x2="29.7619" y2="-15.35" end2="none" antialias="false"/>
+        <polygon y3="-0.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-50" y4="-17" y5="-50" x5="2.23809" x1="2.23809" x2="-46.3333" x4="67" y2="-33.5" antialias="false" closed="false" x3="18.4286"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.67605" length1="1.5" end1="none" length2="1.5" x1="18.4286" x2="18.4286" y2="29.3907" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-49.8761" length1="1.5" end1="none" length2="1.5" x1="2.23809" x2="2.23809" y2="-19.8093" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.5261" length1="1.5" end1="none" length2="1.5" x1="67" x2="67" y2="13.5407" end2="none" antialias="false"/>
+        <polygon y3="30.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19" y4="14" y5="-19" x5="2.23809" x1="2.23809" x2="-46.3333" x4="67" y2="-2.5" antialias="false" closed="false" x3="18.4286"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29" length1="1.5" end1="none" length2="1.5" x1="25" x2="22" y2="-22" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-33.026" length1="1.5" end1="none" length2="1.5" x1="-46.3333" x2="-46.3333" y2="-2.95933" end2="none" antialias="false"/>
+        <polygon y3="-15.35" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31.85" y4="-17" y5="-31.85" x5="37.8571" x1="37.8571" x2="29.7619" x4="37.8571" y2="-30.2" antialias="false" closed="false" x3="29.7619"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-25" length1="1.5" end1="none" length2="1.5" x1="22" x2="25" y2="-26" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.1" length1="1.5" end1="none" length2="1.5" x1="20.0476" x2="37.8571" y2="-31.85" end2="none" antialias="false"/>
+        <polygon y3="-23.6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.1" x1="20.0476" x2="11.9524" y2="-38.45" antialias="false" closed="false" x3="11.9524"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="9.9" width="4.85714" x="15.1905" antialias="true" y="-33.5"/>
+        <polygon y3="-2.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7.4" y4="14" x1="-26.9048" x2="-26.9048" x4="-13.9524" y2="-9.1" antialias="false" closed="false" x3="-13.9524"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.8" length1="1.5" end1="none" length2="1.5" x1="-20.4286" x2="-20.4286" y2="10.7" end2="none" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="1.95" width="1.2381" x="35" antialias="true" y="-30.2"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-32" length1="1.5" end1="none" length2="1.5" x1="17" x2="18" y2="-25" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-32" length1="1.5" end1="none" length2="1.5" x1="19" x2="16" y2="-25" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-28" length1="1.5" end1="none" length2="1.5" x1="16" x2="19" y2="-29" end2="none" antialias="false"/>
+        <polygon y3="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" y4="7" y5="3" x5="16" x1="16" x2="-2" x4="5" y2="-6" antialias="false" closed="false" x3="-13"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" length1="1.5" end1="none" length2="1.5" x1="-9" x2="-9" y2="3" end2="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.26667" length1="1.5" end1="none" length2="1.5" x1="13" x2="13" y2="6.71111" end2="none" antialias="false"/>
+        <input rotate="true" text="Uso:_" size="4" x="-46" tagg="label" y="-54"/>
+        <terminal orientation="e" x="40" y="-30"/>
+        <terminal orientation="e" x="40" y="-20"/>
+    </description>
+</definition>

@@ -1,0 +1,26 @@
+<definition width="140" version="0.4" hotspot_x="67" hotspot_y="26" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito horizontal</name>
+        <name lang="ca">Dipósit horitzontal</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="2" x="9" y="-20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-41" y="-20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="16.5" x="-63.4" y="-16.5011" antialias="true" height="52.5011" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="115.5" x="-55.15" y="-16.5011" antialias="false" height="52.5011" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.3" x="-61.1" y="27.9999" antialias="true" height="2.50007" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="16.5" x="52.1" y="-16.5011" antialias="true" height="52.5011" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-18.2511" x1="-40.3" y2="30.7499" x2="-40.3"/>
+        <ellipse width="2.3" x="-60.1" y="-12.0008" antialias="true" height="2.50007" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="49" y="-20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-40" y5="36" x5="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="36" x1="-50" y2="40" x2="-50" y3="40" x3="-45" y4="36"/>
+        <polygon x4="40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="36" x1="50" y2="40" x2="50" y3="40" x3="45" y4="36"/>
+        <input x="2" y="11" size="4" rotate="true" text="__L." tagg="label"/>
+        <terminal x="50" y="-21" orientation="n"/>
+        <terminal x="-60" y="-11" orientation="w"/>
+        <terminal x="-60" y="29" orientation="w"/>
+        <terminal x="-40" y="-21" orientation="n"/>
+        <terminal x="10" y="-21" orientation="n"/>
+    </description>
+</definition>

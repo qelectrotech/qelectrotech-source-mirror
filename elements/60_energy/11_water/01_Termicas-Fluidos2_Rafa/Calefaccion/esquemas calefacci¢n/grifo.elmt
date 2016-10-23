@@ -1,0 +1,19 @@
+<definition width="40" version="0.4" hotspot_x="28" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">grifo</name>
+        <name lang="ca">Aixeta</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11.2553" y2="0" x2="5.2766"/>
+        <arc width="17" x="-20" y="0" antialias="true" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="-10" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-12.1705" y2="-10" x2="-1.81526"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-22" y2="17" x2="-24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-18" y2="17" x2="-15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-20" y2="17" x2="-20"/>
+        <input x="-27" y="-5.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="5" y="0" orientation="e"/>
+    </description>
+</definition>

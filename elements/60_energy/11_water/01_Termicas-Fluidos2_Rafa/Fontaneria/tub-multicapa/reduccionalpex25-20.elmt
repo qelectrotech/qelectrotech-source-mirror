@@ -1,0 +1,21 @@
+<definition width="70" version="0.4" hotspot_x="44" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Reducción25-20</name>
+        <name lang="ca">Reducció 25-20</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="4.048" x="-6.045" y="-4.52362" antialias="false" height="11.2465" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.048" x="19.219" y="-4.6483" antialias="false" height="11.2465" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.06" x="-11.2" y="-7.3025" antialias="false" height="15.2289" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.06" x="-39.5" y="-7.3025" antialias="false" height="15.2289" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="23.24" x="-36.44" y="-12.394" antialias="false" height="24.3663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="19.216" x="0.003" y="-8.0222" antialias="false" height="17.9945" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-13" y="-15" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="2" x="-2" y="-11" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-23" y="18" size="4" rotate="true" text="red 25-20" tagg="label"/>
+        <terminal x="-39.5" y="0.3119" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+    </description>
+</definition>

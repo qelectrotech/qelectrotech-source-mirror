@@ -1,0 +1,15 @@
+<definition height="90" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="74" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Botella 35kg</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon y10="-16.25" x10="13" y11="-56" antialias="false" x11="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-56" y2="8.75" y3="10" y4="11.25" y5="13.75" y6="13.75" x1="-11.4367" closed="false" y7="11.25" x2="-11.4367" y8="10" x3="-10.2149" y9="8.75" x4="-11.4367" x5="-11.4367" x6="13" x7="13" x8="11.7782" x9="13"/>
+        <arc angle="-180" height="12.5" x="-11.4367" y="-62.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="24.4367"/>
+        <input x="-8.99303" size="2" rotate="true" y="8.75" text="35kg" tagg="label"/>
+        <rect height="6" x="-6" y="-69" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="14"/>
+        <line y1="-69" y2="-63" x1="-6" x2="8" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-63" y2="-69" x1="-6" x2="8" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <terminal x="0" y="-70" orientation="n"/>
+    </description>
+</definition>

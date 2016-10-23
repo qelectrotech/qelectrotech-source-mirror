@@ -1,0 +1,36 @@
+<definition hotspot_x="14" hotspot_y="14" width="40" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="en">Steel radiator</name>
+        <name lang="it">Radiatore</name>
+        <name lang="pl">Grzejnik płytowy</name>
+        <name lang="ca">Radiador xapa</name>
+        <name lang="fr">Radiateur Acier</name>
+        <name lang="cs">Deskové topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="es">Radiador chapa</name>
+        <name lang="nl">Radiator staal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.2295" width="2.5" antialias="false" height="2.70641" x="-10.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="7"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="9.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.94279" width="2.5" antialias="false" height="3.00483" x="18.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.2295" width="2.5" antialias="false" height="2.70641" x="18.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="14.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.0531" width="26.25" antialias="false" height="33.0531" x="-8"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="-5.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="-0.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="12"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="4.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.04823" width="1.25" antialias="false" height="27.0434" x="-3"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.94279" width="5.5" antialias="false" height="3.00483" x="-10.5"/>
+        <input rotate="true" text="_" tagg="label" y="-13.5284" x="4" size="4"/>
+        <terminal y="-10" x="-9" orientation="w"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="20" x="20" orientation="e"/>
+        <terminal y="20" x="-10" orientation="w"/>
+    </description>
+</definition>

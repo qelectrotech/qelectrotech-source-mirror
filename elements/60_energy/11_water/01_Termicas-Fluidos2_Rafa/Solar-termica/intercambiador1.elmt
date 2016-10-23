@@ -1,0 +1,31 @@
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="38" height="70" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Intercambiador placas</name>
+        <name lang="ca">Intercambiador plaques</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="5" x="16" y="-31" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-16" y="19" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="16" y="20" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30.1519" x1="2" y2="24.1645" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30.1519" x1="5.5" y2="24.1645" x2="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30.1519" x1="10" y2="24.1645" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="0" y2="28" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="3.5" y2="28" x2="3.5"/>
+        <rect width="4" x="12" y="-34" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="8" y2="28" x2="8"/>
+        <rect width="4" x="-11" y="-34" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="-4" y2="28" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31" x1="-6" y2="-31" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="-7" y2="25" x2="12"/>
+        <rect width="5" x="-16" y="-31" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-30.1519" x1="-2" y2="24.1645" x2="-2"/>
+        <input x="-10" y="-42" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-16" y="-28" orientation="w"/>
+        <terminal x="-16" y="22" orientation="w"/>
+        <terminal x="21" y="-28" orientation="e"/>
+        <terminal x="21" y="23" orientation="e"/>
+    </description>
+</definition>

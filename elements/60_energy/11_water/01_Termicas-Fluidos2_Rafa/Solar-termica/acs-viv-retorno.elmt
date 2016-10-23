@@ -1,0 +1,23 @@
+<definition width="60" version="0.4" hotspot_x="15" hotspot_y="27" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">ACS +retorno a vivienda</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-0.332274" x1="3.1904" y2="-0.332274" x2="16.6437"/>
+        <text x="-5" y="7" size="6" text="ret."/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.55405" x1="-4.69893" y2="-7.55405" x2="11.8905"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.55405" x1="13.4" y2="1.11208" x2="20.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.44515" x1="16.2" y2="-3.22099" x2="26"/>
+        <arc width="16.8" x="9.2" y="-8.99841" antialias="true" height="14.4436" style="line-style:normal;line-weight:normal;filling:none;color:black" start="10" angle="-110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.332274" x1="28.8" y2="4.00079" x2="38.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="8.33386" x1="20.4" y2="17" x2="24.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.44515" x1="26" y2="12.6669" x2="33"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.55644" x1="27.4" y2="6.88951" x2="33"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.88951" x1="23.2" y2="12.6669" x2="27.4"/>
+        <text x="-7.6" y="-11.8871" size="6" text="ACS"/>
+        <terminal x="-4.8" y="-7.55405" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="-4.8" y="-0.332274" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

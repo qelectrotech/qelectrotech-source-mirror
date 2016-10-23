@@ -1,0 +1,19 @@
+<definition width="50" hotspot_y="14" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Valv. retención 1"</name>
+        <name lang="ca">Valv. retenció 1"</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="9.35" y="-7.56859" style="line-style:dashed;line-weight:normal;filling:none;color:red" x="11.2383" antialias="false" height="17.0895"/>
+        <rect width="2.18368" y="-11.2151" style="line-style:normal;line-weight:normal;filling:none;color:black" x="18.9283" antialias="false" height="23.6243"/>
+        <rect width="35.7229" y="-12.2366" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.8486" antialias="true" height="26.4175"/>
+        <rect width="2.18368" y="-11.2151" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19.2861" antialias="false" height="23.6243"/>
+        <line y1="0.596993" end1="none" x1="-6.184" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.91804" antialias="false" y2="0.596993" length2="1.5"/>
+        <polygon y1="-2.02793" x3="11.2854" y4="-2.02793" x4="6.91804" x1="6.91804" y3="0.596993" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="6.91804" antialias="false" y2="3.22191"/>
+        <input size="4" text="ret.1&quot;" y="-16.5631" tagg="label" x="-12.5617" rotate="true"/>
+        <rect width="9.35" y="-7.56859" style="line-style:dashed;line-weight:normal;filling:none;color:red" x="-19.3617" antialias="false" height="17.0895"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="21"/>
+    </description>
+</definition>

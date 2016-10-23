@@ -1,0 +1,30 @@
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="35" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Grupo Gasoil</name>
+        <name lang="ca">Grup Gasoil</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="6" x="8" y="-25" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.42089" x1="8.1229" y2="-8.42089" x2="3.21482"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.1197" x1="8" y2="8.12967" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.57911" x1="8.1229" y2="8.57911" x2="3.21482"/>
+        <polygon x4="1.3228" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="8.31983" x1="1.3228" y2="2.35417" x2="-10.0983" y3="14.2855" x3="-10.0983" y4="8.31983"/>
+        <polygon x4="1.3228" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-8.68017" x1="1.3228" y2="-14.6458" x2="-10.0983" y3="-2.71451" x3="-10.0983" y4="-8.68017"/>
+        <ellipse width="17.7851" x="-15.1837" y="-16.656" antialias="true" height="15.9517" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="17.7851" x="-15.1837" y="0.344016" antialias="true" height="15.9517" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.4681" x1="-15.9108" y2="-8.4681" x2="-20.3131"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.5319" x1="-15.9108" y2="8.5319" x2="-20.3131"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.11969" x1="-21" y2="8.12967" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-27" y2="0" x2="-22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="8" y2="-18" x2="8"/>
+        <ellipse width="12" x="2" y="-28" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6" x="2" y="-25" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="41" x="-25" y="-29" antialias="false" height="47" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="0" x2="18"/>
+        <input x="-24" y="-32" size="4" rotate="true" text="Pres. gasoil" tagg="label"/>
+        <terminal x="-29" y="0" orientation="w"/>
+        <terminal x="18" y="0" orientation="e"/>
+    </description>
+</definition>

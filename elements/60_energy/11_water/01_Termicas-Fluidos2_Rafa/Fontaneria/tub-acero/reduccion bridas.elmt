@@ -1,0 +1,27 @@
+<definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="19" orientation="dyyy" width="50" hotspot_x="24">
+    <names>
+        <name lang="ca">Reducció brides</name>
+        <name lang="es">Reducción bridas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.2025" y="-17.4536" width="2.5047" antialias="false"/>
+        <arc height="2.94575" style="line-style:normal;line-weight:normal;filling:none;color:black" x="14.1151" y="-6.9516" angle="-90" start="0" width="2.47401" antialias="true"/>
+        <arc height="2.94575" style="line-style:normal;line-weight:normal;filling:none;color:black" x="14.1151" y="4.83142" angle="-90" start="90" width="2.47401" antialias="true"/>
+        <arc height="4.93156" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="-12.8873" angle="-90" start="-90" width="4.4982" antialias="true"/>
+        <rect height="18.6564" style="line-style:normal;line-weight:normal;filling:none;color:black" x="16.558" y="-9.40641" width="1.92759" antialias="false"/>
+        <line x2="14.9392" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="7.71894" y1="4.83142" y2="4.83142"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="9.0308" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <line x2="15.0194" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="7.70983" y1="-4.05542" y2="-4.05542"/>
+        <line x2="-2.19814" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-15.5332" y1="9.0308" y2="9.0308"/>
+        <input tagg="label" x="-14" rotate="true" text="reducc" y="16" size="4"/>
+        <line x2="-2.05" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-15.55" y1="-8.03873" y2="-8.03873"/>
+        <line x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-2" y1="-8" y2="-4"/>
+        <line x2="-2" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="7" y1="5" y2="9"/>
+        <line x2="-2" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-2" y1="-5" y2="6"/>
+        <line x2="7" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="7" y1="-2" y2="3"/>
+        <terminal x="20" orientation="e" y="0"/>
+        <terminal x="-20" orientation="w" y="0"/>
+    </description>
+</definition>

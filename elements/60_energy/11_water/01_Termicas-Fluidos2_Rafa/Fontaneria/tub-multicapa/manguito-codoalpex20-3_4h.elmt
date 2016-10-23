@@ -1,0 +1,31 @@
+<definition width="60" version="0.4" hotspot_x="32" hotspot_y="34" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito-Codo 20-3/4"H</name>
+        <name lang="ca">Manguet-Colze 20-3/4"H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="6" x="-4" y="-19.737" antialias="true" height="4.737" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.3009" x1="2" y2="-15" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-22.1055" x1="3.2" y2="-23.2897" x2="16.4"/>
+        <rect width="4" x="-5" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.144" x="0.944" y="-28.4803" antialias="false" height="8.60757" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="33" x="-17" y="-25" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="13.608" x="3.212" y="-28.6844" antialias="false" height="7.09917" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <rect width="2.36678" x="-27.9256" y="-6.20875" antialias="false" height="12.776" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6" x="18.8" y="-19.737" antialias="true" height="4.737" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="18.5588" x="-25.5588" y="-10.0415" antialias="false" height="20.4415" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="16.8" x="2" y="-19.737" antialias="true" height="4.737" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="10" x="-6" y="-14" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="28.8" x="-4" y="-19.737" antialias="false" height="4.737" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.3009" x1="18.8" y2="-15" x2="18.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-24.474" x1="3.2" y2="-25.6582" x2="16.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="16" y2="-15" x2="20"/>
+        <rect width="2" x="-7" y="-13" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="12" y="4" size="4" rotate="true" text="20-3/3H" tagg="label"/>
+        <terminal x="-27.9256" y="0.17923" orientation="w"/>
+        <terminal x="10" y="-29" orientation="n"/>
+    </description>
+</definition>

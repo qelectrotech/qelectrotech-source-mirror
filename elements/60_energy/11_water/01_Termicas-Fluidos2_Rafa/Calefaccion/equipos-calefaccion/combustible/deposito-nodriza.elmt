@@ -1,0 +1,24 @@
+<definition width="80" version="0.4" hotspot_x="39" hotspot_y="26" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito nodriza</name>
+        <name lang="ca">Dipòsit nodrissa</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="1" x="-20.8852" y="-18.6553" antialias="false" height="2.351" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="14" y2="7" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.3506" x1="31.1148" y2="8.41776" x2="31.1148"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.5822" x1="-29.3852" y2="-16.5822" x2="31.1148"/>
+        <rect width="1" x="9.1148" y="7.34467" antialias="false" height="1.351" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="8.64815" x="-33.7704" y="-16.318" antialias="true" height="24.8252" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="8.64815" x="26.7667" y="-16.318" antialias="true" height="24.8252" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <polygon x4="-21.5057" y5="8.50719" x5="-21.5057" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.50719" x1="-26.7471" y2="19.3828" x2="-26.7471" y3="19.3828" x3="-24.1264" y4="8.50719"/>
+        <polygon x4="20.4247" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.50719" x1="25.666" y2="18.8154" x2="25.666" y3="18.8154" x3="23.0453" y4="8.50719"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.41776" x1="-28.3852" y2="8.41776" x2="32.1148"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.3506" x1="-29.3852" y2="8.41776" x2="-29.3852"/>
+        <input x="9.6148" y="-8.69496" size="4" rotate="true" text="_ L." tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-15" y2="-18" x2="-15"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

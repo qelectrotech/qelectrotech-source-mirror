@@ -1,0 +1,18 @@
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="28" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. expansion electrónica</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.2561" x1="-13.6084" y2="-2.2561" x2="-7.71475"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.2561" x1="9.30279" y2="-2.2561" x2="17.8846"/>
+        <polygon x4="8.14448" y5="-9.60522" x5="-7.30374" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.60522" x1="-7.30374" y2="5" x2="-7.30374" y3="-9.60522" x3="8.14448" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.92939" x1="0.396605" y2="-8.48921" x2="0.396605"/>
+        <ellipse width="13.6949" x="-5.92709" y="-22.2894" antialias="true" height="12.6842" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-5" y="-14" size="4" text="TCE"/>
+        <polygon x4="-2.55044" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0.618434" x1="3.39118" y2="5" x2="-0.173791" y3="0.618434" x3="-2.55044" y4="0.618434"/>
+        <terminal x="18" y="-2" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-14.4337" y="-2.18361" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

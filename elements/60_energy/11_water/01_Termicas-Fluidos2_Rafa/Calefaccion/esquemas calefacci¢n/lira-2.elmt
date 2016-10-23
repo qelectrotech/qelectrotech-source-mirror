@@ -1,0 +1,18 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Dilatador-lira2</name>
+        <name lang="ca">Dilatador-lira2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="14" x="-7" y="-15" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-150" angle="-240"/>
+        <arc width="9" x="5" y="-8" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
+        <arc width="9" x="-14" y="-8" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="30" angle="-120"/>
+        <input x="-7" y="-17.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

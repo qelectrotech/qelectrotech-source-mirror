@@ -1,0 +1,45 @@
+<definition orientation="dyyy" type="element" height="50" link_type="simple" width="80" hotspot_y="31" version="0.5" hotspot_x="35">
+    <names>
+        <name lang="es">Controlador AKO 14112</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line end2="none" x1="30" y1="5" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <text text="2" size="6" x="-25" y="4"/>
+        <line end2="none" x1="1" y1="5" x2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <line end2="none" x1="-23" y1="5" x2="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <text text="3" size="6" x="-16" y="4"/>
+        <line end2="none" x1="-13" y1="5" x2="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <text text="N" size="6" x="7" y="3"/>
+        <line end2="none" x1="10" y1="5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <text text="L" size="6" x="1" y="3"/>
+        <text text="S1" size="6" x="31" y="-5"/>
+        <line end2="none" x1="27.8052" y1="-4" x2="27.8052" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <line end2="none" x1="34.8052" y1="-4" x2="34.8052" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <line end2="none" x1="40" y1="5" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <line end2="none" x1="5.9965" y1="-4" x2="5.9965" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <line end2="none" x1="-10.1948" y1="-4" x2="-10.1948" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="2" width="1.95305" x="-23.8157" y="-11"/>
+        <line end2="none" x1="-2.00351" y1="-4" x2="-2.00351" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="9" width="74.7687" x="-32.7688" y="-4"/>
+        <line end2="none" x1="-18.3861" y1="-4" x2="-18.3861" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <line end2="none" x1="13.047" y1="-4" x2="13.047" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="2" width="1.95305" x="-14.8157" y="-11"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="2" width="2.14836" x="-19.8681" y="-20"/>
+        <line end2="none" x1="-26.5774" y1="-4" x2="-26.5774" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="5" end1="none" length2="1.5"/>
+        <line end2="none" x1="-23" y1="-9" x2="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-5" end1="none" length2="1.5"/>
+        <line end2="none" x1="-14" y1="-9" x2="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-5" end1="none" length2="1.5"/>
+        <polygon x5="-21.3025" y6="-10" x1="-30.2922" x2="-30.2922" x7="-21.3025" y3="-19" y4="-10" x6="-21.3025" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-19" y5="-10" y8="-10" y7="-10" x8="-21.3025" antialias="false" x3="-18.3058" closed="false" x4="-21.3025" y1="-4"/>
+        <text text="1" size="6" x="-32" y="3.2"/>
+        <line end2="none" x1="-30" y1="5" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9" end1="none" length2="1.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="20" width="75" x="-33" y="-24"/>
+        <input text="AKO 14112" rotate="true" size="7" tagg="label" x="-10" y="-17.5"/>
+        <terminal orientation="s" x="-30" y="10"/>
+        <terminal orientation="s" x="-23" y="10"/>
+        <terminal orientation="s" x="-13" y="10"/>
+        <terminal orientation="s" x="0.5" y="10"/>
+        <terminal orientation="s" x="30" y="10"/>
+        <terminal orientation="s" x="40" y="10"/>
+        <terminal orientation="s" x="10" y="10"/>
+    </description>
+</definition>

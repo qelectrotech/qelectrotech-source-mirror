@@ -1,0 +1,18 @@
+<definition width="80" version="0.4" hotspot_x="28" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Vaina tubería</name>
+        <name lang="ca">Beina tuberia</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="28.1756" y2="0" x2="47.8931"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-4.23892" y2="0" x2="26.2589"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-12" y2="11" x2="21"/>
+        <ellipse width="14" x="-20" y="-9" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="14" x="13" y="-9" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="-13" y2="-9" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-25.8244" y2="0" x2="-6.10687"/>
+        <terminal x="-24" y="0" orientation="w"/>
+        <terminal x="47" y="0" orientation="e"/>
+    </description>
+</definition>

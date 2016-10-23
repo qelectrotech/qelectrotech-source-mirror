@@ -1,0 +1,28 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="39" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Purgador</name>
+        <name lang="ca">Purgador</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.02225" x1="-3.6" y2="-3.07559" x2="3.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7602" x1="5.4" y2="-32.9202" x2="5.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7602" x1="6.9" y2="-32.9202" x2="6.9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7602" x1="7.8" y2="-32.9202" x2="7.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7602" x1="3.9" y2="-32.9202" x2="3.9"/>
+        <rect width="7.8" x="-3.9" y="-3.77782" antialias="false" height="7.72448" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.617802" x1="-3.6" y2="-1.67114" x2="3.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.54221" x1="-3.6" y2="1.48887" x2="3.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.13776" x1="-3.6" y2="0.0844229" x2="3.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.94666" x1="-3.6" y2="2.89332" x2="3.6"/>
+        <rect width="10.8" x="-5.4" y="-8.34228" antialias="false" height="4.56446" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="-9" y="-27.3024" antialias="false" height="18.9601" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.9" x="3.3" y="-29.0579" antialias="false" height="1.75556" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.3" x="2.1" y="-33.9735" antialias="false" height="4.91558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7602" x1="3" y2="-32.9202" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.7912" x1="-9" y2="-23.7912" x2="8.7"/>
+        <input x="8" y="-18" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="4.29777" orientation="s"/>
+    </description>
+</definition>

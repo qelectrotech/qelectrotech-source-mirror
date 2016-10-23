@@ -1,0 +1,21 @@
+<definition width="40" version="0.4" hotspot_x="12" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sifón lavabo</name>
+        <name lang="ca">Sifó pica</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="12" x="-6" y="-20" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="4" y5="10" x5="4" y6="10" x6="-4" y7="-7" x7="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7" x1="4" y2="4" x2="19" y3="11" x3="13" y4="4"/>
+        <arc width="9" x="12" y="3" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="50" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="12" y2="3" x2="17"/>
+        <input x="-15" y="2.5" size="4" rotate="true" text="_" tagg="label"/>
+        <rect width="12" x="-6" y="10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-4" y2="-7" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="4" y2="-7" x2="4"/>
+        <polygon x4="1" y5="3" x5="1" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-6" x1="3" y2="-5" x2="0" y3="1" x3="-1" y4="3"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

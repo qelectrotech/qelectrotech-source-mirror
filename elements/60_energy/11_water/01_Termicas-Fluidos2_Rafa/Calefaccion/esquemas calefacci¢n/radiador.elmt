@@ -1,0 +1,15 @@
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Radiador</name>
+        <name lang="ca">Radiador</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="40" x="-20" y="-3.37083" antialias="false" height="6.37083" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19" x2="-15" x3="-9" x4="-3" antialias="false" x5="4" x6="11" x7="18" x8="18" closed="false" y1="-3.37083" y2="3" y3="-3.37083" y4="3" y5="-3.37083" y6="3" y7="-3.37083" y8="-3.37083"/>
+        <input x="-9" y="-4.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-22" y="-0.185414" orientation="w"/>
+        <terminal x="22" y="-0.185414" orientation="e"/>
+    </description>
+</definition>

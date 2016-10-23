@@ -1,0 +1,15 @@
+<definition width="50" version="0.4" hotspot_x="30" hotspot_y="22" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Motor combustion int.</name>
+        <name lang="ca">Motor combustó int.</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="17" x2="-23" x3="-23" x4="-13" antialias="false" x5="-13" x6="8" x7="8" x8="17" x9="17" closed="false" y1="7" y2="7" y3="-3" y4="-3" y5="-13" y6="-13" y7="-16" y8="-16" y9="6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-10" x3="-10" x4="-6" antialias="false" x5="-2" x6="2" x7="7" x8="10" x9="10" closed="false" y1="10" y10="10" y2="4" y3="1" y4="4" y5="1" x10="10" y6="4" y7="1" y8="4" y9="9"/>
+        <input x="-4" y="-16" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-25" y="3" orientation="w"/>
+        <terminal x="-10" y="10" orientation="s"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

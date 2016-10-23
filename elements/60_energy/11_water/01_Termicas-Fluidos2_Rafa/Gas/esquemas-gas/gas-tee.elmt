@@ -1,0 +1,17 @@
+<definition height="40" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="29" type="element" width="50" orientation="dyyy">
+    <names>
+        <name lang="es">Te</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" y2="-4" y3="-4" y4="4" y5="4" y6="-4" x1="-4" y7="-4" x2="-4" y8="-10" x3="-10" y9="-10" x4="-10" x5="10" x6="10" x7="4" x8="4" x9="-4"/>
+        <line y1="0" y2="0" x1="-20" x2="-10" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="0" y2="0" x1="20" x2="9" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-20" y2="-10" x1="0" x2="0" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-6" size="4" rotate="true" y="20" text="_" tagg="label"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

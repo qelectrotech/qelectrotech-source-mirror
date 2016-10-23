@@ -1,0 +1,32 @@
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Bomba de vacío</name>
+        <name lang="ca">Bomba de buit</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9" x1="-8.90195" y2="9" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="-8.90195" y2="7" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10" x1="-8.90195" y2="10" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="-8.90195" y2="-2" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-11" y2="12" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-8.90195" y2="4" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="-8.90195" y2="1" x2="8.76873"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="-11" y2="-6" x2="12"/>
+        <rect width="10.35" x="-0.65" y="-11" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-9" x3="-3" x4="2" antialias="false" x5="5" x6="10" x7="11" x8="11" x9="-5" closed="false" y1="-7" y10="-15" y2="-19" y11="-6" y3="-19" y4="-20" y5="-19" x10="-6" y6="-20" x11="-6" y7="-19" y8="-16" y9="-16"/>
+        <polygon x4="-26" y5="14" x5="-11" y6="-6" x6="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-11" y2="-8" x2="-11" y3="-7" x3="-26" y4="10"/>
+        <polygon x4="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="13" x1="-16" y2="17" x2="-17" y3="17" x3="-12" y4="14"/>
+        <polygon x4="13.15" y5="17" x5="10.85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="12" y2="17" x2="17.75" y3="13" x3="15.45" y4="13"/>
+        <rect width="3" x="-21" y="-11" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-30" y="-24" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <rect width="2" x="-20" y="-18" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-27" y="-17" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-25" y="-15" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.45" x="3.95" y="-9" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="-7.80578" y2="-4" x2="8.9771"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="14" x3="18" x4="20" antialias="false" x5="20" x6="19" x7="12" x8="12" x9="12" closed="false" y1="-7" y2="-8" y3="-8" y4="-7" y5="11" y6="13" y7="13" y8="12" y9="-7"/>
+        <input x="18" y="9.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="-19" y="-21" orientation="n"/>
+    </description>
+</definition>

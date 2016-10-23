@@ -1,0 +1,16 @@
+<definition link_type="simple" version="0.5" width="30" height="30" hotspot_x="14" type="element" hotspot_y="13" orientation="dyyy">
+    <names>
+        <name lang="es">Cocina con horno</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="1.75" height="1.3" x="4" y="-7.77"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="1.75" height="1.3" x="-1.25" y="-7.77"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="21" height="18.2" x="-10" y="-10.37"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="14" height="9.1" x="-6.5" y="-3.87"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="1.75" height="1.3" x="-6.5" y="-7.77"/>
+        <input text="_" tagg="label" rotate="true" x="-10" y="-15.57" size="4"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

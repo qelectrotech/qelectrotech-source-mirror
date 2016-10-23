@@ -1,0 +1,36 @@
+<definition height="20" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="11" type="element" width="40" orientation="dyyy">
+    <names>
+        <name lang="es">Flexible metálico</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc angle="-90" height="4.6358" x="-7.61818" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="6.03636"/>
+        <arc angle="-90" height="4.6358" x="4.45455" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" width="6.03636"/>
+        <arc angle="-90" height="4.6358" x="-7.61818" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" width="6.03636"/>
+        <arc angle="-180" height="4.6358" x="-13.6545" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="6.03636"/>
+        <line y1="0.145679" y2="0.145679" x1="-19.7151" x2="-17.3382" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="0.145679" y2="0.145679" x1="8.0268" x2="10.0164" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <arc angle="-180" height="4.6358" x="-1.58182" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="6.03636"/>
+        <arc angle="-90" height="4.6358" x="-19.6909" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="6.03636"/>
+        <ellipse height="0" x="-15.9182" y="-1.70864" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0.92716" x="-14.4091" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="-11.3909" y="-6.34444" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="-2.33636" y="-3.56296" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="-0.0727273" y="-6.34444" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0" x="2.94545" y="-5.41728" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0" x="5.96364" y="-2.6358" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0" x="-13.6545" y="-5.41728" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0" x="-9.88182" y="-5.41728" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0.92716" x="-7.61818" y="-5.41728" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="-3.84545" y="-1.70864" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0" x="-6.10909" y="-1.70864" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0" x="-6.86364" y="-2.6358" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.754545"/>
+        <ellipse height="0.92716" x="-1.58182" y="-5.41728" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="1.43636" y="-6.34444" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <ellipse height="0.92716" x="5.20909" y="-4.49012" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0"/>
+        <input x="-12" size="4" rotate="true" y="-11" text="_" tagg="label"/>
+        <terminal x="10.4909" y="0.145679" orientation="e"/>
+        <terminal x="-19.6909" y="0.145679" orientation="w"/>
+    </description>
+</definition>

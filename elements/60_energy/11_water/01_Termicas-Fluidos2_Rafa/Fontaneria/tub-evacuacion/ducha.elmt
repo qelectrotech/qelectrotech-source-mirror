@@ -1,0 +1,20 @@
+<definition width="60" version="0.4" hotspot_x="31" hotspot_y="22" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Ducha</name>
+        <name lang="ca">Dutxa</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.09" x1="-6.41855" y2="-7.64" x2="-3.78024"/>
+        <rect width="12.3121" x="-8.17742" y="-15.29" antialias="false" height="11.9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.64" x1="-0.2625" y2="-5.09" x2="2.37581"/>
+        <rect width="52.7661" x="-27.525" y="1.71" antialias="false" height="1.7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25.7661" x2="-23.1278" x3="-3.78024" x4="-2.02137" antialias="false" x5="0.616935" x6="2.37581" x7="20.844" x8="23.4823" x9="23.4823" closed="false" y1="3.41" y10="3.41" y2="6.81" y3="6.81" y4="8.51" y5="8.51" x10="23.4823" y6="6.81" y7="6.81" y8="3.41" y9="3.41"/>
+        <rect width="14.071" x="-9.05685" y="-16.14" antialias="false" height="13.6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.75887" x="-2.90081" y="-10.19" antialias="false" height="1.7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13.59" x1="-5.53911" y2="-11.04" x2="-2.90081"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11.04" x1="-0.2625" y2="-13.59" x2="2.37581"/>
+        <input x="8" y="-4.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-1.14194" y="9.36" orientation="s"/>
+    </description>
+</definition>

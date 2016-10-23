@@ -1,0 +1,21 @@
+<definition width="60" version="0.4" hotspot_x="20" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">solenoide</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="29" y2="15" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="0" y2="16" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-16" x2="0"/>
+        <rect width="30" x="-15" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-15" y2="-10" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="28"/>
+        <input x="-19" y="17" size="6" rotate="true" text="A2" tagg="none"/>
+        <input x="-17" y="-15" size="6" rotate="true" text="A1" tagg="none"/>
+        <polygon x4="24" y5="-10" x5="34" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="34" y2="10" x2="24" y3="10" x3="34" y4="-10"/>
+        <input x="5" y="18.5" size="6" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="29" y2="-11" x2="29"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

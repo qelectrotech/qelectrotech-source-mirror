@@ -1,0 +1,20 @@
+<definition link_type="simple" type="element" hotspot_x="15" hotspot_y="16" version="0.5" width="30" height="40" orientation="dyyy">
+    <names>
+        <name lang="es">Contador gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect y="-9.87031" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="2.175" height="2.34336" x="6.575"/>
+        <rect y="-9.87031" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="2.175" height="2.34336" x="-8.65"/>
+        <polygon x2="-10.825" y5="-5.1836" x3="10.925" antialias="false" x4="10.925" x5="-10.825" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.1836" y2="18.25" y3="18.25" x1="-10.825" y4="-5.1836"/>
+        <rect y="6.5332" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" width="26.1" height="1.17168" x="-13"/>
+        <rect y="-7.52696" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.35" height="2.34336" x="5.4875"/>
+        <rect y="-7.52696" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.35" height="2.34336" x="-9.7375"/>
+        <rect y="-1.66856" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6.525" height="3.51504" x="1.1375"/>
+        <rect y="-2.84024" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8.7" height="5.8584" x="0.05"/>
+        <input y="13" tagg="label" size="4" rotate="true" x="-9" text="GLP"/>
+        <terminal y="-10" orientation="n" x="-10"/>
+        <terminal y="-10" orientation="n" x="10"/>
+    </description>
+</definition>

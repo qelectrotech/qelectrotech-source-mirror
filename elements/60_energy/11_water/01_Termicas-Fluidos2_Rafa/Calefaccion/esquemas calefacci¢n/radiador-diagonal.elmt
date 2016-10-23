@@ -1,0 +1,15 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="5" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Radiador diagonal</name>
+        <name lang="ca">Radiador diagonal</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="40" x="-20" y="1.67356" antialias="false" height="7.32644" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19" x2="-15" x3="-9" x4="-3" antialias="false" x5="4" x6="11" x7="18" x8="18" closed="false" y1="1.67356" y2="9" y3="1.67356" y4="9" y5="1.67356" y6="9" y7="1.67356" y8="1.67356"/>
+        <input x="-6" y="1.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+    </description>
+</definition>

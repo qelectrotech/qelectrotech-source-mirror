@@ -1,0 +1,14 @@
+<definition height="20" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="14" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Radiador mural estanco</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="10" x="-10" y="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <circle x="-2" y="-8" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="0" y="-6" diameter="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-6" size="4" rotate="true" y="-20" text="_" tagg="label"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

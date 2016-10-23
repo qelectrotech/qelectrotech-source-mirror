@@ -1,0 +1,17 @@
+<definition width="40" hotspot_y="44" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
+    <names>
+        <name lang="es">Calentador ACS</name>
+        <name lang="ca">Escalfador ACS</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="7.03926" end1="none" x1="-9.5" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9.5" antialias="false" y2="-13.2671" length2="1.5"/>
+        <ellipse width="32.5" y="-41.306" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" antialias="true" height="31.306"/>
+        <text size="9" text="ACS" y="-22.5224" x="-12.1"/>
+        <line y1="7.31958" end1="none" x1="10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" antialias="false" y2="-12.4489" length2="1.5"/>
+        <input size="4" text="_" y="-48" tagg="label" x="-7" rotate="true"/>
+        <terminal y="10" orientation="s" x="10"/>
+        <terminal y="10" orientation="s" x="-10"/>
+    </description>
+</definition>

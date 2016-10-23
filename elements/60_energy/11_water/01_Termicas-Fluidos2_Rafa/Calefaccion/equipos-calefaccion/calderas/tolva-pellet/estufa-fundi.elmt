@@ -1,0 +1,26 @@
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Estufa fundición</name>
+        <name lang="ca">Estufa fundició</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="-6" y2="-7" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="-3" y2="-7" x2="5"/>
+        <rect width="41" x="-20" y="-13" antialias="false" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="-14" y="12" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-1" y="14" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20.513" x2="-21.6348" x3="-23.8783" x4="-25" antialias="false" x5="-16.0261" x6="20.9913" x7="26.6" x8="25.4783" x9="23.2348" closed="false" y1="10" y10="10" y2="18" y11="10" y3="18" y4="28" y5="20" x10="20.9913" y6="20" x11="20.9913" y7="28" y8="18" y9="18"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-16" x2="16" x3="17" x4="17" antialias="false" x5="16" x6="-15" x7="-16" x8="-16" x9="-16" closed="false" y1="7" y2="7" y3="5" y4="-8" y5="-10" y6="-10" y7="-9" y8="6" y9="6"/>
+        <rect width="0" x="-16" y="-5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="14" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="14" y2="-1" x2="12" y3="4" x3="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="-10" y2="-7" x2="-2"/>
+        <rect width="45" x="-22" y="-15" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="5" y5="-15" x5="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="-6" y2="-20" x2="-4" y3="-20" x3="3" y4="-15"/>
+        <input x="-13" y="25.5" size="4" rotate="true" text="_" tagg="label"/>
+        <input x="-12" y="6.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

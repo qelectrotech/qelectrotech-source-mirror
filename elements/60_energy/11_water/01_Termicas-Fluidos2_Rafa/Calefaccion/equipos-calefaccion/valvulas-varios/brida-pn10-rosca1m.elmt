@@ -1,0 +1,32 @@
+<definition version="0.5" type="element" height="30" link_type="simple" width="30" hotspot_x="14" hotspot_y="15" orientation="dyyy">
+    <names>
+        <name lang="ca">Unió amb brides</name>
+        <name lang="es">Union con bridas</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x1="3.19405" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-8.06948" length1="1.5" y1="-8.06948" x2="5.91999" antialias="false" end2="none"/>
+        <line x1="9.54917" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.26965" length1="1.5" y1="4.05312" x2="8.68204" antialias="false" end2="none"/>
+        <line x1="-3.86419" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-8.34579" length1="1.5" y1="-8.34579" x2="-0.818505" antialias="false" end2="none"/>
+        <line x1="1.56437" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="8.93155" length1="1.5" y1="8.93155" x2="5.24708" antialias="false" end2="none"/>
+        <line x1="8.393" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.26965" length1="1.5" y1="4.05312" x2="7.52587" antialias="false" end2="none"/>
+        <line x1="-4.05627" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.8759" length1="1.5" y1="3.65949" x2="-5.18501" antialias="false" end2="none"/>
+        <line x1="3.16365" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-10.6154" length1="1.5" y1="-10.6154" x2="5.56438" antialias="false" end2="none"/>
+        <line x1="-4.1183" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="9.0043" length1="1.5" y1="9.0043" x2="-0.596617" antialias="false" end2="none"/>
+        <line x1="6.05438" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2.9504" length1="1.5" y1="4.37236" x2="5.18726" antialias="false" end2="none"/>
+        <line x1="2.01381" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="11.253" length1="1.5" y1="11.253" x2="5.69585" antialias="false" end2="none"/>
+        <line x1="7.21055" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2.9504" length1="1.5" y1="4.37236" x2="6.34343" antialias="false" end2="none"/>
+        <line x1="-3.86419" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-10.6923" length1="1.5" y1="-10.6923" x2="-0.818505" antialias="false" end2="none"/>
+        <rect x="1.12533" height="25.7732" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.706" width="4.03022" antialias="false"/>
+        <rect x="5.18726" height="7.25991" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.88754" width="4.62468" antialias="false"/>
+        <line x1="-4.00353" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="11.4122" length1="1.5" y1="11.4122" x2="-0.696156" antialias="false" end2="none"/>
+        <line x1="-5.56126" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.8759" length1="1.5" y1="3.65949" x2="-6.69" antialias="false" end2="none"/>
+        <line x1="-8.60544" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.54738" length1="1.5" y1="3.988" x2="-9.73417" antialias="false" end2="none"/>
+        <line x1="-7.10045" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.54738" length1="1.5" y1="3.988" x2="-8.22919" antialias="false" end2="none"/>
+        <rect x="-9.73417" height="7.4707" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.48269" width="6.01996" antialias="false"/>
+        <rect x="-3.57701" height="26.0515" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.8054" width="4.02478" antialias="false"/>
+        <input tagg="label" x="-33" text="Brida a rosca M" rotate="true" size="3" y="24.5"/>
+        <terminal x="-9.80258" y="0.105345" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

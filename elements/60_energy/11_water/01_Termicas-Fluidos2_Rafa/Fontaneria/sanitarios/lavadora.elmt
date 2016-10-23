@@ -1,0 +1,30 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Lavadora</name>
+        <name lang="ca">Rentadora</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="7.33895" x="12.2941" y="-5.63951" antialias="true" height="20.5151" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.806" x1="7.42211" y2="-18.806" x2="7.96339"/>
+        <arc width="5.50421" x="13.3949" y="-4.72773" antialias="true" height="18.6916" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="3.89724" x="8.65622" y="-21.8136" antialias="true" height="5.41367" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.46779" x="18.5322" y="3.47832" antialias="false" height="0.911783" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.89724" x="1.83603" y="-21.2121" antialias="false" height="4.21062" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21.8136" x1="8.16906" y2="-21.2121" x2="8.65622"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.3375" x1="10.6049" y2="-22.6691" x2="10.6049"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0015" x1="8.65622" y2="-16.4" x2="8.16906"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0015" x1="12.5535" y2="-16.4" x2="13.0406"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.806" x1="10.6049" y2="-20.0091" x2="11.5792"/>
+        <rect width="4.87156" x="-10.83" y="-20.0091" antialias="false" height="1.80455" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29.2294" x="-13.2658" y="-24.2197" antialias="false" height="9.02278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.6106" x1="13.0406" y2="-21.2121" x2="14.0149"/>
+        <rect width="29.2294" x="-13.2658" y="-15.197" antialias="false" height="32.482" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13.6404" x="-5.47133" y="-7.97874" antialias="true" height="15.6395" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="17.6578" x="-7.54014" y="-10.0876" antialias="true" height="20.1543" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.46147" x="10.1177" y="-1.96356" antialias="false" height="2.40607" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="2.38652" y="12.5962" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="19.2661" y="4.3901" orientation="n"/>
+    </description>
+</definition>

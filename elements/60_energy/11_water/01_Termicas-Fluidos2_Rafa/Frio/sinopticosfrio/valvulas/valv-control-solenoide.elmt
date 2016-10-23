@@ -1,0 +1,19 @@
+<definition orientation="dyyy" height="30" width="40" hotspot_x="19" type="element" version="0.5" link_type="simple" hotspot_y="21">
+    <names>
+        <name lang="es">Valvula control solenoide</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line end1="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0.0318443" x1="-11.3055" x2="-6.34587" y2="0.0318443" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0.0318443" x1="7.30108" x2="11.9263" y2="0.0318443" end2="none"/>
+        <polygon y3="-5" y4="5" closed="false" x3="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y1="-5" x1="-6" x5="-6" x2="-6" y5="-5" y2="5" x4="7"/>
+        <line end1="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" x1="0.48" x2="0.48" y2="-7" end2="none"/>
+        <rect x="-2" y="-15" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5"/>
+        <line end1="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-10" x1="-2" x2="3" y2="-12" end2="none"/>
+        <input x="-6" y="8" rotate="true" tagg="label" size="4" text="_"/>
+        <terminal x="0" orientation="n" y="-16"/>
+        <terminal x="12" orientation="e" y="0.0814798"/>
+        <terminal x="-12" orientation="w" y="0.0814798"/>
+    </description>
+</definition>

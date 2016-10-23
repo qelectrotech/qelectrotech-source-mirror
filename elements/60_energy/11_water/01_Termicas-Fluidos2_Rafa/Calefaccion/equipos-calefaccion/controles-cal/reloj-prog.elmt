@@ -1,0 +1,29 @@
+<definition width="40" version="0.4" hotspot_x="16" hotspot_y="31" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Reloj programador</name>
+        <name lang="ca">Rellotge programador</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="1.05625" x="2.17625" y="-8.49987" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13.7313" x="-8.175" y="-18.5514" antialias="true" height="12.9793" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.05625" x="-6.27375" y="-16.0875" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="17.21" x="-10.02" y="-20.2834" antialias="true" height="16.4432" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-1.8375" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10.1468" x1="-1.8375" y2="-11.0617" x2="-0.78125" y3="-14.7215" x3="-5.00625" y4="-10.1468"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10.1468" x1="-0.78125" y2="-11.9767" x2="4.5" y3="-11.0617" x3="-0.78125"/>
+        <rect width="1.05625" x="-7.96375" y="-11.4277" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.05625" x="-1.8375" y="-18.3684" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.05625" x="-1.8375" y="-6.66999" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.05625" x="-6.0625" y="-8.31688" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.05625" x="4.0775" y="-11.4277" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.05625" x="3.3875" y="-15.7215" antialias="false" height="0.914943" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28.505" x="-12.71" y="-21.2112" antialias="false" height="20.5669" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="15.7765" y5="-21.6751" x5="15.7765" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21.6751" x1="-12.4" y2="-24.6029" x2="-8.2257" y3="-24.6029" x3="18.3854" y4="-21.6751"/>
+        <polygon x4="16.2439" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23.871" x1="18.497" y2="-4.10814" x2="18.497" y3="-1.18033" x3="16.2439" y4="-1.18033"/>
+        <rect width="3" x="11" y="-15" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="11" y="-11" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="3" y="-18" size="4" rotate="true" text="R" tagg="label"/>
+        <terminal x="7" y="0" orientation="s"/>
+        <terminal x="18" y="-1" orientation="s"/>
+    </description>
+</definition>

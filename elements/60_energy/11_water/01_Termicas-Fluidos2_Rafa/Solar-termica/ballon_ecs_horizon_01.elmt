@@ -1,0 +1,33 @@
+<definition width="170" version="0.4" hotspot_x="84" hotspot_y="45" height="90" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خزان ماء أفقي</name>
+        <name lang="en">DHW horizontal</name>
+        <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="fr">Ballon ECS horizontal</name>
+        <name lang="pl">Zasobnik poziomy CWU</name>
+        <name lang="es">Interacumulador Horiz</name>
+        <name lang="nl">Boiler elektrisch</name>
+        <name lang="cs">Vodorovný zásobnik ECS</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="61" y="-18" size="3" text="ACS"/>
+        <text x="39" y="40" size="3" text="Placa"/>
+        <text x="54.62" y="18.1597" size="3" text="Agua fría"/>
+        <polygon x4="74.5575" y5="-19.3645" x5="74.5575" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22.0935" x1="73.76" y2="-22.0935" x2="79.3425" y3="-19.3645" x3="79.3425" y4="-19.3645"/>
+        <polygon x4="74.5575" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21.571" x1="73.76" y2="21.571" x2="79.3425" y3="18.8419" x3="79.3425" y4="18.8419"/>
+        <rect width="3.19" x="53.8225" y="33.8516" antialias="true" height="6.82258" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.19" x="-65.8025" y="-41.1968" antialias="true" height="6.82258" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="131.588" x="-67.3975" y="-34.3742" antialias="true" height="68.2258" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-38" y="38.5" size="5" rotate="true" text="Inter acumulador" tagg="label"/>
+        <arc width="22.33" x="53.8225" y="-34.3742" antialias="true" height="68.2258" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="22.33" x="-78.5625" y="-34.3742" antialias="true" height="68.2258" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <text x="-59" y="-35" size="3" text="Placa"/>
+        <polygon x4="55" y5="35" x5="55" y6="35" x6="55" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:red" closed="false" y1="-35" x1="-65" y2="30" x2="-35" y3="-30" x3="15" y4="35"/>
+        <terminal x="-64.2075" y="-41.1968" orientation="n"/>
+        <terminal x="55.4175" y="40.6742" orientation="s"/>
+        <terminal x="79.3425" y="-20.729" orientation="e"/>
+        <terminal x="79.3425" y="20.2065" orientation="e"/>
+    </description>
+</definition>

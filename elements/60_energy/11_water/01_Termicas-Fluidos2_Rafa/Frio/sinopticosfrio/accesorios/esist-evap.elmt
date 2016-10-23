@@ -1,0 +1,10 @@
+<definition width="70" version="0.4" hotspot_x="29" hotspot_y="13" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Resist. desescarche</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x2="-12" x3="-12" x4="-2" antialias="false" x5="-2" x6="7" x7="7" x8="17" x9="17" closed="false" y1="0" y10="0" y2="0" y11="-9" y3="-9" y4="-9" y12="-9" y5="0" x10="26" y13="0" y6="0" x11="26" y14="0" y7="-9" x12="35" y8="-9" x13="35" y9="0" x14="34"/>
+        <terminal x="-21" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition width="50" version="0.4" hotspot_x="7" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">ACS a consumo</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.7505" x1="-1.80893" y2="-9.7505" x2="10.8764"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.7505" x1="11.5" y2="-1.72091" x2="19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.29388" x1="14.5" y2="-5.7357" x2="25"/>
+        <arc width="18" x="7" y="-11.0888" antialias="true" height="13.3826" style="line-style:normal;line-weight:normal;filling:none;color:black" start="10" angle="-110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.05917" x1="28" y2="0.955619" x2="38.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97041" x1="19" y2="13" x2="23.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.29388" x1="25" y2="8.98521" x2="32.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.382645" x1="26.5" y2="3.63215" x2="32.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.63215" x1="22" y2="8.98521" x2="26.5"/>
+        <text x="-3.5" y="-15.1036" size="5" text="ACS"/>
+        <polygon x4="7" y5="-4" x5="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="-2" y2="-4" x2="12" y3="-5" x3="7" y4="-3"/>
+        <terminal x="-2" y="-10" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

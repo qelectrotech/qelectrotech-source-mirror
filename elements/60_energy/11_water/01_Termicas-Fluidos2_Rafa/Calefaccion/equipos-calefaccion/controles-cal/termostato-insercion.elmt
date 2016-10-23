@@ -1,0 +1,23 @@
+<definition type="element" hotspot_x="13" orientation="dyyy" width="30" height="70" link_type="simple" hotspot_y="42" version="0.5">
+    <names>
+        <name lang="ca">Termostat-inserció</name>
+        <name lang="es">Termostato-insercion</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0.124008" x2="1.68363" end2="none" y2="-22.5933" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-22.5933"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4.55485" x2="-2.99523" end2="none" y2="-22.5933" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-22.5933"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0.124008" x2="1.68363" end2="none" y2="-25.4703" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-25.4703"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.67408" antialias="false" width="15.5962" height="4.31548" y="-5.33139"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.9221" antialias="false" width="3.11924" height="3.31548" y="-11.5239"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.43561" antialias="false" width="3.11924" height="20.0159" y="-0.0159111"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.7933" antialias="true" width="21.8347" height="21.5774" y="-38.4168"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-7.67408" x2="-7.67408" y2="-5.33139" x3="7.9221" y3="-5.33139" antialias="false" x4="7.9221" y4="-20.851" y1="-20.851" closed="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.55485" antialias="false" width="9.35771" height="2.87699" y="-32.6628"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4.55485" x2="-2.99523" end2="none" y2="-25.4703" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-25.4703"/>
+        <input rotate="true" x="-8" tagg="label" text="ºC" size="4" y="-42"/>
+        <terminal x="12.601" orientation="e" y="-9.64688"/>
+        <terminal x="0" orientation="s" y="20"/>
+    </description>
+</definition>

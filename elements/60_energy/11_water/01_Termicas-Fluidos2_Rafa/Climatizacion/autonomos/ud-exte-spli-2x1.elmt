@@ -1,0 +1,37 @@
+<definition hotspot_x="22" hotspot_y="36" width="70" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Unidtat exterior Split-2x1</name>
+        <name lang="es">Unidad exterior Split-2x1</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22.4292" width="1.39258" antialias="false" height="1.36831" x="33.7661"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="14.1275" y="-12.165" antialias="true" height="13.6831" x="-4.66997"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.7975" width="2.78516" antialias="false" height="4.10493" x="34.9412"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="19.2647" y="-14.9015" antialias="true" height="19.1564" x="-7.23862"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="12.4645" width="5.57032" antialias="false" height="2.73663" x="25.4106"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.6403" width="1.39258" antialias="false" height="1.36831" x="33.7661"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.0086" width="2.78516" antialias="false" height="4.10493" x="34.7462"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.42923" width="1.39258" antialias="false" height="1.36831" x="33.7661"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="30.8234" y="-20.3747" antialias="true" height="30.1029" x="-12.3758"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-27.2165" width="50.1329" antialias="false" height="39.6809" x="-16.3668"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.79754" width="2.78516" antialias="false" height="4.10493" x="34.9412"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="21.2328" y2="12.5229" end1="none" x1="21.2328" y1="-24.5336" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.3747" width="6.96291" antialias="false" height="2.73663" x="22.018"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="12.4645" width="5.57032" antialias="false" height="2.73663" x="-12.1892"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8.35972" width="1.39258" antialias="false" height="1.36831" x="33.7661"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="6.99144" width="2.78516" antialias="false" height="4.10493" x="34.7462"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="33.7661" y2="-24.4796" end1="none" x1="-16.3668" y1="-24.4796" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="3.18088" y2="8.35972" end1="none" x1="3.18088" y1="-20.3747" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="18.4476" y2="-5.32336" end1="none" x1="-12.3758" y1="-5.32336" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="25.6864" y="-17.6382" antialias="true" height="24.6296" x="-9.80727"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.70589" y="-9.4283" antialias="true" height="8.20986" x="-0.817032"/>
+        <input rotate="true" text="Ud_" tagg="label" y="-34.6156" x="-19.8267" size="4"/>
+        <terminal y="15.2013" x="-3.36355" orientation="s"/>
+        <terminal y="-1.42923" x="37.7264" orientation="e"/>
+        <terminal y="8.35972" x="38.5314" orientation="e"/>
+        <terminal y="-29" x="23" orientation="n"/>
+        <terminal y="-22.4292" x="37.7264" orientation="e"/>
+        <terminal y="-12.6403" x="38.5314" orientation="e"/>
+    </description>
+</definition>

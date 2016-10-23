@@ -1,0 +1,25 @@
+<definition hotspot_x="14" hotspot_y="14" width="30" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Clau termotàtica</name>
+        <name lang="es">Llave termostatica</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-0.6" y2="-4.4662" end1="none" x1="-0.6" y1="-7.73388" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="0.6" y2="-4.4662" end1="none" x1="0.6" y1="-7.73388" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.6" y2="0.93912" end1="none" x1="4.87624" y1="0.93912" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="1.788" y2="-4.4662" end1="none" x1="1.788" y1="-7.73388" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.11887" width="1.8" antialias="false" height="2.10435" x="2.4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.56975" width="4.8" antialias="false" height="5.20698" x="-2.4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.40868" width="2.1547" antialias="false" height="5.79707" x="4.4453"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.6" y2="-1.95941" end1="none" x1="4.87624" y1="-1.95941" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.10436" width="2.4" antialias="false" height="2.5971" x="-5.2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.83236" width="2.4" antialias="false" height="1.26261" x="-1.2"/>
+        <polygon y7="-3.83236" x4="1.8" y3="-7.93102" antialias="false" x3="3" y4="-9.68763" x2="3" x1="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-3" x7="-3" y5="-9.68763" x5="-1.8" closed="false" y8="-3.83236" y2="-3.83236" x8="-3" y6="-7.93102" y1="-3.83236"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-1.8" y2="-4.4662" end1="none" x1="-1.8" y1="-7.73388" length1="1.5"/>
+        <input rotate="true" text="_" tagg="label" y="-15" x="-5" size="3"/>
+        <terminal y="0" x="-6" orientation="w"/>
+        <terminal y="0" x="6" orientation="e"/>
+    </description>
+</definition>

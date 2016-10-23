@@ -1,0 +1,21 @@
+<definition link_type="simple" height="20" type="element" width="40" hotspot_y="12" version="0.5" hotspot_x="19" orientation="dyyy">
+    <names>
+        <name lang="ca">Clau tall ràpid NC</name>
+        <name lang="en">Valve Hogger NC</name>
+        <name lang="es">Llave corte rápido NC</name>
+        <name lang="fr">Valve Lardeur NC</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.7828" end2="none" antialias="false" x1="16.0481" y1="0" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-9.175" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0.6225" end2="none" antialias="false" x1="0.6225" y1="-0.1975" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-9.175" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5.3475" end2="none" antialias="false" x1="-4.1025" y1="-9.175" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-14.9858" end2="none" antialias="false" x1="-9.18334" y1="0" length1="1.5"/>
+        <input text="NC" x="-6" tagg="label" size="4" y="4" rotate="true"/>
+        <polygon y5="-5" y4="-5" x6="-9" y2="5" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="1" y3="0" x2="-9" y6="-5" antialias="false" x1="-9" y1="-5" x4="-9" x5="-9"/>
+        <polygon y5="-5" y4="-5" x6="10" y2="5" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="1" y3="0" x2="10" y6="-5" antialias="false" x1="10" y1="-5" x4="10" x5="10"/>
+        <terminal x="16" y="0" orientation="e"/>
+        <terminal x="-15" y="0" orientation="w"/>
+    </description>
+</definition>

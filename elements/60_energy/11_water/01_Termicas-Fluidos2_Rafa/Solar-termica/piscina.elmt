@@ -1,0 +1,35 @@
+<definition width="130" version="0.4" hotspot_x="81" hotspot_y="21" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Piscina climatizada</name>
+        <name lang="ca">Piscina climatitzada</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon x4="34.2" y5="-1.33872" x5="28.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1.33872" x1="28.6" y2="2.06988" x2="28.6" y3="-1.33872" x3="34.2" y4="2.06988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.96684" x1="34.8017" y2="-8.96684" x2="40.0559"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.122772" x1="34.8017" y2="0.122772" x2="40.0559"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.122772" x1="22.9017" y2="0.122772" x2="28.1559"/>
+        <arc width="10.5509" x="4.7181" y="-3.22513" antialias="true" height="5.74174" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <polygon x4="-17.5561" y5="5.9616" x5="-5.83286" y6="-17.0052" x6="-5.83286" y7="-17.0052" x7="-5.83286" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:black" y1="-17.0052" x1="-4.6605" y2="-17.0052" x2="-75" y3="-5.52182" x3="-75" y4="5.9616"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.7033" x1="-9.15023" y2="11.7033" x2="-3.43445"/>
+        <arc width="10.5509" x="4.7181" y="2.51658" antialias="true" height="5.74174" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.928447" x1="4.67121" y2="4.81324" x2="4.67121"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.219895" x1="15.269" y2="4.81324" x2="15.269"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.36824" x1="3.54578" y2="1.36824" x2="16.4414"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.66494" x1="15.3754" y2="3.66494" x2="22.1688"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.55586" x1="22.3029" y2="-12.3111" x2="22.3029"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.4119" x1="22.3029" y2="-12.4119" x2="-7.00515"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.96684" x1="22.9017" y2="-8.96684" x2="28.1559"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.9616" x1="-9.3498" y2="11.7033" x2="-9.3498"/>
+        <ellipse width="5.86163" x="-3.48821" y="8.82636" antialias="true" height="5.17364" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.7033" x1="2.29005" y2="11.7033" x2="10.1978"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.7033" x1="10.5797" y2="8.25826" x2="10.5797"/>
+        <polygon x4="-1.77636" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="8.98588" x1="-1.77636" y2="11.4929" x2="2.37345" y3="14" x3="-1.77636" y4="8.98588"/>
+        <polygon x4="24.4" y5="-6.45163" x5="20.2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6.45163" x1="20.2" y2="-6.45163" x2="24.4" y3="-4.17923" x3="20.2" y4="-4.17923"/>
+        <polygon x4="34.2" y5="-10.4283" x5="28.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10.4283" x1="28.6" y2="-7.01973" x2="28.6" y3="-10.4283" x3="34.2" y4="-7.01973"/>
+        <input x="-66" y="-23" size="6" rotate="true" text="Piscina clim_" tagg="label"/>
+        <terminal x="40.5" y="-8.72404" orientation="e"/>
+        <terminal x="40.5" y="0.365579" orientation="e"/>
+    </description>
+</definition>

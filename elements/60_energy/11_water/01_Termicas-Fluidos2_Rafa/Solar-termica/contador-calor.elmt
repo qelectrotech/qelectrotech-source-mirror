@@ -1,0 +1,40 @@
+<definition width="70" version="0.4" hotspot_x="34" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Contador calorías</name>
+        <name lang="ca">Comptador caloríes</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.04" x="-22.7" y="13.6321" antialias="true" height="4.3679" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="9.70954" y2="-11.629" x2="9.70954"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="-11.7589" y2="-11.629" x2="-11.7589"/>
+        <arc width="3.04" x="19.38" y="13.6321" antialias="true" height="4.3679" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="5.84" x="12.54" y="6.62428" antialias="false" height="5.7358" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="2.26715" y2="-11.629" x2="2.26715"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="12.0949" y2="-11.629" x2="12.0949"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="7.32415" y2="-11.629" x2="7.32415"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="-6.98813" y2="-11.629" x2="-6.98813"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="-2.21737" y2="-11.629" x2="-2.21737"/>
+        <rect width="26.5042" x="-13.3491" y="-11.629" antialias="false" height="9.70139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.6" x="19.14" y="1.98436" antialias="false" height="16.0156" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.35226" x1="19.38" y2="6.35226" x2="26.98"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.92757" x1="-10.1686" y2="-11.629" x2="-10.1686"/>
+        <rect width="5.6" x="-19.66" y="6.62428" antialias="false" height="5.7358" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.6321" x1="19.38" y2="13.6321" x2="26.98"/>
+        <rect width="7.6" x="-27.26" y="1.98436" antialias="false" height="16.0156" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="3.04" x="19.38" y="1.98436" antialias="true" height="4.3679" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="3.04" x="19.38" y="6.35226" antialias="true" height="7.27984" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.35226" x1="-27.26" y2="6.35226" x2="-19.66"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.6321" x1="-27.26" y2="13.6321" x2="-19.66"/>
+        <arc width="3.04" x="-22.7" y="1.98436" antialias="true" height="4.3679" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="3.04" x="-22.7" y="6.35226" antialias="true" height="7.27984" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="3.31303" x="-11.9985" y="-16.765" antialias="false" height="5.13604" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12" x2="-14" x3="-14" x4="-10" antialias="false" x5="8" x6="12" x7="12" x8="10" x9="-12" closed="false" y1="1" y10="1" y2="3" y11="1" y3="15" y4="17" y5="17" x10="-12" y6="15" x11="-12" y7="3" y8="1" y9="1"/>
+        <rect width="15" x="-8" y="-2" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-12" y="9" size="6" rotate="true" text="Cal_" tagg="label"/>
+        <terminal x="-26.5" y="9.99218" orientation="w"/>
+        <terminal x="26.98" y="9.99218" orientation="e"/>
+        <terminal x="-10.0483" y="-16.765" orientation="n"/>
+    </description>
+</definition>

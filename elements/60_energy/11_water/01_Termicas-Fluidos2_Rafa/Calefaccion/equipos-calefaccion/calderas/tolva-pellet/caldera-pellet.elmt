@@ -1,0 +1,46 @@
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="58" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مرجل خشب</name>
+        <name lang="el">Καυστήρας ξύλου</name>
+        <name lang="en">Pellet boiler</name>
+        <name lang="it">Caldaia a legna</name>
+        <name lang="fr">Chaudière Bois</name>
+        <name lang="pl">Kocioł</name>
+        <name lang="es">Caldera pellets</name>
+        <name lang="nl">boiler hout</name>
+        <name lang="ca">Caldera de pellets</name>
+        <name lang="cs">Kotel na dřevo</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="3" x="-29" y="-30" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-49.1764" x1="-15.4" y2="-49.1764" x2="-16.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-49.1764" x1="-18" y2="-49.1764" x2="-17.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-50.5012" x1="-16.7" y2="-49.8388" x2="-16.7"/>
+        <ellipse width="4.68721" x="-19.0436" y="-51.5647" antialias="true" height="4.77666" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.83848" x="-12.2192" y="-49.8856" antialias="true" height="1.87356" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="45.5" x="-26.45" y="-52.4884" antialias="false" height="6.62403" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.6" x="-26.45" y="-43.8644" antialias="false" height="70.8644" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.6" x="16.45" y="-43.8644" antialias="false" height="70.8644" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="47" x="-27" y="27" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="45" x="-26" y="-46" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="36" x="-21" y="-43" antialias="false" height="10" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="-5" y="-50" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-29" y="-42" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-16" y2="-40" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-41" x1="-18" y2="-40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39" x1="-18" y2="-40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-20" y2="-28" x2="-16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="-18" y2="-28" x2="-15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="-18" y2="-28" x2="-15"/>
+        <ellipse width="11" x="-9" y="2" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="35" x="-20" y="0" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="12" y5="-50" x5="11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-48" x1="4" y2="-50" x2="8" y3="-48" x3="7" y4="-50"/>
+        <input x="-20" y="-16" size="4" rotate="true" text="Mod." tagg="label"/>
+        <terminal x="-29" y="-40" orientation="w"/>
+        <terminal x="-29" y="-28" orientation="w"/>
+        <terminal x="-4" y="9" orientation="s"/>
+        <terminal x="10" y="-54" orientation="n"/>
+    </description>
+</definition>

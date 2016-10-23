@@ -1,0 +1,30 @@
+<definition width="40" version="0.4" hotspot_x="14" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Reloj</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.5" x1="15" y2="20" x2="15"/>
+        <circle x="14" y="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="16" y2="-9.5" x2="16"/>
+        <polygon x4="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7" x1="-1" y2="-7" x2="1" y3="-8" x3="0" y4="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-1" y2="0" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="-7" x2="0"/>
+        <polygon x4="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="5" y2="0" x2="7" y3="1" x3="5" y4="-1"/>
+        <circle x="-11.1803" y="-11.1803" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22.3607"/>
+        <circle x="-4" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.55271e-15"/>
+        <circle x="-9" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.5" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9.5" x2="0"/>
+        <input x="20" y="18" size="6" rotate="true" text="_" tagg="label"/>
+        <circle x="15" y="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="11.4364" y2="-1" x2="15.5273"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="11.4364" y2="1" x2="15.5273"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="14" x2="22" x3="20" x4="12" antialias="false" x5="14" x6="14" x7="14" x8="14" closed="false" y1="8" y2="-8" y3="-8" y4="8" y5="8" y6="8" y7="8" y8="8"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+        <terminal x="16" y="-21" orientation="n"/>
+        <terminal x="15" y="21" orientation="s"/>
+    </description>
+</definition>

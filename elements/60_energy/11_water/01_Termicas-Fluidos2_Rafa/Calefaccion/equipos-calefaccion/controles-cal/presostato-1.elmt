@@ -1,0 +1,23 @@
+<definition width="30" version="0.4" hotspot_x="12" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Presostato</name>
+        <name lang="ca">Presostat</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.20937" x1="-1.70846" y2="4.45018" x2="2.56494"/>
+        <rect width="16.3814" x="-8.11856" y="-10.7336" antialias="false" height="11.3878" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="16.3814" x="-8.11856" y="-13.7703" antialias="true" height="5.31432" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="7.12234" x="-3.13292" y="0.65424" antialias="false" height="2.27757" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.2734" x="-1.70846" y="2.9318" antialias="false" height="5.31432" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.48694" x1="-1.70846" y2="6.72775" x2="2.56494"/>
+        <ellipse width="1.42447" x="3.98942" y="-6.93764" antialias="true" height="1.51838" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.42447" x="8.26281" y="-9.9744" antialias="false" height="2.27757" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.56117" x="-3.84516" y="-8.45602" antialias="true" height="3.79594" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.41927" x1="-3.84516" y2="-7.69683" x2="-0.283991"/>
+        <input x="-15" y="-20.6453" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="10.3995" y="-9.21521" orientation="e"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

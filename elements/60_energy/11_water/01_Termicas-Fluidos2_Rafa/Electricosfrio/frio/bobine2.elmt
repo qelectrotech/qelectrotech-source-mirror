@@ -1,0 +1,26 @@
+<definition orientation="dyyy" type="element" height="40" link_type="simple" width="30" hotspot_y="24" version="0.5" hotspot_x="15">
+    <names>
+        <name lang="ru">Обмотка</name>
+        <name lang="pt">Bobine</name>
+        <name lang="fr">Bobine</name>
+        <name lang="cs">Cívka</name>
+        <name lang="en">Coil</name>
+        <name lang="es">Bobina</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="A2" rotate="true" size="4" tagg="none" x="-17" y="8"/>
+        <input text="A1" rotate="true" size="4" tagg="none" x="-16" y="-10"/>
+        <line end2="none" x1="1.77636e-15" y1="-15.5011" x2="1.77636e-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-9.47518" end1="none" length2="1.5"/>
+        <line end2="none" x1="1.77636e-15" y1="3.75593" x2="1.77636e-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="9.78185" end1="none" length2="1.5"/>
+        <line end2="none" x1="9" y1="2.57667" x2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-9.47518" end1="none" length2="1.5"/>
+        <line end2="none" x1="-9" y1="2.57667" x2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="2.57667" end1="none" length2="1.5"/>
+        <input text="" size="9" tagg="none" x="12" y="-1.64148"/>
+        <line end2="none" x1="9" y1="-9.47518" x2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-9.47518" end1="none" length2="1.5"/>
+        <line end2="none" x1="-9" y1="-9.47518" x2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="2.57667" end1="none" length2="1.5"/>
+        <input text="KM_" rotate="true" size="4" tagg="label" x="9" y="-1"/>
+        <terminal orientation="n" x="1.77636e-15" y="-16.1037"/>
+        <terminal orientation="s" x="1.77636e-15" y="9.20518"/>
+    </description>
+</definition>

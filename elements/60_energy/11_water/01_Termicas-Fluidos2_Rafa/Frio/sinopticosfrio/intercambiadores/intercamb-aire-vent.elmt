@@ -1,0 +1,22 @@
+<definition width="60" version="0.4" hotspot_x="26" hotspot_y="29" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Intercamb.aletas+ventilador</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="11.5" y2="13" x2="11.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="4" y2="13" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-3.5" y2="13" x2="-3.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="19" y2="13" x2="19"/>
+        <rect width="40" x="-16" y="-24" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-22.0216" y2="10" x2="30.0234"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-11" y2="13" x2="-11"/>
+        <ellipse width="25" x="-9" y="-21" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="-9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="7" y2="-9" x2="16"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3.4" x2="5.2" x3="5.2" x4="3.4" antialias="false" x5="1.6" x6="1.6" x7="3.4" x8="6.1" x9="9.7" closed="false" y1="-10.2367" y10="-4.69297" y2="-11.6227" y11="-5.38594" y3="-15.7805" y4="-17.8594" y12="-7.46484" y5="-15.7805" x10="9.7" y13="-10.2367" y6="-12.3156" x11="7" y7="-10.2367" x12="4.3" y8="-9.54375" x13="3.4" y9="-6.77187"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3.4" x2="0.7" x3="-2" x4="-2" antialias="false" x5="0.7" x6="3.4" x7="3.4" x8="3.4" closed="false" y1="-10.2367" y2="-9.54375" y3="-6.07891" y4="-4" y5="-4.69297" y6="-7.46484" y7="-9.54375" y8="-9.54375"/>
+        <terminal x="-22" y="10" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="29" y="10" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

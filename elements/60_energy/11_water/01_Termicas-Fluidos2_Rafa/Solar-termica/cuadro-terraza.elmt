@@ -1,0 +1,41 @@
+<definition width="60" version="0.4" hotspot_x="19" hotspot_y="26" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Cuadro elec. terraza</name>
+        <name lang="ca">Cuade elec. terrassa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="52" x="-15" y="-18.2579" antialias="false" height="20.8816" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.50528" x1="2.6" y2="-6.81712" x2="2.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.50528" x1="-7" y2="-6.81712" x2="-7"/>
+        <ellipse width="1.6" x="17" y="-3.81712" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="48" x="-13" y="-16.2579" antialias="false" height="16.8816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="9.6" x="-3.8" y="-11.8816" antialias="false" height="11.8171" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="9.6" x="15.4" y="-5.50528" antialias="false" height="5.06448" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.50528" x1="20.2" y2="-0.440802" x2="20.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.50528" x1="-0.6" y2="-6.81712" x2="-0.6"/>
+        <ellipse width="1.6" x="7.4" y="-3.81712" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.6" x="21.8" y="-3.81712" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.81712" x1="-0.6" y2="-6.81712" x2="2.6"/>
+        <ellipse width="1.6" x="-2.2" y="-3.4408" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.6" x="2.6" y="-3.4408" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="9.6" x="-13.4" y="-11.8816" antialias="false" height="11.8171" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.50528" x1="-10.2" y2="-6.81712" x2="-10.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.81712" x1="-10.2" y2="-6.81712" x2="-7"/>
+        <ellipse width="1.6" x="-11.8" y="-3.4408" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.6" x="-7" y="-3.4408" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="9.6" x="5.8" y="-5.50528" antialias="false" height="5.06448" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.50528" x1="10.6" y2="-0.440802" x2="10.6"/>
+        <ellipse width="1.6" x="12.2" y="-3.81712" antialias="true" height="1.68816" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x4="24.6" y5="-11.3224" x5="19.8" y6="-9.6342" x6="21.4" y7="-13.0106" x7="24.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.9461" x1="11.8" y2="-13.0106" x2="18.2" y3="-7.9461" x3="16.6" y4="-13.0106"/>
+        <input x="-8" y="-22.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-8" y="7" orientation="s"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="9.6" y="6.37632" orientation="s"/>
+        <terminal x="19.2" y="6.37632" orientation="s"/>
+        <terminal x="24" y="6.37632" orientation="s"/>
+        <terminal x="14.4" y="6.37632" orientation="s"/>
+        <terminal x="1.6" y="7" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Contador Calor</name>
+        <name lang="ca">Comptador Calor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="11.94" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="8" x1="11.94" y2="-7.1636" x2="-2.55" y3="7.77827" x3="-2.55" y4="8"/>
+        <rect width="16" x="-3" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-9" y2="0" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="13.6545" y2="0" x2="18.2909"/>
+        <rect width="2" x="9" y="-15" antialias="false" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="20" x="-5" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-4" y="17" size="4" rotate="true" text="Cal. Ø" tagg="label"/>
+        <terminal x="-9.75" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="10" y="-15" orientation="n"/>
+    </description>
+</definition>

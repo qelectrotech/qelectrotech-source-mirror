@@ -1,0 +1,29 @@
+<definition width="80" version="0.4" hotspot_x="70" hotspot_y="62" height="90" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Captador solar terraza</name>
+        <name lang="ca">Captador solar terrassa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-23" y2="21" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-22" y2="19" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-64" y2="23" x2="-36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-67" y2="20" x2="-39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-56" x1="-28" y2="-40" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-56" x1="-28" y2="4" x2="-67"/>
+        <polygon x4="3" y5="-40" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-40" x1="0" y2="20" x2="-39" y3="20" x3="-35" y4="-40"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-40" x1="3" y2="-56" x2="-25" y3="-56" x3="-28"/>
+        <polygon x4="-28" y5="4" x5="-65" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="4" x1="-65" y2="18" x2="-40" y3="-39" x3="-3" y4="-53"/>
+        <polygon x4="-34" y5="23" x5="-36" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="23" x1="-36" y2="-40" x2="4" y3="-39" x3="6" y4="23"/>
+        <polygon x4="3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-39" x1="6" y2="22" x2="6" y3="22" x3="3" y4="-34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-11" y2="-5" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-11" y2="-4" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-64" y2="6" x2="-64"/>
+        <input x="-15" y="-52.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-33" y="19" orientation="e"/>
+        <terminal x="3" y="-37" orientation="e"/>
+        <terminal x="-65" y="2" orientation="w"/>
+        <terminal x="-29" y="-55" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition orientation="dyyy" type="element" width="30" height="30" hotspot_x="14" hotspot_y="14" link_type="simple" version="0.5">
+    <names>
+        <name lang="ca">Bomba simple</name>
+        <name lang="nl">Pomp</name>
+        <name lang="it">Pompa</name>
+        <name lang="fr">Pompe</name>
+        <name lang="pl">Pompa</name>
+        <name lang="el">Αντλία</name>
+        <name lang="ar">مضخة</name>
+        <name lang="es">Bomba simple</name>
+        <name lang="cs">Pumpa</name>
+        <name lang="en">Pump</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="0.253352" end1="none" length1="1.5" y1="0.253352" length2="1.5" antialias="false" x2="7.9206" end2="none" x1="10.2946" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="-3.48197" y4="0.324684" y2="-6.64867" y3="7.29803" y1="0.324684" x4="8.08426" antialias="true" x2="-3.48197" x1="8.08426" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <ellipse width="16.5994" y="-8.29578" height="16.5915" antialias="true" x="-7.85481" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-0.29279" end1="none" length1="1.5" y1="-0.29279" length2="1.5" antialias="false" x2="-9.44" end2="none" x1="-7.73564" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-12" tagg="label" text="_" rotate="true" x="-6" size="4"/>
+        <terminal orientation="w" y="0" x="-10"/>
+        <terminal orientation="e" y="0" x="10"/>
+    </description>
+</definition>

@@ -1,0 +1,34 @@
+<definition width="40" version="0.4" hotspot_x="21" hotspot_y="26" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termostática-2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24.6308" x1="2" y2="27.4" x2="2"/>
+        <rect width="5" x="-2" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" x="-7" y="13" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="1.79428" x="-16.2264" y="12.2135" antialias="true" height="2.91701" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="2.01857" x="-13.7593" y="12.2135" antialias="true" height="2.91701" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="2.01857" x="-16.2264" y="4.73862" antialias="true" height="3.64629" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="1.79428" x="-13.535" y="8.3849" antialias="true" height="3.82862" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="4.4857" x="-16.2264" y="5.71808" antialias="false" height="8.61537" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.3849" x1="-12.818" y2="8.3849" x2="-15.1457"/>
+        <arc width="2.01857" x="-13.7593" y="4.73862" antialias="true" height="3.64629" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.2135" x1="-15.1275" y2="12.2135" x2="-12.8378"/>
+        <arc width="1.56999" x="-16.2264" y="8.3849" antialias="true" height="3.82862" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="10" x="-5" y="-2" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-14.0716" y2="-4" x2="15.0776"/>
+        <polygon x4="-5" y5="-4" x5="-15" y6="-2" x6="-5" y7="-2" x7="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="5" y2="-4" x2="16" y3="-6" x3="5" y4="-6"/>
+        <rect width="6" x="-3" y="0" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" x="-7" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-11" y="8" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="14" x="0" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <ellipse width="12" x="1" y="-23" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7" x="-3" y="24" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24.6115" x1="-1" y2="27.4209" x2="-1"/>
+        <terminal x="-17" y="10" orientation="w"/>
+        <terminal x="-2" y="-20" orientation="w"/>
+        <terminal x="0" y="29" orientation="s"/>
+    </description>
+</definition>

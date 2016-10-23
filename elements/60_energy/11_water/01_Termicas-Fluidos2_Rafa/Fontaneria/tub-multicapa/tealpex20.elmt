@@ -1,0 +1,29 @@
+<definition width="100" version="0.4" hotspot_x="48" hotspot_y="45" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Te Alpex 20</name>
+        <name lang="ca">Te Alpex 20</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3" x="18" y="-13" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="21.8323" x="-10.0373" y="-37.7314" antialias="false" height="18.8161" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="13.8" x="-6.35" y="-17.3123" antialias="false" height="4.72834" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.6" x="14.35" y="-6.37002" antialias="false" height="12.4278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="11.5" x="7.45" y="-17.555" antialias="true" height="11.185" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="2.6" x="41.65" y="-6.6128" antialias="false" height="12.4278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14.5974" x="-6.41984" y="-40.0946" antialias="false" height="2.36322" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.6" x="-16.7" y="-6.37002" antialias="false" height="12.4278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.6" x="-39.7" y="-6.37002" antialias="false" height="12.4278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.4" x="-38.1" y="-10.3411" antialias="false" height="19.8845" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20.7" x="20.95" y="-10.3411" antialias="false" height="19.8845" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="11.5" x="-17.85" y="-17.555" antialias="true" height="11.185" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.05777" x1="-10.95" y2="6.05777" x2="14.35"/>
+        <rect width="3" x="-20" y="-13" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="28" x="-13" y="-19" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-13" y="14" size="4" rotate="true" text="Te 20" tagg="label"/>
+        <terminal x="-40" y="0" orientation="w"/>
+        <terminal x="-0.0574" y="-40.0946" orientation="n"/>
+        <terminal x="44.25" y="-0.39891" orientation="e"/>
+    </description>
+</definition>

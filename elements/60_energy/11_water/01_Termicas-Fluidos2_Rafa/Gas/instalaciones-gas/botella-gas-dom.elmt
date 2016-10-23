@@ -1,0 +1,29 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="35" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Botella doméstica</name>
+        <name lang="ca">Botella domèstica</name>
+    </names>
+    <informations/>
+    <description>
+        <arc width="4" x="-6" y="-31" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.049" x1="8" y2="15.0531" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-6.62" y2="-9" x2="-6.62"/>
+        <rect width="2" x="5" y="15.9857" antialias="false" height="1.01429" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="1" y="15.9857" antialias="false" height="1.01429" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="-4" y="16" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="6.38" y2="-9" x2="6.38"/>
+        <arc width="16" x="-8" y="-10" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-8.1403" y2="-5" x2="8.0686"/>
+        <arc width="4" x="-6" y="-24" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="4" x="-2" y="-13" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.049" x1="-8" y2="15.0531" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-8" y2="15" x2="8"/>
+        <polygon x4="9" y5="17" x5="9" y6="15" x6="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="15" x1="-8" y2="17" x2="-9" y3="21" x3="-9" y4="21"/>
+        <rect width="2" x="-7" y="16" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4" x2="5" x3="2" x4="4" antialias="false" x5="1" x6="-1" x7="-4" x8="-2" x9="-4" closed="false" y1="-13" y2="-13" y3="-14" y4="-18" y5="-20" y6="-20" y7="-18" y8="-14" y9="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-18" x1="-3.12632" y2="-18" x2="3.13684"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-15" x1="-2" y2="-15" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-21" x2="1"/>
+        <terminal x="-2" y="-28" orientation="n"/>
+    </description>
+</definition>

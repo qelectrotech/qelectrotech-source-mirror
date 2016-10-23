@@ -1,0 +1,28 @@
+<definition link_type="simple" height="40" type="element" width="30" hotspot_y="13" version="0.5" hotspot_x="11" orientation="dyyy">
+    <names>
+        <name lang="ca">Vàlvula de seguretat</name>
+        <name lang="en">Saffety valve</name>
+        <name lang="es">Válvula de seguridad</name>
+        <name lang="fr">Soupape de sécurité</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" y2="-0.89732" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.2993" end2="none" antialias="false" x1="9.2993" y1="8.9727" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none" antialias="false" x1="0" y1="4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none" antialias="false" x1="-6" y1="14" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none" antialias="false" x1="0" y1="4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" end2="none" antialias="false" x1="0" y1="4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" end2="none" antialias="false" x1="9" y1="-1" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" end2="none" antialias="false" x1="0" y1="4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-5" end2="none" antialias="false" x1="0" y1="0" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="3" end2="none" antialias="false" x1="-5" y1="-4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none" antialias="false" x1="3" y1="-6" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="19" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" antialias="false" x1="0" y1="15" length1="1.5"/>
+        <input text="_bar" x="0" tagg="label" size="4" y="-9" rotate="true"/>
+        <line length2="1.5" end1="none" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="14" end2="none" antialias="false" x1="9" y1="4" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" end2="none" antialias="false" x1="7" y1="-1" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" antialias="false" x1="0" y1="5" length1="1.5"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

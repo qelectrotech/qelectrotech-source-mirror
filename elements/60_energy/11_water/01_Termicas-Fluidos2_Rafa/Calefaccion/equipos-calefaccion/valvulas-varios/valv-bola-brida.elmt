@@ -1,0 +1,23 @@
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="12" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv bola brida</name>
+        <name lang="ca">Valv bola brida</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="0.8" x="7.2" y="-4.95526" antialias="false" height="9.04668" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="9.62464" x="-4.0116" y="-5.25732" antialias="true" height="4.89352" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="1.40073" x="5.61304" y="-2.41627" antialias="false" height="4.36252" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="9.62464" x="-4.0116" y="-0.106219" antialias="true" height="4.89353" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="3.92203" x="-1.05029" y="-6.54508" antialias="false" height="1.28777" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="13.7271" x="-0.77014" y="-8.57528" antialias="false" height="0.227339" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.12058" x="0.35044" y="-7.57528" antialias="false" height="1.03021" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.40073" x="-5.41232" y="-2.54901" antialias="false" height="4.49526" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.54508" x1="0.070296" y2="-5.51483" x2="0.070296"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.54508" x1="2.03131" y2="-5.51483" x2="2.03131"/>
+        <rect width="0.8" x="-6.4" y="-4.95526" antialias="false" height="9.04668" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-6" y="-13" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-7.2" y="-0.431922" orientation="w"/>
+        <terminal x="8.4" y="-0.431922" orientation="e"/>
+    </description>
+</definition>

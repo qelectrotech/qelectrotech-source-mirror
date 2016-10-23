@@ -1,0 +1,44 @@
+<definition width="110" version="0.4" hotspot_x="55" hotspot_y="24" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Calefaccián radiadores</name>
+        <name lang="ca">Calefaccián radiadores</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7107" x1="9.5388" y2="12.7107" x2="34.7603"/>
+        <rect width="1.152" x="-24.36" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="-10.536" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="-31.272" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="-27.816" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.2816" x1="-47.403" y2="-18.2816" x2="46.863"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.6266" x1="-47.4022" y2="19.6266" x2="47.5824"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7107" x1="-35.8212" y2="12.7107" x2="-10.5997"/>
+        <rect width="1.152" x="-13.992" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="27.648" x="-35.88" y="-11.9037" antialias="false" height="26.5078" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.152" x="17.544" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="34.824" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="-17.448" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.0103" x1="-34.6692" y2="-10.0103" x2="-9.44772"/>
+        <rect width="1.152" x="-34.728" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="-20.904" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="21" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="14.088" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.2312" x1="-41.64" y2="-9.73044" x2="-41.64"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.31273" x1="-41.64" y2="-9.31273" x2="-35.88"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.611" x1="-7.8" y2="12.611" x2="-3.48"/>
+        <rect width="1.152" x="31.368" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.611" x1="-3.48" y2="19.5868" x2="-3.48"/>
+        <rect width="27.648" x="9.48" y="-11.9037" antialias="false" height="26.5078" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.152" x="27.912" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.0103" x1="10.6908" y2="-10.0103" x2="35.9123"/>
+        <rect width="1.152" x="10.632" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.152" x="24.456" y="-8.11693" antialias="false" height="18.9342" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.2312" x1="3.72" y2="-9.73044" x2="3.72"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.31273" x1="3.72" y2="-9.31273" x2="9.48"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.611" x1="37.56" y2="12.611" x2="41.88"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.611" x1="41.88" y2="19.5868" x2="41.88"/>
+        <input x="44.16" y="1.94231" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-46.68" y="-18.2816" orientation="w"/>
+        <terminal x="-47.4" y="19.5868" orientation="w"/>
+    </description>
+</definition>

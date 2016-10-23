@@ -1,0 +1,32 @@
+<definition width="50" hotspot_y="21" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Bomba circuladora</name>
+        <name lang="ca">Bomba circuladora</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="13.0284" end1="none" x1="15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18" antialias="false" y2="13.0284" length2="1.5"/>
+        <line y1="13.0284" end1="none" x1="-18" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15" antialias="false" y2="13.0284" length2="1.5"/>
+        <polygon y1="3.06945" x3="7" y4="1.82462" x5="9" x4="9" x1="-8" y5="1.82462" closed="false" y3="-18.0933" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" antialias="false" y2="-18.0933"/>
+        <rect width="4" y="8.04891" style="line-style:normal;line-weight:normal;filling:none;color:black" x="11" antialias="false" height="4.97946"/>
+        <rect width="4" y="5.55918" style="line-style:normal;line-weight:normal;filling:none;color:black" x="15" antialias="false" height="9.95894"/>
+        <line y1="8.04891" end1="none" x1="15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18" antialias="false" y2="8.04891" length2="1.5"/>
+        <line y1="-15.6035" end1="none" x1="-4" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-5" antialias="false" y2="0.579701" length2="1.5"/>
+        <line y1="-15.6035" end1="none" x1="5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7" antialias="false" y2="0.579701" length2="1.5"/>
+        <line y1="-15.6035" end1="none" x1="3" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="4" antialias="false" y2="0.579701" length2="1.5"/>
+        <rect width="4" y="8.04891" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" antialias="false" height="4.97946"/>
+        <rect width="4" y="5.55918" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18" antialias="false" height="9.95894"/>
+        <line y1="-15.6035" end1="none" x1="-1" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-2" antialias="false" y2="0.579701" length2="1.5"/>
+        <line y1="8.04891" end1="none" x1="-18" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15" antialias="false" y2="8.04891" length2="1.5"/>
+        <rect width="3" y="-15.6035" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" antialias="false" height="3.73459"/>
+        <line y1="-15.6035" end1="none" x1="-6" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7" antialias="false" y2="-15.6035" length2="1.5"/>
+        <line y1="0.579701" end1="none" x1="-8" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="9" antialias="false" y2="0.579701" length2="1.5"/>
+        <polygon x5="11" x8="-8" x9="-10" closed="false" y10="13.0284" y1="13.0284" x3="6" y9="5.55918" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15.5181" antialias="false" x4="8" y6="8.04891" y7="3.06945" y4="14.2732" y3="15.5181" x7="10" x10="-10" x1="-10" y5="13.0284" x2="-5" x6="11" y8="3.06945"/>
+        <polygon y1="-13.1137" x3="3" y4="-6.88948" x5="2" x4="2" x1="2" y5="-6.88948" closed="false" y3="-11.8689" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1" antialias="false" y2="-9.37915"/>
+        <input size="4" text="_" y="22.3649" tagg="label" x="-7" rotate="true"/>
+        <terminal y="10" orientation="w" x="-20"/>
+        <terminal y="10" orientation="e" x="20"/>
+        <terminal y="-14.3587" orientation="e" x="11"/>
+    </description>
+</definition>

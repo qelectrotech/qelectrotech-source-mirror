@@ -1,0 +1,14 @@
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="10" height="20" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Sonda temp.depósito</name>
+        <name lang="ca">Sonda temp.dipòsit</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="20" x="-4" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7" x="-11.5" y="-1.5" antialias="false" height="2.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-5" y="-1" size="6" rotate="true" text="PTC_" tagg="label"/>
+        <terminal x="-11" y="0" orientation="w"/>
+    </description>
+</definition>

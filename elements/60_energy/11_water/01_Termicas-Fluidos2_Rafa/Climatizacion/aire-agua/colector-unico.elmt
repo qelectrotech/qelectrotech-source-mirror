@@ -1,0 +1,44 @@
+<definition width="220" version="0.5" type="element" link_type="simple" hotspot_x="109" hotspot_y="14" orientation="dyyy" height="40">
+    <names>
+        <name lang="es">Colector unico</name>
+        <name lang="ca">Col.lector únic</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="57" y="12"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="67" y="-9"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-52" y="-9"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="47" y="-9"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="53" y="17.7699"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-72" y="-9"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-32" y="-9"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="87" y="-9"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="63" y="-10.2301"/>
+        <rect width="6" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63" y="12"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="83" y="-10.2301"/>
+        <arc width="8" angle="-180" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-104" y="-2" start="-90"/>
+        <arc width="8" angle="-180" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="97" y="-2" start="90"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="43" y="-10.2301"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27" y="-9"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-56" y="-10.2301"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="23" y="-10.2301"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-36" y="-10.2301"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-76" y="-10.2301"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-67" y="17.7699"/>
+        <rect width="6" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-92" y="-9"/>
+        <rect width="14" antialias="false" height="1.23008" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-96" y="-10.2301"/>
+        <line y1="12" length1="1.5" y2="12" length2="1.5" x1="-99.4847" x2="100.358" end1="none" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-2" length1="1.5" y2="-2" length2="1.5" x1="-99.4869" x2="100.361" end1="none" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" tagg="label" size="4" rotate="true" x="-15" y="10.5"/>
+        <terminal orientation="s" x="-60" y="20"/>
+        <terminal orientation="n" x="-90" y="-10"/>
+        <terminal orientation="n" x="-70" y="-10"/>
+        <terminal orientation="n" x="-50" y="-10"/>
+        <terminal orientation="n" x="-30" y="-10"/>
+        <terminal orientation="n" x="30" y="-10"/>
+        <terminal orientation="n" x="50" y="-10"/>
+        <terminal orientation="n" x="70" y="-10"/>
+        <terminal orientation="n" x="90" y="-10"/>
+        <terminal orientation="s" x="60" y="20"/>
+    </description>
+</definition>

@@ -1,0 +1,34 @@
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="20" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Compresor Hermético</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="13" x="8" y="1" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="21" y2="0" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.64161" x1="17" y2="-7.66921" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-19" y2="1" x2="-19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16.9932" x1="17" y2="12.0832" x2="17"/>
+        <arc width="40" x="-23" y="11" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-24.0752" y2="-3" x2="18.0815"/>
+        <arc width="11" x="-20" y="1" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="40" x="-23" y="-14" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="9" x="-19" y="3" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16.1405" x1="-23" y2="1.87027" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.60561" x1="-23" y2="-7.55906" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-20" y2="1" x2="-20"/>
+        <arc width="9" x="10" y="2" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="19" y2="0" x2="19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="19" y2="0" x2="20"/>
+        <line length1="1.5" length2="1" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="23" y2="10" x2="23"/>
+        <line length1="1" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-15" y2="7" x2="-15"/>
+        <polygon x4="-22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="-17" y2="23" x2="-19" y3="23" x3="-21" y4="23"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="10" y2="23" x2="13" y3="23" x3="16"/>
+        <arc width="4" x="13" y="10" antialias="true" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="6" x="-2" y="0" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-1" y="1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <terminal x="20" y="-1" orientation="n"/>
+        <terminal x="1" y="11" orientation="s"/>
+        <terminal x="-20" y="0" orientation="n"/>
+    </description>
+</definition>

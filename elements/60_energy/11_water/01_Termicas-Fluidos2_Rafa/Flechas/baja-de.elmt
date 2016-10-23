@@ -1,0 +1,14 @@
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Baja a</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="12" x="-9" y="0" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <circle x="-9" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <text x="-2" y="-2" size="4" text="Baja"/>
+        <polygon x4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="0" y2="5" x2="6" y3="11" x3="3" y4="5"/>
+        <terminal x="-10" y="0" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

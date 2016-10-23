@@ -1,0 +1,23 @@
+<definition version="0.4" link_type="simple" type="element" ic="true" hotspot_y="19" width="20" height="40" orientation="dyyy" hotspot_x="12">
+    <names>
+        <name lang="es">Brida a rosca H</name>
+        <name lang="ca">Brida a rosca H</name>
+    </names>
+    <informations/>
+    <description>
+        <line antialias="false" y1="4.51043" x2="-2.27425" style="line-style:dotted;line-weight:normal;filling:none;color:red" end1="none" y2="-3.55012" x1="-1.276" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="9.3783" x2="2.0515" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="9.3783" x1="-0.27775" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-11.8358" x2="2.0515" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="-11.8358" x1="-0.27775" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="12.7457" x2="2.0515" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="12.7457" x1="-0.27775" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="4.51043" x2="-3.60525" style="line-style:dotted;line-weight:normal;filling:none;color:red" end1="none" y2="-3.55012" x1="-2.607" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="4.51043" x2="-6.6" style="line-style:dotted;line-weight:normal;filling:none;color:red" end1="none" y2="-3.55012" x1="-5.60175" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="4.51043" x2="-5.269" style="line-style:dotted;line-weight:normal;filling:none;color:red" end1="none" y2="-3.55012" x1="-4.27075" end2="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-6.6" width="5.324" y="-3.14709" height="7.65751"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.6" width="6.32225" y="-5.95312" height="13.2696"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.27775" width="2.662" y="-13.3764" height="27.3764"/>
+        <line antialias="false" y1="-8.46849" x2="1.61975" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="-8.46849" x1="0.197707" end2="none" length1="1.5" length2="1.5"/>
+        <input text="Brida H Ø_" rotate="true" tagg="label" x="-9" size="4" y="20"/>
+        <terminal x="-7" y="0" orientation="w"/>
+        <terminal x="3" y="0" orientation="e"/>
+    </description>
+</definition>

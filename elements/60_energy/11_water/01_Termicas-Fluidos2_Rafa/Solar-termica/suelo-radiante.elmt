@@ -1,0 +1,20 @@
+<definition width="90" version="0.4" hotspot_x="30" hotspot_y="32" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Suelo radiante</name>
+        <name lang="ca">Sol radiant</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="17" x="32" y="-20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <polygon y21="4" x15="7" x16="-23" x17="-23" x18="19" x19="19" x20="27" x21="34" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27" x2="-28" x3="-28" x4="12" x5="12" x6="-17" closed="false" x7="-17" x8="2" x9="2" y1="-16" y2="-16" y3="24" y4="24" y5="-8" y6="-8" y7="15" y8="15" y10="4" y9="4" y11="10" y12="10" y13="-1" y14="-1" y15="20" y16="20" y17="-11" y18="-11" y19="4" x10="-4" x11="-4" x12="-9" antialias="false" x13="-9" x14="7" y20="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="48.7913" y2="-18" x2="56.2261"/>
+        <rect width="17" x="24" y="-29" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="40.7913" y2="-27" x2="48.2261"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="27" y2="-26" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="35" y2="4" x2="35"/>
+        <input x="-26" y="-22" size="6" rotate="true" text="Suelo rad._" tagg="label"/>
+        <terminal x="48" y="-27" orientation="e"/>
+        <terminal x="56" y="-18" orientation="e"/>
+    </description>
+</definition>

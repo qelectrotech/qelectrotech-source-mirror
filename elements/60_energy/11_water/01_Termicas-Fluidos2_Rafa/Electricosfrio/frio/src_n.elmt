@@ -1,0 +1,17 @@
+<definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+    <names>
+        <name lang="ru">Нейтраль</name>
+        <name lang="en">Neutral source</name>
+        <name lang="fr">Source neutre</name>
+        <name lang="es">Fuente neutro</name>
+        <name lang="cs">Nulový zdroj</name>
+        <name lang="pt">Fonte de neutro</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <text x="-12" y="3" size="5" text="N"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

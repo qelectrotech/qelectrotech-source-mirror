@@ -1,0 +1,36 @@
+<definition width="70" version="0.4" hotspot_x="23" hotspot_y="12" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Inverter</name>
+        <name lang="fr">Inverter</name>
+        <name lang="es">Inverter</name>
+        <name lang="ca">Inverter</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="5" x="-15" y="19" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" x1="20" y2="29" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" x1="10" y2="29" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="0" y2="35" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="-7" y2="28" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="25" y2="28" x2="25"/>
+        <rect width="32" x="-7" y="4" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-7" y2="28" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="0" y2="4" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="10" y2="4" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="20" y2="4" x2="20"/>
+        <input x="26" y="29" size="6" rotate="true" text="_" tagg="label"/>
+        <text x="-6" y="13" size="5" text="L1 L2 L3"/>
+        <text x="-6" y="26" size="6" text="U  V  W"/>
+        <arc width="5" x="-15" y="14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="-9" y2="16" x2="-17"/>
+        <terminal x="0" y="-5" orientation="n"/>
+        <terminal x="20" y="-5" orientation="n"/>
+        <terminal x="10" y="-5" orientation="n"/>
+        <terminal x="10" y="40" orientation="s"/>
+        <terminal x="20" y="40" orientation="s"/>
+        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="29" y="8" orientation="e"/>
+        <terminal x="29" y="14" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition width="40" version="0.4" hotspot_x="25" hotspot_y="29" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Lavabo</name>
+        <name lang="ca">Pica</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.7368" x1="-20.9653" y2="-11.7368" x2="8.17906"/>
+        <rect width="2.6" x="2.8" y="-19.8842" antialias="false" height="5.43158" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2.8" x2="-5" x3="-7.6" x4="-6.3" antialias="false" x5="-5" x6="-5" x7="2.8" x8="2.8" x9="2.8" closed="false" y1="-19.8842" y10="-17.1684" y2="-22.6" y3="-19.8842" y4="-18.5263" y5="-19.8842" x10="2.8" y6="-19.8842" y7="-17.1684" y8="-17.1684" y9="-17.1684"/>
+        <rect width="5.2" x="5.4" y="8.63158" antialias="false" height="3.07368" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="-22" x3="-22" x4="-22" antialias="false" x5="-21" x6="-18" x7="-12" x8="-3" x9="-2" closed="false" y1="-14" y10="23" y2="-14" y11="24" y3="-13" y4="-11" y12="25" y5="-10" x10="-2" y13="25" y6="-8" x11="-4" y14="-14" y7="-6" x12="-4" y15="-14" y8="-6" x13="9" y16="-14" y9="-5" x14="9" x15="9" x16="9"/>
+        <input x="-17" y="10.5" size="6" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="-1.7913" y2="23" x2="8.77391"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-1.096" y2="-5" x2="8.104"/>
+        <terminal x="10" y="10" orientation="e"/>
+    </description>
+</definition>

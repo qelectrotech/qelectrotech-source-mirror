@@ -1,0 +1,18 @@
+<definition width="30" version="0.4" hotspot_x="8" hotspot_y="24" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termostato bulbo</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="10.0644" x="-5.07901" y="-19.0865" antialias="false" height="9.31213" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-3" y="-13" size="5" text="T"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.77432" x1="-0.0468226" y2="-0.462187" x2="-0.0468226"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.01421" x1="15.8993" y2="-2.01421" x2="19.1282"/>
+        <ellipse width="3.96284" x="8.94223" y="-15.9824" antialias="true" height="4.65607" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-15.9824" x1="5.10487" y2="-15.9824" x2="11.4482"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14.009" x1="12.9051" y2="-2.47075" x2="12.9051"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.01421" x1="12.9051" y2="-2.01421" x2="15.547"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

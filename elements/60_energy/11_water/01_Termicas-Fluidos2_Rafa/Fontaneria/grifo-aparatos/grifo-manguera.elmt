@@ -1,0 +1,39 @@
+<definition width="50" version="0.4" hotspot_x="13" hotspot_y="17" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Grifo-manguera</name>
+        <name lang="ca">Aixeta mànega</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="16.8" x="14.93" y="-3.27552" antialias="true" height="21.2755" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.40993" x1="13.477" y2="-2.40993" x2="15.9703"/>
+        <arc width="8.82" x="2.82" y="-7.35718" antialias="true" height="7.36294" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="1.54" x="11.64" y="-3.48194" antialias="false" height="7.36294" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.08" x="13.18" y="-5.80709" antialias="false" height="12.4008" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="3.59088" x1="-3.34" y2="-2.78678" x2="-4.495"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.10595" x1="13.477" y2="3.10595" x2="15.9703"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="3.59088" x1="-4.88" y2="-2.78678" x2="-6.035"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="3.59088" x1="-8.345" y2="-2.78678" x2="-9.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="3.59088" x1="-6.805" y2="-2.78678" x2="-7.96"/>
+        <rect width="6.16" x="-9.5" y="-2.4679" antialias="false" height="6.05878" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="7.315" x="16.26" y="-3.48194" antialias="false" height="7.33706" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7.315" x="-9.5" y="-3.10567" antialias="false" height="7.33429" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.08" x="-2.185" y="-5.80709" antialias="false" height="12.4008" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.14902" x1="-2.185" y2="-2.14902" x2="0.51"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.10595" x1="-1.88799" y2="3.10595" x2="0.60534"/>
+        <arc width="8.82" x="2.82" y="0.393288" antialias="true" height="7.36294" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="5.39" x="4.885" y="-9.29483" antialias="false" height="1.93762" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.865" x="5.27" y="-12.0075" antialias="false" height="1.16257" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.54" x="6.81" y="-10.8449" antialias="false" height="1.55009" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.925" x="0.895" y="-3.48194" antialias="false" height="7.36294" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.29483" x1="6.425" y2="-7.74471" x2="6.425"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.29483" x1="9.12" y2="-7.74471" x2="9.12"/>
+        <arc width="5.6" x="20.53" y="3.81632" antialias="true" height="5.51587" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="9.8" x="24.03" y="6.96825" antialias="false" height="1.57596" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="31.73" y5="8.54422" x5="31.73" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.54422" x1="26.13" y2="16.424" x2="26.83" y3="16.424" x3="31.03" y4="8.54422"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10.9082" x1="26.83" y2="10.9082" x2="31.03"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.0601" x1="26.83" y2="14.0601" x2="31.03"/>
+        <input x="5.83" y="14.0601" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-9.5" y="0.402048" orientation="w"/>
+    </description>
+</definition>

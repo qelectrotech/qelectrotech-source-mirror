@@ -1,0 +1,38 @@
+<definition width="40" hotspot_y="25" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Puente manómetros</name>
+        <name lang="ca">Pont manómetres</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="6" end1="none" x1="-1" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2" antialias="false" y2="5" length2="1.5"/>
+        <line y1="6" end1="none" x1="-12" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-9" antialias="false" y2="5" length2="1.5"/>
+        <polygon x5="9.9805" x8="11.1883" x9="9.9805" y1="-3" x3="6.9609" y9="-3" style="line-style:normal;line-weight:normal;filling:red;color:red" y2="-1.2" antialias="false" x4="8.7727" y6="1.2" y7="0" y4="1.2" y3="0" x7="13" x1="9.9805" y5="3" x2="8.7727" x6="11.1883" y8="-1.2"/>
+        <line y1="6" end1="none" x1="9" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="12" antialias="false" y2="5" length2="1.5"/>
+        <circle y="-20" style="line-style:normal;line-weight:thin;filling:blue;color:black" diameter="11" x="-16" antialias="true"/>
+        <circle y="-20" style="line-style:normal;line-weight:thin;filling:red;color:black" diameter="11" x="4" antialias="true"/>
+        <rect width="30" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" antialias="false" height="6"/>
+        <ellipse width="2.41562" y="-1.2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.7727" antialias="true" height="2.4"/>
+        <rect width="3" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" antialias="false" height="4"/>
+        <rect width="3" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="9" antialias="false" height="4"/>
+        <rect width="3" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="false" height="2"/>
+        <rect width="3" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="9" antialias="false" height="2"/>
+        <line y1="5" end1="none" x1="9" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="12" antialias="false" y2="4" length2="1.5"/>
+        <line y1="5" end1="none" x1="-1" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2" antialias="false" y2="4" length2="1.5"/>
+        <circle y="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15" x="-18" antialias="true"/>
+        <circle y="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="15" x="2" antialias="true"/>
+        <line y1="-14" end1="none" x1="9" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5" antialias="false" y2="-17" length2="1.5"/>
+        <rect width="6" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" antialias="false" height="2"/>
+        <rect width="6" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13" antialias="false" height="2"/>
+        <line y1="-15" end1="none" x1="-10" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15" antialias="false" y2="-12" length2="1.5"/>
+        <circle y="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" x="-2" antialias="true"/>
+        <polygon x5="-10.0195" x8="-8.81172" x9="-10.0195" y1="-3" x3="-13.0391" y9="-3" style="line-style:normal;line-weight:normal;filling:blue;color:blue" y2="-1.2" antialias="false" x4="-11.2273" y6="1.2" y7="0" y4="1.2" y3="0" x7="-7" x1="-10.0195" y5="3" x2="-11.2273" x6="-8.81172" y8="-1.2"/>
+        <ellipse width="2.41562" y="-1.2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.2273" antialias="true" height="2.4"/>
+        <rect width="3" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="false" height="4"/>
+        <line y1="5" end1="none" x1="-12" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-9" antialias="false" y2="4" length2="1.5"/>
+        <input size="4" text="_" y="-25" tagg="label" x="-5" rotate="true"/>
+        <terminal y="10" orientation="s" x="-10"/>
+        <terminal y="10" orientation="s" x="0"/>
+        <terminal y="10" orientation="s" x="10"/>
+    </description>
+</definition>

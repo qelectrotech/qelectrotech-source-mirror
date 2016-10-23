@@ -1,0 +1,20 @@
+<definition width="10" version="0.4" hotspot_x="4" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ru">Клеммное соединение</name>
+        <name lang="pt">Terminal de combinação</name>
+        <name lang="en">Terminal block</name>
+        <name lang="fr">Borne continuité</name>
+        <name lang="es">Punto de combinación</name>
+        <name lang="cs">Spojovací svorka</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="3" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-3" x2="0"/>
+        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="2" y="1.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-10" orientation="n"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

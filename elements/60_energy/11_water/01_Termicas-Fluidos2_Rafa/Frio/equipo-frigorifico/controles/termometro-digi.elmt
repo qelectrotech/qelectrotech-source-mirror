@@ -1,0 +1,22 @@
+<definition width="50" version="0.4" hotspot_x="28" hotspot_y="20" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Indicador temperatura</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="2" x="10" y="3" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-8" y5="-9" x5="-6" y6="-9" x6="-6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-9" x1="-6" y2="-9" x2="-1" y3="-3" x3="-3" y4="-3"/>
+        <rect width="22" x="-18" y="-12" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-6" x1="-7" y2="-6" x2="-2"/>
+        <polygon x4="-16" y5="-9" x5="-14" y6="-9" x6="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-9" x1="-14" y2="-9" x2="-9" y3="-3" x3="-11" y4="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-6" x1="-15" y2="-6" x2="-10"/>
+        <polygon x4="9" y5="-10" x5="6" y6="-8" x6="6" y7="-8" x7="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-8" x1="7" y2="-8" x2="12" y3="-10" x3="12" y4="-12"/>
+        <polygon x4="9" y5="-4" x5="6" y6="-6" x6="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:blue" closed="false" y1="-6" x1="6" y2="-6" x2="12" y3="-4" x3="12" y4="-2"/>
+        <rect width="36" x="-22" y="-15" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="-22" y2="-17" x2="-18" y3="-17" x3="16" y4="-15"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="16" y2="0" x2="16" y3="2" x3="14"/>
+        <circle x="1" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <arc width="3" x="0" y="-6" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <terminal x="11" y="5" orientation="s"/>
+    </description>
+</definition>

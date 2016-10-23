@@ -1,0 +1,30 @@
+<definition width="40" hotspot_y="29" hotspot_x="16" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Manguito codo 1/2"H-15</name>
+        <name lang="ca">Maneguet colze 1/2"H-15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-17.4776" end1="none" x1="4" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" length1="1.5" x2="15" antialias="false" y2="-18.4583" length2="1.5"/>
+        <arc width="5" angle="-180" y="-8.59326" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" start="0" antialias="true" height="3.92288"/>
+        <line y1="-11.2345" end1="none" x1="2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="2" antialias="false" y2="-7.48169" length2="1.5"/>
+        <line y1="-13.5547" end1="none" x1="4" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" length1="1.5" x2="15" antialias="false" y2="-14.5354" length2="1.5"/>
+        <arc width="3.78" angle="-90" y="-4.54595" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.77" start="90" antialias="true" height="3.91744"/>
+        <rect width="7.92641" y="2.98313" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-8.5864" antialias="false" height="8.79361"/>
+        <rect width="19.12" y="-19.662" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.12" antialias="false" height="8.10897"/>
+        <arc width="5.985" angle="-90" y="-5.50982" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.975" start="0" antialias="true" height="6.88184"/>
+        <arc width="28.35" angle="-90" y="-16.5565" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" start="0" antialias="true" height="29.6541"/>
+        <arc width="3.78" angle="-90" y="-4.54595" style="line-style:normal;line-weight:normal;filling:none;color:black" x="14.35" start="-180" antialias="true" height="3.91744"/>
+        <rect width="11.34" y="-19.0029" style="line-style:normal;line-weight:normal;filling:none;color:red" x="4.01" antialias="false" height="5.87909"/>
+        <input size="4" text="1/2&quot;H-15" y="15" tagg="label" x="3" rotate="true"/>
+        <arc width="5" angle="-180" y="-8.59326" style="line-style:normal;line-weight:normal;filling:none;color:black" x="16" start="0" antialias="true" height="3.92288"/>
+        <arc width="14" angle="-180" y="-8.59326" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" start="0" antialias="true" height="3.92288"/>
+        <rect width="24" y="-11.5933" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" antialias="false" height="6.92288"/>
+        <line y1="-11.2345" end1="none" x1="16" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="16" antialias="false" y2="-7.48169" length2="1.5"/>
+        <line y1="-15.5161" end1="none" x1="4" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" length1="1.5" x2="15" antialias="false" y2="-16.4969" length2="1.5"/>
+        <polygon y7="0.44619" y1="0.44619" x3="0" y4="12.5038" x5="-1" x4="0" x7="-9" x1="-9" y6="13.6" y5="13.6" closed="false" y3="1.54234" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-1" x6="-9" antialias="false" y2="0.44619"/>
+        <terminal y="10" orientation="w" x="-10"/>
+        <terminal y="-20.4197" orientation="n" x="10"/>
+    </description>
+</definition>

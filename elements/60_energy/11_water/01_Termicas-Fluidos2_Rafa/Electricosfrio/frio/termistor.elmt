@@ -1,0 +1,50 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="58" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termistor</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="5" y="15" size="4" text="N"/>
+        <text x="6.235" y="5.1208" size="4" text="L"/>
+        <input x="5" y="-8" size="4" rotate="true" text="1" tagg="none"/>
+        <input x="4" y="-19" size="4" rotate="true" text="2" tagg="none"/>
+        <input x="1" y="-29" size="4" rotate="true" text="12" tagg="none"/>
+        <input x="2" y="-40" size="4" rotate="true" text="14" tagg="none"/>
+        <input x="1" y="-50" size="4" rotate="true" text="11" tagg="none"/>
+        <input x="-17" y="8" size="4" rotate="true" text="230V" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.2619" x1="-12.759" y2="-14.8591" x2="-2.86953"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.8591" x1="-0.71965" y2="-14.8591" x2="-2.86953"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.2619" x1="-14.9088" y2="-23.2619" x2="-12.759"/>
+        <rect width="12.0393" x="-13.6189" y="-21.1612" antialias="false" height="4.20138" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0605" x1="-16.1988" y2="-19.0605" x2="-13.6189"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0605" x1="1.00025" y2="-19.0605" x2="-1.5796"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.55705" x1="-16.1988" y2="-19.0605" x2="-16.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.564" x1="1.00025" y2="-29.564" x2="-3.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.55705" x1="1.00025" y2="-8.55705" x2="-16.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.0674" x1="-3.2995" y2="-39.017" x2="-3.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.8056" x1="-3.2995" y2="-33.1384" x2="-3.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.5708" x1="1.00025" y2="-50.5708" x2="-16.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.1757" x1="-16.1988" y2="-37.8258" x2="-16.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-37.4416" x1="-16.1988" y2="-37.4416" x2="-11.899"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.0674" x1="1.00025" y2="-40.0674" x2="-3.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-37.4416" x1="-11.899" y2="-33.2401" x2="-2.86953"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.19803" x1="14.4045" y2="7.19803" x2="2.55872"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17.7015" x1="2.15023" y2="17.7015" x2="14.4045"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.30541" x1="2.15023" y2="17.7015" x2="2.15023"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.26561" x1="14.9245" y2="17.216" x2="14.9245"/>
+        <rect width="23.4238" x="-20.7536" y="-55.3081" antialias="false" height="73.524" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.8088" x1="13.8995" y2="-13.8088" x2="1.43022"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.3122" x1="13.8995" y2="-24.3122" x2="1.43022"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34.8156" x1="13.8995" y2="-34.8156" x2="1.43022"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45.3192" x1="13.8995" y2="-45.3192" x2="1.43022"/>
+        <rect width="12.8993" x="2.04025" y="-55.4971" antialias="false" height="52.5172" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-28" y="26.5" size="5" rotate="true" text="TERMISTOR _" tagg="label"/>
+        <terminal x="20" y="1" orientation="e"/>
+        <terminal x="20" y="11" orientation="e"/>
+        <terminal x="20" y="-50" orientation="e"/>
+        <terminal x="19.685" y="-39.8452" orientation="e"/>
+        <terminal x="20" y="-30" orientation="e"/>
+        <terminal x="20" y="-20" orientation="e"/>
+        <terminal x="20" y="-10" orientation="e"/>
+    </description>
+</definition>

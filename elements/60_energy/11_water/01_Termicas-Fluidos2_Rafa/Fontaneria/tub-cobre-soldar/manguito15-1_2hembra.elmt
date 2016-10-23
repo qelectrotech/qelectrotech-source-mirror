@@ -1,0 +1,31 @@
+<definition width="50" hotspot_y="15" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Manguito 15-1/2"H</name>
+        <name lang="ca">Maneguet 15-1/2"H</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="5" end1="none" x1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1" antialias="false" y2="5" length2="1.5"/>
+        <arc width="3" angle="-180" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="-90" antialias="true" height="6"/>
+        <arc width="5" angle="-180" y="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" start="-180" antialias="true" height="4"/>
+        <line y1="5.93079" end1="none" x1="-7.38" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-9.165" antialias="false" y2="-6.34605" length2="1.5"/>
+        <line y1="5.93079" end1="none" x1="-12.735" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-14.52" antialias="false" y2="-6.34605" length2="1.5"/>
+        <line y1="5.93079" end1="none" x1="-10.355" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-12.14" antialias="false" y2="-6.34605" length2="1.5"/>
+        <rect width="9.52" y="-6.7322" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-16.9" antialias="false" height="13.2768"/>
+        <line y1="5.93079" end1="none" x1="-15.115" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-16.9" antialias="false" y2="-6.34605" length2="1.5"/>
+        <rect width="7.14" y="-8.18757" style="line-style:normal;line-weight:thin;filling:none;color:black" x="9.95" antialias="false" height="15.9599"/>
+        <line y1="-9.41526" end1="none" x1="17.09" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="7.57" antialias="false" y2="-9.41526" length2="1.5"/>
+        <line y1="9" end1="none" x1="17.09" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="17.09" antialias="false" y2="-9.41526" length2="1.5"/>
+        <line y1="9" end1="none" x1="7.4017" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="16.2723" antialias="false" y2="9" length2="1.5"/>
+        <rect width="10.71" y="-10.1876" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.9" antialias="false" height="20.1876"/>
+        <line y1="-8.78315" end1="none" x1="7.595" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="7.595" antialias="false" y2="8.27559" length2="1.5"/>
+        <input size="4" text="1/2&quot;H-15" y="19" tagg="label" x="-12" rotate="true"/>
+        <rect width="8" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" antialias="false" height="22"/>
+        <line y1="-5" end1="none" x1="-5.33282" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1.27722" antialias="false" y2="-5" length2="1.5"/>
+        <arc width="3" angle="-180" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="-90" antialias="true" height="6"/>
+        <arc width="2" angle="-180" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="-90" antialias="true" height="10"/>
+        <arc width="5" angle="-180" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" start="0" antialias="true" height="4"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

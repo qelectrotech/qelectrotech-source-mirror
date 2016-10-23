@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Rejilla sobrepresión</name>
+        <name lang="ca">Eeixa sobrepresió</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="-4.5625" y5="-2.02043" x5="-4.5625" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19.0408" x1="10.4375" y2="-17.1497" x2="13.25" y3="-14.313" x3="13.25" y4="-1.07486"/>
+        <polygon x4="-4.5625" y5="4.59862" x5="-4.5625" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12.4218" x1="10.4375" y2="-10.5307" x2="13.25" y3="-7.69391" x3="13.25" y4="5.54421"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5307" x1="13.25" y2="1.76188" x2="-4.5625"/>
+        <polygon x4="-4.5625" y5="12.1633" x5="-4.5625" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4.85717" x1="10.4375" y2="-2.96601" x2="13.25" y3="-0.129274" x3="13.25" y4="13.1088"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.96601" x1="13.25" y2="9.32652" x2="-4.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.63949" x1="-9.25" y2="-8.63949" x2="-4.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-9.25" y2="15" x2="-4.5625"/>
+        <polygon x4="14.1875" y5="-21.8776" x5="14.1875" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21.8776" x1="14.1875" y2="-8.63949" x2="-4.5625" y3="15" x3="-4.5625" y4="0.816305"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21.8776" x1="9.5" y2="-21.8776" x2="14.1875"/>
+        <polygon x4="-9.25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21.8776" x1="9.5" y2="-8.63949" x2="-9.25" y3="15" x3="-9.25" y4="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.1497" x1="13.25" y2="-4.85717" x2="-4.5625"/>
+        <input x="12.3125" y="-1.54765" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10.5" y="0.381465" orientation="w"/>
+    </description>
+</definition>

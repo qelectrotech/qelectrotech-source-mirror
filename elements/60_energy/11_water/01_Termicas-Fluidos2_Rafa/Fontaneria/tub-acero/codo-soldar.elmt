@@ -1,0 +1,17 @@
+<definition width="60" height="50" link_type="simple" hotspot_x="40" hotspot_y="39" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Codo soldar</name>
+        <name lang="ca">Colze soldar</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="17.4672" height="14.5147" antialias="true" y="-21.4929" angle="-45" start="-45" x="-18.547" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="48.4188" height="41.1398" antialias="true" y="-34.8055" angle="-45" start="-45" x="-34.4411" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="8.5" text="_" tagg="label" size="4" x="5" rotate="true"/>
+        <line x1="-10.0778" length2="1.5" antialias="false" x2="-10.0778" end1="none" y2="6.3883" length1="1.5" end2="none" y1="-6.15317" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-3" length2="1.5" antialias="false" x2="7" end1="none" y2="2.22045e-16" length1="1.5" end2="none" y1="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-0.05" orientation="w" x="-10.2"/>
+        <terminal y="-6" orientation="n" x="2"/>
+    </description>
+</definition>

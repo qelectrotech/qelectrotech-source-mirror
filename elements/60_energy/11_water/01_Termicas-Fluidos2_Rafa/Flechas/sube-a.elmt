@@ -1,0 +1,14 @@
+<definition width="30" version="0.4" hotspot_x="12" hotspot_y="18" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sube a</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="12" x="-5" y="-10" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <polygon x4="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="7" y2="-5" x2="5" y3="-5" x3="9" y4="-13"/>
+        <circle x="-6" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <text x="1" y="5" size="4" text="Sube"/>
+        <terminal x="-7" y="0" nameHidden="110" number="" name="" orientation="w"/>
+    </description>
+</definition>

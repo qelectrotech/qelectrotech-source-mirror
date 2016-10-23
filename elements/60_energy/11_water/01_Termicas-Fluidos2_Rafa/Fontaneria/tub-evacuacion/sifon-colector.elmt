@@ -1,0 +1,21 @@
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="8" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sifón colector</name>
+        <name lang="ca">Sifó col.lector</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="20.1316" x="-24.1053" y="-3.36948" antialias="true" height="18.3593" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="20.1316" x="4.64474" y="-2.91401" antialias="true" height="18.3593" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="8.55593" x="-18.5691" y="1.79406" antialias="true" height="8.03218" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="8.55593" x="10.1809" y="2.24953" antialias="true" height="8.03218" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <rect width="6.03948" x="-20.2895" y="-3.94321" antialias="false" height="6.88473" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="20.1316" x="-9.95068" y="-2.34029" antialias="true" height="17.7856" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="8.55592" x="-3.91118" y="2.24953" antialias="true" height="8.03218" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="6.03947" x="14.7105" y="-3.48774" antialias="false" height="6.88473" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-7.72368" y="19.0839" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="21.2533" y="-0.0453759" orientation="e"/>
+        <terminal x="-21" y="0" orientation="w"/>
+    </description>
+</definition>

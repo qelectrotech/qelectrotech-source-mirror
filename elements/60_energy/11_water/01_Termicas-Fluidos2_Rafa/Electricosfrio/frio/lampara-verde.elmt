@@ -1,0 +1,24 @@
+<definition width="40" version="0.4" hotspot_x="12" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Лампа</name>
+        <name lang="pt">Lâmpada</name>
+        <name lang="en">Light</name>
+        <name lang="fr">Lampe</name>
+        <name lang="es">Lámpara verde</name>
+        <name lang="ca">Lum verda</name>
+        <name lang="cs">Světlo</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="14.5169" x="-7.5012" y="-6.95514" antialias="true" height="13.3034" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.97958" x1="4.85994" y2="4.37273" x2="-5.34544"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.97958" x1="-5.34544" y2="4.37273" x2="4.85994"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.6069" x1="-0.242746" y2="-6.95514" x2="-0.242746"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.34829" x1="-0.242746" y2="13" x2="-0.242746"/>
+        <input x="15" y="3" size="9" text="" tagg="none"/>
+        <input x="4.83817" y="2.68985" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-15" orientation="n"/>
+        <terminal x="0" y="14" orientation="s"/>
+    </description>
+</definition>

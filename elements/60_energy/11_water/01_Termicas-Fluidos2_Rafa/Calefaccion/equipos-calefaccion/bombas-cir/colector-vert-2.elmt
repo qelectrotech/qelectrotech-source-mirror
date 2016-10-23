@@ -1,0 +1,25 @@
+<definition link_type="simple" hotspot_x="14" orientation="dyyy" hotspot_y="33" version="0.5" type="element" height="70" width="30">
+    <names>
+        <name lang="es">Colector 3 salidas</name>
+        <name lang="ca">Col.lector 3 eixides</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect antialias="false" x="5" y="-2" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <arc antialias="true" x="-4" y="22" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="9" angle="-180"/>
+        <line x1="5" length1="1.5" x2="5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.7618" y2="-20.636"/>
+        <rect antialias="false" x="5" y="-22.0245" height="5.35365" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <rect antialias="false" x="5" y="18" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <arc antialias="true" x="-4" y="-24.166" height="5.35365" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="9" angle="-180"/>
+        <line x1="-4" length1="1.5" x2="-4" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.719" y2="-21.6672"/>
+        <rect antialias="false" x="-8" y="-2" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <input text="_" x="-13" tagg="label" y="19.5" rotate="true" size="4"/>
+        <terminal orientation="w" x="-10" y="0"/>
+        <terminal orientation="e" x="10" y="-20"/>
+        <terminal orientation="s" x="0" y="28"/>
+        <terminal orientation="e" x="10" y="20"/>
+        <terminal orientation="e" x="10" y="0"/>
+        <terminal orientation="n" x="0" y="-24.166"/>
+    </description>
+</definition>

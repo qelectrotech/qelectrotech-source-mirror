@@ -1,0 +1,28 @@
+<definition width="40" version="0.4" hotspot_x="14" hotspot_y="28" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bomba piscina a solar</name>
+        <name lang="ca">Bomba piscina a solar</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3" x="18" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="15" y="9" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5992" x1="5.375" y2="3" x2="5.375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5992" x1="10.475" y2="3" x2="10.475"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5992" x1="1.975" y2="3" x2="1.975"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5992" x1="7.925" y2="3" x2="7.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.5992" x1="0.275" y2="3" x2="0.275"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.5992" x1="11.75" y2="3" x2="11.75"/>
+        <rect width="3" x="-7" y="9" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="15" x="-2" y="-16" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.5992" x1="-1" y2="3" x2="-1"/>
+        <rect width="2" x="-1" y="-18" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="13" x2="-2" x3="-4" x4="-4" antialias="false" x5="0" x6="12" x7="15" x8="15" x9="13" closed="false" y1="3" y10="3" y2="3" y11="3" y3="5" y4="13" y5="15" x10="13" y6="15" x11="13" y7="13" y8="5" y9="3"/>
+        <rect width="3" x="-10" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-1" y="15.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10" y="10" orientation="w"/>
+        <terminal x="21" y="10" orientation="e"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,84 @@
+<definition width="360" version="0.4" hotspot_x="178" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Bornero general-2</name>
+        <name lang="ca">Borner general-2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="17" x="-84" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="18" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-169" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-135" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-152" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="120" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="69" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="137" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="86" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-118" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="35" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-67" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-101" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="103" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-50" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="52" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-128" y2="9.09604" x2="-128"/>
+        <rect width="17" x="154" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-145" y2="9.09604" x2="-145"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-162" y2="9.09604" x2="-162"/>
+        <rect width="17" x="-33" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-172" y="-0.5" size="6" rotate="true" text="X21" tagg="label"/>
+        <input x="-138" y="-0.5" size="6" rotate="true" text="X23" tagg="label"/>
+        <input x="-155" y="-0.5" size="6" rotate="true" text="X22" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="110" y2="9.09604" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="59" y2="9.09604" x2="59"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="161" y2="9.09604" x2="161"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-94" y2="9.09604" x2="-94"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="127" y2="9.09604" x2="127"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-77" y2="9.09604" x2="-77"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="76" y2="9.09604" x2="76"/>
+        <input x="134" y="-0.5" size="6" rotate="true" text="X39" tagg="label"/>
+        <input x="-121" y="-0.5" size="6" rotate="true" text="X24" tagg="label"/>
+        <input x="32" y="-0.5" size="6" rotate="true" text="X33" tagg="label"/>
+        <rect width="17" x="-16" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="83" y="-0.5" size="6" rotate="true" text="X36" tagg="label"/>
+        <input x="100" y="-0.5" size="6" text="X37" tagg="label"/>
+        <input x="49" y="-0.5" size="6" text="X34" tagg="label"/>
+        <input x="-104" y="-0.5" size="6" text="X25" tagg="label"/>
+        <input x="151" y="-0.5" size="6" text="X40" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-26" y2="9.09604" x2="-26"/>
+        <input x="117" y="-0.5" size="6" rotate="true" text="X38" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-43" y2="9.09604" x2="-43"/>
+        <input x="66" y="-0.5" size="6" rotate="true" text="X35" tagg="label"/>
+        <input x="-87" y="-0.5" size="6" rotate="true" text="X26" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="-60" y2="9.09604" x2="-60"/>
+        <rect width="17" x="1" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-53" y="-0.5" size="6" rotate="true" text="X28" tagg="label"/>
+        <input x="-70" y="-1" size="6" rotate="true" text="X27" tagg="label"/>
+        <input x="-36" y="-0.5" size="6" rotate="true" text="X29" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="8" y2="9.09604" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="25" y2="9.09604" x2="25"/>
+        <input x="-19" y="-0.5" size="6" rotate="true" text="X30" tagg="label"/>
+        <input x="-2" y="-0.5" size="6" text="X31" tagg="label"/>
+        <input x="15" y="-0.5" size="6" rotate="true" text="X32" tagg="label"/>
+        <terminal x="-162" y="10" orientation="s"/>
+        <terminal x="-145" y="10" orientation="s"/>
+        <terminal x="-128" y="10" orientation="s"/>
+        <terminal x="-111" y="10" orientation="s"/>
+        <terminal x="-94" y="10" orientation="s"/>
+        <terminal x="-77" y="10" orientation="s"/>
+        <terminal x="-60" y="10" orientation="s"/>
+        <terminal x="-43" y="10" orientation="s"/>
+        <terminal x="-26" y="10" orientation="s"/>
+        <terminal x="-9" y="10" orientation="s"/>
+        <terminal x="8" y="10" orientation="s"/>
+        <terminal x="25" y="10" orientation="s"/>
+        <terminal x="42" y="10" orientation="s"/>
+        <terminal x="59" y="10" orientation="s"/>
+        <terminal x="76" y="10" orientation="s"/>
+        <terminal x="93" y="10" orientation="s"/>
+        <terminal x="110" y="10" orientation="s"/>
+        <terminal x="127" y="10" orientation="s"/>
+        <terminal x="144" y="10" orientation="s"/>
+        <terminal x="161" y="10" orientation="s"/>
+    </description>
+</definition>

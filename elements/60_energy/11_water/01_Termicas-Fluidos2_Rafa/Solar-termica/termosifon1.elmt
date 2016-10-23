@@ -1,0 +1,29 @@
+<definition width="100" version="0.4" hotspot_x="46" hotspot_y="47" height="90" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termosifón perfil</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <circle x="18" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <polygon x4="22" y5="-21" x5="19" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" y1="-21" x1="19" y2="38" x2="-42" y3="41" x3="-39" y4="-18"/>
+        <ellipse width="27" x="21" y="-43" antialias="true" height="25" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22.9213" x1="22" y2="40.9147" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="41" x1="-38" y2="41" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40.9175" x1="-7" y2="10.0762" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="49" y2="41" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="22" y2="-18" x2="41"/>
+        <circle x="-40" y="37" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="33" y="-41" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="33" y="-23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-43" x1="34" y2="-45" x2="34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-45" x1="34" y2="-45" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-45" x1="23" y2="-24" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-24" x1="17" y2="-18" x2="19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y1="39" x1="-39" y2="39" x2="-29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:blue;color:blue" y1="39" x1="-28" y2="-14" x2="33"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y1="-14" x1="33" y2="-18" x2="33"/>
+        <terminal x="37" y="-39" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="35" y="-22" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

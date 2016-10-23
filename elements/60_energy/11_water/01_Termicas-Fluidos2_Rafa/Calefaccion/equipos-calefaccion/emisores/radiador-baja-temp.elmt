@@ -1,0 +1,45 @@
+<definition width="80" version="0.4" hotspot_x="29" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مشعاع</name>
+        <name lang="en">Radiator low temp</name>
+        <name lang="it">Radiatore</name>
+        <name lang="fr">Radiateur Acier</name>
+        <name lang="pl">Grzejnik płytowy</name>
+        <name lang="es">Radiador baja temperatura</name>
+        <name lang="nl">Radiator staal</name>
+        <name lang="ca">Radiador baixa temp</name>
+        <name lang="cs">Deskové topné těleso</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="0.324089" x="-4.28921" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="6.40572" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="27.7956" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="17.1006" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.11" x1="34.9255" y2="5.31" x2="34.9255"/>
+        <rect width="3.24089" x="-21.4659" y="-1.03755" antialias="false" height="2.97705" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.324089" x="8.99843" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="11.5911" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="14.1838" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="32.981" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="30.3883" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="35.5737" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3.24089" x="38.1664" y="-1.03755" antialias="false" height="2.97705" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.324089" x="24.8788" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="22.2861" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="19.6934" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="-1.6965" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="0.89621" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="3.48892" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="-7.20601" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="56.0673" x="-18.225" y="-8.27116" antialias="false" height="11.3811" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.324089" x="-9.79872" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="-12.3914" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.324089" x="-14.9841" y="-7.2365" antialias="false" height="9.31189" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.11" x1="-15.6323" y2="5.31" x2="-15.6323"/>
+        <input x="2.51665" y="-10.64" size="4" rotate="true" text="rad_" tagg="label"/>
+        <terminal x="-21.4659" y="0.45097" orientation="w"/>
+        <terminal x="41.4073" y="0.36" orientation="e"/>
+    </description>
+</definition>

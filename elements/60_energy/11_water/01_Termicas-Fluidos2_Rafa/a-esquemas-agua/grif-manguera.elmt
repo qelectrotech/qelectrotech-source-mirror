@@ -1,0 +1,19 @@
+<definition link_type="simple" height="40" type="element" width="30" hotspot_y="13" version="0.5" hotspot_x="14" orientation="dyyy">
+    <names>
+        <name lang="ca">Aixeta rec</name>
+        <name lang="es">Grifo riego</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" y2="1.34236" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-0.02" end2="none" antialias="false" x1="-0.02" y1="-7.97109" length1="1.5"/>
+        <polygon y4="1.46011" y2="1.46011" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-0.5" y3="10" x2="-8" antialias="false" x1="7" y1="1.46011" x4="7" closed="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" start="0" height="9.5495" antialias="true" width="7.35" y="14.4505" angle="-270"/>
+        <line length2="1.5" end1="none" y2="18.2079" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-0.65" end2="none" antialias="false" x1="-0.65" y1="10.4852" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="16.3812" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8.05" end2="none" antialias="false" x1="-3.35" y1="14.4505" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="17.3466" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.95" end2="none" antialias="false" x1="7.1" y1="15.4159" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="17.3466" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.95" end2="none" antialias="false" x1="7.1" y1="17.3466" length1="1.5"/>
+        <input text="_" x="-19" tagg="label" size="4" y="-5" rotate="true"/>
+        <terminal x="0" y="-9" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_x="30" hotspot_y="27" link_type="simple" version="0.5">
+    <names>
+        <name lang="ca">Caldera peu</name>
+        <name lang="es">Caldera pié</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="28.4625" y="-18.206" height="34.8614" antialias="false" x="-14.35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.66563" y="-0.607917" height="6.02064" antialias="false" x="-18.6625" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y5="0.917974" x7="-25.85" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-27" antialias="false" closed="false" y7="8.52145" y4="-2.88376" y8="8.52145" x3="-18.95" x2="-18.95" y6="8.52145" y3="-2.88376" x1="-24.7" y1="8.52145" y2="8.52145" x6="-27" x8="-23.55" x4="-23.55"/>
+        <rect width="1.15" y="-6.6855" height="5.06899" antialias="false" x="14.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="25.6293" tagg="label" text="_" rotate="true" x="-12.05" size="4"/>
+        <line y2="-18" end1="none" length1="1.5" y1="-20" length2="1.5" antialias="false" x2="-10" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-18" end1="none" length1="1.5" y1="-20" length2="1.5" antialias="false" x2="10" end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" y="-20" x="-10"/>
+        <terminal orientation="s" y="9.7887" x="-21.25"/>
+        <terminal orientation="n" y="-20" x="10"/>
+    </description>
+</definition>

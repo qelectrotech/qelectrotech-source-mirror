@@ -1,0 +1,31 @@
+<definition version="0.5" link_type="simple" type="element" hotspot_y="58" width="50" height="80" orientation="dyyy" hotspot_x="17">
+    <names>
+        <name lang="es">Valv compuerta bridas</name>
+        <name lang="ca">Vàlv comporta brides</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line antialias="false" y1="11" x2="-4" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="11" x1="-13" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="11" x2="29" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="11" x1="20" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-9" x2="-4" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="-9" x1="-13" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-6.16551" x2="17.3426" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-17.8759" x1="17.3426" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.11219" width="18.7275" y="-30.1876" height="15.3857" angle="-180"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="22.9477" width="3.3297" y="-10.7679" height="24.2933"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.6153" width="5.33242" y="-6.0722" height="15.0922"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.7743" width="3.3297" y="-10.7679" height="24.2933"/>
+        <arc antialias="true" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.11219" width="18.7275" y="0.37875" height="15.3857" angle="-180"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.41575" width="9.02948" y="-41.4844" height="3.85608"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.6393" width="31.6031" y="-51.8433" height="2.31364"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.64055" width="2.57985" y="-49.5297" height="8.0453"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.44458" width="5.33243" y="-5.3956" height="14.4156"/>
+        <line antialias="false" y1="-41.4844" x2="5.99558" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-38.3995" x1="5.99558" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-41.4844" x2="10.5103" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-38.3995" x1="10.5103" end2="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.52998" width="9.1" y="-37.2681" height="7.44065"/>
+        <line antialias="false" y1="-6.1655" x2="-0.96039" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-17.876" x1="-0.96039" end2="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.35606" width="24.2242" y="-21.9968" height="2.60423"/>
+        <input text="Compuerta" tagg="label" rotate="true" x="-12" size="5" y="22"/>
+        <line antialias="false" y1="-9" x2="29" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="-9" x1="20" end2="none" length1="1.5" length2="1.5"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="27" y="0" orientation="e"/>
+    </description>
+</definition>

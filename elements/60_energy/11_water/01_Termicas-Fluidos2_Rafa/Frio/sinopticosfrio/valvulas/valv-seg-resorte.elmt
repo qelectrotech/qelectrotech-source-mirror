@@ -1,0 +1,19 @@
+<definition link_type="simple" hotspot_x="19" width="40" height="20" version="0.5" type="element" hotspot_y="13" orientation="dyyy">
+    <names>
+        <name lang="ca">Vàlvula seg resort</name>
+        <name lang="es">Valvula seguridad resorte</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-11.3055" x2="-6.34587" y2="0.0318443" y1="0.0318443" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7.30108" x2="11.9263" y2="0.0318443" y1="0.0318443" end2="none"/>
+        <polygon y3="-5" x4="7" y5="-5" antialias="true" x3="7" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" x2="-6" y4="5" x5="-6" y2="5" y1="-5"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" x2="5" y2="5" y1="-5" end2="none"/>
+        <input y="14" tagg="label" rotate="true" size="5" x="-6" text="_"/>
+        <circle antialias="false" y="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2" x="-1"/>
+        <polygon y8="-11" x8="1" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x9="1" x10="1" x3="3" y4="-7" y10="-11" x6="-3" x4="-3" y5="-8" y7="-10" y9="-11" y3="-6" x1="0" antialias="false" x2="0" y1="-1" x7="1" y6="-9" x5="3" closed="false"/>
+        <terminal y="0.0814798" x="12" orientation="e"/>
+        <terminal y="0.0814798" x="-12" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,24 @@
+<definition height="30" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="22" type="element" width="50" orientation="dyyy">
+    <names>
+        <name lang="es">Reg. Máxima pres.</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="5.97891" x="-9" y="-2.97891" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="19.2"/>
+        <line y1="0.0105469" y2="0.0105469" x1="-9.43927" x2="-18.5945" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="0.0105469" y2="0.0105469" x1="10.8575" x2="18.2877" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="0" y2="-3" x1="10" x2="-9" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="0" y2="3" x1="10" x2="-9" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <circle x="-5" y="-9" diameter="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-7" y2="-7" y3="-3" x1="-5" x2="-9" x3="-9" closed="false" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-13" y2="-8" y3="-8" x1="4" y4="-13" x2="1" x3="7" closed="false" x4="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-13.4571" y2="-15.9143" y3="-11" x1="4" y4="-13.4571" x2="9.2" x3="9.2" closed="false" x4="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-13" y2="-13" x1="9.81538" x2="13.2" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-8" y2="-3" x1="4" x2="4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-14" y2="-18" x1="4" x2="4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-7" size="4" rotate="true" y="-26" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

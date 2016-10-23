@@ -1,0 +1,29 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="18" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Motor eléctrico</name>
+        <name lang="ca">Motor elèctric</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7" x1="1" y2="-7" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8.93514" x1="16" y2="7.92973" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" x1="1" y2="-1" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5" x1="1" y2="5" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" x1="1" y2="7" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="1" y2="3" x2="16"/>
+        <rect width="4" x="15" y="8" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-4" y="-5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="22" x="-2" y="-9" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-1" y="8" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8.93514" x1="1" y2="7.92973" x2="1"/>
+        <rect width="1" x="20" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="9" x="6" y="-13" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11" x1="6" y2="-11" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="16"/>
+        <rect width="3" x="-7.5" y="-1.25" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1" x="-8.5" y="-5.25" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-1" y="15.5" size="4" rotate="true" text="kW:_" tagg="label"/>
+        <terminal x="11" y="-14" orientation="n"/>
+        <terminal x="-9" y="0" orientation="w"/>
+    </description>
+</definition>

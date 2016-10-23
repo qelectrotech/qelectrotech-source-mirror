@@ -1,0 +1,24 @@
+<definition width="110" hotspot_y="49" hotspot_x="54" type="element" orientation="dyyy" version="0.5" link_type="simple" height="70">
+    <names>
+        <name lang="es">Salto 22</name>
+        <name lang="ca">Salt 22</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="15.8484" angle="-40" y="-24.3308" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20.4453" start="-90" antialias="true" height="17.516"/>
+        <arc width="54.3375" angle="-120" y="-18.0362" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-28.232" start="-210" antialias="true" height="32.5954"/>
+        <arc width="3.32063" angle="-90" y="-9.65243" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-33.1375" start="90" antialias="true" height="3.25954"/>
+        <arc width="43.7719" angle="-40" y="-41.0878" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.61563" start="-90" antialias="true" height="47.7707"/>
+        <arc width="15.8484" angle="-40" y="-25.9606" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-36.9109" start="-55" antialias="true" height="17.516"/>
+        <arc width="3.32063" angle="-90" y="5.01542" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-33.1375" start="0" antialias="true" height="3.25954"/>
+        <arc width="45.2813" angle="-40" y="-44.3474" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-51.25" start="-50" antialias="true" height="51.0302"/>
+        <input size="4" text="22" y="16" tagg="label" x="-7" rotate="true"/>
+        <line y1="-6.56295" end1="none" x1="-29.6961" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-29.6961" antialias="false" y2="6.82935" length2="1.5"/>
+        <polygon y1="-9.65243" x3="-39.4769" y4="8.27496" x4="-31.93" x1="-31.93" closed="false" y3="8.27496" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-39.4769" antialias="false" y2="-9.65243"/>
+        <polygon x5="29.1242" x8="38.1805" closed="false" y1="8.04011" x3="30.6336" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-9.88736" antialias="false" x4="29.1242" y6="8.04011" y7="8.04011" y4="-8.25759" y3="-9.88736" x7="38.1805" x1="38.1805" y5="6.41034" x2="38.1805" x6="30.6336" y8="6.41034"/>
+        <arc width="30.1875" angle="-140" y="-4.99805" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.6477" start="-200" antialias="true" height="14.6679"/>
+        <terminal y="0" orientation="w" x="-39"/>
+        <terminal y="0" orientation="e" x="40"/>
+    </description>
+</definition>

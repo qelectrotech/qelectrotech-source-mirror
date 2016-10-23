@@ -1,0 +1,22 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="11" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Aislamiento Tuberias</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.128406" x1="-9.3" y2="0.128406" x2="7.2"/>
+        <ellipse width="1.2" x="-9.9" y="2.24875" antialias="true" height="1.52196" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="5.1" x="-12" y="-8.19687" antialias="true" height="8.32528" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.2" x="-10.2" y="-5.33506" antialias="true" height="2.34148" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.19687" x1="-9.3" y2="-8.19687" x2="7.2"/>
+        <ellipse width="3.6" x="-11.1" y="0.388571" antialias="true" height="5.41143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.4" x="4.8" y="-8.19687" antialias="true" height="8.32528" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.8" x1="-9.3" y2="5.8" x2="7.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.388571" x1="-9.3" y2="0.388571" x2="7.2"/>
+        <arc width="3.9" x="5.4" y="0.388571" antialias="true" height="5.41143" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <terminal x="-10.5" y="-4.2944" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="-10.2" y="3.25038" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="10.2" y="-4.03423" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="9.6" y="3.25038" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

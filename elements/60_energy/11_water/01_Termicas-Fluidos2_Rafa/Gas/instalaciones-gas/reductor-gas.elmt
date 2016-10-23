@@ -1,0 +1,31 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Reductor presion gas</name>
+    </names>
+    <informations/>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="13.5393" y2="2" x2="8.6321"/>
+        <arc width="7.60725" x="4.41994" y="-2" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.59187" x1="-16.3721" y2="2.59187" x2="-14.5705"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.4" x1="-13.0074" y2="1.4" x2="-11.1444"/>
+        <arc width="2.70235" x="-16.3721" y="2.59187" antialias="true" height="2.40813" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="13.9466" x="3.786" y="-17.8089" antialias="true" height="13.8089" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="17.1163" x="-6.357" y="-4" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="13.9466" x="-12.6964" y="-17.8089" antialias="true" height="13.8089" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="11.3933" y2="-1" x2="13.2951"/>
+        <rect width="1.90181" x="13.929" y="-3" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.53575" x="1.25025" y="-15.2982" antialias="false" height="3.76605" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="7.60725" x="-5.08913" y="-2" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-1.2855" y2="2" x2="-8.25881"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-8.25881" y2="-1" x2="-6.357"/>
+        <rect width="2.96919" x="-16.3721" y="-3.63252" antialias="false" height="7.63252" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.53575" x="-10.7946" y="-2" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.02032" x1="-13.1101" y2="-1.02032" x2="-11.0178"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.22439" x1="-15.9781" y2="-2.22439" x2="-14.9224"/>
+        <arc width="2.70235" x="-16.3721" y="-4.63252" antialias="true" height="2.40813" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="1.80157" x="-15.4713" y="-2.22439" antialias="true" height="4.81626" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="-1.91944" y="7.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-16.5" y="0" orientation="w"/>
+        <terminal x="15.8308" y="0" orientation="e"/>
+    </description>
+</definition>

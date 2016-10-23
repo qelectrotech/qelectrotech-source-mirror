@@ -1,0 +1,18 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="14" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sensor de presión</name>
+        <name lang="ca">Sensor de presió</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.9167" x1="-1.5" y2="14.2222" x2="2.5"/>
+        <rect width="5" x="-2" y="12.5278" antialias="false" height="8.47222" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="19.3056" x1="-1.5" y2="17.6111" x2="2.5"/>
+        <rect width="8.5" x="-4" y="-2.72222" antialias="false" height="15.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.5" x="-2.5" y="-9.5" antialias="false" height="6.77778" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="4" y="6" size="4" rotate="true" text="_bar" tagg="label"/>
+        <terminal x="0" y="-10" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

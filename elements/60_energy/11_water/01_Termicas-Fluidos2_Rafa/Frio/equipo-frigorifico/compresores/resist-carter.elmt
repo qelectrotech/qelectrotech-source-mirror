@@ -1,0 +1,14 @@
+<definition width="70" version="0.4" hotspot_x="34" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Resistencia cárter</name>
+        <name lang="ca">Resistència càrter</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="5" x="10" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="-30" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="24" y5="0" x5="26" y6="0" x6="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="15" y2="1" x2="18" y3="0" x3="20" y4="1"/>
+        <input x="-14" y="5.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="30" y="0" orientation="e"/>
+    </description>
+</definition>

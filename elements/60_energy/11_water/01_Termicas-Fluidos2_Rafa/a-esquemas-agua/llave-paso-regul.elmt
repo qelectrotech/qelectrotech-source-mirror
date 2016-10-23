@@ -1,0 +1,22 @@
+<definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="18" type="element" hotspot_x="24" orientation="dyyy">
+    <names>
+        <name lang="es">Llave regulación</name>
+        <name lang="ca">Clau de regulació</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5.49676" end2="none" x2="-9.72225" antialias="false" y1="4.97104" x1="-9.72225" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5.49676" end2="none" x2="9.61707" antialias="false" y1="4.97104" x1="9.61707" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" x2="9.38775" antialias="false" y1="-5.52347" x1="-9.72225" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5.52347" end2="none" x2="9.38775" antialias="false" y1="5" x1="-9.72225" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-8.61406" end2="none" x2="-0.16725" antialias="false" y1="-0.421394" x1="-0.16725" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-9.03129" end2="none" x2="4.61025" antialias="false" y1="-9.03129" x1="-4.94475" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.4225" start="-180" antialias="true" height="6.01341" width="10.0328" y="-12.038" angle="-180"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="-20" antialias="false" y1="0" x1="-10" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="20" antialias="false" y1="0" x1="9" length1="1.5"/>
+        <input text="_" x="-7" tagg="label" size="4" y="11.5" rotate="true"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+    </description>
+</definition>

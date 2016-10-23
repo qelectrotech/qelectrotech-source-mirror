@@ -1,0 +1,31 @@
+<definition link_type="simple" version="0.5" width="50" height="20" hotspot_x="24" type="element" hotspot_y="7" orientation="dyyy">
+    <names>
+        <name lang="es">Tuberia superficial</name>
+        <name lang="ca">Canonada supeficial</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-270" antialias="true" width="4" height="8" angle="-180" x="6" y="-3"/>
+        <line x2="5.99216" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="4" x1="-2.99216"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-270" antialias="true" width="4" height="8" angle="-180" x="-7" y="-3"/>
+        <line x2="-7" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="4" x1="-16"/>
+        <line x2="16.3806" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="4" x1="9.54055"/>
+        <line x2="5" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-2.5" y2="-2.5" x1="-4"/>
+        <line x2="16.3806" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-2.5" y2="-2.5" x1="9.54055"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="3.3" height="6.38775" x="-18.575" y="-2.38775"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-250" antialias="true" width="4" height="8" angle="-230" x="3" y="-3"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" width="4.3" height="6.38775" angle="-180" x="14.275" y="-2.38775"/>
+        <line x2="8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-3" y2="-3" x1="5"/>
+        <line x2="8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="5" y2="5" x1="5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-250" antialias="true" width="4" height="8" angle="-230" x="-10" y="-3"/>
+        <line x2="-5" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-3" y2="-3" x1="-8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="2" height="4" x="6" y="5"/>
+        <line x2="-5" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="5" y2="5" x1="-8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="2" height="4" x="-7" y="5"/>
+        <line x2="19" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="9" y2="9" x1="-15"/>
+        <line x2="-8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-2.5" y2="-2.5" x1="-17"/>
+        <input text="_" tagg="label" rotate="true" x="-7" y="-9" size="4"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-20" y="0" orientation="w"/>
+    </description>
+</definition>

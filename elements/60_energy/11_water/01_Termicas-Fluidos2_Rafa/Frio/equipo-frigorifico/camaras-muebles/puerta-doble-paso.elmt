@@ -1,0 +1,18 @@
+<definition width="170" version="0.4" hotspot_x="85" hotspot_y="44" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Puerta paso doble</name>
+        <name lang="ca">Porta pas doble</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" x="40" y="-39" antialias="false" height="39" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <rect width="6" x="-41" y="1" antialias="false" height="39" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-41" y="-39" antialias="false" height="39" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <rect width="10" x="-52" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="80" x="-81" y="-39" antialias="true" height="79" style="line-style:dashed;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="10" x="47" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="40" y="1" antialias="false" height="39" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="80" x="0" y="-39" antialias="true" height="79" style="line-style:dashed;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <input x="44" y="-12" size="4" rotate="true" text="_" tagg="label"/>
+    </description>
+</definition>

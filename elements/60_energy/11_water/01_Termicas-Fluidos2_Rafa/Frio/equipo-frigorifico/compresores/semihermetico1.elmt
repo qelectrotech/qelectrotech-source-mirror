@@ -1,0 +1,38 @@
+<definition width="70" version="0.4" hotspot_x="34" hotspot_y="42" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Compresor Semihermético 1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="-14.5" y2="-34" x2="-13.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="15" y2="7.7" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="7.5" y2="7.7" x2="7.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.9" x1="-26" y2="-19.9" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="19" y2="10" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.6" x1="-26" y2="-17.6" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="3" y2="7.7" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="11" y2="7.7" x2="11"/>
+        <ellipse width="2" x="-16" y="-14.15" antialias="true" height="2.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y29="10" x23="-27" x24="-21" x25="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" x26="-2" x27="-1" x1="-7" x28="1" x2="-5" x29="3" x3="-7" y30="7.7" x4="-5" y31="10" x5="-7" y32="7.7" x6="-5" y33="10" x7="-5" y34="7.7" x8="-6" y35="10" x9="-9" y36="7.7" x30="5" y37="7.7" x31="7" y38="12.3" x32="9" y39="12.3" x33="11" x34="13" x35="15" x36="17" x37="19" y1="-15.3" x38="19" y2="-17.6" x39="25" y3="-18.75" y40="6.55" y4="-21.05" y41="6.55" y5="-22.2" y42="3.1" y6="-24.5" y43="3.1" y7="-31.4" y44="-7.25" y8="-33.7" y45="-7.25" y9="-36" y46="-11.85" x40="25" y47="-11.85" x41="28" y48="-16.45" x42="28" y49="-16.45" x43="29" x44="29" antialias="false" x45="28" x46="28" x47="25" x48="25" x49="20" y50="-14.15" y51="-16.45" y52="-14.15" y53="-16.45" y54="-14.15" y55="-16.45" x50="18" y56="-14.15" x51="17" y57="-16.45" x52="15" y58="-13" x53="13" y59="-15.3" x54="11" x55="9" x56="7" x57="5" x58="3" x59="1" y60="-13" y61="-15.3" y62="-15.3" x60="0" closed="false" x61="-1" x62="-6" y10="-36" y11="-33.7" y12="-31.4" y13="-24.5" y14="-22.2" y15="-21.05" y16="-18.75" x10="-25" y17="-17.6" x11="-28" y18="-15.3" x12="-29" y19="-10.7" x13="-29" x14="-27" x15="-29" x16="-27" x17="-29" x18="-27" x19="-27" y20="-10.7" y21="3.1" y22="3.1" y23="12.3" y24="12.3" y25="7.7" y26="7.7" x20="-31" y27="10" x21="-31" y28="7.7" x22="-27"/>
+        <polygon x4="22" y5="-16.45" x5="22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16.45" x1="9" y2="-20.5875" x2="9" y3="-20.5875" x3="22" y4="-17.2775"/>
+        <rect width="13" x="9" y="-23.07" antialias="false" height="2.4825" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-12" y5="-18.75" x5="-13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-18.75" x1="-14" y2="-14.15" x2="-20" y3="-11.85" x3="-18" y4="-16.45"/>
+        <rect width="24" x="-29" y="-27.95" antialias="false" height="2.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2" x="-18" y="-18.75" antialias="true" height="2.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19.9" x1="-13" y2="-19.9" x2="-10" y3="-16.45" x3="-12"/>
+        <ellipse width="4" x="-17" y="-0.35" antialias="true" height="4.6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="0" y2="7.7" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.85" x1="25" y2="5.4" x2="25"/>
+        <rect width="2" x="22" y="-21.415" antialias="false" height="1.655" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="30" y="-8.4" antialias="false" height="9.2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8.4" x1="32" y2="-11.85" x2="31" y3="-8.4" x3="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.7" x1="-29" y2="3.1" x2="-29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.85" x1="-27" y2="8.85" x2="-22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-22.2" x1="-26" y2="-22.2" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="-23" y2="-34" x2="-22"/>
+        <terminal x="31" y="-11.85" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-11" y="-21.05" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="24" y="-20.5875" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

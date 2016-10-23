@@ -1,0 +1,13 @@
+<definition width="60" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Tubo Cu 15</name>
+        <name lang="ca">Tub Cu 15</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="48.8" x="-19.6" y="-5.63888" antialias="false" height="11.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-5" y="0" size="4" rotate="true" text="Cu15" tagg="label"/>
+        <terminal x="-20.4" y="0.00983577" orientation="w"/>
+        <terminal x="30" y="0.00983577" orientation="e"/>
+    </description>
+</definition>

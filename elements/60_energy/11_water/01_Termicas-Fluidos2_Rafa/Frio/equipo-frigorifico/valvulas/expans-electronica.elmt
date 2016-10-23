@@ -1,0 +1,22 @@
+<definition width="50" version="0.4" hotspot_x="20" hotspot_y="34" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. expansión electr.</name>
+        <name lang="ca">Valv. expansió electr.</name>
+    </names>
+    <informations/>
+    <description>
+        <arc width="4" x="6" y="-28" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="6" x="17" y="-11" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="17" x2="5" x3="5" x4="-3" antialias="false" x5="-3" x6="4" x7="4" x8="6" x9="6" closed="false" y1="-10" y10="-4" y2="-10" y3="-12" y4="-12" y5="5" x10="17" y6="5" y7="0" y8="0" y9="-4"/>
+        <rect width="9" x="-4" y="5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="1" y2="0" x2="1"/>
+        <rect width="19" x="-9" y="-26" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <arc width="4" x="-9" y="-28" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-7" y2="-28" x2="8"/>
+        <rect width="4" x="-2" y="-30" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-12" y="-15" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="23" y="-7" orientation="e"/>
+        <terminal x="-14" y="-14" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Conducto recto</name>
+        <name lang="ca">Conducte recte</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse width="5.6" x="-9" y="-5.26667" antialias="true" height="10.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.98333" x1="-4.74605" y2="4.98333" x2="15.9332"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.26667" x1="-5.01778" y2="-5.26667" x2="16.6026"/>
+        <arc width="5.6" x="14" y="-5.26667" antialias="true" height="10.25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="0" y="11.5" size="4" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

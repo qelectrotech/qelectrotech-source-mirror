@@ -1,0 +1,28 @@
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito20-3/4"H</name>
+        <name lang="ca">Manget 20-3/4"H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.20909" x1="3" y2="6.20909" x2="7"/>
+        <rect width="4.66359" x="-1.91531" y="-6.36337" antialias="false" height="13.2602" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="3" x="5" y="6.20909" antialias="true" height="6.79091" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="2.49769" x="-29.565" y="-6.36337" antialias="false" height="13.2602" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="23.152" x="-27.0674" y="-10.3414" antialias="false" height="21.2163" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11.424" x="8.61" y="-8.46378" antialias="false" height="18.3541" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.064" x="10.97" y="-5.99109" antialias="false" height="13.4088" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="7.41761" x1="12.314" y2="-5.32066" x2="13.658"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="7.41761" x1="14.33" y2="-5.99109" x2="16.346"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="7.41761" x1="16.346" y2="-5.99109" x2="19.034"/>
+        <rect width="5" x="3" y="-11.9" antialias="false" height="24.9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.10909" x1="3" y2="-5.10909" x2="7"/>
+        <arc width="3" x="5" y="-11.9" antialias="true" height="6.79091" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="2" x="-4" y="-13" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <arc width="2" x="6" y="-5.10909" antialias="true" height="11.3182" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="-21" y="16" size="4" rotate="true" text="20-3/4&quot;H" tagg="label"/>
+        <terminal x="-29.565" y="0.266721" orientation="w"/>
+        <terminal x="20" y="0.55" orientation="e"/>
+    </description>
+</definition>

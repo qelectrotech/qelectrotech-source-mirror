@@ -1,0 +1,33 @@
+<definition height="70" hotspot_x="16" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="59" version="0.5">
+    <names>
+        <name lang="ca">Banc frigorífic</name>
+        <name lang="es">Banco frigorífico</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="true" x="-5" diameter="2"/>
+        <line x1="52" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-47.1131" x2="52" y2="-41.8775" length1="1.5" end1="none"/>
+        <line x1="22" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-27" x2="55" y2="-50" length1="1.5" end1="none"/>
+        <line x1="19" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="4" x2="52" y2="-19" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-35" height="18" antialias="false" width="3" x="38"/>
+        <polygon x1="53" x4="58" x3="55" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y5="-40" antialias="false" y1="-32" x2="55" y4="-44" y2="-33" y3="-40" x5="53"/>
+        <polygon x1="38" x4="53" x3="53" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y5="-17" antialias="false" y1="-35" x2="49" y4="-27" y2="-43" y3="-43" x5="41"/>
+        <line x1="41" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-35" x2="53" y2="-43" length1="1.5" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" antialias="true" x="14" diameter="2"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" y="-10" antialias="true" width="2" x="-6"/>
+        <input y="-52.5" size="4" rotate="true" x="-3" text="Uso:_" tagg="label"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-27" height="31" antialias="false" width="29" x="-10"/>
+        <line x1="22" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-30" x2="55" y2="-53" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" height="18" antialias="false" width="3" x="21"/>
+        <polygon x1="36" x4="41" x3="38" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y5="-28" antialias="false" y1="-20" x2="38" y4="-32" y2="-21" y3="-28" x5="36"/>
+        <polygon x1="21" x4="36" x3="36" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y5="-5" antialias="false" y1="-23" x2="32" y4="-15" y2="-31" y3="-31" x5="24"/>
+        <line x1="24" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-23" x2="36" y2="-31" length1="1.5" end1="none"/>
+        <polygon x1="-11" x4="55" x3="55" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" antialias="false" y1="-30" x2="22" y4="-50" y2="-53" y3="-53"/>
+        <line x1="52" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-25.1131" x2="52" y2="-19.8775" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" height="3" antialias="false" width="33" x="-11"/>
+        <terminal y="1" x="15" orientation="s"/>
+        <terminal y="-19" x="-8" orientation="w"/>
+        <terminal y="-10" x="-9" orientation="w"/>
+    </description>
+</definition>

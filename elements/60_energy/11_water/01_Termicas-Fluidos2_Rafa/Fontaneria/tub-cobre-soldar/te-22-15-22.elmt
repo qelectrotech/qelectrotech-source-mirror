@@ -1,0 +1,24 @@
+<definition width="70" hotspot_y="25" hotspot_x="34" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Te Cu 22-15-22</name>
+        <name lang="ca">Te Cu 22-15-22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="10.8811" y="-9.4326" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.4634" antialias="false" height="20.8373"/>
+        <rect width="14.52" y="-21.935" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.93" antialias="false" height="7.73955"/>
+        <line y1="9.02325" end1="none" x1="-14.8884" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="15.0912" antialias="false" y2="9.02325" length2="1.5"/>
+        <line y1="-13.5833" end1="none" x1="-4.51" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4.51" antialias="false" y2="-7.66471" length2="1.5"/>
+        <line y1="-7.0512" end1="none" x1="-14.7036" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4.89599" antialias="false" y2="-7.0512" length2="1.5"/>
+        <line y1="-7.0512" end1="none" x1="5.20436" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="15.2062" antialias="false" y2="-7.0512" length2="1.5"/>
+        <line y1="-13.5833" end1="none" x1="5.17" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.17" antialias="false" y2="-7.66471" length2="1.5"/>
+        <line y1="-1.69305" end1="none" x1="-1.38" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4.51" antialias="false" y2="-7.0512" length2="1.5"/>
+        <line y1="-1.69305" end1="none" x1="2.61" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.17" antialias="false" y2="-7.0512" length2="1.5"/>
+        <polygon x5="15.7888" x8="27.1738" x9="27.1738" closed="false" y1="1" x3="18.3188" y9="1" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-9" antialias="false" x4="15.7888" y6="12" y7="12" y4="-7" y3="-9" x7="27.1738" x1="27.1738" y5="10" x2="27.1738" x6="18.3188" y8="1"/>
+        <polygon y1="-7" x3="19.5838" y4="10" x5="27.1738" x4="19.5838" x1="27.1738" y5="10" closed="false" y3="9" style="line-style:dotted;line-weight:normal;filling:none;color:red" x2="19.5838" antialias="false" y2="-7"/>
+        <input size="4" text="22-15-22" y="12" tagg="label" x="-9.51116" rotate="true"/>
+        <terminal y="0" orientation="w" x="-30"/>
+        <terminal y="0" orientation="e" x="30"/>
+        <terminal y="-20" orientation="n" x="0"/>
+    </description>
+</definition>

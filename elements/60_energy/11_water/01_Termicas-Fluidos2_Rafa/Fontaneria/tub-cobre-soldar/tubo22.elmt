@@ -1,0 +1,13 @@
+<definition width="70" hotspot_y="16" hotspot_x="34" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Tubo Cu 22</name>
+        <name lang="ca">Tub Cu 22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="52.5359" y="-9.99447" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.335" antialias="false" height="17.9945"/>
+        <input size="4" text="Cu 22" y="-2" tagg="label" x="-11.9091" rotate="true"/>
+        <terminal y="0" orientation="w" x="-30"/>
+        <terminal y="0" orientation="e" x="30"/>
+    </description>
+</definition>

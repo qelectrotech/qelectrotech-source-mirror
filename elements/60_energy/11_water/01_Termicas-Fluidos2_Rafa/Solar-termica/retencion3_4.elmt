@@ -1,0 +1,19 @@
+<definition width="50" version="0.4" hotspot_x="20" hotspot_y="14" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. retención solar</name>
+        <name lang="ca">Valv. retenció solar</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="1.82" x="19.85" y="-7.45884" antialias="false" height="14.8326" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29.7735" x="-9.96849" y="-8.10011" antialias="true" height="16.5863" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.82" x="-12" y="-7.45884" antialias="false" height="14.8326" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0425474" x1="7.3044" y2="-0.0425474" x2="13.2152"/>
+        <ellipse width="10.4" x="-4.72" y="-4.702" antialias="true" height="10.1938" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-4.702" x1="-9.92" y2="-7.25044" x2="1.78"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="5.49178" x1="-9.92" y2="8.04022" x2="1.78"/>
+        <input x="-2" y="9.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-12" y="-0.0425474" orientation="w"/>
+        <terminal x="21.67" y="-0.0425474" orientation="e"/>
+    </description>
+</definition>

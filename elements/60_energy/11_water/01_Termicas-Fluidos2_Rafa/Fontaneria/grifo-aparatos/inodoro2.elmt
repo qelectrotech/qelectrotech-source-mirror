@@ -1,0 +1,20 @@
+<definition width="60" type="element" hotspot_x="31" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="43" height="80">
+    <names>
+        <name lang="es">Inodoro tanque</name>
+        <name lang="ca">Inodor1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect antialias="false" width="15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-34" height="30" x="-24"/>
+        <arc antialias="true" width="15" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-38" angle="180" height="7" x="-24"/>
+        <rect antialias="false" width="45" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" height="5" x="-21"/>
+        <rect antialias="false" width="28" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6" height="2" x="-6"/>
+        <polygon x14="23" x16="23" y16="3" y3="12" x4="-6" y11="11" y6="27" y12="9" y8="23" y15="3" y4="17" x3="-6" y17="3" x7="18" x5="-16" y10="15" x1="-16" y7="27" x11="11" x12="19" y1="2" x2="-16" y13="5" x13="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x8="20" y2="7" y5="22" y14="3" x6="-16" x9="16" y9="17" antialias="false" x10="11" x15="23" closed="false" x17="23"/>
+        <circle antialias="false" diameter="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-32" x="-21"/>
+        <rect antialias="false" width="13" style="line-style:dashed;line-weight:normal;filling:none;color:black" y="22" height="6" x="-14"/>
+        <input tagg="label" rotate="true" y="-20" text="_" x="20" size="5"/>
+        <terminal orientation="w" y="-31" x="-24"/>
+        <terminal orientation="s" y="29" x="-7"/>
+    </description>
+</definition>

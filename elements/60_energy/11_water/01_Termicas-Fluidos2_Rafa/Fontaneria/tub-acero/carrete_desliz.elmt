@@ -1,0 +1,34 @@
+<definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="18" orientation="dyyy" width="60" hotspot_x="29">
+    <names>
+        <name lang="ca">Carret desliz</name>
+        <name lang="es">Carrete desliz</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="8" y2="8"/>
+        <line x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-18" y1="-13" y2="-13"/>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="15" y2="15"/>
+        <line x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-18" y1="1" y2="1"/>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.2025" y="-16.4536" width="2.5047" antialias="false"/>
+        <line x2="2.73684" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="15.2632" y1="9" y2="9"/>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="-5" y2="-5"/>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.2025" y="-16.4536" width="2.5047" antialias="false"/>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="7" y2="7"/>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="14" y2="14"/>
+        <line x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-19" y1="-6" y2="-6"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="-10.8873" angle="-90" start="0" width="4.4982" antialias="true"/>
+        <line x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-18" y1="0" y2="0"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="-11.8873" angle="-90" start="-90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="9.0308" angle="-90" start="90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="10.0308" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.7975" y="-16.4536" width="3.5047" antialias="false"/>
+        <line x2="-1.10206" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-16.1897" y1="10.0308" y2="10.0308"/>
+        <input tagg="label" x="-16" rotate="true" text="carrete desliz" y="23" size="4"/>
+        <line x2="-0.785714" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-16.2143" y1="-6.5" y2="-6.5"/>
+        <line x2="2.86842" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="16.1316" y1="-5.5" y2="-5.5"/>
+        <line x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-18" y1="-14" y2="-14"/>
+        <terminal x="-22" orientation="w" y="0"/>
+        <terminal x="22" orientation="e" y="0"/>
+    </description>
+</definition>

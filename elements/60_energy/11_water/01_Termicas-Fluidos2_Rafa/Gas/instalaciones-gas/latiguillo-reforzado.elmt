@@ -1,0 +1,19 @@
+<definition width="20" version="0.4" hotspot_x="9" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Latiguillo reforzado</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="12" x="-5" y="-17.25" antialias="true" height="12.75" style="line-style:dashed;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="7" x="-7" y="-14.2738" antialias="false" height="2.11905" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="12" x="-3" y="-17.25" antialias="true" height="11.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="12" x="-3" y="-5.5" antialias="true" height="11.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="7" x="-7" y="12.4048" antialias="false" height="2.11905" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="12" x="-3" y="6.25" antialias="true" height="11.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="12" x="-5" y="-4.5" antialias="true" height="9.75" style="line-style:dashed;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="12" x="-5" y="5.25" antialias="true" height="12.75" style="line-style:dashed;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <input x="7" y="7.5" size="3" rotate="true" text="_" tagg="label"/>
+        <terminal x="-4" y="-15" orientation="n"/>
+        <terminal x="-4" y="16" orientation="s"/>
+    </description>
+</definition>

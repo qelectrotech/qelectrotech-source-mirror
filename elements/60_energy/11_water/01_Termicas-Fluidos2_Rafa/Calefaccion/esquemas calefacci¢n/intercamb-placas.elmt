@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" width="30" height="40" hotspot_x="14" hotspot_y="20" link_type="simple" version="0.5">
+    <names>
+        <name lang="ca">Intercamviador Plaques</name>
+        <name lang="es">Intercambiador Placas</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="13.1" y="-17.5644" height="35.5644" antialias="false" x="-6.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="3" y4="10.0112" y2="-9.77421" y3="0.118549" y5="10.0112" closed="false" x5="-9.49629" y1="-9.77421" x4="-0.471191" antialias="false" x2="-1.16543" x6="-9.49629" x1="-9.49629" y6="10.0112" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="-1.6" y4="10.0112" y2="-9.77421" y3="0.118549" y5="10.0112" closed="false" x5="10.28" y1="-9.77421" x4="1.37" antialias="false" x2="1.964" x6="10.28" x1="10.28" y6="10.0112" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-26.0007" tagg="label" text="_" rotate="true" x="-5" size="4"/>
+        <terminal orientation="w" y="-9.89711" x="-10"/>
+        <terminal orientation="e" y="-9.89711" x="10"/>
+        <terminal orientation="e" y="10" x="10"/>
+        <terminal orientation="w" y="10" x="-10"/>
+    </description>
+</definition>

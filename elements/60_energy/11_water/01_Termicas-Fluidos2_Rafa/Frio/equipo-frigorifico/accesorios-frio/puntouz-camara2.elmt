@@ -1,0 +1,15 @@
+<definition width="80" hotspot_y="9" hotspot_x="34" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
+    <names>
+        <name lang="es">Luz cámara 2</name>
+        <name lang="ca">Llum càmbra 2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="59" y="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-29" antialias="false" height="5"/>
+        <rect width="52" y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" antialias="false" height="1"/>
+        <line y1="0.52" end1="none" x1="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="39" antialias="false" y2="0.52" length2="1.5"/>
+        <input size="4" text="_" y="0.5" tagg="label" x="2" rotate="true"/>
+        <rect width="65" y="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-31" antialias="false" height="10"/>
+        <terminal y="0.5" orientation="e" x="40"/>
+    </description>
+</definition>

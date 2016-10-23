@@ -1,0 +1,23 @@
+<definition width="50" version="0.4" hotspot_x="27" hotspot_y="11" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Capilar expansion</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="6" x="-14" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="2" x="10" y="-3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="11.7474" y2="-1" x2="17.2737"/>
+        <arc width="6" x="4" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="3" x="-1" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="3" x="-6" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-21.2526" y2="-1" x2="-15.7263"/>
+        <arc width="8" x="-6" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="3" x="-11" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="8" x="-11" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="3" x="4" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="8" x="-1" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="2" x="-16" y="-3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <terminal x="-22" y="-1" nameHidden="110" number="" name="" orientation="w"/>
+        <terminal x="18" y="-1" nameHidden="40" number="" name="" orientation="e"/>
+    </description>
+</definition>

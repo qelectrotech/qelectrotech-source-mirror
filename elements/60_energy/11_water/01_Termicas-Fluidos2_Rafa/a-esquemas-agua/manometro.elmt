@@ -1,0 +1,15 @@
+<definition link_type="simple" ic="true" height="30" width="20" version="0.4" hotspot_y="15" type="element" hotspot_x="10" orientation="dyyy">
+    <names>
+        <name lang="es">Termómetro</name>
+        <name lang="ca">Termómetre</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" antialias="true" height="15" width="16" y="-11"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end2="none" x2="0" antialias="false" y1="4" x1="0" length1="1.5"/>
+        <text text="T" x="-4" size="9" y="1"/>
+        <input text="_" x="-9" tagg="label" size="4" y="-14.5" rotate="true"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

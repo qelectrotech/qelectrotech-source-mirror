@@ -1,0 +1,24 @@
+<definition version="0.5" link_type="simple" type="element" hotspot_y="20" width="30" height="40" orientation="dyyy" hotspot_x="15">
+    <names>
+        <name lang="es">Brida desliz.</name>
+        <name lang="ca">Brida desliz.</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line antialias="false" y1="6" x2="-1" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="6" x1="0" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="4" x2="4" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="4" x1="-8" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="0" style="line-style:normal;line-weight:thin;filling:none;color:red" x="-2" width="4" y="6" height="3" angle="90"/>
+        <line antialias="false" y1="-6" x2="-2.34237" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-6" x1="-7.65763" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="6" x2="-2.35256" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="6" x1="-7.64744" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="-90" style="line-style:normal;line-weight:thin;filling:none;color:red" x="-2" width="4" y="-9" height="3" angle="90"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" width="4" y="-17" height="33"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="9" width="1" y="14" height="0"/>
+        <line antialias="false" y1="-6" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="6" x1="-8" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-4" x2="4" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="-4" x1="-8" end2="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" width="2" y="-9" height="18"/>
+        <line antialias="false" y1="-6" x2="-1" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="-6" x1="0" end2="none" length1="1.5" length2="1.5"/>
+        <input text="Desliz." tagg="label" rotate="true" x="-14" size="5" y="23"/>
+        <terminal x="5" y="0" orientation="e"/>
+        <terminal x="-9" y="0" orientation="w"/>
+    </description>
+</definition>

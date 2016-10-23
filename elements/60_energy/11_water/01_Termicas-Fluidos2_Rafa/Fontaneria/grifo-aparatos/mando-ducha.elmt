@@ -1,0 +1,46 @@
+<definition width="50" height="70" link_type="simple" hotspot_x="17" hotspot_y="61" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Grifo ducha</name>
+        <name lang="en">Mixer 02 ECS</name>
+        <name lang="ca">Aixeta banyera</name>
+        <name lang="ar">خلاّط 02 ECS</name>
+        <name lang="fr">Mitigeur02 ECS</name>
+        <name lang="cs">Směšovač 02 ECS</name>
+        <name lang="it">Valvola miscelatrice ACS 2</name>
+        <name lang="pl">Mieszacz CWU</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="6.4" height="6.70171" antialias="true" y="-7.0841" angle="-90" start="-90" x="-12.9875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-11.7875" length2="1.5" antialias="false" x2="-11.7875" end1="none" y2="-3.85278" length1="1.5" end2="none" y1="-49.9513" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-1.58752" length2="1.5" antialias="false" x2="-8.7875" end1="none" y2="-54.5915" length1="1.5" end2="none" y1="-54.5915" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="8.4" height="9.70171" antialias="true" y="-56.0841" angle="-160" start="35" x="-12.9875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-12.9875" length2="1.5" antialias="false" x2="-12.9875" end1="none" y2="-4.25344" length1="1.5" end2="none" y1="-51.5488" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="6" height="6.71657" antialias="true" y="-54.5915" x="-11.7875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-1.58752" length2="1.5" antialias="false" x2="-8.7875" end1="none" y2="-56.0841" length1="1.5" end2="none" y1="-56.0841" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.6" height="14.1285" antialias="false" y="-8.4309" x="-7.66752" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="8.4" height="9.70171" antialias="true" y="-56.0841" angle="-90" start="-180" x="-12.9875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="4.42248" length2="1.5" antialias="false" x2="6.28248" end1="none" y2="-1.36666" length1="1.5" end2="none" y1="-1.36666" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-3.94752" length2="1.5" antialias="false" x2="-3.94752" end1="none" y2="0.0462" length1="1.5" end2="none" y1="-2.77951" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-4.87752" length2="1.5" antialias="false" x2="-3.01752" end1="none" y2="-1.36666" length1="1.5" end2="none" y1="-1.36666" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="11.8625" length2="1.5" antialias="false" x2="14.6525" end1="none" y2="2.87191" length1="1.5" end2="none" y1="2.87191" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.72" height="2.82571" antialias="false" y="-11.4669" x="7.09248" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.86" height="2.66628" antialias="false" y="-1.69979" x="-9.52752" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20.2325" length2="1.5" antialias="false" x2="11.8625" end1="none" y2="5.69761" length1="1.5" end2="none" y1="5.69761" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20.2325" length2="1.5" antialias="false" x2="11.8625" end1="none" y2="-8.4309" length1="1.5" end2="none" y1="-8.4309" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="2.79" height="14.1285" antialias="true" y="-8.4309" angle="-180" start="90" x="18.8375" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="11.8625" length2="1.5" antialias="false" x2="14.6525" end1="none" y2="-5.60523" length1="1.5" end2="none" y1="-5.60523" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="11.8625" length2="1.5" antialias="false" x2="14.6525" end1="none" y2="-2.77951" length1="1.5" end2="none" y1="-2.77951" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="11.8625" length2="1.5" antialias="false" x2="14.6525" end1="none" y2="0.0462" length1="1.5" end2="none" y1="0.0462" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.72" height="2.82571" antialias="false" y="-11.4669" x="-5.80752" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="18" text="Grifo bañera" tagg="label" size="4" x="17" rotate="true"/>
+        <arc width="5" height="5" antialias="true" y="-7" angle="-90" start="-90" x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" height="3" antialias="false" y="-57" x="-1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="14" y3="-58" antialias="false" x2="14" closed="false" x6="14" y5="-52" y6="-52" y7="-52" y4="-54" y2="-58" x7="14" x5="14" x4="24" y1="-52" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="24"/>
+        <line x1="16" length2="1.5" antialias="false" x2="14" end1="none" y2="-40" length1="1.5" end2="none" y1="-50" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="20" length2="1.5" antialias="false" x2="20" end1="none" y2="-40" length1="1.5" end2="none" y1="-50" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="24" length2="1.5" antialias="false" x2="28" end1="none" y2="-42" length1="1.5" end2="none" y1="-50" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal y="-11.7858" orientation="n" x="-4.18752"/>
+        <terminal y="-11.7858" orientation="n" x="9.01248"/>
+    </description>
+</definition>

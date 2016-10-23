@@ -1,0 +1,11 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Flujo tuberia 2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6.94746" x1="-5" y2="0.0262718" x2="3" y3="7" x3="-5"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6.94746" x1="-2.6" y2="0.0262718" x2="5.4" y3="7" x3="-2.6"/>
+    </description>
+</definition>

@@ -1,0 +1,12 @@
+<definition width="30" version="0.4" hotspot_x="11" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sonda PTC</name>
+        <name lang="ca">Sonda PTC</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="14" x="-7" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="7" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="12" y="0" orientation="e"/>
+    </description>
+</definition>

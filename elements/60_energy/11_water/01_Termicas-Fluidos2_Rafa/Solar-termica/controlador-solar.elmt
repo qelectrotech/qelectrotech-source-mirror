@@ -1,0 +1,34 @@
+<definition width="40" version="0.4" hotspot_x="21" hotspot_y="13" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Controlador solar 4</name>
+        <name lang="ca">Controlador solar 4</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <text x="0" y="7" size="4" text="S1"/>
+        <text x="-6" y="7" size="4" text="V"/>
+        <text x="7" y="7" size="4" text="S2"/>
+        <rect width="3" x="1" y="8" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="-6" y="8" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.95" x="-13" y="-3.13281" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <ellipse width="1.95" x="-13" y="0.289062" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="3" x="8" y="8" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="30" x="-17" y="-11" antialias="false" height="19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-7" y="10" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="0" y="10" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="7" y="10" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="18" x="-7" y="-9" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <ellipse width="1.95" x="-13" y="-7.125" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="16" x="-6" y="-8" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="-1" y="0" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <rect width="3" x="-15" y="8" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="-16" y="10" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-10" y="-15.5" size="6" rotate="true" text="_" tagg="label"/>
+        <text x="-16" y="7" size="4" text="B"/>
+        <terminal x="-13" y="13" orientation="s"/>
+        <terminal x="-4" y="13" orientation="s"/>
+        <terminal x="2" y="13" orientation="s"/>
+        <terminal x="9" y="13" orientation="s"/>
+    </description>
+</definition>

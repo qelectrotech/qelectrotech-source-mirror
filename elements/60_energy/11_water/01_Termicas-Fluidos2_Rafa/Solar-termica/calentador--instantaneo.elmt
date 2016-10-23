@@ -1,0 +1,32 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="23" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Calentador instantáneo</name>
+        <name lang="ca">Escalfador instantàneo</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="19.6714" x1="9.7905" y2="19.2606" x2="13.6178"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="19.6714" x1="-13.1592" y2="19.2606" x2="-9.33197"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.0283" x1="-6.78047" y2="21.3142" x2="-6.78047"/>
+        <rect width="30.5623" x="-14.842" y="-21.3147" antialias="false" height="37.0278" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.0821" x1="-5.92997" y2="21.725" x2="-6.78047"/>
+        <rect width="4.2525" x="-13.1592" y="16.3854" antialias="false" height="5.33965" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.0821" x1="-7.63097" y2="21.725" x2="-6.78047"/>
+        <rect width="4.2525" x="9.7905" y="16.3854" antialias="false" height="5.33965" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="21.3142" x1="-13.1592" y2="20.9036" x2="-9.33197"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="21.3142" x1="9.7905" y2="20.9036" x2="13.6178"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.4928" x1="-13.1592" y2="20.0821" x2="-9.33197"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.4928" x1="9.7905" y2="20.0821" x2="13.6178"/>
+        <ellipse width="1.701" x="-2.30347" y="4.55932" antialias="true" height="1.54028" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <rect width="0.162" x="3.48803" y="4.55932" antialias="false" height="2.0537" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.0283" x1="7.239" y2="21.3142" x2="7.239"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17.6176" x1="7.239" y2="19.2606" x2="6.3885"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17.6176" x1="7.239" y2="19.2606" x2="8.0895"/>
+        <rect width="11.1375" x="-4.81447" y="2.60643" antialias="false" height="6.10246" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-9" y="-8" size="6" rotate="true" text="Inst." tagg="label"/>
+        <terminal x="11.9168" y="21.3142" orientation="s"/>
+        <terminal x="-11.033" y="20.9036" orientation="s"/>
+        <terminal x="1" y="17" orientation="s"/>
+    </description>
+</definition>

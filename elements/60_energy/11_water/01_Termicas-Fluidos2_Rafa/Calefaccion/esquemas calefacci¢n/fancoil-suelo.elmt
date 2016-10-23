@@ -1,0 +1,24 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="17" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Fancoil Suelo</name>
+        <name lang="ca">Fancoil Sòl</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.3932" x1="9.5" y2="-10" x2="6.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.3932" x1="2" y2="-10" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.3932" x1="6" y2="-10" x2="3"/>
+        <ellipse width="5.2" x="-0.4" y="16.5391" antialias="true" height="4.49454" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10.4" x="-3" y="14.2918" antialias="true" height="8.7082" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-280"/>
+        <rect width="19" x="-7" y="-10" antialias="false" height="38" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x2="-4" x3="-2" x4="1" antialias="false" x5="3" x6="5" x7="7" x8="9" x9="10" closed="false" y1="1" y10="7" y2="1" y11="7" y3="6" y4="1" y12="10" y5="6" x10="10" y13="10" y6="1" x11="-4" y14="10" y7="6" x12="-7" y8="1" x13="-10" y9="1" x14="-10"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="18" x1="-3" y2="12" x2="-3" y3="12" x3="2" y4="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.3932" x1="-1" y2="-10" x2="-4"/>
+        <rect width="2" x="11" y="17" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-8" y="-15.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-5" y="20" orientation="w"/>
+        <terminal x="-10" y="1" orientation="w"/>
+        <terminal x="-10" y="10" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Clixon hermético</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="9" x="1" y="-7" antialias="true" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="12" y2="0" x2="16"/>
+        <ellipse width="24" x="-12" y="-11" antialias="true" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-17" y2="0" x2="-13"/>
+        <arc width="9" x="-9" y="-7" antialias="true" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="4" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="2" y2="0" x2="12"/>
+        <terminal x="-17" y="0" orientation="w"/>
+        <terminal x="16" y="0" orientation="e"/>
+    </description>
+</definition>

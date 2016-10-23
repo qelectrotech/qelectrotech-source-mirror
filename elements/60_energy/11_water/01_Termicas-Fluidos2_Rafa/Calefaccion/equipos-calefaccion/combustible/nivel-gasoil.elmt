@@ -1,0 +1,29 @@
+<definition type="element" hotspot_x="14" orientation="dyyy" width="30" height="50" link_type="simple" hotspot_y="19" version="0.5">
+    <names>
+        <name lang="ca">Nivell de gasoil</name>
+        <name lang="es">Nivel de gasoil</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" antialias="false" width="20" height="6" y="-1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" antialias="false" width="14" height="2" y="-3"/>
+        <polygon y2="-3" x5="10" y4="-14" x6="-7" y5="-16" y7="-14" x4="12" y6="-16" y1="-14" x2="-4" x3="8" y3="-3" x8="-9" x7="-9" x1="-9" y9="-14" x9="-9" closed="false" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y8="-14"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="1" diameter="2" antialias="false" y="-7"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" x2="-4" end2="none" y2="-13" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" x2="-4" end2="none" y2="-7" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-7"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-7" x2="-5" end2="none" y2="-10" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8" x2="-7" end2="none" y2="-14" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-14"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" x2="-1" end2="none" y2="-13.6429" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-15.3571"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" x2="5" end2="none" y2="-13.6429" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-15.3571"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="11" x2="10" end2="none" y2="-14" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-14"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="8" end2="none" y2="-10" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="7" end2="none" y2="-7" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-7"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" x2="2" end2="none" y2="16.6667" antialias="false" end1="none" length2="1.5" length1="1.5" y1="5.33333"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="1" antialias="false" width="2" height="12" y="17"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" x2="10" end2="none" y2="3" antialias="false" end1="none" length2="1.5" length1="1.5" y1="3"/>
+        <input rotate="true" x="7" tagg="label" text="Nivel" size="6" y="-4"/>
+        <polygon y2="-14" x5="-10" y4="-17" x6="-5" y5="-14" y7="-3" x4="-7" y6="-3" y1="-3" x2="13" x3="10" y3="-17" x8="-5" x7="-5" x1="9" closed="false" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y8="-3"/>
+        <terminal x="-10" orientation="w" y="0"/>
+    </description>
+</definition>

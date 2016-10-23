@@ -1,0 +1,33 @@
+<definition hotspot_x="64" hotspot_y="20" width="90" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Panel radiant</name>
+        <name lang="es">Panel radiante</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon y4="4" x6="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-2" antialias="false" x2="-6" y2="4" y7="4" x5="-2" y3="6" y5="4" x4="-2" y6="4" closed="false" x1="-6" y1="4" x3="-8"/>
+        <polygon y4="-16" x6="17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="17" y2="-18" x5="17" y3="-17" y5="-16" x4="17" y6="-16" closed="false" x1="13" y1="-16" x3="17"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-18" y2="2" end1="none" x1="-2" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-1" y2="2" end1="none" x1="15" y1="-14" length1="1.5"/>
+        <polygon y7="4" x4="-40" y3="-16" antialias="false" x3="20" y4="-16" x2="0" x1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-50" x7="-50" y5="4" x5="-60" closed="false" y8="4" y2="4" x8="-50" y6="4" y1="4"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="3" y="-12" antialias="false" height="4" x="19"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-45" y2="2" end1="none" x1="-29" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-36" y2="2" end1="none" x1="-20" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-9" y2="2" end1="none" x1="7" y1="-14" length1="1.5"/>
+        <polygon y7="-8" x4="15" y3="-10" antialias="false" x3="15" y4="-9" x2="16" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="20" x7="20" y5="-8" x5="16" closed="false" y8="-8" y2="-12" x8="20" y6="-8" y1="-12"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-27" y2="2" end1="none" x1="-11" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="0" y2="8" end1="none" x1="0" y1="4" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="3" y="1" antialias="false" height="4" x="6"/>
+        <polygon y7="5" x4="2" y3="3" antialias="false" x3="2" y4="4" x2="3" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="7" x7="7" y5="5" x5="3" closed="false" y8="5" y2="1" x8="7" y6="5" y1="1"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="20" y2="-12" end1="none" x1="20" y1="-16" length1="1.5"/>
+        <polygon y4="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-60" y2="8" x5="0" y3="8" y5="8" x4="0" closed="false" x1="-60" y1="4" x3="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="3" y2="5" end1="none" x1="0" y1="8" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="1" end1="none" x1="17" y1="-8" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-54" y2="2" end1="none" x1="-38" y1="-14" length1="1.5"/>
+        <polygon y4="-16" x6="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-33" y2="-18" x5="-33" y3="-17" y5="-16" x4="-33" y6="-16" closed="false" x1="-37" y1="-16" x3="-33"/>
+        <polygon y4="4" x6="-53" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-53" antialias="false" x2="-57" y2="4" y7="4" x5="-53" y3="6" y5="4" x4="-53" y6="4" closed="false" x1="-57" y1="4" x3="-59"/>
+        <input rotate="true" text="rad." tagg="label" y="-10" x="-25" size="4"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="4" x="10" orientation="e"/>
+    </description>
+</definition>

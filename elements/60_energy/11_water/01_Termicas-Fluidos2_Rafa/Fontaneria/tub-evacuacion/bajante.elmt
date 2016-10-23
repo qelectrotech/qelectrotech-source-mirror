@@ -1,0 +1,16 @@
+<definition width="20" version="0.4" hotspot_x="9" hotspot_y="25" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bajante-colector</name>
+        <name lang="ca">Baixant-col.lector</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="11" x="-5" y="-13" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="13" x="-6" y="23" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="13" x="-6" y="-20" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-9" y="4" size="4" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+    </description>
+</definition>

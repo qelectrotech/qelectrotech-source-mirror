@@ -1,0 +1,15 @@
+<definition height="110" hotspot_x="79" type="element" width="160" link_type="simple" orientation="dyyy" hotspot_y="59" version="0.5">
+    <names>
+        <name lang="ca">Càmbra planta-1</name>
+        <name lang="es">Cámara planta-1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input y="-24" size="5" rotate="true" x="-12" text="ºC_" tagg="label"/>
+        <polygon x3="-76.425" y14="38.0167" y10="-49.4508" y12="31.769" x10="70.9332" x6="27.9536" x9="70.9332" y13="31.769" y9="31.769" y8="31.769" y1="38.0167" y2="38.0167" antialias="false" x13="-15.0258" closed="false" x11="-70.2852" x5="77.0731" x4="77.0731" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-55.6986" x7="27.9536" y6="38.0167" y7="34.8929" y5="38.0167" y11="-49.4508" y4="-55.6986" x8="27.9536" x1="-15.0258" x2="-76.425" x14="-15.0258" x12="-70.2852"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="38.0186" height="6.24767" antialias="false" width="45.9186" x="-17.0957"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="45.2663" height="3.12384" antialias="false" width="3.99095" x="23.8363"/>
+        <input y="-31.5" size="5" rotate="true" x="-12" text="Uso:_" tagg="label"/>
+    </description>
+</definition>

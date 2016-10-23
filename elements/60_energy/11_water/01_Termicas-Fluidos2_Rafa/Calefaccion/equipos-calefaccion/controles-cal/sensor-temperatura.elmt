@@ -1,0 +1,21 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="14" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sensor temperatura</name>
+        <name lang="ca">Sensor temperatura</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.1791" x1="-4.65" y2="16.797" x2="0.3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.4149" x1="-5.2" y2="14.0328" x2="-0.25"/>
+        <rect width="5.5" x="-5.2" y="12.6507" antialias="false" height="6.91045" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="9" x="-6.95" y="6.28507" antialias="false" height="6.36567" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="6.35" y5="6.28507" x5="6.35" y6="6.28507" x6="3.05" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6.28507" x1="3.05" y2="6.28507" x2="-11.25" y3="-2.00746" x3="-11.25" y4="-7.53582"/>
+        <arc width="14.3" x="-10.7" y="-10.3" antialias="true" height="14.5119" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="18.7" x="-14" y="-10.3" antialias="true" height="9.67463" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-70"/>
+        <rect width="5.1" x="6.35" y="-2.00746" antialias="false" height="4.83731" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.65" x="-3.55" y="19.5612" antialias="false" height="21.4388" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-3" y="32.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

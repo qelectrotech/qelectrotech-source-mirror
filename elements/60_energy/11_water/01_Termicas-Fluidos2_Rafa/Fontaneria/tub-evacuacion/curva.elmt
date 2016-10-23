@@ -1,0 +1,23 @@
+<definition width="50" hotspot_y="31" hotspot_x="27" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Curva</name>
+        <name lang="ca">Corba</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="2.2" angle="-90" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="18" start="0" antialias="true" height="2"/>
+        <arc width="2.2" angle="-90" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="90" antialias="true" height="2"/>
+        <arc width="24.5" angle="-90" y="-19.0064" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15.5" start="0" antialias="true" height="23.7475"/>
+        <arc width="2.2" angle="-90" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="0" antialias="true" height="2"/>
+        <arc width="43" angle="-90" y="-27.2883" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" start="0" antialias="true" height="39.3113"/>
+        <arc width="2.2" angle="-90" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" start="-90" antialias="true" height="2"/>
+        <polygon y1="-9" x3="20.2" y4="-9" x4="20.2" x1="7" closed="false" y3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" antialias="false" y2="-15"/>
+        <line y1="-8" end1="none" x1="8.1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18" antialias="false" y2="-8" length2="1.5"/>
+        <line y1="4.89565" end1="none" x1="-3.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.72" antialias="false" y2="13.113" length2="1.5"/>
+        <polygon y1="3" x3="-10.2" y4="14" x4="-5.2" x1="-5.2" closed="false" y3="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10.2" antialias="false" y2="3"/>
+        <input size="4" text="_" y="9.5" tagg="label" x="15" rotate="true"/>
+        <terminal y="10" orientation="w" x="-10"/>
+        <terminal y="-16" orientation="n" x="14"/>
+    </description>
+</definition>

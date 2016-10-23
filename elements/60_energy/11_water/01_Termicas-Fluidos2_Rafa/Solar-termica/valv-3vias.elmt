@@ -1,0 +1,35 @@
+<definition width="50" version="0.4" hotspot_x="37" hotspot_y="9" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">خلاّط 03 ECS</name>
+        <name lang="en">Mixer 03 ECS</name>
+        <name lang="it">Valvola miscelatrice ACS 3</name>
+        <name lang="fr">Mitigeur 03 ECS</name>
+        <name lang="pl">Mieszacz CWU</name>
+        <name lang="es">Valv 3 Vías</name>
+        <name lang="cs">Směšovač 03 ECS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="22.9393" x1="-16.2762" y2="22.9393" x2="-7.79375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7.85821" x1="2.1025" y2="14.8187" x2="2.1025"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7.85821" x1="-26.1725" y2="14.8187" x2="-26.1725"/>
+        <polygon y21="25.2595" x15="4.93" y22="25.2595" x16="2.1025" y23="25.2595" x17="2.1025" x18="-7.79375" x19="-7.79375" x20="-6.38" x21="-6.38" x22="-12.035" x23="-12.035" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12.035" x2="-17.69" x3="-17.69" x4="-16.2762" x5="-16.2762" x6="-26.1725" x7="-26.1725" x8="-29" x9="-29" y1="25.2595" y2="25.2595" y3="22.9393" y4="22.9393" y5="14.8187" y6="14.8187" y7="15.9788" y8="15.9788" y10="6.69812" y9="6.69812" y11="7.85821" y12="7.85821" y13="6.69812" y14="6.69812" y15="15.9788" y16="15.9788" y17="14.8187" y18="14.8187" y19="22.9393" x10="-26.1725" x11="-26.1725" x12="2.1025" antialias="true" x13="2.1025" x14="4.93" y20="22.9393"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.78201" x1="-2.13875" y2="1.08862" x2="-2.13875"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.17015" x1="-22.0062" y2="1.70048" x2="-22.0062"/>
+        <arc width="19.7925" x="-21.9312" y="-6.22335" antialias="true" height="4.88275" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="19.7925" x="-21.9312" y="-2.6462" antialias="false" height="8.05695" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.6192" x1="-10.6212" y2="20.6192" x2="-13.4487"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.3385" x1="-24.7587" y2="11.3385" x2="-21.9312"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10.1784" x1="-23.345" y2="12.4986" x2="-23.345"/>
+        <rect width="9.75" x="-16.625" y="5.3842" antialias="false" height="2.44745" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.5028" x1="-3.875" y2="11.5028" x2="-6.125"/>
+        <polygon x4="-3.875" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10.2791" x1="-3.875" y2="12.7266" x2="-3.875" y3="11.5028" x3="-1.625" y4="10.2791"/>
+        <rect width="3.75" x="-1.625" y="-1.95816" antialias="false" height="2.44745" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-13.625" y="1.71302" size="2" text="M"/>
+        <arc width="9.75" x="-16.625" y="7.21979" antialias="true" height="1.22373" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <terminal x="-29" y="11.3385" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="4.93" y="11.3385" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-12.035" y="25.2595" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="2.875" y="-0.734431" nameHidden="120" number="" name="" orientation="e"/>
+    </description>
+</definition>

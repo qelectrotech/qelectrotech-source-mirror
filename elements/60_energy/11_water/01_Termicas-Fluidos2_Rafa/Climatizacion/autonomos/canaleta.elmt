@@ -1,0 +1,15 @@
+<definition width="110" version="0.4" hotspot_x="43" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Canaleta</name>
+        <name lang="ca">Canaleta</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="101" x="-39" y="-10" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="0" y="-6" size="4" rotate="true" text="canaleta_" tagg="label"/>
+        <terminal x="-39" y="-7" orientation="w"/>
+        <terminal x="63" y="-8" orientation="e"/>
+        <terminal x="63" y="-2" orientation="e"/>
+        <terminal x="-39" y="-2" orientation="w"/>
+    </description>
+</definition>

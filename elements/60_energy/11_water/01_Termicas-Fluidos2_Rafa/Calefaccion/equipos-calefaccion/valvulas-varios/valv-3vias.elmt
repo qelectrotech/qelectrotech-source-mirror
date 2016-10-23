@@ -1,0 +1,49 @@
+<definition version="0.5" type="element" height="40" link_type="simple" width="50" hotspot_x="36" hotspot_y="9" orientation="dyyy">
+    <names>
+        <name lang="ca">Valv. 3 vies</name>
+        <name lang="fr">Mitigeur 03 ECS</name>
+        <name lang="es">Valv 3 Vías</name>
+        <name lang="pl">Mieszacz CWU</name>
+        <name lang="en">Mixer 03 ECS</name>
+        <name lang="ar">خلاّط 03 ECS</name>
+        <name lang="it">Valvola miscelatrice ACS 3</name>
+        <name lang="cs">Směšovač 03 ECS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x1="-29" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14" length1="1.5" y1="14" x2="-27" antialias="false" end2="none"/>
+        <line x1="-16.2762" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="22.9393" length1="1.5" y1="22.9393" x2="-7.79375" antialias="false" end2="none"/>
+        <line x1="-15.875" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="11.5028" length1="1.5" y1="11.5028" x2="-18.125" antialias="false" end2="none"/>
+        <line x1="3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14" length1="1.5" y1="14" x2="5" antialias="false" end2="none"/>
+        <line x1="2.1025" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14.8187" length1="1.5" y1="7.85821" x2="2.1025" antialias="false" end2="none"/>
+        <polygon y3="11.5028" y4="10.2791" x1="-15.875" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="12.7266" x4="-15.875" y1="10.2791" x2="-15.875" antialias="false" x3="-13.625"/>
+        <line x1="3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9" length1="1.5" y1="9" x2="5" antialias="false" end2="none"/>
+        <line x1="-26.1725" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14.8187" length1="1.5" y1="7.85821" x2="-26.1725" antialias="false" end2="none"/>
+        <polygon y7="15.9788" y16="15.9788" x9="-29" x18="-7.79375" x15="4.93" y13="6.69812" y23="25.2595" x16="2.1025" x6="-26.1725" x19="-7.79375" y18="14.8187" x2="-17.69" y14="6.69812" y5="14.8187" y12="7.85821" style="line-style:normal;line-weight:normal;filling:none;color:black" y8="15.9788" x14="4.93" y2="25.2595" antialias="true" x20="-6.38" y15="15.9788" x23="-12.035" y1="25.2595" x4="-16.2762" y3="22.9393" x5="-16.2762" y6="14.8187" y21="25.2595" x21="-6.38" x1="-12.035" x3="-17.69" y20="22.9393" x22="-12.035" x17="2.1025" y4="22.9393" x8="-29" y9="6.69812" x7="-26.1725" y10="6.69812" x12="2.1025" y11="7.85821" y22="25.2595" x11="-26.1725" y19="22.9393" y17="14.8187" x10="-26.1725" x13="2.1025"/>
+        <line x1="-2.13875" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.08862" length1="1.5" y1="-4.78201" x2="-2.13875" antialias="false" end2="none"/>
+        <line x1="-22.0062" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.70048" length1="1.5" y1="-4.17015" x2="-22.0062" antialias="false" end2="none"/>
+        <arc x="-21.9312" height="4.88275" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" y="-7.22335" width="19.7925" angle="-180" antialias="true"/>
+        <rect x="-21.9312" height="8.05695" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.6462" width="19.7925" antialias="false"/>
+        <line x1="-10.6212" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="20.6192" length1="1.5" y1="20.6192" x2="-13.4487" antialias="false" end2="none"/>
+        <line x1="-20.7587" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="11.3385" length1="1.5" y1="11.3385" x2="-17.9312" antialias="false" end2="none"/>
+        <line x1="-23.345" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="12.4986" length1="1.5" y1="10.1784" x2="-23.345" antialias="false" end2="none"/>
+        <rect x="-16.625" height="2.44745" style="line-style:normal;line-weight:normal;filling:none;color:black" y="4.3842" width="9.75" antialias="false"/>
+        <line x1="-5.875" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10.9311" length1="1.5" y1="10.9311" x2="-8.125" antialias="false" end2="none"/>
+        <polygon y3="10.9311" y4="9.2791" x1="-5.875" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="12.5832" x4="-5.875" y1="9.2791" x2="-5.875" antialias="false" x3="-3.625"/>
+        <rect x="-1.625" height="2.44745" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.95816" width="3.75" antialias="false"/>
+        <text x="-13.625" text="M" size="2" y="0.71302"/>
+        <arc x="-16.625" height="1.22373" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" y="7.21979" width="9.75" angle="-180" antialias="true"/>
+        <input tagg="label" x="-25" text="_" rotate="true" size="4" y="-7.5"/>
+        <line x1="-29" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9" length1="1.5" y1="9" x2="-27" antialias="false" end2="none"/>
+        <line x1="-15" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" length1="1.5" y1="23" x2="-15" antialias="false" end2="none"/>
+        <line x1="-9" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" length1="1.5" y1="23" x2="-9" antialias="false" end2="none"/>
+        <line x1="-12" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16" length1="1.5" y1="19" x2="-12" antialias="false" end2="none"/>
+        <line x1="-12" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" length1="1.5" y1="16" x2="-13" antialias="false" end2="none"/>
+        <line x1="-12" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" length1="1.5" y1="16" x2="-11" antialias="false" end2="none"/>
+        <arc x="-12" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" y="11" width="6" angle="90" antialias="true"/>
+        <terminal x="2.875" y="-1.73443" orientation="e"/>
+        <terminal x="4.93" y="11.3385" orientation="e"/>
+        <terminal x="-12.035" y="25.2595" orientation="s"/>
+        <terminal x="-29" y="11.3385" orientation="w"/>
+    </description>
+</definition>

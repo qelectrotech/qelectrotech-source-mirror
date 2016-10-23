@@ -1,0 +1,16 @@
+<definition width="50" version="0.4" hotspot_x="29" hotspot_y="36" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Lavadora</name>
+        <name lang="ca">Rentadora</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30.8468" x="-26.8125" y="-32.7031" antialias="false" height="32.7031" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.1625" x1="-25.8125" y2="-26.1625" x2="3.49194"/>
+        <ellipse width="14.3387" x="-19.5585" y="-21.6219" antialias="false" height="15.0813" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.62702" x="-3.67742" y="-31.7031" antialias="false" height="4.90547" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y21="-11.4461" x15="7.11895" x16="7.11895" x17="5.57661" x18="4.03427" x19="4.03427" x20="4.03427" x21="4.03427" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="4.03427" x2="7.11895" x3="10.2036" x4="10.2036" x5="11.746" x6="13.2883" closed="false" x7="14.8306" x8="14.8306" x9="17.9153" y1="-8.17578" y2="-8.17578" y3="-11.4461" y4="-22.8922" y5="-24.5273" y6="-24.5273" y7="-22.8922" y8="-21.257" y10="-22.8922" y9="-21.257" y11="-26.1625" y12="-27.7977" y13="-27.7977" y14="-26.1625" y15="-24.5273" y16="-13.0813" y17="-11.4461" y18="-11.4461" y19="-11.4461" x10="17.9153" x11="14.8306" x12="13.2883" antialias="false" x13="10.2036" x14="8.66129" y20="-11.4461"/>
+        <input x="-26" y="-36.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="17" y="-19" orientation="s"/>
+    </description>
+</definition>

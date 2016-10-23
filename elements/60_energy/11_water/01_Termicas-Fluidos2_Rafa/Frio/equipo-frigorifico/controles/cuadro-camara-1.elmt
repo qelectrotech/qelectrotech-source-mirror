@@ -1,0 +1,42 @@
+<definition width="70" version="0.4" hotspot_x="37" hotspot_y="23" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Cuadro cámara</name>
+        <name lang="ca">Cuadre càmbra</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-14" y2="33" x2="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="23" y2="33" x2="23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-3" y2="33" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="10" y2="33" x2="10"/>
+        <text x="-15" y="22" size="4" text="Vc"/>
+        <text x="-5" y="22" size="4" text="Ve"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="23" y2="-14" x2="23"/>
+        <text x="8" y="22" size="4" text="Pr"/>
+        <text x="18" y="22" size="4" text="Sol"/>
+        <text x="-26" y="-7" size="4" text="Ter"/>
+        <rect width="14.457" x="-12.5883" y="-4.25" antialias="false" height="3.75" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="4.33711" x="-10.1426" y="6.75" antialias="true" height="3.75" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="56.2625" x="-30.2625" y="-13.25" antialias="false" height="38.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.33711" x="7.20586" y="6.75" antialias="true" height="3.75" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="20.2398" x="-15.4797" y="-5.5" antialias="false" height="6.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.4457" x="8.65156" y="8" antialias="false" height="3.75" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <rect width="1.4457" x="-8.69688" y="8" antialias="false" height="3.75" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <ellipse width="2.38541" x="20.2172" y="5.27016" antialias="true" height="2.3879" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.795137" x="21.0123" y="3.67822" antialias="false" height="5.57178" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.33711" x="-1.46836" y="6.75" antialias="true" height="3.75" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="1.4457" x="-0.0226563" y="8" antialias="false" height="3.75" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <polygon x4="23.7715" y5="-10" x5="20.8801" y6="-8.75" x6="22.3258" y7="-11.25" x7="23.7715" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6.25" x1="16.543" y2="-8.75" x2="19.4344" y3="-6.25" x3="19.4344" y4="-11.25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-29" y2="33" x2="-29"/>
+        <text x="-29" y="22" size="4" text="Co"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-24" y2="-14" x2="-24"/>
+        <input x="-30" y="6.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="-29" y="33" orientation="s"/>
+        <terminal x="-14" y="33" orientation="s"/>
+        <terminal x="-3" y="33" orientation="s"/>
+        <terminal x="10" y="33" orientation="s"/>
+        <terminal x="23" y="33" orientation="s"/>
+        <terminal x="-24" y="-19" orientation="n"/>
+        <terminal x="23" y="-19" orientation="n"/>
+    </description>
+</definition>

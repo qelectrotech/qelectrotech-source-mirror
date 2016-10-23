@@ -1,0 +1,28 @@
+<definition orientation="dyyy" type="element" height="40" link_type="simple" width="30" hotspot_y="14" version="0.5" hotspot_x="18">
+    <names>
+        <name lang="ru">Обмотка</name>
+        <name lang="pt">Bobine</name>
+        <name lang="fr">Bobine</name>
+        <name lang="cs">Cívka</name>
+        <name lang="en">Coil</name>
+        <name lang="es">Temporizador</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="-16" y1="-2.24113" x2="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-16" y6="-2.24113" antialias="false" x5="-16" y2="11.0437" x4="-9.5" y5="-2.24113" closed="false" y3="11.0437" y4="-2.24113" x6="-16"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="13.2848" width="6.5" x="-16" y="-2.24113"/>
+        <input text="A2" rotate="true" size="6" tagg="none" x="-16" y="16"/>
+        <input text="A1" rotate="true" size="6" tagg="none" x="-15" y="-6"/>
+        <line end2="none" x1="0.25" y1="-8.88354" x2="0.25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-2.24113" end1="none" length2="1.5"/>
+        <line end2="none" x1="0.25" y1="11.7079" x2="0.25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="18.3503" end1="none" length2="1.5"/>
+        <line end2="none" x1="10" y1="11.0437" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-2.24113" end1="none" length2="1.5"/>
+        <line end2="none" x1="-9.5" y1="11.0437" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="11.0437" end1="none" length2="1.5"/>
+        <input text="" size="9" tagg="none" x="13.25" y="6.39399"/>
+        <line end2="none" x1="10" y1="-2.24113" x2="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="-2.24113" end1="none" length2="1.5"/>
+        <line end2="none" x1="-9.5" y1="-2.24113" x2="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y2="11.0437" end1="none" length2="1.5"/>
+        <input text="_" rotate="true" size="6" tagg="label" x="10" y="3"/>
+        <terminal orientation="n" x="0" y="-10"/>
+        <terminal orientation="s" x="0" y="20"/>
+    </description>
+</definition>

@@ -1,0 +1,26 @@
+<definition link_type="simple" ic="true" height="50" width="60" version="0.4" hotspot_y="27" type="element" hotspot_x="34" orientation="dyyy">
+    <names>
+        <name lang="ar">مضخة</name>
+        <name lang="el">Αντλία</name>
+        <name lang="en">Pump</name>
+        <name lang="es">Grupo de Presión</name>
+        <name lang="ca">Grup de presió</name>
+        <name lang="cs">Pumpa</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" start="-180" antialias="true" height="4" width="6" y="-17" angle="-180"/>
+        <polygon y4="-10.6927" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-18.1636" y3="-3.2217" x3="-12.55" x2="-12.55" antialias="true" x4="0.05" y1="-10.6927" x1="0.05"/>
+        <polygon y4="10.3073" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="2.83639" y3="17.7783" x3="-12.55" x2="-12.55" antialias="true" x4="0.05" y1="10.3073" x1="0.05"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1604" antialias="true" height="19.9766" width="19.6209" y="-20.6809"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1604" antialias="true" height="19.9766" width="19.6209" y="0.31908"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="20.6052" antialias="false" y1="0" x1="-28.9433" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" antialias="true" height="17" width="12" y="-24"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="10" antialias="false" y1="-7" x1="10" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" start="0" antialias="true" height="4" width="6" y="-17" angle="-180"/>
+        <input text="_" x="-25" tagg="label" size="4" y="-30" rotate="true"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-29" y="0" orientation="w"/>
+    </description>
+</definition>

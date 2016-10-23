@@ -1,0 +1,36 @@
+<definition width="80" hotspot_y="38" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="80">
+    <names>
+        <name lang="es">Recuperador refrig.</name>
+        <name lang="ca">Recuperador refrig.</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="4" end1="simple" x1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="20" antialias="false" y2="-1" length2="1.5"/>
+        <ellipse width="1" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" antialias="true" height="5"/>
+        <polygon x5="10" x8="16" x9="16" closed="false" y10="-4" y1="-4" x3="10" y9="-3" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-4" antialias="false" x4="10" y6="2" y7="1" y4="0" y3="-2" x7="14" x10="15" x1="15" y5="1" x2="12" x6="12" y8="-1"/>
+        <polygon y1="12" x3="8.4812" y4="17" x4="10" x1="10" closed="false" y3="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8.4812" antialias="false" y2="15"/>
+        <ellipse width="0.95" y="5.00904" style="line-style:normal;line-weight:normal;filling:red;color:red" x="10.15" antialias="true" height="3.31325"/>
+        <polygon y1="-9.9006" x3="46.25" y4="-17.3554" x5="45.3" x4="46.25" x1="23.45" y5="-17.3554" closed="false" y3="-26.4669" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25.35" antialias="false" y2="-18.1837"/>
+        <ellipse width="0.95" y="-4.10241" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x="0.65" antialias="true" height="3.31325"/>
+        <polygon y7="16.9488" y1="16.9488" x3="12.9" y4="0.38253" x5="3.4" x4="22.4" x7="-6.1" x1="-6.1" y6="-7.9006" y5="-16.1837" closed="false" y3="8.66566" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12.9" x6="-6.1" antialias="false" y2="33.5151"/>
+        <ellipse width="0.95" y="5.00904" style="line-style:normal;line-weight:normal;filling:red;color:red" x="9.2" antialias="true" height="3.31325"/>
+        <polygon x5="41.4" x8="-8" closed="false" y1="16.9488" x3="60.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="36" antialias="false" x4="60.4" y6="-17.8404" y7="-7.9006" y4="-16.1837" y3="16.9488" x7="-8" x1="-8" y5="-32.75" x2="12.9" x6="3.4" y8="16.9488"/>
+        <line y1="0.38253" end1="none" x1="23.25" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="60.5" antialias="false" y2="-16.5271" length2="1.5"/>
+        <polygon y1="-9.9006" x3="22.5" y4="-28.9518" x5="46.25" x4="42.45" x1="23.45" y5="-26.4669" closed="false" y3="-20.6687" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.6" antialias="false" y2="-12.3855"/>
+        <polygon y1="-11.5572" x3="43.4" y4="-16.5271" x5="46.25" x4="43.4" x1="27.25" y5="-18.1837" closed="false" y3="-23.1536" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="28.2" antialias="false" y2="-16.5271"/>
+        <polygon y1="-17.3554" x3="40.55" x1="43.4" closed="false" y3="-21.497" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40.55" antialias="false" y2="-19.012"/>
+        <line y1="-9.9006" end1="none" x1="23.45" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="27.25" antialias="false" y2="-11.5572" length2="1.5"/>
+        <ellipse width="0.95" y="-4.10241" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x="-0.3" antialias="true" height="3.31325"/>
+        <input size="5" text="recup." y="12.0497" tagg="label" x="26.3" rotate="true"/>
+        <line y1="-6" end1="none" x1="1" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="7" antialias="false" y2="-11" length2="1.5"/>
+        <polygon x5="4" x8="10" x9="10" closed="false" y10="-8" y1="-8" x3="4" y9="-7" style="line-style:normal;line-weight:normal;filling:none;color:blue" y2="-8" antialias="false" x4="4" y6="-2" y7="-3" y4="-4" y3="-6" x7="8" x10="9" x1="9" y5="-3" x2="6" x6="6" y8="-5"/>
+        <line y1="-5" end1="none" x1="7" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7" antialias="false" y2="-8" length2="1.5"/>
+        <line y1="-1" end1="none" x1="13" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="14" antialias="false" y2="-3" length2="1.5"/>
+        <ellipse width="2" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="true" height="3"/>
+        <ellipse width="2" y="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x="9" antialias="true" height="4"/>
+        <ellipse width="1" y="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" antialias="true" height="5"/>
+        <polygon y1="4" x3="-2.5188" y4="9" x4="-1" x1="-1" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-2.5188" antialias="false" y2="7"/>
+        <terminal y="-3" orientation="e" x="-1"/>
+        <terminal y="8" orientation="e" x="15"/>
+    </description>
+</definition>

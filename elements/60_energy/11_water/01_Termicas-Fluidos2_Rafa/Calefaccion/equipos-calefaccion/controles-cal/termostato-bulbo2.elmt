@@ -1,0 +1,30 @@
+<definition width="50" version="0.4" hotspot_x="16" hotspot_y="16" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termostato bulbo</name>
+        <name lang="ca">Termostat bulb</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="24" x="-12" y="-12" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-7" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-4" y2="0" x2="1"/>
+        <circle x="-8" y="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <circle x="-9" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <circle x="-7" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <circle x="4" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <circle x="-2" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="7" x="-8" y="12" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-4" y2="13" x2="-2"/>
+        <rect width="0" x="5" y="20" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="7" y="17" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="11" x="9" y="22" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:red" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="30" x1="9" y2="21" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="29.8575" x1="20" y2="-7.86849" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="9" x1="27" y2="-7" x2="27"/>
+        <circle x="20" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:red" diameter="7"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:red" x1="27" x2="25" x3="25" x4="27" antialias="false" x5="29" x6="29" x7="27" x8="27" closed="false" y1="9" y2="11" y3="27" y4="29" y5="27" y6="11" y7="9" y8="9"/>
+        <input x="-6" y="-20" size="4" rotate="true" text="ºC" tagg="label"/>
+        <terminal x="27" y="28" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,15 @@
+<definition width="50" version="0.4" hotspot_x="31" hotspot_y="29" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Inodoro</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="25.74" x="-25.32" y="-6.9359" antialias="false" height="2.32621" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-22.98" x2="-22.98" x3="-18.3" x4="-13.62" antialias="false" x5="-13.62" x6="-15.96" x7="9.78" x8="7.44" x9="7.44" closed="false" y1="-4.60969" y10="-6.9359" y2="0.0427391" y11="-6.9359" y3="2.36894" y4="2.36894" y12="-6.9359" y5="11.6739" x10="12.12" y13="-6.9359" y6="14" x11="0.42" y7="14" x12="0.42" y8="11.6739" x13="0.42" y9="-2.28347"/>
+        <rect width="9.36" x="2.76" y="-23.2194" antialias="false" height="16.2834" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.8932" x1="2.76" y2="-20.8932" x2="12.12"/>
+        <rect width="2.34" x="7.44" y="7.02136" antialias="false" height="4.65242" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-30" y="-19.6858" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="9.78" y="9.3476" orientation="e"/>
+    </description>
+</definition>

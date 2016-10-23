@@ -1,0 +1,15 @@
+<definition width="80" version="0.4" hotspot_x="43" hotspot_y="29" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Tubo bridas</name>
+        <name lang="ca">Tub brides</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="1.6" x="29.4" y="-11.2274" antialias="false" height="20.1631" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="64" x="-34.6" y="-5.02334" antialias="false" height="7.75507" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.6" x="-36.2" y="-11.2274" antialias="false" height="20.1631" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-10.6" y="-16.6559" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-37.8" y="-0.370309" orientation="w"/>
+        <terminal x="31" y="-0.370309" orientation="e"/>
+    </description>
+</definition>

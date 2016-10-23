@@ -1,0 +1,31 @@
+<definition width="50" hotspot_y="15" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Manguito 15-1/2"Macho</name>
+        <name lang="ca">Maneguet 15-1/2"Macho</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="4.64376" end1="none" x1="-7.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9" antialias="false" y2="-4.7812" length2="1.5"/>
+        <line y1="5.25" end1="none" x1="-3.42663" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0.40042" antialias="false" y2="5.25" length2="1.5"/>
+        <arc width="3" angle="-180" y="5.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.05" start="-90" antialias="true" height="6"/>
+        <line y1="4.64376" end1="none" x1="-9.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-11" antialias="false" y2="-4.7812" length2="1.5"/>
+        <arc width="5" angle="-180" y="7.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.95" start="-180" antialias="true" height="4"/>
+        <line y1="4.64376" end1="none" x1="-14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15.5" antialias="false" y2="-4.7812" length2="1.5"/>
+        <line y1="4.64376" end1="none" x1="-12" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-13.5" antialias="false" y2="-4.7812" length2="1.5"/>
+        <rect width="10.5" y="-4.7812" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18" antialias="false" height="9.42496"/>
+        <line y1="4.64376" end1="none" x1="-16" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-17.5" antialias="false" y2="-4.7812" length2="1.5"/>
+        <rect width="8.72839" y="-7.93757" style="line-style:normal;line-weight:thin;filling:none;color:black" x="9.68084" antialias="false" height="15.9599"/>
+        <line y1="-9.16526" end1="none" x1="18.4092" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.77138" antialias="false" y2="-9.16526" length2="1.5"/>
+        <line y1="9.25" end1="none" x1="18.4092" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18.4092" antialias="false" y2="-9.16526" length2="1.5"/>
+        <line y1="9.25" end1="none" x1="6.56564" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="17.4096" antialias="false" y2="9.25" length2="1.5"/>
+        <line y1="-8.53315" end1="none" x1="6.545" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.545" antialias="false" y2="8.52559" length2="1.5"/>
+        <input size="4" text="1/2&quot;H-15" y="18" tagg="label" x="-14" rotate="true"/>
+        <rect width="6.9628" y="-10.75" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.832" antialias="false" height="22"/>
+        <line y1="-4.75" end1="none" x1="-3.96974" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0.08744" antialias="false" y2="-4.75" length2="1.5"/>
+        <arc width="3" angle="-180" y="-10.75" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.05" start="-90" antialias="true" height="6"/>
+        <arc width="3" angle="-180" y="-4.75" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.05" start="-90" antialias="true" height="10"/>
+        <arc width="5" angle="-180" y="-10.75" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.95" start="0" antialias="true" height="4"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

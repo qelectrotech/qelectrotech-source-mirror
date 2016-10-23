@@ -1,0 +1,24 @@
+<definition width="50" version="0.5" type="element" link_type="simple" hotspot_x="35" hotspot_y="38" orientation="dyyy" height="60">
+    <names>
+        <name lang="es">Enfriadora-2+ Módulo h</name>
+        <name lang="ca">Refredadora-2+Mòdul h</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="2.85" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30.125" y="-11"/>
+        <rect width="5.7" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5.025" y="14"/>
+        <rect width="38.95" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.325" y="-27"/>
+        <rect width="21.85" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13.975" y="-31"/>
+        <rect width="27.55" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.825" y="-32"/>
+        <rect width="5.7" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.525" y="14"/>
+        <line y1="-27" length1="1.5" y2="12" length2="1.5" x1="-15.875" x2="-15.875" end1="none" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.85" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30.125" y="9"/>
+        <rect width="5.7" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-24.425" y="-24"/>
+        <input text="Chiller_" tagg="label" size="4" rotate="true" x="-17.775" y="-6"/>
+        <polygon y1="-18" closed="false" y2="-20" y3="-18" x1="-24.425" y4="-21" x2="-21.575" y5="-21" x3="-21.575" x4="-18.725" x5="-18.725" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" x="-30.125" y="10"/>
+        <terminal orientation="w" x="-30.125" y="-10"/>
+        <terminal orientation="n" x="-20" y="-26"/>
+    </description>
+</definition>

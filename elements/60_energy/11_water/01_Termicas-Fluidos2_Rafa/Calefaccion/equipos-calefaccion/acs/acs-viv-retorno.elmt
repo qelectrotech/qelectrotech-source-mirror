@@ -1,0 +1,24 @@
+<definition orientation="dyyy" link_type="simple" type="element" hotspot_x="20" hotspot_y="29" width="60" height="50" version="0.5">
+    <names>
+        <name lang="ca">ACS+retorn</name>
+        <name lang="es">ACS+retorno </name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x2="10.5599" y2="-0.332274" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-0.332274" length2="1.5" x1="-8.72578" length1="1.5" end1="none"/>
+        <line x2="6.8905" y2="-9.55405" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-9.55405" length2="1.5" x1="-9.69893" length1="1.5" end1="none"/>
+        <line x2="15.4" y2="-0.88792" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-9.55405" length2="1.5" x1="8.4" length1="1.5" end1="none"/>
+        <line x2="21" y2="-5.22099" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="3.44515" length2="1.5" x1="11.2" length1="1.5" end1="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.9984" antialias="true" width="16.8" height="14.4436" start="10" angle="-110" x="4.2"/>
+        <line x2="33.6" y2="2.00079" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-2.33227" length2="1.5" x1="23.8" length1="1.5" end1="none"/>
+        <line x2="19.6" y2="15" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="6.33386" length2="1.5" x1="15.4" length1="1.5" end1="none"/>
+        <line x2="28" y2="10.6669" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="3.44515" length2="1.5" x1="21" length1="1.5" end1="none"/>
+        <line x2="28" y2="4.88951" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="0.55644" length2="1.5" x1="22.4" length1="1.5" end1="none"/>
+        <line x2="22.4" y2="10.6669" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="4.88951" length2="1.5" x1="18.2" length1="1.5" end1="none"/>
+        <text size="6" text="ACS" y="-13.8871" x="-12.6"/>
+        <input size="6" text="ret." tagg="label" y="4" rotate="true" x="-4"/>
+        <terminal orientation="w" y="-10" x="-10"/>
+        <terminal orientation="w" y="0" x="-10"/>
+    </description>
+</definition>

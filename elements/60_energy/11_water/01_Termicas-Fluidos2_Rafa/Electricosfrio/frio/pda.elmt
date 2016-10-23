@@ -1,0 +1,37 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="58" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">PDA Pres. aceite</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="8" y="5" size="4" text="T2"/>
+        <input x="6.765" y="-8.1208" size="4" rotate="true" text="1" tagg="none"/>
+        <input x="4.765" y="-19.1208" size="4" rotate="true" text="L" tagg="none"/>
+        <input x="2.765" y="-29.1208" size="4" rotate="true" text="A/S" tagg="none"/>
+        <input x="3.765" y="-40.1208" size="4" rotate="true" text="M" tagg="none"/>
+        <input x="2.765" y="-50.1208" size="4" rotate="true" text="N" tagg="none"/>
+        <input x="-16" y="-50" size="4" rotate="true" text="230V" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.564" x1="3.00025" y2="-19.564" x2="-1.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.0674" x1="-1.2995" y2="-29.017" x2="-1.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.8056" x1="-1.2995" y2="-23.1384" x2="-1.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.5708" x1="3.00025" y2="-40.5708" x2="-14.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40.1757" x1="-14.1988" y2="-27.8258" x2="-14.1988"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27.4416" x1="-14.1988" y2="-27.4416" x2="-9.899"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.0674" x1="3.00025" y2="-30.0674" x2="-1.2995"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27.4416" x1="-9.899" y2="-23.2401" x2="-0.86953"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.92277" x1="15.1695" y2="-1.92277" x2="3.32372"/>
+        <rect width="23.4238" x="-20.7536" y="-54.3081" antialias="false" height="62.524" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.9296" x1="15.6645" y2="-13.9296" x2="3.19522"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.433" x1="15.6645" y2="-24.433" x2="3.19522"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34.9364" x1="15.6645" y2="-34.9364" x2="3.19522"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45.44" x1="15.6645" y2="-45.44" x2="3.19522"/>
+        <rect width="12.8993" x="2.80525" y="-54.6179" antialias="false" height="62.5172" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-19" y="13.5" size="5" rotate="true" text="PRES.DIF.A." tagg="label"/>
+        <terminal x="20" y="1" orientation="e"/>
+        <terminal x="20" y="-50" orientation="e"/>
+        <terminal x="19.685" y="-39.8452" orientation="e"/>
+        <terminal x="20" y="-30" orientation="e"/>
+        <terminal x="20" y="-20" orientation="e"/>
+        <terminal x="20" y="-10" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,29 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="29" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Separador de aceite</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="1" x="-5" y="-14" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1" x="4" y="-14" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1" x="13" y="-14" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="13" x="-21" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="20" x="-10" y="-10" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="20" x="-10" y="18" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-8" y2="-14" x2="-8"/>
+        <arc width="13" x="2" y="-23" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="2" y2="-14" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-7" y2="26" x2="8"/>
+        <polygon x4="8" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-14" x1="5" y2="-5" x2="5" y3="-4" x3="7" y4="-4"/>
+        <polygon antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-14" x1="-5" y2="-6" x2="-5" y3="-4" x3="-7"/>
+        <rect width="31" x="-15" y="-13" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11.52" x1="-15" y2="-11.52" x2="16"/>
+        <rect width="1" x="-14" y="-14" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5" x="8" y="-17" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="8" y2="-14" x2="8"/>
+        <polygon x4="19" y5="20" x5="22" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="11" y2="-17" x2="18" y3="-16" x3="19" y4="20"/>
+        <terminal x="-15" y="-23" orientation="w"/>
+        <terminal x="9" y="-23" orientation="e"/>
+        <terminal x="21" y="20" orientation="e"/>
+    </description>
+</definition>

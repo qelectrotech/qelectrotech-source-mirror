@@ -1,0 +1,21 @@
+<definition width="40" hotspot_y="18" height="30" type="element" version="0.5" orientation="dyyy" hotspot_x="24" link_type="simple">
+    <names>
+        <name lang="ca">Vàlv bola</name>
+        <name lang="es">Valv bola</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc start="-180" width="16.1525" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.7464" x="-12.6673" height="11.4856" angle="-180"/>
+        <rect width="2" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" y="-16" x="-5" height="17"/>
+        <rect width="1.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.49429" x="-18.6" height="16.4233"/>
+        <rect width="3.59945" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.56213" x="3.56918" height="10.52"/>
+        <arc start="0" width="16.1525" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.7464" x="-12.6673" height="11.4856" angle="-180"/>
+        <rect width="3.59946" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.05704" x="-16.2668" height="10.0149"/>
+        <input y="14.2744" rotate="true" x="-10.2099" size="4" tagg="label" text="_"/>
+        <rect width="1.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.49429" x="7.2" height="16.4233"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-2" x="-5" diameter="2"/>
+        <arc start="60" width="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" x="-7" height="6" angle="-300"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
+    </description>
+</definition>

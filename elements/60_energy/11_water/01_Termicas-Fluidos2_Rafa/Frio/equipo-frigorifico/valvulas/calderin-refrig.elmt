@@ -1,0 +1,23 @@
+<definition width="40" version="0.4" hotspot_x="16" hotspot_y="17" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Recipiente líquido</name>
+        <name lang="ca">Calderí líquid</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="2" x="-8" y="-3" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="20" x="-6" y="-12" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="4" x="-12" y="-7" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-6" y="-8" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="20" x="-6" y="20" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-7" y2="26" x2="8"/>
+        <polygon antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-12" x1="-1" y2="15.26" x2="-1" y3="22.075" x3="-3"/>
+        <rect width="2" x="14" y="-3" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="16" y="-5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-11" y="-9" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-9" y5="1" x5="-11" y6="2" x6="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-11" y2="4" x2="-10" y3="2" x3="-9" y4="1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:blue;color:black" x1="-6" x2="-6" x3="-5" x4="-2" antialias="true" x5="2" x6="5" x7="10" x8="12" x9="13" y1="10" y10="22" y2="23" y11="10" y3="25" y4="26" y12="10" y5="27" x10="14" y6="27" x11="14" y7="26" x12="-6" y8="25" y9="24"/>
+        <terminal x="17" y="2" orientation="s"/>
+        <terminal x="-10" y="-10" orientation="n"/>
+    </description>
+</definition>

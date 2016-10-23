@@ -1,0 +1,33 @@
+<definition hotspot_x="24" hotspot_y="33" width="50" version="0.5" type="element" orientation="dyyy" height="60" link_type="simple">
+    <names>
+        <name lang="es">Calderíin refrigerante</name>
+        <name lang="ca">Calderi refrigerant</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-22.5053" length1="1" y2="-18.4526" length2="1.5" x1="-20" x2="-20" end1="simple" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="22" angle="-180" x="-8" y="-29" height="11"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-19" length1="1.5" y2="-25" length2="1.5" x1="-12" x2="-12" end1="none" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="13" angle="-90" x="8" y="-24" height="12"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-19" length1="1.5" y2="-25" length2="1.5" x1="-14" x2="-14" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-11" length1="1.5" y2="-17" length2="1.5" x1="21" x2="21" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-25" length1="1.5" y2="-25" length2="1.5" x1="-14" x2="-13" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="15.5204" length1="1.5" y2="-22.865" length2="1.5" x1="14" x2="14" end1="none" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="22" angle="-180" x="-8" y="11" height="11"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="15.5564" length1="1.5" y2="-23.6675" length2="1.5" x1="-8" x2="-8" end1="none" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="9" angle="-90" x="10" y="-22" height="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-11" length1="1.5" y2="-17" length2="1.5" x1="19" x2="19" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-11" length1="1.5" y2="-11" length2="1.5" x1="20" x2="21" end1="none" end2="none"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="21" y2="23" y3="23" x1="-3" y4="23" x2="-5" x3="-7" x4="-8" closed="false"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="21" y2="23" y3="23" x1="9" x2="12" x3="15" closed="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="-90" width="4" angle="-180" x="13" y="13" height="2"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-13" length1="1.5" y2="-13" length2="1.5" x1="-7.39773" x2="13.4014" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-4.5053" length1="1" y2="-0.4526" length2="1.5" x1="20" x2="20" end1="simple" end2="none"/>
+        <input text="_" x="-2" y="13.5" tagg="label" rotate="true" size="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="4" x="-15" y="-19" height="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="2" x="-14" y="-14" height="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" x="-10" y="-18" height="1"/>
+        <terminal x="-13" y="-26" orientation="n"/>
+        <terminal x="20" y="-10" orientation="s"/>
+    </description>
+</definition>

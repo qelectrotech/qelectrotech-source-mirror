@@ -1,0 +1,26 @@
+<definition version="0.5" type="element" orientation="dyyy" hotspot_x="13" width="20" height="60" hotspot_y="31" link_type="simple">
+    <names>
+        <name lang="es">Termómetro capilla</name>
+        <name lang="ca">Termòmetre de capella</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-0.348026" y2="-0.348026" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-13.7005" y2="-13.7005" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-7.02427" y2="-7.02427" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <rect y="-23.7149" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.22235" antialias="false" width="6.20737" height="39.223"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="6.32821" y2="6.32821" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="2.9901" y2="2.9901" x2="-3.46352" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="9.66631" y2="9.66631" x2="-3.46352" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-3.68615" y2="-3.68615" x2="-3.46352" x1="-5.53265" length1="1.5"/>
+        <rect y="-25.384" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.60178" antialias="false" width="8.96623" height="42.5611"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-10.3624" y2="-10.3624" x2="-3.46352" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-20.3768" y2="-20.3768" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="-17.0387" y2="-17.0387" x2="-3.46352" x1="-5.53265" length1="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" end1="none" y1="13.0045" y2="13.0045" x2="-1.39439" x1="-5.53265" length1="1.5"/>
+        <rect y="17.1771" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.15323" antialias="false" width="2.06912" height="3.33812"/>
+        <input y="-28.5052" x="-8" rotate="true" size="4" text="ºC" tagg="label"/>
+        <terminal y="20.5153" x="-2.77381" orientation="s"/>
+    </description>
+</definition>

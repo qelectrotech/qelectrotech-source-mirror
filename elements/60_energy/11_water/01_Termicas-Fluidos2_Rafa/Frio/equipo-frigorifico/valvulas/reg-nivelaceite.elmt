@@ -1,0 +1,16 @@
+<definition width="40" version="0.4" hotspot_x="22" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ca">Reg. nivel aceite</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="4" y2="3" x2="7"/>
+        <circle x="-16" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <rect width="2" x="7" y="-6" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-10" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9"/>
+        <circle x="-8" y="-2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="4" y2="-2" x2="7"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

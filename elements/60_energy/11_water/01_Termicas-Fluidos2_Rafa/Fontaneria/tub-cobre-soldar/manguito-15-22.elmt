@@ -1,0 +1,26 @@
+<definition width="40" hotspot_y="14" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Manguito Cu 15-22</name>
+        <name lang="ca">Maneguet Cu 15-22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="2.32809" angle="-90" y="-9.06459" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.13275" start="-180" antialias="true" height="2.13893"/>
+        <arc width="2.32809" angle="-90" y="-5.28001" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.1328" start="90" antialias="true" height="2.05091"/>
+        <line y1="8.94606" end1="none" x1="-2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1" antialias="false" y2="8.94606" length2="1.5"/>
+        <line y1="5.78423" end1="none" x1="-11" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" antialias="false" y2="5.78423" length2="1.5"/>
+        <line y1="-7.91701" end1="none" x1="-2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1" antialias="false" y2="-7.91701" length2="1.5"/>
+        <arc width="2.32809" angle="-90" y="7.86107" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.13275" start="-90" antialias="true" height="2.13893"/>
+        <arc width="2.32809" angle="-90" y="3.94909" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.1328" start="0" antialias="true" height="2.05091"/>
+        <line y1="-3.3361" end1="none" x1="-11.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-11.72" antialias="false" y2="5.09042" length2="1.5"/>
+        <polygon y1="-5.28001" x3="-18.5773" y4="6" x4="-13.2862" x1="-13.2862" closed="false" y3="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18.5773" antialias="false" y2="-5.28001"/>
+        <line y1="-4.75519" end1="none" x1="-11" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" antialias="false" y2="-4.75519" length2="1.5"/>
+        <line y1="-4.75519" end1="none" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3" antialias="false" y2="-7.91701" length2="1.5"/>
+        <line y1="5.78423" end1="none" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3" antialias="false" y2="8.94606" length2="1.5"/>
+        <line y1="-7.72964" end1="none" x1="-1.04" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1.04" antialias="false" y2="7.91416" length2="1.5"/>
+        <polygon y1="-9" x3="8" y4="10" x4="1" x1="0" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8" antialias="false" y2="-9"/>
+        <input size="4" text="15-22" y="14" tagg="label" x="-14" rotate="true"/>
+        <terminal y="0" orientation="e" x="10"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

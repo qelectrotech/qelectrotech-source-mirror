@@ -1,0 +1,29 @@
+<definition width="70" version="0.4" hotspot_x="23" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Llave rotalock 2</name>
+        <name lang="ca">Llave rotalock 2</name>
+    </names>
+    <informations/>
+    <description>
+        <arc width="3" x="2" y="2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14.8154" x1="20" y2="-10.2" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.01969" x1="9" y2="5.97867" x2="9"/>
+        <arc width="3" x="9" y="2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="30" x="-5" y="-8" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="25" y="-3" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8" x="27" y="-1" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="32" y2="0" x2="32"/>
+        <rect width="4" x="17" y="-9" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8" x="15" y="-15" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-15" y="-4" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-5" y="6" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="2" y="2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="5" y2="6" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14.8154" x1="17" y2="-10.2" x2="17"/>
+        <arc width="4" x="5" y="2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <polygon x4="41" y5="-5" x5="27" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-5" x1="27" y2="7" x2="27" y3="1" x3="41" y4="-1"/>
+        <rect width="8" x="5" y="10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-15" y="0" orientation="w"/>
+        <terminal x="9" y="13" orientation="s"/>
+    </description>
+</definition>

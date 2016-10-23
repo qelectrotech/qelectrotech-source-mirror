@@ -1,0 +1,27 @@
+<definition hotspot_x="14" hotspot_y="39" width="30" type="element" version="0.5" height="80" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Col.lector 4 eixides</name>
+        <name lang="es">Colector 4 salidas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-31" width="4.032" antialias="false" height="5" x="4.752"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8" width="4.032" antialias="false" height="5" x="4.752"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="28" width="9" angle="-180" antialias="true" height="5" x="-4" start="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="5" y2="-32.1112" end1="none" x1="5" y1="30.1205" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" width="4.032" antialias="false" height="5" x="4.752"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="25" width="4.032" antialias="false" height="5" x="4.752"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-34" width="9" angle="-180" antialias="true" height="5" x="-4" start="-180"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-4" y2="-31.1393" end1="none" x1="-4" y1="30.1509" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2" width="5" antialias="false" height="5" x="-9"/>
+        <input rotate="true" text="_" tagg="label" y="22.5" x="-12" size="4"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="-10" x="10" orientation="e"/>
+        <terminal y="34" x="0" orientation="s"/>
+        <terminal y="30" x="10" orientation="e"/>
+        <terminal y="10" x="10" orientation="e"/>
+        <terminal y="-34" x="0" orientation="n"/>
+        <terminal y="-30" x="10" orientation="e"/>
+    </description>
+</definition>

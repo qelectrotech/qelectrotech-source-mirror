@@ -1,0 +1,48 @@
+<definition height="50" link_type="simple" width="40" hotspot_x="19" hotspot_y="33" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="ca">Termostàtica motor bridas.</name>
+        <name lang="es">Termostática motor bridas.</name>
+    </names>
+    <informations/>
+    <description>
+        <rect height="15" width="2" antialias="false" y="-7" x="-14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="9.66578" width="1.8" antialias="false" y="-16.7891" x="-0.85" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect height="9.66578" width="0.9" antialias="false" y="-16.7891" x="6.35" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="1.20822" width="1.8" antialias="false" y="-6.31785" x="-8.05" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="1.20822" width="1.8" antialias="false" y="-19.2056" x="5.9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="1.20822" width="1.8" antialias="false" y="-6.31785" x="5.9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="4.1" length2="1.5" antialias="false" x2="5.45" end1="none" length1="1.5" end2="none" y2="4.15341" y1="4.15341" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="4.1" length2="1.5" antialias="false" x2="5.45" end1="none" length1="1.5" end2="none" y2="-3.09593" y1="-3.09593" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-1.75" length2="1.5" antialias="false" x2="-4.45" end1="none" length1="1.5" end2="none" y2="3.75067" y1="2.1397" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-5.8" length2="1.5" antialias="false" x2="-4.45" end1="none" length1="1.5" end2="none" y2="-2.69319" y1="-2.69319" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="1.4" length2="1.5" antialias="false" x2="4.1" end1="none" length1="1.5" end2="none" y2="4.15341" y1="2.1397" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="3.94977" length2="1.5" antialias="false" x2="3.94977" end1="none" length1="1.5" end2="none" y2="-6.20013" y1="-2.63161" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6.91076" width="5.88298" antialias="false" y="-3.17566" x="-12.0091" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="3.82918" width="7.77" antialias="false" y="5.66739" x="-4.15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6.91076" width="6.88298" antialias="false" y="-3.17566" x="5.55107" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5.84519" length2="1.5" antialias="false" x2="5.55107" end1="none" length1="1.5" end2="none" y2="-2.09648" y1="-4.17566" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-6.42023" length2="1.5" antialias="false" x2="-6.12611" end1="none" length1="1.5" end2="none" y2="-2.09648" y1="-4.17566" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-4.12816" length2="1.5" antialias="false" x2="-4.12816" end1="none" length1="1.5" end2="none" y2="-6.20013" y1="-2.63161" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-36" text="termostátic H" tagg="label" size="4" x="-19" rotate="true"/>
+        <line x1="-4" length2="1.5" antialias="false" x2="-1.75" end1="none" length1="1.5" end2="none" y2="-1.08222" y1="-2.69319" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="4.1" length2="1.5" antialias="false" x2="1.85" end1="none" length1="1.5" end2="none" y2="-1.08222" y1="-3.09593" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x1="-4.45" y3="5.76437" antialias="false" x2="-4.45" closed="false" y4="4.15341" y2="5.76437" x4="4.1" y1="3.75067" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="4.1"/>
+        <line x1="-5.8" length2="1.5" antialias="false" x2="-4.45" end1="none" length1="1.5" end2="none" y2="3.75067" y1="3.75067" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0.05" length2="1.5" antialias="false" x2="0.05" end1="none" length1="1.5" end2="none" y2="1.33422" y1="4.15341" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line x1="0.05" length2="1.5" antialias="false" x2="2.75" end1="none" length1="1.5" end2="triangle" y2="0.931481" y1="0.931481" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line x1="-4.65" length2="1.5" antialias="false" x2="-0.15" end1="none" length1="1.5" end2="triangle" y2="-0.471259" y1="-0.471259" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <rect height="0.805481" width="18" antialias="false" y="-7.12333" x="-9.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="9.66578" width="0.9" antialias="false" y="-16.7891" x="-7.6" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <polygon antialias="false" x6="9.05" y3="-17.9973" y4="-17.9973" y6="-29.2741" y8="-28.4686" style="line-style:normal;line-weight:normal;filling:green;color:black" y2="-16.7891" x2="11.75" x7="-8.5" y10="-17.9973" x5="9.5" y1="-16.7891" x3="11.75" x11="-12.1" x8="-9.4" x1="-11.65" x4="9.5" x9="-9.4" y5="-28.8713" y9="-17.9973" x10="-12.1" y7="-29.2741" y11="-16.7891"/>
+        <rect height="2.41644" width="0.9" antialias="false" y="-26.8576" x="9.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="4.02741" width="1.35" antialias="false" y="-27.6631" x="10.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-12.1" length2="1.5" antialias="false" x2="11.75" end1="none" length1="1.5" end2="none" y2="-17.9973" y1="-17.9973" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="1.20822" width="1.8" antialias="false" y="-19.2056" x="-8.05" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="15" width="2" antialias="false" y="-7" x="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="2" width="20" antialias="false" y="10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-25.6494" orientation="e" x="12.2"/>
+        <terminal y="10.1945" orientation="s" x="0.05"/>
+        <terminal y="0" orientation="e" x="15"/>
+        <terminal y="0.126" orientation="w" x="-12.1"/>
+    </description>
+</definition>

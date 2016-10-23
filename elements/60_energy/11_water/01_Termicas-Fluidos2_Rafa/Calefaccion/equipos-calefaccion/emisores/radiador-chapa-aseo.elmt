@@ -1,0 +1,33 @@
+<definition hotspot_x="15" hotspot_y="14" width="30" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="en">Steel radiator</name>
+        <name lang="it">Radiatore</name>
+        <name lang="pl">Grzejnik płytowy</name>
+        <name lang="ca">Radiador xapa lavabo</name>
+        <name lang="fr">Radiateur Acier</name>
+        <name lang="cs">Deskové topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="es">Radiador chapa aseo</name>
+        <name lang="nl">Radiator staal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.2295" width="3.5" antialias="false" height="2.70641" x="-13.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.1876" width="2.5" antialias="false" height="1.99309" x="9.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.2295" width="2.5" antialias="false" height="2.70641" x="9.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="5.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="2.66454e-15"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.924" width="18.25" antialias="false" height="21.924" x="-9"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="-7.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="-2.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="3"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-8.93092" width="1.25" antialias="false" height="17.9379" x="-5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.1876" width="2.5" antialias="false" height="1.99309" x="-12.5"/>
+        <input rotate="true" text="_" tagg="label" y="-14.5" x="-6" size="4"/>
+        <terminal y="-10" x="-10" orientation="w"/>
+        <terminal y="10" x="10" orientation="e"/>
+        <terminal y="10" x="-10" orientation="w"/>
+        <terminal y="-10" x="10" orientation="e"/>
+    </description>
+</definition>

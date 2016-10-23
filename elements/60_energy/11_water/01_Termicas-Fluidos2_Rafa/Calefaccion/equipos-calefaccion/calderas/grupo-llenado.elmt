@@ -1,0 +1,24 @@
+<definition height="40" type="element" ic="true" link_type="simple" version="0.4" hotspot_x="24" orientation="dyyy" width="50" hotspot_y="27">
+    <names>
+        <name lang="es">Grupo de llenado</name>
+        <name lang="ca">Grup d'ompliment</name>
+    </names>
+    <informations/>
+    <description>
+        <rect height="6.42404" x="15.8" y="-4.86528" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5.25"/>
+        <rect height="8.99365" x="-13.6" y="-6.15008" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="12.6"/>
+        <rect height="2.56961" x="-9.4" y="-8.7197" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5.25"/>
+        <line end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-13.8589" y2="-13.8589" x1="-7.73279" x2="-0.531143"/>
+        <rect height="6.42404" x="-18.85" y="-4.86528" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5.25"/>
+        <rect height="6.42404" x="-1" y="-4.86528" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5.25"/>
+        <rect height="10.2785" x="4.25" y="-6.15008" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="11.55"/>
+        <rect height="2.56961" x="7.4" y="4.12838" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5.25"/>
+        <ellipse height="10.2785" x="6.35" y="-20.283" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="8.4"/>
+        <text text="P" x="8.45" y="-11.2893" size="6"/>
+        <line end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-10.0045" y2="-6.15008" x1="9.5" x2="9.5"/>
+        <line end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-13.8589" y2="-8.7197" x1="-6.796" x2="-6.796"/>
+        <input text="Ø_" rotate="true" tagg="label" x="-6.25" y="13.122" size="5"/>
+        <terminal x="-19.9" y="-1.01085" orientation="w"/>
+        <terminal x="21.05" y="-1.01085" orientation="e"/>
+    </description>
+</definition>

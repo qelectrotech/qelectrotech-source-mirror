@@ -1,0 +1,42 @@
+<definition link_type="simple" hotspot_x="11" orientation="dyyy" hotspot_y="55" version="0.5" type="element" height="90" width="20">
+    <names>
+        <name lang="es">Bomba pozo sumergida</name>
+        <name lang="ca">Bomba pozo sumergida</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon antialias="false" y1="-21.5486" closed="false" y2="-25.1956" y3="-25.1956" y4="-21.5486" y5="-19.725" y6="-19.725" x1="-5.82471" y7="-21.5486" x2="-2.84418" y8="-21.5486" x3="3.11686" y9="-21.5486" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="6.09739" x5="6.09739" x6="-5.82471" x7="-5.82471" x8="-5.82471" x9="-5.82471"/>
+        <line x1="1.6266" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.925" y2="-7.225"/>
+        <line x1="-4.33445" length1="1.5" x2="0.136339" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.525" y2="-8.575"/>
+        <polygon antialias="false" y1="-27.2986" closed="false" y2="-30.9456" y3="-30.9456" y4="-27.2986" y5="-25.475" y6="-25.475" x1="-5.82471" y7="-27.2986" x2="-2.84418" y8="-27.2986" x3="3.11686" y9="-27.2986" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="6.09739" x5="6.09739" x6="-5.82471" x7="-5.82471" x8="-5.82471" x9="-5.82471"/>
+        <line x1="-5.82471" length1="1.5" x2="0.136339" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.225" y2="-3.175"/>
+        <line x1="-2.84418" length1="1.5" x2="4.60712" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.175" y2="-9.925"/>
+        <polygon antialias="false" y1="-15.7986" closed="false" y2="-19.4456" y3="-19.4456" y4="-15.7986" y5="-13.975" y6="-13.975" x1="-5.82471" y7="-15.7986" x2="-2.84418" y8="-15.7986" x3="3.11686" y9="-15.7986" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="6.09739" x5="6.09739" x6="-5.82471" x7="-5.82471" x8="-5.82471" x9="-5.82471"/>
+        <line x1="1.6266" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.525" y2="-8.575"/>
+        <line x1="-4.33445" length1="1.5" x2="3.11686" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8.575" y2="-3.175"/>
+        <line x1="-4.33445" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-21.75" y2="-21.75"/>
+        <line x1="0.28034" length1="1.5" x2="0.28034" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.24047" y2="30.28"/>
+        <polygon antialias="false" y1="-33.0486" closed="false" y2="-36.6956" y3="-36.6956" y4="-33.0486" y5="-31.225" y6="-31.225" x1="-5.82471" y7="-33.0486" x2="-2.84418" y8="-33.0486" x3="3.11686" y9="-33.0486" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="6.09739" x5="6.09739" x6="-5.82471" x7="-5.82471" x8="-5.82471" x9="-5.82471"/>
+        <line x1="-4.33445" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-33.25" y2="-33.25"/>
+        <line x1="4.96674" length1="1.5" x2="4.96674" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.24047" y2="30.28"/>
+        <line x1="-2.84392" length1="1.5" x2="-2.84392" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.24047" y2="30.28"/>
+        <line x1="-4.33445" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-27.5" y2="-27.5"/>
+        <line x1="2.62354" length1="1.5" x2="2.62354" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.24047" y2="30.28"/>
+        <line x1="-4.40605" length1="1.5" x2="-4.40605" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.24047" y2="30.28"/>
+        <rect antialias="false" x="-5.82471" y="-9.925" height="40.5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="11.9221"/>
+        <rect antialias="false" x="-2.84418" y="30.575" height="2.7" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.96105"/>
+        <line x1="-5.82471" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.175" y2="-3.175"/>
+        <line x1="-5.82471" length1="1.5" x2="-1.35392" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.875" y2="-9.925"/>
+        <line x1="-2.84418" length1="1.5" x2="4.60712" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.925" y2="-4.525"/>
+        <polygon antialias="false" y1="-11.275" closed="false" y2="-13.975" y3="-13.975" y4="-11.275" y5="-9.925" y6="-9.925" x1="-5.82471" y7="-11.275" x2="-2.84418" y8="-11.275" x3="3.11686" y9="-11.275" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="6.09739" x5="6.09739" x6="-5.82471" x7="-5.82471" x8="-5.82471" x9="-5.82471"/>
+        <line x1="-4.33445" length1="1.5" x2="6.09739" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" y2="-16"/>
+        <rect antialias="false" x="-5.82471" y="-43.375" height="6.75" style="line-style:normal;line-weight:normal;filling:none;color:black" width="11.9221"/>
+        <rect antialias="false" x="-7.31497" y="-43.675" height="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.49026"/>
+        <rect antialias="false" x="-2.84418" y="-48.775" height="5.4" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.96105"/>
+        <input text="_" x="4.60712" tagg="label" y="14.375" rotate="true" size="4"/>
+        <polygon x1="-7" y4="-10" x2="-7" y5="-10" antialias="false" x3="-6" y6="-10" x4="-6" x5="-6" x6="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" y2="-12" closed="false" y3="-10"/>
+        <terminal orientation="n" x="-7" y="-42"/>
+        <terminal orientation="n" x="0.136339" y="-50.125"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition width="50" hotspot_y="16" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Arqueta sep. grasas</name>
+        <name lang="ca">Arqueta sep. greixos</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="31.1701" y="-10.5723" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15.044" antialias="false" height="2.89823"/>
+        <rect width="4.96858" y="-1.9794" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.1576" antialias="false" height="4.78206"/>
+        <rect width="25.233" y="-7.67405" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.0754" antialias="false" height="26.7366"/>
+        <rect width="4.96858" y="-2.9794" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17.044" antialias="false" height="6.69466"/>
+        <input size="4" text="Sep.grasas" y="23" tagg="label" x="-17" rotate="true"/>
+        <line y1="-7" end1="none" x1="1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1" antialias="false" y2="13" length2="1.5"/>
+        <arc width="12" angle="-90" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18" start="90" antialias="true" height="10"/>
+        <line y1="1.44615" end1="none" x1="-6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-6" antialias="false" y2="3.6" length2="1.5"/>
+        <polygon x5="6" x8="13" closed="false" y1="-2" x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2" antialias="false" x4="6" y6="9" y7="3" y4="-4" y3="-4" x7="10" x1="13" y5="9" x2="10" x6="10" y8="3"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

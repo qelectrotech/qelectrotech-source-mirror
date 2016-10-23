@@ -1,0 +1,19 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Venteo depósito</name>
+        <name lang="ca">Ventilació dipòsit</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="7" y2="-8" x2="9"/>
+        <arc width="11" x="-1" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-230" angle="-130"/>
+        <arc width="11" x="-9" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-130"/>
+        <rect width="3" x="-1" y="-8" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5" x="2" y="-10" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="5" x="-6" y="-10" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-9" y2="-8" x2="-7"/>
+        <input x="-5" y="-13.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0.5" y="9" orientation="s"/>
+    </description>
+</definition>

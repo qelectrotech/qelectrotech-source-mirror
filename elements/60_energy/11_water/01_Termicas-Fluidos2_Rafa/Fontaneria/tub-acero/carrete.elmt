@@ -1,0 +1,21 @@
+<definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="18" orientation="dyyy" width="60" hotspot_x="30">
+    <names>
+        <name lang="ca">Carret</name>
+        <name lang="es">Carrete</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.2025" y="-16.4536" width="3.5047" antialias="false"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="-11.8873" angle="-90" start="0" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="-11.8873" angle="-90" start="-90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="10.0308" angle="-90" start="90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="10.0308" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.7975" y="-16.4536" width="3.5047" antialias="false"/>
+        <line x2="14.6708" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-14.9626" y1="10.0308" y2="10.0308"/>
+        <input tagg="label" x="-16" rotate="true" text="carrete" y="16" size="4"/>
+        <line x2="15" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-15" y1="-6.5" y2="-6.5"/>
+        <terminal x="-24" orientation="w" y="0"/>
+        <terminal x="22" orientation="e" y="0"/>
+    </description>
+</definition>

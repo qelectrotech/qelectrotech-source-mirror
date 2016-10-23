@@ -1,0 +1,25 @@
+<definition width="70" version="0.4" hotspot_x="36" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Conductos de retorno</name>
+        <name lang="ca">Conductes de retorn</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="21" y5="25" x5="20" y6="25" x6="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="20" y2="25" x2="20" y3="28" x3="19" y4="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="12" y2="20" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="16" x1="-33" y2="16" x2="-16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="-33" y2="20" x2="-16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="16" x1="12" y2="16" x2="29"/>
+        <rect width="17" x="12" y="14" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" x1="12" y2="18" x2="29"/>
+        <polygon x4="12" y5="10" x5="16" y6="0" x6="16" y7="0" x7="16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="26" y2="10" x2="26" y3="14" x3="30" y4="14"/>
+        <polygon x4="-33" y5="10" x5="-29" y6="0" x6="-29" y7="0" x7="-29" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-19" y2="10" x2="-19" y3="14" x3="-15" y4="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-19" y2="0" x2="15"/>
+        <rect width="17" x="-33" y="14" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" x1="-33" y2="18" x2="-16"/>
+        <polygon x4="-25" y5="25" x5="-26" y6="25" x6="-26" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="-26" y2="25" x2="-26" y3="28" x3="-27" y4="28"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-29" x2="-29" x3="-26" x4="-7" antialias="false" x5="-5" x6="-5" x7="7" x8="7" x9="10" closed="false" y1="-1" y10="-10" y2="-8" y11="-8" y3="-10" y4="-10" y12="-1" y5="-12" x10="23" y6="-21" x11="26" y7="-21" x12="26" y8="-12" y9="-10"/>
+        <input x="-13" y="-7" size="4" rotate="true" text="Retorno_" tagg="label"/>
+        <terminal x="0" y="-22" orientation="n"/>
+    </description>
+</definition>

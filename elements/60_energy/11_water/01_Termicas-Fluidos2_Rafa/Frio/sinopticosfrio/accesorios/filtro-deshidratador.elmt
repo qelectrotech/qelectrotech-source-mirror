@@ -1,0 +1,17 @@
+<definition link_type="simple" hotspot_x="25" width="40" height="20" version="0.5" type="element" hotspot_y="10" orientation="dyyy">
+    <names>
+        <name lang="es">Silenciador</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" x2="-5" y2="1.22727" y1="-4.22727" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="6" x2="9.75" y2="0.494709" y1="0.494709" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" x2="2" y2="4.45455" y1="-0.454545" end2="none"/>
+        <rect width="21.75" antialias="false" y="-5.01058" height="10.0106" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15.75"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19.5" x2="-15.75" y2="0.494709" y1="0.494709" end2="none"/>
+        <input y="20" tagg="label" rotate="true" size="5" x="-16" text="_"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12" x2="-12" y2="4.41483" y1="-0.414828" end2="none"/>
+        <terminal y="0.494709" x="9.75" orientation="e"/>
+        <terminal y="0.494709" x="-19.5" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,40 @@
+<definition width="220" version="0.4" hotspot_x="69" hotspot_y="46" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Digestor estiércol</name>
+        <name lang="ca">Digestor fem</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="-40" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
+        <ellipse width="12" x="72" y="-1" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="12" x="72" y="20" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="12" x="5" y="8" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-64" y="-3" size="5" text="Fangos"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36.6129" x1="72" y2="21.5806" x2="72"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34" x1="5" y2="10" x2="5"/>
+        <ellipse width="13" x="59" y="-1" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13" x="-8" y="8" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13" x="59" y="20" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="52.3429" y2="-20" x2="89.6286"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="-10" y2="-4" x2="19"/>
+        <polygon x4="-11" y5="25" x5="4" y6="15" x6="19" y7="-25" x7="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-25" x1="19" y2="-25" x2="19" y3="-25" x3="-11" y4="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="6.05333" y2="25" x2="26.9422"/>
+        <circle x="27" y="19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
+        <polygon x4="31" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="21" x1="31" y2="30" x2="31" y3="25" x3="39" y4="20"/>
+        <polygon x4="146" y5="1" x5="146" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1" x1="106" y2="31" x2="106" y3="31" x3="146" y4="1"/>
+        <arc width="40" x="106" y="-9" antialias="true" height="19" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="40" x="51" y="-29" antialias="false" height="61" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="56" y5="-27" x5="56" y6="-27" x6="56" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="26" x1="39" y2="26" x2="44" y3="-36" x3="44" y4="-36"/>
+        <polygon x4="108" y5="19" x5="108" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="90" y2="0" x2="97" y3="-8" x3="97" y4="19"/>
+        <arc width="40" x="106" y="1" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <polygon x4="139" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:blue" closed="false" y1="-3" x1="109" y2="-35" x2="109" y3="-35" x3="139" y4="-35"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:blue" closed="false" y1="-27" x1="88" y2="-35" x2="88" y3="-35" x3="108"/>
+        <rect width="32" x="-50" y="1" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-33.9" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10.05" x1="-33.9" y2="19" x2="-39" y3="19" x3="-28.8" y4="10.05"/>
+        <polygon x4="-8" y5="-11" x5="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="-34" y2="-15" x2="-34" y3="-15" x3="-8" y4="-11"/>
+        <text x="120" y="-36" size="5" text="Gas"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-31" x1="125" y2="-31" x2="136"/>
+        <input x="2" y="-42.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="139" y="-35" orientation="e"/>
+    </description>
+</definition>

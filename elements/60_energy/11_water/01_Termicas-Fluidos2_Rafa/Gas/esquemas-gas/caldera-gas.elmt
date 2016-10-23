@@ -1,0 +1,13 @@
+<definition width="20" version="0.4" hotspot_x="14" hotspot_y="12" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Caldera calefacción</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse width="10" x="-6" y="-6" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="-1" y2="10" x2="-1" y3="10" x3="-10"/>
+        <polygon x4="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1" x1="-5" y2="1" x2="3" y3="-6" x3="-1" y4="1"/>
+        <terminal x="-10" y="10" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

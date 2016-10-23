@@ -1,0 +1,29 @@
+<definition width="40" hotspot_y="41" hotspot_x="19" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Termómetro 1/2H</name>
+        <name lang="ca">Termòmetre 1/2H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-8.26405" end1="none" x1="-6.54" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-6.54" antialias="false" y2="-11.3647" length2="1.5"/>
+        <ellipse width="24.48" y="-33.9485" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.64" antialias="true" height="23.2065"/>
+        <rect width="10.88" y="-7.9195" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.52" antialias="false" height="7.84005"/>
+        <rect width="7.82" y="-6.03788" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-3.82" antialias="false" height="5.95844"/>
+        <line y1="-7.9195" end1="none" x1="-6.54" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.38" antialias="false" y2="-7.9195" length2="1.5"/>
+        <line y1="-8.19129" end1="none" x1="6.38" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.38" antialias="false" y2="-10.8046" length2="1.5"/>
+        <ellipse width="27.2" y="-34.8893" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13" antialias="true" height="25.0882"/>
+        <line y1="-22.6588" end1="none" x1="0.26" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.56" antialias="false" y2="-28.6172" length2="1.5"/>
+        <line y1="-28.9309" end1="none" x1="-7.56" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0.26" antialias="false" y2="-22.9724" length2="1.5"/>
+        <ellipse width="2.04" y="-22.9724" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.08" antialias="true" height="1.88161"/>
+        <input size="3" text="10" y="-15.288" tagg="none" x="-8.75" rotate="true"/>
+        <text size="3" text="20" y="-22.1173" x="-10.45"/>
+        <text size="3" text="30" y="-28.5448" x="-5.35"/>
+        <text size="3" text="40" y="-29.3483" x="3.15"/>
+        <text size="3" text="50" y="-22.1173" x="8.25"/>
+        <text size="3" text="60" y="-14.8863" x="5.7"/>
+        <text size="4" text="ºC" y="-16.4931" x="-1.95"/>
+        <input size="4" text="1/2&quot;H" y="-25.331" tagg="label" x="13.35" rotate="true"/>
+        <terminal y="-0.0794417" orientation="s" x="-0.08"/>
+    </description>
+</definition>

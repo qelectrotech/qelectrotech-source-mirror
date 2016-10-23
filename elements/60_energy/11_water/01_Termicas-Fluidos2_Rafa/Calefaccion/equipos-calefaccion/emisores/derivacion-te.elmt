@@ -1,0 +1,16 @@
+<definition hotspot_x="15" hotspot_y="14" width="30" type="element" version="0.4" height="20" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="es">Derivación-Te</name>
+        <name lang="ca">Derivació-Te</name>
+    </names>
+    <informations/>
+    <description>
+        <input rotate="true" text="Te" tagg="label" y="8" x="-1" size="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-3" antialias="false" x="-3" diameter="6"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y2="0" x2="0" end1="none" length1="1.5" y1="-10" x1="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y2="0" x2="10" end1="none" length1="1.5" y1="0" x1="-10"/>
+        <terminal y="-10" x="0" orientation="n"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="0" x="-10" orientation="w"/>
+    </description>
+</definition>

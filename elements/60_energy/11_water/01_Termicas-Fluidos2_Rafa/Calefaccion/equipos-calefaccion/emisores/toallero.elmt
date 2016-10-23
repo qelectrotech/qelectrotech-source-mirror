@@ -1,0 +1,33 @@
+<definition hotspot_x="14" hotspot_y="32" width="30" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Toaller</name>
+        <name lang="es">Toallero</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-18" end1="none" x1="-7" y1="-18" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-11" end1="none" x1="-7" y1="-11" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-6.1" y2="18" end1="none" x1="-6.1" y1="-24.8138" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="14" end1="none" x1="-7" y1="14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="3" end1="none" x1="-7" y1="3" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="11.9" y2="18" end1="none" x1="11.9" y1="-24.8138" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.4" y="-25.8526" antialias="false" height="2.07751" x="7"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-4" end1="none" x1="-7" y1="-4" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="8" end1="none" x1="-7" y1="8" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-17" end1="none" x1="-7" y1="-17" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.4" y="-25.8526" antialias="false" height="2.07751" x="-11"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="9" end1="none" x1="-7" y1="9" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-3" end1="none" x1="-7" y1="-3" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-11" y2="18" end1="none" x1="-11" y1="-24.8138" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="7" y2="18" end1="none" x1="7" y1="-24.8138" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="17" width="5" angle="-180" antialias="true" height="2" x="7" start="0"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="17" width="5" angle="-180" antialias="true" height="2" x="-11" start="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="15" end1="none" x1="-7" y1="15" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="4" end1="none" x1="-7" y1="4" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="-10" end1="none" x1="-7" y1="-10" length1="1.5"/>
+        <input rotate="true" text="_" tagg="none" y="-24" x="-2" size="9"/>
+        <input rotate="true" text="rad" tagg="label" y="-23" x="-8" size="4"/>
+        <terminal y="20" x="10" orientation="s"/>
+        <terminal y="20" x="-10" orientation="s"/>
+    </description>
+</definition>

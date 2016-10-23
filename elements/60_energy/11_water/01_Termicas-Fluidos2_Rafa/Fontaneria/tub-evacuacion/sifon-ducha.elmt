@@ -1,0 +1,21 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="13" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sifón Ducha</name>
+        <name lang="ca">Sifó dutxa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="16.1053" x="-1.10526" y="-1.61395" antialias="true" height="12.614" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="6.84474" x="3.32368" y="1.93372" antialias="true" height="5.5186" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="16.1053" x="-12.7816" y="-1.21977" antialias="true" height="12.2198" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <polygon x4="-15.6" y5="-2.00814" x5="-12.7816" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2.00814" x1="-12.3789" y2="-2.00814" x2="-7.95" y3="-5.95" x3="-4.72895" y4="-5.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.55581" x1="-15.1974" y2="-5.55581" x2="-5.13158"/>
+        <rect width="4.83158" x="-12.7816" y="-2.00814" antialias="false" height="6.70116" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6.84474" x="-7.95" y="1.93372" antialias="true" height="5.5186" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="4.83158" x="6.94737" y="-2.00814" antialias="false" height="4.73023" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-11" y="13.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="12.1816" y="0.356977" orientation="e"/>
+        <terminal x="-10" y="-6" orientation="n"/>
+    </description>
+</definition>

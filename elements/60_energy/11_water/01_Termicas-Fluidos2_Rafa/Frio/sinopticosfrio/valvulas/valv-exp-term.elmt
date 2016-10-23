@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="28" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Válvula expansión term</name>
+        <name lang="ca">Vàlvula expansió term</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0318443" x1="-8.3055" y2="0.0318443" x2="-3.34587"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0318443" x1="10.9747" y2="0.0318443" x2="18.1965"/>
+        <polygon x4="10" y5="-5" x5="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-3" y2="5" x2="-3" y3="-5" x3="10" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.302286" x1="3.48" y2="-6.72096" x2="3.48"/>
+        <polygon x4="-3" y5="-9.95476" x5="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.95476" x1="-3" y2="-9.95476" x2="10" y3="-7" x3="3.5" y4="-9.95476"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="3.78" y2="-10" x2="3.78"/>
+        <ellipse width="4" x="4" y="-20" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="7.12" y2="-20" x2="16.7867"/>
+        <input x="-1" y="8.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="19" y="0" orientation="e"/>
+        <terminal x="-9" y="0.0814798" orientation="w"/>
+        <terminal x="19" y="-20" orientation="e"/>
+    </description>
+</definition>

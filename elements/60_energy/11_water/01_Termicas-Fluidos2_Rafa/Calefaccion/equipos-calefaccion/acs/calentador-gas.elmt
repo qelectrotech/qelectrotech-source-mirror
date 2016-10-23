@@ -1,0 +1,42 @@
+<definition orientation="dyyy" link_type="simple" type="element" hotspot_x="24" hotspot_y="44" width="50" height="80" version="0.5">
+    <names>
+        <name lang="ca">Escalfador ACS cas</name>
+        <name lang="es">Calentador ACS-gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="9.9242" antialias="true" width="9.1049" height="7.21036" start="90" angle="-90" x="0.353766"/>
+        <line x2="12.3224" y2="25.697" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="26.1476" length2="1.5" x1="8.1886" length1="1.5" end1="none"/>
+        <line x2="-8.95617" y2="25.697" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="26.1476" length2="1.5" x1="-13.09" length1="1.5" end1="none"/>
+        <line x2="-5.09617" y2="27.9502" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="24.345" length2="1.5" x1="-5.09617" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.636" antialias="false" width="36.8829" height="43.7584" x="-18.4781"/>
+        <line x2="-5.09617" y2="28.4008" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="26.5983" length2="1.5" x1="-4.17754" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:red;color:black" y="22.5423" antialias="false" width="4.59314" height="5.85842" x="-13.09"/>
+        <line x2="-5.09617" y2="28.4008" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="26.5983" length2="1.5" x1="-6.0148" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:blue;color:black" y="22.5423" antialias="false" width="4.59314" height="5.85842" x="8.1886"/>
+        <line x2="-8.95617" y2="27.4996" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="27.9502" length2="1.5" x1="-13.09" length1="1.5" end1="none"/>
+        <line x2="12.3224" y2="27.4996" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="27.9502" length2="1.5" x1="8.1886" length1="1.5" end1="none"/>
+        <line x2="-8.95617" y2="26.5983" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="27.0489" length2="1.5" x1="-13.09" length1="1.5" end1="none"/>
+        <line x2="12.3224" y2="26.5983" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="27.0489" length2="1.5" x1="8.1886" length1="1.5" end1="none"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:red;color:black" y="12.5294" antialias="true" width="2.83726" height="2.35194" x="-11.2105"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="13.0788" antialias="false" width="0.918628" height="1.8026" x="-5.61731"/>
+        <line x2="17.0039" y2="27.9502" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="24.345" length2="1.5" x1="17.0039" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="19.3879" antialias="false" width="29.3961" height="3.15453" x="-14.3443"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="10.8255" antialias="true" width="6.43039" height="5.40777" x="2.65034"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="4.06584" antialias="false" width="9.64559" height="1.8026" x="-4.23937"/>
+        <line x2="8.1621" y2="11.7269" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="13.5294" length2="1.5" x1="5.86553" length1="1.5" end1="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="9.9242" antialias="true" width="8.26765" height="7.21036" start="90" angle="-90" x="1.73171"/>
+        <line x2="-4.23937" y2="-29.2821" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-24.7757" length2="1.5" x1="-9.29182" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-37.7886" antialias="false" width="9.18628" height="8.50648" x="-4.23937"/>
+        <line x2="11.3773" y2="-24.7757" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-29.2821" length2="1.5" x1="4.9469" length1="1.5" end1="none"/>
+        <line x2="16.8537" y2="24.0484" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="26.2994" length2="1.5" x1="15.7496" length1="1.5" end1="none"/>
+        <line x2="16.8537" y2="24.0484" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="26.2994" length2="1.5" x1="17.9579" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="23" antialias="false" width="2" height="1" x="-1"/>
+        <input size="4" text="Calentador" tagg="label" y="-15" rotate="true" x="-18"/>
+        <terminal orientation="s" y="30" x="10"/>
+        <terminal orientation="s" y="30" x="-10"/>
+        <terminal orientation="s" y="25" x="0"/>
+        <terminal orientation="n" y="-40" x="0"/>
+    </description>
+</definition>

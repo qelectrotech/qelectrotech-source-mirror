@@ -1,0 +1,17 @@
+<definition width="70" version="0.4" hotspot_x="36" hotspot_y="25" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Recipiente horiz.</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-26" y2="2" x2="25"/>
+        <arc width="9" x="-31" y="-16" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="9" x="20" y="-16" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-27" y2="-16" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-1" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-16" x2="20"/>
+        <input x="-10" y="3" size="4" rotate="true" text="L_" tagg="label"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+        <terminal x="20" y="-20" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,32 @@
+<definition orientation="dyyy" link_type="simple" type="element" hotspot_x="24" hotspot_y="29" width="50" height="40" version="0.5">
+    <names>
+        <name lang="ca">Bomba circuladora</name>
+        <name lang="es">Bomba circuladora</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x2="18" y2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="2" length2="1.5" x1="15" length1="1.5" end1="none"/>
+        <line x2="-15" y2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="2" length2="1.5" x1="-18" length1="1.5" end1="none"/>
+        <polygon x2="-6" y4="-7" y5="-7" y2="-23" x3="7" x5="9" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-23" closed="false" antialias="false" y1="-6" x1="-8" x4="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2" antialias="false" width="4" height="4" x="11"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4" antialias="false" width="4" height="8" x="15"/>
+        <line x2="18" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-2" length2="1.5" x1="15" length1="1.5" end1="none"/>
+        <line x2="-5" y2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-21" length2="1.5" x1="-4" length1="1.5" end1="none"/>
+        <line x2="7" y2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-21" length2="1.5" x1="5" length1="1.5" end1="none"/>
+        <line x2="4" y2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-21" length2="1.5" x1="3" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2" antialias="false" width="4" height="4" x="-14"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4" antialias="false" width="4" height="8" x="-18"/>
+        <line x2="-2" y2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-21" length2="1.5" x1="-1" length1="1.5" end1="none"/>
+        <line x2="-15" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-2" length2="1.5" x1="-18" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21" antialias="false" width="3" height="3" x="7"/>
+        <line x2="7" y2="-21" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-21" length2="1.5" x1="-6" length1="1.5" end1="none"/>
+        <line x2="9" y2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" y1="-8" length2="1.5" x1="-8" length1="1.5" end1="none"/>
+        <polygon y4="3" x1="-10" y2="4" x7="10" x5="11" y8="-6" y1="2" x8="-8" y5="2" y7="-6" y9="-4" x3="6" x10="-10" y6="-2" y10="2" x2="-5" x9="-10" closed="false" antialias="false" y3="4" x6="11" x4="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="1" y4="-14" y5="-14" y2="-16" x3="3" x5="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-18" closed="false" antialias="false" y1="-19" x1="2" x4="2"/>
+        <input size="4" text="_" tagg="label" y="9.5" rotate="true" x="-7"/>
+        <terminal orientation="w" y="0" x="-20"/>
+        <terminal orientation="e" y="0" x="20"/>
+        <terminal orientation="e" y="-20" x="10"/>
+    </description>
+</definition>

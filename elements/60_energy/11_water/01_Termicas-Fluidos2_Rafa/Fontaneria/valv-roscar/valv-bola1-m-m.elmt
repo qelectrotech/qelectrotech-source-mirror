@@ -1,0 +1,39 @@
+<definition width="70" hotspot_y="31" hotspot_x="45" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Válv bola 1"M-M</name>
+        <name lang="ca">Vàlv bola 1"M-M</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="19.734" angle="-180" y="-16.2109" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20.091" start="-180" antialias="true" height="15.0374"/>
+        <rect width="2.46675" y="-8.29648" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.357" antialias="false" height="15.0374"/>
+        <rect width="4.9335" y="-13.0451" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.10975" antialias="false" height="25.3261"/>
+        <line y1="7.53229" end1="none" x1="-29.958" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-31.8081" antialias="false" y2="-8.29648" length2="1.5"/>
+        <line y1="8.3237" end1="none" x1="18.7604" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="16.9103" antialias="false" y2="-7.50507" length2="1.5"/>
+        <line y1="-6.71362" end1="none" x1="2.23898" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.55575" antialias="false" y2="-6.71362" length2="1.5"/>
+        <line y1="5.15798" end1="none" x1="2.58548" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.5793" antialias="false" y2="5.15798" length2="1.5"/>
+        <line y1="8.3237" end1="none" x1="16.2936" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="14.4435" antialias="false" y2="-7.50507" length2="1.5"/>
+        <line y1="7.53229" end1="none" x1="-32.4248" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-34.2749" antialias="false" y2="-8.29648" length2="1.5"/>
+        <line y1="7.53229" end1="none" x1="-37.9749" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-39.825" antialias="false" y2="-8.29648" length2="1.5"/>
+        <line y1="8.3237" end1="none" x1="10.7434" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="8.89335" antialias="false" y2="-7.50507" length2="1.5"/>
+        <line y1="7.53229" end1="none" x1="-35.5082" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="-37.3582" antialias="false" y2="-8.29648" length2="1.5"/>
+        <line y1="8.3237" end1="none" x1="13.2101" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" length1="1.5" x2="11.36" antialias="false" y2="-7.50507" length2="1.5"/>
+        <rect width="9.867" y="-6.71362" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="8.89335" antialias="false" height="15.0374"/>
+        <rect width="9.867" y="-7.50507" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-39.825" antialias="false" height="15.0374"/>
+        <rect width="11.717" y="-8.29648" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.04325" antialias="false" height="18.2031"/>
+        <rect width="11.7171" y="-9.08797" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-39.825" antialias="false" height="18.2031"/>
+        <rect width="4.9335" y="-13.0451" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-28.1079" antialias="false" height="25.3261"/>
+        <line y1="-6.71362" end1="none" x1="-27.6205" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-23.3036" antialias="false" y2="-6.71362" length2="1.5"/>
+        <line y1="5.15798" end1="none" x1="-27.6322" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-23.6384" antialias="false" y2="5.15798" length2="1.5"/>
+        <arc width="19.734" angle="-180" y="-0.382091" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20.091" start="0" antialias="true" height="15.0374"/>
+        <rect width="8.63363" y="-20.1681" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.5408" antialias="false" height="3.95721"/>
+        <rect width="30.2177" y="-25.7082" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13.9241" antialias="false" height="2.37432"/>
+        <rect width="2.46675" y="-23.3339" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.4574" antialias="false" height="3.16576"/>
+        <rect width="3.08344" y="-8.29648" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23.1744" antialias="false" height="15.0374"/>
+        <line y1="-19.6808" end1="none" x1="-12.0741" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-12.0741" antialias="false" y2="-16.5151" length2="1.5"/>
+        <line y1="-20.1031" end1="none" x1="-7.75725" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.75725" antialias="false" y2="-16.5855" length2="1.5"/>
+        <input size="4" text="1&quot; MM" y="20.7058" tagg="label" x="-20.175" rotate="true"/>
+        <terminal y="-0.382091" orientation="w" x="-39.825"/>
+        <terminal y="-0.382091" orientation="e" x="18.7604"/>
+    </description>
+</definition>

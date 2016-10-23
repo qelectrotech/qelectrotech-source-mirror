@@ -1,0 +1,23 @@
+<definition width="60" version="0.4" hotspot_x="44" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Compr. Tornillo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-20" y2="4" x2="-9"/>
+        <ellipse width="18.6469" x="-38" y="-10.0957" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="3.35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-0.85" x1="-4" y2="-4" x2="0.2" y3="-0.85" x3="3.35" y4="-0.85"/>
+        <ellipse width="18.6469" x="-9" y="-9.09572" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.33175" x1="-3.28713" y2="4.07197" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.33175" x1="3.934" y2="3.07197" x2="8.64687"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.87578" x1="0" y2="13.5963" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-14" x2="0"/>
+        <text x="-34" y="4" size="9" text="M"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-19" y2="0" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-20" y2="-4" x2="-9"/>
+        <polygon x4="3.35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-4" y2="-1" x2="0.2" y3="2" x3="3.35" y4="2"/>
+        <terminal x="0" y="14" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="0" y="-14" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-29" y="9" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

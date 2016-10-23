@@ -1,0 +1,26 @@
+<definition width="40" hotspot_y="20" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Bote sifónico</name>
+        <name lang="ca">Pot sifònic</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse width="7" y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="true" height="6"/>
+        <rect width="9" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" antialias="false" height="5"/>
+        <rect width="3" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" antialias="false" height="6"/>
+        <rect width="22" y="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" antialias="false" height="2"/>
+        <rect width="16" y="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" antialias="false" height="23"/>
+        <rect width="3" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" antialias="false" height="6"/>
+        <ellipse width="7" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="true" height="6"/>
+        <rect width="3" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" antialias="false" height="5"/>
+        <input size="6" text="Ø_" y="-27" tagg="label" x="-10" rotate="true"/>
+        <polygon y7="-10" y1="-10" x3="14" y4="-9" x5="17" x4="14" x7="17" x1="11" y6="-10" y5="-10" closed="false" y3="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17" x6="17" antialias="false" y2="-10"/>
+        <terminal y="0" orientation="e" x="14"/>
+        <terminal y="0" orientation="w" x="-10"/>
+        <terminal y="-10" orientation="w" x="-10"/>
+        <terminal y="4" orientation="s" x="1"/>
+        <terminal y="-10" orientation="e" x="20"/>
+        <terminal y="-14" orientation="n" x="1"/>
+    </description>
+</definition>

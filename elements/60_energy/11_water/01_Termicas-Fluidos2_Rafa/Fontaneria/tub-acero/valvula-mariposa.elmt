@@ -1,0 +1,24 @@
+<definition width="30" version="0.4" hotspot_x="11" hotspot_y="47" height="70" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Válvula de mariposa</name>
+        <name lang="ca">Valv. de papallona</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="13" x="-4.75" y="-18.8427" antialias="false" height="37.8427" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.3" x="-6.05" y="-15.6891" antialias="false" height="32.1663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.3" x="8.25" y="-15.6891" antialias="false" height="32.1663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="6.5" x="-1.5" y="-12.5356" antialias="false" height="27.1206" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.5" x="-1.5" y="-28.3033" antialias="false" height="9.46067" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8" x2="-4.75" x3="8.25" x4="11.5" antialias="false" x5="11.5" x6="8.25" x7="-4.75" x8="-8" x9="-8" closed="false" y1="-37.764" y10="-37.764" y2="-40.9175" y11="-37.764" y3="-40.9175" y4="-37.764" y5="-31.4569" x10="-8" y6="-28.3033" x11="-8" y7="-28.3033" y8="-31.4569" y9="-37.764"/>
+        <ellipse width="4.29" x="5.585" y="-37.3421" antialias="false" height="4.12007" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="17.16" x="-0.85" y="-43.5222" antialias="false" height="16.4803" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-35.282" x1="10.4626" y2="-35.282" x2="15.7086"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-37.3421" x1="6.6575" y2="-42.0929" x2="3.0175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-33.222" x1="6.6575" y2="-28.0719" x2="4.5125"/>
+        <ellipse width="2.6" x="6.3" y="-36.5026" antialias="false" height="2.52284" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-5" y="25" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-7" y="0" orientation="w"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

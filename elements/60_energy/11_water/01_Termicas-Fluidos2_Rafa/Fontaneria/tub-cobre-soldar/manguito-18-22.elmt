@@ -1,0 +1,26 @@
+<definition width="40" hotspot_y="14" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Manguito Cu 18-22</name>
+        <name lang="ca">maneguet Cu 18-22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="2.32809" angle="-90" y="-9.06459" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.13275" start="-180" antialias="true" height="2.13893"/>
+        <arc width="2.54895" angle="-90" y="-6.30164" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.0249" start="90" antialias="true" height="2.45806"/>
+        <line y1="8.94606" end1="none" x1="-1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" antialias="false" y2="8.94606" length2="1.5"/>
+        <line y1="6.9591" end1="none" x1="-10.5949" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9.5" antialias="false" y2="6.9591" length2="1.5"/>
+        <line y1="-7.91701" end1="none" x1="-1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" antialias="false" y2="-7.91701" length2="1.5"/>
+        <arc width="2.32809" angle="-90" y="7.86107" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.13275" start="-90" antialias="true" height="2.13893"/>
+        <arc width="2.54895" angle="-90" y="4.75964" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.0249" start="0" antialias="true" height="2.45806"/>
+        <line y1="-3.97182" end1="none" x1="-11.3832" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-11.3832" antialias="false" y2="6.12755" length2="1.5"/>
+        <polygon y1="-6.30164" x3="-18.891" y4="7.21771" x4="-13.098" x1="-13.098" closed="false" y3="7.21771" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18.891" antialias="false" y2="-6.30164"/>
+        <line y1="-5.67263" end1="none" x1="-10.5949" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9.5" antialias="false" y2="-5.67263" length2="1.5"/>
+        <line y1="-5.75519" end1="none" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2" antialias="false" y2="-7.91701" length2="1.5"/>
+        <line y1="6.78423" end1="none" x1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2" antialias="false" y2="8.94606" length2="1.5"/>
+        <line y1="-7.72964" end1="none" x1="-0.04" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-0.04" antialias="false" y2="7.91416" length2="1.5"/>
+        <polygon y1="-9" x3="9" y4="10" x4="2" x1="1" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" antialias="false" y2="-9"/>
+        <input size="4" text="18-22" y="19" tagg="label" x="-16" rotate="true"/>
+        <terminal y="0" orientation="e" x="10"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

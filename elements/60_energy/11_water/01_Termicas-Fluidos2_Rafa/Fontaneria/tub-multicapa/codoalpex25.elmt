@@ -1,0 +1,23 @@
+<definition width="80" version="0.4" hotspot_x="35" hotspot_y="57" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Codo Alpex 25</name>
+        <name lang="ca">Clze Alpex 25</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6.26371" x="2.36713" y="-7.3698" antialias="false" height="16.3488" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="26.6208" x="11.7627" y="-45.1238" antialias="false" height="22.675" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="51.6756" x="-16.424" y="-40.0674" antialias="true" height="49.0465" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="17.2252" x="16.4605" y="-48.2228" antialias="false" height="3.09892" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.7911" x="16.4605" y="-20.4489" antialias="false" height="4.90465" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.26371" x="-30.5174" y="-7.3698" antialias="false" height="16.3488" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="26.6208" x="-27.2537" y="-12.2744" antialias="false" height="26.1581" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="15.6593" x="0.8012" y="-22.0837" antialias="true" height="14.7139" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="34" x="8" y="-23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="3" x="-1" y="-16" antialias="false" height="33" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="25" y="4" size="4" rotate="true" text="25" tagg="label"/>
+        <terminal x="-30.5174" y="0.80461" orientation="w"/>
+        <terminal x="25" y="-48.642" orientation="n"/>
+    </description>
+</definition>

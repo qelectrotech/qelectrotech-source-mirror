@@ -1,0 +1,34 @@
+<definition width="40" hotspot_y="19" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Manguito codoplaca 1/2"H-15</name>
+        <name lang="ca">Maneguet placa 1/2"H-15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="5" angle="-180" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" start="0" antialias="true" height="4"/>
+        <line y1="12" end1="none" x1="9" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9" antialias="false" y2="15" length2="1.5"/>
+        <line y1="-6.4762" end1="none" x1="-7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7" antialias="false" y2="-2" length2="1.5"/>
+        <arc width="3.78" angle="-90" y="-1.54595" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.77" start="90" antialias="true" height="3.91744"/>
+        <rect width="9.3" y="4.06333" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17.33" antialias="false" height="12.2178"/>
+        <line y1="-8" end1="none" x1="-6" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" length1="1.5" x2="5" antialias="false" y2="-9" length2="1.5"/>
+        <rect width="15.12" y="-14.2274" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.88" antialias="false" height="7.26838"/>
+        <rect width="7.92641" y="4.98313" style="line-style:dashed;line-weight:thin;filling:none;color:red" x="-17.5864" antialias="false" height="9.79361"/>
+        <arc width="5.985" angle="-90" y="-2.85595" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.975" start="0" antialias="true" height="7.01712"/>
+        <rect width="11.34" y="-13.5553" style="line-style:dashed;line-weight:normal;filling:none;color:red" x="-5.99" antialias="false" height="4.99466"/>
+        <arc width="5" angle="-180" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" start="0" antialias="true" height="4"/>
+        <arc width="28.35" angle="-45" y="-14.1394" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22" start="0" antialias="true" height="30.237"/>
+        <arc width="3.78" angle="-90" y="-1.54595" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.35" start="-180" antialias="true" height="3.91744"/>
+        <arc width="14" angle="-180" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7" start="0" antialias="true" height="4"/>
+        <rect width="24" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="false" height="4"/>
+        <line y1="-6.4762" end1="none" x1="7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="7" antialias="false" y2="-2" length2="1.5"/>
+        <line y1="-11" end1="none" x1="-6" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" length1="1.5" x2="5" antialias="false" y2="-12" length2="1.5"/>
+        <input size="4" text="1/2&quot;H-15" y="23" tagg="label" x="-12" rotate="true"/>
+        <line y1="16" end1="none" x1="-7.76112" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="12.7412" antialias="false" y2="16" length2="1.5"/>
+        <line y1="16" end1="none" x1="13" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="13" antialias="false" y2="12" length2="1.5"/>
+        <line y1="12" end1="none" x1="12.268" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.32433" antialias="false" y2="12" length2="1.5"/>
+        <line y1="12" end1="none" x1="5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5" antialias="false" y2="15" length2="1.5"/>
+        <terminal y="10" orientation="w" x="-20"/>
+        <terminal y="-13" orientation="n" x="0"/>
+    </description>
+</definition>

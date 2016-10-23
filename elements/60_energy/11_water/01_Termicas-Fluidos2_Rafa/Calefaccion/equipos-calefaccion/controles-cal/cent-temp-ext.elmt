@@ -1,0 +1,59 @@
+<definition width="50" version="0.4" hotspot_x="17" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Centralita temp. exterior</name>
+        <name lang="ca">Centraleta temp. exterior</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="3.00048" x="-6.35591" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.00048" x="19.1482" y="-1.57023" antialias="true" height="2.77717" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.00048" x="21.3986" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.00048" x="-1.10507" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.00048" x="19.1482" y="3.28982" antialias="true" height="2.77717" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.00048" x="10.1467" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.00048" x="15.3976" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.3474" x1="9.39662" y2="5.37269" x2="9.39662"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.57023" x1="7.14626" y2="-1.57023" x2="17.6479"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.3474" x1="17.6479" y2="5.37269" x2="17.6479"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.65311" x1="7.14626" y2="-3.65311" x2="17.6479"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0.512647" x1="7.14626" y2="0.512647" x2="17.6479"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.3474" x1="12.022" y2="5.37269" x2="12.022"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.3474" x1="14.6475" y2="5.37269" x2="14.6475"/>
+        <rect width="0.937651" x="-0.917538" y="2.59553" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="12.1895" x="-10.1065" y="-5.0417" antialias="true" height="10.4144" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="0.937651" x="-8.41875" y="-3.65311" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.181647" x1="19.1482" y2="-0.181647" x2="22.1487"/>
+        <ellipse width="13.5022" x="-10.8566" y="-5.73598" antialias="true" height="11.803" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x4="-4.48061" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1.03337" x1="-4.48061" y2="0.1655" x2="-3.54296" y3="-3.30596" x3="-7.29356" y4="1.03337"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1.03337" x1="-3.54296" y2="-0.702357" x2="1.14529" y3="0.1655" x3="-3.54296"/>
+        <rect width="0.937651" x="-9.91899" y="-0.181647" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.937651" x="-4.48061" y="-4.86812" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.937651" x="-4.48061" y="4.33125" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.937651" x="-8.23121" y="2.7691" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.937651" x="0.770233" y="-0.181647" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.937651" x="-0.730008" y="-3.30596" antialias="false" height="0.867865" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="12.0019" x="5.64602" y="-5.73598" antialias="false" height="11.803" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.37269" x1="6.39614" y2="-4.3474" x2="12.3971"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.37269" x1="6.39614" y2="-2.95881" x2="16.1477"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.37269" x1="6.39614" y2="0.512647" x2="16.8978"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.37269" x1="6.39614" y2="3.98412" x2="16.8978"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.37269" x1="6.39614" y2="-4.3474" x2="8.6465"/>
+        <rect width="37.506" x="-12.3569" y="-8.51316" antialias="false" height="16.663" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="3.00048" x="19.1482" y="-6.43027" antialias="true" height="2.77717" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.3474" x1="19.8983" y2="-6.43027" x2="22.1487"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.98412" x1="19.1482" y2="5.37269" x2="22.1487"/>
+        <rect width="3.00048" x="-12.3569" y="8.14987" antialias="false" height="1.38859" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40.5065" x="-13.8571" y="-9.90173" antialias="false" height="18.7459" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="26.6494" y5="-9.90173" x5="26.6494" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.90173" x1="-13.8571" y2="-12.6789" x2="-7.85615" y3="-12.6789" x3="30.4" y4="-9.90173"/>
+        <polygon x4="26.6494" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12.6789" x1="30.4" y2="6.06699" x2="30.4" y3="8.84411" x3="26.6494" y4="8.84411"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.28982" x1="7.14626" y2="3.28982" x2="17.6479"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.3474" x1="6.39614" y2="5.37269" x2="6.39614"/>
+        <input x="-11.3567" y="-18.7474" size="4" rotate="true" text="Centralita" tagg="label"/>
+        <terminal x="-10.8566" y="9.53849" orientation="s"/>
+        <terminal x="0.395173" y="9.53849" orientation="s"/>
+        <terminal x="11.647" y="9.53849" orientation="s"/>
+        <terminal x="22.8988" y="9.53849" orientation="s"/>
+        <terminal x="-4.85567" y="9.53849" orientation="s"/>
+        <terminal x="16.8978" y="9.53849" orientation="s"/>
+    </description>
+</definition>

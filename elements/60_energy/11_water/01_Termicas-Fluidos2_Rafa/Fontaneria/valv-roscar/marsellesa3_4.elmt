@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="14" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Marsellesa 3/4</name>
+        <name lang="ca">Marsellessa 3/4</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="11.5172" x="4.98515" y="5.99225" antialias="true" height="7.65163" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="7.4039" x="-2.41875" y="6.75741" antialias="true" height="12.2427" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="8.2266" x="10.7437" y="-6.25034" antialias="false" height="12.2427" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="13.9852" x="-9" y="-12.3717" antialias="false" height="25.2504" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.01556" x1="1.005" y2="-7.01556" x2="-8.30025"/>
+        <arc width="6.58125" x="-1.5961" y="-17.7279" antialias="true" height="10.7123" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.75741" x1="-8.23808" y2="6.75741" x2="0.937657"/>
+        <arc width="5.75859" x="-0.773438" y="-7.01556" antialias="true" height="13.7729" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.25034" x1="16.5023" y2="5.99225" x2="14.857"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.48521" x1="14.857" y2="5.22708" x2="13.2117"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.25034" x1="18.1477" y2="5.99225" x2="16.5023"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.25034" x1="13.2117" y2="5.99225" x2="11.5664"/>
+        <arc width="11.5172" x="4.98515" y="-13.9019" antialias="true" height="7.65163" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <input x="-7.125" y="-21.9005" size="4" rotate="true" text="3/4&quot;" tagg="label"/>
+        <rect width="9" x="-8.625" y="-7.98587" antialias="false" height="16.8662" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <terminal x="-9" y="-0.129059" orientation="w"/>
+        <terminal x="19.7929" y="-0.129059" orientation="e"/>
+    </description>
+</definition>

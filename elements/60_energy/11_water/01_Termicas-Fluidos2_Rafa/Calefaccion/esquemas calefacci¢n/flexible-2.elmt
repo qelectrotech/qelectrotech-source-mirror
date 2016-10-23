@@ -1,0 +1,18 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Flexible2</name>
+        <name lang="ca">Flexible2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="11" y2="0" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954" x1="10" y2="10.8866" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954" x1="-10" y2="10.8866" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
+        <ellipse width="18" x="-9" y="-13" antialias="true" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-8" y="-16.5" size="3" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+    </description>
+</definition>

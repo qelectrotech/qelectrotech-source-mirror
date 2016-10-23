@@ -1,0 +1,13 @@
+<definition height="20" link_type="simple" hotspot_x="10" version="0.5" hotspot_y="14" type="element" width="20" orientation="dyyy">
+    <names>
+        <name lang="es">Evacuación humos</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse height="9" x="-5" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10"/>
+        <polygon y10="-3" x10="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-3" y2="-9" y3="-7" y4="-5" y5="-4" y6="-3" x1="-4" y7="-2" x2="3" y8="-1" x3="4" y9="-2" x4="4" x5="4" x6="3" x7="2" x8="-1" x9="-2"/>
+        <input x="-5" size="4" rotate="true" y="-12" text="_" tagg="label"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

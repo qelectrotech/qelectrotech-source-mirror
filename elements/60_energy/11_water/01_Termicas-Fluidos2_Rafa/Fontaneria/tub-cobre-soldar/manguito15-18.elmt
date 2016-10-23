@@ -1,0 +1,16 @@
+<definition width="40" hotspot_y="10" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
+    <names>
+        <name lang="es">Manguito Cu 15-18</name>
+        <name lang="ca">Maneguet Cu 15-18</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon y7="-4" y1="-4" x3="-9" y4="6" x5="-1" x4="-9" x7="0" x1="0" y6="5" y5="6" closed="false" y3="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-1" x6="0" antialias="false" y2="-6"/>
+        <polygon y7="-6" y1="-6" x3="18" y4="7" x5="11" x4="18" x7="10" x1="10" y6="5" y5="7" closed="false" y3="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" x6="10" antialias="false" y2="-7"/>
+        <line y1="4" end1="none" x1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" antialias="false" y2="5" length2="1.5"/>
+        <line y1="-4" end1="none" x1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" antialias="false" y2="-5" length2="1.5"/>
+        <input size="4" text="15-18" y="19" tagg="label" x="-2" rotate="true"/>
+        <terminal y="0" orientation="w" x="-10"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

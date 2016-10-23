@@ -1,0 +1,32 @@
+<definition width="80" version="0.4" hotspot_x="37" hotspot_y="15" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">bañera</name>
+        <name lang="ca">banyera</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.80066" x1="-27.2172" y2="-5.80066" x2="31.1584"/>
+        <rect width="5.06058" x="7.34427" y="-8.62933" antialias="false" height="2.92723" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.87345" x1="-24.0161" y2="-2.87345" x2="29.0526"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16.6414" x1="-24.0161" y2="16.6414" x2="29.0526"/>
+        <arc width="8.21809" x="-28.53" y="-2.87345" antialias="true" height="19.5149" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.62933" x1="8.82789" y2="-6.16533" x2="8.82789"/>
+        <arc width="8.21809" x="25.3441" y="-2.90655" antialias="true" height="19.623" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.5444" x1="-27.2172" y2="20.5444" x2="31.1584"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.62933" x1="10.8079" y2="-6.16533" x2="10.8079"/>
+        <arc width="9.03989" x="-32.1824" y="-5.7775" antialias="true" height="26.3219" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <ellipse width="3.65247" x="-21.225" y="4.93252" antialias="true" height="3.90298" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10.1399" x="27.079" y="-5.7775" antialias="true" height="26.3219" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="18.2624" x="-8.59506" y="-5.70211" antialias="false" height="2.42458" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.06058" x="-11.6308" y="-8.62933" antialias="false" height="2.92723" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.62933" x1="-10.1471" y2="-6.16533" x2="-10.1471"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.62933" x1="-8.16711" y2="-6.16533" x2="-8.16711"/>
+        <polygon x4="1.07289" y5="2.56469" x5="1.56789" y6="-3.23522" x6="1.56789" y7="-3.23522" x7="-0.412112" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3.23522" x1="-0.412112" y2="2.56469" x2="-0.412112" y3="3.04803" x3="0.082888" y4="3.04803"/>
+        <ellipse width="0.99" x="0.082888" y="0.148072" antialias="true" height="0.966652" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="18.6182" y="4.70442" size="4" rotate="true" text="_" tagg="label"/>
+        <input x="-6.68176" y="17.3044" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-9.15711" y="-9.12212" orientation="n"/>
+        <terminal x="9.81789" y="-9.12212" orientation="n"/>
+    </description>
+</definition>

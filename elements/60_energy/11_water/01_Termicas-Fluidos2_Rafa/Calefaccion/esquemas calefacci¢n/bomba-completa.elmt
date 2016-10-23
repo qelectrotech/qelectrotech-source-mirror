@@ -1,0 +1,48 @@
+<definition width="120" version="0.4" hotspot_x="51" hotspot_y="35" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مضخة</name>
+        <name lang="el">Αντλία</name>
+        <name lang="en">Pump complet</name>
+        <name lang="it">Pompa</name>
+        <name lang="fr">Pompe</name>
+        <name lang="pl">Pompa</name>
+        <name lang="es">Bomba completa</name>
+        <name lang="nl">Pomp</name>
+        <name lang="ca">Bomba completa</name>
+        <name lang="cs">Pumpa</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.096" x1="23" y2="5.104" x2="23"/>
+        <polygon x4="-28" y5="-4" x5="-38" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="-38" y2="5" x2="-38" y3="-4" x3="-28" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.096" x1="-14" y2="5.104" x2="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-47" y2="1" x2="-39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.188687" x1="15.0186" y2="0.188687" x2="10.1105"/>
+        <polygon x4="-9.5" y5="-18.161" x5="-15" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-18.161" x1="-15" y2="-14" x2="-15" y3="-18.161" x3="-9.5" y4="-14"/>
+        <polygon x4="12.5" y5="-18.161" x5="7" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-18.161" x1="7" y2="-14" x2="7" y3="-18.161" x3="12.5" y4="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.188687" x1="-21.9814" y2="0.188687" x2="-26.8895"/>
+        <polygon x4="8.21845" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-0.0837017" x1="8.21845" y2="-6.3512" x2="-3.20265" y3="6.18379" x3="-3.20265" y4="-0.0837017"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.096" x1="-21" y2="5.104" x2="-21"/>
+        <ellipse width="17.7851" x="-8.28807" y="-8.46305" antialias="true" height="16.7588" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="7" x="-21" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.139091" x1="-9.0152" y2="0.139091" x2="-13.4174"/>
+        <polygon x4="39.6" y5="-4.24134" x5="39.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="30" y2="-4.24134" x2="30" y3="4" x3="39.6" y4="-4.24134"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.438876" x1="39.8954" y2="-0.438876" x2="44.08"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.096" x1="16" y2="5.104" x2="16"/>
+        <ellipse width="7" x="16" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="23" y2="0" x2="29"/>
+        <circle x="29" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <polygon x4="55" y5="-5" x5="45" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="45" y2="4" x2="45" y3="-5" x3="55" y4="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="56" y2="0" x2="64"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="-9.72284" y2="-16" x2="6.78308"/>
+        <circle x="-4" y="-27" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <text x="-3" y="-22" size="4" text="M"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="-1" y2="-16" x2="-1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-16" x1="-15" y2="-16" x2="-24" y3="0" x3="-24"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-16" x1="13" y2="-16" x2="26" y3="0" x3="26"/>
+        <input x="-5" y="17" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-46" y="1" orientation="w"/>
+        <terminal x="64" y="0" orientation="e"/>
+    </description>
+</definition>

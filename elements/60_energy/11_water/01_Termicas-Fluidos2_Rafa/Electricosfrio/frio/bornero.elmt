@@ -1,0 +1,15 @@
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bornero salida</name>
+        <name lang="ca">Born eixida</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="17" x="-7" y="-5" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.73184" x1="0" y2="-5.20717" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.98831" x1="0" y2="9.09604" x2="0"/>
+        <input x="-10" y="4.44089e-16" size="7" rotate="true" text="X_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

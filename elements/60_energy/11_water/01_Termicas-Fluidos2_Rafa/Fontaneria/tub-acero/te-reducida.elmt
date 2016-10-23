@@ -1,0 +1,23 @@
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Te reducida</name>
+        <name lang="ca">Te reduida</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.02325" x1="-20.7858" y2="8.02325" x2="19.9172"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.7558" x1="-5.37719" y2="-8.66471" x2="-5.37719"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="-20.5609" y2="-8.0512" x2="-6.08532"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="6.4431" y2="-8.0512" x2="20.2911"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.7558" x1="5.68313" y2="-8.66471" x2="5.68313"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.69305" x1="0.1006" y2="-8.0512" x2="-5.82455"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.69305" x1="0.7091" y2="-8.0512" x2="5.9759"/>
+        <input x="-9" y="13.5" size="6" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.13291" x1="-21" y2="7.14399" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.18342" x1="21" y2="7.1987" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-4.89081" y2="-19" x2="5.09838"/>
+        <terminal x="-22" y="0" orientation="w"/>
+        <terminal x="22" y="0" orientation="e"/>
+        <terminal x="0.1" y="-20" orientation="n"/>
+    </description>
+</definition>

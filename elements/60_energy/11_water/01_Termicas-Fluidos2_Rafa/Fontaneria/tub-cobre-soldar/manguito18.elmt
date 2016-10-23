@@ -1,0 +1,15 @@
+<definition width="40" hotspot_y="9" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
+    <names>
+        <name lang="es">Manguito Cu 18</name>
+        <name lang="ca">Maneguet Cu 18</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="8.8" y="-7.196" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10.4" antialias="false" height="14.9969"/>
+        <rect width="8.8" y="-7.196" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.6" antialias="false" height="14.9969"/>
+        <rect width="11" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" antialias="false" height="12"/>
+        <input size="4" text="18" y="12" tagg="label" x="-2" rotate="true"/>
+        <terminal y="0.103895" orientation="w" x="-10"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

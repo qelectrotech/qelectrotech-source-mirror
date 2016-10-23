@@ -1,0 +1,16 @@
+<definition link_type="simple" hotspot_x="14" width="30" height="40" version="0.5" type="element" hotspot_y="19" orientation="dyyy">
+    <names>
+        <name lang="es">Compresor</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse width="18.6469" antialias="true" height="18.3354" y="-9.09572" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3.28713" x2="-8" y2="4.07197" y1="-8.33175" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3.934" x2="8.64687" y2="3.07197" y1="-8.33175" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y2="13.5963" y1="9.87578" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y2="-14" y1="-10" end2="none"/>
+        <input y="20" tagg="label" rotate="true" size="5" x="-20" text="_"/>
+        <terminal y="-14" x="0" orientation="n"/>
+        <terminal y="14" x="0" orientation="s"/>
+    </description>
+</definition>

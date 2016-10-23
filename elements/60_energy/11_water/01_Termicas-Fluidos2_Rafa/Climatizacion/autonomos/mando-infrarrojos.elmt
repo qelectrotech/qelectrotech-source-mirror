@@ -1,0 +1,27 @@
+<definition width="30" version="0.4" hotspot_x="17" hotspot_y="36" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Mando infrarojos</name>
+        <name lang="ca">Comandament</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="5" x="2" y="-3" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="2" y="4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="2" y="11" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-8" y="11" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-8" y="4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="7" y5="-28" x5="-8" y6="-25.45" x6="-11" y7="17.05" x7="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17.05" x1="-11" y2="17.05" x2="9" y3="-25.45" x3="9" y4="-28"/>
+        <arc width="5" x="-3" y="-29" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="16" x="-9" y="-22" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-5.25724" y5="-16" x5="-3" y6="-18" x6="-3" y7="-20" x7="-5.25724" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-5.25724" y2="-18" x2="-7.51448" y3="-16" x3="-7.51448" y4="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.7818" x1="4" y2="-15.2364" x2="4"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="-1" y2="-19" x2="2" y3="-15" x3="-1" y4="-15"/>
+        <rect width="5" x="-8" y="-3" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" y1="-8.76252" x1="0" y2="-8.76252" x2="4.8" y3="-5" x3="2.4" y4="-8.76252"/>
+        <polygon x4="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" y1="-5" x1="-8" y2="-5" x2="-3" y3="-9" x3="-6" y4="-5"/>
+        <polygon x4="5.9" y5="16.9295" x5="8.735" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-25.0338" x1="-11.11" y2="-22.9868" x2="-13" y3="20" x3="-13" y4="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="-13" y2="17" x2="-11"/>
+        <input x="-13" y="25.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-30" orientation="n"/>
+    </description>
+</definition>

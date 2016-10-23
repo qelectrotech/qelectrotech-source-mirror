@@ -1,0 +1,27 @@
+<definition hotspot_x="25" hotspot_y="29" width="40" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Intercamviador plaques</name>
+        <name lang="es">Intercambiador placas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.8556" width="3.85" antialias="false" height="4.70608" x="5.24"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.3617" width="3.85" antialias="false" height="4.70608" x="-19.4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.1461" width="3.85" antialias="false" height="4.70608" x="5.24"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-7.08" y2="24.4209" end1="none" x1="-7.08" y1="-24.2086" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-4.385" y2="24.4209" end1="none" x1="-4.385" y1="-24.2086" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.2086" width="3.08" antialias="false" height="48.6295" x="2.16"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-0.92" y2="24.4209" end1="none" x1="-0.92" y1="-24.2086" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.2086" width="3.08" antialias="false" height="48.6295" x="-15.55"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-10.16" y2="24.4209" end1="none" x1="-10.16" y1="-24.2086" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="1.39" y2="-21.8556" end1="none" x1="-11.7" y1="-21.8556" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="2.16" y2="22.0678" end1="none" x1="-12.47" y1="22.0678" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.8556" width="3.85" antialias="false" height="4.70608" x="-19.4"/>
+        <input rotate="true" text="_" tagg="label" y="-26.5" x="-11" size="4"/>
+        <terminal y="19.7148" x="-19.4" orientation="w"/>
+        <terminal y="-19.5025" x="9.09" orientation="e"/>
+        <terminal y="20.4991" x="9.09" orientation="e"/>
+        <terminal y="-19.5025" x="-19.4" orientation="w"/>
+    </description>
+</definition>

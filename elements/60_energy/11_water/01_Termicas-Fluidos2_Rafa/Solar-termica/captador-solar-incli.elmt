@@ -1,0 +1,23 @@
+<definition width="80" version="0.4" hotspot_x="70" hotspot_y="58" height="90" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Captador solar inclinado</name>
+        <name lang="ca">Captador solar inclinat</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-64" y2="27" x2="-36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-67" y2="24" x2="-39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-52" x1="-28" y2="-36" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-52" x1="-28" y2="8" x2="-67"/>
+        <polygon x4="3" y5="-36" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-36" x1="0" y2="24" x2="-39" y3="24" x3="-35" y4="-36"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-36" x1="3" y2="-52" x2="-25" y3="-52" x3="-28"/>
+        <polygon x4="-28" y5="8" x5="-65" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="8" x1="-65" y2="22" x2="-40" y3="-35" x3="-3" y4="-49"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-64" y2="10" x2="-64"/>
+        <input x="-19" y="-51.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-33" y="23" orientation="e"/>
+        <terminal x="-65" y="6" orientation="w"/>
+        <terminal x="-29" y="-51" orientation="w"/>
+        <terminal x="4" y="-35" orientation="e"/>
+    </description>
+</definition>

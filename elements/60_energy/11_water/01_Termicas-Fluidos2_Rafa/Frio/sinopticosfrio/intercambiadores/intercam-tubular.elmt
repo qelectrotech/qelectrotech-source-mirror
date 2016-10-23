@@ -1,0 +1,21 @@
+<definition width="80" version="0.4" hotspot_x="36" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Intercambiador tubular</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-21" y2="9" x2="27"/>
+        <arc width="6" x="-25" y="-11" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="22" y2="14" x2="22"/>
+        <arc width="8" x="23" y="-11" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-22" y2="-11" x2="26"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-20" y2="-11" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30.3455" y2="0" x2="-25.7091"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="31" y2="0" x2="37"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" x2="-22" x3="-17" x4="-6" antialias="false" x5="4" x6="13" x7="22" x8="26" x9="32" closed="false" y1="0" y2="0" y3="-4" y4="4" y5="-4" y6="3" y7="-4" y8="0" y9="0"/>
+        <terminal x="-20" y="-15" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-30" y="0" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="22" y="14" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="37" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

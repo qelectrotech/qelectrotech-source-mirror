@@ -1,0 +1,17 @@
+<definition width="30" version="0.4" hotspot_x="8" hotspot_y="23" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sonda Temperatura</name>
+        <name lang="ca">Sonda Temperatura</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="9" x="-4" y="15" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-12" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="-12" x2="6"/>
+        <input x="11" y="22" size="6" rotation="270" rotate="true" text="PTC" tagg="label"/>
+        <polygon x4="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="18" x1="-4" y2="0" x2="-4" y3="0" x3="5" y4="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" x1="-2.85882" y2="18" x2="3.84706"/>
+        <terminal x="-4" y="-16" orientation="n"/>
+        <terminal x="6" y="-16" orientation="n"/>
+    </description>
+</definition>

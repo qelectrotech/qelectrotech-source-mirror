@@ -1,0 +1,38 @@
+<definition width="30" hotspot_y="33" hotspot_x="15" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Grupo seg.termo3/4"MH</name>
+        <name lang="ca">Grup seg.escalfador3/4"MH</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-1.67652" end1="none" x1="-2" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.6" antialias="false" y2="-2.43589" length2="1.5"/>
+        <line y1="-3.19525" end1="none" x1="-2" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.6" antialias="false" y2="-3.95462" length2="1.5"/>
+        <rect width="9.52" y="-28.3646" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.3968" antialias="false" height="8.53939"/>
+        <rect width="7.84" y="-27.8338" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-3.5568" antialias="false" height="5.73058"/>
+        <rect width="6.02" y="-5.58351" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.2968" antialias="false" height="6.26129"/>
+        <line y1="-17.8803" end1="none" x1="6.32087" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.26237" antialias="false" y2="-17.8803" length2="1.5"/>
+        <line y1="-6.60824" end1="none" x1="6.32415" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.25887" antialias="false" y2="-6.60824" length2="1.5"/>
+        <line y1="-17.8303" end1="none" x1="9.3232" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.3232" antialias="false" y2="-6.6623" length2="1.5"/>
+        <line y1="-17.8803" end1="none" x1="6.2432" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="4.0032" antialias="false" y2="-15.8308" length2="1.5"/>
+        <line y1="-6.60824" end1="none" x1="6.2432" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="4.0032" antialias="false" y2="-9.34084" length2="1.5"/>
+        <line y1="-18.0409" end1="none" x1="6.2432" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.2432" antialias="false" y2="-19.7552" length2="1.5"/>
+        <line y1="-19.9297" end1="none" x1="-5.48415" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.20784" antialias="false" y2="-19.9297" length2="1.5"/>
+        <line y1="-5.58351" end1="none" x1="-5.48415" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.20784" antialias="false" y2="-5.58351" length2="1.5"/>
+        <line y1="-5.65001" end1="none" x1="6.2432" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.2432" antialias="false" y2="-6.52058" length2="1.5"/>
+        <line y1="-19.9297" end1="none" x1="-5.528" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.528" antialias="false" y2="-5.58351" length2="1.5"/>
+        <ellipse width="0.7" y="-17.6232" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.9" antialias="true" height="0.759367"/>
+        <line y1="-19.142" end1="none" x1="-5.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9" antialias="false" y2="-17.6232" length2="1.5"/>
+        <line y1="-17.6232" end1="none" x1="-9" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8.3" antialias="false" y2="-13.067" length2="1.5"/>
+        <line y1="-13.067" end1="none" x1="-8.3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9" antialias="false" y2="-7.75146" length2="1.5"/>
+        <line y1="-7.75146" end1="none" x1="-9" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.6" antialias="false" y2="-7.75146" length2="1.5"/>
+        <line y1="-7.75146" end1="none" x1="-7.6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-6.9" antialias="false" y2="-15.3451" length2="1.5"/>
+        <line y1="-15.3451" end1="none" x1="-6.9" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.5" antialias="false" y2="-16.1045" length2="1.5"/>
+        <rect width="2.1" y="-17.6232" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" antialias="false" height="9.87177"/>
+        <ellipse width="3.5" y="-14.5858" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-1.3" antialias="true" height="3.79684"/>
+        <input size="4" text="3/4&quot;M-H" y="-12.3077" tagg="label" x="7.8" rotate="true"/>
+        <line y1="-0.157785" end1="none" x1="-2" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.6" antialias="false" y2="-0.917152" length2="1.5"/>
+        <terminal y="0.601582" orientation="s" x="0.1"/>
+        <terminal y="-29" orientation="n" x="0"/>
+    </description>
+</definition>

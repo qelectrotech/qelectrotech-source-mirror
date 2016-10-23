@@ -1,0 +1,18 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Regulador velocitat</name>
+        <name lang="ca">Regulador velocidad</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="13.7812" x="-6.64562" y="-8.28496" antialias="false" height="16.3197" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="7.13956" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.4263" x1="-7" y2="8.57869" x2="-7" y3="8.57869" x3="7.13956" y4="8.57869"/>
+        <rect width="7.97" x="-3.04" y="-7.00501" antialias="false" height="3.19994" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="5.7456" x="-2.1996" y="-1.89162" antialias="true" height="5.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.605738" x1="-1.7208" y2="0.68015" x2="0.6732"/>
+        <polygon x4="3.07" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="6.16991" x1="3.07" y2="6.16991" x2="-2.6" y3="4.82373" x3="-2.6" y4="6.16991"/>
+        <input x="-7" y="12" size="3" rotate="true" text="Vel" tagg="label"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

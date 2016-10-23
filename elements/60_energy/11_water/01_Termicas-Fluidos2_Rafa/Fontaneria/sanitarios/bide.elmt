@@ -1,0 +1,34 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="24" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bidé</name>
+        <name lang="ca">Bidet</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.0219" x1="1.9375" y2="-16.0219" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.0124" x1="-5.625" y2="-17.0124" x2="-3.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.0124" x1="1.9375" y2="-17.0124" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6511" x1="11.5625" y2="-14.4014" x2="11.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.0219" x1="-5.625" y2="-16.0219" x2="-3.5625"/>
+        <ellipse width="3.4375" x="-9.0625" y="-18.0028" antialias="true" height="2.47607" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="2.75" x="-4.9375" y="-18.0028" antialias="true" height="2.47607" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.0028" x1="-7" y2="-18.0028" x2="-3.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15.5267" x1="-7" y2="-15.5267" x2="-3.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.5076" x1="-5.625" y2="-17.5076" x2="-3.5625"/>
+        <ellipse width="26.125" x="-13.875" y="-11.0699" antialias="true" height="31.6938" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6709" x1="-12.5" y2="-14.3799" x2="-12.5"/>
+        <arc width="35.0625" x="-18" y="-20.4789" antialias="true" height="43.5789" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-270"/>
+        <ellipse width="5.5" x="-3.5625" y="-2.65115" antialias="true" height="3.96172" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.9837" x1="-12.0334" y2="-19.9837" x2="11.1143"/>
+        <rect width="2.0625" x="-1.5" y="-18.0028" antialias="false" height="8.91386" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.4375" x="4" y="-18.0028" antialias="true" height="2.47607" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="2.75" x="1.25" y="-18.0028" antialias="true" height="2.47607" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.0028" x1="2.625" y2="-18.0028" x2="6.0625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15.5267" x1="2.625" y2="-15.5267" x2="6.0625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17.5076" x1="1.9375" y2="-17.5076" x2="4"/>
+        <input x="-0.5" y="9.9" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10.5" y="-19.8" orientation="n"/>
+        <terminal x="9.5" y="-19.8" orientation="n"/>
+    </description>
+</definition>

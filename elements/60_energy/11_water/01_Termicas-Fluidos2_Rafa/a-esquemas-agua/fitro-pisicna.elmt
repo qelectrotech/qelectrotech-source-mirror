@@ -1,0 +1,35 @@
+<definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="10" type="element" hotspot_x="14" orientation="dyyy">
+    <names>
+        <name lang="es">Filtro piscina</name>
+        <name lang="ca">Filtre piscina</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" start="0" antialias="true" height="6" width="20" y="8" angle="-180"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="12" end2="none" x2="25.0171" antialias="false" y1="12" x1="28.0648" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" antialias="false" height="15" width="20" y="-4"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" start="-180" antialias="true" height="6" width="20" y="-8" angle="-180"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2" end2="none" x2="9" antialias="false" y1="-2" x1="-10" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" end2="none" x2="-8" antialias="false" y1="13" x1="-5" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" end2="none" x2="8" antialias="false" y1="17" x1="-8" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="13" end2="none" x2="5" antialias="false" y1="17" x1="8" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="16" antialias="false" height="13" width="7" y="-2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="18" antialias="false" height="2" width="3" y="-4"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" end2="none" x2="23" antialias="false" y1="-4" x1="19" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="1" end2="none" x2="16" antialias="false" y1="1" x1="10" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" end2="none" x2="15" antialias="false" y1="4" x1="10" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="27.8" antialias="false" y1="0" x1="23.1846" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9" end2="none" x2="28" antialias="false" y1="9" x1="23" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3" end2="none" x2="24.2959" antialias="false" y1="-3" x1="28.7628" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-4" end2="none" x2="27" antialias="false" y1="-3" x1="24" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2" end2="none" x2="27" antialias="false" y1="-3" x1="24" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="11" end2="none" x2="27" antialias="false" y1="12" x1="28" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13" end2="none" x2="27" antialias="false" y1="12" x1="28" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16" end2="none" x2="18" antialias="false" y1="12" x1="18" length1="1.5"/>
+        <input text="_" x="-10" tagg="label" size="4" y="-11.5" rotate="true"/>
+        <terminal x="29" y="0" orientation="e"/>
+        <terminal x="29" y="9" orientation="e"/>
+        <terminal x="18" y="15" orientation="s"/>
+    </description>
+</definition>

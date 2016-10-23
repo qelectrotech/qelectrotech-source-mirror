@@ -1,0 +1,29 @@
+<definition hotspot_x="22" hotspot_y="49" width="50" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Split Torre</name>
+        <name lang="es">Split Torre</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="15" end1="none" x1="-17" y1="15" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="12" end1="none" x1="-17" y1="12" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="3" end1="none" x1="-17" y1="3" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="9" end1="none" x1="-17" y1="9" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="5" end1="none" x1="-17" y1="5" length1="1.5"/>
+        <polygon y4="-30" x6="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-12" y2="-30" x5="9" y3="-30" y5="-33" x4="11" y6="-33" closed="false" x1="-14" y1="-32" x3="9"/>
+        <polygon y4="-33" x6="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-12" y2="-33" x5="9" y3="-33" y5="-36" x4="11" y6="-36" closed="false" x1="-14" y1="-35" x3="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-41" width="30" antialias="false" height="60" x="-17"/>
+        <polygon y4="13" x6="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-13" y2="-47" x5="13" y3="-47" y5="19" x4="17" y6="19" closed="false" x1="-17" y1="-41" x3="17"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13" y2="-41" end1="none" x1="17" y1="-47" length1="1.5"/>
+        <polygon y7="-31" x4="11" y3="-37" antialias="false" x3="11" y4="-31" x2="10" x1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-12" x7="-14" y5="-29" x5="10" closed="false" y8="-37" x9="-12" y2="-39" x8="-14" y6="-29" y1="-39" y9="-39"/>
+        <polygon y4="-36" x6="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-11" y2="-36" x5="10" y3="-36" y5="-39" x4="12" y6="-39" closed="false" x1="-13" y1="-38" x3="10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="13" y2="-2" y3="-3" closed="false" x1="-17" y1="-2" x3="13"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="12" y2="1" end1="none" x1="-17" y1="1" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="4" y="-5" antialias="true" height="1" x="7"/>
+        <polygon y4="-2" x6="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="15" y2="5" x5="15" y3="3" y5="0" x4="17" y6="0" closed="false" x1="15" y1="0" x3="17"/>
+        <input rotate="true" text="Ud_" tagg="label" y="-23" x="-12" size="4"/>
+        <terminal y="6" x="21" orientation="e"/>
+        <terminal y="13" x="21" orientation="e"/>
+        <terminal y="-4" x="19" orientation="e"/>
+    </description>
+</definition>

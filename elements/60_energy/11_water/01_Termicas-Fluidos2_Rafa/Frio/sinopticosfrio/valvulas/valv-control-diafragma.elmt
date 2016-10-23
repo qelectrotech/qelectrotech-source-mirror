@@ -1,0 +1,17 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="12" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valvula control diafragma</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0318443" x1="-11.3055" y2="0.0318443" x2="-6.34587"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0318443" x1="7.30108" y2="0.0318443" x2="11.9263"/>
+        <polygon x4="7" y5="-5" x5="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-6" y2="5" x2="-6" y3="-5" x3="7" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0.48" y2="-7" x2="0.48"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-5" y2="-7" x2="6"/>
+        <arc width="13" x="-6" y="-9" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="12" y="0.0814798" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-12" y="0.0814798" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

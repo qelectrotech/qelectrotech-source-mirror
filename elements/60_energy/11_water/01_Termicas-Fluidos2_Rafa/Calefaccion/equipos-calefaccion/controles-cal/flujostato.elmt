@@ -1,0 +1,21 @@
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="14" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Flujostato</name>
+        <name lang="ca">Flujostato</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.1791" x1="-2.65" y2="6.797" x2="2.3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.4149" x1="-3.2" y2="4.0328" x2="1.75"/>
+        <rect width="5.5" x="-3.2" y="2.6507" antialias="false" height="6.91045" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="9" x="-4.95" y="-0.71493" antialias="false" height="3.36567" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.1" x="7.35" y="-11.3713" antialias="false" height="2.20116" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.65" x="-0.55" y="9.5612" antialias="false" height="5.4388" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-2" y="15" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="15" x="-8" y="-12" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <rect width="17" x="-9" y="-7" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="0" y="20.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="11" y="-10" orientation="e"/>
+    </description>
+</definition>

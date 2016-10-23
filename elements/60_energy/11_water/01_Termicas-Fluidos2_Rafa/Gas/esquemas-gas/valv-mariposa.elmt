@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" hotspot_x="24" hotspot_y="10" version="0.5" width="50" height="20" orientation="dyyy">
+    <names>
+        <name lang="es">Válvula mariposa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x2="20.104" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" x1="10.904" length1="1.5"/>
+        <polygon x2="-10" x3="10" antialias="false" x4="10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" y2="-5" y3="5" x1="-10" y4="-5"/>
+        <line x2="-10" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" x1="-20" length1="1.5"/>
+        <circle y="-1" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black" diameter="2" x="-1"/>
+        <input y="-16" tagg="label" size="4" rotate="true" x="-4" text="_"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

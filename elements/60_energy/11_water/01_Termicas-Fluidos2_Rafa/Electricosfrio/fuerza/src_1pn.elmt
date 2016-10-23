@@ -1,0 +1,20 @@
+<definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="ru">Однополюсный + нейтраль</name>
+        <name lang="en">Single-pole source + neutral</name>
+        <name lang="fr">Source unipolaire + neutre</name>
+        <name lang="es">Fuente unipolo + neutro</name>
+        <name lang="cs">Jednopólový zdroj + nulový</name>
+        <name lang="pt">Fonte unipolar + neutro</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
+        <text x="-12" y="13" size="5" text="N"/>
+        <text x="-12" y="3" size="5" text="L"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="10" y="10" orientation="e"/>
+    </description>
+</definition>

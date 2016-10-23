@@ -1,0 +1,30 @@
+<definition width="60" version="0.4" hotspot_x="33" hotspot_y="37" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Llave paso20</name>
+        <name lang="ca">Aixeta pas 20</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-6" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="2.39781" y2="-4" x2="6.65242"/>
+        <rect width="2" x="-15" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="12" x="-27" y="-6" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-29" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="7" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="11" x="-8" y="-30.825" antialias="false" height="9.825" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.4214" x1="0" y2="-23.1054" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.4214" x1="-5" y2="-23.1054" x2="-5"/>
+        <polygon x4="3" y5="-21" x5="-9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21" x1="-9" y2="-13" x2="-23" y3="-13" x3="17" y4="-21"/>
+        <rect width="12" x="9" y="-6" antialias="false" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="21" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-13" y2="3" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-12.6022" y2="-4" x2="-8.34758"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-6" y2="-6" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="-6" y2="-4" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="0" y2="-4" x2="2"/>
+        <input x="-17" y="12" size="4" rotate="true" text="paso 20" tagg="label"/>
+        <terminal x="-28" y="0" orientation="w"/>
+        <terminal x="22" y="0" orientation="e"/>
+    </description>
+</definition>

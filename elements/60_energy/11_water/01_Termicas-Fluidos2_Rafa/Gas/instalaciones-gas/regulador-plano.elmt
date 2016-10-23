@@ -1,0 +1,24 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Regulador-2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="4" x="-2" y="8" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <ellipse width="14" x="-7" y="-7" antialias="true" height="13" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="18" x="-9" y="-9" antialias="true" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-2" y="-11" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-6" y="4" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="-8" y="-3" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="-3" y="-8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="7" y="-2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="6" y="3" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="1" y="6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <circle x="4" y="-7" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="1"/>
+        <rect width="4" x="-2" y="3" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="0" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="9" nameHidden="110" number="" name="" orientation="s"/>
+    </description>
+</definition>

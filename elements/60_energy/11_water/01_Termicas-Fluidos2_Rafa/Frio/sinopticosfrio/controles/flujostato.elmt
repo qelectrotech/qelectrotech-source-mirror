@@ -1,0 +1,15 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="24" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Flujostato</name>
+        <name lang="ca">Fuxostat</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="12" x="-6" y="-17.2754" antialias="false" height="8.4348" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-5" y="-12" size="5" text="Q"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.8406" x1="0" y2="-0.4058" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-3" y2="-11" x2="4"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

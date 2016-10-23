@@ -1,0 +1,20 @@
+<definition width="110" version="0.4" hotspot_x="53" hotspot_y="28" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Conductos impulsión</name>
+        <name lang="ca">Conducte impulsió</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="-1" y5="27" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="0" y2="27" x2="0" y3="23" x3="1" y4="23"/>
+        <polygon x4="34" y5="14" x5="38" y6="4" x6="38" y7="4" x7="38" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="48" y2="14" x2="48" y3="18" x3="52" y4="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="5.94655" y2="4" x2="38.0579"/>
+        <polygon x4="42" y5="26" x5="43" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="43" y2="26" x2="43" y3="22" x3="44" y4="22"/>
+        <polygon x4="-9" y5="14" x5="-5" y6="4" x6="-5" y7="4" x7="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="5" y2="14" x2="5" y3="18" x3="9" y4="18"/>
+        <polygon x4="-48" y5="14" x5="-44" y6="4" x6="-44" y7="4" x7="-44" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="-34" y2="14" x2="-34" y3="18" x3="-30" y4="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-34.1999" y2="4" x2="-5.78339"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-44" x2="-39" x3="-8" x4="-5" antialias="false" x5="-5" x6="5" x7="5" x8="8" x9="43" closed="false" y1="3" y10="3" y2="-3.9" y3="-3.9" y4="-8.5" y5="-20" x10="48" y6="-20" y7="-8.5" y8="-3.9" y9="-3.9"/>
+        <polygon x4="-41" y5="27" x5="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="-40" y2="27" x2="-40" y3="23" x3="-39" y4="23"/>
+        <input x="-16" y="-1" size="4" rotate="true" text="Impulsión_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition width="40" version="0.4" hotspot_x="14" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Entrada agua fría</name>
+        <name lang="ca">Entrada aigua freda</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0751242" x1="24.48" y2="0.0751242" x2="4.8"/>
+        <polygon x4="4.8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.95726" x1="4.8" y2="9" x2="4.8" y3="0.0751242" x3="-4.8" y4="-8.84975"/>
+        <input x="7" y="7.5" size="6" rotate="true" text="Agua fría" tagg="label"/>
+        <terminal x="-9.6" y="-0.0159467" orientation="w"/>
+    </description>
+</definition>

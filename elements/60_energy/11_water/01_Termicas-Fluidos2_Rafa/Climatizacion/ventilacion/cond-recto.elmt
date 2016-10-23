@@ -1,0 +1,19 @@
+<definition width="60" version="0.4" hotspot_x="26" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Conducto rectangular</name>
+        <name lang="ca">Conducte rectangular</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2" x1="-17.62" y2="2" x2="-7.9"/>
+        <polygon x4="-7.9" y5="-8" x5="-17.62" y6="-6" x6="-17.62" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-17.62" y2="2" x2="-17.62" y3="7" x3="-7.9" y4="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-7.11501" y2="-3" x2="23.6096"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-16.9006" y2="-8" x2="11.714"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-8.0371" y2="7" x2="23.5252"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="24.46" y2="-3" x2="24.46"/>
+        <input x="2" y="9" size="4" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="12.58" y2="-3" x2="24.46"/>
+        <terminal x="-19" y="0" orientation="w"/>
+        <terminal x="27" y="0" orientation="e"/>
+    </description>
+</definition>

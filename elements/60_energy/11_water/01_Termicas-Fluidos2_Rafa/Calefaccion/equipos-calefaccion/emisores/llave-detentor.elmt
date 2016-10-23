@@ -1,0 +1,21 @@
+<definition hotspot_x="15" hotspot_y="9" width="30" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Calu detentor</name>
+        <name lang="es">Llave detentor</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-5.94641" y2="1.57239" end1="none" x1="-8.3884" y1="1.57239" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.883951" width="3.4" antialias="false" height="2.51168" x="-5.94641"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.07009" width="7.65" antialias="false" height="10.884" x="-2.54641"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.61699" width="3.05249" antialias="false" height="6.91917" x="-8.99893"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-5.94641" y2="-1.88719" end1="none" x1="-8.3884" y1="-1.88719" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.18613" width="2.4" antialias="false" height="2.67445" x="5.15359"/>
+        <polygon y4="2.46496" x6="3.74359" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="2.72359" antialias="false" x2="0.17359" y2="-1.74922" y7="-1.74922" x5="2.72359" y3="0.35787" y5="2.46496" x4="0.17359" y6="0.35787" closed="false" x1="2.72359" y1="-1.74922" x3="-0.84641"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" antialias="true" x="-2" diameter="7"/>
+        <input rotate="true" text="_" tagg="label" y="-11" x="-4" size="2"/>
+        <terminal y="0" x="6" orientation="e"/>
+        <terminal y="0" x="-7" orientation="w"/>
+    </description>
+</definition>

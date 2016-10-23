@@ -1,0 +1,12 @@
+<definition height="30" link_type="simple" hotspot_x="9" version="0.5" hotspot_y="12" type="element" width="20" orientation="dyyy">
+    <names>
+        <name lang="es">Estufa móvil</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon y1="-7" y2="9" y3="9" x1="-4" y4="1" x2="-4" y5="-7" x3="6" y6="-7" closed="false" x4="6" x5="1" x6="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-6" size="4" rotate="true" y="-12" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

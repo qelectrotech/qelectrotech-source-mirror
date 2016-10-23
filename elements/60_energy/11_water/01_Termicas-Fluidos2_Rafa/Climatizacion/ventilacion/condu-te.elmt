@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="21" hotspot_y="9" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Conducto Te</name>
+        <name lang="ca">Conducte Te</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse width="5.6" x="-12" y="-5.26667" antialias="true" height="10.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.6" x="3.1" y="-5.26667" antialias="true" height="10.25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.8167" x1="3.1758" y2="4.98333" x2="3.1758"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.98333" x1="3.0609" y2="4.98333" x2="5.61739"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.26667" x1="-9.9276" y2="-5.26667" x2="4.9049"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.8167" x1="-4.881" y2="4.98333" x2="-4.881"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.98333" x1="-8.70178" y2="4.98333" x2="-5.63969"/>
+        <arc width="8.2" x="-5.4" y="1.93333" antialias="true" height="5.41667" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-180" angle="-180"/>
+        <ellipse width="8" x="-5" y="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-9" y="-9" size="4" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="-13" y="0" orientation="w"/>
+        <terminal x="-1" y="15" orientation="s"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

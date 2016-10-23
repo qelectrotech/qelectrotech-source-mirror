@@ -1,0 +1,23 @@
+<definition height="60" hotspot_x="37" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="25" version="0.5">
+    <names>
+        <name lang="ca">Cambra-1</name>
+        <name lang="es">Cámara-1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse style="line-style:dotted;line-weight:normal;filling:none;color:black" height="5.2" y="-9.57" antialias="true" width="4.8" x="-21.7385"/>
+        <line x1="24.5077" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-12.235" x2="24.5077" y2="30.99" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-16.785" height="47.775" antialias="false" width="74.7688" x="-35.3073"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.41" height="34.125" antialias="false" width="27.4152" x="-10.3844"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="10.515" height="2.275" antialias="false" width="4.98458" x="12.0462"/>
+        <line x1="-35.3073" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-12.235" x2="39.4615" y2="-12.235" length1="1.5" end1="none"/>
+        <line x1="-15.3689" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-12.235" x2="-15.3689" y2="30.99" length1="1.5" end1="none"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="10.515" height="2.275" antialias="false" width="4.98458" x="7.0617"/>
+        <input y="-22.57" size="5" rotate="true" x="-3.73854" text="ºC_" tagg="label"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:black" y="-10.87" height="7.8" antialias="false" width="16.8" x="-31.3385"/>
+        <ellipse style="line-style:dotted;line-weight:normal;filling:none;color:black" height="5.2" y="-9.57" antialias="true" width="4.8" x="-30.1385"/>
+        <terminal y="-19.97" x="-30.1385" orientation="n"/>
+        <terminal y="-20" x="-20" orientation="n"/>
+    </description>
+</definition>

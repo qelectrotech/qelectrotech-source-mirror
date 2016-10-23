@@ -1,0 +1,21 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="16" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="pt">Motor monofásico</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="fr">Moteur monophasé</name>
+        <name lang="es">Motor monofásico</name>
+        <name lang="cs">Jednofázový motor</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-6" y="21" size="18" text="M"/>
+        <circle x="-10.25" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="6.75" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-9.75" y2="7" x2="-9.75"/>
+        <input x="19" y="16" size="6" rotate="true" text="_W" tagg="label"/>
+        <terminal x="-9.75" y="-10" orientation="n"/>
+        <terminal x="20" y="-10" orientation="n"/>
+    </description>
+</definition>

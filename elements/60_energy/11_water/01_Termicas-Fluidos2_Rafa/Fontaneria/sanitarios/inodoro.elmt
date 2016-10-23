@@ -1,0 +1,26 @@
+<definition width="40" version="0.4" hotspot_x="24" hotspot_y="22" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Inodoro tanque</name>
+        <name lang="ca">Inodor1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.76787" x1="9.32154" y2="-1.68875" x2="9.32154"/>
+        <ellipse width="0.493507" x="1.91889" y="-1.68875" antialias="true" height="0.439875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29.6105" x="-16.8344" y="-14.885" antialias="false" height="10.1171" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.44157" x="-4.00321" y="-11.366" antialias="true" height="3.519" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.46754" x="-19.302" y="-11.366" antialias="false" height="3.519" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="23.6883" x="-13.8733" y="1.39038" antialias="true" height="29.0318" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.76787" x1="-12.8864" y2="-1.68875" x2="-12.8864"/>
+        <arc width="31.091" x="-17.3279" y="-7.40712" antialias="true" height="40.4685" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-270"/>
+        <ellipse width="9.37663" x="-6.96426" y="7.10875" antialias="true" height="7.038" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.64762" x1="-16.8344" y2="-4.76787" x2="-15.8475"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.76787" x1="11.2955" y2="-5.64762" x2="12.7761"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.6065" x1="-4.00321" y2="-9.6065" x2="-0.0551465"/>
+        <ellipse width="0.493507" x="-6.96426" y="-1.68875" antialias="true" height="0.439875" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-15.6441" y="-9.71" size="4" text="1/2"/>
+        <input x="-2.32767" y="18.7525" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-19.5281" y="-9.71" orientation="w"/>
+    </description>
+</definition>

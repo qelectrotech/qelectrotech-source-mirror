@@ -1,0 +1,23 @@
+<definition width="50" hotspot_y="26" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Te Cu 18-15-18</name>
+        <name lang="ca">T Cu 18-15-18</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="7.65" y="-8.24137" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10.44" antialias="false" height="16.2414"/>
+        <rect width="7.65" y="-8.24137" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17.61" antialias="false" height="16.2414"/>
+        <rect width="14.32" y="-18.6718" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.92" antialias="false" height="6.8109"/>
+        <line y1="5.38042" end1="none" x1="-9.96" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.93" antialias="false" y2="5.38042" length2="1.5"/>
+        <line y1="-6.14571" end1="none" x1="-9.55644" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.76469" antialias="false" y2="-6.14571" length2="1.5"/>
+        <line y1="-6.14571" end1="none" x1="6.25356" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10.0453" antialias="false" y2="-6.14571" length2="1.5"/>
+        <line y1="-3.00222" end1="none" x1="-2.31" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.37" antialias="false" y2="-6.14571" length2="1.5"/>
+        <line y1="-3.00222" end1="none" x1="2.79" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.85" antialias="false" y2="-6.14571" length2="1.5"/>
+        <input size="4" text="18-15-18" y="12" tagg="label" x="-14" rotate="true"/>
+        <line y1="-11" end1="none" x1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5" antialias="false" y2="-6" length2="1.5"/>
+        <line y1="-11" end1="none" x1="6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6" antialias="false" y2="-7" length2="1.5"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

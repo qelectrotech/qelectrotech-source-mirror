@@ -1,0 +1,29 @@
+<definition width="60" version="0.4" hotspot_x="9" hotspot_y="35" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Переключатель 2-х позиционный</name>
+        <name lang="en">Switch 2 positions</name>
+        <name lang="es">Termostato</name>
+        <name lang="cs">Dvoupolohový spínač</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-6" x1="6.66197" y2="-6" x2="30.3662"/>
+        <input x="29" y="-8" size="6" rotate="true" text="T" tagg="none"/>
+        <rect width="53" x="-6" y="-20" antialias="false" height="26" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-8" x1="6.66197" y2="-8" x2="30.3662"/>
+        <rect width="13" x="30" y="-13" antialias="false" height="11" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="22" y="-7.33333" size="9" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="9" y2="1" x2="2"/>
+        <circle x="18.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="8.5" y="-16.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="-1.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-30" x2="10"/>
+        <input x="46" y="2.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="20" y="10" orientation="s"/>
+        <terminal x="10" y="-30" orientation="n"/>
+    </description>
+</definition>

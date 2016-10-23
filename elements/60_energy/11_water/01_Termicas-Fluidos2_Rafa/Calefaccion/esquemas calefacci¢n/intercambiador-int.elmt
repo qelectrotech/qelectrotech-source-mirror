@@ -1,0 +1,14 @@
+<definition width="70" version="0.4" hotspot_x="34" hotspot_y="14" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Resistencia calor</name>
+        <name lang="ca">Resistència calor</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-27" x2="-24" x3="-21" x4="29" antialias="false" x5="31" x6="29" x7="-21" x8="-23" x9="-21" closed="false" y1="-7" y10="-3" y2="-7" y11="-1" y3="-9" y4="-9" y12="0" y5="-7" x10="29" y13="0" y6="-6" x11="31" y14="-2" y7="-6" x12="29" y15="-2" y8="-5" x13="-21" y9="-3" x14="-23" x15="-27"/>
+        <input x="-11" y="-16" size="4" rotate="true" text="_W" tagg="label"/>
+        <terminal x="-27" y="-7" orientation="w"/>
+        <terminal x="-27" y="-2" orientation="w"/>
+    </description>
+</definition>

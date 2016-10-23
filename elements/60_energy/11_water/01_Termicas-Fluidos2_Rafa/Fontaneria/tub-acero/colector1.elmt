@@ -1,0 +1,32 @@
+<definition width="170" height="60" link_type="simple" hotspot_x="63" hotspot_y="24" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Colector-1</name>
+        <name lang="ca">Col.lector-1</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="10" height="7" antialias="false" y="20" x="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" height="5" antialias="false" y="3" x="94" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" height="7" antialias="false" y="-17" x="74" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" height="7" antialias="false" y="-17" x="35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="135" height="30" antialias="false" y="-10" x="-47" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" height="7" antialias="false" y="-17" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" height="2" antialias="false" y="-19" x="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" height="2" antialias="false" y="-19" x="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" height="2" antialias="false" y="-19" x="68" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" height="30" antialias="true" y="-10" angle="-180" start="90" x="84" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" height="2" antialias="false" y="27" x="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" height="30" antialias="true" y="-10" angle="-180" start="-90" x="-52" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="5" text="Ø_" tagg="label" size="6" x="-20" rotate="true"/>
+        <rect width="10" height="7" antialias="false" y="-17" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" height="2" antialias="false" y="-19" x="-51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" height="5" antialias="false" y="2" x="-57" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-20" orientation="n" x="79"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="30" orientation="s" x="20"/>
+        <terminal y="6" orientation="e" x="100"/>
+        <terminal y="-20" orientation="n" x="40"/>
+        <terminal y="5" orientation="w" x="-58"/>
+        <terminal y="-20" orientation="n" x="-40"/>
+    </description>
+</definition>

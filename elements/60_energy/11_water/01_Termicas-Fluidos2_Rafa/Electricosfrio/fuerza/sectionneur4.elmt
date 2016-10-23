@@ -1,0 +1,37 @@
+<definition width="40" version="0.4" hotspot_x="16" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Выключатель-разъеденитель</name>
+        <name lang="pt">Seccionador</name>
+        <name lang="en">Disconnecting switch</name>
+        <name lang="fr">Sectionneur</name>
+        <name lang="es">Contactor</name>
+        <name lang="cs">Odpojovač</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="4" x="-2" y="-13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="4" x="8" y="-13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="4" x="18" y="-13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7" x1="-10" y2="-14" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x1="-10" y2="4" x2="-10"/>
+        <rect width="8" x="-14" y="-7" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-5" x1="19" y2="-5" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="20" y2="5" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="5" x2="0"/>
+        <polygon x4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-4" y2="-3" x2="0" y3="1" x3="0" y4="1"/>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="6" y2="-3" x2="10" y3="1" x3="10" y4="1"/>
+        <polygon x4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="16" y2="-3" x2="20" y3="1" x3="20" y4="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="0" y2="-9" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-9" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="20" y2="-9" x2="20"/>
+        <input x="32" y="-4" size="6" rotate="true" text="KM_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="20" y="-21" orientation="n"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="10" y="-21" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,43 @@
+<definition width="30" hotspot_y="33" hotspot_x="12" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Aixeta cable 1/2M</name>
+        <name lang="ca">Llave latiguillo 1/2 M</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-22.2839" end1="none" x1="-2.4746" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-2.4746" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="-22.2839" end1="none" x1="1.68602" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="1.68602" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="-16.5807" end1="none" x1="0.0217706" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0.0217706" antialias="false" y2="-17.6177" length2="1.5"/>
+        <line y1="-22.2839" end1="none" x1="0.853894" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="0.853894" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="-22.2839" end1="none" x1="0.0217706" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="0.0217706" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="-22.2839" end1="none" x1="-1.64248" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-1.64248" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="-16.5807" end1="none" x1="4.39042" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="4.39042" antialias="false" y2="-17.6177" length2="1.5"/>
+        <line y1="-8.38881" end1="none" x1="10.0905" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="9.59119" antialias="false" y2="-14.3513" length2="1.5"/>
+        <line y1="-16.5807" end1="none" x1="2.9342" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="2.9342" antialias="false" y2="-17.6177" length2="1.5"/>
+        <line y1="-8.38881" end1="none" x1="8.09337" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7.5941" antialias="false" y2="-14.3513" length2="1.5"/>
+        <line y1="-8.38881" end1="none" x1="9.09192" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="8.59265" antialias="false" y2="-14.3513" length2="1.5"/>
+        <line y1="-16.5807" end1="none" x1="-2.89066" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.89066" antialias="false" y2="-17.6177" length2="1.5"/>
+        <line y1="-22.2839" end1="none" x1="-0.810353" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-0.810353" antialias="false" y2="-25.9133" length2="1.5"/>
+        <line y1="4.15832" end1="none" x1="-4.13885" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.35027" antialias="false" y2="3.12136" length2="1.5"/>
+        <line y1="7.26912" end1="none" x1="-4.13885" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.35027" antialias="false" y2="6.23216" length2="1.5"/>
+        <rect width="7.90518" y="2.60288" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.13885" antialias="false" height="6.74018"/>
+        <line y1="5.71376" end1="none" x1="-3.72279" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.76633" antialias="false" y2="4.6768" length2="1.5"/>
+        <line y1="8.82456" end1="none" x1="-4.13885" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="3.35027" antialias="false" y2="7.7876" length2="1.5"/>
+        <rect width="11.2337" y="-18.6546" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.8031" antialias="false" height="18.1466"/>
+        <line y1="2.60288" end1="none" x1="-4.13885" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.8031" antialias="false" y2="-0.508" length2="1.5"/>
+        <line y1="2.60288" end1="none" x1="3.76633" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.43058" antialias="false" y2="-0.508" length2="1.5"/>
+        <rect width="4.16062" y="-19.6916" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.05854" antialias="false" height="1.03695"/>
+        <rect width="7.07305" y="-26.9502" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.72279" antialias="false" height="5.70323"/>
+        <arc width="3.3285" angle="-180" y="-27.9872" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.64248" start="-180" antialias="true" height="2.0739"/>
+        <line y1="-22.2839" end1="none" x1="2.51814" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2.51814" antialias="false" y2="-25.9133" length2="1.5"/>
+        <rect width="3.49492" y="-14.3513" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.09482" antialias="false" height="5.96246"/>
+        <line y1="-14.3513" end1="none" x1="7.09482" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.597" antialias="false" y2="-15.5438" length2="1.5"/>
+        <line y1="-8.38881" end1="none" x1="7.09482" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.597" antialias="false" y2="-7.19631" length2="1.5"/>
+        <rect width="7.90518" y="-21.247" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.13885" antialias="false" height="1.55542"/>
+        <line y1="-16.5807" end1="none" x1="-4.55491" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4.55491" antialias="false" y2="-17.6177" length2="1.5"/>
+        <input size="4" text="latig.1/2M-3/8M" y="-37.62" tagg="label" x="-23.2777" rotate="true"/>
+        <terminal y="-10" orientation="e" x="10"/>
+        <terminal y="10" orientation="s" x="0"/>
+    </description>
+</definition>

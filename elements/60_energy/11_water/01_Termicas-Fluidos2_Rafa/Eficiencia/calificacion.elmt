@@ -1,0 +1,25 @@
+<definition width="100" version="0.4" hotspot_x="13" hotspot_y="88" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Calificacion energética</name>
+        <name lang="ca">Qualificació energètica</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="76.5" y5="-5" x5="71.0333" y6="-5" x6="-5.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-5" x1="-5.5" y2="5" x2="-5.5" y3="5" x3="71.0333" y4="0"/>
+        <polygon x4="61.4363" y5="-19" x5="56.82" y6="-19" x6="-5.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:red" y1="-19" x1="-5.5" y2="-9" x2="-5.5" y3="-9" x3="57.9741" y4="-14"/>
+        <polygon x4="44.3074" y5="-31" x5="38.2333" y6="-31" x6="-5.5" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="-31" x1="-5.5" y2="-21" x2="-5.5" y3="-21" x3="39.4481" y4="-26"/>
+        <polygon x4="33.3741" y5="-44" x5="27.3" y6="-44" x6="-5.5" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="-44" x1="-5.5" y2="-34" x2="-5.5" y3="-34" x3="27.3" y4="-39"/>
+        <polygon x4="22.5622" y5="-56" x5="17.217" y6="-56" x6="-5.5" antialias="false" style="line-style:normal;line-weight:normal;filling:green;color:red" y1="-56" x1="-5.5" y2="-46" x2="-5.5" y3="-46" x3="15.8807" y4="-51"/>
+        <polygon x4="16.1844" y5="-68" x5="8.9563" y6="-68" x6="-5.5" antialias="false" style="line-style:normal;line-weight:normal;filling:green;color:green" y1="-68" x1="-5.5" y2="-58" x2="-5.5" y3="-58" x3="8.9563" y4="-63"/>
+        <text x="-0.640741" y="-10" size="5" color="white" text="F"/>
+        <text x="-0.640741" y="3" size="5" color="white" text="G"/>
+        <text x="-0.640741" y="-23" size="5" color="white" text="E"/>
+        <polygon x4="8.9563" y5="-80" x5="1.72815" y6="-80" x6="-5.5" antialias="false" style="line-style:normal;line-weight:normal;filling:green;color:green" y1="-80" x1="-5.5" y2="-70" x2="-5.5" y3="-70" x3="1.72815" y4="-75"/>
+        <text x="-0.640741" y="-36" size="5" color="white" text="D"/>
+        <text x="-0.640741" y="-48" size="5" color="white" text="C"/>
+        <text x="-0.640741" y="-60" size="5" color="white" text="B"/>
+        <text x="-1.85556" y="-67" size="5" color="white" text="A"/>
+        <rect width="95" x="-11" y="-86" antialias="false" height="96" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="38" y="-71" size="5" rotate="true" text="cal:_" tagg="label"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition width="50" version="0.4" hotspot_x="28" hotspot_y="32" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Boya niv.aceite</name>
+        <name lang="ca">Suro niv-oli</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1972" x1="-10.1255" y2="11.7053" x2="-10.1255"/>
+        <arc width="2.19497" x="-13.1567" y="-12.0232" antialias="true" height="6.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="2.19497" x="14.2282" y="6.45111" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="7.42109" x="-19.5326" y="5.11137" antialias="true" height="6.72501" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="2.19497" x="14.2282" y="-12.0232" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="7.42109" x="-20.5778" y="-10.7881" antialias="true" height="5.83428" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="2.19497" x="-12.1115" y="6.45111" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.0232" x1="-12.7863" y2="-12.0232" x2="5.03528"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.8783" x1="-10.5666" y2="11.8783" x2="14.6438"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1972" x1="13.9146" y2="11.7053" x2="13.9146"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.66465" x1="-17" y2="4.93387" x2="-17"/>
+        <input x="-3" y="15.5" size="5" rotate="true" text="_" tagg="label"/>
+        <rect width="4" x="-21" y="-11.2362" antialias="false" height="22.7476" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="10.4" x="-4.05" y="-4.76494" antialias="true" height="9.80412" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="14.3" x="-6" y="-6.72577" antialias="true" height="13.7258" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-4" y2="-1" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="16.48" y2="9" x2="16.48"/>
+        <rect width="15" x="2" y="-23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="13" y5="-20" x5="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="6" y2="-12" x2="6" y3="-10" x3="10" y4="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="13" y2="-12" x2="15"/>
+        <terminal x="10" y="-24" orientation="n"/>
+        <terminal x="-22" y="-0.674793" orientation="w"/>
+    </description>
+</definition>

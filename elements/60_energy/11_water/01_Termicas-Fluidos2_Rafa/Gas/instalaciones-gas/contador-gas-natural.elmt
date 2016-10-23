@@ -1,0 +1,25 @@
+<definition link_type="simple" type="element" hotspot_x="20" hotspot_y="16" version="0.5" width="40" height="40" orientation="dyyy">
+    <names>
+        <name lang="es">Contador gas natural</name>
+        <name lang="ca">Contador gas natural</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect y="-6.2812" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="2.625" height="1.79878" x="7.475"/>
+        <line x2="5.1625" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.31434" y2="2.11312" x1="5.1625" length1="1.5"/>
+        <line x2="4.375" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.31434" y2="2.11312" x1="4.375" length1="1.5"/>
+        <line x2="2.8" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.31434" y2="2.11312" x1="2.8" length1="1.5"/>
+        <rect y="6.90988" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="28.35" height="1.19919" x="-14"/>
+        <rect y="-8.67957" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.725" height="2.39838" x="6.425"/>
+        <polygon x2="-12.95" y5="-2.68363" x3="-11.375" y6="6.90988" antialias="false" x4="11.725" y7="6.90988" x5="13.3" x6="13.3" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-12.95" closed="false" y1="6.90988" y2="-2.68363" y3="-4.48241" x1="-12.95" y4="-4.48241"/>
+        <polygon x2="-12.95" y5="17.7026" x3="-11.9" y6="8.10907" antialias="false" x4="12.25" y7="8.10907" x5="13.3" x6="13.3" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-12.95" closed="false" y1="8.10907" y2="18.3022" y3="19.5014" x1="-12.95" y4="19.5014"/>
+        <rect y="-6.2812" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="2.625" height="1.79878" x="-9.75"/>
+        <rect y="-8.67957" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4.725" height="2.39838" x="-10.8"/>
+        <rect y="-0.884849" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8.925" height="5.99594" x="-1.925"/>
+        <rect y="0.31434" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.775" height="1.79878" x="-0.35"/>
+        <line x2="1.225" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.31434" y2="2.11312" x1="1.225" length1="1.5"/>
+        <input y="22.7294" tagg="label" size="4" rotate="true" x="-6.5" text="_"/>
+        <terminal y="-10" orientation="n" x="-10"/>
+        <terminal y="-10" orientation="n" x="10"/>
+    </description>
+</definition>

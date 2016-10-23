@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="17" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Inversor botellas</name>
+        <name lang="ca">Inversor ampolles</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="2" x="9" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-11" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4"/>
+        <ellipse width="16" x="-8" y="-7" antialias="true" height="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="18" x="-9" y="-8" antialias="true" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-2" y="-10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-2" y2="-7" x2="0" y3="0" x3="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-2" x2="0"/>
+        <input x="-6" y="11" size="3" rotate="true" text="inv" tagg="label"/>
+        <terminal x="0" y="-12" orientation="n"/>
+        <terminal x="-13" y="0" orientation="w"/>
+        <terminal x="13" y="0" orientation="e"/>
+    </description>
+</definition>

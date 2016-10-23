@@ -1,0 +1,23 @@
+<definition width="50" version="0.4" hotspot_x="27" hotspot_y="15" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Mando-termostato pared</name>
+        <name lang="ca">Comandament termostat pared</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="7" x="-11" y="13" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7" x="10" y="13" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7" x="-1" y="13" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="43" x="-23" y="-9" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8.05781" x1="-23.8656" y2="22" x2="-23.8656" y3="22" x3="18" y4="22"/>
+        <rect width="21" x="-16" y="-5" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="13" y5="-3" x5="9" y6="0" x6="9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="9" y2="0" x2="18" y3="-3" x3="18" y4="-5"/>
+        <polygon x4="13" y5="6" x5="9" y6="3" x6="9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="9" y2="3" x2="18" y3="6" x3="18" y4="8"/>
+        <rect width="7" x="-21" y="13" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-11.6859" x2="-13.3719" x3="-13.3719" x4="-11.6859" antialias="false" x5="-10" x6="-10" x7="-11.6859" x8="-11.6859" closed="false" y1="-1.92656" y2="-0.94125" y3="0.536719" y4="1.52203" y5="0.536719" y6="-0.94125" y7="-1.92656" y8="-1.92656"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-6" x2="-6" x3="-2" x4="-1" antialias="false" x5="-6" x6="-6" x7="-2" x8="-2" x9="-2" closed="false" y1="-1" y2="-2" y3="-2" y4="-1" y5="3" y6="4" y7="4" y8="3" y9="3"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="4" x1="2" y2="-2" x2="2" y3="0" x3="1" y4="0"/>
+        <input x="-22" y="25" size="4" rotate="true" text="Termostato_" tagg="label"/>
+        <terminal x="-20" y="-10" orientation="n"/>
+    </description>
+</definition>

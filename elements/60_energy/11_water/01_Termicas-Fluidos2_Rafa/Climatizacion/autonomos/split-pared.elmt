@@ -1,0 +1,22 @@
+<definition hotspot_x="30" hotspot_y="11" width="80" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Split paret-E</name>
+        <name lang="es">Split pared-I</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="34.2059" y2="-1.1994" end1="none" x1="-20.8131" y1="-1.1994" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="34.2059" y2="-0.1994" end1="none" x1="-20.8131" y1="-0.1994" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.6202" width="61.6" antialias="false" height="14.2075" x="-24.1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8.45618" width="50.4" antialias="false" height="2.13112" x="-20.9"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="7.74581" width="2.4" antialias="false" height="1.42075" x="32.7"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="34.2059" y2="-2.19944" end1="none" x1="-20.8131" y1="-2.19944" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="6.4" y="2.77319" antialias="true" height="2.13112" x="3.1"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="37.5" y2="6.32506" end1="none" x1="-24.1" y1="6.32506" length1="1.5"/>
+        <input rotate="true" text="Ud_" tagg="label" y="-9.9709" x="-5.7" size="4"/>
+        <terminal y="0" x="40" orientation="e"/>
+        <terminal y="10" x="40" orientation="e"/>
+        <terminal y="12" x="-22" orientation="s"/>
+        <terminal y="-5" x="26" orientation="n"/>
+    </description>
+</definition>

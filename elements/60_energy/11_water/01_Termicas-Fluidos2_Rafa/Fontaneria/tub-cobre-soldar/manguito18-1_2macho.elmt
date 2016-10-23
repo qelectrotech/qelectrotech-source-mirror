@@ -1,0 +1,31 @@
+<definition width="50" hotspot_y="14" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Manguito 18-1/2"M</name>
+        <name lang="ca">Maneguet 18-1/2"M</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="5.67818" end1="none" x1="-6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="2.8" antialias="false" y2="5.67818" length2="1.5"/>
+        <line y1="3.00265" end1="none" x1="-6.35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8" antialias="false" y2="-5.32746" length2="1.5"/>
+        <arc width="2.85" angle="-180" y="5.67818" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.1" start="-90" antialias="true" height="6.32182"/>
+        <line y1="3.79267" end1="none" x1="-8.55" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10.2" antialias="false" y2="-5.37113" length2="1.5"/>
+        <arc width="4.75" angle="-180" y="7.78546" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.75" start="-180" antialias="true" height="4.21454"/>
+        <line y1="3.79267" end1="none" x1="-13.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-15.15" antialias="false" y2="-5.37113" length2="1.5"/>
+        <line y1="3.79267" end1="none" x1="-11.3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-12.95" antialias="false" y2="-5.37113" length2="1.5"/>
+        <rect width="11.55" y="-5.37113" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17.9" antialias="false" height="9.1638"/>
+        <line y1="3.79267" end1="none" x1="-15.7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-17.35" antialias="false" y2="-5.37113" length2="1.5"/>
+        <rect width="6.783" y="-8.21672" style="line-style:dashed;line-weight:normal;filling:none;color:red" x="11.3025" antialias="false" height="16.816"/>
+        <line y1="-9.51029" end1="none" x1="18.0884" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.0888" antialias="false" y2="-9.51029" length2="1.5"/>
+        <line y1="9.8928" end1="none" x1="18.0855" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18.0855" antialias="false" y2="-9.51029" length2="1.5"/>
+        <line y1="9.8928" end1="none" x1="8.88162" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="17.3087" antialias="false" y2="9.8928" length2="1.5"/>
+        <line y1="-6.16775" end1="none" x1="9.0653" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="9.0653" antialias="false" y2="6.49334" length2="1.5"/>
+        <rect width="9.75" y="-11.18" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" antialias="false" height="23.18"/>
+        <line y1="-4.85818" end1="none" x1="-3.85714" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="3.5619" antialias="false" y2="-4.85818" length2="1.5"/>
+        <arc width="2.85" angle="-180" y="-11.18" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.1" start="-90" antialias="true" height="6.32182"/>
+        <arc width="2.9" angle="-180" y="-4.85818" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.15" start="-90" antialias="true" height="10.5363"/>
+        <arc width="4.75" angle="-180" y="-11.18" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.75" start="0" antialias="true" height="4.21454"/>
+        <input size="4" text="18-1/2&quot;M" y="19" tagg="label" x="-12" rotate="true"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

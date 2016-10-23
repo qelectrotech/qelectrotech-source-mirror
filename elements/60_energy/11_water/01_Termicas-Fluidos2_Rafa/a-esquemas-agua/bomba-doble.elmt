@@ -1,0 +1,34 @@
+<definition link_type="simple" ic="true" height="50" width="50" version="0.4" hotspot_y="25" type="element" hotspot_x="24" orientation="dyyy">
+    <names>
+        <name lang="ar">مضخة</name>
+        <name lang="el">Αντλία</name>
+        <name lang="en">Pump</name>
+        <name lang="it">Pompa</name>
+        <name lang="fr">Pompe</name>
+        <name lang="pl">Pompa</name>
+        <name lang="es">Bomba doble</name>
+        <name lang="nl">Pomp</name>
+        <name lang="ca">Bomba doble</name>
+        <name lang="cs">Pumpa</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10.2435" end2="none" x2="12.4" antialias="false" y1="-9.30654" x1="12.4" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10.3018" end2="none" x2="10.2317" antialias="false" y1="10.3018" x1="12.5727" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.043455" end2="none" x2="12.4" antialias="false" y1="0.043455" x1="18" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10.0982" end2="none" x2="10.2317" antialias="false" y1="-10.0982" x1="12.5727" length1="1.5"/>
+        <polygon y4="-10.4188" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-17.7964" y3="-3.04119" x3="-3.43819" x2="-3.43819" antialias="true" x4="8.74432" y1="-10.4188" x1="8.74432"/>
+        <polygon y4="9.9812" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="2.60358" y3="17.3588" x3="-3.43819" x2="-3.43819" antialias="true" x4="8.74432" y1="9.9812" x1="8.74432"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.86264" antialias="true" height="19.7271" width="18.9708" y="-20.2823"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.86264" antialias="true" height="19.7271" width="18.9708" y="0.11766"/>
+        <input text="_" x="-9.128" tagg="none" size="3" y="-6.4253" rotate="true"/>
+        <input text="_" x="-9.128" tagg="label" size="3" y="-26.8253" rotate="true"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10.1565" end2="none" x2="-10.9074" antialias="false" y1="-10.1565" x1="-9.01694" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10.2435" end2="none" x2="-10.9074" antialias="false" y1="10.2435" x1="-9.01694" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9.39345" end2="none" x2="-10.8" antialias="false" y1="-10.1565" x1="-10.8" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.043455" end2="none" x2="-16.4" antialias="false" y1="0.043455" x1="-10.8" length1="1.5"/>
+        <terminal x="-16.4" y="0.043455" orientation="w"/>
+        <terminal x="18" y="0.043455" orientation="e"/>
+    </description>
+</definition>

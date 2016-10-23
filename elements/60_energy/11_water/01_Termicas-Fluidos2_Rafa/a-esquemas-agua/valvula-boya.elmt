@@ -1,0 +1,22 @@
+<definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="19" type="element" hotspot_x="21" orientation="dyyy">
+    <names>
+        <name lang="es">Válvula de Boya</name>
+        <name lang="ca">Vaàlvula de boia</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-8" end2="none" x2="25" antialias="false" y1="-11" x1="9" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" x="6" diameter="4" antialias="true" y="-14"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-9" end2="none" x2="25" antialias="false" y1="-12" x1="10" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" x="19" start="-10" antialias="true" height="7" width="6" y="-12" angle="-180"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-8" end2="none" x2="25" antialias="false" y1="-9" x1="25" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" x="7" diameter="2" antialias="true" y="-13"/>
+        <polygon y5="-5" y4="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" y3="-5" x3="11" x2="-9" antialias="false" x4="11" closed="false" y1="-5" x1="-9" x5="-9"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" end2="none" x2="8" antialias="false" y1="0" x1="1" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="-15" antialias="false" y1="0" x1="-9" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="19" antialias="false" y1="0" x1="11" length1="1.5"/>
+        <input text="_" x="-3" tagg="label" size="4" y="-14.5" rotate="true"/>
+        <terminal x="-15" y="0" orientation="w"/>
+    </description>
+</definition>

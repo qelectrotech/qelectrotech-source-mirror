@@ -1,0 +1,23 @@
+<definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="19" orientation="dyyy" width="60" hotspot_x="27">
+    <names>
+        <name lang="ca">Reducció exèntrica brides</name>
+        <name lang="es">Reducción excéntrica bridas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.2025" y="-17.4536" width="2.5047" antialias="false"/>
+        <arc height="3.26186" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.1695" y="-3.69022" angle="-90" start="0" width="3.09251" antialias="true"/>
+        <arc height="3.26186" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.1695" y="9.35726" angle="-90" start="90" width="3.09251" antialias="true"/>
+        <arc height="4.93156" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="-12.8873" angle="-90" start="-90" width="4.4982" antialias="true"/>
+        <rect height="20.6584" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20.2231" y="-6.40846" width="2.40949" antialias="false"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="9.0308" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <line x2="18.6083" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="11.3545" y1="-0.483243" y2="-0.483243"/>
+        <input tagg="label" x="-15" rotate="true" text="reducc" y="20" size="4"/>
+        <line x2="-8.83378" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-15.7662" y1="-8.03873" y2="-8.03873"/>
+        <line x2="17.7857" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-14.7857" y1="9" y2="9"/>
+        <line x2="12" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-9" y1="-8" y2="-4.44089e-16"/>
+        <terminal x="-20" orientation="w" y="0"/>
+        <terminal x="24.5256" orientation="e" y="4.00737"/>
+    </description>
+</definition>

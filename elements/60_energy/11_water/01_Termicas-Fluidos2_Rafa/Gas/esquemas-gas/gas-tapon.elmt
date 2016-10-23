@@ -1,0 +1,13 @@
+<definition height="20" link_type="simple" hotspot_x="16" version="0.5" hotspot_y="10" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Tapón gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-0.134828" y2="-0.134828" x1="-9.6451" x2="8.81558" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <polygon y1="-8.26966" y2="-8.26966" y3="8" x1="5.6" y4="8" x2="9.2" x3="9.2" closed="false" x4="5.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-4" size="4" rotate="true" y="-12" text="_" tagg="label"/>
+        <terminal x="-10" y="-0.134828" orientation="w"/>
+    </description>
+</definition>

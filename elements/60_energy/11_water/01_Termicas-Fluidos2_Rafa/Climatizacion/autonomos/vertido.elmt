@@ -1,0 +1,21 @@
+<definition type="element" orientation="dyyy" hotspot_y="25" height="60" hotspot_x="14" link_type="simple" width="30" version="0.5">
+    <names>
+        <name lang="ca">Abocament desguàs</name>
+        <name lang="es">Vertido desague</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon y2="7.5" x4="0.518064" y6="6.6" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="7.95" y4="7.95" closed="false" x7="0.0190144" antialias="false" y5="7.5" x6="1.01711" x2="-0.979084" x5="1.01711" x1="0.0190144" y1="5.25" x3="-0.480035" y7="5.25"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.10364" x="-9.17183" antialias="true" width="19.1718" y="13.33"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.87954" x="-7.63805" antialias="true" start="0" angle="-180" width="16.1043" y="26.5205"/>
+        <line y2="14.8818" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x2="10" x1="8.46627" y1="28.8482" end1="none" length2="1.5" end2="none"/>
+        <line y2="28.0723" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x2="-7.63805" x1="-9.17183" y1="14.8818" end1="none" length2="1.5" end2="none"/>
+        <polygon y2="11.5" x4="0.518064" y6="10.6" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="11.95" y4="11.95" closed="false" x7="0.0190144" antialias="false" y5="11.5" x6="1.01711" x2="-0.979084" x5="1.01711" x1="0.0190144" y1="9.25" x3="-0.480035" y7="9.25"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" x="-2.28404" antialias="true" width="5.38462" y="-19"/>
+        <line y2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x2="-2.28404" x1="-2.28404" y1="-16" end1="none" length2="1.5" end2="none"/>
+        <line y2="0.92973" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x2="3.10059" x1="3.10059" y1="-15.9351" end1="none" length2="1.5" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" x="-2.28404" antialias="true" start="0" angle="-180" width="5.38462" y="-1"/>
+        <input rotate="true" x="4" size="2" y="12.5" tagg="label" text="_"/>
+        <terminal orientation="n" x="0.201174" y="-20"/>
+    </description>
+</definition>

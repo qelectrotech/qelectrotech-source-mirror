@@ -1,0 +1,21 @@
+<definition width="50" version="0.4" hotspot_x="29" hotspot_y="22" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Canalón de pluviales</name>
+        <name lang="ca">Canaló de pluvials</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.616" x1="-7" y2="8.416" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-23" y2="9" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-25" y2="5" x2="7"/>
+        <arc width="10" x="-25" y="-16" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-100" angle="-80"/>
+        <arc width="10" x="7" y="0" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="10" x="-25" y="-16" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-15" y2="5" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-13" y2="8" x2="-13"/>
+        <arc width="6" x="-13" y="6" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <polygon x4="-7" y5="1" x5="-7" y6="1" x6="-7" y7="1" x7="-7" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-2" x1="-13" y2="-2" x2="-10" y3="-1" x3="-8" y4="1"/>
+        <input x="-4" y="-10.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10" y="10" orientation="s"/>
+    </description>
+</definition>

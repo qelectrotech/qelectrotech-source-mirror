@@ -1,0 +1,23 @@
+<definition link_type="simple" width="60" height="50" hotspot_x="27" hotspot_y="30" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Válv bola bridas</name>
+        <name lang="ca">Vàlv bola brides</name>
+    </names>
+    <informations/>
+    <description>
+        <arc width="19.734" height="15.0374" antialias="true" y="-15.2109" angle="-180" start="-180" x="-10.091" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.9601" height="25.3261" antialias="false" y="-12.0451" x="-19.8903" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.46675" height="15.0374" antialias="false" y="-7.29648" x="9.643" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.9601" height="25.3261" antialias="false" y="-12.0451" x="16.1097" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="19.734" height="15.0374" antialias="true" y="0.617909" angle="-180" start="0" x="-10.091" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.63363" height="3.95721" antialias="false" y="-19.1681" x="-4.5408" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30.2177" height="2.37432" antialias="false" y="-24.7082" x="-3.9241" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.46675" height="3.16576" antialias="false" y="-22.3339" x="-1.4574" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-2.0741" length2="1.5" antialias="false" x2="-2.0741" end1="none" y2="-15.5151" end2="none" length1="1.5" y1="-18.6808" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="2.24275" length2="1.5" antialias="false" x2="2.24275" end1="none" y2="-15.5855" end2="none" length1="1.5" y1="-19.1031" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="21.7058" text="Bola" tagg="label" size="4" x="-10.175" rotate="true"/>
+        <rect width="7" height="15" antialias="false" y="-7" x="-17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

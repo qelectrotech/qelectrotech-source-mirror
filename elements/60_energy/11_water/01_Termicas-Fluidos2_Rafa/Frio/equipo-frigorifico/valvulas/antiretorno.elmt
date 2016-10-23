@@ -1,0 +1,28 @@
+<definition width="90" version="0.4" hotspot_x="45" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. antiretorno</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1972" x1="-10.1255" y2="11.7053" x2="-10.1255"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.9111" x1="20" y2="5.9037" x2="20"/>
+        <arc width="2.19497" x="-13.1567" y="-12.0232" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="2.19497" x="14.2282" y="6.45111" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="7.42109" x="-19.5326" y="6.12219" antialias="true" height="8.27781" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="2.19497" x="14.2282" y="-12.0232" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="5.1216" x="16.4232" y="5.73845" antialias="true" height="6.13983" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="5.1216" x="16.4232" y="-11.6395" antialias="true" height="5.04343" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="7.42109" x="-20.5778" y="-13.4485" antialias="true" height="7.18141" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="2.19497" x="-12.1115" y="6.45111" antialias="true" height="5.42717" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.0232" x1="-12.3792" y2="-12.0232" x2="14.5942"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.8783" x1="-10.5666" y2="11.8783" x2="14.6438"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="19.1407" x2="30.6382" x3="32.7287" x4="37.9548" antialias="false" x5="37.9548" x6="32.7287" x7="30.6382" x8="19.1407" closed="false" y1="-6.34142" y2="-6.34142" y3="-7.55233" y4="-7.55233" y5="6.9786" y6="6.9786" y7="5.76769" y8="5.76769"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-16.3969" x2="-29.9848" x3="-32.0752" x4="-39.3918" antialias="false" x5="-39.3918" x6="-32.0752" x7="-28.9396" x8="-16.3969" closed="false" y1="-6.34161" y2="-6.34161" y3="-7.48533" y4="-7.48533" y5="7.38305" y6="7.38305" y7="6.23933" y8="6.23933"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1972" x1="13.9146" y2="11.7053" x2="13.9146"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.291738" x1="6.59805" y2="-0.291738" x2="-2.80897"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.91111" x1="-17" y2="5.9037" x2="-17"/>
+        <input x="-5" y="9.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="-38" y="0" orientation="w"/>
+        <terminal x="36.9096" y="-0.291738" orientation="e"/>
+    </description>
+</definition>

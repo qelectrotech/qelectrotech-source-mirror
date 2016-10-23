@@ -1,0 +1,26 @@
+<definition hotspot_x="14" hotspot_y="21" width="30" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Termostat ambient</name>
+        <name lang="es">Termostato ambiente</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13" y2="-6" end1="none" x1="9" y1="-6" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13" y2="-8" end1="none" x1="9" y1="-8" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13" y2="-10" end1="none" x1="9" y1="-10" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14" width="24" antialias="false" height="24" x="-11"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="true" x="-7" diameter="14"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="1" y2="-2" end1="none" x1="-4" y1="-6" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="2" antialias="true" x="-8" diameter="1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="true" x="-9" diameter="1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="true" x="-7" diameter="1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" antialias="true" x="4" diameter="1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" antialias="true" x="-2" diameter="1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="6" width="7" antialias="false" height="2" x="2"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8" y2="7" end1="none" x1="6" y1="7" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13" y2="-12" end1="none" x1="9" y1="-12" length1="1.5"/>
+        <input rotate="true" text="ºC" tagg="label" y="-18" x="-8" size="4"/>
+        <terminal y="10" x="0" orientation="s"/>
+    </description>
+</definition>

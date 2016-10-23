@@ -1,0 +1,25 @@
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="26" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Cortina de aire</name>
+        <name lang="ca">Cortina aire</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.33636" x1="22.25" y2="-5.57273" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17.3545" x1="-28.75" y2="8.53636" x2="5.25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.8" x1="16.3" y2="-15.2727" x2="2.7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-28.75" y2="11.1818" x2="5.25"/>
+        <polygon x4="-16" y5="17.3545" x5="-28.75" y6="20" x6="-28.75" y7="20" x7="-32.15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-33" y2="-6.45455" x2="-33" y3="-6.45455" x3="-16" y4="11.1818"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.1818" x1="-16" y2="2.36364" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.45455" x1="-16" y2="-15.2727" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.45455" x1="-33" y2="-15.2727" x2="1"/>
+        <polygon x4="5.25" y5="11.1818" x5="5.25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15.2727" x1="1" y2="-15.2727" x2="18" y3="2.36364" x3="18" y4="8.53636"/>
+        <ellipse width="6.8" x="24.8" y="-15.2727" antialias="true" height="10.5818" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.92727" x1="27.1578" y2="-2.92727" x2="18.1774"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.8" x1="15.9092" y2="-18.8" x2="26.9234"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.8" x1="26.5" y2="-15.2727" x2="14.6"/>
+        <arc width="11.9" x="21.4" y="-18.8" antialias="true" height="15.8727" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-240"/>
+        <input x="-36" y="-20.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="29" y="-20" orientation="n"/>
+    </description>
+</definition>

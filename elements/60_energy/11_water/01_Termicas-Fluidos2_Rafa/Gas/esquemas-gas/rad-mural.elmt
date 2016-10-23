@@ -1,0 +1,14 @@
+<definition height="20" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="14" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Radiador mural</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="10" x="-10" y="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <circle x="-2" y="-8" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-7" y2="-4" y3="-4" x1="2" y4="-4" x2="-1" y5="-5" x3="1" y6="-7" x4="2" x5="3" x6="2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-5" size="4" rotate="true" y="-17" text="_" tagg="label"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition width="70" version="0.4" hotspot_x="33" hotspot_y="45" height="90" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Captador solar plano-2,5</name>
+        <name lang="ca">Captador solar pla-2,5</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="51.6" x="-24" y="-42.9288" antialias="false" height="84.7476" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="4.8" y2="-37.6958" x2="4.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="13.8" y2="-37.6958" x2="13.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-13.2" y2="-37.6958" x2="-13.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="21.6" y2="-37.6958" x2="21.6"/>
+        <rect width="3.6" x="27.6" y="38.6838" antialias="false" height="3.135" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.6" x="-27.6" y="-42.9288" antialias="false" height="4.61421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.6" x="-27.6" y="38.6838" antialias="false" height="3.135" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-4.2" y2="-37.6958" x2="-4.2"/>
+        <rect width="46.8" x="-21.6" y="-40.0065" antialias="false" height="78.9029" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="0" y2="-37.6958" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-9" y2="-37.6958" x2="-9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="9" y2="-37.6958" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="18" y2="-37.6958" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-18" y2="-37.6958" x2="-18"/>
+        <rect width="3.6" x="27.6" y="-42.9288" antialias="false" height="4.61421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-3" y="-47" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-27.6" y="40.6088" orientation="w"/>
+        <terminal x="31.2" y="40.6088" orientation="e"/>
+        <terminal x="-27.6" y="-40.8876" orientation="w"/>
+        <terminal x="31.2" y="-40.8876" orientation="e"/>
+    </description>
+</definition>

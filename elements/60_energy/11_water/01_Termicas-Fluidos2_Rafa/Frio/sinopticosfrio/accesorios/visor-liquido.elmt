@@ -1,0 +1,17 @@
+<definition width="50" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Visor de líquido</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0538826" x1="21.7269" y2="-0.0538826" x2="27.65"/>
+        <rect width="22.75" x="-0.7" y="-5.79239" antialias="false" height="11.7924" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="12.25" x="4.55" y="-5.79239" antialias="true" height="11.7924" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0538826" x1="-7.7" y2="-0.0538826" x2="-0.7"/>
+        <text x="8" y="3" size="5" text="V"/>
+        <input x="6" y="-7.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="27.3" y="-0.0538826" orientation="e"/>
+        <terminal x="-7.7" y="-0.0538826" orientation="w"/>
+    </description>
+</definition>

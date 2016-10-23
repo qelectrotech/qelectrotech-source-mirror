@@ -1,0 +1,24 @@
+<definition width="40" version="0.4" hotspot_x="13" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Лампа</name>
+        <name lang="pt">Lâmpada</name>
+        <name lang="en">Light</name>
+        <name lang="fr">Lampe</name>
+        <name lang="es">Lámpara roja</name>
+        <name lang="cs">Světlo</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:red;color:red" x1="-6.61784" x2="-8.37626" x3="-8.37626" x4="-7.49705" antialias="false" x5="-4.85942" x6="-0.463379" x7="3.05345" x8="5.69108" x9="7.4495" y1="-5.31158" y10="-0.849266" y2="-2.3367" y11="-3.82414" y3="0.638173" y4="3.61305" y12="-6.0553" y5="5.84421" x10="7.4495" y13="-6.79902" y6="7.33165" x11="6.57029" y14="-6.79902" y7="6.58793" x12="4.81187" y15="-5.31158" y8="4.35677" x13="1.29504" y9="2.12561" x14="-3.10101" x15="-6.61784"/>
+        <ellipse width="17.5842" x="-9.25546" y="-7.54274" antialias="true" height="14.8744" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.33389" x1="5.71746" y2="5.1228" x2="-6.64422"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.33389" x1="-6.64422" y2="5.1228" x2="5.71746"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.9799" x1="-0.463379" y2="-7.54274" x2="-0.463379"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.33165" x1="-0.463379" y2="14.7688" x2="-0.463379"/>
+        <input x="15" y="3" size="9" text="" tagg="none"/>
+        <input x="5.69108" y="3.24119" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-0.463379" y="-15.7237" orientation="n"/>
+        <terminal x="-0.463379" y="15.5126" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,23 @@
+<definition width="60" hotspot_y="28" hotspot_x="34" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
+    <names>
+        <name lang="es">Codo soldar22</name>
+        <name lang="ca">Colze soldar 22</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.64288" angle="-90" y="-2.03444" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.5028" start="0" antialias="true" height="3.18723"/>
+        <arc width="3.64288" angle="-90" y="9.12085" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.6467" start="90" antialias="true" height="3.18723"/>
+        <arc width="17.3865" angle="-90" y="-6.82549" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.7863" start="0" antialias="true" height="17.1274"/>
+        <arc width="3.64288" angle="-90" y="23.4634" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.6467" start="0" antialias="true" height="3.18723"/>
+        <arc width="48.0198" angle="-90" y="-21.6172" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-29.517" start="0" antialias="true" height="46.7109"/>
+        <input size="4" text="22" y="14" tagg="label" x="-5" rotate="true"/>
+        <arc width="3.64288" angle="-90" y="-2.03444" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.711575" start="-90" antialias="true" height="3.18723"/>
+        <polygon y1="-0.440827" x3="21.1457" y4="-0.440827" x4="21.1457" x1="-0.711575" closed="false" y3="-10.0025" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-0.711575" antialias="false" y2="-10.0025"/>
+        <line y1="1.15279" end1="none" x1="1.17338" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18.434" antialias="false" y2="1.15279" length2="1.5"/>
+        <line y1="11.2187" end1="none" x1="-6.87136" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-6.87136" antialias="false" y2="25.1537" length2="1.5"/>
+        <polygon y1="9.12085" x3="-17.6013" y4="26.6506" x4="-9.32202" x1="-9.32202" closed="false" y3="26.6506" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-17.6013" antialias="false" y2="9.12085"/>
+        <terminal y="20" orientation="w" x="-20"/>
+        <terminal y="-10" orientation="n" x="10"/>
+    </description>
+</definition>

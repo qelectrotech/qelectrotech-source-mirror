@@ -1,0 +1,22 @@
+<definition width="30" hotspot_y="19" height="40" type="element" version="0.5" orientation="dyyy" hotspot_x="11" link_type="simple">
+    <names>
+        <name lang="ca">Brida a rosca M</name>
+        <name lang="es">Brida a rosca M</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x1="3.724" y1="7.46345" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-6.81558" length1="1.5" end2="none" length2="1.5" x2="2.72575" end1="none"/>
+        <line x1="6.72225" y1="9.3783" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="9.3783" length1="1.5" end2="none" length2="1.5" x2="9.0515" end1="none"/>
+        <line x1="6.72225" y1="-11.8358" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-11.8358" length1="1.5" end2="none" length2="1.5" x2="9.0515" end1="none"/>
+        <line x1="6.72225" y1="12.7457" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="12.7457" length1="1.5" end2="none" length2="1.5" x2="9.0515" end1="none"/>
+        <line x1="2.393" y1="7.46345" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-6.81558" length1="1.5" end2="none" length2="1.5" x2="1.39475" end1="none"/>
+        <line x1="-0.60175" y1="7.46345" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-6.81558" length1="1.5" end2="none" length2="1.5" x2="-1.6" end1="none"/>
+        <line x1="0.72925" y1="7.46345" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-6.81558" length1="1.5" end2="none" length2="1.5" x2="-0.269" end1="none"/>
+        <rect width="9.32225" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.95312" x="-2.6" height="14.9831"/>
+        <rect width="2.662" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13.3764" x="6.72225" height="27.3764"/>
+        <line x1="7.19771" y1="-8.46849" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-8.46849" length1="1.5" end2="none" length2="1.5" x2="8.61975" end1="none"/>
+        <input y="20" rotate="true" x="-2" size="4" tagg="label" text="Brida M Ø_"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="0" x="-4" orientation="w"/>
+    </description>
+</definition>

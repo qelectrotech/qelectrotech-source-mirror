@@ -1,0 +1,36 @@
+<definition width="50" version="0.4" hotspot_x="29" hotspot_y="37" height="80" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Inter acumulador Vivienda</name>
+        <name lang="ca">Inter acumulador Vivenda</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6" x="-25" y="-21" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="35.8288" x1="11.4" y2="35.4249" x2="15.18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="35.8288" x1="-16.18" y2="35.4249" x2="-12.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="34.2133" x1="-9.88" y2="37.4441" x2="-9.88"/>
+        <rect width="37.0986" x="-18.842" y="-29.4691" antialias="false" height="59.4061" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="37.0986" x="-18.3338" y="-32.5048" antialias="true" height="6.5043" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36.2326" x1="-9.04" y2="37.848" x2="-9.88"/>
+        <rect width="4.2" x="-16.18" y="32.598" antialias="false" height="5.25" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <arc width="37.0986" x="-18.842" y="26.9013" antialias="true" height="6.5043" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36.2326" x1="-10.72" y2="37.848" x2="-9.88"/>
+        <rect width="4.2" x="11.4" y="32.598" antialias="false" height="5.25" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.4441" x1="-16.18" y2="37.0403" x2="-12.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.4441" x1="11.4" y2="37.0403" x2="15.18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="36.6364" x1="-16.18" y2="36.2326" x2="-12.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="36.6364" x1="11.4" y2="36.2326" x2="15.18"/>
+        <ellipse width="1.68" x="-2.52" y="30.9201" antialias="true" height="1.51442" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="34.2133" x1="8.88" y2="37.4441" x2="8.88"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33.8095" x1="8.88" y2="35.4249" x2="8.04"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33.8095" x1="8.88" y2="35.4249" x2="9.72"/>
+        <rect width="6" x="-25" y="12" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:dashed;line-weight:normal;filling:none;color:red" x1="-18" x2="18" x3="-18" x4="18" antialias="false" x5="-18" x6="-18" x7="-18" x8="-18" closed="false" y1="-20" y2="-12" y3="-4" y4="8" y5="14" y6="14" y7="14" y8="14"/>
+        <input x="-11" y="20" size="6" rotate="true" text="_L" tagg="label"/>
+        <terminal x="13.5" y="37.4441" orientation="s"/>
+        <terminal x="-14.08" y="37.0403" orientation="s"/>
+        <terminal x="-25" y="14" orientation="w"/>
+        <terminal x="-25" y="-19" orientation="w"/>
+    </description>
+</definition>

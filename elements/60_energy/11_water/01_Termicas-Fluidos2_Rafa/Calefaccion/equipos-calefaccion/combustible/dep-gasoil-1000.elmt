@@ -1,0 +1,23 @@
+<definition hotspot_x="30" hotspot_y="55" width="60" type="element" version="0.5" height="100" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Dipòsit gasoil 1000L</name>
+        <name lang="es">Depósito gasoil 1000L</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-49" width="2" antialias="false" height="3" x="-11"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-6" y2="-40" end1="none" x1="-6" y1="-45" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-14" y2="-40" end1="none" x1="-14" y1="-45" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-10" y2="-40" end1="none" x1="-10" y1="-45" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-4" y2="-40" end1="none" x1="-4" y1="-45" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-31" width="47" antialias="false" height="69" x="-23"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="8" antialias="false" height="9" x="-14"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-45" width="16" antialias="false" height="5" x="-18"/>
+        <polygon y7="-34.6475" x4="-27.1145" y3="-31.6625" antialias="false" x3="-27.1145" y4="41.9676" x2="-23.9925" x1="-14.6266" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="27" x7="23.878" y5="41.9676" x5="27" closed="false" y8="-34.6475" y2="-34.6475" x8="-6.30124" y6="-32.6575" y1="-34.6475"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-16" y2="-40" end1="none" x1="-16" y1="-45" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:brun;color:black" y="-16" width="47" antialias="false" height="53" x="-23"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-10" y2="31" end1="none" x1="-10" y1="-40" length1="1.5"/>
+        <input rotate="true" text="1000 L." tagg="label" y="-22" x="-10" size="4"/>
+        <terminal y="-50" x="-10" orientation="n"/>
+    </description>
+</definition>

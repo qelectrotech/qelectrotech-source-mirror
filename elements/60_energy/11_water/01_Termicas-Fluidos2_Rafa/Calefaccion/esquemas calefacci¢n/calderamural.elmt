@@ -1,0 +1,17 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="42" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Caldera Mural ACS</name>
+        <name lang="ca">Caldera Mural ACS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="24.75" x="-13" y="-30.091" antialias="false" height="27.5096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.091" x1="-6.8125" y2="-36.9684" x2="-0.625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36.9684" x1="1.85" y2="-30.091" x2="6.8"/>
+        <rect width="6.1875" x="-4.75" y="-14.2041" antialias="false" height="2.75096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.3" x="-3.1" y="-8.87355" antialias="true" height="3.3697" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-9" y="-37.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-9.2875" y="0.169453" orientation="s"/>
+        <terminal x="6.8" y="0.169453" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition width="30" version="0.4" hotspot_x="6" hotspot_y="6" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Presostato dif. aceite</name>
+        <name lang="ca">Pres.dif.Oli</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="26.425" x="-4" y="-0.7076" antialias="false" height="10.9086" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="1" y="6" size="5" text="PdA"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.201" x1="9.45" y2="19.5513" x2="9.45"/>
+        <terminal x="9.45" y="17.9929" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition width="60" version="0.4" hotspot_x="40" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Caldera pié Mixta Acum</name>
+        <name lang="ca">Caldera peu Mixta Acum</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="11" x="-1" y="-17" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <text x="-22" y="-10" size="4" text="Cal"/>
+        <rect width="35.75" x="-23" y="-18.091" antialias="false" height="27.5096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.1875" x="-26.75" y="-4.2041" antialias="false" height="4.75096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-32" x2="-27" x3="-27" x4="-31" antialias="false" x5="-34" x6="-34" x7="-33" x8="-31" closed="false" y1="3" y2="3" y3="-6" y4="-6" y5="-3" y6="3" y7="3" y8="3"/>
+        <rect width="1" x="13" y="-9" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-1" y="7" size="4" text="ACS"/>
+        <arc width="11" x="-1" y="-2" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-1" y2="-1" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="10" y2="-1" x2="10"/>
+        <input x="-17" y="18.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+        <terminal x="-10" y="-20" orientation="n"/>
+        <terminal x="-29" y="4" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="9" y="-20" orientation="n"/>
+    </description>
+</definition>

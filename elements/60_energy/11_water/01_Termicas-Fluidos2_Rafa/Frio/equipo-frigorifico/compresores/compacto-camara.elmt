@@ -1,0 +1,25 @@
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="25" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Ud compacta càmara</name>
+        <name lang="ca">Ud compacta cámara</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="1" y2="26.9148" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="3.5" y2="26.9148" x2="3.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="5" y2="26.9148" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="-2" y2="26.9148" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="2" y2="26.9148" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="-1" y2="26.9148" x2="-1"/>
+        <rect width="12.4824" x="-5.70957" y="-10" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-16.9438" y5="30" x5="-5.70957" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="6.77285" y2="-20" x2="-4.46133" y3="-20" x3="-16.9438" y4="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-16.9438" y2="-10" x2="-5.70957"/>
+        <polygon x4="23" y5="2" x5="6.77285" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-18" x1="-1.96484" y2="-18" x2="11.7658" y3="-8" x3="23" y4="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="21.9485" y2="-8" x2="6.59129"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.92131" x1="-4" y2="26.9148" x2="-4"/>
+        <rect width="10" x="-4" y="-3" antialias="false" height="31" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x4="-7" y5="-10" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-10" y2="-2" x2="-10" y3="1" x3="-7" y4="-7"/>
+        <input x="6" y="14.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-8" y="-11" orientation="n"/>
+    </description>
+</definition>

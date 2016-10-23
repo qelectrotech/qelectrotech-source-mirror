@@ -1,0 +1,45 @@
+<definition width="80" version="0.4" hotspot_x="35" hotspot_y="64" height="110" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خزّان 1000ل</name>
+        <name lang="en">Storage tank 1000L</name>
+        <name lang="it">Serbatoio 1000L</name>
+        <name lang="fr">Ballon Stockage 1000L</name>
+        <name lang="pl">Zasobnik 1000L</name>
+        <name lang="es">Inter-acumulador 1000L</name>
+        <name lang="ca">Inter-acumulador 1000L</name>
+        <name lang="nl">Opslagtank 1000L</name>
+        <name lang="cs">Zásobník 1000L</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="2.6" x="-29.4" y="19.5239" antialias="false" height="2.41594" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="20.7319" x1="-22.8159" y2="20.7319" x2="23.159"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.8468" x1="39.5" y2="31.1311" x2="39.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="13.4841" x1="-10.7025" y2="13.4841" x2="22.7652"/>
+        <arc width="4.55" x="21.95" y="17.108" antialias="true" height="3.62391" style="line-style:normal;line-weight:normal;filling:none;color:red" start="90" angle="-180"/>
+        <arc width="4.55" x="-13.8" y="13.4841" antialias="true" height="3.62391" style="line-style:normal;line-weight:normal;filling:none;color:red" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="17.108" x1="-10.7025" y2="17.108" x2="22.7652"/>
+        <arc width="58.5" x="-19" y="23.2175" antialias="true" height="14.61" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <polygon x4="11.225" y5="38.0303" x5="11.225" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="38.0303" x1="9.275" y2="39.2478" x2="9.275" y3="39.2478" x3="11.225" y4="38.0303"/>
+        <arc width="58.5" x="-19" y="-58.5575" antialias="true" height="14.61" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <input x="-21" y="-25" size="6" rotate="true" text="Interac.1000L" tagg="label"/>
+        <ellipse width="1.95" x="9.275" y="-39.8893" antialias="true" height="1.62332" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.68125" x="8.90937" y="-56.427" antialias="true" height="2.23207" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="29.75" y5="35.5953" x5="29.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33.5661" x1="37.0625" y2="39.6536" x2="37.0625" y3="39.6536" x3="29.75" y4="35.5953"/>
+        <polygon x4="-9.25" y5="35.5953" x5="-9.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33.5661" x1="-16.5625" y2="39.6536" x2="-16.5625" y3="39.6536" x3="-9.25" y4="35.5953"/>
+        <ellipse width="1.95" x="9.275" y="-11.4812" antialias="true" height="1.62332" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-51.0545" x1="-19" y2="30.9235" x2="-19"/>
+        <rect width="2.6" x="-26.8" y="6.23616" antialias="false" height="18.1196" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.6" x="-29.4" y="9.25618" antialias="false" height="2.41594" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.2" x="-24.2" y="8.04817" antialias="false" height="14.4957" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="9.86006" x1="-22.8297" y2="9.86006" x2="22.5238"/>
+        <arc width="5.2" x="21.3" y="9.86006" antialias="true" height="3.62391" style="line-style:normal;line-weight:normal;filling:none;color:red" start="90" angle="-180"/>
+        <terminal x="10.25" y="-55.311" orientation="n"/>
+        <terminal x="10.25" y="39.2478" orientation="s"/>
+        <terminal x="10.25" y="-39.0777" orientation="e"/>
+        <terminal x="10.25" y="-10.6695" orientation="e"/>
+        <terminal x="-29.4" y="10.4641" orientation="w"/>
+        <terminal x="-29.4" y="20.7319" orientation="w"/>
+    </description>
+</definition>

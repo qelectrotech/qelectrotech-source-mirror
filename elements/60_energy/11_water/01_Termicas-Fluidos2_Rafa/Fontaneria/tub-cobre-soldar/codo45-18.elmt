@@ -1,0 +1,20 @@
+<definition width="50" hotspot_y="21" hotspot_x="25" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Codo 45º  18</name>
+        <name lang="ca">Colze 45º 18</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="2.67551" angle="-90" y="3.5746" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.83364" start="90" antialias="true" height="2.3809"/>
+        <arc width="12.7695" angle="-40" y="-8.33751" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.874" start="-55" antialias="true" height="12.7943"/>
+        <arc width="2.67551" angle="-90" y="14.2886" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.83364" start="0" antialias="true" height="2.3809"/>
+        <arc width="35.2681" angle="-40" y="-19.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19.4273" start="-50" antialias="true" height="34.8936"/>
+        <input size="4" text="18" y="18.1275" tagg="label" x="5.2" rotate="true"/>
+        <line y1="5.83127" end1="none" x1="-2.06084" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.06084" antialias="false" y2="15.6135" length2="1.5"/>
+        <polygon y1="3.5746" x3="-9.94144" y4="16.6695" x4="-3.86073" x1="-3.86073" closed="false" y3="16.6695" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.94144" antialias="false" y2="3.5746"/>
+        <polygon y7="2.21254" y1="2.21254" x3="11.2802" y4="6.97434" x5="7.63181" x4="17.361" x7="1.5511" x1="1.5511" y6="1.0221" y5="-3.73969" closed="false" y3="11.7361" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.0641" x6="1.5511" antialias="false" y2="11.7361"/>
+        <terminal y="9.69076" orientation="w" x="-10.9144"/>
+        <terminal y="0" orientation="n" x="10"/>
+    </description>
+</definition>

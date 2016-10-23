@@ -1,0 +1,23 @@
+<definition link_type="simple" hotspot_x="14" orientation="dyyy" hotspot_y="19" version="0.5" type="element" height="50" width="30">
+    <names>
+        <name lang="es">Colector 2 salidas</name>
+        <name lang="ca">Col.lector 2 eixides</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc antialias="true" x="-4" y="19.8637" height="3.83519" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="9" angle="-180"/>
+        <line x1="5" length1="1.5" x2="5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.2151" y2="-10.5902"/>
+        <rect antialias="false" x="5" y="-11.5849" height="3.83519" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <rect antialias="false" x="5" y="18.7955" height="3.83519" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <arc antialias="true" x="-4" y="-13.1189" height="3.83519" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="9" angle="-180"/>
+        <line x1="-4" length1="1.5" x2="-4" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.1844" y2="-11.3289"/>
+        <rect antialias="false" x="-8" y="8.45479" height="3.83519" style="line-style:normal;line-weight:normal;filling:none;color:black" width="4"/>
+        <input text="_" x="-13" tagg="label" y="17.9461" rotate="true" size="4"/>
+        <terminal orientation="w" x="-10" y="10"/>
+        <terminal orientation="e" x="10" y="-10.0508"/>
+        <terminal orientation="s" x="0" y="24.4659"/>
+        <terminal orientation="e" x="10" y="20.3296"/>
+        <terminal orientation="n" x="0" y="-13.1189"/>
+    </description>
+</definition>

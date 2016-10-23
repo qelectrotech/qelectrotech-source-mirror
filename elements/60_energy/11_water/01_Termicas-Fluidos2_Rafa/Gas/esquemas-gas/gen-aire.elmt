@@ -1,0 +1,16 @@
+<definition height="40" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="24" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Generador aire</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="3" y2="3" x1="8" x2="13" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="simple"/>
+        <polygon y1="-20" y2="-13" y3="-8" x1="-4" y4="4" x2="-4" y5="6" x3="-8" closed="false" x4="-8" x5="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-20" y2="-13" y3="-8" x1="4" y4="6" x2="4" x3="8" closed="false" x4="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-5" y2="-5" y3="3" x1="-8" y4="3" x2="6" x3="-6" closed="false" x4="8" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y1="-5" y2="-5" x1="-13" x2="-8" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="simple"/>
+        <input x="-5" size="4" rotate="true" y="-26" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

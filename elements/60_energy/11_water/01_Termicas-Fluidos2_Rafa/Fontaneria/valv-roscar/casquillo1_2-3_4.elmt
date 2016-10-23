@@ -1,0 +1,24 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Casquillo 1/2-3/4</name>
+        <name lang="ca">Casquet 1/2-3/4</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.1963" x1="14.2781" y2="9.42181" x2="10.8559"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.1963" x1="-2.48862" y2="9.42181" x2="-5.91088"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="4.26325" y2="5.42182" x2="1.98175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="-2.23675" y2="5.42182" x2="-4.51825"/>
+        <rect width="21.0113" x="-6.322" y="-10.1963" antialias="false" height="19.6182" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20.5075" x="-6.322" y="-6.41647" antialias="false" height="11.8383" style="line-style:normal;line-weight:thin;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.1963" x1="6.95588" y2="9.42181" x2="3.53363"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.9702" x1="3.53363" y2="9.19567" x2="0.111375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.1963" x1="10.3781" y2="9.42181" x2="6.95588"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.1963" x1="0.111375" y2="9.42181" x2="-3.31087"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="1.66325" y2="5.42182" x2="-0.61825"/>
+        <input x="-10" y="16" size="4" rotate="true" text="3/4.1/2&quot;" tagg="label"/>
+        <terminal x="18" y="0" orientation="e"/>
+        <terminal x="-9" y="0" orientation="w"/>
+    </description>
+</definition>

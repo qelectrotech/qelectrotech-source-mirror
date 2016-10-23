@@ -1,0 +1,23 @@
+<definition width="40" hotspot_y="21" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Codo soldar 15</name>
+        <name lang="ca">Colze soldar 15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="2.2" angle="-90" y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13" start="0" antialias="true" height="2"/>
+        <arc width="2.2" angle="-90" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" start="90" antialias="true" height="2"/>
+        <arc width="10.5" angle="-90" y="-7.00641" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.5" start="0" antialias="true" height="10.7475"/>
+        <arc width="2.2" angle="-90" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" start="0" antialias="true" height="2"/>
+        <arc width="29" angle="-90" y="-16.2883" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" start="0" antialias="true" height="29.3113"/>
+        <input size="4" text="15" y="6" tagg="label" x="-4" rotate="true"/>
+        <arc width="2.2" angle="-90" y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" start="-90" antialias="true" height="2"/>
+        <polygon y1="-3" x3="15.2" y4="-3" x4="15.2" x1="2" closed="false" y3="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="2" antialias="false" y2="-9"/>
+        <line y1="-2" end1="none" x1="3.1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="13" antialias="false" y2="-2" length2="1.5"/>
+        <line y1="4.89565" end1="none" x1="-1.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1.72" antialias="false" y2="13.113" length2="1.5"/>
+        <polygon y1="3" x3="-8.2" y4="14" x4="-3.2" x1="-3.2" closed="false" y3="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.2" antialias="false" y2="3"/>
+        <terminal y="10" orientation="w" x="-10"/>
+        <terminal y="-10" orientation="n" x="10"/>
+    </description>
+</definition>

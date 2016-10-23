@@ -1,0 +1,18 @@
+<definition link_type="simple" hotspot_x="19" width="40" height="20" version="0.5" type="element" hotspot_y="12" orientation="dyyy">
+    <names>
+        <name lang="ca">Valv. tancament ràpid</name>
+        <name lang="es">Valvula cierre rápido</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-11.3055" x2="-6.34587" y2="0.0318443" y1="0.0318443" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7.30108" x2="11.9263" y2="0.0318443" y1="0.0318443" end2="none"/>
+        <polygon y3="-5" x4="7" y5="-5" antialias="true" x3="7" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" x2="-6" y4="5" x5="-6" y2="5" y1="-5"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-0.02" x2="-0.02" y2="-7" y1="0" end2="none"/>
+        <input y="21" tagg="label" rotate="true" size="5" x="-11" text="_"/>
+        <polygon y3="-10" x4="0" y5="-6" x7="0" y6="-6" antialias="false" x3="-4" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="0" x1="0" x2="4" y4="-6" x5="0" y2="-10" y7="-6" y1="-6"/>
+        <terminal y="0.0814798" x="12" orientation="e"/>
+        <terminal y="0.0814798" x="-12" orientation="w"/>
+    </description>
+</definition>

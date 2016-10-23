@@ -1,0 +1,22 @@
+<definition width="30" hotspot_y="9" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
+    <names>
+        <name lang="es">Manguito Cu 15 </name>
+        <name lang="ca">Manguet Cu 15</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="4.5" end1="none" x1="-3.31304" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="3.33913" antialias="false" y2="4.5" length2="1.5"/>
+        <arc width="1.7417" angle="-90" y="-5.40947" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.86725" start="-180" antialias="true" height="1.26687"/>
+        <arc width="2.32809" angle="-90" y="-5.49772" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.6328" start="90" antialias="true" height="2.05091"/>
+        <arc width="1.7417" angle="-90" y="4.61543" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.86725" start="-90" antialias="true" height="1.26687"/>
+        <arc width="2.32809" angle="-90" y="3.73138" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.6328" start="0" antialias="true" height="2.05091"/>
+        <line y1="-3.55381" end1="none" x1="-4.22" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4.22" antialias="false" y2="4.87271" length2="1.5"/>
+        <polygon y1="-5.49772" x3="-11.0773" y4="5.78229" x4="-5.7862" x1="-5.7862" closed="false" y3="5.78229" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-11.0773" antialias="false" y2="-5.49772"/>
+        <line y1="-4.6188" end1="none" x1="3.93664" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="3.93664" antialias="false" y2="4.64687" length2="1.5"/>
+        <polygon y1="-5.37122" x3="10.6997" y4="5.8823" x4="5.46281" x1="4.71469" closed="false" y3="5.8823" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.6997" antialias="false" y2="-5.37122"/>
+        <line y1="-4" end1="none" x1="-4.2087" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="3.22609" antialias="false" y2="-4" length2="1.5"/>
+        <input size="4" text="15" y="17" tagg="label" x="-5" rotate="true"/>
+        <terminal y="0" orientation="e" x="10"/>
+        <terminal y="0" orientation="w" x="-10"/>
+    </description>
+</definition>

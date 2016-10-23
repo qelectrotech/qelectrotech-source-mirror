@@ -1,0 +1,21 @@
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="32" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Rejilla Exterior</name>
+        <name lang="ca">Reixa Exterior</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.94732" x1="8.6" y2="-7.1715" x2="10" y3="5.24173" x3="-2.6"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14.1539" x1="8.6" y2="-13.3781" x2="10" y3="-0.964883" x3="-2.6"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-11.0506" x1="8.6" y2="-10.2748" x2="10" y3="2.13842" x3="-2.6"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4.84402" x1="8.6" y2="-4.06819" x2="10" y3="8.34504" x3="-2.6"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17.2572" x1="8.6" y2="-16.4814" x2="10" y3="-4.06819" x3="-2.6"/>
+        <rect width="4.9" x="-9.6" y="-11.0506" antialias="false" height="24.0506" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-4.7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-11.0506" x1="-9.6" y2="-26.5672" x2="6.5" y3="-26.5672" x3="11.4" y4="-11.0506"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="13" x1="-4.7" y2="-2.51654" x2="11.4" y3="-26.5672" x3="11.4"/>
+        <polygon x4="10" y5="-10.2748" x5="-2.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10.2748" x1="-2.6" y2="8.34504" x2="-2.6" y3="-3.29236" x3="10" y4="-22.688"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20.3606" x1="8.6" y2="-19.5847" x2="10" y3="-7.1715" x3="-2.6"/>
+        <input x="10.7" y="-10.6627" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-11" y="0" orientation="w"/>
+    </description>
+</definition>

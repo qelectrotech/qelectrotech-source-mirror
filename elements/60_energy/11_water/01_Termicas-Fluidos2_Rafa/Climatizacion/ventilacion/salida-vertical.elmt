@@ -1,0 +1,16 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Descarga superior</name>
+        <name lang="ca">Descàrrega superior</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="10.725" x="-5.2025" y="4.69353" antialias="false" height="5.16469" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="12.3337" x="-6.275" y="-3.28827" antialias="false" height="7.98179" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="9.8125" y5="-5.63586" x5="9.8125" y6="-3.28827" x6="5.5225" y7="-3.28827" x7="6.05875" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3.28827" x1="-5.73875" y2="-5.63586" x2="-9.4925" y3="-12.209" x3="-9.4925" y4="-12.209"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.209" x1="0.16" y2="-3.7578" x2="0.16"/>
+        <polygon x4="-0.37625" y5="-14.0872" x5="-11.1013" y6="-12.209" x6="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12.209" x1="-16.4638" y2="-12.209" x2="16.7837" y3="-14.0872" x3="9.27625" y4="-15.0262"/>
+        <input x="-14.4" y="-19.609" size="4" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="0.16" y="10.5509" orientation="s"/>
+    </description>
+</definition>

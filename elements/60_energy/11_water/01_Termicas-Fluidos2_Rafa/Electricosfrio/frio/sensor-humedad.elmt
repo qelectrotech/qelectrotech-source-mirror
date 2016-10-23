@@ -1,0 +1,19 @@
+<definition hotspot_x="10" hotspot_y="19" width="20" version="0.5" type="element" orientation="dyyy" height="50" link_type="simple">
+    <names>
+        <name lang="es">Sonda Humedad</name>
+        <name lang="ca">Sonda Humitat</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="13.644" angle="-180" x="-7.07308" y="18.7" height="7.2"/>
+        <input text="Hr" x="6" y="19" tagg="label" rotate="true" size="4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="22.3" y2="0.7" y3="0.7" x1="-7.07308" y4="22.3" x2="-7.07308" x3="6.57095" x4="6.57095" closed="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="22.3" length1="1.5" y2="22.3" length2="1.5" x1="-3.60834" x2="5.07758" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="4" length1="1.5" y2="22" length2="1.5" x1="0" x2="0" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="4" length1="1.5" y2="22" length2="1.5" x1="4" x2="4" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="4" length1="1.5" y2="22" length2="1.5" x1="-4" x2="-4" end1="none" end2="none"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" length1="1.5" y2="-15" length2="1.5" x1="0" x2="0" end1="none" end2="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="2" x="-1" y="-8" height="8"/>
+        <terminal x="0" y="-13" orientation="n"/>
+    </description>
+</definition>

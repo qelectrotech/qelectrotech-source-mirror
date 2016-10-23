@@ -1,0 +1,13 @@
+<definition width="30" version="0.4" hotspot_x="7" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Brida Ciega</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="2" x="15" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <rect width="2" x="10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="0" y="0" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

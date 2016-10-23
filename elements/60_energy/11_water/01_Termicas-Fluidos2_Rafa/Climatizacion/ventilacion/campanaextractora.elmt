@@ -1,0 +1,31 @@
+<definition hotspot_x="27" hotspot_y="27" width="60" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Campana extractora</name>
+        <name lang="es">Campana extractora</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-6" width="12" angle="-180" antialias="true" height="3" x="4" start="0"/>
+        <polygon y4="0.668966" style="line-style:dashed;line-weight:thin;filling:none;color:black" antialias="false" x2="-18.15" y2="2.43966" x5="-2" y3="4.21034" y5="-1.98707" x4="-2.95" closed="false" x1="-2" y1="-1.98707" x3="-18.15"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-11" width="12" angle="-180" antialias="true" height="3" x="4" start="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="4.02241" y2="-0.538666" end1="none" x1="4.02241" y1="-16.8417" length1="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="12.0276" y="-18.6531" antialias="true" height="2.41526" x="4.02241"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="16.05" y2="-0.538666" end1="none" x1="16.05" y1="-16.8417" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.35011" width="12.0276" angle="-180" antialias="true" height="3.01908" x="4.02241" start="0"/>
+        <polygon y7="-3.75776" x4="7.5" y3="11.2931" antialias="false" x3="-21" y4="29" x2="-21" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="26.5" x7="17" y5="20.1466" x5="7.5" closed="false" y8="-3.75776" y2="2.43966" x8="17" y6="2.43966" y1="-15.2672"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="7.5" y2="20.1466" end1="none" x1="-21" y1="2.43966" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="3.7" y2="-10.8405" end1="none" x1="-2" y1="-15.2672" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="25.55" y2="17.4905" end1="none" x1="8.45" y1="29" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="26.5" y2="3.21603" end1="none" x1="26.5" y1="16.7232" length1="1.5"/>
+        <polygon y4="17.4905" style="line-style:dashed;line-weight:thin;filling:none;color:black" antialias="false" x2="9.4" y2="19.2612" x5="25.55" y3="21.0319" y5="14.8345" x4="24.6" closed="false" x1="25.55" y1="14.8345" x3="9.4"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.7" y="5.09569" antialias="true" height="5.31207" x="6.55"/>
+        <polygon y4="6.86638" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="9.4" y2="2.43966" y3="2.43966" x4="12.25" closed="false" x1="9.4" y1="5.09569" x3="12.25"/>
+        <polygon y4="1.55431" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="19.85" y2="2.43966" y3="4.21034" x4="21.75" closed="false" x1="18.9" y1="4.21034" x3="20.8"/>
+        <polygon style="line-style:dashed;line-weight:thin;filling:none;color:black" antialias="false" x2="-2" y2="0.668966" y3="-14.3819" closed="false" x1="26.5" y1="17.4905" x3="-2"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-21" y2="10.4078" end1="none" x1="-2" y1="0.668966" length1="1.5"/>
+        <input rotate="true" text="_" tagg="label" y="5" x="-14" size="4"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-16" width="12" angle="-180" antialias="true" height="3" x="4" start="0"/>
+        <terminal y="-2" x="25" orientation="n"/>
+        <terminal y="-20.5793" x="9.4" orientation="n"/>
+    </description>
+</definition>

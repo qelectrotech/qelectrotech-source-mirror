@@ -1,0 +1,25 @@
+<definition hotspot_x="24" hotspot_y="14" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="es">Te tuberias VRV</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.59375" width="2.24" antialias="false" height="5.04957" x="17.28"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.6299" width="5.88" antialias="false" height="2.10692" x="-19.72"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8.43534" width="12.8" antialias="false" height="3.36638" x="-16.8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.1566" width="1.68" antialias="false" height="3.16038" x="2.12"/>
+        <polygon x14="-4" y7="26.1088" x4="1.32" y14="7.59375" y3="11.8017" y16="14.3265" antialias="false" x3="17.28" y4="11.8017" x2="17.28" y12="15.1681" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x16="1.32" x6="8.768" x7="8.768" y5="14.3265" x11="1.32" x5="7.704" y10="16.8513" closed="false" y8="26.1088" x15="1.32" y15="7.59375" x9="6.64" y11="14.3265" y2="8.43534" x8="6.64" x10="6.108" x13="-4" y6="16.0097" y1="8.43534" y13="12.6433" y9="17.6929" x12="1.32"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.59375" width="2.8" antialias="false" height="5.04957" x="-19.6"/>
+        <polygon x14="-13.84" y7="0.431397" x4="-9.85" y14="-11.1566" y3="-8.52298" y16="-6.94279" antialias="false" x3="2.12" y4="-8.52298" x2="2.12" y12="-6.41606" x1="-13.84" style="line-style:normal;line-weight:normal;filling:none;color:black" x16="-9.85" x6="-4.264" x7="-4.264" y5="-6.94279" x11="-9.85" x5="-5.062" y10="-5.3626" closed="false" y8="0.431397" x15="-9.85" y15="-11.1566" x9="-5.86" y11="-6.94279" y2="-10.6299" x8="-5.86" x10="-6.259" x13="-13.84" y6="-5.88933" y1="-10.6299" y13="-7.99625" y9="-4.83586" x12="-9.85"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="26.1088" width="4.2" antialias="false" height="3.36638" x="5.6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.1566" width="1.68" antialias="false" height="3.16038" x="-21.4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="0.431397" width="2.52" antialias="false" height="2.10692" x="-6.28"/>
+        <input rotate="true" text="vrv" tagg="label" y="25.5" x="-13" size="3"/>
+        <terminal y="30.3168" x="7.7" orientation="s"/>
+        <terminal y="-10" x="-20" orientation="w"/>
+        <terminal y="10.1185" x="-19.6" orientation="w"/>
+        <terminal y="10.1185" x="20.08" orientation="e"/>
+        <terminal y="3" x="-5" orientation="s"/>
+        <terminal y="-10" x="4" orientation="e"/>
+    </description>
+</definition>

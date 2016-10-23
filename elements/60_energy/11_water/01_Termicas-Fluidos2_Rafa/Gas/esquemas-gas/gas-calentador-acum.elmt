@@ -1,0 +1,13 @@
+<definition height="30" link_type="simple" hotspot_x="27" version="0.5" hotspot_y="15" type="element" width="40" orientation="dyyy">
+    <names>
+        <name lang="es">Calentador-acum. agua</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="11" x="-6" y="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="13"/>
+        <polygon y1="-1" y2="10" y3="10" x1="0" x2="0" x3="-20" closed="false" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-7" size="4" rotate="true" y="-17" text="_" tagg="label"/>
+        <terminal x="-20" y="10" orientation="w"/>
+    </description>
+</definition>

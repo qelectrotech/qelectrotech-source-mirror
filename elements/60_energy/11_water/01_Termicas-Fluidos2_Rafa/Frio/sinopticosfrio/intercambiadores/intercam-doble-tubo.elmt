@@ -1,0 +1,16 @@
+<definition width="60" version="0.4" hotspot_x="33" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Intercamb. doble tubo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.57647" x1="11.66" y2="12.4588" x2="11.66"/>
+        <rect width="40" x="-23" y="-9" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-26.3065" y2="0" x2="19.332"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.2824" x1="-19" y2="-8.69412" x2="-19"/>
+        <terminal x="-19" y="-14" nameHidden="80" number="" name="" orientation="n"/>
+        <terminal x="12" y="13" nameHidden="112" number="" name="" orientation="s"/>
+        <terminal x="-27" y="0" nameHidden="240" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

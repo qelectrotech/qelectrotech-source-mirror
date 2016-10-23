@@ -1,0 +1,23 @@
+<definition link_type="simple" height="40" width="40" version="0.4" hotspot_y="22" type="element" hotspot_x="16" orientation="dyyy">
+    <names>
+        <name lang="en">Termstatic valve</name>
+        <name lang="es">Válvula termostática</name>
+        <name lang="ca">Vàlvula termostàtica</name>
+    </names>
+    <informations>24v et anti-bélier </informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-0.346667" end2="none" x2="0" antialias="false" y1="-6.68" x1="0" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.76946" antialias="false" height="8" width="10.9695" y="-15"/>
+        <polygon y4="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8" y3="8" x3="4" x2="-4" antialias="true" x4="0" y1="0" x1="0"/>
+        <polygon y5="-4" y4="0" x6="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" y3="4" x3="-8" x7="0" x2="-8" y6="4" antialias="true" x4="0" y1="0" x1="0" x5="8" y7="0"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="15.292" antialias="false" y1="0" x1="7.57664" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="-10.1327" antialias="false" y1="0" x1="-7.7729" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end2="none" x2="0" antialias="false" y1="8" x1="0" length1="1.5"/>
+        <text text="T" x="-2" size="4" y="-9"/>
+        <input text="_" x="-6" tagg="label" size="4" y="-17.5" rotate="true"/>
+        <polygon y5="0" y4="0" style="line-style:dotted;line-weight:normal;filling:none;color:black" y2="-10" y3="0" x3="14.75" x2="14.75" antialias="false" x4="14.75" closed="false" y1="-10" x1="5" x5="14.75"/>
+        <terminal x="-9" y="0" orientation="w"/>
+        <terminal x="17" y="0" orientation="e"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,29 @@
+<definition width="30" hotspot_y="24" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Machón red. 3/4-1</name>
+        <name lang="ca">Mascle red. 3/4-1</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line y1="8.44715" end1="none" x1="-4.15249" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-5.0793" antialias="false" y2="-7.11951" length2="1.5"/>
+        <arc width="2.99934" angle="-90" y="8.63584" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.57879" start="-180" antialias="true" height="14.4966"/>
+        <arc width="2.99934" angle="-90" y="8.63584" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.109494" start="90" antialias="true" height="14.4966"/>
+        <line y1="8.44715" end1="none" x1="-5.32049" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-6.2473" antialias="false" y2="-7.11951" length2="1.5"/>
+        <arc width="2.99934" angle="-90" y="-22.1694" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.57879" start="-90" antialias="true" height="14.4966"/>
+        <line y1="6.21631" end1="none" x1="6.9733" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="6.04649" antialias="false" y2="-4.68036" length2="1.5"/>
+        <arc width="2.14238" angle="-180" y="-7.67295" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.966448" start="90" antialias="true" height="16.3087"/>
+        <line y1="6.21631" end1="none" x1="8.14132" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7.21449" antialias="false" y2="-4.68036" length2="1.5"/>
+        <rect width="5.68763" y="-16.7332" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.57879" antialias="false" height="32.6174"/>
+        <line y1="6.21631" end1="none" x1="5.8053" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="4.87849" antialias="false" y2="-4.68036" length2="1.5"/>
+        <line y1="-7.67295" end1="none" x1="1.39392" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1.11813" antialias="false" y2="-7.67295" length2="1.5"/>
+        <rect width="5.86978" y="-5.2252" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.64274" antialias="false" height="11.1914"/>
+        <line y1="8.44715" end1="none" x1="-6.48849" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-7.4153" antialias="false" y2="-7.11951" length2="1.5"/>
+        <arc width="2.99934" angle="-90" y="-22.1694" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.109494" start="0" antialias="true" height="14.4966"/>
+        <input size="4" text="3/4-1&quot;" y="21.7638" tagg="label" x="-8.7638" rotate="true"/>
+        <line y1="8.63584" end1="none" x1="-1.09004" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1.36351" antialias="false" y2="8.63584" length2="1.5"/>
+        <rect width="5.86978" y="-7.89786" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.651" antialias="false" height="15.9878"/>
+        <arc width="2.14238" angle="-180" y="-7.67295" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.57879" start="-90" antialias="true" height="16.3087"/>
+        <terminal y="0.107339" orientation="e" x="10.037"/>
+        <terminal y="-0.279951" orientation="w" x="-9.819"/>
+    </description>
+</definition>

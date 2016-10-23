@@ -1,0 +1,17 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="31" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Pozo</name>
+        <name lang="ca">Puo</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3.2" x="15.4" y="-2.99787" antialias="false" height="6.22033" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="16.8" x="-3.8" y="-27.1016" antialias="false" height="0.777541" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="15.4" y5="-19.3262" x5="15.4" y6="-26.3241" x6="11.4" y7="-26.3241" x7="-2.2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-26.3241" x1="-2.2" y2="-19.3262" x2="-6.2" y3="4" x3="-6.2" y4="4"/>
+        <rect width="3.2" x="-9.4" y="-3.77541" antialias="false" height="6.22033" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="0.2" y="-12.3284" size="4" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="19" y="0" orientation="e"/>
+    </description>
+</definition>

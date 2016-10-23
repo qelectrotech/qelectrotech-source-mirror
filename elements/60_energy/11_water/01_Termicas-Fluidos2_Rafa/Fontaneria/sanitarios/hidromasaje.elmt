@@ -1,0 +1,45 @@
+<definition width="80" version="0.4" hotspot_x="38" hotspot_y="28" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bañera hidromasaje</name>
+        <name lang="ca">Banyera hidromassage</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse width="0.99" x="-13.2921" y="6.50985" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="12.0099" x="23.604" y="4.48296" antialias="true" height="11.4548" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="0.99" x="5.51789" y="6.50985" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="11.88" x="21.8529" y="-0.434384" antialias="true" height="13.0392" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <ellipse width="0.99" x="16.4079" y="6.50985" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.4748" x1="-29.2072" y2="-16.4748" x2="29.1683"/>
+        <rect width="5.06058" x="5.35427" y="-19.2594" antialias="false" height="2.88163" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.5932" x1="-26.0061" y2="-13.5932" x2="27.0626"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5624" x1="-26.0061" y2="12.5624" x2="27.0626"/>
+        <arc width="8.21809" x="-30.52" y="-13.3543" antialias="true" height="25.9167" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.2594" x1="6.83789" y2="-16.8338" x2="6.83789"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.9377" x1="-29.2072" y2="15.9377" x2="29.1683"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.2594" x1="8.81789" y2="-16.8338" x2="8.81789"/>
+        <arc width="9.03989" x="-33.1824" y="-16.452" antialias="true" height="32.3898" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <ellipse width="3.65247" x="-23.215" y="-1.62672" antialias="true" height="3.36637" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="12.0099" x="23.604" y="-16.452" antialias="true" height="11.4548" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="24.8624" x="-13.8851" y="-16.3778" antialias="false" height="2.3868" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.06058" x="-12.5208" y="-19.2594" antialias="false" height="2.88163" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.2594" x1="-11.0371" y2="-16.8338" x2="-11.0371"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.2594" x1="-9.05711" y2="-16.8338" x2="-9.05711"/>
+        <polygon x4="-0.917112" y5="-8.23981" x5="-0.422112" y6="-13.9494" x6="-0.422112" y7="-13.9494" x7="-2.40211" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13.9494" x1="-2.40211" y2="-8.23981" x2="-2.40211" y3="-7.76401" x3="-1.90711" y4="-7.76401"/>
+        <ellipse width="0.99" x="-1.90711" y="-10.6188" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="14.4279" y="-20.1347" size="4" rotate="true" text="_" tagg="label"/>
+        <arc width="11.88" x="21.3579" y="-13.4736" antialias="true" height="13.0392" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.0946" x1="35.7129" y2="10.3162" x2="35.7129"/>
+        <ellipse width="0.99" x="-23.6871" y="-8.23981" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="-13.2921" y="-8.23981" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="5.51789" y="-8.23981" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="16.4079" y="-8.23981" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="25.8129" y="-8.23981" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="26.3079" y="6.50985" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.99" x="-24.1821" y="6.50985" antialias="true" height="0.951591" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.485" x="-22.2021" y="-0.627081" antialias="true" height="1.42739" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10.0471" y="-19.7445" orientation="n"/>
+        <terminal x="7.82789" y="-19.7445" orientation="n"/>
+    </description>
+</definition>

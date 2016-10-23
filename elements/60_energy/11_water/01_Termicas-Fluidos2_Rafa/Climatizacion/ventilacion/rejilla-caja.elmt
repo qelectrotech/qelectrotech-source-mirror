@@ -1,0 +1,26 @@
+<definition hotspot_x="35" hotspot_y="32" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Reixa caixa</name>
+        <name lang="es">Rejilla caja</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-7.1715" y3="5.24173" closed="false" x1="8.6" y1="-7.94732" x3="-2.6"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-22.3513" y2="0" end1="none" x1="-27.3826" y1="0" length1="1.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-13.3781" y3="-0.964883" closed="false" x1="8.6" y1="-14.1539" x3="-2.6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-10.2748" y3="2.13842" closed="false" x1="8.6" y1="-11.0506" x3="-2.6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-4.06819" y3="8.34504" closed="false" x1="8.6" y1="-4.84402" x3="-2.6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-16.4814" y3="-4.06819" closed="false" x1="8.6" y1="-17.2572" x3="-2.6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.0506" width="4.9" antialias="false" height="24.0506" x="-9.6"/>
+        <polygon y4="-11.0506" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="6.5" y2="-26.5672" y3="-26.5672" x4="-4.7" closed="false" x1="-9.6" y1="-11.0506" x3="11.4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="11.4" y2="-2.51654" y3="-26.5672" closed="false" x1="-4.7" y1="13" x3="11.4"/>
+        <polygon y4="-22.688" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-2.6" y2="8.34504" x5="-2.6" y3="-3.29236" y5="-10.2748" x4="10" closed="false" x1="-2.6" y1="-10.2748" x3="10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-19.5847" y3="-7.1715" closed="false" x1="8.6" y1="-20.3606" x3="-2.6"/>
+        <input rotate="true" text="_" tagg="label" y="-10.6627" x="10.7" size="4"/>
+        <polygon y4="-11" x6="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-3" y2="-27" x5="-10" y3="-11" y5="-11" x4="-10" y6="-11" closed="false" x1="6" y1="-27" x3="-22"/>
+        <polygon y4="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-22" y2="13" x5="-10" y3="13" y5="13" x4="-10" closed="false" x1="-22" y1="-11" x3="-10"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.503" width="6.69471" angle="-180" antialias="true" height="14.503" x="-31.9853" start="270"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-18.7059" y2="-14.503" end1="none" x1="-28.486" y1="-14.503" length1="1.5"/>
+        <terminal y="0" x="-11" orientation="w"/>
+    </description>
+</definition>

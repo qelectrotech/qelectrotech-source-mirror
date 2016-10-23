@@ -1,0 +1,14 @@
+<definition width="10" version="0.4" hotspot_x="6" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sonda temp.exterio</name>
+        <name lang="ca">Sonda temp.exterio</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6.3" x="-4" y="0.181624" antialias="false" height="10.8184" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.4" x="-0.9" y="-9.83761" antialias="false" height="10.0192" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-0.5" y="14" size="3" rotation="270" rotate="true" text="PTC_" tagg="label"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

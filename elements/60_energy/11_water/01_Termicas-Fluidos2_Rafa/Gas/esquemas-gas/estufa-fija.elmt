@@ -1,0 +1,19 @@
+<definition height="20" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="4" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Estufa fija</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="9" y2="-1" x1="-1" x2="-1" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="9" y2="-1" x1="5" x2="5" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="9" y2="-1" x1="-7" x2="-7" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="9" y2="-1" x1="2" x2="2" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="9" y2="-1" x1="8" x2="8" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <rect height="10" x="-10" y="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <line y1="9" y2="-1" x1="0" x2="0" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="9" y2="-1" x1="-4" x2="-4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-5" size="4" rotate="true" y="-7" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

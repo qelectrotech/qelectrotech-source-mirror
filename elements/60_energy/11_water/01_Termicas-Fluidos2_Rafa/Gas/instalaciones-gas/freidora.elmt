@@ -1,0 +1,26 @@
+<definition width="50" version="0.4" hotspot_x="12" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Freidora gas</name>
+        <name lang="ca">Fregidora gas</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="15" y2="-13" x2="15"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" x2="20" x3="15" x4="15" antialias="false" x5="8" x6="18" x7="25" x8="15" closed="false" y1="-18" y2="-22" y3="-22" y4="-18" y5="-12" y6="-12" y7="-18" y8="-18"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="20" y2="-22" x2="25" y3="-18" x3="25"/>
+        <circle x="4" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="14" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <rect width="30" x="-10" y="-10" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-20" x2="31"/>
+        <circle x="-6" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <input x="-12" y="9.5" size="5" rotate="true" text="freidora" tagg="label"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7" x2="7" x3="2" x4="2" antialias="false" x5="-5" x6="5" x7="12" x8="2" closed="false" y1="-18" y2="-22" y3="-22" y4="-18" y5="-12" y6="-12" y7="-18" y8="-18"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="7" y2="-22" x2="12" y3="-18" x3="12"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-10" y2="-20" x2="1" y3="-20" x3="2" y4="-20"/>
+        <polygon x4="25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="20" y2="11" x2="31" y3="-20" x3="31" y4="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="12" y2="-20" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="2" y2="-13" x2="2"/>
+        <terminal x="-7" y="-17" orientation="w"/>
+        <terminal x="33" y="-16" orientation="e"/>
+    </description>
+</definition>

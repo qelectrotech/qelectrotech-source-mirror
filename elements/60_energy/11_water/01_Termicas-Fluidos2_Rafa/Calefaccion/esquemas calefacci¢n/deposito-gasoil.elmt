@@ -1,0 +1,24 @@
+<definition hotspot_x="14" hotspot_y="22" width="30" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Dipòsit gasoil 1000L</name>
+        <name lang="es">Depósito gasoil 1000L</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7" width="20" antialias="false" height="30" x="-11"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="3" antialias="false" height="2" x="-8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14" width="7" antialias="false" height="5" x="-10"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-8" y2="-12" end1="none" x1="-6" y1="-10" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="3" antialias="false" height="2" x="3"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-6" width="18" antialias="false" height="28" x="-10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" width="3" antialias="false" height="3" x="3"/>
+        <polygon y7="-13" x4="9" y3="-14" antialias="false" x3="3" y4="-17" x2="3" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="5" x7="6" y5="-16" x5="10" closed="false" y8="-12" y2="-12" x8="6" y6="-13" y1="-12"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" width="3" antialias="false" height="1" x="6"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-13" width="5" angle="-120" antialias="true" height="4" x="-9" start="-180"/>
+        <rect style="line-style:normal;line-weight:thin;filling:brun;color:black" y="3" width="18" antialias="false" height="19" x="-10"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="4" y2="20" end1="none" x1="4" y1="-7" length1="1.5"/>
+        <input rotate="true" text="1000L" tagg="label" y="-1.5" x="-11" size="3"/>
+        <terminal y="-10" x="10" orientation="e"/>
+    </description>
+</definition>

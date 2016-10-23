@@ -1,0 +1,35 @@
+<definition width="70" version="0.4" hotspot_x="29" hotspot_y="21" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Evaporador textil</name>
+        <name lang="ca">Evaporador tèxtil</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-11" y2="9" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-11" y2="-9" x2="10"/>
+        <arc width="8" x="31" y="17" antialias="true" height="15" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <ellipse width="1" x="-23" y="5" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11" x1="16" y2="17" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9" x1="13" y2="18" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-1" y2="32" x2="33"/>
+        <arc width="8" x="-4" y="-6" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-22" y2="5" x2="-18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="1" y2="17" x2="35"/>
+        <polygon x4="-11" y5="-10" x5="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-20" y2="5" x2="-20" y3="12" x3="-11" y4="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-20" y2="-15" x2="1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="1" y2="-9" x2="10" y3="0" x3="10"/>
+        <arc width="8" x="31" y="17" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="8" x1="10" y2="17" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9" x1="15" y2="15" x2="11"/>
+        <ellipse width="1" x="-23" y="-6" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-22" y2="-6" x2="-18"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="-20" y2="9" x2="-20" y3="16" x3="-11" y4="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-11" y2="16" x2="-11"/>
+        <rect width="2" x="-3" y="13" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-6" y5="-3" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="-10" y2="1" x2="-10" y3="0" x3="-6" y4="-4"/>
+        <terminal x="-25" y="-5" orientation="w"/>
+        <terminal x="-25" y="6" orientation="w"/>
+        <terminal x="-2" y="16" orientation="s"/>
+        <terminal x="-8" y="-7" orientation="n"/>
+    </description>
+</definition>

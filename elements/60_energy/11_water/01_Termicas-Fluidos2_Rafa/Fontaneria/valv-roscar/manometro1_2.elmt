@@ -1,0 +1,29 @@
+<definition width="30" hotspot_y="24" hotspot_x="15" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Manómetro 1/2H</name>
+        <name lang="ca">Manòmetre 1/2H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="2.82138" end1="none" x1="-6.3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-6.3" antialias="false" y2="0.0410131" length2="1.5"/>
+        <ellipse width="21.6" y="-20.2102" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.8" antialias="true" height="20.8097"/>
+        <rect width="9.6" y="3.13035" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.4" antialias="false" height="7.0303"/>
+        <rect width="6.9" y="4.81763" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="-3.9" antialias="false" height="5.34303"/>
+        <line y1="3.13035" end1="none" x1="-6.3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.1" antialias="false" y2="3.13035" length2="1.5"/>
+        <line y1="2.88663" end1="none" x1="5.1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.1" antialias="false" y2="0.543204" length2="1.5"/>
+        <ellipse width="24" y="-21.0539" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="true" height="22.497"/>
+        <line y1="-10.0866" end1="none" x1="-0.3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.2" antialias="false" y2="-15.4296" length2="1.5"/>
+        <line y1="-15.7109" end1="none" x1="-7.2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-0.3" antialias="false" y2="-10.3678" length2="1.5"/>
+        <ellipse width="1.8" y="-10.3678" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" antialias="true" height="1.68727"/>
+        <input size="3" text="1" y="-3.4781" tagg="none" x="-8.4" rotate="true"/>
+        <text size="3" text="2" y="-9.52421" x="-9.9"/>
+        <text size="3" text="3" y="-15.4296" x="-5.4"/>
+        <text size="3" text="4" y="-15.9921" x="2.4"/>
+        <text size="3" text="5" y="-9.80541" x="8.1"/>
+        <text size="3" text="6" y="-1.93148" x="4.5"/>
+        <input size="4" text="1/2&quot;H" y="-24.7307" tagg="label" x="-7.5" rotate="true"/>
+        <text size="4" text="bar" y="-4.55778" x="-3"/>
+        <terminal y="10" orientation="s" x="0"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition width="20" hotspot_y="9" hotspot_x="6" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
+    <names>
+        <name lang="es">Tapón 18</name>
+        <name lang="ca">Tap 18</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="2.97" angle="-90" y="-6.00162" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.2" start="90" antialias="true" height="2.57196"/>
+        <arc width="2.97" angle="-90" y="5.57214" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.2" start="0" antialias="true" height="2.57196"/>
+        <line y1="-3.56386" end1="none" x1="9.278" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="9.278" antialias="false" y2="7.00343" length2="1.5"/>
+        <polygon y1="-6.00162" x3="0.53" y4="8.1441" x4="7.28" x1="7.28" closed="false" y3="8.1441" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0.53" antialias="false" y2="-6.00162"/>
+        <input size="4" text="18" y="12" tagg="label" x="0" rotate="true"/>
+        <terminal y="0" orientation="w" x="0"/>
+    </description>
+</definition>

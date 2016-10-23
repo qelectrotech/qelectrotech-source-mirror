@@ -1,0 +1,32 @@
+<definition orientation="dyyy" link_type="simple" type="element" hotspot_x="54" hotspot_y="28" width="120" height="50" version="0.5">
+    <names>
+        <name lang="ca">Grup d'ompliment-desconectador</name>
+        <name lang="es">Grupo de llenado-desconectador</name>
+    </names>
+    <informations/>
+    <description>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.0821" antialias="true" width="12.4" height="11.0065" x="-35.65"/>
+        <polygon x2="-50" y4="5" y5="5" y2="0" x3="-40" x5="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="5" closed="false" antialias="false" y1="-5" x1="-40" x4="-40"/>
+        <text size="6" text="P" y="-12.2125" x="-31"/>
+        <line x2="-40" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-5" length2="1.5" x1="-40" length1="1.5" end1="none"/>
+        <line x2="-30" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="-40" length1="1.5" end1="none"/>
+        <input size="5" text="Ø_" tagg="label" y="14" rotate="true" x="-22"/>
+        <polygon x2="-1" y4="5" y5="-5" x6="-21" y2="5" x3="-1" x5="-21" x7="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-5" closed="false" antialias="false" y1="-5" y6="-5" y7="-5" x1="-21" x4="-21"/>
+        <polygon x2="9" y4="-5" y5="-5" x6="29" y2="-5" x3="29" x5="29" x7="29" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="5" closed="false" antialias="false" y1="5" y6="-5" y7="-5" x1="9" x4="29"/>
+        <circle diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-7" antialias="false" x="7"/>
+        <line x2="9" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="-1" length1="1.5" end1="none"/>
+        <line x2="38.563" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="29.437" length1="1.5" end1="none"/>
+        <polygon x2="39" y4="5" y5="5" y2="0" x3="49" x5="49" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="5" closed="false" antialias="false" y1="-5" x1="49" x4="49"/>
+        <line x2="-31" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="-21" length1="1.5" end1="none"/>
+        <line x2="-29" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="-29" length1="1.5" end1="none"/>
+        <line x2="4" y2="14.4359" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0.564094" length2="1.5" x1="4" length1="1.5" end1="none"/>
+        <line x2="-11" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="-11" length1="1.5" end1="none"/>
+        <line x2="-6" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-10" length2="1.5" x1="-16" length1="1.5" end1="none"/>
+        <line x2="4" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="11" length2="1.5" x1="-1" length1="1.5" end1="none"/>
+        <line x2="4" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="11" length2="1.5" x1="9" length1="1.5" end1="none"/>
+        <line x2="49" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="-5" length2="1.5" x1="49" length1="1.5" end1="none"/>
+        <line x2="59" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y1="0" length2="1.5" x1="49" length1="1.5" end1="none"/>
+        <terminal orientation="w" y="0" x="-50"/>
+        <terminal orientation="e" y="0" x="60"/>
+    </description>
+</definition>

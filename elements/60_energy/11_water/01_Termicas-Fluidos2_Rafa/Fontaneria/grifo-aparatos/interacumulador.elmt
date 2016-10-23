@@ -1,0 +1,28 @@
+<definition width="100" version="0.4" hotspot_x="42" hotspot_y="31" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">خزان ماء أفقي</name>
+        <name lang="en">DHW horizontal</name>
+        <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="fr">Ballon ECS horizontal</name>
+        <name lang="pl">Zasobnik poziomy CWU</name>
+        <name lang="es">Interacumulador Horiz.</name>
+        <name lang="ca">Inter acumulador Horit.</name>
+        <name lang="cs">Vodorovný zásobnik ECS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="49.76" y5="-11.2245" x5="49.76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13.6442" x1="49.2925" y2="-13.6442" x2="52.565" y3="-11.2245" x3="52.565" y4="-11.2245"/>
+        <polygon x4="49.76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="11.8309" x1="49.2925" y2="11.8309" x2="52.565" y3="9.4505" x3="52.565" y4="9.4505"/>
+        <rect width="1.87" x="39.605" y="16.9073" antialias="true" height="3.60663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.2075" x="-32.52" y="-22.7657" antialias="true" height="3.60663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="77.1375" x="-33.455" y="-19.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="13.09" x="37.605" y="-19.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="13.09" x="-40" y="-19.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <polygon style="line-style:dashdotted;line-weight:normal;filling:none;color:red" x1="-31" x2="-20" x3="-15" x4="-10" antialias="false" x5="-5" x6="0" x7="5" x8="10" x9="15" closed="false" y1="-19" y10="-10" y2="-10" y11="10" y3="10" y4="-10" y12="-10" y5="10" x10="20" y13="10" y6="-10" x11="25" y14="16" y7="10" x12="30" y8="-10" x13="35" y9="10" x14="40"/>
+        <input x="3" y="-15" size="4" rotate="true" text="_L" tagg="label"/>
+        <terminal x="-30.65" y="-22.7657" orientation="n"/>
+        <terminal x="40.54" y="20.5139" orientation="s"/>
+        <terminal x="52.565" y="-12.4344" orientation="e"/>
+        <terminal x="52.565" y="10.4153" orientation="e"/>
+    </description>
+</definition>

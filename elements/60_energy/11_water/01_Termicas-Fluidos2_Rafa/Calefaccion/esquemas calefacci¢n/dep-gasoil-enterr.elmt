@@ -1,0 +1,25 @@
+<definition width="100" version="0.4" hotspot_x="63" hotspot_y="31" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito gasoil enterrado</name>
+        <name lang="ca">Dipòsit soterrat</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="8" x="-53" y="-11" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="70" x="-49" y="-11" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="3" y="-18" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="3" y="-21" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4" x2="3" x3="3" x4="9" antialias="false" x5="10" x6="5" x7="6" x8="6" closed="false" y1="-21" y2="-21" y3="-23" y4="-26" y5="-25" y6="-22" y7="-22" y8="-21"/>
+        <rect width="3" x="6" y="-20" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-15.8373" x1="4" y2="14.8237" x2="4"/>
+        <arc width="8" x="17" y="-11" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="16" x="-4" y="-15" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-6" y="-16" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="-53" y2="3" x2="25"/>
+        <input x="-34" y="6" size="4" rotate="true" text="_ L." tagg="label"/>
+        <rect width="88" x="-57" y="-15" antialias="false" height="39" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="10" y="-19" orientation="e"/>
+        <terminal x="-3" y="-18" orientation="n"/>
+    </description>
+</definition>

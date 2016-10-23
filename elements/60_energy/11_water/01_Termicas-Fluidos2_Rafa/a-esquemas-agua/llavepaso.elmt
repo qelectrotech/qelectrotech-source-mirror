@@ -1,0 +1,23 @@
+<definition link_type="simple" height="20" type="element" width="40" hotspot_y="12" version="0.5" hotspot_x="19" orientation="dyyy">
+    <names>
+        <name lang="ca">Clau tall ràpid</name>
+        <name lang="en">Valve Hogger</name>
+        <name lang="es">Llave corte rápido</name>
+        <name lang="fr">Valve Lardeur</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.7828" end2="none" antialias="false" x1="16.0481" y1="0" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-4.89732" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.8275" end2="none" antialias="false" x1="-8.8275" y1="4.9727" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-4.89732" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.2993" end2="none" antialias="false" x1="10.2993" y1="4.9727" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.0725" end2="none" antialias="false" x1="-8.8275" y1="-4.9225" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-4.9225" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.0725" end2="none" antialias="false" x1="-8.8275" y1="5" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-9.175" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0.6225" end2="none" antialias="false" x1="0.6225" y1="-0.1975" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-9.175" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5.3475" end2="none" antialias="false" x1="-4.1025" y1="-9.175" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-14.9858" end2="none" antialias="false" x1="-9.18334" y1="0" length1="1.5"/>
+        <input text="_" x="-6" tagg="label" size="4" y="12" rotate="true"/>
+        <terminal x="-15" y="0" orientation="w"/>
+        <terminal x="16" y="0" orientation="e"/>
+    </description>
+</definition>

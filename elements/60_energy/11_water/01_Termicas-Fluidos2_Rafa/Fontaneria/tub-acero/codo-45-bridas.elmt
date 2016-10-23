@@ -1,0 +1,25 @@
+<definition version="0.5" link_type="simple" type="element" hotspot_y="37" width="60" height="60" orientation="dyyy" hotspot_x="39">
+    <names>
+        <name lang="es">Codo 45 bridas</name>
+        <name lang="ca">Colçe45  brides</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30.2025" width="3.5047" y="-17.4536" height="34.7036"/>
+        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-34" width="41" y="-32" height="39" angle="45"/>
+        <arc antialias="true" start="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.1316" width="4.4982" y="-17.8873" height="5.47951" angle="-90"/>
+        <arc antialias="true" start="-230" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.8684" width="4.4982" y="-5.8873" height="4.47951" angle="-90"/>
+        <line antialias="false" y1="1" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-5" x1="1" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.1316" width="4.4982" y="-11.8873" height="5.47951" angle="-90"/>
+        <arc antialias="true" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.1316" width="4.4982" y="7.0308" height="5.47951" angle="-90"/>
+        <input text="Codo 45" tagg="label" rotate="true" x="-20" size="5" y="11"/>
+        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22" width="16" y="-20" height="14" angle="45"/>
+        <line antialias="false" y1="7" x2="-14.6923" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="7" x1="-23.3077" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-6" x2="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-6" x1="-13" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-8" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-14" x1="-8" end2="none" length1="1.5" length2="1.5"/>
+        <polygon x2="14" y4="-24" x4="-6" y7="-22" x7="-8" x3="16" x5="-8" y6="-22" y3="-4" x8="-8" x6="-8" closed="false" y8="-22" x1="-8" antialias="false" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y5="-22" y1="-22"/>
+        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="5" y="-15" orientation="n"/>
+    </description>
+</definition>

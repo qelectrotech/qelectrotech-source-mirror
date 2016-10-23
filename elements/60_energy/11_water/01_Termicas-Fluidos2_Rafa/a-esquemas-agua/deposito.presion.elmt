@@ -1,0 +1,20 @@
+<definition link_type="simple" height="50" type="element" width="30" hotspot_y="23" version="0.5" hotspot_x="15" orientation="dyyy">
+    <names>
+        <name lang="ca">Dipòsit a presió</name>
+        <name lang="es">Depósito a presión</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.8299" start="-180" height="8" antialias="true" width="17.8299" y="-18" angle="-180"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" x="-8.8299" start="0" height="7" antialias="true" width="17.8299" y="-18" angle="-180"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.8299" start="0" height="8" antialias="true" width="17.8299" y="8" angle="-180"/>
+        <line length2="1.5" end1="none" y2="-13.1304" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.8299" end2="none" antialias="false" x1="-8.8299" y1="11.1304" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-14.0217" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" end2="none" antialias="false" x1="9" y1="11.0217" length1="1.5"/>
+        <input text="_L" x="-8" tagg="label" size="4" y="0" rotate="true"/>
+        <line length2="1.5" end1="none" y2="-19.1667" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" antialias="false" x1="0" y1="-13.8333" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" antialias="false" x1="0" y1="16" length1="1.5"/>
+        <terminal x="0" y="-19" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

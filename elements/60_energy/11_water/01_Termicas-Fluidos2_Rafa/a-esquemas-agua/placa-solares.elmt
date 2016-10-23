@@ -1,0 +1,28 @@
+<definition link_type="simple" ic="true" height="80" width="80" version="0.4" hotspot_y="24" type="element" hotspot_x="63" orientation="dyyy">
+    <names>
+        <name lang="es">Placas solares</name>
+        <name lang="ca">Plaques solars</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon y4="4.85" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="37.15" y3="37.15" x3="-1.4325" x2="-41" antialias="false" x4="-1.4325" closed="false" y1="4" x1="-1.4325"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-12.3876" end2="none" x2="-40.1324" antialias="false" y1="-19.2662" x1="-40.1324" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-9.8864" end2="none" x2="-48.6986" antialias="false" y1="-14.2636" x1="-53.3111" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.63311" end2="none" x2="-51.9933" antialias="false" y1="-3.63311" x1="-59.2416" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="2.62014" end2="none" x2="-47.3807" antialias="false" y1="6.99741" x1="-52.6522" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="33.4603" end2="none" x2="-47" antialias="false" y1="48.418" x1="-47" length1="1.5"/>
+        <polygon y4="1" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="39" y3="39" x3="0.55" x2="-46" antialias="false" x4="0.55" closed="false" y1="0" x1="0.55"/>
+        <polygon y5="-2" y4="37" style="line-style:normal;line-weight:normal;filling:red;color:black" y2="-5" y3="34" x3="-50" x2="-4" antialias="false" x4="-47" y1="-2" x1="-1" x5="-1"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:red;color:black" x="-44.7449" antialias="true" height="8.75454" width="9.22513" y="-7.3851"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-4.2584" end2="none" x2="-23" antialias="false" y1="-4.2584" x1="-30.2483" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="12" end2="none" x2="-40.7913" antialias="false" y1="5.12143" x1="-40.7913" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7.62273" end2="none" x2="-30.2483" antialias="false" y1="3.24546" x1="-34.8609" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-13.6383" end2="none" x2="-29.5894" antialias="false" y1="-9.261" x1="-34.8609" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end2="none" x2="-1" antialias="false" y1="-3" x1="-3" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end2="none" x2="-0.831304" antialias="false" y1="-5" x1="9.73391" length1="1.5"/>
+        <input text="_" x="-25" tagg="label" size="4" y="36.5" rotate="true"/>
+        <terminal x="-47" y="49" orientation="s"/>
+        <terminal x="10" y="-5" orientation="e"/>
+    </description>
+</definition>

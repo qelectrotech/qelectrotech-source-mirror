@@ -1,0 +1,16 @@
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Enlace</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="12" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <polygon x4="25" y5="9" x5="16" y6="9" x6="-13" y7="0" x7="-24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-24" y2="-9" x2="-13" y3="-9" x3="16" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="25" y2="0" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-26"/>
+        <circle x="-12" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <input x="-8" y="5.5" size="5" rotate="true" text="_" tagg="label"/>
+        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="30" y="0" orientation="e"/>
+    </description>
+</definition>

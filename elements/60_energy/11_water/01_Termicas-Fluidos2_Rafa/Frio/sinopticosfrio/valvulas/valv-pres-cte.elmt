@@ -1,0 +1,19 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="21" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valvula presión constante</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.272041" x1="-13.8979" y2="0.272041" x2="-8.16948"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.272041" x1="8.37082" y2="0.272041" x2="16.712"/>
+        <polygon x4="7.245" y5="-5.52935" x5="-7.77" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.52935" x1="-7.77" y2="6" x2="-7.77" y3="-5.52935" x3="7.245" y4="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.147283" x1="-0.2856" y2="-8.02323" x2="-0.2856"/>
+        <ellipse width="10.395" x="-5.46" y="-17.7528" antialias="true" height="9.22348" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-3.81" y="-11" size="4" text="PC"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-2.71" y2="5" x2="-0.51" y3="3" x3="1.69"/>
+        <polygon x4="0.59" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-13.059" x1="4.55" y2="-13.059" x2="8.51" y3="-8.75224" x3="8.51" y4="-1"/>
+        <terminal x="17.64" y="0.235327" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-14.7" y="0.329267" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition width="40" hotspot_y="14" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Rácor 18-3/4"</name>
+        <name lang="ca">Ràcord 18-3/4"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="4.2075" angle="-90" y="4.93011" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.525" start="90" antialias="true" height="8.06989"/>
+        <rect width="12.155" y="-6.67037" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5.3575" antialias="false" height="13.6179"/>
+        <rect width="4.675" y="-5.15726" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.6825" antialias="false" height="11.0961"/>
+        <rect width="9.90075" y="-5.15726" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="7.61175" antialias="false" height="10.5918"/>
+        <rect width="8.8825" y="-9.19222" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.2" antialias="false" height="19.166"/>
+        <line y1="-4.14853" end1="none" x1="-1.655" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.7325" antialias="false" y2="-4.14853" length2="1.5"/>
+        <arc width="3.74" angle="-90" y="-12.2184" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.0575" start="0" antialias="true" height="8.06989"/>
+        <line y1="4.93011" end1="none" x1="-7.69383" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1.69691" antialias="false" y2="4.93011" length2="1.5"/>
+        <arc width="3.2725" angle="-180" y="-4.14853" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.59" start="90" antialias="true" height="9.07863"/>
+        <input size="4" text="3/4&quot;-18" y="18" tagg="label" x="-11" rotate="true"/>
+        <terminal y="0" orientation="w" x="-10"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

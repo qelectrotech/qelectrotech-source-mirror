@@ -1,0 +1,29 @@
+<definition width="50" version="0.4" hotspot_x="27" hotspot_y="33" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Condensador Evaporativo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.93092" x1="-7.83023" y2="-1.93092" x2="14.7327"/>
+        <arc width="6" x="-12" y="-6.13092" antialias="true" height="4.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.13092" x1="-9.17778" y2="-6.13092" x2="0.19259"/>
+        <rect width="31" x="-18" y="0" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-18" y2="-30" x2="-8" y3="-30" x3="2" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.3309" x1="-18.2" y2="-10.3309" x2="0.13333"/>
+        <ellipse width="9.5625" x="-8" y="-28.4344" antialias="true" height="9.43442" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6" x="-2" y="-10.3309" antialias="true" height="4.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-15" y2="-16" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28.0413" x1="-4.5575" y2="-23.7172" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28.0413" x1="-1.88" y2="-23.7172" x2="1.5625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-1" y2="-13" x2="1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3.257" x2="-2.5685" x3="-2.5685" x4="-3.257" antialias="false" x5="-3.9455" x6="-3.9455" x7="-3.257" x8="-2.22425" x9="-0.84725" closed="false" y1="-24.2034" y10="-22.0241" y2="-24.7482" y11="-22.2965" y3="-26.3826" y4="-27.1998" y12="-23.1137" y5="-26.3826" x10="-0.84725" y13="-24.2034" y6="-25.0206" x11="-1.88" y7="-24.2034" x12="-2.91275" y8="-23.931" x13="-3.257" y9="-22.8413"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-3" y2="-13" x2="-5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3.257" x2="-4.28975" x3="-5.3225" x4="-5.3225" antialias="false" x5="-4.28975" x6="-3.257" x7="-3.257" x8="-3.257" closed="false" y1="-24.2034" y2="-23.931" y3="-22.5689" y4="-21.7517" y5="-22.0241" y6="-23.1137" y7="-23.931" y8="-23.931"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.4364" x1="-2" y2="-13.1" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-14" y2="11" x2="-14"/>
+        <terminal x="-19" y="-10" nameHidden="232" number="" name="" orientation="w"/>
+        <terminal x="15" y="-2" nameHidden="184" number="" name="" orientation="e"/>
+        <terminal x="-14" y="11" nameHidden="192" number="" name="" orientation="s"/>
+        <terminal x="-15" y="-16" nameHidden="8" number="" name="" orientation="w"/>
+    </description>
+</definition>

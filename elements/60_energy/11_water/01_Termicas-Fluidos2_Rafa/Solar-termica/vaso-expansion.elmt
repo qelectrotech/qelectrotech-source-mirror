@@ -1,0 +1,20 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="32" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Vaso Expansion</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="1.35" x="-17" y="-8.87838" antialias="true" height="1.07069" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="31.5" x="-16.1" y="-27.6154" antialias="true" height="8.56549" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22.7973" x1="-16.1" y2="3.96985" x2="-16.1"/>
+        <arc width="31.5" x="-16.1" y="-0.848233" antialias="true" height="8.56549" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.3326" x1="15.4" y2="3.43451" x2="15.4"/>
+        <rect width="31.5" x="-16.1" y="-8.87838" antialias="false" height="1.07069" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.8" x="-1.25" y="7.71726" antialias="false" height="3.21206" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="0.9" x="15.4" y="-8.87838" antialias="true" height="1.07069" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <polygon x4="-14" y5="4" x5="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="-16" y2="13" x2="-18" y3="13" x3="-16" y4="6"/>
+        <polygon x4="15" y5="6.16993" x5="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6.16993" x1="13" y2="13" x2="15" y3="13" x3="17" y4="4.21849"/>
+        <terminal x="-0.35" y="10.9293" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

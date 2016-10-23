@@ -1,0 +1,35 @@
+<definition hotspot_x="43" hotspot_y="21" width="80" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Split Sostre</name>
+        <name lang="es">Split Techo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="1.11938" width="2.60006" antialias="false" height="1.14767" x="-30.5016"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15.1413" width="1.95005" antialias="false" height="0.573833" x="-0.767524"/>
+        <polygon y7="-9.40299" x4="-35.2184" y3="-5.38617" antialias="false" x3="-39.7685" y4="-5.38617" x2="-39.7685" x1="0.532508" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="0.532508" x7="10.9328" y5="-2.51704" x11="0.532508" x5="-33.2683" y10="-14.5675" closed="false" y8="-12.2722" x9="10.2827" y11="-14.5675" y2="-14.5675" x8="11.5828" x10="0.532508" y6="-2.51704" y1="-14.5675" y9="-14.5675"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.2385" width="2.60006" antialias="false" height="1.14767" x="-37.1684"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15.1413" width="1.95005" antialias="false" height="0.573833" x="-33.2683"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.650016" y="-12.846" antialias="true" height="0.573833" x="-37.8184"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.650016" y="-7.10767" antialias="true" height="0" x="-37.8184"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.650016" y="-12.846" antialias="true" height="0.573833" x="8.98272"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.650016" y="-4.2385" antialias="true" height="0.573833" x="-0.117508"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.650016" y="-4.2385" antialias="true" height="0.573833" x="-33.2683"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-18.1013" y2="8.1697" end1="none" x1="-32.835" y1="-2.95917" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="21.7664" y2="10.5545" end1="none" x1="0.965852" y1="-2.95917" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="32.1666" y2="4.1951" end1="none" x1="10.4994" y1="-9.31854" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="33.0333" y2="1.81034" end1="none" x1="11.3661" y1="-11.7033" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="32.1666" y2="-0.574412" end1="none" x1="10.4994" y1="-14.883" length1="1.5"/>
+        <polygon y4="8.1697" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10.4994" y2="-6.13886" x5="5.29929" y3="4.99002" y5="-2.95917" x4="21.7664" closed="false" x1="5.29929" y1="-2.95917" x3="26.9665"/>
+        <polygon y7="1.81034" x4="-11.1678" y3="8.1697" antialias="false" x3="-12.9012" y4="10.5545" x2="-18.1013" x1="-31.9683" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="32.1666" x7="33.9" y5="10.5545" x5="22.6331" closed="false" y8="-0.574412" y2="8.1697" x8="32.1666" y6="4.1951" y1="-2.95917"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="20.033" y2="10.5545" end1="none" x1="0.0991638" y1="-2.16426" length1="1.5"/>
+        <polygon y4="6.57987" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10.4994" y2="-3.75409" x5="6.16598" y3="6.57987" y5="-3.75409" x4="20.8997" closed="false" x1="6.16598" y1="-3.75409" x3="26.0998"/>
+        <input rotate="true" text="Ud_" tagg="label" y="-18.9009" x="-33.9683" size="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-13.0098" width="6.66683" antialias="false" height="3.53464" x="-3.30092"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="9.84161" width="2.66673" antialias="false" height="5.89107" x="-11.6347"/>
+        <terminal y="-16.5445" x="2.03254" orientation="n"/>
+        <terminal y="-3.75409" x="-38.9018" orientation="w"/>
+        <terminal y="14.5545" x="-10.3013" orientation="s"/>
+        <terminal y="1.6038" x="-32.235" orientation="w"/>
+    </description>
+</definition>

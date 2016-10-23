@@ -1,0 +1,27 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="8" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Filtro de gasoil</name>
+        <name lang="ca">Filtre de gasoil</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3.64" x="4.95" y="-4.12348" antialias="false" height="6.87064" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.22035" x1="-6.88" y2="1.22035" x2="-5.06"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="5.80077" x1="2.22" y2="17.2518" x2="2.22"/>
+        <rect width="3.64" x="-7.79" y="-4.12348" antialias="false" height="6.87064" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.59667" x1="-6.88" y2="-2.59667" x2="-5.06"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.22035" x1="5.86" y2="1.22035" x2="7.68"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.59667" x1="5.86" y2="-2.59667" x2="7.68"/>
+        <polygon x4="8.59" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2.74715" x1="-7.79" y2="3.51056" x2="-8.7" y3="3.51056" x3="9.5" y4="2.74715"/>
+        <polygon x4="3.13" y5="-4.12348" x5="4.95" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4.12348" x1="-4.15" y2="-5.6503" x2="-2.33" y3="-6.4137" x3="0.4" y4="-5.6503"/>
+        <polygon x4="9.5" y5="5.03737" x5="8.59" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5.03737" x1="-7.79" y2="18.7786" x2="-5.06" y3="18.7786" x3="5.86" y4="5.03737"/>
+        <rect width="18.2" x="-8.7" y="3.51056" antialias="false" height="1.5268" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="3.13" y5="-4.12348" x5="3.13" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-4.12348" x1="-2.33" y2="1.98375" x2="-2.33" y3="1.98375" x3="3.13" y4="-4.12348"/>
+        <rect width="9.1" x="-4.15" y="5.03737" antialias="false" height="12.2144" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="5.80077" x1="-1.42" y2="17.2518" x2="-1.42"/>
+        <input x="-4" y="19" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

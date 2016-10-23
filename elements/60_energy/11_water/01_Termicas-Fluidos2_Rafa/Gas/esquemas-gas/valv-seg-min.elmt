@@ -1,0 +1,17 @@
+<definition link_type="simple" type="element" hotspot_x="24" hotspot_y="8" version="0.5" width="50" height="20" orientation="dyyy">
+    <names>
+        <name lang="es">Valv.Seg. mínima pres.</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x2="10.808" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" x1="19.208" length1="1.5"/>
+        <polygon x2="10" y5="-5" x3="10" antialias="false" x4="-10" x5="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" y2="5" y3="-5" x1="-10" y4="5"/>
+        <line x2="-19.1986" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" x1="-10.7849" length1="1.5"/>
+        <circle y="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" x="2"/>
+        <polygon x2="0" x3="0" antialias="false" x4="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" y2="7" y3="0" x1="2" y4="0"/>
+        <input y="-13" tagg="label" size="4" rotate="true" x="-5" text="_"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

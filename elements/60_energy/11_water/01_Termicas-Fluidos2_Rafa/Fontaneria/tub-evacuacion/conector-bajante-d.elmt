@@ -1,0 +1,20 @@
+<definition width="40" hotspot_y="15" hotspot_x="10" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Conector Bajante</name>
+        <name lang="ca">Connector Baixant</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6" y="-1.92645" style="line-style:normal;line-weight:normal;filling:none;color:black" x="12" antialias="false" height="7.22417"/>
+        <rect width="9.75" y="14.0893" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" antialias="false" height="4.5972"/>
+        <rect width="9.75" y="-10.1506" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" antialias="false" height="4.5972"/>
+        <input size="4" text="_" y="6.03617" tagg="label" x="-19" rotate="true"/>
+        <polygon y1="14.5362" x3="8" y4="3.48617" x4="12" x1="5" closed="false" y3="5.18617" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5" antialias="false" y2="8.58617"/>
+        <polygon y1="-5" x3="8.19917" y4="-1" x4="11" x1="4.46474" closed="false" y3="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4.46474" antialias="false" y2="3"/>
+        <line y1="-5.09217" end1="none" x1="-3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3" antialias="false" y2="13.771" length2="1.5"/>
+        <terminal y="-10.1506" orientation="n" x="0.25"/>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

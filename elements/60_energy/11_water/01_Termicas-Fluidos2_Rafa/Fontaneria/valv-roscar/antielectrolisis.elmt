@@ -1,0 +1,32 @@
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Mang.Antielectrolisis</name>
+        <name lang="ca">Mang.Antielectrolisis</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" x="8" y="-7" antialias="true" height="14" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.42543" x1="-2.2" y2="-5.42543" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.83261" x1="-2.2" y2="-6.83261" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.01824" x1="-2.2" y2="-4.01824" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.61105" x1="-2.2" y2="-2.61105" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.01769" x1="-2.2" y2="3.01769" x2="3.4"/>
+        <rect width="1.3359" x="12.6893" y="-8.98153" antialias="false" height="18.4801" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="8.64643" x1="-2.2" y2="8.64643" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.6105" x1="-2.2" y2="1.6105" x2="3.4"/>
+        <rect width="21.854" x="-9.19768" y="-10.4841" antialias="true" height="20.665" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7.23925" x1="-2.2" y2="7.23925" x2="3.4"/>
+        <rect width="1.3359" x="-10.6889" y="-8.98153" antialias="false" height="18.4801" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0.203318" x1="-2.2" y2="0.203318" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.35003" x1="-2.2" y2="9.35003" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.42488" x1="-2.2" y2="4.42488" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.20387" x1="-2.2" y2="-1.20387" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.83206" x1="-2.2" y2="5.83206" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.64698" x1="-2.2" y2="-9.64698" x2="3.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8.2398" x1="-2.2" y2="-8.2398" x2="3.4"/>
+        <input x="-15" y="-19" size="4" rotate="true" text="antielectr.Ø_&quot;" tagg="label"/>
+        <rect width="6" x="-10" y="-7" antialias="true" height="14" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <terminal x="-10.6889" y="0.258498" orientation="w"/>
+        <terminal x="14" y="0" orientation="e"/>
+    </description>
+</definition>

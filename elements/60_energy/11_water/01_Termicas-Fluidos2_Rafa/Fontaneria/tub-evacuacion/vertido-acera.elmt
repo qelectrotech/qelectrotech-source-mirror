@@ -1,0 +1,20 @@
+<definition width="30" hotspot_y="29" hotspot_x="12" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Vertido-acera</name>
+        <name lang="ca">Abocament</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="20" angle="90" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-6" start="0" antialias="true" height="6"/>
+        <arc width="14" angle="90" y="8" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-3" start="0" antialias="true" height="6"/>
+        <input size="4" text="_" y="13" tagg="label" x="-14" rotate="true"/>
+        <rect width="10" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" antialias="false" height="20"/>
+        <arc width="20" angle="90" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" start="-180" antialias="true" height="20"/>
+        <arc width="8" angle="90" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" start="-180" antialias="true" height="6"/>
+        <polygon y1="3" x3="1" y4="10" x5="1" x4="1" x1="4" y5="10" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" antialias="false" y2="10"/>
+        <arc width="18" angle="90" y="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-4" start="0" antialias="true" height="6"/>
+        <line y1="-17" end1="none" x1="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="3" antialias="false" y2="2" length2="1.5"/>
+        <polygon y1="10" x3="15" y4="12" x5="15" x4="15" x1="3" y5="12" closed="false" y3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="3" antialias="false" y2="12"/>
+        <terminal y="-20" orientation="n" x="-5"/>
+    </description>
+</definition>

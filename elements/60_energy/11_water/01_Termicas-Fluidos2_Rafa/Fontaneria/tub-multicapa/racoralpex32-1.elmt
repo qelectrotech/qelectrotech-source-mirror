@@ -1,0 +1,23 @@
+<definition width="80" version="0.4" hotspot_x="47" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Rácor 32-1"</name>
+        <name lang="ca">Ràcord 32-1"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="11.6503" x="-28.3407" y="11.4477" antialias="true" height="21.2812" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="6.63139" x="-16.6903" y="-9.83342" antialias="false" height="18.621" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="22.0062" x="-38.6965" y="-21.8041" antialias="false" height="43.8924" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.4936" x1="-22.9533" y2="-12.4936" x2="-37.5954"/>
+        <arc width="10.3559" x="-27.0462" y="-31.1146" antialias="true" height="18.621" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.4477" x1="-37.4975" y2="11.4477" x2="-23.0592"/>
+        <arc width="9.06139" x="-25.7516" y="-12.4936" antialias="true" height="23.9413" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="-25.1045" y="26.7694" size="4" rotate="true" text="rá 32-1&quot;" tagg="label"/>
+        <rect width="28.6452" x="-7.62896" y="-12.4936" antialias="false" height="23.9413" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.71688" x="21.0161" y="-8.50334" antialias="false" height="15.9609" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.43" x="-10.1063" y="-16.2193" antialias="false" height="30.7706" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-38.6965" y="-0.522919" orientation="w"/>
+        <terminal x="24.7331" y="-0.522919" orientation="e"/>
+    </description>
+</definition>

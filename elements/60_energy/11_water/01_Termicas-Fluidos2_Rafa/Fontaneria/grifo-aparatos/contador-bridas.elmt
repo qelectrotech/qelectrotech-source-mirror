@@ -1,0 +1,21 @@
+<definition width="50" height="40" link_type="simple" hotspot_x="24" hotspot_y="21" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Contador bridas</name>
+        <name lang="ca">Comptador brides</name>
+        <name lang="en">Counter flanges</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="2" height="25" antialias="false" y="-13" x="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" height="25" antialias="false" y="-13" x="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" x6="17" y3="11" y4="11" y6="7" y8="7" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" x2="-11" x7="17" x5="11" y1="7" x3="-9" x8="17" x1="-17" x4="8" x9="17" y5="7" y9="7" y7="7"/>
+        <polygon closed="false" antialias="false" x6="17" y3="-11" y4="-11" y6="-7" y8="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" x2="-12" x7="17" x5="10" y1="-7" x3="-10" x8="17" x1="-17" x4="8" y5="-7" y7="-7"/>
+        <rect width="18" height="2" antialias="false" y="-13" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" height="2" antialias="false" y="-15" x="-4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-11" y3="3" antialias="false" x2="-9" closed="false" x6="-11" y5="6" y6="6" y7="6" y4="6" y2="-3" x7="-11" x5="-11" x4="-11" y1="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-9"/>
+        <polygon x1="10" y3="4" antialias="false" x2="8" closed="false" x6="10" y5="6" y6="6" y4="6" y2="-4" x5="10" x4="10" y1="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="8"/>
+        <input y="5" text="Ø_" tagg="label" size="4" x="-11" rotate="true"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

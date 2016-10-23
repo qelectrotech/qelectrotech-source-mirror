@@ -1,0 +1,20 @@
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="30" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Cuadro eléctrico</name>
+        <name lang="ca">Cuadre elèctric</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" x="-10" y="-10.7071" antialias="false" height="2.24388" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="6" x="4.25" y="0.512245" antialias="false" height="2.24388" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="6" x="4.25" y="-13.699" antialias="false" height="2.24388" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="8.25" x="-4" y="-24.9184" antialias="false" height="29.9184" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="6" x="4.25" y="-6.96735" antialias="false" height="2.24388" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="6" x="4.25" y="-21.1786" antialias="false" height="2.24388" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-12" y="-29" size="4" rotate="true" text="CE_" tagg="label"/>
+        <terminal x="11" y="-19.6827" orientation="e"/>
+        <terminal x="11" y="-12.951" orientation="e"/>
+        <terminal x="11" y="-6.21939" orientation="e"/>
+        <terminal x="11" y="1.2602" orientation="e"/>
+    </description>
+</definition>

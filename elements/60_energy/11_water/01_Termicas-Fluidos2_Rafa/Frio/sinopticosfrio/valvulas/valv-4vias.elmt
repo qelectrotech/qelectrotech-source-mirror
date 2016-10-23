@@ -1,0 +1,22 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="23" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. 4 vías</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon x4="-8" y5="-1" x5="-9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-9" y2="6" x2="-12" y3="6" x3="-5" y4="-1"/>
+        <polygon x4="10" y5="-1" x5="9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="9" y2="6" x2="6" y3="6" x3="13" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.87071" x1="-8.52" y2="9.14001" x2="-8.52"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.87071" x1="9.48" y2="9.14001" x2="9.48"/>
+        <polygon x4="1" y5="-1" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="0" y2="6" x2="-3" y3="6" x3="4" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.70077" x1="0.48" y2="9.32411" x2="0.48"/>
+        <rect width="26" x="-13" y="-6" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-4" y5="-14" x5="-2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="-3" y2="-14" x2="4" y3="-6" x3="0" y4="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="0" y2="-15" x2="0"/>
+        <terminal x="0" y="-17" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="0.5" y="10" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="9.5" y="10" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="-8.5" y="10" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

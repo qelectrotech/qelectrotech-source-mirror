@@ -1,0 +1,43 @@
+<definition width="80" version="0.4" hotspot_x="33" hotspot_y="23" height="70" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Aerotermo</name>
+        <name lang="ca">Aerotermo</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="7.2" x="-29.2" y="33.5166" antialias="false" height="2.43128" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-18.4" y5="-7.00478" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-7.00478" x1="-18.4" y2="-2.95264" x2="-18.4" y3="-2.95264" x3="-15.7" y4="-7.00478"/>
+        <rect width="51.3" x="-18.4" y="-0.874707" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-18.4" y5="-0.52136" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-0.52136" x1="-18.4" y2="3.53078" x2="-18.4" y3="3.53078" x3="-15.7" y4="-0.52136"/>
+        <polygon x4="-18.4" y5="5.96206" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="5.96206" x1="-18.4" y2="10.0142" x2="-18.4" y3="10.0142" x3="-15.7" y4="5.96206"/>
+        <polygon x4="-18.4" y5="25.4123" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="25.4123" x1="-18.4" y2="29.4644" x2="-18.4" y3="29.4644" x3="-15.7" y4="25.4123"/>
+        <polygon x4="-18.4" y5="12.4455" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="12.4455" x1="-18.4" y2="16.4976" x2="-18.4" y3="16.4976" x3="-15.7" y4="12.4455"/>
+        <polygon x4="-18.4" y5="18.9289" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="18.9289" x1="-18.4" y2="22.981" x2="-18.4" y3="22.981" x3="-15.7" y4="18.9289"/>
+        <polygon x4="-18.4" y5="31.8957" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="31.8957" x1="-18.4" y2="35.9479" x2="-18.4" y3="35.9479" x3="-15.7" y4="31.8957"/>
+        <rect width="51.3" x="-18.4" y="25.059" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="18.7218" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="58.5" x="-22" y="-16.7299" antialias="false" height="56.7299" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="31.8836" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="22.1341" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="12.3847" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="35.2959" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="-7.21184" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="28.4713" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="5.9499" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="2.5376" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="15.797" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="-3.79954" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="-13.549" antialias="false" height="3.4123" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="51.3" x="-18.4" y="9.3622" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="51.3" x="-18.4" y="-10.1367" antialias="false" height="1.46242" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="7.2" x="-29.2" y="-12.6778" antialias="false" height="2.43128" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-18.4" y5="-13.4882" x5="-18.4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13.4882" x1="-18.4" y2="-9.43606" x2="-18.4" y3="-9.43606" x3="-15.7" y4="-13.4882"/>
+        <rect width="3" x="37" y="9" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="44" y5="4" x5="41" y6="5" x6="42" y7="3" x7="44" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="37" y2="4" x2="40" y3="6" x3="39" y4="3"/>
+        <input x="-5" y="45" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-29.2" y="-11.0569" orientation="w"/>
+        <terminal x="-29.2" y="35.1374" orientation="w"/>
+        <terminal x="41" y="10" orientation="e"/>
+    </description>
+</definition>

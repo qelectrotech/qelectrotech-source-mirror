@@ -1,0 +1,25 @@
+<definition version="0.5" link_type="simple" type="element" hotspot_y="19" width="30" height="40" orientation="dyyy" hotspot_x="16">
+    <names>
+        <name lang="es">Brida cuello</name>
+        <name lang="ca">Brida coll</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line antialias="false" y1="11.5315" x2="1.4532" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="11.5315" x1="-1.63574" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="4" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="4" x1="-10" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="9.53151" x2="1.4532" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="9.53151" x1="-1.63574" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" width="4" y="6" height="3" angle="90"/>
+        <line antialias="false" y1="-11.8358" x2="1.7104" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="-11.8358" x1="-0.936651" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-9.46849" x2="1.4532" style="line-style:normal;line-weight:normal;filling:none;color:red" end1="none" y2="-9.46849" x1="-1.63574" end2="none" length1="1.5" length2="1.5"/>
+        <input text="Brida C Ø_" tagg="label" rotate="true" x="-18" size="6" y="20"/>
+        <line antialias="false" y1="-6" x2="-4.34237" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-6" x1="-9.65763" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="6" x2="-4.35256" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="6" x1="-9.64744" end2="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" width="4" y="-9" height="3" angle="90"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" width="4" y="-13" height="26"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="9" width="1" y="14" height="0"/>
+        <line antialias="false" y1="-6" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="6" x1="-10" end2="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" y1="-4" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:red" end1="none" y2="-4" x1="-10" end2="none" length1="1.5" length2="1.5"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="3" y="0" orientation="e"/>
+    </description>
+</definition>

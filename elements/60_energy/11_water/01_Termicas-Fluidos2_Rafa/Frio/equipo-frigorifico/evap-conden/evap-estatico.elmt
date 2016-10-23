@@ -1,0 +1,40 @@
+<definition width="100" version="0.4" hotspot_x="65" hotspot_y="33" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Evaporador estático</name>
+        <name lang="ca">Evaporador estátic</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="-32" y5="-1" x5="-28" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="8" y2="-19" x2="8" y3="-9" x3="-32" y4="0"/>
+        <arc width="3" x="-3" y="-4" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <polygon x4="-19" y5="3" x5="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="21" y2="-15" x2="21" y3="-5" x3="-19" y4="4"/>
+        <arc width="3" x="2" y="-5" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <arc width="3" x="-10" y="-2" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <polygon x4="26" y5="-3" x5="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="-14" y2="7" x2="-14" y3="-3" x3="26" y4="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-13" y2="6" x2="-8"/>
+        <polygon x4="-45" y5="-5" x5="-41" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-5" y2="-23" x2="-5" y3="-13" x3="-45" y4="-4"/>
+        <polygon x4="-54" y5="-8" x5="-50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23" x1="-14" y2="-26" x2="-14" y3="-16" x3="-54" y4="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-13" y2="7" x2="-8"/>
+        <arc width="3" x="14" y="-8" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <arc width="3" x="8" y="-7" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <polygon x4="-50" y5="-7" x5="-46" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="-10" y2="-25" x2="-10" y3="-15" x3="-50" y4="-6"/>
+        <polygon x4="-28" y5="0" x5="-24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="12" y2="-18" x2="12" y3="-8" x3="-28" y4="1"/>
+        <polygon x4="-41" y5="-4" x5="-37" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="-1" y2="-22" x2="-1" y3="-12" x3="-41" y4="-3"/>
+        <polygon x4="-37" y5="-3" x5="-33" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-18" x1="3" y2="-21" x2="3" y3="-11" x3="-37" y4="-2"/>
+        <polygon x4="-24" y5="1" x5="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="16" y2="-17" x2="16" y3="-7" x3="-24" y4="2"/>
+        <polygon x4="-62" y5="-11" x5="-60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-27" x1="-22" y2="-30" x2="-22" y3="-20" x3="-62" y4="-10"/>
+        <polygon x4="-59" y5="-10" x5="-55" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-25" x1="-19" y2="-28" x2="-19" y3="-18" x3="-59" y4="-9"/>
+        <arc width="3" x="19" y="-10" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-260" angle="-200"/>
+        <polygon x15="16" x16="22" x17="21" x18="27" x19="27" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27" x2="-14" x3="-14" x4="-9" x5="-10" x6="-4" closed="false" x7="-5" x8="2" x9="1" y1="-1" y2="9" y3="13" y4="10" y5="12" y6="9" y7="11" y8="7" y10="6" y9="9" y11="8" y12="5" y13="7" y14="3" y15="6" y16="2" y17="5" y18="1" y19="-1" x10="7" x11="6" x12="12" antialias="false" x13="11" x14="17"/>
+        <polygon x4="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-14" y2="-8" x2="-62" y3="-5" x3="-62" y4="13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-62" y2="-9" x2="-59"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9" x1="-58" y2="8" x2="-11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="27" y2="-2" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="24" y2="-10" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="24" y2="-9" x2="29"/>
+        <polygon x4="-43" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-45" y2="5" x2="-45" y3="6" x3="-43" y4="3"/>
+        <terminal x="30" y="-10" orientation="e"/>
+        <terminal x="-7" y="6" orientation="e"/>
+        <terminal x="-44" y="6" orientation="s"/>
+    </description>
+</definition>

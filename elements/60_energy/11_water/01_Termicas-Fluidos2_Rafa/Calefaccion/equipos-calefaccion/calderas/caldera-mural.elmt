@@ -1,0 +1,46 @@
+<definition link_type="simple" hotspot_x="27" orientation="dyyy" hotspot_y="54" version="0.5" type="element" height="90" width="50">
+    <names>
+        <name lang="es">Caldera mural ACS</name>
+        <name lang="ca">Caldera mural ACS</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc antialias="true" x="0.353766" y="6.9242" height="7.21036" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" width="10.1049" angle="-90"/>
+        <ellipse antialias="true" x="2.65034" y="7.8255" height="5.40777" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6.43039"/>
+        <line x1="9.1886" length1="1.5" x2="13.3224" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.1476" y2="26.697"/>
+        <line x1="-12.09" length1="1.5" x2="-7.95617" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.1476" y2="26.697"/>
+        <line x1="5.86553" length1="1.5" x2="8.1621" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.5294" y2="8.7269"/>
+        <arc antialias="true" x="1.73171" y="6.9242" height="7.21036" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" width="8.26765" angle="-90"/>
+        <line x1="-10.0962" length1="1.5" x2="-10.0962" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.345" y2="21.9502"/>
+        <rect antialias="false" x="-20.4781" y="-35.6693" height="52.7917" style="line-style:normal;line-weight:normal;filling:none;color:black" width="38.8829"/>
+        <line x1="-9.17754" length1="1.5" x2="-10.0962" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.5983" y2="22.4008"/>
+        <rect antialias="false" x="-12.09" y="23.5423" height="5.85842" style="line-style:normal;line-weight:normal;filling:red;color:black" width="4.59314"/>
+        <line x1="-11.0148" length1="1.5" x2="-10.0962" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.5983" y2="22.4008"/>
+        <rect antialias="false" x="9.1886" y="23.5423" height="5.85842" style="line-style:normal;line-weight:normal;filling:blue;color:black" width="4.59314"/>
+        <line x1="-12.09" length1="1.5" x2="-7.95617" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="28.9502" y2="28.4996"/>
+        <line x1="9.1886" length1="1.5" x2="13.3224" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="28.9502" y2="28.4996"/>
+        <line x1="-12.09" length1="1.5" x2="-7.95617" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="28.0489" y2="27.5983"/>
+        <line x1="9.1886" length1="1.5" x2="13.3224" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="28.0489" y2="27.5983"/>
+        <ellipse antialias="true" x="-8.2105" y="10.5294" height="1.35194" style="line-style:normal;line-weight:normal;filling:red;color:black" width="1.83726"/>
+        <rect antialias="false" x="-3.61731" y="10.0788" height="1.8026" style="line-style:normal;line-weight:normal;filling:none;color:black" width="0.918628"/>
+        <line x1="11.0039" length1="1.5" x2="11.0039" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.345" y2="22.9502"/>
+        <rect antialias="false" x="-17.3443" y="17.3879" height="6.15453" style="line-style:normal;line-weight:normal;filling:none;color:black" width="34.3961"/>
+        <rect antialias="false" x="-6.23937" y="-4.13156" height="3.1974" style="line-style:normal;line-weight:normal;filling:none;color:black" width="9.64559"/>
+        <line x1="-10.2918" length1="1.5" x2="-5.23937" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35.8378" y2="-41.2745"/>
+        <rect antialias="false" x="-5.23937" y="-46.7113" height="5.43677" style="line-style:normal;line-weight:normal;filling:none;color:black" width="9.18628"/>
+        <line x1="3.9469" length1="1.5" x2="10.3773" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-41.2745" y2="-35.8378"/>
+        <line x1="9.7496" length1="1.5" x2="10.8537" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.2994" y2="19.0484"/>
+        <line x1="11.9579" length1="1.5" x2="10.8537" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.2994" y2="19.0484"/>
+        <input text="Mod." x="-17" tagg="label" y="-29" rotate="true" size="4"/>
+        <rect antialias="false" x="-1" y="24" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" width="2"/>
+        <text text="gas" x="-4" y="29" size="4"/>
+        <polygon x1="-19" y4="-16" x2="-16" y5="-16" antialias="false" x3="-16" y6="-16" x4="-13" y7="-16" x5="-13" x6="-13" x7="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" y2="-16" closed="false" y3="-13"/>
+        <polygon x1="-14" y4="-15" x2="-12" y5="-15" antialias="false" x3="-13" x4="-13" x5="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" y2="-17" closed="false" y3="-15"/>
+        <terminal orientation="w" x="-21" y="-20"/>
+        <terminal orientation="s" x="10" y="30"/>
+        <terminal orientation="n" x="0" y="-50"/>
+        <terminal orientation="s" x="-10" y="30"/>
+        <terminal orientation="s" x="0" y="30"/>
+    </description>
+</definition>

@@ -1,0 +1,23 @@
+<definition width="70" height="30" link_type="simple" hotspot_x="34" hotspot_y="18" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Tubo rosca</name>
+        <name lang="ca">Tub rosca </name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="60" height="20.899" antialias="false" y="-13.899" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" length2="1.5" antialias="false" x2="20" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="23" length2="1.5" antialias="false" x2="21" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-20" length2="1.5" antialias="false" x2="-20" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="25" length2="1.5" antialias="false" x2="23" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-26" length2="1.5" antialias="false" x2="-28" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-24" length2="1.5" antialias="false" x2="-26" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="27" length2="1.5" antialias="false" x2="25" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="29" length2="1.5" antialias="false" x2="27" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-22" length2="1.5" antialias="false" x2="-24" end1="none" y2="-13.707" length1="1.5" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-20" length2="1.5" antialias="false" x2="-22" end1="none" y2="-13.707" length1="1.5" end2="none" y1="5.78194" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input y="-2" text="_&quot;" tagg="label" size="4" x="-6" rotate="true"/>
+        <terminal y="-2.74449" orientation="w" x="-30"/>
+        <terminal y="-2.74449" orientation="e" x="30"/>
+    </description>
+</definition>

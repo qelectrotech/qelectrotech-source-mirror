@@ -1,0 +1,18 @@
+<definition height="40" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="21" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Frigorífico a gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-13" y2="-9" x1="1" x2="1" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-13" y2="-9" x1="-5" x2="-5" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-13" y2="-9" x1="7" x2="7" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-13" y2="-9" x1="4" x2="4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="-13" y2="-9" x1="-2" x2="-2" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <rect height="24" x="-10" y="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <line y1="-13" y2="-9" x1="-8" x2="-8" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-10" size="4" rotate="true" y="-24" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

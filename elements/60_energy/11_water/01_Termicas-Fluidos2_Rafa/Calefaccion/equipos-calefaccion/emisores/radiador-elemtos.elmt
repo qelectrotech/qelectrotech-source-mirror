@@ -1,0 +1,32 @@
+<definition hotspot_x="24" hotspot_y="14" width="50" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="en">Steel radiator</name>
+        <name lang="it">Radiatore</name>
+        <name lang="pl">Grzejnik płytowy</name>
+        <name lang="ca">Radiador ferro colat</name>
+        <name lang="fr">Radiateur Acier</name>
+        <name lang="cs">Deskové topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="es">Radiador fundicion</name>
+        <name lang="nl">Radiator staal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y7="17.6305" x4="12" y3="-11.548" antialias="false" x3="6" y4="-11.548" x2="6" y12="17.6305" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="11" x7="11" y5="-6.33753" x11="6" x5="12" y10="22.841" closed="false" y8="17.6305" x9="12" y11="17.6305" y2="-6.33753" x8="12" x10="6" x13="7" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="7"/>
+        <polygon y7="17.6305" x4="0" y3="-11.548" antialias="false" x3="-6" y4="-11.548" x2="-6" y12="17.6305" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-1" x7="-1" y5="-6.33753" x11="-6" x5="0" y10="22.841" closed="false" y8="17.6305" x9="0" y11="17.6305" y2="-6.33753" x8="0" x10="-6" x13="-5" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="-5"/>
+        <polygon y7="17.6305" x4="-6" y3="-11.548" antialias="false" x3="-12" y4="-11.548" x2="-12" y12="17.6305" x1="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-7" x7="-7" y5="-6.33753" x11="-12" x5="-6" y10="22.841" closed="false" y8="17.6305" x9="-6" y11="17.6305" y2="-6.33753" x8="-6" x10="-12" x13="-11" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="-11"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="19.2295" width="2.5" antialias="false" height="2.70641" x="-20.5"/>
+        <polygon y7="17.6305" x4="18" y3="-11.548" antialias="false" x3="12" y4="-11.548" x2="12" y12="17.6305" x1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="17" x7="17" y5="-6.33753" x11="12" x5="18" y10="22.841" closed="false" y8="17.6305" x9="18" y11="17.6305" y2="-6.33753" x8="18" x10="12" x13="13" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="13"/>
+        <polygon y7="17.6305" x4="6" y3="-11.548" antialias="false" x3="0" y4="-11.548" x2="0" y12="17.6305" x1="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="5" x7="5" y5="-6.33753" x11="0" x5="6" y10="22.841" closed="false" y8="17.6305" x9="6" y11="17.6305" y2="-6.33753" x8="6" x10="0" x13="1" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.3296" width="2.5" antialias="false" height="3.08469" x="18.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="19.2295" width="2.5" antialias="false" height="2.70641" x="18.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10.3296" width="2.5" antialias="false" height="3.08469" x="-20.5"/>
+        <polygon y7="17.6305" x4="-12" y3="-11.548" antialias="false" x3="-18" y4="-11.548" x2="-18" y12="17.6305" x1="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-13" x7="-13" y5="-6.33753" x11="-18" x5="-12" y10="22.841" closed="false" y8="17.6305" x9="-12" y11="17.6305" y2="-6.33753" x8="-12" x10="-18" x13="-17" y6="-6.33753" y1="-6.33753" y13="-6.33753" y9="22.841" x12="-17"/>
+        <input rotate="true" text="_" tagg="label" y="-12.265" x="-2" size="4"/>
+        <terminal y="-10" x="-20" orientation="w"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="20" x="20" orientation="e"/>
+        <terminal y="20" x="-19" orientation="w"/>
+    </description>
+</definition>

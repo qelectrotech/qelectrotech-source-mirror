@@ -1,0 +1,24 @@
+<definition width="50" hotspot_y="28" hotspot_x="29" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Derivación Y-D</name>
+        <name lang="ca">Derivació Y-D</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6.4125" y="-6.91915" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.105" antialias="false" height="16.5132"/>
+        <rect width="6.4125" y="-7.39095" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20.4" antialias="false" height="16.5132"/>
+        <line y1="7.23496" end1="none" x1="-13.4771" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6.01515" antialias="false" y2="7.23496" length2="1.5"/>
+        <line y1="-5.50374" end1="none" x1="-13.8376" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9.0199" antialias="false" y2="-5.50374" length2="1.5"/>
+        <line y1="-5.50374" end1="none" x1="1.51035" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="5.98823" antialias="false" y2="-5.50374" length2="1.5"/>
+        <line y1="-2.04999" end1="none" x1="-6.51" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8.8575" antialias="false" y2="-5.50374" length2="1.5"/>
+        <line y1="-5.46316" end1="none" x1="1.275" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.225" antialias="false" y2="-2.29324" length2="1.5"/>
+        <line y1="-15.7654" end1="none" x1="-13.725" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8.475" antialias="false" y2="-5.46316" length2="1.5"/>
+        <line y1="-19.7278" end1="none" x1="-6.225" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1.275" antialias="false" y2="-6.25565" length2="1.5"/>
+        <polygon y1="-14.9729" x3="-6.975" y4="-18.9353" x5="-15.225" x4="-17.475" x1="-15.225" y5="-14.9729" closed="false" y3="-25.2752" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4.725" antialias="false" y2="-21.3128"/>
+        <input size="4" text="_" y="13.9526" tagg="label" x="-10.725" rotate="true"/>
+        <terminal y="0.629709" orientation="w" x="-20.4"/>
+        <terminal y="0" orientation="e" x="13"/>
+        <terminal y="-23.6902" orientation="n" x="-12.225"/>
+    </description>
+</definition>

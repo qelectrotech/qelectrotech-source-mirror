@@ -1,0 +1,17 @@
+<definition link_type="simple" hotspot_x="15" width="30" height="40" version="0.5" type="element" hotspot_y="17" orientation="dyyy">
+    <names>
+        <name lang="ca">Ventilador axial</name>
+        <name lang="es">Ventilador Axial</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse width="25" antialias="true" height="24" y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4" x2="-13" y2="0" y1="-11" end2="none"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3" x2="12" y2="0" y1="-11" end2="none"/>
+        <polygon y8="-0.54375" y12="1.53516" y13="-1.2367" x8="2.1" y2="-2.6227" style="line-style:normal;line-weight:normal;filling:none;color:black" x9="5.7" x10="5.7" x3="1.2" y4="-8.8594" y10="4.30703" x6="-2.4" x4="-0.6" y5="-6.7805" y7="-1.2367" y9="2.22813" x11="3" y3="-6.7805" x13="-0.6" x1="-0.6" antialias="false" x2="1.2" y1="-1.2367" x12="0.3" x7="-0.6" y6="-3.3156" x5="-2.4" closed="false" y11="3.61406"/>
+        <polygon y8="-0.54375" x8="-0.6" y2="-0.54375" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-6" y4="5" x6="-0.6" x4="-6" y5="4.30703" y7="-0.54375" y3="2.92109" x1="-0.6" antialias="false" x2="-3.3" y1="-1.2367" x7="-0.6" y6="1.53516" x5="-3.3" closed="false"/>
+        <line end1="none" length2="1.5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2.21177e-17" x2="2.21177e-17" y2="10" y1="6" end2="none"/>
+        <input y="17" tagg="label" rotate="true" size="5" x="-24" text="_"/>
+        <terminal y="16" x="0" orientation="s"/>
+    </description>
+</definition>

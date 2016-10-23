@@ -1,0 +1,19 @@
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="30" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Presostato mini</name>
+        <name lang="ca">Prtesostat min</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="19" x1="-3" y2="18" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="17" x1="-3" y2="16" x2="8"/>
+        <rect width="11" x="-3" y="12" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="37" x="-16" y="-2" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="37" x="-16" y="-10" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="24" x="-8" y="-24" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="17" y="-21" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15" x1="-3" y2="14" x2="8"/>
+        <terminal x="19" y="-18" orientation="e"/>
+        <terminal x="2" y="21" orientation="s"/>
+    </description>
+</definition>

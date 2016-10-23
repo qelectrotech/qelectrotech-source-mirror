@@ -1,0 +1,36 @@
+<definition width="110" version="0.4" hotspot_x="55" hotspot_y="26" height="60" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Captador solar horiz</name>
+        <name lang="ca">Captador solar horiz</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="89.035" x="-44.9689" y="-22.6448" antialias="false" height="53.3681" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-18.672" y2="-18.297" x2="-18.672"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-12.497" y2="-18.297" x2="-12.497"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-24.847" y2="-18.297" x2="-24.847"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-37.197" y2="-18.297" x2="-37.197"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-31.022" y2="-18.297" x2="-31.022"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-7.557" y2="-18.297" x2="-7.557"/>
+        <rect width="4.0755" x="-49.3" y="-22.4598" antialias="false" height="4.32813" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="18.2545" y2="-18.297" x2="18.2545"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="-2.123" y2="-18.297" x2="-2.123"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="28.4433" y2="-18.297" x2="28.4433"/>
+        <rect width="4.0755" x="-49.3" y="26.8048" antialias="false" height="3.91856" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.0755" x="44.066" y="26.9639" antialias="false" height="3.91856" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="37.2735" y2="-18.297" x2="37.2735"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="8.06575" y2="-18.297" x2="8.06575"/>
+        <rect width="83.2227" x="-42.0628" y="-20.8046" antialias="false" height="49.6876" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="2.63175" y2="-18.297" x2="2.63175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="33.198" y2="-18.297" x2="33.198"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="12.8205" y2="-18.297" x2="12.8205"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="27.4169" x1="23.0093" y2="-18.297" x2="23.0093"/>
+        <rect width="4.0755" x="44.066" y="-21.4074" antialias="false" height="4.32813" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-14.91" y="-28.0952" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-49.3" y="29.2108" orientation="w"/>
+        <terminal x="48.1415" y="29.37" orientation="e"/>
+        <terminal x="-49.3" y="-20.5451" orientation="w"/>
+        <terminal x="48.1415" y="-19.4927" orientation="e"/>
+    </description>
+</definition>

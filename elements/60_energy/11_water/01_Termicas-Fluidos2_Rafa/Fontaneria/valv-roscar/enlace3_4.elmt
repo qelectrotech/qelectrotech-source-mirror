@@ -1,0 +1,26 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Enlace 3tuercas 3/4H</name>
+        <name lang="ca">Enllaç 3 rosques 3/4H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3" x="6" y="-4" antialias="false" height="9" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <rect width="5.98" x="-10.48" y="-7.6688" antialias="false" height="15.2261" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="3.68" x="-4.5" y="6.94832" antialias="true" height="9.74475" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="4.14" x="0.56" y="6.94832" antialias="true" height="9.74475" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="4.14" x="-4.5" y="-18.0225" antialias="true" height="12.1809" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="5.06" x="4.7" y="-7.6688" antialias="false" height="15.2261" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="3.68" x="1.02" y="-5.84166" antialias="true" height="12.7899" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="9.2" x="-4.5" y="-12.5412" antialias="false" height="24.3619" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.84166" x1="2.54001" y2="-5.84166" x2="-1.86924"/>
+        <arc width="4.14" x="0.56" y="-18.0225" antialias="true" height="12.1809" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.94832" x1="-1.83244" y2="6.94832" x2="2.50016"/>
+        <arc width="3.22" x="-4.5" y="-5.84166" antialias="true" height="12.7899" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <input x="-15" y="16" size="4" rotate="true" text="enlace 3/4&quot;" tagg="label"/>
+        <rect width="3" x="-10" y="-4" antialias="false" height="9" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <terminal x="-10.48" y="-0.36024" orientation="w"/>
+        <terminal x="9.76" y="-0.36024" orientation="e"/>
+    </description>
+</definition>

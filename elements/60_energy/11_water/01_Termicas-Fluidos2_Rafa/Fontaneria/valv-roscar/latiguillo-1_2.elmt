@@ -1,0 +1,39 @@
+<definition width="40" hotspot_y="35" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Latiguillo H</name>
+        <name lang="ca">Cable H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="34.2375" angle="-90" y="-31.3097" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18" start="0" antialias="true" height="34.5491"/>
+        <arc width="2.78438" angle="-90" y="3.57997" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.06875" start="90" antialias="true" height="5.98526"/>
+        <rect width="3.09375" y="-2.77939" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.28438" antialias="false" height="5.98526"/>
+        <rect width="5.25938" y="-5.77199" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.54375" antialias="false" height="12.3446"/>
+        <line y1="-3.15346" end1="none" x1="-5.78117" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-9.28058" antialias="false" y2="-3.15346" length2="1.5"/>
+        <arc width="2.475" angle="-90" y="-8.39056" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.75937" start="0" antialias="true" height="5.2371"/>
+        <line y1="3.57997" end1="none" x1="-9.25718" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5.8065" antialias="false" y2="3.57997" length2="1.5"/>
+        <arc width="2.16563" angle="-180" y="-3.15346" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.45" start="90" antialias="true" height="6.73342"/>
+        <arc width="23.925" angle="-90" y="-24.9839" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13.05" start="0" antialias="true" height="22.3839"/>
+        <line y1="-14.7651" end1="none" x1="8.4" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="14.175" antialias="false" y2="-12.8187" length2="1.5"/>
+        <line y1="-15.2517" end1="none" x1="13.35" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="18.3" antialias="false" y2="-13.3053" length2="1.5"/>
+        <line y1="-15.2517" end1="none" x1="13.35" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="14.175" antialias="false" y2="-12.8187" length2="1.5"/>
+        <line y1="-2.59995" end1="none" x1="-0.2625" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="8.4" antialias="false" y2="-0.166911" length2="1.5"/>
+        <line y1="-5.51959" end1="none" x1="7.1625" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="13.7625" antialias="false" y2="-5.03298" length2="1.5"/>
+        <line y1="-9.89909" end1="none" x1="10.05" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="16.2375" antialias="false" y2="-12.8187" length2="1.5"/>
+        <line y1="0.319696" end1="none" x1="-1.0875" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2.625" antialias="false" y2="2.75273" length2="1.5"/>
+        <line y1="-3.08656" end1="none" x1="1.8" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-0.675" antialias="false" y2="3.23934" length2="1.5"/>
+        <line y1="-6.97941" end1="none" x1="7.9875" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="7.1625" antialias="false" y2="0.806302" length2="1.5"/>
+        <line y1="-11.8455" end1="none" x1="10.4625" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="12.1125" antialias="false" y2="-2.59995" length2="1.5"/>
+        <line y1="-13.3053" end1="none" x1="12.9375" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="15" antialias="false" y2="-8.43925" length2="1.5"/>
+        <line y1="-13.7919" end1="none" x1="11.7" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="14.175" antialias="false" y2="-6.00619" length2="1.5"/>
+        <line y1="-8.43925" end1="none" x1="9.6375" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="10.05" antialias="false" y2="-1.14012" length2="1.5"/>
+        <line y1="-4.54637" end1="none" x1="5.5125" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="4.6875" antialias="false" y2="1.77952" length2="1.5"/>
+        <line y1="-3.57316" end1="none" x1="3.8625" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2.2125" antialias="false" y2="2.75273" length2="1.5"/>
+        <line y1="-7.95262" end1="none" x1="8.8125" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="15.4125" antialias="false" y2="-8.92583" length2="1.5"/>
+        <line y1="-4.05977" end1="none" x1="4.6875" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="11.7" antialias="false" y2="-2.59995" length2="1.5"/>
+        <input size="4" text="Ø_  H" y="7.79132" tagg="label" x="0" rotate="true"/>
+        <terminal y="0.21325" orientation="w" x="-9.54375"/>
+        <terminal y="-14.7651" orientation="n" x="13.35"/>
+    </description>
+</definition>

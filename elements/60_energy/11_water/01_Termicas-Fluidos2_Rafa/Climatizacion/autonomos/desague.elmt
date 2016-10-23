@@ -1,0 +1,13 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Desague</name>
+        <name lang="ca">Desguàs</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse width="10" x="-5" y="-9.27588" antialias="true" height="10.2759" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-3.5" x2="4.081" x3="5.02865" x4="4.55481" antialias="false" x5="2.65957" x6="0.764315" x7="-1.60475" x8="-3.5" y1="-0.499842" y2="-6.99916" y3="-4.99937" y4="-1.99968" y5="0.000105297" y6="1" y7="0.500053" y8="-0.499842"/>
+        <input x="3" y="6.5" size="2" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-9.78968" orientation="n"/>
+    </description>
+</definition>

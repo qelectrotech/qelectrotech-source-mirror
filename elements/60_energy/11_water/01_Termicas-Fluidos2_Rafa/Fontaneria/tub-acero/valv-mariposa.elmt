@@ -1,0 +1,22 @@
+<definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="25" orientation="dyyy" width="40" hotspot_x="12">
+    <names>
+        <name lang="ca">Valv papallona</name>
+        <name lang="es">Valv mariposa</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect height="18.5128" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.3374" y="-9.55265" width="0.954783" antialias="false"/>
+        <rect height="1.77318" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.73012" y="-17.1967" width="29.5938" antialias="false"/>
+        <rect height="18.5128" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.55129" y="-9.55265" width="0.954783" antialias="false"/>
+        <input tagg="label" x="-4.68518" rotate="true" text="_" y="-28.7429" size="4"/>
+        <rect height="18.8226" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.96018" y="-9.92032" width="6.9" antialias="false"/>
+        <rect height="4.70565" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.23518" y="-14.626" width="3.45" antialias="false"/>
+        <line x2="24.6398" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="9.83982" y1="-15.626" y2="-11.4889"/>
+        <rect height="1.56855" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.23518" y="-19.3316" width="3.45" antialias="false"/>
+        <line x2="5.66482" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-4.68518" y1="-6.78322" y2="-6.78322"/>
+        <line x2="5.66482" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-4.68518" y1="-0.509013" y2="-0.509013"/>
+        <line x2="5.66482" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-4.68518" y1="5.7652" y2="5.7652"/>
+        <terminal x="10" orientation="e" y="0"/>
+        <terminal x="-8" orientation="w" y="0"/>
+    </description>
+</definition>

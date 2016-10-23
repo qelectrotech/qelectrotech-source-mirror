@@ -1,0 +1,21 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="50" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Resistencia de depósito</name>
+        <name lang="ca">Resistència de dipòsit</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="2" x="0" y="-46" antialias="false" height="49" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-3" y2="11" x2="-2"/>
+        <rect width="15" x="-8" y="6" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="25" x="-13" y="3" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="1" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="2" x="-4" y="9" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-4" y2="10" x2="-3"/>
+        <rect width="2" x="-4" y="-46" antialias="false" height="49" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-10" y="10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="2" y="-11.5" size="4" rotate="true" text="_W" tagg="label"/>
+        <terminal x="-9" y="11" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition height="80" link_type="simple" width="70" hotspot_x="26" hotspot_y="51" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="ca">Inodor perfil</name>
+        <name lang="es">Inodoro perfil</name>
+    </names>
+    <informations/>
+    <description>
+        <rect height="36.9019" width="18.75" antialias="false" y="-42.5384" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="2.46013" width="2.5" antialias="false" y="-40.0783" x="-16.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="7.38038" width="18.75" antialias="true" y="-46.2286" angle="180" start="0" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="2.46013" width="32.5" antialias="false" y="-8.09668" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x17="37.5" x6="-15" x15="37.5" y4="6.66408" x8="25" x10="22.5" y8="21.4248" y9="16.5046" x4="-7.5" y18="-3.17642" x9="25" y7="21.4248" y14="1.74383" y15="-0.716297" x12="20" y5="11.5843" y6="16.5046" x18="37.5" y3="1.74383" x3="-20" x7="-15" x1="37.5" x16="37.5" y12="6.66408" x2="-20" x5="-7.5" y16="-3.17642" x11="20" x13="27.5" antialias="false" y17="-3.17642" x14="35" y13="4.20396" y11="9.12421" y1="-4.40649" y10="11.5843" y2="-4.40649" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5" length2="1.5" antialias="false" x2="11.25" end1="none" length1="1.5" end2="none" y2="18.9647" y1="18.9647" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="4.92025" width="10" antialias="false" y="17.7347" x="-12.5" style="line-style:dashed;line-weight:thin;filling:none;color:red"/>
+        <ellipse height="2.46013" width="2.5" antialias="false" y="-6.86661" x="1.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="0.513767" text="Inodoro" tagg="label" size="4" x="-7.5" rotate="true"/>
+        <terminal y="-42.5384" orientation="n" x="-15"/>
+        <terminal y="21.4248" orientation="s" x="-7.5"/>
+    </description>
+</definition>

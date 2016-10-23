@@ -1,0 +1,35 @@
+<definition width="80" version="0.4" hotspot_x="54" hotspot_y="33" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Controlador sevicio 2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.29677" x1="-19.625" y2="9.09892" x2="-19.625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.29677" x1="4" y2="9.09892" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.29677" x1="-29.75" y2="9.09892" x2="-29.75"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.29677" x1="13.45" y2="9.09892" x2="13.45"/>
+        <text x="-35.825" y="7.64838" size="3" text="na"/>
+        <text x="-25.025" y="7.64838" size="3" text="nc"/>
+        <text x="10.75" y="-1.05485" size="3" text="s2"/>
+        <polygon x4="-21.4723" y5="-16.1342" x5="-17.9997" y6="-16.1342" x6="-17.9997" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-16.1342" x1="-17.9997" y2="-16.1342" x2="-9.31794" y3="-6.12779" x3="-12.7906" y4="-6.12779"/>
+        <rect width="38.1997" x="-38.8359" y="-21.1373" antialias="false" height="20.0126" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-11.131" x1="-19.7361" y2="-11.131" x2="-11.0543"/>
+        <polygon x4="-35.3632" y5="-16.1342" x5="-31.8904" y6="-16.1342" x6="-31.8904" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-16.1342" x1="-31.8904" y2="-16.1342" x2="-23.2087" y3="-6.12779" x3="-26.6815" y4="-6.12779"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-11.131" x1="-33.6268" y2="-11.131" x2="-24.9451"/>
+        <polygon x4="8.04556" y5="-20.703" x5="2.8365" y6="-17.3675" x6="2.8365" y7="-17.3675" x7="2.8365" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" closed="false" y1="-17.3675" x1="4.57286" y2="-17.3675" x2="13.2547" y3="-20.703" x3="13.2547" y4="-24.0383"/>
+        <polygon x4="8.04556" y5="-10.6966" x5="2.8365" y6="-14.032" x6="2.8365" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:blue" closed="false" y1="-14.032" x1="2.8365" y2="-14.032" x2="13.2547" y3="-10.6966" x3="13.2547" y4="-7.36115"/>
+        <rect width="62.5086" x="-44.4313" y="-26.1405" antialias="false" height="28.3514" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="18.0773" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-26.1405" x1="-44.4313" y2="-29.476" x2="-37.4859" y3="-29.476" x3="21.55" y4="-26.1405"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29.476" x1="21.55" y2="-1.12462" x2="21.55" y3="2.21084" x3="18.0773"/>
+        <ellipse width="1.73634" x="-5.84524" y="-16.1342" antialias="true" height="1.66773" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.20904" x="-7.5816" y="-11.131" antialias="true" height="5.00318" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.29677" x1="-43.25" y2="9.09892" x2="-43.25"/>
+        <text x="1.3" y="-1.05485" size="3" text="s1"/>
+        <text x="-48.65" y="7.64838" size="3" text="c"/>
+        <terminal x="-43.25" y="9.09892" orientation="s"/>
+        <terminal x="-29.75" y="9.09892" orientation="s"/>
+        <terminal x="4" y="9.09892" orientation="s"/>
+        <terminal x="-19.625" y="9.09892" orientation="s"/>
+        <terminal x="13.45" y="9.09892" orientation="s"/>
+    </description>
+</definition>

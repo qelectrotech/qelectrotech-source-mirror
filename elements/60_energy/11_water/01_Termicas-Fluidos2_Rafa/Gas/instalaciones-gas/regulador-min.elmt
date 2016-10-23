@@ -1,0 +1,17 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Regulador pres</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="4" x="-2" y="12" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-3" y="2" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" x2="6" x3="9" x4="6" antialias="false" x5="-6" x6="-9" x7="-7" x8="0" closed="false" y1="2" y2="2" y3="-1" y4="-4" y5="-4" y6="-1" y7="2" y8="2"/>
+        <rect width="6" x="-3" y="-7" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="3" y="5" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-4" y="-9" size="4" text="_mB"/>
+        <terminal x="6" y="7" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="0" y="16" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

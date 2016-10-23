@@ -1,0 +1,18 @@
+<definition width="60" hotspot_y="46" height="60" type="element" version="0.5" orientation="dyyy" hotspot_x="36" link_type="simple">
+    <names>
+        <name lang="ca">Colze 180 brides</name>
+        <name lang="es">Codo 180 bridas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line x1="-7.0778" y1="-36.1532" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-23.6117" length1="1.5" end2="none" length2="1.5" x2="-7.0778" end1="none"/>
+        <rect width="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" x="-9" height="20"/>
+        <arc start="90" width="17.4672" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.4929" x="-15.547" height="14.5147" angle="-180"/>
+        <arc start="90" width="49.4188" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-36.8055" x="-31.4411" height="41.1398" angle="-180"/>
+        <input y="6.5" rotate="true" x="8" size="4" tagg="label" text="_"/>
+        <rect width="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" x="-9" height="20"/>
+        <terminal y="-30" x="-10" orientation="w"/>
+        <terminal y="0" x="-10" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,24 @@
+<definition width="50" version="0.4" hotspot_x="26" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Pellet</name>
+        <name lang="ca">Pellet</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="11.4" x="2.2" y="-11.9047" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="11.4" x="-2.6" y="-9.79871" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-100"/>
+        <arc width="11.4" x="5.2" y="-14.0107" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-100"/>
+        <arc width="11.4" x="-17.6" y="-1.90115" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-100"/>
+        <arc width="11.4" x="-9.2" y="-6.11318" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-100"/>
+        <arc width="11.4" x="-12.2" y="-4.00716" antialias="true" height="14.7421" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="4.2" x="-20" y="5.46991" antialias="true" height="7.37106" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="11.4" x="-23" y="1.25788" antialias="true" height="14.7421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.4735" x1="-15.2" y2="-1.90115" x2="17.2"/>
+        <ellipse width="7.2" x="-21.2" y="3.3639" antialias="true" height="10.5301" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="9" x="-21.8" y="2.31089" antialias="true" height="12.6361" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.25788" x1="-18.8" y2="-16.1168" x2="13.6"/>
+        <arc width="11.4" x="9.4" y="-16.1168" antialias="true" height="14.7421" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-250" angle="-180"/>
+        <input x="-7" y="15" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-11" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,30 @@
+<definition width="60" height="40" link_type="simple" hotspot_x="30" hotspot_y="18" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Valv. renten. brides</name>
+        <name lang="ca">Valv.rención bridas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="2.5047" height="34.7036" antialias="false" y="-16.4536" x="-21.2025" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="4.4982" height="5.47951" antialias="true" y="-11.8873" angle="-90" start="0" x="13.3558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="4.4982" height="5.47951" antialias="true" y="-11.8873" angle="-90" start="-90" x="-18.1316" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="4.4982" height="5.47951" antialias="true" y="10.0308" angle="-90" start="90" x="13.3558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="4.4982" height="5.47951" antialias="true" y="10.0308" angle="-90" start="-180" x="-18.1316" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.5047" height="34.7036" antialias="false" y="-16.4536" x="17.7975" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-15.6887" length2="1.5" antialias="false" x2="-11.1036" end1="none" y2="-6.4078" length1="1.5" end2="none" y1="-6.4078" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="11.5293" length2="1.5" antialias="false" x2="15.6668" end1="none" y2="-6.4078" length1="1.5" end2="none" y1="-6.4078" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" x6="-6" y3="-7" y4="-6" y6="-14" y8="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" x2="-6" x7="-6" x5="-6" y1="-7" x3="11" x8="-6" x1="-11" x4="11" y5="-14" y7="-14"/>
+        <circle antialias="false" y="-7" diameter="3" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" length2="1.5" antialias="false" x2="5" end1="none" y2="9" length1="1.5" end2="none" y1="-3" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <line x1="6" length2="1.5" antialias="false" x2="-6" end1="none" y2="-12" length1="1.5" end2="none" y1="-6" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <polygon x1="0" y3="4" antialias="false" x2="-10" closed="false" x6="-10" y5="5" y6="5" y7="5" y4="6" y2="5" x7="-10" x5="-10" x4="-6" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-6"/>
+        <input y="19" text="reten." tagg="label" size="4" x="-14" rotate="true"/>
+        <arc width="22" height="10" antialias="true" y="5" angle="180" start="-180" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7.48374" length2="1.5" antialias="false" x2="15.5163" end1="none" y2="10" length1="1.5" end2="none" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" x6="-14" y3="3" y4="7" y6="9" y8="9" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2" x2="-8" x7="-14" x5="-14" y1="-5" x3="-8" x8="-14" x1="-11" x4="-11" y5="9" y7="9"/>
+        <polygon x1="10" y3="6" antialias="false" x2="6" closed="false" x6="7" y5="8" y6="8" y7="8" y4="8" y2="0" x7="7" x5="7" x4="7" y1="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="5"/>
+        <terminal y="0" orientation="w" x="-24"/>
+        <terminal y="0" orientation="e" x="22"/>
+    </description>
+</definition>

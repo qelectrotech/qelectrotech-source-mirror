@@ -1,0 +1,28 @@
+<definition width="80" version="0.4" hotspot_x="50" hotspot_y="46" height="80" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Caldera pié</name>
+        <name lang="ca">Caldera peu</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-37.6854" x1="-14.925" y2="-34.7661" x2="-14.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-39.1451" x1="7.125" y2="-28.9274" x2="7.125"/>
+        <rect width="39.375" x="-25.95" y="-28.9274" antialias="false" height="56.9274" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.3" x="-32.25" y="1.72582" antialias="false" height="13.1371" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:red;color:black" x1="-32.25" x2="-32.25" x3="-43.275" x4="-48" antialias="false" x5="-48" x6="-32.25" x7="-32.25" x8="-32.25" y1="1.72582" y2="-2.65321" y3="-2.65321" y4="10.4839" y5="17.7823" y6="17.7823" y7="1.72582" y8="1.72582"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.65321" x1="-36.975" y2="16.3226" x2="-36.975"/>
+        <rect width="4.725" x="13.425" y="1.72582" antialias="false" height="11.6774" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="9.45" x="18.15" y="-11.4113" antialias="false" height="29.1935" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon x4="-14.925" y5="-28.9274" x5="-25.95" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-28.9274" x1="-25.95" y2="-18.7096" x2="-25.95" y3="-18.7096" x3="-19.65" y4="-28.9274"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.7096" x1="-19.65" y2="26.5403" x2="-19.65"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y1="-39.1451" x1="-19.65" y2="-28.9274" x2="-19.65"/>
+        <polygon x4="-16.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-34.7661" x1="-16.5" y2="-34.7661" x2="-13.35" y3="-31.8467" x3="-14.925" y4="-34.7661"/>
+        <polygon x4="11.85" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-37.6854" x1="11.85" y2="-34.7661" x2="10.275" y3="-34.7661" x3="13.425" y4="-37.6854"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-34.7661" x1="11.85" y2="-31.8467" x2="11.85"/>
+        <input x="-16" y="6" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-19.65" y="-39.1451" orientation="n"/>
+        <terminal x="7.125" y="-39.1451" orientation="n"/>
+        <terminal x="-44" y="19" orientation="s"/>
+    </description>
+</definition>

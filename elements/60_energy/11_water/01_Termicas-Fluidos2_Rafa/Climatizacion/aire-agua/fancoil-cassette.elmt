@@ -1,0 +1,42 @@
+<definition hotspot_x="35" hotspot_y="27" width="90" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Fancoil Cassette</name>
+        <name lang="es">Fancoil Cassette</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="44" y2="17" end1="none" x1="-11" y1="17" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="41" y2="15" end1="none" x1="35" y1="10" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="42" y2="15" end1="none" x1="36" y1="10" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-16" y2="15" end1="none" x1="-22" y1="10" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.594096" width="7.07266" antialias="false" height="2.33948" x="-30.119"/>
+        <polygon y4="5" x6="26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-32" y2="4" x5="34" y3="5" y5="4" x4="34" y6="3" closed="false" x1="-24" y1="3" x3="-32"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.2915" width="7.07266" antialias="false" height="2.33948" x="-30.119"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-15" y2="19" end1="none" x1="-32" y1="5" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="52" y2="19" end1="none" x1="34" y1="4" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="51.981" y2="19" end1="none" x1="-14.9825" y1="19" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="45" y2="12.3246" end1="none" x1="45" y1="-2.29961" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="45" y2="-3" end1="none" x1="31" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="33" y2="8" end1="none" x1="-22" y1="8" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-15" y2="15" end1="none" x1="-21" y1="10" length1="1.5"/>
+        <polygon y4="10" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x2="-11" y2="15" x5="-17" y3="15" y5="10" x4="31" x1="-17" y1="10" x3="37"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-20" y2="2" end1="none" x1="-20" y1="-17" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="31" y2="3" end1="none" x1="31" y1="-14" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="22" y2="3" end1="none" x1="22" y1="-17" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-23" y2="-13" end1="none" x1="-23" y1="3" length1="1.5"/>
+        <polygon y4="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-20" y2="-18" x5="31" y3="-18" y5="-14" x4="31" closed="false" x1="-23" y1="-14" x3="22"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="27" y2="3" end1="none" x1="-23" y1="3" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="49" y2="-2" end1="none" x1="46" y1="-2" length1="1.5"/>
+        <polygon y4="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="30" y2="-14" y3="-17" x4="25" closed="false" x1="25" y1="-16" x3="28"/>
+        <polygon y4="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-20.6" y2="-16.6254" y3="-18.2508" x4="-21.95" closed="false" x1="-21.95" y1="-15" x3="-26"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6" antialias="true" x="34" diameter="3"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="37" y2="-5" end1="none" x1="35" y1="-3" length1="1.5"/>
+        <input rotate="true" text="Fancoil" tagg="label" y="-6" x="-11" size="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.78229" width="1.53633" antialias="false" height="9.01845" x="-27.3508"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" width="3" antialias="false" height="4" x="-28"/>
+        <terminal y="0" x="-30" orientation="w"/>
+        <terminal y="-7" x="42" orientation="e"/>
+        <terminal y="-10" x="-30" orientation="w"/>
+        <terminal y="-22" x="-14" orientation="w"/>
+    </description>
+</definition>

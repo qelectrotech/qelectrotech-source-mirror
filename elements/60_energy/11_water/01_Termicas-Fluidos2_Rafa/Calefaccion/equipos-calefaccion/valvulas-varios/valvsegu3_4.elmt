@@ -1,0 +1,28 @@
+<definition hotspot_x="11" hotspot_y="22" width="30" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Válv. seguretat</name>
+        <name lang="es">Válv. seguridad</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="4" y2="3.34863" end1="none" x1="-3" y1="5.64863" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="4" y2="5.64863" end1="none" x1="-3" y1="7.94863" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:red;color:black" y="-15.518" width="8.01764" antialias="false" height="4.99836" x="-3.23617"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="0.67581" width="7.79355" antialias="false" height="7.66351" x="-3.75344"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8.86343" y2="-8.92029" end1="none" x1="6.14639" y1="-8.92029" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8.86019" y2="-0.12387" end1="none" x1="6.14941" y1="-0.12387" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="8.91961" y2="-0.16606" end1="none" x1="8.91961" y1="-8.88129" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="4.00558" y2="-7.32094" end1="none" x1="6.07464" y1="-8.92029" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="4.00558" y2="-2.25632" end1="none" x1="6.07464" y1="-0.12387" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.07464" y2="-10.3834" end1="none" x1="6.07464" y1="-9.04562" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.04198" y2="-10.5196" end1="none" x1="-4.75782" y1="-10.5196" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.04198" y2="0.67581" end1="none" x1="-4.75782" y1="0.67581" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6.07464" y2="-0.05546" end1="none" x1="6.07464" y1="0.62391" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-4.79832" y2="0.67581" end1="none" x1="-4.79832" y1="-10.5196" length1="1.5"/>
+        <input rotate="true" text="_bar" tagg="label" y="-20" x="-10" size="4"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="4" y2="1.04863" end1="none" x1="-3" y1="3.34863" length1="1.5"/>
+        <terminal y="10" x="0" orientation="s"/>
+        <terminal y="-10" x="10" orientation="e"/>
+    </description>
+</definition>

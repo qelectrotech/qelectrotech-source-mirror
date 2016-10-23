@@ -1,0 +1,11 @@
+<definition width="40" version="0.4" hotspot_x="14" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Soporte unidad exterior</name>
+        <name lang="ca">Soport unitat exterior</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4.86" x2="-4.86" x3="20.4975" x4="20.4975" antialias="false" x5="-4.86" x6="-4.86" x7="-9" x8="-9" x9="-4.86" closed="false" y1="-20.0125" y2="6.61049" y3="6.61049" y4="8.74032" y5="11.4026" y6="13" y7="13" y8="-20.0125" y9="-20.0125"/>
+        <input x="-3" y="14.5" size="4" rotate="true" text="_" tagg="label"/>
+    </description>
+</definition>

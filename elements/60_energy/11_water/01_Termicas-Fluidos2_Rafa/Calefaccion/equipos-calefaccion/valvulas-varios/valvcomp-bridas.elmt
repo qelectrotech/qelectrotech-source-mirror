@@ -1,0 +1,27 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="28" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv compuerta brida</name>
+        <name lang="ca">Valv comporta brida</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.53766" x1="5.11512" y2="-8.29119" x2="5.11512"/>
+        <rect width="0.553497" x="-8.53752" y="-5.7656" antialias="false" height="11.8025" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10.1663" x="-4.90308" y="-14.0579" antialias="true" height="7.51757" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="2.36251" x="5.26319" y="-3.74089" antialias="false" height="7.76699" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10.1663" x="-4.90308" y="0.876906" antialias="true" height="7.51757" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="4.90166" x="-2.4451" y="-19.5775" antialias="false" height="1.88409" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17.1558" x="-8.44635" y="-24.6389" antialias="false" height="1.13046" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.40048" x="-0.694511" y="-23.5085" antialias="false" height="3.93095" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.91602" x="-7.81913" y="-3.41028" antialias="false" height="7.43635" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5775" x1="-1.04464" y2="-18.0703" x2="-1.04464"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5775" x1="1.4062" y2="-18.0703" x2="1.4062"/>
+        <rect width="4.93996" x="-2.3831" y="-17.5175" antialias="false" height="3.63552" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.53766" x1="-4.82067" y2="-8.29119" x2="-4.82067"/>
+        <rect width="13.1502" x="-6.66404" y="-10.0559" antialias="false" height="1.27244" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.553497" x="7.51389" y="-5.7656" antialias="false" height="11.8025" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-10" y="-31" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-9.09101" y="0.135663" orientation="w"/>
+        <terminal x="8.62088" y="0.135663" orientation="e"/>
+    </description>
+</definition>

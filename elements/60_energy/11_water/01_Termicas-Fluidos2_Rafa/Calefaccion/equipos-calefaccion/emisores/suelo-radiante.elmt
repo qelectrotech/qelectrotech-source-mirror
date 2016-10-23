@@ -1,0 +1,14 @@
+<definition hotspot_x="11" hotspot_y="36" width="70" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Sol radiant</name>
+        <name lang="es">Suelo radiante</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <polygon y5="-22" x1="50" x18="42" x4="35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x20="50" x10="19" y13="-15" y7="1" x16="0" closed="false" x2="-5" x8="25" x14="30" x11="19" y16="6" y14="-15" y3="10" x19="42" y1="-30" x3="-5" y8="1" y9="-10" y20="-10" y2="-30" y21="-10" y4="10" y15="6" y6="-22" y18="-25" x5="35" y17="-25" x9="25" y10="-10" x13="14" y11="-4" y12="-4" x17="0" x12="14" y19="-10" x21="45" x6="6" x7="6" x15="30"/>
+        <input rotate="true" text="suelo rad._" tagg="label" y="-34.5" x="-1" size="4"/>
+        <terminal y="-30" x="50" orientation="e"/>
+        <terminal y="-10" x="50" orientation="e"/>
+    </description>
+</definition>

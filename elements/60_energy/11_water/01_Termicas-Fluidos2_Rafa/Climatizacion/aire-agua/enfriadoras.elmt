@@ -1,0 +1,40 @@
+<definition width="70" version="0.5" type="element" link_type="simple" hotspot_x="22" hotspot_y="39" orientation="dyyy" height="70">
+    <names>
+        <name lang="es">Enfriadora chalet</name>
+        <name lang="ca">Refredadora xalet</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.3" y="8.02156" start="-180"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.2" y="8.02156" start="-180"/>
+        <rect width="5.0025" antialias="false" height="2.53046" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35.1425" y="8.49111"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-31.2005" start="-90"/>
+        <rect width="5.0025" antialias="false" height="1.26523" style="line-style:normal;line-weight:normal;filling:none;color:black" x="28.4725" y="25.7348"/>
+        <rect width="51.6925" antialias="false" height="61.9962" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.55" y="-36.2615"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-2.10027" start="-90"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="10.552" start="-90"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-18.5482" start="-90"/>
+        <ellipse width="30.45" antialias="true" height="26.5698" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13.65" y="-3.3655"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="10.552" start="90"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.2" y="8.02156" start="0"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-2.10027" start="90"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.3" y="-21.0787" start="-180"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.3" y="8.02156" start="0"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.2" y="-21.0787" start="-180"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-18.5482" start="90"/>
+        <ellipse width="30.45" antialias="true" height="26.5698" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-13.65" y="-32.4658"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.2" y="-21.0787" start="0"/>
+        <arc width="4.35" angle="-180" antialias="true" height="11.3871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-0.6" y="-31.2005" start="90"/>
+        <arc width="13.05" angle="-180" antialias="true" height="3.79569" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.3" y="-21.0787" start="0"/>
+        <line y1="-36.2615" length1="1.5" y2="24.4695" length2="1.5" x1="19.7" x2="19.7" end1="none" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.0025" antialias="false" height="2.53046" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35.1425" y="18.1434"/>
+        <rect width="6.67" antialias="false" height="2.53046" style="line-style:normal;line-weight:thin;filling:none;color:black" x="26.805" y="-21.0787"/>
+        <rect width="4.35" antialias="false" height="1.26523" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15.1" y="25.7348"/>
+        <polygon y1="-14.7526" closed="false" y2="-17.283" y3="-14.7526" x1="26.805" y4="-18.5482" x2="28.4725" x3="30.14" x4="31.8075" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="Chiller_" tagg="label" size="4" rotate="true" x="-18" y="-41.3224"/>
+        <terminal orientation="e" x="40" y="20"/>
+        <terminal orientation="e" x="40" y="10"/>
+        <terminal orientation="e" x="30" y="-20"/>
+    </description>
+</definition>

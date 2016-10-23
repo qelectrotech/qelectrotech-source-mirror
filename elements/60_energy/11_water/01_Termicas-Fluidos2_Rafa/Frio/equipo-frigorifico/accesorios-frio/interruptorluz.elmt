@@ -1,0 +1,20 @@
+<definition width="30" hotspot_y="14" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Interruptor luces</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x5="-1" x8="-1" closed="false" y1="0" x3="9" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" x4="9" y6="0" y7="0" y4="-10" y3="10" x7="-1" x1="-1" y5="0" x2="-1" x6="-1" y8="0"/>
+        <polygon y7="20" y1="-10" x3="-9" y4="20" x5="-1" x4="-9" x7="-1" x1="9" y6="20" y5="20" closed="false" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1" x6="-1" antialias="false" y2="-10"/>
+        <line y1="0" end1="none" x1="-9" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1" antialias="false" y2="0" length2="1.5"/>
+        <polygon y1="4" x3="4" y4="4" x5="0" x4="0" x1="0" y6="4" y5="4" closed="false" y3="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" x6="0" antialias="false" y2="16"/>
+        <line y1="16" end1="none" x1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="6" antialias="false" y2="10" length2="1.5"/>
+        <line y1="-3" end1="none" x1="6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" antialias="false" y2="4" length2="1.5"/>
+        <line y1="6" end1="none" x1="4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" antialias="false" y2="-1" length2="1.5"/>
+        <polygon y1="-3" x3="6" y4="10" x5="6" x4="6" x1="6" y5="10" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" antialias="false" y2="-1"/>
+        <ellipse width="4" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="false" height="2"/>
+        <input size="4" text="_" y="11" tagg="label" x="11" rotate="true"/>
+        <terminal y="-10" orientation="n" x="0"/>
+        <terminal y="20" orientation="s" x="0"/>
+    </description>
+</definition>

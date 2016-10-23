@@ -1,0 +1,14 @@
+<definition height="30" link_type="simple" hotspot_x="28" version="0.5" hotspot_y="24" type="element" width="40" orientation="dyyy">
+    <names>
+        <name lang="es">Aparato a gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="10" x="-6" y="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="12"/>
+        <polygon y1="-10" y2="0" y3="0" x1="0" y4="0" x2="0" x3="-20" closed="false" x4="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-3" size="6" y="-12" text="G"/>
+        <input x="-10" size="4" rotate="true" y="-30" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="w"/>
+    </description>
+</definition>

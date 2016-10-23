@@ -1,0 +1,14 @@
+<definition link_type="simple" ic="true" height="10" width="30" version="0.4" hotspot_y="5" type="element" hotspot_x="17" orientation="dyyy">
+    <names>
+        <name lang="es">Codo baja</name>
+        <name lang="ca">Colze baixa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="0.52" antialias="false" y1="0" x1="-5.48" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="1" diameter="6" antialias="true" y="-3"/>
+        <input text="_" x="-2" tagg="label" size="3" y="-9.5" rotate="true"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,13 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="23" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Presostato Alta</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="22.1" x="-10" y="-17.8855" antialias="false" height="9.44275" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-6" y="-11" size="5" text="PA"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.44275" x1="0.2" y2="-0.348964" x2="0.2"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

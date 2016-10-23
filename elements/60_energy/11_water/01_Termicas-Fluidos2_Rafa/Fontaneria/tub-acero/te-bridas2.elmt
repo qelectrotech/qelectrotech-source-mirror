@@ -1,0 +1,30 @@
+<definition type="element" height="50" version="0.5" link_type="simple" hotspot_y="28" orientation="dyyy" width="60" hotspot_x="30">
+    <names>
+        <name lang="ca">Te brides</name>
+        <name lang="es">Te bridas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23.2025" y="-16.4536" width="4.5047" antialias="false"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="-11.8873" angle="-90" start="0" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="-11.8873" angle="-90" start="-90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.3843" y="-20.1066" angle="-90" start="90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="13.3558" y="10.0308" angle="-90" start="90" width="4.4982" antialias="true"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.1316" y="10.0308" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <rect height="34.7036" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.7975" y="-16.4536" width="3.5047" antialias="false"/>
+        <arc height="5.47951" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.6085" y="-20.1066" angle="-90" start="-180" width="4.4982" antialias="true"/>
+        <line x2="14.6708" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-14.9626" y1="10.0308" y2="10.0308"/>
+        <line x2="-7.94353" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-14.8487" y1="-6.4078" y2="-6.4078"/>
+        <line x2="14.6308" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="7.56534" y1="-6.4078" y2="-6.4078"/>
+        <line x2="-6.8861" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-6.8861" y1="-16.6311" y2="-7.20483"/>
+        <line x2="6.6085" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="6.6085" y1="-17.4532" y2="-7.30354"/>
+        <line x2="2.1103" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="6.6085" y1="-6.4078" y2="-1.84154"/>
+        <line x2="-2.3879" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" end2="none" antialias="false" x1="-6.8861" y1="-6.4078" y2="-1.84154"/>
+        <rect height="2.67684" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.6334" y="-22.9606" width="28.9892" antialias="false"/>
+        <input tagg="label" x="-10" rotate="true" text="Te" y="4" size="6"/>
+        <terminal x="22" orientation="e" y="0"/>
+        <terminal x="-24" orientation="w" y="0"/>
+        <terminal x="0" orientation="n" y="-24"/>
+    </description>
+</definition>

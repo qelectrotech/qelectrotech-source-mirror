@@ -1,0 +1,15 @@
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="17" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Ventilador</name>
+        <name lang="ca">Ventilador</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse width="8" x="-4" y="-4.64534" antialias="true" height="7.40545" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="8" y5="-2.33114" x5="8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8.34807" x1="0" y2="-8.34807" x2="11.5" y3="-2.33114" x3="11.5" y4="-2.33114"/>
+        <arc width="16" x="-8" y="-8.34807" antialias="true" height="14.3481" style="line-style:normal;line-weight:normal;filling:none;color:black" start="8" angle="-280"/>
+        <input x="-6" y="12.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-0.5" y="-9.27375" orientation="n"/>
+    </description>
+</definition>

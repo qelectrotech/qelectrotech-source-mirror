@@ -1,0 +1,17 @@
+<definition link_type="simple" ic="true" height="30" width="30" version="0.4" hotspot_y="14" type="element" hotspot_x="15" orientation="dyyy">
+    <names>
+        <name lang="es">Grifo fria y caliente</name>
+        <name lang="ca">Aixeta freda i calenta</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.45589" end2="none" x2="9.97745" antialias="false" y1="-7.90245" x1="9.97745" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.45589" end2="none" x2="-9.51402" antialias="false" y1="-7.90245" x1="-9.51402" length1="1.5"/>
+        <polygon y4="1.3149" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="1.3149" y3="12.9273" x3="1.25959" x2="1.25959" antialias="false" x4="-10.678" y1="1.3149" x1="-10.678"/>
+        <polygon y4="1.3149" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="1.3149" y3="12.9273" x3="1.25959" x2="12.0034" antialias="false" x4="1.25959" closed="false" y1="1.3149" x1="1.25959"/>
+        <input text="_" x="-8" tagg="label" size="4" y="19.5" rotate="true"/>
+        <terminal x="-9.51402" y="-9.57412" orientation="n"/>
+        <terminal x="10" y="-9" orientation="n"/>
+    </description>
+</definition>

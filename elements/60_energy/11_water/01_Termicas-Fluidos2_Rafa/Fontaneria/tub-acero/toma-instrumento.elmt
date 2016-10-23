@@ -1,0 +1,18 @@
+<definition width="20" version="0.4" hotspot_x="9" hotspot_y="22" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Toma instrumento</name>
+        <name lang="ca">Presa instrument</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:red" y1="-9" x1="-4" y2="-12" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:red" y1="-14" x1="-4" y2="-16" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:red" y1="-8" x1="-4" y2="-10" x2="6"/>
+        <rect width="5" x="-2" y="-6" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="15" x="-7" y="-16" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-4" y="-15" antialias="false" height="7" style="line-style:dashed;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:red" y1="-12" x1="-4" y2="-14" x2="6"/>
+        <input x="10" y="-15" size="6" rotate="true" text="Ø_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

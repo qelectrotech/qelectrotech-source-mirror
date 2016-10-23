@@ -1,0 +1,22 @@
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Caldera pié Mixta</name>
+        <name lang="ca">Caldera peu Mixta</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="-12" y="0" size="4" text="Cal"/>
+        <rect width="35.75" x="-13" y="-8.091" antialias="false" height="27.5096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.1875" x="-16.75" y="5.7959" antialias="false" height="4.75096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-22" x2="-17" x3="-17" x4="-21" antialias="false" x5="-24" x6="-24" x7="-23" x8="-21" closed="false" y1="13" y2="13" y3="4" y4="4" y5="7" y6="13" y7="13" y8="13"/>
+        <rect width="1" x="23" y="1" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="10" x3="17" x4="10" antialias="false" x5="17" x6="10" x7="17" x8="10" x9="20" closed="false" y1="-9" y10="-9" y2="-6" y11="-9" y3="-4" y4="-2" y5="0" x10="20" y6="3" x11="20" y7="4" y8="7" y9="7"/>
+        <text x="11" y="13" size="4" text="ACS"/>
+        <input x="-5" y="28.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10" y="-10" orientation="n"/>
+        <terminal x="-4" y="-10" orientation="n"/>
+        <terminal x="-19" y="14" orientation="s"/>
+        <terminal x="10" y="-10" orientation="n"/>
+        <terminal x="20" y="-10" orientation="n"/>
+    </description>
+</definition>

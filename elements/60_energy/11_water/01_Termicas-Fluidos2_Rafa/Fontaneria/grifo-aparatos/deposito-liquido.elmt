@@ -1,0 +1,25 @@
+<definition width="80" version="0.4" hotspot_x="44" hotspot_y="31" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito agua</name>
+        <name lang="ca">Dipòsit aigua</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="60" x="-31" y="-23" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5826" x1="-31" y2="25.5478" x2="-31"/>
+        <polygon x4="-12.9416" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.3319" x1="-12.9416" y2="-17" x2="-14" y3="-17" x3="-11.8832" y4="-19.3319"/>
+        <arc width="60" x="-31" y="-25" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="60" x="-31" y="19" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="60" x="-31" y="-26" antialias="true" height="14" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5826" x1="29" y2="25.5478" x2="29"/>
+        <rect width="3" x="-34" y="18" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="24" y5="-18" x5="19" y6="-16" x6="19" y7="-16" x7="17" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="17" y2="-20" x2="17" y3="-20" x3="24" y4="-18"/>
+        <ellipse width="60" x="-31" y="-1" antialias="true" height="12" style="line-style:dashed;line-weight:thin;filling:none;color:red"/>
+        <polygon x4="18.0584" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-12" x1="18.0584" y2="-14" x2="17" y3="-14" x3="19.1168" y4="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="18" y2="-13" x2="18"/>
+        <input x="-6" y="23" size="4" rotate="true" text="_L" tagg="label"/>
+        <terminal x="-36" y="20" orientation="w"/>
+        <terminal x="24" y="-19" orientation="e"/>
+    </description>
+</definition>

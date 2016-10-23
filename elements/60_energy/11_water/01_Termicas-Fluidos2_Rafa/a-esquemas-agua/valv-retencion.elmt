@@ -1,0 +1,22 @@
+<definition link_type="simple" height="20" type="element" width="50" hotspot_y="10" version="0.5" hotspot_x="25" orientation="dyyy">
+    <names>
+        <name lang="ca">Vàlvula de retenció</name>
+        <name lang="es">Válvula retención</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" y2="-6.80967" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.6275" end2="none" antialias="false" x1="-9.6275" y1="5.59109" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="-6.80967" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.4993" end2="none" antialias="false" x1="9.4993" y1="5.59109" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="5.62539" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.2725" end2="none" antialias="false" x1="-9.6275" y1="-6.84131" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="6.21904" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="3.6025" end2="none" antialias="false" x1="-5.8475" y1="6.21904" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="6.21904" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="4.075" end2="none" antialias="false" x1="1.7125" y1="4.43809" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="6.21904" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="4.075" end2="none" antialias="false" x1="1.7125" y1="8" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9.33333" end2="none" antialias="false" x1="16.6667" y1="0" length1="1.5"/>
+        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10.3333" end2="none" antialias="false" x1="-17.6667" y1="0" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" x="-11" diameter="3" antialias="true" y="-8"/>
+        <input text="_" x="-6" tagg="label" size="4" y="-12" rotate="true"/>
+        <terminal x="-18" y="0" orientation="w"/>
+        <terminal x="17" y="0" orientation="e"/>
+    </description>
+</definition>

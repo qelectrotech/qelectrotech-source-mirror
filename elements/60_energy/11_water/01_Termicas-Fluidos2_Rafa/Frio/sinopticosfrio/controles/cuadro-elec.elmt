@@ -1,0 +1,20 @@
+<definition width="40" version="0.4" hotspot_x="21" hotspot_y="21" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Cuadro eléctrico</name>
+        <name lang="ca">Cuadro elèctric</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" x="-12" y="10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect width="6" x="-12" y="-13" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect width="6" x="-12" y="-5" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect width="10" x="-6" y="-16" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect width="6" x="-12" y="2" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect width="6" x="4" y="-1" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <terminal x="11" y="0" orientation="e"/>
+        <terminal x="-13" y="-12" orientation="w"/>
+        <terminal x="-13" y="-4" orientation="w"/>
+        <terminal x="-13" y="3" orientation="w"/>
+        <terminal x="-13" y="11" orientation="w"/>
+    </description>
+</definition>

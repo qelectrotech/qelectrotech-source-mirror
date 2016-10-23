@@ -1,0 +1,25 @@
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Tapón 1/2"</name>
+        <name lang="ca">Tap 1/2"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="6.0565" x="-5.0825" y="5.42182" antialias="true" height="7.39893" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="7.8975" x="1.02" y="6.16171" antialias="true" height="11.8383" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="7.8975" x="-10.5542" y="-6.41647" antialias="false" height="11.8383" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7.82408" x="1.09342" y="-12.3356" antialias="false" height="24.4165" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.15637" x1="6.69078" y2="-7.15637" x2="1.4849"/>
+        <arc width="7.02" x="1.8975" y="-17.5149" antialias="true" height="10.3585" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.16171" x1="1.51967" y2="6.16171" x2="6.6531"/>
+        <arc width="6.1425" x="2.775" y="-7.15637" antialias="true" height="13.3181" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="-5.026" y2="5.42182" x2="-6.6055"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.67658" x1="-6.6055" y2="4.68192" x2="-8.185"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="-2.4465" y2="5.42182" x2="-4.026"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.41647" x1="-8.185" y2="5.42182" x2="-9.7645"/>
+        <arc width="5.0565" x="-4.0825" y="-13.8154" antialias="true" height="7.39893" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <input x="-10" y="-18" size="4" rotate="true" text="tap.1/2&quot;" tagg="label"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

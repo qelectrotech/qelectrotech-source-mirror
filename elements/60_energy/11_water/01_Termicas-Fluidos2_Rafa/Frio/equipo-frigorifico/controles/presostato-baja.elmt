@@ -1,0 +1,25 @@
+<definition width="30" version="0.4" hotspot_x="8" hotspot_y="15" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Presotato Baja</name>
+        <name lang="ca">Presotato Baixa</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="4" x="4" y="1" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="5" y="-11" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-6" y="-9" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-2" y="-3" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="6" y2="2" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="0" y2="-1" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="2" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="6" y2="4" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="4" x2="1"/>
+        <rect width="14" x="-4" y="-5" antialias="false" height="13" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="-1" y="-11" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-4" y="11" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-2" y="17" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1" x="14" y="-2" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="19" orientation="s"/>
+        <terminal x="18" y="0" orientation="e"/>
+    </description>
+</definition>

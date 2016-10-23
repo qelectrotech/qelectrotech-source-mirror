@@ -1,0 +1,15 @@
+<definition hotspot_x="3" hotspot_y="14" width="20" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Purgador rad.</name>
+        <name lang="es">Purgador rad.</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" width="11" antialias="false" height="10" x="0"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="7" y="-8" antialias="true" height="6" x="2"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="7" y2="-3" end1="none" x1="3" y1="-7" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7" width="2" antialias="false" height="2" x="11"/>
+        <input rotate="true" text="_" tagg="label" y="-15.5" x="0" size="3"/>
+        <terminal y="0" x="5" orientation="s"/>
+    </description>
+</definition>

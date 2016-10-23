@@ -1,0 +1,31 @@
+<definition hotspot_x="27" hotspot_y="39" width="50" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Split Sol</name>
+        <name lang="es">Split Suelo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="17" y2="1.20976" end1="none" x1="-1.515" y1="14.0265" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="17" y2="-1.05201" end1="none" x1="-1.515" y1="11.7647" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="17" y2="3.47154" end1="none" x1="-1.515" y1="16.2883" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="9.0265" width="1.61" antialias="false" height="1.50785" x="-18.42"/>
+        <polygon y4="-16.1305" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="13.78" y2="-29.7011" x5="10.56" y3="-15.3766" y5="-28.9472" x4="-7.15" closed="false" x1="10.56" y1="-28.9472" x3="-5.54"/>
+        <polygon y4="-16.8844" x6="-3.125" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-16.005" y2="21.5657" x5="-3.125" y3="-16.8844" y5="-11.6069" x4="-11.175" y6="21.5657" closed="false" x1="-3.125" y1="21.5657" x3="-16.005"/>
+        <polygon y4="-27.4394" x6="-3.125" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5.73" y2="-32.7168" x5="18.61" y3="-32.7168" y5="5.7333" x4="18.61" y6="21.5657" closed="false" x1="-16.005" y1="-16.8844" x3="10.56"/>
+        <polygon y4="-5.57555" x6="-1.515" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-1.515" y2="18.55" x5="-1.515" y3="4.97943" y5="7.2411" x4="17" y6="8.749" closed="false" x1="-1.515" y1="8.749" x3="17"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="17" y2="-3.31378" end1="none" x1="-1.515" y1="9.5029" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="18.61" y2="-26.6854" end1="none" x1="-3.125" y1="-10.853" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="17.805" y2="-28.1932" end1="none" x1="-3.93" y1="-12.3609" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="10.56" y2="-32.7168" end1="none" x1="-11.175" y1="-16.8844" length1="1.5"/>
+        <polygon y4="-30.4551" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-3.125" y2="-13.1148" x5="-7.955" y3="-27.4394" y5="-16.1305" x4="11.365" closed="false" x1="-7.955" y1="-16.1305" x3="16.195"/>
+        <polygon y4="-14.6226" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="16.195" y2="-28.1932" x5="12.975" y3="-13.8687" y5="-27.4394" x4="-4.735" closed="false" x1="12.975" y1="-27.4394" x3="-3.125"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="2.415" y="17.7961" antialias="true" height="2.26177" x="-7.59"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.55" width="1.61" antialias="false" height="1.50785" x="-18.42"/>
+        <input rotate="true" text="Ud_" tagg="label" y="-4.60548" x="-4.735" size="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-11.8531" width="3.45" antialias="false" height="5.57509" x="-12.785"/>
+        <terminal y="-12.9681" x="-11.635" orientation="n"/>
+        <terminal y="22" x="-6" orientation="s"/>
+        <terminal y="20" x="-19" orientation="w"/>
+        <terminal y="9.7804" x="-19.225" orientation="w"/>
+    </description>
+</definition>

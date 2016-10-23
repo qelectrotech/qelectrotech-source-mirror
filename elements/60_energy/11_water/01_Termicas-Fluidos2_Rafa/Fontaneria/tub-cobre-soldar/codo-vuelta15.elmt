@@ -1,0 +1,23 @@
+<definition width="40" hotspot_y="29" hotspot_x="22" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Vuelta soldar 15</name>
+        <name lang="ca">Volta soldar 15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="17.5" angle="-180" y="-13.0064" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.5" start="90" antialias="true" height="17.7475"/>
+        <arc width="2.2" angle="-90" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="90" antialias="true" height="2"/>
+        <arc width="2.2" angle="-90" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="90" antialias="true" height="2"/>
+        <arc width="2.2" angle="-90" y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="0" antialias="true" height="2"/>
+        <arc width="2.2" angle="-90" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="0" antialias="true" height="2"/>
+        <line y1="-21.1044" end1="none" x1="-2.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.72" antialias="false" y2="-12.887" length2="1.5"/>
+        <arc width="33" angle="-180" y="-21.2883" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19" start="90" antialias="true" height="34.3113"/>
+        <polygon y1="-23" x3="-9.2" y4="-12" x4="-4.2" x1="-4.2" closed="false" y3="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.2" antialias="false" y2="-23"/>
+        <input size="4" text="15" y="-4" tagg="label" x="-5" rotate="true"/>
+        <line y1="4.89565" end1="none" x1="-2.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.72" antialias="false" y2="13.113" length2="1.5"/>
+        <polygon y1="3" x3="-9.2" y4="14" x4="-4.2" x1="-4.2" closed="false" y3="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.2" antialias="false" y2="3"/>
+        <terminal y="10" orientation="w" x="-10"/>
+        <terminal y="-20" orientation="w" x="-10"/>
+    </description>
+</definition>

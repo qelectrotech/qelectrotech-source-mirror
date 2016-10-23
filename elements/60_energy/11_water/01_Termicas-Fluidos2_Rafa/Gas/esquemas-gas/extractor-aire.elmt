@@ -1,0 +1,16 @@
+<definition height="20" link_type="simple" hotspot_x="10" version="0.5" hotspot_y="5" type="element" width="20" orientation="dyyy">
+    <names>
+        <name lang="es">Extractor de aire</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="3.23438" y2="3.23438" x1="-5.47579" x2="-1.7179" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="4.96406" y2="8.42344" x1="0" x2="0" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none"/>
+        <ellipse height="11.5312" x="-6" y="-2.53125" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="12"/>
+        <line y1="-1.95469" y2="1.50469" x1="0" x2="0" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none"/>
+        <line y1="3.23438" y2="3.23438" x1="1.72421" x2="5.48211" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-5" size="4" rotate="true" y="-6" text="_" tagg="label"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

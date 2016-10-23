@@ -1,0 +1,22 @@
+<definition width="30" hotspot_y="15" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Rácor 15-1/2"</name>
+        <name lang="ca">Ràcord 15-1/2"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.6" angle="-90" y="3.39487" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="90" antialias="true" height="6.60513"/>
+        <rect width="7.2" y="-4.86154" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.6" antialias="false" height="9.08205"/>
+        <rect width="4" y="-3.62308" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.4" antialias="false" height="6.60513"/>
+        <rect width="5.2" y="-4.0359" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="4.6" antialias="false" height="7.43077"/>
+        <rect width="6.8" y="-6.92564" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.2" antialias="false" height="13.6231"/>
+        <line y1="-4.0359" end1="none" x1="-3.33527" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7.85976" antialias="false" y2="-4.0359" length2="1.5"/>
+        <arc width="3.2" angle="-90" y="-9.81538" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.6" start="0" antialias="true" height="5.77949"/>
+        <line y1="3.39487" end1="none" x1="-7.82952" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-3.36801" antialias="false" y2="3.39487" length2="1.5"/>
+        <arc width="2.8" angle="-180" y="-4.0359" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.2" start="90" antialias="true" height="7.43077"/>
+        <input size="4" text="1/2&quot;-15" y="13" tagg="label" x="-13" rotate="true"/>
+        <terminal y="0" orientation="w" x="-10"/>
+        <terminal y="-0.320513" orientation="e" x="9.8"/>
+    </description>
+</definition>

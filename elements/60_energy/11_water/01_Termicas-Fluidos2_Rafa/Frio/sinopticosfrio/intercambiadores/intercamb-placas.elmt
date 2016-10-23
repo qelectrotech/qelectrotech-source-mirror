@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="21" hotspot_y="15" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Intercambiador placas</name>
+    </names>
+    <informations/>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="6" y2="14" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.82667" x1="10" y2="-10.16" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="0.5" y2="14" x2="0.5"/>
+        <rect width="30" x="-16" y="-5" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="10" y2="15" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.1359" x1="-10" y2="15.8746" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-7" y2="14" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-12" y2="15" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="15" x2="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="-10" x2="-10"/>
+        <terminal x="-10" y="-10" nameHidden="88" number="" name="" orientation="n"/>
+        <terminal x="10" y="-10" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-10" y="20" nameHidden="72" number="" name="" orientation="s"/>
+        <terminal x="10" y="20" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,49 @@
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="60" height="120" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خزّان 500ل</name>
+        <name lang="en">Storage tank 500L</name>
+        <name lang="it">Serbatoio 500L</name>
+        <name lang="fr">Ballon Stockage 500L</name>
+        <name lang="pl">Zasobnik 500L</name>
+        <name lang="es">Depósito 500L</name>
+        <name lang="nl">Opslagtank 500L</name>
+        <name lang="ca">Dipòsit 500L</name>
+        <name lang="cs">Zásobník500L</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="3.9375" x="-28.7188" y="-22.7764" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="63" x="-32" y="-49.433" antialias="false" height="95.2527" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="63" x="-32" y="37.5268" antialias="true" height="17.0602" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <ellipse width="3.9375" x="23.7812" y="-46.4711" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.9375" x="23.7812" y="15.1352" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.9375" x="-28.7188" y="15.1352" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.9375" x="23.7812" y="-22.7764" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.9375" x="23.7812" y="38.8299" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="0.55" y5="54.8239" x5="0.55" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="54.8239" x1="-1.55" y2="56.2456" x2="-1.55" y3="56.2456" x3="0.55" y4="54.8239"/>
+        <arc width="63" x="-32" y="-57.9631" antialias="true" height="17.0602" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <input x="-18.5" y="-11.2191" size="6" rotate="true" text="Depósito _L" tagg="label"/>
+        <ellipse width="3.9375" x="-28.7188" y="-46.4711" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.1" x="-1.55" y="-36.1639" antialias="true" height="1.89558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.8875" x="-1.94375" y="-55.4751" antialias="true" height="2.60642" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="20.5" y5="51.9806" x5="20.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49.6111" x1="28.375" y2="56.7195" x2="28.375" y3="56.7195" x3="20.5" y4="51.9806"/>
+        <polygon x4="-21.5" y5="51.9806" x5="-21.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49.6111" x1="-29.375" y2="56.7195" x2="-29.375" y3="56.7195" x3="-21.5" y4="51.9806"/>
+        <ellipse width="3.9375" x="-28.7188" y="38.8299" antialias="true" height="3.55421" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.1" x="-1.55" y="30.1814" antialias="true" height="1.89558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.1" x="-1.55" y="-2.99125" antialias="true" height="1.89558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-26.75" y="-44.694" orientation="w"/>
+        <terminal x="-26.75" y="40.607" orientation="w"/>
+        <terminal x="-0.5" y="-54.172" orientation="n"/>
+        <terminal x="-0.5" y="56.2456" orientation="s"/>
+        <terminal x="-0.5" y="-35.2161" orientation="e"/>
+        <terminal x="-0.5" y="-2.04349" orientation="e"/>
+        <terminal x="-0.5" y="31.1292" orientation="e"/>
+        <terminal x="25.75" y="40.607" orientation="e"/>
+        <terminal x="25.75" y="-44.694" orientation="e"/>
+        <terminal x="25.75" y="-20.9992" orientation="e"/>
+        <terminal x="25.75" y="16.9123" orientation="e"/>
+        <terminal x="-26.75" y="-20.9992" orientation="w"/>
+        <terminal x="-26.75" y="16.9123" orientation="w"/>
+    </description>
+</definition>

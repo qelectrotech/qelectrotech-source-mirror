@@ -1,0 +1,26 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Codo rectangular</name>
+        <name lang="ca">Colçe rectangular</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="-10" y5="-6" x5="-19" y6="-4" x6="-19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="-19" y2="4" x2="-19" y3="9" x3="-10" y4="-1"/>
+        <arc width="6" x="-5" y="-11" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="31" x="-8" y="-18" antialias="true" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-19" y2="4" x2="-10"/>
+        <polygon x4="10" y5="-19" x5="1" y6="-17" x6="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="1" y2="-9" x2="1" y3="-4" x3="10" y4="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-10" y2="-1" x2="7"/>
+        <arc width="6" x="4" y="-6" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="1" y2="-19" x2="14"/>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="14" y2="-14" x2="23" y3="-14" x3="10" y4="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="23" y2="-14" x2="23"/>
+        <polygon x4="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-19" y2="-6" x2="-2" y3="-1" x3="7" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-10" y2="9" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-18.8154" x1="14" y2="-14.2" x2="14"/>
+        <input x="1" y="15.5" size="4" rotate="true" text="_" tagg="label"/>
+        <input x="10" y="4.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="10" y="-20" orientation="n"/>
+    </description>
+</definition>

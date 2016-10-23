@@ -1,0 +1,24 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="17" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Llave corte gas</name>
+        <name lang="ca">Clau  pas gas</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="2.42" x="-8.76" y="-1.07273" antialias="false" height="2.47273" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.63636" x1="8.36224" y2="2.63636" x2="11.4456"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.63636" x1="-12.2078" y2="2.63636" x2="-9.12445"/>
+        <ellipse width="4.15191" x="-2.36986" y="-1.76367" antialias="true" height="3.98184" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.78418" x="-12.5442" y="-3.54545" antialias="false" height="7.41818" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.30909" x1="-12.2078" y2="-2.30909" x2="-9.12445"/>
+        <rect width="2.42" x="5.76" y="-1.07273" antialias="false" height="2.47273" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.78417" x="8.02583" y="-3.54545" antialias="false" height="7.41818" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.30909" x1="8.3622" y2="-2.30909" x2="11.4456"/>
+        <arc width="9.6878" x="-5.1378" y="-4.41823" antialias="true" height="9.29096" style="line-style:normal;line-weight:normal;filling:none;color:black" start="50" angle="-280"/>
+        <polygon x4="0.92" y5="-3.78182" x5="2.13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3.78182" x1="-2.71" y2="-11.2" x2="-1.5" y3="-11.2" x3="-0.29" y4="-11.2"/>
+        <arc width="12.1" x="-6.34" y="-6.25455" antialias="true" height="12.3636" style="line-style:normal;line-weight:normal;filling:none;color:black" start="60" angle="-300"/>
+        <input x="-6" y="11.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-13.6" y="0.163636" orientation="w"/>
+        <terminal x="13.02" y="0.163636" orientation="e"/>
+    </description>
+</definition>

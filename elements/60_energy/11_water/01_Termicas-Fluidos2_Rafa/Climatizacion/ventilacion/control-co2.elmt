@@ -1,0 +1,35 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Controlador CO2</name>
+        <name lang="ca">Controlador CO2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.85541" x1="-2.6" y2="1.85541" x2="-0.2"/>
+        <rect width="1.8" x="-17" y="7.49129" antialias="false" height="1.12718" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.98259" x1="-2.6" y2="2.98259" x2="-0.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.90765" x1="19" y2="-4.90765" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.34406" x1="19" y2="-4.34406" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.10976" x1="-2.6" y2="4.10976" x2="-0.2"/>
+        <rect width="24.6" x="-23" y="-0.962529" antialias="false" height="11.2718" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="7" y5="10.3092" x5="1.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-0.962529" x1="-23" y2="-3.78047" x2="-17.6" y3="-3.78047" x3="7" y4="7.49129"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.962529" x1="1.6" y2="-3.78047" x2="7"/>
+        <rect width="11.4" x="-20.6" y="0.728235" antialias="false" height="2.25435" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.8" x="-19.4" y="7.49129" antialias="false" height="1.12718" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon x4="-11.6" y5="7.49129" x5="-12.8" y6="8.61847" x6="-12.8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8.61847" x1="-12.8" y2="8.61847" x2="-10.4" y3="7.49129" x3="-10.4" y4="6.36412"/>
+        <polygon x4="-7.4" y5="7.49129" x5="-8.6" y6="6.36412" x6="-8.6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6.36412" x1="-8.6" y2="6.36412" x2="-5.6" y3="7.49129" x3="-5.6" y4="8.61847"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.728235" x1="-2.6" y2="0.728235" x2="-0.2"/>
+        <arc width="5.4" x="2.8" y="-5.47124" antialias="true" height="3.94512" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.78047" x1="8.2" y2="-12.2343" x2="8.2"/>
+        <ellipse width="3.6" x="8.2" y="-14.4886" antialias="true" height="3.38153" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12.7979" x1="11.8" y2="-6.59841" x2="11.8"/>
+        <arc width="4.8" x="11.8" y="-7.72559" antialias="true" height="2.81794" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="7.8" x="14.2" y="-6.03482" antialias="false" height="2.25435" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.67713" x1="19" y2="-3.73156" x2="19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.47124" x1="19" y2="-5.47124" x2="22"/>
+        <input x="-19" y="-9" size="4" rotate="true" text="CO2_" tagg="label"/>
+        <terminal x="-10" y="11" orientation="s"/>
+        <terminal x="0" y="11" orientation="s"/>
+    </description>
+</definition>

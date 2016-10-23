@@ -1,0 +1,30 @@
+<definition width="70" hotspot_x="35" hotspot_y="17" link_type="simple" type="element" version="0.5" orientation="dyyy" height="30">
+    <names>
+        <name lang="ca">Llínies frig. central</name>
+        <name lang="es">Líneas frig. Central</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line end2="none" x1="-26.1087" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.8913" y1="1" y2="1" length2="1.5" antialias="false" end1="none"/>
+        <ellipse width="1.4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25.5" y="-1" antialias="false" height="2"/>
+        <ellipse width="1.4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25.5" y="-9" antialias="false" height="4"/>
+        <line end2="none" x1="-6" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="26" y1="1" y2="1" length2="1.5" antialias="false" end1="none"/>
+        <arc width="2" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-28" y="-9" start="-90" antialias="true" height="4"/>
+        <arc width="2" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-28" y="-1" start="-90" antialias="true" height="2"/>
+        <polygon x11="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1.42617" y2="-11" x6="-8.70469" y8="-10" y12="-10" x7="1" x8="1" y6="-13" x10="1" y5="5" x12="1" y3="-11" y7="-13" closed="false" y10="-10" x5="-8.70469" x4="-6.27852" y9="-10" y11="-10" x3="-6.27852" y1="-9" y4="5" antialias="false" x2="-1.42617" x9="1"/>
+        <rect width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8" y="1" antialias="false" height="3"/>
+        <line end2="none" x1="-27" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9" y1="-9" y2="-9" length2="1.5" antialias="false" end1="none"/>
+        <line end2="none" x1="-6" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="26" y1="-9" y2="-9" length2="1.5" antialias="false" end1="none"/>
+        <line end2="none" x1="-27" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9" y1="-5" y2="-5" length2="1.5" antialias="false" end1="none"/>
+        <line end2="none" x1="-6" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="26" y1="-5" y2="-5" length2="1.5" antialias="false" end1="none"/>
+        <line end2="none" x1="-27" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9" y1="-1" y2="-1" length2="1.5" antialias="false" end1="none"/>
+        <line end2="none" x1="-6" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="26" y1="-1" y2="-1" length2="1.5" antialias="false" end1="none"/>
+        <input text="_" rotate="true" x="-12" y="-16" tagg="label" size="4"/>
+        <terminal x="9" orientation="s" y="5"/>
+        <terminal x="-29" orientation="w" y="-7"/>
+        <terminal x="28" orientation="e" y="-7"/>
+        <terminal x="28" orientation="e" y="0"/>
+        <terminal x="-7" orientation="s" y="6"/>
+        <terminal x="-29" orientation="w" y="0"/>
+    </description>
+</definition>

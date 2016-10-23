@@ -1,0 +1,32 @@
+<definition width="50" version="0.4" hotspot_x="26" hotspot_y="28" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito llenado</name>
+        <name lang="ca">Dipósit omplida</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="35.7" x="-16.52" y="-22.9528" antialias="true" height="7.88681" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.9009" x1="-16.52" y2="4.39629" x2="-16.52"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-18.5072" x1="-9.975" y2="-3.7798" x2="-9.975"/>
+        <polygon x4="-5.77525" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-20.8864" x1="-5.77525" y2="-19.5727" x2="-6.405" y3="-19.5727" x3="-5.1455" y4="-20.8864"/>
+        <arc width="35.7" x="-16.52" y="-24.0795" antialias="true" height="7.88681" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="35.7" x="-16.52" y="0.70763" antialias="true" height="7.88681" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="35.7" x="-16.52" y="-24.6428" antialias="true" height="7.88681" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.5727" x1="-5.81" y2="-17.8827" x2="-5.81"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.9009" x1="19.18" y2="4.39629" x2="19.18"/>
+        <rect width="1.785" x="-9.975" y="-21.8261" antialias="false" height="2.81672" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="7.14" x="-12.95" y="-3.23577" antialias="true" height="6.76012" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <polygon x4="-9.38" antialias="true" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="-2.86526" x1="-9.38" y2="1.79488" x2="-12.355" y3="1.79488" x3="-6.405" y4="-2.86526"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-18.5072" x1="-8.19" y2="-3.7798" x2="-8.19"/>
+        <polygon x4="16.205" y5="-20.1361" x5="13.23" y6="-19.0094" x6="13.23" y7="-19.0094" x7="12.04" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19.0094" x1="12.04" y2="-21.2628" x2="12.04" y3="-21.2628" x3="16.205" y4="-20.1361"/>
+        <ellipse width="35.7" x="-16.52" y="-10.5592" antialias="true" height="6.76012" style="line-style:dashed;line-weight:thin;filling:none;color:red"/>
+        <polygon x4="12.6697" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16.756" x1="12.6697" y2="-17.8827" x2="12.04" y3="-17.8827" x3="13.2995" y4="-16.756"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.0094" x1="12.635" y2="-17.3194" x2="12.635"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="0.144287" x1="-15.925" y2="0.144287" x2="-12.95"/>
+        <input x="-8.89" y="10.7751" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-9.38" y="-21.8261" orientation="n"/>
+        <terminal x="16.205" y="-20.6994" orientation="e"/>
+        <terminal x="-18.9" y="0.144287" orientation="w"/>
+    </description>
+</definition>

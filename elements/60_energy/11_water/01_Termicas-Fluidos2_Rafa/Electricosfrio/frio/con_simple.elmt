@@ -1,0 +1,19 @@
+<definition width="20" version="0.4" hotspot_x="11" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ru">Проктой контакт (НР)</name>
+        <name lang="pt">Contacto simples (NO)</name>
+        <name lang="en">Simple contact</name>
+        <name lang="fr">Contact simple</name>
+        <name lang="es">Contactor simple</name>
+        <name lang="cs">Jednoduché spojení</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <input x="5" y="15.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,30 @@
+<definition hotspot_x="14" hotspot_y="12" width="40" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Valv Solenoide</name>
+        <name lang="es">Valv Solenoide</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="17.9923" y2="12.8187" end1="none" x1="17.9923" y1="5.85821" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="20" y2="7" end1="none" x1="18" y1="7" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="20" y2="12" end1="none" x1="18" y1="12" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-7.1725" y2="12.8187" end1="none" x1="-7.1725" y1="5.85821" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13.3357" y2="-0.44051" end1="none" x1="13.3357" y1="-7.2936" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-2.35542" y2="-0.65227" end1="none" x1="-2.35542" y1="-6.8445" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.2233" width="15.6319" angle="-180" antialias="true" height="3.88275" x="-2.29618" start="-180"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-2.9312" y2="8.3385" end1="none" x1="-5.7587" y1="8.3385" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-4.345" y2="9.4986" end1="none" x1="-4.345" y1="7.1784" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.9582" width="3.75" antialias="false" height="2.44745" x="13.375"/>
+        <polygon x14="17.9" y7="13.36" x4="-10" y14="6.045" y3="5" antialias="false" x3="-7.3" y4="5" x2="-7.3" y12="5" x1="17.9" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-7.3" x7="-7.3" y5="14.405" x11="20.6" x5="-10" y10="14.405" closed="false" y8="13.36" x9="17.9" y11="14.405" y2="6.045" x8="0.8" x10="17.9" x13="17.9" y6="14.405" y1="6.045" y13="5" y9="13.36" x12="20.6"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="13.4452" y2="0" end1="none" x1="-2.35052" y1="0" length1="1.5"/>
+        <input rotate="true" text="_" tagg="label" y="-13" x="0" size="4"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-8" y2="7" end1="none" x1="-10" y1="7" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-8" y2="12" end1="none" x1="-10" y1="12" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="4" width="8" angle="180" antialias="true" height="2" x="2" start="-180"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="2" y2="0" end1="none" x1="2" y1="4" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="10" y2="1" end1="none" x1="10" y1="5" length1="1.5"/>
+        <terminal y="-4.7344" x="17.2954" orientation="e"/>
+        <terminal y="10" x="-10" orientation="w"/>
+        <terminal y="10" x="20" orientation="e"/>
+    </description>
+</definition>

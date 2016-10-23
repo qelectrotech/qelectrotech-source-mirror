@@ -1,0 +1,21 @@
+<definition width="80" hotspot_y="31" hotspot_x="46" type="element" orientation="dyyy" version="0.5" link_type="simple" height="70">
+    <names>
+        <name lang="es">Balsa de riego</name>
+        <name lang="ca">Bassa rec</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="60" angle="-180" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-31" start="0" antialias="true" height="14"/>
+        <line y1="-17.5826" end1="none" x1="-31" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-31" antialias="false" y2="25.5478" length2="1.5"/>
+        <arc width="60" angle="-180" y="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-31" start="-180" antialias="true" height="14"/>
+        <arc width="60" angle="-180" y="19" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-31" start="0" antialias="true" height="14"/>
+        <arc width="54" angle="-360" y="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-28" start="0" antialias="true" height="12"/>
+        <line y1="-17.5826" end1="none" x1="29" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="29" antialias="false" y2="25.5478" length2="1.5"/>
+        <rect width="3" y="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-34" antialias="false" height="5"/>
+        <ellipse width="60" y="-1" style="line-style:dashed;line-weight:thin;filling:none;color:red" x="-31" antialias="true" height="12"/>
+        <input size="4" text="balsa" y="23" tagg="label" x="-10" rotate="true"/>
+        <rect width="4" y="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-38" antialias="false" height="8"/>
+        <terminal y="20" orientation="w" x="-40"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition width="50" version="0.4" hotspot_x="29" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Lavadero</name>
+        <name lang="ca">Safareig</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="43.4" x="-26" y="-12.6313" antialias="false" height="2.93854" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="17" y5="-9" x5="17" y6="-7.7234" x6="17" y7="-7.7234" x7="17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.6927" x1="-22.2" y2="-1.81563" x2="-1.2" y3="8.03073" x3="-1.2" y4="8.03073"/>
+        <rect width="4.2" x="8.6" y="8.03073" antialias="false" height="1.96927" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-20" y="5.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

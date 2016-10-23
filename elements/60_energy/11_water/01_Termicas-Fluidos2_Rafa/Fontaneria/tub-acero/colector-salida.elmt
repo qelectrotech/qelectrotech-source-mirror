@@ -1,0 +1,14 @@
+<definition width="30" height="30" link_type="simple" hotspot_x="15" hotspot_y="14" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Final brida</name>
+        <name lang="ca">Acabament brida</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="24" height="2" antialias="false" y="-10" x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8" height="15" antialias="false" y="-6" x="-4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="24" height="2" antialias="false" y="-8" x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-16" text="Ø_" tagg="label" size="4" x="-7" rotate="true"/>
+        <terminal y="10" orientation="s" x="0"/>
+    </description>
+</definition>

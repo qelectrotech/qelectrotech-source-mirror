@@ -1,0 +1,14 @@
+<definition width="70" version="0.4" hotspot_x="36" hotspot_y="12" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Bañera</name>
+        <name lang="ca">Banyera</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="61" x="-32" y="-7" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" x2="-28" x3="-28" x4="-26" antialias="false" x5="25" x6="27" x7="27" x8="27" x9="27" closed="false" y1="-5" y2="-3" y3="6" y4="8" y5="8" y6="6" y7="-5" y8="-5" y9="-5"/>
+        <rect width="3" x="-21" y="6" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="9" y="2.5" size="6" rotate="true" text="_" tagg="label"/>
+        <terminal x="-20" y="10" orientation="s"/>
+    </description>
+</definition>

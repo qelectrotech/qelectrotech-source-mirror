@@ -1,0 +1,19 @@
+<definition width="40" hotspot_y="18" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Arqueta</name>
+        <name lang="ca">Arqueta</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="25.2" y="-12.8672" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.6" antialias="false" height="2.31858"/>
+        <rect width="4.4" y="-3.59288" style="line-style:normal;line-weight:normal;filling:none;color:black" x="15.2" antialias="false" height="6.95573"/>
+        <rect width="20.4" y="-10.5486" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.2" antialias="false" height="17.3893"/>
+        <rect width="4.4" y="-3.59288" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.6" antialias="false" height="6.95573"/>
+        <ellipse width="7.4" y="-3.59288" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.8" antialias="true" height="6.95573"/>
+        <input size="4" text="_" y="13" tagg="label" x="-1" rotate="true"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-10"/>
+        <terminal y="0" orientation="s" x="5"/>
+    </description>
+</definition>

@@ -1,0 +1,43 @@
+<definition width="90" hotspot_y="26" hotspot_x="25" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Bomba agua horiz-1</name>
+        <name lang="ca">Bomba aigua horiz-1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="8.61045" angle="-180" y="-16.0243" style="line-style:normal;line-weight:normal;filling:none;color:black" x="42.191" start="90" antialias="true" height="34.0577"/>
+        <arc width="6.26213" angle="-180" y="-12.0175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="26.1445" start="90" antialias="true" height="25.6434"/>
+        <rect width="2.73967" y="-1.49057" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="53.541" antialias="false" height="5.86449"/>
+        <rect width="7.43623" y="-12.0175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="22.2307" antialias="false" height="25.6434"/>
+        <rect width="34.833" y="-10.8155" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.6023" antialias="false" height="23.2394"/>
+        <rect width="15.6553" y="-16.425" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.25219" antialias="false" height="5.60951"/>
+        <rect width="7.43623" y="-12.0175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20.0385" antialias="false" height="25.6434"/>
+        <line y1="-9.21276" end1="none" x1="-12.2821" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.9166" antialias="false" y2="-9.21276" length2="1.5"/>
+        <line y1="-6.408" end1="none" x1="-12.2821" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.9166" antialias="false" y2="-6.408" length2="1.5"/>
+        <line y1="0.804232" end1="none" x1="-12.2821" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.9166" antialias="false" y2="0.804232" length2="1.5"/>
+        <line y1="10.8212" end1="none" x1="-12.2918" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.5356" antialias="false" y2="10.8212" length2="1.5"/>
+        <line y1="8.41714" end1="none" x1="-12.2866" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.9213" antialias="false" y2="8.41714" length2="1.5"/>
+        <line y1="4.81102" end1="none" x1="-12.2814" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="22.3072" antialias="false" y2="4.81102" length2="1.5"/>
+        <line y1="-3.60323" end1="none" x1="-12.2858" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="21.9205" antialias="false" y2="-3.60323" length2="1.5"/>
+        <line y1="-15.2229" end1="none" x1="-1.25219" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="14.4031" antialias="false" y2="-15.2229" length2="1.5"/>
+        <rect width="8.03955" y="-19.6304" style="line-style:normal;line-weight:normal;filling:none;color:black" x="37.9936" antialias="false" height="3.60612"/>
+        <rect width="5.3052" y="-2.29192" style="line-style:normal;line-weight:normal;filling:none;color:black" x="51.9757" antialias="false" height="7.4672"/>
+        <rect width="2.34829" y="-14.4216" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.60048" antialias="false" height="2.0034"/>
+        <line y1="-16.0243" end1="none" x1="37.886" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="46.1052" antialias="false" y2="-16.0243" length2="1.5"/>
+        <line y1="18.0335" end1="none" x1="37.886" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="46.1052" antialias="false" y2="18.0335" length2="1.5"/>
+        <rect width="6.474" y="-19.6304" style="line-style:dotted;line-weight:normal;filling:none;color:red" x="38.7766" antialias="false" height="2.80476"/>
+        <arc width="6.26213" angle="-180" y="-12.0175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.7782" start="-90" antialias="true" height="25.6434"/>
+        <line y1="-1.59984" end1="none" x1="32.4066" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="33.1893" antialias="false" y2="-1.59984" length2="1.5"/>
+        <line y1="6.41374" end1="none" x1="32.0152" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="33.5808" antialias="false" y2="6.41374" length2="1.5"/>
+        <rect width="1.56553" y="-4.8053" style="line-style:normal;line-weight:normal;filling:none;color:black" x="50.4102" antialias="false" height="12.8218"/>
+        <input size="4" text="_" y="25" tagg="label" x="0" rotate="true"/>
+        <rect width="3" y="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" x="37" antialias="false" height="34"/>
+        <rect width="3" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="34" antialias="false" height="10"/>
+        <polygon y7="18" y1="18" x3="30" y4="20" x5="47" x4="47" x7="47" x1="37" y6="18" y5="18" closed="false" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" x6="47" antialias="false" y2="18"/>
+        <polygon x5="-13" x8="-14" x9="-14" closed="false" y1="13.6844" x3="-22" y9="13.6844" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17.4738" antialias="false" x4="-22" y6="13.6844" y7="13.6844" y4="20" y3="17.4738" x7="-14" x1="-15" y5="20" x2="-15" x6="-13" y8="13.6844"/>
+        <terminal y="-20" orientation="n" x="41"/>
+        <terminal y="0" orientation="e" x="60"/>
+        <terminal y="-18" orientation="n" x="-3"/>
+    </description>
+</definition>

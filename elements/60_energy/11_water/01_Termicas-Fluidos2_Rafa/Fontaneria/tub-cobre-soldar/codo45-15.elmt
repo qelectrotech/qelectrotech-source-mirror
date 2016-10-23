@@ -1,0 +1,20 @@
+<definition width="40" hotspot_y="21" hotspot_x="21" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
+    <names>
+        <name lang="es">Codo 45º  15</name>
+        <name lang="ca">Colze 45º 15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="2.2" angle="-90" y="3.14415" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" start="90" antialias="true" height="2"/>
+        <arc width="10.5" angle="-40" y="-6.86226" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.75" start="-55" antialias="true" height="10.7475"/>
+        <arc width="2.2" angle="-90" y="12.1441" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.25" start="0" antialias="true" height="2"/>
+        <arc width="29" angle="-40" y="-16.1441" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.25" start="-50" antialias="true" height="29.3113"/>
+        <input size="4" text="15" y="15" tagg="label" x="-1" rotate="true"/>
+        <line y1="5.0398" end1="none" x1="-1.97" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-1.97" antialias="false" y2="13.2571" length2="1.5"/>
+        <polygon y1="3.14415" x3="-8.45" y4="14.1441" x4="-3.45" x1="-3.45" closed="false" y3="14.1441" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.45" antialias="false" y2="3.14415"/>
+        <polygon y7="2" y1="2" x3="9" y4="6" x5="6" x4="14" x7="1" x1="1" y6="1" y5="-3" closed="false" y3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8" x6="1" antialias="false" y2="10"/>
+        <terminal y="10" orientation="w" x="-10"/>
+        <terminal y="0" orientation="n" x="10"/>
+    </description>
+</definition>

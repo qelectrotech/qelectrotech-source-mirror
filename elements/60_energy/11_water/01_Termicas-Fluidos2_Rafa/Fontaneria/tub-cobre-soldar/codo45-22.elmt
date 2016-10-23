@@ -1,0 +1,20 @@
+<definition width="60" hotspot_y="29" hotspot_x="26" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Codo 45º  22</name>
+        <name lang="ca">Colze 45º 22</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.38211" angle="-90" y="2.09633" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.01433" start="90" antialias="true" height="2.98256"/>
+        <arc width="16.1419" angle="-40" y="-12.826" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.85763" start="-55" antialias="true" height="16.0275"/>
+        <arc width="3.38211" angle="-90" y="15.5178" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.01433" start="0" antialias="true" height="2.98256"/>
+        <arc width="44.5823" angle="-40" y="-26.6679" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20.4622" start="-50" antialias="true" height="43.7114"/>
+        <input size="4" text="22" y="19" tagg="label" x="6" rotate="true"/>
+        <line y1="4.92328" end1="none" x1="1.49076" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="1.49076" antialias="false" y2="17.1776" length2="1.5"/>
+        <polygon y1="2.09633" x3="-8.47108" y4="18.5003" x4="-0.784476" x1="-0.784476" closed="false" y3="18.5003" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.47108" antialias="false" y2="2.09633"/>
+        <polygon y7="0.390086" y1="0.390086" x3="18.3552" y4="6.35521" x5="13.7432" x4="26.0418" x7="6.0566" x1="6.0566" y6="-1.10119" y5="-7.06632" closed="false" y3="12.3203" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="16.8178" x6="6.0566" antialias="false" y2="12.3203"/>
+        <terminal y="9.75809" orientation="w" x="-9.70094"/>
+        <terminal y="0" orientation="n" x="20"/>
+    </description>
+</definition>

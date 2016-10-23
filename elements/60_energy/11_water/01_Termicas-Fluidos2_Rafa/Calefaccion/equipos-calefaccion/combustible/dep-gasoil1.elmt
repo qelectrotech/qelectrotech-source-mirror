@@ -1,0 +1,32 @@
+<definition hotspot_x="55" hotspot_y="48" width="150" type="element" version="0.5" height="90" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Dipósit gasoil horitzontal</name>
+        <name lang="es">Depósito gasoil horizontal</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="81" y2="30" end1="none" x1="81" y1="-25" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-39" width="2" antialias="false" height="3" x="-11"/>
+        <polygon y4="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10.4744" y2="-32" x5="-10.4744" y3="-29" y5="-32" x4="-12" closed="false" x1="-10.4744" y1="-28" x3="-8.94877"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-39" width="2" antialias="false" height="3" x="-1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-39" width="2" antialias="false" height="3" x="9"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.9276" width="17.2963" angle="-180" antialias="true" height="55.1262" x="-48.7704" start="-90"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24.9276" width="17.2963" angle="-180" antialias="true" height="55.1262" x="72.3037" start="90"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:red" end2="none" antialias="false" x2="10.6509" y2="28.4679" end1="none" x1="10.6509" y1="-34.9715" length1="1.5"/>
+        <polygon y4="30.1986" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-34.7237" y2="34.3986" x5="-24.2411" y3="34.3986" y5="30.1986" x4="-24.2411" closed="false" x1="-34.7237" y1="30.1986" x3="-29.4824"/>
+        <polygon y4="30.1986" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="70.1023" y2="34.3986" y3="34.3986" x4="59.6197" closed="false" x1="70.1023" y1="30.1986" x3="64.861"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-35" width="37" antialias="false" height="1" x="-18"/>
+        <polygon y4="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="13" y2="-31" x5="13" y3="-28" y5="-31" x4="12" closed="false" x1="13" y1="-27" x3="14"/>
+        <polygon y4="-31" x6="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-2" y2="-28" x5="-2" y3="-31" y5="-28" x4="-3" y6="-28" closed="false" x1="-2" y1="-32" x3="-1"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-15" y2="-25" end1="none" x1="-40" y1="-25" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="80" y2="-25" end1="none" x1="16" y1="-25" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="81" y2="30" end1="none" x1="-40" y1="30" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-40" y2="30" end1="none" x1="-40" y1="-25" length1="1.5"/>
+        <polygon y7="-25" x4="-2.46522" y3="-22" antialias="false" x3="-11.6978" y4="-20" x2="-14.7754" x1="-14.7754" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="12.9225" x7="16" y5="-20" x5="3.68985" closed="false" y8="-34" y2="-25" x8="16" y6="-22" y1="-34"/>
+        <input rotate="true" text="_ L." tagg="label" y="-8" x="38" size="4"/>
+        <polygon x14="-48" y7="29" x4="-45" y14="9" y3="20" y16="9" antialias="false" x3="-46" y4="23" x2="-47" y12="16" x1="-48" style="line-style:normal;line-weight:normal;filling:brun;color:black" x16="-48" x6="-43" x7="-41" y5="26" x11="87" x5="-44" y10="27" y8="29" x15="-48" y15="9" x9="83" y11="21" y2="16" x8="81" x10="85" x13="89" y6="28" y1="9" y13="9" y9="29" x12="88"/>
+        <terminal y="-40" x="10" orientation="n"/>
+        <terminal y="-40" x="0" orientation="n"/>
+        <terminal y="-40" x="-10" orientation="n"/>
+    </description>
+</definition>

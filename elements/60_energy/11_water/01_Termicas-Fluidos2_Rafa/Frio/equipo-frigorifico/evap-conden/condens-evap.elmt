@@ -1,0 +1,43 @@
+<definition width="80" version="0.4" hotspot_x="46" hotspot_y="31" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Condensador Evaporativo</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="-8" y2="-7" x2="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="10" y2="-7" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="-27" y2="-7" x2="-31"/>
+        <ellipse width="18" x="-6" y="-19" antialias="true" height="3" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="-26" y2="-7" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="11" y2="-7" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.48" x1="-35.5626" y2="2.48" x2="-34.3906"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="-7" y2="-7" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-7.52" y2="-7" x2="-7.52"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-26.52" y2="-7" x2="-26.52"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="10.48" y2="-7" x2="10.48"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.48" x1="18.4374" y2="2.48" x2="19.6094"/>
+        <rect width="53" x="-34" y="-18" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="45" x="-29" y="-20" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.0196" x="19.8" y="0" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="18" x="-27" y="-19" antialias="true" height="3" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.0196" x="19.8" y="2" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7" x="-11" y="-23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-9" y="-20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.48" x1="18.4374" y2="0.48" x2="19.6094"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-16" x1="-35.0389" y2="-16" x2="19"/>
+        <ellipse width="1.0196" x="-37.0781" y="0" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.0196" x="-37.0781" y="2" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.48" x1="-35.5626" y2="0.48" x2="-34.3906"/>
+        <polygon x4="-27" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="-34" y2="10" x2="-34" y3="10" x3="-32" y4="4"/>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="17" y2="10" x2="17" y3="10" x3="15" y4="4"/>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="-27" y2="8" x2="-9" y3="8" x3="-5" y4="4"/>
+        <rect width="4" x="-9" y="8" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="19" x2="23" x3="26" x4="26" antialias="false" x5="24" x6="24" x7="24" x8="22" x9="19" closed="false" y1="-15" y2="-15" y3="-14" y4="-8" y5="-8" y6="-11" y7="-12" y8="-13" y9="-13"/>
+        <rect width="49" x="-30" y="-15" antialias="false" height="2" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <terminal x="-38" y="2" orientation="w"/>
+        <terminal x="21" y="1" orientation="e"/>
+        <terminal x="-8" y="-23" orientation="n"/>
+        <terminal x="-7" y="11" orientation="s"/>
+        <terminal x="25" y="-7" orientation="s"/>
+    </description>
+</definition>

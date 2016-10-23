@@ -1,0 +1,30 @@
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="37" height="80" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Derivación doble</name>
+        <name lang="ca">Derivació doble</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="8.55" x="14.44" y="-9.83725" antialias="false" height="20.8373" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.55" x="-20.9" y="-10.4326" antialias="false" height="20.8373" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="-12.1501" y2="-8.0512" x2="-5.72654"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="8.3138" y2="-8.0512" x2="14.2843"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.69305" x1="-2.38" y2="-8.0512" x2="-5.51"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="8" y2="-4" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="-12" y2="-8" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="-2" y2="-9" x2="8"/>
+        <polygon x4="-17" y5="-20" x5="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-14" y2="-28" x2="0" y3="-33" x3="-3" y4="-25"/>
+        <input x="-8" y="16.5" size="4" rotate="true" text="_" tagg="label"/>
+        <polygon x4="-3.21437" y5="24" x5="-15.3977" y6="24" x6="-15.3977" y7="24" x7="-15.3977" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="24" x1="-15.3977" y2="30.12" x2="-19.4588" y3="36.24" x3="-7.27549" y4="30.12"/>
+        <polygon x4="10" y5="8" x5="10" y6="8" x6="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="8" x1="-4" y2="25" x2="-14" y3="30" x3="-4" y4="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-4" y2="4" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="10" y2="2" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-12" y2="8" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="10" y2="8" x2="14"/>
+        <terminal x="-20.9" y="-0.311652" orientation="w"/>
+        <terminal x="22.99" y="-0.311652" orientation="e"/>
+        <terminal x="-10" y="-31" orientation="n"/>
+        <terminal x="-12" y="37" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Registrador temperatura</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="16" x="-8" y="-9" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2" y="-3" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="5"/>
+        <circle x="-4" y="-5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9"/>
+        <circle x="-5" y="-6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="11"/>
+        <circle x="-3" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:red" diameter="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.25263" x1="-3" y2="-0.726316" x2="-3"/>
+        <circle x="0" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="20" x="-10" y="-11" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-7" y="14" size="4" text="ºC Hr"/>
+        <terminal x="9" y="-12" nameHidden="144" number="" name="" orientation="n"/>
+    </description>
+</definition>

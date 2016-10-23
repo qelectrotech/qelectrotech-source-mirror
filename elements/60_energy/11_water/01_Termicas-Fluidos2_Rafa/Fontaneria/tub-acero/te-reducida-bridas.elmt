@@ -1,0 +1,26 @@
+<definition width="60" height="40" link_type="simple" hotspot_x="29" hotspot_y="24" version="0.5" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Te reducida bridas</name>
+        <name lang="ca">Te reduida brides</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="2" height="26" antialias="false" y="-13" x="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20.7858" length2="1.5" antialias="false" x2="19.9172" end1="none" y2="8.02325" length1="1.5" end2="none" y1="8.02325" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-5.37719" length2="1.5" antialias="false" x2="-5.37719" end1="none" y2="-8.66471" length1="1.5" end2="none" y1="-18.7558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20.5609" length2="1.5" antialias="false" x2="-6.08532" end1="none" y2="-8.0512" length1="1.5" end2="none" y1="-8.0512" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="6.4431" length2="1.5" antialias="false" x2="20.2911" end1="none" y2="-8.0512" length1="1.5" end2="none" y1="-8.0512" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5.68313" length2="1.5" antialias="false" x2="5.68313" end1="none" y2="-8.66471" length1="1.5" end2="none" y1="-18.7558" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0.1006" length2="1.5" antialias="false" x2="-5.82455" end1="none" y2="-8.0512" length1="1.5" end2="none" y1="-2.69305" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0.7091" length2="1.5" antialias="false" x2="5.9759" end1="none" y2="-8.0512" length1="1.5" end2="none" y1="-2.69305" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="13.5" text="_" tagg="label" size="6" x="-9" rotate="true"/>
+        <line x1="-21" length2="1.5" antialias="false" x2="-21" end1="none" y2="7.14399" length1="1.5" end2="none" y1="-7.13291" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" length2="1.5" antialias="false" x2="21" end1="none" y2="7.1987" length1="1.5" end2="none" y1="-7.18342" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-4.89081" length2="1.5" antialias="false" x2="5.09838" end1="none" y2="-19" length1="1.5" end2="none" y1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.2" height="2" antialias="false" y="-21" x="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" height="26" antialias="false" y="-13" x="-24" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="w" x="-22"/>
+        <terminal y="0" orientation="e" x="22"/>
+        <terminal y="-20" orientation="n" x="0.1"/>
+    </description>
+</definition>

@@ -1,0 +1,41 @@
+<definition width="50" version="0.4" hotspot_x="26" hotspot_y="16" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Lavadero</name>
+        <name lang="ca">Pica</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.7438" x1="-14.2492" y2="23.7438" x2="11.9923"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18.7645" x1="-14.2379" y2="18.7645" x2="12.5114"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.13193" x1="0.195835" y2="-6.13193" x2="1.7899"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.254" x1="-14.6821" y2="21.254" x2="12.417"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="27.8932" x1="-14.6821" y2="27.8932" x2="12.417"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.9618" x1="-5.64905" y2="-6.9618" x2="-4.05499"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.9618" x1="0.195835" y2="-6.9618" x2="1.7899"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.13193" x1="-5.64905" y2="-6.13193" x2="-4.05499"/>
+        <ellipse width="2.65675" x="-8.30582" y="-7.79168" antialias="true" height="2.0747" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="2.12543" x="-5.11771" y="-7.79168" antialias="true" height="2.0747" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.79168" x1="-6.71176" y2="-7.79168" x2="-4.05499"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.71699" x1="-6.71176" y2="-5.71699" x2="-4.05499"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.37674" x1="-5.64905" y2="-7.37674" x2="-4.05499"/>
+        <ellipse width="4.25082" x="-3.52364" y="2.58181" antialias="true" height="3.31951" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.59406" x="-2.46094" y="-7.79168" antialias="false" height="7.46892" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.65675" x="1.7899" y="-7.79168" antialias="true" height="2.0747" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="2.12543" x="-0.335519" y="-7.79168" antialias="true" height="2.0747" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.79168" x1="0.727188" y2="-7.79168" x2="3.38396"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.71699" x1="0.727188" y2="-5.71699" x2="3.38396"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.37674" x1="0.195835" y2="-7.37674" x2="1.7899"/>
+        <rect width="37.1947" x="-19.9956" y="-9.45144" antialias="false" height="39.4193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.64228" x1="-2.43974" y2="-3.64228" x2="-16.827"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.64228" x1="-0.355763" y2="-3.64228" x2="14.5643"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.32792" x1="-17.3388" y2="27.5525" x2="-17.3388"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="27.8932" x1="14.5421" y2="27.8932" x2="-17.3386"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.30933" x1="15.0737" y2="27.9474" x2="15.0737"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.9553" x1="-16.7866" y2="12.9553" x2="15.0511"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16.2749" x1="-14.6821" y2="16.2749" x2="12.417"/>
+        <input x="-6.1804" y="9.63583" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="-10" y="-10" orientation="n"/>
+        <terminal x="10" y="-10" orientation="n"/>
+    </description>
+</definition>

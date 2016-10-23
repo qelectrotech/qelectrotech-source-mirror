@@ -1,0 +1,16 @@
+<definition height="40" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="25" type="element" width="30" orientation="dyyy">
+    <names>
+        <name lang="es">Contador de gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-12.7594" y2="-19.3698" x1="9.4" x2="9.4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <polygon y1="-12.37" y2="12" y3="12" x1="-12.2" y4="-12.37" x2="-12.2" y5="-12.37" x3="11.2" closed="false" x4="11.2" x5="-12.2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="3.65549" x="-9.86" y="-9.93299" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="18.72"/>
+        <line y1="-12.7594" y2="-19.3699" x1="-10.4" x2="-10.4" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
+        <input x="-10" size="4" rotate="true" y="20" text="_" tagg="label"/>
+        <terminal x="-10" y="-20" orientation="n"/>
+        <terminal x="10" y="-20" orientation="n"/>
+    </description>
+</definition>

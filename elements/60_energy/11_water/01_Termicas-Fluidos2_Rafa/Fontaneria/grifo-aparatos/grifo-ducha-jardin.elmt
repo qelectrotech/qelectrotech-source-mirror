@@ -1,0 +1,37 @@
+<definition width="80" version="0.4" hotspot_x="39" hotspot_y="73" height="130" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Grifo Ducha jardín</name>
+        <name lang="ca">Dutxa jardí</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47.2836" x1="-8.93933" y2="47.2836" x2="-7.65739"/>
+        <arc width="14.3325" x="-14.708" y="-69.4965" antialias="true" height="17.7193" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5752" x1="-0.3755" y2="-60.103" x2="-0.3755"/>
+        <ellipse width="4.2336" x="3.876" y="-13.1878" antialias="true" height="5.62527" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21.3003" x="-12" y="-13.9378" antialias="false" height="6.93784" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47.2836" x1="7.06067" y2="47.2836" x2="8.34261"/>
+        <rect width="9.261" x="-6.1085" y="-14.7036" antialias="false" height="0.502489" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.75" x="6.85" y="46.3782" antialias="false" height="3.62181" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.9845" x="4.9344" y="-11.5002" antialias="true" height="2.43761" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49.0945" x1="7.06067" y2="49.0945" x2="8.34261"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4.7161" x2="7.20996" x3="8.41392" x4="7.12398" antialias="false" x5="4.7161" x6="3.4791" x7="4.63011" x8="4.63011" closed="false" y1="-7.75005" y2="-7.75005" y3="-10.3785" y4="-13.1453" y5="-13.1453" y6="-10.3785" y7="-7.75005" y8="-7.75005"/>
+        <ellipse width="4.2336" x="-10.8801" y="-13.3753" antialias="true" height="5.62527" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.75" x="-9.15" y="46.3782" antialias="false" height="3.62181" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.1895" x="-3.683" y="-16.4624" antialias="false" height="1.75871" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49.0945" x1="-8.93933" y2="49.0945" x2="-7.65739"/>
+        <rect width="5.5125" x="-4.565" y="-17.2161" antialias="false" height="0.753735" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5195" x1="-3.0215" y2="-59.9031" x2="-3.0215"/>
+        <arc width="8.82" x="-11.8415" y="-66.5874" antialias="true" height="11.9011" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="3.7485" x="-15.149" y="-60.5046" antialias="false" height="2.90914" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.9845" x="-9.8217" y="-11.6877" antialias="true" height="2.43761" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10.04" x2="-7.54614" x3="-6.34224" x4="-7.63212" antialias="false" x5="-10.04" x6="-11.277" x7="-10.126" x8="-10.126" closed="false" y1="-7.93751" y2="-7.93751" y3="-10.566" y4="-13.3328" y5="-13.3328" y6="-10.566" y7="-7.93751" y8="-7.93751"/>
+        <rect width="27" x="-15" y="43" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-4" y="-7" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="-33" y2="47" x2="34"/>
+        <input x="9" y="12" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="-8" y="51" orientation="s"/>
+        <terminal x="8" y="51" orientation="s"/>
+    </description>
+</definition>

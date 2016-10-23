@@ -1,0 +1,45 @@
+<definition width="90" version="0.4" hotspot_x="43" hotspot_y="79" height="160" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">خزّان 1000ل</name>
+        <name lang="en">Storage tank 1000L</name>
+        <name lang="it">Serbatoio 1000L</name>
+        <name lang="fr">Ballon Stockage 1000L</name>
+        <name lang="pl">Zasobnik 1000L</name>
+        <name lang="es">Depósito rectangular</name>
+        <name lang="nl">Opslagtank 1000L</name>
+        <name lang="ca">Dipòsit rectangular</name>
+        <name lang="cs">Zásobník 1000L</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="8" x="24" y="67" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.5" x="-30.25" y="-14.0983" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.5" x="29.75" y="-59.1274" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.5" x="29.75" y="37.1483" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.5" x="-30.25" y="37.1483" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="4.5" x="29.75" y="-14.0983" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="2.2" y5="69.7971" x5="2.2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="69.7971" x1="-0.2" y2="71.7188" x2="-0.2" y3="71.7188" x3="2.2" y4="69.7971"/>
+        <input x="-16.6" y="-5.9309" size="4" rotate="true" text="Depósito ___L" tagg="label"/>
+        <ellipse width="4.5" x="-30.25" y="-59.1274" antialias="true" height="4.80437" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.4" x="0.8" y="-45.1947" antialias="true" height="2.56233" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3.3" x="0.35" y="-71.2985" antialias="true" height="3.5232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.4" x="0.8" y="44.4868" antialias="true" height="2.56233" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.4" x="0.8" y="12.646" antialias="true" height="2.56233" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-38" x2="-38" x3="-29" x4="33" antialias="false" x5="42" x6="42" x7="32" x8="-28" x9="-38" closed="false" y1="-63" y2="56" y3="67" y4="67" y5="57" y6="-63" y7="-73" y8="-73" y9="-63"/>
+        <rect width="8" x="-28" y="67" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-63" x1="-38" y2="-63" x2="42"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="56" x1="-38" y2="56" x2="42"/>
+        <terminal x="-28" y="-56.7252" orientation="w"/>
+        <terminal x="2" y="-69.5369" orientation="n"/>
+        <terminal x="1" y="71.7188" orientation="s"/>
+        <terminal x="2" y="-43.9136" orientation="e"/>
+        <terminal x="2" y="13.9272" orientation="e"/>
+        <terminal x="2" y="45.768" orientation="e"/>
+        <terminal x="32" y="-56.7252" orientation="e"/>
+        <terminal x="32" y="-11.6961" orientation="e"/>
+        <terminal x="32" y="39.5505" orientation="e"/>
+        <terminal x="-28" y="-11.6961" orientation="w"/>
+        <terminal x="-28" y="39.5505" orientation="w"/>
+    </description>
+</definition>

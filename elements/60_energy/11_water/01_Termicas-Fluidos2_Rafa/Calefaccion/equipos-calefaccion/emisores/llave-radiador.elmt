@@ -1,0 +1,26 @@
+<definition hotspot_x="15" hotspot_y="19" width="30" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="ca">Clau radiador</name>
+        <name lang="es">Llave radiador</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="0.06014" y2="-6.25786" end1="none" x1="0.06014" y1="-10.598" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="1.7701" y2="-6.25786" end1="none" x1="1.7701" y1="-10.598" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-5.92486" y2="1.7263" end1="none" x1="-8.38122" y1="1.7263" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="3.463" y2="-6.25786" end1="none" x1="3.463" y1="-10.598" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.733781" width="3.42" antialias="false" height="2.51551" x="-5.92486"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.08779" width="6.84" antialias="false" height="8.9005" x="-2.50486"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.47098" width="3.07045" antialias="false" height="6.92971" x="-8.99531"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-5.92486" y2="-1.73855" end1="none" x1="-8.38122" y1="-1.73855" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1.18726" width="3.42" antialias="false" height="2.677" x="4.20514"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.76479" width="3.42" antialias="false" height="1.677" x="-0.79486"/>
+        <polygon y7="-5.76479" x4="3.4801" y3="-10.7688" antialias="false" x3="5.1901" y4="-12.9134" x2="5.1901" x1="-3.35986" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-3.35986" x7="-3.35986" y5="-12.9134" x5="-1.64986" closed="false" y8="-5.76479" y2="-5.76479" x8="-3.35986" y6="-10.7688" y1="-5.76479"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-1.64986" y2="-6.25786" end1="none" x1="-1.64986" y1="-10.598" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="5.1901" y2="-10.7958" end1="none" x1="-3.35986" y1="-10.7958" length1="1.5"/>
+        <input rotate="true" text="_" tagg="label" y="-13.5" x="-4" size="3"/>
+        <terminal y="0" x="6" orientation="e"/>
+        <terminal y="0" x="-7" orientation="w"/>
+    </description>
+</definition>

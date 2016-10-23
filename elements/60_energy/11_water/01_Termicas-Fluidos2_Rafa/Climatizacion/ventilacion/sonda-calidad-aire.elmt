@@ -1,0 +1,25 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Sonda calidad aire</name>
+        <name lang="ca">Sonda qualitat aire</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-7.8" y2="6.13626" x2="-7.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-6.4" y2="6.13626" x2="-6.4"/>
+        <polygon x4="10.54" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:blue" y1="6.16991" x1="10.54" y2="6.16991" x2="4.87" y3="4.82373" x3="4.87" y4="6.16991"/>
+        <ellipse width="5.7456" x="5.0128" y="-0.891622" antialias="true" height="5.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="24.5" x="-11.37" y="-8.28496" antialias="false" height="16.3197" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.394262" x1="5.4916" y2="1.68015" x2="7.8856"/>
+        <polygon x4="13.137" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.4263" x1="-12" y2="8.57869" x2="-12" y3="8.57869" x3="13.137" y4="8.57869"/>
+        <rect width="11.97" x="-3.04" y="-7.00501" antialias="false" height="3.19994" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="5.7456" x="-3.1996" y="-0.891622" antialias="true" height="5.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.394262" x1="-2.7208" y2="1.68015" x2="-0.3268"/>
+        <polygon x4="2.07" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="6.16991" x1="2.07" y2="6.16991" x2="-3.6" y3="4.82373" x3="-3.6" y4="6.16991"/>
+        <input x="-15" y="12" size="4" rotate="true" text="cal._" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-9.2" y2="6.13626" x2="-9.2"/>
+        <terminal x="-9" y="-10" orientation="n"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

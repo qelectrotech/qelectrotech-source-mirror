@@ -1,0 +1,25 @@
+<definition width="70" version="0.4" hotspot_x="34" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Colector Horizontal-2</name>
+        <name lang="ca">Colector Horitzontal-2</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="4" x="15" y="-6" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-2" y="-6" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-19" y="-6" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-21.7186" y2="6" x2="22.7785"/>
+        <arc width="9" x="-26" y="-4" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <rect width="4" x="-2" y="6" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="9" x="18" y="-4" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-21.7186" y2="-4" x2="22.7785"/>
+        <input x="-18" y="13.5" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="9" orientation="s"/>
+        <terminal x="17" y="-7" orientation="n"/>
+        <terminal x="0" y="-7" orientation="n"/>
+        <terminal x="27" y="1" orientation="e"/>
+        <terminal x="-26" y="1" orientation="w"/>
+        <terminal x="-17" y="-7" orientation="n"/>
+    </description>
+</definition>

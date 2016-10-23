@@ -1,0 +1,19 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Muelle carga</name>
+        <name lang="ca">Moll càrrega</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="4" x="16" y="2.1" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-270"/>
+        <arc width="4" x="-20" y="2.1" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-270"/>
+        <rect width="30" x="-15" y="-2" antialias="false" height="2" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <arc width="4" x="16" y="0" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <polygon x4="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="19" y2="-4" x2="16" y3="0" x3="16" y4="0"/>
+        <arc width="4" x="16" y="0" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <polygon x4="-19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="-19" y2="-4" x2="-16" y3="0" x3="-16" y4="0"/>
+        <arc width="4" x="-20" y="0" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="4" x="-20" y="0" antialias="true" height="2.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <input x="-7" y="6.5" size="4" rotate="true" text="_" tagg="label"/>
+    </description>
+</definition>

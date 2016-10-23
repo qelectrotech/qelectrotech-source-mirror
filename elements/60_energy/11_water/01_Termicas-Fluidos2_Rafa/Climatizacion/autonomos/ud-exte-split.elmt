@@ -1,0 +1,31 @@
+<definition type="element" orientation="dyyy" hotspot_y="27" height="50" hotspot_x="22" link_type="simple" width="70" version="0.5">
+    <names>
+        <name lang="ca">Unidtat exterior Split-1</name>
+        <name lang="es">Unidad exterior Split-1</name>
+    </names>
+    <informations></informations>
+    <description>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" height="12.1948" x="-4.66997" antialias="true" width="14.1275" y="-8.8833"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" height="17.0728" x="-7.23862" antialias="true" width="19.2647" y="-11.3222"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="2.43897" x="25.4106" antialias="false" width="5.57032" y="13.0673"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="1.21948" x="33.7661" antialias="false" width="1.39258" y="-1.09773"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="26.8287" x="-12.3758" antialias="true" width="30.8234" y="-16.2001"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="35.3649" x="-16.3668" antialias="false" width="50.1329" y="-22.2977"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.65845" x="34.9412" antialias="false" width="2.78516" y="-2.31721"/>
+        <line y2="13.1193" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" x2="21.2328" x1="21.2328" y1="-19.9066" end1="none" length2="1.5" end2="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="2.43897" x="24.018" antialias="false" width="6.96291" y="-16.2001"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="2.43897" x="-12.1892" antialias="false" width="5.57032" y="13.0673"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="1.21948" x="33.7661" antialias="false" width="1.39258" y="9.40897"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.65845" x="35.7462" antialias="false" width="2.78516" y="8.18951"/>
+        <line y2="-19.8585" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" x2="33.7661" x1="-16.3668" y1="-19.8585" end1="none" length2="1.5" end2="none"/>
+        <line y2="9.40897" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" x2="3.18088" x1="3.18088" y1="-16.2001" end1="none" length2="1.5" end2="none"/>
+        <line y2="-2.78584" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" x2="18.4476" x1="-12.3758" y1="-2.78584" end1="none" length2="1.5" end2="none"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" height="21.9507" x="-9.80727" antialias="true" width="25.6864" y="-13.7612"/>
+        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" height="7.31689" x="-0.817032" antialias="true" width="7.70589" y="-6.44429"/>
+        <input rotate="true" x="-19.8267" size="4" y="-28.892" tagg="label" text="Ud_"/>
+        <terminal orientation="s" x="-3.36355" y="15.5064"/>
+        <terminal orientation="e" x="37.7264" y="-1.09773"/>
+        <terminal orientation="e" x="38.5314" y="9.40897"/>
+        <terminal orientation="n" x="26.4212" y="-17.9867"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition link_type="simple" version="0.5" width="90" height="50" hotspot_x="44" type="element" hotspot_y="33" orientation="dyyy">
+    <names>
+        <name lang="es">Alumbrado con LEDs</name>
+        <name lang="ca">Enllumenat amb LEDs</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x2="22" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-21" y2="-29" x1="22"/>
+        <line x2="-11" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="13" y2="7" x1="-25"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" height="1" x="-21" y="5"/>
+        <line x2="-31" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="11" y2="13" x1="-26"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" height="1" x="-17" y="4"/>
+        <polygon x2="-29" y5="10" x3="-19" y6="10" x4="-9" y7="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-9" x6="-9" antialias="false" x7="-9" closed="false" y1="10" y2="-6" y3="-6" x1="-39" y4="10"/>
+        <polygon x2="21" y5="10" x3="31" y6="10" x4="41" y7="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-9" x6="-9" antialias="false" x7="-9" closed="false" y1="-6" y2="-22" y3="-22" x1="-29" y4="-6"/>
+        <line x2="31" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-6" y2="-22" x1="-19"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="5" height="9" x="-28" y="4"/>
+        <line x2="-15" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="0" x1="-26"/>
+        <line x2="-31" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="6" y2="8" x1="-26"/>
+        <line x2="-27" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="10" y2="6" x1="-39"/>
+        <line x2="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-4" y2="-12" x1="-20"/>
+        <input text="Alumbrado" tagg="label" rotate="true" x="-11" y="-3" size="6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" height="1" x="-21" y="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" height="1" x="-17" y="7"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="1" height="1" x="-14" y="6"/>
+        <terminal x="-30" y="5" orientation="n"/>
+    </description>
+</definition>

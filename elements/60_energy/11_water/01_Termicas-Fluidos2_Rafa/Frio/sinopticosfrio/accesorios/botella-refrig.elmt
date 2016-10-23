@@ -1,0 +1,16 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="37" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Botella de  refrig.</name>
+    </names>
+    <informations/>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.9838" x1="2.887" y2="-22.4854" x2="2.887"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0873" x1="8.425" y2="18" x2="8.425"/>
+        <arc width="16.575" x="-8.15" y="-22.4854" antialias="true" height="9.89643" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0873" x1="-8.15" y2="18" x2="-8.15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-8.15" y2="18" x2="8.1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.9838" x1="-2.3" y2="-22.4854" x2="-2.3"/>
+        <arc width="5.2" x="-2.3" y="-30.5825" antialias="true" height="5.39805" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="0" y="-31" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

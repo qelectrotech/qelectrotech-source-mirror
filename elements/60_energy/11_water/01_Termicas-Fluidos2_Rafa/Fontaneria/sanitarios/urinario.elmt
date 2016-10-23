@@ -1,0 +1,20 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="17" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Urinario</name>
+        <name lang="ca">Unirnari</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.40609" x1="12.171" y2="-6.18137" x2="12.171"/>
+        <ellipse width="25.0092" x="-12.1801" y="-2.26814" antialias="true" height="19.8377" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.41834" x1="-10.8639" y2="-6.16811" x2="-10.8639"/>
+        <arc width="33.5649" x="-16.1289" y="-9.8531" antialias="true" height="27.4227" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-270"/>
+        <ellipse width="5.2651" x="-2.3081" y="0.06571" antialias="true" height="4.6677" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.61047" x1="-10.4172" y2="-9.61047" x2="11.7419"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.39956" x1="-1.21916" y2="2.39956" x2="1.83219"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.23263" x1="0.324463" y2="3.56647" x2="0.324463"/>
+        <input x="-5.90897" y="16.9245" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="0.324463" y="-9.8531" orientation="n"/>
+    </description>
+</definition>

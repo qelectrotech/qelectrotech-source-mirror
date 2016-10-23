@@ -1,0 +1,19 @@
+<definition width="90" version="0.4" hotspot_x="43" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Depósito Horizontal</name>
+        <name lang="ca">Dipòsit Horitzontal</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="16" x="-33" y="-17" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="16" x="21" y="-17" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-25" y2="-17" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="-25" y2="19" x2="28"/>
+        <input x="-14" y="-2" size="4" rotate="true" text="_L" tagg="label"/>
+        <terminal x="38" y="1" orientation="e"/>
+        <terminal x="-35" y="0" orientation="w"/>
+        <terminal x="0" y="-19" orientation="n"/>
+        <terminal x="-1" y="21" orientation="s"/>
+    </description>
+</definition>

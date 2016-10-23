@@ -1,0 +1,28 @@
+<definition width="130" hotspot_y="11" hotspot_x="11" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
+    <names>
+        <name lang="es">Valvula flotador"M</name>
+        <name lang="ca">Valvula flotador"M</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="47.0662" angle="-90" y="-6.20327" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.43476" start="90" antialias="true" height="40.5131"/>
+        <line y1="-4.55428" end1="none" x1="3.81999" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="5.39555" antialias="false" y2="4.73279" length2="1.5"/>
+        <line y1="-4.55428" end1="none" x1="6.70851" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="8.28408" antialias="false" y2="4.73279" length2="1.5"/>
+        <line y1="-4.55428" end1="none" x1="9.33445" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="10.91" antialias="false" y2="4.73279" length2="1.5"/>
+        <rect width="10.5037" y="-5.48299" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0.668873" antialias="false" height="11.1445"/>
+        <rect width="5.21206" y="-7.15132" style="line-style:normal;line-weight:normal;filling:none;color:black" x="11.1726" antialias="false" height="15.3237"/>
+        <line y1="-4.55428" end1="none" x1="1.19406" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="2.76962" antialias="false" y2="4.73279" length2="1.5"/>
+        <rect width="14.2032" y="14.7067" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25.3762" antialias="false" height="4.57406"/>
+        <arc width="16.7523" angle="-90" y="7.51892" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.51987" start="90" antialias="true" height="13.0687"/>
+        <line y1="-5.97457" end1="none" x1="23.6768" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="48.4064" antialias="false" y2="-5.97457" length2="1.5"/>
+        <line y1="6.86548" end1="none" x1="38.0359" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="48.4064" antialias="false" y2="6.86548" length2="1.5"/>
+        <arc width="13.5614" angle="-180" y="-5.54982" style="line-style:normal;line-weight:normal;filling:none;color:black" x="42.0246" start="90" antialias="true" height="12.4153"/>
+        <ellipse width="3.98866" y="-4.24294" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46.0132" antialias="true" height="3.26718"/>
+        <line y1="-1.6292" end1="none" x1="55.586" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="105.046" antialias="false" y2="12.7464" length2="1.5"/>
+        <line y1="0.98455" end1="none" x1="55.586" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="103.45" antialias="false" y2="14.7067" length2="1.5"/>
+        <ellipse width="17.5501" y="13.3159" style="line-style:normal;line-weight:normal;filling:none;color:black" x="97.4499" antialias="true" height="15.6825"/>
+        <input size="4" text="Ø_&quot;M" y="-14.951" tagg="label" x="14.7853" rotate="true"/>
+        <terminal y="0.0892524" orientation="w" x="0.143687"/>
+        <terminal y="19.3544" orientation="s" x="33.4791"/>
+    </description>
+</definition>

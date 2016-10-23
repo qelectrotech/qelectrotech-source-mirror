@@ -1,0 +1,22 @@
+<definition width="40" hotspot_y="16" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
+    <names>
+        <name lang="es">Luz de emergencia</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="4" angle="-180" y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" start="90" antialias="true" height="11"/>
+        <arc width="4" angle="-180" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" start="90" antialias="true" height="11"/>
+        <arc width="4" angle="-180" y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="12" start="90" antialias="true" height="11"/>
+        <arc width="4" angle="-180" y="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" start="90" antialias="true" height="11"/>
+        <polygon y7="10" y1="-12" x3="-11" y4="10" x5="-6" x4="-11" x7="-6" x1="14" y6="10" y5="10" closed="false" y3="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" x6="-6" antialias="false" y2="-12"/>
+        <line y1="-1" end1="none" x1="-11" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-7" antialias="false" y2="-1" length2="1.5"/>
+        <line y1="-1" end1="none" x1="-6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="14" antialias="false" y2="-12" length2="1.5"/>
+        <line y1="-1" end1="none" x1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-5" antialias="false" y2="10" length2="1.5"/>
+        <input size="4" text="_" y="13" tagg="label" x="-3" rotate="true"/>
+        <line y1="4" end1="none" x1="-4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="16" antialias="false" y2="-8" length2="1.5"/>
+        <line y1="-7" end1="none" x1="8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="18" antialias="false" y2="-12" length2="1.5"/>
+        <line y1="-2" end1="none" x1="8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="23" antialias="false" y2="3" length2="1.5"/>
+        <line y1="3" end1="none" x1="7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="12" antialias="false" y2="8" length2="1.5"/>
+        <terminal y="-10" orientation="n" x="0"/>
+    </description>
+</definition>

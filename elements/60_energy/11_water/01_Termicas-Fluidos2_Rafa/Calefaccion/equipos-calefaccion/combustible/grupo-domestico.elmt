@@ -1,0 +1,26 @@
+<definition type="element" hotspot_x="23" orientation="dyyy" width="60" height="60" link_type="simple" hotspot_y="38" version="0.5">
+    <names>
+        <name lang="ca">Grup pres. domèstic</name>
+        <name lang="es">Grupo-pres. doméstico</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17" antialias="false" width="30" height="30" y="-15"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="false" width="5" height="10" y="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" antialias="false" width="5" height="5" y="-10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="-11" antialias="false" width="2" height="10" y="-28"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-17" x2="-11" y5="15" y7="15" y2="-19" x3="17" y3="-19" antialias="false" x4="17" x5="13" x6="13" y4="11" x7="13" y1="-15" y6="15" closed="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="13" x2="17" end2="none" y2="-19" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-15"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="15" antialias="false" width="12" height="2" y="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="false" width="4" height="2" y="-31"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="27" antialias="false" width="2" height="4" y="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-11" x2="-10" end2="none" y2="-17" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-18"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-9" end2="none" y2="-18" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-17"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="15" x2="14" end2="none" y2="10" antialias="false" end1="none" length2="1.5" length1="1.5" y1="9"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="14" x2="15" end2="none" y2="11" antialias="false" end1="none" length2="1.5" length1="1.5" y1="10"/>
+        <text x="-4" text="Pres." size="6" y="10"/>
+        <input rotate="true" x="-15" tagg="label" text="_" size="6" y="16"/>
+        <terminal x="-10" orientation="n" y="-30"/>
+        <terminal x="29" orientation="e" y="10"/>
+    </description>
+</definition>

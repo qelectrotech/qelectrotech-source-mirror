@@ -1,0 +1,26 @@
+<definition link_type="simple" version="0.5" width="50" height="20" hotspot_x="24" type="element" hotspot_y="9" orientation="dyyy">
+    <names>
+        <name lang="es">Tuberia vaina acero</name>
+        <name lang="ca">Canonada acer</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x2="11.625" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="4" x1="-5.625"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-270" antialias="true" width="3.56" height="5.83305" angle="-180" x="16.13" y="-1.83301"/>
+        <line x2="13.625" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-1" y2="-1" x1="-3.625"/>
+        <line x2="13.625" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" end2="none" y1="2" y2="2" x1="-3.625"/>
+        <line x2="17.1783" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-1.83301" y2="-1.83301" x1="15.4373"/>
+        <line x2="17.1783" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4.00002" y2="4.00002" x1="15.4373"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-270" antialias="true" width="6" height="10.3911" angle="-180" x="9.75" y="-4.39106"/>
+        <line x2="-8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="4" y2="4" x1="-17"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" width="3.3" height="6.38775" x="-19.575" y="-2.38775"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="-230" antialias="true" width="5" height="10.3911" angle="-260" x="-12" y="-4.39106"/>
+        <line x2="12.25" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-4.39106" y2="-4.39106" x1="-9.5"/>
+        <line x2="12.25" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="6" y2="6" x1="-9.5"/>
+        <line x2="-8.17857" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-2.5" y2="-2.5" x1="-17.8214"/>
+        <input text="_" tagg="label" rotate="true" x="-3" y="-10" size="4"/>
+        <line x2="12.625" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" end1="none" end2="none" y1="-3" y2="-3" x1="-4.625"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

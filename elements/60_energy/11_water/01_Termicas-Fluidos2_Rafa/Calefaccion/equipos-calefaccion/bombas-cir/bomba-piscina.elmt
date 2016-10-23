@@ -1,0 +1,30 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="21" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Bomba piscina</name>
+        <name lang="ca">Bomba piscina</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="6" x="15" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="5.5" y2="2" x2="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="11.5" y2="2" x2="11.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="1.5" y2="2" x2="1.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="8.5" y2="2" x2="8.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x1="-0.5" y2="2" x2="-0.5"/>
+        <rect width="19" x="-4" y="3" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="13" y2="2" x2="13"/>
+        <rect width="6" x="-10" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="17" x="-3" y="-18" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-2" y2="2" x2="-2"/>
+        <rect width="4" x="-7" y="-17" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-3" y="22.5" size="4" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5" x1="-3.94146" y2="5" x2="14.9366"/>
+        <rect width="2" x="4" y="2" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="12" y="2" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-3" y="2" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="10" orientation="w"/>
+        <terminal x="20" y="10" orientation="e"/>
+        <terminal x="-7" y="-15" orientation="w"/>
+    </description>
+</definition>

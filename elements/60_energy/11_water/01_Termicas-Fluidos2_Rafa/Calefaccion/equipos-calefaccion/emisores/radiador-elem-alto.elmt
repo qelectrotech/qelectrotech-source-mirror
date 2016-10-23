@@ -1,0 +1,34 @@
+<definition hotspot_x="24" hotspot_y="25" width="60" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="en">Steel radiator</name>
+        <name lang="it">Radiatore</name>
+        <name lang="pl">Grzejnik płytowy</name>
+        <name lang="ca">Radidador ferro colat</name>
+        <name lang="fr">Radiateur Acier</name>
+        <name lang="cs">Deskové topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="es">Radiador fundicion alto</name>
+        <name lang="nl">Radiator staal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y7="25.5762" x4="21.8109" y3="-22.7567" antialias="false" x3="16.234" y4="-22.7567" x2="16.234" y12="25.5762" x1="17.1635" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="20.8814" x7="20.8814" y5="-17.4646" x11="16.234" x5="21.8109" y10="31.0887" closed="false" y8="25.5762" x9="21.8109" y11="25.5762" y2="-17.4646" x8="21.8109" x10="16.234" x13="17.1635" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="17.1635"/>
+        <polygon y7="25.5762" x4="5.08012" y3="-22.7567" antialias="false" x3="-0.496804" y4="-22.7567" x2="-0.496804" y12="25.5762" x1="0.432683" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="4.15063" x7="4.15063" y5="-17.4646" x11="-0.496804" x5="5.08012" y10="31.0887" closed="false" y8="25.5762" x9="5.08012" y11="25.5762" y2="-17.4646" x8="5.08012" x10="-0.496804" x13="0.432683" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="0.432683"/>
+        <polygon y7="25.5762" x4="-6.07373" y3="-22.7567" antialias="false" x3="-11.6507" y4="-22.7567" x2="-11.6507" y12="25.5762" x1="-10.7212" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-7.00322" x7="-7.00322" y5="-17.4646" x11="-11.6507" x5="-6.07373" y10="31.0887" closed="false" y8="25.5762" x9="-6.07373" y11="25.5762" y2="-17.4646" x8="-6.07373" x10="-11.6507" x13="-10.7212" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="-10.7212"/>
+        <polygon y7="25.5762" x4="-0.496804" y3="-22.7567" antialias="false" x3="-6.07373" y4="-22.7567" x2="-6.07373" y12="25.5762" x1="-5.14424" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-1.42629" x7="-1.42629" y5="-17.4646" x11="-6.07373" x5="-0.496804" y10="31.0887" closed="false" y8="25.5762" x9="-0.496804" y11="25.5762" y2="-17.4646" x8="-0.496804" x10="-6.07373" x13="-5.14424" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="-5.14424"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="26.9318" width="2.32372" antialias="false" height="2.98382" x="-19.5513"/>
+        <polygon y7="25.5762" x4="16.234" y3="-22.7567" antialias="false" x3="10.657" y4="-22.7567" x2="10.657" y12="25.5762" x1="11.5865" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="15.3045" x7="15.3045" y5="-17.4646" x11="10.657" x5="16.234" y10="31.0887" closed="false" y8="25.5762" x9="16.234" y11="25.5762" y2="-17.4646" x8="16.234" x10="10.657" x13="11.5865" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="11.5865"/>
+        <polygon y7="25.5762" x4="27.3878" y3="-22.7567" antialias="false" x3="21.8109" y4="-22.7567" x2="21.8109" y12="25.5762" x1="22.7404" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="26.4583" x7="26.4583" y5="-17.4646" x11="21.8109" x5="27.3878" y10="31.0887" closed="false" y8="25.5762" x9="27.3878" y11="25.5762" y2="-17.4646" x8="27.3878" x10="21.8109" x13="22.7404" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="22.7404"/>
+        <polygon y7="25.5762" x4="10.657" y3="-22.7567" antialias="false" x3="5.08012" y4="-22.7567" x2="5.08012" y12="25.5762" x1="6.00961" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="9.72756" x7="9.72756" y5="-17.4646" x11="5.08012" x5="10.657" y10="31.0887" closed="false" y8="25.5762" x9="10.657" y11="25.5762" y2="-17.4646" x8="10.657" x10="5.08012" x13="6.00961" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="6.00961"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.5192" width="2.32372" antialias="false" height="3.13301" x="27.8526"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="26.9318" width="2.32372" antialias="false" height="2.98382" x="27.8526"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.5192" width="2.32372" antialias="false" height="3.13301" x="-19.5513"/>
+        <polygon y7="25.5762" x4="-11.6507" y3="-22.7567" antialias="false" x3="-17.2276" y4="-22.7567" x2="-17.2276" y12="25.5762" x1="-16.2981" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-12.5801" x7="-12.5801" y5="-17.4646" x11="-17.2276" x5="-11.6507" y10="31.0887" closed="false" y8="25.5762" x9="-11.6507" y11="25.5762" y2="-17.4646" x8="-11.6507" x10="-17.2276" x13="-16.2981" y6="-17.4646" y1="-17.4646" y13="-17.4646" y9="31.0887" x12="-16.2981"/>
+        <input rotate="true" text="_" tagg="label" y="-25.69" x="6.00961" size="4"/>
+        <terminal y="-20" x="-20" orientation="w"/>
+        <terminal y="-20" x="30" orientation="e"/>
+        <terminal y="30" x="30.1763" orientation="e"/>
+        <terminal y="30" x="-19" orientation="w"/>
+    </description>
+</definition>

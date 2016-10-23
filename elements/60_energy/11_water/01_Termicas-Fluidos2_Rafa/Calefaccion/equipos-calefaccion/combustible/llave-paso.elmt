@@ -1,0 +1,25 @@
+<definition type="element" hotspot_x="20" orientation="dyyy" width="40" height="30" link_type="simple" hotspot_y="21" version="0.5">
+    <names>
+        <name lang="ca">Clau  tall</name>
+        <name lang="es">Llave paso</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.76" antialias="false" width="2.42" height="2.47273" y="-1.07273"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8.36224" x2="11.4456" end2="none" y2="2.13636" antialias="false" end1="none" length2="1.5" length1="1.5" y1="2.13636"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12.2078" x2="-9.12445" end2="none" y2="2.13636" antialias="false" end1="none" length2="1.5" length1="1.5" y1="2.13636"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.36986" antialias="true" width="2.15191" height="1.98184" y="-0.76367"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5442" antialias="false" width="3.78418" height="7.41818" y="-3.54545"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12.2078" x2="-9.12445" end2="none" y2="-1.80909" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-1.80909"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="5.76" antialias="false" width="2.42" height="2.47273" y="-1.07273"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.02583" antialias="false" width="3.78417" height="7.41818" y="-3.54545"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8.3622" x2="11.4456" end2="none" y2="-1.80909" antialias="false" end1="none" length2="1.5" length1="1.5" y1="-1.80909"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5.1378" antialias="true" width="9.6878" height="9.29096" angle="-300" start="60" y="-4.41823"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6.34" antialias="true" width="12.1" height="11.3636" angle="-320" start="70" y="-5.25455"/>
+        <input rotate="true" x="-4" tagg="label" text="_" size="4" y="10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="false" width="3" height="12" y="-10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:gray;color:black" x="-3" antialias="false" width="5" height="8" y="-18"/>
+        <terminal x="-13.6" orientation="w" y="0.163636"/>
+        <terminal x="13.02" orientation="e" y="0.163636"/>
+    </description>
+</definition>

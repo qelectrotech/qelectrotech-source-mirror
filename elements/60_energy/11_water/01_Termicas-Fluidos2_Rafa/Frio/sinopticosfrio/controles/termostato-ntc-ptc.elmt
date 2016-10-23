@@ -1,0 +1,15 @@
+<definition width="30" version="0.4" hotspot_x="10" hotspot_y="24" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termostato sonda NTC-PTC</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="12" x="-6" y="-17.2754" antialias="false" height="8.4348" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-4" y="-11" size="5" text="T"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.8406" x1="0" y2="-0.4058" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.029" x1="15" y2="-1.8116" x2="15"/>
+        <polygon antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-14.4638" x1="6" y2="-14.4638" x2="15" y3="-6.029" x3="15"/>
+        <terminal x="0" y="-1" orientation="s"/>
+    </description>
+</definition>

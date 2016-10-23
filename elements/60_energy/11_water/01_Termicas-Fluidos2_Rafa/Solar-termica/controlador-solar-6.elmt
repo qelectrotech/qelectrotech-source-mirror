@@ -1,0 +1,45 @@
+<definition width="50" version="0.4" hotspot_x="19" hotspot_y="14" height="30" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="es">Controlador solar 6</name>
+        <name lang="ca">Controlador solar 6</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <text x="-10" y="7" size="4" text="V1"/>
+        <text x="-1" y="7" size="4" text="V2"/>
+        <text x="14" y="7" size="4" text="S2"/>
+        <text x="6" y="7" size="4" text="S1"/>
+        <text x="21" y="7" size="4" text="S3"/>
+        <rect width="3" x="24" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="17" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="19" y="1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <circle x="9" y="1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <circle x="3" y="1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <rect width="3" x="1" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="23" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="-7" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="16" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="1.95" x="-13" y="-3.13281" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <ellipse width="1.95" x="-13" y="0.289062" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="3" x="9" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="44" x="-17" y="-12" antialias="false" height="19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-8" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="0" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="8" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="18" x="-7" y="-9" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <ellipse width="1.95" x="-13" y="-7.125" antialias="true" height="1.71094" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="16" x="-6" y="-8" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="-7" y="1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2"/>
+        <rect width="3" x="-16" y="7" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="-17" y="9" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-8" y="-16.5" size="6" rotate="true" text="_" tagg="label"/>
+        <text x="-15" y="7" size="4" text="B"/>
+        <terminal x="-14" y="12" orientation="s"/>
+        <terminal x="-5" y="12" orientation="s"/>
+        <terminal x="2" y="12" orientation="s"/>
+        <terminal x="10" y="12" orientation="s"/>
+        <terminal x="25" y="12" orientation="s"/>
+        <terminal x="18" y="12" orientation="s"/>
+    </description>
+</definition>

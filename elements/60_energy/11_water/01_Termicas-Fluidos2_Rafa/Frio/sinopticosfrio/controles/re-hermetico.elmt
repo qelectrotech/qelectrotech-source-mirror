@@ -1,0 +1,19 @@
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Relé arranque</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="10" x="-6" y="2" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-320"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="18.64" y2="-1" x2="26.3067"/>
+        <arc width="10" x="-6" y="-2" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-320"/>
+        <rect width="33" x="-14" y="-13" antialias="false" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-23.36" y2="-1" x2="-15.6933"/>
+        <rect width="2" x="-3" y="-6" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" x="-6" y="-5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-320"/>
+        <polygon x4="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-15" y2="-8" x2="-8" y3="-8" x3="4" y4="-1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="-2" y2="7" x2="5" y3="3" x3="19"/>
+        <terminal x="-23" y="-1" orientation="w"/>
+        <terminal x="23" y="-1" orientation="e"/>
+    </description>
+</definition>

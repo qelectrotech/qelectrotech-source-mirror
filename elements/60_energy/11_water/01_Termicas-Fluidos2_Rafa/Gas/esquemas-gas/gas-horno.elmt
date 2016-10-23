@@ -1,0 +1,13 @@
+<definition link_type="simple" version="0.5" width="30" height="30" hotspot_x="15" type="element" hotspot_y="13" orientation="dyyy">
+    <names>
+        <name lang="es">Horno gas</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="23.76" height="18.375" x="-12" y="-10.0075"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="15.84" height="9.1875" x="-8.04" y="-3.445"/>
+        <input text="_" tagg="label" rotate="true" x="-12" y="-16.57" size="4"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

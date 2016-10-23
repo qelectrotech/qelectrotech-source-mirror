@@ -1,0 +1,45 @@
+<definition width="90" version="0.4" hotspot_x="37" hotspot_y="80" height="130" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termosifón 1placa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="51.6" x="-20" y="-42.9288" antialias="false" height="84.7476" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <rect width="3" x="32" y="-32" antialias="false" height="76" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc width="9" x="-34" y="-71" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="6" x="-23" y="-52" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-70.9529" x1="34" y2="-47.051" x2="34"/>
+        <rect width="5" x="41" y="-54" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6" x="29" y="28" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <rect width="6" x="31" y="-36" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="8.8" y2="-37.6958" x2="8.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="25" y2="-43" x2="25"/>
+        <arc width="10" x="27" y="26" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="17.8" y2="-37.6958" x2="17.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-9.2" y2="-37.6958" x2="-9.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="25.6" y2="-37.6958" x2="25.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-0.2" y2="-37.6958" x2="-0.2"/>
+        <rect width="46.8" x="-17.6" y="-40.0065" antialias="false" height="78.9029" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="4" y2="-37.6958" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-5" y2="-37.6958" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="13" y2="-37.6958" x2="13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="22" y2="-37.6958" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.8971" x1="-14" y2="-37.6958" x2="-14"/>
+        <text x="-18" y="-57" size="4" text="Compacto 2,5m2"/>
+        <arc width="9" x="33" y="-71" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-71" x1="-28.117" y2="-71" x2="37.1267"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="-29.096" y2="-47" x2="37.104"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-71" x1="-27" y2="-48" x2="-27"/>
+        <rect width="5" x="41" y="-67" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" x="-25" y="-54" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="27" y2="-43" x2="27"/>
+        <rect width="3.6" x="24" y="-75.8687" antialias="false" height="4.86869" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1.8" x="24.6" y="-77.0859" antialias="false" height="1.21717" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-26" y="-36" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" x="-23" y="-32" antialias="false" height="76" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="67" x="-28" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="47" y="-65.5" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="47" y="-52.5" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

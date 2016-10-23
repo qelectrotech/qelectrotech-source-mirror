@@ -1,0 +1,18 @@
+<definition link_type="simple" ic="true" height="20" width="50" version="0.4" hotspot_y="9" type="element" hotspot_x="24" orientation="dyyy">
+    <names>
+        <name lang="es">Reductora de presión</name>
+        <name lang="ca">Reductora de pressió</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="18" antialias="false" y1="0" x1="10.9231" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" antialias="false" height="11" width="20" y="-5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="-10.9451" antialias="false" y1="0" x1="-18.1276" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="9" antialias="false" y1="-5" x1="-10" length1="1.5"/>
+        <line length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" x2="10" antialias="false" y1="6" x1="-10" length1="1.5"/>
+        <input text="_" x="-7" tagg="label" size="4" y="-9.5" rotate="true"/>
+        <terminal x="-19" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>
