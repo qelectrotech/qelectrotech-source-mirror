@@ -1,5 +1,5 @@
 <definition hotspot_x="45" hotspot_y="69" width="120" type="element" version="0.5" height="80" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{FB9B19F9-9DDB-40E8-B083-446EF809E30E}"/><names>
         <name lang="ca">Fancoil conductes</name>
         <name lang="es">Fancoil conductos</name>
     </names>

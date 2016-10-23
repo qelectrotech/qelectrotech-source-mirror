@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="16" hotspot_y="26" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{000F732A-5ACF-46C3-9B9D-06EF93A9CD73}"/><names>
         <name lang="es">Industria Vertical</name>
         <name lang="ca">Industria Vertical</name>
     </names>

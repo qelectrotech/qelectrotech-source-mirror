@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="16" type="element" hotspot_x="25" orientation="dyyy">
-    <names>
+<uuid uuid="{0F1B0C69-D061-4E25-9E0D-B1957F1F86F2}"/><names>
         <name lang="es">Llave acometida</name>
         <name lang="ca">Calu pas escomesa</name>
     </names>

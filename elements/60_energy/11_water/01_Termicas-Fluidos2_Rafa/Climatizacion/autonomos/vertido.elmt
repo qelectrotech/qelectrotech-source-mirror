@@ -1,5 +1,5 @@
 <definition type="element" orientation="dyyy" hotspot_y="25" height="60" hotspot_x="14" link_type="simple" width="30" version="0.5">
-    <names>
+<uuid uuid="{8ECF52CD-A4D8-437A-9DA0-1CB5708D76A6}"/><names>
         <name lang="ca">Abocament desguàs</name>
         <name lang="es">Vertido desague</name>
     </names>

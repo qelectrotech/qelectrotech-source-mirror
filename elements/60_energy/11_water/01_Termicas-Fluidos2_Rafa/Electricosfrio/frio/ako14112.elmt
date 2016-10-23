@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="50" link_type="simple" width="80" hotspot_y="31" version="0.5" hotspot_x="35">
-    <names>
+<uuid uuid="{7D9ECFAF-0401-49AA-9127-CE39B612B87D}"/><names>
         <name lang="es">Controlador AKO 14112</name>
     </names>
     <informations></informations>

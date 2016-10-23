@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="21" hotspot_y="9" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AA6F50CB-5A8B-47D2-8B54-FEA481B559C6}"/><names>
         <name lang="es">Conducto Te</name>
         <name lang="ca">Conducte Te</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="220" version="0.4" hotspot_x="69" hotspot_y="46" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6DDF758A-A8DB-41BB-8706-A7D8CF62B3F4}"/><names>
         <name lang="es">Digestor estiércol</name>
         <name lang="ca">Digestor fem</name>
     </names>

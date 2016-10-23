@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="16" type="element" hotspot_x="25" orientation="dyyy">
-    <names>
+<uuid uuid="{635346C5-B17A-4416-BB0E-F9798A1F5606}"/><names>
         <name lang="es">Llave equilibrado</name>
         <name lang="ca">Clau equilibrat</name>
     </names>

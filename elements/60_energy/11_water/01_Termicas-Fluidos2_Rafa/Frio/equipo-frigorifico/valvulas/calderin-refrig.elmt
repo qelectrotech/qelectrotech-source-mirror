@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="16" hotspot_y="17" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{091DC900-3293-4246-8551-EA2140097778}"/><names>
         <name lang="es">Recipiente líquido</name>
         <name lang="ca">Calderí líquid</name>
     </names>

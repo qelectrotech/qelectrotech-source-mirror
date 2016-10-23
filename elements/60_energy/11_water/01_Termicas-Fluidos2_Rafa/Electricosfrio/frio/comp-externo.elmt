@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="40" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8B977018-788A-4CAA-BC16-8F593595CE7A}"/><names>
         <name lang="es">Componente Externo</name>
         <name lang="ca">Component Extern</name>
     </names>

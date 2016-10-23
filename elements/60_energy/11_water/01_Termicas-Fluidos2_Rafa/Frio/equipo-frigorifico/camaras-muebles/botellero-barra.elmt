@@ -1,5 +1,5 @@
 <definition height="70" hotspot_x="20" type="element" width="50" link_type="simple" orientation="dyyy" hotspot_y="39" version="0.5">
-    <names>
+<uuid uuid="{34BF238E-1761-4130-B2AB-8252EF95C72C}"/><names>
         <name lang="ca">Boteller-barra</name>
         <name lang="es">Botellero-barra</name>
     </names>

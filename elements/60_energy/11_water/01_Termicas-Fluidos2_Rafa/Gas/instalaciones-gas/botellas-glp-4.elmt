@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="25" hotspot_y="45" version="0.5" width="70" height="70" orientation="dyyy">
-    <names>
+<uuid uuid="{73BD4D76-C3B2-48CA-ACCC-D4F87DAE74D2}"/><names>
         <name lang="es">Botellas GLPx4</name>
         <name lang="ca">Botellas GLPx4</name>
     </names>

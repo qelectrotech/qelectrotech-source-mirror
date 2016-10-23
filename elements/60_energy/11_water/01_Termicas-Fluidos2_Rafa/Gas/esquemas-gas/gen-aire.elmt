@@ -1,5 +1,5 @@
 <definition height="40" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="24" type="element" width="30" orientation="dyyy">
-    <names>
+<uuid uuid="{D1B7030F-6A75-4C10-B699-7347D0525FBF}"/><names>
         <name lang="es">Generador aire</name>
     </names>
     <informations>Rafael Ferrando.

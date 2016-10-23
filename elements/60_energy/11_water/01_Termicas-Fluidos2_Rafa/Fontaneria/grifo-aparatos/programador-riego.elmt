@@ -1,5 +1,5 @@
 <definition width="50" height="40" link_type="simple" hotspot_x="23" hotspot_y="24" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C0013D05-6986-47A4-9400-ECA0791C8D0A}"/><names>
         <name lang="es">Programador riego</name>
         <name lang="ca">Programador rec</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="35" hotspot_y="10" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{E3A9A08D-0767-4F7C-A1BE-12E8F9C78DA3}"/><names>
         <name lang="ca">Aerotermo</name>
         <name lang="es">Aerotermo</name>
     </names>

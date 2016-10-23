@@ -1,5 +1,5 @@
 <definition hotspot_x="49" link_type="simple" height="90" orientation="dyyy" hotspot_y="55" width="120" version="0.5" type="element">
-    <names>
+<uuid uuid="{71DA077F-93D8-490A-9375-45345B5156B3}"/><names>
         <name lang="es">Sala fría</name>
         <name lang="ca">Sala freda</name>
     </names>

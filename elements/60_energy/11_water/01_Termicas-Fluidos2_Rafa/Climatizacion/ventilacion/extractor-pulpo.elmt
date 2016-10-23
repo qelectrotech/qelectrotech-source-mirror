@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="15" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CF709F53-D243-48B7-9BD8-3C97134CE6A2}"/><names>
         <name lang="es">Extractor pulpo</name>
     </names>
     <informations></informations>

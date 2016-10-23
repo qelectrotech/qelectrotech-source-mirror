@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1752C9AF-C89D-4459-84AF-B99702CB5EEE}"/><names>
         <name lang="es">Estufa fundición</name>
         <name lang="ca">Estufa fundició</name>
     </names>

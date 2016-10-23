@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="20" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0F75C10E-EB62-4B5E-B3E2-998AD103C020}"/><names>
         <name lang="es">Valvula de control general</name>
     </names>
     <informations>Rafael Ferrando.

@@ -1,5 +1,5 @@
 <definition width="30" hotspot_y="29" hotspot_x="12" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{4BF4844C-26A3-428E-9F27-F77AA667A0F5}"/><names>
         <name lang="es">Vertido-acera</name>
         <name lang="ca">Abocament</name>
     </names>

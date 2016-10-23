@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{637CFEE9-2108-43BF-83A2-68654B40BAF6}"/><names>
         <name lang="es">Te reducida</name>
         <name lang="ca">Te reduida</name>
     </names>

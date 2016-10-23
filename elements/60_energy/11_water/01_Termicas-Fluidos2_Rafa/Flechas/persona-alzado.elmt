@@ -1,5 +1,5 @@
 <definition height="90" hotspot_y="60" type="element" hotspot_x="33" link_type="simple" width="50" orientation="dyyy" version="0.5">
-    <names>
+<uuid uuid="{22DA19EF-EFF2-4A56-9C43-2138E585B30D}"/><names>
         <name lang="es">Persona en alzado</name>
     </names>
     <informations></informations>

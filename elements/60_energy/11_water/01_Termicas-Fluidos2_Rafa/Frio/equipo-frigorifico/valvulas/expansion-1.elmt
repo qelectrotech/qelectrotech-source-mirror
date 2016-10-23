@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="17" hotspot_y="32" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A565AE00-AFEF-4615-9596-FA58D1F62A59}"/><names>
         <name lang="es">Termostática-1</name>
     </names>
     <informations>Rafael Ferrando.

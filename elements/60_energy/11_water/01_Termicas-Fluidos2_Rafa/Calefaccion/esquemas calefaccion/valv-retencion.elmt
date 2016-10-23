@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{95C0E11A-5DE1-43C0-B20B-B981CBCAFB0D}"/><names>
         <name lang="es">Válvula retención</name>
         <name lang="ca">Vàlvula retenció</name>
     </names>

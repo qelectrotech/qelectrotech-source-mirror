@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="17" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AB3F4F5E-7DCE-4319-81C4-F0D3925EA15E}"/><names>
         <name lang="es">Centralita temp. exterior</name>
         <name lang="ca">Centraleta temp. exterior</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="24" hotspot_y="33" width="50" version="0.5" type="element" orientation="dyyy" height="60" link_type="simple">
-    <names>
+<uuid uuid="{2A9365E8-E57D-4E42-8D61-51C2C85A0485}"/><names>
         <name lang="es">Calderíin refrigerante</name>
         <name lang="ca">Calderi refrigerant</name>
     </names>

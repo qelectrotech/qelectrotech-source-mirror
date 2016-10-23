@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{919DB6DC-0BA2-4735-8B44-FAE59024F4B7}"/><names>
         <name lang="ar">مُؤشّر وميضي</name>
         <name lang="el">Λυχνία με παλλόμενο φως</name>
         <name lang="en">Flashing light</name>

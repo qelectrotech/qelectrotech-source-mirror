@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="50" width="40" version="0.4" hotspot_y="24" type="element" hotspot_x="18" orientation="dyyy">
-    <names>
+<uuid uuid="{7244E017-0578-4847-BC25-821B668FAC8E}"/><names>
         <name lang="es">Grupo seguridad termo</name>
         <name lang="ca">Grup deguretat  termo</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="28" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F5E163DA-FFE9-4DD1-9AF0-8D0B027FC5DD}"/><names>
         <name lang="es">Vaina tubería</name>
         <name lang="ca">Beina tuberia</name>
     </names>

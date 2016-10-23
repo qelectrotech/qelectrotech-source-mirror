@@ -1,5 +1,5 @@
 <definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="18" orientation="dyyy" width="60" hotspot_x="29">
-    <names>
+<uuid uuid="{688A9BE0-637A-413B-8CDC-739B908582A2}"/><names>
         <name lang="ca">Carret desliz</name>
         <name lang="es">Carrete desliz</name>
     </names>

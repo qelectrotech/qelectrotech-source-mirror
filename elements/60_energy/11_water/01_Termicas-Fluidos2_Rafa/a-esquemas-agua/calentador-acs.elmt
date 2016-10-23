@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="44" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
-    <names>
+<uuid uuid="{97EB6B3F-3B5D-41E1-8FFE-616349524F64}"/><names>
         <name lang="es">Calentador ACS</name>
         <name lang="ca">Escalfador ACS</name>
     </names>

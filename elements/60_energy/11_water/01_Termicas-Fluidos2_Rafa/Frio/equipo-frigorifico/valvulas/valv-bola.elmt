@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{35DCCB72-4B0B-4761-841A-20B02508A868}"/><names>
         <name lang="es">Valv de bola</name>
     </names>
     <informations>Rafael Ferrando.

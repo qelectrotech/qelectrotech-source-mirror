@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="5" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{575116A4-0991-4391-A8F7-5D8EDC133868}"/><names>
         <name lang="es">Radiador diagonal</name>
         <name lang="ca">Radiador diagonal</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="12" hotspot_y="23" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{14E2669C-0BCD-4FCC-8323-0BE5A617A599}"/><names>
         <name lang="es">Termostato ambiente</name>
     </names>
     <informations>Rafael Ferrando.

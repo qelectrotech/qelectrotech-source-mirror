@@ -1,5 +1,5 @@
 <definition height="10" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="5" type="element" width="50" orientation="dyyy">
-    <names>
+<uuid uuid="{7AB72D58-6BD8-439B-A57B-95E09CA3B026}"/><names>
         <name lang="es">Regulador gas</name>
     </names>
     <informations>Rafael Ferrando.

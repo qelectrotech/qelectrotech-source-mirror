@@ -1,5 +1,5 @@
 <definition width="80" hotspot_y="9" hotspot_x="34" type="element" orientation="dyyy" version="0.5" link_type="simple" height="20">
-    <names>
+<uuid uuid="{4A4C7A63-B12F-4EF5-9BB1-661057F4A7B9}"/><names>
         <name lang="es">Luz cámara 2</name>
         <name lang="ca">Llum càmbra 2</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="25" hotspot_y="26" width="50" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{D21060AE-CD87-4C43-9448-945B8F39776A}"/><names>
         <name lang="ca">Difusor d'aire</name>
         <name lang="es">Difusor salida aire</name>
     </names>

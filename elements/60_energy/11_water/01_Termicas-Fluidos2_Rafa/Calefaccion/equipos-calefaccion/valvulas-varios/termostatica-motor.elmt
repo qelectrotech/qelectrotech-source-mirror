@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{59575FA6-38A5-4AAD-93AB-14B3CC47C430}"/><names>
         <name lang="es">Mezcladora motor</name>
         <name lang="ca">Mezcladora motor</name>
     </names>

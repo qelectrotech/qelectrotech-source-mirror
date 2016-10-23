@@ -1,5 +1,5 @@
 <definition hotspot_x="10" hotspot_y="19" width="20" version="0.5" type="element" orientation="dyyy" height="50" link_type="simple">
-    <names>
+<uuid uuid="{5A77CFE7-DD29-4693-9DBB-592034EBD6DC}"/><names>
         <name lang="es">Sonda Humedad</name>
         <name lang="ca">Sonda Humitat</name>
     </names>

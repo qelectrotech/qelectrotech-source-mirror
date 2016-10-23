@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="14" orientation="dyyy" hotspot_y="33" version="0.5" type="element" height="70" width="30">
-    <names>
+<uuid uuid="{0C9FDE50-104B-40D2-A5E2-E4E5401B2DF2}"/><names>
         <name lang="es">Colector 3 salidas</name>
         <name lang="ca">Col.lector 3 eixides</name>
     </names>

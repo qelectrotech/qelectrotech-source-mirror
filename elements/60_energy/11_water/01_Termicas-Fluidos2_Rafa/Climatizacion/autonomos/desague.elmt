@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DA25BB35-614B-47CF-98BA-9A217B8A2ADD}"/><names>
         <name lang="es">Desague</name>
         <name lang="ca">Desguàs</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="26" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D00106FF-CF5A-44B1-A46A-7B2B15EE6F95}"/><names>
         <name lang="es">Generador eléctrico</name>
         <name lang="ca">Generador elèctric</name>
     </names>

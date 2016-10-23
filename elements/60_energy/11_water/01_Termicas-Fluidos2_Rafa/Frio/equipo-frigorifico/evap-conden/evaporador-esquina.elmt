@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="37" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4141D557-448C-49AA-83DD-650510C7E0CB}"/><names>
         <name lang="es">Evap. Esquina</name>
     </names>
     <informations></informations>

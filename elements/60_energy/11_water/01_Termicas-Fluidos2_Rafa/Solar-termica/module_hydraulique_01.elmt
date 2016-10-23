@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="24" hotspot_y="36" height="70" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4B2AAAA3-AA28-49B8-B30D-8A0FA1B5D107}"/><names>
         <name lang="ar">وحدة هيدروليكية  #1</name>
         <name lang="el">Υδραυλική μονάδα Ν°1</name>
         <name lang="en">Hydraulic unit # 1</name>

@@ -1,5 +1,5 @@
 <definition width="50" height="50" link_type="simple" hotspot_x="24" hotspot_y="38" version="0.4" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5800DED3-2E1A-4627-A625-76702EA0E189}"/><names>
         <name lang="es">Bomba circuladora bridas</name>
         <name lang="ca">Bomba circuladora brides</name>
     </names>

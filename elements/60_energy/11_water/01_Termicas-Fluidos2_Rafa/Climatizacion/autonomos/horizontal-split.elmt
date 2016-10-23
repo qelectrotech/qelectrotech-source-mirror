@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="20" hotspot_y="21" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D0F070E5-2020-467F-9CFE-5DB4AE30DED9}"/><names>
         <name lang="es">Industrial Evap. split</name>
         <name lang="ca">Industrial Evap. split</name>
     </names>

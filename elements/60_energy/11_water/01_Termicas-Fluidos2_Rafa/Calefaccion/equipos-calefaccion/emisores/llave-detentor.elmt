@@ -1,5 +1,5 @@
 <definition hotspot_x="15" hotspot_y="9" width="30" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{CDFCB9B1-E5A8-4E12-8EE5-9AD8BA2E2EE8}"/><names>
         <name lang="ca">Calu detentor</name>
         <name lang="es">Llave detentor</name>
     </names>

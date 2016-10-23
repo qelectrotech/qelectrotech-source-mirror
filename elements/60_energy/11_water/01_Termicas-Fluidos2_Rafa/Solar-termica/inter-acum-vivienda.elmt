@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="29" hotspot_y="37" height="80" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{53727BB8-DC50-4037-A05F-D3EE896F4344}"/><names>
         <name lang="es">Inter acumulador Vivienda</name>
         <name lang="ca">Inter acumulador Vivenda</name>
     </names>

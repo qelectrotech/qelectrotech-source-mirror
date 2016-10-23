@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="17" width="70" version="0.5" type="element" orientation="dyyy" height="60" link_type="simple">
-    <names>
+<uuid uuid="{461C5EFF-366A-4512-875D-531D86940E91}"/><names>
         <name lang="es">Termostato bulbo</name>
     </names>
     <informations>Rafael Ferrando.

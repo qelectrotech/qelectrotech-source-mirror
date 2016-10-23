@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{818A7077-5751-4C8F-BDF0-E3DB43F9B46A}"/><names>
         <name lang="es">Contador Agua</name>
         <name lang="ca">Comptador aigua</name>
     </names>

@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="40" width="50" version="0.4" hotspot_y="19" type="element" hotspot_x="25" orientation="dyyy">
-    <names>
+<uuid uuid="{E449E878-7889-401A-827A-10D07CD1209C}"/><names>
         <name lang="es">Interacambiador calor</name>
         <name lang="ca">Interacamviador calor</name>
     </names>

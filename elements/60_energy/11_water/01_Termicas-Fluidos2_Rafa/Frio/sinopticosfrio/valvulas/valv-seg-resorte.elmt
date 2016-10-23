@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="19" width="40" height="20" version="0.5" type="element" hotspot_y="13" orientation="dyyy">
-    <names>
+<uuid uuid="{15245F60-885B-4848-8E5F-ABE9D1AB8D15}"/><names>
         <name lang="ca">Vàlvula seg resort</name>
         <name lang="es">Valvula seguridad resorte</name>
     </names>

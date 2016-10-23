@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{50FDAA74-E9C7-408E-8A21-647ADE59D861}"/><names>
         <name lang="es">Indicador digital</name>
         <name lang="ca">Indicador digital</name>
     </names>

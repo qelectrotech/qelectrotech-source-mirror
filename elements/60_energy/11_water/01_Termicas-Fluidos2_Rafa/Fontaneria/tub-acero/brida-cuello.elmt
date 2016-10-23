@@ -1,5 +1,5 @@
 <definition version="0.5" link_type="simple" type="element" hotspot_y="19" width="30" height="40" orientation="dyyy" hotspot_x="16">
-    <names>
+<uuid uuid="{0F1EF747-8AFD-4880-9310-BCF29BC1D40B}"/><names>
         <name lang="es">Brida cuello</name>
         <name lang="ca">Brida coll</name>
     </names>

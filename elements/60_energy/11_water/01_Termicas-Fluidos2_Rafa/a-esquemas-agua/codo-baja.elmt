@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="10" width="30" version="0.4" hotspot_y="5" type="element" hotspot_x="17" orientation="dyyy">
-    <names>
+<uuid uuid="{DB100D30-6BAC-4B98-A6E9-5419BBAD3805}"/><names>
         <name lang="es">Codo baja</name>
         <name lang="ca">Colze baixa</name>
     </names>

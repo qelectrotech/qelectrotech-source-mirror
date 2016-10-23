@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="16" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B3B8BBB7-B0BA-4BBB-831D-09814600C394}"/><names>
         <name lang="ru">Кнопка (НР)</name>
         <name lang="pt">Botão de pressão (NA)</name>
         <name lang="en">Push-button</name>

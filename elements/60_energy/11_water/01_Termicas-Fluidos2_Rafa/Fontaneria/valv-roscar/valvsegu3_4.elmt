@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="31" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0A4B3909-F591-4A49-B3BB-8D5147626615}"/><names>
         <name lang="es">Valv seg. H</name>
         <name lang="ca">Valv seg. H</name>
     </names>

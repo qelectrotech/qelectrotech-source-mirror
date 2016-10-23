@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="13" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B1046D39-EA51-4777-8FA0-2C03E34458C6}"/><names>
         <name lang="es">Valvula control flotador</name>
     </names>
     <informations>Rafael Ferrando.

@@ -1,5 +1,5 @@
 <definition link_type="simple" height="40" width="40" version="0.4" hotspot_y="22" type="element" hotspot_x="16" orientation="dyyy">
-    <names>
+<uuid uuid="{977418A5-D383-4B26-82C3-926C80AEAA6E}"/><names>
         <name lang="en">Termstatic valve</name>
         <name lang="es">Válvula termostática</name>
         <name lang="ca">Vàlvula termostàtica</name>

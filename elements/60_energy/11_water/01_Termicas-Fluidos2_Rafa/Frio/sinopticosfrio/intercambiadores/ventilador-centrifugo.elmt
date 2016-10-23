@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="15" width="30" height="40" version="0.5" type="element" hotspot_y="17" orientation="dyyy">
-    <names>
+<uuid uuid="{9A6DC345-88DF-4ECC-A80E-D3EA67B38851}"/><names>
         <name lang="ca">Ventilador centrífugo</name>
         <name lang="es">Ventilador centríf.</name>
     </names>

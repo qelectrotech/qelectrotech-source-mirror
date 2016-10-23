@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="50" height="20" hotspot_x="24" type="element" hotspot_y="7" orientation="dyyy">
-    <names>
+<uuid uuid="{7A913354-0006-4D64-A4BE-49182955801C}"/><names>
         <name lang="es">Tuberia superficial</name>
         <name lang="ca">Canonada supeficial</name>
     </names>

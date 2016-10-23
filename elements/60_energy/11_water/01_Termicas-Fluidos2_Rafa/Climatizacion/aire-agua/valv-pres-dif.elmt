@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="29" width="40" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{6C9D17D6-3B05-4712-963F-DAD17CC7F2E4}"/><names>
         <name lang="ca">Vàlvula pres. diferencial</name>
         <name lang="es">Válvula pres. diferencial</name>
     </names>

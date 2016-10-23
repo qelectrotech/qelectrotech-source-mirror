@@ -1,5 +1,5 @@
 <definition width="160" version="0.4" hotspot_x="59" hotspot_y="59" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2E56FA0C-9448-49B2-B455-35883AF41035}"/><names>
         <name lang="es">Almacén de calor</name>
         <name lang="ca">Magatzem de calor</name>
     </names>

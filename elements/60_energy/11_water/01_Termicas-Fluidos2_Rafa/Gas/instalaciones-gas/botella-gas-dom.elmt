@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="35" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BCEE4EDF-0DBC-413B-B996-62351E25F3A7}"/><names>
         <name lang="es">Botella doméstica</name>
         <name lang="ca">Botella domèstica</name>
     </names>

@@ -1,5 +1,5 @@
 <definition version="0.5" link_type="simple" type="element" hotspot_y="37" width="60" height="60" orientation="dyyy" hotspot_x="39">
-    <names>
+<uuid uuid="{52065060-5A4E-4DC1-A811-3DE14F6EA849}"/><names>
         <name lang="es">Codo bridas</name>
         <name lang="ca">Colçe brides</name>
     </names>

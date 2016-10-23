@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="21" width="30" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{5BB5E58B-D960-4CB0-9ECF-47AB9629B756}"/><names>
         <name lang="ca">Termostat ambient</name>
         <name lang="es">Termostato ambiente</name>
     </names>

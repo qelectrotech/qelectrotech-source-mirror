@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="9" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AFEA36B2-8CDA-4B7E-89B4-089221843C3A}"/><names>
         <name lang="ru">Шестифазный эл. мотор</name>
         <name lang="pt">Motor de seis fases (duplo enrolamento)</name>
         <name lang="en">Six-phase engine</name>

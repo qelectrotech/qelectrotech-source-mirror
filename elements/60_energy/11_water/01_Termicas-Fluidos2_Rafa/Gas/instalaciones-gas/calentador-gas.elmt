@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F4CF1A2F-07B3-4A6F-AE22-E96632AD1C8F}"/><names>
         <name lang="es">Calentador ACS-gas</name>
     </names>
     <informations>Rafael Ferrando.

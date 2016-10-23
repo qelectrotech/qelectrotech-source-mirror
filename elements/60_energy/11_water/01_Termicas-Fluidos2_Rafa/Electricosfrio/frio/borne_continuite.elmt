@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="4" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CFD303D2-E8C7-41E3-91F7-A9FC5F91B92C}"/><names>
         <name lang="ru">Клеммное соединение</name>
         <name lang="pt">Terminal de combinação</name>
         <name lang="en">Terminal block</name>

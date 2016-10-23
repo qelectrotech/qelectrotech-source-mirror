@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="33" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EA2A0D71-C0E7-4204-93A7-26084F115B4F}"/><names>
         <name lang="es">Reduccion 20-16</name>
         <name lang="ca">Reducció 20-16</name>
     </names>

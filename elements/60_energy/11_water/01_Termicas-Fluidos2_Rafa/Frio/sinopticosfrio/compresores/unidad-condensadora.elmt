@@ -1,5 +1,5 @@
 <definition width="210" version="0.4" hotspot_x="114" hotspot_y="60" height="120" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7550C74B-A02E-45AF-9BB5-DDE232A72ABC}"/><names>
         <name lang="es">Unidad condensadora</name>
     </names>
     <informations></informations>

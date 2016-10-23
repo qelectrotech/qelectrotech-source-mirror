@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="19" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{599466DC-88E2-4699-BC25-061467C57F20}"/><names>
         <name lang="es">Valvula control caudal</name>
     </names>
     <informations>Rafael Ferrando.

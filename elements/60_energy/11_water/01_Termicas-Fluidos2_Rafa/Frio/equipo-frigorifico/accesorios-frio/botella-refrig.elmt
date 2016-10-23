@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="9" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9383FAAA-BD3E-41D7-A715-3FBADB7E334B}"/><names>
         <name lang="es">Botella refrigerante</name>
         <name lang="ca">Botella refrig.</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="8" hotspot_y="6" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9D4744A9-C720-48B4-BD5D-0F8B7DC2CC6A}"/><names>
         <name lang="es">Válvula de seguridad</name>
         <name lang="ca">Vàlvula de seguretat</name>
     </names>

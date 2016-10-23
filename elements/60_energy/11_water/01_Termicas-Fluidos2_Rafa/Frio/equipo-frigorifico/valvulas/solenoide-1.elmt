@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="27" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{73F7E467-9413-4E99-9366-34E5A5CBF293}"/><names>
         <name lang="es">Solenoide 1</name>
     </names>
     <informations>Rafael Ferrando.

@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="29" hotspot_y="50" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{87F74256-D832-4E97-8C03-072DE015791E}"/><names>
         <name lang="es">Compresor tornillo</name>
         <name lang="ca">Compressor tornavis</name>
     </names>

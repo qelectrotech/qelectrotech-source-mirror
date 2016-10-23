@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="22" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6AE05A18-3A06-4054-871F-6AA4C947F95A}"/><names>
         <name lang="es">Llave con toma pres.</name>
     </names>
     <informations>Rafael Ferrando.

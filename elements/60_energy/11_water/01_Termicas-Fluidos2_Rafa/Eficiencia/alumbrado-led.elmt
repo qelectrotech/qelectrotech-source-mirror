@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="90" height="50" hotspot_x="44" type="element" hotspot_y="33" orientation="dyyy">
-    <names>
+<uuid uuid="{9DC511FE-873E-4A57-A6D4-3EED541F6D73}"/><names>
         <name lang="es">Alumbrado con LEDs</name>
         <name lang="ca">Enllumenat amb LEDs</name>
     </names>

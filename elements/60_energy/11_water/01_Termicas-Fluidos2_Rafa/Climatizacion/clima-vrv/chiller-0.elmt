@@ -1,5 +1,5 @@
 <definition hotspot_x="15" hotspot_y="57" width="60" type="element" version="0.5" height="80" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{6351751F-250F-4489-9A00-B8869E6D7CD3}"/><names>
         <name lang="ca">VRV ext. xalet</name>
         <name lang="es">VRV ext. chalet</name>
     </names>

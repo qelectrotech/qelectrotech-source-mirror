@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="50" height="20" hotspot_x="24" type="element" hotspot_y="9" orientation="dyyy">
-    <names>
+<uuid uuid="{CEA6828B-AC78-42A5-B6B9-4536F6FF3729}"/><names>
         <name lang="es">Tuberia vaina acero</name>
         <name lang="ca">Canonada acer</name>
     </names>

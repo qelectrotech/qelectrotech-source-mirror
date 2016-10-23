@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="45" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{890304E5-AF00-48D6-9BF4-19B05209630E}"/><names>
         <name lang="es">Valv. antiretorno</name>
     </names>
     <informations></informations>

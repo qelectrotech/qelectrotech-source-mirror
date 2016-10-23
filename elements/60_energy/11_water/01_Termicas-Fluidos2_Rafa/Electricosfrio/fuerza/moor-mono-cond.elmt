@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="28" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F0CABA15-9328-4B71-ACF9-3879E27662F1}"/><names>
         <name lang="ru">Трёхфазный эл. мотор</name>
         <name lang="pt">Motor trifásico</name>
         <name lang="en">Three-phase engine</name>

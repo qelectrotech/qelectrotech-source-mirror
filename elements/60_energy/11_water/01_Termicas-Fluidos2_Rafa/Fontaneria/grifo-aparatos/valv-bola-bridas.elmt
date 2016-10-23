@@ -1,5 +1,5 @@
 <definition link_type="simple" width="60" height="50" hotspot_x="27" hotspot_y="30" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{69961472-6852-4FEA-8D24-8FCAA5D57452}"/><names>
         <name lang="es">Válv bola bridas</name>
         <name lang="ca">Vàlv bola brides</name>
     </names>

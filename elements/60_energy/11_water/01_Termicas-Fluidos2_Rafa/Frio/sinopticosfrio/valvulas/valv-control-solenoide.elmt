@@ -1,5 +1,5 @@
 <definition orientation="dyyy" height="30" width="40" hotspot_x="19" type="element" version="0.5" link_type="simple" hotspot_y="21">
-    <names>
+<uuid uuid="{106C8E2B-F604-49A8-BA24-47C8EAC950FE}"/><names>
         <name lang="es">Valvula control solenoide</name>
     </names>
     <informations>Rafael Ferrando.

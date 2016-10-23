@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="19" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2E580968-F466-4C2E-B2A9-B805910AA081}"/><names>
         <name lang="es">Valvula control termostática</name>
     </names>
     <informations>Rafael Ferrando.

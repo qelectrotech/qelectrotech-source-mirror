@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="35" hotspot_y="37" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0C67625F-7F05-4BE5-A7CD-0DAEFEBB3064}"/><names>
         <name lang="es">Tolva pellet</name>
     </names>
     <informations></informations>

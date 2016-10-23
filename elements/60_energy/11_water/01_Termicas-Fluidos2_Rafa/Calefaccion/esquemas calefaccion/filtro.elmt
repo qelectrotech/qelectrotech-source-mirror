@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="13" hotspot_y="7" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9A50AC2E-4E14-4232-8DDF-DBADCC060F04}"/><names>
         <name lang="es">Filtro</name>
         <name lang="ca">Filtre</name>
     </names>

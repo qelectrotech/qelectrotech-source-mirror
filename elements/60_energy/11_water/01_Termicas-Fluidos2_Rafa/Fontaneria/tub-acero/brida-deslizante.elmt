@@ -1,5 +1,5 @@
 <definition version="0.5" link_type="simple" type="element" hotspot_y="20" width="30" height="40" orientation="dyyy" hotspot_x="15">
-    <names>
+<uuid uuid="{B26C30E8-929F-48F6-B4BD-B9B928566575}"/><names>
         <name lang="es">Brida desliz.</name>
         <name lang="ca">Brida desliz.</name>
     </names>

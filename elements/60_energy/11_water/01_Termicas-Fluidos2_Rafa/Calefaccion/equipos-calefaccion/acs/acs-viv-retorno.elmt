@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="20" hotspot_y="29" width="60" height="50" version="0.5">
-    <names>
+<uuid uuid="{CB91CADE-A807-48D7-9216-D42914375983}"/><names>
         <name lang="ca">ACS+retorn</name>
         <name lang="es">ACS+retorno </name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="43" hotspot_y="60" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{28D3051D-97F6-4B76-9F2A-9BEFFEDBE312}"/><names>
         <name lang="es">Horno industrial</name>
         <name lang="ca">Forn industrial</name>
     </names>

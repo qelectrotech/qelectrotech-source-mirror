@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="23" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F8A1BA75-C9A9-4879-AC56-4579E863CE6A}"/><names>
         <name lang="es">Tapon 1"</name>
         <name lang="ca">Tap 1"</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="50" hotspot_y="21" hotspot_x="24" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{5436C828-D73E-4941-A6AC-97966A3121AF}"/><names>
         <name lang="es">Bomba circuladora</name>
         <name lang="ca">Bomba circuladora</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="19" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5D91788B-AE75-427F-AC25-1A978916DB7A}"/><names>
         <name lang="es">Valv.Reguladora-2</name>
         <name lang="ca">Vàlv. reguladora-2</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="11" hotspot_y="22" width="30" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{AF359775-51E8-4C7B-B3F3-923F110C4671}"/><names>
         <name lang="ca">Válv. seguretat</name>
         <name lang="es">Válv. seguridad</name>
     </names>

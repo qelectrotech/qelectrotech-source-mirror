@@ -1,5 +1,5 @@
 <definition width="20" hotspot_y="15" hotspot_x="6" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{D04C0EB1-530C-461F-A697-001D6BE84D12}"/><names>
         <name lang="es">Conector Bajante-2</name>
         <name lang="ca">Connector Baixant-2</name>
     </names>

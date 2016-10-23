@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="17" width="30" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{F862FBCC-055D-44B5-BC49-30EB4B016118}"/><names>
         <name lang="en">Filter Screens</name>
         <name lang="it">Filtro a schermi</name>
         <name lang="pl">Filtr</name>

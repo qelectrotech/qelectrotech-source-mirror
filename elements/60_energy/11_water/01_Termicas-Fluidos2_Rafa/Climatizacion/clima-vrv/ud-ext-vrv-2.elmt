@@ -1,5 +1,5 @@
 <definition hotspot_x="26" hotspot_y="27" width="70" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{064631F2-15A8-4A4B-99C4-71D78B145C5B}"/><names>
         <name lang="es">Ud.Exterior VRV doble</name>
     </names>
     <informations></informations>

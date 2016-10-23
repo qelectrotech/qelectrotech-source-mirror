@@ -1,5 +1,5 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{F5C63761-1730-4820-8E25-529930E663D3}"/><names>
         <name lang="ru">Фаза</name>
         <name lang="en">Phase source</name>
         <name lang="fr">Source phase</name>

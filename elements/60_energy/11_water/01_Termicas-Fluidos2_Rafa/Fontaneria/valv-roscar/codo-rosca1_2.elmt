@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="18" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B61D0EA2-EECC-49F1-AE95-48BF8D2376F2}"/><names>
         <name lang="es">Codo roscar 1/2"HH</name>
         <name lang="ca">Colze rosca 1/2"HH</name>
     </names>

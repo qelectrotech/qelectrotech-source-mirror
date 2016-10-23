@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B1712786-1882-44FD-AD87-CD95F79EB766}"/><names>
         <name lang="es">Reductor presion gas</name>
     </names>
     <informations/>

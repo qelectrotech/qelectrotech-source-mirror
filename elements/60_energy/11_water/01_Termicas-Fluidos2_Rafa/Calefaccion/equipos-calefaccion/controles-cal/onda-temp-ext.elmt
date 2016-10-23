@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="6" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D448DE4C-5989-44DB-AC84-4F6D492E7D98}"/><names>
         <name lang="es">Sonda temp.exterio</name>
         <name lang="ca">Sonda temp.exterio</name>
     </names>

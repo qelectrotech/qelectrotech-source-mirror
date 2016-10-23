@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="27" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{439939AB-9833-4617-AAE4-8F6E6C105055}"/><names>
         <name lang="es">Grupo-presión</name>
         <name lang="ca">Grup de pressió</name>
     </names>

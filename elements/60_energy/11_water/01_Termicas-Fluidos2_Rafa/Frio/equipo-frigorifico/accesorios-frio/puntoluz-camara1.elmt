@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A71B8BB8-D90B-4922-8783-EB6D3FF15DA2}"/><names>
         <name lang="es">Punto luz cámara</name>
     </names>
     <informations/>

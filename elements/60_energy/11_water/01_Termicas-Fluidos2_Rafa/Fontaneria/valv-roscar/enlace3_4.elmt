@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B7AE623C-42A1-4DFF-8271-3F8504A333CD}"/><names>
         <name lang="es">Enlace 3tuercas 3/4H</name>
         <name lang="ca">Enllaç 3 rosques 3/4H</name>
     </names>

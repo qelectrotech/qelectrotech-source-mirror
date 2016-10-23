@@ -1,5 +1,5 @@
 <definition hotspot_x="16" hotspot_y="22" width="30" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{CBB66A49-40A5-4295-A707-748430498A76}"/><names>
         <name lang="ca">Controlador VRV</name>
         <name lang="es">Controlador VRV</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="34" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BB0E3D07-4346-461B-A95C-AFABC0214EE9}"/><names>
         <name lang="es">Alarma cámara</name>
     </names>
     <informations></informations>

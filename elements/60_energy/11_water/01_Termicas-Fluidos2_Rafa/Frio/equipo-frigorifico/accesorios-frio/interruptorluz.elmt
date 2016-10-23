@@ -1,5 +1,5 @@
 <definition width="30" hotspot_y="14" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{534928AC-3B91-4599-B6F4-160B78CD62A6}"/><names>
         <name lang="es">Interruptor luces</name>
     </names>
     <informations></informations>

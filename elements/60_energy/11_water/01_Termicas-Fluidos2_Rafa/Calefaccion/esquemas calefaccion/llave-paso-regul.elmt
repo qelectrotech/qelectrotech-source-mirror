@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="18" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FD283EFC-8D99-4A5E-8708-9C163DA856D9}"/><names>
         <name lang="es">Llave regulación</name>
         <name lang="ca">Clau regulació</name>
     </names>

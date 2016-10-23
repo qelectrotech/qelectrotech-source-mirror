@@ -1,5 +1,5 @@
 <definition hotspot_x="38" hotspot_y="19" width="70" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{113A0A9D-9141-4673-9CF7-C3129897090D}"/><names>
         <name lang="ca">Split paret costat</name>
         <name lang="es">Split pared lado</name>
     </names>

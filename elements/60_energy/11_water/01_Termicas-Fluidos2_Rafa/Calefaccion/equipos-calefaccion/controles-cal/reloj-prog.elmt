@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="16" hotspot_y="31" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C63EAB85-4741-4C84-BFF0-EA5028B59BCC}"/><names>
         <name lang="es">Reloj programador</name>
         <name lang="ca">Rellotge programador</name>
     </names>

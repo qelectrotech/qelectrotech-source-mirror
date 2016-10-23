@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="23" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{46A49AD9-8CB7-4B13-A1A3-53A6705C36F3}"/><names>
         <name lang="es">Llave rotalock 2</name>
         <name lang="ca">Llave rotalock 2</name>
     </names>

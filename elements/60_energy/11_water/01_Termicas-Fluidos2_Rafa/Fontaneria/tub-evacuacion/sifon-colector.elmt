@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="8" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A1CDFC60-9AA9-4623-A767-E60502DB8A9F}"/><names>
         <name lang="es">Sifón colector</name>
         <name lang="ca">Sifó col.lector</name>
     </names>

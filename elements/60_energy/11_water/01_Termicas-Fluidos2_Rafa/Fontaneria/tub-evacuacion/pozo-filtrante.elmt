@@ -1,5 +1,5 @@
 <definition width="50" hotspot_y="26" hotspot_x="36" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
-    <names>
+<uuid uuid="{EC147F6D-67EC-4ADD-A16E-B545F4948AEB}"/><names>
         <name lang="es">Pozo filtrante</name>
         <name lang="ca">Pou seg</name>
     </names>

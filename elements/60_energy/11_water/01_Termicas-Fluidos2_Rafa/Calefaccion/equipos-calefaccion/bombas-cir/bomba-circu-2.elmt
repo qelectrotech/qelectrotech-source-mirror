@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="24" hotspot_y="15" width="50" height="30" version="0.5">
-    <names>
+<uuid uuid="{85F3BADF-FE14-44AE-8EEB-284006D01288}"/><names>
         <name lang="ca">Bomba circu-2</name>
         <name lang="es">Bomba circu-2</name>
     </names>

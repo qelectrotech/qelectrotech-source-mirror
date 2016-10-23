@@ -1,5 +1,5 @@
 <definition hotspot_x="15" hotspot_y="19" width="30" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{0FA32319-C1ED-44EA-9D5E-74306B001FD4}"/><names>
         <name lang="ca">Clau radiador</name>
         <name lang="es">Llave radiador</name>
     </names>

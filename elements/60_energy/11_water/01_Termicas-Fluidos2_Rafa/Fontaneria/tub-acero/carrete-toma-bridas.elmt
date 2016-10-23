@@ -1,5 +1,5 @@
 <definition type="element" height="50" version="0.5" link_type="simple" hotspot_y="26" orientation="dyyy" width="60" hotspot_x="30">
-    <names>
+<uuid uuid="{1D4AA0CC-D2E7-4583-937D-2A90B01026A5}"/><names>
         <name lang="ca">Carret amb presa</name>
         <name lang="es">Carrete con toma</name>
     </names>

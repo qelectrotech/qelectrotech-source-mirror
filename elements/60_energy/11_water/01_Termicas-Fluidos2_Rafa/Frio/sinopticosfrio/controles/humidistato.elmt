@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="12" hotspot_y="23" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8E3A7BD7-1020-44AE-980F-13D7A5FE8373}"/><names>
         <name lang="es">Humidostato</name>
         <name lang="ca">Humidostat</name>
     </names>

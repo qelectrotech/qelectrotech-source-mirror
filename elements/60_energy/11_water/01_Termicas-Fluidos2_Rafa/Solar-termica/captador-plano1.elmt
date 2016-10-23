@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="32" hotspot_y="42" height="80" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E0771268-037C-4CC4-9E7E-553742BB750B}"/><names>
         <name lang="es">Captador solar plano-1</name>
         <name lang="ca">Captador solar pla-1</name>
     </names>

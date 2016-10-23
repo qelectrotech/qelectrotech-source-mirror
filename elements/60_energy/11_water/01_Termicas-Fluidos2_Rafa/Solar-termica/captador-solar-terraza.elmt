@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="70" hotspot_y="62" height="90" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{26400068-39BC-4E68-ACAF-A4ACEA6E003E}"/><names>
         <name lang="es">Captador solar terraza</name>
         <name lang="ca">Captador solar terrassa</name>
     </names>

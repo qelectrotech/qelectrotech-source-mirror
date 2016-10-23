@@ -1,5 +1,5 @@
 <definition height="30" link_type="simple" hotspot_x="10" version="0.5" hotspot_y="21" type="element" width="20" orientation="dyyy">
-    <names>
+<uuid uuid="{7A5B743C-47A0-4066-9FC0-E2551D3E41FE}"/><names>
         <name lang="es">Manómetro</name>
     </names>
     <informations>Rafael Ferrando.

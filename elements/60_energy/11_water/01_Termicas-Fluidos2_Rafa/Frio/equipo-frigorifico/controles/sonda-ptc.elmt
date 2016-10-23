@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AA6C1798-A81B-4271-8681-8B579BB14642}"/><names>
         <name lang="es">Sonda PTC</name>
         <name lang="ca">Sonda PTC</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="100" hotspot_y="34" hotspot_x="64" type="element" orientation="dyyy" version="0.5" link_type="simple" height="80">
-    <names>
+<uuid uuid="{698FD762-7BC4-4FBB-BE24-83B5CF0E2DDA}"/><names>
         <name lang="es">Calentador solar1</name>
         <name lang="ca">Escalfador solar-1</name>
     </names>

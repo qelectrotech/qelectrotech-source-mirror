@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="40" width="30" version="0.4" hotspot_y="22" type="element" hotspot_x="14" orientation="dyyy">
-    <names>
+<uuid uuid="{37BAE4B8-2C43-40C9-AF82-4F3FE53AB352}"/><names>
         <name lang="es">Depósito de expansión</name>
         <name lang="ca">Dipòsit d'expansió</name>
     </names>

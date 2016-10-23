@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="20" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
-    <names>
+<uuid uuid="{330D4A26-96B6-42D5-B284-32B55A171F73}"/><names>
         <name lang="es">Bote sifónico</name>
         <name lang="ca">Pot sifònic</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="19" hotspot_y="33" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C9D573DC-E31B-49B6-B03C-EFE0CAD16AEC}"/><names>
         <name lang="es">Industria Vertical Evapor.</name>
         <name lang="ca">Industria Vertical Evapor.</name>
     </names>

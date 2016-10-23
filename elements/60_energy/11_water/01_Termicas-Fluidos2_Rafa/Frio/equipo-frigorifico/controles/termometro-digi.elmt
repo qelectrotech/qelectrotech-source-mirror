@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="28" hotspot_y="20" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B849FD85-9307-4510-A026-A63F13B51976}"/><names>
         <name lang="es">Indicador temperatura</name>
     </names>
     <informations></informations>

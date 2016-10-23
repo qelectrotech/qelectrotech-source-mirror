@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="27" hotspot_y="33" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1DD9D3DA-321A-4F72-B45A-A906837EEFAE}"/><names>
         <name lang="es">Condensador Evaporativo</name>
     </names>
     <informations></informations>

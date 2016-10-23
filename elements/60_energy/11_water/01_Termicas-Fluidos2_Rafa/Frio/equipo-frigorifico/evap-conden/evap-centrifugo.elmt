@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="29" hotspot_y="21" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9CBC3DBB-5B7C-48B8-98AD-272E827798BE}"/><names>
         <name lang="es">Evaporador textil</name>
         <name lang="ca">Evaporador tèxtil</name>
     </names>

@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="19" width="40" height="20" version="0.5" type="element" hotspot_y="10" orientation="dyyy">
-    <names>
+<uuid uuid="{C8397A03-0D06-49E9-8AFC-226AB61C2E65}"/><names>
         <name lang="ca">Disc de trencada</name>
         <name lang="es">Disco de rotura</name>
     </names>

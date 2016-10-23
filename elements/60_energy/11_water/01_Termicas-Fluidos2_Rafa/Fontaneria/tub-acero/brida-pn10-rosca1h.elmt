@@ -1,5 +1,5 @@
 <definition version="0.4" link_type="simple" type="element" ic="true" hotspot_y="19" width="20" height="40" orientation="dyyy" hotspot_x="12">
-    <names>
+<uuid uuid="{67376F66-3A6A-4EBC-80DF-B3510C750912}"/><names>
         <name lang="es">Brida a rosca H</name>
         <name lang="ca">Brida a rosca H</name>
     </names>

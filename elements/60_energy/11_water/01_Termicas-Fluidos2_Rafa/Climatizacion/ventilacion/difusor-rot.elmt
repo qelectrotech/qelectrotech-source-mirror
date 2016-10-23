@@ -1,5 +1,5 @@
 <definition hotspot_x="30" hotspot_y="34" width="60" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{FFF07761-4005-47BE-9D25-AFEC8BBAD8BF}"/><names>
         <name lang="ca">Difusor rotacional</name>
         <name lang="es">Difusorrotacional</name>
     </names>

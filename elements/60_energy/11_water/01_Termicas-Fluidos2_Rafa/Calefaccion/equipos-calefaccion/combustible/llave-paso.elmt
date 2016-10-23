@@ -1,5 +1,5 @@
 <definition type="element" hotspot_x="20" orientation="dyyy" width="40" height="30" link_type="simple" hotspot_y="21" version="0.5">
-    <names>
+<uuid uuid="{9D2E0262-667F-43C3-9EEE-868E78C233B3}"/><names>
         <name lang="ca">Clau  tall</name>
         <name lang="es">Llave paso</name>
     </names>

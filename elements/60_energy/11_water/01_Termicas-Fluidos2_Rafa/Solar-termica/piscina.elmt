@@ -1,5 +1,5 @@
 <definition width="130" version="0.4" hotspot_x="81" hotspot_y="21" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C9B56983-E244-4E7D-80FF-2D708344C748}"/><names>
         <name lang="es">Piscina climatizada</name>
         <name lang="ca">Piscina climatitzada</name>
     </names>

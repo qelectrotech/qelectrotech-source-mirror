@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="44" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0DD600CE-D05D-4411-881E-29D0B7AAF719}"/><names>
         <name lang="es">Ducha colectiva</name>
         <name lang="ca">Dutxa col.lectiva</name>
     </names>

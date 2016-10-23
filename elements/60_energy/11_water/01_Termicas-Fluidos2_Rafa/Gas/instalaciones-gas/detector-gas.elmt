@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2F55BCE5-0204-43C1-8BBD-82AAC9E6C714}"/><names>
         <name lang="es">Detector gas</name>
         <name lang="ca">Detector gas</name>
     </names>

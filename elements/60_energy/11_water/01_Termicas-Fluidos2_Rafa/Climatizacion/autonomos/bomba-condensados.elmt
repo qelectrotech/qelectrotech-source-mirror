@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="38" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1E3643AB-2740-435D-A780-56384A2289EA}"/><names>
         <name lang="es">Bomba de condensados</name>
         <name lang="ca">Bomba condensats</name>
     </names>

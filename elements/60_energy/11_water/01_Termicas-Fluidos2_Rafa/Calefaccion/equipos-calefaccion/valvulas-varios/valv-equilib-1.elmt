@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="30" link_type="simple" width="30" hotspot_x="14" hotspot_y="13" orientation="dyyy">
-    <names>
+<uuid uuid="{E3B1E62F-3AB4-4443-AD01-C7FA4494C88D}"/><names>
         <name lang="ca">Vàlv.equilibrat TA</name>
         <name lang="es">Valv.equilibrado TA</name>
     </names>

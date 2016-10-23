@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="28" hotspot_y="20" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7415E90D-FA1F-43B7-92F2-1F04009E8CD2}"/><names>
         <name lang="es">Controlador temperatura</name>
         <name lang="ca">Controlador temperatura</name>
     </names>

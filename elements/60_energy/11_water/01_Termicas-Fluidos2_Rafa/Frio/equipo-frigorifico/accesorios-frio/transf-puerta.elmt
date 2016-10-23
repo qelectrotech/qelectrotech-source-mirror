@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{730100B0-94B9-4546-AE09-2282E0192873}"/><names>
         <name lang="es">Transformador de puerta</name>
     </names>
     <informations>Rafael Ferrando.

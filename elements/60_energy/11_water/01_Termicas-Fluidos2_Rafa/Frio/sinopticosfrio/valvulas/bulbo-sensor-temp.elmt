@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="6" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{795C3D02-BDE9-49CC-A6C7-16E259103BC4}"/><names>
         <name lang="es">Bulbo sensor valv.exp.</name>
     </names>
     <informations></informations>

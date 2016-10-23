@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="10" hotspot_y="33" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{485500F9-6DFF-4682-9C10-B4912FC45591}"/><names>
         <name lang="es">Control condensació</name>
         <name lang="ca">Control condensación</name>
     </names>

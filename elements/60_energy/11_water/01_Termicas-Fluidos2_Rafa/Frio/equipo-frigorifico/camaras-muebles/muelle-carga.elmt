@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{96CC38DF-3FD1-4AB0-8F9B-0FC3D5CE34D2}"/><names>
         <name lang="es">Muelle carga</name>
         <name lang="ca">Moll càrrega</name>
     </names>

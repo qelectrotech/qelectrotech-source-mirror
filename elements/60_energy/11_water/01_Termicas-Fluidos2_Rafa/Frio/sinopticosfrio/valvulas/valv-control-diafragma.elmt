@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="12" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D645AFE8-BDFF-423A-8678-2ABB7BA3D402}"/><names>
         <name lang="es">Valvula control diafragma</name>
     </names>
     <informations>Rafael Ferrando.

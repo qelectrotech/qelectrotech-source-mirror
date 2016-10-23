@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="19" type="element" hotspot_x="21" orientation="dyyy">
-    <names>
+<uuid uuid="{68F0A6B6-ED00-4670-8031-FE64ECC2B39E}"/><names>
         <name lang="es">Válvula de Boya</name>
         <name lang="ca">Vaàlvula de boia</name>
     </names>

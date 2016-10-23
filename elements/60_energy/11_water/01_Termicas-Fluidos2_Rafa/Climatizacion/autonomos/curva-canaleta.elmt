@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="17" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E48CAF38-F0CE-49E3-94A8-E06879E4FFDB}"/><names>
         <name lang="es">Canaleta giro</name>
         <name lang="ca">Canaleta revolta</name>
     </names>

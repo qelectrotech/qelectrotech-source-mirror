@@ -1,5 +1,5 @@
 <definition width="50" height="70" link_type="simple" hotspot_x="17" hotspot_y="61" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{27099ECB-FA7C-4E59-9580-073955D333F8}"/><names>
         <name lang="es">Grifo ducha</name>
         <name lang="en">Mixer 02 ECS</name>
         <name lang="ca">Aixeta banyera</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="14" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BE7DC093-18F7-4E36-ADA2-E536A2D963F1}"/><names>
         <name lang="es">Cocina gas</name>
         <name lang="ca">Cuina gas</name>
     </names>

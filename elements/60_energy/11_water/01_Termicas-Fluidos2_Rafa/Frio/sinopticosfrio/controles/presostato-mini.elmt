@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="8" hotspot_y="23" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E61CE60D-AEA4-406D-9A15-4361526ED8F4}"/><names>
         <name lang="es">Presostato mini</name>
         <name lang="ca">Presostat mini</name>
     </names>

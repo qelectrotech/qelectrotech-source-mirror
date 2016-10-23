@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="30" height="20" hotspot_x="15" type="element" hotspot_y="3" orientation="dyyy">
-    <names>
+<uuid uuid="{65B505CF-2DDA-4007-ABDB-3CDB95C015FE}"/><names>
         <name lang="es">Cocina gas</name>
     </names>
     <informations>Rafael Ferrando.

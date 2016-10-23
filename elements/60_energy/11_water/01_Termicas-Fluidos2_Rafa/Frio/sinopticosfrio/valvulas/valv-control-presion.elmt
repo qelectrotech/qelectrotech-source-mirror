@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="19" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B1F89527-2311-4FB2-AB81-E811E072688A}"/><names>
         <name lang="es">Valvula control presión</name>
     </names>
     <informations>Rafael Ferrando.

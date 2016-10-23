@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="31" hotspot_y="22" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4DD3C561-E5BD-4029-B395-204B821ACE52}"/><names>
         <name lang="es">Ducha</name>
         <name lang="ca">Dutxa</name>
     </names>

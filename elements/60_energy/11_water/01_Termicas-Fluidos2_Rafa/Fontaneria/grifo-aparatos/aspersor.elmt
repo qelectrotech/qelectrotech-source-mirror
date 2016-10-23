@@ -1,5 +1,5 @@
 <definition width="60" hotspot_y="34" hotspot_x="17" type="element" orientation="dyyy" version="0.5" link_type="simple" height="80">
-    <names>
+<uuid uuid="{0D36B5F8-F70E-47C7-879D-3308E4F8C514}"/><names>
         <name lang="es">Aspersor riego</name>
         <name lang="ca">Aspersor reg</name>
     </names>

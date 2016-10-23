@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BCCE0484-27D8-4893-BC13-670C8D5DF4DA}"/><names>
         <name lang="ru">Резистор</name>
         <name lang="pt">Resistência</name>
         <name lang="en">Resistor</name>

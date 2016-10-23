@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="35" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D625BFCD-06CC-476F-816F-50C83DA8667F}"/><names>
         <name lang="es">Filtro secador-1</name>
     </names>
     <informations>Rafael Ferrando.

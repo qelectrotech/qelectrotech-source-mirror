@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="21" hotspot_y="25" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CDBF2870-4A6D-489F-BC84-EDBB9484EEDB}"/><names>
         <name lang="es">Compresor Scroll</name>
     </names>
     <informations></informations>

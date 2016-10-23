@@ -1,5 +1,5 @@
 <definition hotspot_x="40" hotspot_y="39" width="120" type="element" version="0.5" height="80" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{4A3CF7D4-E025-4B02-828F-793D255588E8}"/><names>
         <name lang="ca">Colector sol radiant</name>
         <name lang="es">Colector suelo radiante</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="24" hotspot_y="26" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9D288357-630F-42AE-902E-C007ECDC6E0F}"/><names>
         <name lang="es">Compresor Rotativo</name>
         <name lang="ca">Compressor rotatiu</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="8" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C9C6013B-0DF9-4234-B279-1C200AF09C46}"/><names>
         <name lang="ru">Проктой контакт (НЗ)</name>
         <name lang="pt">Contacto simples (NC)</name>
         <name lang="en">Simple contact (NC)</name>

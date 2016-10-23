@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="9" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F4AB313B-95E8-4987-810C-5A4CCE465C4C}"/><names>
         <name lang="es">ACS +retorno a vivienda</name>
         <name lang="ca">ACS +retorn a vivenda</name>
     </names>

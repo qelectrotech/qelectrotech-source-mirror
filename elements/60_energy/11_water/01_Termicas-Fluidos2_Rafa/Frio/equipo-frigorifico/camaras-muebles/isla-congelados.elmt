@@ -1,5 +1,5 @@
 <definition hotspot_x="25" link_type="simple" height="100" orientation="dyyy" hotspot_y="71" width="100" version="0.5" type="element">
-    <names>
+<uuid uuid="{3D7EB3F4-DDEC-4814-8583-8F85F15CE5E8}"/><names>
         <name lang="es">Isla de congelados</name>
         <name lang="ca">Illa de congelats</name>
     </names>

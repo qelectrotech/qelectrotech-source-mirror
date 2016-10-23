@@ -1,5 +1,5 @@
 <definition link_type="simple" height="20" type="element" width="40" hotspot_y="12" version="0.5" hotspot_x="19" orientation="dyyy">
-    <names>
+<uuid uuid="{5FB06BCE-3B4C-416D-BEBE-2AD88D79E4E2}"/><names>
         <name lang="ca">Clau tall ràpid NC</name>
         <name lang="en">Valve Hogger NC</name>
         <name lang="es">Llave corte rápido NC</name>

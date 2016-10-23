@@ -1,5 +1,5 @@
 <definition hotspot_x="27" hotspot_y="39" width="50" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{CD9C2CA7-F976-422F-B13A-77D7240AA32C}"/><names>
         <name lang="ca">Split Sol</name>
         <name lang="es">Split Suelo</name>
     </names>

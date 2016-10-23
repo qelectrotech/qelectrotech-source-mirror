@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AA84BA1D-62BC-4964-8EB5-AD4218903154}"/><names>
         <name lang="es">Grupo de llenado</name>
         <name lang="ca">Grup de omplida</name>
     </names>

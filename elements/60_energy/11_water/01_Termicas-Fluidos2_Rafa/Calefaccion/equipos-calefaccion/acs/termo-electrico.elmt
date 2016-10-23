@@ -1,5 +1,5 @@
 <definition type="element" hotspot_x="29" orientation="dyyy" width="50" height="80" link_type="simple" hotspot_y="34" version="0.4" ic="true">
-    <names>
+<uuid uuid="{D2F1A489-F9A4-4A36-B85E-4DF2C9BB9EB2}"/><names>
         <name lang="es">Calentador Termo Electrico</name>
         <name lang="ca">Escalfador eléctric</name>
     </names>

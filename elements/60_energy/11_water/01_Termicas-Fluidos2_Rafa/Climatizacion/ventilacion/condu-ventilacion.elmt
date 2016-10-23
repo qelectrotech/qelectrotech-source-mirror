@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="43" hotspot_y="20" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B8D2C4DD-C99B-4D15-A5E0-7A10413A627C}"/><names>
         <name lang="es">Conducto ventilación</name>
         <name lang="ca">Conducte de ventilació</name>
     </names>

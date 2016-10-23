@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="13" hotspot_y="24" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1066838E-D903-453D-983A-059519B366D0}"/><names>
         <name lang="es">Regulador capacidad</name>
         <name lang="ca">Regulador capacitat</name>
     </names>

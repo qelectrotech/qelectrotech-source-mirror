@@ -1,5 +1,5 @@
 <definition width="90" height="40" link_type="simple" hotspot_x="42" hotspot_y="18" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6BE34BA1-39FE-412A-92BF-C7D7EB9DDEF0}"/><names>
         <name lang="es">Piscina</name>
         <name lang="ca">Piscina</name>
         <name lang="en">Pool</name>

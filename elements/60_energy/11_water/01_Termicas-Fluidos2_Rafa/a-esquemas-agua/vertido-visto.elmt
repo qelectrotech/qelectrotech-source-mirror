@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="40" width="30" version="0.4" hotspot_y="22" type="element" hotspot_x="14" orientation="dyyy">
-    <names>
+<uuid uuid="{AE6C7C94-9689-40F1-935E-D83F6A4179C0}"/><names>
         <name lang="ar">مجرى صرف</name>
         <name lang="en">Sewer drain</name>
         <name lang="it">Scarico</name>

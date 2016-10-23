@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="50" link_type="simple" width="50" hotspot_x="23" hotspot_y="26" orientation="dyyy">
-    <names>
+<uuid uuid="{82BE5196-BD6B-45F0-AF35-BFCC0CAEE06E}"/><names>
         <name lang="ca">Radiador alum alt</name>
         <name lang="fr">Radiateur Acier</name>
         <name lang="es">Radiador alum Alto</name>

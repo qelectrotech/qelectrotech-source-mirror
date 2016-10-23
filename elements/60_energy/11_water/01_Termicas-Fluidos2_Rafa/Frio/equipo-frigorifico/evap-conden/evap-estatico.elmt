@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="65" hotspot_y="33" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3D56E11B-AB02-48F3-B672-44441281FF0B}"/><names>
         <name lang="es">Evaporador estático</name>
         <name lang="ca">Evaporador estátic</name>
     </names>

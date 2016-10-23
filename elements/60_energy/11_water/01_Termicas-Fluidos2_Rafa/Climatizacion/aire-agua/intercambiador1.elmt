@@ -1,5 +1,5 @@
 <definition hotspot_x="22" hotspot_y="30" width="50" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{5005F646-D020-4BE3-AE43-6D06E60D7F5A}"/><names>
         <name lang="ca">Intercanviador de plaques</name>
         <name lang="es">Intercambador placas</name>
     </names>

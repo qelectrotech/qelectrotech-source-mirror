@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A80203FB-11A0-4625-BFBA-F0A309EE0267}"/><names>
         <name lang="es">Ventilador</name>
     </names>
     <informations></informations>

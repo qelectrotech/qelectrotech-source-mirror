@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="32" hotspot_x="13" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
-    <names>
+<uuid uuid="{FD35885C-98FD-481C-BF6B-F4AD75FAB657}"/><names>
         <name lang="es">Botella refrigerante doble</name>
         <name lang="ca">Botella refrig doble</name>
     </names>

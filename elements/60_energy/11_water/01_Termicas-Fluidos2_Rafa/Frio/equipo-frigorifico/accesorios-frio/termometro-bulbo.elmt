@@ -1,5 +1,5 @@
 <definition width="60" hotspot_y="19" hotspot_x="15" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{508FD3CD-4FE6-439D-B59E-92193BB5E925}"/><names>
         <name lang="es">Termómetro bulbo</name>
     </names>
     <informations>Rafael Ferrando.

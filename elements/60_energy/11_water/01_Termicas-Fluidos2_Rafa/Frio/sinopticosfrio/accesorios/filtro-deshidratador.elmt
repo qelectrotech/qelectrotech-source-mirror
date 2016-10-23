@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="25" width="40" height="20" version="0.5" type="element" hotspot_y="10" orientation="dyyy">
-    <names>
+<uuid uuid="{060AC81F-2B25-469A-B51A-96A8AA80FAB3}"/><names>
         <name lang="es">Silenciador</name>
     </names>
     <informations></informations>

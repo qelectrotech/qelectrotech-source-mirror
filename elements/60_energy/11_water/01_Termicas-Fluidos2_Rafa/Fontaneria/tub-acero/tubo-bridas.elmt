@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="43" hotspot_y="29" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{98E6D176-C0F8-42AE-83B8-9F8F432B6E9C}"/><names>
         <name lang="es">Tubo bridas</name>
         <name lang="ca">Tub brides</name>
     </names>

@@ -1,5 +1,5 @@
 <definition height="30" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="20" type="element" width="50" orientation="dyyy">
-    <names>
+<uuid uuid="{491C39ED-A90A-41E0-9C32-62E17CCC7C0A}"/><names>
         <name lang="es">Llave corte auto.</name>
     </names>
     <informations>Rafael Ferrando.

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="31" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{056E61B2-DEE5-404C-8A53-C44414DFCEA4}"/><names>
         <name lang="es">Pozo</name>
         <name lang="ca">Puo</name>
     </names>

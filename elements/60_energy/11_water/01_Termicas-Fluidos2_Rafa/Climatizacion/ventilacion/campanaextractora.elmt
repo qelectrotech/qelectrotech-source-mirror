@@ -1,5 +1,5 @@
 <definition hotspot_x="27" hotspot_y="27" width="60" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{B66DBD03-D26E-4407-8C8B-40B604F01076}"/><names>
         <name lang="ca">Campana extractora</name>
         <name lang="es">Campana extractora</name>
     </names>

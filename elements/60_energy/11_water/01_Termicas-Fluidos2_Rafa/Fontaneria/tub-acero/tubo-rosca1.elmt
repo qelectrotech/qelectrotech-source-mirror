@@ -1,5 +1,5 @@
 <definition width="70" height="30" link_type="simple" hotspot_x="34" hotspot_y="18" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DB202F57-8E41-4C50-9383-F190D4926177}"/><names>
         <name lang="es">Tubo rosca</name>
         <name lang="ca">Tub rosca </name>
     </names>

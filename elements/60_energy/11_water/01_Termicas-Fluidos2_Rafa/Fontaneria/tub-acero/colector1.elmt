@@ -1,5 +1,5 @@
 <definition width="170" height="60" link_type="simple" hotspot_x="63" hotspot_y="24" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9B9132D1-972C-45A1-98E3-9DBBAF19AC8A}"/><names>
         <name lang="es">Colector-1</name>
         <name lang="ca">Col.lector-1</name>
     </names>

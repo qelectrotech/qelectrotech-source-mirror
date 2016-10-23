@@ -1,5 +1,5 @@
 <definition width="20" hotspot_y="25" hotspot_x="10" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{AA39CE5E-A9E1-40A5-8E55-99325BB11E33}"/><names>
         <name lang="es">Purgador 3/8 M</name>
         <name lang="ca">Purgador 3/8 M</name>
     </names>

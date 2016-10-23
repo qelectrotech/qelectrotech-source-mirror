@@ -1,5 +1,5 @@
 <definition hotspot_x="35" hotspot_y="24" width="70" version="0.5" type="element" orientation="dyyy" height="50" link_type="simple">
-    <names>
+<uuid uuid="{28C20685-838A-4EDB-AA70-6AC7C87E2BBC}"/><names>
         <name lang="es">Calderin horizontal</name>
         <name lang="ca">Calderi horiz</name>
     </names>

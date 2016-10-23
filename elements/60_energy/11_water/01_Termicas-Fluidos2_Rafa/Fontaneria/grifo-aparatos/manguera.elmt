@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="36" hotspot_y="15" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8BCE9911-821E-4A6E-B12B-F3A64136F293}"/><names>
         <name lang="es">Manguera riego</name>
         <name lang="ca">Mànega de reg</name>
     </names>

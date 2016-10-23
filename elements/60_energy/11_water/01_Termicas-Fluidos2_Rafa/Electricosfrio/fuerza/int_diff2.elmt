@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{76EED4DD-9477-4AF8-BFAA-94AB4304A35D}"/><names>
         <name lang="ru">УЗО</name>
         <name lang="pt">Interruptor diferencial</name>
         <name lang="en">Differential switch</name>

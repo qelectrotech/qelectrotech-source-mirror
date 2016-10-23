@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{48666C61-42ED-4DFB-8454-679604FA8BE7}"/><names>
         <name lang="es">Rejilla sobrepresión</name>
         <name lang="ca">Eeixa sobrepresió</name>
     </names>

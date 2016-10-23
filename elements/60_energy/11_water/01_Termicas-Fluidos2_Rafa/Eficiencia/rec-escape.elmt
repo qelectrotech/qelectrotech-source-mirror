@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="35" hotspot_y="41" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E3FE1D71-065C-4342-A137-6A8D127B3666}"/><names>
         <name lang="es">Recuperador escape</name>
         <name lang="ca">Recuperador d'escap</name>
     </names>

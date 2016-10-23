@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="36" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{85D5F810-E7BC-4E09-A898-AA41AA5E62BC}"/><names>
         <name lang="es">Intercambiador tubular</name>
     </names>
     <informations></informations>

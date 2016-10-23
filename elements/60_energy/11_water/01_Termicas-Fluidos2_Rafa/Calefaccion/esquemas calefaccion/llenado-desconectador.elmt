@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="54" hotspot_y="28" width="120" height="50" version="0.5">
-    <names>
+<uuid uuid="{2C28E2BD-0B60-4311-8C7D-D07FB1B8180E}"/><names>
         <name lang="ca">Grup d'ompliment-desconectador</name>
         <name lang="es">Grupo de llenado-desconectador</name>
     </names>

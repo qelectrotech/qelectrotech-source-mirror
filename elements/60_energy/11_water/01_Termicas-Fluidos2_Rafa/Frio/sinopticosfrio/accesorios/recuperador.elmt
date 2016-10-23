@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="31" hotspot_y="22" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{85E3EBC8-8625-4674-BCBD-39A04100F526}"/><names>
         <name lang="es">Recuperador</name>
         <name lang="ca">Recuperador</name>
     </names>

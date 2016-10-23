@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="30" height="30" hotspot_x="15" type="element" hotspot_y="13" orientation="dyyy">
-    <names>
+<uuid uuid="{A5998F42-B4EC-4671-B248-A0CFE2722BC4}"/><names>
         <name lang="es">Horno gas</name>
     </names>
     <informations>Rafael Ferrando.

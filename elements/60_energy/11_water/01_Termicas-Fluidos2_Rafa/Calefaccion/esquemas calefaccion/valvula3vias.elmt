@@ -1,5 +1,5 @@
 <definition width="30" height="40" version="0.5" orientation="dyyy" link_type="simple" type="element" hotspot_x="14" hotspot_y="23">
-    <names>
+<uuid uuid="{F9CF0314-A775-42FB-8B9B-782FE660D827}"/><names>
         <name lang="nl">Elektrisch klep sanitair 3</name>
         <name lang="cs">Elektrický uzávěr 3V</name>
         <name lang="it">Elettrovalvola 3vie acqua sanitaria</name>

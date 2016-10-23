@@ -1,5 +1,5 @@
 <definition width="440" version="0.4" hotspot_x="30" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BE12C2AC-CE48-4813-8A83-A5568164D69E}"/><names>
         <name lang="es">Bornero general</name>
         <name lang="ca">Borner general</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="16" hotspot_y="9" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{61BD193E-9821-4C04-B913-D840CF23D8E6}"/><names>
         <name lang="es">Viene de</name>
         <name lang="ca">Ve de</name>
     </names>

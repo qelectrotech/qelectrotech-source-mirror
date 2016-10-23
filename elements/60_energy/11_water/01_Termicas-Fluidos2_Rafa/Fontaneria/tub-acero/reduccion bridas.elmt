@@ -1,5 +1,5 @@
 <definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="19" orientation="dyyy" width="50" hotspot_x="24">
-    <names>
+<uuid uuid="{60A54639-6949-4078-BBF3-BD3C1A76CC24}"/><names>
         <name lang="ca">Reducció brides</name>
         <name lang="es">Reducción bridas</name>
     </names>

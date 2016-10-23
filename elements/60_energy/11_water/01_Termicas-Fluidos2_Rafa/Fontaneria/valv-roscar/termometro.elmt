@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="41" hotspot_x="19" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{25DFE629-DA7E-4466-93A4-E74233814653}"/><names>
         <name lang="es">Termómetro 1/2H</name>
         <name lang="ca">Termòmetre 1/2H</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="36" hotspot_y="25" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3AC9B1FA-1596-4F8B-87D8-E8EB27E50016}"/><names>
         <name lang="es">Recipiente horiz.</name>
     </names>
     <informations></informations>

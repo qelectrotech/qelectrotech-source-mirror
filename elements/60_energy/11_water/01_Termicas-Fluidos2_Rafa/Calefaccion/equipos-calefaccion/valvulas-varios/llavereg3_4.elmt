@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="28" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8E227866-53C9-4083-85C6-C79481429281}"/><names>
         <name lang="es">Valv compuerta</name>
         <name lang="ca">Valv comporta</name>
     </names>

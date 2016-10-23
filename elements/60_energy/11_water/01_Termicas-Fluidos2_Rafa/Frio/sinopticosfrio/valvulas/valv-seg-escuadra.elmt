@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="10" width="30" height="40" version="0.5" type="element" hotspot_y="18" orientation="dyyy">
-    <names>
+<uuid uuid="{604447F1-D400-4040-872C-A164C6D12908}"/><names>
         <name lang="ca">Vàlvula seg escuadra</name>
         <name lang="es">Valvula seguridad escuadra</name>
     </names>

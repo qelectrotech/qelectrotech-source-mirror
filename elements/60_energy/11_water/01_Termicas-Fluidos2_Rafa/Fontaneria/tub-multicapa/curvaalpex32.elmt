@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="53" hotspot_y="47" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9E86F766-4FB6-44FE-BBD7-4187484DCED7}"/><names>
         <name lang="es">Curva  Alpex 32</name>
         <name lang="ca">Corva Alpex 32</name>
     </names>

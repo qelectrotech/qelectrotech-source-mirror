@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="20" width="20" version="0.4" hotspot_y="6" type="element" hotspot_x="10" orientation="dyyy">
-    <names>
+<uuid uuid="{3D90A1DB-3674-4E55-B790-0EB5509822D6}"/><names>
         <name lang="es">Vaciado - Vertido</name>
         <name lang="ca">Buidadge-Abocament</name>
     </names>

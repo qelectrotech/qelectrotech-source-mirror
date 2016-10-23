@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="29" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E1A465EE-F069-4D9C-A73C-3259635FF3D3}"/><names>
         <name lang="es">Lavadero</name>
         <name lang="ca">Safareig</name>
     </names>

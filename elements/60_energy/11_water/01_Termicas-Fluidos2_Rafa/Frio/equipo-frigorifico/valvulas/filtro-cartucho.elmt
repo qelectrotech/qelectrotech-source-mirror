@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="17" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FDFF7529-DD58-4235-BD3E-32CD526967E5}"/><names>
         <name lang="es">Filtro de cartucho</name>
         <name lang="ca">Filtr -cartuxo</name>
     </names>

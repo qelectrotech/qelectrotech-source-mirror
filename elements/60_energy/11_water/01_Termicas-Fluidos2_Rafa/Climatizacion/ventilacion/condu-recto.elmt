@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BD5DEF9A-2765-47B5-9244-BAC31FE193E9}"/><names>
         <name lang="es">Conducto recto</name>
         <name lang="ca">Conducte recte</name>
     </names>

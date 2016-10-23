@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="50" hotspot_y="46" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{048A1230-11D2-4962-99B8-AFA6950EE848}"/><names>
         <name lang="es">Caldera pié mixta</name>
         <name lang="ca">Caldera peu mixta</name>
     </names>

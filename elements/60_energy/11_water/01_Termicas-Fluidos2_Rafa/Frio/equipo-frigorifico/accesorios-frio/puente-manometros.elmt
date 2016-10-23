@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="25" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{D6756781-81B7-4F0A-BA1C-6D9EDB70A091}"/><names>
         <name lang="es">Puente manómetros</name>
         <name lang="ca">Pont manómetres</name>
     </names>

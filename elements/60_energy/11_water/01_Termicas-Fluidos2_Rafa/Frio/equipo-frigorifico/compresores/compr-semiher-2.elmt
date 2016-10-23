@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="39" hotspot_y="35" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D3004935-573A-452C-87F8-D39C58F97C09}"/><names>
         <name lang="es">Compr.Semihermético 2</name>
     </names>
     <informations>Rafael Ferrando.

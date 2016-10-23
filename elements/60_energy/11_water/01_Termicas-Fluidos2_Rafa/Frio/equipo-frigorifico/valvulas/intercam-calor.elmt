@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="32" hotspot_y="13" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8B634F61-A68D-4EAD-8055-4CE23F8DC96D}"/><names>
         <name lang="es">Intercambiador de calor</name>
     </names>
     <informations></informations>

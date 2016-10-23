@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="36" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F8E19E0B-CF1F-4FF5-AA45-5C08D90263C0}"/><names>
         <name lang="es">Conductos de retorno</name>
         <name lang="ca">Conducte de retorn</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="35" hotspot_y="27" width="90" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{684AF4E0-E89F-4CBC-8200-BFEFDDE3D6EE}"/><names>
         <name lang="ca">Fancoil Cassette</name>
         <name lang="es">Fancoil Cassette</name>
     </names>

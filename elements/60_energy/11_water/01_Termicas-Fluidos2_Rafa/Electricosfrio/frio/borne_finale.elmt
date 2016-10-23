@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="4" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{17DF210F-C1F0-4F37-BAEE-6690CC573A5E}"/><names>
         <name lang="ru">Клеммник</name>
         <name lang="pt">Terminal de fim</name>
         <name lang="en">Terminal block</name>

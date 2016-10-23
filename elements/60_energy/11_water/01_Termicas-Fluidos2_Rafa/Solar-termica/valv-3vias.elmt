@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="37" hotspot_y="9" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2667B608-B25B-4A9F-83B8-2D2CC6A0723D}"/><names>
         <name lang="ar">خلاّط 03 ECS</name>
         <name lang="en">Mixer 03 ECS</name>
         <name lang="it">Valvola miscelatrice ACS 3</name>

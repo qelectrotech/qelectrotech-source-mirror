@@ -1,5 +1,5 @@
 <definition type="element" orientation="dyyy" hotspot_y="27" height="50" hotspot_x="22" link_type="simple" width="70" version="0.5">
-    <names>
+<uuid uuid="{E1F9B434-7E18-47A3-8D0D-C2D9B4AA4CE4}"/><names>
         <name lang="ca">Unidtat exterior Split-1</name>
         <name lang="es">Unidad exterior Split-1</name>
     </names>

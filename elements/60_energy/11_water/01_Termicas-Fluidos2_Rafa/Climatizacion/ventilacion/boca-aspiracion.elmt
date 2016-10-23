@@ -1,5 +1,5 @@
 <definition hotspot_x="19" hotspot_y="26" width="40" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{95D37A9F-115F-4189-BD2C-F7BF40EC3AA1}"/><names>
         <name lang="ca">Boca d'aspiració</name>
         <name lang="es">Boca de aspiración</name>
     </names>

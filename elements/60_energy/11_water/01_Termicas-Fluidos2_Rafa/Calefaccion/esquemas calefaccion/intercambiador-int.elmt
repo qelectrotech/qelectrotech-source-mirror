@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="14" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D8754158-B7E6-4FC0-882E-7E976293363A}"/><names>
         <name lang="es">Resistencia calor</name>
         <name lang="ca">Resistència calor</name>
     </names>

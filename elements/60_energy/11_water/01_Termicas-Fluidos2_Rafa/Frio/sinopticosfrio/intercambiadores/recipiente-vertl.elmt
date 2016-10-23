@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="33" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B4879B01-25CA-47DC-B90A-1711F806B85B}"/><names>
         <name lang="es">Recipiente vertical</name>
     </names>
     <informations></informations>

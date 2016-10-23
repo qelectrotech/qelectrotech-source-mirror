@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3E8C3120-FF1D-4E6A-B013-E23EB794B307}"/><names>
         <name lang="es">Indicador-controlador</name>
         <name lang="ca">Indicador-controlador</name>
     </names>

@@ -1,5 +1,5 @@
 <definition link_type="simple" height="40" type="element" width="30" hotspot_y="13" version="0.5" hotspot_x="14" orientation="dyyy">
-    <names>
+<uuid uuid="{FEACDA82-7843-45FC-B11D-F15D3F5BB36D}"/><names>
         <name lang="ca">Aixeta rec</name>
         <name lang="es">Grifo riego</name>
     </names>

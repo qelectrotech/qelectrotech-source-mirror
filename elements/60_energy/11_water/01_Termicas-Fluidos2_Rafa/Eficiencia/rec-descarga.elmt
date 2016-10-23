@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="67" hotspot_y="52" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B6F6E272-21AB-4B6C-A5BC-6A3F47D97137}"/><names>
         <name lang="es">Recuperador descarga</name>
         <name lang="ca">Recuperador descarga</name>
     </names>

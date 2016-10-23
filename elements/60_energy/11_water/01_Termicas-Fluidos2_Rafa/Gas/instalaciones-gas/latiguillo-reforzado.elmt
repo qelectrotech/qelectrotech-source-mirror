@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BA4AA6D2-B2D1-44C4-86CE-108116BB68A0}"/><names>
         <name lang="es">Latiguillo reforzado</name>
     </names>
     <informations></informations>

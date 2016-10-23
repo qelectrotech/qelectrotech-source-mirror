@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="42" hotspot_y="31" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0E6A98C0-0CF1-46FE-9178-5015FB320640}"/><names>
         <name lang="ar">خزان ماء أفقي</name>
         <name lang="en">DHW horizontal</name>
         <name lang="it">Scambiatore orizzontale ACS</name>

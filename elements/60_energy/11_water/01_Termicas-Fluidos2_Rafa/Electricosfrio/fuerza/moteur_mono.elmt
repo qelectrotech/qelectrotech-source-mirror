@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="16" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BFAD2FF1-4BB8-467E-82FA-BCD49AFB54FA}"/><names>
         <name lang="ru">Однофазный эл. мотор</name>
         <name lang="pt">Motor monofásico</name>
         <name lang="en">One-phase engine</name>

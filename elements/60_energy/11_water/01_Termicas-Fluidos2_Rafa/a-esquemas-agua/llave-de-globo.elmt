@@ -1,5 +1,5 @@
 <definition link_type="simple" height="20" type="element" width="40" hotspot_y="10" version="0.5" hotspot_x="19" orientation="dyyy">
-    <names>
+<uuid uuid="{ECCB3E04-3788-4682-BE65-0FF2CEDEFE3A}"/><names>
         <name lang="ca">Clau de globus</name>
         <name lang="en">Valve globe</name>
         <name lang="es">Llave de globo</name>

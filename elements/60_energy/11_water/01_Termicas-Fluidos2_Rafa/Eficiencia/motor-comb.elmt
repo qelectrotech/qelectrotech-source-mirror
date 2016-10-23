@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="30" hotspot_y="22" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{54A167F0-2EA1-4A83-B1A4-9716CA910B97}"/><names>
         <name lang="es">Motor combustion int.</name>
         <name lang="ca">Motor combustó int.</name>
     </names>

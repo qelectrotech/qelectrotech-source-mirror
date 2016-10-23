@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="35" height="70" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{203F1D9F-DFEC-4777-A0AF-45934D1D9B72}"/><names>
         <name lang="es">Caldera mural</name>
         <name lang="ca">Caldera mural</name>
     </names>

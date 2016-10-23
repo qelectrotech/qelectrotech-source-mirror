@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="12" type="element" width="30" orientation="dyyy">
-    <names>
+<uuid uuid="{79C47E8D-3FC5-434E-A3D5-68DFB3CCC56E}"/><names>
         <name lang="es">Limitador de caudal</name>
     </names>
     <informations>Rafael Ferrando.

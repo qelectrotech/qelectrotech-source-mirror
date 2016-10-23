@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="18" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9FFE54A3-BFD0-45B1-946C-A7C20CFEFA3A}"/><names>
         <name lang="es">Filtro ósmosis</name>
         <name lang="ca">Filtre ósmosis</name>
     </names>

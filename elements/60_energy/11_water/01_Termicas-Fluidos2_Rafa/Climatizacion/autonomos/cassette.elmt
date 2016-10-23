@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="31" hotspot_y="27" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EFA4DCE7-C178-40BD-8C1E-8381C1B46130}"/><names>
         <name lang="es">Cassette</name>
         <name lang="ca">Cassette</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="42" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{35CD7112-A2B2-4F6E-AD0F-541FB85E4C52}"/><names>
         <name lang="es">Compresor Semihermético 1</name>
     </names>
     <informations>Rafael Ferrando.

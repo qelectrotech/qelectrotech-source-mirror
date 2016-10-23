@@ -1,5 +1,5 @@
 <definition width="50" hotspot_y="25" hotspot_x="27" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{B95584C9-02D3-41AE-B350-025A85A7C5EC}"/><names>
         <name lang="pl">Filtr</name>
         <name lang="fr">Filtre à Tamis</name>
         <name lang="es">Filtro H-H</name>

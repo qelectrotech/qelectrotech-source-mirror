@@ -1,5 +1,5 @@
 <definition width="80" hotspot_y="38" hotspot_x="14" type="element" orientation="dyyy" version="0.5" link_type="simple" height="80">
-    <names>
+<uuid uuid="{61AE8340-F8CD-4269-B2E9-675441295019}"/><names>
         <name lang="es">Recuperador refrig.</name>
         <name lang="ca">Recuperador refrig.</name>
     </names>

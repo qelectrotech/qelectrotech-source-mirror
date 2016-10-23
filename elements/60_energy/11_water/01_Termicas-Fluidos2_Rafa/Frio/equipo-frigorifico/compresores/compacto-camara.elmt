@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="25" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FC2C30F5-4E9A-40A1-9FB0-688E9E700C89}"/><names>
         <name lang="es">Ud compacta càmara</name>
         <name lang="ca">Ud compacta cámara</name>
     </names>

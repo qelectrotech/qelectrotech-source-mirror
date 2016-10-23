@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="14" hotspot_y="40" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6F3638CF-EC95-485D-8D3E-43BEFE36884C}"/><names>
         <name lang="es">Contador calorías</name>
         <name lang="ca">Comptador calories</name>
     </names>

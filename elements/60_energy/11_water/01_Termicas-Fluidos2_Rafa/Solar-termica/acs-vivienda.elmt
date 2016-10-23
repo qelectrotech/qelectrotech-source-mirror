@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="7" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{71CE2200-B8F1-4BD4-A5E0-F737A209090A}"/><names>
         <name lang="es">ACS a consumo</name>
     </names>
     <informations>Rafael Ferrando.

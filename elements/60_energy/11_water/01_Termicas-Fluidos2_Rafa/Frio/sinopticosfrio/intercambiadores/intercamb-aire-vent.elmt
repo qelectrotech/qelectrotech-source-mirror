@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="26" hotspot_y="29" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3814B49A-F0F7-4240-8C09-F4D8374C1F70}"/><names>
         <name lang="es">Intercamb.aletas+ventilador</name>
     </names>
     <informations></informations>

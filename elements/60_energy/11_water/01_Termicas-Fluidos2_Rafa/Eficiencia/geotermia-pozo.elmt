@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="39" hotspot_y="44" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BFBED621-154F-4DAB-89C8-8ED922F00B9C}"/><names>
         <name lang="es">Geotérmia pozo</name>
         <name lang="ca">Geotèrmia pou</name>
     </names>

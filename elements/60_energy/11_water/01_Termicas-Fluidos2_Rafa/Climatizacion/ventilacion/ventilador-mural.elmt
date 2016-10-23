@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="26" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2947F39E-B13D-466C-9C96-EB1FF8ED36A0}"/><names>
         <name lang="es">Extractor mural</name>
         <name lang="ca">Extractor de mur</name>
     </names>

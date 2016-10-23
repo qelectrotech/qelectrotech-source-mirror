@@ -1,5 +1,5 @@
 <definition hotspot_x="37" hotspot_y="31" width="80" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{D03247EB-55C5-4E3E-B4FF-6970DE5FF443}"/><names>
         <name lang="ca">Distribuïdor VRV</name>
         <name lang="es">Distribuidor VRV</name>
     </names>

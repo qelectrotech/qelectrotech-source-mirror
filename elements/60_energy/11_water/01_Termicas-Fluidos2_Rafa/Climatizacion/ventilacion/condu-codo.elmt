@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="31" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F8724918-DE7E-4CBD-ABBF-FB992593E484}"/><names>
         <name lang="es">Conducto Codo</name>
         <name lang="ca">colze conducte</name>
     </names>

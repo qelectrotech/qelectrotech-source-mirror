@@ -1,5 +1,5 @@
 <definition hotspot_x="57" hotspot_y="21" width="80" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{1F151E38-40B7-4627-81C4-53F1C00BE94B}"/><names>
         <name lang="ca">Colector sol rad.</name>
         <name lang="es">Colector suelo rad.</name>
     </names>

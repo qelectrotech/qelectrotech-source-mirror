@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{22B669ED-D91C-4338-BD9B-5027548C9643}"/><names>
         <name lang="es">Llave de paso general</name>
     </names>
     <informations>Rafael Ferrando.

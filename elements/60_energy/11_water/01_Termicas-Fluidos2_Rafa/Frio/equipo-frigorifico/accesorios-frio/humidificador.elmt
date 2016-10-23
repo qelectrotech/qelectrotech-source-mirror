@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="31" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DB91A6C5-615B-4E0F-8BEE-AF0DE6DB8999}"/><names>
         <name lang="es">Humidificador cámara</name>
     </names>
     <informations></informations>

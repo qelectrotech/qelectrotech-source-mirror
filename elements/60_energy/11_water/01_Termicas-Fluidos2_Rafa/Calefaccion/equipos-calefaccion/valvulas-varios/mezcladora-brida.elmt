@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="50" link_type="simple" width="40" hotspot_x="23" hotspot_y="30" orientation="dyyy">
-    <names>
+<uuid uuid="{C64171A1-25DB-44F9-9BCC-C1967970647F}"/><names>
         <name lang="ca">Mezcladora brides</name>
         <name lang="es">Mezcladora bridas</name>
     </names>

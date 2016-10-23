@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="43" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F720A2BE-66F7-4F23-AE0E-D7936FE0BD72}"/><names>
         <name lang="es">Depósito Rectangular</name>
         <name lang="ca">Dipòsit rectangular</name>
     </names>

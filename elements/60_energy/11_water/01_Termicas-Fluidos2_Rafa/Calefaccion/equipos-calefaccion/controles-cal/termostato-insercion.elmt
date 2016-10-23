@@ -1,5 +1,5 @@
 <definition type="element" hotspot_x="13" orientation="dyyy" width="30" height="70" link_type="simple" hotspot_y="42" version="0.5">
-    <names>
+<uuid uuid="{62E5F8D1-F40A-45C0-BA61-7343820A64E8}"/><names>
         <name lang="ca">Termostat-inserció</name>
         <name lang="es">Termostato-insercion</name>
     </names>

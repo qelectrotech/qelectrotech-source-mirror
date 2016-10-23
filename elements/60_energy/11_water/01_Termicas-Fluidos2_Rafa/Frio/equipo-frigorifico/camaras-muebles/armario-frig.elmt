@@ -1,5 +1,5 @@
 <definition height="100" hotspot_x="20" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="55" version="0.5">
-    <names>
+<uuid uuid="{8B00E98E-C36A-44A1-BC9F-542335856A7E}"/><names>
         <name lang="ca">Armari frigorífic</name>
         <name lang="es">Armario frigorífico</name>
     </names>

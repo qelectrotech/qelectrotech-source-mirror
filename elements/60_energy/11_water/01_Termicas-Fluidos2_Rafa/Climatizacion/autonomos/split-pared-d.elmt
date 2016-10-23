@@ -1,5 +1,5 @@
 <definition hotspot_x="38" hotspot_y="17" width="70" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{C8F20AF9-911B-4D49-97A1-67B26783BC21}"/><names>
         <name lang="ca">Split paret-D</name>
         <name lang="es">Split pared-D</name>
     </names>

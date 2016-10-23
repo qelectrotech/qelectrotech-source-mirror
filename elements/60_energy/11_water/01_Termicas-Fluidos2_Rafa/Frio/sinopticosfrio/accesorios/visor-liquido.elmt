@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7D36289A-B221-450C-8FB2-3EB8259051CB}"/><names>
         <name lang="es">Visor de líquido</name>
     </names>
     <informations>Rafael Ferrando.

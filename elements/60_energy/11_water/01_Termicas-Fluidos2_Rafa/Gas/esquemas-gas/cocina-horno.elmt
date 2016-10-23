@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="30" height="30" hotspot_x="14" type="element" hotspot_y="13" orientation="dyyy">
-    <names>
+<uuid uuid="{8DBC5791-1F44-4B32-996A-A15C42936FD5}"/><names>
         <name lang="es">Cocina con horno</name>
     </names>
     <informations>Rafael Ferrando.

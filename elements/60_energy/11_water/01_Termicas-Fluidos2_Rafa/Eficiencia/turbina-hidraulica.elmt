@@ -1,5 +1,5 @@
 <definition width="150" version="0.4" hotspot_x="50" hotspot_y="39" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C2F05586-B962-418D-8FA1-26E441F4E3C5}"/><names>
         <name lang="es">Turbina hidráulica</name>
         <name lang="ca">Turbina hidráulica</name>
     </names>

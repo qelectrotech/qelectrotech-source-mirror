@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="21" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{728D3DDC-D98B-4BA5-AF3B-DD07A455EBED}"/><names>
         <name lang="es">Indicador-controlador</name>
     </names>
     <informations>Rafael Ferrando.

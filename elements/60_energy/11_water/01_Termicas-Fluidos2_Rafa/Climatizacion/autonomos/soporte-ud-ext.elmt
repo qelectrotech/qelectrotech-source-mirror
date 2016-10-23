@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="14" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EA3747DE-4909-4FC4-8B43-F2B90529A7B6}"/><names>
         <name lang="es">Soporte unidad exterior</name>
         <name lang="ca">Soport unitat exterior</name>
     </names>

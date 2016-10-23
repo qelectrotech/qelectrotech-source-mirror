@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="21" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3BBB199C-0430-4085-922D-A3A90A1D0E13}"/><names>
         <name lang="es">Conmutador-1</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;

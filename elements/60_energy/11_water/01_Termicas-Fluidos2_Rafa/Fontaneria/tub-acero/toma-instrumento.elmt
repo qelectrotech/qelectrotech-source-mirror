@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="22" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2D01ED54-998C-4BE7-B847-017050D35E3B}"/><names>
         <name lang="es">Toma instrumento</name>
         <name lang="ca">Presa instrument</name>
     </names>

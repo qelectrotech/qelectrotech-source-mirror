@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="56" hotspot_y="42" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{36986D38-D0DA-416C-926D-011EB3015D6E}"/><names>
         <name lang="es">Ud.condensadora hermet.</name>
     </names>
     <informations></informations>

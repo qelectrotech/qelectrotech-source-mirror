@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="39" hotspot_y="44" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E9C5A52D-7C91-429C-93A8-83571B6B9CAF}"/><names>
         <name lang="es">Puerta 90</name>
         <name lang="ca">Porta 90</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="13" hotspot_y="88" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8454A9E8-EF3F-46BA-90DD-86662497D3E1}"/><names>
         <name lang="es">Calificacion energética</name>
         <name lang="ca">Qualificació energètica</name>
     </names>

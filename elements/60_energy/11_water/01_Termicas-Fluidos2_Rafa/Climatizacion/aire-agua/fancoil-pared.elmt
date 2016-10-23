@@ -1,5 +1,5 @@
 <definition hotspot_x="38" hotspot_y="17" width="70" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{E9C7B52B-871C-4110-9E7E-CAF5C793E732}"/><names>
         <name lang="ca">Fancoil paret</name>
         <name lang="es">Fancoil pared</name>
     </names>

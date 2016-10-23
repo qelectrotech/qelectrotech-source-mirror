@@ -1,5 +1,5 @@
 <definition hotspot_x="21" hotspot_y="20" width="40" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{AD8978F6-493A-4655-86B9-F9799DE759C7}"/><names>
         <name lang="ca">Extractor de bany</name>
         <name lang="es">Extractor de aseo</name>
     </names>

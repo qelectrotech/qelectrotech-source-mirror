@@ -1,5 +1,5 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4C31B850-3566-475A-9246-6AB021B70FF9}"/><names>
         <name lang="ru">Однополюсный + нейтраль</name>
         <name lang="en">Single-pole source + neutral</name>
         <name lang="fr">Source unipolaire + neutre</name>

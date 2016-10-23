@@ -1,5 +1,5 @@
 <definition width="110" version="0.5" type="element" link_type="simple" hotspot_x="57" hotspot_y="39" orientation="dyyy" height="50">
-    <names>
+<uuid uuid="{96CE3BE3-CB93-4CB7-867D-B38C4601F80F}"/><names>
         <name lang="es">Enfriadora-1+Módulo h</name>
         <name lang="ca">Refredadora+Mòdul h</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="16" hotspot_y="16" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{04FD4C40-3505-4975-90C0-5EE39FECB3C5}"/><names>
         <name lang="es">Termostato bulbo</name>
         <name lang="ca">Termostat bulb</name>
     </names>

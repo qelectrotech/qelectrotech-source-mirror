@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="20" version="0.4" hotspot_y="15" type="element" hotspot_x="10" orientation="dyyy">
-    <names>
+<uuid uuid="{02020332-4504-4157-BF95-C3945F51D383}"/><names>
         <name lang="es">Purgador</name>
         <name lang="ca">Purgador</name>
     </names>

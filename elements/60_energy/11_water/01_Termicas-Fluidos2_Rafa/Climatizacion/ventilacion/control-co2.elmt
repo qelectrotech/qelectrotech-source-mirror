@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E325DAE4-4B81-4DC1-8ED1-7BCF1D11EB47}"/><names>
         <name lang="es">Controlador CO2</name>
         <name lang="ca">Controlador CO2</name>
     </names>

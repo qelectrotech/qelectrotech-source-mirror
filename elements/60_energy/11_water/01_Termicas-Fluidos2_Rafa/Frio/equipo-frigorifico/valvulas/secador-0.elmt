@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="31" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7E752782-386E-46EF-9303-B4F0357BBB8F}"/><names>
         <name lang="es">Filtro-capilar</name>
     </names>
     <informations></informations>

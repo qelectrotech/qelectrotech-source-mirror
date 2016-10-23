@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="20" hotspot_y="16" version="0.5" width="40" height="40" orientation="dyyy">
-    <names>
+<uuid uuid="{9EB8E5EE-8ACC-4A6D-BC0F-5F7A7833FF7C}"/><names>
         <name lang="es">Contador gas natural</name>
         <name lang="ca">Contador gas natural</name>
     </names>

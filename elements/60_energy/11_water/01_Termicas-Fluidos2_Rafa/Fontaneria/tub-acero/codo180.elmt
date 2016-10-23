@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="36" hotspot_y="40" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{752846E6-61D1-4FEF-9FF6-5467BFFE83F8}"/><names>
         <name lang="es">Codo 180</name>
         <name lang="ca">Colze 180</name>
     </names>

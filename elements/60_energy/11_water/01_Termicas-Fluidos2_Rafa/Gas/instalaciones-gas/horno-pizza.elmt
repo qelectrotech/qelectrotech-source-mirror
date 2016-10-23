@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="43" hotspot_y="20" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8B081298-AC28-42EB-8C8D-53DA8F1830CD}"/><names>
         <name lang="es">Horno de pizza</name>
         <name lang="ca">Forn de pizza</name>
     </names>

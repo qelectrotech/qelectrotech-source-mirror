@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="35" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{91D108D6-14F6-4585-B352-C44C5ECA8117}"/><names>
         <name lang="es">Bomba de vacío</name>
         <name lang="ca">Bomba de buit</name>
     </names>

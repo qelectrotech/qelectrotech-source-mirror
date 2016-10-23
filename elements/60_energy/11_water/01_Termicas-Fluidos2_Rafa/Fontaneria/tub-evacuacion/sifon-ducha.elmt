@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="13" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E83BD1E1-F296-4157-AC82-B2E5EFA33FFF}"/><names>
         <name lang="es">Sifón Ducha</name>
         <name lang="ca">Sifó dutxa</name>
     </names>

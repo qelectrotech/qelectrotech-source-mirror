@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="32" hotspot_y="55" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C6F3389D-855E-4D6D-A364-62B68D6EB87E}"/><names>
         <name lang="es">Condensadora carrozada</name>
         <name lang="ca">Condensad.carrossada</name>
     </names>

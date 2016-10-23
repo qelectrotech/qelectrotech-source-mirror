@@ -1,5 +1,5 @@
 <definition width="50" hotspot_y="31" hotspot_x="27" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{B937F453-BF38-448C-A100-93623E49047C}"/><names>
         <name lang="es">Curva</name>
         <name lang="ca">Corba</name>
     </names>

@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="40" width="70" version="0.4" hotspot_y="20" type="element" hotspot_x="34" orientation="dyyy">
-    <names>
+<uuid uuid="{E66EC0A3-133C-40F5-9442-25C31E397F14}"/><names>
         <name lang="es">Aljibe</name>
         <name lang="ca">Aljub</name>
     </names>

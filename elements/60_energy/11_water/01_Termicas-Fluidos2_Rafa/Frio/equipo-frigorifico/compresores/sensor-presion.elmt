@@ -1,5 +1,5 @@
 <definition hotspot_x="14" link_type="simple" height="50" orientation="dyyy" hotspot_y="26" width="20" version="0.5" type="element">
-    <names>
+<uuid uuid="{F6318445-4879-4FF0-B0BF-EAE40C3E1854}"/><names>
         <name lang="es">Sensor presión</name>
         <name lang="ca">Sensor presió</name>
     </names>

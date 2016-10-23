@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="20" version="0.4" hotspot_y="15" type="element" hotspot_x="10" orientation="dyyy">
-    <names>
+<uuid uuid="{1FED317E-F205-427D-91A6-924B29C2A45C}"/><names>
         <name lang="es">Fluxor</name>
         <name lang="ca">Fluxor</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="17" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6900BB82-C0C1-4F4C-8ADC-29646EE87484}"/><names>
         <name lang="es">Llave corte gas</name>
         <name lang="ca">Clau  pas gas</name>
     </names>

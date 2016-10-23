@@ -1,5 +1,5 @@
 <definition width="30" height="30" link_type="simple" hotspot_x="15" hotspot_y="14" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C5949FD4-5329-4A53-B47B-146CA03F35C6}"/><names>
         <name lang="es">Final brida</name>
         <name lang="ca">Acabament brida</name>
     </names>

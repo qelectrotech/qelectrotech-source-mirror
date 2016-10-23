@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="10" hotspot_y="24" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{23B5185F-71C4-49E8-9BD3-C46A8A5727EF}"/><names>
         <name lang="es">Termostato sonda NTC-PTC</name>
     </names>
     <informations>Rafael Ferrando.

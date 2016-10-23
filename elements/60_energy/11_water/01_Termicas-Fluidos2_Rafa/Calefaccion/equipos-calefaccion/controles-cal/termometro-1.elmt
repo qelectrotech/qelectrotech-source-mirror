@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" orientation="dyyy" hotspot_x="13" width="20" height="60" hotspot_y="31" link_type="simple">
-    <names>
+<uuid uuid="{6C2DD5F4-1E92-4B29-B9F6-3F47F812DF74}"/><names>
         <name lang="es">Termómetro capilla</name>
         <name lang="ca">Termòmetre de capella</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="26" hotspot_y="26" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BF5D9AAA-B696-4971-92EC-6CEE609C4F83}"/><names>
         <name lang="es">Evaporador mur</name>
         <name lang="ca">Evaporador pared</name>
     </names>

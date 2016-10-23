@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="23" hotspot_y="12" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7789D570-872E-40FC-B363-A0A1B2A4238D}"/><names>
         <name lang="en">Inverter</name>
         <name lang="fr">Inverter</name>
         <name lang="es">Inverter</name>

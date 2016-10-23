@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FD8812A9-1833-4478-9A5D-5A1EA28C6BC8}"/><names>
         <name lang="es">Radiador</name>
         <name lang="ca">Radiador</name>
     </names>

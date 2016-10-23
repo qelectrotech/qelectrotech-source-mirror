@@ -1,5 +1,5 @@
 <definition hotspot_x="46" hotspot_y="39" width="110" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{3D1A4989-8B52-490F-AA90-47D027A50824}"/><names>
         <name lang="ca">Fancoil habitació</name>
         <name lang="es">Fancoil habitación</name>
     </names>

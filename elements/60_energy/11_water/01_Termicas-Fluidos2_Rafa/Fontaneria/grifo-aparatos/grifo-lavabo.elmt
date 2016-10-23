@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="24" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C87C3125-89D1-4FC5-80B6-6EBBBC10E939}"/><names>
         <name lang="es">Grifo Lavabo</name>
         <name lang="ca">Aixeta lavab</name>
     </names>

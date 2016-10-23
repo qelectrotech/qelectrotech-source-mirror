@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="25" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D53B2DF3-B921-45C2-AE4C-A361E3C1B5EF}"/><names>
         <name lang="ru">Выключатель-разъеденитель</name>
         <name lang="pt">Seccionador</name>
         <name lang="en">Disconnecting switch</name>

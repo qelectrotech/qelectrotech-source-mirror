@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="14" hotspot_y="10" version="0.5" width="30" height="20" orientation="dyyy">
-    <names>
+<uuid uuid="{7120E35E-3162-4B55-BFCC-690FC43CCA2B}"/><names>
         <name lang="es">Válvula de esfera</name>
     </names>
     <informations>Rafael Ferrando.

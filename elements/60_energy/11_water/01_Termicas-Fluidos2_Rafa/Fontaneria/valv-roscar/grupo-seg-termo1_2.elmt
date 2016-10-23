@@ -1,5 +1,5 @@
 <definition width="20" hotspot_y="26" hotspot_x="10" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{CDB41750-F18C-49BD-98CD-812CA7A13B17}"/><names>
         <name lang="es">Grupo seg.termo1/2MH</name>
         <name lang="ca">Grup seg.escalfador1/2MH</name>
     </names>

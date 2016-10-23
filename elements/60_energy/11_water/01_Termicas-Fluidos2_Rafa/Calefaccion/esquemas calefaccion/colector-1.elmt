@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="49" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7DB8EF93-12F9-4CFF-A61E-78416711486F}"/><names>
         <name lang="es">Colector vertical</name>
         <name lang="ca">Colector vertical</name>
     </names>

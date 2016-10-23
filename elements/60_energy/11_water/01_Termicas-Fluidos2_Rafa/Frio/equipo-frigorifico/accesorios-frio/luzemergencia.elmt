@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="16" hotspot_x="17" type="element" orientation="dyyy" version="0.5" link_type="simple" height="30">
-    <names>
+<uuid uuid="{06D5343D-2A15-4422-96CB-A4A2E7605C4B}"/><names>
         <name lang="es">Luz de emergencia</name>
     </names>
     <informations></informations>

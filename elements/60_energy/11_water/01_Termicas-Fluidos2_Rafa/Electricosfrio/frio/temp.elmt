@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="40" link_type="simple" width="30" hotspot_y="14" version="0.5" hotspot_x="18">
-    <names>
+<uuid uuid="{E0921BC2-1676-4BB2-A5AB-D59077A26D6A}"/><names>
         <name lang="ru">Обмотка</name>
         <name lang="pt">Bobine</name>
         <name lang="fr">Bobine</name>

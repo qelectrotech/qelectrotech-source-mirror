@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="55" hotspot_y="26" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ADFCF37C-4E66-47A2-92E1-ECD0F405AAA0}"/><names>
         <name lang="es">Captador solar horiz</name>
         <name lang="ca">Captador solar horiz</name>
     </names>

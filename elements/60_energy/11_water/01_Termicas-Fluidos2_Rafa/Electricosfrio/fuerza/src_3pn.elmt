@@ -1,5 +1,5 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{1A2B0439-CCC8-4EC3-BA8D-4653C471429C}"/><names>
         <name lang="ru">Трёхполюсный + нейтраль</name>
         <name lang="en">Three-pole source + neutral</name>
         <name lang="fr">Source tripolaire + neutre</name>

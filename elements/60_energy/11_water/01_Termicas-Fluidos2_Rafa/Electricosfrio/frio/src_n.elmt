@@ -1,5 +1,5 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{538CBDB3-56D6-4A98-9280-A4C4868D57EE}"/><names>
         <name lang="ru">Нейтраль</name>
         <name lang="en">Neutral source</name>
         <name lang="fr">Source neutre</name>

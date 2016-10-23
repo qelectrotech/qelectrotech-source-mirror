@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="39" hotspot_y="14" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5279D8C2-9150-416D-BCD0-6338DF260AE0}"/><names>
         <name lang="es">Leña</name>
         <name lang="ca">Llenya</name>
     </names>

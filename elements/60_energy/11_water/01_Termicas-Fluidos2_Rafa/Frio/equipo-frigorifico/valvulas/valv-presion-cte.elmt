@@ -1,5 +1,5 @@
 <definition hotspot_x="5" hotspot_y="33" width="30" version="0.5" type="element" orientation="dyyy" height="50" link_type="simple">
-    <names>
+<uuid uuid="{525BCC21-2F1C-4A62-AB06-227B352E4C5F}"/><names>
         <name lang="es">Valv. presión constante</name>
         <name lang="ca">Valv. presión constante</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="14" hotspot_y="12" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{29562D2C-64CB-45C5-B043-8D09F05DC673}"/><names>
         <name lang="es">Calentador instantáneo</name>
     </names>
     <informations>Rafael Ferrando.

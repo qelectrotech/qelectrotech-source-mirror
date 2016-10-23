@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="10" width="30" version="0.4" hotspot_y="5" type="element" hotspot_x="18" orientation="dyyy">
-    <names>
+<uuid uuid="{5CA79401-C739-4509-B296-2DFE42D3CB3E}"/><names>
         <name lang="es">Codo sube</name>
         <name lang="ca">Colze puja</name>
     </names>

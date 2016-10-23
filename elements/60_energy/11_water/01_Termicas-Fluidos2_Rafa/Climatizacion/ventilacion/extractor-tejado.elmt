@@ -1,5 +1,5 @@
 <definition hotspot_x="25" hotspot_y="23" width="50" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{F02986C6-5D92-4273-B099-4F007DA1CE49}"/><names>
         <name lang="es">Extractor de cubierta</name>
     </names>
     <informations></informations>

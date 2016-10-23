@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="44" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F5AEC3E6-DD8D-4110-849B-0D9C8A33E4BA}"/><names>
         <name lang="es">Depósito inercial</name>
         <name lang="ca">Depòsit inercial</name>
     </names>

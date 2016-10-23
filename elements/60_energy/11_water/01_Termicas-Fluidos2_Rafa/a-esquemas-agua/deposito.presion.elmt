@@ -1,5 +1,5 @@
 <definition link_type="simple" height="50" type="element" width="30" hotspot_y="23" version="0.5" hotspot_x="15" orientation="dyyy">
-    <names>
+<uuid uuid="{1EBC1A0D-5C78-431C-B3A7-5CB4C0F31B8F}"/><names>
         <name lang="ca">Dipòsit a presió</name>
         <name lang="es">Depósito a presión</name>
     </names>

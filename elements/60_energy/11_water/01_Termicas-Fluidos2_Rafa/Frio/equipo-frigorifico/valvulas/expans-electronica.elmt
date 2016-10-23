@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="20" hotspot_y="34" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{402EFB16-A80A-4C10-8E38-55945750F4F5}"/><names>
         <name lang="es">Valv. expansión electr.</name>
         <name lang="ca">Valv. expansió electr.</name>
     </names>

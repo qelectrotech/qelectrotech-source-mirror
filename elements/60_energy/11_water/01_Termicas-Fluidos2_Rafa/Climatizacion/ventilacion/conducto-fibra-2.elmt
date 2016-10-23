@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="53" hotspot_y="28" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{11CA60CF-37A1-4990-AC05-1DEBFCE016D8}"/><names>
         <name lang="es">Conductos impulsión</name>
         <name lang="ca">Conducte impulsió</name>
     </names>

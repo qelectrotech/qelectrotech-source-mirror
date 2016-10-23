@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="80" width="80" version="0.4" hotspot_y="24" type="element" hotspot_x="63" orientation="dyyy">
-    <names>
+<uuid uuid="{798F2D48-7CD5-4332-8280-E87595A34123}"/><names>
         <name lang="es">Placas solares</name>
         <name lang="ca">Plaques solars</name>
     </names>

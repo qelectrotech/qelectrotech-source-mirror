@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CCE44E1E-B6BC-4F6F-A6D7-4DEE8B7F9E52}"/><names>
         <name lang="es">Distribuidor líquido</name>
     </names>
     <informations></informations>

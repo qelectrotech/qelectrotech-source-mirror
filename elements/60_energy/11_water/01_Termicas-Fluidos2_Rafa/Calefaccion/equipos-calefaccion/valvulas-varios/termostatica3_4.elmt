@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="50" link_type="simple" width="40" hotspot_x="24" hotspot_y="27" orientation="dyyy">
-    <names>
+<uuid uuid="{4F7CA2FF-9482-4FD0-8029-873B9A66D487}"/><names>
         <name lang="ca">Termostàtica</name>
         <name lang="es">Termostática</name>
     </names>

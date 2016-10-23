@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E0F6389A-3510-4372-8FF9-7A0C74512E88}"/><names>
         <name lang="es">Sonda calidad aire</name>
         <name lang="ca">Sonda qualitat aire</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="45" hotspot_y="35" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BEFDE47C-400D-49EE-B83C-20CAEE76680A}"/><names>
         <name lang="en">Defrost clock</name>
         <name lang="es">Reloj desescache</name>
         <name lang="ca">Rellotje desglaç</name>

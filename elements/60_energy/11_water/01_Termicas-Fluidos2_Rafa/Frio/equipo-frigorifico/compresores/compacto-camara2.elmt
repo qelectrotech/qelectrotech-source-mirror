@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="20" hotspot_y="25" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{678B3A73-EA68-41E8-9FD4-48A9AF6785EC}"/><names>
         <name lang="es">Ud compacta partida</name>
         <name lang="ca">Ud compacta partidt</name>
     </names>

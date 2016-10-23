@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="35" hotspot_y="33" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8F86ACB6-023A-42D9-A73E-4C541E5423C5}"/><names>
         <name lang="en">filter flanges</name>
         <name lang="es">Filtro bridas</name>
         <name lang="ca">Fltre brides</name>

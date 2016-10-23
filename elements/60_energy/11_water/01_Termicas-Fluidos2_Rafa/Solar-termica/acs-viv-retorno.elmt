@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="15" hotspot_y="27" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F7015FA9-D3DB-48FF-8406-3138CABCA156}"/><names>
         <name lang="es">ACS +retorno a vivienda</name>
     </names>
     <informations>Rafael Ferrando.

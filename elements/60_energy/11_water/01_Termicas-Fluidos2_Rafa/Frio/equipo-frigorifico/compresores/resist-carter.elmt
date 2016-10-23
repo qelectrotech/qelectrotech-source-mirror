@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{70FD3C93-5430-410D-B063-3E45D113ED90}"/><names>
         <name lang="es">Resistencia cárter</name>
         <name lang="ca">Resistència càrter</name>
     </names>

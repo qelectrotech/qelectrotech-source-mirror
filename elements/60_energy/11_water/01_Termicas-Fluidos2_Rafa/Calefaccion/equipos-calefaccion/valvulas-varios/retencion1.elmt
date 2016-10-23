@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="9" width="30" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{DD57906F-1079-45B6-A4DB-8D2C150940B4}"/><names>
         <name lang="ca">Valv. retenció</name>
         <name lang="es">Valv. retención</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="17" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A8A5954F-675A-4FE9-9D04-0DCA1EBC2A86}"/><names>
         <name lang="ru">Контакт теплового реле (НЗ)</name>
         <name lang="pt">Contacto relé térmico (NC)</name>
         <name lang="en">Contact relais thermique (NC)</name>

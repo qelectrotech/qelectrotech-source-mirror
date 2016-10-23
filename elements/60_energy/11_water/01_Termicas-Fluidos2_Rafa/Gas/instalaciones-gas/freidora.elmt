@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="12" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{132AE82A-18DF-4E18-9524-B9DD169CCBD9}"/><names>
         <name lang="es">Freidora gas</name>
         <name lang="ca">Fregidora gas</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="17" hotspot_y="36" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{646E4C6B-3A5D-42B5-8A3B-C675E3005461}"/><names>
         <name lang="es">Mando infrarojos</name>
         <name lang="ca">Comandament</name>
     </names>

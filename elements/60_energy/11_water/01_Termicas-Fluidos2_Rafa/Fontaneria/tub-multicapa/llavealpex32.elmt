@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="35" hotspot_y="44" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6FB49577-F3EE-4853-99E6-BEE5B34CE093}"/><names>
         <name lang="es">Llave paso32</name>
         <name lang="ca">Aixeta pas 32</name>
     </names>

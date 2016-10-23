@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="34" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4EDA5AA1-7645-4ECE-B5DE-A3CB6FEFE08B}"/><names>
         <name lang="el">Αισθητήρας ροής υγρού, μεταγωγική επαφή</name>
         <name lang="en">Actuated by the flow of a fluid NC/NO</name>
         <name lang="it">Azionato dal flusso di un fluido (NC/NO)</name>

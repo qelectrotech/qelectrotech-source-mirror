@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="21" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{806104B2-A415-40CD-AB50-1F2FF57E1691}"/><names>
         <name lang="es">Dilatador-lira2</name>
         <name lang="ca">Dilatador-lira2</name>
     </names>

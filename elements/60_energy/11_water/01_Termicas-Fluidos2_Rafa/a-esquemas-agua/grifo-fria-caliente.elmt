@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="30" version="0.4" hotspot_y="14" type="element" hotspot_x="15" orientation="dyyy">
-    <names>
+<uuid uuid="{507DA669-9871-43F6-B922-4632B0E0D70C}"/><names>
         <name lang="es">Grifo fria y caliente</name>
         <name lang="ca">Aixeta freda i calenta</name>
     </names>

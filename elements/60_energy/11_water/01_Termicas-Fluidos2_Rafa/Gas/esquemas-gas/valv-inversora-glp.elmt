@@ -1,5 +1,5 @@
 <definition link_type="simple" version="0.5" width="50" height="40" hotspot_x="25" type="element" hotspot_y="29" orientation="dyyy">
-    <names>
+<uuid uuid="{FDEF3DA3-A398-4C62-8FF0-D0D42224BFF7}"/><names>
         <name lang="es">Válvula inversora</name>
         <name lang="ca">Vàlvula inverssora</name>
     </names>

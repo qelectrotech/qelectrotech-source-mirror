@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="10" type="element" width="50" orientation="dyyy">
-    <names>
+<uuid uuid="{D7C98736-A0FB-4F7C-84DA-A02882D71146}"/><names>
         <name lang="es">Llave paso manual</name>
     </names>
     <informations>Rafael Ferrando.

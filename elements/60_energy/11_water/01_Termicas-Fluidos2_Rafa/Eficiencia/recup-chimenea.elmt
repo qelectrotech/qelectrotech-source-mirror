@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="33" hotspot_y="53" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CB726C77-F69F-417F-905D-0778264E3FDE}"/><names>
         <name lang="es">Recuperador humos</name>
         <name lang="ca">Recuperador de fums</name>
     </names>

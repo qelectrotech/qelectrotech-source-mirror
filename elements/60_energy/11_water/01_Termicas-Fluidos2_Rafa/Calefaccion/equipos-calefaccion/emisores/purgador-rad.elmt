@@ -1,5 +1,5 @@
 <definition hotspot_x="3" hotspot_y="14" width="20" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{A4666931-DD13-472E-9198-08575F2F4E59}"/><names>
         <name lang="ca">Purgador rad.</name>
         <name lang="es">Purgador rad.</name>
     </names>

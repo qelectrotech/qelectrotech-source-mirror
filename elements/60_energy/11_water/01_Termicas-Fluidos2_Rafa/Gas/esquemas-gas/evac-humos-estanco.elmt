@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="9" version="0.5" hotspot_y="14" type="element" width="20" orientation="dyyy">
-    <names>
+<uuid uuid="{340D7A57-6D1D-47E7-BF21-7C76CE56C679}"/><names>
         <name lang="es">Evacuación estanco humos</name>
     </names>
     <informations>Rafael Ferrando.

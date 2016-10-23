@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BC5C34CF-4574-45EC-839A-CF01C5174125}"/><names>
         <name lang="en">Compressor</name>
         <name lang="fr">Compre</name>
         <name lang="es">Ventilador condensador</name>

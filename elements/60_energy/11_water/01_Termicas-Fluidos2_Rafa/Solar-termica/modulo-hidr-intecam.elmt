@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="38" hotspot_y="54" height="80" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FF9A4380-14A0-4952-9BD8-31510D87892B}"/><names>
         <name lang="es">Grupo de circulación primario</name>
         <name lang="ca">Grup de circulació primari</name>
     </names>

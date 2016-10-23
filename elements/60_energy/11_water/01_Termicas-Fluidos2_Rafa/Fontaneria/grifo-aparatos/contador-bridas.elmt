@@ -1,5 +1,5 @@
 <definition width="50" height="40" link_type="simple" hotspot_x="24" hotspot_y="21" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8A219086-47F2-46D3-B787-468BD11D9F77}"/><names>
         <name lang="es">Contador bridas</name>
         <name lang="ca">Comptador brides</name>
         <name lang="en">Counter flanges</name>

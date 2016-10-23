@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="19" hotspot_y="26" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{23AD181E-AAEF-4021-9877-3C060926D100}"/><names>
         <name lang="es">Cuadro elec. terraza</name>
         <name lang="ca">Cuade elec. terrassa</name>
     </names>

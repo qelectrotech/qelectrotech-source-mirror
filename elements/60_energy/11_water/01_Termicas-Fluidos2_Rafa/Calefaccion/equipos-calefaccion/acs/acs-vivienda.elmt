@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="5" hotspot_y="30" width="50" height="50" version="0.5">
-    <names>
+<uuid uuid="{1679D9C1-0598-4048-A5C2-66899F366CEA}"/><names>
         <name lang="ca">ACS consum</name>
         <name lang="es">ACS consumo</name>
     </names>

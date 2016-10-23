@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="12" width="40" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{3A106F22-E69E-43B5-BBB6-DB408B1C740B}"/><names>
         <name lang="ca">Valv Solenoide</name>
         <name lang="es">Valv Solenoide</name>
     </names>

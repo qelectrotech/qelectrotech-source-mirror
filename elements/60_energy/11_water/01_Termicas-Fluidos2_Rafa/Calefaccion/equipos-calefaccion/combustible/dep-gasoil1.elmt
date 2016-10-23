@@ -1,5 +1,5 @@
 <definition hotspot_x="55" hotspot_y="48" width="150" type="element" version="0.5" height="90" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{4FB0012D-A0C0-4EA9-B197-E67D62DB3E9B}"/><names>
         <name lang="ca">Dipósit gasoil horitzontal</name>
         <name lang="es">Depósito gasoil horizontal</name>
     </names>

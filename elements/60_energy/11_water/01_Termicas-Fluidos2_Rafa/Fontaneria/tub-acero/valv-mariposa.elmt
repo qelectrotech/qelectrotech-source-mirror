@@ -1,5 +1,5 @@
 <definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="25" orientation="dyyy" width="40" hotspot_x="12">
-    <names>
+<uuid uuid="{6517860C-56CA-401F-AFB4-C4700E0F1C90}"/><names>
         <name lang="ca">Valv papallona</name>
         <name lang="es">Valv mariposa</name>
     </names>

@@ -1,5 +1,5 @@
 <definition hotspot_x="35" hotspot_y="32" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{47959C9E-5A39-4A75-A07A-5D400ACDFDAB}"/><names>
         <name lang="ca">Reixa caixa</name>
         <name lang="es">Rejilla caja</name>
     </names>

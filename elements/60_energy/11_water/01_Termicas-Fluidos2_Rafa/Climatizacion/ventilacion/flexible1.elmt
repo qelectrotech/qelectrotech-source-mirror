@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="16" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9BDD3397-5BFA-4ED2-A038-EE8706259102}"/><names>
         <name lang="es">Conducto flexible1</name>
         <name lang="ca">Conducte flexible1</name>
     </names>

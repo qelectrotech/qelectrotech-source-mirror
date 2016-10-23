@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="37" hotspot_y="26" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D0F07ADB-774F-451D-8D97-139065E303DD}"/><names>
         <name lang="es">Geotérmia circuito</name>
         <name lang="ca">Geotèrmia circuit</name>
     </names>

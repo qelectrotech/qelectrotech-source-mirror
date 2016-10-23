@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="12" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7134DBC7-9A56-4935-9570-BEC55F525C9A}"/><names>
         <name lang="es">Llave corte rápido</name>
         <name lang="ca">Clau tall ràpid</name>
     </names>

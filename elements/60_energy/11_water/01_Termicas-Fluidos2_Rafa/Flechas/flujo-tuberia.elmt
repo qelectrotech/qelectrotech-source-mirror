@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="6" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7FAC41C1-4A94-429C-99D2-1D5FA29E7E85}"/><names>
         <name lang="es">Flujo tuberia</name>
     </names>
     <informations>Rafael Ferrando.

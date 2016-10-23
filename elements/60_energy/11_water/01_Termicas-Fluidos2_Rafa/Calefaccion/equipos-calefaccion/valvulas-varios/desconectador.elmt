@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="30" link_type="simple" width="30" hotspot_x="14" hotspot_y="9" orientation="dyyy">
-    <names>
+<uuid uuid="{EB30EB35-4779-4E45-AC5F-10DA0780378D}"/><names>
         <name lang="ca">Desconectador</name>
         <name lang="es">Desconectador</name>
     </names>

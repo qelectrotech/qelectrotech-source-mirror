@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="51" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9713E933-EA9A-4B0D-B74C-19E142B4FB33}"/><names>
         <name lang="en">NC/NO controlled relative humidity</name>
         <name lang="it">Controllato dall'umidità relativa NC/NO</name>
         <name lang="fr">Actionné par humidité relative NF/NO</name>

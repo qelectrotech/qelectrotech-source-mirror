@@ -1,5 +1,5 @@
 <definition height="40" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="25" type="element" width="30" orientation="dyyy">
-    <names>
+<uuid uuid="{4F6FC9DB-DC7C-42AD-AC19-66B42E116E9F}"/><names>
         <name lang="es">Contador de gas</name>
     </names>
     <informations>Rafael Ferrando.

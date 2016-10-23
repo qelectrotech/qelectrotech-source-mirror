@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="14" width="30" type="element" version="0.5" height="20" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{D109CBB6-084F-4CFA-AC6A-117C7F128242}"/><names>
         <name lang="ca">Clau termotàtica</name>
         <name lang="es">Llave termostatica</name>
     </names>

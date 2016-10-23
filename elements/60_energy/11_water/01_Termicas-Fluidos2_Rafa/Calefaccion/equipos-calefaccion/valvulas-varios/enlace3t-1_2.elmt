@@ -1,5 +1,5 @@
 <definition hotspot_x="18" hotspot_y="29" width="40" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{F4E333DD-D629-4791-8DE9-BA6006099A56}"/><names>
         <name lang="ca">Enllaç 3 rosques</name>
         <name lang="es">Enlace 3tuercas</name>
     </names>

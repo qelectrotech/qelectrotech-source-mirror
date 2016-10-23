@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="13" hotspot_y="30" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D01E889A-7F8E-4803-9696-670C12860FD0}"/><names>
         <name lang="es">Cuadro eléctrico</name>
         <name lang="ca">Cuadre elèctric</name>
     </names>

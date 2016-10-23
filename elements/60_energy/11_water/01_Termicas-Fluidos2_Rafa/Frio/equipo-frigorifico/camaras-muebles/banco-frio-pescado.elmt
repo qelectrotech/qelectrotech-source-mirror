@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="23" hotspot_y="40" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5A97B039-284D-4647-A1F4-DEC584311E2D}"/><names>
         <name lang="es">Banco frio de pescado</name>
         <name lang="ca">Banc fred de peix</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="13" hotspot_y="12" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6F61DB76-FD36-44C0-A8BC-B36D9DD2E2C7}"/><names>
         <name lang="es">Valv bola brida</name>
         <name lang="ca">Valv bola brida</name>
     </names>

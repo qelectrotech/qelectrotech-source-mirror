@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="54" hotspot_y="33" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1F48F918-6FAA-4F42-9786-8EF4F2C4C59C}"/><names>
         <name lang="es">Controlador sevicio 2</name>
     </names>
     <informations></informations>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="27" hotspot_y="45" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2DAD8377-480E-4A6C-A332-445F022ABAA8}"/><names>
         <name lang="en">Contact NC/NO-controlled clock</name>
         <name lang="it">Contatto NC/NO comandato da orologio</name>
         <name lang="fr">Commande par horloge électrique NO/NF</name>

@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="21" hotspot_x="20" type="element" orientation="dyyy" version="0.5" link_type="simple" height="40">
-    <names>
+<uuid uuid="{6047E10D-9DCD-4D31-A74D-62A26292A0EF}"/><names>
         <name lang="es">Codo soldar 15</name>
         <name lang="ca">Colze soldar 15</name>
     </names>

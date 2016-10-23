@@ -1,5 +1,5 @@
 <definition height="50" link_type="simple" width="40" hotspot_x="19" hotspot_y="33" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8C3EE0E7-DB9C-42D6-86B5-85D12389FA77}"/><names>
         <name lang="ca">Termostàtica motor bridas.</name>
         <name lang="es">Termostática motor bridas.</name>
     </names>

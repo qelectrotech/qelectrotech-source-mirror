@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="24" hotspot_y="22" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B563016E-2408-44E3-9CC8-636034E5DA0D}"/><names>
         <name lang="es">Inodoro tanque</name>
         <name lang="ca">Inodor1</name>
     </names>

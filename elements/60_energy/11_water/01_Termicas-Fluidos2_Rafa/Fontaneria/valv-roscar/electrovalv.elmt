@@ -1,5 +1,5 @@
 <definition width="60" hotspot_y="32" hotspot_x="36" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{B07046DF-3A10-4D00-A1B1-B424FC62200B}"/><names>
         <name lang="es">Electroválvula HH</name>
         <name lang="ca">Electrovàlvula HH</name>
     </names>

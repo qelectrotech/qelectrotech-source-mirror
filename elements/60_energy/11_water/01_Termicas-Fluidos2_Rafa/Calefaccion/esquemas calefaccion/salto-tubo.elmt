@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{687CA459-1AC4-486C-9C7D-E5EF03EF010F}"/><names>
         <name lang="es">Salto Tubería</name>
         <name lang="ca">Salt canonada</name>
     </names>

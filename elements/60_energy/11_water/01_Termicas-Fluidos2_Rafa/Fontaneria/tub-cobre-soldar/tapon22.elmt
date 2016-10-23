@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="9" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DBD60063-AE23-4EAC-9775-1879834EC231}"/><names>
         <name lang="es">Tapón 22</name>
         <name lang="ca">Tap 22</name>
     </names>

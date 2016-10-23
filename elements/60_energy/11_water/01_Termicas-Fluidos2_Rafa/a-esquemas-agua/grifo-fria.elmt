@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="20" version="0.4" hotspot_y="16" type="element" hotspot_x="10" orientation="dyyy">
-    <names>
+<uuid uuid="{C71DA0E7-5D76-45C8-9E03-B9D7A1B7D432}"/><names>
         <name lang="es">Grifo fría</name>
         <name lang="ca">Aixeta freda</name>
     </names>

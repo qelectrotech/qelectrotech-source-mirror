@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="19" width="40" height="20" version="0.5" type="element" hotspot_y="12" orientation="dyyy">
-    <names>
+<uuid uuid="{A89AA696-D89F-4B62-AC17-41597789D899}"/><names>
         <name lang="ca">Valv. tancament ràpid</name>
         <name lang="es">Valvula cierre rápido</name>
     </names>

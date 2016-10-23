@@ -1,5 +1,5 @@
 <definition height="60" hotspot_x="37" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="25" version="0.5">
-    <names>
+<uuid uuid="{621BE19E-4A2D-45C7-8F37-83681E1A79BD}"/><names>
         <name lang="ca">Cambra-1</name>
         <name lang="es">Cámara-1</name>
     </names>

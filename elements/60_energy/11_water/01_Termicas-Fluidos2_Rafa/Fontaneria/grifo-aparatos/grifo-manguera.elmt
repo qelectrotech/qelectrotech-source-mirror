@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="13" hotspot_y="17" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DC319845-08E6-43BF-9D80-A594E37EEDAB}"/><names>
         <name lang="es">Grifo-manguera</name>
         <name lang="ca">Aixeta mànega</name>
     </names>

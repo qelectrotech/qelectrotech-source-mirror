@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="16" hotspot_y="25" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{78326FE6-EBA3-4CA3-8D2E-50D8F9E9A65E}"/><names>
         <name lang="es">Presostato AyB</name>
     </names>
     <informations>Rafael Ferrando.

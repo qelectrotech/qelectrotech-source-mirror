@@ -1,5 +1,5 @@
 <definition type="element" hotspot_x="14" orientation="dyyy" width="30" height="50" link_type="simple" hotspot_y="19" version="0.5">
-    <names>
+<uuid uuid="{52799611-45F2-4B6B-B498-742673D7B8E2}"/><names>
         <name lang="ca">Nivell de gasoil</name>
         <name lang="es">Nivel de gasoil</name>
     </names>

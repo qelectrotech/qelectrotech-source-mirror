@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="10" version="0.5" hotspot_y="5" type="element" width="20" orientation="dyyy">
-    <names>
+<uuid uuid="{3D53A216-17D0-4884-B5EE-ED12904F23A1}"/><names>
         <name lang="es">Extractor de aire</name>
     </names>
     <informations>Rafael Ferrando.

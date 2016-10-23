@@ -1,5 +1,5 @@
 <definition width="40" height="30" version="0.5" orientation="dyyy" link_type="simple" type="element" hotspot_x="19" hotspot_y="21">
-    <names>
+<uuid uuid="{675C9847-2D73-4B61-8EEA-5F5A52C86528}"/><names>
         <name lang="nl">Elketrische klep sanitair 2</name>
         <name lang="cs">Elektrický uzávěr 2V</name>
         <name lang="it">Elettrovalvola 2vie acqua sanitaria</name>

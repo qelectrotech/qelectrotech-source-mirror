@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="35" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{171CA378-8CF8-4CAC-BB4A-255FA5EBC87A}"/><names>
         <name lang="es">Reduccion 32-25</name>
         <name lang="ca">Reducció 32-25</name>
     </names>

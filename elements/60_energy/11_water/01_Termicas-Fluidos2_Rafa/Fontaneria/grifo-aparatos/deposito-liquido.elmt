@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="44" hotspot_y="31" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DD28201A-B6C7-4087-B8BE-704241C86F6A}"/><names>
         <name lang="es">Depósito agua</name>
         <name lang="ca">Dipòsit aigua</name>
     </names>

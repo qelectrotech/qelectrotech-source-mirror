@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="9" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{59BEC4C2-96DA-4C79-B757-CA1D58994CE5}"/><names>
         <name lang="es">Conector flexible</name>
         <name lang="ca">Conector flexible</name>
     </names>

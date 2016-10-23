@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="6" hotspot_y="8" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CE525F6E-FC7D-4876-BA30-AB96E1AF2ABA}"/><names>
         <name lang="es">Sumidero suelo 2</name>
         <name lang="ca">Sumidero sól 2</name>
     </names>

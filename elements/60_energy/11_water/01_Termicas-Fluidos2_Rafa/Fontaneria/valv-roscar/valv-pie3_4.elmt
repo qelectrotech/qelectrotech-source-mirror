@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="13" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{43AE9C41-AA04-49C1-8405-BE7E479BBCBF}"/><names>
         <name lang="es">Valv Pié H</name>
         <name lang="ca">Valv Peu H</name>
     </names>

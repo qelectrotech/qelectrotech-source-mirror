@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="20" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{179A233D-B385-4ABF-9FB7-11EDC5EFB521}"/><names>
         <name lang="es">solenoide</name>
     </names>
     <informations></informations>

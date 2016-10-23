@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" width="60" height="80" hotspot_x="33" hotspot_y="44" link_type="simple" version="0.5">
-    <names>
+<uuid uuid="{D35DC743-A48F-4BC4-A456-A825FD6E52C1}"/><names>
         <name lang="ca">Interacumulador</name>
         <name lang="es">Interacumulador</name>
     </names>

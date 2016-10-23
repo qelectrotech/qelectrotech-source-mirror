@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="32" width="30" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{7D243178-2DD6-4186-9049-15C0DEE24982}"/><names>
         <name lang="ca">Toaller</name>
         <name lang="es">Toallero</name>
     </names>

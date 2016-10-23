@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="45" hotspot_y="19" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8BE5453A-AB8E-4C59-989C-118F0A0FD347}"/><names>
         <name lang="es">Conducto toberas</name>
         <name lang="ca">Conducte toberes</name>
     </names>

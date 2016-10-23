@@ -1,5 +1,5 @@
 <definition link_type="simple" height="20" type="element" width="40" hotspot_y="10" version="0.5" hotspot_x="19" orientation="dyyy">
-    <names>
+<uuid uuid="{8948D9AF-C3E7-4F5B-8382-BEDA395A5410}"/><names>
         <name lang="ca">Clau de comporta</name>
         <name lang="en">Gate Valve</name>
         <name lang="es">Llave de compuerta</name>

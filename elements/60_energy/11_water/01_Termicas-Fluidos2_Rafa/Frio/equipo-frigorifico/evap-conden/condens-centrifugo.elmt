@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="39" hotspot_y="32" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AB407793-FDF6-4ECB-9DB2-9C68C365AEE7}"/><names>
         <name lang="es">Condensador centrífugo</name>
         <name lang="ca">Condensador centrífug</name>
     </names>

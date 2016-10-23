@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="51" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1B9AA915-276E-4ED2-BDF9-F8DBB9782746}"/><names>
         <name lang="es">Cortina de aire2</name>
         <name lang="ca">Cortina aire2</name>
     </names>

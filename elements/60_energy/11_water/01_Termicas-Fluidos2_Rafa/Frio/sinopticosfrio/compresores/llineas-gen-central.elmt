@@ -1,5 +1,5 @@
 <definition width="70" hotspot_x="35" hotspot_y="17" link_type="simple" type="element" version="0.5" orientation="dyyy" height="30">
-    <names>
+<uuid uuid="{2254E0B0-FBAF-4CED-B6FB-A7483DABD89C}"/><names>
         <name lang="ca">Llínies frig. central</name>
         <name lang="es">Líneas frig. Central</name>
     </names>

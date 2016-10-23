@@ -1,5 +1,5 @@
 <definition hotspot_x="38" hotspot_y="36" width="90" version="0.5" type="element" orientation="dyyy" height="50" link_type="simple">
-    <names>
+<uuid uuid="{CEACFF06-1EFE-4F2F-98CF-46CC14529C08}"/><names>
         <name lang="es">Condensador terraza</name>
         <name lang="ca">Condesador cuberta</name>
     </names>

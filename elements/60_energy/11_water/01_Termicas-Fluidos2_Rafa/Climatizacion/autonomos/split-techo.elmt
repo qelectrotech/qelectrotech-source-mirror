@@ -1,5 +1,5 @@
 <definition hotspot_x="43" hotspot_y="21" width="80" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{148DA479-0A95-48C6-92DF-C69FFCB3B7F5}"/><names>
         <name lang="ca">Split Sostre</name>
         <name lang="es">Split Techo</name>
     </names>

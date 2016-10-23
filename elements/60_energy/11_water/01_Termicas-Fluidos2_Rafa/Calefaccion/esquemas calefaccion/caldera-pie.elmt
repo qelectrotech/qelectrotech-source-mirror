@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" width="50" height="50" hotspot_x="30" hotspot_y="27" link_type="simple" version="0.5">
-    <names>
+<uuid uuid="{C89FB85A-1C34-4136-957B-7537A55237BE}"/><names>
         <name lang="ca">Caldera peu</name>
         <name lang="es">Caldera pié</name>
     </names>

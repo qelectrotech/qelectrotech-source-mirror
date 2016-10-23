@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="15" width="30" height="40" version="0.5" type="element" hotspot_y="17" orientation="dyyy">
-    <names>
+<uuid uuid="{9E1B2B69-73A8-467E-9D54-8BD460D8BD09}"/><names>
         <name lang="ca">Ventilador axial</name>
         <name lang="es">Ventilador Axial</name>
     </names>

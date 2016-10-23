@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="11" hotspot_y="35" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4D576C5C-C10C-4047-9D10-2B8E73DC3404}"/><names>
         <name lang="ru">Переключатель 2-х позиционный</name>
         <name lang="en">Termostat Resist</name>
         <name lang="es">Termostato Resistencias</name>

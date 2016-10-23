@@ -1,5 +1,5 @@
 <definition width="170" version="0.4" hotspot_x="85" hotspot_y="44" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2366735D-90BA-47D1-A160-B66870D70E49}"/><names>
         <name lang="es">Puerta paso doble</name>
         <name lang="ca">Porta pas doble</name>
     </names>

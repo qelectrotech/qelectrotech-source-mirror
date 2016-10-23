@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="26" hotspot_y="37" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F64C8A7B-3D49-4E7F-9D25-412711B21305}"/><names>
         <name lang="es">Caldera de Leña</name>
         <name lang="ca">Caldera de llenya</name>
     </names>

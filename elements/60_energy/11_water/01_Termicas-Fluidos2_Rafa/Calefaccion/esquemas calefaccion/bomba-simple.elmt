@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" width="30" height="30" hotspot_x="14" hotspot_y="14" link_type="simple" version="0.5">
-    <names>
+<uuid uuid="{F1D0E186-A646-44F6-B60D-58F52E8D2302}"/><names>
         <name lang="ca">Bomba simple</name>
         <name lang="nl">Pomp</name>
         <name lang="it">Pompa</name>

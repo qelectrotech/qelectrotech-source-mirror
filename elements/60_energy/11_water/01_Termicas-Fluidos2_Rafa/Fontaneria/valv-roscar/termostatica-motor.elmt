@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="33" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CAC49FB6-32EB-4E97-BAC7-5716FD6A8531}"/><names>
         <name lang="es">Termostática motor.</name>
         <name lang="ca">Termostàtica motor.</name>
     </names>

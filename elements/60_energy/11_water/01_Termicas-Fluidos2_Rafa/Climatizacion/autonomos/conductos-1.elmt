@@ -1,5 +1,5 @@
 <definition hotspot_x="34" hotspot_y="42" width="110" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{ADA74CF7-2CC4-4C2D-A39F-C7A2919FA013}"/><names>
         <name lang="ca">Split-conductos-1</name>
         <name lang="es">Split-conductos-1</name>
     </names>

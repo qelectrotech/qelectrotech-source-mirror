@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="20" version="0.4" hotspot_y="13" type="element" hotspot_x="8" orientation="dyyy">
-    <names>
+<uuid uuid="{50C98AC1-BB87-48DF-92B5-CC2235DE19CE}"/><names>
         <name lang="es">Grifo de comprobación</name>
         <name lang="ca">Aixeta de comprobació</name>
     </names>

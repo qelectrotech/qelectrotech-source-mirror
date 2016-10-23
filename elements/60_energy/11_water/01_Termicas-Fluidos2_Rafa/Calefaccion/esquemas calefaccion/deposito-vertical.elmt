@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="44" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{60E432E6-5137-4768-B6A7-AD0DF7B9A854}"/><names>
         <name lang="es">Depósito Vertical</name>
         <name lang="ca">Dipòsit vertical</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="14" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{241D7820-A5F3-4042-9FA3-4535F635A6EC}"/><names>
         <name lang="es">Entrada agua fría</name>
         <name lang="ca">Entrada aigua freda</name>
     </names>

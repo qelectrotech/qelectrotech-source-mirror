@@ -1,5 +1,5 @@
 <definition width="40" hotspot_y="23" hotspot_x="15" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
-    <names>
+<uuid uuid="{801AE4AE-5362-4376-98FE-8DC8CBACB99A}"/><names>
         <name lang="es">Press control bomba</name>
         <name lang="ca">Press control bomba</name>
     </names>

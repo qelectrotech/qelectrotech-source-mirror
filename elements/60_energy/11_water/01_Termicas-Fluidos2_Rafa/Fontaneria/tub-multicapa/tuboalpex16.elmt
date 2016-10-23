@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="45" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B3BFD6EB-E70F-459F-8078-9AD9C87B9817}"/><names>
         <name lang="es">Tubo Alpex 16</name>
         <name lang="ca">Tub Alpex 16</name>
     </names>

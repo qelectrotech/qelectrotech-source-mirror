@@ -1,5 +1,5 @@
 <definition width="90" hotspot_y="26" hotspot_x="25" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-    <names>
+<uuid uuid="{0C893A73-1766-48F2-BA19-B0C28E3D60B0}"/><names>
         <name lang="es">Bomba agua horiz-1</name>
         <name lang="ca">Bomba aigua horiz-1</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B9A38399-9202-48E6-B691-125FE90FA584}"/><names>
         <name lang="es">Enlace</name>
     </names>
     <informations></informations>

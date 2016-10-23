@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="33" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2420FC99-FC45-4C57-A2BE-4074D8B321A9}"/><names>
         <name lang="es">Presotato Alta y Baja</name>
         <name lang="ca">Presotato A i B</name>
     </names>

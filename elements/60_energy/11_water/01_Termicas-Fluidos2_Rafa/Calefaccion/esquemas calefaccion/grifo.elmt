@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="28" hotspot_y="16" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2A9DCB72-007B-4854-B636-BF100EEECF24}"/><names>
         <name lang="es">grifo</name>
         <name lang="ca">Aixeta</name>
     </names>

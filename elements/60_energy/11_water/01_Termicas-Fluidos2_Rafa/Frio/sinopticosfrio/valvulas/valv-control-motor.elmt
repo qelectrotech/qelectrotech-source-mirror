@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{777C9036-360E-4F77-9473-87C183DAC9DB}"/><names>
         <name lang="es">Valvula control motorizada</name>
     </names>
     <informations>Rafael Ferrando.

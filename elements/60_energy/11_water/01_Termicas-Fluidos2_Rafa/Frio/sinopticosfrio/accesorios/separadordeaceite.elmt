@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="14" hotspot_y="12" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B7FD2258-36C9-4D0A-AB2A-8EB122A14573}"/><names>
         <name lang="es">Separador de aceite</name>
     </names>
     <informations></informations>

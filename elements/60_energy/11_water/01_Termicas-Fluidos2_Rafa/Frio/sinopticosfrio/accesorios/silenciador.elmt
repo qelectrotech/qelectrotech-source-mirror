@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8607F23B-80F1-4E2D-BEA1-A13BEB127850}"/><names>
         <name lang="es">Silenciador descarga</name>
     </names>
     <informations></informations>

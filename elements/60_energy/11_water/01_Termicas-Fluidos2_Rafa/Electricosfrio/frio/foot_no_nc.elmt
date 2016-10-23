@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="21" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{493F67D2-58EB-473F-882B-4A6B3F44896F}"/><names>
         <name lang="ar">مفتاح بدوّاسة (NO/NC)</name>
         <name lang="el">Ποδοδιακόπτης, ανοικτή και κλειστή επαφή</name>
         <name lang="en">Foot Switch (NO/NC)</name>

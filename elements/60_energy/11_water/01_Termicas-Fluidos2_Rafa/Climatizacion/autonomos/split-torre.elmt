@@ -1,5 +1,5 @@
 <definition hotspot_x="22" hotspot_y="49" width="50" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{C03219C6-FE18-432B-A242-75D4DE2A39E4}"/><names>
         <name lang="ca">Split Torre</name>
         <name lang="es">Split Torre</name>
     </names>

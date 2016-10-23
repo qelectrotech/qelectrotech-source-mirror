@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{230FEE4C-E4C9-4F5A-92DF-E27F80B2F879}"/><names>
         <name lang="es">Registrador temperatura</name>
     </names>
     <informations>Rafael Ferrando.

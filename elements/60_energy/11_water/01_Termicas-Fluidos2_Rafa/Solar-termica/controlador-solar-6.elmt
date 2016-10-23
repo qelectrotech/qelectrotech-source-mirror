@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="19" hotspot_y="14" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3154ACCE-EE0F-489B-B990-D2EE564A15F1}"/><names>
         <name lang="es">Controlador solar 6</name>
         <name lang="ca">Controlador solar 6</name>
     </names>

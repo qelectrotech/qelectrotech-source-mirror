@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A7CB7D90-665D-4EC1-8279-1BE27B921D7D}"/><names>
         <name lang="es">Enlace desmontable</name>
         <name lang="ca">Enllaç desmuntable</name>
     </names>

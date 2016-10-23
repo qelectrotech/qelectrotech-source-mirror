@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="12" height="20" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2568C425-8DD9-4BFE-996F-FE8FF1F5C55F}"/><names>
         <name lang="es">Válv. bola rosca</name>
         <name lang="ca">Vàlv. bola rosca</name>
     </names>

@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="24" hotspot_y="7" version="0.5" width="50" height="20" orientation="dyyy">
-    <names>
+<uuid uuid="{40D66777-188D-446F-8908-F86E98FAE217}"/><names>
         <name lang="es">Reg. Mínima pres.</name>
     </names>
     <informations>Rafael Ferrando.

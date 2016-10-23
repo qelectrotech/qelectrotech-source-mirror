@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="8" hotspot_y="24" version="0.5" width="20" height="40" orientation="dyyy">
-    <names>
+<uuid uuid="{E62897B8-AF29-468F-A60D-D2024BB1B29C}"/><names>
         <name lang="es">Válvula de alivio</name>
     </names>
     <informations>Rafael Ferrando.

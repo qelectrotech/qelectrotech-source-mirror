@@ -1,5 +1,5 @@
 <definition hotspot_x="43" link_type="simple" height="80" orientation="dyyy" hotspot_y="44" width="110" version="0.5" type="element">
-    <names>
+<uuid uuid="{F9CB780A-F6A9-47C1-AD44-F5CAA9FC8A78}"/><names>
         <name lang="es">Central digital scroll</name>
     </names>
     <informations></informations>

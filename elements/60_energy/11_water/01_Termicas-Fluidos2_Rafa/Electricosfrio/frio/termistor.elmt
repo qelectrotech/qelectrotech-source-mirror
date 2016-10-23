@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="58" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A7C3BBF2-E4D0-4096-9DAE-6B469146BE74}"/><names>
         <name lang="es">Termistor</name>
     </names>
     <informations></informations>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="26" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{84CFC149-C99B-4719-89E6-9206130C9CE6}"/><names>
         <name lang="es">Codo rectangular</name>
         <name lang="ca">Colçe rectangular</name>
     </names>

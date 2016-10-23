@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="20" hotspot_y="72" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0183B868-5628-4B93-87FE-108B97F4BFFC}"/><names>
         <name lang="es">Presostato Alta y Baja</name>
     </names>
     <informations></informations>

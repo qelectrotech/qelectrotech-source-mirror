@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2B70B517-24A6-46C0-B83E-3C7802168181}"/><names>
         <name lang="es">Flexible2</name>
         <name lang="ca">Flexible2</name>
     </names>

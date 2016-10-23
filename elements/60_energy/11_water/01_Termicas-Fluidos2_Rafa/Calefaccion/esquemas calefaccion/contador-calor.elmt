@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FF4CF61B-FB76-45F3-B8F6-6AC260BDD535}"/><names>
         <name lang="es">Contador Calor</name>
         <name lang="ca">Comptador Calor</name>
     </names>

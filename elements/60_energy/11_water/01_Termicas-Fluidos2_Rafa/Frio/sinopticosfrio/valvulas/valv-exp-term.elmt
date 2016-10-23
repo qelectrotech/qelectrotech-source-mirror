@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="28" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{27E2C5C5-8450-4042-A94E-D280EC23D217}"/><names>
         <name lang="es">Válvula expansión term</name>
         <name lang="ca">Vàlvula expansió term</name>
     </names>

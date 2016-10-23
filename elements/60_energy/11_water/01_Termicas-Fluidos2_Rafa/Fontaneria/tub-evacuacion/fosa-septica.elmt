@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="12" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A9E07CA0-D61D-4FDF-9CAE-EACAB1C971CF}"/><names>
         <name lang="es">Fosa Séptica</name>
         <name lang="ca">Fossa sèptica</name>
     </names>

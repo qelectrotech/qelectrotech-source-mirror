@@ -1,5 +1,5 @@
 <definition type="element" height="40" version="0.5" link_type="simple" hotspot_y="19" orientation="dyyy" width="60" hotspot_x="27">
-    <names>
+<uuid uuid="{FBF435E8-EF56-4FFA-B32C-3D54A0E4D9F5}"/><names>
         <name lang="ca">Reducció exèntrica brides</name>
         <name lang="es">Reducción excéntrica bridas</name>
     </names>

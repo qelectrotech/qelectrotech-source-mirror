@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2C5182FE-61BC-43AD-8F4B-D8BC761F91BB}"/><names>
         <name lang="es">Regulador pres</name>
     </names>
     <informations>Rafael Ferrando.

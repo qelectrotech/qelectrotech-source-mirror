@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F19616EF-17F7-4E22-88BB-A5FC5E0DB49B}"/><names>
         <name lang="es">Equilibrador de presión</name>
     </names>
     <informations></informations>

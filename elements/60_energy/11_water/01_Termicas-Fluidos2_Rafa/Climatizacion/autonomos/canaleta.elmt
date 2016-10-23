@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="43" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A1363D5B-E8DA-47F7-9202-C312DC879231}"/><names>
         <name lang="es">Canaleta</name>
         <name lang="ca">Canaleta</name>
     </names>

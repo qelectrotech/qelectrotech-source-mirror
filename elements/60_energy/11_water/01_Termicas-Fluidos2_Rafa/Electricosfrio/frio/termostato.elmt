@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="9" hotspot_y="35" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9C1187C6-0BB9-437F-AC61-588E073DEC8D}"/><names>
         <name lang="ru">Переключатель 2-х позиционный</name>
         <name lang="en">Switch 2 positions</name>
         <name lang="es">Termostato</name>

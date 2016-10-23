@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="34" hotspot_y="49" height="120" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{28C89597-BF49-47BE-B90B-2A35DDABD49D}"/><names>
         <name lang="ar">خزّان 1000ل</name>
         <name lang="en">Storage tank 1000L</name>
         <name lang="it">Serbatoio 1000L</name>

@@ -1,5 +1,5 @@
 <definition hotspot_x="24" hotspot_y="21" width="40" type="element" version="0.5" height="30" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{D0AD5798-1D44-4B92-B689-8B20CB43FB74}"/><names>
         <name lang="ca">Vàlvula d'equilibrat</name>
         <name lang="es">Válvula de equilibrado</name>
     </names>

@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="4" type="element" width="30" orientation="dyyy">
-    <names>
+<uuid uuid="{FAAE54F0-B896-4F9E-AE1E-D25630D309DA}"/><names>
         <name lang="es">Estufa fija</name>
     </names>
     <informations>Rafael Ferrando.

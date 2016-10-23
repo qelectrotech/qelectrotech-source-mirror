@@ -1,5 +1,5 @@
 <definition width="140" version="0.4" hotspot_x="69" hotspot_y="36" height="70" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2FF3145C-6C60-45EB-A3C1-636667BB4F70}"/><names>
         <name lang="es">Cortina lamas</name>
         <name lang="ca">Cortina lames</name>
     </names>

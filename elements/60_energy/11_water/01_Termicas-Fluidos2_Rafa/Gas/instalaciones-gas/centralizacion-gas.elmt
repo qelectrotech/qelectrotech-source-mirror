@@ -1,5 +1,5 @@
 <definition link_type="simple" type="element" hotspot_x="38" hotspot_y="38" version="0.5" width="80" height="90" orientation="dyyy">
-    <names>
+<uuid uuid="{0ED24A28-1D7A-4194-BEED-B3E1DED99DED}"/><names>
         <name lang="es">Centralización</name>
         <name lang="ca">Centralització</name>
     </names>

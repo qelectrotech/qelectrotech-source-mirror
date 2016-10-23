@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="40" link_type="simple" width="50" hotspot_x="36" hotspot_y="9" orientation="dyyy">
-    <names>
+<uuid uuid="{D7F1B1A6-D10B-40FB-900D-AF5B7ABF3AB3}"/><names>
         <name lang="ca">Valv. 3 vies</name>
         <name lang="fr">Mitigeur 03 ECS</name>
         <name lang="es">Valv 3 Vías</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="13" hotspot_y="22" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1BEEDE54-7AFE-4585-84BA-C6D41D1917E8}"/><names>
         <name lang="es">Fancoil Horiz</name>
         <name lang="ca">Fancoil Horitz</name>
     </names>

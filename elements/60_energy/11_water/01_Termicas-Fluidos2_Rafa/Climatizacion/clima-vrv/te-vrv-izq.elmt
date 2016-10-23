@@ -1,5 +1,5 @@
 <definition hotspot_x="24" hotspot_y="14" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{F3A782E1-5C0E-420A-9CF9-154D64A04459}"/><names>
         <name lang="ca">Te tuberies VRV-esq</name>
         <name lang="es">Te tuberias VRV-izq</name>
     </names>

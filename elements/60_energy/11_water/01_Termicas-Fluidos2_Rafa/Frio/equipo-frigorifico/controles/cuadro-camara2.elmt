@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="48" hotspot_y="23" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B2E4C265-74CB-4CAA-BEA2-08F1DF1E1F95}"/><names>
         <name lang="es">Cuadro cámara2</name>
         <name lang="ca">Cuadre càmbra2</name>
     </names>

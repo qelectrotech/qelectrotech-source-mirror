@@ -1,5 +1,5 @@
 <definition width="130" version="0.4" hotspot_x="31" hotspot_y="80" height="130" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1CB90822-F8FF-47C9-BBA9-082DC1E9E75E}"/><names>
         <name lang="es">Solar Termosifón 2</name>
         <name lang="ca">Solar temosifó 2</name>
     </names>

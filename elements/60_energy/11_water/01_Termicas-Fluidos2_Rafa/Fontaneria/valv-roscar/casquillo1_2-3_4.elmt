@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3321C9C4-BE16-4AE6-BA96-6A8C536F8095}"/><names>
         <name lang="es">Casquillo 1/2-3/4</name>
         <name lang="ca">Casquet 1/2-3/4</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="19" hotspot_y="21" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E10EC565-ED1E-400A-8E38-DF583CF31986}"/><names>
         <name lang="es">Valvula presión constante</name>
     </names>
     <informations>Rafael Ferrando.

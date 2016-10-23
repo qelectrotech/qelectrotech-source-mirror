@@ -1,5 +1,5 @@
 <definition width="150" version="0.4" hotspot_x="54" hotspot_y="21" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2B51277A-24BB-43C7-A174-D1D3DECC83C8}"/><names>
         <name lang="es">Depósito gas superf.</name>
         <name lang="ca">Dipòsit gas superf.</name>
     </names>

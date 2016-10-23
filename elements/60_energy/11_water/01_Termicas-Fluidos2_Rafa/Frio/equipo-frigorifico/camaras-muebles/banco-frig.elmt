@@ -1,5 +1,5 @@
 <definition height="70" hotspot_x="16" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="59" version="0.5">
-    <names>
+<uuid uuid="{FEFA2656-2A7F-4D2A-A30E-4C7DCEB91DA5}"/><names>
         <name lang="ca">Banc frigorífic</name>
         <name lang="es">Banco frigorífico</name>
     </names>

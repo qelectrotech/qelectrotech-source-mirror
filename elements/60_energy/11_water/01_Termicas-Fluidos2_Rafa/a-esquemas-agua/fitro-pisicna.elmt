@@ -1,5 +1,5 @@
 <definition link_type="simple" ic="true" height="30" width="50" version="0.4" hotspot_y="10" type="element" hotspot_x="14" orientation="dyyy">
-    <names>
+<uuid uuid="{0F455155-1C70-4550-8385-D880A697893B}"/><names>
         <name lang="es">Filtro piscina</name>
         <name lang="ca">Filtre piscina</name>
     </names>

@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="24" hotspot_y="21" width="50" height="40" version="0.5">
-    <names>
+<uuid uuid="{6993D357-A91A-4224-8871-D0EAEB6DCCEE}"/><names>
         <name lang="ca">Bomba vertical</name>
         <name lang="es">Bomba vertical</name>
     </names>

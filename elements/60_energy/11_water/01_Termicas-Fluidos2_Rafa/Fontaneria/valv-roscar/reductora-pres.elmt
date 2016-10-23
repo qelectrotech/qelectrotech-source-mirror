@@ -1,5 +1,5 @@
 <definition width="70" hotspot_y="49" hotspot_x="39" type="element" orientation="dyyy" version="0.5" link_type="simple" height="70">
-    <names>
+<uuid uuid="{B36AD5CE-24B4-4F24-8CB3-5B742E23DC8D}"/><names>
         <name lang="pl">Filtr</name>
         <name lang="fr">Filtre à Tamis</name>
         <name lang="es">Reductora Presión</name>

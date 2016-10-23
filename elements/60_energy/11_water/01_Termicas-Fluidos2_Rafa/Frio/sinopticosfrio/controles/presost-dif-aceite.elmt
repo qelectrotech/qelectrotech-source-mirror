@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="6" hotspot_y="6" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F7DFE276-A400-4548-8FE6-68B474C415E3}"/><names>
         <name lang="es">Presostato dif. aceite</name>
         <name lang="ca">Pres.dif.Oli</name>
     </names>

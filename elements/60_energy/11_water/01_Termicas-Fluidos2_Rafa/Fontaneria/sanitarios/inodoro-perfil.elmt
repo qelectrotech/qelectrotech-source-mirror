@@ -1,5 +1,5 @@
 <definition height="80" link_type="simple" width="70" hotspot_x="26" hotspot_y="51" version="0.5" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{56BBC0D1-7AA0-489F-96AB-C0B31610BCE3}"/><names>
         <name lang="ca">Inodor perfil</name>
         <name lang="es">Inodoro perfil</name>
     </names>

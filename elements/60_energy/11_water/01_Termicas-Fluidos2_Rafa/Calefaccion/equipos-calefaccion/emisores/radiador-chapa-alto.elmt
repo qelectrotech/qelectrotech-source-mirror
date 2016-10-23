@@ -1,5 +1,5 @@
 <definition hotspot_x="14" hotspot_y="29" width="40" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{783ABE3E-B308-4DD0-8171-766B5DBF6231}"/><names>
         <name lang="en">Steel radiator</name>
         <name lang="it">Radiatore</name>
         <name lang="pl">Grzejnik płytowy</name>

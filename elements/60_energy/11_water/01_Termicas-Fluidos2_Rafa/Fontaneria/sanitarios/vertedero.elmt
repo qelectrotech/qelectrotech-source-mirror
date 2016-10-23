@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="26" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B3F139EA-4175-4375-83E9-CF8A981277B8}"/><names>
         <name lang="es">Vertedero</name>
         <name lang="ca">Pica2</name>
     </names>

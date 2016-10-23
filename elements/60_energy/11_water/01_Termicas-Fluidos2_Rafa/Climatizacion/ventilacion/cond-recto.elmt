@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="26" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F28997CF-0BBB-47E1-A411-61FBE0D400DF}"/><names>
         <name lang="es">Conducto rectangular</name>
         <name lang="ca">Conducte rectangular</name>
     </names>

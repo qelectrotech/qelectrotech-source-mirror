@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="60" hotspot_y="37" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8769FFC4-9174-4578-A5C2-333235018F65}"/><names>
         <name lang="es">Recuperador calor</name>
         <name lang="ca">Recuperador calor</name>
     </names>

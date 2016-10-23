@@ -1,5 +1,5 @@
 <definition hotspot_x="11" hotspot_y="36" width="70" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{81E26A8A-B4F9-4D6F-9CE1-1A6A9FC37D99}"/><names>
         <name lang="ca">Sol radiant</name>
         <name lang="es">Suelo radiante</name>
     </names>

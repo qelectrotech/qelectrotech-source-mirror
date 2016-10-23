@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="33" hotspot_y="7" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6800729C-2CB6-4F8D-A577-AD03218DBF83}"/><names>
         <name lang="es">Resistencias suelo</name>
     </names>
     <informations>Rafael Ferrando.

@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{15B2A170-E5ED-4725-A3CF-F8FF107D6987}"/><names>
         <name lang="es">Regulador velocitat</name>
         <name lang="ca">Regulador velocidad</name>
     </names>

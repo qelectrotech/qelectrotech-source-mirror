@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="22" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A4845C3E-9E78-4F48-BC1C-F68FFEAE85BA}"/><names>
         <name lang="ca">Reg. nivel aceite</name>
     </names>
     <informations></informations>

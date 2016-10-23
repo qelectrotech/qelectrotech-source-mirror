@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4B0BFFD5-8AAA-4353-AF8B-8DB509202C80}"/><names>
         <name lang="es">Compresor Hermético 2</name>
     </names>
     <informations></informations>

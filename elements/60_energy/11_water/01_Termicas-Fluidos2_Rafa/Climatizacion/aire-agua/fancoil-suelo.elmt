@@ -1,5 +1,5 @@
 <definition hotspot_x="25" hotspot_y="38" width="50" type="element" version="0.5" height="70" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{39920157-6959-4072-8B05-8C5BC5D7AFD4}"/><names>
         <name lang="ca">Fancoil sol</name>
         <name lang="es">Fancoil Suelo</name>
     </names>

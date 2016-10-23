@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="20" hotspot_y="14" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{34694EC3-1A37-409B-99F7-2244F86A2C12}"/><names>
         <name lang="es">Valv. retención solar</name>
         <name lang="ca">Valv. retenció solar</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="39" hotspot_y="26" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2D27BE1D-CCCF-4803-914E-AE688A02F4EF}"/><names>
         <name lang="es">Depósito nodriza</name>
         <name lang="ca">Dipòsit nodrissa</name>
     </names>

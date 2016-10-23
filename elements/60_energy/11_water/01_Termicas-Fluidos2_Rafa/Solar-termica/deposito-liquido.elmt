@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="26" hotspot_y="28" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7CFDDDE-51E3-4F70-BA2A-24376120F9C8}"/><names>
         <name lang="es">Depósito llenado</name>
         <name lang="ca">Dipósit omplida</name>
     </names>

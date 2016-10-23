@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C8E33246-C0C7-4F52-A0D3-19116166F9BE}"/><names>
         <name lang="es">Llave de paso compuerta</name>
     </names>
     <informations>Rafael Ferrando.

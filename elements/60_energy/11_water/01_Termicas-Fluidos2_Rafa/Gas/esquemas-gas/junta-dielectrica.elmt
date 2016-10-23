@@ -1,5 +1,5 @@
 <definition height="20" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="10" type="element" width="30" orientation="dyyy">
-    <names>
+<uuid uuid="{334E8337-B1F5-44B7-9F9E-E4C45DF141A2}"/><names>
         <name lang="es">Junta dieléctrica</name>
     </names>
     <informations>Rafael Ferrando.

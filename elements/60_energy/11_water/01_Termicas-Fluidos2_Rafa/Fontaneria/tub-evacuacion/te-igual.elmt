@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="32" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{00E4E699-BCA7-4698-8FC7-170FC557F77E}"/><names>
         <name lang="es">Te igual</name>
         <name lang="ca">Te igual</name>
     </names>

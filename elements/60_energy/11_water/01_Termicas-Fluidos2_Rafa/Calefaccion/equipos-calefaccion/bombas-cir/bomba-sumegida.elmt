@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="18" orientation="dyyy" hotspot_y="34" version="0.5" type="element" height="60" width="30">
-    <names>
+<uuid uuid="{E1046D2D-4DB2-4F26-BB70-84BB600E26B2}"/><names>
         <name lang="es">Bomba sumergida</name>
         <name lang="ca">Bomba sumergida</name>
     </names>
