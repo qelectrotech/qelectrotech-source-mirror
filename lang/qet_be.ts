@@ -214,7 +214,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Python plugin qet tb generator</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="128"/>
@@ -298,22 +298,22 @@
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Autonumerotation Séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="44"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="57"/>
         <source>Conductor</source>
-        <translation type="unfinished">Geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde</translation>
     </message>
 </context>
 <context>
@@ -321,115 +321,115 @@
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="113"/>
         <source>Project Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Status project:</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Bereik</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="159"/>
         <source>Apply to Selected Locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Toepassen op de geslecteerde locaties</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="166"/>
         <source>Apply to Selected Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Toepassen op de geselecteerde bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Toepassen op het volledige project</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="192"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="215"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="238"/>
         <source>Update Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanpassings regels</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="253"/>
         <source>Conductor</source>
-        <translation type="unfinished">Geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="270"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="344"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="409"/>
         <source>Only New</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkel nieuwe</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="260"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="328"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="429"/>
         <source>Both</source>
-        <translation type="unfinished"></translation>
+        <translation>Beiden</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="290"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="376"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="439"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitgeschakeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="315"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="280"/>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkel bestaande</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestaande</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
-        <translation type="unfinished"></translation>
+        <translation>In ontwikkeling</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation>Installerend</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Built</source>
-        <translation type="unfinished"></translation>
+        <translation>Maken</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="184"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Beheer automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/autonumberingmanagementw.cpp" line="185"/>
@@ -439,7 +439,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>In dit menu kan u instellen wat en hoe de Automatisch nummering wordt bijgewerkt. Voor  Element  heb je 4 mogelijk opties :
+-Beide: Zowel bestaan en nieuw element zal worden bijgewerkt labels. Dit is de standaardoptie.
+Alleen Nnieuwe: alleen  voor nieuwe elementen zal worden bijgewerkt. Bestaande Element labels zullen worden bevroren.
+-Update Alleen bestaan: alleen bestaan Elements worden bijgewerkt. Nieuwe elementen worden toegewezen Hun doel formule zal niet een keer informatie bijwerken gemaakt.
+-Uitgeschakeld: Zowel nieuwe als bestaande Element labels worden niet bijgewerkt. Dit geldt ook voor nieuwe bladzijden.
+Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen hun beleid aan.</translation>
     </message>
 </context>
 <context>
@@ -2071,22 +2076,22 @@ Field &quot;Raise&quot; wordt hier  niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch naam patroon</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>%voorvoegsel%l%c</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formule:</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
@@ -2100,7 +2105,16 @@ Field &quot;Raise&quot; wordt hier  niet gebruikt.</translation>
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt gebruik maken van de volgende variabelen in uw formule:
+  -% Voorvoegsel Standaard Element voorvoegsel
+  -% S: Rij waarin zich het element bevindt
+  -% C: Kolom waarin zich het element bevindt
+  -% F: Naam bladzijde
+  -% F of% id: Bladzijde ID
+  -% Totaal: Totaal aantal bladzijden
+U kan eendere welke variable toevoegen welke u in het titleblok gebruikt
+Tkest en cijfers zijn ook beschikbaar
+.</translation>
     </message>
 </context>
 <context>
@@ -2128,7 +2142,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebuik de bladzijde namen in de plaats van hun ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -2164,12 +2178,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaar niet de labels van de element bij copy-paste</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer de klemmen naar de nomenclatuur</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
@@ -2884,7 +2898,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="175"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="292"/>
         <source>Chiffre 1 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Cijfer 1 - Bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="88"/>
@@ -2892,7 +2906,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="179"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="296"/>
         <source>Chiffre 01 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Cijfer 01 - Bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="88"/>
@@ -2900,7 +2914,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="183"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="300"/>
         <source>Chiffre 001 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Cijfer 001 - Bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
@@ -2908,7 +2922,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Machiene</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
@@ -2916,28 +2930,28 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie machine</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="195"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="312"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Element rij</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="197"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="314"/>
         <source>Element Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Element kolom</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="199"/>
         <location filename="../sources/ui/numparteditorw.cpp" line="316"/>
         <source>Element Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Element voorvoegsel</translation>
     </message>
 </context>
 <context>
@@ -3098,7 +3112,7 @@ Selecteer de eigenschappen die moeten worden toegepast op een nieuw potentiaal.<
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="324"/>
         <source>Management</source>
-        <translation type="unfinished"></translation>
+        <translation>Beheer</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
@@ -3108,7 +3122,7 @@ Selecteer de eigenschappen die moeten worden toegepast op een nieuw potentiaal.<
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="343"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="359"/>
@@ -3719,12 +3733,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef rooster weer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbergen of weergeven raster op de bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -3744,7 +3758,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Start aanmaken klemmenstrook</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -3795,13 +3809,13 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een rij toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Verwijderen van een lijn</translation>
+        <translation>Verwijderen van een rij</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
@@ -3872,7 +3886,7 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Teken een lijn</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
@@ -4254,12 +4268,12 @@ Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde el
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Projecten</translation>
+        <translation>Projecten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Collectie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -4825,7 +4839,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>|Start DXF converter</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
@@ -5064,46 +5078,46 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="76"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Online handleiding</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
+        <translation>Youtube kanaal</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe versie downloaden (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Start internet browser voor de online handleiding van QElectroTEch</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="87"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Start internet browser voor Youtube kanaal van QElectroTEch</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Start internet browser voor de online depot Nightly van QElectroTEch</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished"></translation>
+        <translation>Steun het project met een donatie</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Steun het project QElectroTech met een donatie</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="110"/>
@@ -6244,12 +6258,12 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisie</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6484,12 +6498,12 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Naamloos project</translation>
+        <translation>Naamloos project</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Collectie</translation>
     </message>
 </context>
 <context>
@@ -6628,7 +6642,15 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>
+U kunt een aangepaste label definiëren voor afdrukken van de bladzijden.
+Creëer uw eigen tekst door het gebruiken van de volgende variabelen:
+% F: het folionummer
+% F: folio label
+% M: Machine
+% LM: Locatie machine
+% S: het lijnnummer
+% C: kolomnummer</translation>
     </message>
 </context>
 <context>
@@ -6705,7 +6727,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/ui/selectautonumw.cpp" line="187"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummering geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="188"/>
@@ -7555,7 +7577,7 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="334"/>
         <source>à droite </source>
-        <translation type="unfinished"></translation>
+        <translation>rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
@@ -7591,22 +7613,22 @@ Breng de huidige datum aan</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisie index</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbaar als %locmach in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbaar als %machine in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Beschikbaar als %date in de diversde titelhoeken bebruikt wordt</translation>
+        <translation>Beschikbaar als %date in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="289"/>
@@ -7661,17 +7683,17 @@ Breng de huidige datum aan</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbaar als %indexrev in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7827,7 +7849,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar: &lt;ul&gt; &lt;li&gt;% {author} auteur van portfolio &lt;/ li&gt; &lt;li&gt;% {date}: datum van de portfolio &lt;/ li&gt; &lt;li&gt;% {title} onder de portfolio &lt;/ li&gt; &lt;li&gt;% {filename}: project bestandsnaam &lt;/ li&gt; &lt;li&gt;% {Machine}: naam van de functionele groep &lt;/ li&gt; project &lt;li&gt;% {locmach} locatie naam in het werkgebied van het project &lt;/ li&gt; &lt;li&gt;% {} indexrev revisie-index van de portefeuille &lt;/ li&gt; &lt;li&gt;% {version}: softwareversie &lt;/ li&gt; &lt;li&gt;% {} portfolio: informatie over de portfolio &lt;/ li&gt; &lt;li&gt;% {folio-id}: de positie van de portefeuille in het project &lt;/ li&gt; &lt;li&gt;% {folio-total} totale aantal folio&apos;s in het project &lt; / li&gt; &lt;/ ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8199,27 +8221,27 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef vertikale offset:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10px komt overeen met 1 tegel verplaatsing</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zet vertikale offset voor de kruisverwijzing. 10 px komt overeen met 1 tegel verplaatsing.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard - Pas in XREf hoogte</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Wee&amp;rgeven in contacten</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
@@ -8260,7 +8282,13 @@ Maximale lengte : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Creëer uw eigen tekst door het gebruiken van de volgende variabelen:
+% F: het bladzijde nummer
+% F: folio label
+% S: het rijnummer
+% C: kolomnummer
+% M: Installatie
+% LM: Location</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
