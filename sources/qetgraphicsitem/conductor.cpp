@@ -1919,8 +1919,9 @@ void Conductor::setFreezeLabel(bool freeze) {
 		this->properties_.text = freezelabel;
 	}
 	else {
+		if (m_frozen_label.isEmpty())
+			return;
 		this->setText(m_frozen_label);
-		if (m_frozen_label == "") return;
 		properties_.text = m_frozen_label;
 	}
 }
