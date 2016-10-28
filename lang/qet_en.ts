@@ -439,12 +439,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation>In this Menu you can set whether you want the Auto Numberings to be updated or not. For Element Auto Numbering you have 4 options of Update Policy:
--Both: both New and Existent Element labels will be updated. This is the default option.
--Update Only New: only new created Elements will be updated. Existent Element labels will be frozen.
--Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
--Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
-Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</translation>
+        <translation>In this menu you can set whether you want the auto numberings to be updated or not. For element auto numbering you have 4 options of update policy:
+-Both: both new and existent element labels will be updated. This is the default option.
+-Update only new: only new created elements will be updated. Existent element labels will be frozen.
+-Update only existent: only existent elements will be updated. New elements will be assigned their formula but will not update once created.
+-Disable: both new and existent element labels will not be updated. This is valid for new folios as well.
+Note: these options DO NOT allow or block auto numberings, only their update policy.</translation>
     </message>
 </context>
 <context>
@@ -1982,7 +1982,7 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="175"/>
         <source>Dessiner le cartouche</source>
-        <translation>Draw the inset</translation>
+        <translation>Draw the title block</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="179"/>
@@ -2306,7 +2306,7 @@ that you create. Text and number inputs are
         <location filename="../sources/genericpanel.cpp" line="182"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is a QElectroTech project, ie. a .qet file containing several folios. It also embeds element and title block templates used by these diagrams/folios.</translation>
+        <translation>This is a QElectroTech project, ie. a .qet file containing several folios. It also embeds elements and title block templates used in the folios.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="289"/>
@@ -2581,7 +2581,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
         <source>Report de folio</source>
-        <translation>Report folio</translation>
+        <translation>Folio referencing</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
@@ -2711,7 +2711,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="80"/>
         <source>Reports de folio</source>
-        <translation>Reports folio</translation>
+        <translation>Folio referencings</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="81"/>
@@ -3178,7 +3178,7 @@ Please select the properties to be applied to new potential.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="168"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>You may define below custom properties that will be made available to all child folios (typically for use within title blocks).</translation>
+        <translation>You may define below custom properties that will be made available to all folios of the project (typically to use within title blocks).</translation>
     </message>
 </context>
 <context>
@@ -3717,7 +3717,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation>Displays the background color of the sheet in white or gray</translation>
+        <translation>Displays the background color of the folio in white or gray</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
@@ -3747,7 +3747,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation>Launch the Terminal Block creation plugin</translation>
+        <translation>Launch the terminal block creation plugin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -3914,7 +3914,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="458"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation>Edits the properties of the folio (dimensions, title block information properties conductors...)</translation>
+        <translation>Edits the properties of the folio (size, title block informations, conductor properties...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
@@ -4512,7 +4512,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="677"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished">&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</translation>
+        <translation>&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="698"/>
@@ -4779,7 +4779,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="721"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt; &lt;b&gt; Error &lt;/ b&gt;: &lt;br&gt; folio reports must have a single terminal &lt;br&gt; &lt;b&gt; Solution &lt;/ b&gt; :&lt;br&gt; Check that the element has only one terminal</translation>
+        <translation>&lt;br&gt; &lt;b&gt; Error &lt;/ b&gt;: &lt;br&gt; folio referencings must have a single terminal &lt;br&gt; &lt;b&gt; Solution &lt;/ b&gt; :&lt;br&gt; Check that the element has only one terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
@@ -4829,7 +4829,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b  &gt; :&lt;br&gt;Masters-type elements, slaves, simple and  folio reports must have a text field containing the tagg &apos;label&apos; &lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insert a text field and give it the tagg &apos;label&apos;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b  &gt; :&lt;br&gt;Masters-type elements, slaves, simple and  folio referencings must have a text field containing the tagg &apos;label&apos; &lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insert a text field and give it the tagg &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="750"/>
@@ -5824,7 +5824,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="774"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>modify the inset</translation>
+        <translation>modify the title block</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="807"/>
@@ -6265,7 +6265,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation>Image Files (*.png *.jpg *.bmp *.svg)</translation>
+        <translation>Image files (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -6611,7 +6611,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Label of report folio</translation>
+        <translation>Label of folio referencing</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -6623,14 +6623,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>You can define a custom label for report folio.
+        <translation>You can define a custom label for folio referencing.
 Create your own text by helping you of the following variables:
-% f: the folio number
-% F: folio label
+% f: Folio number
+% F: Folio label
 % M: Plant
 % LM: Location
-% l: the line number
-% c: column number
+% l: Line number
+% c: Column number
 </translation>
     </message>
 </context>
@@ -7525,7 +7525,7 @@ The other fields are not used.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="312"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="430"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation>Create an Auto Folio Numbering</translation>
+        <translation>Create an auto folio numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="70"/>
@@ -7540,17 +7540,17 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="218"/>
         <source>Folio :</source>
-        <translation>Folio :</translation>
+        <translation>Folio:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="190"/>
         <source>Auteur :</source>
-        <translation>Author :</translation>
+        <translation>Author:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="239"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>Available as % filename patterns for title blocks</translation>
+        <translation>Available as variable %filename for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="345"/>
@@ -7558,15 +7558,15 @@ The other fields are not used.</translation>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>The following variables are used in the field Folio:
--% Id: current sheet number in the project
--% Total: total number of folios in the project
--% Autonum: Folio Auto Numeration</translation>
+        <translation>The following variables are available to use in the field Folio:
+-%id: current number of folios in the project
+-%total: total number of folios in the project
+-%autonum: folio auto numbering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="334"/>
         <source>à droite </source>
-        <translation>To the right</translation>
+        <translation>to the right</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
@@ -7591,47 +7591,47 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="53"/>
         <source>Informations des cartouches</source>
-        <translation>Informations title blocs</translation>
+        <translation>Title block informations</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
         <source>Afficher :</source>
-        <translation>Display :</translation>
+        <translation>Display:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Indice Rev</source>
-        <translation>Index Rev</translation>
+        <translation>Rev index:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>Available as %locmach patterns for title blocks</translation>
+        <translation>Available as variable %locmach for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation>Available as %machine patterns for title blocks</translation>
+        <translation>Available as variable %machine for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Available as %date patterns for title blocks</translation>
+        <translation>Available as variable %date for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="289"/>
         <source>Date fixe :</source>
-        <translation>Fixed date :</translation>
+        <translation>Fixed date:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="305"/>
         <source>Titre :</source>
-        <translation>Title :</translation>
+        <translation>Title:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt; Displays the cartridge bottom (horizontal) or right (vertically) of the folio &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the title block at the bottom (horizontal) or right (vertically) of the folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
@@ -7641,27 +7641,27 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="225"/>
         <source>Fichier :</source>
-        <translation>File :</translation>
+        <translation>File:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation>Available as %folio patterns for title blocks</translation>
+        <translation>Available as variable %folio for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="129"/>
         <source>Date :</source>
-        <translation>Date :</translation>
+        <translation>Date:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="232"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>Available as %author patterns for title blocks</translation>
+        <translation>Available as variable %author for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>Available as %title patterns for title blocks</translation>
+        <translation>Available as variable %title for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
@@ -7671,17 +7671,17 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation>Plants :</translation>
+        <translation>Plant:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation>Location</translation>
+        <translation>Location:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>Available as %indexrev patterns for title blocks</translation>
+        <translation>Available as variable %indexrev for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
@@ -7692,7 +7692,7 @@ The other fields are not used.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="393"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>You may define here your own name/value associations so the title block takes them into account. E.g. associating the volta name with the 1745 value will replace %{volta} with 1745 within the title block.</translation>
+        <translation>You may define here your own name/value associations so the title block takes them into account. E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will replace %{volta} by 1745 within the title block.</translation>
     </message>
 </context>
 <context>
@@ -7841,7 +7841,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values from the folio.</translation>
+        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the folio.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -8172,13 +8172,13 @@ Maximum length : %2px</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="138"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Untitled project (id %1) title blocks</translation>
+        <translation>Title blocks of untitled project (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="146"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>&quot;%1&quot; project title blocks</translation>
+        <translation>Title blocks of project &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
