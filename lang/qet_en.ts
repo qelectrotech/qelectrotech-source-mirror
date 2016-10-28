@@ -4072,7 +4072,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="581"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Recently opened</translation>
+        <translation>&amp;Latest files</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
@@ -4543,7 +4543,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="222"/>
         <source>Amener au premier plan</source>
-        <translation>Bring forward</translation>
+        <translation>Bring to front</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="227"/>
@@ -5878,7 +5878,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="369"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
-        <translation>send backward</translation>
+        <translation>Send to back</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="469"/>
