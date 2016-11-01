@@ -2,5 +2,7 @@
     <names>
         <name lang="es">Maniobra</name>
         <name lang="ca">Maniobra</name>
+        <name lang="en">Cold</name>
+        <name lang="fr">Froid</name>
     </names>
 </qet-directory>

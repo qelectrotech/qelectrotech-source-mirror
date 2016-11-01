@@ -2,5 +2,7 @@
     <names>
         <name lang="es">CLIMATIZACION</name>
         <name lang="ca">CLIMATITZACIÓ</name>
+        <name lang="en">AIR CONDITIONING</name>
+        <name lang="fr">CLIMATISATION</name>
     </names>
 </qet-directory>

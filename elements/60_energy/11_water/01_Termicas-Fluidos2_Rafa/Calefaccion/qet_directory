@@ -2,5 +2,7 @@
     <names>
         <name lang="es">CALEFACCION</name>
         <name lang="ca">CALEFACCIÓ</name>
+        <name lang="en">HEATING</name>
+        <name lang="fr">CHAUFFAGE</name>
     </names>
 </qet-directory>

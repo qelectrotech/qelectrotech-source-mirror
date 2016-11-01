@@ -2,5 +2,7 @@
     <names>
         <name lang="es">Gasóleo</name>
         <name lang="ca">Gasoil</name>
+        <name lang="en">Diesel fuel</name>
+        <name lang="fr">Gas-oil</name>
     </names>
 </qet-directory>
