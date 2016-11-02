@@ -1,6 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="es">Valvuleria</name>
-        <name lang="ca">Valvules</name>
+        <name lang="es">Válvulas-Aparatos</name>
+        <name lang="ca">Vàlvules-Aparells</name>
+        <name lang="en">Valves</name>
+        <name lang="fr">Vannes</name>
     </names>
 </qet-directory>

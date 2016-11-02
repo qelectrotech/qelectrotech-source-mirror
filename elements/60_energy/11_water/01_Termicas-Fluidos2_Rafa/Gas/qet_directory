@@ -2,5 +2,7 @@
     <names>
         <name lang="es">GASES COMBUSTIBLES</name>
         <name lang="ca">GASOS COMBUSTIBLES</name>
+        <name lang="en">FUELS GASES</name>
+        <name lang="fr">CARBURANTS GAZ</name>
     </names>
 </qet-directory>
