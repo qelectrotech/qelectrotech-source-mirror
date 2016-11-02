@@ -2,5 +2,7 @@
     <names>
         <name lang="es">Sanitarios</name>
         <name lang="ca">Sanitaris</name>
+        <name lang="en">Health equipment</name>
+        <name lang="fr">Sanitaire</name>
     </names>
 </qet-directory>

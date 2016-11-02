@@ -1,5 +1,7 @@
 <qet-directory>
     <names>
         <name lang="es">Evap+Condens.</name>
+        <name lang="en">Evaporator condenser</name>
+        <name lang="fr">Evaporateur condenseur</name>
     </names>
 </qet-directory>

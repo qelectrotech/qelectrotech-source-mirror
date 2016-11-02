@@ -2,5 +2,7 @@
     <names>
         <name lang="es">Equipo frigorífico</name>
         <name lang="ca">Equips frigorífics</name>
+        <name lang="en">Refrigeration equipment</name>
+        <name lang="fr">Equipement de réfrigération</name>
     </names>
 </qet-directory>
