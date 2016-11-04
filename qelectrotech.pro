@@ -80,9 +80,9 @@ INCLUDEPATH += sources \
                sources/undocommand \
                sources/diagramevent \
                sources/ElementsCollection \
-sources/ElementsCollection/ui \
-sources/autoNum \
-sources/autoNum/ui
+               sources/ElementsCollection/ui \
+               sources/autoNum \
+               sources/autoNum/ui
 
 
 # Fichiers sources
@@ -95,9 +95,9 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/undocommand/*.h) \
            $$files(sources/diagramevent/*.h) \
            $$files(sources/ElementsCollection/*.h) \
-$$files(sources/ElementsCollection/ui/*.h) \
-$$files(sources/autoNum/*.h) \
-$$files(sources/autoNum/ui/*.h)
+           $$files(sources/ElementsCollection/ui/*.h) \
+           $$files(sources/autoNum/*.h) \
+           $$files(sources/autoNum/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
@@ -108,9 +108,9 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/undocommand/*.cpp) \
            $$files(sources/diagramevent/*.cpp) \
            $$files(sources/ElementsCollection/*.cpp) \
-$$files(sources/ElementsCollection/ui/*.cpp) \
-$$files(sources/autoNum/*.cpp) \
-$$files(sources/autoNum/ui/*.cpp)
+           $$files(sources/ElementsCollection/ui/*.cpp) \
+           $$files(sources/autoNum/*.cpp) \
+           $$files(sources/autoNum/ui/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -128,8 +128,8 @@ QT += xml svg network sql widgets printsupport concurrent
 FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/ui/*.ui) \
          $$files(sources/editor/ui/*.ui) \
-$$files(sources/ElementsCollection/ui/*.ui) \
-$$files(sources/autoNum/ui/*.ui)
+         $$files(sources/ElementsCollection/ui/*.ui) \
+         $$files(sources/autoNum/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
