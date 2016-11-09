@@ -21,6 +21,7 @@
 #include "qet.h"
 #include "qetgraphicsitem.h"
 #include "diagramcontext.h"
+#include "assignvariables.h"
 
 class ElementTextItem;
 class QETProject;
@@ -134,8 +135,10 @@ class Element : public QetGraphicsItem {
 		DiagramContext  kindInformations       () const             {return kind_informations_;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
-		QString assignVariables (QString, Element *);
-		QString assignSeq (QString, Element*);
+
+		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
+		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
+
 		void setSequential ();
 		void setSequentialToList(QStringList*, NumerotationContext*, QString);
 		void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
@@ -148,6 +151,7 @@ class Element : public QetGraphicsItem {
 	//ATTRIBUTES
 	protected:
 		DiagramContext m_element_informations, kind_informations_;
+		autonum::sequenceStruct m_autoNum_seq;
 
 	/**
 		Draw this element
@@ -187,14 +191,6 @@ class Element : public QetGraphicsItem {
 
 	// orientation-related methods
 	int orientation() const;
-	
-	// Lists containing Sequentials
-	QStringList seq_unit;
-	QStringList seq_unitfolio;
-	QStringList seq_ten;
-	QStringList seq_tenfolio;
-	QStringList seq_hundred;
-	QStringList seq_hundredfolio;
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);

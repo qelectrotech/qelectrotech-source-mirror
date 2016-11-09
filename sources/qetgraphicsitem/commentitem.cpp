@@ -151,9 +151,9 @@ void CommentItem::updateLabel()
  * Draw Info to item text.
  * (draw this item in a QPicture)
  */
-void CommentItem::addInfo(QPainter &painter, QString type){
-
-	QString text = m_element -> assignVariables(m_element -> elementInformations()[type].toString(), m_element);
+void CommentItem::addInfo(QPainter &painter, QString type)
+{
+	QString text = autonum::AssignVariables::formulaToLabel(m_element -> elementInformations()[type].toString(), m_element->rSequenceStruct(), m_element->diagram(), m_element);
 	bool must_show  = m_element -> elementInformations().keyMustShow(type);
 
 	if (!text.isEmpty() && must_show)

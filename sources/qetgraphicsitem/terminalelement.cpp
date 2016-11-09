@@ -68,10 +68,9 @@ void TerminalElement::changeElementInfo(){
  * @brief SimpleElement::updateLabel
  * update label of this element
  */
-void TerminalElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
-	QString label = new_info["label"].toString();
-	Element *elmt = this;
-	label = assignVariables(label,elmt);
+void TerminalElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
+{
+	QString label = autonum::AssignVariables::formulaToLabel(new_info["label"].toString(), m_autoNum_seq, diagram(), this);
 
 	//Label of element
 	if (old_info["label"].toString() != label) {

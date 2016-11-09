@@ -19,6 +19,7 @@
 
 #include "nomenclature.h"
 #include "elementprovider.h"
+#include "assignvariables.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 /**
@@ -142,15 +143,16 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += diagram -> border_and_titleblock.folio() + ";";
 	info += elmt -> name() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
-	info += elmt->assignVariables(elmt_info["label"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["designation"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["comment"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["manufacturer"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["manufacturer-reference"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["auxiliary1"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["auxiliary2"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["machine-manufacturer-reference"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["location"].toString(), elmt) + ";";
-	info += elmt->assignVariables(elmt_info["function"].toString(), elmt) + "\n";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary2"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["machine-manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["location"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["function"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + "\n";
+
 	return info;
 }

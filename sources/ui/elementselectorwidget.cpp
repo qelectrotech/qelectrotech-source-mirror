@@ -24,6 +24,7 @@
 #include "terminal.h"
 #include "conductor.h"
 #include "qet.h"
+#include "assignvariables.h"
 
 /**
  * @brief ElementSelectorWidget::ElementSelectorWidget
@@ -134,13 +135,13 @@ void ElementSelectorWidget::buildInterface() {
 			DiagramContext dc = elmt -> elementInformations();
 
 			if (!dc["label"].toString().isEmpty())
-				button_text = elmt->assignVariables(dc["label"].toString(), elmt) + " ";
+				button_text = autonum::AssignVariables::formulaToLabel(dc["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + " ";
 
 			if (!dc["comment"].toString().isEmpty())
-				button_text += elmt->assignVariables(dc["comment"].toString(), elmt);
+				button_text = autonum::AssignVariables::formulaToLabel(dc["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt);
 
 			if (!dc["location"].toString().isEmpty())
-				button_text += elmt->assignVariables(dc["location"].toString(), elmt);
+				button_text = autonum::AssignVariables::formulaToLabel(dc["location"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt);
 
 			if (!button_text.isEmpty())
 				button_text += "\n";

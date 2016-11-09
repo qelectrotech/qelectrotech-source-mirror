@@ -129,7 +129,7 @@ void MasterElement::initLink(QETProject *project) {
  */
 void MasterElement::folioIdChange() {
 	DiagramContext dc =elementInformations();
-	setTaggedText("label", assignVariables(dc["label"].toString(), this), true);
+	setTaggedText("label", autonum::AssignVariables::formulaToLabel(dc["label"].toString(), m_autoNum_seq, diagram(), this), true);
 }
 
 /**
@@ -151,8 +151,7 @@ void MasterElement::changeElementInfo(){
  */
 void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
 	QString newstr = new_info["label"].toString();
-	Element	*elmt = this;
-	newstr = assignVariables(newstr, elmt);
+	newstr = autonum::AssignVariables::formulaToLabel(newstr, m_autoNum_seq, diagram(), this);
 
 		//Label of element
 	if (old_info["label"].toString() != newstr) {

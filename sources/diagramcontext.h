@@ -26,8 +26,24 @@
 /**
 	This class represents a diagram context, i.e. the data (a list of key/value
 	pairs) of a diagram at a given time. It is notably used by titleblock templates
-	to fetch the informations they need to do their rendering.
+	to fetch the informations they need to do their rendering, or element for retrieve information about itself
 */
+
+/**
+ * Key for element :
+ * label                          -> label or identification of element
+ * designation                    -> exhaustive comment used to explain what the element does.
+ * comment                        -> a little comment wich can be displayed in the folio
+ * manufacturer                   -> the manufacturer of the element
+ * manufacturer-reference         -> the manufacturer reference of the element
+ * auxiliary1                     -> auxiliary 1 of element
+ * auxiliary2                     -> auxiliary 2 of element
+ * machine-manufacturer-reference -> reference of the manufacturer machine
+ * function                       -> the function of element
+ * location                       -> the location of the element
+ * frozenLabel                    -> label locked at a given time
+ *
+ */
 class DiagramContext {
 	public:
 	enum KeyOrder {

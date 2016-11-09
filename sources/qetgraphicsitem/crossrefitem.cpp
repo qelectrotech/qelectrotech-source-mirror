@@ -539,7 +539,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
  */
 void CrossRefItem::AddExtraInfo(QPainter &painter, QString type)
 {
-	QString text = m_element -> assignVariables(m_element -> elementInformations()[type].toString(), m_element);
+	QString text = autonum::AssignVariables::formulaToLabel(m_element -> elementInformations()[type].toString(), m_element->rSequenceStruct(), m_element->diagram(), m_element);
 	bool must_show  = m_element -> elementInformations().keyMustShow(type);
 
 	if (!text.isEmpty() && must_show)

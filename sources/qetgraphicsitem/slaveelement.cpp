@@ -134,16 +134,17 @@ void SlaveElement::updateLabel()
 	bool no_editable = false;
 
 	//must be linked to set the label of master
-	if (linkedElements().count()) {
+	if (linkedElements().count())
+	{
 		no_editable = true;
 		Element *elmt = linkedElements().first();
 		label = elmt -> elementInformations()["label"].toString();
 		XRefProperties xrp = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 		Xreflabel = xrp.slaveLabel();
-		Xreflabel = assignVariables(Xreflabel, elmt);
-		label = assignVariables(label, elmt);
+		Xreflabel = autonum::AssignVariables::formulaToLabel(Xreflabel, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 	}
-	else label = assignVariables(label, this);
+	else label = autonum::AssignVariables::formulaToLabel(label, m_autoNum_seq, diagram(), this);
 
 	// set the new label
 	ElementTextItem *eti = setTaggedText("label", label, no_editable);

@@ -61,9 +61,10 @@ void SimpleElement::initLink(QETProject *project) {
  * @brief SimpleElement::folioIdChange
  * Use to update the label of this item when the foio id change
  */
-void SimpleElement::folioIdChange() {
+void SimpleElement::folioIdChange()
+{
 	DiagramContext dc =elementInformations();
-	setTaggedText("label", assignVariables(dc["label"].toString(), this), true);
+	setTaggedText("label", autonum::AssignVariables::formulaToLabel(dc["label"].toString(), m_autoNum_seq, diagram(), this));
 }
 
 /**
@@ -82,10 +83,9 @@ void SimpleElement::changeElementInfo(){
  * @brief SimpleElement::updateLabel
  * update label of this element
  */
-void SimpleElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
-	QString label = new_info["label"].toString();
-	Element *elmt = this;
-	label = assignVariables(label,elmt);
+void SimpleElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
+{
+	QString label = autonum::AssignVariables::formulaToLabel(new_info["label"].toString(), m_autoNum_seq, diagram(), this);
 
 		//Label of element
 	if (old_info["label"].toString() != label) {

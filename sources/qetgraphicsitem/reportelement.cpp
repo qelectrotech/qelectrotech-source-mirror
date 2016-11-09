@@ -219,7 +219,7 @@ void ReportElement::updateLabel()
 	{
 		Element *elmt = connected_elements.at(0);
 		QString label = label_;
-		label = assignVariables(label,elmt);
+		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 		m_text_field -> setPlainText(label);
 	}
 	else
