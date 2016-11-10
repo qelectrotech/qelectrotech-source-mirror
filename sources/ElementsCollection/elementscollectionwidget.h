@@ -54,6 +54,7 @@ class ElementsCollectionWidget : public QWidget
 
 	protected:
 		virtual bool event(QEvent *event);
+		virtual void leaveEvent(QEvent *event);
 
 	private:
 		void setUpAction();

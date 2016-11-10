@@ -609,6 +609,23 @@ QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 	return(0);
 }
 
+/**
+ * @brief QETApp::diagramEditorAncestorOf
+ * @param child
+ * @return the parent QETDiagramEditor (or grandparent and so on to any level) of the given child.
+ * If not return nullptr;
+ */
+QETDiagramEditor *QETApp::diagramEditorAncestorOf (const QWidget *child)
+{
+	foreach (QETDiagramEditor *qde, QETApp::diagramEditors()) {
+		if (qde->isAncestorOf(child)) {
+			return qde;
+		}
+	}
+
+	return nullptr;
+}
+
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 /**
 	Redefinit le chemin du dossier des elements communs

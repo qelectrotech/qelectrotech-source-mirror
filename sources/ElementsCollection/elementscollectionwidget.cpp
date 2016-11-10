@@ -29,6 +29,7 @@
 #include "qetproject.h"
 #include "qetelementeditor.h"
 #include "elementstreeview.h"
+#include "qetdiagrameditor.h"
 
 #include <QVBoxLayout>
 #include <QMenu>
@@ -115,6 +116,14 @@ bool ElementsCollectionWidget::event(QEvent *event)
 	return QWidget::event(event);
 }
 
+void ElementsCollectionWidget::leaveEvent(QEvent *event)
+{
+	if (QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this))
+		qde->statusBar()->clearMessage();
+
+	QWidget::leaveEvent(event);
+}
+
 void ElementsCollectionWidget::setUpAction()
 {
 	m_open_dir =       new QAction(QET::Icons::DocumentOpen,  tr("Ouvrir le dossier correspondant"), this);
@@ -190,6 +199,13 @@ void ElementsCollectionWidget::setUpConnection()
 	connect(m_tree_view, &QTreeView::doubleClicked, [this](const QModelIndex &index) {
 		this->m_index_at_context_menu = index ;
 		this->editElement();});
+
+	connect(m_tree_view, &QTreeView::entered, [this] (const QModelIndex &index) {
+		QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this);
+		ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+		if (qde && eci)
+			qde->statusBar()->showMessage(eci->localName());
+	});
 }
 
 /**
