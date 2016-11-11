@@ -40,9 +40,9 @@ namespace autonum
 	}
 
 	AssignVariables::AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, Element *elmt):
+	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
-	m_diagram(diagram),
 	m_seq_struct(seqStruct),
 	m_element(elmt)
 	{
