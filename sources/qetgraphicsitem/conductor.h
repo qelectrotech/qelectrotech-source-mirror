@@ -21,6 +21,7 @@
 #include "conductorproperties.h"
 #include <QGraphicsPathItem>
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+#include "assignvariables.h"
 
 class ConductorProfile;
 class ConductorSegmentProfile;
@@ -93,10 +94,8 @@ class Conductor : public QObject, public QGraphicsPathItem
 	ConductorSegment *middleSegment();
 	QPointF posForText(Qt::Orientations &flag);
 	QString text() const;
-	QString assignVariables(QString) ;
 	void setText(const QString &);
 	void refreshText();
-	QString assignSeq (QString, Conductor*);
 	void setSequential ();
 	void setOthersSequential (Conductor *);
 	void setSequentialToList(QStringList*, NumerotationContext*, QString);
@@ -124,13 +123,13 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
-		// Lists containing Sequentials
-		QStringList seq_unit;
-		QStringList seq_unitfolio;
-		QStringList seq_ten;
-		QStringList seq_tenfolio;
-		QStringList seq_hundred;
-		QStringList seq_hundredfolio;
+
+		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
+		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
+	private:
+		autonum::sequenceStruct m_autoNum_seq;
+
+	public:
 		bool setSeq;
 		void setFreezeLabel(bool freeze);
 		QString m_frozen_label;

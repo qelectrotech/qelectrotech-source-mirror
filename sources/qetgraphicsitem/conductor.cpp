@@ -830,12 +830,12 @@ bool Conductor::fromXml(QDomElement &e) {
 	pr.fromXml(e);
 
 	//Load Sequential Values
-	loadSequential(&e,"sequ_",&seq_unit);
-	loadSequential(&e,"sequf_",&seq_unitfolio);
-	loadSequential(&e,"seqt_",&seq_ten);
-	loadSequential(&e,"seqtf_",&seq_tenfolio);
-	loadSequential(&e,"seqh_",&seq_hundred);
-	loadSequential(&e,"seqhf_",&seq_hundredfolio);
+	loadSequential(&e,"sequ_",&m_autoNum_seq.unit);
+	loadSequential(&e,"sequf_",&m_autoNum_seq.unit_folio);
+	loadSequential(&e,"seqt_",&m_autoNum_seq.ten);
+	loadSequential(&e,"seqtf_",&m_autoNum_seq.ten_folio);
+	loadSequential(&e,"seqh_",&m_autoNum_seq.hundred);
+	loadSequential(&e,"seqhf_",&m_autoNum_seq.hundred_folio);
 
 	m_frozen_label = e.attribute("frozenlabel");
 
@@ -890,33 +890,33 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 
 	// Save Conductor sequential values to Xml
 	// Save Unit Sequential Values
-	for (int i = 0; i < seq_unit.size(); i++) {
-			e.setAttribute("sequ_" + QString::number(i+1),seq_unit.at(i));
+	for (int i = 0; i < m_autoNum_seq.unit.size(); i++) {
+			e.setAttribute("sequ_" + QString::number(i+1),m_autoNum_seq.unit.at(i));
 	}
 
 	// Save UnitFolio Sequential Values
-	for (int i = 0; i < seq_unitfolio.size(); i++) {
-			e.setAttribute("sequf_" + QString::number(i+1),seq_unitfolio.at(i));
+	for (int i = 0; i < m_autoNum_seq.unit_folio.size(); i++) {
+			e.setAttribute("sequf_" + QString::number(i+1),m_autoNum_seq.unit_folio.at(i));
 	}
 
 	// Save Ten Sequential Values
-	for (int i = 0; i < seq_ten.size(); i++) {
-			e.setAttribute("seqt_" + QString::number(i+1),seq_ten.at(i));
+	for (int i = 0; i < m_autoNum_seq.ten.size(); i++) {
+			e.setAttribute("seqt_" + QString::number(i+1),m_autoNum_seq.ten.at(i));
 	}
 
 	// Save TenFolio Sequential Values
-	for (int i = 0; i < seq_tenfolio.size(); i++) {
-			e.setAttribute("seqtf_" + QString::number(i+1),seq_tenfolio.at(i));
+	for (int i = 0; i < m_autoNum_seq.ten_folio.size(); i++) {
+			e.setAttribute("seqtf_" + QString::number(i+1),m_autoNum_seq.ten_folio.at(i));
 	}
 
 	// Save Hundred Sequential Values
-	for (int i = 0; i < seq_hundred.size(); i++) {
-			e.setAttribute("seqh_" + QString::number(i+1),seq_hundred.at(i));
+	for (int i = 0; i < m_autoNum_seq.hundred.size(); i++) {
+			e.setAttribute("seqh_" + QString::number(i+1),m_autoNum_seq.hundred.at(i));
 	}
 
 	// Save Hundred Sequential Values
-	for (int i = 0; i < seq_hundredfolio.size(); i++) {
-			e.setAttribute("seqhf_" + QString::number(i+1),seq_hundredfolio.at(i));
+	for (int i = 0; i < m_autoNum_seq.hundred_folio.size(); i++) {
+			e.setAttribute("seqhf_" + QString::number(i+1),m_autoNum_seq.hundred_folio.at(i));
 	}
 
 	if (m_frozen_label != "") e.setAttribute("frozenlabel", m_frozen_label);
@@ -1269,52 +1269,6 @@ QString Conductor::text() const {
 }
 
 /**
- * @brief Conductor::assignVariables
- * Apply variables to conductor label
- * @param label to be processed
- * @return label with variables assigned
- */
-QString Conductor::assignVariables(QString label) {
-	//The check below was introduced to avoid crash caused by the addition of terminal elements
-	//Needs further debbugging.
-	if (diagram() == NULL) return label;
-
-	//Titleblock Variables
-		for (int i = 0; i < diagram()->border_and_titleblock.additionalFields().count(); i++)
-	{
-		QString folio_variable = diagram()->border_and_titleblock.additionalFields().keys().at(i);
-		QVariant folio_value = diagram()->border_and_titleblock.additionalFields().operator [](folio_variable);
-
-		if (label.contains(folio_variable)) {
-			label.replace("%{" + folio_variable + "}", folio_value.toString());
-			label.replace("%"  + folio_variable      , folio_value.toString());
-		}
-	}
-
-	//Project Variables
-	for (int i = 0; i < diagram()->project()->projectProperties().count(); i++)
-	{
-		QString folio_variable = diagram()->project()->projectProperties().keys().at(i);
-		QVariant folio_value = diagram()->project()->projectProperties().operator [](folio_variable);
-
-		if (label.contains(folio_variable)) {
-			label.replace("%{" + folio_variable + "}", folio_value.toString());
-			label.replace("%"  + folio_variable      , folio_value.toString());
-		}
-	}
-
-	//Default Variables
-	label.replace("%f", QString::number(diagram()->folioIndex()+1));
-	label.replace("%F", diagram() -> border_and_titleblock.folio());
-	label.replace("%id", QString::number(diagram()->folioIndex()+1));
-	label.replace("%total", QString::number(diagram()->border_and_titleblock.folioTotal()));
-	label.replace("%M",  diagram() -> border_and_titleblock.machine());
-	label.replace("%LM",  diagram() -> border_and_titleblock.locmach());
-	label = assignSeq(label, this);
-	return label;
-}
-
-/**
  * @brief Conductor::setSequential
  * Set sequential values to conductor
  */
@@ -1327,22 +1281,22 @@ void Conductor::setSequential() {
 	NumerotationContextCommands ncc (nc);
 	if (!nc.isEmpty()) {
 		if (label.contains("%sequ_"))
-			setSequentialToList(&seq_unit,&nc,"unit");
+			setSequentialToList(&m_autoNum_seq.unit,&nc,"unit");
 		if (label.contains("%sequf_")) {
-			setSequentialToList(&seq_unitfolio,&nc,"unitfolio");
-			setFolioSequentialToHash(&seq_unitfolio,&diagram()->m_cnd_unitfolio_max,conductor_currentAutoNum);
+			setSequentialToList(&m_autoNum_seq.unit_folio,&nc,"unitfolio");
+			setFolioSequentialToHash(&m_autoNum_seq.unit_folio,&diagram()->m_cnd_unitfolio_max,conductor_currentAutoNum);
 		}
 		if (label.contains("%seqt_"))
-			setSequentialToList(&seq_ten,&nc,"ten");
+			setSequentialToList(&m_autoNum_seq.ten,&nc,"ten");
 		if (label.contains("%seqtf_")) {
-			setSequentialToList(&seq_tenfolio,&nc,"tenfolio");
-			setFolioSequentialToHash(&seq_tenfolio,&diagram()->m_cnd_tenfolio_max,conductor_currentAutoNum);
+			setSequentialToList(&m_autoNum_seq.ten_folio,&nc,"tenfolio");
+			setFolioSequentialToHash(&m_autoNum_seq.ten_folio,&diagram()->m_cnd_tenfolio_max,conductor_currentAutoNum);
 		}
 		if (label.contains("%seqh_"))
-			setSequentialToList(&seq_hundred,&nc,"hundred");
+			setSequentialToList(&m_autoNum_seq.hundred,&nc,"hundred");
 		if (label.contains("%seqhf_")) {
-			setSequentialToList(&seq_hundredfolio,&nc,"hundredfolio");
-			setFolioSequentialToHash(&seq_hundredfolio,&diagram()->m_cnd_hundredfolio_max,conductor_currentAutoNum);
+			setSequentialToList(&m_autoNum_seq.hundred_folio,&nc,"hundredfolio");
+			setFolioSequentialToHash(&m_autoNum_seq.hundred_folio,&diagram()->m_cnd_hundredfolio_max,conductor_currentAutoNum);
 		}
 	this->diagram()->project()->addConductorAutoNum(conductor_currentAutoNum,ncc.next());
 	}
@@ -1398,36 +1352,6 @@ void Conductor::setFolioSequentialToHash(QStringList* list, QHash<QString, QStri
 }
 
 /**
- * @brief Conductor::assignSeq
- * Replace sequential values to conductor label
- * @param label to be replaced
- * @return replaced label
- */
-QString Conductor::assignSeq(QString label, Conductor* cnd) {
-	for (int i = 1; i <= qMax(qMax(qMax(cnd->seq_unitfolio.size(), cnd->seq_tenfolio.size()),qMax(cnd->seq_hundredfolio.size(),cnd->seq_unit.size())),qMax(cnd->seq_hundred.size(),cnd->seq_ten.size())); i++) {
-		if (label.contains("%sequ_" + QString::number(i)) && !cnd->seq_unit.isEmpty()) {
-			label.replace("%sequ_" + QString::number(i),cnd->seq_unit.at(i-1));
-		}
-		if (label.contains("%seqt_" + QString::number(i)) && !cnd->seq_ten.isEmpty()) {
-			label.replace("%seqt_" + QString::number(i),cnd->seq_ten.at(i-1));
-		}
-		if (label.contains("%seqh_" + QString::number(i)) && !cnd->seq_hundred.isEmpty()) {
-			label.replace("%seqh_" + QString::number(i),cnd->seq_hundred.at(i-1));
-		}
-		if (label.contains("%sequf_" + QString::number(i)) && !cnd->seq_unitfolio.isEmpty()) {
-			label.replace("%sequf_" + QString::number(i),cnd->seq_unitfolio.at(i-1));
-		}
-		if (label.contains("%seqtf_" + QString::number(i)) && !cnd->seq_tenfolio.isEmpty()) {
-			label.replace("%seqtf_" + QString::number(i),cnd->seq_tenfolio.at(i-1));
-		}
-		if (label.contains("%seqhf_" + QString::number(i)) && !cnd->seq_hundredfolio.isEmpty()) {
-			label.replace("%seqhf_" + QString::number(i),cnd->seq_hundredfolio.at(i-1));
-		}
-	}
-	return label;
-}
-
-/**
  * @brief Conductor::setOthersSequential
  * Copy sequentials from conductor in argument to this conductor
  * @param conductor to copy sequentials from
@@ -1435,12 +1359,12 @@ QString Conductor::assignSeq(QString label, Conductor* cnd) {
 void Conductor::setOthersSequential(Conductor *other) {
 	QString conductor_currentAutoNum = other->diagram()->project()->conductorCurrentAutoNum();
 	NumerotationContext nc = other->diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
-	seq_unit = other->seq_unit;
-	seq_unitfolio = other->seq_unitfolio;
-	seq_ten = other->seq_ten;
-	seq_tenfolio = other->seq_tenfolio;
-	seq_hundred = other->seq_hundred;
-	seq_hundredfolio = other->seq_hundredfolio;
+	m_autoNum_seq.unit = other->m_autoNum_seq.unit;
+	m_autoNum_seq.unit_folio = other->m_autoNum_seq.unit_folio;
+	m_autoNum_seq.ten = other->m_autoNum_seq.ten;
+	m_autoNum_seq.ten_folio = other->m_autoNum_seq.ten_folio;
+	m_autoNum_seq.hundred = other->m_autoNum_seq.hundred;
+	m_autoNum_seq.hundred_folio = other->m_autoNum_seq.hundred_folio;
 }
 
 /**
@@ -1448,13 +1372,15 @@ void Conductor::setOthersSequential(Conductor *other) {
  * The text of this conductor
  * @param t
  */
-void Conductor::setText(const QString &t) {
+void Conductor::setText(const QString &t)
+{
 	text_item->setPlainText(t);
-	if (setSeq) {
+	if (setSeq)
+	{
 		setSequential();
 		setSeq = false;
 	}
-	QString label = assignVariables(t);
+	QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
 	text_item -> setPlainText(label);
 }
 
@@ -1541,7 +1467,7 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
  */
 void Conductor::displayedTextChanged()
 {
-	if ((text_item->toPlainText() == assignVariables(properties_.text)) || !diagram()) return;
+	if ((text_item->toPlainText() == autonum::AssignVariables::formulaToLabel(properties_.text, m_autoNum_seq, diagram())) || !diagram()) return;
 
 	QVariant old_value, new_value;
 	old_value.setValue(properties_);
