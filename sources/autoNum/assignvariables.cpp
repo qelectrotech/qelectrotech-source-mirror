@@ -48,10 +48,10 @@ namespace autonum
 	{
 		if (m_diagram)
 		{
+			m_assigned_label.replace("%F",  m_diagram -> border_and_titleblock.folio());
 			m_assigned_label.replace("%f",     QString::number(m_diagram->folioIndex()+1));
 			m_assigned_label.replace("%id",    QString::number(m_diagram->folioIndex()+1));
 			m_assigned_label.replace("%total", QString::number(m_diagram->border_and_titleblock.folioTotal()));
-			m_assigned_label.replace("%F",  m_diagram -> border_and_titleblock.folio());
 			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.machine());
 			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
 
