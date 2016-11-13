@@ -308,22 +308,22 @@
 <context>
     <name>AutoNumberingDockWidget</name>
     <message>
-        <location filename="../sources/ui/autonumberingdockwidget.ui" line="14"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Autonumerotation Séléction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingdockwidget.ui" line="44"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="44"/>
         <source>Element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingdockwidget.ui" line="57"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="57"/>
         <source>Conductor</source>
         <translation type="unfinished">Проводник</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingdockwidget.ui" line="64"/>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Folio</source>
         <translation type="unfinished">Страница</translation>
     </message>
@@ -331,120 +331,120 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="26"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
         <translation type="unfinished">Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="113"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="113"/>
         <source>Project Status:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="146"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="159"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="159"/>
         <source>Apply to Selected Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="166"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="166"/>
         <source>Apply to Selected Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="173"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="192"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="192"/>
         <source>From</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="215"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="215"/>
         <source>To</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="238"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="238"/>
         <source>Update Policy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="253"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="253"/>
         <source>Conductor</source>
         <translation type="unfinished">Проводник</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="270"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="344"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="409"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="270"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="344"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="409"/>
         <source>Only New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="260"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="328"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="429"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="260"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="328"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="429"/>
         <source>Both</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="290"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="376"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="439"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="290"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="376"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="439"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="315"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="315"/>
         <source>Element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="280"/>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="360"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="280"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="402"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="402"/>
         <source>Folio</source>
         <translation type="unfinished">Страница</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.ui" line="419"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.cpp" line="61"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.cpp" line="62"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Installing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.cpp" line="63"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Built</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.cpp" line="184"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="184"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumberingmanagementw.cpp" line="185"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="185"/>
         <source>In this Menu you can set whether you want the Auto Numberings to be updated or not. For Element Auto Numbering you have 4 options of Update Policy:
 -Both: both New and Existent Element labels will be updated. This is the default option.
 -Update Only New: only new created Elements will be updated. Existent Element labels will be frozen.
@@ -457,18 +457,18 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>AutonumSelectorWidget</name>
     <message>
-        <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
+        <location filename="../sources/autoNum/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
+        <location filename="../sources/autoNum/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
         <translatorcomment>Автонумерация :</translatorcomment>
         <translation>Авто-нумерация :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
+        <location filename="../sources/autoNum/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
         <translatorcomment>context dependent</translatorcomment>
         <translation>Правка нумерации</translation>
@@ -521,13 +521,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1534"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1479"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Редактировать свойства проводника</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1538"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1483"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Редактировать свойства нескольких проводников</translation>
@@ -778,6 +778,14 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
+    <name>DiagramEventAddElement</name>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
+        <source>Ajouter %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramFolioList</name>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="160"/>
@@ -868,7 +876,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Вставить здесь</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="967"/>
+        <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Propriétés de la sélection</source>
         <translation>Свойства выделения</translation>
     </message>
@@ -879,31 +887,31 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Это поле для построения схем, куда вы добавляете элементы и соединения между их выводами. Вы так же можете добавить произвольные надписи.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="204"/>
+        <location filename="../sources/diagramview.cpp" line="199"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translatorcomment>Choose orientation for selected texts=Выбрать направления для выделенного текста</translatorcomment>
         <translation>Выбор направления выделенного текста</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="747"/>
+        <location filename="../sources/diagramview.cpp" line="778"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Без имени</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="969"/>
+        <location filename="../sources/diagramview.cpp" line="1000"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Выделение содержит %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1005"/>
+        <location filename="../sources/diagramview.cpp" line="1036"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Выберите новый цвет для этого проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1024"/>
+        <location filename="../sources/diagramview.cpp" line="1055"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Редактировать свойства проводника</translation>
@@ -920,68 +928,68 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DialogAutoNum</name>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="14"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
         <translation>Аннотация к схеме</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="28"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="42"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
         <translation>Аннотация</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="50"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="50"/>
         <source>Sélection</source>
         <translation>Выбор</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="58"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="58"/>
         <source>Conducteurs</source>
         <translation>Проводники</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="75"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
         <translation>Компоненты</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="96"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нумерация выбранной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="99"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
         <translation>Аннотация (альфа)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="110"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Убрана нумерация выбраной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="113"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
         <translation>Удаление аннотаций</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="147"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.ui" line="147"/>
         <source>Fermer</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
         <translation>Удаление аннотаций проводников</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.cpp" line="68"/>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
@@ -990,7 +998,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 %1 ?</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
@@ -999,7 +1007,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 %1 ?</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
+        <location filename="../sources/autoNum/ui/dialogautonum.cpp" line="99"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
         <translation>Аннотации проводников</translation>
@@ -1387,8 +1395,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Вы можете задать имя элемента на разных языках.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="827"/>
-        <location filename="../sources/editor/elementscene.cpp" line="867"/>
+        <location filename="../sources/editor/elementscene.cpp" line="826"/>
+        <location filename="../sources/editor/elementscene.cpp" line="866"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Этот XML-документ не является определением элемента.</translation>
@@ -1402,17 +1410,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="180"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="181"/>
         <source>N° fil : </source>
         <translation>№ провода:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="191"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="192"/>
         <source>Sans titre</source>
         <translation>Без имени</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="206"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="207"/>
         <source>Voir l&apos;élément</source>
         <translation>Смотреть элемент</translation>
     </message>
@@ -1523,98 +1531,103 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="120"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Открыть директорию</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="121"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="130"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редактировать элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="122"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="131"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Удалить элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="123"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="132"/>
         <source>Supprimer le dossier</source>
         <translation>Удалить папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="124"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="133"/>
         <source>Recharger les collections</source>
         <translation>Перезагрузить коллекции</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="125"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="134"/>
         <source>Éditer le dossier</source>
         <translation>Редактировать папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="126"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="135"/>
         <source>Nouveau dossier</source>
         <translation>Новая папка</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="127"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="136"/>
         <source>Nouvel élément</source>
         <translation>Новый элемент</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="137"/>
         <source>Afficher uniquement ce dossier</source>
         <translation>Показать только эту папку</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="138"/>
         <source>Afficher tous les dossiers</source>
         <translation>Прказать все папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="143"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
+        <source>Propriété du dossier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
         <source>Rechercher</source>
         <translation>Искать</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="161"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="171"/>
         <source>Chargement</source>
         <translation>Загрузка</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="301"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="332"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Удалить элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="302"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="333"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>Вы действительно хотите удалить этот элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="313"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Удаление элемента</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="314"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление элемента не удалось.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="333"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="364"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Удалять папку?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="334"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="365"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -1622,16 +1635,54 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Будут удалены все элементы и все содержимое этой папки.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="347"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="378"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Удаление папки</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="348"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="379"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление папки не удалось.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
+        <source>Le dossier %1 contient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
+        <source>%n élément(s), répartie(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
+        <source>dans %n dossier(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
+        <source>Chemin de la collection :  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
+        <source>Chemin dans le système de fichiers :  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
+        <source>Propriété du dossier %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2016,58 +2067,58 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="26"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
         <translation type="unfinished">Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="107"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="132"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="174"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
         <source>À</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="187"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
         <source>De</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="203"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="203"/>
         <source>Sélection:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="215"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="215"/>
         <source>Créer de nouveaux Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="228"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="228"/>
         <source>NumAuto des folios séléctionnés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.ui" line="244"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="244"/>
         <source>Numérotation automatique de Folio :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.cpp" line="173"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="173"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioautonumbering.cpp" line="174"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="174"/>
         <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
@@ -2097,27 +2148,27 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <location filename="../sources/ui/formulaautonumberingw.ui" line="26"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
         <translation type="unfinished">Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/formulaautonumberingw.ui" line="41"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/formulaautonumberingw.ui" line="59"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/formulaautonumberingw.ui" line="72"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/formulaautonumberingw.ui" line="85"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="85"/>
         <source>You can use the following variables to your formula:
  -%prefix: Default Element Prefix
  -%l: Element Line
@@ -2862,121 +2913,121 @@ that you create. Text and number inputs are
 <context>
     <name>NumPartEditorW</name>
     <message>
-        <location filename="../sources/ui/numparteditorw.ui" line="14"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="82"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="87"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="92"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="173"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="290"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="82"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="87"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="92"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="173"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="290"/>
         <source>Chiffre 1</source>
         <translation>Формат чисел 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="82"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="87"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="92"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="177"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="294"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="82"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="87"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="92"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="177"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="294"/>
         <source>Chiffre 01</source>
         <translation>Формат чисел 01</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="83"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="88"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="181"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="298"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="83"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="93"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="181"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="298"/>
         <source>Chiffre 001</source>
         <translation>Формат чисел 001</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="84"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="185"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="302"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="84"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="185"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="302"/>
         <source>Texte</source>
         <translation>Текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="187"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="304"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="187"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="304"/>
         <source>N° folio</source>
         <translatorcomment>№ схемы?</translatorcomment>
         <translation>№ страницы</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="189"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="306"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="189"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="306"/>
         <source>Folio</source>
         <translation>Страница</translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="87"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="92"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="175"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="292"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="87"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="92"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="175"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="292"/>
         <source>Chiffre 1 - Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="88"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="179"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="296"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="93"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="179"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="296"/>
         <source>Chiffre 01 - Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="88"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="93"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="183"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="300"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="93"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="183"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="300"/>
         <source>Chiffre 001 - Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="191"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="308"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="191"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="89"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="193"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="310"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="193"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="195"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="312"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="195"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="312"/>
         <source>Element Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="197"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="314"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="197"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="314"/>
         <source>Element Column</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/numparteditorw.cpp" line="95"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="199"/>
-        <location filename="../sources/ui/numparteditorw.cpp" line="316"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="199"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="316"/>
         <source>Element Prefix</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2984,7 +3035,10 @@ that you create. Text and number inputs are
 <context>
     <name>PartArc</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="214"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="227"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="239"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="243"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="250"/>
         <source>Modifier un arc</source>
         <translation>Редактировать дугу</translation>
     </message>
@@ -3414,161 +3468,161 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Штампы пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="788"/>
+        <location filename="../sources/qetapp.cpp" line="805"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="789"/>
+        <location filename="../sources/qetapp.cpp" line="806"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="790"/>
+        <location filename="../sources/qetapp.cpp" line="807"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="791"/>
+        <location filename="../sources/qetapp.cpp" line="808"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Электрическая</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="792"/>
+        <location filename="../sources/qetapp.cpp" line="809"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1196"/>
+        <location filename="../sources/qetapp.cpp" line="1213"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Настройка QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1322"/>
+        <location filename="../sources/qetapp.cpp" line="1339"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1387"/>
+        <location filename="../sources/qetapp.cpp" line="1404"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...Значок в трее</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1389"/>
+        <location filename="../sources/qetapp.cpp" line="1406"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1391"/>
+        <location filename="../sources/qetapp.cpp" line="1408"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1392"/>
+        <location filename="../sources/qetapp.cpp" line="1409"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Скрыть</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1393"/>
+        <location filename="../sources/qetapp.cpp" line="1410"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показать</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1394"/>
+        <location filename="../sources/qetapp.cpp" line="1411"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Скрыть редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1395"/>
+        <location filename="../sources/qetapp.cpp" line="1412"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показать редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1396"/>
+        <location filename="../sources/qetapp.cpp" line="1413"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Скрыть редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1397"/>
+        <location filename="../sources/qetapp.cpp" line="1414"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показать редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1398"/>
+        <location filename="../sources/qetapp.cpp" line="1415"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Скрыть редактор штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1399"/>
+        <location filename="../sources/qetapp.cpp" line="1416"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Показать редактор штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1400"/>
+        <location filename="../sources/qetapp.cpp" line="1417"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новый редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1401"/>
+        <location filename="../sources/qetapp.cpp" line="1418"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новый редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1403"/>
+        <location filename="../sources/qetapp.cpp" line="1420"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрыть QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1404"/>
+        <location filename="../sources/qetapp.cpp" line="1421"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Свернуть QElectroTech в трей</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1405"/>
+        <location filename="../sources/qetapp.cpp" line="1422"/>
         <source>Restaurer QElectroTech</source>
         <translation>Восстановить QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1421"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1490"/>
+        <location filename="../sources/qetapp.cpp" line="1507"/>
         <source>Éditeurs de schémas</source>
         <translation>Редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1499"/>
+        <location filename="../sources/qetapp.cpp" line="1516"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1509"/>
+        <location filename="../sources/qetapp.cpp" line="1526"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translatorcomment>??</translatorcomment>
         <translation>Редакторы штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1574"/>
+        <location filename="../sources/qetapp.cpp" line="1591"/>
         <source>Usage : </source>
         <translation>Использование: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1574"/>
+        <location filename="../sources/qetapp.cpp" line="1591"/>
         <source> [options] [fichier]...
 
 </source>
@@ -3577,7 +3631,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1575"/>
+        <location filename="../sources/qetapp.cpp" line="1592"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3594,28 +3648,28 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1581"/>
+        <location filename="../sources/qetapp.cpp" line="1598"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Задаёт каталог с коллекцией элементов
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1584"/>
+        <location filename="../sources/qetapp.cpp" line="1601"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Задаёт каталог с коллекцией штампов
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1587"/>
+        <location filename="../sources/qetapp.cpp" line="1604"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Задаёт каталог конфигураций
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1589"/>
+        <location filename="../sources/qetapp.cpp" line="1606"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Задаёт каталог с языковыми файлами
@@ -4842,35 +4896,35 @@ Options disponibles :
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="786"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1498"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1500"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Невозможно открыть файл %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="795"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1502"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1504"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Этот файл не является правильным XML-документом</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1508"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1510"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="813"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1472"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1474"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Версия только для чтения</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="814"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1473"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1475"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>У вас нет прав для редактирования этого элемента. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
@@ -4895,51 +4949,51 @@ Options disponibles :
         <translation>Невозможно сохранить элемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1072"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1074"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Невозможно открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1074"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1076"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Похоже, что файл %1, который вы пытаетесь открыть не существует.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1144"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1170"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1210"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1146"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1172"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1212"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Регистрация не удалась</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1144"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1170"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1210"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1146"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1172"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1212"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Запись не удалась,
 условия не верные</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1326"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1328"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Слишком много частей, список не создан.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1425"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1427"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1427"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1429"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Элементы QElectroTech (*.elmt);;XML-файлы (*.xml);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1092"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1094"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Перезагрузить элемент</translation>
@@ -5023,54 +5077,54 @@ les conditions requises ne sont pas valides</source>
         <translation>Предупреждения</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1093"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1095"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Этот элемент был изменён со времени последнего сохранения. Если вы перезагрузите его, все изменения будут потеряны. Вы действительно хотите перезагрузить элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1185"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1187"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1187"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1189"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Элементы QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1225"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1227"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Сохранить текущий элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1227"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1229"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Вы хотите сохранить элемент %1 ?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1447"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1454"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1528"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1535"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1449"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1456"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1530"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1537"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Несуществующий элемент.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1455"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1536"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1457"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1538"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Элемент не существует.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1448"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1529"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1450"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1531"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Выбранный виртуальный путь не соответствует элементу.</translation>
@@ -5117,6 +5171,7 @@ les conditions requises ne sont pas valides</source>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
+        <location filename="../sources/qetmainwindow.cpp" line="97"/>
         <source>Télécharger une nouvelle version (dev)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5134,73 +5189,74 @@ les conditions requises ne sont pas valides</source>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
+        <location filename="../sources/qetmainwindow.cpp" line="98"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="102"/>
+        <location filename="../sources/qetmainwindow.cpp" line="110"/>
         <source>Soutenir le projet par un don</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="103"/>
+        <location filename="../sources/qetmainwindow.cpp" line="111"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="110"/>
+        <location filename="../sources/qetmainwindow.cpp" line="118"/>
         <source>À propos de &amp;Qt</source>
         <translation>О &amp;библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="111"/>
+        <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Показывает информацию о библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="119"/>
+        <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="125"/>
+        <location filename="../sources/qetmainwindow.cpp" line="133"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
         <translation>П&amp;омощь</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="181"/>
+        <location filename="../sources/qetmainwindow.cpp" line="196"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Выйти из полно&amp;экранного режима</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="183"/>
+        <location filename="../sources/qetmainwindow.cpp" line="198"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Покажет QElectroTech в оконном (обычном) режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="185"/>
+        <location filename="../sources/qetmainwindow.cpp" line="200"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>Полно&amp;экранный режим</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="187"/>
+        <location filename="../sources/qetmainwindow.cpp" line="202"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Покажет QElectroTech в полноэкранном режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="189"/>
+        <location filename="../sources/qetmainwindow.cpp" line="204"/>
         <source>Ctrl+Shift+F</source>
         <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="201"/>
+        <location filename="../sources/qetmainwindow.cpp" line="216"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation>Показывать</translation>
@@ -6319,12 +6375,12 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
-        <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation>Файлы Изображений (*.png *.jpg *.bmp *.svg)</translation>
+        <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
-        <location filename="../sources/nomenclature.cpp" line="59"/>
+        <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Erreur</source>
         <translation>Ошибка</translation>
     </message>
@@ -6412,22 +6468,22 @@ Que désirez vous faire ?</source>
         <translation>Переместить %1 текст элемента</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="49"/>
+        <location filename="../sources/nomenclature.cpp" line="50"/>
         <source>nomenclature_</source>
         <translation>документация_</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <location filename="../sources/nomenclature.cpp" line="54"/>
         <source>Enregister sous... </source>
         <translation>Сохранить как ...</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <location filename="../sources/nomenclature.cpp" line="54"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>Файлы csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -6436,83 +6492,83 @@ Que désirez vous faire ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>NOMENCLATURE : </source>
         <translation>ДОКУМЕНТАЦИЯ:</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>N° de folio</source>
         <translation>№ страницы</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Titre de folio</source>
         <translation>Название страницы</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Label de folio</source>
         <translation>Метка страницы</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Désignation qet</source>
         <translation>Назначение.qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Position</source>
         <translation>Положение</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Désignation</source>
         <translation>Назначение</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Commentaire</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Fabricant</source>
         <translation>Производитель</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Reference</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Внешний блок 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Внешний блок 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Machine-reference</source>
         <translation>Информация по машине</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Localisation</source>
         <translation>Расположение</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Fonction</source>
         <translation>Функция</translation>
     </message>
@@ -6540,6 +6596,16 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/elementsmover.cpp" line="158"/>
+        <source>Ajouter %n conducteur(s)</source>
+        <comment>add a numbers of conductor one or more</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -6684,58 +6750,58 @@ Créer votre propre texte en vous aidant des variables suivantes :
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="20"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="131"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="131"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удалить переменную нумерацию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="148"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="148"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Добавить переменную нумерацию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="98"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="98"/>
         <source>Définition</source>
         <translation>Указание</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="165"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="165"/>
         <source>Précédent</source>
         <translation>Предыдущий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="179"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="179"/>
         <source>Suivant</source>
         <translation>Следующий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="224"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="224"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="234"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="234"/>
         <source>Valeur</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.ui" line="250"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="250"/>
         <source>Incrémentation</source>
         <translation>Инкремент</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="169"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="169"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
         <translation>Автонумерация страниц</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="170"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="170"/>
         <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
@@ -6762,13 +6828,13 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Поле &quot;Приращение&quot; не используется.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="187"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="187"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="188"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="188"/>
         <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
