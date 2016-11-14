@@ -769,7 +769,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfügen von .%1</translation>
     </message>
 </context>
 <context>
@@ -1566,7 +1566,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordnereigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
@@ -1632,38 +1632,38 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Ordner %1 beinhaltet</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Bauteil, verteilt</numerusform>
+            <numerusform>%n Bauteile, verteilt</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>in %n Ordner.</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad der Sammlung: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad im Dateisystem: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften vom Ordner %1</translation>
     </message>
 </context>
 <context>
@@ -6314,7 +6314,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilddateien (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -6539,9 +6539,9 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementsmover.cpp" line="158"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Leiter einfügen</numerusform>
+            <numerusform>%n Leiter einfügen</numerusform>
         </translation>
     </message>
 </context>
