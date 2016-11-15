@@ -2,6 +2,7 @@
 <uuid uuid="{D95B78E9-6185-441B-9A83-F871680AB794}"/><names>
         <name lang="ca">Escalfador ACS cas</name>
         <name lang="es">Calentador ACS-gas</name>
+        <name lang="it">Boiler a gas</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
