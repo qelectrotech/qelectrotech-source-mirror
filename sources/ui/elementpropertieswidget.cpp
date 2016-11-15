@@ -276,19 +276,18 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		description_string += QString(tr("Emplacement : %1\n")).arg(custom_element -> location().toString());
 	}
 
-	// widget himself
+		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
 	QVBoxLayout *vlayout_ = new QVBoxLayout (general_widget);
 	general_widget -> setLayout(vlayout_);
 
-	//widget for the text
+		//widget for the text
 	QLabel *label = new QLabel (description_string, general_widget);
 	label->setWordWrap(true);
 	vlayout_->addWidget(label);
 
-	//widget for the pixmap
+		//widget for the pixmap
 	QLabel *pix = new QLabel(general_widget);
-	pix->setPixmap(m_element->pixmap().scaled (34, 34, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
 	vlayout_->addWidget(pix, 0, Qt::AlignHCenter);
 	vlayout_ -> addStretch();
 
@@ -300,7 +299,21 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);
-
 	vlayout_->addLayout(hlayout_);
+
+		//Set the maximum size of the pixmap to the minimum size of the layout
+	QPixmap pixmap = m_element->pixmap();
+	int margin = vlayout_->contentsMargins().left() + vlayout_->contentsMargins().right();
+	int widht_ = vlayout_->minimumSize().width()-margin;
+
+	if (pixmap.size().width() > widht_ || pixmap.size().height() > widht_)
+	{
+		pix->setPixmap(m_element->pixmap().scaled (widht_, widht_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	}
+	else
+	{
+		pix->setPixmap(pixmap);
+	}
+
 	return general_widget;
 }
