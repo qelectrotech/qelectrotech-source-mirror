@@ -19,6 +19,7 @@
 #include "crossrefitem.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include <QRegularExpression>
 
 /**
  * @brief MasterElement::MasterElement
@@ -149,32 +150,47 @@ void MasterElement::changeElementInfo(){
  * update label of this element
  * and the comment item if he's displayed.
  */
-void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
-	QString newstr = new_info["label"].toString();
-	newstr = autonum::AssignVariables::formulaToLabel(newstr, m_autoNum_seq, diagram(), this);
+void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
+{
+	const QString old_label = old_info["label"].toString();
+	const QString new_label = new_info["label"].toString();
+
+	QString newstr = autonum::AssignVariables::formulaToLabel(new_label, m_autoNum_seq, diagram(), this);
+
+	ElementTextItem *eti = taggedText("label");
 
 		//Label of element
-	if (old_info["label"].toString() != newstr) {
-		if (new_info["label"].toString().isEmpty())
+	if (eti && (eti->toPlainText() != newstr))
+	{
+		if (new_label.isEmpty())
+		{
 			setTaggedText("label", "_", false);
-		else {
+		}
+		else
+		{
 			setTaggedText("label", newstr, true);
 		}
 
-			//If autonum formula have %id we connect the change of folio position, to keep up to date the label.
-		if (diagram() && diagram()->project()) {
-			if (old_info["label"].toString().contains("%id") && !new_info["label"].toString().contains("%id")) {
+			//If autonum formula have %id %f or %F (because %F can itself contain %id or %f),
+			//we connect the change of folio position, to keep up to date the label.
+		if (diagram() && diagram()->project())
+		{
+			if (old_label.contains(QRegularExpression("%id|%f|%F"))  && !new_label.contains(QRegularExpression("%id|%f|%F")))
+			{
 				disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
 			}
-			else if (new_info["label"].toString().contains("%id")) {
+			else if (new_label.contains(QRegularExpression("%id|%f|%F")))
+			{
 				connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
 			}
 		}
 	}
 
-	if (ElementTextItem *eti = taggedText("label")) {
-		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
+	if (eti)
+	{
+		new_label.isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
 	}
+
 
 	//Delete or update the xref
 	if (cri_) {
