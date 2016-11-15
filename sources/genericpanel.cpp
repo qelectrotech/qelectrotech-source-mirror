@@ -285,49 +285,54 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 	QSettings settings;
 	
 	QString displayed_title = diagram -> title();
-	if (displayed_title.isEmpty()) {
+	if (displayed_title.isEmpty())
+	{
 		displayed_title = tr("Folio sans titre", "Fallback label when a diagram has no title");
 	}
-	if (settings.value("genericpanel/folio", true).toBool()){
-	QString displayed_label = diagram ->border_and_titleblock.folio();
-	int diagram_folio_idx = diagram -> folioIndex();
-	if (diagram_folio_idx != -1) {
-		displayed_label = QString(
-			tr(
-				"%1 - %2",
-				"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
-			)
-		).arg(displayed_label).arg(displayed_title);
+
+	if (settings.value("genericpanel/folio", true).toBool())
+	{
+		QString displayed_label = diagram ->border_and_titleblock.finalfolio();
+		int diagram_folio_idx = diagram -> folioIndex();
+		if (diagram_folio_idx != -1)
+		{
+			displayed_label = QString(
+						tr(
+							"%1 - %2",
+							"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
+							)
+						).arg(displayed_label).arg(displayed_title);
+			diagram_qtwi -> setText(0, displayed_label);
+		}
+
+	}
+	else
+	{
+		QString displayed_label;
+		int diagram_folio_idx = diagram -> folioIndex();
+		if (diagram_folio_idx != -1)
+		{
+			displayed_label = QString(
+						tr(
+							"%1 - %2",
+							"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
+							)
+						).arg(diagram_folio_idx + 1).arg(displayed_title);
+		}
+
 		diagram_qtwi -> setText(0, displayed_label);
+
 	}
-	
-	}else{
-	QString displayed_label;
-	int diagram_folio_idx = diagram -> folioIndex();
-	if (diagram_folio_idx != -1) {
-		displayed_label = QString(
-			tr(
-				"%1 - %2",
-				"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
-			)
-		).arg(diagram_folio_idx + 1).arg(displayed_title);
-	}
-	
-	diagram_qtwi -> setText(0, displayed_label);
-	
-	}
-	if (freshly_created) {
+	if (freshly_created)
+	{
 		diagram_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(diagram));
 		diagrams_.insert(diagram, diagram_qtwi);
 		
-		connect(
-			diagram, SIGNAL(diagramTitleChanged(Diagram *, const QString &)),
-			this,    SLOT  (diagramTitleChanged(Diagram *, const QString &))
-		);
+		connect(diagram, &Diagram::diagramTitleChanged, this, &GenericPanel::diagramTitleChanged);
 	}
 	
 	return(updateItem(diagram_qtwi, options, freshly_created));
-	}
+}
 
 
 
