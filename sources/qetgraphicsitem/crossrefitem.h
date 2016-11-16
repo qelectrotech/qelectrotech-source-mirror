@@ -75,13 +75,16 @@ class CrossRefItem : public QGraphicsObject
 	protected:
 		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
+		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
+		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
 	private:
 		void buildHeaderContact		();
 		void setUpCrossBoundingRect (QPainter &painter);
 		void drawAsCross			(QPainter &painter);
 		void drawAsContacts		(QPainter &painter);
-		QRectF drawContact			(QPainter &painter, int flags, QString str = QString());
+		QRectF drawContact			(QPainter &painter, int flags, Element *elmt);
 		void fillCrossRef			(QPainter &painter);
 		void AddExtraInfo			(QPainter &painter, QString);
 		void setTextParent			();
@@ -94,6 +97,10 @@ class CrossRefItem : public QGraphicsObject
 		QPainterPath   m_shape_path;
 		XRefProperties m_properties;
 		int			   m_drawed_contacts;
+		QMap <Element *, QRectF> m_hovered_contacts_map;
+		Element *m_hovered_contact = nullptr;
+		QRectF m_hover_text_rect;
+
 };
 
 #endif // CROSSREFITEM_H

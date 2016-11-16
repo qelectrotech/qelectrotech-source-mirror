@@ -46,6 +46,7 @@ CrossRefItem::CrossRefItem(Element *elmt) :
 	Q_ASSERT_X(elmt->diagram(), "CrossRefItem constructor", "Parent element is not in a diagram");
 
 	m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
+	setAcceptHoverEvents(true);
 
 	connect(elmt -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	connect(elmt -> diagram() -> project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
@@ -239,9 +240,90 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
  * @brief CrossRefItem::mouseDoubleClickEvent
  * @param event
  */
-void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
 	event->accept();
-	m_element->editProperty();
+	if (m_hovered_contact && m_hovered_contact->scene())
+	{
+			//Show and select the linked slave element
+		if (scene() != m_hovered_contact->scene())
+		{
+			m_hovered_contact->diagram()->showMe();
+		}
+		m_hovered_contact->setSelected(true);
+
+			//Zoom to the linked slave element
+		foreach(QGraphicsView *view, m_hovered_contact->diagram()->views())
+		{
+			QRectF fit = m_hovered_contact->sceneBoundingRect();
+			fit.adjust(-200, -200, 200, 200);
+			view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
+		}
+	}
+	else
+	{
+		m_element->editProperty();
+	}
+}
+
+void CrossRefItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered_contact = nullptr;
+	QGraphicsObject::hoverEnterEvent(event);
+}
+
+void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	QPointF pos = event->pos();
+
+	if (m_hovered_contact)
+	{
+		QRectF rect = m_hovered_contacts_map.value(m_hovered_contact);
+			//Mouse hover the same rect than previous hover event
+		if (rect.contains(pos))
+		{
+			QGraphicsObject::hoverMoveEvent(event);
+			return;
+		}
+			//Mouse don't hover previous rect
+		else
+		{
+			m_hovered_contact = nullptr;
+
+			foreach (Element *elmt, m_hovered_contacts_map.keys())
+			{
+					//Mouse hover a contact
+				if (m_hovered_contacts_map.value(elmt).contains(pos))
+				{
+					m_hovered_contact = elmt;
+				}
+			}
+			updateLabel();
+			QGraphicsObject::hoverMoveEvent(event);
+			return;
+		}
+	}
+	else
+	{
+		foreach (Element *elmt, m_hovered_contacts_map.keys())
+		{
+				//Mouse hover a contact
+			if (m_hovered_contacts_map.value(elmt).contains(pos))
+			{
+				m_hovered_contact = elmt;
+				updateLabel();
+				QGraphicsObject::hoverMoveEvent(event);
+				return;
+			}
+		}
+	}
+}
+
+void CrossRefItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered_contact = nullptr;
+	updateLabel();
+	QGraphicsObject::hoverLeaveEvent(event);
 }
 
 /**
@@ -374,6 +456,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 		return;
 
 	m_drawed_contacts = 0;
+	m_hovered_contacts_map.clear();
 	QRectF bounding_rect;
 
 	//Draw each linked contact
@@ -395,7 +478,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 			else if (type == "delayOn")  option += DelayOn;
 			else if (type == "delayOff") option += DelayOff;
 
-			QRectF br = drawContact(painter, option, elementPositionText(elmt));
+			QRectF br = drawContact(painter, option, elmt);
 			bounding_rect = bounding_rect.united(br);
 		}
 	}
@@ -411,13 +494,18 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
  * Draw one contact, the type of contact to draw is define in @flags.
  * @param painter, painter to use
  * @param flags, define how to draw the contact (see enul CONTACTS)
- * @param str, the text to display for this contact (the position of the contact).
+ * @param elmt, the element to display text (the position of the contact)
  * @return The bounding rect of the draw (contact + text)
  */
-QRectF CrossRefItem::drawContact(QPainter &painter, int flags, QString str)
+QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 {
+	QString str = elementPositionText(elmt);
 	int offset = m_drawed_contacts*10;
 	QRectF bounding_rect;
+
+	QPen pen = painter.pen();
+	m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
+	painter.setPen(pen);
 
 	//Draw NO or NC contact
 	if (flags &NOC)
@@ -496,6 +584,17 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, QString str)
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
 
+			//If an element have several contact drawed, we united all bounding rect of contacts.
+		if (m_hovered_contacts_map.contains(elmt))
+		{
+			QRectF rect = m_hovered_contacts_map.value(elmt);
+			m_hovered_contacts_map.insert(elmt, rect.united(bounding_rect));
+		}
+		else
+		{
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
+		}
+
 		++m_drawed_contacts;
 	}
 
@@ -526,6 +625,17 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, QString str)
 		QRectF text_rect = painter.boundingRect(QRectF(30, offset+5, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
+
+			//If an element have several contact drawed, we united all bounding rect of contacts.
+		if (m_hovered_contacts_map.contains(elmt))
+		{
+			QRectF rect = m_hovered_contacts_map.value(elmt);
+			m_hovered_contacts_map.insert(elmt, rect.united(bounding_rect));
+		}
+		else
+		{
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
+		}
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
