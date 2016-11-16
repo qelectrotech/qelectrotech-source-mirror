@@ -22,6 +22,7 @@
 #include "elementtextitem.h"
 #include "diagram.h"
 #include "qgraphicsitemutility.h"
+#include "assignvariables.h"
 
 //define the height of the header.
 #define header 5
@@ -88,19 +89,15 @@ QPainterPath CrossRefItem::shape() const{
  * @return the string corresponding to the position of @elmt in the diagram.
  * if @add_prefix is true, prefix (for power and delay contact) is added to the poistion text.
  */
-QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_prefix) const{
-
-	QString txt;
+QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_prefix) const
+{
 	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
-	txt = xrp.masterLabel();
-	txt.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
-	txt.replace("%F", elmt->diagram() -> border_and_titleblock.folio());
-	txt.replace("%M", elmt->diagram() -> border_and_titleblock.machine());
-	txt.replace("%LM", elmt->diagram() -> border_and_titleblock.locmach());
-	txt.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
-	txt.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
+	QString formula = xrp.masterLabel();
+	autonum::sequenceStruct seq;
+	QString txt = autonum::AssignVariables::formulaToLabel(formula, seq, elmt->diagram(), elmt);
 
-	if (add_prefix) {
+	if (add_prefix)
+	{
 		if      (elmt->kindInformations()["type"].toString() == "power")        txt.prepend(m_properties.prefix("power"));
 		else if (elmt->kindInformations()["type"].toString().contains("delay")) txt.prepend(m_properties.prefix("delay"));
 		else if (elmt->kindInformations()["state"].toString() == "SW")          txt.prepend(m_properties.prefix("switch"));
@@ -181,7 +178,8 @@ void CrossRefItem::updateProperties() {
  * @brief CrossRefItem::updateLabel
  * Update the content of the item
  */
-void CrossRefItem::updateLabel() {
+void CrossRefItem::updateLabel()
+{
 		//init the shape and bounding rect
 	m_shape_path    = QPainterPath();
 	prepareGeometryChange();
@@ -200,9 +198,9 @@ void CrossRefItem::updateLabel() {
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
 
 		if (dh == XRefProperties::Cross)
-			drawHasCross(qp);
+			drawAsCross(qp);
 		else if (dh == XRefProperties::Contacts)
-			drawHasContacts(qp);
+			drawAsContacts(qp);
 	}
 
 	AddExtraInfo(qp, "comment");
@@ -338,11 +336,11 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
 }
 
 /**
- * @brief CrossRefItem::drawHasCross
+ * @brief CrossRefItem::drawAsCross
  * Draw this crossref with a cross
  * @param painter, painter to use
  */
-void CrossRefItem::drawHasCross(QPainter &painter) {
+void CrossRefItem::drawAsCross(QPainter &painter) {
 		//calcul the size of the cross
 	setUpCrossBoundingRect(painter);
 
@@ -366,20 +364,25 @@ void CrossRefItem::drawHasCross(QPainter &painter) {
 }
 
 /**
- * @brief CrossRefItem::drawHasContacts
+ * @brief CrossRefItem::drawAsContacts
  * Draw this crossref with symbolic contacts
  * @param painter painter to use
  */
-void CrossRefItem::drawHasContacts(QPainter &painter) {
-	if (m_element -> isFree()) return;
+void CrossRefItem::drawAsContacts(QPainter &painter)
+{
+	if (m_element -> isFree())
+		return;
 
 	m_drawed_contacts = 0;
+	QRectF bounding_rect;
 
 	//Draw each linked contact
-	foreach (Element *elmt,  m_element->linkedElements()) {
+	foreach (Element *elmt,  m_element->linkedElements())
+	{
 		DiagramContext info = elmt->kindInformations();
 
-		for (int i=0; i<info["number"].toInt(); i++) {
+		for (int i=0; i<info["number"].toInt(); i++)
+		{
 			int option = 0;
 
 			QString state = info["state"].toString();
@@ -392,14 +395,15 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 			else if (type == "delayOn")  option += DelayOn;
 			else if (type == "delayOff") option += DelayOff;
 
-			drawContact(painter, option, elementPositionText(elmt));
+			QRectF br = drawContact(painter, option, elementPositionText(elmt));
+			bounding_rect = bounding_rect.united(br);
 		}
 	}
 
-	QRectF br(0, 0, 50, m_drawed_contacts*10+4);
+	bounding_rect.adjust(-4, -4, 4, 4);
 	prepareGeometryChange();
-	m_bounding_rect = br;
-	m_shape_path.addRect(br);
+	m_bounding_rect = bounding_rect;
+	m_shape_path.addRect(bounding_rect);
 }
 
 /**
@@ -408,12 +412,18 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
  * @param painter, painter to use
  * @param flags, define how to draw the contact (see enul CONTACTS)
  * @param str, the text to display for this contact (the position of the contact).
+ * @return The bounding rect of the draw (contact + text)
  */
-void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
+QRectF CrossRefItem::drawContact(QPainter &painter, int flags, QString str)
+{
 	int offset = m_drawed_contacts*10;
+	QRectF bounding_rect;
 
 	//Draw NO or NC contact
-	if (flags &NOC) {
+	if (flags &NOC)
+	{
+		bounding_rect = QRectF(0, offset, 24, 10);
+
 		//draw the basic line
 		painter.drawLine(0, offset+6, 8, offset+6);
 		painter.drawLine(16, offset+6, 24, offset+6);
@@ -482,12 +492,18 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 			}
 		}
 
-		painter.drawText(30, offset, 150, 10, Qt::AlignLeft | Qt::AlignVCenter, str);
+		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
+		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+		bounding_rect = bounding_rect.united(text_rect);
+
 		++m_drawed_contacts;
 	}
 
 	//Draw a switch contact
-	else if (flags &SW) {
+	else if (flags &SW)
+	{
+		bounding_rect = QRectF(0, offset, 24, 20);
+
 		//draw the NO side
 		painter.drawLine(0, offset+6, 8, offset+6);
 		//Draw the NC side
@@ -497,6 +513,7 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 			QPointF(8, offset+12)
 		};
 		painter.drawPolyline(p1, 3);
+
 		//Draw the common side
 		QPointF p2[3] = {
 			QPointF(7, offset+14),
@@ -504,11 +521,17 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 			QPointF(24, offset+11),
 		};
 		painter.drawPolyline(p2, 3);
-		//Draw position text
-		painter.drawText(20, offset+5, 30, 10, Qt::AlignRight | Qt::AlignVCenter, str);
-		//a switch contact take place of two normal contact
+
+			//Draw position text
+		QRectF text_rect = painter.boundingRect(QRectF(30, offset+5, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
+		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+		bounding_rect = bounding_rect.united(text_rect);
+
+			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
 	}
+
+	return bounding_rect;
 }
 
 /**

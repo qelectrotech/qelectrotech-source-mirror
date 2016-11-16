@@ -143,7 +143,7 @@ class Element : public QetGraphicsItem {
 		void setSequentialToList(QStringList*, NumerotationContext*, QString);
 		void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
 		void setPrefix(QString);
-		QString getPrefix();
+		QString getPrefix() const;
 		void freezeLabel();
 		void unfreezeLabel();
 		void freezeNewAddedElement();

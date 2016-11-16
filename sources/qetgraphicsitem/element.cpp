@@ -823,7 +823,7 @@ ElementTextItem* Element::setTaggedText(const QString &tagg, const QString &news
  * @brief Element::getPrefix
  * get Element Prefix
  */
-QString Element::getPrefix() {
+QString Element::getPrefix() const{
 	return m_prefix;
 }
 

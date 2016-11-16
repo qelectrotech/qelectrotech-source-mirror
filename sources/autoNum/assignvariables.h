@@ -44,10 +44,10 @@ namespace autonum
 	class AssignVariables
 	{
 		public:
-			static QString formulaToLabel (QString formula, sequenceStruct &seqStruct, Diagram *diagram, Element *elmt = nullptr);
+			static QString formulaToLabel (QString formula, sequenceStruct &seqStruct, Diagram *diagram, const Element *elmt = nullptr);
 
 		private:
-			AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, Element *elmt = nullptr);
+			AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, const Element *elmt = nullptr);
 			void assignTitleBlockVar();
 			void assignProjectVar();
 			void assignSequence();
@@ -56,7 +56,7 @@ namespace autonum
 			QString m_arg_formula;
 			QString m_assigned_label;
 			sequenceStruct m_seq_struct;
-			Element *m_element = nullptr;
+			const Element *m_element = nullptr;
 	};
 
 

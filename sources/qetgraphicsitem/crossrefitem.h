@@ -39,61 +39,61 @@ class CrossRefItem : public QGraphicsObject
 {
 	Q_OBJECT
 
-	//Methods
+		//Methods
 	public:
-	explicit CrossRefItem(Element *elmt);
-	~CrossRefItem();
+		explicit CrossRefItem(Element *elmt);
+		~CrossRefItem();
 
-	enum { Type = UserType + 1009 };
-	virtual int type() const { return Type; }
+		enum { Type = UserType + 1009 };
+		virtual int type() const { return Type; }
 
-	enum CONTACTS {
-		NO       = 1,
-		NC       = 2,
-		NOC      = 3,
-		SW       = 4,
-		Power    = 8,
-		DelayOn  = 16,
-		DelayOff = 32,
-		Delay    = 48
-	};
+		enum CONTACTS {
+			NO       = 1,
+			NC       = 2,
+			NOC      = 3,
+			SW       = 4,
+			Power    = 8,
+			DelayOn  = 16,
+			DelayOff = 32,
+			Delay    = 48
+		};
 
-	QRectF boundingRect			() const;
-	virtual QPainterPath shape	() const;
-	QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
-	void allElementsPositionText (QString &no_str, QString &nc_str,const bool &add_prefix = false) const;
-	void setTextLabel(QString label);
+		QRectF boundingRect			() const;
+		virtual QPainterPath shape	() const;
+		QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
+		void allElementsPositionText (QString &no_str, QString &nc_str,const bool &add_prefix = false) const;
+		void setTextLabel(QString label);
 
 
 	signals:
 
 	public slots:
-	void updateProperties ();
-	void updateLabel   ();
-	void autoPos	   ();
+		void updateProperties ();
+		void updateLabel   ();
+		void autoPos	   ();
 
 	protected:
-	virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-	virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
+		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
 
 	private:
-	void buildHeaderContact		();
-	void setUpCrossBoundingRect (QPainter &painter);
-	void drawHasCross			(QPainter &painter);
-	void drawHasContacts		(QPainter &painter);
-	void drawContact			(QPainter &painter, int flags, QString str = QString());
-	void fillCrossRef			(QPainter &painter);
-	void AddExtraInfo			(QPainter &painter, QString);
-	void setTextParent			();
+		void buildHeaderContact		();
+		void setUpCrossBoundingRect (QPainter &painter);
+		void drawAsCross			(QPainter &painter);
+		void drawAsContacts		(QPainter &painter);
+		QRectF drawContact			(QPainter &painter, int flags, QString str = QString());
+		void fillCrossRef			(QPainter &painter);
+		void AddExtraInfo			(QPainter &painter, QString);
+		void setTextParent			();
 
-	//Attributes
+		//Attributes
 	private:
-	Element		  *m_element; //element to display the cross reference
-	QRectF		   m_bounding_rect;
-	QPicture	   m_drawing, m_hdr_no_ctc, m_hdr_nc_ctc;
-	QPainterPath   m_shape_path;
-	XRefProperties m_properties;
-	int			   m_drawed_contacts;
+		Element		  *m_element; //element to display the cross reference
+		QRectF		   m_bounding_rect;
+		QPicture	   m_drawing, m_hdr_no_ctc, m_hdr_nc_ctc;
+		QPainterPath   m_shape_path;
+		XRefProperties m_properties;
+		int			   m_drawed_contacts;
 };
 
 #endif // CROSSREFITEM_H

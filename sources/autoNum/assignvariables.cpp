@@ -32,14 +32,14 @@ namespace autonum
 	 * @param elmt - parent element (if any) of the formula
 	 * @return the string with variable assigned.
 	 */
-	QString AssignVariables::formulaToLabel(QString formula, sequenceStruct &seqStruct, Diagram *diagram, Element *elmt)
+	QString AssignVariables::formulaToLabel(QString formula, sequenceStruct &seqStruct, Diagram *diagram, const Element *elmt)
 	{
 		AssignVariables av(formula, seqStruct, diagram, elmt);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
 
-	AssignVariables::AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, Element *elmt):
+	AssignVariables::AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
