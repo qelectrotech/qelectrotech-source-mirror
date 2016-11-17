@@ -25,9 +25,9 @@
 #include "assignvariables.h"
 
 //define the height of the header.
-#define header 5
+static int header = 5;
 //define the minimal height of the cross (without header)
-#define cross_min_heigth 33
+static int cross_min_heigth = 33;
 
 /**
  * @brief CrossRefItem::CrossRefItem
@@ -107,51 +107,6 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 }
 
 /**
- * @brief CrossRefItem::allElementsPositionText
- * Return the text of all elements linked to @m_element, in several QString
- * according to the type of linked elements. Each text of elements are separate by "\n"
- * @param no_str the string of NO contacts
- * @param nc_str the string of NC contacts
- * @param add_prefix must add prefix to text (true) or not (false);
- */
-void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, const bool &add_prefix) const
-{
-	QString *tmp_str = nullptr;
-	foreach (Element *elmt, m_element->linkedElements())
-	{
-			//We continue if element is a power contact and xref propertie
-			//is set to don't show power contact
-		if (m_properties.displayHas() == XRefProperties::Cross &&
-			!m_properties.showPowerContact() &&
-			elmt -> kindInformations()["type"].toString() == "power")
-			continue;
-
-		QString state = elmt->kindInformations()["state"].toString();
-
-		//NO and NC are displayed in single place in the cross
-		if (state == "NO" || state == "NC")
-		{
-			if (state == "NO") tmp_str = &no_str;
-			else if (state == "NC") tmp_str = &nc_str;
-
-			if (!tmp_str->isEmpty()) *tmp_str += "\n";
-			*tmp_str += elementPositionText(elmt, add_prefix);
-		}
-
-		//SW are displayed in NC and NO column in the cross
-		else if (state == "SW")
-		{
-			for (int i = 0; i < 2; i++)
-			{
-				tmp_str = i==0? &no_str : &nc_str;
-				if (!tmp_str->isEmpty()) *tmp_str += "\n";
-				*tmp_str += elementPositionText(elmt, add_prefix);
-			}
-		}
-	}
-}
-
-/**
  * @brief CrossRefItem::updateProperties
  * update the curent properties
  */
@@ -195,7 +150,8 @@ void CrossRefItem::updateLabel()
 	qp.setFont(QETApp::diagramTextsFont(5));
 
 		//Draw cross or contact, only if master element is linked.
-	if (! m_element->linkedElements().isEmpty()) {
+	if (! m_element->linkedElements().isEmpty())
+	{
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
 
 		if (dh == XRefProperties::Cross)
@@ -260,10 +216,6 @@ void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 			view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
 		}
 	}
-	else
-	{
-		m_element->editProperty();
-	}
 }
 
 void CrossRefItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
@@ -278,42 +230,49 @@ void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 
 	if (m_hovered_contact)
 	{
-		QRectF rect = m_hovered_contacts_map.value(m_hovered_contact);
-			//Mouse hover the same rect than previous hover event
-		if (rect.contains(pos))
+		foreach(QRectF rect, m_hovered_contacts_map.values(m_hovered_contact))
 		{
-			QGraphicsObject::hoverMoveEvent(event);
-			return;
+				//Mouse hover the same rect than previous hover event
+			if (rect.contains(pos))
+			{
+				QGraphicsObject::hoverMoveEvent(event);
+				return;
+			}
 		}
-			//Mouse don't hover previous rect
-		else
-		{
-			m_hovered_contact = nullptr;
 
-			foreach (Element *elmt, m_hovered_contacts_map.keys())
+			//At this point, mouse don't hover previous rect
+		m_hovered_contact = nullptr;
+
+		foreach (Element *elmt, m_hovered_contacts_map.keys())
+		{
+			foreach(QRectF rect, m_hovered_contacts_map.values(elmt))
 			{
 					//Mouse hover a contact
-				if (m_hovered_contacts_map.value(elmt).contains(pos))
+				if (rect.contains(pos))
 				{
 					m_hovered_contact = elmt;
 				}
 			}
-			updateLabel();
-			QGraphicsObject::hoverMoveEvent(event);
-			return;
 		}
+
+		updateLabel();
+		QGraphicsObject::hoverMoveEvent(event);
+		return;
 	}
 	else
 	{
 		foreach (Element *elmt, m_hovered_contacts_map.keys())
 		{
-				//Mouse hover a contact
-			if (m_hovered_contacts_map.value(elmt).contains(pos))
+			foreach(QRectF rect, m_hovered_contacts_map.values(elmt))
 			{
-				m_hovered_contact = elmt;
-				updateLabel();
-				QGraphicsObject::hoverMoveEvent(event);
-				return;
+					//Mouse hover a contact
+				if (rect.contains(pos))
+				{
+					m_hovered_contact = elmt;
+					updateLabel();
+					QGraphicsObject::hoverMoveEvent(event);
+					return;
+				}
 			}
 		}
 	}
@@ -378,43 +337,56 @@ void CrossRefItem::buildHeaderContact() {
  * for calculate the size of the cross bounding rect.
  * The cross ref item is drawing according to the size of the cross bounding rect.
  */
-void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
+void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
+{
 		//No need to calcul if nothing is linked
-	if (!m_element->isFree()) {
+	if (m_element->isFree()) return;
 
-		QString no_str, nc_str;
-		allElementsPositionText(no_str, nc_str, true);
+	QStringList no_str, nc_str;
 
-			//There is no string to display, we return now
-		if (no_str.isEmpty() && nc_str.isEmpty()) return;
+	foreach (Element *elmt, NOElements())
+		no_str.append(elementPositionText(elmt, true));
+	foreach(Element *elmt, NCElements())
+		nc_str.append(elementPositionText(elmt, true));
 
-			//this is the default size of cross ref item
-		QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
 
-			/*
-			 * Adjust the size of default_bounding if needed.
-			 * We calcule the size by using a single text
-			 * because in the method fillCrossRef, the text is draw like this (aka single text)
-			 */
+		//There is no string to display, we return now
+	if (no_str.isEmpty() && nc_str.isEmpty()) return;
 
-			//Adjust according to the NO
-		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, no_str);
-		if (bounding.height() > default_bounding.height() - header)
-			default_bounding.setHeight(bounding.height() + header); //adjust the height
-		if (bounding.width() > default_bounding.width()/2)
-			default_bounding.setWidth(bounding.width()*2);			//adjust the width
+		//this is the default size of cross ref item
+	QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
 
-			//Adjust according to the NC
-		bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, nc_str);
-		if (bounding.height() > default_bounding.height() - header)
-			default_bounding.setHeight(bounding.height() + header); //adjust the heigth
-		if (bounding.width() > default_bounding.width()/2)
-			default_bounding.setWidth(bounding.width()*2);			//adjust the width
-
-		m_shape_path.addRect(default_bounding);
-		prepareGeometryChange();
-		m_bounding_rect = default_bounding;
+		//Bounding rect of the NO text
+	QRectF no_bounding;
+	foreach(QString str, no_str)
+	{
+		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
+		no_bounding = no_bounding.united(bounding);
 	}
+		//Adjust according to the NO
+	if (no_bounding.height() > default_bounding.height() - header)
+		default_bounding.setHeight(no_bounding.height() + header); //adjust the height
+	if (no_bounding.width() > default_bounding.width()/2)
+		default_bounding.setWidth(no_bounding.width()*2);			//adjust the width
+
+		//Bounding rect of the NC text
+	QRectF nc_bounding;
+	foreach(QString str, nc_str)
+	{
+		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
+		nc_bounding = nc_bounding.united(bounding);
+	}
+		//Adjust according to the NC
+	if (nc_bounding.height() > default_bounding.height() - header)
+		default_bounding.setHeight(nc_bounding.height() + header); //adjust the heigth
+	if (nc_bounding.width() > default_bounding.width()/2)
+		default_bounding.setWidth(nc_bounding.width()*2);			//adjust the width
+
+		//Minor adjustement for better visual
+	default_bounding.adjust(0, 0, 4, 0);
+	m_shape_path.addRect(default_bounding);
+	prepareGeometryChange();
+	m_bounding_rect = default_bounding;
 }
 
 /**
@@ -422,9 +394,11 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
  * Draw this crossref with a cross
  * @param painter, painter to use
  */
-void CrossRefItem::drawAsCross(QPainter &painter) {
+void CrossRefItem::drawAsCross(QPainter &painter)
+{
 		//calcul the size of the cross
 	setUpCrossBoundingRect(painter);
+	m_hovered_contacts_map.clear();
 
 		//Bounding rect is empty that mean there's no contact to draw
 	if (boundingRect().isEmpty()) return;
@@ -584,11 +558,9 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-			//If an element have several contact drawed, we united all bounding rect of contacts.
 		if (m_hovered_contacts_map.contains(elmt))
 		{
-			QRectF rect = m_hovered_contacts_map.value(elmt);
-			m_hovered_contacts_map.insert(elmt, rect.united(bounding_rect));
+			m_hovered_contacts_map.insertMulti(elmt, bounding_rect);
 		}
 		else
 		{
@@ -626,11 +598,9 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-			//If an element have several contact drawed, we united all bounding rect of contacts.
 		if (m_hovered_contacts_map.contains(elmt))
 		{
-			QRectF rect = m_hovered_contacts_map.value(elmt);
-			m_hovered_contacts_map.insert(elmt, rect.united(bounding_rect));
+			m_hovered_contacts_map.insertMulti(elmt, bounding_rect);
 		}
 		else
 		{
@@ -649,19 +619,59 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
  * Fill the content of the cross ref
  * @param painter painter to use.
  */
-void CrossRefItem::fillCrossRef(QPainter &painter) {
+void CrossRefItem::fillCrossRef(QPainter &painter)
+{
 	if (m_element->isFree()) return;
-
-	QString no_str, nc_str;
-	allElementsPositionText(no_str, nc_str, true);
 
 	qreal middle_cross = m_bounding_rect.width()/2;
 
-	QRectF rect_(0, header, middle_cross, boundingRect().height()-header);
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, no_str);
+		//Fill NO
+	QPointF no_top_left(0, header);
+	foreach(Element *elmt, NOElements())
+	{
+		QPen pen = painter.pen();
+		m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
+		painter.setPen(pen);
 
-	rect_.moveTopLeft(QPointF (middle_cross, header));
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, nc_str);
+		QString str = elementPositionText(elmt, true);
+		QRectF bounding = painter.boundingRect(QRectF(no_top_left, QSize(middle_cross, 1)), Qt::AlignLeft, str);
+		painter.drawText(bounding, Qt::AlignLeft, str);
+
+		if (m_hovered_contacts_map.contains(elmt))
+		{
+			m_hovered_contacts_map.insertMulti(elmt, bounding);
+		}
+		else
+		{
+			m_hovered_contacts_map.insert(elmt, bounding);
+		}
+
+		no_top_left.ry() += bounding.height();
+	}
+
+		//Fill NC
+	QPointF nc_top_left(middle_cross, header);
+	foreach(Element *elmt, NCElements())
+	{
+		QPen pen = painter.pen();
+		m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
+		painter.setPen(pen);
+
+		QString str = elementPositionText(elmt, true);
+		QRectF bounding = painter.boundingRect(QRectF(nc_top_left, QSize(middle_cross, 1)), Qt::AlignRight, str);
+		painter.drawText(bounding, Qt::AlignRight, str);
+
+		if (m_hovered_contacts_map.contains(elmt))
+		{
+			m_hovered_contacts_map.insertMulti(elmt, bounding);
+		}
+		else
+		{
+			m_hovered_contacts_map.insert(elmt, bounding);
+		}
+
+		nc_top_left.ry() += bounding.height();
+	}
 }
 
 /**
@@ -682,9 +692,10 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, QString type)
 
 		QRectF r, text_bounding;
 		qreal center = boundingRect().center().x();
+		qreal width = boundingRect().width() > 70 ? boundingRect().width()/2 : 35;
 
-		r = QRectF(QPointF(center - 35, boundingRect().bottom()),
-				   QPointF(center + 35, boundingRect().bottom() + 1));
+		r = QRectF(QPointF(center - width, boundingRect().bottom()),
+				   QPointF(center + width, boundingRect().bottom() + 1));
 
 		text_bounding = painter.boundingRect(r, Qt::TextWordWrap | Qt::AlignHCenter, text);
 		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, text);
@@ -710,3 +721,62 @@ void CrossRefItem::setTextParent() {
 	else qDebug() << "CrossRefItem,no text tagged 'label' found to set has parent";
 }
 
+/**
+ * @brief CrossRefItem::NOElements
+ * @return The linked elements of @m_element wich are open or switch contact.
+ * If linked element is a power contact, xref propertie is set to don't show power contact
+ * and this cross item must be drawed as cross, the element is not append in the list.
+ */
+QList<Element *> CrossRefItem::NOElements() const
+{
+	QList<Element *> no_list;
+
+	foreach (Element *elmt, m_element->linkedElements())
+	{
+			//We continue if element is a power contact and xref propertie
+			//is set to don't show power contact
+		if (m_properties.displayHas() == XRefProperties::Cross &&
+			!m_properties.showPowerContact() &&
+			elmt -> kindInformations()["type"].toString() == "power")
+			continue;
+
+		QString state = elmt->kindInformations()["state"].toString();
+
+		if (state == "NO" || state == "SW")
+		{
+			no_list.append(elmt);
+		}
+	}
+
+	return no_list;
+}
+
+/**
+ * @brief CrossRefItem::NCElements
+ * @return The linked elements of @m_element wich are close or switch contact
+ * If linked element is a power contact, xref propertie is set to don't show power contact
+ * and this cross item must be drawed as cross, the element is not append in the list.
+ */
+QList<Element *> CrossRefItem::NCElements() const
+{
+	QList<Element *> nc_list;
+
+	foreach (Element *elmt, m_element->linkedElements())
+	{
+			//We continue if element is a power contact and xref propertie
+			//is set to don't show power contact
+		if (m_properties.displayHas() == XRefProperties::Cross &&
+			!m_properties.showPowerContact() &&
+			elmt -> kindInformations()["type"].toString() == "power")
+			continue;
+
+		QString state = elmt->kindInformations()["state"].toString();
+
+		if (state == "NC" || state == "SW")
+		{
+			nc_list.append(elmt);
+		}
+	}
+
+	return nc_list;
+}

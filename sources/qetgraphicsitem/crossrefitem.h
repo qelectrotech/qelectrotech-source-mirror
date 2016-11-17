@@ -61,11 +61,6 @@ class CrossRefItem : public QGraphicsObject
 		QRectF boundingRect			() const;
 		virtual QPainterPath shape	() const;
 		QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
-		void allElementsPositionText (QString &no_str, QString &nc_str,const bool &add_prefix = false) const;
-		void setTextLabel(QString label);
-
-
-	signals:
 
 	public slots:
 		void updateProperties ();
@@ -88,6 +83,8 @@ class CrossRefItem : public QGraphicsObject
 		void fillCrossRef			(QPainter &painter);
 		void AddExtraInfo			(QPainter &painter, QString);
 		void setTextParent			();
+		QList<Element *> NOElements() const;
+		QList<Element *> NCElements() const;
 
 		//Attributes
 	private:
@@ -99,7 +96,6 @@ class CrossRefItem : public QGraphicsObject
 		int			   m_drawed_contacts;
 		QMap <Element *, QRectF> m_hovered_contacts_map;
 		Element *m_hovered_contact = nullptr;
-		QRectF m_hover_text_rect;
 
 };
 
