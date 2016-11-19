@@ -766,7 +766,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen %1</translation>
     </message>
 </context>
 <context>
@@ -1563,7 +1563,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen dossier</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
@@ -1630,38 +1630,38 @@ Alle elementen in het dossier worden verwijderd.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Dossier %1 bevat</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n element(en), verspreid(en)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>in %n dosssier(s).</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandslocatie van collectie : %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestands locatie van : %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>eigenschappen van dossier %1</translation>
     </message>
 </context>
 <context>
@@ -6338,7 +6338,7 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldings bestanden (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -6563,8 +6563,8 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/elementsmover.cpp" line="158"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Toevoegen %n geleider(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
