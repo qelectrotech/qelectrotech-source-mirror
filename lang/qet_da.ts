@@ -917,7 +917,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/autoNum/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation>Indstillinger</translation>
+        <translation>Opsætning</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/dialogautonum.ui" line="42"/>
@@ -2195,7 +2195,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Eksport terminaler i BOM</translation>
+        <translation>Eksporter terminaler i BOM</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -2206,7 +2206,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/configpages.cpp" line="254"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
-        <translation>Præsenter senest integrerede symboler i panelet</translation>
+        <translation>Vis senest integrerede symboler i panelet</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
@@ -2241,7 +2241,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="308"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
-        <translation>Nyt sprog kræver QElectroTech genstart.</translation>
+        <translation>Nyt sprog (kræver QElectroTech genstart)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="371"/>
@@ -3509,7 +3509,7 @@ Kommandovalg:
         <location filename="../sources/qetapp.cpp" line="1604"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation>  --config-dir=DIR              Angiv mappe for indstillinger
+        <translation>  --config-dir=DIR              Angiv mappe for opsætning
 </translation>
     </message>
     <message>
@@ -3607,7 +3607,7 @@ Kommandovalg:
         <location filename="../sources/qetapp.cpp" line="1213"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Indstil QElectroTech</translation>
+        <translation>Opsæt QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1339"/>
@@ -5106,7 +5106,7 @@ betingelser ikke gyldig</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="56"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Indstil QElectroTech</translation>
+        <translation>&amp;Opsæt QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
@@ -5186,7 +5186,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation>&amp;Indstillinger</translation>
+        <translation>&amp;Opsætning</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="133"/>
