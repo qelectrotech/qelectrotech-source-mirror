@@ -132,4 +132,106 @@ namespace autonum
 		}
 	}
 
+	/**
+	 * @brief setSequentialToList
+	 * Append all sequential of type @type owned by @context in list
+	 * @param list : list to have value inserted
+	 * @param context : numerotation context to retrieve value
+	 * @param type : type of sequential (unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
+	 */
+	void setSequentialToList(QStringList &list, NumerotationContext &context, QString type)
+	{
+		for (int i = 0; i < context.size(); i++)
+		{
+			if (context.itemAt(i).at(0) == type)
+			{
+				QString number;
+				if (type == "ten" || type == "tenfolio")
+					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
+				else if (type == "hundred" || type == "hundredfolio")
+					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
+				else number = QString::number(context.itemAt(i).at(1).toInt());
+					list.append(number);
+			}
+		}
+	}
+
+	/**
+	 * @brief setFolioSequentialToHash
+	 * Insert all value of @list in @hash with key @autoNumName
+	 * @param list : list to get values from
+	 * @param hash : hash to have values inserted
+	 * @param autoNumName : name to use as key of hash
+	 */
+	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName)
+	{
+		if (hash.isEmpty() || !hash.contains(autoNumName))
+		{
+			QStringList max;
+			for (int i = 0; i < list.size(); i++)
+			{
+				max.append(list.at(i));
+			}
+			hash.insert(autoNumName,max);
+		}
+		else if (hash.contains(autoNumName))
+		{
+				//Load the String List and update it
+			QStringList max = hash.value(autoNumName);
+			for (int i = 0; i < list.size(); i++)
+			{
+				if ((list.at(i).toInt()) > max.at(i).toInt())
+				{
+					max.replace(i,list.at(i));
+					hash.remove(autoNumName);
+					hash.insert(autoNumName,max);
+				}
+			}
+		}
+	}
+
+	/**
+	 * @brief setSequential
+	 * Fill seqStruct
+	 * @param label : label of sequential to fill (%sequ_, %sequf_, %seqt_, ect....)
+	 * @param seqStruct : struct to fill
+	 * @param context : numerotation context use to know the current sequential num.
+	 * @param diagram : diagram where the sequential occur, notably use when label is folio type (%sequf_, %seqtf_, %seqhf_),
+	 * to keep up to date the current sequential of folio.
+	 * @param hashKey : the hash key used to store the sequential for folio type.
+	 */
+	void setSequential(QString label, sequenceStruct &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey)
+	{
+		if (!context.isEmpty())
+		{
+			if (label.contains("%sequ_"))
+			{
+				autonum::setSequentialToList(seqStruct.unit, context,"unit");
+			}
+			if (label.contains("%sequf_"))
+			{
+				autonum::setSequentialToList(seqStruct.unit_folio, context,"unitfolio");
+				autonum::setFolioSequentialToHash(seqStruct.unit_folio, diagram->m_elmt_unitfolio_max, hashKey);
+			}
+			if (label.contains("%seqt_"))
+			{
+				autonum::setSequentialToList(seqStruct.ten, context,"ten");
+			}
+			if (label.contains("%seqtf_"))
+			{
+				autonum::setSequentialToList(seqStruct.ten_folio, context,"tenfolio");
+				autonum::setFolioSequentialToHash(seqStruct.ten_folio, diagram->m_elmt_tenfolio_max, hashKey);
+			}
+			if (label.contains("%seqh_"))
+			{
+				autonum::setSequentialToList(seqStruct.hundred, context,"hundred");
+			}
+			if (label.contains("%seqhf_"))
+			{
+				autonum::setSequentialToList(seqStruct.hundred_folio, context,"hundredfolio");
+				autonum::setFolioSequentialToHash(seqStruct.hundred_folio, diagram->m_elmt_hundredfolio_max, hashKey);
+			}
+		}
+	}
+
 }

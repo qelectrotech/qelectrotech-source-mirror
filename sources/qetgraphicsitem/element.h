@@ -139,9 +139,7 @@ class Element : public QetGraphicsItem {
 		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
 		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
 
-		void setSequential ();
-		void setSequentialToList(QStringList*, NumerotationContext*, QString);
-		void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
+		void SetUpSequential ();
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel();

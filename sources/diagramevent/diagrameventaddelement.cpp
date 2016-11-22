@@ -238,7 +238,7 @@ void DiagramEventAddElement::addElement()
 		}
 	};
 	m_diagram -> undoStack().push(undo_object);
-	element->setSequential();
+	element->SetUpSequential();
 	element->freezeNewAddedElement();
 	element->updateLabel();
 }

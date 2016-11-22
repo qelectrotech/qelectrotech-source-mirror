@@ -720,85 +720,19 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * @brief Element::setSequential
- * Set sequential values to element
+ * @brief Element::SetUpSequential
+ * Setup the sequential value of this element
  */
-void Element::setSequential() {
-	DiagramContext &dc = this->rElementInformations();
-	QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
-	QString formula = diagram()->project()->elementAutoNumCurrentFormula();
-	QString label = dc["label"].toString();
-	NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
-	NumerotationContextCommands ncc (nc);
-	if (!nc.isEmpty()) {
-		if (label.contains("%sequ_"))
-			setSequentialToList(&m_autoNum_seq.unit,&nc,"unit");
-		if (label.contains("%sequf_")) {
-			setSequentialToList(&m_autoNum_seq.unit_folio,&nc,"unitfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.unit_folio,&diagram()->m_elmt_unitfolio_max,element_currentAutoNum);
-		}
-		if (label.contains("%seqt_"))
-			setSequentialToList(&m_autoNum_seq.ten,&nc,"ten");
-		if (label.contains("%seqtf_")) {
-			setSequentialToList(&m_autoNum_seq.ten_folio,&nc,"tenfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.ten_folio,&diagram()->m_elmt_tenfolio_max,element_currentAutoNum);
-		}
-		if (label.contains("%seqh_"))
-			setSequentialToList(&m_autoNum_seq.hundred,&nc,"hundred");
-		if (label.contains("%seqhf_")) {
-			setSequentialToList(&m_autoNum_seq.hundred_folio,&nc,"hundredfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.hundred_folio,&diagram()->m_elmt_hundredfolio_max,element_currentAutoNum);
-		}
-	this->diagram()->project()->addElementAutoNum(element_currentAutoNum,ncc.next());
-	}
-}
+void Element::SetUpSequential()
+{
+	if (diagram())
+	{
+		QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
+		NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
+		NumerotationContextCommands ncc (nc);
 
-/**
- * @brief Element::setSequentialToList
- * This class appends all sequential to selected list
- * @param list to have values inserted
- * @param nc to retrieve values from
- * @param sequential type
- */
-void Element::setSequentialToList(QStringList* list, NumerotationContext* nc, QString type) {
-	for (int i = 0; i < nc->size(); i++) {
-		if (nc->itemAt(i).at(0) == type) {
-			QString number;
-			if (type == "ten" || type == "tenfolio")
-				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-			else if (type == "hundred" || type == "hundredfolio")
-				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-			else number = QString::number(nc->itemAt(i).at(1).toInt());
-				list->append(number);
-		}
-	}
-}
-
-/**
- * @brief Element::setFolioSequentialToHash
- * This class inserts all elements from list to hash
- * @param list to retrieve values from
- * @param hash to have values inserted
- * @param current element autonum to insert on hash
- */
-void Element::setFolioSequentialToHash(QStringList* list, QHash<QString, QStringList> *hash, QString element_currentAutoNum) {
-	if (hash->isEmpty() || (!(hash->contains(element_currentAutoNum)))) {
-		QStringList max;
-		for (int i = 0; i < list->size(); i++) {
-			max.append(list->at(i));
-		}
-		hash->insert(element_currentAutoNum,max);
-	}
-	else if (hash->contains(element_currentAutoNum)) {
-		//Load the String List and update it
-		QStringList max = hash->value(element_currentAutoNum);
-		for (int i = 0; i < list->size(); i++) {
-			if ((list->at(i).toInt()) > max.at(i).toInt()) {
-				max.replace(i,list->at(i));
-				hash->remove(element_currentAutoNum);
-				hash->insert(element_currentAutoNum,max);
-			}
-		}
+		autonum::setSequential(elementInformations()["label"].toString(), m_autoNum_seq, nc, diagram(), element_currentAutoNum);
+		diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
 	}
 }
 

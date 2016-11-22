@@ -22,6 +22,8 @@
 #include <QPointF>
 #include <QStringList>
 
+#include "numerotationcontext.h"
+
 class Diagram;
 class Element;
 
@@ -59,8 +61,9 @@ namespace autonum
 			const Element *m_element = nullptr;
 	};
 
-
-
+	void setSequentialToList(QStringList &list, NumerotationContext &nc, QString type);
+	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName);
+	void setSequential(QString label, autonum::sequenceStruct &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey);
 }
 
 #endif // ASSIGNVARIABLES_H

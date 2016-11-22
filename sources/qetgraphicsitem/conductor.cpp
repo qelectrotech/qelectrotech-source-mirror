@@ -1269,89 +1269,6 @@ QString Conductor::text() const {
 }
 
 /**
- * @brief Conductor::setSequential
- * Set sequential values to conductor
- */
-void Conductor::setSequential() {
-	if (diagram()==NULL) return;
-	QString conductor_currentAutoNum = diagram()->project()->conductorCurrentAutoNum();
-	QString formula = diagram()->project()->conductorAutoNumCurrentFormula();
-	QString label = this->text();
-	NumerotationContext nc = diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
-	NumerotationContextCommands ncc (nc);
-	if (!nc.isEmpty()) {
-		if (label.contains("%sequ_"))
-			setSequentialToList(&m_autoNum_seq.unit,&nc,"unit");
-		if (label.contains("%sequf_")) {
-			setSequentialToList(&m_autoNum_seq.unit_folio,&nc,"unitfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.unit_folio,&diagram()->m_cnd_unitfolio_max,conductor_currentAutoNum);
-		}
-		if (label.contains("%seqt_"))
-			setSequentialToList(&m_autoNum_seq.ten,&nc,"ten");
-		if (label.contains("%seqtf_")) {
-			setSequentialToList(&m_autoNum_seq.ten_folio,&nc,"tenfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.ten_folio,&diagram()->m_cnd_tenfolio_max,conductor_currentAutoNum);
-		}
-		if (label.contains("%seqh_"))
-			setSequentialToList(&m_autoNum_seq.hundred,&nc,"hundred");
-		if (label.contains("%seqhf_")) {
-			setSequentialToList(&m_autoNum_seq.hundred_folio,&nc,"hundredfolio");
-			setFolioSequentialToHash(&m_autoNum_seq.hundred_folio,&diagram()->m_cnd_hundredfolio_max,conductor_currentAutoNum);
-		}
-	this->diagram()->project()->addConductorAutoNum(conductor_currentAutoNum,ncc.next());
-	}
-}
-
-/**
- * @brief Conductor::setSequentialToList
- * This class appends all sequential to selected list
- * @param list to have values inserted
- * @param nc to retrieve values from
- * @param sequential type
- */
-void Conductor::setSequentialToList(QStringList* list, NumerotationContext* nc, QString type) {
-	for (int i = 0; i < nc->size(); i++) {
-		if (nc->itemAt(i).at(0) == type) {
-			QString number;
-			if (type == "ten" || type == "tenfolio")
-				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-			else if (type == "hundred" || type == "hundredfolio")
-				number = QString("%1").arg(nc->itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-			else number = QString::number(nc->itemAt(i).at(1).toInt());
-				list->append(number);
-		}
-	}
-}
-
-/**
- * @brief Conductor::setFolioSequentialToHash
- * This class inserts all conductors from list to hash
- * @param list to retrieve values from
- * @param hash to have values inserted
- * @param current element autonum to insert on hash
- */
-void Conductor::setFolioSequentialToHash(QStringList* list, QHash<QString, QStringList> *hash, QString conductor_currentAutoNum) {
-	if (hash->isEmpty() || (!(hash->contains(conductor_currentAutoNum)))) {
-		QStringList max;
-		for (int i = 0; i < list->size(); i++) {
-			max.append(list->at(i));
-		}
-		hash->insert(conductor_currentAutoNum,max);
-	}
-	else if (hash->contains(conductor_currentAutoNum)) {
-		//Load the String List and update it
-		QStringList max = hash->value(conductor_currentAutoNum);
-		for (int i = 0; i < list->size(); i++) {
-			if ((list->at(i).toInt()) > max.at(i).toInt()) {
-				max.replace(i,list->at(i));
-				hash->remove(conductor_currentAutoNum);
-				hash->insert(conductor_currentAutoNum,max);
-			}
-		}
-	}
-}
-
-/**
  * @brief Conductor::setOthersSequential
  * Copy sequentials from conductor in argument to this conductor
  * @param conductor to copy sequentials from
@@ -1375,13 +1292,23 @@ void Conductor::setOthersSequential(Conductor *other) {
 void Conductor::setText(const QString &t)
 {
 	text_item->setPlainText(t);
-	if (setSeq)
+	if (setSeq && diagram())
 	{
-		setSequential();
+		QString conductor_currentAutoNum = diagram()->project()->conductorCurrentAutoNum();
+		NumerotationContext nc = diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
+
+		autonum::setSequential(text(), m_autoNum_seq, nc, diagram(), conductor_currentAutoNum);
+
+		NumerotationContextCommands ncc (nc);
+		diagram()->project()->addConductorAutoNum(conductor_currentAutoNum, ncc.next());
+
 		setSeq = false;
 	}
-	QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
-	text_item -> setPlainText(label);
+	if (diagram())
+	{
+		QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
+		text_item -> setPlainText(label);
+	}
 }
 
 /**

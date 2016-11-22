@@ -96,10 +96,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	QString text() const;
 	void setText(const QString &);
 	void refreshText();
-	void setSequential ();
 	void setOthersSequential (Conductor *);
-	void setSequentialToList(QStringList*, NumerotationContext*, QString);
-	void setFolioSequentialToHash(QStringList*, QHash<QString, QStringList>*, QString);
 
 	public:
 		static bool valideXml (QDomElement &);
