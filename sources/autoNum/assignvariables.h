@@ -64,6 +64,7 @@ namespace autonum
 	void setSequentialToList(QStringList &list, NumerotationContext &nc, QString type);
 	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName);
 	void setSequential(QString label, autonum::sequenceStruct &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey);
+	QString NumerotationContextToFormula(const NumerotationContext &nc);
 }
 
 #endif // ASSIGNVARIABLES_H

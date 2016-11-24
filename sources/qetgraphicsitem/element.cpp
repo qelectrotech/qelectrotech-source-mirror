@@ -437,8 +437,18 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	loadSequential(&e,"seqh_",&m_autoNum_seq.hundred);
 	loadSequential(&e,"seqhf_",&m_autoNum_seq.hundred_folio);
 
-	//load informations
+		//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
+		/**
+		 * Since the commit 4791, the value used as "label" and "formula" is stored in differents keys (instead of the same key, "label" in previous version),
+		 * so, if "label" contain "%" (Use variable value), and "formula" does not exist,
+		 * this mean the label was made before commit 4791 (0.51 dev). So we swap the value stored in "label" to "formula" as expected.
+		 * @TODO remove this code at version 0.7 or more (probably useless).
+		 */
+	if (m_element_informations["label"].toString().contains("%") && m_element_informations["formula"].toString().isNull())
+	{
+		m_element_informations.addValue("formula", m_element_informations["label"]);
+	}
 
 	//Position and selection.
 	//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid

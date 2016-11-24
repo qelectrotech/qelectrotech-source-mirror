@@ -75,7 +75,20 @@ void ElementInfoWidget::setElement(Element *element)
 void ElementInfoWidget::apply()
 {
 	if (QUndoCommand *undo = associatedUndo())
+	{
 		m_element -> diagram() -> undoStack().push(undo);
+
+		ElementInfoPartWidget *f = infoPartWidgetForKey("formula");
+		ElementInfoPartWidget *l = infoPartWidgetForKey("label");
+
+		if (f && l)
+		{
+			if (f->text().isEmpty())
+				l->setEnabled(true);
+			else
+				l->setDisabled(true);
+		}
+	}
 }
 
 /**
@@ -177,6 +190,22 @@ void ElementInfoWidget::buildInterface()
 }
 
 /**
+ * @brief ElementInfoWidget::infoPartWidgetForKey
+ * @param key
+ * @return the ElementInfoPartWidget with key @key, if not found return nullptr;
+ */
+ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
+{
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	{
+		if (eipw->key() == key)
+			return eipw;
+	}
+
+	return nullptr;
+}
+
+/**
  * @brief ElementInfoWidget::updateUi
  * fill information fetch in m_element_info to the
  * corresponding line edit
@@ -201,6 +230,17 @@ void ElementInfoWidget::updateUi()
 		}
 		else //< for other eipw we hide the checkbox
 			eipw->setHideShow(true);
+	}
+
+	ElementInfoPartWidget *f = infoPartWidgetForKey("formula");
+	ElementInfoPartWidget *l = infoPartWidgetForKey("label");
+
+	if (f && l)
+	{
+		if (f->text().isEmpty())
+			l->setEnabled(true);
+		else
+			l->setDisabled(true);
 	}
 
 	if (m_live_edit) enableLiveEdit();

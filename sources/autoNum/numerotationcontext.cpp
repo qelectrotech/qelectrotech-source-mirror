@@ -99,7 +99,7 @@ QStringList NumerotationContext::itemAt(const int i) const {
  * @return all type use to numerotation
  */
 QString NumerotationContext::validRegExpNum () const {
-	return ("unit|unitfolio|ten|hundred|string|idfolio|folio|machine|locmach|elementline|elementcolumn|elementprefix");
+	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|string|idfolio|folio|machine|locmach|elementline|elementcolumn|elementprefix");
 }
 
 /**
@@ -107,7 +107,7 @@ QString NumerotationContext::validRegExpNum () const {
  * @return all type represents a number
  */
 QString NumerotationContext::validRegExpNumber() const {
-	return ("unit|unitfolio|ten|hundred");
+	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio");
 }
 
 /**

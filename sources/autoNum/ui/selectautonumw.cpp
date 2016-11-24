@@ -22,7 +22,7 @@
 #include "numerotationcontextcommands.h"
 #include "formulaautonumberingw.h"
 #include "ui_formulaautonumberingw.h"
-#include "qdebug.h"
+#include "assignvariables.h"
 
 /**
  * Constructor
@@ -244,72 +244,18 @@ void SelectAutonumW::applyEnable(bool b) {
  * @brief SelectAutonumW::contextToFormula
  * Apply formula to ElementAutonumbering Widget
  */
-void SelectAutonumW::contextToFormula() {
-	FormulaAutonumberingW* m_faw;
+void SelectAutonumW::contextToFormula()
+{
+	FormulaAutonumberingW* m_faw = nullptr;
 	if (this->parentWidget() -> objectName()=="ElementTab")
 		m_faw = m_feaw;
-	if (this->parentWidget()->objectName()=="ConductorTab")
+	else if (this->parentWidget()->objectName()=="ConductorTab")
 		m_faw = m_fcaw;
-	m_faw->clearContext();
-	int count_unit = 0;
-	int count_unitf = 0;
-	int count_ten = 0;
-	int count_tenf = 0;
-	int count_hundred = 0;
-	int count_hundredf = 0;
-	foreach (NumPartEditorW *npe, num_part_list_) {
-		if (npe->isValid()) {
-			if (npe->type_ == NumPartEditorW::idfolio) {
-				m_faw->setContext("%id");
-			}
-			else if (npe->type_ == NumPartEditorW::folio) {
-				m_faw->setContext("%F");
-			}
-			else if (npe->type_ == NumPartEditorW::machine) {
-				m_faw->setContext("%M");
-			}
-			else if (npe->type_ == NumPartEditorW::locmach) {
-				m_faw->setContext("%LM");
-			}
-			
-			
-			else if (npe->type_ == NumPartEditorW::elementcolumn) {
-				m_faw->setContext("%c");
-			}
-			else if (npe->type_ == NumPartEditorW::elementline) {
-				m_faw->setContext("%l");
-			}
-			else if (npe->type_ == NumPartEditorW::elementprefix) {
-				m_faw->setContext("%prefix");
-			}
-			else if (npe->type_ == NumPartEditorW::string) {
-				m_faw->setContext(npe->toNumContext().itemAt(0).at(1));
-			}
-			else if (npe->type_ == NumPartEditorW::unit) {
-				count_unit++;
-				m_faw->setContext("%sequ_"+QString::number(count_unit));
-			}
-			else if (npe->type_ == NumPartEditorW::unitfolio) {
-				count_unitf++;
-				m_faw->setContext("%sequf_"+QString::number(count_unitf));
-			}
-			else if (npe->type_ == NumPartEditorW::ten) {
-				count_ten++;
-				m_faw->setContext("%seqt_"+QString::number(count_ten));
-			}
-			else if (npe->type_ == NumPartEditorW::tenfolio) {
-				count_tenf++;
-				m_faw->setContext("%seqtf_"+QString::number(count_tenf));
-			}
-			else if (npe->type_ == NumPartEditorW::hundred) {
-				count_hundred++;
-				m_faw->setContext("%seqh_"+QString::number(count_hundred));
-			}
-			else if (npe->type_ == NumPartEditorW::hundredfolio) {
-				count_hundredf++;
-				m_faw->setContext("%seqhf_"+QString::number(count_hundredf));
-			}
-		}
+
+	if (m_faw)
+	{
+		m_faw->clearContext();
+		m_faw->setContext(autonum::NumerotationContextToFormula(toNumContext()));
 	}
 }
 

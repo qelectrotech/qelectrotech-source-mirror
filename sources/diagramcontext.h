@@ -32,6 +32,7 @@
 /**
  * Key for element :
  * label                          -> label or identification of element
+ * formula                        -> formula used to create the label (formula is make with variable)
  * designation                    -> exhaustive comment used to explain what the element does.
  * comment                        -> a little comment wich can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element

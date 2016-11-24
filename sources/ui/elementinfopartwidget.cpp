@@ -99,3 +99,23 @@ void ElementInfoPartWidget::setHideShow(const bool &hide) {
 void ElementInfoPartWidget::setFocusTolineEdit() {
 	ui->line_edit->setFocus();
 }
+
+/**
+ * @brief ElementInfoPartWidget::setEnabled
+ * enable the line edit
+ * @param e
+ */
+void ElementInfoPartWidget::setEnabled(bool e)
+{
+	ui->line_edit->setEnabled(e);
+}
+
+/**
+ * @brief ElementInfoPartWidget::setDisabled
+ * disable the line edit
+ * @param d
+ */
+void ElementInfoPartWidget::setDisabled(bool d)
+{
+	ui->line_edit->setDisabled(d);
+}

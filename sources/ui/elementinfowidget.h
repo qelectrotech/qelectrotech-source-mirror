@@ -60,6 +60,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 	private:
 		void buildInterface();
+		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
 
 	private slots:
 		void firstActivated();

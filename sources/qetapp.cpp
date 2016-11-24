@@ -282,9 +282,11 @@ ElementsCollectionCache *QETApp::collectionCache() {
  * @brief QETApp::elementInfoKeys
  * @return all available key for describe an element
  */
-QStringList QETApp::elementInfoKeys() {
+QStringList QETApp::elementInfoKeys()
+{
 	QStringList info_list;
-	info_list << "label"
+	info_list << "formula"
+			  << "label"
 			  << "comment"
 			  << "designation"
 			  << "manufacturer"
@@ -304,8 +306,10 @@ QStringList QETApp::elementInfoKeys() {
  * @param info the key to be translated
  * @return
  */
-QString QETApp::elementTranslatedInfoKey(QString &info) {
-	if (info == "label") return tr("Label");
+QString QETApp::elementTranslatedInfoKey(QString &info)
+{
+	if (info == "formula") return tr("formule du label");
+	else if (info == "label") return tr("Label");
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "designation") return tr("Désignation");
 	else if (info == "manufacturer") return tr("Fabricant");

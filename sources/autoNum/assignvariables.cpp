@@ -20,6 +20,7 @@
 #include "element.h"
 #include "diagramposition.h"
 #include <QVariant>
+#include <QStringList>
 
 namespace autonum
 {
@@ -232,6 +233,83 @@ namespace autonum
 				autonum::setFolioSequentialToHash(seqStruct.hundred_folio, diagram->m_elmt_hundredfolio_max, hashKey);
 			}
 		}
+	}
+
+	/**
+	 * @brief NumerotationContextToFormula
+	 * @param nc
+	 * @return the numerotation context, converted to formula
+	 */
+	QString NumerotationContextToFormula(const NumerotationContext &nc)
+	{
+		QString type;
+		QString value;
+		QString formula;
+		int count_unit = 0;
+		int count_unitf = 0;
+		int count_ten = 0;
+		int count_tenf = 0;
+		int count_hundred = 0;
+		int count_hundredf = 0;
+
+		for(int i=0 ; i<nc.size() ; i++)
+		{
+			type = nc.itemAt(i).at(0);
+			value = nc.itemAt(i).at(1);
+
+			if (type == "idfolio") {
+				formula.append("%id");
+			}
+			else if (type == "folio") {
+				formula.append("%F");
+			}
+			else if (type == "machine") {
+				formula.append("%M");
+			}
+			else if (type == "locmach") {
+				formula.append("%LM");
+			}
+
+
+			else if (type == "elementcolumn") {
+				formula.append("%c");
+			}
+			else if (type == "elementline") {
+				formula.append("%l");
+			}
+			else if (type == "elementprefix") {
+				formula.append("%prefix");
+			}
+			else if (type == "string") {
+				formula.append(value);
+			}
+			else if (type == "unit") {
+				count_unit++;
+				formula.append("%sequ_" + QString::number(count_unit));
+			}
+			else if (type == "unitfolio") {
+				count_unitf++;
+				formula.append("%sequf_" + QString::number(count_unitf));
+			}
+			else if (type == "ten") {
+				count_ten++;
+				formula.append("%seqt_" + QString::number(count_ten));
+			}
+			else if (type == "tenfolio") {
+				count_tenf++;
+				formula.append("%seqtf_" + QString::number(count_tenf));
+			}
+			else if (type == "hundred") {
+				count_hundred++;
+				formula.append("%seqh_" + QString::number(count_hundred));
+			}
+			else if (type == "hundredfolio") {
+				count_hundredf++;
+				formula.append("%seqhf_" + QString::number(count_hundredf));
+			}
+		}
+
+		return formula;
 	}
 
 }

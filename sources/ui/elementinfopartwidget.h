@@ -40,6 +40,8 @@ class ElementInfoPartWidget : public QWidget
 		void    setShow     (const bool &);
 		void    setHideShow (const bool &);
 		void    setFocusTolineEdit();
+		void    setEnabled(bool e);
+		void    setDisabled(bool d);
 
 	signals:
 		void textEdited  (const QString & text);
