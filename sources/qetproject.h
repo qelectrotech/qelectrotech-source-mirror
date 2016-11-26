@@ -108,15 +108,12 @@ class QETProject : public QObject
 
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
 		QHash <QString, NumerotationContext> elementAutoNum() const;
-		QHash <QString, QString>             elementAutoNumHash();
 		QHash <QString, QString>             conductorAutoNumHash();
 		QHash <QString, NumerotationContext> folioAutoNum() const;
 		void addConductorAutoNum (QString key, NumerotationContext context);
 		void addConductorAutoNumFormula (QString key, QString formula);
 		void setConductorAutoNumCurrentFormula (QString formula, QString title);
 		void addElementAutoNum (QString key, NumerotationContext context);
-		void addElementAutoNumFormula (QString key, QString formula);
-		void setElementAutoNumCurrentFormula (QString formula, QString title);
 		void addFolioAutoNum     (QString key, NumerotationContext context);
 		void removeConductorAutoNum (QString key);
 		void removeElementAutoNum (QString key);
@@ -128,10 +125,12 @@ class QETProject : public QObject
 		QString conductorAutoNumFormula(const QString key) const; //returns Formula
 		QString conductorAutoNumCurrentFormula() const;
 		QString conductorCurrentAutoNum() const;
+		void setCurrentConductorAutoNum(QString autoNum);
 
-		QString elementAutoNumFormula(const QString key) const; //returns Formula
+		QString elementAutoNumFormula(const QString key) const;
 		QString elementAutoNumCurrentFormula() const;
 		QString elementCurrentAutoNum() const;
+		void setCurrrentElementAutonum(QString autoNum);
 
 		//Element
 		void freezeExistentElementLabel(int,int);
@@ -175,42 +174,42 @@ class QETProject : public QObject
 		QUndoStack* undoStack() {return undo_stack_;}
 	
 	public slots:
-	void componentWritten();
-	Diagram *addNewDiagram();
-	QList <Diagram *> addNewDiagramFolioList();
-	void removeDiagram(Diagram *);
-	void diagramOrderChanged(int, int);
-	void setModified(bool);
+		void componentWritten();
+		Diagram *addNewDiagram();
+		QList <Diagram *> addNewDiagramFolioList();
+		void removeDiagram(Diagram *);
+		void diagramOrderChanged(int, int);
+		void setModified(bool);
 	
 	signals:
-	void projectFilePathChanged(QETProject *, const QString &);
-	void projectTitleChanged(QETProject *, const QString &);
-	void projectInformationsChanged(QETProject *);
-	void diagramAdded(QETProject *, Diagram *);
-	void diagramRemoved(QETProject *, Diagram *);
-	void projectModified(QETProject *, bool);
-	void projectDiagramsOrderChanged(QETProject *, int, int);
-	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
-	void readOnlyChanged(QETProject *, bool);
-	void reportPropertiesChanged(QString);
-	void XRefPropertiesChanged ();
-	void addAutoNumDiagram();
-	void elementAutoNumAdded();
-	void elementAutoNumRemoved();
-	void conductorAutoNumAdded();
-	void conductorAutoNumRemoved();
-	void folioAutoNumAdded();
-	void folioAutoNumRemoved();
-	void folioAutoNumChanged(QString);
-	void defaultTitleBlockPropertiesChanged();
-	void conductorAutoNumChanged();
+		void projectFilePathChanged(QETProject *, const QString &);
+		void projectTitleChanged(QETProject *, const QString &);
+		void projectInformationsChanged(QETProject *);
+		void diagramAdded(QETProject *, Diagram *);
+		void diagramRemoved(QETProject *, Diagram *);
+		void projectModified(QETProject *, bool);
+		void projectDiagramsOrderChanged(QETProject *, int, int);
+		void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
+		void readOnlyChanged(QETProject *, bool);
+		void reportPropertiesChanged(QString);
+		void XRefPropertiesChanged ();
+		void addAutoNumDiagram();
+		void elementAutoNumAdded(QString name);
+		void elementAutoNumRemoved(QString name);
+		void conductorAutoNumAdded();
+		void conductorAutoNumRemoved();
+		void folioAutoNumAdded();
+		void folioAutoNumRemoved();
+		void folioAutoNumChanged(QString);
+		void defaultTitleBlockPropertiesChanged();
+		void conductorAutoNumChanged();
 	
 	private slots:
-	void updateDiagramsFolioData();
-	void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
-	void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
-	void usedTitleBlockTemplateChanged(const QString &);
-	void undoStackChanged (bool a) {if (!a) setModified(true);}
+		void updateDiagramsFolioData();
+		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+		void usedTitleBlockTemplateChanged(const QString &);
+		void undoStackChanged (bool a) {if (!a) setModified(true);}
 	
 	private:
 		void setupTitleBlockTemplatesCollection();
@@ -228,56 +227,55 @@ class QETProject : public QObject
 	
 	// attributes
 	private:
-	/// File path this project is saved to
-	QString file_path_;
-	/// Current state of the project
-	ProjectState state_;
-	/// Diagrams carried by the project
-	QList<Diagram *> diagrams_;
-	/// Project title
-	QString project_title_;
-	/// QElectroTech version declared in the XML document at opening time
-	qreal project_qet_version_;
-	/// Whether options were modified
-	bool modified_;
-	/// Whether the project is read only
-	bool read_only_;
-	/// Filepath for which this project is considered read only
-	QString read_only_file_path_;
-	/// Default dimensions and properties for new diagrams created within the project
-	BorderProperties default_border_properties_;
-	/// Default conductor properties for new diagrams created within the project
-	ConductorProperties default_conductor_properties_;
-	/// Default title block properties for new diagrams created within the project
-	TitleBlockProperties default_titleblock_properties_;
-	/// Default report properties
-	QString default_report_properties_;
-	/// Default xref properties
-	QHash <QString, XRefProperties> m_default_xref_properties;
-	/// Embedded title block templates collection
-	TitleBlockTemplatesProjectCollection titleblocks_;
-	/// project-wide variables that will be made available to child diagrams
-	DiagramContext project_properties_;
-	/// undo stack for this project
-	QUndoStack *undo_stack_;
-	/// Conductor auto numerotation
-	QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
-	QHash <QString, QString> m_conductor_autonum_formula;//Title and Formula hash
-	QString m_current_conductor_formula;
-	QString m_current_conductor_autonum;
-	/// Folio auto numbering
-	QHash <QString, NumerotationContext> m_folio_autonum;
-	/// Element Auto Numbering
-	QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
-	QHash <QString, QString> m_element_autonum_formula; //Title and Formula hash
-	QString m_current_element_formula;
-	QString m_current_element_autonum;
-	/// Folio List Sheets quantity for this project.
-	int folioSheetsQuantity;
-	bool m_auto_conductor;
-	XmlElementCollection *m_elements_collection;
-	bool m_freeze_new_elements;
-	bool m_freeze_new_conductors;
+			/// File path this project is saved to
+		QString file_path_;
+			/// Current state of the project
+		ProjectState state_;
+			/// Diagrams carried by the project
+		QList<Diagram *> diagrams_;
+			/// Project title
+		QString project_title_;
+			/// QElectroTech version declared in the XML document at opening time
+		qreal project_qet_version_;
+			/// Whether options were modified
+		bool modified_;
+			/// Whether the project is read only
+		bool read_only_;
+			/// Filepath for which this project is considered read only
+		QString read_only_file_path_;
+			/// Default dimensions and properties for new diagrams created within the project
+		BorderProperties default_border_properties_;
+			/// Default conductor properties for new diagrams created within the project
+		ConductorProperties default_conductor_properties_;
+			/// Default title block properties for new diagrams created within the project
+		TitleBlockProperties default_titleblock_properties_;
+			/// Default report properties
+		QString default_report_properties_;
+			/// Default xref properties
+		QHash <QString, XRefProperties> m_default_xref_properties;
+			/// Embedded title block templates collection
+		TitleBlockTemplatesProjectCollection titleblocks_;
+			/// project-wide variables that will be made available to child diagrams
+		DiagramContext project_properties_;
+			/// undo stack for this project
+		QUndoStack *undo_stack_;
+			/// Conductor auto numerotation
+		QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
+		QHash <QString, QString> m_conductor_autonum_formula;//Title and Formula hash
+		QString m_current_conductor_formula;
+		QString m_current_conductor_autonum;
+			/// Folio auto numbering
+		QHash <QString, NumerotationContext> m_folio_autonum;
+			/// Element Auto Numbering
+		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
+		QString m_current_element_autonum;
+			/// Folio List Sheets quantity for this project.
+		int folioSheetsQuantity;
+		bool m_auto_conductor;
+		XmlElementCollection *m_elements_collection;
+		bool m_freeze_new_elements;
+		bool m_freeze_new_conductors;
 };
+
 Q_DECLARE_METATYPE(QETProject *)
 #endif

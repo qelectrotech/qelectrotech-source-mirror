@@ -55,8 +55,8 @@ class AutoNumberingDockWidget : public QDockWidget
 
 	private:
 		Ui::AutoNumberingDockWidget *ui;
-		QETProject* project_;
-		ProjectView* projectview_;
+		QETProject* m_project;
+		ProjectView* m_project_view;
 
 };
 

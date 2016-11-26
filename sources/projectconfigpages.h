@@ -84,7 +84,7 @@ class ProjectConfigPage : public ConfigPage {
 	
 	// attributes
 	protected:
-	QETProject *project_; ///< Currently edited project
+	QETProject *m_project; ///< Currently edited project
 };
 
 /**
@@ -146,9 +146,9 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void updateContext_folio(QString);//folio
 		void saveContext_folio();
 		void removeContext_folio();
-		void updateContext_element(QString);//element
-		void saveContext_element();
-		void removeContext_element();
+		void updateContextElement(QString);//element
+		void saveContextElement();
+		void removeContextElement();
 
 		void applyAutoNum();
 		void applyManagement();
