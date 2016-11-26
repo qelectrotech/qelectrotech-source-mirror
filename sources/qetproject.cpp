@@ -434,7 +434,7 @@ QHash <QString, QString> QETProject::conductorAutoNumHash() {
 QString QETProject::elementAutoNumFormula (QString key) const
 {
 	if (m_element_autonum.contains(key)) {
-		return autonum::NumerotationContextToFormula(m_element_autonum[key]);
+		return autonum::numerotationContextToFormula(m_element_autonum[key]);
 	}
 
 	return QString();

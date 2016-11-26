@@ -19,6 +19,8 @@
 #include "diagram.h"
 #include "element.h"
 #include "diagramposition.h"
+#include "qetapp.h"
+
 #include <QVariant>
 #include <QStringList>
 
@@ -236,11 +238,11 @@ namespace autonum
 	}
 
 	/**
-	 * @brief NumerotationContextToFormula
+	 * @brief numerotationContextToFormula
 	 * @param nc
 	 * @return the numerotation context, converted to formula
 	 */
-	QString NumerotationContextToFormula(const NumerotationContext &nc)
+	QString numerotationContextToFormula(const NumerotationContext &nc)
 	{
 		QString type;
 		QString value;
@@ -310,6 +312,87 @@ namespace autonum
 		}
 
 		return formula;
+	}
+
+	/**
+	 * @brief elementPrefixForLocation
+	 * @param location
+	 * @return the prefix for an element represented by location, prefix can be null.
+	 * Search for a prefix only if @location represent an element embedded in a project
+	 */
+	QString elementPrefixForLocation(const ElementsLocation &location)
+	{
+		if (!location.isProject())
+			return QString();
+
+		QXmlStreamReader rxml;
+		QString path[10];
+		int i = -1;
+		ElementsLocation current_location = location;
+		int dirLevel = -1;
+
+			//Add location name to path array
+		while(current_location.parent().fileName() != "import")
+		{
+			i++;
+			path[i]=current_location.fileName();
+			current_location = current_location.parent();
+			dirLevel++;
+		}
+			//User Element without folder treatment
+		if (i == -1)
+		{
+			i = 0;
+			path[i]=current_location.fileName();
+			current_location = current_location.parent();
+			dirLevel = 0;
+		}
+
+		// Only Electric labels created so far
+		//if (current_location.fileName() != "10_electric")
+		QString qet_labels = "10_electric/qet_labels.xml";
+		QString filepath = QETApp::commonElementsDir().append(qet_labels);
+		QFile file(filepath);
+		file.isReadable();
+
+		if (!file.open(QFile::ReadOnly | QFile::Text))
+			return QString();
+
+		rxml.setDevice(&file);
+		rxml.readNext();
+
+		while(!rxml.atEnd())
+		{
+			if (rxml.attributes().value("name").toString() == path[i])
+			{
+				rxml.readNext();
+				i=i-1;
+					//reached element directory
+				if (i==0)
+				{
+					for (int j=i; j<= dirLevel; j = j +1)
+					{
+							//if there is a prefix available apply prefix
+						if(rxml.name()=="prefix")
+						{
+							return rxml.readElementText();
+						}
+							//if there isn't a prefix available, find parent prefix in parent folder
+						else
+						{
+							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							{
+								rxml.skipCurrentElement();
+								rxml.readNext();
+							}
+						}
+					}
+				}
+			}
+			rxml.readNext();
+		}
+
+		return QString();
 	}
 
 }

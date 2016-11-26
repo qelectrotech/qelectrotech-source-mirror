@@ -255,7 +255,7 @@ void SelectAutonumW::contextToFormula()
 	if (m_faw)
 	{
 		m_faw->clearContext();
-		m_faw->setContext(autonum::NumerotationContextToFormula(toNumContext()));
+		m_faw->setContext(autonum::numerotationContextToFormula(toNumContext()));
 	}
 }
 

@@ -63,6 +63,7 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	list_circles_.clear();
 	list_polygons_.clear();
 	list_arcs_.clear();
+	setPrefix(autonum::elementPrefixForLocation(location));
 
 	int elmt_state;
 	buildFromXml(location.xml(), &elmt_state);
@@ -270,97 +271,45 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	has a specific label, it will be applied. See qet_labels.xml for more
 	instructions.
 */
-void CustomElement::parseLabels() {
-	if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) && (this->taggedText("label")->toPlainText()=="_")) { //element is being added
-		QXmlStreamReader rxml;
-		QString path[10];
-		QString prefix;
-		int i = -1;
-		ElementsLocation current_location = location();
-		int dirLevel = -1;
+void CustomElement::parseLabels()
+{
+	QString formula = location().project()->elementAutoNumCurrentFormula();
+	DiagramContext &dc = rElementInformations();
 
-		//Add location name to path array
-		while(current_location.parent().fileName() != "import") {
-			i++;
-			path[i]=current_location.fileName();
-			current_location = current_location.parent();
-			dirLevel++;
-		}
-		//User Element without folder treatment
-		if (i == -1) {
-			i = 0;
-			path[i]=current_location.fileName();
-			current_location = current_location.parent();
-			dirLevel = 0;
-		}
-
-		// Only Electric labels created so far
-		//if (current_location.fileName() != "10_electric")
-		QString qet_labels = "10_electric/qet_labels.xml";
-		QString filepath = QETApp::commonElementsDir().append(qet_labels);
-		QFile file(filepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text)) return;
-		rxml.setDevice(&file);
-		rxml.readNext();
-
-		while(!rxml.atEnd()) {
-				if (rxml.attributes().value("name").toString() == path[i]) {
-					rxml.readNext();
-					i=i-1;
-					//reached element directory
-					if (i==0) {
-						for (int j=i; j<= dirLevel; j = j +1){
-							//if there is a prefix available apply prefix
-							if(rxml.name()=="prefix") {
-								prefix = rxml.readElementText();
-								DiagramContext &dc = this->rElementInformations();
-								//if there is a formula to assign, assign it
-								if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
-										(this->linkType()!=Element::Slave)) {
-									QString formula = location().project()->elementAutoNumCurrentFormula();
-									this->setPrefix(prefix);
-									dc.addValue("label", formula);
-									this->setTaggedText("label",formula);
-								} else { //assign only prefix
-									this->setPrefix(prefix);
-									dc.addValue("label", "%prefix");
-									this->setTaggedText("label", prefix);
-								}
-								this->setElementInformations(dc);
-								return;
-							}
-							//if there isn't a prefix available, find parent prefix in parent folder
-							else {
-								while (rxml.readNextStartElement() && rxml.name()!="prefix") {
-									rxml.skipCurrentElement();
-									rxml.readNext();
-								}
-							}
-						}
-					}
-				}
-				rxml.readNext();
-		}
-		if (prefix == "") {
-			if (!(location().project()->elementAutoNumCurrentFormula().isEmpty()) && (location().project()->elementAutoNumCurrentFormula() != "") &&
-					(this->linkType()!=Element::Slave)) {
-				QString formula = location().project()->elementAutoNumCurrentFormula();
-				this->setPrefix(prefix);
-				DiagramContext &dc = this->rElementInformations();
+		//element is being added
+	if (taggedText("label") && (location().projectId()!=-1) && (taggedText("label")->toPlainText()=="_"))
+	{
+		if (getPrefix().isEmpty())
+		{
+			if (!formula.isEmpty() && (this->linkType() != Element::Slave))
+			{
 				dc.addValue("label", formula);
 				this->setTaggedText("label",formula);
 			}
 		}
+		else
+		{
+				//if there is a formula to assign, assign it
+			if (!formula.isEmpty() && (this->linkType() != Element::Slave))
+			{
+				dc.addValue("label", formula);
+				this->setTaggedText("label",formula);
+			}
+			else
+			{ //assign only prefix
+				dc.addValue("label", "%prefix");
+				this->setTaggedText("label", getPrefix());
+			}
+		}
 	}
-	//apply formula to specific label - This condition specify elements which have different labels e.g KM
-	//that are already specified in the element label (inside .elmt file). This method is not called if elements
-	//are being loaded at first time or being pasted
+
+		//apply formula to specific label - This condition specify elements which have different labels e.g KM
+		//that are already specified in the element label (inside .elmt file). This method is not called if elements
+		//are being loaded at first time or being pasted
 	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
 			 (!location().project()->elementAutoNumCurrentFormula().isEmpty()) &&
-			 (this->linkType()!=Element::Slave) && !this->diagram()->item_paste) {
-		QString formula = location().project()->elementAutoNumCurrentFormula();
-		DiagramContext &dc = this->rElementInformations();
+			 (this->linkType()!=Element::Slave) && !this->diagram()->item_paste)
+	{
 		QString prefix = this->taggedText("label")->toPlainText();
 		this->setPrefix(prefix);
 		dc.addValue("label", formula);
