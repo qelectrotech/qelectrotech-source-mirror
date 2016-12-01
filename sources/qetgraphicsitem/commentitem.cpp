@@ -113,7 +113,6 @@ void CommentItem::updateLabel()
 
 	QString location = m_element -> elementInformations()["location"].toString();
 
-	QPainterPath m_shape_path_ = QPainterPath();
 	prepareGeometryChange();
 	m_bounding_rect = QRectF();
 

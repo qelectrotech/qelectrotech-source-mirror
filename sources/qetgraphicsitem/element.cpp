@@ -730,19 +730,45 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * @brief Element::SetUpSequential
- * Setup the sequential value of this element
+ * @brief Element::setUpFormula
+ * Set up the formula used to create the label of this element
+ * @param : if true set tagged text to code letter (ex K for coil) with condition :
+ * formula is empty, text tagged "label" is emptty or "_";
  */
-void Element::SetUpSequential()
+void Element::setUpFormula(bool code_letter)
 {
+	if (linkType() == Element::Slave || linkType() & Element::AllReport)
+		return;
+
 	if (diagram())
 	{
-		QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
-		NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
-		NumerotationContextCommands ncc (nc);
+		QString formula = diagram()->project()->elementAutoNumCurrentFormula();
 
-		autonum::setSequential(elementInformations()["label"].toString(), m_autoNum_seq, nc, diagram(), element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
+		if (formula.isEmpty())
+		{
+			if (code_letter && !m_prefix.isEmpty())
+			{
+				if (ElementTextItem *eti = taggedText("label"))
+				{
+					QString text = eti->toPlainText();
+					if (text.isEmpty() || text == "_")
+					{
+						m_element_informations.addValue("formula", "%prefix");
+					}
+				}
+			}
+		}
+		else
+		{
+			m_element_informations.addValue("formula", formula);
+
+			QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
+			NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
+			NumerotationContextCommands ncc (nc);
+
+			autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
+			diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
+		}
 	}
 }
 
@@ -823,4 +849,27 @@ void Element::freezeNewAddedElement() {
 		freezeLabel();
 	}
 	else return;
+}
+
+/**
+ * @brief Element::setUpConnectionForFormula
+ * setup connection according to the variable of formula
+ * @param old_formula
+ * @param new_formula
+ */
+void Element::setUpConnectionForFormula(QString old_formula, QString new_formula)
+{
+	if (diagram() && (old_formula.contains("%f") || old_formula.contains("%id")))
+		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
+	if (old_formula.contains("%l"))
+		disconnect(this, &Element::yChanged, this, &Element::updateLabel);
+	if (old_formula.contains("%c"))
+		disconnect(this, &Element::xChanged, this, &Element::updateLabel);
+
+	if (diagram() && (new_formula.contains("%f") || new_formula.contains("%id")))
+		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
+	if (new_formula.contains("%l"))
+		connect(this, &Element::yChanged, this, &Element::updateLabel);
+	if (new_formula.contains("%c"))
+		connect(this, &Element::xChanged, this, &Element::updateLabel);
 }

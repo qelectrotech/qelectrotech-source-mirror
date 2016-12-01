@@ -40,21 +40,15 @@ class MasterElement : public CustomElement
 		virtual void unlinkAllElements ();
 		virtual void unlinkElement     (Element *elmt);
 		virtual void initLink          (QETProject *project);
-	
-	signals:
-
-	private:
-		void folioIdChange();
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
-		void changeElementInfo();
 
 	private:
 		bool aboutDeleteXref ();
 
 	private:
-		CrossRefItem *cri_;
+		CrossRefItem *m_Xref_item;
 };
 
 #endif // MASTERELEMENT_H

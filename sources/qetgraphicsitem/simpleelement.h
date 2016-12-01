@@ -37,14 +37,8 @@ class SimpleElement : public CustomElement {
 
 		virtual void initLink(QETProject *project);
 
-	signals:
-
-	private:
-		void folioIdChange();
-
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
-		void changeElementInfo();
 
 	private:
 		CommentItem *m_comment_item;

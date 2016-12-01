@@ -32,7 +32,8 @@ class NumerotationContext;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QetGraphicsItem {	
+class Element : public QetGraphicsItem
+{
 	Q_OBJECT
 	
 		// constructors, destructor
@@ -139,14 +140,17 @@ class Element : public QetGraphicsItem {
 		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
 		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
 
-		void SetUpSequential ();
+		void setUpFormula(bool code_letter = true);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel();
 		void unfreezeLabel();
 		void freezeNewAddedElement();
 
-	//ATTRIBUTES
+	protected:
+		void setUpConnectionForFormula(QString old_formula, QString new_formula);
+
+		//ATTRIBUTES
 	protected:
 		DiagramContext m_element_informations, kind_informations_;
 		autonum::sequenceStruct m_autoNum_seq;

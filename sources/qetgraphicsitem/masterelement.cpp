@@ -31,13 +31,11 @@
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	CustomElement(location, qgi, state),
-	cri_ (nullptr)
+	m_Xref_item (nullptr)
 {
 	link_type_ = Master;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-	connect(this, SIGNAL(xChanged()),    this, SLOT(changeElementInfo()));
-	connect(this, SIGNAL(yChanged()),    this, SLOT(changeElementInfo()));
-	connect(this, SIGNAL(updateLabel()), this, SLOT(changeElementInfo()));
+	connect(this, &Element::updateLabel, [this]() {this->updateLabel(this->elementInformations(), this->elementInformations());});
 }
 
 /**
@@ -62,12 +60,12 @@ void MasterElement::linkToElement(Element *elmt)
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		if (!cri_) cri_ = new CrossRefItem(this); //create cross ref item if not yet
+		if (!m_Xref_item) m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet
 
-		connect(elmt, SIGNAL(xChanged()),    cri_, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(yChanged()),    cri_, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(updateLabel()), cri_, SLOT(updateLabel()));
-		cri_ -> updateLabel();
+		connect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
+		m_Xref_item -> updateLabel();
 		emit linkedElementChanged();
 	}
 }
@@ -102,11 +100,11 @@ void MasterElement::unlinkElement(Element *elmt)
 		elmt -> setHighlighted (false);
 
 			//update the graphics cross ref
-		disconnect(elmt, SIGNAL(xChanged()),    cri_, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(yChanged()),    cri_, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(updateLabel()), cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
 
-		cri_ -> updateLabel();
+		m_Xref_item -> updateLabel();
 		aboutDeleteXref();
 		emit linkedElementChanged();
 	}
@@ -125,76 +123,39 @@ void MasterElement::initLink(QETProject *project) {
 }
 
 /**
- * @brief MasterElement::folioIdChange
- * Used to update the label of this item when the folio id change
- */
-void MasterElement::folioIdChange() {
-	DiagramContext dc =elementInformations();
-	setTaggedText("label", autonum::AssignVariables::formulaToLabel(dc["label"].toString(), m_autoNum_seq, diagram(), this), true);
-}
-
-/**
- * @brief MasterElement::changeElementInfo()
- * Update label if it contains %c, %l, %f or %F variables
- */
-void MasterElement::changeElementInfo(){
-	QString temp_label = this->elementInformations()["label"].toString();
-	if (temp_label.contains("\%")) {
-		if (this->diagram()!=NULL)
-			this->updateLabel(this->elementInformations(),this->elementInformations());
-	}
-}
-
-/**
  * @brief MasterElement::updateLabel
  * update label of this element
  * and the comment item if he's displayed.
  */
 void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
 {
-	const QString old_label = old_info["label"].toString();
-	const QString new_label = new_info["label"].toString();
+	QString old_formula = old_info["formula"].toString();
+	QString new_formula = new_info["formula"].toString();
 
-	QString newstr = autonum::AssignVariables::formulaToLabel(new_label, m_autoNum_seq, diagram(), this);
+	setUpConnectionForFormula(old_formula, new_formula);
 
-	ElementTextItem *eti = taggedText("label");
+	QString label = autonum::AssignVariables::formulaToLabel(new_formula, m_autoNum_seq, diagram(), this);
 
-		//Label of element
-	if (eti && (eti->toPlainText() != newstr))
+	if (label.isEmpty())
 	{
-		if (new_label.isEmpty())
-		{
-			setTaggedText("label", "_", false);
-		}
-		else
-		{
-			setTaggedText("label", newstr, true);
-		}
-
-			//If autonum formula have %id %f or %F (because %F can itself contain %id or %f),
-			//we connect the change of folio position, to keep up to date the label.
-		if (diagram() && diagram()->project())
-		{
-			if (old_label.contains(QRegularExpression("%id|%f|%F"))  && !new_label.contains(QRegularExpression("%id|%f|%F")))
-			{
-				disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
-			}
-			else if (new_label.contains(QRegularExpression("%id|%f|%F")))
-			{
-				connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &MasterElement::folioIdChange);
-			}
-		}
+		setTaggedText("label", new_info["label"].toString());
+	}
+	else
+	{
+		bool visible = m_element_informations.contains("label") ? m_element_informations.keyMustShow("label") : true;
+		m_element_informations.addValue("label", label, visible);
+		setTaggedText("label", label);
 	}
 
-	if (eti)
+	if (ElementTextItem *eti = taggedText("label"))
 	{
-		new_label.isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
+		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
 	}
 
 
 	//Delete or update the xref
-	if (cri_) {
-		cri_ -> updateLabel();
+	if (m_Xref_item) {
+		m_Xref_item -> updateLabel();
 		aboutDeleteXref();
 	}
 	else {
@@ -205,7 +166,7 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 		bool	must_show_location = elementInformations().keyMustShow("location");
 
 		if (! (comment.isEmpty() || !must_show_comment) || !(location.isEmpty() || !must_show_location)) {
-			cri_ = new CrossRefItem(this);
+			m_Xref_item = new CrossRefItem(this);
 		}
 	}
 }
@@ -221,12 +182,12 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
  * @return
  */
 bool MasterElement::aboutDeleteXref() {
-	if(!cri_) return true;
+	if(!m_Xref_item) return true;
 	if(!linkedElements().isEmpty()) return false;
 
-	if (cri_ -> boundingRect().isNull()) {
-		delete cri_;
-		cri_ = nullptr;
+	if (m_Xref_item -> boundingRect().isNull()) {
+		delete m_Xref_item;
+		m_Xref_item = nullptr;
 		return true;
 	}
 
