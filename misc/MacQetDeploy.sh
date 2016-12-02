@@ -182,9 +182,10 @@ else
     exit
 fi
 
+cp -R ${current_dir}/misc/Info.plist qelectrotech.app/Contents/
+cp -R ${current_dir}/ico/mac_icon/*.icns qelectrotech.app/Contents/Resources/
 # On rajoute le numero de version pour "cmd + i"
-sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>$tagName r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
-
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $tagName r$revAp" "qelectrotech.app/Contents/Info.plist"  # Version number
 
 ### copy over frameworks ############################################
 
@@ -326,3 +327,21 @@ svnversion | grep -q '[MS:]' ; if [ $? -eq 0 ] ; then
 fi 
 
 
+
+#rsync to TF DMG builds
+echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$tagName"_"r$revAp.dmg", n/Y?.\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
+cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" /Users/amdosx/MAC_OS_X/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/amdosx/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+if [ $? != 0 ]; then
+{
+echo "RSYNC ERROR: problem syncing ${APPNAME} $tagName r$revAp.dmg"
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/amdosx/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+
+} fi
+
+else
+echo  -e "\033[1;33mExit.\033[m"
+
+fi
