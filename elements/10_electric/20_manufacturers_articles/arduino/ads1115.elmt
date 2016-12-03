@@ -1,0 +1,40 @@
+<definition width="90" orientation="dyyy" version="0.51" type="element" hotspot_x="49" hotspot_y="59" link_type="simple" height="110">
+    <uuid uuid="{e3746578-7d8a-414e-9f97-a12472aa72d7}"/>
+    <names>
+        <name lang="fr">ADS1115</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text size="5" y="-20" text="ADS1115" x="18" rotation="90"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-50" x="0" height="5"/>
+        <text size="7" y="44" text="A3" x="-34"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-40" x="0" height="5"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-20" x="0" height="5"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-10" x="0" height="5"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-30" x="0" height="5"/>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="0" x="0" height="5"/>
+        <text size="7" y="-6" text="ADDR" x="-34"/>
+        <text size="7" y="34" text="A2" x="-34"/>
+        <text size="7" y="-16" text="SDA" x="-34"/>
+        <text size="7" y="4" text="ALRT" x="-34"/>
+        <text size="7" y="24" text="A1" x="-34"/>
+        <text size="7" y="14" text="A0" x="-34"/>
+        <text size="7" y="-26" text="SCL" x="-34"/>
+        <text size="7" y="-36" text="GND" x="-34"/>
+        <input tagg="label" size="9" y="63" text="_" x="-28"/>
+        <text size="7" y="-46" text="VDD" x="-34"/>
+        <rect width="21" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="20" x="-11" height="20"/>
+        <text size="5" y="-39" text="16Bit I2C ADC+PGA" x="26" rotation="90"/>
+        <rect width="81" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-55" x="-45" height="100"/>
+        <terminal orientation="w" y="-50" x="-40"/>
+        <terminal orientation="w" y="-40" x="-40"/>
+        <terminal orientation="w" y="-30" x="-40"/>
+        <terminal orientation="w" y="-20" x="-40"/>
+        <terminal orientation="w" y="-10" x="-40"/>
+        <terminal orientation="w" y="0" x="-40"/>
+        <terminal orientation="w" y="10" x="-40"/>
+        <terminal orientation="w" y="20" x="-40"/>
+        <terminal orientation="w" y="40" x="-40"/>
+        <terminal orientation="w" y="30" x="-40"/>
+    </description>
+</definition>

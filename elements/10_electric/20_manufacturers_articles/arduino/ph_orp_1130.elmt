@@ -1,0 +1,21 @@
+<definition link_type="simple" width="90" hotspot_x="49" orientation="dyyy" height="40" type="element" hotspot_y="21" version="0.51">
+    <uuid uuid="{ac234fc9-5705-4410-aedd-fe36fe2d3ea2}"/>
+    <names>
+        <name lang="en">pH/ORP adapter phidget 1130</name>
+        <name lang="fr">Adaptateur pH/ORP phidget 1130</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text size="7" y="-7" text="A0" x="12"/>
+        <text size="7" y="13" text="GND" x="3"/>
+        <text size="7" y="3" text="BNC" x="-34"/>
+        <text size="7" y="3" text="VDD" x="4"/>
+        <input size="9" y="23" rotate="true" text="_" x="-20" tagg="label"/>
+        <rect y="-7" width="22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="13" x="-34"/>
+        <rect y="-18" width="81" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="34" x="-45"/>
+        <terminal y="-10" orientation="e" x="30"/>
+        <terminal y="0" orientation="e" x="30"/>
+        <terminal y="10" orientation="e" x="30"/>
+        <terminal y="0" orientation="w" x="-40"/>
+    </description>
+</definition>

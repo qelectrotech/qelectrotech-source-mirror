@@ -1,0 +1,56 @@
+<definition version="0.51" link_type="simple" hotspot_x="70" width="80" orientation="dyyy" height="90" type="element" hotspot_y="70">
+    <uuid uuid="{63dedf3e-52bc-4461-8dc6-ce8d62b15cf0}"/>
+    <names>
+        <name lang="it">Modulo 2 relais</name>
+        <name lang="fr">Module 2 relais</name>
+        <name lang="en">2 relays module</name>
+        <name lang="cs">Reléový modul (2)</name>
+        <name lang="pl">Moduł przekaźnikowy</name>
+        <name lang="nl">relais module (2)</name>
+    </names>
+    <informations>Charles Ferrand
+novembre 2013</informations>
+    <description>
+        <text size="5" text="JD-Vcc" y="-18" x="-29"/>
+        <text size="5" text="Vcc" y="-8" x="-19"/>
+        <circle diameter="2" y="-49" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-17"/>
+        <circle diameter="2" y="-49" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-47"/>
+        <line y1="-58.5543" antialias="false" y2="-48.5662" x1="-30" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" end2="none" length2="1.5"/>
+        <line y1="-58.5543" antialias="false" y2="-48.5662" x1="-60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-60" end2="none" length2="1.5"/>
+        <line y1="-48" antialias="false" y2="-48" x1="-60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-55" end2="none" length2="1.5"/>
+        <line y1="-48" antialias="false" y2="-48" x1="-30" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25" end2="none" length2="1.5"/>
+        <line y1="-48" antialias="false" y2="-48" x1="-45" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40" end2="none" length2="1.5"/>
+        <line y1="-48" antialias="false" y2="-48" x1="-15" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" length2="1.5"/>
+        <line y1="-48.5203" antialias="false" y2="-57.5967" x1="-10" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" length2="1.5"/>
+        <line y1="-48.5203" antialias="false" y2="-57.5967" x1="-40" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40" end2="none" length2="1.5"/>
+        <circle diameter="2" y="-49" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-25"/>
+        <circle diameter="2" y="-49" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-55"/>
+        <line y1="-52" antialias="false" y2="-47" x1="-50" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-53" end2="none" length2="1.5"/>
+        <line y1="-52" antialias="false" y2="-47" x1="-20" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23" end2="none" length2="1.5"/>
+        <line y1="-60" antialias="false" y2="-52" x1="-50" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-50" end2="none" length2="1.5"/>
+        <line y1="-60" antialias="false" y2="-52" x1="-20" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" end2="none" length2="1.5"/>
+        <rect width="20" y="-45" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30"/>
+        <text size="7" text="R2" y="-36" x="-26"/>
+        <text size="5" text="Vcc" y="-9" x="-32" rotation="90"/>
+        <text size="5" text="In1" y="-6" x="-53" rotation="90"/>
+        <text size="5" text="In2" y="-6" x="-43" rotation="90"/>
+        <rect width="20" y="-45" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60"/>
+        <text size="6" text="2 Relays" y="-25" x="1" rotation="270"/>
+        <text size="5" text="GND" y="-11" x="-63" rotation="90"/>
+        <text size="7" text="R1" y="-36" x="-56"/>
+        <input size="9" text="_" y="23" tagg="label" x="-58"/>
+        <rect width="70" y="-65" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-65"/>
+        <terminal y="10" orientation="s" x="-60"/>
+        <terminal y="10" orientation="s" x="-50"/>
+        <terminal y="10" orientation="s" x="-40"/>
+        <terminal y="10" orientation="s" x="-30"/>
+        <terminal y="-60" orientation="n" x="-50"/>
+        <terminal y="-60" orientation="n" x="-40"/>
+        <terminal y="-60" orientation="n" x="-60"/>
+        <terminal y="-60" orientation="n" x="-20"/>
+        <terminal y="-60" orientation="n" x="-10"/>
+        <terminal y="-60" orientation="n" x="-30"/>
+        <terminal y="-20" orientation="e" x="0"/>
+        <terminal y="-10" orientation="e" x="0"/>
+    </description>
+</definition>

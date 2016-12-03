@@ -1,0 +1,36 @@
+<definition height="70" type="element" orientation="dyyy" hotspot_x="40" version="0.51" hotspot_y="29" link_type="simple" width="90">
+    <uuid uuid="{ec372b24-376d-4d5c-b6fc-740773b3de74}"/>
+    <names>
+        <name lang="en">Level Shifter 4 ways</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text size="7" text="HV1" x="-24" y="-16"/>
+        <text size="7" text="HV2" x="-24" y="-6"/>
+        <text size="7" text="HV3" x="-24" y="24"/>
+        <text size="7" text="HV4" x="-24" y="35"/>
+        <text size="7" text="HV" x="-24" y="4"/>
+        <text size="7" text="GND" x="-24" y="14"/>
+        <text size="7" text="LV1" x="18" y="-16"/>
+        <text size="7" text="LV2" x="18" y="-6"/>
+        <text size="7" text="LV3" x="18" y="24"/>
+        <text size="7" text="LV4" x="18" y="34"/>
+        <text size="7" text="LV" x="24" y="4"/>
+        <text size="7" text="GND" x="13" y="14"/>
+        <input size="9" rotation="-1" tagg="label" text="_" x="-24" y="42"/>
+        <rect height="62" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="80" x="-35" y="-25"/>
+        <text size="5" rotation="90" text="Level shifter" x="2" y="-16"/>
+        <terminal orientation="w" x="-30" y="10"/>
+        <terminal orientation="w" x="-30" y="0"/>
+        <terminal orientation="w" x="-30" y="-10"/>
+        <terminal orientation="w" x="-30" y="-20"/>
+        <terminal orientation="e" x="40" y="10"/>
+        <terminal orientation="e" x="40" y="-20"/>
+        <terminal orientation="w" x="-30" y="20"/>
+        <terminal orientation="w" x="-30" y="31"/>
+        <terminal orientation="e" x="40" y="-10"/>
+        <terminal orientation="e" x="40" y="0"/>
+        <terminal orientation="e" x="40" y="30"/>
+        <terminal orientation="e" x="40" y="20"/>
+    </description>
+</definition>

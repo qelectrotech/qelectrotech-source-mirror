@@ -1,0 +1,48 @@
+<definition type="element" hotspot_y="75" version="0.51" width="100" height="130" orientation="dyyy" link_type="simple" hotspot_x="50">
+    <uuid uuid="{23f969a0-ff71-4b33-a60c-ba9665972e15}"/>
+    <names>
+        <name lang="fr">Wemos D1 Mini</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="D2" x="-34" y="14" size="7"/>
+        <text text="D3" x="-34" y="4" size="7"/>
+        <text text="D1" x="-34" y="24" size="7"/>
+        <text text="Tx" x="-34" y="44" size="7"/>
+        <text text="Rx" x="-34" y="34" size="7"/>
+        <text text="D6" x="21" y="4" size="7"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" y="-70" width="32" height="30" antialias="false"/>
+        <text text="D4" x="-34" y="-6" size="7"/>
+        <text text="GND" x="-34" y="-16" size="7"/>
+        <text text="USB" x="-13" y="-47" size="9"/>
+        <text text="RST" x="16" y="44" size="7"/>
+        <text text="D5" x="21" y="14" size="7"/>
+        <input tagg="label" text="_" x="-28" y="63" size="9"/>
+        <text text="A0" x="22" y="34" size="7"/>
+        <text text="+5V" x="-34" y="-26" size="7"/>
+        <text text="D0" x="21" y="24" size="7"/>
+        <text text="D7" x="21" y="-6" size="7"/>
+        <text text="D8" x="21" y="-16" size="7"/>
+        <text text="+3.3V" x="5" y="-26" size="7"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-20" y="-10" width="40" height="40" antialias="false"/>
+        <text text="ESP&#xa;12F" x="-7" y="8" size="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-45" y="-60" width="90" height="110" antialias="false"/>
+        <terminal x="-1" y="-65" orientation="n"/>
+        <terminal x="-40" y="-30" orientation="w"/>
+        <terminal x="-40" y="-20" orientation="w"/>
+        <terminal x="-40" y="-10" orientation="w"/>
+        <terminal x="-40" y="0" orientation="w"/>
+        <terminal x="-40" y="10" orientation="w"/>
+        <terminal x="-40" y="20" orientation="w"/>
+        <terminal x="-40" y="30" orientation="w"/>
+        <terminal x="-40" y="40" orientation="w"/>
+        <terminal x="40" y="-30" orientation="e"/>
+        <terminal x="40" y="-20" orientation="e"/>
+        <terminal x="40" y="-10" orientation="e"/>
+        <terminal x="40" y="0" orientation="e"/>
+        <terminal x="40" y="10" orientation="e"/>
+        <terminal x="40" y="20" orientation="e"/>
+        <terminal x="40" y="30" orientation="e"/>
+        <terminal x="40" y="40" orientation="e"/>
+    </description>
+</definition>

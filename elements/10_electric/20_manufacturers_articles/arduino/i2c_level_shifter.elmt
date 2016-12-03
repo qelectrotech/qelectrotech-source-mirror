@@ -1,0 +1,28 @@
+<definition type="element" hotspot_y="29" orientation="dyyy" height="50" link_type="simple" version="0.51" hotspot_x="49" width="110">
+    <uuid uuid="{b0cd6f79-143e-4367-8a6e-f96fbf4124e0}"/>
+    <names>
+        <name lang="en">I2C Level Shifter</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text y="-16" size="7" text="BVCC" x="-34"/>
+        <text y="-6" size="7" text="BSCL" x="-34"/>
+        <text y="4" size="7" text="BSDA" x="-34"/>
+        <text y="14" size="7" text="BGND" x="-34"/>
+        <text y="-16" size="7" text="AVCC" x="19"/>
+        <text y="-6" size="7" text="ASCL" x="19"/>
+        <text y="4" size="7" text="ASDA" x="18"/>
+        <text y="14" size="7" text="AGND" x="17"/>
+        <input y="42" size="9" text="_" rotation="-1" x="-24" tagg="label"/>
+        <rect y="-25" antialias="false" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black" width="101" x="-45"/>
+        <text y="-20" size="5" text="I2C Level&#xa;shifter" rotation="90" x="7"/>
+        <terminal y="10" orientation="w" x="-40"/>
+        <terminal y="0" orientation="w" x="-40"/>
+        <terminal y="-10" orientation="w" x="-40"/>
+        <terminal y="-20" orientation="w" x="-40"/>
+        <terminal y="10" orientation="e" x="50"/>
+        <terminal y="-20" orientation="e" x="50"/>
+        <terminal y="-10" orientation="e" x="50"/>
+        <terminal y="0" orientation="e" x="50"/>
+    </description>
+</definition>
