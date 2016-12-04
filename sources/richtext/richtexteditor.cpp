@@ -503,19 +503,19 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
     // Superscript and subscript buttons
 
     m_valign_sup_action = createCheckableAction(
-            QIcon(),
+            QIcon(":/ico/22x22/format-text-superscript.svg.png"),
             tr("Superscript"),
             this, SLOT(setVAlignSuper(bool)), this);
     addAction(m_valign_sup_action);
 
     m_valign_sub_action = createCheckableAction(
-            QIcon(),
+            QIcon(":/ico/22x22/format-text-subscript.svg.png"),
             tr("Subscript"),
             this, SLOT(setVAlignSub(bool)), this);
     addAction(m_valign_sub_action);
 	
-	m_valign_sup_action -> setVisible( false );
-	m_valign_sub_action -> setVisible( false );
+	m_valign_sup_action -> setVisible( true );
+	m_valign_sub_action -> setVisible( true );
 
     // Insert hyperlink and image buttons
 

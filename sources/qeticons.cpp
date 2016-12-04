@@ -190,6 +190,8 @@ namespace QET {
 		QIcon QETDonate;
 		QIcon QETDownload;
 		QIcon QETVideo;
+		QIcon super;
+		QIcon sub;
 	}
 }
 
@@ -462,4 +464,6 @@ void QET::Icons::initIcons() {
 	listDrawings        .addFile(":/ico/48x48/view-pim-journal.png");
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");
 	TerminalStrip       .addFile(":/ico/22x22/terminalstrip.png");
+	sub                 .addFile(":/ico/22x22/format-text-subscript.svg.png");
+	super               .addFile(":/ico/22x22/format-text-superscript.svg.png");
 }
