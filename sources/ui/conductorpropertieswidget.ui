@@ -45,7 +45,7 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="2">
+            <item row="3" column="2">
              <widget class="QLineEdit" name="m_function_le">
               <property name="clearButtonEnabled">
                <bool>true</bool>
@@ -74,35 +74,35 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
+            <item row="4" column="2">
              <widget class="QLineEdit" name="m_tension_protocol_le">
               <property name="clearButtonEnabled">
                <bool>true</bool>
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="4" column="0">
              <widget class="QLabel" name="label_9">
               <property name="text">
                <string>Tension / Protocole :</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
+            <item row="2" column="0">
              <widget class="QLabel" name="label">
               <property name="text">
                <string>Texte :</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_8">
               <property name="text">
                <string>Fonction :</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
+            <item row="2" column="2">
              <widget class="QLineEdit" name="m_text_le">
               <property name="toolTip">
                <string>Texte</string>
@@ -112,7 +112,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="3">
+            <item row="2" column="3">
              <widget class="QCheckBox" name="m_show_text_cb">
               <property name="toolTip">
                <string>Texte visible</string>
@@ -124,6 +124,16 @@
                <bool>true</bool>
               </property>
              </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>Formule du texte :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="m_formula_le"/>
             </item>
            </layout>
           </item>
