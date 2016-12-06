@@ -1294,18 +1294,19 @@ void Diagram::loadCndFolioSeq() {
 	//Conductor
 	QString title = project()->conductorCurrentAutoNum();
 	NumerotationContext nc = project()->conductorAutoNum(title);
+	QString formula = autonum::numerotationContextToFormula(nc);
 
 	//Unit Folio
 	if (m_cnd_unitfolio_max.isEmpty() || !m_cnd_unitfolio_max.contains(title)) {
 		//Insert Initial Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%sequf_")) {
+		if (formula.contains("%sequf_")) {
 			insertFolioSeqHash(&m_cnd_unitfolio_max,title,"unitfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}
 	}
 	else if (m_cnd_unitfolio_max.contains(title)) {
 		//Load Folio Current Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%sequf_")) {
+		if (formula.contains("%sequf_")) {
 			loadFolioSeqHash(&m_cnd_unitfolio_max,title,"unitfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}
@@ -1314,14 +1315,14 @@ void Diagram::loadCndFolioSeq() {
 	//Ten Folio
 	if (m_cnd_tenfolio_max.isEmpty() || !m_cnd_tenfolio_max.contains(title)) {
 		//Insert Initial Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%seqtf_")) {
+		if (formula.contains("%seqtf_")) {
 			insertFolioSeqHash(&m_cnd_tenfolio_max,title,"tenfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}
 	}
 	else if (m_cnd_tenfolio_max.contains(title)) {
 		//Load Folio Current Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%seqtf_")) {
+		if (formula.contains("%seqtf_")) {
 			loadFolioSeqHash(&m_cnd_tenfolio_max,title,"tenfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}
@@ -1330,14 +1331,14 @@ void Diagram::loadCndFolioSeq() {
 	//Hundred Folio
 	if (m_cnd_hundredfolio_max.isEmpty() || !m_cnd_hundredfolio_max.contains(title)) {
 		//Insert Initial Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%seqhf_")) {
+		if (formula.contains("%seqhf_")) {
 			insertFolioSeqHash(&m_cnd_hundredfolio_max,title,"hundredfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}
 	}
 	else if (m_cnd_hundredfolio_max.contains(title)) {
 		//Load Folio Current Value
-		if (project()->conductorAutoNumCurrentFormula().contains("%seqhf_")) {
+		if (formula.contains("%seqhf_")) {
 			loadFolioSeqHash(&m_cnd_hundredfolio_max,title,"hundredfolio",&nc);
 			project()->addConductorAutoNum(title,nc);
 		}

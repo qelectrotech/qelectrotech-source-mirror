@@ -23,6 +23,7 @@
 #include "qet.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "potentialselectordialog.h"
+#include "assignvariables.h"
 
 /**
  * @brief ConductorAutoNumerotation::ConductorAutoNumerotation
@@ -36,8 +37,8 @@
  */
 ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagram *diagram, QUndoCommand *parent_undo) :
 	m_diagram      (diagram),
-	conductor_     (conductor),
-	conductor_list (conductor -> relatedPotentialConductors()),
+	m_conductor     (conductor),
+	conductor_list (conductor -> relatedPotentialConductors().toList()),
 	m_parent_undo  (parent_undo)
 {}
 
@@ -46,9 +47,9 @@ ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagr
  * execute the automatic numerotation
  */
 void ConductorAutoNumerotation::numerate() {
-	if (!conductor_) return;
+	if (!m_conductor) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
-	else if (conductor_ -> properties().type == ConductorProperties::Multi) numerateNewConductor();
+	else if (m_conductor -> properties().type == ConductorProperties::Multi) numerateNewConductor();
 }
 
 /**
@@ -57,15 +58,15 @@ void ConductorAutoNumerotation::numerate() {
  */
 void ConductorAutoNumerotation::applyText(QString t)
 {
-	if (!conductor_) return;
+	if (!m_conductor) return;
 
 	QVariant old_value, new_value;
-	ConductorProperties cp = conductor_ -> properties();
+	ConductorProperties cp = m_conductor -> properties();
 	old_value.setValue(cp);
 	cp.text = t;
 	new_value.setValue(cp);
 
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor_, "properties", old_value, new_value, m_parent_undo);
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, m_parent_undo);
 	undo->setText(QObject::tr("Modifier les propriétés d'un conducteur", "undo caption"));
 
 	if (!conductor_list.isEmpty())
@@ -91,35 +92,58 @@ void ConductorAutoNumerotation::applyText(QString t)
  */
 void ConductorAutoNumerotation::numeratePotential()
 {
-	QStringList strl;
-	foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
+	QStringList text_list;
+	QStringList formula_list;
+	foreach (const Conductor *cc, conductor_list)
+	{
+		ConductorProperties cp = cc->properties();
+		text_list << cp.text;
+		formula_list << cp.m_formula;
+	}
+
 
 		//the texts is identicals
-	if (QET::eachStrIsEqual(strl))
+	if (QET::eachStrIsEqual(text_list) && QET::eachStrIsEqual(formula_list))
 	{
-		ConductorProperties cp = conductor_ -> properties();
-		cp.text = strl.at(0);
-		conductor_ -> setProperties(cp);
-		conductor_ -> setText(strl.at(0));
+		ConductorProperties cp = m_conductor -> properties();
+		cp.text = text_list.first();
+		cp.m_formula = formula_list.first();
+		m_conductor->setProperties(cp);
+		m_conductor->setOthersSequential(conductor_list.first());
+		m_conductor->setText(text_list.first());
 	}
 		//the texts isn't identicals
 	else
 	{
-		PotentialSelectorDialog psd(conductor_, m_parent_undo, conductor_->diagramEditor());
+		PotentialSelectorDialog psd(m_conductor, m_parent_undo, m_conductor->diagramEditor());
 		psd.exec();
 	}
 }
 
 /**
  * @brief ConductorAutoNumerotation::numerateNewConductor
- * create and apply a new numerotation to @conductor_
+ * create and apply a new numerotation to @m_conductor
  */
-void ConductorAutoNumerotation::numerateNewConductor() {
-	if (!conductor_ || m_diagram->conductorsAutonumName().isEmpty()) return;
+void ConductorAutoNumerotation::numerateNewConductor()
+{
+	if (!m_conductor || m_diagram->conductorsAutonumName().isEmpty())
+		return;
 
 	NumerotationContext context = m_diagram->project()->conductorAutoNum(m_diagram -> conductorsAutonumName());
-	if (context.isEmpty()) return;
+	if (context.isEmpty())
+		return;
+
+	QString autoNum_name = m_diagram->project()->conductorCurrentAutoNum();
+	QString formula = autonum::numerotationContextToFormula(context);
+
+	ConductorProperties cp = m_conductor -> properties();
+	cp.m_formula = formula;
+	m_conductor->setProperties(cp);
+
+	autonum::setSequential(formula, m_conductor->rSequenceStruct(), context, m_diagram, autoNum_name);
 
 	NumerotationContextCommands ncc (context, m_diagram);
-	applyText(m_diagram->project()->conductorAutoNumCurrentFormula());
+	m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+
+	applyText(autonum::AssignVariables::formulaToLabel(formula, m_conductor->rSequenceStruct(), m_diagram));
 }

@@ -604,9 +604,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 	QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, diagram());
 
-	if (use_properties) {
+	if (use_properties)
+	{
 		Conductor *other = conductors_list.toList().first();
-		new_conductor->setSeq = false;
 		new_conductor->setOthersSequential(other);
 		new_conductor->setProperties(others_properties);
 	}
@@ -615,11 +615,11 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 		//Autonum it
 		ConductorAutoNumerotation can (new_conductor, diagram(), undo);
 		can.numerate();
-		new_conductor->setSeq = true;
 	}
 	//Add undo command to the parent diagram
 	diagram() -> undoStack().push(undo);
-	if (use_properties) {
+	if (use_properties)
+	{
 		Conductor *other = conductors_list.toList().first();
 		new_conductor->setText("");
 		new_conductor->setText(other->properties().text);

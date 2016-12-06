@@ -225,14 +225,11 @@ void DiagramEventAddElement::addElement()
 		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
 
 		Conductor *conductor = new Conductor(pair.first, pair.second);
-		conductor -> setProperties(m_diagram -> defaultConductorProperties);
-
 		new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo_object);
 
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
-		conductor->setSeq = true;
 		if (m_diagram->freezeNewConductors() || m_diagram->project()->freezeNewConductors()) {
 			conductor->setFreezeLabel(true);
 		}

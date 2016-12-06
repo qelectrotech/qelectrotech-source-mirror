@@ -419,14 +419,6 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
 }
 
 /**
- * @brief QETProject::conductorAutoNumHash
- * @return Title and Formula Hash
- */
-QHash <QString, QString> QETProject::conductorAutoNumHash() {
-	return m_conductor_autonum_formula;
-}
-
-/**
  * @brief QETProject::elementAutoNumFormula
  * @param element autonum title
  * @return Formula of element autonum stored in element autonum
@@ -469,18 +461,12 @@ void QETProject::setCurrrentElementAutonum(QString autoNum) {
  * @param conductor autonum title
  * @return Formula of element autonum stored in conductor autonum
  */
-QString QETProject::conductorAutoNumFormula (QString key) const {
+QString QETProject::conductorAutoNumFormula (QString key) const
+{
 	if (m_conductor_autonum.contains(key))
-	return m_conductor_autonum_formula[key];
-	else return "";
-}
-
-/**
- * @brief QETProject::conductorAutoNumCurrentFormula
- * @return current formula being used by project
- */
-QString QETProject::conductorAutoNumCurrentFormula() const {
-	return m_current_conductor_formula;
+		return autonum::numerotationContextToFormula(m_conductor_autonum.value(key));
+	else
+		return QString();
 }
 
 /**
@@ -516,26 +502,6 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
  */
 void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
 	m_conductor_autonum.insert(key, context);
-}
-
-/**
- * @brief QETProject::addConductorAutoNumFormula
- * Add the new formula
- * @param formula
- */
-void QETProject::addConductorAutoNumFormula(QString key, QString formula) {
-	m_conductor_autonum_formula.insert(key, formula);
-}
-
-/**
- * @brief QETProject::setConductorAutoNumCurrentFormula
- * Add the formula and title to the current formula and current autonum
- * @param formula
- * @param title
- */
-void QETProject::setConductorAutoNumCurrentFormula(QString formula, QString title) {
-	m_current_conductor_formula = formula;
-	m_current_conductor_autonum = title;
 }
 
 /**
@@ -1471,14 +1437,12 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (!conds_autonums.isNull())
 	{
 		m_current_conductor_autonum = conds_autonums.attribute("current_autonum");
-		m_current_conductor_formula = conds_autonums.attribute("current_formula");
 		m_freeze_new_conductors = conds_autonums.attribute("freeze_new_conductors") == "true";
 		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum"))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_conductor_autonum.insert(elmt.attribute("title"), nc);
-			m_conductor_autonum_formula.insert(elmt.attribute("title"),elmt.attribute("formula"));
 		}
 	}
 	if (!folio_autonums.isNull())
@@ -1556,7 +1520,6 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	//Export Conductor Autonums
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
-	conductor_autonums.setAttribute("current_formula", m_current_conductor_formula);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
 	foreach (QString key, conductorAutoNum().keys()) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");

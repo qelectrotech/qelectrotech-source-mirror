@@ -334,7 +334,6 @@ namespace autonum
 			//Add location name to path array
 		while((current_location.parent() != current_location) && (current_location.parent().fileName() != "import"))
 		{
-			qDebug() << "i = " << i << "  " << current_location.fileName();
 			i++;
 			path[i]=current_location.fileName();
 			current_location = current_location.parent();

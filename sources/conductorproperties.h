@@ -80,7 +80,8 @@ class ConductorProperties
 		QColor color;
 		QString text,
 				m_function,
-				m_tension_protocol;
+				m_tension_protocol,
+				m_formula;
 		int text_size;
 		double cond_size;
 		double verti_rotate_text;

@@ -75,6 +75,7 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
+	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
 	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
@@ -107,6 +108,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 
 	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
+	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.m_function              = ui -> m_function_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
@@ -188,6 +190,7 @@ void ConductorPropertiesWidget::initWidget() {
 
 	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
 	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
+	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(text.isEmpty());});
 	ui->m_multiwires_gb->setChecked(true);
 	ui->m_singlewire_gb->setChecked(true);
 }

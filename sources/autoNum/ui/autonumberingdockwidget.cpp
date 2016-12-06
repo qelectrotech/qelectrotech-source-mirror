@@ -191,15 +191,8 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
 void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 {
 	QString current_autonum = ui->m_conductor_cb->currentText();
-	QString current_formula = m_project->conductorAutoNumFormula(current_autonum);
 
-	if (!current_autonum.isEmpty())  {
-		m_project->setConductorAutoNumCurrentFormula(current_formula, current_autonum);
-	}
-	else {
-		m_project->setConductorAutoNumCurrentFormula("","");
-	}
-
+	m_project->setCurrentConductorAutoNum(current_autonum);
 	m_project_view->currentDiagram()->diagram()->setConductorsAutonumName(current_autonum);
 	m_project_view->currentDiagram()->diagram()->loadCndFolioSeq();
 }

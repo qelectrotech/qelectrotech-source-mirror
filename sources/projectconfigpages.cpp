@@ -532,23 +532,23 @@ void ProjectAutoNumConfigPage::removeContextElement()
 void ProjectAutoNumConfigPage::saveContext_conductor() {
 	// If the text is the default text "Name of new numerotation" save the edited context
 	// With the the name "No name"
-	if (m_context_cb_conductor-> currentText() == tr("Nom de la nouvelle numérotation")) {
+	if (m_context_cb_conductor-> currentText() == tr("Nom de la nouvelle numérotation"))
+	{
 		m_project->addConductorAutoNum (tr("Sans nom"), m_saw_conductor -> toNumContext());
-		project()->addConductorAutoNumFormula (tr("Sans nom"), m_saw_conductor->formula()); //add hash <title, formula>
-		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(),tr("Sans nom")); //add last added conductor formula to current formula
+		project()->setCurrentConductorAutoNum(tr("Sans nom"));
 		m_context_cb_conductor-> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> conductorAutoNum().keys().contains( m_context_cb_conductor->currentText())) {
+	else if ( !m_project -> conductorAutoNum().keys().contains( m_context_cb_conductor->currentText()))
+	{
 		project()->addConductorAutoNum(m_context_cb_conductor->currentText(), m_saw_conductor->toNumContext());
-		project()->addConductorAutoNumFormula (m_context_cb_conductor->currentText(), m_saw_conductor->formula()); //add hash <title, formula>
-		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(),m_context_cb_conductor->currentText()); //add last added conductor formula to current formula
+		project()->setCurrentConductorAutoNum(m_context_cb_conductor->currentText());
 		m_context_cb_conductor-> addItem(m_context_cb_conductor->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
-	else {
-		project()->addConductorAutoNumFormula (m_context_cb_conductor->currentText(), m_saw_conductor->formula()); //add hash <title, formula>
-		project()->setConductorAutoNumCurrentFormula (m_saw_conductor->formula(), m_context_cb_conductor->currentText()); //add last added conductor formula to current formula
+	else
+	{
+		project()->setCurrentConductorAutoNum(m_context_cb_conductor->currentText());
 		m_project->addConductorAutoNum (m_context_cb_conductor-> currentText(), m_saw_conductor -> toNumContext());
 	}
 	project()->conductorAutoNumAdded();

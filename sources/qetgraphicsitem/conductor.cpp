@@ -47,8 +47,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	QGraphicsPathItem(0),
 	terminal1(p1),
 	terminal2(p2),
-	setSeq(true),
-	bMouseOver(false),
+	m_mouse_over(false),
 	m_handler(10),
 	text_item(0),
 	segments(NULL),
@@ -59,9 +58,9 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 {
 		//Set the default conductor properties.
 	if (p1->diagram())
-		properties_ = p1->diagram()->defaultConductorProperties;
+		m_properties = p1->diagram()->defaultConductorProperties;
 	else if (p2->diagram())
-		properties_ = p2->diagram()->defaultConductorProperties;
+		m_properties = p2->diagram()->defaultConductorProperties;
 
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
@@ -98,7 +97,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setAcceptHoverEvents(true);
 	
 		// Add the text field
-	text_item = new ConductorTextItem(properties_.text, this);
+	text_item = new ConductorTextItem(m_properties.text, this);
 	connect(text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
 }
 
@@ -439,7 +438,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
 	// determine la couleur du conducteur
-	QColor final_conductor_color(properties_.color);
+	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
 		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
 	} else if (must_highlight_ == Alert) {
@@ -455,7 +454,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	}
 	
 		//Draw the conductor bigger when is hovered
-	conductor_pen.setWidthF(bMouseOver? (properties_.cond_size) +4 : (properties_.cond_size));
+	conductor_pen.setWidthF(m_mouse_over? (m_properties.cond_size) +4 : (m_properties.cond_size));
 
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
@@ -463,7 +462,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	
 	// modification du QPen generique pour lui affecter la couleur et le style adequats
 	final_conductor_pen.setColor(final_conductor_color);
-	final_conductor_pen.setStyle(properties_.style);
+	final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // meilleur rendu des pointilles
 	
 	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
@@ -475,9 +474,9 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	
 	// dessin du conducteur
 	qp -> drawPath(path());
-	if (properties_.type == ConductorProperties::Single) {
+	if (m_properties.type == ConductorProperties::Single) {
 		qp -> setBrush(final_conductor_color);
-		properties_.singleLineProperties.draw(
+		m_properties.singleLineProperties.draw(
 			qp,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
 			QRectF(middleSegment() -> middle() - QPointF(12.0, 12.0), QSizeF(24.0, 24.0))
@@ -633,7 +632,7 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 	Q_UNUSED(event);
-	bMouseOver = true;
+	m_mouse_over = true;
 	update();
 }
 
@@ -645,7 +644,7 @@ void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 	Q_UNUSED(event);
 	update();
-	bMouseOver = false;
+	m_mouse_over = false;
 }
 
 /**
@@ -719,7 +718,7 @@ QRectF Conductor::boundingRect() const
 QPainterPath Conductor::shape() const
 {
 	QPainterPathStroker pps;
-	pps.setWidth(bMouseOver? 5 : 1);
+	pps.setWidth(m_mouse_over? 5 : 1);
 	pps.setJoinStyle(conductor_pen.joinStyle());
 
 	QPainterPath shape_(pps.createStroke(path()));
@@ -850,14 +849,15 @@ bool Conductor::fromXml(QDomElement &e) {
 	@param Qstring seq to be retrieved
 	@param QStringList list to be inserted values
 */
-void Conductor::loadSequential(QDomElement* e, QString seq, QStringList* list) {
-	//Load Sequential Values
+void Conductor::loadSequential(QDomElement* e, QString seq, QStringList* list)
+{
+		//Load Sequential Values
 	int i = 0;
-	while (!e->attribute(seq + QString::number(i+1)).isEmpty()) {
+	while (!e->attribute(seq + QString::number(i+1)).isEmpty())
+	{
 		list->append(e->attribute(seq + QString::number(i+1)));
 		i++;
 	}
-	setSeq = false;
 }
 
 /**
@@ -922,7 +922,7 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	if (m_frozen_label != "") e.setAttribute("frozenlabel", m_frozen_label);
 	
 	// Export the properties and text
-	properties_. toXml(e);
+	m_properties. toXml(e);
 	text_item -> toXml(e);
 
 	return(e);
@@ -1144,7 +1144,7 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
  * If text was moved by user, this function do nothing, except check if text is near conductor.
  */
 void Conductor::calculateTextItemPosition() {
-	if (!text_item || !diagram() || properties_.type != ConductorProperties::Multi) return;
+	if (!text_item || !diagram() || m_properties.type != ConductorProperties::Multi) return;
 
 	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
 		relatedPotentialConductors(false).size() > 0) {
@@ -1181,8 +1181,8 @@ void Conductor::calculateTextItemPosition() {
 		QPointF text_pos = posForText(rotation);
 
 		if (!text_item -> wasRotateByUser()) {
-			rotation == Qt::Vertical ? text_item -> setRotationAngle(properties_.verti_rotate_text):
-									   text_item -> setRotationAngle(properties_.horiz_rotate_text);
+			rotation == Qt::Vertical ? text_item -> setRotationAngle(m_properties.verti_rotate_text):
+									   text_item -> setRotationAngle(m_properties.horiz_rotate_text);
 		}
 
 		//Adjust the position of text if his rotation
@@ -1292,23 +1292,24 @@ void Conductor::setOthersSequential(Conductor *other) {
 void Conductor::setText(const QString &t)
 {
 	text_item->setPlainText(t);
-	if (setSeq && diagram())
-	{
-		QString conductor_currentAutoNum = diagram()->project()->conductorCurrentAutoNum();
-		NumerotationContext nc = diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
+//	text_item->setPlainText(t);
+//	if (setSeq && diagram())
+//	{
+//		QString conductor_currentAutoNum = diagram()->project()->conductorCurrentAutoNum();
+//		NumerotationContext nc = diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
 
-		autonum::setSequential(text(), m_autoNum_seq, nc, diagram(), conductor_currentAutoNum);
+//		autonum::setSequential(text(), m_autoNum_seq, nc, diagram(), conductor_currentAutoNum);
 
-		NumerotationContextCommands ncc (nc);
-		diagram()->project()->addConductorAutoNum(conductor_currentAutoNum, ncc.next());
+//		NumerotationContextCommands ncc (nc);
+//		diagram()->project()->addConductorAutoNum(conductor_currentAutoNum, ncc.next());
 
-		setSeq = false;
-	}
-	if (diagram())
-	{
-		QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
-		text_item -> setPlainText(label);
-	}
+//		setSeq = false;
+//	}
+//	if (diagram())
+//	{
+//		QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
+//		text_item -> setPlainText(label);
+//	}
 }
 
 /**
@@ -1329,35 +1330,35 @@ void Conductor::refreshText() {
  */
 void Conductor::setProperties(const ConductorProperties &properties)
 {
-	if (properties_ == properties) return;
+	if (m_properties == properties) return;
 
-	properties_ = properties;
+	m_properties = properties;
 
 	foreach(Conductor *other_conductor, relatedPotentialConductors())
 	{
 		ConductorProperties other_properties = other_conductor->properties();
-		other_properties.text = properties_.text;
-		other_properties.color = properties_.color;
-		other_properties.cond_size = properties_.cond_size;
-		other_properties.m_function = properties_.m_function;
-		other_properties.m_tension_protocol = properties_.m_tension_protocol;
+		other_properties.text = m_properties.text;
+		other_properties.color = m_properties.color;
+		other_properties.cond_size = m_properties.cond_size;
+		other_properties.m_function = m_properties.m_function;
+		other_properties.m_tension_protocol = m_properties.m_tension_protocol;
 		other_conductor->setProperties(other_properties);
 	}
-	setText(properties_.text);
-	text_item -> setFontSize(properties_.text_size);
+	setText(m_properties.text);
+	text_item -> setFontSize(m_properties.text_size);
 
 	 if (terminal1 != NULL && terminal1->diagram() != NULL) {
 		if (terminal1->diagram()->item_paste)
 			m_frozen_label = "";
 		else
-			m_frozen_label = properties_.text;
+			m_frozen_label = m_properties.text;
 	}
 
 	setFreezeLabel(m_freeze_label);
-	if (properties_.type != ConductorProperties::Multi)
+	if (m_properties.type != ConductorProperties::Multi)
 		text_item -> setVisible(false);
 	else
-		text_item -> setVisible(properties_.m_show_text);
+		text_item -> setVisible(m_properties.m_show_text);
 	calculateTextItemPosition();
 	update();
 
@@ -1368,8 +1369,9 @@ void Conductor::setProperties(const ConductorProperties &properties)
  * @brief Conductor::properties
  * @return the properties of this Conductor
  */
-ConductorProperties Conductor::properties() const {
-	return(properties_);
+ConductorProperties Conductor::properties() const
+{
+	return(m_properties);
 }
 
 /**
@@ -1394,11 +1396,11 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
  */
 void Conductor::displayedTextChanged()
 {
-	if ((text_item->toPlainText() == autonum::AssignVariables::formulaToLabel(properties_.text, m_autoNum_seq, diagram())) || !diagram()) return;
+	if ((text_item->toPlainText() == autonum::AssignVariables::formulaToLabel(m_properties.text, m_autoNum_seq, diagram())) || !diagram()) return;
 
 	QVariant old_value, new_value;
-	old_value.setValue(properties_);
-	ConductorProperties new_properties(properties_);
+	old_value.setValue(m_properties);
+	ConductorProperties new_properties(m_properties);
 	new_properties.text = text_item -> toPlainText();
 	new_value.setValue(new_properties);
 
@@ -1767,14 +1769,14 @@ void Conductor::setFreezeLabel(bool freeze) {
 
 	if (m_freeze_label) {
 		QString freezelabel = this->text_item->toPlainText();
-		m_frozen_label = properties_.text;
+		m_frozen_label = m_properties.text;
 		this->setText(freezelabel);
-		this->properties_.text = freezelabel;
+		this->m_properties.text = freezelabel;
 	}
 	else {
 		if (m_frozen_label.isEmpty())
 			return;
 		this->setText(m_frozen_label);
-		properties_.text = m_frozen_label;
+		m_properties.text = m_frozen_label;
 	}
 }

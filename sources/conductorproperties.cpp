@@ -254,6 +254,7 @@ void ConductorProperties::toXml(QDomElement &e) const
 		singleLineProperties.toXml(e);
 
 	e.setAttribute("num", text);
+	e.setAttribute("formula", m_formula);
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension-protocol", m_tension_protocol);
 	e.setAttribute("numsize", QString::number(text_size));
@@ -293,6 +294,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 		type = Multi;
 
 	text                 = e.attribute("num");
+	m_formula            = e.attribute("formula");
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension-protocol");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
@@ -318,6 +320,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
+	settings.setValue(prefix + "formula", m_formula);
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
@@ -344,6 +347,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	singleLineProperties.fromSettings(settings, prefix);
 
 	text                 = settings.value(prefix + "text", "_").toString();
+	m_formula            = settings.value(prefix + "formula", "").toString();
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
@@ -391,15 +395,18 @@ ConductorProperties ConductorProperties::defaultProperties()
 }
 
 /**
-	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
-	@return true si les deux ensembles de proprietes sont identiques, false sinon
-*/
-bool ConductorProperties::operator==(const ConductorProperties &other) const{
+ * @brief ConductorProperties::operator ==
+ * @param other
+ * @return true if other == this
+ */
+bool ConductorProperties::operator==(const ConductorProperties &other) const
+{
 	return(
 		other.type == type &&\
 		other.color == color &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.m_formula == m_formula &&\
 		other.m_function == m_function &&\
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_show_text == m_show_text &&\

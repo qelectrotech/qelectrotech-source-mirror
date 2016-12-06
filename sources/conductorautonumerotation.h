@@ -18,7 +18,7 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
-#include <QSet>
+#include <QList>
 
 class Diagram;
 class Conductor;
@@ -41,8 +41,8 @@ class ConductorAutoNumerotation
 
 		//attributes
 		Diagram            *m_diagram;
-		Conductor          *conductor_;
-		QSet <Conductor *>  conductor_list;
+		Conductor          *m_conductor;
+		QList <Conductor *>  conductor_list;
 		QUndoCommand       *m_parent_undo;
 };
 
