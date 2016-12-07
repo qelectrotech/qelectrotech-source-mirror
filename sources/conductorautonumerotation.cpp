@@ -66,12 +66,25 @@ void ConductorAutoNumerotation::applyText(QString t)
 	cp.text = t;
 	new_value.setValue(cp);
 
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, m_parent_undo);
-	undo->setText(QObject::tr("Modifier les propriétés d'un conducteur", "undo caption"));
+	QUndoCommand *undo = nullptr;
+
+	if (m_parent_undo)
+	{
+		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, m_parent_undo);
+		undo = m_parent_undo;
+	}
+	else
+	{
+		undo = new QUndoCommand();
+		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
+		undo->setText(QObject::tr("Modifier les propriétés d'un conducteur", "undo caption"));
+	}
 
 	if (!conductor_list.isEmpty())
 	{
-		undo->setText(QObject::tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+		if (!m_parent_undo)
+			undo->setText(QObject::tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+
 		foreach (Conductor *cond, conductor_list)
 		{
 			ConductorProperties cp2 = cond -> properties();

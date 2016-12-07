@@ -602,7 +602,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	}
 
 
-	QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, diagram());
+	QUndoCommand *undo = new QUndoCommand();
+	QUndoCommand *aic = new AddItemCommand<Conductor *>(new_conductor, diagram(), QPointF(), undo);
+	undo->setText(aic->text());
 
 	if (use_properties)
 	{
