@@ -92,7 +92,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QString text() const;
 		void setText(const QString &);
 		void refreshText();
-		void setOthersSequential (Conductor *);
 
 	public:
 		static bool valideXml (QDomElement &);
@@ -117,10 +116,10 @@ class Conductor : public QObject, public QGraphicsPathItem
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
-		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
-		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
+		autonum::sequentialNumbers sequenceNum () const {return m_autoNum_seq;}
+		autonum::sequentialNumbers& rSequenceNum()      {return m_autoNum_seq;}
 	private:
-		autonum::sequenceStruct m_autoNum_seq;
+		autonum::sequentialNumbers m_autoNum_seq;
 
 	public:
 		void setFreezeLabel(bool freeze);

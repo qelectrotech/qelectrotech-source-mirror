@@ -122,7 +122,7 @@ void ConductorAutoNumerotation::numeratePotential()
 		cp.text = text_list.first();
 		cp.m_formula = formula_list.first();
 		m_conductor->setProperties(cp);
-		m_conductor->setOthersSequential(conductor_list.first());
+		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
 		m_conductor->setText(text_list.first());
 	}
 		//the texts isn't identicals
@@ -153,10 +153,10 @@ void ConductorAutoNumerotation::numerateNewConductor()
 	cp.m_formula = formula;
 	m_conductor->setProperties(cp);
 
-	autonum::setSequential(formula, m_conductor->rSequenceStruct(), context, m_diagram, autoNum_name);
+	autonum::setSequential(formula, m_conductor->rSequenceNum(), context, m_diagram, autoNum_name);
 
 	NumerotationContextCommands ncc (context, m_diagram);
 	m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
 
-	applyText(autonum::AssignVariables::formulaToLabel(formula, m_conductor->rSequenceStruct(), m_diagram));
+	applyText(autonum::AssignVariables::formulaToLabel(formula, m_conductor->rSequenceNum(), m_diagram));
 }

@@ -41,6 +41,7 @@ namespace QETXML
 
 	bool writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message = nullptr);
 
+	QDomElement textToDomElement (QDomDocument &document, QString tag_name, QString value);
 }
 
 #endif // QETXML_H

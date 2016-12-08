@@ -1269,22 +1269,6 @@ QString Conductor::text() const {
 }
 
 /**
- * @brief Conductor::setOthersSequential
- * Copy sequentials from conductor in argument to this conductor
- * @param conductor to copy sequentials from
- */
-void Conductor::setOthersSequential(Conductor *other) {
-	QString conductor_currentAutoNum = other->diagram()->project()->conductorCurrentAutoNum();
-	NumerotationContext nc = other->diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
-	m_autoNum_seq.unit = other->m_autoNum_seq.unit;
-	m_autoNum_seq.unit_folio = other->m_autoNum_seq.unit_folio;
-	m_autoNum_seq.ten = other->m_autoNum_seq.ten;
-	m_autoNum_seq.ten_folio = other->m_autoNum_seq.ten_folio;
-	m_autoNum_seq.hundred = other->m_autoNum_seq.hundred;
-	m_autoNum_seq.hundred_folio = other->m_autoNum_seq.hundred_folio;
-}
-
-/**
  * @brief Conductor::setText
  * The text of this conductor
  * @param t
@@ -1292,24 +1276,6 @@ void Conductor::setOthersSequential(Conductor *other) {
 void Conductor::setText(const QString &t)
 {
 	text_item->setPlainText(t);
-//	text_item->setPlainText(t);
-//	if (setSeq && diagram())
-//	{
-//		QString conductor_currentAutoNum = diagram()->project()->conductorCurrentAutoNum();
-//		NumerotationContext nc = diagram()->project()->conductorAutoNum(conductor_currentAutoNum);
-
-//		autonum::setSequential(text(), m_autoNum_seq, nc, diagram(), conductor_currentAutoNum);
-
-//		NumerotationContextCommands ncc (nc);
-//		diagram()->project()->addConductorAutoNum(conductor_currentAutoNum, ncc.next());
-
-//		setSeq = false;
-//	}
-//	if (diagram())
-//	{
-//		QString label = autonum::AssignVariables::formulaToLabel(t, m_autoNum_seq, diagram());
-//		text_item -> setPlainText(label);
-//	}
 }
 
 /**

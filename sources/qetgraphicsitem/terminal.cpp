@@ -609,7 +609,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	if (use_properties)
 	{
 		Conductor *other = conductors_list.toList().first();
-		new_conductor->setOthersSequential(other);
+		new_conductor->rSequenceNum() = other->sequenceNum();
 		new_conductor->setProperties(others_properties);
 	}
 	else

@@ -137,8 +137,8 @@ class Element : public QetGraphicsItem
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 
-		autonum::sequenceStruct sequenceStruct () const {return m_autoNum_seq;}
-		autonum::sequenceStruct& rSequenceStruct()      {return m_autoNum_seq;}
+		autonum::sequentialNumbers sequenceStruct () const {return m_autoNum_seq;}
+		autonum::sequentialNumbers& rSequenceStruct()      {return m_autoNum_seq;}
 
 		void setUpFormula(bool code_letter = true);
 		void setPrefix(QString);
@@ -153,7 +153,7 @@ class Element : public QetGraphicsItem
 		//ATTRIBUTES
 	protected:
 		DiagramContext m_element_informations, kind_informations_;
-		autonum::sequenceStruct m_autoNum_seq;
+		autonum::sequentialNumbers m_autoNum_seq;
 
 	/**
 		Draw this element
@@ -203,7 +203,6 @@ class Element : public QetGraphicsItem
 		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
 		void etiToElementLabels(ElementTextItem*);
-		void loadSequential(QDomElement* e, QString seq, QStringList* list);
 
 	protected:
 		virtual void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event );

@@ -20,12 +20,114 @@
 #include "element.h"
 #include "diagramposition.h"
 #include "qetapp.h"
+#include "qetxml.h"
 
 #include <QVariant>
 #include <QStringList>
 
 namespace autonum
 {
+
+	/**
+	 * @brief sequentialNumbers::sequentialNumbers
+	 */
+	sequentialNumbers::sequentialNumbers()
+	{}
+
+	sequentialNumbers &sequentialNumbers::operator=(const sequentialNumbers &other)
+	{
+		if (&other == this || other == *this)
+			return (*this);
+
+		unit          = other.unit;
+		unit_folio    = other.unit_folio;
+		ten           = other.ten;
+		ten_folio     = other.ten_folio;
+		hundred       = other.hundred;
+		hundred_folio = other.hundred_folio;
+
+		return (*this);
+	}
+
+	bool sequentialNumbers::operator==(const sequentialNumbers &other) const
+	{
+		if (unit          == other.unit && \
+			unit_folio    == other.unit_folio && \
+			ten           == other.ten && \
+			ten_folio     == other.ten_folio && \
+			hundred       == other.hundred && \
+			hundred_folio == other.hundred_folio)
+			return true;
+		else
+			return false;
+	}
+
+	bool sequentialNumbers::operator!=(const sequentialNumbers &other) const
+	{
+		if (*this == other)
+			return false;
+		else
+			return true;
+	}
+
+	/**
+	 * @brief sequentialNumbers::toXml
+	 * export this sequential numbers into a QDomElement.
+	 * @param document : QDomDocument used to create the QDomElement
+	 * @param tag_name : the tag name used for the QDomElement.
+	 * @return A QDomElement, if this sequential have no value, the returned QDomELement is empty
+	 */
+	QDomElement sequentialNumbers::toXml(QDomDocument &document, QString tag_name) const
+	{
+		QDomElement element = document.createElement(tag_name);
+
+		if (!unit.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "unit", unit.join(";")));
+		if (!unit_folio.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "unitFolio", unit_folio.join(";")));
+		if(!ten.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "ten", ten.join(";")));
+		if(!ten_folio.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "tenFolio", ten_folio.join(";")));
+		if(!hundred.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "hundred", hundred.join(";")));
+		if(!hundred_folio.isEmpty())
+			element.appendChild(QETXML::textToDomElement(document, "hundredFolio", hundred_folio.join(";")));
+
+		return element;
+	}
+
+	/**
+	 * @brief sequentialNumbers::fromXml
+	 * Import sequential values from a QDomElement
+	 * @param element
+	 */
+	void sequentialNumbers::fromXml(const QDomElement &element)
+	{
+		if (!element.hasChildNodes())
+			return;
+
+		QDomElement from;
+
+		from = element.firstChildElement("unit");
+		unit = from.text().split(";");
+
+		from = element.firstChildElement("unitFolio");
+		unit_folio = from.text().split(";");
+
+		from = element.firstChildElement("ten");
+		ten = from.text().split(";");
+
+		from = element.firstChildElement("tenFolio");
+		ten_folio = from.text().split(";");
+
+		from = element.firstChildElement("hundred");
+		hundred = from.text().split(";");
+
+		from = element.firstChildElement("hundredFolio");
+		hundred_folio = from.text().split(";");
+	}
+
 	/**
 	 * @brief AssignVariables::formulaToLabel
 	 * Return the @formula with variable assigned (ready to be displayed)
@@ -35,14 +137,14 @@ namespace autonum
 	 * @param elmt - parent element (if any) of the formula
 	 * @return the string with variable assigned.
 	 */
-	QString AssignVariables::formulaToLabel(QString formula, sequenceStruct &seqStruct, Diagram *diagram, const Element *elmt)
+	QString AssignVariables::formulaToLabel(QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt)
 	{
 		AssignVariables av(formula, seqStruct, diagram, elmt);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
 
-	AssignVariables::AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, const Element *elmt):
+	AssignVariables::AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
@@ -203,7 +305,7 @@ namespace autonum
 	 * to keep up to date the current sequential of folio.
 	 * @param hashKey : the hash key used to store the sequential for folio type.
 	 */
-	void setSequential(QString label, sequenceStruct &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey)
+	void setSequential(QString label, sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey)
 	{
 		if (!context.isEmpty())
 		{
@@ -394,5 +496,4 @@ namespace autonum
 
 		return QString();
 	}
-
 }

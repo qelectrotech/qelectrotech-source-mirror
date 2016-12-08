@@ -30,7 +30,18 @@ class ElementsLocation;
 
 namespace autonum
 {
-	struct sequenceStruct {
+	class sequentialNumbers
+	{
+		public:
+			sequentialNumbers();
+
+			sequentialNumbers &operator= (const sequentialNumbers &other);
+			bool operator== (const sequentialNumbers &other) const;
+			bool operator!= (const sequentialNumbers &other) const;
+
+			QDomElement toXml(QDomDocument &document, QString tag_name = QString("sequentialNumbers")) const;
+			void fromXml(const QDomElement &element);
+
 			QStringList unit;
 			QStringList unit_folio;
 			QStringList ten;
@@ -47,10 +58,10 @@ namespace autonum
 	class AssignVariables
 	{
 		public:
-			static QString formulaToLabel (QString formula, sequenceStruct &seqStruct, Diagram *diagram, const Element *elmt = nullptr);
+			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt = nullptr);
 
 		private:
-			AssignVariables(QString formula, sequenceStruct seqStruct , Diagram *diagram, const Element *elmt = nullptr);
+			AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt = nullptr);
 			void assignTitleBlockVar();
 			void assignProjectVar();
 			void assignSequence();
@@ -58,13 +69,13 @@ namespace autonum
 			Diagram *m_diagram  = nullptr;
 			QString m_arg_formula;
 			QString m_assigned_label;
-			sequenceStruct m_seq_struct;
+			sequentialNumbers m_seq_struct;
 			const Element *m_element = nullptr;
 	};
 
 	void setSequentialToList(QStringList &list, NumerotationContext &nc, QString type);
 	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName);
-	void setSequential(QString label, autonum::sequenceStruct &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey);
+	void setSequential(QString label, autonum::sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey);
 	QString numerotationContextToFormula(const NumerotationContext &nc);
 	QString elementPrefixForLocation(const ElementsLocation &location);
 }

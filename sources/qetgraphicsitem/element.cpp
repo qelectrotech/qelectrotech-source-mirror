@@ -29,6 +29,35 @@
 #include "numerotationcontextcommands.h"
 #include "diagramcontext.h"
 
+class ElementXmlRetroCompatibility
+{
+	friend class Element;
+
+	static void loadSequential(const QDomElement &dom_element, QString seq, QStringList* list)
+	{
+		int i = 0;
+		while (!dom_element.attribute(seq + QString::number(i+1)).isEmpty())
+		{
+				list->append(dom_element.attribute(seq + QString::number(i+1)));
+				i++;
+		}
+	}
+
+	static void loadSequential(const QDomElement &dom_element, Element *element)
+	{
+		autonum::sequentialNumbers sn;
+
+		loadSequential(dom_element,"sequ_",&sn.unit);
+		loadSequential(dom_element,"sequf_",&sn.unit_folio);
+		loadSequential(dom_element,"seqt_",&sn.ten);
+		loadSequential(dom_element,"seqtf_",&sn.ten_folio);
+		loadSequential(dom_element,"seqh_",&sn.hundred);
+		loadSequential(dom_element,"seqhf_",&sn.hundred_folio);
+
+		element->rSequenceStruct() = sn;
+	}
+};
+
 /**
 	Constructeur pour un element sans scene ni parent
 */
@@ -426,16 +455,14 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//uuid of this element
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
-	//load prefix
+		//load prefix
 	m_prefix = e.attribute("prefix");
 
-	//Load Sequential Values
-	loadSequential(&e,"sequ_",&m_autoNum_seq.unit);
-	loadSequential(&e,"sequf_",&m_autoNum_seq.unit_folio);
-	loadSequential(&e,"seqt_",&m_autoNum_seq.ten);
-	loadSequential(&e,"seqtf_",&m_autoNum_seq.ten_folio);
-	loadSequential(&e,"seqh_",&m_autoNum_seq.hundred);
-	loadSequential(&e,"seqhf_",&m_autoNum_seq.hundred_folio);
+		//Load Sequential Values
+	if (e.hasAttribute("sequ_1") || e.hasAttribute("sequf_1") || e.hasAttribute("seqt_1") || e.hasAttribute("seqtf_1") || e.hasAttribute("seqh_1") || e.hasAttribute("sequf_1"))
+		ElementXmlRetroCompatibility::loadSequential(e, this);
+	else
+		m_autoNum_seq.fromXml(e.firstChildElement("sequentialNumbers"));
 
 		//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
@@ -468,21 +495,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 }
 
 /**
-	Load Sequentials to display on element label
-	@param element QDomElement to set Attributes
-	@param Qstring seq to be retrieved
-	@param QStringList list to be inserted values
-*/
-void Element::loadSequential(QDomElement* e, QString seq, QStringList* list) {
-	//Load Sequential Values
-	int i = 0;
-	while (!e->attribute(seq + QString::number(i+1)).isEmpty()) {
-			list->append(e->attribute(seq + QString::number(i+1)));
-			i++;
-	}
-}
-
-/**
 	Permet d'exporter l'element en XML
 	@param document Document XML a utiliser
 	@param table_adr_id Table de correspondance entre les adresses des bornes
@@ -490,46 +502,23 @@ void Element::loadSequential(QDomElement* e, QString seq, QStringList* list) {
 	methode
 	@return L'element XML representant cet element electrique
 */
-QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const {
+QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const
+{
 	QDomElement element = document.createElement("element");
 	
-	// type
+		// type
 	element.setAttribute("type", typeId());
-	// uuid
+
+		// uuid
 	element.setAttribute("uuid", uuid().toString());
-	// prefix
+
+		// prefix
 	element.setAttribute("prefix", m_prefix);
 
-	// Save Element sequential values to Xml
-	// Save Unit Sequential Values
-	for (int i = 0; i < m_autoNum_seq.unit.size(); i++) {
-			element.setAttribute("sequ_" + QString::number(i+1),m_autoNum_seq.unit.at(i));
-	}
-
-	// Save UnitFolio Sequential Values
-	for (int i = 0; i < m_autoNum_seq.unit_folio.size(); i++) {
-			element.setAttribute("sequf_" + QString::number(i+1),m_autoNum_seq.unit_folio.at(i));
-	}
-
-	// Save Ten Sequential Values
-	for (int i = 0; i < m_autoNum_seq.ten.size(); i++) {
-			element.setAttribute("seqt_" + QString::number(i+1),m_autoNum_seq.ten.at(i));
-	}
-
-	// Save TenFolio Sequential Values
-	for (int i = 0; i < m_autoNum_seq.ten_folio.size(); i++) {
-			element.setAttribute("seqtf_" + QString::number(i+1),m_autoNum_seq.ten_folio.at(i));
-	}
-
-	// Save Hundred Sequential Values
-	for (int i = 0; i < m_autoNum_seq.hundred.size(); i++) {
-			element.setAttribute("seqh_" + QString::number(i+1),m_autoNum_seq.hundred.at(i));
-	}
-
-	// Save Hundred Sequential Values
-	for (int i = 0; i < m_autoNum_seq.hundred_folio.size(); i++) {
-			element.setAttribute("seqhf_" + QString::number(i+1),m_autoNum_seq.hundred_folio.at(i));
-	}
+		// sequential num
+	QDomElement seq = m_autoNum_seq.toXml(document);
+	if (seq.hasChildNodes())
+		element.appendChild(seq);
 	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));

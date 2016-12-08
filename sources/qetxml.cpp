@@ -254,3 +254,20 @@ bool QETXML::writeXmlFile(const QDomDocument &xml_document, const QString &file_
 
 	return(true);
 }
+
+/**
+ * @brief QETXML::textToDomElement
+ * Return a QDomElement, created from @document, with tag name @tag_name and text @value.
+ * @param document
+ * @param tag_name
+ * @param value
+ * @return
+ */
+QDomElement QETXML::textToDomElement(QDomDocument &document, QString tag_name, QString value)
+{
+	QDomElement element = document.createElement(tag_name);
+	QDomText text = document.createTextNode(value);
+
+	element.appendChild(text);
+	return element;
+}

@@ -94,7 +94,7 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 {
 	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
 	QString formula = xrp.masterLabel();
-	autonum::sequenceStruct seq;
+	autonum::sequentialNumbers seq;
 	QString txt = autonum::AssignVariables::formulaToLabel(formula, seq, elmt->diagram(), elmt);
 
 	if (add_prefix)
