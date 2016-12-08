@@ -1011,14 +1011,6 @@ void Diagram::addItem(QGraphicsItem *item)
 
 	switch (item->type())
 	{
-		case Element::Type:
-		{
-			Element *elmt = static_cast<Element*>(item);
-			foreach(ElementTextItem *eti, elmt->texts())
-				connect (eti, &ElementTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
-		}
-			break;
-
 		case Conductor::Type:
 		{
 			Conductor *conductor = static_cast<Conductor *>(item);
@@ -1048,15 +1040,6 @@ void Diagram::removeItem(QGraphicsItem *item)
 
 	switch (item->type())
 	{
-		case Element::Type:
-		{
-			Element *elmt = static_cast<Element *>(item);
-			elmt->unlinkAllElements();
-			foreach(ElementTextItem *text, elmt->texts())
-				disconnect(text, &ElementTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
-		}
-			break;
-
 		case Conductor::Type:
 		{
 			Conductor *conductor = static_cast<Conductor *>(item);

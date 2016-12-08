@@ -28,6 +28,7 @@
 #include "elementpropertieswidget.h"
 #include "numerotationcontextcommands.h"
 #include "diagramcontext.h"
+#include "changeelementinformationcommand.h"
 
 class ElementXmlRetroCompatibility
 {
@@ -436,12 +437,15 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
 		}
 	}
-	
-	// importe les valeurs des champs de texte
+
+		//import text filed value
 	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
-	foreach(QGraphicsItem *qgi, childItems()) {
-		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
-			foreach(QDomElement input, inputs) {
+	foreach(QGraphicsItem *qgi, childItems())
+	{
+		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi))
+		{
+			foreach(QDomElement input, inputs)
+			{
 				eti -> fromXml(input);
 				etiToElementLabels(eti);
 			}
@@ -776,6 +780,40 @@ ElementTextItem* Element::setTaggedText(const QString &tagg, const QString &news
 		eti -> setNoEditable(noeditable);
 	}
 	return eti;
+}
+
+/**
+ * @brief Element::textItemChanged
+ * Use to keep up to date the element information when text item changed.
+ * @param dti
+ * @param old_str
+ * @param new_str
+ */
+void Element::textItemChanged(DiagramTextItem *dti, QString old_str, QString new_str)
+{
+	Q_UNUSED(new_str)
+
+	if (!diagram())
+		return;
+
+	ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(dti);
+	if (!eti)
+		return;
+
+	QString tagg = eti->tagg();
+	if (m_element_informations.contains(tagg))
+	{
+		DiagramContext dc = m_element_informations;
+		dc.addValue(tagg, eti->toPlainText(), dc.keyMustShow(tagg));
+		if (tagg == "label")
+			dc.addValue("formula", eti->toPlainText(), dc.keyMustShow("formula"));
+
+		diagram()->undoStack().push(new ChangeElementInformationCommand(this, m_element_informations, dc));
+	}
+	else
+	{
+		diagram()->undoStack().push(new ChangeDiagramTextCommand(eti, old_str, eti->toPlainText()));
+	}
 }
 
 /**

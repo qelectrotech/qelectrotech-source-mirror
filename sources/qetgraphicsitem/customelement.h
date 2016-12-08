@@ -72,7 +72,6 @@ class CustomElement : public FixedElement
 	virtual QList<QVector<qreal> *> arcs() const;
 	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
-	virtual void parseLabels();
 	QString typeId() const;
 	ElementsLocation location() const;
 	QString name() const;

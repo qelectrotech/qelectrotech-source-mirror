@@ -266,59 +266,6 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 }
 
 /**
-	Retrieves the element label stored in file ./elements/ * /qet_labels.xml
-	The labels are applied to all elements inside a folder. If an element
-	has a specific label, it will be applied. See qet_labels.xml for more
-	instructions.
-*/
-void CustomElement::parseLabels()
-{
-	QString formula = location().project()->elementAutoNumCurrentFormula();
-	DiagramContext &dc = rElementInformations();
-
-		//element is being added
-	if (taggedText("label") && (location().projectId()!=-1) && (taggedText("label")->toPlainText()=="_"))
-	{
-		if (getPrefix().isEmpty())
-		{
-			if (!formula.isEmpty() && (this->linkType() != Element::Slave))
-			{
-				dc.addValue("label", formula);
-				this->setTaggedText("label",formula);
-			}
-		}
-		else
-		{
-				//if there is a formula to assign, assign it
-			if (!formula.isEmpty() && (this->linkType() != Element::Slave))
-			{
-				dc.addValue("label", formula);
-				this->setTaggedText("label",formula);
-			}
-			else
-			{ //assign only prefix
-				dc.addValue("label", "%prefix");
-				this->setTaggedText("label", getPrefix());
-			}
-		}
-	}
-
-		//apply formula to specific label - This condition specify elements which have different labels e.g KM
-		//that are already specified in the element label (inside .elmt file). This method is not called if elements
-		//are being loaded at first time or being pasted
-	else if ((this->taggedText("label")!= NULL) && (location().projectId()!=-1) &&
-			 (!location().project()->elementAutoNumCurrentFormula().isEmpty()) &&
-			 (this->linkType()!=Element::Slave) && !this->diagram()->item_paste)
-	{
-		QString prefix = this->taggedText("label")->toPlainText();
-		this->setPrefix(prefix);
-		dc.addValue("label", formula);
-		this->setTaggedText("label",formula);
-		this->setElementInformations(dc);
-	}
-}
-
-/**
 	Analyse et prend en compte un element XML decrivant une partie du dessin
 	de l'element perso. Si l'analyse reussit, la partie est ajoutee au dessin.
 	Cette partie peut etre une borne, une ligne, une ellipse, un cercle, un arc
@@ -766,6 +713,8 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 
 	list_texts_ << eti;
+
+	connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
 
 	return(eti);
 }

@@ -28,6 +28,7 @@ class QETProject;
 class Terminal;
 class Conductor;
 class NumerotationContext;
+class DiagramTextItem;
 
 /**
 	This is the base class for electrical elements.
@@ -46,8 +47,7 @@ class Element : public QetGraphicsItem
 		// attributes
 	public:
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast
-			 * a QGraphicsItem into an Element.
+			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an Element.
 			 * @return the QGraphicsItem type
 			 */
 		enum { Type = UserType + 1000 };
@@ -72,30 +72,30 @@ class Element : public QetGraphicsItem
 
 		// methods
 	public:
-		/// @return the list of terminals for this element
-	virtual QList<Terminal *> terminals() const = 0;
-		/// @return the list of conductors attached to this element
-	virtual QList<Conductor *> conductors() const = 0;
-		/// @return the list of text items attached to this element
-	virtual QList<ElementTextItem *> texts() const = 0;
-		/// @return the text field tagged with @tagg or NULL if text field isn't found
-	virtual ElementTextItem* taggedText(const QString &tagg) const = 0;
-		/// @return the list of lines items in this element
-	virtual QList<QLineF *> lines() const = 0;
-		/// @return the list of rectangles items in this element
-	virtual QList<QRectF *> rectangles() const = 0;
-		/// @return the list of bounding rectangles for circles items in this element
-	virtual QList<QRectF *> circles() const = 0;
-		/// @return the list of polygons in this element
-	virtual QList<QVector<QPointF> *> polygons() const = 0;	
-		/// @return the list of arcs in this element
-	virtual QList<QVector<qreal> *> arcs() const = 0;
-		/// @return the current number of terminals of this element
-	virtual int terminalsCount() const = 0;
-		/// @return the minimum number of terminals for this element
-	virtual int minTerminalsCount() const = 0;
-		/// @return the maximum number of terminals for this element
-	virtual int maxTerminalsCount() const = 0;
+			/// @return the list of terminals for this element
+		virtual QList<Terminal *> terminals() const = 0;
+			/// @return the list of conductors attached to this element
+		virtual QList<Conductor *> conductors() const = 0;
+			/// @return the list of text items attached to this element
+		virtual QList<ElementTextItem *> texts() const = 0;
+			/// @return the text field tagged with @tagg or NULL if text field isn't found
+		virtual ElementTextItem* taggedText(const QString &tagg) const = 0;
+			/// @return the list of lines items in this element
+		virtual QList<QLineF *> lines() const = 0;
+			/// @return the list of rectangles items in this element
+		virtual QList<QRectF *> rectangles() const = 0;
+			/// @return the list of bounding rectangles for circles items in this element
+		virtual QList<QRectF *> circles() const = 0;
+			/// @return the list of polygons in this element
+		virtual QList<QVector<QPointF> *> polygons() const = 0;
+			/// @return the list of arcs in this element
+		virtual QList<QVector<qreal> *> arcs() const = 0;
+			/// @return the current number of terminals of this element
+		virtual int terminalsCount() const = 0;
+			/// @return the minimum number of terminals for this element
+		virtual int minTerminalsCount() const = 0;
+			/// @return the maximum number of terminals for this element
+		virtual int maxTerminalsCount() const = 0;
 
 		QList <QPair <Terminal *, Terminal *> > AlignedFreeTerminals () const;
 
@@ -130,6 +130,7 @@ class Element : public QetGraphicsItem
 
 		//METHODS related to information
 	public:
+		void textItemChanged(DiagramTextItem *dti, QString old_str, QString new_str);
 		DiagramContext  elementInformations    ()const              {return m_element_informations;}
 		DiagramContext& rElementInformations   ()                   {return m_element_informations;}
 		virtual void    setElementInformations (DiagramContext dc);
