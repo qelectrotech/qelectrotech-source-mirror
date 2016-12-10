@@ -112,7 +112,7 @@ class Diagram : public QGraphicsScene
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
 
-		bool m_freeze_new_elements_;
+		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 	
 	// METHODS
@@ -217,7 +217,7 @@ class Diagram : public QGraphicsScene
 	QGIManager &qgiManager();
 	
 	//methods related to element label Update Policy
-	void freezeElements();
+	void freezeElements(bool freeze);
 	void unfreezeElements();
 	void setFreezeNewElements(bool);
 	bool freezeNewElements();

@@ -462,6 +462,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//load prefix
 	m_prefix = e.attribute("prefix");
 
+	QString fl = e.attribute("freezeLabel", "false");
+	m_freeze_label = fl == "false"? false : true;
+
 		//Load Sequential Values
 	if (e.hasAttribute("sequ_1") || e.hasAttribute("sequf_1") || e.hasAttribute("seqt_1") || e.hasAttribute("seqtf_1") || e.hasAttribute("seqh_1") || e.hasAttribute("sequf_1"))
 		ElementXmlRetroCompatibility::loadSequential(e, this);
@@ -518,6 +521,9 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 
 		// prefix
 	element.setAttribute("prefix", m_prefix);
+
+		//frozen label
+	element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 
 		// sequential num
 	QDomElement seq = m_autoNum_seq.toXml(document);
@@ -836,35 +842,17 @@ void Element::setPrefix(QString prefix) {
  * @brief Element::freezeLabel
  * Freeze this element label
  */
-void Element::freezeLabel()
+void Element::freezeLabel(bool freeze)
 {
-	DiagramContext &dc = this->rElementInformations();
-	QString freezelabel = dc["label"].toString();
-	QString label = autonum::AssignVariables::formulaToLabel(freezelabel, m_autoNum_seq, diagram(),this );
-
-	if (!(label == freezelabel))
+	if (m_freeze_label != freeze)
 	{
-		dc.addValue("frozenlabel", freezelabel);
-		dc.addValue("label",label);
-		this->setTaggedText("label", label);
-		this->setElementInformations(dc);
-	}
-}
+		m_freeze_label = freeze;
+		QString f = m_element_informations["formula"].toString();
+		setUpConnectionForFormula(f,f);
 
-/**
- * @brief Element::unfreezeLabel
- * Unfreeze this element label
- */
-void Element::unfreezeLabel()
-{
-	DiagramContext &dc = this->rElementInformations();
-	QString frozenlabel = dc["frozenlabel"].toString();
-	if (frozenlabel == "") return;
-	dc.addValue("frozenlabel", "");
-	dc.addValue("label",frozenlabel);
-	frozenlabel = autonum::AssignVariables::formulaToLabel(frozenlabel, m_autoNum_seq, diagram(),this );
-	this->setTaggedText("label", frozenlabel);
-	this->setElementInformations(dc);
+		if (m_freeze_label == true)
+			updateLabel();
+	}
 }
 
 /**
@@ -873,7 +861,7 @@ void Element::unfreezeLabel()
  */
 void Element::freezeNewAddedElement() {
 	if (this->diagram()->freezeNewElements() || this->diagram()->project()->freezeNewElements()) {
-		freezeLabel();
+		freezeLabel(true);
 	}
 	else return;
 }
@@ -892,6 +880,10 @@ void Element::setUpConnectionForFormula(QString old_formula, QString new_formula
 		disconnect(this, &Element::yChanged, this, &Element::updateLabel);
 	if (old_formula.contains("%c"))
 		disconnect(this, &Element::xChanged, this, &Element::updateLabel);
+
+		//Label is frozen, so we don't update it.
+	if (m_freeze_label == true)
+		return;
 
 	if (diagram() && (new_formula.contains("%f") || new_formula.contains("%id")))
 		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);

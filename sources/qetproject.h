@@ -128,15 +128,13 @@ class QETProject : public QObject
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
 
-		//Element
-		void freezeExistentElementLabel(int,int);
-		void freezeNewElementLabel(int,int);
-		void unfreezeExistentElementLabel(int,int);
-		void unfreezeNewElementLabel(int,int);
+			//Element
+		void freezeExistentElementLabel(bool freeze, int from, int to);
+		void freezeNewElementLabel(bool freeze, int from, int to);
 		bool freezeNewElements();
 		void setFreezeNewElements(bool);
 
-		//Conductor
+			//Conductor
 		void freezeExistentConductorLabel(int,int);
 		void unfreezeExistentConductorLabel(int,int);
 		void freezeNewConductorLabel(int,int);

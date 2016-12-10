@@ -60,7 +60,7 @@ Diagram::Diagram(QETProject *project) :
 	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
 	m_event_interface (nullptr),
-	m_freeze_new_elements_   (false),
+	m_freeze_new_elements   (false),
 	m_freeze_new_conductors_ (false)
 {
 	setProject(project);
@@ -477,7 +477,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 
 		//Default New Element
-		racine.setAttribute("freezeNewElement", m_freeze_new_elements_ ? "true" : "false");
+		racine.setAttribute("freezeNewElement", m_freeze_new_elements ? "true" : "false");
 
 		//Default New Conductor
 		racine.setAttribute("freezeNewConductor", m_freeze_new_conductors_ ? "true" : "false");
@@ -726,7 +726,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		m_conductors_autonum_name = root.attribute("conductorAutonum");
 
 		// Load Freeze New Element
-		m_freeze_new_elements_ = root.attribute("freezeNewElement").toInt();
+		m_freeze_new_elements = root.attribute("freezeNewElement").toInt();
 
 		// Load Freeze New Conductor
 		m_freeze_new_conductors_ = root.attribute("freezeNewConductor").toInt();
@@ -1453,9 +1453,9 @@ bool Diagram::usesTitleBlockTemplate(const QString &name) {
  * @brief Diagram::freezeElements
  * Freeze every existent element label.
  */
-void Diagram::freezeElements() {
+void Diagram::freezeElements(bool freeze) {
 	foreach (Element *elmt, elements()) {
-		elmt->freezeLabel();
+		elmt->freezeLabel(freeze);
 	}
 }
 
@@ -1465,7 +1465,7 @@ void Diagram::freezeElements() {
  */
 void Diagram::unfreezeElements() {
 	foreach (Element *elmt, elements()) {
-		elmt->unfreezeLabel();
+		elmt->freezeLabel(false);
 	}
 }
 
@@ -1474,7 +1474,7 @@ void Diagram::unfreezeElements() {
  * Set new element label to be frozen.
  */
 void Diagram::setFreezeNewElements(bool b) {
-	m_freeze_new_elements_ = b;
+	m_freeze_new_elements = b;
 }
 
 /**
@@ -1482,7 +1482,7 @@ void Diagram::setFreezeNewElements(bool b) {
  * @return current freeze new element status .
  */
 bool Diagram::freezeNewElements() {
-	return m_freeze_new_elements_;
+	return m_freeze_new_elements;
 }
 
 /**

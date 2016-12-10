@@ -41,7 +41,7 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project, QWidget 
 	ui->m_selected_folios_widget->setDisabled(true);
 	ui->m_selected_folios_le->setDisabled(true);
 	ui->m_selected_folios_le->setReadOnly(true);
-	applyEnable(false);
+	ui->m_apply_project_rb->setChecked(true);
 	setProjectContext();
 }
 

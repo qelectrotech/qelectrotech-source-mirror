@@ -660,21 +660,9 @@ void QETProject::setFreezeNewConductors(bool set) {
  * @param from - first folio index to apply freeze
  * @param to - last folio index to apply freeze
  */
-void QETProject::freezeExistentElementLabel(int from, int to) {
+void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->freezeElements();
-	}
-}
-
-/**
- * @brief QETProject::unfreezeExistentElementLabel
- * Unfreeze Existent Elements in the selected folios
- * @param from - first folio index to apply unfreeze
- * @param to - last folio index to apply unfreeze
- */
-void QETProject::unfreezeExistentElementLabel(int from, int to) {
-	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->unfreezeElements();
+		diagrams_.at(i)->freezeElements(freeze);
 	}
 }
 
@@ -684,21 +672,9 @@ void QETProject::unfreezeExistentElementLabel(int from, int to) {
  * @param from - first folio index to apply freeze
  * @param to - last folio index to apply freeze
  */
-void QETProject::freezeNewElementLabel(int from, int to) {
+void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewElements(true);
-	}
-}
-
-/**
- * @brief QETProject::unfreezeNewElementLabel
- * Unfreeze New Elements in the selected folios
- * @param from - first folio index to apply unfreeze
- * @param to - last folio index to apply unfreeze
- */
-void QETProject::unfreezeNewElementLabel(int from, int to) {
-	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewElements(false);
+		diagrams_.at(i)->setFreezeNewElements(freeze);
 	}
 }
 

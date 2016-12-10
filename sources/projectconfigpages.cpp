@@ -653,29 +653,29 @@ void ProjectAutoNumConfigPage::applyManagement() {
 	//Allow Both Existent and New Elements
 	if (m_amw->ui->m_both_element_rb->isChecked()) {
 		//Unfreeze Existent and New Elements
-		project()->unfreezeExistentElementLabel(from,to);
-		project()->unfreezeNewElementLabel(from,to);
+		project()->freezeExistentElementLabel(false, from,to);
+		project()->freezeNewElementLabel(false, from,to);
 		project()->setFreezeNewElements(false);
 	}
 	//Allow Only New
 	else if (m_amw->ui->m_new_element_rb->isChecked()) {
 		//Freeze Existent and Unfreeze New Elements
-		project()->freezeExistentElementLabel(from,to);
-		project()->unfreezeNewElementLabel(from,to);
+		project()->freezeExistentElementLabel(true, from,to);
+		project()->freezeNewElementLabel(false, from,to);
 		project()->setFreezeNewElements(false);
 	}
 	//Allow Only Existent
 	else if (m_amw->ui->m_existent_element_rb->isChecked()) {
 		//Freeze New and Unfreeze Existent Elements, Set Freeze Element Project Wide
-		project()->unfreezeExistentElementLabel(from,to);
-		project()->freezeNewElementLabel(from,to);
+		project()->freezeExistentElementLabel(false, from,to);
+		project()->freezeNewElementLabel(true, from,to);
 		project()->setFreezeNewElements(true);
 	}
 	//Disable
 	else if (m_amw->ui->m_disable_element_rb->isChecked()) {
 		//Freeze Existent and New Elements, Set Freeze Element Project Wide
-		project()->freezeExistentElementLabel(from,to);
-		project()->freezeNewElementLabel(from,to);
+		project()->freezeExistentElementLabel(true, from,to);
+		project()->freezeNewElementLabel(true, from,to);
 		project()->setFreezeNewElements(true);
 	}
 

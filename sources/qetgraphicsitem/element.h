@@ -144,8 +144,7 @@ class Element : public QetGraphicsItem
 		void setUpFormula(bool code_letter = true);
 		void setPrefix(QString);
 		QString getPrefix() const;
-		void freezeLabel();
-		void unfreezeLabel();
+		void freezeLabel(bool freeze);
 		void freezeNewAddedElement();
 
 	protected:
@@ -155,6 +154,7 @@ class Element : public QetGraphicsItem
 	protected:
 		DiagramContext m_element_informations, kind_informations_;
 		autonum::sequentialNumbers m_autoNum_seq;
+		bool m_freeze_label = false;
 
 	/**
 		Draw this element
