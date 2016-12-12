@@ -596,21 +596,9 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
  * @param from - first folio index to apply freeze
  * @param to - last folio index to apply freeze
  */
-void QETProject::freezeExistentConductorLabel(int from, int to) {
+void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->freezeConductors();
-	}
-}
-
-/**
- * @brief QETProject::unfreezeExistentConductorLabel
- * Unfreeze Existent Conductors in the selected folios
- * @param from - first folio index to apply unfreeze
- * @param to - last folio index to apply unfreeze
- */
-void QETProject::unfreezeExistentConductorLabel(int from, int to) {
-	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->unfreezeConductors();
+		diagrams_.at(i)->freezeConductors(freeze);
 	}
 }
 
@@ -620,29 +608,17 @@ void QETProject::unfreezeExistentConductorLabel(int from, int to) {
  * @param from - first folio index to apply freeze
  * @param to - last folio index to apply freeze
  */
-void QETProject::freezeNewConductorLabel(int from, int to) {
+void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewConductors(true);
+		diagrams_.at(i)->setFreezeNewConductors(freeze);
 	}
 }
 
 /**
- * @brief QETProject::unfreezeNewElementLabel
- * Unfreeze New Conductors in the selected folios
- * @param from - first folio index to apply unfreeze
- * @param to - last folio index to apply unfreeze
- */
-void QETProject::unfreezeNewConductorLabel(int from, int to) {
-	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewConductors(false);
-	}
-}
-
-/**
- * @brief QETProject::freezeNewConductors
+ * @brief QETProject::isFreezeNewConductors
  * @return freeze new conductors Project Wide status
  */
-bool QETProject::freezeNewConductors() {
+bool QETProject::isFreezeNewConductors() {
 	return m_freeze_new_conductors;
 }
 
@@ -682,7 +658,7 @@ void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
  * @brief QETProject::freezeNewElements
  * @return freeze new elements Project Wide status
  */
-bool QETProject::freezeNewElements() {
+bool QETProject::isFreezeNewElements() {
 	return m_freeze_new_elements;
 }
 

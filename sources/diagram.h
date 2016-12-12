@@ -222,9 +222,8 @@ class Diagram : public QGraphicsScene
 	void setFreezeNewElements(bool);
 	bool freezeNewElements();
 
-	//methods related to conductor label Update Policy
-	void freezeConductors();
-	void unfreezeConductors();
+		//methods related to conductor label Update Policy
+	void freezeConductors(bool freeze);
 	void setFreezeNewConductors(bool);
 	bool freezeNewConductors();
 

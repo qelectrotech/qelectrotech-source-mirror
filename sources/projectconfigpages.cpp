@@ -623,29 +623,29 @@ void ProjectAutoNumConfigPage::applyManagement() {
 	//Allow Both Existent and New Conductors
 	if (m_amw->ui->m_both_conductor_rb->isChecked()) {
 		//Unfreeze Existent and New Conductors
-		project()->unfreezeExistentConductorLabel(from,to);
-		project()->unfreezeNewConductorLabel(from,to);
+		project()->freezeExistentConductorLabel(false, from,to);
+		project()->freezeNewConductorLabel(false, from,to);
 		project()->setFreezeNewConductors(false);
 	}
 	//Allow Only New
 	else if (m_amw->ui->m_new_conductor_rb->isChecked()) {
 		//Freeze Existent and Unfreeze New Conductors
-		project()->freezeExistentConductorLabel(from,to);
-		project()->unfreezeNewConductorLabel(from,to);
+		project()->freezeExistentConductorLabel(true, from,to);
+		project()->freezeNewConductorLabel(false, from,to);
 		project()->setFreezeNewConductors(false);
 	}
 	//Allow Only Existent
 	else if (m_amw->ui->m_existent_conductor_rb->isChecked()) {
 		//Freeze Existent and Unfreeze New Conductors
-		project()->unfreezeExistentConductorLabel(from,to);
-		project()->freezeNewConductorLabel(from,to);
+		project()->freezeExistentConductorLabel(false, from,to);
+		project()->freezeNewConductorLabel(true, from,to);
 		project()->setFreezeNewConductors(true);
 	}
 	//Disable
 	else if (m_amw->ui->m_disable_conductor_rb->isChecked()) {
 		//Freeze Existent and New Elements, Set Freeze Element Project Wide
-		project()->freezeExistentConductorLabel(from,to);
-		project()->freezeNewConductorLabel(from,to);
+		project()->freezeExistentConductorLabel(true, from,to);
+		project()->freezeNewConductorLabel(true, from,to);
 		project()->setFreezeNewConductors(true);
 	}
 

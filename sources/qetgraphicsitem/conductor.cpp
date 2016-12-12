@@ -36,6 +36,36 @@ bool Conductor::pen_and_brush_initialized = false;
 QPen Conductor::conductor_pen = QPen();
 QBrush Conductor::conductor_brush = QBrush();
 
+
+class ConductorXmlRetroCompatibility
+{
+		friend class Conductor;
+
+		static void loadSequential(const QDomElement &dom_element, QString seq, QStringList* list)
+		{
+			int i = 0;
+			while (!dom_element.attribute(seq + QString::number(i+1)).isEmpty())
+			{
+					list->append(dom_element.attribute(seq + QString::number(i+1)));
+					i++;
+			}
+		}
+
+		static void loadSequential(const QDomElement &dom_element, Conductor *conductor)
+		{
+			autonum::sequentialNumbers sn;
+
+			loadSequential(dom_element,"sequ_",&sn.unit);
+			loadSequential(dom_element,"sequf_",&sn.unit_folio);
+			loadSequential(dom_element,"seqt_",&sn.ten);
+			loadSequential(dom_element,"seqtf_",&sn.ten_folio);
+			loadSequential(dom_element,"seqh_",&sn.hundred);
+			loadSequential(dom_element,"seqhf_",&sn.hundred_folio);
+
+			conductor->rSequenceNum() = sn;
+		}
+};
+
 /**
  * @brief Conductor::Conductor
  * Default constructor.
@@ -818,46 +848,28 @@ void Conductor::pointsToSegments(QList<QPointF> points_list) {
  * @param e
  * @return true is loading success else return false
  */
-bool Conductor::fromXml(QDomElement &e) {
-	setPos(e.attribute("x", 0).toDouble(),
-		   e.attribute("y", 0).toDouble());
+bool Conductor::fromXml(QDomElement &dom_element)
+{
+	setPos(dom_element.attribute("x", 0).toDouble(),
+		   dom_element.attribute("y", 0).toDouble());
 
-	bool return_ = pathFromXml(e);
+	bool return_ = pathFromXml(dom_element);
 
-	text_item -> fromXml(e);
+	text_item -> fromXml(dom_element);
 	ConductorProperties pr;
-	pr.fromXml(e);
+	pr.fromXml(dom_element);
 
-	//Load Sequential Values
-	loadSequential(&e,"sequ_",&m_autoNum_seq.unit);
-	loadSequential(&e,"sequf_",&m_autoNum_seq.unit_folio);
-	loadSequential(&e,"seqt_",&m_autoNum_seq.ten);
-	loadSequential(&e,"seqtf_",&m_autoNum_seq.ten_folio);
-	loadSequential(&e,"seqh_",&m_autoNum_seq.hundred);
-	loadSequential(&e,"seqhf_",&m_autoNum_seq.hundred_folio);
+		//Load Sequential Values
+	if (dom_element.hasAttribute("sequ_1") || dom_element.hasAttribute("sequf_1") || dom_element.hasAttribute("seqt_1") || dom_element.hasAttribute("seqtf_1") || dom_element.hasAttribute("seqh_1") || dom_element.hasAttribute("sequf_1"))
+		ConductorXmlRetroCompatibility::loadSequential(dom_element, this);
+	else
+		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	m_frozen_label = e.attribute("frozenlabel");
+	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
 
 	setProperties(pr);
 
 	return return_;
-}
-
-/**
-	Load Sequentials to display on conductor label
-	@param QDomElement to set Attributes
-	@param Qstring seq to be retrieved
-	@param QStringList list to be inserted values
-*/
-void Conductor::loadSequential(QDomElement* e, QString seq, QStringList* list)
-{
-		//Load Sequential Values
-	int i = 0;
-	while (!e->attribute(seq + QString::number(i+1)).isEmpty())
-	{
-		list->append(e->attribute(seq + QString::number(i+1)));
-		i++;
-	}
 }
 
 /**
@@ -867,65 +879,39 @@ void Conductor::loadSequential(QDomElement* e, QString seq, QStringList* list)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
-	QDomElement e = d.createElement("conductor");
+QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
+{
+	QDomElement dom_element = dom_document.createElement("conductor");
 
-	e.setAttribute("x", QString::number(pos().x()));
-	e.setAttribute("y", QString::number(pos().y()));
-	e.setAttribute("terminal1", table_adr_id.value(terminal1));
-	e.setAttribute("terminal2", table_adr_id.value(terminal2));
+	dom_element.setAttribute("x", QString::number(pos().x()));
+	dom_element.setAttribute("y", QString::number(pos().y()));
+	dom_element.setAttribute("terminal1", table_adr_id.value(terminal1));
+	dom_element.setAttribute("terminal2", table_adr_id.value(terminal2));
+	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
-	if (modified_path) {
+	if (modified_path)
+	{
 		// parcours et export des segments
 		QDomElement current_segment;
-		foreach(ConductorSegment *segment, segmentsList()) {
-			current_segment = d.createElement("segment");
+		foreach(ConductorSegment *segment, segmentsList())
+		{
+			current_segment = dom_document.createElement("segment");
 			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
 			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-			e.appendChild(current_segment);
+			dom_element.appendChild(current_segment);
 		}
 	}
 
-	// Save Conductor sequential values to Xml
-	// Save Unit Sequential Values
-	for (int i = 0; i < m_autoNum_seq.unit.size(); i++) {
-			e.setAttribute("sequ_" + QString::number(i+1),m_autoNum_seq.unit.at(i));
-	}
-
-	// Save UnitFolio Sequential Values
-	for (int i = 0; i < m_autoNum_seq.unit_folio.size(); i++) {
-			e.setAttribute("sequf_" + QString::number(i+1),m_autoNum_seq.unit_folio.at(i));
-	}
-
-	// Save Ten Sequential Values
-	for (int i = 0; i < m_autoNum_seq.ten.size(); i++) {
-			e.setAttribute("seqt_" + QString::number(i+1),m_autoNum_seq.ten.at(i));
-	}
-
-	// Save TenFolio Sequential Values
-	for (int i = 0; i < m_autoNum_seq.ten_folio.size(); i++) {
-			e.setAttribute("seqtf_" + QString::number(i+1),m_autoNum_seq.ten_folio.at(i));
-	}
-
-	// Save Hundred Sequential Values
-	for (int i = 0; i < m_autoNum_seq.hundred.size(); i++) {
-			e.setAttribute("seqh_" + QString::number(i+1),m_autoNum_seq.hundred.at(i));
-	}
-
-	// Save Hundred Sequential Values
-	for (int i = 0; i < m_autoNum_seq.hundred_folio.size(); i++) {
-			e.setAttribute("seqhf_" + QString::number(i+1),m_autoNum_seq.hundred_folio.at(i));
-	}
-
-	if (m_frozen_label != "") e.setAttribute("frozenlabel", m_frozen_label);
+	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
+	dom_element.appendChild(dom_seq);
 	
-	// Export the properties and text
-	m_properties. toXml(e);
-	text_item -> toXml(e);
+		// Export the properties and text
+	m_properties. toXml(dom_element);
+	text_item -> toXml(dom_element);
 
-	return(e);
+	return(dom_element);
 }
 
 /**
@@ -1313,18 +1299,11 @@ void Conductor::setProperties(const ConductorProperties &properties)
 	setText(m_properties.text);
 	text_item -> setFontSize(m_properties.text_size);
 
-	 if (terminal1 != NULL && terminal1->diagram() != NULL) {
-		if (terminal1->diagram()->item_paste)
-			m_frozen_label = "";
-		else
-			m_frozen_label = m_properties.text;
-	}
-
-	setFreezeLabel(m_freeze_label);
 	if (m_properties.type != ConductorProperties::Multi)
 		text_item -> setVisible(false);
 	else
 		text_item -> setVisible(m_properties.m_show_text);
+
 	calculateTextItemPosition();
 	update();
 
@@ -1732,17 +1711,4 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
  */
 void Conductor::setFreezeLabel(bool freeze) {
 	m_freeze_label = freeze;
-
-	if (m_freeze_label) {
-		QString freezelabel = this->text_item->toPlainText();
-		m_frozen_label = m_properties.text;
-		this->setText(freezelabel);
-		this->m_properties.text = freezelabel;
-	}
-	else {
-		if (m_frozen_label.isEmpty())
-			return;
-		this->setText(m_frozen_label);
-		m_properties.text = m_frozen_label;
-	}
 }

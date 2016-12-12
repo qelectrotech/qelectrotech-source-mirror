@@ -123,7 +123,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 
 	public:
 		void setFreezeLabel(bool freeze);
-		QString m_frozen_label;
 	
 	public slots:
 		void displayedTextChanged();
@@ -187,7 +186,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 		static QPointF extendTerminal(const QPointF &, Qet::Orientation, qreal = 9.0);
 		static Qt::Corner movementType(const QPointF &, const QPointF &);
 		static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
-		void loadSequential(QDomElement* e, QString seq, QStringList* list);
 };
 
 Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);

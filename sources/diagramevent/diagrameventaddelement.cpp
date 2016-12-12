@@ -230,7 +230,7 @@ void DiagramEventAddElement::addElement()
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
-		if (m_diagram->freezeNewConductors() || m_diagram->project()->freezeNewConductors()) {
+		if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
 			conductor->setFreezeLabel(true);
 		}
 	};

@@ -868,10 +868,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					addItem(c);
 					c -> fromXml(f);
 					added_conductors << c;
-					if (item_paste) {
-						c->m_frozen_label = f.attribute("frozenlabel");
-						qDebug() << "Frozen Label" << f.attribute("frozenlabel");
-					}
 				}
 				else
 					delete c;
@@ -1489,19 +1485,9 @@ bool Diagram::freezeNewElements() {
  * @brief Diagram::freezeConductors
  * Freeze every existent conductor label.
  */
-void Diagram::freezeConductors() {
+void Diagram::freezeConductors(bool freeze) {
 	foreach (Conductor *cnd, conductors()) {
-		cnd->setFreezeLabel(true);
-	}
-}
-
-/**
- * @brief Diagram::unfreezeConductors
- * Unfreeze every existent conductor label.
- */
-void Diagram::unfreezeConductors() {
-	foreach (Conductor *cnd, conductors()) {
-		cnd->setFreezeLabel(false);
+		cnd->setFreezeLabel(freeze);
 	}
 }
 

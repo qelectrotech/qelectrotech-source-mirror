@@ -860,7 +860,7 @@ void Element::freezeLabel(bool freeze)
  * Freeze this label if needed
  */
 void Element::freezeNewAddedElement() {
-	if (this->diagram()->freezeNewElements() || this->diagram()->project()->freezeNewElements()) {
+	if (this->diagram()->freezeNewElements() || this->diagram()->project()->isFreezeNewElements()) {
 		freezeLabel(true);
 	}
 	else return;

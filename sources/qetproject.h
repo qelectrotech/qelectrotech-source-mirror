@@ -131,15 +131,13 @@ class QETProject : public QObject
 			//Element
 		void freezeExistentElementLabel(bool freeze, int from, int to);
 		void freezeNewElementLabel(bool freeze, int from, int to);
-		bool freezeNewElements();
+		bool isFreezeNewElements();
 		void setFreezeNewElements(bool);
 
 			//Conductor
-		void freezeExistentConductorLabel(int,int);
-		void unfreezeExistentConductorLabel(int,int);
-		void freezeNewConductorLabel(int,int);
-		void unfreezeNewConductorLabel(int,int);
-		bool freezeNewConductors();
+		void freezeExistentConductorLabel(bool freeze, int from, int to);
+		void freezeNewConductorLabel(bool freeze, int from, int to);
+		bool isFreezeNewConductors();
 		void setFreezeNewConductors(bool);
 
 		bool autoConductor () const;
