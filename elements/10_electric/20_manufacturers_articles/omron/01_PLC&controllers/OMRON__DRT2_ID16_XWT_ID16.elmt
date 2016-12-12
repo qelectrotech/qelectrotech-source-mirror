@@ -1,0 +1,94 @@
+<definition height="100" link_type="simple" hotspot_y="42" width="380" version="0.51" hotspot_x="160" orientation="dyyy" type="element">
+    <uuid uuid="{88cf4b3b-e92b-4455-97ae-2605a96bfc13}"/>
+    <names>
+        <name lang="fr">OMRON_DRT2-ID16/XWT-ID16</name>
+        <name lang="en">OMRON_DRT2-ID16/XWT-ID16</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y5="48" x1="182" x2="218" x3="218" y3="48" closed="false" y2="-38" y4="48" antialias="false" x5="211" x4="203" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38"/>
+        <polygon x1="-158" x2="-158" x3="-143" y3="48" closed="false" y2="48" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="32"/>
+        <polygon x1="-158" x2="-158" x3="181" y3="-38" closed="false" y2="-38" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31"/>
+        <line end1="none" length1="1.5" x1="183" x2="197" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <text x="136" y="43" size="6" text="12"/>
+        <line end1="none" length1="1.5" x1="143" x2="157" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="103" x2="117" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="123" x2="137" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="83" x2="97" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="63" x2="77" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="163" x2="177" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <text x="-82" y="43" size="6" text="1"/>
+        <ellipse height="5" width="5.00431" x="-82.543" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-62" y="43" size="6" text="2"/>
+        <ellipse height="5" width="5.00431" x="-62.543" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="-122.543" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="-142.547" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-102" y="43" size="6" text="0"/>
+        <text x="-125" y="43" size="6" text="V+"/>
+        <text x="-42" y="43" size="6" text="3"/>
+        <ellipse height="5" width="5.00431" x="37.47" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="-102.543" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="38" y="43" size="6" text="7"/>
+        <line end1="none" length1="1.5" x1="3" x2="17" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="43" x2="57" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-97" x2="-83" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-17" x2="-3" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-117" x2="-103" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <ellipse height="5" width="5.00431" x="97.474" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" length1="1.5" x1="-77" x2="-63" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-37" x2="-23" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-57" x2="-43" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="-137" x2="-123" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <line end1="none" length1="1.5" x1="23" x2="37" y2="48" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" end2="none"/>
+        <ellipse height="5" width="5.00431" x="-2.534" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="177.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="96" y="43" size="6" text="10"/>
+        <text x="78" y="43" size="6" text="9"/>
+        <ellipse height="5" width="5.00431" x="-22.534" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="156" y="43" size="6" text="13"/>
+        <text x="58" y="43" size="6" text="8"/>
+        <ellipse height="5" width="5.00431" x="57.47" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="196" y="43" size="6" text="15"/>
+        <text x="116" y="43" size="6" text="11"/>
+        <ellipse height="5" width="5.00431" x="17.47" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="77.47" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-2" y="43" size="6" text="5"/>
+        <ellipse height="5" width="5.00431" x="137.457" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="5" width="5.00431" x="-42.539" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-22" y="43" size="6" text="4"/>
+        <ellipse height="5" width="5.00431" x="157.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="18" y="43" size="6" text="6"/>
+        <text x="176" y="43" size="6" text="14"/>
+        <input x="-152" rotate="true" y="-18" size="6" text=" Node&#xa; Address" tagg="none"/>
+        <ellipse height="5" width="5.00431" x="197.504" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" x="117.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" x="37.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-144" y="43" size="6" text="G-"/>
+        <text x="-141" y="30" size="6" text="24VDC"/>
+        <input x="-150" rotate="true" y="10" size="6" text="REMOTE TERMINAL" tagg="none"/>
+        <input x="-150" rotate="true" y="-0.5" size="7" text="OMRON DRT2-ID16/XWT-ID16" tagg="none"/>
+        <input x="-117" rotate="true" y="-20.5" size="7" text="XX" tagg="label"/>
+        <polygon x1="-144" x2="-144" x3="-116" y3="32" closed="false" y2="32" y4="35" antialias="false" x4="-116" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35"/>
+        <input x="-190" rotate="true" y="-40" size="9" text="_" tagg="none"/>
+        <terminal x="0.013" y="51" orientation="s"/>
+        <terminal x="-119.996" y="51" orientation="s"/>
+        <terminal x="200.056" y="51" orientation="s"/>
+        <terminal x="20.017" y="51" orientation="s"/>
+        <terminal x="140.047" y="51" orientation="s"/>
+        <terminal x="160.043" y="51" orientation="s"/>
+        <terminal x="60.013" y="51" orientation="s"/>
+        <terminal x="-140" y="51" orientation="s"/>
+        <terminal x="40.017" y="51" orientation="s"/>
+        <terminal x="-39.987" y="51" orientation="s"/>
+        <terminal x="-99.996" y="51" orientation="s"/>
+        <terminal x="-19.987" y="51" orientation="s"/>
+        <terminal x="-80" y="51" orientation="s"/>
+        <terminal x="100.017" y="51" orientation="s"/>
+        <terminal x="180.043" y="51" orientation="s"/>
+        <terminal x="40" y="51" orientation="s"/>
+        <terminal x="-60" y="51" orientation="s"/>
+        <terminal x="120" y="51" orientation="s"/>
+        <terminal x="80.013" y="51" orientation="s"/>
+    </description>
+</definition>
