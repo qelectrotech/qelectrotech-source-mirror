@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -214,7 +214,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Pythonovský přídavný modul qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="128"/>
@@ -760,7 +760,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>vložit %1</translation>
     </message>
 </context>
 <context>
@@ -1557,7 +1557,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti složky</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
@@ -1623,40 +1623,40 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Složka %1 obsahuje</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n prvek, část</numerusform>
+            <numerusform>%n prvky, části</numerusform>
+            <numerusform>%n prvků, částí</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>v %n složce.</numerusform>
+            <numerusform>v %n složkách.</numerusform>
+            <numerusform>v %n složkách.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta ke sbírce: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta v souborovém systému: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti složky %1</translation>
     </message>
 </context>
 <context>
@@ -2112,22 +2112,22 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Vzor automatického pojmenování:</translation>
+        <translation>Vzor automatického pojmenování:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="59"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">Zde vložte vzorec, např.: %prefix%l%c</translation>
+        <translation>Zde vložte vzorec, např.: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation type="unfinished">Vzorec:</translation>
+        <translation>Vzorec:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="85"/>
@@ -2141,7 +2141,16 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Na svůj vzorec můžete použít následující proměnné:
+ -%prefix: výchozí předpona prvku
+ -%l: řádek prvku
+ -%c: sloupec prvku
+ -%F: název listu
+ -%f or %id: ID listu
+ -%total: celkový počet listů
+Taktéž můžete přiřadit všechny ostatní proměnné pro
+záhlaví výkresu, jež vytvoříte. Také je dostupné zadávání
+textu a čísel.</translation>
     </message>
 </context>
 <context>
@@ -2169,12 +2178,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít štítky listu namísto jejich identifikátoru (ID)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést svorky (zakončení) do číselníku (seznamu částí)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
@@ -3787,7 +3796,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit přídavný modul na tvoření svorek (zakončení)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -3838,13 +3847,13 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat řádek</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Odstranit řádek</translation>
+        <translation>Odstranit řádek</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
@@ -3915,7 +3924,7 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat čáru</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
@@ -4865,7 +4874,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Spustit přídavný modul převodník DXF</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
@@ -5105,48 +5114,48 @@ podmínky nejsou platné</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="76"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Příručka na internetu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál na YouTube</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <location filename="../sources/qetmainwindow.cpp" line="97"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished"></translation>
+        <translation>Stáhnout novou verzi (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spustit výchozí prohlížeč a zobrazit příručku k QElectroTechu na internetu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="87"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spustit výchozí prohlížeč a zobrazit kanál na YouTube věnovaný QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <location filename="../sources/qetmainwindow.cpp" line="98"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spustit výchozí prohlížeč a zobrazit internetové úložiště (Nightly) s nočními sestaveními QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="110"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished"></translation>
+        <translation>Podpořit projekt darem</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="111"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podpořit projekt QElectroTech darem</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="118"/>
@@ -6317,7 +6326,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázkové soubory (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -6541,10 +6550,10 @@ Co chcete dělat?</translation>
         <location filename="../sources/elementsmover.cpp" line="158"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Přidat %n vodič</numerusform>
+            <numerusform>Přidat %n vodiče</numerusform>
+            <numerusform>Přidat %n vodičů</numerusform>
         </translation>
     </message>
 </context>
@@ -8254,7 +8263,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zobrazit kontakt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
