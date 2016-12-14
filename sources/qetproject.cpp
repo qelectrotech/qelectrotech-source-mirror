@@ -1092,6 +1092,7 @@ QList <Diagram *> QETProject::addNewDiagramFolioList() {
 			setFolioSheetsQuantity( getFolioSheetsQuantity()+1 );
 			emit(diagramAdded(this, diagram_folio_list));
 			diagram_list << diagram_folio_list;
+			diagCount++;
 		}
 	}
 
