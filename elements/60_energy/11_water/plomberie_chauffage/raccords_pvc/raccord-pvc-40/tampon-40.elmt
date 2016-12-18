@@ -1,0 +1,14 @@
+<definition width="20" version="0.4" hotspot_x="15" hotspot_y="10" height="20" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Tampon 40</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input x="-21" y="11" size="4" rotate="true" text="Tampon 40" tagg="label"/>
+        <rect width="8" x="-9" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-11" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="1" x="-12" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="0" orientation="e"/>
+    </description>
+</definition>

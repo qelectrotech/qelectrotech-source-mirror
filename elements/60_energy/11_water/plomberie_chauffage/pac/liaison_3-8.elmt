@@ -1,0 +1,15 @@
+<definition hotspot_y="10" type="element" link_type="simple" orientation="dyyy" hotspot_x="54" width="110" height="20" version="0.51">
+    <uuid uuid="{79b9ef7f-7c26-4115-a5c1-abbc3551c99a}"/>
+    <names>
+        <name lang="fr">Liaison 3/8</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-5" antialias="false" x="-35" width="70" height="10"/>
+        <input text="Liaison 3/8" size="9" y="32" x="-33" tagg="label" rotate="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2" antialias="false" x="-45" width="10" height="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2" antialias="false" x="35" width="10" height="4"/>
+        <terminal y="0" x="-50" orientation="w"/>
+        <terminal y="0" x="50" orientation="e"/>
+    </description>
+</definition>

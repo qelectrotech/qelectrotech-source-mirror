@@ -1,0 +1,27 @@
+<definition type="element" width="30" hotspot_x="22" version="0.51" link_type="simple" height="40" hotspot_y="27" orientation="dyyy">
+    <uuid uuid="{abe6bde0-de9d-4954-b09b-40a3a7d0d829}"/>
+    <names>
+        <name lang="fr">Coude Cu n° 92</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <input y="2" x="10" rotate="true" tagg="label" text="_" size="5"/>
+        <arc y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" start="270" width="4" antialias="true" angle="90" height="4"/>
+        <rect y="-6" style="line-style:normal;line-weight:normal;filling:white;color:white" x="-18" width="7" antialias="false" height="12"/>
+        <arc y="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" start="270" width="2" antialias="true" angle="90" height="2"/>
+        <line y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-9" end1="none" end2="none" length2="1.5" y2="-5" length1="1.5" x2="-8"/>
+        <arc y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" start="0" width="2" antialias="true" angle="90" height="2"/>
+        <line y1="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-5" end1="none" end2="none" length2="1.5" y2="-8" length1="1.5" x2="-5"/>
+        <line y1="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="5" end1="none" end2="none" length2="1.5" y2="-7" length1="1.5" x2="5"/>
+        <arc y="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17" start="270" width="22" antialias="true" angle="90" height="22"/>
+        <line y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-9" end1="none" end2="none" length2="1.5" y2="5" length1="1.5" x2="-7"/>
+        <line y1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-5" end1="none" end2="none" length2="1.5" y2="-18" length1="1.5" x2="5"/>
+        <line y1="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="5" end1="none" end2="none" length2="1.5" y2="-10" length1="1.5" x2="-5"/>
+        <line y1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-12" end1="none" end2="none" length2="1.5" y2="-6" length1="1.5" x2="-18"/>
+        <line y1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-18" end1="none" end2="none" length2="1.5" y2="6" length1="1.5" x2="-18"/>
+        <line y1="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-18" end1="none" end2="none" length2="1.5" y2="6" length1="1.5" x2="-11"/>
+        <line y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-10" end1="none" end2="none" length2="1.5" y2="-5" length1="1.5" x2="-10"/>
+        <terminal y="0" x="-18" orientation="w"/>
+        <terminal y="-18" x="0" orientation="n"/>
+    </description>
+</definition>

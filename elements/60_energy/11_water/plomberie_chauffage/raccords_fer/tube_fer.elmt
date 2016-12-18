@@ -1,0 +1,27 @@
+<definition height="20" link_type="terminal" hotspot_x="25" hotspot_y="10" orientation="dyyy" version="0.51" type="element" width="40">
+    <uuid uuid="{da470249-5721-4298-ba22-77eb21de7bd9}"/>
+    <names>
+        <name lang="fr">Tube fer</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line y1="-5" end2="none" y2="5" x1="5" antialias="false" x2="7" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <input x="-7" rotate="true" y="29" size="9" text="_" tagg="label"/>
+        <line y1="-5" end2="none" y2="5" x1="2" antialias="false" x2="4" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="5" x1="1" antialias="false" x2="3" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <rect height="10" x="1" y="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7"/>
+        <line y1="0" end2="none" y2="5" x1="1" antialias="false" x2="2" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="5" x1="3" antialias="false" x2="5" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="5" x1="4" antialias="false" x2="6" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="5" x1="6" antialias="false" x2="8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="0" x1="7" antialias="false" x2="8" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="0" end2="none" y2="0" x1="-5" antialias="false" x2="-1" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="-5" x1="0" antialias="false" x2="-18" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line y1="5" end2="none" y2="5" x1="1" antialias="false" x2="-21" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line y1="-5" end2="none" y2="5" x1="-18" antialias="false" x2="-21" length1="1.5" length2="1.5" style="line-style:dotted;line-weight:thin;filling:none;color:black" end1="none"/>
+        <text x="-13" y="3" size="5" text="Fe"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="8" y="0" orientation="e"/>
+    </description>
+</definition>

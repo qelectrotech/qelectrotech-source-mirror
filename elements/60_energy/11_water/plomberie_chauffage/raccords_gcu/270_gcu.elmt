@@ -1,0 +1,25 @@
+<definition hotspot_y="15" hotspot_x="16" type="element" width="30" link_type="simple" height="30" version="0.51" orientation="dyyy">
+    <uuid uuid="{03e98229-f67c-44a2-8108-78223cf16919}"/>
+    <names>
+        <name lang="fr">Manchon 270 GCU</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <rect y="-6" x="-1" width="8" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:white;color:white"/>
+        <rect y="-7" x="-10" width="7" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:white;color:brun"/>
+        <line length2="1.5" x2="-10" end2="none" y1="-4" length1="1.5" y2="-4" antialias="false" x1="-5" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-5" end2="none" y1="4" length1="1.5" y2="4" antialias="false" x1="-10" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <input y="8" rotate="true" x="-10" size="9" tagg="label" text="_"/>
+        <arc angle="-180" y="-4" x="-7" width="4" antialias="true" height="8" style="line-style:normal;line-weight:thin;filling:none;color:brun" start="90"/>
+        <arc angle="90" y="-10" x="-7" width="4" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:none;color:brun" start="270"/>
+        <arc angle="90" y="4" x="-7" width="4" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:none;color:brun" start="0"/>
+        <arc angle="90" y="-8" x="-3" width="2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="180"/>
+        <arc angle="90" y="6" x="-3" width="2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="90"/>
+        <line length2="1.5" x2="7" end2="none" y1="-6" length1="1.5" y2="-6" antialias="false" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-1" end2="none" y1="6" length1="1.5" y2="6" antialias="false" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="7" end2="none" y1="-6" length1="1.5" y2="6" antialias="false" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-1" end2="none" y1="-6" length1="1.5" y2="6" antialias="false" x1="-1" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="7" orientation="e"/>
+    </description>
+</definition>

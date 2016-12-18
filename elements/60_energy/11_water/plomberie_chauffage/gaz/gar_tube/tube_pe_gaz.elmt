@@ -1,0 +1,19 @@
+<definition hotspot_y="11" type="element" link_type="terminal" orientation="dyyy" hotspot_x="25" width="40" height="20" version="0.51">
+    <uuid uuid="{e933ebb5-8d63-4910-be71-d74230d6bbc3}"/>
+    <names>
+        <name lang="fr">Tube PE gaz</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <line y2="0" x2="-18" style="line-style:normal;line-weight:hight;filling:none;color:yellow" antialias="false" length2="1.5" y1="0" end1="none" length1="1.5" end2="none" x1="9"/>
+        <polygon y2="-5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="10" y5="-5" antialias="false" y1="-5" x4="-20" y4="5" closed="false" y3="5" x5="-15" x1="-15"/>
+        <input text="_" size="5" y="-34" x="-3" tagg="label" rotate="true"/>
+        <text text="PE" size="5" y="2" x="-12"/>
+        <line y2="6" x2="-22" style="line-style:normal;line-weight:hight;filling:none;color:white" antialias="false" length2="1.5" y1="-8" end1="none" length1="1.5" end2="none" x1="-15"/>
+        <line y2="-4" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="-15"/>
+        <line y2="4" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="4" end1="none" length1="1.5" end2="none" x1="-19"/>
+        <input text="25" size="5" y="-1" x="-7" tagg="none" rotate="true"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="0" x="-18" orientation="w"/>
+    </description>
+</definition>

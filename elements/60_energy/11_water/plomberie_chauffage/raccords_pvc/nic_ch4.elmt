@@ -1,0 +1,48 @@
+<definition version="0.51" hotspot_y="18" width="200" height="120" type="element" hotspot_x="34" orientation="dyyy" link_type="simple">
+    <uuid uuid="{bdc86f4f-b3a3-4617-884a-13581685e56d}"/>
+    <names>
+        <name lang="fr">Coude 45°  PVC 40 MF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect x="-7" width="7" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" y="3" antialias="false"/>
+        <input size="4" tagg="label" x="-9" text="45° - 40" y="29" rotate="true"/>
+        <arc x="-16" angle="45" width="32" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-16" antialias="true" start="270"/>
+        <arc x="-4" angle="45" width="8" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4" antialias="true" start="270"/>
+        <line y2="-6" y1="3" x1="3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="12" antialias="false" length1="1.5"/>
+        <line y2="2" y1="11" x1="12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="21" antialias="false" length1="1.5"/>
+        <line y2="-6" y1="2" x1="21" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="12" antialias="false" length1="1.5"/>
+        <line y2="35" y1="45" x1="47" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" end1="none" x2="57" antialias="false" length1="1.5"/>
+        <circle x="-15" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="40" antialias="false"/>
+        <line y2="58" y1="58" x1="65" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="79" antialias="false" length1="1.5"/>
+        <circle x="88" diameter="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y="13" antialias="false"/>
+        <circle x="68" diameter="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y="58" antialias="false"/>
+        <line y2="70" y1="58" x1="80" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="80" antialias="false" length1="1.5"/>
+        <line y2="70" y1="70" x1="80" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="65" antialias="false" length1="1.5"/>
+        <line y2="43" y1="35" x1="57" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" end1="none" x2="65" antialias="false" length1="1.5"/>
+        <line y2="52" y1="43" x1="65" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" end1="none" x2="56" antialias="false" length1="1.5"/>
+        <polygon y2="44" x4="151" closed="false" y1="54" y5="54" x1="142" y3="53" x5="142" y4="63" x3="161" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="152" antialias="false"/>
+        <arc x="27.5" angle="45" width="33" height="32" style="line-style:normal;line-weight:normal;filling:none;color:red" y="25" antialias="true" start="270"/>
+        <arc x="40" angle="45" width="8" height="9" style="line-style:normal;line-weight:normal;filling:none;color:red" y="37.5" antialias="true" start="270"/>
+        <arc x="42" angle="90" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="45" antialias="true" start="0"/>
+        <arc x="42" angle="90" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57" antialias="true" start="270"/>
+        <line y2="45" y1="45" x1="42" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="35" antialias="false" length1="1.5"/>
+        <line y2="59" y1="45" x1="35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="35" antialias="false" length1="1.5"/>
+        <line y2="59" y1="59" x1="43" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="35" antialias="false" length1="1.5"/>
+        <line y2="57" y1="47" x1="44" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="44" antialias="false" length1="1.5"/>
+        <arc x="47.5" angle="45" width="33" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black" y="58" antialias="true" start="90"/>
+        <arc x="59.5" angle="45" width="9" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y="70" antialias="true" start="90"/>
+        <line y2="72" y1="63" x1="52" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="60" antialias="false" length1="1.5"/>
+        <arc x="50.5" angle="-90" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="63" antialias="true" start="-225"/>
+        <arc x="57.5" angle="90" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="71" antialias="true" start="315"/>
+        <circle x="-29" diameter="28" style="line-style:normal;line-weight:normal;filling:none;color:black" y="71" antialias="false"/>
+        <line y2="68" y1="64" x1="50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="46" antialias="false" length1="1.5"/>
+        <line y2="77" y1="73" x1="59" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="55" antialias="false" length1="1.5"/>
+        <line y2="77" y1="68" x1="46" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="55" antialias="false" length1="1.5"/>
+        <ellipse x="44" width="16" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" y="63" antialias="false"/>
+        <polygon y2="41" x4="98" closed="false" y1="51" y5="51" x1="90" y3="49" x5="90" y4="59" x3="108" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="100" antialias="false"/>
+        <terminal x="-7" orientation="w" y="10"/>
+        <terminal x="16" orientation="n" y="-3"/>
+    </description>
+</definition>

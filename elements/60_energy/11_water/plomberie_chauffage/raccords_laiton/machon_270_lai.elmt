@@ -1,0 +1,25 @@
+<definition hotspot_x="14" width="30" height="20" type="element" version="0.51" link_type="simple" hotspot_y="10" orientation="dyyy">
+    <uuid uuid="{b142ed0b-8cec-4e5c-b629-97a3fbdc368e}"/>
+    <names>
+        <name lang="fr">Manchon n° 270 DD</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect x="-10" width="20" y="-7" height="14" style="line-style:normal;line-weight:normal;filling:white;color:white" antialias="false"/>
+        <input x="-7" y="20" text="_" rotate="true" size="9" tagg="label"/>
+        <arc x="-10" width="2" y="-8" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-180" antialias="true"/>
+        <arc x="-10" width="2" y="6" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="0" angle="-180" antialias="true"/>
+        <arc x="8" width="2" y="-8" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-180" antialias="true"/>
+        <arc x="8" width="2" y="6" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="0" angle="-180" antialias="true"/>
+        <line length1="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="6" length2="1.5" antialias="false" y1="-7"/>
+        <line length1="1.5" x1="-8" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="7" length2="1.5" antialias="false" y1="-7"/>
+        <line length1="1.5" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="6" length2="1.5" antialias="false" y1="-6"/>
+        <line length1="1.5" x1="8" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="7" length2="1.5" antialias="false" y1="-7"/>
+        <line length1="1.5" x1="-8" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="-7" length2="1.5" antialias="false" y1="-7"/>
+        <line length1="1.5" x1="-7" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="7" length2="1.5" antialias="false" y1="7"/>
+        <line length1="1.5" x1="-4" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="0" length2="1.5" antialias="false" y1="0"/>
+        <input x="-11" y="-3" text="1-1/4" rotate="true" size="4" tagg="none"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

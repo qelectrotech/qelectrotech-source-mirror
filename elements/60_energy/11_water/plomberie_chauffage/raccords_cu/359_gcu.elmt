@@ -1,0 +1,23 @@
+<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="14" width="30" height="30" version="0.51">
+    <uuid uuid="{4774327d-c304-4529-a06d-53de1676fafa}"/>
+    <names>
+        <name lang="fr">Raccord 359 GCU</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" y="-7" antialias="false" x="-10" width="7" height="14"/>
+        <line y2="-4" x2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="-5"/>
+        <line y2="4" x2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="4" end1="none" length1="1.5" end2="none" x1="-10"/>
+        <input text="_" size="5" y="-16" x="-3" tagg="label" rotate="true"/>
+        <arc start="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-4" antialias="true" x="-7" angle="-180" width="4" height="8"/>
+        <arc start="270" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-10" antialias="true" x="-7" angle="90" width="4" height="6"/>
+        <arc start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y="4" antialias="true" x="-7" angle="90" width="4" height="6"/>
+        <arc start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" antialias="true" x="-1" angle="90" width="4" height="4"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="5" antialias="true" x="-1" angle="90" width="4" height="4"/>
+        <line y2="-5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-5" end1="none" length1="1.5" end2="none" x1="-3"/>
+        <line y2="5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="5" end1="none" length1="1.5" end2="none" x1="-3"/>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" y="-7" antialias="false" x="3" width="8" height="14"/>
+        <terminal y="0" x="11" orientation="e"/>
+        <terminal y="0" x="-10" orientation="w"/>
+    </description>
+</definition>

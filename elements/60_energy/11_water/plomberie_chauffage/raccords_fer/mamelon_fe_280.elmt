@@ -1,0 +1,33 @@
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="10" type="element" width="30" height="20" orientation="dyyy">
+    <uuid uuid="{d14a3701-f4a6-49cc-b811-3a9c98d4362a}"/>
+    <names>
+        <name lang="fr">Mamelon n° 280</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-5" x2="-3"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="6" x2="8"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-8" x2="-6"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="3" x2="5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="2" x2="4"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-9" x2="-7"/>
+        <rect x="2" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="7" height="10"/>
+        <input x="-7" y="13" text="_" tagg="label" rotate="true" size="5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="0" end1="none" y2="5" end2="none" x1="2" x2="3"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="4" x2="6"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="5" x2="7"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="7" x2="9"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="0" end2="none" x1="8" x2="9"/>
+        <rect x="-9" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="7" height="10"/>
+        <rect x="-2" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="4" height="14"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-3" end1="none" y2="-3" end2="none" x1="-2" x2="2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="3" end1="none" y2="3" end2="none" x1="-2" x2="2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="0" end1="none" y2="5" end2="none" x1="-9" x2="-8"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-7" x2="-5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-6" x2="-4"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-4" x2="-2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="0" end2="none" x1="-3" x2="-2"/>
+        <terminal x="-9" y="0" orientation="w"/>
+        <terminal x="9" y="0" orientation="e"/>
+    </description>
+</definition>

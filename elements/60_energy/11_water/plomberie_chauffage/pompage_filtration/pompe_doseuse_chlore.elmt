@@ -1,0 +1,30 @@
+<definition hotspot_y="33" type="element" link_type="simple" orientation="dyyy" hotspot_x="54" width="60" height="60" version="0.51">
+    <uuid uuid="{0afc94d1-1f6a-43cf-b772-45a6dafacc10}"/>
+    <names>
+        <name lang="fr">Pompe doseuse Chlore</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input text="_" size="9" y="-59" x="-18" tagg="label" rotate="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-27" antialias="false" x="-15" width="10" height="10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false" x="-18" width="3" height="2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22" antialias="false" x="-5" width="4" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-24" antialias="false" x="-13" width="6" height="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26" antialias="false" x="-18" width="3" height="2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="false" x="-50" width="20" height="30"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="false" x="-50" width="20" height="2"/>
+        <line y2="-6" x2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-6" end1="none" length1="1.5" end2="none" x1="-30"/>
+        <line y2="-25" x2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-6" end1="none" length1="1.5" end2="none" x1="-26"/>
+        <text text="C l" size="9" y="10" x="-47"/>
+        <line y2="-19" x2="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-19" end1="none" length1="1.5" end2="none" x1="-18"/>
+        <line y2="-4" x2="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-19" end1="none" length1="1.5" end2="none" x1="-22"/>
+        <line y2="-4" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="-22"/>
+        <text text="0.5" size="2" y="-21" x="-12"/>
+        <line y2="-25" x2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-25" end1="none" length1="1.5" end2="none" x1="-18"/>
+        <line y2="-21" x2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-20" end1="none" length1="1.5" end2="none" x1="-27"/>
+        <line y2="-20" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-21" end1="none" length1="1.5" end2="none" x1="-26"/>
+        <line y2="-12" x2="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-13" end1="none" length1="1.5" end2="none" x1="-23"/>
+        <line y2="-13" x2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-12" end1="none" length1="1.5" end2="none" x1="-22"/>
+        <terminal y="-20" x="-1" orientation="e"/>
+    </description>
+</definition>

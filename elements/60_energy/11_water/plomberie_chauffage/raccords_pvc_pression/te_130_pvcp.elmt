@@ -1,0 +1,28 @@
+<definition type="element" hotspot_x="24" orientation="dyyy" width="50" height="30" hotspot_y="20" link_type="simple" version="0.51">
+    <uuid uuid="{b507ed0b-e4c7-4f69-b57c-45eca69b55e2}"/>
+    <names>
+        <name lang="fr">Té égal PVC Pression</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect x="-7" style="line-style:normal;line-weight:normal;filling:white;color:none" width="14" height="8" antialias="false" y="-16"/>
+        <rect x="8" style="line-style:normal;line-weight:normal;filling:white;color:none" width="8" height="14" antialias="false" y="-7"/>
+        <rect x="-16" style="line-style:normal;line-weight:normal;filling:white;color:none" width="8" height="14" antialias="false" y="-7"/>
+        <input text="_" size="9" rotate="true" x="-7" tagg="label" y="22"/>
+        <arc x="7" start="180" style="line-style:normal;line-weight:hight;filling:none;color:black" angle="90" width="4" height="4" antialias="true" y="-11"/>
+        <arc x="-11" start="270" style="line-style:normal;line-weight:hight;filling:none;color:black" angle="90" width="4" height="4" antialias="true" y="-11"/>
+        <line length1="1.5" end2="none" y1="7" x1="-15" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="7" end1="none" x2="15" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-8" x1="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-5" end1="none" x2="-5" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-8" x1="8" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-5" end1="none" x2="5" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-7" x1="-16" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="7" end1="none" x2="-16" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-7" x1="16" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="7" end1="none" x2="16" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-7" x1="-16" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-7" end1="none" x2="-10" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-16" x1="-7" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-16" end1="none" x2="7" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-10" x1="-7" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-15" end1="none" x2="-7" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-10" x1="7" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-15" end1="none" x2="7" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-7" x1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-7" end1="none" x2="15" length2="1.5" antialias="false"/>
+        <terminal x="0" orientation="n" y="-16"/>
+        <terminal x="16" orientation="e" y="0"/>
+        <terminal x="-16" orientation="w" y="0"/>
+    </description>
+</definition>

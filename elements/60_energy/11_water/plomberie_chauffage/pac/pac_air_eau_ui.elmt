@@ -1,0 +1,20 @@
+<definition hotspot_y="27" type="element" link_type="simple" orientation="dyyy" hotspot_x="33" width="50" height="70" version="0.51">
+    <uuid uuid="{65c567a8-5e32-495f-8b29-f267333d0367}"/>
+    <names>
+        <name lang="fr">Unité Intérieure Air/Eau</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-20" antialias="false" x="-22.5" width="35" height="50"/>
+        <input text="_" size="9" y="-57" x="-12" tagg="label"/>
+        <line y2="20" x2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="25" end1="simple" length1="1.5" end2="none" x1="-10"/>
+        <line y2="20" x2="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="25" end1="none" length1="1.5" end2="simple" x1="-20"/>
+        <line y2="20" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="25" end1="simple" length1="1.5" end2="none" x1="0"/>
+        <line y2="20" x2="10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="25" end1="none" length1="1.5" end2="simple" x1="10"/>
+        <terminal y="34" x="10" orientation="s"/>
+        <terminal y="34" x="0" orientation="s"/>
+        <terminal y="34" x="-10" orientation="s"/>
+        <terminal y="25" x="-27" orientation="w"/>
+        <terminal y="34" x="-20" orientation="s"/>
+    </description>
+</definition>

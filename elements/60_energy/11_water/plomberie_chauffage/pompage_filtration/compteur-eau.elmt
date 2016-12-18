@@ -1,0 +1,30 @@
+<definition hotspot_y="5" type="element" link_type="simple" orientation="dyyy" hotspot_x="24" width="50" height="30" version="0.51">
+    <uuid uuid="{eda7409b-b43c-4188-9460-fba783b2a23a}"/>
+    <names>
+        <name lang="fr">Compteur eau</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <polygon closed="false" x12="2" y14="18" x3="-2" y8="15" x14="2" antialias="false" y6="16" x17="0" style="line-style:normal;line-weight:thin;filling:black;color:black" y16="19" x10="1" x6="-2" x16="1" x2="-1" x1="0" x7="-2" y5="17" x11="2" y7="15" x9="0" x4="-2" y4="18" y10="15" x15="2" x8="-1" y17="20" x5="-3" y11="15" y3="19" y12="16" y15="19" y1="20" y13="17" y2="19" x13="3" y9="14"/>
+        <text text="0000.000 m³" size="2" y="11" x="-10"/>
+        <input text="_" size="9" y="-15" x="-11" tagg="label" rotate="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8" antialias="false" x="-20" width="4" height="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="8" antialias="false" x="16" width="4" height="4"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" antialias="false" x="-12.5" width="25" height="26"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="-1" antialias="false" x="-11" diameter="22"/>
+        <circle style="line-style:normal;line-weight:thin;filling:white;color:black" y="15.5" antialias="false" x="-1.5" diameter="3"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="-10" width="2" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="-8" width="2" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="-6" width="2" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="-4" width="3" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="-1" width="2" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="1" width="2" height="4"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="8" antialias="false" x="3" width="2" height="4"/>
+        <arc start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y="4" antialias="true" x="-20" angle="90" width="8" height="4"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="12" antialias="true" x="-20" angle="90" width="8" height="4"/>
+        <arc start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" y="4" antialias="true" x="12" angle="90" width="8" height="4"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="12" antialias="true" x="12" angle="90" width="8" height="4"/>
+        <terminal y="10" x="20" orientation="e"/>
+        <terminal y="10" x="-20" orientation="w"/>
+    </description>
+</definition>

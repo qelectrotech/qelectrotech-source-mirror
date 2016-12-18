@@ -1,0 +1,24 @@
+<definition height="40" hotspot_x="25" orientation="dyyy" hotspot_y="20" version="0.51" link_type="simple" width="50" type="element">
+    <uuid uuid="{fa931dbb-3792-476c-9af9-fe517b73c40a}"/>
+    <names>
+        <name lang="fr">PE PP droite</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <polygon x1="-23" antialias="false" y1="-13" x2="-23" y4="-13" x4="-7" x5="-23" x3="-7" y3="13" y5="-13" style="line-style:normal;line-weight:normal;filling:gray;color:black" y2="13"/>
+        <polygon x1="-6" antialias="false" y1="12" x2="-6" y4="12" x4="10" x5="-6" x3="10" y3="-12" y5="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12"/>
+        <input y="22" text="_" tagg="label" rotate="true" x="-1" size="9"/>
+        <line x1="-23" antialias="false" end1="none" length2="1.5" y1="-8" x2="-7" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-8"/>
+        <line x1="-23" antialias="false" end1="none" length2="1.5" y1="0" x2="-7" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0"/>
+        <line x1="-23" antialias="false" end1="none" length2="1.5" y1="8" x2="-7" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="-5" x2="9" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="5" x2="9" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5"/>
+        <line x1="-5" antialias="false" end1="none" length2="1.5" y1="-14" x2="7" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="14" x2="7" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="-14" x2="-6" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14"/>
+        <arc height="2" start="0" antialias="true" y="-14" x="7" width="2" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="3" start="270" antialias="true" y="11" x="7" width="2" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="10" antialias="false" y1="-11" x2="20" y4="11" x4="10" closed="false" x5="10" x3="20" y3="8" y5="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-8"/>
+        <terminal orientation="e" y="0" x="20"/>
+    </description>
+</definition>

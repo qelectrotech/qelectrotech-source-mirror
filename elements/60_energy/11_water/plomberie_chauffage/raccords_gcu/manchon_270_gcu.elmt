@@ -1,0 +1,23 @@
+<definition type="element" width="30" hotspot_y="10" hotspot_x="14" version="0.51" link_type="simple" orientation="dyyy" height="20">
+    <uuid uuid="{465acf2a-8f60-47a8-9a6a-7b7b1cbb9f3c}"/>
+    <names>
+        <name lang="fr">Mamelon n° 280</name>
+    </names>
+    <informations>Baboune41
+</informations>
+    <description>
+        <polygon x3="10" x5="2" y4="7" x4="2" x1="2" style="line-style:normal;line-weight:normal;filling:brun;color:black" antialias="false" y5="-7" y1="-7" x2="10" y3="7" y2="-7"/>
+        <input rotate="true" size="5" y="13" x="-7" text="_" tagg="label"/>
+        <rect width="10" style="line-style:normal;line-weight:normal;filling:brun;color:none" antialias="false" y="-8" x="-8" height="16"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="-8" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" y1="-3" x2="2" y2="-3"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="-8" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" y1="3" x2="2" y2="3"/>
+        <arc width="2" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-8" x="0" height="2" start="0"/>
+        <arc width="2" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="6" x="0" height="2" start="270"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" x2="2" y2="6"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-8" x2="-8" y2="-8"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="8" x2="-8" y2="8"/>
+        <line end1="none" length1="1.5" length2="1.5" end2="none" x1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" x2="-8" y2="7"/>
+        <terminal y="0" orientation="e" x="9"/>
+        <terminal y="0" orientation="w" x="-8"/>
+    </description>
+</definition>

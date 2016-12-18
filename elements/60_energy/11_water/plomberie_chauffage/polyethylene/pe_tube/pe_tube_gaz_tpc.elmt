@@ -1,0 +1,71 @@
+<definition height="40" link_type="terminal" width="70" hotspot_y="19" version="0.51" type="element" orientation="dyyy" hotspot_x="37">
+    <uuid uuid="{4686f254-afb9-48d8-8373-c5911b74a66f}"/>
+    <names>
+        <name lang="fr">Tube PE gaz</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:yellow" y1="0" x2="1" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="0" x1="25"/>
+        <input rotate="true" text="25" y="-1" size="5" x="9" tagg="none"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5" width="25" x="1"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="-14.5" width="3" x="-10.5"/>
+        <text text="PE" y="2" size="5" x="4"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="11.5" width="3" x="-18.5"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="-180" y="11" width="4" x="-19"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="0" y="-15" width="4" x="-27"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="12" x="-23" diameter="4"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="-180" y="11" width="4" x="-3"/>
+        <rect height="3" style="line-style:normal;line-weight:none;filling:yellow;color:black" antialias="false" y="-13" width="4" x="-7"/>
+        <rect height="2" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="11" width="4" x="-23"/>
+        <rect height="3" style="line-style:normal;line-weight:none;filling:yellow;color:black" antialias="false" y="-13" width="4" x="-23"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="12" x="-7" diameter="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-16" x="-31" diameter="4"/>
+        <rect height="2" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="11" width="4" x="-7"/>
+        <rect height="1" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="10" width="2" x="-2"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="0" y="-15" width="4" x="-11"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-16" x="-15" diameter="4"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="-180" y="11" width="4" x="-11"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-16" x="-23" diameter="4"/>
+        <rect height="22" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-11" width="31" x="-31"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="12" x="-15" diameter="4"/>
+        <rect height="2" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="11" width="4" x="-15"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-16" x="-7" diameter="4"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="0" y="-15" width="4" x="-3"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="-16.5" width="5" x="-7.5"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="0" y="-15" width="4" x="-19"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="-14.5" width="3" x="-2.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="-16.5" width="5" x="-23.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x2="-2.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-14" x1="-2.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x2="-7.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="14" x1="-7.5"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="-14.5" width="3" x="-18.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="-16.5" width="5" x="-15.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x2="-18.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-14" x1="-18.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x2="-10.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-14" x1="-10.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x2="-15.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="14" x1="-15.5"/>
+        <rect height="3" style="line-style:normal;line-weight:none;filling:yellow;color:black" antialias="false" y="-13" width="4" x="-15"/>
+        <input rotate="true" text="_" y="28" size="9" x="-20" tagg="label"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="-16.5" width="5" x="-31.5"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="-14.5" width="3" x="-26.5"/>
+        <rect height="3" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="-13" width="4" x="-31"/>
+        <arc height="4" style="line-style:normal;line-weight:normal;filling:none;color:yellow" angle="-180" antialias="true" start="-180" y="11" width="4" x="-27"/>
+        <circle style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="12" x="-31" diameter="4"/>
+        <rect height="2" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" antialias="false" y="11" width="4" x="-31"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x2="-26.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-14" x1="-26.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x2="-23.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="14" x1="-23.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x2="-31.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="14" x1="-31.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="11.5" width="5" x="-31.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="11.5" width="5" x="-23.5"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="11.5" width="3" x="-26.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="11.5" width="5" x="-15.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="0" y="11.5" width="5" x="-7.5"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="11.5" width="3" x="-10.5"/>
+        <arc height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" antialias="true" start="-180" y="11.5" width="3" x="-2.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-12" x2="1" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="12" x1="1"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-13" x2="0.5" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="13" x1="0.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x2="25" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-4" x1="2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x2="25" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="4" x1="2"/>
+        <terminal y="0" x="26" orientation="e"/>
+        <terminal y="0" x="-32" orientation="w"/>
+    </description>
+</definition>

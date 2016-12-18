@@ -1,0 +1,27 @@
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="30" height="30" orientation="dyyy">
+    <uuid uuid="{9baa8254-4a3b-4d3d-a246-1c8ea3b33d86}"/>
+    <names>
+        <name lang="fr">Réduction fer n° 240 DF</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="-7" y="20" text="_" tagg="label" rotate="true" size="9"/>
+        <arc x="-10" y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="2" height="2" angle="-180"/>
+        <arc x="-10" y="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="2" height="2" angle="-180"/>
+        <arc x="8" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="2" height="2" angle="-180"/>
+        <arc x="8" y="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="2" height="2" angle="-180"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="7" end2="none" x1="-10" x2="-10"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="7" end2="none" x1="-8" x2="-8"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="6" end2="none" x1="10" x2="10"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="6" end2="none" x1="8" x2="8"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="-7" end2="none" x1="-8" x2="-2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="7" end1="none" y2="7" end2="none" x1="-7" x2="-2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" end1="none" y2="0" end2="none" x1="-4" x2="-1"/>
+        <arc x="-2" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="2" height="2" angle="90"/>
+        <arc x="-2" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="270" width="2" height="2" angle="90"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="-6" end2="none" x1="1" x2="7"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="6" end1="none" y2="6" end2="none" x1="1" x2="7"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

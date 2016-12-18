@@ -1,0 +1,30 @@
+<definition hotspot_x="33" width="50" height="50" type="element" version="0.51" link_type="simple" hotspot_y="13" orientation="dyyy">
+    <uuid uuid="{6d83ec55-ebac-472a-b977-287a3df77f01}"/>
+    <names>
+        <name lang="fr">Coude n° 90 DF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect x="-27" width="14" y="12" height="7" style="line-style:normal;line-weight:normal;filling:white;color:none" antialias="false"/>
+        <rect x="-8" width="7" y="-7" height="14" style="line-style:normal;line-weight:normal;filling:white;color:none" antialias="false"/>
+        <input x="-7" y="26" text="_" rotate="true" size="9" tagg="label"/>
+        <arc x="-13" width="10" y="7" height="10" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-90" antialias="true"/>
+        <arc x="-27" width="38" y="-7" height="38" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-90" antialias="true"/>
+        <arc x="-28" width="2" y="17" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-90" angle="-180" antialias="true"/>
+        <arc x="-14" width="2" y="17" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="90" angle="-180" antialias="true"/>
+        <line length1="1.5" x1="-27" x2="-13" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="17" length2="1.5" antialias="false" y1="17"/>
+        <line length1="1.5" x1="-27" x2="-27" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="16" length2="1.5" antialias="false" y1="12"/>
+        <line length1="1.5" x1="-13" x2="-13" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="16" length2="1.5" antialias="false" y1="12"/>
+        <line length1="1.5" x1="-26" x2="-14" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="19" length2="1.5" antialias="false" y1="19"/>
+        <arc x="-3" width="2" y="-8" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-180" antialias="true"/>
+        <arc x="-3" width="2" y="6" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="0" angle="-180" antialias="true"/>
+        <line length1="1.5" x1="-1" x2="-1" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="6" length2="1.5" antialias="false" y1="-6"/>
+        <line length1="1.5" x1="-3" x2="-3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="7" length2="1.5" antialias="false" y1="-7"/>
+        <line length1="1.5" x1="-4" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="7" length2="1.5" antialias="false" y1="7"/>
+        <line length1="1.5" x1="-4" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="-7" length2="1.5" antialias="false" y1="-7"/>
+        <input x="-24.3431" y="13.6569" text="1-1/4" rotate="true" rotation="315" size="5" tagg="none"/>
+        <terminal x="-1" y="0" orientation="e"/>
+        <terminal x="-20" y="19" orientation="s"/>
+    </description>
+</definition>

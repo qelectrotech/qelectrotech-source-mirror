@@ -1,0 +1,26 @@
+<definition link_type="simple" hotspot_x="11" version="0.51" hotspot_y="10" type="element" width="30" height="20" orientation="dyyy">
+    <uuid uuid="{6c424774-aec0-436f-8206-03397f896abd}"/>
+    <names>
+        <name lang="fr">Réduction Cuivre DF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input x="-3" y="-34" text="_" tagg="label" rotate="true" size="5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-3" end1="none" y2="-3" end2="none" x1="11" x2="5"/>
+        <arc x="2.5" y="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="1" height="1" angle="90"/>
+        <arc x="2.5" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="270" width="1" height="1" angle="90"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="-6" end2="none" x1="2" x2="-5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="6" end2="none" x1="-6" x2="-6"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="6" end1="none" y2="6" end2="none" x1="-5" x2="2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="6" end2="none" x1="3.5" x2="3.5"/>
+        <arc x="3.5" y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="1" height="1" angle="-90"/>
+        <arc x="3.5" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="1" height="1" angle="-90"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-3" end1="none" y2="3" end2="none" x1="12" x2="12"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="3" end1="none" y2="3" end2="none" x1="11" x2="5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="-4" end2="none" x1="3.5" x2="3.5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="4" end1="none" y2="5" end2="none" x1="3.5" x2="3.5"/>
+        <terminal x="-6" y="0" orientation="w"/>
+        <terminal x="12" y="0" orientation="e"/>
+    </description>
+</definition>

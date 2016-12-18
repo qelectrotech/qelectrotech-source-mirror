@@ -1,0 +1,15 @@
+<definition hotspot_y="10" hotspot_x="34" height="20" orientation="dyyy" type="element" version="0.51" width="70" link_type="simple">
+    <uuid uuid="{5c22b440-e2da-4666-84cd-131c55267508}"/>
+    <names>
+        <name lang="fr">Tube PVC pression</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input rotate="true" y="0" size="4" tagg="label" text="40" x="1"/>
+        <rect y="-5" height="10" antialias="false" width="60" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="2" size="4" text="PVC P" x="-15"/>
+        <terminal y="0" orientation="w" x="-30"/>
+        <terminal y="0" orientation="e" x="30"/>
+    </description>
+</definition>

@@ -1,0 +1,37 @@
+<definition height="30" hotspot_x="27" orientation="dyyy" hotspot_y="15" version="0.51" link_type="terminal" width="40" type="element">
+    <uuid uuid="{3adf5bac-2c04-42ba-a05b-2b476ebb460e}"/>
+    <names>
+        <name lang="fr">Tube PER isolé</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <arc height="6" start="-180" antialias="true" y="6" x="-23" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-19" antialias="false" end1="none" length2="1.5" y1="-1" x2="-18" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="-1"/>
+        <arc height="6" start="-180" antialias="true" y="-12" x="-5" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect height="10" antialias="false" y="-5" x="-18" width="26" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <arc height="6" start="0" antialias="true" y="-12" x="1" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="-180" antialias="true" y="6" x="1" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input y="17" text="_" tagg="label" rotate="true" x="-14" size="9"/>
+        <arc height="6" start="-180" antialias="true" y="-12" x="-17" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="0" antialias="true" y="6" x="-5" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-5" antialias="false" end1="none" length2="1.5" y1="0" x2="-1" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0"/>
+        <arc height="6" start="-180" antialias="true" y="6" x="-11" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="0" antialias="true" y="-12" x="-11" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-18" antialias="false" end1="none" length2="1.5" y1="-5" x2="-21" end2="none" length1="1.5" style="line-style:dotted;line-weight:thin;filling:none;color:black" y2="5"/>
+        <arc height="6" start="0" antialias="true" y="6" x="-17" width="6" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-17" antialias="false" end1="none" length2="1.5" y1="-12" x2="7" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-12"/>
+        <text y="3" text="PER" x="-13" size="5"/>
+        <line x1="-17" antialias="false" end1="none" length2="1.5" y1="-6" x2="7" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-6"/>
+        <line x1="-21" antialias="false" end1="none" length2="1.5" y1="6" x2="7" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="6"/>
+        <line x1="7" antialias="false" end1="none" length2="1.5" y1="12" x2="-22" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="12"/>
+        <line x1="-21" antialias="false" end1="none" length2="1.5" y1="5" x2="-19" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="5"/>
+        <line x1="-20" antialias="false" end1="none" length2="1.5" y1="4" x2="-19" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="4"/>
+        <line x1="-20" antialias="false" end1="none" length2="1.5" y1="3" x2="-19" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="3"/>
+        <line x1="-20" antialias="false" end1="none" length2="1.5" y1="2" x2="-19" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="2"/>
+        <line x1="-18" antialias="false" end1="none" length2="1.5" y1="1" x2="-19" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" y2="1"/>
+        <line x1="-16" antialias="false" end1="none" length2="1.5" y1="-12" x2="-23" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:white" y2="12"/>
+        <line x1="-17" antialias="false" end1="none" length2="1.5" y1="-12" x2="-24" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:white" y2="12"/>
+        <terminal orientation="w" y="0" x="-19"/>
+        <terminal orientation="e" y="0" x="8"/>
+    </description>
+</definition>

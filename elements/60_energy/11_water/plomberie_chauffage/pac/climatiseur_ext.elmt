@@ -1,0 +1,32 @@
+<definition hotspot_y="24" type="element" link_type="simple" orientation="dyyy" hotspot_x="44" width="90" height="60" version="0.51">
+    <uuid uuid="{a986c803-fab9-4af5-a8c9-6bd02a4a07e7}"/>
+    <names>
+        <name lang="fr">Unité Extérieure</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-20" antialias="false" x="-35" width="70" height="50"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-10" antialias="false" x="-27" diameter="30"/>
+        <input text="_" size="9" y="52.5" x="-17" tagg="label"/>
+        <line y2="-8" x2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-8" end1="none" length1="1.5" end2="none" x1="-19"/>
+        <line y2="-6" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-6" end1="none" length1="1.5" end2="none" x1="-22"/>
+        <line y2="-4" x2="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="-24"/>
+        <line y2="-2" x2="1" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-2" end1="none" length1="1.5" end2="none" x1="-25"/>
+        <line y2="0" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="0" end1="none" length1="1.5" end2="none" x1="-26"/>
+        <line y2="2" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="2" end1="none" length1="1.5" end2="none" x1="-27"/>
+        <line y2="4" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="4" end1="none" length1="1.5" end2="none" x1="-27"/>
+        <line y2="6" x2="3" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="6" end1="none" length1="1.5" end2="none" x1="-27"/>
+        <line y2="8" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="-27"/>
+        <line y2="10" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="10" end1="none" length1="1.5" end2="none" x1="-26"/>
+        <line y2="12" x2="1" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="12" end1="none" length1="1.5" end2="none" x1="-25"/>
+        <line y2="14" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="14" end1="none" length1="1.5" end2="none" x1="-24"/>
+        <line y2="16" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="16" end1="none" length1="1.5" end2="none" x1="-22"/>
+        <line y2="18" x2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="18" end1="none" length1="1.5" end2="none" x1="-19"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="31" antialias="false" x="-26" width="2" height="1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="31" antialias="false" x="24" width="2" height="1"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-10" antialias="true" x="-27" angle="-360" width="30" height="30"/>
+        <terminal y="20" x="40" orientation="e"/>
+        <terminal y="10" x="40" orientation="e"/>
+        <terminal y="20" x="-40" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition orientation="dyyy" type="element" width="20" link_type="simple" height="20" hotspot_y="10" version="0.51" hotspot_x="7">
+    <uuid uuid="{b8dc8e30-e392-4721-aa57-c1ad36657d0b}"/>
+    <names>
+        <name lang="fr">Bouchon fer n° 290</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect x="1" antialias="false" width="7" height="10" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-5"/>
+        <input text="_" x="-7" rotate="true" y="29" size="9" tagg="label"/>
+        <line x1="1" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="3" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="1" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x2="2" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="3" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="5" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="4" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="6" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="6" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="8" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="7" y2="0" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="8" length2="1.5" length1="1.5" end1="none"/>
+        <rect x="-1" antialias="false" width="2" height="14" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-7"/>
+        <rect x="-5" antialias="false" width="4" height="8" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-4"/>
+        <line x1="-5" y2="0" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x2="-1" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-1" y2="-3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x2="1" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-1" y2="3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x2="1" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="2" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="4" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="5" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="7" length2="1.5" length1="1.5" end1="none"/>
+        <terminal orientation="e" x="8" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,55 @@
+<definition orientation="dyyy" type="element" width="60" link_type="simple" height="40" hotspot_y="26" version="0.51" hotspot_x="28">
+    <uuid uuid="{d85e5527-3c91-477e-9262-799c8d0d04a6}"/>
+    <names>
+        <name lang="es">Valv bola 1/2H-H</name>
+        <name lang="it">Valvola a sfera 1/2 F-F</name>
+        <name lang="cs">Kulový ventil 1/2"</name>
+        <name lang="fr">Vanne à sphère DM</name>
+        <name lang="pl">Zawór kulowy 1/2"</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect x="-13" antialias="false" width="4" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7"/>
+        <rect x="9" antialias="false" width="4" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7"/>
+        <input text="1/2 DM" x="-23" rotate="true" y="40" size="9" tagg="label"/>
+        <rect x="-3" antialias="false" width="6" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12"/>
+        <rect x="-4" antialias="false" width="8" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14"/>
+        <rect x="-3" antialias="false" width="6" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-16"/>
+        <rect x="-2" antialias="false" width="4" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-17"/>
+        <line x1="-1" y2="-16" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17" x2="-1" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="1" y2="-16" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17" x2="1" length2="1.5" length1="1.5" end1="none"/>
+        <rect x="-1" antialias="false" width="2" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-18"/>
+        <rect x="8" antialias="false" width="17" height="2" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-21"/>
+        <polygon x3="8" x1="3" y3="-19" y2="-21" closed="false" antialias="false" x4="3" y4="-14" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x2="8" y6="-16" x6="3" x5="3" y5="-16"/>
+        <rect x="13" antialias="false" width="7" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5"/>
+        <rect x="-20" antialias="false" width="7" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5"/>
+        <line x1="-13" y2="-3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x2="-9" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-13" y2="3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x2="-9" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="9" y2="3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x2="13" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="9" y2="-3" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x2="13" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-20" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x2="-19" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-20" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-18" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-19" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-17" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-18" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-16" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-17" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-15" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-16" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-14" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-15" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-13" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-14" y2="0" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="-13" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="19" y2="0" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="20" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="18" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="20" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="17" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="19" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="16" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="18" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="15" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="17" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="14" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="16" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="13" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="15" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="13" y2="5" end2="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x2="14" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-2" y2="7" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x2="8" length2="1.5" length1="1.5" end1="none"/>
+        <line x1="-2" y2="7" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x2="-2" length2="1.5" length1="1.5" end1="none"/>
+        <arc x="-4" angle="90" antialias="true" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" start="0"/>
+        <arc x="3" angle="90" antialias="true" width="2" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" start="180"/>
+        <line x1="5" y2="-7" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x2="8" length2="1.5" length1="1.5" end1="none"/>
+        <polygon x3="-2" x1="-9" y3="8" y2="-8" closed="false" antialias="false" x4="-9" y4="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x2="-2" x5="-9" y5="-8"/>
+        <terminal orientation="w" x="-20" y="0"/>
+        <terminal orientation="e" x="20" y="0"/>
+    </description>
+</definition>

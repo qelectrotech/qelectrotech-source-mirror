@@ -1,0 +1,21 @@
+<definition height="30" hotspot_x="15" orientation="dyyy" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
+    <uuid uuid="{0db9323f-658e-4397-9e78-ae52eae7738a}"/>
+    <names>
+        <name lang="fr">Raccord Femelle PER glissement </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect height="10" antialias="false" y="-5" x="-1" width="1" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="10" antialias="false" y="-5" x="9" width="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="12" antialias="false" y="-6" x="1" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="14" antialias="false" y="-7" x="-10" width="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line x1="-3" antialias="false" end1="none" length2="1.5" y1="-4" x2="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-4"/>
+        <line x1="-10" antialias="false" end1="none" length2="1.5" y1="4" x2="-3" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="4"/>
+        <input y="-16" text="_" tagg="label" rotate="true" x="-3" size="5"/>
+        <arc height="8" start="90" antialias="true" y="-4" x="-5" width="4" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="270" antialias="true" y="-10" x="-5" width="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="0" antialias="true" y="4" x="-5" width="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="e" y="0" x="19"/>
+        <terminal orientation="w" y="0" x="-10"/>
+    </description>
+</definition>

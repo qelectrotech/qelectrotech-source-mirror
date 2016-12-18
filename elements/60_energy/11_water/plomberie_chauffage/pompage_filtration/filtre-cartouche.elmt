@@ -1,0 +1,27 @@
+<definition hotspot_y="17" type="element" link_type="simple" orientation="dyyy" hotspot_x="30" width="60" height="90" version="0.51">
+    <uuid uuid="{389cf182-5f5e-48e6-a8c2-5e5daf85778e}"/>
+    <names>
+        <name lang="fr">Filtre à cartouche</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:blue;color:black" y="-13" antialias="false" x="-15" width="31" height="3"/>
+        <ellipse style="line-style:normal;line-weight:none;filling:blue;color:black" y="-12" antialias="false" x="-21" width="42" height="12"/>
+        <rect style="line-style:normal;line-weight:none;filling:blue;color:black" y="-6" antialias="false" x="-21" width="42" height="14"/>
+        <input text="_" size="9" y="-35" x="-17" tagg="label" rotate="true" rotation="270"/>
+        <rect style="line-style:normal;line-weight:normal;filling:blue;color:black" y="-6" antialias="false" x="-25" width="4" height="12"/>
+        <rect style="line-style:normal;line-weight:normal;filling:blue;color:black" y="-6" antialias="false" x="21" width="4" height="12"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" antialias="true" x="-21" angle="180" width="42" height="12"/>
+        <line y2="8" x2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="2" end1="none" length1="1.5" end2="none" x1="-21"/>
+        <line y2="8" x2="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="-21"/>
+        <line y2="2" x2="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="21"/>
+        <polygon y2="68" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="15" y5="8" antialias="false" y1="8" x4="19" y4="8" closed="false" y3="68" x5="-19" x1="-19"/>
+        <rect style="line-style:normal;line-weight:thin;filling:bdiag;color:black" y="8" antialias="false" x="-11" width="22" height="60"/>
+        <rect style="line-style:normal;line-weight:normal;filling:blue;color:black" y="8" antialias="false" x="-20" width="40" height="8"/>
+        <line y2="16" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="0"/>
+        <line y2="16" x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="-12"/>
+        <line y2="16" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="12"/>
+        <terminal y="0" x="-25" orientation="w"/>
+        <terminal y="0" x="24" orientation="e"/>
+    </description>
+</definition>

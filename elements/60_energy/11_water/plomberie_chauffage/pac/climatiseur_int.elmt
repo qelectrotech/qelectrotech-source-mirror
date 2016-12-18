@@ -1,0 +1,24 @@
+<definition hotspot_y="24" type="element" link_type="simple" orientation="dyyy" hotspot_x="44" width="90" height="60" version="0.51">
+    <uuid uuid="{e36efb84-d89d-4c4e-9272-d4222ea8b698}"/>
+    <names>
+        <name lang="fr">Climatiseur Unité Int</name>
+    </names>
+    <informations>cbh41Baboune41-2016</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:lightgray;color:black" y="-20" antialias="false" x="-35" width="70" height="50"/>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" y="-18" antialias="false" x="-33" width="66" height="12"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-18" antialias="false" x="-33" width="66" height="12"/>
+        <input text="_" size="9" y="56.5" x="-13" tagg="label" rotate="true"/>
+        <line y2="-17" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-17" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <line y2="-15" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-15" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <line y2="-13" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-13" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <line y2="-11" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-11" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <line y2="-9" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-9" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <line y2="-7" x2="33" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-7" end1="none" length1="1.5" end2="none" x1="-33"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="31" antialias="false" x="-26" width="2" height="1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="31" antialias="false" x="24" width="2" height="1"/>
+        <terminal y="10" x="-40" orientation="w"/>
+        <terminal y="20" x="-40" orientation="w"/>
+        <terminal y="20" x="40" orientation="e"/>
+    </description>
+</definition>

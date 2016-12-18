@@ -1,0 +1,25 @@
+<definition height="20" link_type="simple" width="30" hotspot_y="10" version="0.51" type="element" orientation="dyyy" hotspot_x="11">
+    <uuid uuid="{2707a844-0552-4acc-873e-8efb4600d7b1}"/>
+    <names>
+        <name lang="fr">Embout fileté mâle</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input rotate="true" text="_" y="7" size="9" x="-2" tagg="label"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5" width="7" x="7"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="9" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="7"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x2="8" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="7"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="11" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="9"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="12" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="10"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="14" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="12"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="14" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="0" x1="13"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="10" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="8"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x2="13" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="5" x1="11"/>
+        <rect height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-7" width="3" x="4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x2="-7" antialias="false" y3="5" closed="false" y5="-5" x3="-7" x4="4" y4="5" y2="-5" x5="4" x1="4"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x2="7" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="-3" x1="4"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x2="7" end2="none" antialias="false" length2="1.5" end1="none" length1="1.5" y2="3" x1="4"/>
+        <terminal y="0" x="-7" orientation="w"/>
+        <terminal y="0" x="14" orientation="e"/>
+    </description>
+</definition>

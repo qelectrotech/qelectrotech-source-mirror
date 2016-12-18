@@ -1,0 +1,24 @@
+<definition hotspot_y="10" hotspot_x="7" type="element" width="20" link_type="simple" height="20" version="0.51" orientation="dyyy">
+    <uuid uuid="{a4859c30-6ed3-4262-b65a-6a90c5c5bb57}"/>
+    <names>
+        <name lang="fr">Bouchon laiton n° 290</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input y="29" rotate="true" x="-7" size="9" tagg="label" text="_"/>
+        <rect y="-5" x="1" width="7" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:brun"/>
+        <line length2="1.5" x2="2" end2="none" y1="0" length1="1.5" y2="5" antialias="false" x1="1" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="5" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="6" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="4" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="8" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="6" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="8" end2="none" y1="-5" length1="1.5" y2="0" antialias="false" x1="7" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <rect y="-7" x="-1" width="2" antialias="false" height="14" style="line-style:normal;line-weight:thin;filling:none;color:brun"/>
+        <rect y="-5" x="-5" width="4" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:brun"/>
+        <line length2="1.5" x2="-1" end2="none" y1="-2" length1="1.5" y2="-2" antialias="false" x1="-5" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-1" end2="none" y1="2" length1="1.5" y2="2" antialias="false" x1="-5" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="3" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="1" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="7" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="5" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="4" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="2" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <terminal y="0" x="8" orientation="e"/>
+    </description>
+</definition>

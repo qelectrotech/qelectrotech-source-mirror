@@ -1,0 +1,24 @@
+<definition version="0.51" type="element" height="20" orientation="dyyy" link_type="simple" hotspot_x="10" width="30" hotspot_y="10">
+    <uuid uuid="{3d375e51-f24e-4ca9-a150-2a55d87002a1}"/>
+    <names>
+        <name lang="fr">Manchon Cu n° 270</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" size="5" x="-3" y="-34"/>
+        <line y1="-6" y2="-6" end1="none" end2="none" x1="12" x2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <arc height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="2" start="0" y="-6" width="2" angle="90"/>
+        <arc height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="2" start="270" y="4" width="2" angle="90"/>
+        <line y1="-6" y2="-6" end1="none" end2="none" x1="2" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line y1="-6" y2="6" end1="none" end2="none" x1="-4" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line y1="6" y2="6" end1="none" end2="none" x1="-4" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line y1="-5" y2="5" end1="none" end2="none" x1="4" x2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <arc height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="4" start="90" y="-6" width="2" angle="90"/>
+        <arc height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="4" start="180" y="4" width="2" angle="90"/>
+        <line y1="-6" y2="6" end1="none" end2="none" x1="12" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line y1="6" y2="6" end1="none" end2="none" x1="12" x2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <terminal orientation="w" x="-4" y="0"/>
+        <terminal orientation="e" x="12" y="0"/>
+    </description>
+</definition>

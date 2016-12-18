@@ -1,0 +1,35 @@
+<definition orientation="dyyy" width="110" version="0.51" height="50" type="element" hotspot_x="73" link_type="terminal" hotspot_y="12">
+    <uuid uuid="{b77952ca-50e8-47ae-ac12-af0171d4992b}"/>
+    <names>
+        <name lang="fr">Tube Multicouche</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <line x1="-25.618" end2="none" end1="none" y1="-1" length1="1.5" x2="-24.3729" length2="1.5" y2="-1" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <rect y="-5" width="32.3729" style="line-style:normal;line-weight:normal;filling:lightgray;color:lightgray" height="10" x="-24.3729" antialias="false"/>
+        <line x1="-28.1083" end2="none" end1="none" y1="5" length1="1.5" x2="-25.618" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-26.8632" end2="none" end1="none" y1="4" length1="1.5" x2="-25.618" length2="1.5" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-26.8632" end2="none" end1="none" y1="3" length1="1.5" x2="-25.618" length2="1.5" y2="3" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-26.8632" end2="none" end1="none" y1="2" length1="1.5" x2="-25.618" length2="1.5" y2="2" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-24.3729" end2="none" end1="none" y1="1" length1="1.5" x2="-25.618" length2="1.5" y2="1" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <input y="17" tagg="label" text="_" rotate="true" x="-14" size="9"/>
+        <line x1="8" end2="none" end1="none" y1="-5" length1="1.5" x2="-24.3729" length2="1.5" y2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="-4" length1="1.5" x2="-24.3729" length2="1.5" y2="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="4" length1="1.5" x2="-28.1083" length2="1.5" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="5" length1="1.5" x2="-28.1083" length2="1.5" y2="5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="-24.3729" end2="none" end1="none" y1="-5" length1="1.5" x2="-28.1083" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false"/>
+        <line x1="-25.618" end2="none" end1="none" y1="-5" length1="1.5" x2="-29.3534" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false"/>
+        <rect y="-5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="16" x="10" antialias="false"/>
+        <rect y="-5" width="3" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" x="17" antialias="false"/>
+        <rect y="-5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="24" x="22" antialias="false"/>
+        <rect y="-5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="32" x="29" antialias="false"/>
+        <rect y="-6" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" x="-40" antialias="false"/>
+        <rect y="-6" width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-56" antialias="false"/>
+        <rect y="-6" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" height="13" x="-70" antialias="false"/>
+        <rect y="16" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" height="16" x="-66" antialias="false"/>
+        <input y="0" tagg="none" text="16" rotate="true" x="-9" size="5"/>
+        <input y="0" tagg="none" text="Multi" rotate="true" x="-25" size="5"/>
+        <terminal orientation="w" y="0" x="-25.618"/>
+        <terminal orientation="e" y="0" x="8"/>
+    </description>
+</definition>

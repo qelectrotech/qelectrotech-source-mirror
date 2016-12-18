@@ -1,0 +1,14 @@
+<definition type="element" hotspot_x="19" orientation="dyyy" width="40" height="30" hotspot_y="15" link_type="simple" version="0.51">
+    <uuid uuid="{bd9c5a8f-e5a0-4284-9b00-0658d4357685}"/>
+    <names>
+        <name lang="fr">Manchon PVC pression</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x7="-12" x5="0" y6="8" y1="-8" y4="8" y5="9" x1="-12" y7="-8" y3="-8" x6="-12" style="line-style:normal;line-weight:hight;filling:white;color:black" y2="-9" x3="12" x2="0" antialias="false" x4="12"/>
+        <input text="_" size="9" rotate="true" x="-5" tagg="label" y="18"/>
+        <line length1="1.5" end2="none" y1="-9" x1="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="9" end1="none" x2="0" length2="1.5" antialias="false"/>
+        <terminal x="-12" orientation="w" y="0"/>
+        <terminal x="12" orientation="e" y="0"/>
+    </description>
+</definition>

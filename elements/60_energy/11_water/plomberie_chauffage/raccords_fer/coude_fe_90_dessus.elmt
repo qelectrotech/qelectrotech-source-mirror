@@ -1,0 +1,21 @@
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="12" type="element" width="30" height="40" orientation="dyyy">
+    <uuid uuid="{0547a11f-dc79-4893-b266-abcbf44abc84}"/>
+    <names>
+        <name lang="fr">Coude n° 90 DF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input x="13" y="19" text="_" tagg="label" rotate="true" size="9"/>
+        <arc x="-9" y="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="2" height="2" angle="-180"/>
+        <arc x="7" y="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="2" height="2" angle="-180"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="21" end1="none" y2="21" end2="none" x1="-7" x2="7"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="6" end1="none" y2="20" end2="none" x1="-7" x2="-7"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="6" end1="none" y2="20" end2="none" x1="7" x2="7"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="23" end1="none" y2="23" end2="none" x1="-7" x2="7"/>
+        <circle x="-7" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="14"/>
+        <circle x="-9" y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="18"/>
+        <terminal x="0" y="23" orientation="s"/>
+        <terminal x="8" y="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,30 @@
+<definition link_type="simple" hotspot_x="31" version="0.51" hotspot_y="40" type="element" width="50" height="50" orientation="dyyy">
+    <uuid uuid="{9d4c6395-0c6e-4638-8140-7a2654263a87}"/>
+    <names>
+        <name lang="fr">Coude n° 92 MF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="0" x2="2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-3" x2="-1"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-4" x2="-2"/>
+        <rect x="-4" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="7" height="10"/>
+        <input x="-27" y="19" text="_" tagg="label" rotate="true" size="9"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="0" end1="none" y2="5" end2="none" x1="-4" x2="-3"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-2" x2="0"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-1" x2="1"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="1" x2="3"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="0" end2="none" x1="2" x2="3"/>
+        <arc x="-13" y="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="16" height="20" angle="-90"/>
+        <arc x="-27" y="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="44" height="40" angle="-90"/>
+        <arc x="-29" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="2" height="2" angle="-180"/>
+        <arc x="-13" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="2" height="2" angle="-180"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-23" end1="none" y2="-23" end2="none" x1="-27" x2="-13"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-20" end1="none" y2="-16" end2="none" x1="-27" x2="-27"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-20" end1="none" y2="-16" end2="none" x1="-13" x2="-13"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-21" end1="none" y2="-21" end2="none" x1="-27" x2="-13"/>
+        <terminal x="-20" y="-23" orientation="n"/>
+        <terminal x="3" y="0" orientation="e"/>
+    </description>
+</definition>

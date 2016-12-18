@@ -1,0 +1,27 @@
+<definition height="20" hotspot_x="10" orientation="dyyy" hotspot_y="10" version="0.51" link_type="simple" width="40" type="element">
+    <uuid uuid="{33ca1f09-79b1-4831-a3f2-0615fda9b655}"/>
+    <names>
+        <name lang="fr">Raccord Mâle PER glissement </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect height="10" antialias="false" y="-5" x="15" width="9" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="12" antialias="false" y="-6" x="7" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-16" text="_" tagg="label" rotate="true" x="-2" size="5"/>
+        <rect height="10" antialias="false" y="-5" x="5" width="1" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="10" antialias="false" y="-5" x="-6" width="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="0" x2="-5" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-6" antialias="false" end1="none" length2="1.5" y1="-5" x2="-4" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-5" antialias="false" end1="none" length2="1.5" y1="-5" x2="-3" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-4" antialias="false" end1="none" length2="1.5" y1="-5" x2="-2" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-3" antialias="false" end1="none" length2="1.5" y1="-5" x2="-1" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-2" antialias="false" end1="none" length2="1.5" y1="-5" x2="0" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="-1" antialias="false" end1="none" length2="1.5" y1="-5" x2="1" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5"/>
+        <line x1="0" antialias="false" end1="none" length2="1.5" y1="-5" x2="1" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0"/>
+        <rect height="12" antialias="false" y="-6" x="1" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="1" antialias="false" end1="none" length2="1.5" y1="-3" x2="5" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3"/>
+        <line x1="1" antialias="false" end1="none" length2="1.5" y1="3" x2="5" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="3"/>
+        <terminal orientation="e" y="0" x="24"/>
+        <terminal orientation="w" y="0" x="-6"/>
+    </description>
+</definition>

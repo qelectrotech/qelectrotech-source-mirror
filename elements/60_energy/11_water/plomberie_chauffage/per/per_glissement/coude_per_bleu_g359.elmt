@@ -1,0 +1,29 @@
+<definition height="50" hotspot_x="17" orientation="dyyy" hotspot_y="14" version="0.51" link_type="simple" width="40" type="element">
+    <uuid uuid="{a3dcef29-daa6-4266-ace2-47b99c44b760}"/>
+    <names>
+        <name lang="fr">Coude écrou libre PER glissement </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect height="9" antialias="false" y="20" x="5" width="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect height="14" antialias="false" y="-7" x="-9" width="7" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line x1="-4" antialias="false" end1="none" length2="1.5" y1="-4" x2="-9" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-4"/>
+        <line x1="-9" antialias="false" end1="none" length2="1.5" y1="4" x2="-4" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="4"/>
+        <input y="-16" text="_" tagg="label" rotate="true" x="-2" size="5"/>
+        <arc height="8" start="90" antialias="true" y="-4" x="-6" width="4" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="270" antialias="true" y="-10" x="-6" width="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc height="6" start="0" antialias="true" y="4" x="-6" width="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect height="1" antialias="false" y="10" x="5" width="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <line x1="0" antialias="false" end1="none" length2="1.5" y1="-5" x2="0" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5"/>
+        <line x1="4" antialias="false" end1="none" length2="1.5" y1="9" x2="16" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9"/>
+        <arc height="6" start="0" antialias="true" y="5" x="-2" width="6" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="24" start="0" antialias="true" y="-5" x="-8" width="24" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-1" antialias="false" end1="none" length2="1.5" y1="4" x2="0" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4"/>
+        <line x1="-1" antialias="false" end1="none" length2="1.5" y1="-4" x2="0" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4"/>
+        <line x1="0" antialias="false" end1="none" length2="1.5" y1="-5" x2="3" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5"/>
+        <line x1="16" antialias="false" end1="none" length2="1.5" y1="7" x2="16" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9"/>
+        <rect height="8" antialias="false" y="11" x="4" width="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="s" y="29" x="10"/>
+        <terminal orientation="w" y="0" x="-9"/>
+    </description>
+</definition>

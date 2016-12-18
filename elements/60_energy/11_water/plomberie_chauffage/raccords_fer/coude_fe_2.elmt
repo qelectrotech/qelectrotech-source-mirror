@@ -1,0 +1,33 @@
+<definition link_type="simple" hotspot_x="42" version="0.51" hotspot_y="12" type="element" width="70" height="70" orientation="dyyy">
+    <uuid uuid="{82591d82-e9f6-436c-904f-bf03b438b871}"/>
+    <names>
+        <name lang="fr">Coude n° 2 DF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input x="-7" y="29" text="_" tagg="label" rotate="true" size="9"/>
+        <arc x="-25" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="40" height="40" angle="-90"/>
+        <arc x="-35" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="60" height="60" angle="-90"/>
+        <arc x="-39" y="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-90" width="2" height="2" angle="-180"/>
+        <arc x="-23" y="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="2" height="2" angle="-180"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="32" end1="none" y2="32" end2="none" x1="-37" x2="-23"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="27" end1="none" y2="31" end2="none" x1="-37" x2="-37"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="27" end1="none" y2="31" end2="none" x1="-23" x2="-23"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="34" end1="none" y2="34" end2="none" x1="-37" x2="-23"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="7" end1="none" y2="7" end2="none" x1="1" x2="-3"/>
+        <arc x="-37" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="2" height="2" angle="90"/>
+        <arc x="-25" y="25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="2" height="2" angle="90"/>
+        <arc x="-5" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="2" height="2" angle="90"/>
+        <arc x="-5" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="180" width="2" height="2" angle="90"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="-7" end2="none" x1="-3" x2="1"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="7" end2="none" x1="2" x2="2"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-7" end1="none" y2="7" end2="none" x1="4" x2="4"/>
+        <arc x="2" y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="2" height="2" angle="-180"/>
+        <arc x="2" y="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="2" height="2" angle="-180"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="25" end1="none" y2="25" end2="none" x1="-35" x2="-26"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-5" end1="none" y2="5" end2="none" x1="-5" x2="-5"/>
+        <terminal x="4" y="0" orientation="e"/>
+        <terminal x="-30" y="34" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,26 @@
+<definition hotspot_y="10" hotspot_x="14" type="element" width="30" link_type="simple" height="20" version="0.51" orientation="dyyy">
+    <uuid uuid="{b0dc06bd-d5c7-47e4-bea5-69c2e076977d}"/>
+    <names>
+        <name lang="fr">Mamelon n° 243 GCU</name>
+    </names>
+    <informations>Baboune41
+</informations>
+    <description>
+        <polygon x2="9" x4="2" y1="-6" y4="6" y2="-6" y5="-6" antialias="false" x1="2" style="line-style:normal;line-weight:normal;filling:white;color:brun" y3="6" x5="2" x3="9"/>
+        <polygon x2="-9" x4="-2" y1="-5" y4="5" y2="-5" y5="-5" antialias="false" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:brun" y3="5" x5="-2" x3="-9"/>
+        <line length2="1.5" x2="-3" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-5" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-6" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-8" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-7" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-9" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <input y="13" rotate="true" x="-7" size="9" tagg="label" text="_"/>
+        <rect y="-8" x="-2" width="4" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:brun"/>
+        <line length2="1.5" x2="2" end2="none" y1="-3" length1="1.5" y2="-3" antialias="false" x1="-2" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="2" end2="none" y1="3" length1="1.5" y2="3" antialias="false" x1="-2" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-8" end2="none" y1="0" length1="1.5" y2="5" antialias="false" x1="-9" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-5" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-7" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-4" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-6" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-2" end2="none" y1="-5" length1="1.5" y2="5" antialias="false" x1="-4" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <line length2="1.5" x2="-2" end2="none" y1="-5" length1="1.5" y2="0" antialias="false" x1="-3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none"/>
+        <terminal y="0" x="-9" orientation="w"/>
+        <terminal y="0" x="9" orientation="e"/>
+    </description>
+</definition>

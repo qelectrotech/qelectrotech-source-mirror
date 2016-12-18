@@ -1,0 +1,15 @@
+<definition height="20" hotspot_x="23" orientation="dyyy" hotspot_y="10" version="0.51" link_type="terminal" width="40" type="element">
+    <uuid uuid="{f178d02e-f5bb-4c07-a13d-2a3135899895}"/>
+    <names>
+        <name lang="fr">Tube PER </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <polygon x1="-18" antialias="false" y6="-5" y1="-5" x2="12" y4="5" x6="-18" x4="-20" x5="-18" x3="12" y3="5" y5="-5" style="line-style:normal;line-weight:normal;filling:red;color:red" y2="-5"/>
+        <input y="17" text="_" tagg="label" rotate="true" x="-14" size="9"/>
+        <text y="3" text="PER" x="-15" size="5"/>
+        <input y="0" text="16" tagg="none" rotate="true" x="-5" size="5"/>
+        <terminal orientation="e" y="0" x="12"/>
+        <terminal orientation="w" y="0" x="-19"/>
+    </description>
+</definition>

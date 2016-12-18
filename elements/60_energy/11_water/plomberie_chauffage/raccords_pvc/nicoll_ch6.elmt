@@ -1,0 +1,19 @@
+<definition version="0.51" hotspot_y="50" width="70" height="70" type="element" hotspot_x="23" orientation="dyyy" link_type="simple">
+    <uuid uuid="{9f3eee3e-143f-4702-8cdb-c9fee571f43b}"/>
+    <names>
+        <name lang="fr">Coude 67°30 PVC 100</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect x="1" width="9" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13" antialias="false"/>
+        <input size="4" tagg="label" x="4" text="67°30 - 100" y="17" rotate="true"/>
+        <arc x="-18" angle="67" width="56" height="56" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-44" antialias="true" start="270"/>
+        <arc x="7" angle="67" width="6" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-18" antialias="true" start="270"/>
+        <line y2="-14" y1="-28" x1="19" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="13" antialias="false" length1="1.5"/>
+        <line y2="-5" y1="-19" x1="41" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="36" antialias="false" length1="1.5"/>
+        <line y2="-19" y1="-28" x1="19" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" x2="41" antialias="false" length1="1.5"/>
+        <terminal x="1" orientation="w" y="0"/>
+        <terminal x="30" orientation="n" y="-24"/>
+    </description>
+</definition>

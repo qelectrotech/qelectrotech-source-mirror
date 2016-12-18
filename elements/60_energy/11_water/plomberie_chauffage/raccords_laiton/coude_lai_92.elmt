@@ -1,0 +1,34 @@
+<definition hotspot_x="30" width="50" height="50" type="element" version="0.51" link_type="simple" hotspot_y="10" orientation="dyyy">
+    <uuid uuid="{d33f3303-0c92-4f25-b8e3-3a703d42e3c6}"/>
+    <names>
+        <name lang="fr">Coude laiton n° 92 MF</name>
+    </names>
+    <informations>Baboune41
+</informations>
+    <description>
+        <rect x="-27" width="14" y="15" height="7" style="line-style:normal;line-weight:thin;filling:white;color:none" antialias="false"/>
+        <rect x="-4" width="7" y="-5" height="10" style="line-style:normal;line-weight:normal;filling:none;color:brun" antialias="false"/>
+        <line length1="1.5" x1="-4" x2="-3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="0"/>
+        <line length1="1.5" x1="-2" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <line length1="1.5" x1="-1" x2="1" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <line length1="1.5" x1="1" x2="3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <line length1="1.5" x1="2" x2="3" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="0" length2="1.5" antialias="false" y1="-5"/>
+        <arc x="-13" width="18" y="5" height="22" style="line-style:normal;line-weight:thin;filling:none;color:white" start="-180" angle="-90" antialias="true"/>
+        <arc x="-27" width="44" y="-5" height="40" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="-180" angle="-90" antialias="true"/>
+        <arc x="-28" width="2" y="21" height="2" style="line-style:normal;line-weight:thin;filling:none;color:white" start="-90" angle="-180" antialias="true"/>
+        <line length1="1.5" x1="-27" x2="-13" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="20" length2="1.5" antialias="false" y1="20"/>
+        <line length1="1.5" x1="-27" x2="-27" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="20" length2="1.5" antialias="false" y1="16"/>
+        <line length1="1.5" x1="-13" x2="-13" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="20" length2="1.5" antialias="false" y1="16"/>
+        <line length1="1.5" x1="-26" x2="-14" style="line-style:normal;line-weight:normal;filling:none;color:brun" end1="none" end2="none" y2="22" length2="1.5" antialias="false" y1="22"/>
+        <line length1="1.5" x1="0" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <line length1="1.5" x1="-4" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <line length1="1.5" x1="-3" x2="-1" style="line-style:normal;line-weight:thin;filling:none;color:brun" end1="none" end2="none" y2="5" length2="1.5" antialias="false" y1="-5"/>
+        <input x="-7" y="18" text="_" rotate="true" size="9" tagg="label"/>
+        <arc x="-28" width="2" y="20" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="90" angle="180" antialias="true"/>
+        <arc x="-13" width="18" y="5" height="20" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="90" angle="90" antialias="true"/>
+        <arc x="-14" width="2" y="20" height="2" style="line-style:normal;line-weight:normal;filling:none;color:brun" start="270" angle="180" antialias="true"/>
+        <input x="-24.3431" y="15.6569" text="1-1/4" rotate="true" rotation="315" size="5" tagg="none"/>
+        <terminal x="-20" y="22" orientation="s"/>
+        <terminal x="3" y="0" orientation="e"/>
+    </description>
+</definition>

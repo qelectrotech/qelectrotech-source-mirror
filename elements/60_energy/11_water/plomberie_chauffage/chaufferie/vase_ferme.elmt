@@ -1,0 +1,36 @@
+<definition type="element" width="50" link_type="simple" height="70" orientation="dyyy" hotspot_y="35" version="0.51" hotspot_x="25">
+    <uuid uuid="{9c969a20-39c9-470a-a398-0aa20948a3c6}"/>
+    <names>
+        <name lang="en">Heating Vase </name>
+        <name lang="nl">Expansie tank</name>
+        <name lang="fr">Vase Chauffage 50L</name>
+        <name lang="pl">Naczynie wzbiorcze</name>
+        <name lang="it">Vaso di espansione 50L</name>
+        <name lang="ar">إناء تسخين 02</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license
+Baboune41-2016
+Modifications</informations>
+    <description>
+        <line y2="-25" y1="-24" x1="-2" end2="none" x2="2" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <polygon y2="-28" y3="-28" x3="2" x4="2" y1="-24" x1="-2" x2="-2" y5="-24" x5="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y4="-24"/>
+        <ellipse width="40" height="15" style="line-style:normal;line-weight:thin;filling:red;color:none" antialias="false" x="-20" y="-24.5"/>
+        <rect width="40" height="17" style="line-style:normal;line-weight:thin;filling:red;color:none" antialias="false" x="-20" y="-17"/>
+        <rect width="40" height="20" style="line-style:normal;line-weight:thin;filling:red;color:none" antialias="false" x="-20" y="0"/>
+        <ellipse width="40" height="15" style="line-style:normal;line-weight:thin;filling:red;color:none" antialias="false" x="-20" y="12.5"/>
+        <polygon y2="3" y3="3" x3="3" x4="0" y1="0" x1="0" x2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y4="0"/>
+        <input tagg="label" text="50L" size="7" x="-11" y="44.5" rotate="true"/>
+        <line y2="20" y1="-17" x1="20" end2="none" x2="20" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
+        <line y2="20" y1="-17" x1="-20" end2="none" x2="-20" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
+        <arc width="40" start="-180" height="15" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="-24.5"/>
+        <arc width="40" start="0" height="15" angle="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="12.5"/>
+        <line y2="30" y1="28" x1="0" end2="none" x2="0" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect width="1" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-0.5" y="29"/>
+        <line y2="0" y1="0" x1="-20" end2="none" x2="20" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line y2="-28" y1="-27" x1="-2" end2="none" x2="2" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line y2="-27" y1="-26" x1="-2" end2="none" x2="2" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line y2="-26" y1="-25" x1="-2" end2="none" x2="2" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <terminal orientation="n" x="0" y="-28"/>
+    </description>
+</definition>

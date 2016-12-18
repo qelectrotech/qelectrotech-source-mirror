@@ -1,0 +1,30 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="27" hotspot_y="61" type="element" version="0.51" width="60" height="100">
+    <uuid uuid="{7cc8ef71-4d55-4c5d-9277-b3f37c10db46}"/>
+    <names>
+        <name lang="cs">Elektrický ohřívač</name>
+        <name lang="it">Boiler elettrico</name>
+        <name lang="pl">Bojler elektryczny</name>
+        <name lang="en">thermo Electric</name>
+        <name lang="fr">Ballon ECS stable</name>
+        <name lang="es">Termo Electrico</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <input rotate="true" x="-7" y="-86" text="_" tagg="label" size="9"/>
+        <arc x="-4.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="9" angle="-360" height="9"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="-54.7867" y2="-51.5559" x1="-5.88" end1="simple" x2="-5.88" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <arc x="-19" y="-47.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" width="38" angle="-180" height="6.5"/>
+        <rect x="-1" y="-52" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" width="2" height="5"/>
+        <rect x="19" y="24" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:black" width="5" height="2"/>
+        <ellipse x="-0.84" y="17.245" antialias="true" style="line-style:normal;line-weight:normal;filling:red;color:black" width="1.68" height="1.51"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="21" y2="21" x1="22" end1="simple" x2="25" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="-43" y2="29" x1="-19" end1="none" x2="-19" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="-43" y2="-43" x1="19" end1="none" x2="-19" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="-43" y2="29" x1="19" end1="none" x2="19" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" length2="1.5" y1="29" y2="29" x1="19" end1="none" x2="-19" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect x="-20" y="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40" height="2"/>
+        <terminal orientation="e" x="24" y="25"/>
+        <terminal orientation="n" x="0" y="-52"/>
+    </description>
+</definition>

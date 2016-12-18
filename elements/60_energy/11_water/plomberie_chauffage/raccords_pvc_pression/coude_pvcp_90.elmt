@@ -1,0 +1,23 @@
+<definition type="element" hotspot_x="16" orientation="dyyy" width="40" height="30" hotspot_y="11" link_type="simple" version="0.51">
+    <uuid uuid="{b24fccb1-6d43-4726-a042-6341ef335ee6}"/>
+    <names>
+        <name lang="fr">Coude 90° PVC pression</name>
+    </names>
+    <informations>Baboune41
+</informations>
+    <description>
+        <rect x="-7" style="line-style:normal;line-weight:normal;filling:white;color:white" width="8" height="14" antialias="false" y="3"/>
+        <rect x="3" style="line-style:normal;line-weight:normal;filling:white;color:white" width="14" height="8" antialias="false" y="-7"/>
+        <input text="_" size="9" rotate="true" x="-5" tagg="label" y="29"/>
+        <arc x="-3" start="270" style="line-style:normal;line-weight:hight;filling:none;color:black" angle="90" width="6" height="6" antialias="true" y="-3"/>
+        <arc x="-9" start="270" style="line-style:normal;line-weight:hight;filling:none;color:black" angle="90" width="26" height="26" antialias="true" y="-9"/>
+        <line length1="1.5" end2="none" y1="17" x1="-6" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="17" end1="none" x2="3" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="3" x1="-7" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="17" end1="none" x2="-7" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="3" x1="-6" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="3" end1="none" x2="-1" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-6" x1="17" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="3" end1="none" x2="17" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-7" x1="17" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-7" end1="none" x2="3" length2="1.5" antialias="false"/>
+        <line length1="1.5" end2="none" y1="-6" x1="3" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-1" end1="none" x2="3" length2="1.5" antialias="false"/>
+        <terminal x="10" orientation="n" y="-6.95"/>
+        <terminal x="-7" orientation="w" y="10"/>
+    </description>
+</definition>

@@ -1,0 +1,40 @@
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="40" height="30" orientation="dyyy">
+    <uuid uuid="{3fab18f1-47ba-4773-810f-3c23b15f1e15}"/>
+    <names>
+        <name lang="fr">Raccord union n° 340 DF</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect x="13" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="7" height="14"/>
+        <rect x="-10" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="7" height="14"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-4" end1="none" y2="-4" end2="none" x1="-5" x2="-10"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-4" end1="none" y2="-4" end2="none" x1="20" x2="15"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="4" end1="none" y2="4" end2="none" x1="-10" x2="-5"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="4" end1="none" y2="4" end2="none" x1="15" x2="20"/>
+        <input x="-7" y="29" text="_" tagg="label" rotate="true" size="9"/>
+        <arc x="-7" y="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="90" width="4" height="8" angle="-180"/>
+        <arc x="-7" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="270" width="4" height="6" angle="90"/>
+        <arc x="-7" y="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="0" width="4" height="6" angle="90"/>
+        <arc x="-4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="270" width="4" height="4" angle="90"/>
+        <arc x="-4" y="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="4" height="4" angle="90"/>
+        <arc x="13" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="180" width="4" height="6" angle="90"/>
+        <arc x="13" y="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="-90" width="4" height="8" angle="-180"/>
+        <arc x="13" y="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="90" width="4" height="6" angle="90"/>
+        <arc x="10" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="180" width="4" height="4" angle="90"/>
+        <arc x="10" y="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="4" height="4" angle="90"/>
+        <rect x="0" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10" height="26"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-6" end1="none" y2="-6" end2="none" x1="2" x2="8"/>
+        <line length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="6" end1="none" y2="6" end2="none" x1="2" x2="8"/>
+        <arc x="0" y="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="180" width="4" height="6" angle="90"/>
+        <arc x="6" y="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="270" width="4" height="6" angle="90"/>
+        <arc x="6" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="0" width="4" height="4" angle="90"/>
+        <arc x="0" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="90" width="4" height="4" angle="90"/>
+        <arc x="0" y="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="180" width="4" height="4" angle="90"/>
+        <arc x="6" y="2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="270" width="4" height="4" angle="90"/>
+        <arc x="0" y="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="90" width="4" height="4" angle="90"/>
+        <arc x="6" y="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="0" width="4" height="4" angle="90"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

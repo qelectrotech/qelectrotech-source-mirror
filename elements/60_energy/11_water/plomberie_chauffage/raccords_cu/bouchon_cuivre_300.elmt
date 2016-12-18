@@ -1,0 +1,18 @@
+<definition hotspot_y="10" type="element" link_type="simple" orientation="dyyy" hotspot_x="11" width="20" height="20" version="0.51">
+    <uuid uuid="{fe9784b4-abdb-4e6e-b6ac-61bf61a0b542}"/>
+    <names>
+        <name lang="fr">Bouchon Cu n° 300</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <input text="_" size="5" y="-34" x="-3" tagg="label" rotate="true"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6" antialias="true" x="2" angle="90" width="2" height="2"/>
+        <arc start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y="4" antialias="true" x="2" angle="90" width="2" height="2"/>
+        <line y2="-6" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-6" end1="none" length1="1.5" end2="none" x1="2"/>
+        <line y2="6" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-6" end1="none" length1="1.5" end2="none" x1="-4"/>
+        <line y2="6" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="6" end1="none" length1="1.5" end2="none" x1="-4"/>
+        <line y2="5" x2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-5" end1="none" length1="1.5" end2="none" x1="4"/>
+        <line y2="4" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="4"/>
+        <terminal y="0" x="-4" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,35 @@
+<definition height="30" orientation="dyyy" hotspot_y="15" width="60" version="0.51" hotspot_x="14" type="element" link_type="simple">
+    <uuid uuid="{6dad1546-2c7a-4540-915b-f32fe10b6bef}"/>
+    <names>
+        <name lang="fr">Flexible eau écrou</name>
+    </names>
+    <informations>Baboune41
+
+</informations>
+    <description>
+        <rect height="12" x="18" y="-6" width="22" style="line-style:normal;line-weight:thin;filling:bdiag;color:none" antialias="false"/>
+        <rect height="12" x="18" y="-6" width="22" style="line-style:normal;line-weight:normal;filling:fdiag;color:none" antialias="false"/>
+        <rect height="14" x="-9" y="-7" width="8" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <line x2="-9" end1="none" length1="1.5" end2="none" y2="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="-1" length2="1.5" antialias="false"/>
+        <line x2="-1" end1="none" length1="1.5" end2="none" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-9" length2="1.5" antialias="false"/>
+        <input x="-4" y="-24" rotate="true" size="5" text="_" tagg="label"/>
+        <line x2="-1" end1="none" length1="1.5" end2="none" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-1" length2="1.5" antialias="false"/>
+        <polygon x2="-1" x4="7" y5="4" y3="-4" x3="7" x5="-1" closed="false" y2="-4" y4="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-1" antialias="false"/>
+        <arc height="4" angle="90" x="7" y="-7" width="4" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <arc height="4" angle="90" x="7" y="3" width="4" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line x2="18" end1="none" length1="1.5" end2="none" y2="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="10" length2="1.5" antialias="false"/>
+        <line x2="18" end1="none" length1="1.5" end2="none" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="18" length2="1.5" antialias="false"/>
+        <line x2="10" end1="none" length1="1.5" end2="none" y2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="18" length2="1.5" antialias="false"/>
+        <line x2="12" end1="none" length1="1.5" end2="none" y2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="18" length2="1.5" antialias="false"/>
+        <line x2="12" end1="none" length1="1.5" end2="none" y2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="18" length2="1.5" antialias="false"/>
+        <line x2="12" end1="none" length1="1.5" end2="none" y2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2" x1="18" length2="1.5" antialias="false"/>
+        <line x2="12" end1="none" length1="1.5" end2="none" y2="5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5" x1="18" length2="1.5" antialias="false"/>
+        <arc height="4" angle="-180" x="10" y="-2" width="4" start="-90" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
+        <arc height="4" angle="90" x="10" y="-9" width="4" start="180" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
+        <arc height="4" angle="90" x="10" y="5" width="4" start="90" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
+        <line x2="40" end1="none" length1="1.5" end2="none" y2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="18" length2="1.5" antialias="false"/>
+        <line x2="40" end1="none" length1="1.5" end2="none" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="19" length2="1.5" antialias="false"/>
+        <terminal orientation="e" x="40" y="0"/>
+        <terminal orientation="w" x="-9" y="0"/>
+    </description>
+</definition>

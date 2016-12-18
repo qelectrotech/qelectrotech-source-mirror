@@ -1,0 +1,40 @@
+<definition orientation="dyyy" width="40" version="0.51" height="30" type="element" hotspot_x="27" link_type="terminal" hotspot_y="15">
+    <uuid uuid="{76cc20b2-308d-4105-8d6b-44362a14196d}"/>
+    <names>
+        <name lang="fr">Tube Multicouche isolé</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <arc y="-12" width="6" start="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-5" antialias="true"/>
+        <arc y="6" width="6" start="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-23" antialias="true"/>
+        <line x1="-19" end2="none" end1="none" y1="-1" length1="1.5" x2="-18" length2="1.5" y2="-1" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <arc y="6" width="6" start="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="1" antialias="true"/>
+        <arc y="-12" width="6" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="1" antialias="true"/>
+        <rect y="-5" width="26" style="line-style:normal;line-weight:normal;filling:lightgray;color:lightgray" height="10" x="-18" antialias="false"/>
+        <arc y="-12" width="6" start="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-17" antialias="true"/>
+        <line x1="-5" end2="none" end1="none" y1="0" length1="1.5" x2="-1" length2="1.5" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <arc y="6" width="6" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-5" antialias="true"/>
+        <text y="3" text="Multi" x="-13" size="5"/>
+        <arc y="-12" width="6" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-11" antialias="true"/>
+        <arc y="6" width="6" start="-180" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-11" antialias="true"/>
+        <line x1="-17" end2="none" end1="none" y1="-12" length1="1.5" x2="7" length2="1.5" y2="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="-21" end2="none" end1="none" y1="5" length1="1.5" x2="-19" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <arc y="6" width="6" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6" angle="-180" x="-17" antialias="true"/>
+        <line x1="-20" end2="none" end1="none" y1="4" length1="1.5" x2="-19" length2="1.5" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-17" end2="none" end1="none" y1="-6" length1="1.5" x2="7" length2="1.5" y2="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="-21" end2="none" end1="none" y1="6" length1="1.5" x2="7" length2="1.5" y2="6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <input y="17" tagg="label" text="_" rotate="true" x="-14" size="9"/>
+        <line x1="-20" end2="none" end1="none" y1="3" length1="1.5" x2="-19" length2="1.5" y2="3" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="-20" end2="none" end1="none" y1="2" length1="1.5" x2="-19" length2="1.5" y2="2" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="7" end2="none" end1="none" y1="12" length1="1.5" x2="-22" length2="1.5" y2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="-18" end2="none" end1="none" y1="1" length1="1.5" x2="-19" length2="1.5" y2="1" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="-5" length1="1.5" x2="-18" length2="1.5" y2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="-4" length1="1.5" x2="-18" length2="1.5" y2="-4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="4" length1="1.5" x2="-21" length2="1.5" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="5" length1="1.5" x2="-21" length2="1.5" y2="5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line x1="-16" end2="none" end1="none" y1="-12" length1="1.5" x2="-23" length2="1.5" y2="12" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false"/>
+        <line x1="-17" end2="none" end1="none" y1="-12" length1="1.5" x2="-24" length2="1.5" y2="12" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false"/>
+        <terminal orientation="w" y="0" x="-19"/>
+        <terminal orientation="e" y="0" x="8"/>
+    </description>
+</definition>

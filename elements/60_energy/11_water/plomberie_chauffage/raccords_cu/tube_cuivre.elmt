@@ -1,0 +1,20 @@
+<definition type="element" width="40" hotspot_x="29" version="0.51" link_type="terminal" height="20" hotspot_y="11" orientation="dyyy">
+    <uuid uuid="{1251a098-31f6-4308-a0b6-9aa39a0580cd}"/>
+    <names>
+        <name lang="fr">Tube Cuivre</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <input y="-34" x="-3" rotate="true" tagg="label" text="_" size="5"/>
+        <line y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="2" end1="none" end2="none" length2="1.5" y2="4" length1="1.5" x2="2"/>
+        <line y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-21" end1="none" end2="none" length2="1.5" y2="-5" length1="1.5" x2="2"/>
+        <line y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-21" end1="none" end2="none" length2="1.5" y2="5" length1="1.5" x2="2"/>
+        <text y="2" x="-18" text="Cu" size="5"/>
+        <ellipse y="0" style="line-style:normal;line-weight:thin;filling:gray;color:gray" x="-22.5" width="3" antialias="false" height="5"/>
+        <arc y="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-22.5" start="-90" width="3" antialias="true" angle="-180" height="5"/>
+        <arc y="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-22.5" start="90" width="3" antialias="true" angle="-180" height="5"/>
+        <input y="-1" x="-14" rotate="true" tagg="none" text="22" size="5"/>
+        <terminal y="0" x="-22" orientation="w"/>
+        <terminal y="0" x="2" orientation="e"/>
+    </description>
+</definition>

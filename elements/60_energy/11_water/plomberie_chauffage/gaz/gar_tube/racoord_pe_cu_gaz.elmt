@@ -1,0 +1,24 @@
+<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="9" width="40" height="30" version="0.51">
+    <uuid uuid="{f56c05df-2e03-43d2-9ad5-7aeb6186354f}"/>
+    <names>
+        <name lang="fr">Raccord Pe/Cu gaz</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <input text="_" size="5" y="-34" x="4" tagg="label" rotate="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6" antialias="false" x="15" width="7" height="12"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" antialias="true" x="13" angle="-90" width="2" height="2"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="7" antialias="true" x="13" angle="-90" width="2" height="2"/>
+        <line y2="-9" x2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-9" end1="none" length1="1.5" end2="none" x1="4"/>
+        <line y2="9" x2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="9" end1="none" length1="1.5" end2="none" x1="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="false" x="-2" width="4" height="20"/>
+        <line y2="-3.55" x2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-3.55" end1="none" length1="1.5" end2="none" x1="-2.5"/>
+        <line y2="6.45" x2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="6.45" end1="none" length1="1.5" end2="none" x1="-2.5"/>
+        <line y2="7" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-7" end1="none" length1="1.5" end2="none" x1="15"/>
+        <line y2="8" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-8" end1="none" length1="1.5" end2="none" x1="4"/>
+        <line y2="-8" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-8" end1="none" length1="1.5" end2="none" x1="4"/>
+        <line y2="8" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="8" end1="none" length1="1.5" end2="none" x1="2"/>
+        <terminal y="0" x="22" orientation="e"/>
+        <terminal y="0" x="-2" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="15" width="20" height="30" version="0.51">
+    <uuid uuid="{ed53d447-d072-4426-9185-d511fb42af7d}"/>
+    <names>
+        <name lang="fr">Bouchon Gaz</name>
+    </names>
+    <informations>Baboune41-2016</informations>
+    <description>
+        <line y2="-4" x2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-4" end1="none" length1="1.5" end2="none" x1="-5"/>
+        <line y2="4" x2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="4" end1="none" length1="1.5" end2="none" x1="-10"/>
+        <arc start="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-4" antialias="true" x="-7" angle="-180" width="4" height="8"/>
+        <arc start="270" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-10" antialias="true" x="-7" angle="90" width="4" height="6"/>
+        <arc start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y="4" antialias="true" x="-7" angle="90" width="4" height="6"/>
+        <line y2="7" x2="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" y1="-7" end1="none" length1="1.5" end2="none" x1="-3"/>
+        <arc start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7" antialias="true" x="-5" angle="90" width="4" height="2"/>
+        <arc start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y="3" antialias="true" x="-5" angle="90" width="4" height="4"/>
+        <line y2="7" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="7" end1="none" length1="1.5" end2="none" x1="-3"/>
+        <line y2="-7" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="7" end1="none" length1="1.5" end2="none" x1="-10"/>
+        <line y2="-7" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-7" end1="none" length1="1.5" end2="none" x1="-9"/>
+        <line y2="5" x2="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-5" end1="none" length1="1.5" end2="none" x1="-1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-1" antialias="false" x="-1" width="2" height="2"/>
+        <line y2="2" x2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" y1="-2" end1="none" length1="1.5" end2="none" x1="1"/>
+        <input text="_" size="9" y="-36" x="-16" tagg="label" rotate="true"/>
+        <terminal y="0" x="-10" orientation="w"/>
+    </description>
+</definition>

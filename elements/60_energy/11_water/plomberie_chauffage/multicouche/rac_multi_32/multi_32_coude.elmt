@@ -1,0 +1,27 @@
+<definition orientation="dyyy" width="80" version="0.51" height="80" type="element" hotspot_x="36" link_type="simple" hotspot_y="56">
+    <uuid uuid="{6616ec0f-b8a1-4abd-b27c-8701dcf74017}"/>
+    <names>
+        <name lang="es">Codo Alpex 20</name>
+        <name lang="en">Elbow Alpex 20</name>
+        <name lang="it">Gomito Alpex 20</name>
+        <name lang="pl">Kolanko Alpex 20</name>
+        <name lang="cs">Koleno Alpex 20</name>
+        <name lang="fr">Coude Multicouche 32</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input y="20" tagg="label" text="_" rotate="true" x="0" size="9"/>
+        <rect y="-12" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" height="24" x="-2" antialias="false"/>
+        <rect y="-47.0013" width="32" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" x="4.004" antialias="false"/>
+        <arc y="-44" width="56" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="56" angle="-90" x="-24" antialias="true"/>
+        <rect y="-22" width="24" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" x="8" antialias="false"/>
+        <rect y="-16" width="22" style="line-style:normal;line-weight:normal;filling:none;color:black" height="32" x="-27" antialias="false"/>
+        <arc y="-20" width="8" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" angle="-90" x="0" antialias="true"/>
+        <rect y="-24" width="38" style="line-style:normal;line-weight:normal;filling:black;color:black" height="2" x="1" antialias="false"/>
+        <rect y="-19" width="2" style="line-style:normal;line-weight:normal;filling:black;color:black" height="38" x="-4" antialias="false"/>
+        <polygon x1="-27" y1="-8" x5="-27" closed="false" x2="-27" y2="8" y4="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-29" x4="-29" y5="-8" y3="8" antialias="false"/>
+        <polygon x1="12" y1="-47" x5="12" closed="false" x2="28" y2="-47" y4="-49" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="28" x4="12" y5="-47" y3="-49" antialias="false"/>
+        <terminal orientation="n" y="-49" x="20"/>
+        <terminal orientation="w" y="0" x="-29"/>
+    </description>
+</definition>

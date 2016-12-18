@@ -1,0 +1,20 @@
+<definition height="20" hotspot_x="26" orientation="dyyy" hotspot_y="10" version="0.51" link_type="terminal" width="50" type="element">
+    <uuid uuid="{28ac065b-447d-4a26-9fe1-800d1978c4a9}"/>
+    <names>
+        <name lang="fr">Manchon PER glissement </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect height="10" antialias="false" y="-5" x="9" width="10" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect height="10" antialias="false" y="-5" x="-22" width="10" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect height="12" antialias="false" y="-6" x="1" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="12" antialias="false" y="-6" x="-12" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" y="-5" x="-3" width="1" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <line x1="-2" antialias="false" end1="none" length2="1.5" y1="-6" x2="-2" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6"/>
+        <input y="-24" text="_" tagg="label" rotate="true" x="-6" size="5"/>
+        <rect height="10" antialias="false" y="-5" x="-1" width="1" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <line x1="-1" antialias="false" end1="none" length2="1.5" y1="-6" x2="-1" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6"/>
+        <terminal orientation="e" y="0" x="19"/>
+        <terminal orientation="w" y="0" x="-22"/>
+    </description>
+</definition>
