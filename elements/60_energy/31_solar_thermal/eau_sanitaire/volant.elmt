@@ -1,0 +1,19 @@
+<definition orientation="dyyy" width="20" version="0.51" height="20" type="element" hotspot_x="10" link_type="simple" hotspot_y="3">
+    <uuid uuid="{60390f6c-586a-44c5-b7f7-86bc10e2c856}"/>
+    <names>
+        <name lang="fr">Volant</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input y="-47" tagg="label" text="_" rotate="true" x="-8" size="9"/>
+        <line x1="-8" end2="none" end1="none" y1="13" length1="1.5" x2="8" length2="1.5" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect y="7" width="16" style="line-style:normal;line-weight:normal;filling:blue;color:blue" height="6" x="-8" antialias="false"/>
+        <ellipse y="-1" width="16" style="line-style:normal;line-weight:normal;filling:blue;color:blue" height="14" x="-8" antialias="false"/>
+        <line x1="0" end2="none" end1="none" y1="13" length1="1.5" x2="0" length2="1.5" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-5" end2="none" end1="none" y1="13" length1="1.5" x2="-5" length2="1.5" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="5" end2="none" end1="none" y1="6" length1="1.5" x2="5" length2="1.5" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-8" end2="none" end1="none" y1="6" length1="1.5" x2="-8" length2="1.5" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="8" end2="none" end1="none" y1="6" length1="1.5" x2="8" length2="1.5" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect y="14" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="1" x="-3" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition link_type="simple" hotspot_x="35" hotspot_y="40" orientation="dyyy" width="60" height="90" type="element" version="0.51">
+    <uuid uuid="{275f0267-93de-4f72-b6e9-01c3a33eae26}"/>
+    <names>
+        <name lang="en">Omron_DeviceNet_connection</name>
+        <name lang="fr">Omron_DeviceNet_connection</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y1="-38" y2="-38" antialias="false" y3="48" x1="-4" y4="48" x2="22" y5="48" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="22" x4="-13" x5="-12" closed="false"/>
+        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.00431" height="5" x="-30.551" y="-2.5"/>
+        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.00431" height="5" x="-30.551" y="17.5"/>
+        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.00431" height="5" x="-30.551" y="7.5"/>
+        <polygon y1="23" y2="48" antialias="false" y3="48" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-13" closed="false"/>
+        <polygon y1="-13" y2="-38" antialias="false" y3="-38" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-4" closed="false"/>
+        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.00431" height="5" x="-30.551" y="-12.5"/>
+        <text size="6" text="brigth" x="-24" y="2"/>
+        <text size="6" text="blue" x="-24" y="12"/>
+        <text size="6" text="black" x="-24" y="22"/>
+        <text size="6" text="red" x="-24" y="-8"/>
+        <text size="6" text="DeviceNet" x="-21" y="43"/>
+        <input size="9" text="" rotate="true" x="-25" tagg="label" y="-25"/>
+        <line y1="-7" y2="-3" antialias="false" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="3" y2="7" antialias="false" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="13" y2="17" antialias="false" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <terminal orientation="w" x="-31" y="0"/>
+        <terminal orientation="w" x="-31" y="20"/>
+        <terminal orientation="w" x="-31" y="10"/>
+        <terminal orientation="w" x="-31" y="-10"/>
+    </description>
+</definition>
