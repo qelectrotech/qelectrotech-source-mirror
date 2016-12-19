@@ -1158,8 +1158,7 @@ void Diagram::updateLabels() {
 			elmt->updateLabel();
 	}
 	foreach (Conductor *cnd, content().conductors()) {
-		if (cnd->properties().text.contains("%F"))
-			cnd->setText(cnd->properties().text);
+		cnd->refreshText();
 	}
 }
 

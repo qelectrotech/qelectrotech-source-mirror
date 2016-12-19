@@ -79,7 +79,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal2(p2),
 	m_mouse_over(false),
 	m_handler(10),
-	text_item(0),
+	m_text_item(0),
 	segments(NULL),
 	moving_segment(false),
 	modified_path(false),
@@ -127,8 +127,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setAcceptHoverEvents(true);
 	
 		// Add the text field
-	text_item = new ConductorTextItem(m_properties.text, this);
-	connect(text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
+	m_text_item = new ConductorTextItem(m_properties.text, this);
+	connect(m_text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
 }
 
 /**
@@ -543,7 +543,7 @@ Diagram *Conductor::diagram() const {
 	@return le champ de texte associe a ce conducteur
 */
 ConductorTextItem *Conductor::textItem() const {
-	return(text_item);
+	return(m_text_item);
 }
 
 /**
@@ -597,7 +597,7 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 			moving_segment = true;
 			moved_segment = segmentsList().at(index+1);
-			before_mov_text_pos_ = text_item -> pos();
+			before_mov_text_pos_ = m_text_item -> pos();
 		}
 	}
 
@@ -855,7 +855,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 
 	bool return_ = pathFromXml(dom_element);
 
-	text_item -> fromXml(dom_element);
+	m_text_item -> fromXml(dom_element);
 	ConductorProperties pr;
 	pr.fromXml(dom_element);
 
@@ -909,7 +909,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 	
 		// Export the properties and text
 	m_properties. toXml(dom_element);
-	text_item -> toXml(dom_element);
+	m_text_item -> toXml(dom_element);
 
 	return(dom_element);
 }
@@ -1130,7 +1130,7 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
  * If text was moved by user, this function do nothing, except check if text is near conductor.
  */
 void Conductor::calculateTextItemPosition() {
-	if (!text_item || !diagram() || m_properties.type != ConductorProperties::Multi) return;
+	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi) return;
 
 	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
 		relatedPotentialConductors(false).size() > 0) {
@@ -1149,37 +1149,37 @@ void Conductor::calculateTextItemPosition() {
 					c -> textItem() -> setVisible(false);
 			}
 		//Make sure text item is visible
-		text_item -> setVisible(true);
+		m_text_item -> setVisible(true);
 	}
 
 	//position
-	if (text_item -> wasMovedByUser()) {
+	if (m_text_item -> wasMovedByUser()) {
 		//Text field was moved by user :
 		//we check if text field is yet  near the conductor
-		QPointF text_item_pos = text_item -> pos();
+		QPointF text_item_pos = m_text_item -> pos();
 		QPainterPath near_shape = nearShape();
 		if (!near_shape.contains(text_item_pos)) {
-			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
+			m_text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
 	} else {
 		//Position and rotation of text is calculated.
 		Qt::Orientations rotation;
 		QPointF text_pos = posForText(rotation);
 
-		if (!text_item -> wasRotateByUser()) {
-			rotation == Qt::Vertical ? text_item -> setRotationAngle(m_properties.verti_rotate_text):
-									   text_item -> setRotationAngle(m_properties.horiz_rotate_text);
+		if (!m_text_item -> wasRotateByUser()) {
+			rotation == Qt::Vertical ? m_text_item -> setRotationAngle(m_properties.verti_rotate_text):
+									   m_text_item -> setRotationAngle(m_properties.horiz_rotate_text);
 		}
 
 		//Adjust the position of text if his rotation
 		//is 0° or 270°, to be exactly centered to the conductor
-		if (text_item -> rotation() == 0)
-			text_pos.rx() -= text_item -> boundingRect().width()/2;
-		else if (text_item -> rotation() == 270)
-			text_pos.ry() += text_item -> boundingRect().width()/2;
+		if (m_text_item -> rotation() == 0)
+			text_pos.rx() -= m_text_item -> boundingRect().width()/2;
+		else if (m_text_item -> rotation() == 270)
+			text_pos.ry() += m_text_item -> boundingRect().width()/2;
 
 		//Finaly set the position of text
-		text_item -> setPos(text_pos);
+		m_text_item -> setPos(text_pos);
 	}
 }
 
@@ -1199,7 +1199,7 @@ void Conductor::saveProfile(bool undo) {
 			conductor_profiles[current_path_type],
 			current_path_type
 		);
-		undo_object -> setConductorTextItemMove(before_mov_text_pos_, text_item -> pos());
+		undo_object -> setConductorTextItemMove(before_mov_text_pos_, m_text_item -> pos());
 		dia -> undoStack().push(undo_object);
 	}
 }
@@ -1248,61 +1248,81 @@ ConductorProfile Conductor::profile(Qt::Corner path_type) const {
 	return(conductor_profiles[path_type]);
 }
 
-/// @return le texte du conducteur
-QString Conductor::text() const {
-	QString label = text_item->toPlainText();
-	return(label);
-}
-
-/**
- * @brief Conductor::setText
- * The text of this conductor
- * @param t
- */
-void Conductor::setText(const QString &t)
-{
-	text_item->setPlainText(t);
-}
-
 /**
  * @brief Conductor::refreshText
  * Refresh the text of this conductor.
  * recalcule and set the text according to the formula.
  */
-void Conductor::refreshText() {
-	setText(m_freeze_label? text_item->toPlainText() : properties().text);
+void Conductor::refreshText()
+{
+	if (!m_freeze_label && diagram())
+	{
+		QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
+		m_properties.text = text;
+		m_text_item->setPlainText(text);
+	}
+}
+
+/**
+ * @brief Conductor::setPropertiesToPotential
+ * @param properties
+ * @param only_text
+ * Set @propertie to conductor and every conductors in the same potential of @conductor.
+ * If @only_text is true only formula, text, function and tension/protocol is set
+ * to other conductor in the same potential, the other values of property stay unmodified
+ */
+void Conductor::setPropertyToPotential(const ConductorProperties &property, bool only_text)
+{
+	setProperties(property);
+	QSet <Conductor *> potential_list = relatedPotentialConductors();
+
+	foreach(Conductor *other_conductor, potential_list)
+	{
+		if (only_text)
+		{
+			ConductorProperties other_properties = other_conductor->properties();
+			other_properties.m_formula = m_properties.m_formula;
+			other_properties.text = m_properties.text;
+			other_properties.m_function = m_properties.m_function;
+			other_properties.m_tension_protocol = m_properties.m_tension_protocol;
+			other_conductor->setProperties(other_properties);
+		}
+		else
+		{
+			other_conductor->setProperties(property);
+		}
+	}
 }
 
 /**
  * @brief Conductor::setProperties
- * Set new properties for this conductor
- * Also change the common properties for every conductors at the same potential.
- * (text, function and tension/protocol) other value of properties isn't changed.
+ * Set @property as current property of conductor
  * @param properties : properties
  */
-void Conductor::setProperties(const ConductorProperties &properties)
+void Conductor::setProperties(const ConductorProperties &property)
 {
-	if (m_properties == properties) return;
+	if (m_properties == property) return;
 
-	m_properties = properties;
+	m_properties = property;
 
-	foreach(Conductor *other_conductor, relatedPotentialConductors())
+	if (!m_properties.m_formula.isEmpty())
 	{
-		ConductorProperties other_properties = other_conductor->properties();
-		other_properties.text = m_properties.text;
-		other_properties.color = m_properties.color;
-		other_properties.cond_size = m_properties.cond_size;
-		other_properties.m_function = m_properties.m_function;
-		other_properties.m_tension_protocol = m_properties.m_tension_protocol;
-		other_conductor->setProperties(other_properties);
+		if (diagram()) {
+			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
+			m_properties.text = text;
+		}
+		else {
+			m_properties.text = m_properties.m_formula;
+		}
 	}
-	setText(m_properties.text);
-	text_item -> setFontSize(m_properties.text_size);
+
+	m_text_item->setPlainText(m_properties.text);
+	m_text_item->setFontSize(m_properties.text_size);
 
 	if (m_properties.type != ConductorProperties::Multi)
-		text_item -> setVisible(false);
+		m_text_item->setVisible(false);
 	else
-		text_item -> setVisible(m_properties.m_show_text);
+		m_text_item->setVisible(m_properties.m_show_text);
 
 	calculateTextItemPosition();
 	update();
@@ -1341,16 +1361,16 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
  */
 void Conductor::displayedTextChanged()
 {
-	if ((text_item->toPlainText() == autonum::AssignVariables::formulaToLabel(m_properties.text, m_autoNum_seq, diagram())) || !diagram()) return;
-
 	QVariant old_value, new_value;
 	old_value.setValue(m_properties);
 	ConductorProperties new_properties(m_properties);
-	new_properties.text = text_item -> toPlainText();
+	new_properties.m_formula = m_text_item->toPlainText();
+	new_properties.text = m_text_item->toPlainText();
 	new_value.setValue(new_properties);
 
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "properties", old_value, new_value);
-	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+	new QPropertyUndoCommand(this, "properties", old_value, new_value, undo);
 
 	if (!relatedPotentialConductors().isEmpty())
 	{
@@ -1360,7 +1380,8 @@ void Conductor::displayedTextChanged()
 		{
 			old_value.setValue(potential_conductor->properties());
 			ConductorProperties new_properties = potential_conductor->properties();
-			new_properties.text = text_item->toPlainText();
+			new_properties.m_formula = m_text_item->toPlainText();
+			new_properties.text = m_text_item->toPlainText();
 			new_value.setValue(new_properties);
 			new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);
 		}
@@ -1438,6 +1459,12 @@ QETDiagramEditor* Conductor::diagramEditor() const {
  */
 void Conductor::editProperty() {
 	ConductorPropertiesDialog::PropertiesDialog(this, diagramEditor());
+}
+
+void Conductor::setSequenceNum(autonum::sequentialNumbers sn)
+{
+	m_autoNum_seq = sn;
+	refreshText();
 }
 
 /**

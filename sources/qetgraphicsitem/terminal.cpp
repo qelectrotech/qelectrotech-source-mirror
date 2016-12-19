@@ -623,8 +623,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	if (use_properties)
 	{
 		Conductor *other = conductors_list.toList().first();
-		new_conductor->setText("");
-		new_conductor->setText(other->properties().text);
+		new_conductor->setProperties(other->properties());
 	}
 }
 
