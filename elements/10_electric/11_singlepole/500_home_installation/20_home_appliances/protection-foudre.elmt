@@ -1,32 +1,55 @@
-<definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-<uuid uuid="{212EE2F8-5CF0-43B2-B6D5-58C9C896100F}"/><names>
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+    <uuid uuid="{7cb32418-27f3-495a-89d5-e18ff4116a8c}"/>
+    <names>
         <name lang="fr">Protection Foudre</name>
-        <name lang="pl">Ochrona odgromowa</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
     <informations>cbh41</informations>
     <description>
-        <rect x="0" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="120" height="85"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-15" y2="-15" x1="0"/>
-        <input x="29" y="-34.5" size="7" text="32" tagg="none" rotate="true"/>
-        <input x="-2" y="-53.5" size="7" text="Local" tagg="label" rotate="true"/>
-        <text x="58" y="-18" size="5" text=" kA C"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-45" y2="-45" x1="0"/>
-        <line x2="120" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-65" y2="-65" x1="0"/>
-        <text x="66" y="-32" size="7" text="A"/>
-        <line x2="120" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-170" y2="-170" x1="0"/>
-        <text x="2" y="-69" size="7" text="Protection Foudre"/>
-        <text x="58" y="-2" size="5" text=" mm²"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y1="-126" y2="-126" y3="-111" y4="-111" y5="-126" y6="-126" y7="-126" closed="false" x1="59" x2="64" y8="-126" x3="59" x4="54" x5="59" x6="59" x7="59" x8="59"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y1="-113" y2="-113" y3="-99" y4="-111" y5="-111" y6="-113" y7="-113" closed="false" x1="60" x2="68" y8="-113" x3="60" x4="64" x5="59" x6="60" x7="60" x8="60"/>
-        <arc x="30" y="-135" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-180" width="20" angle="-90" height="20"/>
-        <arc x="40" y="-145" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" width="20" angle="90" height="20"/>
-        <arc x="60" y="-146" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="20" angle="90" height="20"/>
-        <arc x="69" y="-137" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="20" angle="90" height="20"/>
-        <arc x="50" y="-154" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0" width="20" angle="180" height="20"/>
-        <line x2="30.2083" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-126" y2="-126" x1="89.7917"/>
-        <line x2="60" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="-176" y2="-154" x1="60"/>
-        <input x="28" y="-5" size="5" text="3 G 6.0" tagg="none" rotate="true"/>
-        <input x="30" y="-20" size="5" text="4.5" tagg="none" rotate="true"/>
-        <terminal x="60" y="-180" orientation="n"/>
+        <line x1="65" y2="-214" y1="-224" length2="1.5" end2="none" antialias="false" x2="55" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x8="59" y8="-126" y4="-99" x4="60" x2="54" x5="68" x1="59" x3="63" y1="-126" y5="-113" antialias="false" closed="false" y2="-111" x6="60" x7="64" y3="-111" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-126" y6="-113"/>
+        <line x1="60" y2="-240" y1="-244" length2="1.5" end2="none" antialias="false" x2="60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="120" height="85" x="0" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="60" closed="false" y2="-260" y1="-257" antialias="true" x2="60" y3="-280" x3="55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="-15" y1="-15" length2="1.5" end2="none" antialias="false" x2="120" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="65" y2="-208" y1="-218" length2="1.5" end2="none" antialias="false" x2="55" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="32" x="29" y="-34.5" rotate="true" size="7" tagg="none"/>
+        <input text="Local" x="-2" y="-53.5" rotate="true" size="7" tagg="none"/>
+        <line x1="60" y2="-176" y1="-240" length2="1.5" end2="none" antialias="false" x2="60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text=" kA C" x="58" y="-18" size="5"/>
+        <arc angle="-180" antialias="true" width="8" start="90" height="5" x="56" y="-249.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="-250" y1="-252" length2="1.5" end2="none" antialias="false" x2="60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="-45" y1="-45" length2="1.5" end2="none" antialias="false" x2="120" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="-253" y1="-253" length2="1.5" end2="none" antialias="false" x2="64" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="-65" y1="-65" length2="1.5" end2="none" antialias="false" x2="120" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="A" x="66" y="-32" size="7"/>
+        <circle diameter="2" antialias="false" x="64" y="-225" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x1="0" y2="-170" y1="-170" length2="1.5" end2="none" antialias="false" x2="120" length1="1.5" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:green"/>
+        <line x1="64" y2="-253" y1="-257" length2="1.5" end2="none" antialias="false" x2="64" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="-257" y1="-257" length2="1.5" end2="none" antialias="false" x2="64" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="-280" y1="-290" length2="1.5" end2="none" antialias="false" x2="60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text=" mm²" x="58" y="-2" size="5"/>
+        <line x1="62" y2="-278" y1="-282" length2="1.5" end2="none" antialias="true" x2="58" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="58" y2="-278" y1="-282" length2="1.5" end2="none" antialias="true" x2="62" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-90" antialias="true" width="20" start="-180" height="20" x="30" y="-135" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="57" y2="-270" y1="-270" length2="1.5" end2="none" antialias="false" x2="50" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <arc angle="90" antialias="true" width="20" start="90" height="20" x="40" y="-145" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" y2="-247" y1="-270" length2="1.5" end2="none" antialias="false" x2="50" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x1="50" y2="-247" y1="-247" length2="1.5" end2="none" antialias="false" x2="64" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <arc angle="90" antialias="true" width="20" start="0" height="20" x="60" y="-146" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" y2="-255" y1="-255" length2="1.5" end2="none" antialias="false" x2="64" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <arc angle="90" antialias="true" width="20" start="0" height="20" x="69" y="-137" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" x="70" y="-221" rotate="true" size="9" tagg="none"/>
+        <arc angle="180" antialias="true" width="20" start="0" height="20" x="50" y="-154" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="89.7917" y2="-126" y1="-126" length2="1.5" end2="none" antialias="false" x2="30.2083" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="F" x="66" y="-266.333" size="9" tagg="label"/>
+        <line x1="60" y2="-154" y1="-176" length2="1.5" end2="none" antialias="false" x2="60" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="3 G 6.0" x="28" y="-5" rotate="true" size="5" tagg="none"/>
+        <input text="4.5" x="30" y="-20" rotate="true" size="5" tagg="none"/>
+        <input text="Protection Foudre" x="-2" y="-72" rotate="true" size="7" tagg="none"/>
+        <circle diameter="4" antialias="false" x="58" y="-172" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="60" y="-290" orientation="n"/>
     </description>
 </definition>

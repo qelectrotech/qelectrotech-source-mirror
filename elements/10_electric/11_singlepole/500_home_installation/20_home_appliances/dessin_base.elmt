@@ -1,0 +1,41 @@
+<definition hotspot_y="36" type="element" width="20" height="120" link_type="master" version="0.51" hotspot_x="12" orientation="dyyy">
+    <uuid uuid="{575ee43f-d891-46b5-9b07-fbf1f31f099d}"/>
+    <names>
+        <name lang="fr">Disjoncteur unipolaire</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="nl">Lastscheider 1</name>
+        <name lang="it">Int. Aut. Magneto-termico 1P</name>
+        <name lang="ar">قاطع أحدي القطب</name>
+        <name lang="cs">Jednopólový jistič</name>
+        <name lang="de">Leitungsschutzschalter 1P</name>
+        <name lang="en">Circuit-breaker</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="5" y2="46" y1="36" length2="1.5" end2="none" antialias="false" x2="-5" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="20" y1="16" length2="1.5" end2="none" antialias="false" x2="0" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="0" closed="false" y2="0" y1="3" antialias="true" x2="0" y3="-20" x3="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5" y2="52" y1="42" length2="1.5" end2="none" antialias="false" x2="-5" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="80" y1="20" length2="1.5" end2="none" antialias="false" x2="0" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" width="8" start="90" height="5" x="-4" y="10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="10" y1="8" length2="1.5" end2="none" antialias="false" x2="0" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="7" y1="7" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="4" y="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x1="4" y2="7" y1="3" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="3" y1="3" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="-20" y1="-30" length2="1.5" end2="none" antialias="false" x2="0" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="2" y2="-18" y1="-22" length2="1.5" end2="none" antialias="true" x2="-2" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-2" y2="-18" y1="-22" length2="1.5" end2="none" antialias="true" x2="2" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-3" y2="-10" y1="-10" length2="1.5" end2="none" antialias="false" x2="-10" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x1="-10" y2="13" y1="-10" length2="1.5" end2="none" antialias="false" x2="-10" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x1="-10" y2="13" y1="13" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x1="-10" y2="5" y1="5" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <input text="_" x="10" y="39" rotate="true" size="9" tagg="none"/>
+        <input text="F" x="6" y="-6.3334" size="9" tagg="label"/>
+        <terminal x="0" y="-30" orientation="n"/>
+    </description>
+</definition>

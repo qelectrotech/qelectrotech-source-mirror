@@ -1,29 +1,40 @@
-<definition hotspot_x="15" hotspot_y="17" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
-    <uuid uuid="{27760c1c-8675-4175-835d-26dda2492cdb}"/>
+<definition type="element" width="130" hotspot_x="65" version="0.51" link_type="simple" height="190" hotspot_y="6" orientation="dyyy">
+    <uuid uuid="{36babc0d-ff58-482e-895e-23a78388f503}"/>
     <names>
-        <name lang="fr">Plancher chauffant</name>
         <name lang="en">Heated floor</name>
-        <name lang="pl">Ogrzewanie podłogowe</name>
+        <name lang="fr">Plancher chauffant</name>
     </names>
     <informations></informations>
     <description>
-        <arc x="5.56627" style="line-style:normal;line-weight:thin;filling:none;color:black" height="3.75" antialias="true" start="270" y="5.625" angle="180" width="5.47791"/>
-        <arc x="5.56627" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6.25" antialias="true" start="270" y="4.375" angle="180" width="6.84739"/>
-        <arc x="-10.1827" style="line-style:normal;line-weight:thin;filling:none;color:black" height="3.75" antialias="true" start="270" y="10.625" angle="-179" width="6.84739"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.375" antialias="false" y2="14.375" end1="none" x2="9.6747" length1="1.5" x1="-7.58072"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.375" antialias="false" y2="4.375" end1="none" x2="9.40081" length1="1.5" x1="-8.12851"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.625" antialias="false" y2="5.625" end1="none" x2="8.30522" length1="1.5" x1="-8.12851"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.375" antialias="false" y2="9.375" end1="none" x2="8.30522" length1="1.5" x1="-8.30305"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10.625" antialias="false" y2="10.625" end1="none" x2="9.40081" length1="1.5" x1="-7.58072"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.625" antialias="false" y2="15.625" end1="none" x2="9.6747" length1="1.5" x1="-8.12851"/>
-        <arc x="-11.5522" style="line-style:normal;line-weight:thin;filling:none;color:black" height="6.25" antialias="true" start="270" y="9.375" angle="-179" width="8.21687"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.875" antialias="false" y2="18.125" end1="none" x2="-5.38955" length1="1.5" x1="-5.38955"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.71053" antialias="false" y2="18.2895" end1="none" x2="0.0883568" length1="1.5" x1="0.0883568"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.71053" antialias="false" y2="18.2895" end1="none" x2="5.56627" length1="1.5" x1="5.56627"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.625" antialias="false" y2="4.375" end1="none" x2="-8.12851" length1="1.5" x1="-8.12851"/>
-        <line end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.875" antialias="false" y2="-8.125" end1="none" x2="0.0883568" length1="1.5" x1="0.0883568"/>
-        <input x="11.0442" rotate="true" size="7" text="" y="11.25" tagg="label"/>
-        <input x="-8" rotate="true" size="9" text="_" y="17.5" tagg="label"/>
-        <terminal x="0.0883568" orientation="n" y="-9.375"/>
+        <rect y="95" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="120" antialias="false" height="85"/>
+        <arc y="37.3807" style="line-style:normal;line-weight:thin;filling:none;color:black" x="13.7512" start="270" width="13.9115" antialias="true" angle="180" height="9.07206"/>
+        <line y1="165" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-60" end1="none" end2="none" length2="1.5" y2="165" length1="1.5" x2="60"/>
+        <arc y="34.3566" style="line-style:normal;line-weight:thin;filling:none;color:black" x="13.7512" start="270" width="17.3894" antialias="true" angle="180" height="15.1201"/>
+        <arc y="49.4767" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-26.2442" start="270" width="17.3894" antialias="true" angle="-179" height="9.07206"/>
+        <input y="145.5" x="-31" rotate="true" tagg="none" text="10" size="7"/>
+        <input y="126.5" x="-62" rotate="true" tagg="label" text="Local" size="7"/>
+        <line y1="58.5488" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-19.6363" end1="none" end2="none" length2="1.5" y2="58.5488" length1="1.5" x2="24.1848"/>
+        <line y1="34.3566" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-21.0275" end1="none" end2="none" length2="1.5" y2="34.3566" length1="1.5" x2="23.4893"/>
+        <text y="162" x="-2" text=" kA C" size="5"/>
+        <line y1="135" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-60" end1="none" end2="none" length2="1.5" y2="135" length1="1.5" x2="60"/>
+        <line y1="37.3807" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-21.0275" end1="none" end2="none" length2="1.5" y2="37.3807" length1="1.5" x2="20.7069"/>
+        <line y1="115" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-60" end1="none" end2="none" length2="1.5" y2="115" length1="1.5" x2="60"/>
+        <line y1="46.4527" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-21.4707" end1="none" end2="none" length2="1.5" y2="46.4527" length1="1.5" x2="20.7069"/>
+        <line y1="49.4767" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-19.6363" end1="none" end2="none" length2="1.5" y2="49.4767" length1="1.5" x2="23.4893"/>
+        <text y="150" x="6" text="A" size="7"/>
+        <line y1="61.5728" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-21.0275" end1="none" end2="none" length2="1.5" y2="61.5728" length1="1.5" x2="24.1848"/>
+        <line y1="10" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" x1="-60" end1="none" end2="none" length2="1.5" y2="10" length1="1.5" x2="60"/>
+        <arc y="46.4527" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-29.7221" start="270" width="20.8672" antialias="true" angle="-179" height="15.1201"/>
+        <text y="111" x="-58" text="Plancher chauffant" size="7"/>
+        <text y="178" x="-2" text=" mm²" size="5"/>
+        <line y1="28.3086" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-14.0717" end1="none" end2="none" length2="1.5" y2="67.6209" length1="1.5" x2="-14.0717"/>
+        <line y1="27.9107" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-0.160262" end1="none" end2="none" length2="1.5" y2="68.0188" length1="1.5" x2="-0.160262"/>
+        <line y1="27.9107" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="13.7512" end1="none" end2="none" length2="1.5" y2="68.0188" length1="1.5" x2="13.7512"/>
+        <line y1="37.3807" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-21.0275" end1="none" end2="none" length2="1.5" y2="34.3566" length1="1.5" x2="-21.0275"/>
+        <line y1="28.31" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" end1="none" end2="none" length2="1.5" y2="4.12" length1="1.5" x2="0"/>
+        <input y="50.9888" x="27.6628" rotate="true" tagg="label" text="" size="7"/>
+        <input y="175" x="-32" rotate="true" tagg="none" text="3 G 1.5" size="5"/>
+        <input y="160" x="-30" rotate="true" tagg="none" text="4.5" size="5"/>
+        <terminal y="-0.66" x="0" orientation="n"/>
     </description>
 </definition>

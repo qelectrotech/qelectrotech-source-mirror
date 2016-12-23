@@ -1,0 +1,13 @@
+<definition hotspot_y="2" type="element" width="20" height="20" link_type="simple" version="0.51" hotspot_x="2" orientation="dyyy">
+    <uuid uuid="{d8628b8a-0b45-4d30-b605-7d52c3b7111e}"/>
+    <names>
+        <name lang="fr">Bloc différentiel</name>
+    </names>
+    <informations>cbh41</informations>
+    <description>
+        <ellipse antialias="false" width="12" height="4" x="4" y="8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="0" y2="10" y1="3" length2="1.5" end2="none" antialias="false" x2="0" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x1="0" y2="10" y1="10" length2="1.5" end2="none" antialias="false" x2="4" length1="1.5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <input text="30 mA" x="21" y="4" rotate="true" size="9" tagg="label"/>
+    </description>
+</definition>
