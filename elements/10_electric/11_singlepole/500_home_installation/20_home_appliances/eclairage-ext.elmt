@@ -2,6 +2,7 @@
     <uuid uuid="{2980ea4e-ef72-4816-b939-faf5f46e8845}"/>
     <names>
         <name lang="fr">Éclairage extérieur</name>
+        <name lang="pl">Oświetlenie zewnętrzne</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

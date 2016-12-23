@@ -2,6 +2,7 @@
     <uuid uuid="{f31d3069-1bd3-47f8-80a5-9ee580fcfc30}"/>
     <names>
         <name lang="fr">Prise 4 P+T 400 V</name>
+        <name lang="pl">Gniazdo wtyczkowe pięciobiegunowe 3P+N+E</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

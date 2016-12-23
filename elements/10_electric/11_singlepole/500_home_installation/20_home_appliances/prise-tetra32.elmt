@@ -2,6 +2,7 @@
     <uuid uuid="{2532090b-15ed-4241-9314-9be321e65ba3}"/>
     <names>
         <name lang="fr">Prise Tri + N 32 A</name>
+        <name lang="pl">Gniazdo wtyczkowe pięciobiegunowe 3P+N+E</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

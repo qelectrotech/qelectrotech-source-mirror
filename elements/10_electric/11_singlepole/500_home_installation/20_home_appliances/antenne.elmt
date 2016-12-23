@@ -2,6 +2,8 @@
     <uuid uuid="{79834a2e-47a9-45bc-a95a-78997313f30d}"/>
     <names>
         <name lang="fr">Antenne</name>
+        <name lang="pl">Antena</name>
+        <name lang="en">Antenna</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

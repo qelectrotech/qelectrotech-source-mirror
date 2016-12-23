@@ -2,6 +2,7 @@
     <uuid uuid="{652ef199-187b-47c6-aa4c-69b5cb3af33d}"/>
     <names>
         <name lang="fr">Prise 4 P+T 230 V</name>
+        <name lang="pl">Gniazdo wtyczkowe pięciobiegunowe 3P+N+E</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

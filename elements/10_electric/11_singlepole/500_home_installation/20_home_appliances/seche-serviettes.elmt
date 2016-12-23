@@ -2,6 +2,7 @@
     <uuid uuid="{1da46692-e4dd-4d0c-8398-d8b3424908b5}"/>
     <names>
         <name lang="fr">Sèche-Serviettes</name>
+        <name lang="pl">Chłodziarka</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

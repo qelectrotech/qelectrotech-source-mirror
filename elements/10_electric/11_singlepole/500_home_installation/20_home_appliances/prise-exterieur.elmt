@@ -2,6 +2,7 @@
     <uuid uuid="{ce5aca3d-c053-4edc-8df5-4db6fa781547}"/>
     <names>
         <name lang="fr">Prise Extérieure 16 A</name>
+        <name lang="pl">Gniazdo wtyczkowe trójbiegunowe zewnętrzne</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>

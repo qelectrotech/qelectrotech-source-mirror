@@ -2,6 +2,13 @@
     <uuid uuid="{4ba46ee2-f66a-4759-a020-e4743396236c}"/>
     <names>
         <name lang="fr">Terre générale</name>
+        <name lang="cs">Uzemnění</name>
+        <name lang="it">Terra</name>
+        <name lang="pl">Uziemienie</name>
+        <name lang="en">Ground</name>
+        <name lang="nl">Aarde meting</name>
+        <name lang="de">Fundamenterder</name>
+        <name lang="el">Γείωση</name>
     </names>
     <informations>cbh41</informations>
     <description>

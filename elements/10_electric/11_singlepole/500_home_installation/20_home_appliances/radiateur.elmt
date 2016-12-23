@@ -2,6 +2,14 @@
     <uuid uuid="{677d95b5-f276-4fce-a7a7-b52382ffaf18}"/>
     <names>
         <name lang="fr">Radiateur</name>
+        <name lang="pl">Wymiennik ciepła</name>
+        <name lang="cs">Topné těleso</name>
+        <name lang="ar">مشعاع</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
+        <name lang="it">Termoconvettore</name>
+        <name lang="en">Radiator</name>
+        <name lang="de">Heizkörper</name>
+        <name lang="nl">Elektrische radiator</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

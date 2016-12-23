@@ -2,6 +2,7 @@
     <uuid uuid="{a345adb0-dc8d-4220-8225-2e8cb4359b68}"/>
     <names>
         <name lang="fr">Sonnerie</name>
+        <name lang="pl">Dzwonek</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

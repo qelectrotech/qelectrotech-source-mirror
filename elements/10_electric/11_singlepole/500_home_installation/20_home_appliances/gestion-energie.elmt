@@ -2,6 +2,12 @@
     <uuid uuid="{87143022-ab60-41bc-914f-5e44612d309d}"/>
     <names>
         <name lang="fr">Gestion Énergie</name>
+        <name lang="cs">Hospodaření s energií</name>
+        <name lang="it">Gestione Energia</name>
+        <name lang="pl">Zarządzanie enerią</name>
+        <name lang="en">Energy management</name>
+        <name lang="nl">Energiemanagement</name>
+        <name lang="de">Energieverwaltung</name>
     </names>
     <informations>cbh41</informations>
     <description>

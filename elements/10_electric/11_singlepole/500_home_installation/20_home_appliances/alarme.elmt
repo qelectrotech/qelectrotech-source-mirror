@@ -2,6 +2,8 @@
     <uuid uuid="{c7a38bf2-2378-4031-acb7-64fc6375fb98}"/>
     <names>
         <name lang="fr">Alarme</name>
+        <name lang="pl">Alarm</name>
+        <name lang="en">Alarm</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

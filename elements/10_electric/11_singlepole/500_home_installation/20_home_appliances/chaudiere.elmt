@@ -2,6 +2,7 @@
     <uuid uuid="{901efef7-502d-48bc-a88e-56f36ee2f772}"/>
     <names>
         <name lang="fr">Chaudière</name>
+        <name lang="pl">Kocioł</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

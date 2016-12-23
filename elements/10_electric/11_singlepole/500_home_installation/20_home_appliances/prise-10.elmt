@@ -2,6 +2,7 @@
     <uuid uuid="{d7796afc-22a1-4e66-845c-fa8ea4f648da}"/>
     <names>
         <name lang="fr">Prise 10 A</name>
+        <name lang="pl">Gniazdo wtyczkowe trójbiegunowe</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

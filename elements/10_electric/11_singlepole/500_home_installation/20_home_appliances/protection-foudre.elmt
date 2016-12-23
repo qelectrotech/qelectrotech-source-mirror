@@ -2,6 +2,7 @@
     <uuid uuid="{7cb32418-27f3-495a-89d5-e18ff4116a8c}"/>
     <names>
         <name lang="fr">Protection Foudre</name>
+        <name lang="pl">Ochrona odgromowa</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{0ef621a6-4b4b-46bd-a3ea-a3f2e601a1fb}"/>
     <names>
         <name lang="fr">Prise 20 A</name>
+        <name lang="pl">Gniazdo wtyczkowe trójbiegunowe</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

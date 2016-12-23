@@ -2,6 +2,13 @@
     <uuid uuid="{190d8897-b7cc-4326-8e6b-99367d3f4dc1}"/>
     <names>
         <name lang="fr">Arrosage auto</name>
+        <name lang="pl">Automatyczne podlewanie</name>
+        <name lang="cs">Automatické zalévání</name>
+        <name lang="el">Αυτόματο πότισμα</name>
+        <name lang="it">Irrigazione automatica</name>
+        <name lang="en">self watering</name>
+        <name lang="de">Sprinkleranlage</name>
+        <name lang="nl">Watersproei automatisch</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

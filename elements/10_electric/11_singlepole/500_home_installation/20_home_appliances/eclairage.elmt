@@ -2,6 +2,12 @@
     <uuid uuid="{b3fd3400-2e2b-4500-8300-ffd0df3c4626}"/>
     <names>
         <name lang="fr">Éclairage</name>
+        <name lang="cs">Osvětlení</name>
+        <name lang="it">Illuminazione</name>
+        <name lang="pl">Oświetlenie</name>
+        <name lang="en">Lighting</name>
+        <name lang="nl">Verlichting</name>
+        <name lang="de">Beleuchtung</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>
