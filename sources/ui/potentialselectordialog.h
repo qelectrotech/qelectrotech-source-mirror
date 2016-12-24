@@ -20,7 +20,6 @@
 
 #include <QDialog>
 #include "conductorproperties.h"
-#include "assignvariables.h"
 class Conductor;
 class QUndoCommand;
 class Element;
@@ -33,7 +32,6 @@ class AbstractPotentialSelector
 		virtual bool isValid() const = 0;
 
 		ConductorProperties m_properties_1, m_properties_2;
-		autonum::sequentialNumbers m_seq_num_1, m_seq_num_2;
 		int m_conductor_number_1, m_conductor_number_2;
 };
 
@@ -74,7 +72,6 @@ class PotentialSelectorDialog : public QDialog
 		Element *m_report;
 		QUndoCommand *m_parent_undo;
 		ConductorProperties m_selected_properties;
-		autonum::sequentialNumbers m_sequential_num;
 		AbstractPotentialSelector *m_potential_selector;
 };
 #endif // POTENTIALSELECTORDIALOG_H

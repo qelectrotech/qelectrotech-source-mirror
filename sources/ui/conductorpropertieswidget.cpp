@@ -135,7 +135,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 bool ConductorPropertiesWidget::event(QEvent *event)
 {
 	if (event->type() == QEvent::WindowActivate) {
-		ui -> m_formula_le -> setFocus();
+		ui -> m_text_le -> setFocus();
 	}
 	return(QWidget::event(event));
 }

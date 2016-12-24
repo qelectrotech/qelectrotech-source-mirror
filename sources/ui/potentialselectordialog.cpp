@@ -24,7 +24,6 @@
 #include "diagram.h"
 #include "element.h"
 #include "reportelement.h"
-#include "assignvariables.h"
 
 //### BEGIN PRIVATE CLASS ###//
 
@@ -44,8 +43,8 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			terminal_1->removeConductor(conductor);
 			terminal_2->removeConductor(conductor);
 
-			getPotential(terminal_1, m_properties_1, m_seq_num_1, m_conductor_number_1);
-			getPotential(terminal_2, m_properties_2, m_seq_num_2, m_conductor_number_2);
+			getPotential(terminal_1, m_properties_1, m_conductor_number_1);
+			getPotential(terminal_2, m_properties_2, m_conductor_number_2);
 
 				//There isn't a potential at terminal 1 or 2.
 			if (m_conductor_number_1 == 0 && m_conductor_number_2 == 0) return;
@@ -65,7 +64,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		 * @param properties
 		 * @param number
 		 */
-		void getPotential(Terminal *terminal, ConductorProperties &properties, autonum::sequentialNumbers &seq_num , int &number)
+		void getPotential(Terminal *terminal, ConductorProperties &properties, int &number)
 		{
 			Conductor *conductor_in_potential = nullptr;
 
@@ -100,7 +99,6 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 			if (!conductor_in_potential) return;
 			properties = conductor_in_potential->properties();
-			seq_num = conductor_in_potential->sequenceNum();
 			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
 		}
 
@@ -173,7 +171,7 @@ PotentialSelectorDialog::PotentialSelectorDialog(Conductor *conductor, QUndoComm
  * Constructor when we link two potentiels together, with a folio report.
  * @param report : one of the report used to link the potentials (report must be linked to another report)
  * @param parent_undo : undo parent to use
- * @param parent : parent widget
+ * @param parent : paren widget
  */
 PotentialSelectorDialog::PotentialSelectorDialog(Element *report, QUndoCommand *parent_undo, QWidget *parent) :
 	QDialog(parent),
@@ -202,22 +200,8 @@ void PotentialSelectorDialog::buildWidget()
 	QRadioButton *rb1 = new QRadioButton(tr("Le potentiel avec numero de fil %1 est présent %2 fois").arg(m_potential_selector->m_properties_1.text).arg(m_potential_selector->m_conductor_number_1), this);
 	QRadioButton *rb2 = new QRadioButton(tr("Le potentiel avec numero de fil %1 est présent %2 fois").arg(m_potential_selector->m_properties_2.text).arg(m_potential_selector->m_conductor_number_2), this);
 
-	connect(rb1, &QRadioButton::toggled, [this](bool t)
-	{
-		if(t)
-		{
-			this->m_selected_properties = this->m_potential_selector->m_properties_1;
-			this->m_sequential_num = this->m_potential_selector->m_seq_num_1;
-		}
-	});
-	connect(rb2, &QRadioButton::toggled, [this](bool t)
-	{
-		if(t)
-		{
-			this->m_selected_properties = this->m_potential_selector->m_properties_2;
-			this->m_sequential_num = this->m_potential_selector->m_seq_num_2;
-		}
-	});
+	connect(rb1, &QRadioButton::toggled, [this](bool t){if(t) this->m_selected_properties = this->m_potential_selector->m_properties_1;});
+	connect(rb2, &QRadioButton::toggled, [this](bool t){if(t) this->m_selected_properties = this->m_potential_selector->m_properties_2;});
 
 		//Set the radio button of potential with the bigger number of conductors,
 		//at first position, and check it
@@ -248,7 +232,6 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 
 	ConductorProperties new_properties = m_conductor->properties();
 	new_properties.text = m_selected_properties.text;
-	new_properties.m_formula = m_selected_properties.m_formula;
 	new_properties.m_function = m_selected_properties.m_function;
 	new_properties.m_tension_protocol = m_selected_properties.m_tension_protocol;
 
@@ -256,32 +239,19 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 	old_value.setValue(m_conductor->properties());
 	new_value.setValue(new_properties);
 
-
-	QUndoCommand *undo = nullptr;
-	if (m_parent_undo)
-		undo = m_parent_undo;
-	else
-		undo = new QUndoCommand(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
-
 		//Set the properties for the new conductor
-	QVariant old_seq, new_seq;
-	old_seq.setValue(m_conductor->sequenceNum());
-	new_seq.setValue(m_sequential_num);
-	new QPropertyUndoCommand(m_conductor, "sequenceNum", old_seq, new_seq, undo);
-	new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, m_parent_undo);
+	undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
 		//Set the new properties for each conductors of the new potential
 	foreach(Conductor *cond, m_conductor->relatedPotentialConductors())
 	{
 		new_properties = cond->properties();
 		new_properties.text = m_selected_properties.text;
-		new_properties.m_formula = m_selected_properties.m_formula;
 		new_properties.m_function = m_selected_properties.m_function;
 		new_properties.m_tension_protocol = m_selected_properties.m_tension_protocol;
 		old_value.setValue(cond->properties());
 		new_value.setValue(new_properties);
-		old_seq.setValue(cond->sequenceNum());
-		new QPropertyUndoCommand(cond, "sequenceNum", old_seq, new_seq, undo);
 		new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
 	}
 
@@ -293,7 +263,6 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 	else
 	{
 		delete undo;
-		m_conductor->setSequenceNum(m_sequential_num);
 		m_conductor->setProperties(new_properties);
 	}
 }

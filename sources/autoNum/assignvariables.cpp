@@ -27,23 +27,12 @@
 
 namespace autonum
 {
+
 	/**
 	 * @brief sequentialNumbers::sequentialNumbers
 	 */
 	sequentialNumbers::sequentialNumbers()
 	{}
-
-	sequentialNumbers::sequentialNumbers(const sequentialNumbers &other)
-	{
-		unit          = other.unit;
-		unit_folio    = other.unit_folio;
-		ten           = other.ten;
-		ten_folio     = other.ten_folio;
-		hundred       = other.hundred;
-		hundred_folio = other.hundred_folio;
-	}
-
-	sequentialNumbers::~sequentialNumbers() {}
 
 	sequentialNumbers &sequentialNumbers::operator=(const sequentialNumbers &other)
 	{
@@ -227,22 +216,22 @@ namespace autonum
 
 		for (int i=1; i<=max ; i++)
 		{
-			if (m_assigned_label.contains("%sequ_" + QString::number(i)) && m_seq_struct.unit.size() >= i) {
+			if (m_assigned_label.contains("%sequ_" + QString::number(i)) && !m_seq_struct.unit.isEmpty()) {
 				m_assigned_label.replace("%sequ_" + QString::number(i),m_seq_struct.unit.at(i-1));
 			}
-			if (m_assigned_label.contains("%seqt_" + QString::number(i)) && m_seq_struct.ten.size() >= i) {
+			if (m_assigned_label.contains("%seqt_" + QString::number(i)) && !m_seq_struct.ten.isEmpty()) {
 				m_assigned_label.replace("%seqt_" + QString::number(i),m_seq_struct.ten.at(i-1));
 			}
-			if (m_assigned_label.contains("%seqh_" + QString::number(i)) && m_seq_struct.hundred.size() >= i) {
+			if (m_assigned_label.contains("%seqh_" + QString::number(i)) && !m_seq_struct.hundred.isEmpty()) {
 				m_assigned_label.replace("%seqh_" + QString::number(i),m_seq_struct.hundred.at(i-1));
 			}
-			if (m_assigned_label.contains("%sequf_" + QString::number(i)) && m_seq_struct.unit_folio.size() >= i) {
+			if (m_assigned_label.contains("%sequf_" + QString::number(i)) && !m_seq_struct.unit_folio.isEmpty()) {
 				m_assigned_label.replace("%sequf_" + QString::number(i),m_seq_struct.unit_folio.at(i-1));
 			}
-			if (m_assigned_label.contains("%seqtf_" + QString::number(i)) && m_seq_struct.ten_folio.size() >= i) {
+			if (m_assigned_label.contains("%seqtf_" + QString::number(i)) && !m_seq_struct.ten_folio.isEmpty()) {
 				m_assigned_label.replace("%seqtf_" + QString::number(i),m_seq_struct.ten_folio.at(i-1));
 			}
-			if (m_assigned_label.contains("%seqhf_" + QString::number(i)) && m_seq_struct.hundred_folio.size() >= i) {
+			if (m_assigned_label.contains("%seqhf_" + QString::number(i)) && !m_seq_struct.hundred_folio.isEmpty()) {
 				m_assigned_label.replace("%seqhf_" + QString::number(i),m_seq_struct.hundred_folio.at(i-1));
 			}
 		}
