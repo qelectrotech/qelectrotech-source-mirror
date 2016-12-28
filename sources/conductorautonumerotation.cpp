@@ -121,9 +121,8 @@ void ConductorAutoNumerotation::numeratePotential()
 		ConductorProperties cp = m_conductor -> properties();
 		cp.text = text_list.first();
 		cp.m_formula = formula_list.first();
-		m_conductor->setProperties(cp);
 		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
-		m_conductor->setText(text_list.first());
+		m_conductor->setProperties(cp);
 	}
 		//the texts isn't identicals
 	else

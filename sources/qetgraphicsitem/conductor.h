@@ -45,6 +45,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(int animPath READ fakePath WRITE updatePathAnimate)
 	Q_PROPERTY(ConductorProperties properties READ properties WRITE setProperties)
+	Q_PROPERTY(autonum::sequentialNumbers sequenceNum READ sequenceNum WRITE setSequenceNum)
 
 	signals:
 		void propertiesChange();
@@ -62,9 +63,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		enum { Type = UserType + 1001 };
 		enum Highlight { None, Normal, Alert };
 
-		/// First terminal the wire is attached to
 		Terminal *terminal1;
-		/// Second terminal the wire is attached to
 		Terminal *terminal2;
 	
 	public:
@@ -89,8 +88,6 @@ class Conductor : public QObject, public QGraphicsPathItem
 		qreal length() const;
 		ConductorSegment *middleSegment();
 		QPointF posForText(Qt::Orientations &flag);
-		QString text() const;
-		void setText(const QString &);
 		void refreshText();
 
 	public:
@@ -103,8 +100,11 @@ class Conductor : public QObject, public QGraphicsPathItem
 	public:
 		QVector <QPointF> handlerPoints() const;
 		const QList<ConductorSegment *> segmentsList() const;
-		void setProperties(const ConductorProperties &properties);
+
+		void setPropertyToPotential(const ConductorProperties &property, bool only_text = false);
+		void setProperties(const ConductorProperties &property);
 		ConductorProperties properties() const;
+
 		void setProfile(const ConductorProfile &, Qt::Corner);
 		ConductorProfile profile(Qt::Corner) const;
 		void setProfiles(const ConductorProfilesGroup &);
@@ -118,6 +118,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 
 		autonum::sequentialNumbers sequenceNum () const {return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceNum()      {return m_autoNum_seq;}
+		void setSequenceNum(autonum::sequentialNumbers sn);
 	private:
 		autonum::sequentialNumbers m_autoNum_seq;
 
@@ -143,7 +144,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		/// Functional properties
 		ConductorProperties m_properties;
 		/// Text input for non simple, non-singleline conductors
-		ConductorTextItem *text_item;
+		ConductorTextItem *m_text_item;
 		/// Segments composing the conductor
 		ConductorSegment *segments;
 		/// Attributs related to mouse interaction
@@ -159,14 +160,15 @@ class Conductor : public QObject, public QGraphicsPathItem
 		/// conductor profile: "photography" of what the conductor is supposed to look
 		/// like - there is one profile per kind of traject
 		ConductorProfilesGroup conductor_profiles;
-		/// QPen et QBrush objects used to draw conductors
-		static QPen conductor_pen;
-		static QBrush conductor_brush;
-		static bool pen_and_brush_initialized;
 		/// Define whether and how the conductor should be highlighted
 		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;
+
+			/// QPen et QBrush objects used to draw conductors
+		static QPen conductor_pen;
+		static QBrush conductor_brush;
+		static bool pen_and_brush_initialized;
 	
 	private:
 		void segmentsToPath();

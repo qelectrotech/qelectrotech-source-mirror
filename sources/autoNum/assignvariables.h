@@ -34,6 +34,8 @@ namespace autonum
 	{
 		public:
 			sequentialNumbers();
+			sequentialNumbers(const sequentialNumbers &other);
+			~sequentialNumbers();
 
 			sequentialNumbers &operator= (const sequentialNumbers &other);
 			bool operator== (const sequentialNumbers &other) const;
@@ -79,5 +81,7 @@ namespace autonum
 	QString numerotationContextToFormula(const NumerotationContext &nc);
 	QString elementPrefixForLocation(const ElementsLocation &location);
 }
+
+Q_DECLARE_METATYPE(autonum::sequentialNumbers)
 
 #endif // ASSIGNVARIABLES_H
