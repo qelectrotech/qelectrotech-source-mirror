@@ -1330,7 +1330,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
 			m_properties.text = text;
 		}
-		else {
+		else if (m_properties.text.isEmpty()){
 			m_properties.text = m_properties.m_formula;
 		}
 	}
