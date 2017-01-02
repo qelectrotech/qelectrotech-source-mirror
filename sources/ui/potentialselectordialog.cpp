@@ -130,8 +130,11 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 
 				m_properties_1 = report->conductors().first()->properties();
 				m_conductor_number_1 = report->conductors().first()->relatedPotentialConductors().size() + 1;
+				m_seq_num_1 = report->conductors().first()->sequenceNum();
+
 				m_properties_2 = other_report->conductors().first()->properties();
 				m_conductor_number_2 = other_report->conductors().first()->relatedPotentialConductors().size() + 1;
+				m_seq_num_2 = other_report->conductors().first()->sequenceNum();
 
 					//We relink the report
 				report->linkToElement(other_report);
