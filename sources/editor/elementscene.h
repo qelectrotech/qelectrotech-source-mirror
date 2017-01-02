@@ -82,24 +82,24 @@ class ElementScene : public QGraphicsScene {
 		QPointF fsi_pos;
 		QPointF moving_press_pos;
 	
-		/// Variables related to drawing
-		ESEventInterface *m_event_interface;
+			/// Variables related to drawing
+		ESEventInterface *m_event_interface = nullptr;
 		Behavior behavior;
-		QETElementEditor *element_editor;
+		QETElementEditor *element_editor = nullptr;
 	
-		/// Variables to manage the paste area on the scene
+			/// Variables to manage the paste area on the scene
 		QGraphicsRectItem *paste_area_;
 		QRectF defined_paste_area_;
 	
-		/// Variables to handle copy/paste with offset
+			/// Variables to handle copy/paste with offset
 		QString last_copied_;
 	
-		/// Decorator item displayed when at least one item is selected
-		ElementPrimitiveDecorator *decorator_;
+			/// Decorator item displayed when at least one item is selected
+		ElementPrimitiveDecorator *m_decorator = nullptr;
 	
-		///< Size of the horizontal grid step
+			///< Size of the horizontal grid step
 		int x_grid;
-		///< Size of the vertical grid step
+			///< Size of the vertical grid step
 		int y_grid;
 	
 	// methods
@@ -153,7 +153,7 @@ class ElementScene : public QGraphicsScene {
 	void addPrimitive(QGraphicsItem *);
 	void initPasteArea();
 	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
-	QMutex *decorator_lock_;
+	QMutex *m_decorator_lock;
 	void centerElementToOrigine();
 	
 	public slots:

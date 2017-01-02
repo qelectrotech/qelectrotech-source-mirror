@@ -44,24 +44,32 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	m_elmt_type("simple"),
 	qgi_manager(this),
-	m_event_interface(nullptr),
-	element_editor(editor),
-	decorator_(0)
+	element_editor(editor)
 {
 	behavior = Normal;
 	setItemIndexMethod(NoIndex);
 	setGrid(1, 1);
 	initPasteArea();
 	undo_stack.setClean();
-	decorator_lock_ = new QMutex(QMutex::NonRecursive);
+	m_decorator_lock = new QMutex(QMutex::NonRecursive);
 	connect(&undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(managePrimitivesGroups()));
 }
 
-/// Destructeur
-ElementScene::~ElementScene() {
-	delete decorator_lock_;
-	if (m_event_interface) delete m_event_interface;
+/**
+ * @brief ElementScene::~ElementScene
+ */
+ElementScene::~ElementScene()
+{
+		//Disconnect to avoid crash, see bug report N° 122.
+	disconnect(&undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
+	delete m_decorator_lock;
+
+	if (m_event_interface)
+		delete m_event_interface;
+
+	if (m_decorator)
+		delete m_decorator;
 }
 
 /**
@@ -782,15 +790,19 @@ void ElementScene::getPasteArea(const QRectF &to_paste) {
  * @brief ElementScene::reset
  * Remove all QGraphicsItems in the scene and clear the undo stack.
  */
-void ElementScene::reset() {
+void ElementScene::reset()
+{
 	clearSelection();
 	undoStack().clear();
 
-	foreach (QGraphicsItem *qgi, items()) {	
+	foreach (QGraphicsItem *qgi, items())
+	{
 		removeItem(qgi);
 		qgiManager().release(qgi);
 	}
-	decorator_ = 0;
+
+	delete m_decorator;
+	m_decorator = nullptr;
 }
 
 /**
@@ -1016,35 +1028,39 @@ void ElementScene::centerElementToOrigine() {
 }
 
 /**
-	Ensure the decorator is adequately shown, hidden or updated so it always
-	represents the current selection.
-*/
-void ElementScene::managePrimitivesGroups() {
-	// this function is not supposed to be reentrant
-	if (!decorator_lock_ -> tryLock()) return;
+ * @brief ElementScene::managePrimitivesGroups
+ * Ensure the decorator is adequately shown, hidden or updated so it always
+ * represents the current selection.
+ */
+void ElementScene::managePrimitivesGroups()
+{
+		//this function is not supposed to be reentrant
+	if (!m_decorator_lock->tryLock())
+		return;
 	
-	if (!decorator_) {
-		decorator_ = new ElementPrimitiveDecorator();
-		connect(decorator_, SIGNAL(actionFinished(ElementEditionCommand*)), this, SLOT(stackAction(ElementEditionCommand *)));
-		addItem(decorator_);
-		decorator_ -> hide();
+	if (!m_decorator)
+	{
+		m_decorator = new ElementPrimitiveDecorator();
+		connect(m_decorator, SIGNAL(actionFinished(ElementEditionCommand*)), this, SLOT(stackAction(ElementEditionCommand *)));
+		addItem(m_decorator);
+		m_decorator -> hide();
 	}
 	
 		// should we hide the decorator?
 	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
 	if (selected_items.size() == 0)
-		decorator_ -> hide();
+		m_decorator -> hide();
 	else if (selected_items.size() == 1 &&
 			 selected_items.first()->type() != PartText::Type &&
 			 selected_items.first()->type() != PartTextField::Type)
-		decorator_->hide();
+		m_decorator->hide();
 	else
 	{
-		decorator_ -> setZValue(1000000);
-		decorator_ -> setPos(0, 0);
-		decorator_ -> setItems(selected_items);
+		m_decorator -> setZValue(1000000);
+		m_decorator -> setPos(0, 0);
+		m_decorator -> setItems(selected_items);
 	}
-	decorator_lock_ -> unlock();
+	m_decorator_lock -> unlock();
 }
 
 /**
