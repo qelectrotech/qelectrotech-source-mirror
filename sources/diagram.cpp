@@ -1036,6 +1036,12 @@ void Diagram::removeItem(QGraphicsItem *item)
 
 	switch (item->type())
 	{
+		case Element::Type:
+		{
+			Element *elmt = static_cast<Element*>(item);
+			elmt->unlinkAllElements();
+		}
+			break;
 		case Conductor::Type:
 		{
 			Conductor *conductor = static_cast<Conductor *>(item);
