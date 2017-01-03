@@ -122,8 +122,8 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 
 	ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 
-	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri")) {
-		return true;
+	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
+	{
 			//Return false if user try to drop a item from a folder to the same folder
 		ElementsLocation drop_location(data->text());
 		for (int i=0 ; i<eci->rowCount() ; i++)
@@ -154,7 +154,8 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 	if (!qsi)
 		qsi = itemFromIndex(parent);
 
-	if (qsi->type() == FileElementCollectionItem::Type) {
+	if (qsi->type() == FileElementCollectionItem::Type)
+	{
 		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(qsi);
 
 		if (feci->isCommonCollection())

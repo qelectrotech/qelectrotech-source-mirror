@@ -96,11 +96,25 @@ ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, Element
 
             //Copy all dirs found in source_dir to destination_dir
 		ElementsLocation created_location(created_dir.canonicalPath());
-        foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
-        {
+			//Used this bool when user drop a folder into itself to avoid infinite recursive creation of the dropped dir
+		bool copy_itself = false;
+		if (source_dir == destination_dir)
+			copy_itself = true;
+
+		foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+		{
+			if (copy_itself)
+			{
+				if (source_dir.dirName() == str)
+				{
+					copy_itself = false;
+					continue;
+				}
+			}
+
 			ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
-            copyDirectory(sub_source, created_location);
-        }
+			copyDirectory(sub_source, created_location);
+		}
 
             //Copy all elements found in source_dir to destination_dir
         source_dir.setNameFilters(QStringList() << "*.elmt");
