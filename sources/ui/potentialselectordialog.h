@@ -35,6 +35,7 @@ class AbstractPotentialSelector
 		ConductorProperties m_properties_1, m_properties_2;
 		autonum::sequentialNumbers m_seq_num_1, m_seq_num_2;
 		int m_conductor_number_1, m_conductor_number_2;
+		QList<ConductorProperties> m_properties_list_1, m_properties_list_2;
 };
 
 namespace Ui {
@@ -76,5 +77,7 @@ class PotentialSelectorDialog : public QDialog
 		ConductorProperties m_selected_properties;
 		autonum::sequentialNumbers m_sequential_num;
 		AbstractPotentialSelector *m_potential_selector;
+		QList <ConductorProperties> m_properties_list;
+		int m_selected = 0;
 };
 #endif // POTENTIALSELECTORDIALOG_H

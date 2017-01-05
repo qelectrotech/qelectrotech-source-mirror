@@ -381,6 +381,158 @@ void ConductorProperties::setText(QString text) {
 }
 
 /**
+ * @brief ConductorProperties::applyForEqualAttributes
+ * Test each attribute of properties in the list separatly.
+ * For each attributes, if is equal, the attribute is apply to this.
+ * @param list
+ */
+void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> list)
+{
+	if (list.isEmpty())
+		return;
+
+	if (list.size() == 1)
+	{
+		ConductorProperties cp = list.first();
+		color                = cp.color;
+		text                 = cp.text;
+		m_formula            = cp.m_formula;
+		m_function           = cp.m_function;
+		m_tension_protocol   = cp.m_tension_protocol;
+		text_size            = cp.text_size;
+		cond_size            = cp.cond_size;
+		m_show_text          = cp.m_show_text;
+		m_one_text_per_folio = cp.m_one_text_per_folio;
+		verti_rotate_text    = cp.verti_rotate_text;
+		horiz_rotate_text    = cp.horiz_rotate_text;
+
+		return;
+	}
+
+	bool equal = true;
+		//Color
+	QColor c_value = list.first().color;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.color != c_value)
+			equal = false;
+	}
+	if (equal)
+		color = c_value;
+	equal = true;
+
+		//text
+	QString s_value = list.first().text;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.text != s_value)
+			equal = false;
+	}
+	if (equal)
+		text = s_value;
+	equal = true;
+
+		//formula
+	s_value = list.first().m_formula;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.m_formula != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_formula = s_value;
+	equal = true;
+
+		//function
+	s_value = list.first().m_function;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.m_function != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_function = s_value;
+	equal = true;
+
+		//Tension protocol
+	s_value = list.first().m_tension_protocol;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.m_tension_protocol != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_tension_protocol = s_value;
+	equal = true;
+
+		//text size
+	int i_value = list.first().text_size;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.text_size != i_value)
+			equal = false;
+	}
+	if (equal)
+		text_size = i_value;
+	equal = true;
+
+		//conductor size
+	double d_value = list.first().cond_size;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.cond_size != d_value)
+			equal = false;
+	}
+	if (equal)
+		cond_size = d_value;
+	equal = true;
+
+		//show text
+	bool b_value = list.first().m_show_text;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.m_show_text != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_show_text = b_value;
+	equal = true;
+
+		//One text per folio
+	b_value = list.first().m_one_text_per_folio;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.m_one_text_per_folio != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_one_text_per_folio = b_value;
+	equal = true;
+
+		//Text rotation for vertical conducor
+	d_value = list.first().verti_rotate_text;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.verti_rotate_text != d_value)
+			equal = false;
+	}
+	if (equal)
+		verti_rotate_text = d_value;
+	equal = true;
+
+		//Text rotation for horizontal conducor
+	d_value = list.first().horiz_rotate_text;
+	foreach(ConductorProperties cp, list)
+	{
+		if (cp.horiz_rotate_text != d_value)
+			equal = false;
+	}
+	if (equal)
+		horiz_rotate_text = d_value;
+	equal = true;
+}
+
+/**
  * @brief ConductorProperties::defaultProperties
  * @return the default properties stored in the setting file
  */

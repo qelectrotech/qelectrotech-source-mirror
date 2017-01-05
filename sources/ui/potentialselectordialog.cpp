@@ -44,8 +44,8 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			terminal_1->removeConductor(conductor);
 			terminal_2->removeConductor(conductor);
 
-			getPotential(terminal_1, m_properties_1, m_seq_num_1, m_conductor_number_1);
-			getPotential(terminal_2, m_properties_2, m_seq_num_2, m_conductor_number_2);
+			getPotential(terminal_1, m_properties_1, m_seq_num_1, m_conductor_number_1, m_properties_list_1);
+			getPotential(terminal_2, m_properties_2, m_seq_num_2, m_conductor_number_2, m_properties_list_2);
 
 				//There isn't a potential at terminal 1 or 2.
 			if (m_conductor_number_1 == 0 && m_conductor_number_2 == 0) return;
@@ -65,7 +65,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		 * @param properties
 		 * @param number
 		 */
-		void getPotential(Terminal *terminal, ConductorProperties &properties, autonum::sequentialNumbers &seq_num , int &number)
+		void getPotential(Terminal *terminal, ConductorProperties &properties, autonum::sequentialNumbers &seq_num , int &number, QList<ConductorProperties> &properties_list)
 		{
 			Conductor *conductor_in_potential = nullptr;
 
@@ -98,10 +98,16 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 				}
 			}
 
-			if (!conductor_in_potential) return;
+			if (!conductor_in_potential)
+				return;
 			properties = conductor_in_potential->properties();
 			seq_num = conductor_in_potential->sequenceNum();
 			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
+
+			QList<Conductor *> c_list = conductor_in_potential->relatedPotentialConductors().toList();
+			c_list.append(conductor_in_potential);
+			foreach(Conductor *c, c_list)
+				properties_list.append(c->properties());
 		}
 
 		~NewConductorPotentialSelector() {}
@@ -126,15 +132,28 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 				Element *other_report = report->linkedElements().first();
 				report->unlinkAllElements();
 
-				if (report->conductors().isEmpty() || other_report->conductors().isEmpty()) return;
+				if (report->conductors().isEmpty() || other_report->conductors().isEmpty())
+					return;
+
+				QList <Conductor*> c_list;
 
 				m_properties_1 = report->conductors().first()->properties();
 				m_conductor_number_1 = report->conductors().first()->relatedPotentialConductors().size() + 1;
 				m_seq_num_1 = report->conductors().first()->sequenceNum();
+				c_list.append(report->conductors().first()->relatedPotentialConductors().toList());
+				c_list.append(report->conductors().first());
+				foreach(Conductor *c, c_list)
+					m_properties_list_1 << c->properties();
+
+				c_list.clear();
 
 				m_properties_2 = other_report->conductors().first()->properties();
 				m_conductor_number_2 = other_report->conductors().first()->relatedPotentialConductors().size() + 1;
 				m_seq_num_2 = other_report->conductors().first()->sequenceNum();
+				c_list.append(other_report->conductors().first()->relatedPotentialConductors().toList());
+				c_list.append(other_report->conductors().first());
+				foreach(Conductor *c, c_list)
+					m_properties_list_2 << c->properties();
 
 					//We relink the report
 				report->linkToElement(other_report);
@@ -211,6 +230,8 @@ void PotentialSelectorDialog::buildWidget()
 		{
 			this->m_selected_properties = this->m_potential_selector->m_properties_1;
 			this->m_sequential_num = this->m_potential_selector->m_seq_num_1;
+			this->m_properties_list = this->m_potential_selector->m_properties_list_1;
+			m_selected = 1;
 		}
 	});
 	connect(rb2, &QRadioButton::toggled, [this](bool t)
@@ -219,6 +240,8 @@ void PotentialSelectorDialog::buildWidget()
 		{
 			this->m_selected_properties = this->m_potential_selector->m_properties_2;
 			this->m_sequential_num = this->m_potential_selector->m_seq_num_2;
+			this->m_properties_list = this->m_potential_selector->m_properties_list_2;
+			m_selected = 2;
 		}
 	});
 
@@ -244,21 +267,8 @@ void PotentialSelectorDialog::buildWidget()
  */
 void PotentialSelectorDialog::on_buttonBox_accepted()
 {
-	if (!m_potential_selector->isValid()) return;
-
-	if (!m_conductor)
-		m_conductor = m_report->conductors().first();
-
-	ConductorProperties new_properties = m_conductor->properties();
-	new_properties.text = m_selected_properties.text;
-	new_properties.m_formula = m_selected_properties.m_formula;
-	new_properties.m_function = m_selected_properties.m_function;
-	new_properties.m_tension_protocol = m_selected_properties.m_tension_protocol;
-
-	QVariant old_value, new_value;
-	old_value.setValue(m_conductor->properties());
-	new_value.setValue(new_properties);
-
+	if (!m_potential_selector->isValid())
+		return;
 
 	QUndoCommand *undo = nullptr;
 	if (m_parent_undo)
@@ -266,37 +276,90 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 	else
 		undo = new QUndoCommand(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
-		//Set the properties for the new conductor
-	QVariant old_seq, new_seq;
-	old_seq.setValue(m_conductor->sequenceNum());
-	new_seq.setValue(m_sequential_num);
-	new QPropertyUndoCommand(m_conductor, "sequenceNum", old_seq, new_seq, undo);
-	new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
+	Diagram * diagram = nullptr;
 
-		//Set the new properties for each conductors of the new potential
-	foreach(Conductor *cond, m_conductor->relatedPotentialConductors())
+	if (m_report)
 	{
-		new_properties = cond->properties();
-		new_properties.text = m_selected_properties.text;
-		new_properties.m_formula = m_selected_properties.m_formula;
-		new_properties.m_function = m_selected_properties.m_function;
-		new_properties.m_tension_protocol = m_selected_properties.m_tension_protocol;
-		old_value.setValue(cond->properties());
+		if ((m_report->linkType() & Element::AllReport) && !m_report->isFree())
+		{
+			if (m_report->diagram())
+				diagram = m_report->diagram();
+
+				//We temporarily unlink report to get the two existing potential
+			Element *other_report = m_report->linkedElements().first();
+			m_report->unlinkAllElements();
+
+			QList<Conductor *> conductor_list;
+
+			if (m_selected == 1)
+			{
+				conductor_list.append(other_report->conductors().first()->relatedPotentialConductors().toList());
+				conductor_list.append(other_report->conductors().first());
+			}
+
+			else if (m_selected == 2)
+			{
+				conductor_list.append(m_report->conductors().first()->relatedPotentialConductors().toList());
+				conductor_list.append(m_report->conductors().first());
+			}
+
+			QVariant old_value, new_value;
+			QVariant old_seq, new_seq;
+			new_seq.setValue(m_sequential_num);
+
+				//Set the new properties for each conductors of the new potential
+			foreach(Conductor *cond, conductor_list)
+			{
+				ConductorProperties new_properties = cond->properties();
+				new_properties.applyForEqualAttributes(m_properties_list);
+				old_value.setValue(cond->properties());
+				new_value.setValue(new_properties);
+				old_seq.setValue(cond->sequenceNum());
+				new QPropertyUndoCommand(cond, "sequenceNum", old_seq, new_seq, undo);
+				new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
+			}
+				//We relink the report
+			m_report->linkToElement(other_report);
+		}
+
+	}
+
+	else if (m_conductor)
+	{
+		if (m_conductor->diagram())
+			diagram = m_conductor->diagram();
+
+		ConductorProperties new_properties = m_conductor->properties();
+		new_properties.applyForEqualAttributes(m_properties_list);
+
+		QVariant old_value, new_value;
+		old_value.setValue(m_conductor->properties());
 		new_value.setValue(new_properties);
-		old_seq.setValue(cond->sequenceNum());
-		new QPropertyUndoCommand(cond, "sequenceNum", old_seq, new_seq, undo);
-		new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
+
+		QVariant old_seq, new_seq;
+		old_seq.setValue(m_conductor->sequenceNum());
+		new_seq.setValue(m_sequential_num);
+
+		new QPropertyUndoCommand(m_conductor, "sequenceNum", old_seq, new_seq, undo);
+		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
+
+			//Set the new properties for each conductors of the new potential
+		foreach(Conductor *cond, m_conductor->relatedPotentialConductors())
+		{
+			new_properties = cond->properties();
+			new_properties.applyForEqualAttributes(m_properties_list);
+			old_value.setValue(cond->properties());
+			new_value.setValue(new_properties);
+			old_seq.setValue(cond->sequenceNum());
+			new QPropertyUndoCommand(cond, "sequenceNum", old_seq, new_seq, undo);
+			new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
+		}
 	}
 
 		//There is an undo parent, we stop here, the owner of m_parent_undo will push it to an undo stack
-	if (m_parent_undo) return;
+	if (m_parent_undo)
+		return;
 		//There isn't a parent, we push the undo command to diagram undo stack.
-	if (m_conductor->diagram()) m_conductor->diagram()->undoStack().push(undo);
-		//We apply the change without undo command
-	else
-	{
-		delete undo;
-		m_conductor->setSequenceNum(m_sequential_num);
-		m_conductor->setProperties(new_properties);
-	}
+	if (diagram)
+		diagram->undoStack().push(undo);
 }

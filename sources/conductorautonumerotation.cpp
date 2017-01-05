@@ -105,6 +105,21 @@ void ConductorAutoNumerotation::applyText(QString t)
  */
 void ConductorAutoNumerotation::numeratePotential()
 {
+	ConductorProperties cp = conductor_list.first()->properties();
+	bool properties_equal = true;
+	foreach (const Conductor *conductor, conductor_list)
+	{
+		if (conductor->properties() != cp)
+			properties_equal = false;
+	}
+		//Every properties of the potential is equal, so we apply it to m_conductor
+	if (properties_equal)
+	{
+		m_conductor->setProperties(cp);
+		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
+		return;
+	}
+
 	QStringList text_list;
 	QStringList formula_list;
 	foreach (const Conductor *cc, conductor_list)
@@ -118,9 +133,12 @@ void ConductorAutoNumerotation::numeratePotential()
 		//the texts is identicals
 	if (QET::eachStrIsEqual(text_list) && QET::eachStrIsEqual(formula_list))
 	{
-		ConductorProperties cp = m_conductor -> properties();
-		cp.text = text_list.first();
-		cp.m_formula = formula_list.first();
+		QList<ConductorProperties> cp_list;
+		foreach(Conductor *c, conductor_list)
+			cp_list<<c->properties();
+
+		ConductorProperties cp = m_conductor->properties();
+		cp.applyForEqualAttributes(cp_list);
 		m_conductor->rSequenceNum() = conductor_list.first()->sequenceNum();
 		m_conductor->setProperties(cp);
 	}
