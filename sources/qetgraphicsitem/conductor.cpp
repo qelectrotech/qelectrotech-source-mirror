@@ -86,12 +86,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	has_to_save_profile(false),
 	must_highlight_(Conductor::None)
 {
-		//Set the default conductor properties.
-	if (p1->diagram())
-		m_properties = p1->diagram()->defaultConductorProperties;
-	else if (p2->diagram())
-		m_properties = p2->diagram()->defaultConductorProperties;
-
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	previous_z_value = zValue();
@@ -129,6 +123,12 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		// Add the text field
 	m_text_item = new ConductorTextItem(m_properties.text, this);
 	connect(m_text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
+
+		//Set the default conductor properties.
+	if (p1->diagram())
+		setProperties(p1->diagram()->defaultConductorProperties);
+	else if (p2->diagram())
+		setProperties(p2->diagram()->defaultConductorProperties);
 }
 
 /**
