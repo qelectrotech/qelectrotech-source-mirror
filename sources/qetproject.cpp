@@ -268,10 +268,10 @@ QString QETProject::pathNameTitle() const {
 	if (modified_) {
 		final_title = QString(
 			tr(
-				"%1 [modifié]",
-				"displayed title for a modified project - %1 is a displayable title"
+				"%1 [modifié : %2]",
+				"displayed title for a modified project - %1 is a displayable title, -%2 is the project path"
 			)
-		).arg(final_title);
+		).arg(final_title).arg (file_path_);
 	}
 	
 	return(final_title);
