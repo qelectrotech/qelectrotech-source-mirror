@@ -237,10 +237,10 @@ QString QETProject::pathNameTitle() const {
 	if (!project_title_.isEmpty()) {
 		final_title = QString(
 			tr(
-				"Projet « %1 »",
+				"Projet « %1 : %2»",
 				"displayed title for a ProjectView - %1 is the project title"
 			)
-		).arg(project_title_);
+		).arg(project_title_).arg (file_path_);
 	} else if (!file_path_.isEmpty()) {
 		final_title = QString(
 			tr(
@@ -268,10 +268,10 @@ QString QETProject::pathNameTitle() const {
 	if (modified_) {
 		final_title = QString(
 			tr(
-				"%1 [modifié : %2]",
+				"%1 [modifié]",
 				"displayed title for a modified project - %1 is a displayable title, -%2 is the project path"
 			)
-		).arg(final_title).arg (file_path_);
+		).arg(final_title);
 	}
 	
 	return(final_title);

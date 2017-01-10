@@ -717,7 +717,7 @@ void QETDiagramEditor::save() {
 		QETResult saved = project_view -> save();
 
 		if (saved.isOk()) {
-			save_file -> setDisabled(true);
+			//save_file -> setDisabled(true);
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
 
 			QString title = (project_view -> project() -> title ());
@@ -1361,11 +1361,11 @@ void QETDiagramEditor::slot_updateUndoStack()
 	if (pv)
 	{
 		undo_group.setActiveStack(pv->project()->undoStack());
-		save_file -> setEnabled (undo_group.activeStack() -> count() && !pv -> project() -> isReadOnly());
-	}
-	else
-	{
-		save_file -> setDisabled(true);
+//		save_file -> setEnabled (undo_group.activeStack() -> count() && !pv -> project() -> isReadOnly());
+//	}
+//	else
+//	{
+//		//save_file -> setDisabled(true);
 	}
 }
 
@@ -2141,9 +2141,9 @@ void QETDiagramEditor::selectionChanged()
  * @param clean
  */
 void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
-	if (!clean) {
-		save_file -> setEnabled(true);
-	}
+//	if (!clean) {
+//		save_file -> setEnabled(true);
+//	}
 }
 
 
