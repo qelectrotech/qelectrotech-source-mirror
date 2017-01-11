@@ -156,7 +156,7 @@ class QETDiagramEditor : public QETMainWindow {
 
 	private slots:
 		void selectionChanged();
-		void activeUndoStackCleanChanged (bool clean);
+		//void activeUndoStackCleanChanged (bool clean);
 
 		// attributes
 	private:

@@ -101,7 +101,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	
 	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(subWindowActivated(QMdiSubWindow*)));
 	connect (QApplication::clipboard(), SIGNAL(dataChanged()),                       this, SLOT(slot_updatePasteAction()));
-	connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
+	//connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
 
 	readSettings();
 	show();
@@ -1313,6 +1313,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
 
 	close_file       -> setEnabled(opened_project);
+	save_file        -> setEnabled(opened_project);
 	save_file_as     -> setEnabled(opened_project);
 	prj_edit_prop    -> setEnabled(opened_project);
 	prj_add_diagram  -> setEnabled(editable_project);
@@ -2134,17 +2135,17 @@ void QETDiagramEditor::selectionChanged()
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }
 
-/**
- * @brief QETDiagramEditor::activeUndoStackCleanChanged
- * Enable the QAction save_file when @clean is set to false
- * @clean at true do nothing;
- * @param clean
- */
-void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
+///**
+// * @brief QETDiagramEditor::activeUndoStackCleanChanged
+// * Enable the QAction save_file when @clean is set to false
+// * @clean at true do nothing;
+// * @param clean
+// */
+//void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
 //	if (!clean) {
-//		save_file -> setEnabled(true);
+//		//save_file -> setEnabled(true);
 //	}
-}
+//}
 
 
 /**
