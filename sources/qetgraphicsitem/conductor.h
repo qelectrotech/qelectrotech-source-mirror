@@ -119,7 +119,9 @@ class Conductor : public QObject, public QGraphicsPathItem
 		autonum::sequentialNumbers sequenceNum () const {return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceNum()      {return m_autoNum_seq;}
 		void setSequenceNum(autonum::sequentialNumbers sn);
+
 	private:
+		void setUpConnectionForFormula(QString old_formula, QString new_formula);
 		autonum::sequentialNumbers m_autoNum_seq;
 
 	public:

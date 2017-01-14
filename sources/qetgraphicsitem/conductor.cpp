@@ -1322,17 +1322,22 @@ void Conductor::setProperties(const ConductorProperties &property)
 {
 	if (m_properties == property) return;
 
+	QString formula = m_properties.m_formula;
 	m_properties = property;
 
 	if (!m_properties.m_formula.isEmpty())
 	{
-		if (diagram()) {
+		if (diagram())
+		{
 			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
 			m_properties.text = text;
 		}
-		else if (m_properties.text.isEmpty()){
+		else if (m_properties.text.isEmpty())
+		{
 			m_properties.text = m_properties.m_formula;
 		}
+
+		setUpConnectionForFormula(formula, m_properties.m_formula);
 	}
 
 	m_text_item->setPlainText(m_properties.text);
@@ -1484,6 +1489,25 @@ void Conductor::setSequenceNum(autonum::sequentialNumbers sn)
 {
 	m_autoNum_seq = sn;
 	refreshText();
+}
+
+/**
+ * @brief Conductor::setUpConnectionForFormula
+ * setup connection according to the variable of formula
+ * @param old_formula
+ * @param new_formula
+ */
+void Conductor::setUpConnectionForFormula(QString old_formula, QString new_formula)
+{
+	if (diagram() && old_formula.contains("%id"))
+		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
+
+		//Label is frozen, so we don't update it.
+	if (m_freeze_label == true)
+		return;
+
+	if (diagram() && new_formula.contains("%id"))
+		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
 }
 
 /**
@@ -1755,6 +1779,14 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
  * Unfreeze this conductor label if false
  * @param freeze
  */
-void Conductor::setFreezeLabel(bool freeze) {
+void Conductor::setFreezeLabel(bool freeze)
+{
 	m_freeze_label = freeze;
+
+	if (m_freeze_label != freeze)
+	{
+		m_freeze_label = freeze;
+		QString f = m_properties.m_formula;
+		setUpConnectionForFormula(f,f);
+	}
 }
