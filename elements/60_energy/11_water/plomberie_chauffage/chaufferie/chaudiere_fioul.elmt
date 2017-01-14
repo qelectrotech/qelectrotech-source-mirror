@@ -2,6 +2,7 @@
     <uuid uuid="{704bd575-bf5b-42ef-92ee-d3a2af3945a5}"/>
     <names>
         <name lang="fr">Chaudière Fioul</name>
+        <name lang="it">Caldaia a gasolio</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license.
