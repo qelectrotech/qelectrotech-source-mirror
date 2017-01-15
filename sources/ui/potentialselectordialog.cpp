@@ -303,9 +303,9 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 					QStringList forbidden_str;
 					forbidden_str << "%sequf_" << "%seqtf_" << "%seqhf_" << "%id" << "%F" << "%M" << "%LM";
 					
-					QString text(tr("La formule du nouveau potentiel contient des variables incompatible avec les reports de folio.\n"
+					QString text(tr("La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.\n"
 									"Veuillez saisir une formule compatible pour ce potentiel.\n"
-									"Les variables suivante sont incompatible :\n"
+									"Les variables suivantes sont incompatibles :\n"
 									"%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM"));
 					FormulaAssistantDialog fag(this);
 					fag.setForbiddenVariables(forbidden_str);
