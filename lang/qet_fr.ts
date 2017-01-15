@@ -511,13 +511,13 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1479"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1396"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1483"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1401"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation></translation>
@@ -601,132 +601,137 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <source>Formule du texte :</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="145"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="149"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
         <source>Vertical</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="169"/>
         <source>Horizontal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="169"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="179"/>
         <source>Rotation du texte de conducteur :</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="194"/>
         <source>Unifilaire</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="207"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="217"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="261"/>
         <source>Nombre de phase</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="233"/>
         <source>Neutre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="226"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="236"/>
         <source>neutre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="247"/>
         <source>Phase</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="250"/>
         <source>phase</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>Protective Earth Neutral</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="267"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="277"/>
         <source>PEN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="284"/>
         <source>Terre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="277"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="287"/>
         <source>terre</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="321"/>
         <source>Apparence</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="344"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="354"/>
         <source>Couleur du conducteur</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
         <source>Couleur :</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="337"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="347"/>
         <source>Style du conducteur</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
         <source>Style :</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="376"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="386"/>
         <source>size:</source>
         <translation>Taille:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="185"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="184"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="186"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="185"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="187"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation></translation>
@@ -1328,12 +1333,12 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="296"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="295"/>
         <source>Retrouver dans le panel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="298"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="297"/>
         <source>Éditer l&apos;élément</source>
         <translation></translation>
     </message>
@@ -1341,30 +1346,30 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="569"/>
+        <location filename="../sources/editor/elementscene.cpp" line="577"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="573"/>
+        <location filename="../sources/editor/elementscene.cpp" line="581"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="626"/>
+        <location filename="../sources/editor/elementscene.cpp" line="634"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="630"/>
+        <location filename="../sources/editor/elementscene.cpp" line="638"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="826"/>
-        <location filename="../sources/editor/elementscene.cpp" line="866"/>
+        <location filename="../sources/editor/elementscene.cpp" line="838"/>
+        <location filename="../sources/editor/elementscene.cpp" line="878"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation></translation>
@@ -2099,6 +2104,24 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     </message>
 </context>
 <context>
+    <name>FormulaAssistantDialog</name>
+    <message>
+        <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
+        <source>Assistant de formule</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
+        <source>TextLabel</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
+        <source>Formule</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>FormulaAutonumberingW</name>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
@@ -2344,37 +2367,37 @@ que vous créez. entrées de texte et nombres sont
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="289"/>
+        <location filename="../sources/genericpanel.cpp" line="290"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="296"/>
-        <location filename="../sources/genericpanel.cpp" line="309"/>
+        <location filename="../sources/genericpanel.cpp" line="300"/>
+        <location filename="../sources/genericpanel.cpp" line="316"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="389"/>
+        <location filename="../sources/genericpanel.cpp" line="394"/>
         <source>Modèles de cartouche</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="479"/>
+        <location filename="../sources/genericpanel.cpp" line="484"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="480"/>
+        <location filename="../sources/genericpanel.cpp" line="485"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="722"/>
+        <location filename="../sources/genericpanel.cpp" line="727"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation></translation>
     </message>
@@ -3092,15 +3115,23 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="200"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="201"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="219"/>
         <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="244"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="270"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="306"/>
+        <source>La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.
+Veuillez saisir une formule compatible pour ce potentiel.
+Les variables suivantes sont incompatibles :
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
         <translation></translation>
     </message>
 </context>
@@ -3134,13 +3165,13 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <location filename="../sources/projectconfigpages.cpp" line="305"/>
         <location filename="../sources/projectconfigpages.cpp" line="453"/>
         <location filename="../sources/projectconfigpages.cpp" line="463"/>
-        <location filename="../sources/projectconfigpages.cpp" line="473"/>
-        <location filename="../sources/projectconfigpages.cpp" line="484"/>
-        <location filename="../sources/projectconfigpages.cpp" line="513"/>
-        <location filename="../sources/projectconfigpages.cpp" line="537"/>
-        <location filename="../sources/projectconfigpages.cpp" line="683"/>
-        <location filename="../sources/projectconfigpages.cpp" line="695"/>
-        <location filename="../sources/projectconfigpages.cpp" line="707"/>
+        <location filename="../sources/projectconfigpages.cpp" line="474"/>
+        <location filename="../sources/projectconfigpages.cpp" line="492"/>
+        <location filename="../sources/projectconfigpages.cpp" line="522"/>
+        <location filename="../sources/projectconfigpages.cpp" line="535"/>
+        <location filename="../sources/projectconfigpages.cpp" line="564"/>
+        <location filename="../sources/projectconfigpages.cpp" line="704"/>
+        <location filename="../sources/projectconfigpages.cpp" line="716"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation></translation>
     </message>
@@ -3177,16 +3208,13 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="485"/>
-        <location filename="../sources/projectconfigpages.cpp" line="486"/>
-        <location filename="../sources/projectconfigpages.cpp" line="487"/>
-        <location filename="../sources/projectconfigpages.cpp" line="488"/>
-        <location filename="../sources/projectconfigpages.cpp" line="514"/>
-        <location filename="../sources/projectconfigpages.cpp" line="515"/>
+        <location filename="../sources/projectconfigpages.cpp" line="494"/>
+        <location filename="../sources/projectconfigpages.cpp" line="498"/>
+        <location filename="../sources/projectconfigpages.cpp" line="537"/>
         <location filename="../sources/projectconfigpages.cpp" line="538"/>
         <location filename="../sources/projectconfigpages.cpp" line="539"/>
-        <location filename="../sources/projectconfigpages.cpp" line="540"/>
-        <location filename="../sources/projectconfigpages.cpp" line="541"/>
+        <location filename="../sources/projectconfigpages.cpp" line="565"/>
+        <location filename="../sources/projectconfigpages.cpp" line="566"/>
         <source>Sans nom</source>
         <translation></translation>
     </message>
@@ -3348,229 +3376,234 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="308"/>
-        <source>Label</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="309"/>
-        <source>Commentaire</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="310"/>
-        <source>Désignation</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
-        <source>Fabricant</source>
+        <source>formule du label</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
-        <source>Référence fabricant</source>
+        <source>Label</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
-        <source>Bloc auxiliaire 1</source>
+        <source>Commentaire</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Bloc auxiliaire 2</source>
+        <source>Désignation</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
-        <source>Référence fabricant machine</source>
+        <source>Fabricant</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Localisation</source>
+        <source>Référence fabricant</source>
         <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
+        <source>Bloc auxiliaire 1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="318"/>
+        <source>Bloc auxiliaire 2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="319"/>
+        <source>Référence fabricant machine</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="320"/>
+        <source>Localisation</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="321"/>
         <source>Fonction</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="342"/>
+        <location filename="../sources/qetapp.cpp" line="346"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="805"/>
+        <location filename="../sources/qetapp.cpp" line="809"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="806"/>
+        <location filename="../sources/qetapp.cpp" line="810"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="807"/>
+        <location filename="../sources/qetapp.cpp" line="811"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="808"/>
+        <location filename="../sources/qetapp.cpp" line="812"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="809"/>
+        <location filename="../sources/qetapp.cpp" line="813"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1213"/>
+        <location filename="../sources/qetapp.cpp" line="1217"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1339"/>
+        <location filename="../sources/qetapp.cpp" line="1343"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1404"/>
+        <location filename="../sources/qetapp.cpp" line="1408"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1406"/>
+        <location filename="../sources/qetapp.cpp" line="1410"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1408"/>
+        <location filename="../sources/qetapp.cpp" line="1412"/>
         <source>&amp;Quitter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1409"/>
+        <location filename="../sources/qetapp.cpp" line="1413"/>
         <source>&amp;Masquer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1410"/>
+        <location filename="../sources/qetapp.cpp" line="1414"/>
         <source>&amp;Restaurer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1411"/>
+        <location filename="../sources/qetapp.cpp" line="1415"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1412"/>
+        <location filename="../sources/qetapp.cpp" line="1416"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1413"/>
+        <location filename="../sources/qetapp.cpp" line="1417"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1414"/>
+        <location filename="../sources/qetapp.cpp" line="1418"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1415"/>
+        <location filename="../sources/qetapp.cpp" line="1419"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1416"/>
+        <location filename="../sources/qetapp.cpp" line="1420"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1417"/>
+        <location filename="../sources/qetapp.cpp" line="1421"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1418"/>
+        <location filename="../sources/qetapp.cpp" line="1422"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1420"/>
+        <location filename="../sources/qetapp.cpp" line="1424"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1421"/>
+        <location filename="../sources/qetapp.cpp" line="1425"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1422"/>
+        <location filename="../sources/qetapp.cpp" line="1426"/>
         <source>Restaurer QElectroTech</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1442"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1507"/>
+        <location filename="../sources/qetapp.cpp" line="1511"/>
         <source>Éditeurs de schémas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1516"/>
+        <location filename="../sources/qetapp.cpp" line="1520"/>
         <source>Éditeurs d&apos;élément</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1526"/>
+        <location filename="../sources/qetapp.cpp" line="1530"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1591"/>
+        <location filename="../sources/qetapp.cpp" line="1595"/>
         <source>Usage : </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1591"/>
+        <location filename="../sources/qetapp.cpp" line="1595"/>
         <source> [options] [fichier]...
 
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1592"/>
+        <location filename="../sources/qetapp.cpp" line="1596"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3581,25 +3614,25 @@ Options disponibles :
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1598"/>
+        <location filename="../sources/qetapp.cpp" line="1602"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1601"/>
+        <location filename="../sources/qetapp.cpp" line="1605"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1604"/>
+        <location filename="../sources/qetapp.cpp" line="1608"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1606"/>
+        <location filename="../sources/qetapp.cpp" line="1610"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation></translation>
@@ -4385,42 +4418,42 @@ Options disponibles :
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1419"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1420"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1425"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1426"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1432"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1438"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1445"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1648"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1649"/>
         <source>Active le projet « %1 »</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2108"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2109"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation></translation>
@@ -5345,61 +5378,61 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="238"/>
-        <source>Projet « %1 »</source>
-        <comment>displayed title for a ProjectView - %1 is the project title</comment>
+        <location filename="../sources/qetproject.cpp" line="239"/>
+        <source>Projet « %1 : %2»</source>
+        <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="245"/>
+        <location filename="../sources/qetproject.cpp" line="246"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="252"/>
+        <location filename="../sources/qetproject.cpp" line="253"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="261"/>
+        <location filename="../sources/qetproject.cpp" line="262"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="269"/>
+        <location filename="../sources/qetproject.cpp" line="270"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1062"/>
+        <location filename="../sources/qetproject.cpp" line="976"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1172"/>
+        <location filename="../sources/qetproject.cpp" line="1086"/>
         <source>Liste des Folios</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1277"/>
+        <location filename="../sources/qetproject.cpp" line="1192"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1278"/>
+        <location filename="../sources/qetproject.cpp" line="1193"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1337"/>
+        <location filename="../sources/qetproject.cpp" line="1252"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation></translation>
     </message>
@@ -5937,13 +5970,13 @@ Que désirez vous faire ?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="69"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="80"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="73"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="86"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation></translation>
@@ -6407,7 +6440,7 @@ Que désirez vous faire ?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="103"/>
+        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="104"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation></translation>
     </message>
