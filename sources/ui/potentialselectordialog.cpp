@@ -25,6 +25,7 @@
 #include "element.h"
 #include "reportelement.h"
 #include "assignvariables.h"
+#include "formulaassistantdialog.h"
 
 //### BEGIN PRIVATE CLASS ###//
 
@@ -251,6 +252,7 @@ void PotentialSelectorDialog::buildWidget()
 		rb2->setChecked(true);
 	}
 }
+#include <QDebug>
 
 /**
  * @brief PotentialSelectorDialog::on_buttonBox_accepted
@@ -291,8 +293,42 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 				new QPropertyUndoCommand(cond, "sequenceNum", old_seq, new_seq, undo);
 				new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
 			}
+			
+				//Check if formula of the new potential have incompatible variable with folio report
+			QRegularExpression rx ("%sequf_|%seqtf_|%seqhf_|%id|%F|%M|%LM");
+			foreach(ConductorProperties cp, m_properties_list)
+			{
+				if (cp.m_formula.contains(rx))
+				{
+					QStringList forbidden_str;
+					forbidden_str << "%sequf_" << "%seqtf_" << "%seqhf_" << "%id" << "%F" << "%M" << "%LM";
+					
+					QString text(tr("La formule du nouveau potentiel contient des variables incompatible avec les reports de folio.\n"
+									"Veuillez saisir une formule compatible pour ce potentiel.\n"
+									"Les variables suivante sont incompatible :\n"
+									"%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM"));
+					FormulaAssistantDialog fag(this);
+					fag.setForbiddenVariables(forbidden_str);
+					fag.setText(text);
+					fag.setFormula(cp.m_formula);
+					fag.exec();
+					
+					QString new_formula = fag.formula();
+					QSet <Conductor *> c_list = m_report->conductors().first()->relatedPotentialConductors();
+					c_list.insert(m_report->conductors().first());
+					foreach(Conductor *cond, c_list)
+					{
+						old_value.setValue(cond->properties());
+						ConductorProperties new_properties = cond->properties();
+						new_properties.m_formula = new_formula;
+						new_value.setValue(new_properties);
+						new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
+					}
+					
+					break;
+				}
+			}
 		}
-
 	}
 
 	else if (m_conductor)
