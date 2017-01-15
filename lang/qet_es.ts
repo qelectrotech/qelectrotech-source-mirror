@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -659,7 +659,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto de la fórmula:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
@@ -1534,8 +1534,8 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="133"/>
         <source>Recharger les collections</source>
-        <translatorcomment>Plural</translatorcomment>
-        <translation>Recargar las colecciones</translation>
+        <translatorcomment>Recargar las colecciones</translatorcomment>
+        <translation>Recargar la colección</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="134"/>
@@ -1636,17 +1636,17 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n elemento, repartido</numerusform>
+            <numerusform>%n elementos, repartidos</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>en %n de carpeta.</numerusform>
+            <numerusform>en %n de carpetas.</numerusform>
         </translation>
     </message>
     <message>
@@ -1657,7 +1657,7 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ruta de acceso al sistema de archivos: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
@@ -2129,17 +2129,17 @@ El campos &quot;Incrementación&quot; no se utiliza.</translation>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Asistente de fórmula</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiqueta de texto</translation>
+        <translation>Etiqueta de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Formula</translation>
     </message>
 </context>
 <context>
@@ -3159,7 +3159,10 @@ Por favor, seleccione las propiedades que se aplicarán al nuevo potencial.</tra
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation>La fórmula del nuevo potencial contiene variables incompatibles con los informes del folio.
+Se trata de una fórmula compatible con el potencial.
+Las siguientes variables son incompatibles;
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
 <context>
@@ -3578,7 +3581,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>fórmula de la etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -5441,7 +5444,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projecto « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
@@ -6829,7 +6832,7 @@ El campo &quot;Incremento&quot; no se utiliza.</translation>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="187"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Conductor numeración automática</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="188"/>
