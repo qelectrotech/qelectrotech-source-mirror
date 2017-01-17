@@ -632,7 +632,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Muster vom Text:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="145"/>
@@ -1652,7 +1652,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>in %n Ordner.</numerusform>
-            <numerusform></numerusform>
+            <numerusform>in %n Ordnern.</numerusform>
         </translation>
     </message>
     <message>
@@ -2124,17 +2124,17 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Assistent für Muster</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">TextLabel</translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Muster</translation>
     </message>
 </context>
 <context>
@@ -3149,7 +3149,10 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Muster vom neuen Potenzial beinhaltet Variablen, die nicht mit Folienverweisen kompatibel sind.
+Bitte tragen Sie ein passendes Muster für dieses Potenzial ein.
+Folgende Variablen sind inkompatibel:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
 <context>
@@ -3395,7 +3398,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>BMK-Muster</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -5405,7 +5408,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt &quot;%1: %2&quot;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
