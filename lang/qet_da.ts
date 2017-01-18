@@ -656,7 +656,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Formel tekst:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
@@ -2130,17 +2130,17 @@ Feltet &quot;Forøg&quot; anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Formel assistent</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Formel</translation>
     </message>
 </context>
 <context>
@@ -3154,7 +3154,10 @@ Vælg egenskab som tilføjes ny potentiale.</translation>
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation>Formlen af de nye potentielle variabler indeholder ikke kompatible variabler med ark rapport.
+Indtast venligst kompatibel formel for dette potentiale.
+Følgende variabler er ikke kompatible:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
 <context>
@@ -3567,7 +3570,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>formel etiket</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -5441,7 +5444,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
