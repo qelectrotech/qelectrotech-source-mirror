@@ -874,6 +874,11 @@ void Element::freezeNewAddedElement() {
  */
 void Element::setUpConnectionForFormula(QString old_formula, QString new_formula)
 {
+		//Because the variable %F is a reference to another text which can contain variables,
+		//we must to replace %F by the real text, to check if the real text contain the variable %id
+	if (diagram() && old_formula.contains("%F"))
+		old_formula.replace("%F", diagram()->border_and_titleblock.folio());
+
 	if (diagram() && (old_formula.contains("%f") || old_formula.contains("%id")))
 		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
 	if (old_formula.contains("%l"))
@@ -884,7 +889,10 @@ void Element::setUpConnectionForFormula(QString old_formula, QString new_formula
 		//Label is frozen, so we don't update it.
 	if (m_freeze_label == true)
 		return;
-
+	
+	if (diagram() && new_formula.contains("%F"))
+		new_formula.replace("%F", diagram()->border_and_titleblock.folio());
+	
 	if (diagram() && (new_formula.contains("%f") || new_formula.contains("%id")))
 		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
 	if (new_formula.contains("%l"))
