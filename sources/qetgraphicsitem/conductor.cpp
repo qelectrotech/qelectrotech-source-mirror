@@ -1499,15 +1499,26 @@ void Conductor::setSequenceNum(autonum::sequentialNumbers sn)
  */
 void Conductor::setUpConnectionForFormula(QString old_formula, QString new_formula)
 {
-	if (diagram() && old_formula.contains("%id"))
-		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
-
-		//Label is frozen, so we don't update it.
-	if (m_freeze_label == true)
-		return;
-
-	if (diagram() && new_formula.contains("%id"))
-		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
+	if (diagram())
+	{
+			//Because the variable %F is a reference to another text which can contain variables,
+			//we must to replace %F by the real text, to check if the real text contain the variable %id
+		if (old_formula.contains("%F"))
+			old_formula.replace("%F", diagram()->border_and_titleblock.folio());
+		
+		if (old_formula.contains("%id"))
+			disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
+		
+			//Label is frozen, so we don't update it.
+		if (m_freeze_label == true)
+			return;
+		
+		if (new_formula.contains("%F"))
+			new_formula.replace("%F", diagram()->border_and_titleblock.folio());
+		
+		if (new_formula.contains("%id"))
+			connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
+	}
 }
 
 /**
