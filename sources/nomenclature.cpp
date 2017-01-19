@@ -20,6 +20,7 @@
 #include "nomenclature.h"
 #include "elementprovider.h"
 #include "assignvariables.h"
+
 #define PR(x) qDebug() << #x " = " << x;
 
 /**
@@ -137,10 +138,11 @@ QString nomenclature::getElementInfo(Element *elmt) {
 
 	Diagram *diagram = elmt -> diagram();
 	DiagramContext elmt_info = elmt -> elementInformations();
+	autonum::sequentialNumbers empty_seq;
 
 	info += QString::number(diagram -> folioIndex()+1) + ";";
 	info += diagram -> title() + ";";
-	info += diagram -> border_and_titleblock.folio() + ";";
+	info += autonum::AssignVariables::formulaToLabel(diagram->border_and_titleblock.folio(), empty_seq, diagram) + ";";
 	info += elmt -> name() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
