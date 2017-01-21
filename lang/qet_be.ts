@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 De ontwikkelaars van QElectroTech {2006-2017 ?}</translation>
+        <translation>2006-2016 De ontwikkelaars van QElectroTech </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
@@ -657,7 +657,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Codering tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
@@ -2130,17 +2130,17 @@ Field &quot;Raise&quot; wordt hier  niet gebruikt.</translation>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Formule assistent</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Formule</translation>
     </message>
 </context>
 <context>
@@ -3158,7 +3158,10 @@ Selecteer de eigenschappen die moeten worden toegepast op een nieuw potentiaal.<
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation>De formule voor deze verbinding bevat variabele welke niet gebruikt kunnen worden in de tekeningen
+Controlleer de formules voor deze verbinding
+De volgende items zijn niet compatibel :
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
 <context>
@@ -3575,7 +3578,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Label formule</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -5443,7 +5446,7 @@ Wat wilt u doen?</translation>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project  « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
