@@ -67,6 +67,12 @@
         <translation>QElectroTech er et program til at tegne elektriske diagrammer.</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>2006-2017 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation type="unfinished">2006-2016 QElectroTech udviklere {2006-2017 ?}</translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
@@ -226,12 +232,6 @@
         <location filename="../sources/aboutqet.cpp" line="190"/>
         <source>Paquets Debian</source>
         <translation>Debian pakker</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>2006-2016 Les développeurs de QElectroTech</source>
-        <comment>about tab, developers line</comment>
-        <translation>2006-2016 QElectroTech udviklere</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="197"/>
@@ -6374,7 +6374,7 @@ Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Erreur</source>
         <translation>Fejl</translation>
     </message>
@@ -6462,22 +6462,22 @@ Hvad skal ske?</translation>
         <translation>Flyt %1 symbol tekst</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="50"/>
+        <location filename="../sources/nomenclature.cpp" line="51"/>
         <source>nomenclature_</source>
         <translation>bom_</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
         <translation>Gem som...</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>CSV filer (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="61"/>
+        <location filename="../sources/nomenclature.cpp" line="62"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -6486,83 +6486,83 @@ Hvad skal ske?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
         <translation>BOM:</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>N° de folio</source>
         <translation>Antal ark</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Titre de folio</source>
         <translation>Ark titel</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label de folio</source>
         <translation>Ark etiket</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation qet</source>
         <translation>QET betegnelse</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Position</source>
         <translation>Position</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Label</source>
         <translation>Etiket</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Désignation</source>
         <translation>Betegnelse</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Commentaire</source>
         <translation>Bemærkning</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fabricant</source>
         <translation>Producent</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Reference</source>
         <translation>Henvisning</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Ekstra blok 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Ekstra blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Machine-reference</source>
         <translation>Maskin henvisning</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Localisation</source>
         <translation>Placering</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Fonction</source>
         <translation>Funktion</translation>
     </message>

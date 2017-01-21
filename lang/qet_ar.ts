@@ -63,6 +63,12 @@
         <translation>QElectrotech, تطبيقة لرسم المُخططات الكهربائية . </translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>2006-2017 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation type="unfinished">2006-2016 مُصممو برنامج QElectrotech  {2006-2017 ?}</translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
@@ -207,12 +213,6 @@
         <location filename="../sources/aboutqet.cpp" line="190"/>
         <source>Paquets Debian</source>
         <translation>حزم Debian</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>2006-2016 Les développeurs de QElectroTech</source>
-        <comment>about tab, developers line</comment>
-        <translation>2006-2016 مُصممو برنامج QElectrotech </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="197"/>
@@ -6412,7 +6412,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Erreur</source>
         <translation>خطأ</translation>
     </message>
@@ -6500,22 +6500,22 @@ Que désirez vous faire ?</source>
         <translation>تحريك %1 نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="50"/>
+        <location filename="../sources/nomenclature.cpp" line="51"/>
         <source>nomenclature_</source>
         <translation>تسمية _</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
         <translation>حفظ باسم...</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>ملفات  csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="61"/>
+        <location filename="../sources/nomenclature.cpp" line="62"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -6523,83 +6523,83 @@ Que désirez vous faire ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
         <translation>تسمية:</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>N° de folio</source>
         <translation>رقم الصفحة </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Titre de folio</source>
         <translation>عنوان الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label de folio</source>
         <translation>علامة صفحة</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation qet</source>
         <translation>تعيين qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Position</source>
         <translation>موضع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Label</source>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Désignation</source>
         <translation>تعيين</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Commentaire</source>
         <translation>تعليق</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fabricant</source>
         <translation>مُصنّع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Reference</source>
         <translation>مرجع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Bloc auxiliaire 1</source>
         <translation>كتلة إضافية 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Bloc auxiliaire 2</source>
         <translation>كتلة إضافية 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Machine-reference</source>
         <translation>مرجع الآلة</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Localisation</source>
         <translation>تحديد موقع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Fonction</source>
         <translation>وظيفة</translation>
     </message>

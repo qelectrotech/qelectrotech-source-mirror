@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es">
+<TS version="2.1" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -8,12 +8,6 @@
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
         <translation>QElectroTech,  una aplicación de realización de esquemas eléctricos.</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>2006-2016 Les développeurs de QElectroTech</source>
-        <comment>about tab, developers line</comment>
-        <translation>2006-2016 Los desarrolladores de QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
@@ -223,6 +217,12 @@
         <location filename="../sources/aboutqet.cpp" line="86"/>
         <source>Compilation : </source>
         <translation>Compilación:</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>2006-2017 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation type="unfinished">2006-2016 Los desarrolladores de QElectroTech {2006-2017 ?}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
@@ -6377,7 +6377,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
-        <location filename="../sources/nomenclature.cpp" line="60"/>
+        <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
@@ -6465,105 +6465,105 @@ Que désirez vous faire ?</source>
         <translation>Mover %1 elementos de texto</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="50"/>
+        <location filename="../sources/nomenclature.cpp" line="51"/>
         <source>nomenclature_</source>
         <translation>nomenclatura_</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
         <translation>Guardar como...</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="54"/>
+        <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>Archivo csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="61"/>
+        <location filename="../sources/nomenclature.cpp" line="62"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
         <translation>¡Imposible reemplazar el archivo!</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="85"/>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
         <translation>NOMENCLATURA: </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="86"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>N° de folio</source>
         <translation>N° de folio</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Titre de folio</source>
         <translation>Título del folio</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Label de folio</source>
         <translation>Etiqueta del folio</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Désignation qet</source>
         <translation>Designación qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Position</source>
         <translation>Posición</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Désignation</source>
         <translation>Designación</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Commentaire</source>
         <translation>Comentario</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fabricant</source>
         <translation>Fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>Reference</source>
         <translation>Referencia</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Bloque auxiliar 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Bloque auxiliar 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Machine-reference</source>
         <translation>Referencia de la máquina</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Localisation</source>
         <translation>Localización</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Fonction</source>
         <translation>Función</translation>
     </message>
