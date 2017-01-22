@@ -260,10 +260,14 @@ void MasterPropertiesWidget::on_link_button_clicked()
 {
 		//take the curent item from free_list and push it to linked_list
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
-	ui->m_free_tree_widget->takeTopLevelItem(ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
-	ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
-
-	if(m_live_edit) apply();
+	if (qtwi)
+	{
+		ui->m_free_tree_widget->takeTopLevelItem(ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
+		ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
+		
+		if(m_live_edit)
+			apply();
+	}
 }
 
 /**
@@ -274,10 +278,14 @@ void MasterPropertiesWidget::on_unlink_button_clicked()
 {
 		//take the curent item from linked_list and push it to free_list
 	QTreeWidgetItem *qtwi = ui->m_link_tree_widget->currentItem();
-	ui->m_link_tree_widget->takeTopLevelItem(ui->m_link_tree_widget->indexOfTopLevelItem(qtwi));
-	ui->m_free_tree_widget->insertTopLevelItem(0, qtwi);
+	if(qtwi)
+	{
+		ui->m_link_tree_widget->takeTopLevelItem(ui->m_link_tree_widget->indexOfTopLevelItem(qtwi));
+		ui->m_free_tree_widget->insertTopLevelItem(0, qtwi);
 
-	if(m_live_edit) apply();
+		if(m_live_edit)
+			apply();
+	}
 }
 
 /**
