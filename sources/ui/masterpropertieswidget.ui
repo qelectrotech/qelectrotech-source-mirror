@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>400</height>
+    <width>642</width>
+    <height>666</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,55 +19,139 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="1" column="1" rowspan="5">
-    <widget class="QListWidget" name="free_list"/>
-   </item>
-   <item row="5" column="2">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_2">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
      </property>
-     <property name="sizeHint" stdset="0">
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="text">
+      <string>Éléments liés</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="3">
+    <widget class="QTreeWidget" name="m_link_tree_widget">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="iconSize">
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>32</width>
+       <height>32</height>
       </size>
      </property>
-    </spacer>
-   </item>
-   <item row="4" column="2">
-    <widget class="QPushButton" name="unlink_button">
-     <property name="toolTip">
-      <string>Délier l'élément séléctionné</string>
+     <property name="uniformRowHeights">
+      <bool>true</bool>
      </property>
-     <property name="text">
-      <string/>
+     <property name="sortingEnabled">
+      <bool>true</bool>
      </property>
-     <property name="icon">
-      <iconset resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
-     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>80</number>
+     </attribute>
+     <attribute name="headerStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Vignette</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>N° de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Label de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Titre de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Position</string>
+      </property>
+     </column>
     </widget>
    </item>
-   <item row="1" column="3" rowspan="5">
-    <widget class="QListWidget" name="linked_list"/>
-   </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="link_button">
-     <property name="toolTip">
-      <string>Lier l'élément séléctionné</string>
+   <item row="1" column="2" colspan="3">
+    <widget class="QTreeWidget" name="m_free_tree_widget">
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
      </property>
-     <property name="text">
-      <string/>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
      </property>
-     <property name="icon">
-      <iconset resource="../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
+     <property name="uniformRowHeights">
+      <bool>true</bool>
      </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+     <attribute name="headerVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="headerCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="headerDefaultSectionSize">
+      <number>80</number>
+     </attribute>
+     <attribute name="headerStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Vignette</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>N° de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Label de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Titre de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Position</string>
+      </property>
+     </column>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Éléments disponibles</string>
@@ -77,28 +161,33 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Éléments liés</string>
+   <item row="2" column="3">
+    <widget class="QPushButton" name="unlink_button">
+     <property name="toolTip">
+      <string>Délier l'élément séléctionné</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/go-up.png</normaloff>:/ico/16x16/go-up.png</iconset>
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="2" column="4">
+    <widget class="QPushButton" name="link_button">
+     <property name="toolTip">
+      <string>Lier l'élément séléctionné</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
+     <property name="text">
+      <string/>
      </property>
-    </spacer>
+     <property name="icon">
+      <iconset resource="../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/go-down.png</normaloff>:/ico/16x16/go-down.png</iconset>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

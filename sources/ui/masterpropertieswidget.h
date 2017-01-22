@@ -22,11 +22,13 @@
 #include <QHash>
 #include "abstractelementpropertieseditorwidget.h"
 
-class QListWidgetItem;
 class Element;
 class QUndoCommand;
 class QETProject;
 class Diagram;
+class QTreeWidgetItem;
+class QMenu;
+class QAction;
 
 namespace Ui {
 	class MasterPropertiesWidget;
@@ -50,7 +52,7 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void apply();
 		void reset();
 		QUndoCommand *associatedUndo () const;
-		QString title() const {return tr("Référence croisée (maitre)");}
+		QString title() const {return tr("Référence croisée (maître)");}
 		bool setLiveEdit(bool live_edit);
 
 	public slots:
@@ -59,15 +61,22 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	private slots:
 		void on_link_button_clicked();
 		void on_unlink_button_clicked();
-		void showElementFromLWI(QListWidgetItem *lwi);
+		void showElementFromTWI(QTreeWidgetItem *qtwi, int column);
 		void showedElementWasDeleted ();
 		void diagramWasdeletedFromProject();
+		void customContextMenu(const QPoint &pos, int i=0);
 
 	private:
 	Ui::MasterPropertiesWidget *ui;
-	QHash <QListWidgetItem *, Element *> lwi_hash;
+	QHash <QTreeWidgetItem *, Element *> m_qtwi_hash;
+	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr;
 	Element *m_showed_element;
 	QETProject *m_project;
+	QMenu *m_context_menu;
+	QAction *m_link_action,
+			*m_unlink_action,
+			*m_show_qtwi,
+			*m_show_element;
 };
 
 #endif // MASTERPROPERTIESWIDGET_H

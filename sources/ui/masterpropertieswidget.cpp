@@ -37,8 +37,34 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	m_project(nullptr)
 {
 	ui->setupUi(this);
-	connect(ui->free_list,		SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
-	connect(ui->linked_list,	SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
+	
+	ui->m_free_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+	ui->m_link_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+	
+	m_context_menu  = new QMenu(this);
+	m_link_action   = new QAction(tr("Lier l'élément"), this);
+	m_unlink_action = new QAction(tr("Délier l'élément"), this);
+	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
+	m_show_element  = new QAction(tr("Montrer l'élément maître"), this);
+	
+	connect(ui->m_free_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
+	connect(ui->m_link_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
+	
+	connect(ui->m_free_tree_widget, &QTreeWidget::customContextMenuRequested, [this](QPoint point) {this->customContextMenu(point, 1);});
+	connect(ui->m_link_tree_widget, &QTreeWidget::customContextMenuRequested, [this](QPoint point) {this->customContextMenu(point, 2);});
+	
+	connect(m_link_action,   &QAction::triggered, this, &MasterPropertiesWidget::on_link_button_clicked);
+	connect(m_unlink_action, &QAction::triggered, this, &MasterPropertiesWidget::on_unlink_button_clicked);
+	connect(m_show_qtwi,     &QAction::triggered, [this]() {this->showElementFromTWI(this->m_qtwi_at_context_menu,0);});
+	
+	connect(m_show_element,  &QAction::triggered, [this]()
+	{
+		this->m_element->diagram()->showMe();
+		this->m_element->setHighlighted(true);
+		if(this->m_showed_element)
+			m_showed_element->setHighlighted(false);
+	});
+	
 	setElement(elmt);
 }
 
@@ -48,7 +74,11 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
  */
 MasterPropertiesWidget::~MasterPropertiesWidget()
 {
-	if (m_showed_element) m_showed_element->setHighlighted(false);
+	if (m_showed_element)
+		m_showed_element->setHighlighted(false);
+	
+	m_element->setHighlighted(false);
+	
 	delete ui;
 }
 
@@ -59,19 +89,32 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
  */
 void MasterPropertiesWidget::setElement(Element *element)
 {
-	if (m_element == element) return;
-	if (m_showed_element) {m_showed_element->setHighlighted(false); m_showed_element = nullptr;}
-	if (m_project) disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+	if (m_element == element)
+		return;
+	
+	if (m_showed_element)
+	{
+		m_showed_element->setHighlighted(false);
+		m_showed_element = nullptr;
+	}
+	if (m_element)
+		m_element->setHighlighted(false);
+	
+	if (m_project)
+		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
 
 	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
 	{
 		m_project = element->diagram()->project();
 		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
 	}
-	else m_project = nullptr;
+	else
+		m_project = nullptr;
 
 		//Keep up to date this widget when the linked elements of m_element change
-	if (m_element) disconnect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+	if (m_element)
+		disconnect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+	
 	m_element = element;
 	connect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
 
@@ -94,11 +137,12 @@ void MasterPropertiesWidget::apply() {
  * @brief MasterPropertiesWidget::reset
  * Reset curent widget, clear eveything and rebuild widget.
  */
-void MasterPropertiesWidget::reset() {
-	foreach (QListWidgetItem *lwi, lwi_hash.keys()) {
-		delete lwi;
-	}
-	lwi_hash.clear();
+void MasterPropertiesWidget::reset()
+{
+	foreach (QTreeWidgetItem *qtwi, m_qtwi_hash.keys())
+		delete qtwi;
+	
+	m_qtwi_hash.clear();
 	updateUi();
 }
 
@@ -114,8 +158,8 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 	QList <Element *> to_link;
 	QList <Element *> linked_ = m_element->linkedElements();
 
-	for (int i=0; i<ui->linked_list->count(); i++)
-		to_link << lwi_hash[ui->linked_list->item(i)];
+	for (int i=0; i<ui->m_link_tree_widget->topLevelItemCount(); i++)
+		to_link << m_qtwi_hash[ui->m_link_tree_widget->topLevelItem(i)];
 
 		//The two list contain the same element, there is no change
 	if (to_link.size() == linked_.size())
@@ -158,43 +202,54 @@ bool MasterPropertiesWidget::setLiveEdit(bool live_edit)
  */
 void MasterPropertiesWidget::updateUi()
 {
-	ui->free_list->clear();
-	ui->linked_list->clear();
-	lwi_hash.clear();
+	ui->m_free_tree_widget->clear();
+	ui->m_link_tree_widget->clear();
+	m_qtwi_hash.clear();
 
-	if (Q_UNLIKELY(!m_project)) return;
+	if (Q_UNLIKELY(!m_project))
+		return;
 
 	ElementProvider elmt_prov(m_project);
 
 		//Build the list of free available element
+	QList <QTreeWidgetItem *> items_list;
 	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave))
 	{
-		//label for list widget
-		QString widget_text;
-		QString title = elmt->diagram()->title();
-		if (title.isEmpty()) title = tr("Sans titre");
-		widget_text += QString(tr("Folio  %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
-																	  .arg(title)
-																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
-		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);
-		lwi_hash.insert(lwi_, elmt);
-		ui->free_list->addItem(lwi_);
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
+		qtwi->setIcon(0, elmt->pixmap());
+		qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+		
+		autonum::sequentialNumbers seq;
+		QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+		qtwi->setText(2, F);
+		qtwi->setText(3, elmt->diagram()->title());
+		qtwi->setText(4, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		items_list.append(qtwi);
+		m_qtwi_hash.insert(qtwi, elmt);
 	}
+	
+	ui->m_free_tree_widget->addTopLevelItems(items_list);
+	items_list.clear();
 
 		//Build the list of already linked element
 	foreach(Element *elmt, m_element->linkedElements())
 	{
-		//label for list widget
-		QString widget_text;
-		QString title = elmt->diagram()->title();
-		if (title.isEmpty()) title = tr("Sans titre");
-		widget_text += QString(tr("Folio  %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
-																	  .arg(title)
-																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
-		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);
-		lwi_hash.insert(lwi_, elmt);
-		ui->linked_list->addItem(lwi_);
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
+		qtwi->setIcon(0, elmt->pixmap());
+		qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+		
+		autonum::sequentialNumbers seq;
+		QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+		qtwi->setText(2, F);
+		qtwi->setText(3, elmt->diagram()->title());
+		qtwi->setText(4, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		items_list.append(qtwi);
+		m_qtwi_hash.insert(qtwi, elmt);
 	}
+	if(items_list.count())
+		ui->m_link_tree_widget->addTopLevelItems(items_list);
+	
+
 }
 
 /**
@@ -204,9 +259,9 @@ void MasterPropertiesWidget::updateUi()
 void MasterPropertiesWidget::on_link_button_clicked()
 {
 		//take the curent item from free_list and push it to linked_list
-	ui->linked_list->addItem(
-				ui->free_list->takeItem(
-					ui->free_list->currentRow()));
+	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
+	ui->m_free_tree_widget->takeTopLevelItem(ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
+	ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
 
 	if(m_live_edit) apply();
 }
@@ -218,27 +273,31 @@ void MasterPropertiesWidget::on_link_button_clicked()
 void MasterPropertiesWidget::on_unlink_button_clicked()
 {
 		//take the curent item from linked_list and push it to free_list
-	ui->free_list->addItem(
-				ui->linked_list->takeItem(
-					ui->linked_list->currentRow()));
+	QTreeWidgetItem *qtwi = ui->m_link_tree_widget->currentItem();
+	ui->m_link_tree_widget->takeTopLevelItem(ui->m_link_tree_widget->indexOfTopLevelItem(qtwi));
+	ui->m_free_tree_widget->insertTopLevelItem(0, qtwi);
 
 	if(m_live_edit) apply();
 }
 
 /**
- * @brief MasterPropertiesWidget::showElementFromLWI
- * Show the element corresponding to the given QListWidgetItem
- * @param lwi
+ * @brief MasterPropertiesWidget::showElementFromTWI
+ * Show the element corresponding to the given QTreeWidgetItem
+ * @param qtwi
+ * @param column
  */
-void MasterPropertiesWidget::showElementFromLWI(QListWidgetItem *lwi)
+void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int column)
 {
+	Q_UNUSED(column);
 	if (m_showed_element)
 	{
 		disconnect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
 		m_showed_element -> setHighlighted(false);
 	}
+	if (m_element)
+		m_element->setHighlighted(false);
 
-	m_showed_element = lwi_hash[lwi];
+	m_showed_element = m_qtwi_hash[qtwi];
 	m_showed_element->diagram()->showMe();
 	m_showed_element->setHighlighted(true);
 	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
@@ -262,4 +321,48 @@ void MasterPropertiesWidget::diagramWasdeletedFromProject()
 		//We use a timer because if the removed diagram contain slave element linked to the edited element
 		//we must to wait for this elements be unlinked, else the linked list provide deleted elements.
 	QTimer::singleShot(10, this, SLOT(updateUi()));
+}
+
+/**
+ * @brief MasterPropertiesWidget::customContextMenu
+ * Display a context menu
+ * @param pos
+ * @param i : the tree widget where the context menu was requested.
+ */
+void MasterPropertiesWidget::customContextMenu(const QPoint &pos, int i)
+{
+		//add the size of the header to display the topleft of the QMenu at the position of the mouse.
+		//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
+	QPoint point = pos;
+	point.ry()+=ui->m_free_tree_widget->header()->height();
+	
+	m_context_menu->clear();
+	
+	if (i == 1)
+	{
+		point = ui->m_free_tree_widget->mapToGlobal(point);
+		
+			//Context at for free tree widget
+		if (ui->m_free_tree_widget->currentItem())
+		{
+			m_qtwi_at_context_menu = ui->m_free_tree_widget->currentItem();
+			m_context_menu->addAction(m_link_action);
+			m_context_menu->addAction(m_show_qtwi);
+		}
+	}
+	else
+	{
+		point = ui->m_link_tree_widget->mapToGlobal(point);
+		
+			//context at for link tre widget
+		if (ui->m_link_tree_widget->currentItem())
+		{
+			m_qtwi_at_context_menu = ui->m_link_tree_widget->currentItem();
+			m_context_menu->addAction(m_unlink_action);
+			m_context_menu->addAction(m_show_qtwi);
+		}
+	}
+	
+	m_context_menu->addAction(m_show_element);
+	m_context_menu->popup(point);
 }
