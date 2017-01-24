@@ -1024,16 +1024,18 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	
 	// titre et nom de fichier du schema
 	QString diagram_title = diagram -> title();
-    if (diagram_title.isEmpty()) diagram_title = QObject::tr("Folio sans titre");
+	QString diagram_index = QString::number(diagram -> folioIndex()+1);
+	//QString diagram_folio_label = diagram -> border_and_titleblock.finalfolio();
+	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Folio sans titre");
 	QString diagram_filename = diagram -> title();
 	if (diagram_filename.isEmpty()) diagram_filename = QObject::tr("schema");
-	diagram_filename = QET::stringToFileName(diagram_filename);
+	diagram_filename = QET::stringToFileName(diagram_index + "_" + diagram_filename);
 	
 	title_label = new QLabel(diagram_title);
 	
 	file_name = new QLineEdit();
 	file_name -> setText(diagram_filename);
-	file_name -> setMinimumWidth(180);
+	file_name -> setMinimumWidth(280);
 	
 	width = new QSpinBox();
 	width -> setRange(1, 10000);
