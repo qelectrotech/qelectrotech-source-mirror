@@ -792,6 +792,7 @@ bool QETProject::close() {
  */
 QETResult QETProject::write()
 {
+	QSettings settings;
 		// this operation requires a filepath
 	if (file_path_.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
