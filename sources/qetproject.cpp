@@ -83,6 +83,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	m_auto_conductor     (true  ),
 	m_elements_collection (nullptr)
 {
+	QSettings settings;
 		//Open the file
 	QFile project_file(path);
 	if (!project_file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -798,6 +799,10 @@ QETResult QETProject::write()
 		// if the project was opened read-only and the file is still non-writable, do not save the project
 	if (isReadOnly() && !QFileInfo(file_path_).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
+	
+	if (settings.value("qetproject/readonly", true).toBool()){
+	return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
+	}
 
 		//Get the project in xml
 	QDomDocument xml_project;
