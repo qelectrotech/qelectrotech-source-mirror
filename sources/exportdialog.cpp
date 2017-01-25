@@ -55,9 +55,9 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	}
 	
 	// la taille minimale du dialogue est fixee
-	setMinimumSize(800, 390);
+	setMinimumSize(800, 590);
 	resize(minimumSize());
-    setWindowTitle(tr("Exporter les folios du projet", "window title"));
+	setWindowTitle(tr("Exporter les folios du projet", "window title"));
 
 	// options d'export, dans le widget epw
 	epw = new ExportPropertiesWidget(default_export_properties);
@@ -72,7 +72,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	// disposition des elements
 
 	QHBoxLayout *hLayout = new QHBoxLayout();
-    hLayout -> addWidget(new QLabel(tr("Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :")));
+	hLayout -> addWidget(new QLabel(tr("Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :")));
 	selectAll   = new QPushButton();
 	deSelectAll = new QPushButton();
 	selectAll   -> setText(tr("Tout cocher"));
@@ -138,7 +138,7 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	diagrams_list_layout_ = new QGridLayout();
 	
 	int line_count = 0;
-    diagrams_list_layout_ -> addWidget(new QLabel(tr("Titre du folio")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Titre du folio")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Nom de fichier")),   line_count, 2, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Dimensions")),       line_count, 3, Qt::AlignHCenter | Qt::AlignVCenter);
 	
@@ -762,7 +762,7 @@ void ExportDialog::slot_export() {
 			tr("Noms des fichiers cibles", "message box title"),
 			tr(
 				"Vous devez entrer un nom de fichier non vide et unique pour chaque "
-                "folio à exporter.",
+				"folio à exporter.",
 				"message box content"
 			)
 		);
