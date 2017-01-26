@@ -21,10 +21,7 @@
 #include "element.h"
 #include "abstractelementpropertieseditorwidget.h"
 
-
-class Diagram;
-class QLineEdit;
-class ElementSelectorWidget;
+class QTreeWidgetItem;
 
 namespace Ui {
 	class LinkSingleElementWidget;
@@ -44,7 +41,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
 
-	///Methods
+		///Methods
 	public:
 		explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = 0);
 		~LinkSingleElementWidget();
@@ -56,33 +53,47 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 
 	public slots:
 		void updateUi();
+		void buildTree();
 
 	public:
 		bool setLiveEdit(bool live_edit);
 
 	private :
-		void enableLiveEdit();
-		void disableLiveEdit();
-		void buildList();
-		void buildSearchField();
 		QList <Element *> availableElements();
-		void setUpCompleter();
+//		void setUpCompleter();
+		void clearTreeWidget();
 
 	private slots:
-		void setNewList();
-		void unlinkClicked();
-		void on_button_this_clicked();
-		void on_button_linked_clicked();
 		void diagramWasRemovedFromProject();
-
-	///Attributes
+		void showedElementWasDeleted();
+		void linkTriggered();
+		void hideButtons();
+		void showButtons();
+		
+		void on_m_unlink_pb_clicked();
+		void on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column);
+		void on_m_tree_widget_customContextMenuRequested(const QPoint &pos);
+		void on_m_show_linked_pb_clicked();
+		void on_m_show_this_pb_clicked();
+		
 	private:
 	Ui::LinkSingleElementWidget *ui;
-	ElementSelectorWidget *esw_;
-	QList <Diagram *> diagram_list;
-	bool unlink_;
-	Element::kind filter_;
-	QLineEdit *search_field;
+
+	bool m_unlink = false;
+	Element::kind m_filter;
+	
+	QHash <QTreeWidgetItem*, Element*> m_qtwi_elmt_hash;
+	
+	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr,
+					*m_pending_qtwi = nullptr;
+	
+	Element *m_showed_element = nullptr,
+			*m_element_to_link = nullptr;
+	
+	QMenu *m_context_menu;
+	QAction *m_link_action,
+			*m_show_qtwi,
+			*m_show_element;
 };
 
 #endif // LINKSINGLEELEMENTWIDGET_H

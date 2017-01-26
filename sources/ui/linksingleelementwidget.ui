@@ -6,94 +6,81 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>265</width>
-    <height>182</height>
+    <width>389</width>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="main_layout">
-   <item>
-    <layout class="QVBoxLayout" name="header_layout">
-     <item>
-      <widget class="QWidget" name="m_unlink_widget" native="true">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Cet élément est déjà lié</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="m_unlink_pb">
-          <property name="text">
-           <string>Délier</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Rechercher dans le folio :</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QComboBox" name="folio_combo_box"/>
-     </item>
-    </layout>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_label">
+     <property name="text">
+      <string>Cet élément est déjà lié</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <layout class="QVBoxLayout" name="content_layout"/>
+   <item row="2" column="0" colspan="3">
+    <widget class="QTreeWidget" name="m_tree_widget">
+     <property name="indentation">
+      <number>5</number>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Label</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Commentaire</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>N° de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Label de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Titre de folio</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Position</string>
+      </property>
+     </column>
+    </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="button_this">
-       <property name="text">
-        <string>Voir cet élément</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_linked">
-       <property name="text">
-        <string>Voir l'élément lié</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="m_show_this_pb">
+     <property name="text">
+      <string>Voir cette élément</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QPushButton" name="m_show_linked_pb">
+     <property name="text">
+      <string>Voir l'élément lié</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="m_unlink_pb">
+     <property name="text">
+      <string>Délier</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

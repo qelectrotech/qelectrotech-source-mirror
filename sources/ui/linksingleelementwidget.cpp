@@ -19,8 +19,10 @@
 #include "ui_linksingleelementwidget.h"
 #include "diagram.h"
 #include "elementprovider.h"
-#include "elementselectorwidget.h"
 #include "linkelementcommand.h"
+#include "diagramposition.h"
+
+#include <QTreeWidgetItem>
 
 /**
  * @brief LinkSingleElementWidget::LinkSingleElementWidget
@@ -32,14 +34,27 @@
  */
 LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
-	ui(new Ui::LinkSingleElementWidget),
-	esw_(nullptr),
-	unlink_(false),
-	search_field(nullptr)
+	ui(new Ui::LinkSingleElementWidget)
 {
 	ui->setupUi(this);
-	connect(ui->folio_combo_box, SIGNAL(currentIndexChanged(int)), this, SLOT(setNewList()));
-	connect(ui->m_unlink_pb, SIGNAL(clicked()), this, SLOT(unlinkClicked()));
+	
+	ui->m_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+	m_context_menu  = new QMenu(this);
+	m_link_action   = new QAction(tr("Lier l'élément"), this);
+	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
+	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
+	
+	connect(m_show_qtwi, &QAction::triggered, [this]() {this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);});
+	connect(m_link_action, &QAction::triggered, this, &LinkSingleElementWidget::linkTriggered);
+	
+	connect(m_show_element,  &QAction::triggered, [this]()
+	{
+		this->m_element->diagram()->showMe();
+		this->m_element->setHighlighted(true);
+		if(this->m_showed_element)
+			m_showed_element->setHighlighted(false);
+	});
+			
 	setElement(elmt);
 }
 
@@ -47,7 +62,15 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
  * @brief LinkSingleElementWidget::~LinkSingleElementWidget
  * Default destructor
  */
-LinkSingleElementWidget::~LinkSingleElementWidget() {
+LinkSingleElementWidget::~LinkSingleElementWidget()
+{
+	if(m_showed_element)
+		m_showed_element->setHighlighted(false);
+	
+	m_element->setHighlighted(false);
+	
+	if (!m_element->isFree())
+		m_element->linkedElements().first()->setHighlighted(false);
 	delete ui;
 }
 
@@ -58,26 +81,34 @@ LinkSingleElementWidget::~LinkSingleElementWidget() {
  */
 void LinkSingleElementWidget::setElement(Element *element)
 {
-	if (m_element == element) return;
+	if (m_element == element)
+		return;
 
 		//Remove connection of previous edited element
 	if (m_element)
 	{
 		disconnect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
 		disconnect(m_element, &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi);
-		diagram_list.clear();
+		m_element->setHighlighted(false);
 	}
+	
+	if(m_showed_element)
+		m_showed_element->setHighlighted(false);
+	
+	m_unlink = false;
+	m_showed_element = nullptr;
+	m_element_to_link = nullptr;
+	m_pending_qtwi = nullptr;
 
 		//Setup the new element, connection and ui
 	m_element = element;
-	diagram_list << m_element->diagram()->project()->diagrams();
 
 	if (m_element->linkType() & Element::Slave)
-		filter_ = Element::Master;
+		m_filter = Element::Master;
 	else if (m_element->linkType() & Element::AllReport)
-		filter_ = m_element->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
+		m_filter = m_element->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
 	else
-		filter_ = Element::Simple;
+		m_filter = Element::Simple;
 
 	connect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
 	connect(m_element, &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
@@ -95,6 +126,10 @@ void LinkSingleElementWidget::apply()
 	QUndoCommand *undo = associatedUndo();
 	if (undo)
 		m_element->diagram()->undoStack().push(undo);
+	
+	m_unlink = false;
+	m_element_to_link = nullptr;
+	m_pending_qtwi = nullptr;
 }
 
 /**
@@ -104,13 +139,13 @@ void LinkSingleElementWidget::apply()
  */
 QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 {
-	if (esw_->selectedElement() || unlink_)
-	{
-		LinkElementCommand *undo = new LinkElementCommand(m_element);
+	LinkElementCommand *undo = new LinkElementCommand(m_element);
 
-		if (esw_->selectedElement())
-			undo->setLink(esw_->selectedElement());
-		else if (unlink_)
+	if (m_element_to_link || m_unlink)
+	{
+		if (m_element_to_link)
+			undo->setLink(m_element_to_link);
+		else if (m_unlink)
 			undo->unlinkAll();
 
 		return undo;
@@ -137,33 +172,47 @@ QString LinkSingleElementWidget::title() const
  */
 void LinkSingleElementWidget::updateUi()
 {
-		//Fill the combo box for filter the result by folio
-	ui->folio_combo_box->blockSignals(true);
-	ui->folio_combo_box->clear();
-	ui->folio_combo_box->addItem(tr("Tous"));
-
-	foreach (Diagram *d, diagram_list)
-	{
-		QString title = d->title();
-		if (title.isEmpty()) title = tr("Sans titre");
-		title.prepend(QString::number(d->folioIndex() + 1) + " ");
-		ui->folio_combo_box->addItem(title);
-	}
-	ui->folio_combo_box->blockSignals(false);
-
-	unlink_ = false;
-	buildList();
+	m_unlink = false;
 
 		//Update the behavior of link/unlink button
 	if (m_element->isFree())
-	{
-		ui->button_linked->setDisabled(true);
-		ui->m_unlink_widget->hide();
-	}
+		hideButtons();
 	else
-		ui->m_unlink_widget->show();
+		showButtons();
+	
+	buildTree();
+}
 
-	buildSearchField();
+/**
+ * @brief LinkSingleElementWidget::buildTree
+ * Build the content of the QTreeWidget
+ */
+void LinkSingleElementWidget::buildTree()
+{
+	clearTreeWidget();
+	foreach(Element *elmt, availableElements())
+	{
+		QStringList str_list;
+		str_list << elmt->elementInformations()["label"].toString();
+		str_list << elmt->elementInformations()["comment"].toString();
+		if (Diagram *diag = elmt->diagram())
+		{
+			str_list << QString::number(diag->folioIndex() + 1);
+			autonum::sequentialNumbers seq;
+			QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+			str_list << F;
+			str_list << diag->title();
+			str_list << diag->convertPosition(elmt->scenePos()).toString();
+		}
+		else
+		{
+			qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
+		}
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+		m_qtwi_elmt_hash.insert(qtwi, elmt);
+	}
+	
+	//setUpCompleter();
 }
 
 /**
@@ -173,84 +222,12 @@ void LinkSingleElementWidget::updateUi()
  */
 bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 {
-	if (m_live_edit == live_edit) return true;
+	if (m_live_edit == live_edit)
+		return true;
+	
 	m_live_edit = live_edit;
-
-	if (m_live_edit)
-		enableLiveEdit();
-	else
-		disableLiveEdit();
-
+	
 	return true;
-}
-
-/**
- * @brief LinkSingleElementWidget::enableLiveEdit
- */
-void LinkSingleElementWidget::enableLiveEdit()
-{
-	if (!esw_) return;
-	connect(esw_, &ElementSelectorWidget::elementSelected, this, &LinkSingleElementWidget::apply, Qt::QueuedConnection);
-	connect(ui->m_unlink_pb, &QPushButton::clicked, this, &LinkSingleElementWidget::apply, Qt::QueuedConnection);
-}
-
-/**
- * @brief LinkSingleElementWidget::disableLiveEdit
- */
-void LinkSingleElementWidget::disableLiveEdit()
-{
-	if (!esw_) return;
-	disconnect(esw_, &ElementSelectorWidget::elementSelected, this, &LinkSingleElementWidget::apply);
-	disconnect(ui->m_unlink_pb, &QPushButton::clicked, this, &LinkSingleElementWidget::apply);
-}
-
-/**
- * @brief LinkSingleElementWidget::buildList
- * Build the element list of this widget,
- * the list is fill with the element find in the
- * required folio (folio selected with the combo box)
- */
-void LinkSingleElementWidget::buildList()
-{
-	if (!esw_)
-	{
-		esw_ = new ElementSelectorWidget(availableElements(), this);
-		ui->content_layout->addWidget(esw_);
-	}
-	else
-	{
-		esw_->setList(availableElements());
-	}
-	buildSearchField();
-}
-
-/**
- * @brief LinkSingleElementWidget::buildSearchField
- * Build a line edit for search element by they information,
- * like label or information
- */
-void LinkSingleElementWidget::buildSearchField()
-{
-		//If there isn't string to filter, we remove the search field
-	if (esw_->filter().isEmpty())
-	{
-		if (search_field)
-		{
-			ui -> header_layout -> removeWidget(search_field);
-			delete search_field;
-			search_field = nullptr;
-		}
-		return;
-	}
-
-	if(!search_field)
-	{
-		search_field = new QLineEdit(this);
-		search_field -> setPlaceholderText(tr("Rechercher"));
-		connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filtered(QString)));
-		ui->header_layout->addWidget(search_field);
-	}
-	setUpCompleter();
 }
 
 /**
@@ -263,93 +240,63 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 {
 	QList <Element *> elmt_list;
 		//if element isn't free and unlink isn't pressed, return an empty list
-	if (!m_element->isFree() && !unlink_) return elmt_list;
+	if (!m_element->isFree() && !m_unlink)
+		return elmt_list;
 
-	int i = ui->folio_combo_box->currentIndex();
-		//find in all diagram of this project
-	if (i == 0)
-	{
-		if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
-
-		ElementProvider ep(m_element->diagram()->project());
-		if (filter_ & Element::AllReport)
-			elmt_list = ep.freeElement(filter_);
-		else
-			elmt_list = ep.find(filter_);
-	}
-		//find in single diagram
+	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
+	
+	ElementProvider ep(m_element->diagram()->project());
+	if (m_filter & Element::AllReport)
+		elmt_list = ep.freeElement(m_filter);
 	else
-	{
-		ElementProvider ep (diagram_list.at(i-1));
-		if (filter_ & Element::AllReport)
-			elmt_list = ep.freeElement(filter_);
-		else
-			elmt_list = ep.find(filter_);
-	}
-
-
+		elmt_list = ep.find(m_filter);
+	
 		//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_list.removeAll(m_element->linkedElements().first());
 
 	return elmt_list;
 }
 
+///**
+// * @brief LinkSingleElementWidget::setUpCompleter
+// * Setup the completer of search_field
+// */
+//void LinkSingleElementWidget::setUpCompleter()
+//{
+//	ui->m_search_field->clear();
+//	if(ui->m_search_field->completer())
+//		delete ui->m_search_field->completer();
+	
+//	QStringList filter;
+//	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
+//	{
+//		filter << qtwi->data(0, Qt::DisplayRole).toString();
+//		filter << qtwi->data(1, Qt::DisplayRole).toString();
+//	}
+//	QCompleter *c = new QCompleter(filter, ui->m_search_field);
+//	c->setCaseSensitivity(Qt::CaseInsensitive);
+//	ui->m_search_field->setCompleter(c);
+//}
+
 /**
- * @brief LinkSingleElementWidget::setUpCompleter
- * Setup the completer of search_field
+ * @brief LinkSingleElementWidget::clearTreeWidget
+ * Clear the tree widget.
+ * Delete all QTreeWidget (in the tree widget and in the hash).
+ * Clear the hash.
  */
-void LinkSingleElementWidget::setUpCompleter()
+void LinkSingleElementWidget::clearTreeWidget()
 {
-	if (search_field)
+	while(ui->m_tree_widget->topLevelItemCount())
 	{
-		search_field -> clear();
-		delete search_field -> completer();
-
-		QStringList filter = esw_->filter();
-		filter.sort();
-		QCompleter *comp = new QCompleter(filter, search_field);
-		comp -> setCaseSensitivity(Qt::CaseInsensitive);
-		search_field -> setCompleter(comp);
+		QTreeWidgetItem *qtwi = ui->m_tree_widget->takeTopLevelItem(0);
+		if (!m_qtwi_elmt_hash.contains(qtwi))
+			delete qtwi;
 	}
-}
-
-/**
- * @brief LinkSingleElementWidget::setNewList
- * Set the list according to the selected diagram in the combo_box
- */
-void LinkSingleElementWidget::setNewList()
-{
-	esw_->setList(availableElements());
-	buildSearchField();
-}
-
-/**
- * @brief LinkSingleElementWidget::unlinkClicked
- * Action when 'unlink' button is clicked
- */
-void LinkSingleElementWidget::unlinkClicked()
-{
-	ui->m_unlink_widget->hide();
-	unlink_ = true;
-	setNewList();
-}
-
-/**
- * @brief FolioReportProperties::on_button_this_clicked
- * Action when push button "this report" is clicked
- */
-void LinkSingleElementWidget::on_button_this_clicked() {
-	esw_->showElement(m_element);
-}
-
-/**
- * @brief FolioReportProperties::on_button_linked_clicked
- * Action when push button "linked report" is clicked
- */
-void LinkSingleElementWidget::on_button_linked_clicked()
-{
-	if (m_element->isFree()) return;
-	esw_->showElement(m_element->linkedElements().first());
+	
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
+		delete qtwi;
+	
+	m_qtwi_elmt_hash.clear();
 }
 
 /**
@@ -359,9 +306,147 @@ void LinkSingleElementWidget::on_button_linked_clicked()
  */
 void LinkSingleElementWidget::diagramWasRemovedFromProject()
 {
-	diagram_list.clear();
-	diagram_list << m_element->diagram()->project()->diagrams();
 		//We use a timer because if the removed diagram contain the master element linked to the edited element
 		//we must to wait for this elements be unlinked, else the list of available master isn't up to date
 	QTimer::singleShot(10, this, SLOT(updateUi()));
+}
+
+void LinkSingleElementWidget::showedElementWasDeleted()
+{
+	m_showed_element = nullptr;
+}
+
+/**
+ * @brief LinkSingleElementWidget::linkTriggered
+ * Action linkis triggered
+ */
+void LinkSingleElementWidget::linkTriggered()
+{
+	if(!m_qtwi_at_context_menu)
+		return;
+	
+	m_element_to_link = m_qtwi_elmt_hash.value(m_qtwi_at_context_menu);
+	
+	if(m_live_edit)
+	{
+		apply();
+		updateUi();
+	}
+	else
+	{
+			//In no live edit mode, we set the background of the qtwi green, to inform the user
+			//which element will be linked when he press the apply button
+		if (m_pending_qtwi)
+		{
+			QBrush brush(Qt::white, Qt::NoBrush);
+			for(int i=0 ; i<6 ; i++)
+			{
+				m_pending_qtwi->setBackground(i,brush);
+			}
+		}
+		
+		for (int i=0 ; i<6 ; i++)
+		{
+			m_qtwi_at_context_menu->setBackgroundColor(i, Qt::green);
+		}
+		m_pending_qtwi = m_qtwi_at_context_menu;
+	}
+	
+}
+
+/**
+ * @brief LinkSingleElementWidget::hideButtons
+ * Hide the button displayed when element is already linked
+ */
+void LinkSingleElementWidget::hideButtons()
+{
+	ui->m_label->hide();
+	ui->m_unlink_pb->hide();
+	ui->m_show_linked_pb->hide();
+	ui->m_show_this_pb->hide();
+}
+
+/**
+ * @brief LinkSingleElementWidget::showButtons
+ * Show the button displayed when element is already linked
+ */
+void LinkSingleElementWidget::showButtons()
+{
+	ui->m_label->show();
+	ui->m_unlink_pb->show();
+	ui->m_show_linked_pb->show();
+	ui->m_show_this_pb->show();
+}
+
+void LinkSingleElementWidget::on_m_unlink_pb_clicked()
+{
+	m_unlink = true;
+	
+	if(m_live_edit)
+	{
+		apply();
+		updateUi();
+	}
+	else
+		buildTree();
+}
+
+/**
+ * @brief LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked
+ * Highlight the element represented by @item
+ * @param item
+ * @param column
+ */
+void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+	Q_UNUSED(column);
+	
+	if (m_showed_element)
+	{
+		disconnect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+		m_showed_element->setHighlighted(false);
+	}
+	
+	Element *elmt = m_qtwi_elmt_hash.value(item);
+	elmt->diagram()->showMe();
+	elmt->setHighlighted(true);
+	m_showed_element = elmt;
+	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+
+}
+
+void LinkSingleElementWidget::on_m_tree_widget_customContextMenuRequested(const QPoint &pos)
+{
+		//add the size of the header to display the topleft of the QMenu at the position of the mouse.
+		//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
+	QPoint point = pos;
+	point.ry()+=ui->m_tree_widget->header()->height();
+	point = ui->m_tree_widget->mapToGlobal(point);
+	
+	m_context_menu->clear();
+	
+	if (ui->m_tree_widget->currentItem())
+	{
+		m_qtwi_at_context_menu = ui->m_tree_widget->currentItem();
+		m_context_menu->addAction(m_link_action);
+		m_context_menu->addAction(m_show_qtwi);
+	}
+	
+	m_context_menu->addAction(m_show_element);
+	m_context_menu->popup(point);
+}
+
+void LinkSingleElementWidget::on_m_show_linked_pb_clicked()
+{
+	if (!m_element->isFree())
+	{
+		Element *elmt = m_element->linkedElements().first();
+		elmt->diagram()->showMe();
+		elmt->setHighlighted(true);
+	}
+}
+
+void LinkSingleElementWidget::on_m_show_this_pb_clicked()
+{
+	m_show_element->trigger();
 }
