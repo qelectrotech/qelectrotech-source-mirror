@@ -2261,7 +2261,7 @@ Tkest en cijfers zijn ook beschikbaar
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="unfinished"></translation>
+        <translation>Project in enkel lezen; de bestanden kunnen niet bewaard worden onder dezelfde naam</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="312"/>
@@ -2650,32 +2650,32 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="34"/>
         <source>Label</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>Etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Commentaar</translation>
+        <translation>Commentaar</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="44"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Schema bladzijde nummer</translation>
+        <translation>Schema bladzijde nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Etiket van de bladzijde</translation>
+        <translation>Etiket van de bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="54"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Schema titel</translation>
+        <translation>Schema titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Position</source>
-        <translation type="unfinished">Positie</translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2694,17 +2694,17 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="43"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Lees element</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon element</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon slave element</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="164"/>
@@ -2745,31 +2745,31 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Schema bladzijde nummer</translation>
+        <translation>Schema bladzijde nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Etiket van de bladzijde</translation>
+        <translation>Etiket van de bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Schema titel</translation>
+        <translation>Schema titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished">Positie</translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2806,27 +2806,27 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Lees element</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ontkoppel element</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon element</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Toom master element</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kruisverwijzing (Master)</translation>
     </message>
 </context>
 <context>
