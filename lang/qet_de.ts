@@ -1393,24 +1393,20 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
 <context>
     <name>ElementSelectorWidget</name>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="181"/>
         <source>N° fil : </source>
-        <translation>Draht-Nr.:</translation>
+        <translation type="vanished">Draht-Nr.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="192"/>
         <source>Sans titre</source>
-        <translation>Ohne Titel</translation>
+        <translation type="vanished">Ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="207"/>
         <source>Voir l&apos;élément</source>
-        <translation>Zeige Bauteil</translation>
+        <translation type="vanished">Zeige Bauteil</translation>
     </message>
 </context>
 <context>
@@ -1840,7 +1836,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="458"/>
+        <location filename="../sources/configpages.cpp" line="463"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportieren</translation>
@@ -1890,70 +1886,70 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <translation>Maße</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="432"/>
+        <location filename="../sources/exportdialog.cpp" line="433"/>
         <source>Auteur</source>
         <translation>Bearbeiter</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="433"/>
-        <location filename="../sources/exportdialog.cpp" line="705"/>
+        <location filename="../sources/exportdialog.cpp" line="434"/>
+        <location filename="../sources/exportdialog.cpp" line="698"/>
         <source>Titre</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="434"/>
+        <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Folio</source>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="435"/>
+        <location filename="../sources/exportdialog.cpp" line="436"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="769"/>
+        <location filename="../sources/exportdialog.cpp" line="762"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Namen der Zieldateien</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="770"/>
+        <location filename="../sources/exportdialog.cpp" line="763"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>Die Dateinamen der zu exportierenden Folien müssen einmalig und nicht leer sein.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="785"/>
+        <location filename="../sources/exportdialog.cpp" line="778"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Ordner nicht angegeben</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="786"/>
+        <location filename="../sources/exportdialog.cpp" line="779"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Geben Sie den Pfad vom Ordner ein, in dem die Bilddateien gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="827"/>
+        <location filename="../sources/exportdialog.cpp" line="820"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Schreiben in dieser Datei nicht möglich</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="829"/>
+        <location filename="../sources/exportdialog.cpp" line="822"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Sie haben wahrscheinlich nicht die benötigten Rechte, um in die Datei %1 zu schreiben.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="945"/>
+        <location filename="../sources/exportdialog.cpp" line="938"/>
         <source>Aperçu</source>
         <translation>Vorschau</translation>
     </message>
     <message>
+        <location filename="../sources/exportdialog.cpp" line="1042"/>
         <location filename="../sources/exportdialog.cpp" line="1047"/>
-        <location filename="../sources/exportdialog.cpp" line="1052"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -2186,184 +2182,189 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="242"/>
+        <location filename="../sources/configpages.cpp" line="243"/>
         <source>Apparence</source>
         <translation>Darstellung</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="243"/>
+        <location filename="../sources/configpages.cpp" line="244"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Farben vom Betriebssystem verwenden</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="244"/>
+        <location filename="../sources/configpages.cpp" line="245"/>
         <source>Projets</source>
         <translation>Projekte</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="247"/>
+        <location filename="../sources/configpages.cpp" line="248"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Gesten vom Touchpad aktivieren</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="249"/>
+        <location filename="../sources/configpages.cpp" line="250"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
         <translation>Folienname anstelle von Folien-ID verwenden</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="250"/>
+        <location filename="../sources/configpages.cpp" line="251"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Klemmen in die Stückliste exportieren</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="253"/>
+        <location filename="../sources/configpages.cpp" line="255"/>
         <source>Gestion des éléments</source>
         <translation>Bauteilverwaltung</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="254"/>
+        <location filename="../sources/configpages.cpp" line="256"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>neu zum Projekt hinzugefügte Bauteile im Panel hervorheben</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="256"/>
+        <location filename="../sources/configpages.cpp" line="258"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Jedes Bauteil enthält Informationen über den Autor, die Lizenz und weitere nützlichen Hinweise in einem frei definierbaren Textfeld. Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen  Bauteile definiert werden:</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="305"/>
+        <location filename="../sources/configpages.cpp" line="309"/>
         <source>Langue</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="245"/>
+        <location filename="../sources/configpages.cpp" line="246"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>In Fenster öffnen (erst nach einem Neustart von QElectroTech wirksam)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="246"/>
+        <location filename="../sources/configpages.cpp" line="247"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>In Reiter öffnen (erst nach einem Neustart von QElectroTech wirksam)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="248"/>
+        <location filename="../sources/configpages.cpp" line="249"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Betriebsmittelkennzeichen von Bauteilen beim Kopieren/Einfügen nicht beibehalten</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="251"/>
+        <location filename="../sources/configpages.cpp" line="252"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Ansicht verkleinern über die Folie hinaus erlauben</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="308"/>
+        <location filename="../sources/configpages.cpp" line="253"/>
+        <source>Keep projects in read-only, their files will cannot be over written</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="312"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
         <translation>Die neu einsgestellte Sprache wird erst nach einem Neustart von QElectroTech angezeigt.</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="371"/>
+        <location filename="../sources/configpages.cpp" line="376"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Allgemein</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="379"/>
+        <location filename="../sources/configpages.cpp" line="384"/>
         <source>Système</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="383"/>
+        <location filename="../sources/configpages.cpp" line="388"/>
         <source>Arabe</source>
         <translation>Arabisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="384"/>
+        <location filename="../sources/configpages.cpp" line="389"/>
         <source>Brézilien</source>
         <translation>Brasilianisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="385"/>
+        <location filename="../sources/configpages.cpp" line="390"/>
         <source>Catalan</source>
         <translation>Katalanisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="386"/>
+        <location filename="../sources/configpages.cpp" line="391"/>
         <source>Tchèque</source>
         <translation>Tschechisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="387"/>
+        <location filename="../sources/configpages.cpp" line="392"/>
         <source>Allemand</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="388"/>
+        <location filename="../sources/configpages.cpp" line="393"/>
         <source>Danois</source>
         <translation>Dänisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="389"/>
+        <location filename="../sources/configpages.cpp" line="394"/>
         <source>Grec</source>
         <translation>Grieschisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="390"/>
+        <location filename="../sources/configpages.cpp" line="395"/>
         <source>Anglais</source>
         <translation>Englisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="391"/>
+        <location filename="../sources/configpages.cpp" line="396"/>
         <source>Espagnol</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="392"/>
+        <location filename="../sources/configpages.cpp" line="397"/>
         <source>Français</source>
         <translation>Französisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="393"/>
+        <location filename="../sources/configpages.cpp" line="398"/>
         <source>Croate</source>
         <translation>Kroatisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="394"/>
+        <location filename="../sources/configpages.cpp" line="399"/>
         <source>Italien</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="395"/>
+        <location filename="../sources/configpages.cpp" line="400"/>
         <source>Polonais</source>
         <translation>Polnisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="396"/>
+        <location filename="../sources/configpages.cpp" line="401"/>
         <source>Portugais</source>
         <translation>Portugesisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="397"/>
+        <location filename="../sources/configpages.cpp" line="402"/>
         <source>Roumains</source>
         <translation>Rumänisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="398"/>
+        <location filename="../sources/configpages.cpp" line="403"/>
         <source>Russe</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="399"/>
+        <location filename="../sources/configpages.cpp" line="404"/>
         <source>Slovène</source>
         <translation>Slowenisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="400"/>
+        <location filename="../sources/configpages.cpp" line="405"/>
         <source>Pays-Bas</source>
         <translation>Niederländisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="401"/>
+        <location filename="../sources/configpages.cpp" line="406"/>
         <source>Belgique-Flemish</source>
         <translation>Belgien-Flandern</translation>
     </message>
@@ -2633,54 +2634,95 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Cet élément est déjà lié</source>
         <translation>Das Bauteil ist bereits gebunden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
-        <source>Rechercher dans le folio :</source>
-        <translation>In der Folie suchen: </translation>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="34"/>
+        <source>Label</source>
+        <translation type="unfinished">Betriebsmittelkennzeichen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="85"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Kommentar</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="44"/>
+        <source>N° de folio</source>
+        <translation type="unfinished">Foliennummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
+        <source>Label de folio</source>
+        <translation type="unfinished">Folienname</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="54"/>
+        <source>Titre de folio</source>
+        <translation type="unfinished">Folientitel</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <source>Position</source>
+        <translation type="unfinished">Verweis</translation>
+    </message>
+    <message>
+        <source>Rechercher dans le folio :</source>
+        <translation type="vanished">In der Folie suchen: </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="67"/>
         <source>Voir cet élément</source>
         <translation>Bauteil zeigen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="92"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="74"/>
         <source>Voir l&apos;élément lié</source>
         <translation>gebundenes Bauteil zeigen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="43"/>
+        <source>Lier l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
+        <source>Montrer l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
+        <source>Montrer l&apos;élément esclave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="164"/>
         <source>Report de folio</source>
         <translation>Folienverweis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="166"/>
         <source>Référence croisée (esclave)</source>
         <translation>Querverweis (Slave)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
         <source>Tous</source>
-        <translation>Alle</translation>
+        <translation type="vanished">Alle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="148"/>
         <source>Sans titre</source>
-        <translation>Ohne Titel</translation>
+        <translation type="vanished">Ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="45"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="81"/>
         <source>Délier</source>
         <translation>Trennen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="249"/>
         <source>Rechercher</source>
-        <translation>Suchen</translation>
+        <translation type="vanished">Suchen</translation>
     </message>
 </context>
 <context>
@@ -2691,41 +2733,91 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
+        <source>Vignette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
+        <source>N° de folio</source>
+        <translation type="unfinished">Foliennummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
+        <source>Label de folio</source>
+        <translation type="unfinished">Folienname</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
+        <source>Titre de folio</source>
+        <translation type="unfinished">Folientitel</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
+        <source>Position</source>
+        <translation type="unfinished">Verweis</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
         <source>Délier l&apos;élément séléctionné</source>
         <translation>ausgewähles Bauteil trennen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="187"/>
         <source>Lier l&apos;élément séléctionné</source>
         <translation>ausgewähles Bauteil verbinden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="163"/>
         <source>Éléments disponibles</source>
         <translation>Verfügbare Bauteile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Gebundene Bauteile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="175"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="190"/>
         <source>Sans titre</source>
-        <translation>Ohne Titel</translation>
+        <translation type="vanished">Ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="176"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="191"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation>Folie  %1 (%2), Position %3.</translation>
+        <translation type="vanished">Folie  %1 (%2), Position %3.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
         <source>Référence croisée (maitre)</source>
-        <translation>Querverweis (Master)</translation>
+        <translation type="vanished">Querverweis (Master)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
+        <source>Lier l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
+        <source>Délier l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
+        <source>Montrer l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
+        <source>Montrer l&apos;élément maître</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
+        <source>Référence croisée (maître)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3158,7 +3250,7 @@ Folgende Variablen sind inkompatibel:
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="514"/>
+        <location filename="../sources/configpages.cpp" line="519"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Druck</translation>
@@ -5435,31 +5527,31 @@ les conditions requises ne sont pas valides</source>
         <translation>%1 [geändert]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="976"/>
+        <location filename="../sources/qetproject.cpp" line="981"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetretten.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1086"/>
+        <location filename="../sources/qetproject.cpp" line="1091"/>
         <source>Liste des Folios</source>
         <translation>Inhaltsverzeichnis</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1192"/>
+        <location filename="../sources/qetproject.cpp" line="1197"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1193"/>
+        <location filename="../sources/qetproject.cpp" line="1198"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Das Dokument wurde vermutlich mit einer nachfolgenden Version von QElectroTech erstellt. Möglicherweise wird das Öffnen ganz oder teilweise scheitern. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1252"/>
+        <location filename="../sources/qetproject.cpp" line="1257"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Projekt wird geöffnet...&lt;/b&gt;</translation>
     </message>
@@ -6045,32 +6137,32 @@ Que désirez vous faire ?</source>
         <translation>Textfeld</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1034"/>
+        <location filename="../sources/exportdialog.cpp" line="1029"/>
         <source>Folio sans titre</source>
         <translation>Folie ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1036"/>
+        <location filename="../sources/exportdialog.cpp" line="1031"/>
         <source>schema</source>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1061"/>
+        <location filename="../sources/exportdialog.cpp" line="1056"/>
         <source>Conserver les proportions</source>
         <translation>Verhältnis beibehalten</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1065"/>
+        <location filename="../sources/exportdialog.cpp" line="1060"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Größe zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1069"/>
+        <location filename="../sources/exportdialog.cpp" line="1064"/>
         <source>Aperçu</source>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1073"/>
+        <location filename="../sources/exportdialog.cpp" line="1068"/>
         <source>Exporter vers le presse-papier</source>
         <translation>In die Zwischenablage kopieren</translation>
     </message>
