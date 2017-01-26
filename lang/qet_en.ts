@@ -2253,7 +2253,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="unfinished"></translation>
+        <translation>Keep projects in read-only, their files will cannot be over written</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="312"/>
@@ -2639,32 +2639,32 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="34"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Annotation</translation>
+        <translation>Annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="44"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° of folio</translation>
+        <translation>N° of folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Label folio</translation>
+        <translation>Label folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="54"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Title of folio</translation>
+        <translation>Title of folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2678,22 +2678,22 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="74"/>
         <source>Voir l&apos;élément lié</source>
-        <translation>See the linked element</translation>
+        <translation>See the linked item</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="43"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Link the item</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Show item</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Show slave element</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="164"/>
@@ -2734,31 +2734,31 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Thumbnail</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° of folio</translation>
+        <translation>N° of folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Label folio</translation>
+        <translation>Label folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Title of folio</translation>
+        <translation>Title of folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2795,27 +2795,27 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Link the item</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlink the item</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Show item</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Show master element</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cross-reference (master)</translation>
     </message>
 </context>
 <context>

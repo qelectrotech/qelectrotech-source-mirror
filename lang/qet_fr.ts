@@ -2199,7 +2199,7 @@ que vous créez. entrées de texte et nombres sont
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="unfinished"></translation>
+        <translation>Gardez les projets en lecture seule, leurs fichiers ne pourront pas être écrasés</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="255"/>
@@ -2606,32 +2606,32 @@ que vous créez. entrées de texte et nombres sont
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="34"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="44"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="54"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="81"/>
@@ -2651,17 +2651,17 @@ que vous créez. entrées de texte et nombres sont
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="43"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="164"/>
@@ -2685,31 +2685,31 @@ que vous créez. entrées de texte et nombres sont
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2734,27 +2734,27 @@ que vous créez. entrées de texte et nombres sont
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
