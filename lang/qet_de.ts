@@ -2255,7 +2255,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekte als schreibgeschützt setzen (Dateien können nicht mehr überschrieben werden)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="312"/>
@@ -2641,32 +2641,32 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="34"/>
         <source>Label</source>
-        <translation type="unfinished">Betriebsmittelkennzeichen</translation>
+        <translation>Betriebsmittelkennzeichen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="44"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Foliennummer</translation>
+        <translation>Foliennummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Folienname</translation>
+        <translation>Folienname</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="54"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Folientitel</translation>
+        <translation>Folientitel</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Position</source>
-        <translation type="unfinished">Verweis</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2685,17 +2685,17 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="43"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil zeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slave Bauteil zeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="164"/>
@@ -2736,31 +2736,31 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniaturbild</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Foliennummer</translation>
+        <translation>Foliennummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Folienname</translation>
+        <translation>Folienname</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Folientitel</translation>
+        <translation>Folientitel</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished">Verweis</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2797,27 +2797,27 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil trennen</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil zeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master Bauteil zeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Querverweis (Master)</translation>
     </message>
 </context>
 <context>
