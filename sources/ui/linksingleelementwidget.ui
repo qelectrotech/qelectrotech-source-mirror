@@ -64,7 +64,7 @@
    <item row="1" column="2">
     <widget class="QPushButton" name="m_show_this_pb">
      <property name="text">
-      <string>Voir cette élément</string>
+      <string>Voir cet élément</string>
      </property>
     </widget>
    </item>
