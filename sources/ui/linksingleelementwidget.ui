@@ -51,12 +51,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Titre de folio</string>
+       <string>Position</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Position</string>
+       <string>Titre de folio</string>
       </property>
      </column>
     </widget>
