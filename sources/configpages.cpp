@@ -238,7 +238,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	bool terminal_exportlist = settings.value("nomenclature-exportlist", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
-	bool readonly = settings.value("qetproject/readonly", false).toBool();
 	
 	appearance_ = new QGroupBox(tr("Apparence"), this);
 	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du système"), appearance_);
@@ -250,7 +249,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	folio_panel_ = new QCheckBox(tr("Utiliser les labels de folio à la place de leurs ID"), projects_view_mode_);
 	terminal_exportlist_ = new QCheckBox(tr("Exporter les bornes dans la nomenclature"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
-	readonly_ = new QCheckBox(tr("Keep projects in read-only, their files will cannot be over written"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
@@ -270,7 +268,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	save_label_paste_ -> setChecked(save_label_paste);
 	folio_panel_     ->setChecked(panel_folio);
 	terminal_exportlist_ ->setChecked(terminal_exportlist);
-	readonly_ ->setChecked(readonly);
 
 	if (tabbed) {
 		tabbed_mode_ -> setChecked(true);
@@ -295,7 +292,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(save_label_paste_);
 	projects_view_mode_layout -> addWidget(folio_panel_);
 	projects_view_mode_layout -> addWidget(terminal_exportlist_);
-	projects_view_mode_layout -> addWidget(readonly_);
 	
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
@@ -363,7 +359,6 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("genericpanel/folio",folio_panel_->isChecked());
 	settings.setValue("nomenclature/terminal-exportlist",terminal_exportlist_->isChecked());
-	settings.setValue("qetproject/readonly",readonly_->isChecked());
 }
 
 /// @return l'icone de cette page

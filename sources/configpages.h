@@ -100,7 +100,6 @@ class GeneralConfigurationPage : public ConfigPage {
 	QCheckBox *save_label_paste_;
 	QCheckBox *folio_panel_;
 	QCheckBox *terminal_exportlist_;
-	QCheckBox *readonly_;
 	QGroupBox *projects_view_mode_;
 	QRadioButton *windowed_mode_;
 	QRadioButton *tabbed_mode_;

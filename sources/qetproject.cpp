@@ -791,7 +791,6 @@ bool QETProject::close() {
  */
 QETResult QETProject::write()
 {
-	QSettings settings;
 		// this operation requires a filepath
 	if (file_path_.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
@@ -799,10 +798,7 @@ QETResult QETProject::write()
 		// if the project was opened read-only and the file is still non-writable, do not save the project
 	if (isReadOnly() && !QFileInfo(file_path_).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
-	
-	if (settings.value("qetproject/readonly", true).toBool()){
-	return(QString("the file %1 was opened read-only and thus will not be written, see QET settings for disable files protection").arg(file_path_));
-	}
+
 
 		//Get the project in xml
 	QDomDocument xml_project;
@@ -832,7 +828,7 @@ void QETProject::setReadOnly(bool read_only)
 	if (read_only_ != read_only)
 	{
 			//keep the file to which this project is read-only
-		read_only_file_path_ = file_path_;		
+		read_only_file_path_ = file_path_;
 		read_only_ = read_only;
 		emit(readOnlyChanged(this, read_only));
 	}
