@@ -201,8 +201,8 @@ void LinkSingleElementWidget::buildTree()
 			autonum::sequentialNumbers seq;
 			QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
 			str_list << F;
-			str_list << diag->title();
 			str_list << diag->convertPosition(elmt->scenePos()).toString();
+			str_list << diag->title();
 		}
 		else
 		{
