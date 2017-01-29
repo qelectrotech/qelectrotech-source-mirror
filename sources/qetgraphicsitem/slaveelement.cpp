@@ -32,7 +32,7 @@
 SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	CustomElement(location, qgi, state)
 {
-	Xref_item = nullptr;
+	m_xref_item = nullptr;
 	link_type_ = Slave;
 	connect(this, SIGNAL(updateLabel()), this, SLOT(updateLabel()));
 }
@@ -109,8 +109,11 @@ void SlaveElement::unlinkElement(Element *elmt)
 		disconnect(elmt -> diagram(),    SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateLabel()));
 		disconnect(elmt,                 SIGNAL(updateLabel()),                                    this, SLOT(updateLabel()));
 
-		delete Xref_item; Xref_item = NULL;
-
+		delete m_xref_item; m_xref_item = NULL;
+		
+		if (ElementTextItem *eti = this->taggedText("label"))
+			eti->setPlainText("_");
+		
 		updateLabel();
 		elmt -> unlinkElement  (this) ;
 		elmt -> setHighlighted (false);
@@ -144,16 +147,20 @@ void SlaveElement::updateLabel()
 		Xreflabel = autonum::AssignVariables::formulaToLabel(Xreflabel, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 	}
-	else label = autonum::AssignVariables::formulaToLabel(label, m_autoNum_seq, diagram(), this);
+	else
+		label = autonum::AssignVariables::formulaToLabel(label, m_autoNum_seq, diagram(), this);
 
 	// set the new label
 	ElementTextItem *eti = setTaggedText("label", label, no_editable);
-	if (eti && !isFree()) {
-		if (Xref_item) Xref_item -> setPlainText(Xreflabel);
-		else {
-			Xref_item = new QGraphicsTextItem(Xreflabel, eti);
-			Xref_item -> setFont(QETApp::diagramTextsFont(5));
-			Xref_item -> setPos(eti ->  boundingRect().bottomLeft());
+	if (eti && !isFree())
+	{
+		if (m_xref_item)
+			m_xref_item->setPlainText(Xreflabel);
+		else 
+		{
+			m_xref_item = new QGraphicsTextItem(Xreflabel, eti);
+			m_xref_item->setFont(QETApp::diagramTextsFont(5));
+			m_xref_item->setPos(eti ->  boundingRect().bottomLeft());
 		}
 	}
 }

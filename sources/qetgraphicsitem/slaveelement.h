@@ -37,7 +37,7 @@ class SlaveElement : public CustomElement
 	void updateLabel();
 
 	private:
-	QGraphicsTextItem *Xref_item;
+		QGraphicsTextItem *m_xref_item;
 };
 
 #endif // SLAVEELEMENT_H
