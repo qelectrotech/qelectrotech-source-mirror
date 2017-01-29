@@ -60,8 +60,9 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 
 	private :
 		QList <Element *> availableElements();
-//		void setUpCompleter();
+		void setUpCompleter();
 		void clearTreeWidget();
+		void setUpHeaderLabels();
 
 	private slots:
 		void diagramWasRemovedFromProject();
@@ -76,6 +77,8 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void on_m_show_linked_pb_clicked();
 		void on_m_show_this_pb_clicked();
 		
+		void on_m_search_field_textEdited(const QString &arg1);
+		
 	private:
 	Ui::LinkSingleElementWidget *ui;
 
@@ -83,6 +86,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	Element::kind m_filter;
 	
 	QHash <QTreeWidgetItem*, Element*> m_qtwi_elmt_hash;
+	QHash <QTreeWidgetItem*, QStringList> m_qtwi_strl_hash;
 	
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr,
 					*m_pending_qtwi = nullptr;

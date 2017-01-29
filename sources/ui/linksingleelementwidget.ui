@@ -14,14 +14,14 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="m_label">
+   <item row="1" column="2">
+    <widget class="QPushButton" name="m_show_this_pb">
      <property name="text">
-      <string>Cet élément est déjà lié</string>
+      <string>Voir cet élément</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
+   <item row="3" column="0" colspan="3">
     <widget class="QTreeWidget" name="m_tree_widget">
      <property name="indentation">
       <number>5</number>
@@ -31,40 +31,15 @@
      </property>
      <column>
       <property name="text">
-       <string>Label</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Commentaire</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>N° de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Label de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Position</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Titre de folio</string>
+       <string notr="true">1</string>
       </property>
      </column>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="m_show_this_pb">
+   <item row="1" column="0">
+    <widget class="QPushButton" name="m_unlink_pb">
      <property name="text">
-      <string>Voir cet élément</string>
+      <string>Délier</string>
      </property>
     </widget>
    </item>
@@ -75,10 +50,17 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QPushButton" name="m_unlink_pb">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_label">
      <property name="text">
-      <string>Délier</string>
+      <string>Cet élément est déjà lié</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QLineEdit" name="m_search_field">
+     <property name="placeholderText">
+      <string>Recherche</string>
      </property>
     </widget>
    </item>

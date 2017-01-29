@@ -21,6 +21,7 @@
 #include "elementprovider.h"
 #include "linkelementcommand.h"
 #include "diagramposition.h"
+#include "conductor.h"
 
 #include <QTreeWidgetItem>
 
@@ -54,6 +55,10 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 		if(this->m_showed_element)
 			m_showed_element->setHighlighted(false);
 	});
+	
+//	QHeaderView *qhv = ui->m_tree_widget->header();
+//	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
+//	connect(qhv, &QHeaderView::customContextMenuRequested, [](){qDebug() << "test";});
 			
 	setElement(elmt);
 }
@@ -160,7 +165,7 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
  */
 QString LinkSingleElementWidget::title() const
 {
-	if (m_element->linkType() == Element::AllReport)
+	if (m_element->linkType() & Element::AllReport)
 		return tr("Report de folio");
 	else
 		return tr("Référence croisée (esclave)");
@@ -190,29 +195,86 @@ void LinkSingleElementWidget::updateUi()
 void LinkSingleElementWidget::buildTree()
 {
 	clearTreeWidget();
-	foreach(Element *elmt, availableElements())
+	setUpHeaderLabels();
+	
+	if (m_element->linkType() == Element::Slave)
 	{
-		QStringList str_list;
-		str_list << elmt->elementInformations()["label"].toString();
-		str_list << elmt->elementInformations()["comment"].toString();
-		if (Diagram *diag = elmt->diagram())
+		foreach(Element *elmt, availableElements())
 		{
-			str_list << QString::number(diag->folioIndex() + 1);
-			autonum::sequentialNumbers seq;
-			QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
-			str_list << F;
-			str_list << diag->convertPosition(elmt->scenePos()).toString();
-			str_list << diag->title();
+			QStringList search_list;
+			QStringList str_list;
+			str_list << elmt->elementInformations()["label"].toString();
+			if (!str_list.last().isEmpty())
+				search_list << str_list.last();
+			
+			str_list << elmt->elementInformations()["comment"].toString();
+			if (!str_list.last().isEmpty())
+				search_list << str_list.last();
+			
+			if (Diagram *diag = elmt->diagram())
+			{
+				str_list << QString::number(diag->folioIndex() + 1);
+				autonum::sequentialNumbers seq;
+				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+				str_list << F;
+				str_list << diag->convertPosition(elmt->scenePos()).toString();
+				str_list << diag->title();
+			}
+			else
+			{
+				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
+			}
+			
+			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+			m_qtwi_elmt_hash.insert(qtwi, elmt);
+			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
-		else
-		{
-			qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
-		}
-		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
-		m_qtwi_elmt_hash.insert(qtwi, elmt);
 	}
 	
-	//setUpCompleter();
+	else if (m_element->linkType() & Element::AllReport)
+	{	
+		foreach(Element *elmt, availableElements())
+		{
+			QStringList search_list;
+			QStringList str_list;
+			
+			if (elmt->conductors().size())
+			{
+				ConductorProperties cp = elmt->conductors().first()->properties();
+				str_list << cp.text;
+				if (!str_list.last().isEmpty())
+					search_list << str_list.last();
+				str_list << cp.m_function;
+				if (!str_list.last().isEmpty())
+					search_list << str_list.last();
+				str_list << cp.m_tension_protocol;
+				if (!str_list.last().isEmpty())
+					search_list << str_list.last();
+			}
+			else
+				str_list << "" << "" << "";
+			
+			if (Diagram *diag = elmt->diagram())
+			{
+				str_list << QString::number(diag->folioIndex() + 1);
+				autonum::sequentialNumbers seq;
+				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+				str_list << F;
+				str_list << diag->convertPosition(elmt->scenePos()).toString();
+				str_list << diag->title();
+			}
+			else
+			{
+				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
+			}
+			
+			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+			m_qtwi_elmt_hash.insert(qtwi, elmt);
+			m_qtwi_strl_hash.insert(qtwi, search_list);
+		}
+	}
+
+	setUpCompleter();
 }
 
 /**
@@ -257,26 +319,24 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 	return elmt_list;
 }
 
-///**
-// * @brief LinkSingleElementWidget::setUpCompleter
-// * Setup the completer of search_field
-// */
-//void LinkSingleElementWidget::setUpCompleter()
-//{
-//	ui->m_search_field->clear();
-//	if(ui->m_search_field->completer())
-//		delete ui->m_search_field->completer();
+/**
+ * @brief LinkSingleElementWidget::setUpCompleter
+ * Setup the completer of search_field
+ */
+void LinkSingleElementWidget::setUpCompleter()
+{
+	ui->m_search_field->clear();
+	if(ui->m_search_field->completer())
+		delete ui->m_search_field->completer();
 	
-//	QStringList filter;
-//	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
-//	{
-//		filter << qtwi->data(0, Qt::DisplayRole).toString();
-//		filter << qtwi->data(1, Qt::DisplayRole).toString();
-//	}
-//	QCompleter *c = new QCompleter(filter, ui->m_search_field);
-//	c->setCaseSensitivity(Qt::CaseInsensitive);
-//	ui->m_search_field->setCompleter(c);
-//}
+	QStringList search;
+	foreach(QStringList strl , m_qtwi_strl_hash.values())
+		search.append(strl);
+	
+	QCompleter *c = new QCompleter(search, ui->m_search_field);
+	c->setCaseSensitivity(Qt::CaseInsensitive);
+	ui->m_search_field->setCompleter(c);
+}
 
 /**
  * @brief LinkSingleElementWidget::clearTreeWidget
@@ -297,6 +357,18 @@ void LinkSingleElementWidget::clearTreeWidget()
 		delete qtwi;
 	
 	m_qtwi_elmt_hash.clear();
+	m_qtwi_strl_hash.clear();
+}
+
+void LinkSingleElementWidget::setUpHeaderLabels()
+{
+	QStringList list;
+	if (m_element->linkType() == Element::Slave)
+		list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+	else if (m_element->linkType() & Element::AllReport)
+		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+	
+	ui->m_tree_widget->setHeaderLabels(list);
 }
 
 /**
@@ -364,6 +436,7 @@ void LinkSingleElementWidget::hideButtons()
 	ui->m_unlink_pb->hide();
 	ui->m_show_linked_pb->hide();
 	ui->m_show_this_pb->hide();
+	ui->m_search_field->show();
 }
 
 /**
@@ -376,6 +449,7 @@ void LinkSingleElementWidget::showButtons()
 	ui->m_unlink_pb->show();
 	ui->m_show_linked_pb->show();
 	ui->m_show_this_pb->show();
+	ui->m_search_field->hide();
 }
 
 void LinkSingleElementWidget::on_m_unlink_pb_clicked()
@@ -449,4 +523,35 @@ void LinkSingleElementWidget::on_m_show_linked_pb_clicked()
 void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 {
 	m_show_element->trigger();
+}
+
+/**
+ * @brief LinkSingleElementWidget::on_m_search_field_textEdited
+ * Search all items which match with @arg1 and shows it, other items is hidden.
+ * If @arg1 is empty, show all items.
+ * @param arg1
+ */
+void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
+{
+		//Show all items if arg1 is empty, if not hide all items
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
+		qtwi->setHidden(!arg1.isEmpty());
+	
+	QList <QTreeWidgetItem *> qtwi_list;
+	
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_strl_hash.keys())
+	{
+		foreach(QString str, m_qtwi_strl_hash.value(qtwi))
+		{
+			if(str.contains(arg1, Qt::CaseInsensitive))
+			{
+				qtwi_list << qtwi;
+				continue;
+			}
+		}
+	}
+	
+		//Show items which match with arg1
+	foreach(QTreeWidgetItem *qtwi, qtwi_list)
+		qtwi->setHidden(false);
 }
