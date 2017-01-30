@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 Programiści QElectroTech {2006-2017 ?}</translation>
+        <translation>2006-2017 Programiści QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
@@ -656,7 +656,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Układ tekstu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
@@ -770,7 +770,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstawianie %1</translation>
     </message>
 </context>
 <context>
@@ -1558,7 +1558,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości katalogu</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
@@ -1624,40 +1624,41 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog %1 zawiera</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translatorcomment>do zrobienia</translatorcomment>
+        <translation>
+            <numerusform>%n element, répartie</numerusform>
+            <numerusform>%n elementy, répartie(s)</numerusform>
+            <numerusform>%n elementów, répartie(s)</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>w %n katalogu.</numerusform>
+            <numerusform>w %n katalogach.</numerusform>
+            <numerusform>w %n katalogach.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka do kolekcji:  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka do plików systemowych:  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości katalogu %1</translation>
     </message>
 </context>
 <context>
@@ -2126,17 +2127,17 @@ Pole &quot;Inkrementacja&quot; nie jest używane.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Asystent układu</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Układ</translation>
     </message>
 </context>
 <context>
@@ -2642,56 +2643,56 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Odśwież</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Label</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Komentarz</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Nr arkusza</translation>
+        <translation>Nr arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Etykieta arkusza</translation>
+        <translation>Etykieta arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Tytuł arkusza</translation>
+        <translation>Tytuł arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Position</source>
-        <translation type="unfinished">Pozycja</translation>
+        <translation>Pozycja</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr przewodu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkcja</translation>
+        <translation>Funkcja</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Napięcie / Protokół</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2710,22 +2711,22 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Łączenie elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wskazanie elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Wskazanie elementu podrzędnego</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
