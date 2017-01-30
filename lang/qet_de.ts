@@ -2640,7 +2640,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
@@ -2679,17 +2679,17 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Draht-Nr.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktionstext</translation>
+        <translation>Funktionstext</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Spannung/Protokoll</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2723,7 +2723,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Anordnung speichern</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
@@ -2845,7 +2845,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Anordnung speichern</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
