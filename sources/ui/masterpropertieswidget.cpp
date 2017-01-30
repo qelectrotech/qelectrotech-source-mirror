@@ -46,6 +46,7 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	m_unlink_action = new QAction(tr("Délier l'élément"), this);
 	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
 	m_show_element  = new QAction(tr("Montrer l'élément maître"), this);
+	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
 	
 	connect(ui->m_free_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
 	connect(ui->m_link_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
@@ -63,6 +64,16 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 		this->m_element->setHighlighted(true);
 		if(this->m_showed_element)
 			m_showed_element->setHighlighted(false);
+	});
+	
+	QHeaderView *qhv = ui->m_free_tree_widget->header();
+	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(qhv, &QHeaderView::customContextMenuRequested, this, &MasterPropertiesWidget::headerCustomContextMenuRequested);
+	connect(m_save_header_state, &QAction::triggered, [this, qhv]()
+	{
+		QByteArray qba = qhv->saveState();
+		QSettings settings;
+		settings.setValue("link-element-widget/master-state", qba);
 	});
 	
 	setElement(elmt);
@@ -249,7 +260,20 @@ void MasterPropertiesWidget::updateUi()
 	if(items_list.count())
 		ui->m_link_tree_widget->addTopLevelItems(items_list);
 	
+	QSettings settings;
+	QVariant v = settings.value("link-element-widget/master-state");
+	if(!v.isNull())
+	{
+		ui->m_free_tree_widget->header()->restoreState(v.toByteArray());
+		ui->m_link_tree_widget->header()->restoreState(v.toByteArray());
+	}
+}
 
+void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
+{
+	m_context_menu->clear();
+	m_context_menu->addAction(m_save_header_state);
+	m_context_menu->popup(ui->m_free_tree_widget->header()->mapToGlobal(pos));
 }
 
 /**

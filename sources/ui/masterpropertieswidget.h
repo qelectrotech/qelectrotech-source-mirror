@@ -59,6 +59,7 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void updateUi();
 
 	private slots:
+		void headerCustomContextMenuRequested(const QPoint &pos);
 		void on_link_button_clicked();
 		void on_unlink_button_clicked();
 		void showElementFromTWI(QTreeWidgetItem *qtwi, int column);
@@ -76,7 +77,8 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	QAction *m_link_action,
 			*m_unlink_action,
 			*m_show_qtwi,
-			*m_show_element;
+			*m_show_element,
+			*m_save_header_state;
 };
 
 #endif // MASTERPROPERTIESWIDGET_H

@@ -44,6 +44,7 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 	m_link_action   = new QAction(tr("Lier l'élément"), this);
 	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
+	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
 	
 	connect(m_show_qtwi, &QAction::triggered, [this]() {this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);});
 	connect(m_link_action, &QAction::triggered, this, &LinkSingleElementWidget::linkTriggered);
@@ -56,9 +57,19 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 			m_showed_element->setHighlighted(false);
 	});
 	
-//	QHeaderView *qhv = ui->m_tree_widget->header();
-//	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
-//	connect(qhv, &QHeaderView::customContextMenuRequested, [](){qDebug() << "test";});
+	QHeaderView *qhv = ui->m_tree_widget->header();
+	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(qhv, &QHeaderView::customContextMenuRequested, this, &LinkSingleElementWidget::headerCustomContextMenuRequested);
+	connect(m_save_header_state, &QAction::triggered, [this, qhv]()
+	{
+		QByteArray qba = qhv->saveState();
+		QSettings settings;
+		
+		if (this->m_element->linkType() & Element::AllReport)
+			settings.setValue("link-element-widget/report-state", qba);
+		else if (this->m_element->linkType() == Element::Slave)
+			settings.setValue("link-element-widget/slave-state", qba);
+	});
 			
 	setElement(elmt);
 }
@@ -196,6 +207,7 @@ void LinkSingleElementWidget::buildTree()
 {
 	clearTreeWidget();
 	setUpHeaderLabels();
+	ui->m_tree_widget->header()->resetDefaultSectionSize();
 	
 	if (m_element->linkType() == Element::Slave)
 	{
@@ -229,6 +241,11 @@ void LinkSingleElementWidget::buildTree()
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
+		
+		QSettings settings;
+		QVariant v = settings.value("link-element-widget/slave-state");
+		if(!v.isNull())
+			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
 	
 	else if (m_element->linkType() & Element::AllReport)
@@ -272,6 +289,11 @@ void LinkSingleElementWidget::buildTree()
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
+		
+		QSettings settings;
+		QVariant v = settings.value("link-element-widget/report-state");
+		if(!v.isNull())
+			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
 
 	setUpCompleter();
@@ -450,6 +472,13 @@ void LinkSingleElementWidget::showButtons()
 	ui->m_show_linked_pb->show();
 	ui->m_show_this_pb->show();
 	ui->m_search_field->hide();
+}
+
+void LinkSingleElementWidget::headerCustomContextMenuRequested(const QPoint &pos)
+{
+	m_context_menu->clear();
+	m_context_menu->addAction(m_save_header_state);
+	m_context_menu->popup(ui->m_tree_widget->header()->mapToGlobal(pos));
 }
 
 void LinkSingleElementWidget::on_m_unlink_pb_clicked()

@@ -70,6 +70,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void linkTriggered();
 		void hideButtons();
 		void showButtons();
+		void headerCustomContextMenuRequested(const QPoint &pos);
 		
 		void on_m_unlink_pb_clicked();
 		void on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column);
@@ -97,7 +98,8 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	QMenu *m_context_menu;
 	QAction *m_link_action,
 			*m_show_qtwi,
-			*m_show_element;
+			*m_show_element,
+			*m_save_header_state;
 };
 
 #endif // LINKSINGLEELEMENTWIDGET_H
