@@ -3699,7 +3699,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation>formuła etykiety</translation>
+        <translation>Formuła etykiety</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
