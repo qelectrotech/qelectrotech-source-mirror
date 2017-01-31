@@ -207,7 +207,6 @@ void LinkSingleElementWidget::buildTree()
 {
 	clearTreeWidget();
 	setUpHeaderLabels();
-	ui->m_tree_widget->header()->resetDefaultSectionSize();
 	
 	if (m_element->linkType() == Element::Slave)
 	{
