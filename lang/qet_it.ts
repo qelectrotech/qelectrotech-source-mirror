@@ -2645,7 +2645,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
@@ -2684,17 +2684,17 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>N° del filo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funzione</translation>
+        <translation>Funzione</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Tensione / Protocollo</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2728,7 +2728,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvare la disposizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
@@ -2850,7 +2850,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvare la disposizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
@@ -5925,7 +5925,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="811"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
-        <translation>SAlvare il modello come</translation>
+        <translation>Salva il modello come</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
