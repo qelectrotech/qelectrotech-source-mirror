@@ -207,6 +207,7 @@ void LinkSingleElementWidget::buildTree()
 {
 	clearTreeWidget();
 	setUpHeaderLabels();
+	QSettings settings;
 	
 	if (m_element->linkType() == Element::Slave)
 	{
@@ -224,10 +225,15 @@ void LinkSingleElementWidget::buildTree()
 			
 			if (Diagram *diag = elmt->diagram())
 			{
+			if (settings.value("genericpanel/folio", false).toBool()){
 				str_list << QString::number(diag->folioIndex() + 1);
+				}
+				else
+				{
 				autonum::sequentialNumbers seq;
 				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
 				str_list << F;
+				}
 				str_list << diag->convertPosition(elmt->scenePos()).toString();
 				str_list << diag->title();
 			}
@@ -241,7 +247,7 @@ void LinkSingleElementWidget::buildTree()
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
 		
-		QSettings settings;
+
 		QVariant v = settings.value("link-element-widget/slave-state");
 		if(!v.isNull())
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
@@ -272,10 +278,15 @@ void LinkSingleElementWidget::buildTree()
 			
 			if (Diagram *diag = elmt->diagram())
 			{
+			if (settings.value("genericpanel/folio", false).toBool()){
 				str_list << QString::number(diag->folioIndex() + 1);
+				}
+				else
+				{
 				autonum::sequentialNumbers seq;
 				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
 				str_list << F;
+				}
 				str_list << diag->convertPosition(elmt->scenePos()).toString();
 				str_list << diag->title();
 			}
@@ -384,10 +395,26 @@ void LinkSingleElementWidget::clearTreeWidget()
 void LinkSingleElementWidget::setUpHeaderLabels()
 {
 	QStringList list;
-	if (m_element->linkType() == Element::Slave)
-		list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
-	else if (m_element->linkType() & Element::AllReport)
-		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+	QSettings settings;
+	if (m_element->linkType() == Element::Slave){
+	if (settings.value("genericpanel/folio", false).toBool()){
+		list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+		}
+		else
+		{
+		list << tr("Label") << tr("Commentaire") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+		}
+	}
+	
+	if (m_element->linkType() & Element::AllReport){
+	if (settings.value("genericpanel/folio", false).toBool()){
+		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+		}
+		else
+		{
+		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+		}
+	}
 	
 	ui->m_tree_widget->setHeaderLabels(list);
 }
