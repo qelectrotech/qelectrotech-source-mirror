@@ -1,0 +1,33 @@
+<definition link_type="simple" type="element" version="0.51" hotspot_x="35" orientation="dyyy" hotspot_y="40" height="70" width="70">
+    <uuid uuid="{18833ca2-618e-457e-b061-04fc91a83cd3}"/>
+    <names>
+        <name lang="fr">Prise DTI</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon antialias="false" x9="3" y12="0" y8="0" x11="-3" y13="0" x13="-4" y11="2" y14="0" x4="-11" x5="11" y3="-2" y7="-2" y4="-12" y6="-2" y10="2" x3="-11" x2="-5" x14="-4" y2="-2" y1="0" y9="0" x8="5" x7="5" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="11" y5="-12" x10="3" x12="-3"/>
+        <input text="_" x="-8" y="37" size="9" tagg="label" rotate="true"/>
+        <line end1="none" antialias="false" x1="-1" x2="-1" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-3" x2="-3" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-5" x2="-5" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-7" x2="-7" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="1" x2="1" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="3" x2="3" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="5" x2="5" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <line end1="none" antialias="false" x1="7" x2="7" end2="none" y1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="-10" length1="1.5"/>
+        <rect x="-14" antialias="false" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="28"/>
+        <rect x="-22" antialias="false" y="-27" style="line-style:normal;line-weight:thin;filling:none;color:black" height="44" width="44"/>
+        <text text="TEST" x="-9" y="-18" size="6"/>
+        <arc x="-30" antialias="true" y="-35" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" height="8" width="8"/>
+        <arc x="22" antialias="true" y="-35" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" height="8" width="8"/>
+        <arc x="22" antialias="true" y="17" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" height="8" width="8"/>
+        <arc x="-30" antialias="true" y="17" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" height="8" width="8"/>
+        <line end1="none" antialias="false" x1="-25" x2="25" end2="none" y1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-35" length1="1.5"/>
+        <line end1="none" antialias="false" x1="30" x2="30" end2="none" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="20" length1="1.5"/>
+        <line end1="none" antialias="false" x1="25" x2="-25" end2="none" y1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="25" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-30" x2="-30" end2="none" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-30" length1="1.5"/>
+        <text text="DTI" x="-11" y="16" size="9"/>
+        <terminal x="0" y="-35" orientation="n"/>
+        <terminal x="0" y="24" orientation="s"/>
+    </description>
+</definition>

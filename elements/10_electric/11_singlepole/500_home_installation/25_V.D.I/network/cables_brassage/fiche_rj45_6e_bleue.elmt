@@ -1,0 +1,38 @@
+<definition width="30" height="70" hotspot_x="15" link_type="simple" hotspot_y="24" type="element" version="0.51" orientation="dyyy">
+    <uuid uuid="{98a92b54-9720-496b-a887-5afbeb470651}"/>
+    <names>
+        <name lang="fr">Fiche RJ45 Cat 6e T568A</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon y4="-4" y5="-21" y6="-21" x2="10" x6="-9" y3="-4" x5="-10" antialias="false" y2="-21" x1="-10" x3="10" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-21" x4="-10"/>
+        <polygon x8="-3" y3="41" y1="26" y6="41" x3="3" x5="-1" x7="-3" y5="38" y8="26" x6="-3" y7="41" x4="3" style="line-style:normal;line-weight:thin;filling:blue;color:black" y4="41" x2="3" y2="26" x1="-3" antialias="false"/>
+        <line length2="1.5" x2="-7" end1="none" antialias="false" length1="1.5" y2="-15" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="-5" end1="none" antialias="false" length1="1.5" y2="-15" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="-3" end1="none" antialias="false" length1="1.5" y2="-15" x1="-3" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="-1" end1="none" antialias="false" length1="1.5" y2="-15" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="1" end1="none" antialias="false" length1="1.5" y2="-15" x1="1" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="3" end1="none" antialias="false" length1="1.5" y2="-15" x1="3" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="5" end1="none" antialias="false" length1="1.5" y2="-15" x1="5" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="7" end1="none" antialias="false" length1="1.5" y2="-15" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:yellow" y1="-21" end2="none"/>
+        <line length2="1.5" x2="-1" end1="none" antialias="false" length1="1.5" y2="-4" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:blue" y1="-15" end2="none"/>
+        <line length2="1.5" x2="1" end1="none" antialias="false" length1="1.5" y2="-4" x1="1" style="line-style:dotted;line-weight:normal;filling:none;color:blue" y1="-15" end2="none"/>
+        <line length2="1.5" x2="3" end1="none" antialias="false" length1="1.5" y2="-4" x1="3" style="line-style:normal;line-weight:normal;filling:none;color:orange" y1="-15" end2="none"/>
+        <line length2="1.5" x2="5" end1="none" antialias="false" length1="1.5" y2="-4" x1="5" style="line-style:dotted;line-weight:normal;filling:none;color:brun" y1="-15" end2="none"/>
+        <line length2="1.5" x2="7" end1="none" antialias="false" length1="1.5" y2="-4" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:brun" y1="-15" end2="none"/>
+        <line length2="1.5" x2="-3" end1="none" antialias="false" length1="1.5" y2="-4" x1="-3" style="line-style:dotted;line-weight:normal;filling:none;color:orange" y1="-15" end2="none"/>
+        <line length2="1.5" x2="-5" end1="none" antialias="false" length1="1.5" y2="-4" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:green" y1="-15" end2="none"/>
+        <line length2="1.5" x2="-7" end1="none" antialias="false" length1="1.5" y2="-4" x1="-7" style="line-style:dotted;line-weight:normal;filling:none;color:green" y1="-15" end2="none"/>
+        <polygon x8="11" y3="20" y1="-4" y6="20" x3="-4" y9="-4" x5="4" x7="11" y5="27" y8="-4" x6="4" y7="14" x4="-4" style="line-style:normal;line-weight:normal;filling:blue;color:black" x9="-10" y4="27" x2="-11" y2="14" x1="-11" antialias="false"/>
+        <input text="_" rotate="true" y="-4" tagg="label" x="10" size="9"/>
+        <rect width="16" height="7" y="-15" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="T568A" y="7" x="-8" size="4"/>
+        <line length2="1.5" x2="-2" end1="none" antialias="false" length1="1.5" y2="21" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" end2="none"/>
+        <line length2="1.5" x2="-2" end1="none" antialias="false" length1="1.5" y2="23" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" end2="none"/>
+        <line length2="1.5" x2="-2" end1="none" antialias="false" length1="1.5" y2="25" x1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" end2="none"/>
+        <line length2="1.5" x2="2" end1="none" antialias="false" length1="1.5" y2="25" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" end2="none"/>
+        <line length2="1.5" x2="2" end1="none" antialias="false" length1="1.5" y2="23" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" end2="none"/>
+        <line length2="1.5" x2="2" end1="none" antialias="false" length1="1.5" y2="21" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" end2="none"/>
+        <terminal y="40" x="0" orientation="s"/>
+    </description>
+</definition>

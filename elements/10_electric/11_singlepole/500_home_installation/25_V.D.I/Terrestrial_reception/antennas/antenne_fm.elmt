@@ -1,0 +1,15 @@
+<definition width="40" link_type="simple" orientation="dyyy" hotspot_y="22" version="0.51" type="element" height="30" hotspot_x="9">
+    <uuid uuid="{a748d98b-1a3b-40a7-a223-b877ed7f5e3b}"/>
+    <names>
+        <name lang="fr">Antenne FM</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input size="9" tagg="label" x="-1" text="FM" rotate="true" y="-33"/>
+        <ellipse width="27" antialias="false" x="-3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" height="14" y="-17"/>
+        <ellipse width="27" antialias="false" x="-3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" height="14" y="-19"/>
+        <line x1="-3" x2="23" end2="none" y2="-11" antialias="false" y1="-11" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="10" x2="10" end2="none" y2="3" antialias="false" y1="-11" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <terminal orientation="s" x="10" y="2"/>
+    </description>
+</definition>

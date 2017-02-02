@@ -1,0 +1,17 @@
+<definition width="20" link_type="simple" orientation="dyyy" hotspot_y="10" version="0.51" type="element" height="30" hotspot_x="10">
+    <uuid uuid="{eeea918c-1e37-4080-9e2d-d616a0a0f833}"/>
+    <names>
+        <name lang="fr">Raccord F mâle-F mâle</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect width="14" antialias="false" x="-7" style="line-style:normal;line-weight:thin;filling:white;color:black" height="9" y="-8"/>
+        <rect width="16" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:white;color:black" height="4" y="-5"/>
+        <rect width="14" antialias="false" x="-7" style="line-style:normal;line-weight:thin;filling:white;color:black" height="9" y="9"/>
+        <rect width="10" antialias="false" x="-5" style="line-style:normal;line-weight:thin;filling:white;color:black" height="8" y="1"/>
+        <rect width="6" antialias="false" x="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="-5"/>
+        <rect width="16" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:white;color:black" height="4" y="11"/>
+        <rect width="6" antialias="false" x="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="11"/>
+        <input size="9" tagg="label" x="10" text="" rotate="true" y="9"/>
+    </description>
+</definition>

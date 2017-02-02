@@ -1,0 +1,23 @@
+<definition link_type="simple" type="element" version="0.51" hotspot_x="20" orientation="dyyy" hotspot_y="9" height="30" width="40">
+    <uuid uuid="{533aec10-2b9b-438c-ab56-5586119bbe8b}"/>
+    <names>
+        <name lang="fr">Prise RJ45 Cat 6e</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect x="-14" antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" height="20" width="28"/>
+        <polygon antialias="false" x9="3" y12="1" y8="1" x11="-3" y13="1" x13="-4" y11="-2" y14="1" x4="-11" x5="11" y3="3" y7="3" y4="12" y6="3" y10="-2" x3="-11" x2="-5" x14="-4" y2="3" y1="1" y9="1" x8="5" x7="5" x1="-5" style="line-style:normal;line-weight:normal;filling:white;color:black" x6="11" y5="12" x10="3" x12="-3"/>
+        <input text="_" x="-7" y="-37" size="9" tagg="label" rotate="true"/>
+        <line end1="none" antialias="false" x1="-1" x2="-1" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-3" x2="-3" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-5" x2="-5" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="-7" x2="-7" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="1" x2="1" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="3" x2="3" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="5" x2="5" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <line end1="none" antialias="false" x1="7" x2="7" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y2="12" length1="1.5"/>
+        <rect x="7" antialias="false" y="-3" style="line-style:normal;line-weight:normal;filling:orange;color:orange" height="2" width="4"/>
+        <rect x="-11" antialias="false" y="-3" style="line-style:normal;line-weight:normal;filling:green;color:green" height="2" width="4"/>
+        <terminal x="0" y="15" orientation="s"/>
+    </description>
+</definition>

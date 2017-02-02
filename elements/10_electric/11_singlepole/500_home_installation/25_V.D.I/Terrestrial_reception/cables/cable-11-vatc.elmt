@@ -1,0 +1,32 @@
+<definition width="70" hotspot_x="53" type="element" link_type="simple" height="20" hotspot_y="10" orientation="dyyy" version="0.51">
+    <uuid uuid="{f44c84d6-e159-415c-a6d0-518c3d55fc71}"/>
+    <names>
+        <name lang="fr">Câble 11 VATC </name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <rect width="10" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-7" y="-4" height="8" antialias="false"/>
+        <input rotate="true" x="-26" y="-17" tagg="label" size="9" text=""/>
+        <line length1="1.5" x2="3" y2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-3" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="3" y2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="1" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-7" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-3" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-7" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="1" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-3" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="3" end1="none" y1="-2" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="1" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="3" end1="none" y1="2" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-7" y2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-5" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-7" y2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-5" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="3" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="3" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-1" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-7" end1="none" y1="-2" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="3" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-5" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-1" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="3" end1="none" y1="0" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-5" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-7" end1="none" y1="2" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="-3" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-7" end1="none" y1="0" length2="1.5" antialias="false" end2="none"/>
+        <line length1="1.5" x2="1" y2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-7" end1="none" y1="-4" length2="1.5" antialias="false" end2="none"/>
+        <rect width="36" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-43" y="-4" height="8" antialias="false"/>
+        <line length1="1.5" x2="10" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7" end1="none" y1="0" length2="1.5" antialias="false" end2="none"/>
+        <text x="-40" y="3" size="5" text="11 VATC"/>
+        <rect width="4" style="line-style:normal;line-weight:thin;filling:white;color:black" x="3" y="-4" height="8" antialias="false"/>
+        <terminal x="-44" y="0" orientation="w"/>
+    </description>
+</definition>

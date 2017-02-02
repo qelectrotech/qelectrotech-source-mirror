@@ -1,0 +1,21 @@
+<definition type="element" hotspot_x="20" orientation="dyyy" width="40" height="30" link_type="simple" version="0.51" hotspot_y="19">
+    <uuid uuid="{0df431cf-c5ff-4188-86dd-7ad678e95adc}"/>
+    <names>
+        <name lang="fr">Prise RJ45 Cat 6e</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input tagg="label" rotate="true" x="14" size="9" text="_" y="-26"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-1" end2="none" x1="-1" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-3" end2="none" x1="-3" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5" end2="none" x1="-5" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-7" end2="none" x1="-7" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="1" end2="none" x1="1" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="3" end2="none" x1="3" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5" end2="none" x1="5" length1="1.5"/>
+        <line length2="1.5" antialias="false" y2="1" end1="none" y1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="7" end2="none" x1="7" length1="1.5"/>
+        <rect antialias="false" x="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" width="28" height="20" y="-15"/>
+        <polygon y2="-7" x3="-11" x12="-3" x9="3" x11="-3" x5="11" y12="-11" y13="-9" x1="-5" x6="11" x13="-3" y10="-11" y14="-9" x2="-5" y11="-11" y6="-7" y5="1" y9="-9" x7="5" y7="-7" y4="1" y1="-7" y8="-9" x10="3" antialias="false" x4="-11" y3="-7" x8="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x14="-5"/>
+        <terminal x="0" orientation="s" y="5"/>
+    </description>
+</definition>

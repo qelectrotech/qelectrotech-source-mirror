@@ -1,0 +1,26 @@
+<definition width="30" link_type="simple" orientation="dyyy" hotspot_y="6" version="0.51" type="element" height="30" hotspot_x="15">
+    <uuid uuid="{60928c5c-a3ab-4cad-80e2-39f6c4e8b7fa}"/>
+    <names>
+        <name lang="fr">Prise TV-FM-Sat</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <input size="9" tagg="label" x="-14" text="_" rotate="true" y="33"/>
+        <rect width="20" antialias="false" x="-10" style="line-style:normal;line-weight:thin;filling:white;color:none" height="20" y="0"/>
+        <circle antialias="false" x="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" y="11"/>
+        <circle antialias="false" x="-5.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1" y="13.5"/>
+        <arc width="4" start="90" angle="90" antialias="true" x="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="0"/>
+        <arc width="4" start="0" angle="90" antialias="true" x="6" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="0"/>
+        <arc width="4" start="270" angle="90" antialias="true" x="6" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="16"/>
+        <arc width="4" start="180" angle="90" antialias="true" x="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="16"/>
+        <line x1="-8" x2="8" end2="none" y2="0" antialias="false" y1="0" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="10" x2="10" end2="none" y2="18" antialias="false" y1="2" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="8" x2="-8" end2="none" y2="20" antialias="false" y1="20" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="-10" x2="-10" end2="none" y2="2" antialias="false" y1="18" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <circle antialias="false" x="2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" y="11"/>
+        <circle antialias="false" x="-3" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" diameter="6" y="2"/>
+        <circle antialias="false" x="4" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2" y="13"/>
+        <circle antialias="false" x="-0.5" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="1" y="4.5"/>
+        <terminal orientation="n" x="0" y="0"/>
+    </description>
+</definition>

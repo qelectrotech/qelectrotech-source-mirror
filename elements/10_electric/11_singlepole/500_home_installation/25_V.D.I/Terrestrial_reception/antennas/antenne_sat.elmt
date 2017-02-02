@@ -1,0 +1,49 @@
+<definition type="element" link_type="simple" height="90" hotspot_x="39" hotspot_y="38" width="100" orientation="dyyy" version="0.51">
+    <uuid uuid="{4767fbfe-cb55-4d4a-a83a-a816c3a8694a}"/>
+    <names>
+        <name lang="fr">Antenne Sat</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.5" antialias="false" x="-25.0362" width="2.62397" y="30.725"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.5" antialias="false" x="-19.7882" width="2.62397" y="30.725"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.5" antialias="false" x="-35.532" width="2.62397" y="30.725"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="3.5" antialias="false" x="-30.2841" width="2.62397" y="30.725"/>
+        <line end1="none" y1="31.425" end2="none" y2="32.125" x1="-17.1643" x2="-19.7882" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="31.425" end2="none" y2="32.125" x1="-32.9081" x2="-35.532" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <input text="_" tagg="label" size="9" rotate="true" x="45" y="265"/>
+        <line end1="none" y1="31.425" end2="none" y2="32.125" x1="-22.4122" x2="-25.0362" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="31.425" end2="none" y2="32.125" x1="-27.6601" x2="-30.2841" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.125" end2="none" y2="32.825" x1="-27.6601" x2="-30.2841" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.125" end2="none" y2="32.825" x1="-22.4122" x2="-25.0362" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.125" end2="none" y2="32.825" x1="-32.9081" x2="-35.532" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.125" end2="none" y2="32.825" x1="-17.1643" x2="-19.7882" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.825" end2="none" y2="33.525" x1="-17.1643" x2="-19.7882" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.825" end2="none" y2="33.525" x1="-27.6601" x2="-30.2841" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.825" end2="none" y2="33.525" x1="-32.9081" x2="-35.532" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="32.825" end2="none" y2="33.525" x1="-22.4122" x2="-25.0362" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="33.525" end2="none" y2="34.225" x1="-22.4122" x2="-24.7738" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="33.525" end2="none" y2="34.225" x1="-32.9081" x2="-35.2696" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="33.525" end2="none" y2="34.225" x1="-17.1643" x2="-19.5258" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="33.525" end2="none" y2="34.225" x1="-27.6601" x2="-30.0217" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="0.35" antialias="false" x="-35.2696" width="2.09917" y="34.225"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="0.35" antialias="false" x="-24.7738" width="2.09917" y="34.225"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="0.35" antialias="false" x="-30.0217" width="2.09917" y="34.225"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="0.35" antialias="false" x="-19.5258" width="2.09917" y="34.225"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="28" antialias="false" width="7.8719" x="-2.47004" y="-7.775"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="17.5" antialias="false" x="-35.532" width="18.3678" y="13.225"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="14" antialias="true" start="-90" x="-37.5" width="3.93595" y="-0.775" angle="-180"/>
+        <line end1="none" y1="-0.775" end2="none" y2="-0.775" x1="-35.532" x2="-9.29236" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="-0.775" end2="none" y2="-7.775" x1="-9.29236" x2="1.20351" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="13.225" end2="none" y2="20.225" x1="-9.02996" x2="1.46591" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <line end1="none" y1="23.725" end2="none" y2="44.725" x1="-9.29236" x2="40.563" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" height="79.45" antialias="false" width="29.3884" x="28.3616" y="-33.5"/>
+        <line end1="none" y1="13.225" end2="none" y2="13.225" x1="-17.1643" x2="-9.29236" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <arc style="line-style:normal;line-weight:hight;filling:none;color:black" height="79.45" antialias="true" start="90" x="28.3616" width="29.3884" y="-33.5" angle="-180"/>
+        <line end1="none" y1="13" end2="none" y2="23" x1="-9" x2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5"/>
+        <terminal x="-18.4762" orientation="s" y="37.725"/>
+        <terminal x="-23.7242" orientation="s" y="37.725"/>
+        <terminal x="-28.9721" orientation="s" y="37.725"/>
+        <terminal x="-34.22" orientation="s" y="37.725"/>
+    </description>
+</definition>

@@ -1,0 +1,39 @@
+<definition link_type="simple" hotspot_x="43" height="20" version="0.51" width="110" hotspot_y="10" type="element" orientation="dyyy">
+    <uuid uuid="{7f48be77-f838-4591-8197-8a1ec31e6cec}"/>
+    <names>
+        <name lang="fr">Câble Cat 6A</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y4="4" x3="58" y1="4" x1="20" antialias="false" x5="20" y5="4" x2="20" y3="-4" x6="20" y6="4" x4="62" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" y2="-4"/>
+        <line length1="1.5" y1="0" x1="-13" antialias="true" end1="none" length2="1.5" x2="-18" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y2="4"/>
+        <line length1="1.5" y1="0" x1="13" antialias="true" end1="none" length2="1.5" x2="8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y2="4"/>
+        <line length1="1.5" y1="5" x1="3" antialias="false" end1="none" length2="1.5" x2="9" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:green" y2="0"/>
+        <line length1="1.5" y1="5" x1="-23" antialias="false" end1="none" length2="1.5" x2="-17" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:blue" y2="0"/>
+        <line length1="1.5" y1="3" x1="-22" antialias="true" end1="none" length2="1.5" x2="-18" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y2="4"/>
+        <line length1="1.5" y1="3" x1="4" antialias="true" end1="none" length2="1.5" x2="8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y2="4"/>
+        <line length1="1.5" y1="5" x1="-8" antialias="false" end1="none" length2="1.5" x2="3" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:green" y2="5"/>
+        <line length1="1.5" y1="5" x1="-34" antialias="false" end1="none" length2="1.5" x2="-23" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:blue" y2="5"/>
+        <line length1="1.5" y1="3" x1="4" antialias="false" end1="none" length2="1.5" x2="-8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y2="3"/>
+        <line length1="1.5" y1="-5" x1="8" antialias="true" end1="none" length2="1.5" x2="13" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:brun" y2="0"/>
+        <line length1="1.5" y1="-5" x1="-18" antialias="true" end1="none" length2="1.5" x2="-13" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:orange" y2="0"/>
+        <line length1="1.5" y1="3" x1="-22" antialias="false" end1="none" length2="1.5" x2="-34" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y2="3"/>
+        <line length1="1.5" y1="-3" x1="-23" antialias="false" end1="none" length2="1.5" x2="-18" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:orange" y2="-5"/>
+        <line length1="1.5" y1="-5" x1="-22" antialias="true" end1="none" length2="1.5" x2="-17.05" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:orange" y2="-0.05"/>
+        <line length1="1.5" y1="-3" x1="3" antialias="false" end1="none" length2="1.5" x2="8" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:brun" y2="-5"/>
+        <line length1="1.5" y1="-3" x1="-34" antialias="false" end1="none" length2="1.5" x2="-23" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:orange" y2="-3"/>
+        <line length1="1.5" y1="-5" x1="-22" antialias="false" end1="none" length2="1.5" x2="-34" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:orange" y2="-5"/>
+        <line length1="1.5" y1="-5" x1="4" antialias="true" end1="none" length2="1.5" x2="8.95" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:brun" y2="-0.05"/>
+        <input tagg="label" y="7.5" x="20" text=" 0.00 m" size="3"/>
+        <line length1="1.5" y1="0" x1="-36" antialias="false" end1="none" length2="1.5" x2="20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0"/>
+        <line length1="1.5" y1="-4" x1="20" antialias="false" end1="none" length2="1.5" x2="20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4"/>
+        <line length1="1.5" y1="4" x1="20" antialias="false" end1="none" length2="1.5" x2="62" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4"/>
+        <line length1="1.5" y1="-4" x1="20" antialias="false" end1="none" length2="1.5" x2="58" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4"/>
+        <line length1="1.5" y1="-3" x1="-8" antialias="false" end1="none" length2="1.5" x2="3" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:brun" y2="-3"/>
+        <input tagg="label" y="-0.5" x="20" rotate="true" text="Cat 6A" size="3"/>
+        <line length1="1.5" y1="-4" x1="58" antialias="false" end1="none" length2="1.5" x2="62" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="4"/>
+        <line length1="1.5" y1="-5" x1="4" antialias="false" end1="none" length2="1.5" x2="-8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:brun" y2="-5"/>
+        <terminal y="0" x="-36" orientation="w"/>
+    </description>
+</definition>

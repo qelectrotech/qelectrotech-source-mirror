@@ -1,0 +1,24 @@
+<definition width="40" link_type="simple" orientation="dyyy" hotspot_y="9" version="0.51" type="element" height="20" hotspot_x="13">
+    <uuid uuid="{82a689cc-7613-4963-bc25-beb8d61f53aa}"/>
+    <names>
+        <name lang="fr">Charge 75 Ohms</name>
+    </names>
+    <informations>Baboune41</informations>
+    <description>
+        <line x1="-1" x2="-1" end2="none" y2="-4" antialias="false" y1="-6" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <rect width="14" antialias="false" x="-7" style="line-style:normal;line-weight:thin;filling:white;color:black" height="9" y="-1"/>
+        <rect width="10" antialias="false" x="-5" style="line-style:normal;line-weight:thin;filling:white;color:white" height="3" y="-4"/>
+        <arc width="2" start="-180" angle="-180" antialias="true" x="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-7"/>
+        <line x1="1" x2="1" end2="none" y2="-6" antialias="false" y1="-4" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <rect width="16" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:white;color:black" height="4" y="1"/>
+        <rect width="6" antialias="false" x="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" y="1"/>
+        <input size="9" tagg="label" x="-8" text="" rotate="true" y="-18"/>
+        <arc width="2" start="90" angle="90" antialias="true" x="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-4"/>
+        <arc width="2" start="0" angle="90" antialias="true" x="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="2" y="2"/>
+        <arc width="2" start="0" angle="90" antialias="true" x="3" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-4"/>
+        <line x1="-4" x2="4" end2="none" y2="-4" antialias="false" y1="-4" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="-5" x2="-5" end2="none" y2="-1" antialias="false" y1="-3" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="5" x2="5" end2="none" y2="-1" antialias="false" y1="-3" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+        <line x1="-5" x2="5" end2="none" y2="-1" antialias="false" y1="-1" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length2="1.5"/>
+    </description>
+</definition>
