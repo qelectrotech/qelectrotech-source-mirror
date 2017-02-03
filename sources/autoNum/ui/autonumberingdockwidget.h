@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef AUTONUMBERINGDOCKWIDGET_H
-#define AUTONUMBERINGDOCKWIDGET_H_H
+#define AUTONUMBERINGDOCKWIDGET_H
 
 #include "qetproject.h"
 #include "projectview.h"
