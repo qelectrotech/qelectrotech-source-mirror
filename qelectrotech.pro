@@ -59,6 +59,10 @@ DEFINES += QET_ALLOW_OVERRIDE_CTBTD_OPTION
 # Commenter la ligne ci-dessous pour desactiver l'option --config-dir
 DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
+# warn on *any* usage of deprecated APIs
+#DEFINES += QT_DEPRECATED_WARNINGS
+
+
 ######################################################################
 
 include(sources/PropertiesEditor/PropertiesEditor.pri)

@@ -32,6 +32,7 @@
 #include "nameslist.h"
 #include "ui/elementpropertieseditorwidget.h"
 #include "eseventinterface.h"
+#include <algorithm>
 
 #include <QKeyEvent>
 
@@ -749,7 +750,7 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	
 	// ordonne les parties par leur zValue
 	if (options & SortByZValue) {
-		qSort(all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
+		std::sort (all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
 	}
 	
 	// rajoute eventuellement les bornes

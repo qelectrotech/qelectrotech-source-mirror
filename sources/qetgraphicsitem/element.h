@@ -22,6 +22,7 @@
 #include "qetgraphicsitem.h"
 #include "diagramcontext.h"
 #include "assignvariables.h"
+#include <algorithm>
 
 class ElementTextItem;
 class QETProject;
@@ -248,7 +249,7 @@ inline QUuid Element::uuid() const {
  * @return the list of linked elements, the list is sorted by position
  */
 inline QList <Element *> Element::linkedElements() {
-	 qSort(connected_elements.begin(), connected_elements.end(), comparPos);
+	 std::sort(connected_elements.begin(), connected_elements.end(), comparPos);
 	return connected_elements;
 }
 

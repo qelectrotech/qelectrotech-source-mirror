@@ -18,6 +18,7 @@
 #include "diagramcontext.h"
 #include <QRegExp>
 #include "qet.h"
+#include <algorithm>
 
 /**
 	@return a list containing all the keys in the context object.
@@ -30,7 +31,7 @@ QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const {
 		if (order == Alphabetical) {
 			qSort(keys_list);
 		} else {
-			qSort(keys_list.begin(), keys_list.end(), DiagramContext::stringLongerThan);
+			std::sort(keys_list.begin(), keys_list.end(), DiagramContext::stringLongerThan);
 		}
 		return(keys_list);
 	}

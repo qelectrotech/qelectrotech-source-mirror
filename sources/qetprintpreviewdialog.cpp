@@ -23,6 +23,7 @@
 
 #include <QPrintPreviewWidget>
 #include <QPageSetupDialog>
+#include <algorithm>
 
 /**
 	Constructeur
@@ -400,7 +401,7 @@ void QETPrintPreviewDialog::updateZoomList() {
 	// ajout du zoom en cours
 	if (current_zoom_is_not_null && (!zooms_real.contains(current_zoom))) {
 		zooms_real << current_zoom;
-		qSort(zooms_real.begin(), zooms_real.end());
+		std::sort(zooms_real.begin(), zooms_real.end());
 	}
 	
 	// remplissage de la liste deroulante

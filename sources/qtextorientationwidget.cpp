@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qtextorientationwidget.h"
+#include <algorithm>
 
 /**
 	Constructeur
@@ -283,7 +284,7 @@ QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius
 	// recupere les longueurs a disposition
 	QList<qreal> available_lengths = text_size_hash_.values();
 	// trie les longueurs par ordre croissant
-	qSort(available_lengths.begin(), available_lengths.end());
+	std::sort(available_lengths.begin(), available_lengths.end());
 	// recherche la position ou l'on insererait le rayon
 	QList<qreal>::const_iterator i = qUpperBound(available_lengths, radius);
 	
