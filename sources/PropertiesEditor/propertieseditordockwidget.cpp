@@ -48,7 +48,7 @@ PropertiesEditorDockWidget::~PropertiesEditorDockWidget()
  */
 void PropertiesEditorDockWidget::clear()
 {
-	foreach (PropertiesEditorWidget *editor, m_editor_list)
+	for (PropertiesEditorWidget *editor: m_editor_list)
 	{
 		m_editor_list.removeOne(editor);
 		ui->m_main_vlayout->removeWidget(editor);
@@ -64,7 +64,7 @@ void PropertiesEditorDockWidget::clear()
  */
 void PropertiesEditorDockWidget::apply()
 {
-	foreach(PropertiesEditorWidget *editor, m_editor_list)
+	for (PropertiesEditorWidget *editor: m_editor_list)
 		editor->apply();
 }
 
@@ -74,7 +74,7 @@ void PropertiesEditorDockWidget::apply()
  */
 void PropertiesEditorDockWidget::reset()
 {
-	foreach(PropertiesEditorWidget *editor, m_editor_list)
+	for (PropertiesEditorWidget *editor: m_editor_list)
 		editor->reset();
 }
 

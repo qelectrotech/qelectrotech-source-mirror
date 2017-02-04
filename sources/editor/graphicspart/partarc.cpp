@@ -133,7 +133,7 @@ QRectF PartArc::boundingRect() const
 {
 	QRectF r = AbstractPartEllipse::boundingRect();
 
-	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+	for (QRectF rect: m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
 		r |= rect;
 
 	return r;
@@ -154,7 +154,7 @@ QPainterPath PartArc::shape() const
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+		for (QRectF rect: m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
 			shape.addRect(rect);
 
 	return shape;

@@ -70,7 +70,7 @@ DiagramContext DiagramContextWidget::context() const {
 void DiagramContextWidget::setContext(const DiagramContext &context) {
 	clear();
 	int i = 0;
-	foreach (QString key, context.keys(DiagramContext::Alphabetical)) {
+	for (QString key: context.keys(DiagramContext::Alphabetical)) {
 		table_ -> setItem(i, 0, new QTableWidgetItem(key));
 		table_ -> setItem(i, 1, new QTableWidgetItem(context[key].toString()));
 		++ i;

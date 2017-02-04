@@ -39,7 +39,7 @@ ConductorProfile::ConductorProfile(Conductor *conductor) {
 ConductorProfile::ConductorProfile(const ConductorProfile &c) {
 	beginOrientation = c.beginOrientation;
 	endOrientation   = c.endOrientation;
-	foreach(ConductorSegmentProfile *csp, c.segments) {
+	for (ConductorSegmentProfile *csp: c.segments) {
 		segments << new ConductorSegmentProfile(*csp);
 	}
 }
@@ -57,7 +57,7 @@ ConductorProfile &ConductorProfile::operator=(const ConductorProfile &c) {
 	// copie les informations de l'autre profil de conducteur
 	beginOrientation = c.beginOrientation;
 	endOrientation   = c.endOrientation;
-	foreach(ConductorSegmentProfile *csp, c.segments) {
+	for (ConductorSegmentProfile *csp: c.segments) {
 		segments << new ConductorSegmentProfile(*csp);
 	}
 	return(*this);
@@ -75,14 +75,14 @@ bool ConductorProfile::isNull() const {
 
 /// supprime les segments du profil de conducteur
 void ConductorProfile::setNull() {
-	foreach(ConductorSegmentProfile *csp, segments) delete csp;
+	for (ConductorSegmentProfile *csp: segments) delete csp;
 	segments.clear();
 }
 
 /// @return la largeur occupee par le conducteur
 qreal ConductorProfile::width() const {
 	qreal width = 0.0;
-	foreach(ConductorSegmentProfile *csp, segments) {
+	for (ConductorSegmentProfile *csp: segments) {
 		if (csp -> isHorizontal) width += csp -> length;
 	}
 	return(width);
@@ -91,7 +91,7 @@ qreal ConductorProfile::width() const {
 /// @return la hauteur occupee par le conducteur
 qreal ConductorProfile::height() const{
 	qreal height = 0.0;
-	foreach(ConductorSegmentProfile *csp, segments) {
+	for (ConductorSegmentProfile *csp: segments) {
 		if (!csp -> isHorizontal) height += csp -> length;
 	}
 	return(height);
@@ -104,7 +104,7 @@ qreal ConductorProfile::height() const{
 uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const {
 	if (type == QET::Both) return(segments.count());
 	uint nb_seg = 0;
-	foreach(ConductorSegmentProfile *csp, segments) {
+	for (ConductorSegmentProfile *csp: segments) {
 		if (type == QET::Horizontal && csp -> isHorizontal) ++ nb_seg;
 		else if (type == QET::Vertical && !csp -> isHorizontal) ++ nb_seg;
 	}
@@ -114,7 +114,7 @@ uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const {
 /// @return les segments horizontaux de ce profil
 QList<ConductorSegmentProfile *> ConductorProfile::horizontalSegments() {
 	QList<ConductorSegmentProfile *> segments_list;
-	foreach(ConductorSegmentProfile *csp, segments) {
+	for (ConductorSegmentProfile *csp: segments) {
 		if (csp -> isHorizontal) segments_list << csp;
 	}
 	return(segments_list);
@@ -123,7 +123,7 @@ QList<ConductorSegmentProfile *> ConductorProfile::horizontalSegments() {
 /// @return les segments verticaux de ce profil
 QList<ConductorSegmentProfile *> ConductorProfile::verticalSegments() {
 	QList<ConductorSegmentProfile *> segments_list;
-	foreach(ConductorSegmentProfile *csp, segments) {
+	for (ConductorSegmentProfile *csp: segments) {
 		if (!csp -> isHorizontal) segments_list << csp;
 	}
 	return(segments_list);
@@ -136,7 +136,7 @@ void ConductorProfile::fromConductor(Conductor *conductor) {
 	// supprime les segments precedents
 	setNull();
 	
-	foreach(ConductorSegment *conductor_segment, conductor -> segmentsList()) {
+	for (ConductorSegment *conductor_segment: conductor -> segmentsList()) {
 		segments << new ConductorSegmentProfile(conductor_segment);
 	}
 	beginOrientation = conductor -> terminal1 -> orientation();
@@ -150,7 +150,7 @@ void ConductorProfile::fromConductor(Conductor *conductor) {
 */
 QDebug &operator<<(QDebug d, ConductorProfile &t) {
 	d << "ConductorProfile {";
-	foreach(ConductorSegmentProfile *csp, t.segments) {
+	for (ConductorSegmentProfile *csp: t.segments) {
 		d << "CSP" << (csp -> isHorizontal ? "horizontal" : "vertical") << ":" << csp -> length << ",";
 	}
 	d << "}";

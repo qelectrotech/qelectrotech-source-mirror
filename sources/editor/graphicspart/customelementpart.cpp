@@ -129,7 +129,7 @@ QList<QPointF> CustomElementPart::mapPoints(const QRectF &initial_selection_rect
 	qreal new_top_left_x = new_selection_rect.x();
 	qreal new_top_left_y = new_selection_rect.y();
 	
-	foreach (QPointF point, points) {
+	for (QPointF point: points) {
 		QPointF point_offset = point - initial_top_left;
 		new_points << QPointF(
 			new_top_left_x + (point_offset.rx() * sx),

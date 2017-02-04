@@ -332,7 +332,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	QDomElement description = xml_document.createElement("description");
 
 		//the graphic description of the element
-	foreach(QGraphicsItem *qgi, zItems())
+	for (QGraphicsItem *qgi: zItems())
 	{
 			//If the export concerns only the selection, the not selected part is ignored
 		if (!all_parts && !qgi -> isSelected()) continue;
@@ -416,7 +416,7 @@ void ElementScene::fromXml(
 */
 QRectF ElementScene::elementSceneGeometricRect() const{
 	QRectF esgr;
-	foreach (QGraphicsItem *qgi, items()) {
+	for (QGraphicsItem *qgi: items()) {
 		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi -> type() == QGraphicsRectItem::Type) continue;
 		if (qgi -> type() == PartTextField::Type) continue;
@@ -432,7 +432,7 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 	aucune.
 */
 bool ElementScene::containsTerminals() const {
-	foreach(QGraphicsItem *qgi,items()) {
+	for (QGraphicsItem *qgi:items()) {
 		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
 			return(true);
 		}
@@ -515,7 +515,7 @@ QETElementEditor* ElementScene::editor() const {
 void ElementScene::slot_select(const ElementContent &content) {
 	blockSignals(true);
 	clearSelection();
-	foreach(QGraphicsItem *qgi, content) qgi -> setSelected(true);
+	for (QGraphicsItem *qgi: content) qgi -> setSelected(true);
 	blockSignals(false);
 	emit(selectionChanged());
 }
@@ -539,7 +539,7 @@ void ElementScene::slot_deselectAll() {
 */
 void ElementScene::slot_invertSelection() {
 	blockSignals(true);
-	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(!qgi -> isSelected());
+	for (QGraphicsItem *qgi: items()) qgi -> setSelected(!qgi -> isSelected());
 	blockSignals(false);
 	emit(selectionChanged());
 }
@@ -698,7 +698,7 @@ void ElementScene::slot_sendBackward() {
 */
 QList<CustomElementPart *> ElementScene::primitives() const {
 	QList<CustomElementPart *> primitives_list;
-	foreach (QGraphicsItem *item, items()) {
+	for (QGraphicsItem *item: items()) {
 		if (CustomElementPart *primitive = dynamic_cast<CustomElementPart *>(item)) {
 			primitives_list << primitive;
 		}
@@ -768,7 +768,7 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 */
 ElementContent ElementScene::selectedContent() const {
 	ElementContent content;
-	foreach(QGraphicsItem *qgi, zItems()) {
+	for (QGraphicsItem *qgi: zItems()) {
 		if (qgi -> isSelected()) content << qgi;
 	}
 	return(content);
@@ -796,7 +796,7 @@ void ElementScene::reset()
 	clearSelection();
 	undoStack().clear();
 
-	foreach (QGraphicsItem *qgi, items())
+	for (QGraphicsItem *qgi: items())
 	{
 		removeItem(qgi);
 		qgiManager().release(qgi);
@@ -813,7 +813,7 @@ void ElementScene::reset()
 */
 QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) const {
 	QRectF bounding_rect;
-	foreach(QGraphicsItem *qgi, content) {
+	for (QGraphicsItem *qgi: content) {
 		// skip non-primitives QGraphicsItems (paste area, selection decorator)
 		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi -> type() == QGraphicsRectItem::Type) continue;
@@ -924,7 +924,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 */
 ElementContent ElementScene::addContent(const ElementContent &content, QString *error_message) {
 	Q_UNUSED(error_message);
-	foreach(QGraphicsItem *part, content) {
+	for (QGraphicsItem *part: content) {
 		addPrimitive(part);
 	}
 	return(content);
@@ -947,7 +947,7 @@ ElementContent ElementScene::addContentAtPos(const ElementContent &content, cons
 	QPointF offset = pos - bounding_rect.topLeft();
 	
 	// ajoute les parties avec le decalage adequat
-	foreach(QGraphicsItem *part, content) {
+	for (QGraphicsItem *part: content) {
 		part -> setPos(part -> pos() + offset);
 		addPrimitive(part);
 	}
@@ -1018,7 +1018,7 @@ void ElementScene::centerElementToOrigine() {
 	if (center_y < 0) move_y -= 10;
 
 		//move each primitive by @move
-		foreach (QGraphicsItem *qgi, items()) {
+		for (QGraphicsItem *qgi: items()) {
 			if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
 			if (qgi -> type() == QGraphicsRectItem::Type) continue;
 			//deselect item for disable decorator
@@ -1075,7 +1075,7 @@ void ElementScene::stackAction(ElementEditionCommand *command) {
 	}
 	
 	if (!command -> elementView()) {
-		foreach (QGraphicsView *view, views()) {
+		for (QGraphicsView *view: views()) {
 			if (ElementView *element_view = dynamic_cast<ElementView *>(view)) {
 				command -> setElementView(element_view);
 				break;

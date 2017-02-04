@@ -276,7 +276,7 @@ void QETElementEditor::setupActions() {
 	QAction *add_terminal  = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),         parts);
 	QAction *add_textfield = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"), parts);
 
-	foreach (QAction *action, parts -> actions()) action -> setCheckable(true);
+	for (QAction *action: parts -> actions()) action -> setCheckable(true);
 
 	connect(add_line,      SIGNAL(triggered()), this, SLOT(addLine()      ));
 	connect(add_rectangle, SIGNAL(triggered()), this, SLOT(addRect()      ));
@@ -433,7 +433,7 @@ void QETElementEditor::slot_updateMenus() {
 	bool clipboard_elmt = !read_only && ElementScene::clipboardMayContainElement();
 	
 	// actions dependant seulement de l'etat "lecture seule" de l'editeur
-	foreach (QAction *action, parts -> actions()) {
+	for (QAction *action: parts -> actions()) {
 		action -> setEnabled(!read_only);
 	}
 	selectall       -> setEnabled(!read_only);
@@ -447,7 +447,7 @@ void QETElementEditor::slot_updateMenus() {
 	cut             -> setEnabled(selected_items);
 	copy            -> setEnabled(selected_items);
 	edit_delete     -> setEnabled(selected_items);
-	foreach (QAction *action, m_depth_ag -> actions())
+	for (QAction *action: m_depth_ag -> actions())
 		action->setEnabled(selected_items);
 	
 	// actions dependant du contenu du presse-papiers
@@ -579,7 +579,7 @@ void QETElementEditor::slot_updateInformations() {
 	if (selected_qgis.size() >= 2)
 	{
 		style_editable = true;
-		foreach (QGraphicsItem *qgi, selected_qgis)
+		for (QGraphicsItem *qgi: selected_qgis)
 		{
 			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
 				cep_list << cep;
@@ -689,7 +689,7 @@ bool QETElementEditor::checkElement()
 
 	{
 		bool wrng = true;
-		foreach (CustomElementPart *cep, ce_scene->primitives())
+		for (CustomElementPart *cep: ce_scene->primitives())
 			if (cep->property("tagg").toString() == "label") wrng = false;
 
 			///Error #1: element is master, slave or simple but havent got input tagged 'label'
@@ -708,7 +708,7 @@ bool QETElementEditor::checkElement()
 	{
 		int text =0, terminal =0;
 
-		foreach(QGraphicsItem *qgi, ce_scene->items())
+		for (QGraphicsItem *qgi: ce_scene->items())
 		{
 			if		(qgraphicsitem_cast<PartTerminal *>(qgi))  terminal ++;
 			else if (qgraphicsitem_cast<PartTextField *>(qgi)) text ++;
@@ -744,7 +744,7 @@ bool QETElementEditor::checkElement()
 
 	dialog_message += "<ol>";
 	QList<QETWarning> total = warnings << errors;
-	foreach(QETWarning warning, total) {
+	for (QETWarning warning: total) {
 		dialog_message += "<li>";
 		dialog_message += QString(
 			tr("<b>%1</b> : %2", "warning title: warning description")
@@ -990,7 +990,7 @@ void QETElementEditor::addTerminal() {
  * Uncheck all action related to primitive
  */
 void QETElementEditor::UncheckAddPrimitive() {
-	foreach(QAction *action, parts->actions()) action -> setChecked(false);
+	for (QAction *action: parts->actions()) action -> setChecked(false);
 }
 
 /**

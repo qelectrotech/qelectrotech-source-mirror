@@ -82,7 +82,7 @@ void QTextOrientationWidget::setFont(const QFont &font) {
 	text_font_ = font;
 	
 	// invalide le cache contenant les longueurs des textes a disposition
-	foreach(QString text, text_size_hash_.keys()) {
+	for (QString text: text_size_hash_.keys()) {
 		text_size_hash_[text] = -1;
 	}
 }
@@ -119,7 +119,7 @@ void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 	if (texts_list.isEmpty()) return;
 	
 	// on oublie les anciennes chaines
-	foreach(QString text, text_size_hash_.keys()) {
+	for (QString text: text_size_hash_.keys()) {
 		// il faut oublier les anciennes chaines
 		if (!texts_list.contains(text)) {
 			text_size_hash_.remove(text);
@@ -127,7 +127,7 @@ void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 	}
 	
 	// on ajoute les nouvelles, sans les calculer (on met -1 en guise de longueur)
-	foreach(QString text, texts_list) {
+	for (QString text: texts_list) {
 		if (!text_size_hash_.contains(text)) {
 			text_size_hash_[text] = -1;
 		}
@@ -306,7 +306,7 @@ QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius
 */
 void QTextOrientationWidget::generateTextSizeHash() {
 	QFontMetrics font_metrics(text_font_);
-	foreach(QString text, text_size_hash_.keys()) {
+	for (QString text: text_size_hash_.keys()) {
 		if (text_size_hash_[text] == -1) {
 			text_size_hash_[text] = font_metrics.boundingRect(text).width();
 		}

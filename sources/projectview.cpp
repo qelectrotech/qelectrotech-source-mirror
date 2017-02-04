@@ -55,7 +55,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 */
 ProjectView::~ProjectView() {
 	// qDebug() << "Suppression du ProjectView" << ((void *)this);
-	foreach(int id, diagram_ids_.keys()) {
+	for (int id: diagram_ids_.keys()) {
 		DiagramView *diagram_view = diagram_ids_.take(id);
 		delete diagram_view;
 	}
@@ -281,12 +281,12 @@ bool ProjectView::tryClosingElementEditors() {
 		editant un element du projet.
 	*/
 	QList<QETElementEditor *> editors = QETApp::elementEditors(m_project);
-	foreach(QETElementEditor *editor, editors) {
+	for (QETElementEditor *editor: editors) {
 		if (!editor -> close()) return(false);
 	}
 
 	QList<QETTitleBlockTemplateEditor *> template_editors = QETApp::titleBlockTemplateEditors(m_project);
-	foreach(QETTitleBlockTemplateEditor *template_editor, template_editors) {
+	for (QETTitleBlockTemplateEditor *template_editor: template_editors) {
 		if (!template_editor -> close()) return(false);
 	}
 	return(true);
@@ -389,7 +389,7 @@ void ProjectView::addNewDiagramFolioList() {
 	if (m_project -> isReadOnly()) return;
 	int i = 1; //< Each new diagram is added  to the end of the project.
 			   //< We use @i to move the folio list at second position in the project
-	foreach (Diagram *d, m_project -> addNewDiagramFolioList()) {
+	for (Diagram *d: m_project -> addNewDiagramFolioList()) {
 		DiagramView *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
@@ -745,7 +745,7 @@ QETResult ProjectView::doSave(ProjectSaveOptions options) {
 	the project file itself.
 */
 void ProjectView::saveDiagrams(const QList<Diagram *> &diagrams) {
-	foreach (Diagram *diagram, diagrams) {
+	for (Diagram *diagram: diagrams) {
 		// Diagram::write() emits the written() signal, which is connected
 		// to QETProject::write() through QETProject::componentWritten().
 		// We do not want to write the project immediately, so we block
@@ -892,7 +892,7 @@ void ProjectView::loadDiagrams() {
 
 	setDisplayFallbackWidget(m_project -> diagrams().isEmpty());
 
-	foreach(Diagram *diagram, m_project -> diagrams()) {
+	for (Diagram *diagram: m_project -> diagrams()) {
 		DiagramView *sv = new DiagramView(diagram);
 		addDiagram(sv);
 	}
@@ -972,7 +972,7 @@ void ProjectView::tabMoved(int from, int to) {
 	le schema n'est pas trouve
 */
 DiagramView *ProjectView::findDiagram(Diagram *diagram) {
-	foreach(DiagramView *diagram_view, diagrams()) {
+	for (DiagramView *diagram_view: diagrams()) {
 		if (diagram_view -> diagram() == diagram) {
 			return(diagram_view);
 		}
@@ -987,7 +987,7 @@ void ProjectView::rebuildDiagramsMap() {
 	// vide la map
 	diagram_ids_.clear();
 
-	foreach(DiagramView *diagram_view, m_diagram_view_list) {
+	for (DiagramView *diagram_view: m_diagram_view_list) {
 		int dv_idx = m_tab -> indexOf(diagram_view);
 		if (dv_idx == -1) continue;
 		diagram_ids_.insert(dv_idx, diagram_view);

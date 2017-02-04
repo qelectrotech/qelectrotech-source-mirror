@@ -111,7 +111,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	if (files.count())
 	{
 			//So we open this files
-		foreach(QString file, files)
+		for (QString file: files)
 			if (openAndAddProject(file, false))
 				++ opened_projects;
 	}
@@ -282,8 +282,8 @@ void QETDiagramEditor::setUpActions()
 	m_draw_grid->setCheckable(true);
 	m_draw_grid->setChecked(true);
 	connect(m_draw_grid, &QAction::triggered, [this](bool checked) {
-		foreach (ProjectView *prjv, this->openedProjects())
-			foreach (Diagram *d, prjv->project()->diagrams()) {
+		for (ProjectView *prjv: this->openedProjects())
+			for (Diagram *d: prjv->project()->diagrams()) {
 				d->setDisplayGrid(checked);
 				d->update();
 			}
@@ -436,7 +436,7 @@ void QETDiagramEditor::setUpActions()
 	add_ellipse  ->setData("ellipse");
 	add_polyline ->setData("polyline");
 
-	foreach (QAction *action, m_add_item_actions_group.actions()) action->setCheckable(true);
+	for (QAction *action: m_add_item_actions_group.actions()) action->setCheckable(true);
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 
 		//Keyboard shortcut
@@ -657,7 +657,7 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 			else showNormal();
 		}
 		// sinon demande la permission de fermer chaque projet
-		foreach(ProjectView *project, openedProjects()) {
+		for (ProjectView *project: openedProjects()) {
 			if (!closeProject(project)) {
 				can_quit = false;
 				qce -> ignore();
@@ -985,7 +985,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 QList<ProjectView *> QETDiagramEditor::openedProjects() const {
 	QList<ProjectView *> result;
 	QList<QMdiSubWindow *> window_list(workspace.subWindowList());
-	foreach(QMdiSubWindow *window, window_list) {
+	for (QMdiSubWindow *window: window_list) {
 		if (ProjectView *project_view = qobject_cast<ProjectView *>(window -> widget())) {
 			result << project_view;
 		}
@@ -1054,7 +1054,7 @@ CustomElement *QETDiagramEditor::currentCustomElement() const {
 	@return la vue sur le projet contenant ce schema ou 0 s'il n'y en a pas
 */
 ProjectView *QETDiagramEditor::findProject(DiagramView *diagram_view) const {
-	foreach(ProjectView *project_view, openedProjects()) {
+	for (ProjectView *project_view: openedProjects()) {
 		if (project_view -> diagrams().contains(diagram_view)) {
 			return(project_view);
 		}
@@ -1068,8 +1068,8 @@ ProjectView *QETDiagramEditor::findProject(DiagramView *diagram_view) const {
 	@return la vue sur le projet contenant ce schema ou 0 s'il n'y en a pas
 */
 ProjectView *QETDiagramEditor::findProject(Diagram *diagram) const {
-	foreach(ProjectView *project_view, openedProjects()) {
-		foreach(DiagramView *diagram_view, project_view -> diagrams()) {
+	for (ProjectView *project_view: openedProjects()) {
+		for (DiagramView *diagram_view: project_view -> diagrams()) {
 			if (diagram_view -> diagram() == diagram) {
 				return(project_view);
 			}
@@ -1083,7 +1083,7 @@ ProjectView *QETDiagramEditor::findProject(Diagram *diagram) const {
 	@return la vue du projet passe en parametre
 */
 ProjectView *QETDiagramEditor::findProject(QETProject *project) const {
-	foreach(ProjectView *opened_project, openedProjects()) {
+	for (ProjectView *opened_project: openedProjects()) {
 		if (opened_project -> project() == project) {
 			return(opened_project);
 		}
@@ -1097,7 +1097,7 @@ ProjectView *QETDiagramEditor::findProject(QETProject *project) const {
 	celui-ci n'a pas ete trouve
 */
 ProjectView *QETDiagramEditor::findProject(const QString &filepath) const {
-	foreach(ProjectView *opened_project, openedProjects()) {
+	for (ProjectView *opened_project: openedProjects()) {
 		if (QETProject *project = opened_project -> project()) {
 			if (project -> filePath() == filepath) {
 				return(opened_project);
@@ -1113,7 +1113,7 @@ ProjectView *QETDiagramEditor::findProject(const QString &filepath) const {
 	celui-ci n'a pas ete trouve.
 */
 QMdiSubWindow *QETDiagramEditor::subWindowForWidget(QWidget *widget) const {
-	foreach(QMdiSubWindow *sub_window, workspace.subWindowList()) {
+	for (QMdiSubWindow *sub_window: workspace.subWindowList()) {
 		if (sub_window -> widget() == widget) {
 			return(sub_window);
 		}
@@ -1284,7 +1284,7 @@ void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 void QETDiagramEditor::slot_setSelectionMode()
 {
 	if (ProjectView *pv = currentProject())
-		foreach(DiagramView *dv, pv -> diagrams())
+		for (DiagramView *dv: pv -> diagrams())
 			dv -> setSelectionMode();
 }
 
@@ -1295,7 +1295,7 @@ void QETDiagramEditor::slot_setSelectionMode()
 void QETDiagramEditor::slot_setVisualisationMode()
 {
 	if (ProjectView *pv = currentProject())
-		foreach(DiagramView *dv, pv -> diagrams())
+		for (DiagramView *dv: pv -> diagrams())
 			dv -> setVisualisationMode();
 }
 
@@ -1506,7 +1506,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 {
 	if (!project_view) return;
 
-	foreach(DiagramView *dv, project_view -> diagrams())
+	for (DiagramView *dv: project_view -> diagrams())
 		diagramWasAdded(dv);
 	
 		//Manage the close event of project
@@ -1543,7 +1543,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 */
 QList<QString> QETDiagramEditor::editedFiles() const {
 	QList<QString> edited_files_list;
-	foreach (ProjectView *project_view, openedProjects()) {
+	for (ProjectView *project_view: openedProjects()) {
 		QString diagram_file(project_view -> project() -> filePath());
 		if (!diagram_file.isEmpty()) {
 			edited_files_list << QFileInfo(diagram_file).canonicalFilePath();
@@ -1566,7 +1566,7 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 		// QFileInfo returns an empty path for non-existent files
 		return(0);
 	}
-	foreach (ProjectView *project_view, openedProjects()) {
+	for (ProjectView *project_view: openedProjects()) {
 		QString project_can_file_path = QFileInfo(project_view -> project() -> filePath()).canonicalFilePath();
 		if (project_can_file_path == searched_can_file_path) {
 			return(project_view);
@@ -1616,7 +1616,7 @@ DiagramView *QETDiagramEditor::acessCurrentDiagramView () {
 */
 void QETDiagramEditor::slot_updateWindowsMenu() {
 	// nettoyage du menu
-	foreach(QAction *a, windows_menu -> actions()) windows_menu -> removeAction(a);
+	for (QAction *a: windows_menu -> actions()) windows_menu -> removeAction(a);
 	
 	// actions de fermeture
 	windows_menu -> addAction(close_file);
@@ -1642,7 +1642,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	
 	if (!windows.isEmpty()) windows_menu -> addSeparator();
 	QActionGroup *windows_actions = new QActionGroup(this);
-	foreach(ProjectView *project_view, windows) {
+	for (ProjectView *project_view: windows) {
 		QString pv_title = project_view -> windowTitle();
 		QAction *action  = windows_menu -> addAction(pv_title);
 		windows_actions -> addAction(action);
@@ -2035,7 +2035,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 
 			// if the removed diagram was a folio sheet, then delete all the remaining folio sheets also.
 			if (isFolioList) {
-				foreach (DiagramView *diag, current_project -> diagrams()) {
+				for (DiagramView *diag: current_project -> diagrams()) {
 					if (dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
 						current_project -> removeDiagram(diag);
 					}
@@ -2044,7 +2044,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 			  // else if after diagram removal, the total diagram quantity becomes a factor of 58, then
 			  // remove one (last) folio sheet.
 			} else if (current_project -> diagrams().size() % 58 == 0) {
-				foreach (DiagramView *diag, current_project -> diagrams()) {
+				for (DiagramView *diag: current_project -> diagrams()) {
 					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
 					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
 						current_project -> removeDiagram(diag);

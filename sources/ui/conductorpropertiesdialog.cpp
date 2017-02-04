@@ -74,7 +74,7 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *
 	{
 		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
-		foreach (Conductor *potential_conductor, conductor->relatedPotentialConductors())
+		for (Conductor *potential_conductor: conductor->relatedPotentialConductors())
 		{
 			old_value.setValue(potential_conductor->properties());
 			new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);

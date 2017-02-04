@@ -50,7 +50,7 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 	if (str_list.isEmpty()) return nullptr;
 
 	ElementCollectionItem *return_eci = this;
-	foreach (QString str, str_list)
+	for (QString str: str_list)
 	{
 		ElementCollectionItem *eci = return_eci->childWithCollectionName(str);
 		if (!eci)
@@ -74,7 +74,7 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 ElementCollectionItem *ElementCollectionItem::childWithCollectionName(QString name) const
 {
 	rowCount();
-	foreach (QStandardItem *qsi, directChilds()) {
+	for (QStandardItem *qsi: directChilds()) {
 		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->name() == name)
 			return eci;
@@ -128,7 +128,7 @@ int ElementCollectionItem::rowForInsertItem(const QString &name)
 			return 0;
 	}
 
-	foreach (ElementCollectionItem *eci, child)
+	for (ElementCollectionItem *eci: child)
 		if (eci->name() > name)
 			return model()->indexFromItem(eci).row();
 
@@ -147,7 +147,7 @@ ElementCollectionItem *ElementCollectionItem::itemAtPath(const QString &path)
 		return nullptr;
 
 	ElementCollectionItem *match_eci = this;
-	foreach (QString str, str_list) {
+	for (QString str: str_list) {
 		ElementCollectionItem *eci = match_eci->childWithCollectionName(str);
 		if (!eci)
 			return nullptr;
@@ -166,7 +166,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::elementsDirectChild() cons
 {
 	QList <ElementCollectionItem *> element_child;
 
-	foreach (QStandardItem *qsi, directChilds()) {
+	for (QStandardItem *qsi: directChilds()) {
 		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->isElement())
 			element_child.append(eci);
@@ -183,7 +183,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesDirectChild() c
 {
 	QList <ElementCollectionItem *> dir_child;
 
-	foreach (QStandardItem *qsi, directChilds()) {
+	for (QStandardItem *qsi: directChilds()) {
 		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->isDir())
 			dir_child.append(eci);
@@ -200,7 +200,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::elementsChild() const
 {
 	QList <ElementCollectionItem *> list = elementsDirectChild();
 
-	foreach (ElementCollectionItem *eci, directoriesChild())
+	for (ElementCollectionItem *eci: directoriesChild())
 		list.append(eci->elementsDirectChild());
 
 	return list;
@@ -214,7 +214,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
 {
 	QList<ElementCollectionItem *> list = directoriesDirectChild();
 	QList<ElementCollectionItem *> child_list;
-	foreach (ElementCollectionItem *eci, list) {
+	for (ElementCollectionItem *eci: list) {
 		child_list.append(eci->directoriesChild());
 	}
 

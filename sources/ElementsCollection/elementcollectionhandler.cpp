@@ -101,7 +101,7 @@ ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, Element
 		if (source_dir == destination_dir)
 			copy_itself = true;
 
-		foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+		for (QString str : source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 		{
 			if (copy_itself)
 			{
@@ -118,7 +118,7 @@ ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, Element
 
             //Copy all elements found in source_dir to destination_dir
         source_dir.setNameFilters(QStringList() << "*.elmt");
-        foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+        for (QString str: source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
         {
 			ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
             copyElement(sub_source, created_location);
@@ -211,7 +211,7 @@ ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, Elements
 		XmlElementCollection *project_collection = source.projectCollection();
 
 		QStringList directories_names = project_collection->directoriesNames( project_collection->directory(source.collectionPath(false)) );
-		foreach(QString name, directories_names)
+		for (QString name : directories_names)
 		{
 			ElementsLocation sub_source_dir(source.projectCollectionPath() + "/" + name);
 			copyDirectory(sub_source_dir,  created_location);
@@ -219,7 +219,7 @@ ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, Elements
 
 			//Create all elements found in source to destination
 		QStringList elements_names = project_collection->elementsNames( project_collection->directory(source.collectionPath(false))) ;
-		foreach (QString name, elements_names)
+		for (QString name : elements_names)
 		{
 			ElementsLocation source_element(source.projectCollectionPath() + "/" + name);
 			copyElement(source_element, created_location);

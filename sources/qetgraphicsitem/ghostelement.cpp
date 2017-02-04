@@ -58,7 +58,7 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr,
 	terminalsFromXml(e, table_id_adr);
 	
 	// instancie les champs de texte decrits dans l'element XML
-	foreach(QDomElement qde, QET::findInDomElement(e, "inputs", "input")) {
+	for (QDomElement qde: QET::findInDomElement(e, "inputs", "input")) {
 		qde.setAttribute("size", 9); // arbitraire
 		if (ElementTextItem *new_input = CustomElement::parseInput(qde)) {
 			new_input -> fromXml(qde);
@@ -116,7 +116,7 @@ QRectF GhostElement::minimalBoundingRect() const {
 */
 bool GhostElement::terminalsFromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	// instancie les bornes decrites dans l'element XML
-	foreach(QDomElement qde, QET::findInDomElement(e, "terminals", "terminal")) {
+	for (QDomElement qde: QET::findInDomElement(e, "terminals", "terminal")) {
 		if (!Terminal::valideXml(qde)) continue;
 		
 		// modifie certains attributs pour que l'analyse par la classe CustomElement reussisse

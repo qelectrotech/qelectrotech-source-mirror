@@ -238,7 +238,7 @@ void ElementsPanel::reload(bool reload_collections) {
 	if (first_reload_) custom_tbt_collection_item_ -> setExpanded(true);
 	
 	// add projects
-	foreach(QETProject *project, projects_to_display_.values()) {
+	for (QETProject *project: projects_to_display_.values()) {
 		addProject(project);
 	}
 	
@@ -321,7 +321,7 @@ void ElementsPanel::filter(const QString &m, QET::Filtering filtering) {
 	const int expanded_role = 42; // magic number? So you consider Douglas Adams wrote about magic?
 	
 	if (filtering == QET::BeginFilter) {
-		foreach (QTreeWidgetItem *item, items) {
+		for (QTreeWidgetItem *item: items) {
 			item -> setData(0, expanded_role, item -> isExpanded());
 		}
 	}
@@ -334,7 +334,7 @@ void ElementsPanel::filter(const QString &m, QET::Filtering filtering) {
 		QTreeWidgetItem *current_item = currentItem();
 		
 		// restore the tree as it was before the filtering
-		foreach (QTreeWidgetItem *qtwi, items) {
+		for (QTreeWidgetItem *qtwi: items) {
 			qtwi -> setHidden(false);
 			qtwi -> setExpanded(qtwi -> data(0, expanded_role).toBool());
 		}
@@ -377,7 +377,7 @@ void ElementsPanel::buildFilterList() {
 	filter_list_ = filter_.split( '+' );
 	/*
 	qDebug() << "*******************";
-	foreach( QString filter , filter_list_ )	{
+	for ( QString filter , filter_list_ )	{
 		filter = filter.trimmed();
 		qDebug() << filter;
 	}
@@ -392,10 +392,10 @@ void ElementsPanel::applyCurrentFilter(const QList<QTreeWidgetItem *> &items) {
 	buildFilterList();
 	QList<QTreeWidgetItem *> matching_items;
 
-	foreach (QTreeWidgetItem *item, items) {
+	for (QTreeWidgetItem *item: items) {
 		bool item_matches = true;
 
-		foreach( QString filter , filter_list_ )	{
+		for ( QString filter : filter_list_ )	{
 			filter = filter.trimmed();
 			if ( !filter.isEmpty() )	{
 				item_matches &= matchesFilter(item, filter);
@@ -414,19 +414,19 @@ void ElementsPanel::applyCurrentFilter(const QList<QTreeWidgetItem *> &items) {
 void ElementsPanel::ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &items) {
 	// remonte l'arborescence pour lister les categories contenant les elements filtres
 	QSet<QTreeWidgetItem *> parent_items;
-	foreach(QTreeWidgetItem *item, items) {
+	for (QTreeWidgetItem *item: items) {
 		for (QTreeWidgetItem *parent_qtwi = item -> parent() ; parent_qtwi ; parent_qtwi = parent_qtwi -> parent()) {
 			parent_items << parent_qtwi;
 		}
 	}
 	
 	// etend les parents
-	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
+	for (QTreeWidgetItem *parent_qtwi: parent_items) {
 		if (!parent_qtwi -> isExpanded()) parent_qtwi -> setExpanded(true);
 	}
 	
 	// affiche les parents
-	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
+	for (QTreeWidgetItem *parent_qtwi: parent_items) {
 		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
 	}
 }

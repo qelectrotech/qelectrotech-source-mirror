@@ -53,7 +53,7 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 	movement_driver_ = driver_item;
 	m_texts_item_H.clear();
 
-	foreach(QGraphicsItem *item, diagram -> selectedItems())
+	for (QGraphicsItem *item: diagram -> selectedItems())
 	{
 		if (item->type() == ElementTextItem::Type)
 		{
@@ -79,7 +79,7 @@ void ElementTextsMover::continueMovement(const QPointF &movement)
 {
 	if (!movement_running_ || movement.isNull()) return;
 	
-	foreach(ElementTextItem *text_item, m_texts_item_H.keys())
+	for (ElementTextItem *text_item: m_texts_item_H.keys())
 	{
 		if (text_item == movement_driver_) continue;
 		QPointF applied_movement = text_item -> mapMovementToParent(text_item-> mapMovementFromScene(movement));
@@ -101,7 +101,7 @@ void ElementTextsMover::endMovement()
 	
 	QPropertyUndoCommand *undo = nullptr;
 
-	foreach (ElementTextItem *eti, m_texts_item_H.keys())
+	for (ElementTextItem *eti: m_texts_item_H.keys())
 	{
 		if (undo)
 		{

@@ -395,11 +395,11 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	
 	// deselectionne tous les elements
 	QList<QGraphicsItem *> selected_elmts = diagram -> selectedItems();
-	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
+	for (QGraphicsItem *qgi: selected_elmts) qgi -> setSelected(false);
 	
 	// enleve le flag focusable de tous les elements concernes pour eviter toute reprise de focus par un champ de texte editable
 	QList<QGraphicsItem *> focusable_items;
-	foreach (QGraphicsItem *qgi, diagram -> items()) {
+	for (QGraphicsItem *qgi: diagram -> items()) {
 		if (qgi -> flags() & QGraphicsItem::ItemIsFocusable) {
 			focusable_items << qgi;
 			qgi -> setFlag(QGraphicsItem::ItemIsFocusable, false);
@@ -407,7 +407,7 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	}
 	
 	// evite toute autre forme d'interaction
-	foreach (QGraphicsView *view, diagram -> views()) {
+	for (QGraphicsView *view: diagram -> views()) {
 		view -> setInteractive(false);
 	}
 	
@@ -476,17 +476,17 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	}
 	
 	// remet en place les interactions
-	foreach (QGraphicsView *view, diagram -> views()) {
+	for (QGraphicsView *view: diagram -> views()) {
 		view -> setInteractive(true);
 	}
 	
 	// restaure les flags focusable
-	foreach (QGraphicsItem *qgi, focusable_items) {
+	for (QGraphicsItem *qgi: focusable_items) {
 		qgi -> setFlag(QGraphicsItem::ItemIsFocusable, true);
 	}
 	
 	// restaure les elements selectionnes
-	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
+	for (QGraphicsItem *qgi: selected_elmts) qgi -> setSelected(true);
 	
 	saveReloadDiagramParameters(diagram, options, false);
 }

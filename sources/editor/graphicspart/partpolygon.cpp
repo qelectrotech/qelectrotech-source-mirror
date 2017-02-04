@@ -109,7 +109,7 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
-	foreach(QPointF point, m_polygon) {
+	for (QPointF point: m_polygon) {
 		point = mapToScene(point);
 		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
 		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
@@ -344,7 +344,7 @@ QPainterPath PartPolygon::shape() const
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_polygon))
+		for (QRectF rect: m_handler.handlerRect(m_polygon))
 			shape.addRect(rect);
 
 	return shape;
@@ -379,7 +379,7 @@ QRectF PartPolygon::boundingRect() const
 
 	r.adjust(-adjust, -adjust, adjust, adjust);
 
-	foreach(QRectF rect, m_handler.handlerRect(m_polygon))
+	for (QRectF rect: m_handler.handlerRect(m_polygon))
 		r |=rect;
 
 	return(r);

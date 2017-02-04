@@ -58,7 +58,7 @@ QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 		}
 	}
 	QRectF rect = decorated_items_.first() -> sceneGeometricRect();
-	foreach (CustomElementPart *item, decorated_items_) {
+	for (CustomElementPart *item: decorated_items_) {
 		rect = rect.united(item -> sceneGeometricRect());
 	}
 	return(rect);
@@ -146,7 +146,7 @@ void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items
 */
 void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items) {
 	QList<CustomElementPart *> primitives;
-	foreach (QGraphicsItem *item, items) {
+	for (QGraphicsItem *item: items) {
 		if (CustomElementPart *part_item = dynamic_cast<CustomElementPart *>(item)) {
 			primitives << part_item;
 		}
@@ -166,7 +166,7 @@ QList<CustomElementPart *> ElementPrimitiveDecorator::items() const {
 */
 QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const {
 	QList<QGraphicsItem *> list;
-	foreach (CustomElementPart *part_item, decorated_items_) {
+	for (CustomElementPart *part_item: decorated_items_) {
 		if (QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(part_item)) {
 			list << item;
 		}
@@ -410,7 +410,7 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e) {
 		} else {
 			keys_movement_ += movement;
 		}
-		foreach(QGraphicsItem *qgi, graphicsItems()) {
+		for (QGraphicsItem *qgi: graphicsItems()) {
 			qgi -> setPos(qgi -> pos() + movement);
 			adjust();
 		}
@@ -469,7 +469,7 @@ void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
 void ElementPrimitiveDecorator::startMovement() {
 	adjust();
 	
-	foreach(CustomElementPart *item, decorated_items_) {
+	for (CustomElementPart *item: decorated_items_) {
 		item -> startUserTransformation(mapToScene(original_bounding_rect_).boundingRect());
 	}
 }
@@ -533,7 +533,7 @@ CustomElementPart *ElementPrimitiveDecorator::singleItem() const {
 void ElementPrimitiveDecorator::translateItems(const QPointF &movement) {
 	if (!decorated_items_.count()) return;
 	
-	foreach(QGraphicsItem *qgi, graphicsItems()) {
+	for (QGraphicsItem *qgi: graphicsItems()) {
 		// this is a naive, proof-of-concept implementation; we actually need to take
 		// the grid into account and create a command object in mouseReleaseEvent()
 		qgi -> moveBy(movement.x(), movement.y());
@@ -553,7 +553,7 @@ void ElementPrimitiveDecorator::scaleItems(const QRectF &original_rect, const QR
 	QRectF scene_original_rect = mapToScene(original_rect).boundingRect();
 	QRectF scene_new_rect = mapToScene(new_rect).boundingRect();
 	
-	foreach(CustomElementPart *item, decorated_items_) {
+	for (CustomElementPart *item: decorated_items_) {
 		item -> handleUserTransformation(scene_original_rect, scene_new_rect);
 	}
 }

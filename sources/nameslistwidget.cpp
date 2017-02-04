@@ -133,7 +133,7 @@ NamesList NamesListWidget::names() {
 	Definit les noms que le widget doit afficher
 */
 void NamesListWidget::setNames(const NamesList &provided_names) {
-	foreach(QString lang, provided_names.langs()) {
+	for (QString lang: provided_names.langs()) {
 		QString value = provided_names[lang];
 		QStringList values;
 		values << lang << value;

@@ -56,7 +56,7 @@ void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &po
  * @param color2
  */
 void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QVector<QPointF> &points) {
-	foreach(QPointF point, points)
+	for (QPointF point: points)
 		drawHandler(painter, point);
 }
 
@@ -78,7 +78,7 @@ bool QetGraphicsHandlerUtility::pointIsInHandler(const QPointF &point, const QPo
  */
 int QetGraphicsHandlerUtility::pointIsHoverHandler(const QPointF &point, const QVector<QPointF> &vector) const
 {
-	foreach (QPointF key_point, vector)
+	for (QPointF key_point: vector)
 		if (pointIsInHandler(point, key_point))
 			return vector.indexOf(key_point);
 
@@ -96,7 +96,7 @@ QVector<QRectF> QetGraphicsHandlerUtility::handlerRect(const QVector<QPointF> &v
 {
 	QVector <QRectF> rect_vector;
 
-	foreach(QPointF point, vector)
+	for (QPointF point: vector)
 		rect_vector << getRect(point);
 
 	return rect_vector;

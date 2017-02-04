@@ -210,7 +210,7 @@ void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 			linked -> setSelected(true);
 
 				//Zoom to the linked element
-			foreach(QGraphicsView *view, linked -> diagram() -> views()) {
+			for (QGraphicsView *view: linked -> diagram() -> views()) {
 				QRectF fit = linked -> sceneBoundingRect();
 				fit.adjust(-200, -200, 200, 200);
 				view -> fitInView(fit, Qt::KeepAspectRatioByExpanding);
@@ -328,7 +328,7 @@ void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 
 				//Also color the child text if parent is a slave and linked
 			if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree())
-				foreach (QGraphicsItem *qgi, childItems())
+				for (QGraphicsItem *qgi: childItems())
 					if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
 						qgti -> setDefaultTextColor(Qt::blue);
 		}
@@ -364,7 +364,7 @@ void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 
 			//Also color the child text if parent is a slave and linked
 		if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree())
-			foreach (QGraphicsItem *qgi, childItems())
+			for (QGraphicsItem *qgi: childItems())
 				if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
 					qgti -> setDefaultTextColor(Qt::black);
 	}

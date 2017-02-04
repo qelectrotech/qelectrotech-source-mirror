@@ -122,7 +122,7 @@ void ReportElement::unlinkAllElements()
 
 	QList <Element *> tmp_elmt = connected_elements;
 
-	foreach(Element *elmt, connected_elements)
+	for (Element *elmt: connected_elements)
 	{
 		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
@@ -139,7 +139,7 @@ void ReportElement::unlinkAllElements()
 	}
 	updateLabel();
 
-	foreach(Element *elmt, tmp_elmt)
+	for (Element *elmt: tmp_elmt)
 	{
 		elmt -> setHighlighted(false);
 		elmt -> unlinkAllElements();

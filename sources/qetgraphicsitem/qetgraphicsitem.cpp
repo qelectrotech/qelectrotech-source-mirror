@@ -96,7 +96,7 @@ void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *e)
 	{
 			//Disable views context menu
 		if (scene())
-			foreach (QGraphicsView *view, scene()->views())
+			for (QGraphicsView *view: scene()->views())
 				view->setContextMenuPolicy(Qt::NoContextMenu);
 
 		first_move_ = true;
@@ -164,6 +164,6 @@ void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		//Enable views context menu
 	if (e -> button() == Qt::LeftButton)
 		if (scene())
-			foreach (QGraphicsView *view, scene()->views())
+			for (QGraphicsView *view: scene()->views())
 				view -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }

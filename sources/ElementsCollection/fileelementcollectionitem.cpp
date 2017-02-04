@@ -297,7 +297,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	foreach(QString str, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+	for (QString str: dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -311,7 +311,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	foreach(QString str, dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+	for (QString str: dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

@@ -193,7 +193,7 @@ void QETArguments::parseArguments(const QList<QString> &arguments) {
 	clear();
 	
 	// separe les fichiers des options
-	foreach(QString argument, arguments) {
+	for (QString argument: arguments) {
 		QFileInfo argument_info(argument);
 		if (argument_info.exists()) {
 		// on exprime les chemins des fichiers en absolu

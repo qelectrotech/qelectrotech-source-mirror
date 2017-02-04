@@ -110,7 +110,7 @@ ExportDialog::~ExportDialog() {
 */
 int ExportDialog::diagramsToExportCount() const {
 	int checked_diagrams_count = 0;
-	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+	for (ExportDiagramLine *diagram_line: diagram_lines_.values()) {
 		if (diagram_line -> must_export -> isChecked()) ++ checked_diagrams_count;
 	}
 	return(checked_diagrams_count);
@@ -143,7 +143,7 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Dimensions")),       line_count, 3, Qt::AlignHCenter | Qt::AlignVCenter);
 	
 	// remplit la liste
-	foreach (Diagram *diagram, project_ -> diagrams()) {
+	for (Diagram *diagram: project_ -> diagrams()) {
 		++ line_count;
 		ExportDiagramLine *diagram_line = new ExportDiagramLine(diagram, diagramSize(diagram));
 		diagram_lines_.insert(line_count, diagram_line);
@@ -184,13 +184,13 @@ QWidget *ExportDialog::initDiagramsListPart() {
 }
 
 void ExportDialog::slot_selectAllClicked() {
-	foreach (ExportDiagramLine *diagramLine, diagram_lines_) {
+	for (ExportDiagramLine *diagramLine: diagram_lines_) {
 		diagramLine -> must_export -> setChecked(true);
 	}
 }
 
 void ExportDialog::slot_deSelectAllClicked() {
-	foreach (ExportDiagramLine *diagramLine, diagram_lines_) {
+	for (ExportDiagramLine *diagramLine: diagram_lines_) {
 		diagramLine -> must_export -> setChecked(false);
 	}
 }
@@ -465,7 +465,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 
 	} else {
 		// Determine les elements a "XMLiser"
-		foreach(QGraphicsItem *qgi, diagram -> items()) {
+		for (QGraphicsItem *qgi: diagram -> items()) {
 			if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 				list_elements << elmt;
 			} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
@@ -480,10 +480,10 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 	}
 
-	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path);
+	for (QetShapeItem *qsi: list_shapes) qsi->toDXF(file_path);
 
 	//Draw elements
-	foreach(Element *elmt, list_elements) {
+	for (Element *elmt: list_elements) {
 
 		double rotation_angle = elmt -> orientation() * 90;
 
@@ -494,7 +494,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
 
 		QList<ElementTextItem *> elmt_text = elmt -> texts();
-		foreach(ElementTextItem *dti, elmt_text) {
+		for (ElementTextItem *dti: elmt_text) {
 			qreal fontSize = dti -> font().pointSizeF();
 			if (fontSize < 0)
 				fontSize = dti -> font().pixelSize();
@@ -508,7 +508,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			y = transformed_point.y();
 			QStringList lines = dti -> toPlainText().split('\n');
 			y += (fontSize/2) * (lines.count()-1);
-			foreach (QString line, lines) {
+			for (QString line: lines) {
 				qreal angle = 360 - (dti -> rotationAngle() + rotation_angle);
 				if (line.size() > 0 && line != "_" )
 					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
@@ -528,7 +528,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 
 		QList<QLineF *> elmt_line = elmt -> lines();
-		foreach(QLineF *line, elmt_line) {
+		for (QLineF *line: elmt_line) {
 			qreal x1 = (elem_pos_x + line -> p1().x()) * Createdxf::xScale;
 			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + line -> p1().y()) * Createdxf::yScale;
 			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
@@ -543,7 +543,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 
 		QList<QRectF *> elmt_rectangle = elmt -> rectangles();
-		foreach(QRectF *rect, elmt_rectangle) {
+		for (QRectF *rect: elmt_rectangle) {
 			qreal x1 = (elem_pos_x + rect -> bottomLeft().x()) * Createdxf::xScale;
 			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + rect -> bottomLeft().y()) * Createdxf::yScale;
 			qreal w = rect -> width() * Createdxf::xScale;
@@ -565,7 +565,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 
 		QList<QRectF *> elmt_circle = elmt -> circles();
-		foreach(QRectF *circle_rect, elmt_circle) {
+		for (QRectF *circle_rect: elmt_circle) {
 			qreal x1 = (elem_pos_x + circle_rect ->center().x()) * Createdxf::xScale;
 			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + circle_rect -> center().y()) * Createdxf::yScale;
 			qreal r = circle_rect -> width() * Createdxf::xScale / 2;
@@ -576,7 +576,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 
 		QList<QVector<QPointF> *> elmt_polygon = elmt -> polygons();
-		foreach(QVector<QPointF> *polygon, elmt_polygon) {
+		for (QVector<QPointF> *polygon: elmt_polygon) {
 			if (polygon -> size() == 0)
 				continue;
 			qreal x1 = (elem_pos_x + polygon -> at(0).x()) * Createdxf::xScale;
@@ -598,7 +598,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 
 		// Draw arcs and ellipses
 		QList<QVector<qreal> *> elmt_arc = elmt -> arcs();
-		foreach(QVector<qreal> *arc, elmt_arc) {
+		for (QVector<qreal> *arc: elmt_arc) {
 			if (arc -> size() == 0)
 				continue;
 			qreal x = (elem_pos_x + arc -> at(0)) * Createdxf::xScale;
@@ -612,8 +612,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	}
 
 	//Draw conductors
-	foreach(Conductor *cond, list_conductors) {
-		foreach(ConductorSegment *segment, cond -> segmentsList()) {
+	for (Conductor *cond: list_conductors) {
+		for (ConductorSegment *segment: cond -> segmentsList()) {
 			qreal x1 = (segment -> firstPoint().x()) * Createdxf::xScale;
 			qreal y1 = Createdxf::sheetHeight - (segment -> firstPoint().y() * Createdxf::yScale);
 			qreal x2 = (segment -> secondPoint().x()) * Createdxf::xScale;
@@ -630,7 +630,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal x = (textItem -> pos().x()) * Createdxf::xScale;
 			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize;
 			QStringList lines = textItem->toPlainText().split('\n');
-			foreach (QString line, lines) {
+			for (QString line: lines) {
 				qreal angle = 360 - (textItem -> rotationAngle());
 				if (line.size() > 0 && line != "_" )
 					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0 );
@@ -651,7 +651,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	}
 
 	//Draw text items
-	foreach(DiagramTextItem *dti, list_texts) {
+	for (DiagramTextItem *dti: list_texts) {
 		qreal fontSize = dti -> font().pointSizeF();
 		if (fontSize < 0)
 			fontSize = dti -> font().pixelSize();
@@ -659,7 +659,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal x = (dti -> pos().x()) * Createdxf::xScale;
 		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
 		QStringList lines = dti -> toPlainText().split('\n');
-		foreach (QString line, lines) {
+		for (QString line: lines) {
 			qreal angle = 360 - (dti -> rotationAngle());
 			if (line.size() > 0 && line != "_" )
 				Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
@@ -742,7 +742,7 @@ QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, 
 void ExportDialog::slot_export() {
 	// recupere la liste des schemas a exporter
 	QList<ExportDiagramLine *> diagrams_to_export;
-	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+	for (ExportDiagramLine *diagram_line: diagram_lines_.values()) {
 		if (diagram_line -> must_export -> isChecked()) {
 			diagrams_to_export << diagram_line;
 		}
@@ -750,7 +750,7 @@ void ExportDialog::slot_export() {
 	
 	// verification #1 : chaque schema coche doit avoir un nom de fichier distinct
 	QSet<QString> filenames;
-	foreach(ExportDiagramLine *diagram_line, diagrams_to_export) {
+	for (ExportDiagramLine *diagram_line: diagrams_to_export) {
 		QString diagram_file = diagram_line -> file_name -> text();
 		if (!diagram_file.isEmpty()) {
 			filenames << diagram_file;
@@ -783,7 +783,7 @@ void ExportDialog::slot_export() {
 	}
 	
 	// exporte chaque schema a exporter
-	foreach(ExportDiagramLine *diagram_line, diagrams_to_export) {
+	for (ExportDiagramLine *diagram_line: diagrams_to_export) {
 		exportDiagram(diagram_line);
 	}
 	
@@ -868,7 +868,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 */
 void ExportDialog::slot_changeUseBorder() {
 	// parcourt les schemas a exporter
-	foreach(int diagram_id, diagram_lines_.keys()) {
+	for (int diagram_id: diagram_lines_.keys()) {
 		ExportDiagramLine *diagram_line = diagram_lines_[diagram_id];
 		
 		// corrige les dimensions des schemas dont il faut preserver le ratio
@@ -900,7 +900,7 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	QString format_extension = "." + format_acronym.toLower();
 	
 	// parcourt les schemas a exporter
-	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+	for (ExportDiagramLine *diagram_line: diagram_lines_.values()) {
 		QString diagram_filename = diagram_line -> file_name -> text();
 		
 		// cas 1 : l'extension est presente et correcte : on ne fait rien
@@ -959,7 +959,7 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	);
 	
 	// nettoie l'apercu
-	foreach (QGraphicsItem *qgi, preview_scene -> items()) {
+	for (QGraphicsItem *qgi: preview_scene -> items()) {
 		preview_scene -> removeItem(qgi);
 		delete qgi;
 	}

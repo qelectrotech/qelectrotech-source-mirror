@@ -412,7 +412,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	bool equal = true;
 		//Color
 	QColor c_value = list.first().color;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.color != c_value)
 			equal = false;
@@ -423,7 +423,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//text
 	QString s_value = list.first().text;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.text != s_value)
 			equal = false;
@@ -434,7 +434,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//formula
 	s_value = list.first().m_formula;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.m_formula != s_value)
 			equal = false;
@@ -445,7 +445,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//function
 	s_value = list.first().m_function;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.m_function != s_value)
 			equal = false;
@@ -456,7 +456,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Tension protocol
 	s_value = list.first().m_tension_protocol;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.m_tension_protocol != s_value)
 			equal = false;
@@ -467,7 +467,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//text size
 	int i_value = list.first().text_size;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.text_size != i_value)
 			equal = false;
@@ -478,7 +478,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//conductor size
 	double d_value = list.first().cond_size;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.cond_size != d_value)
 			equal = false;
@@ -489,7 +489,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//show text
 	bool b_value = list.first().m_show_text;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.m_show_text != b_value)
 			equal = false;
@@ -500,7 +500,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//One text per folio
 	b_value = list.first().m_one_text_per_folio;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.m_one_text_per_folio != b_value)
 			equal = false;
@@ -511,7 +511,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text rotation for vertical conducor
 	d_value = list.first().verti_rotate_text;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.verti_rotate_text != d_value)
 			equal = false;
@@ -522,7 +522,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text rotation for horizontal conducor
 	d_value = list.first().horiz_rotate_text;
-	foreach(ConductorProperties cp, list)
+	for (ConductorProperties cp: list)
 	{
 		if (cp.horiz_rotate_text != d_value)
 			equal = false;
@@ -592,7 +592,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
 	
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
-	foreach (QString style_str, styles) {
+	for (QString style_str: styles) {
 		if (rx.exactMatch(style_str)) {
 			QString style_name = rx.cap(1);
 			QString style_value = rx.cap(2);

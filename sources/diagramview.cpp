@@ -149,7 +149,7 @@ void DiagramView::rotateSelection() {
 	QList<Element *> elements_to_rotate;
 	QList<DiagramTextItem *> texts_to_rotate;
 	QList<DiagramImageItem *> images_to_rotate;
-	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+	for (QGraphicsItem *item: scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate << e;
 		} else if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
@@ -176,7 +176,7 @@ void DiagramView::rotateTexts() {
 
 	// recupere les champs de texte a orienter
 	QList<DiagramTextItem *> texts_to_rotate;
-	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+	for (QGraphicsItem *item: scene -> selectedItems()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
 			texts_to_rotate << cti;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
@@ -714,7 +714,7 @@ void DiagramView::keyReleaseEvent(QKeyEvent *e) {
 void DiagramView::scrollOnMovement(QKeyEvent *e){
 			QList<QGraphicsItem *> selected_elmts = scene->selectedContent().items(255);
 			QRectF viewed_scene = viewedSceneRect();
-			foreach (QGraphicsItem *qgi, selected_elmts){
+			for (QGraphicsItem *qgi: selected_elmts){
 				if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 				if (qgraphicsitem_cast<QetShapeItem *>(qgi)) continue;
 				qreal x = qgi->pos().x();
@@ -802,7 +802,7 @@ bool DiagramView::hasSelectedItems() {
 	peuvent etre copies dans le presse-papier, false sinon
 */
 bool DiagramView::hasCopiableItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	for (QGraphicsItem *qgi: scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
@@ -819,7 +819,7 @@ bool DiagramView::hasCopiableItems() {
 	@return true if there is any Text Item selected
 */
 bool DiagramView::hasTextItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	for (QGraphicsItem *qgi: scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
 			qgraphicsitem_cast<ElementTextItem *>(qgi) ||
@@ -837,7 +837,7 @@ bool DiagramView::hasTextItems() {
 	peuvent etre supprimes, false sinon
 */
 bool DiagramView::hasDeletableItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	for (QGraphicsItem *qgi: scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<Conductor *>(qgi) ||
@@ -1068,7 +1068,7 @@ void DiagramView::resetConductors() {
 
 	// repere les conducteurs modifies (= profil non nul)
 	QHash<Conductor *, ConductorProfilesGroup> conductors_and_profiles;
-	foreach(Conductor *conductor, selected_conductors) {
+	for (Conductor *conductor: selected_conductors) {
 		ConductorProfilesGroup profile = conductor -> profiles();
 		if (
 			!profile[Qt::TopLeftCorner].isNull() ||\

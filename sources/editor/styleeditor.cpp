@@ -177,7 +177,7 @@ void StyleEditor::updateForm()
 		size_weight   -> setCurrentIndex(first_part -> lineWeight());
 		filling_color -> setCurrentIndex(first_part -> filling());
 
-		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		for (CustomElementGraphicPart *cegp: m_part_list)
 		{
 			if (first_part -> antialiased() != cegp -> antialiased()) antialiasing -> setChecked(false);
 			if (first_part -> color()       != cegp -> color())      outline_color -> setCurrentIndex(-1);
@@ -236,7 +236,7 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 
 	if (!isStyleEditable(part_list)) return false;
 
-	foreach (CustomElementPart *cep, part_list)
+	for (CustomElementPart *cep: part_list)
 	{
 		if (CustomElementGraphicPart *cegp = dynamic_cast<CustomElementGraphicPart *>(cep))
 			m_part_list << cegp;
@@ -244,7 +244,7 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 			return false;
 	}
 
-	foreach (CustomElementGraphicPart *cegp, m_part_list)
+	for (CustomElementGraphicPart *cegp: m_part_list)
 		m_cep_list << cegp;
 
 	updateForm();
@@ -268,7 +268,7 @@ bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 	QStringList str;
 	str << "arc" << "ellipse" << "line" << "polygon" << "rect";
 
-	foreach (CustomElementPart *cep, cep_list)
+	for (CustomElementPart *cep: cep_list)
 		if (!str.contains(cep -> xmlName()))
 			return false;
 
@@ -307,7 +307,7 @@ void StyleEditor::makeUndo(const QString &undo_text, const char *property_name, 
 	}
 	else if (!m_part_list.isEmpty())
 	{
-		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		for (CustomElementGraphicPart *cegp: m_part_list)
 		{
 			if (!undo)
 			{

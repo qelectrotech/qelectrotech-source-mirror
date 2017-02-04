@@ -45,7 +45,7 @@ DiagramEventAddImage::~DiagramEventAddImage()
         delete m_image;
     }
 
-    foreach (QGraphicsView *view, m_diagram->views())
+    for (QGraphicsView *view: m_diagram->views())
         view->setContextMenuPolicy((Qt::DefaultContextMenu));
 }
 
@@ -64,7 +64,7 @@ bool DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
         pos.ry() -= m_image->boundingRect().height()/2;
         m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
 
-        foreach (QGraphicsView *view, m_diagram->views())
+        for (QGraphicsView *view: m_diagram->views())
             view->setContextMenuPolicy((Qt::DefaultContextMenu));
 
         m_running = false;
@@ -95,7 +95,7 @@ bool DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
     if (!m_is_added)
     {
-        foreach (QGraphicsView *view, m_diagram->views())
+        for (QGraphicsView *view: m_diagram->views())
             view->setContextMenuPolicy((Qt::NoContextMenu));
 
         m_diagram -> addItem(m_image);

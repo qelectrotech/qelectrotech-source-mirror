@@ -134,7 +134,7 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bo
 	associes.
 */
 Terminal::~Terminal() {
-	foreach(Conductor *c, conductors_) delete c;
+	for (Conductor *c: conductors_) delete c;
 	delete br_;
 }
 
@@ -194,7 +194,7 @@ bool Terminal::addConductor(Conductor *conductor)
 	Terminal *other_terminal = (conductor -> terminal1 == this) ? conductor->terminal2 : conductor->terminal1;
 	
 		//Check if this terminal isn't already linked with other_terminal
-	foreach (Conductor* cond, conductors_)
+	for (Conductor* cond: conductors_)
 		if (cond -> terminal1 == other_terminal || cond -> terminal2 == other_terminal)
 			return false; //They already a conductor linked to this and other_terminal
 
@@ -418,14 +418,14 @@ Terminal* Terminal::alignedWithTerminal() const
 	QList <QGraphicsItem *> qgi_list = diagram() -> items(path);
 
 		//Remove all terminals of the parent element
-	foreach (Terminal *t, parent_element_ -> terminals())
+	for (Terminal *t: parent_element_ -> terminals())
 		qgi_list.removeAll(t);
 
 	if (qgi_list.isEmpty()) return nullptr;
 
 		//Get terminals only if orientation is opposed with this terminal
 	QList <Terminal *>  available_terminals;
-	foreach (QGraphicsItem *qgi, qgi_list)
+	for (QGraphicsItem *qgi: qgi_list)
 	{
 		if (Terminal *tt = qgraphicsitem_cast <Terminal *> (qgi))
 		{
@@ -448,7 +448,7 @@ Terminal* Terminal::alignedWithTerminal() const
 	Terminal *nearest_terminal = available_terminals.takeFirst();
 
 		//Search the nearest terminal to this one
-	foreach (Terminal *terminal, available_terminals)
+	for (Terminal *terminal: available_terminals)
 	{
 		line.setP2(terminal -> dockConductor());
 		if (line.length() < current_lenght)
@@ -595,7 +595,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	{
 		use_properties = true;
 		others_properties = (*conductors_list.begin())->properties();
-		foreach (Conductor *conductor, conductors_list) {
+		for (Conductor *conductor: conductors_list) {
 			if (conductor->properties() != others_properties)
 				use_properties = false;
 		}
@@ -632,7 +632,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
  * Update the path of conductor docked to this terminal
  */
 void Terminal::updateConductor() {
-	foreach (Conductor *conductor, conductors_)
+	for (Conductor *conductor: conductors_)
 		conductor->updatePath();
 }
 
@@ -644,7 +644,7 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	if (other_terminal == this) return(false);
 	
 	bool already_linked = false;
-	foreach (Conductor *c, conductors_) {
+	for (Conductor *c: conductors_) {
 		if (c -> terminal1 == other_terminal || c -> terminal2 == other_terminal) {
 			already_linked = true;
 			break;

@@ -692,7 +692,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	// Our final DiagramContext is the initial one (which is supposed to bring
 	// project-wide properties), overridden by the "additional fields" one...
 	DiagramContext context = initial_context;
-	foreach (QString key, additional_fields_.keys()) {
+	for (QString key: additional_fields_.keys()) {
 		context.addValue(key, additional_fields_[key]);
 	}
 	

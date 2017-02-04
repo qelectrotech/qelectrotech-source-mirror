@@ -125,7 +125,7 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	
 	// reads the additional fields used to fill the title block
 	context.clear();
-	foreach (QDomElement e, QET::findInDomElement(e, "properties")) {
+	for (QDomElement e: QET::findInDomElement(e, "properties")) {
 		context.fromXml(e);
 	}
 }

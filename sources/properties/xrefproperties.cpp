@@ -51,7 +51,7 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "master_label", master_label);
 	QString slave_label = m_slave_label;
 	settings.setValue(prefix + "slave_label", slave_label);
-	foreach (QString key, m_prefix.keys()) {
+	for (QString key: m_prefix.keys()) {
 		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
 	}
 }
@@ -71,7 +71,7 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_offset = settings.value(prefix + "offset", "0").toInt();
 	m_master_label = settings.value(prefix + "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix + "slave_label", "(%f-%l%c)").toString();
-	foreach (QString key, m_prefix_keys) {
+	for (QString key: m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
 }
@@ -93,7 +93,7 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
 	xml_element.setAttribute("slave_label", slave_label);
-	foreach (QString key, m_prefix.keys()) {
+	for (QString key: m_prefix.keys()) {
 		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
 	}
 }
@@ -112,7 +112,7 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
-	foreach (QString key, m_prefix_keys) {
+	for (QString key: m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
 }
@@ -132,7 +132,7 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 
 	QSettings settings;
 
-	foreach (QString key, keys)
+	for (QString key: keys)
 	{
 		XRefProperties properties;
 		QString str("diagrameditor/defaultxref");

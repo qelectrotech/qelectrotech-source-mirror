@@ -106,21 +106,21 @@ void AutoNumberingDockWidget::setContext() {
 	ui->m_conductor_cb->addItem("");
 	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
 	if (!keys_conductor.isEmpty()) {
-		foreach (QString str, keys_conductor) { ui->m_conductor_cb-> addItem(str); }
+		for (QString str: keys_conductor) { ui->m_conductor_cb-> addItem(str); }
 	}
 
 	//Element Combobox
 	ui->m_element_cb->addItem("");
 	QList <QString> keys_element = m_project->elementAutoNum().keys();
 	if (!keys_element.isEmpty()) {
-		foreach (QString str, keys_element) {ui->m_element_cb -> addItem(str);}
+		for (QString str: keys_element) {ui->m_element_cb -> addItem(str);}
 	}
 
 	//Folio Combobox
 	ui->m_folio_cb->addItem("");
 	QList <QString> keys_folio = m_project->folioAutoNum().keys();
 	if (!keys_folio.isEmpty()) {
-		foreach (QString str, keys_folio) { ui->m_folio_cb -> addItem(str);}
+		for (QString str: keys_folio) { ui->m_folio_cb -> addItem(str);}
 	}
 
 	this->setActive();
@@ -178,7 +178,7 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
 	ui->m_conductor_cb->addItem("");
 	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
 	if (!keys_conductor.isEmpty()) {
-		foreach (QString str, keys_conductor) { ui->m_conductor_cb-> addItem(str); }
+		for (QString str: keys_conductor) { ui->m_conductor_cb-> addItem(str); }
 	}
 	setActive();
 }
@@ -209,7 +209,7 @@ void AutoNumberingDockWidget::elementAutoNumChanged() {
 	ui->m_element_cb->addItem("");
 	QList <QString> keys_element = m_project->elementAutoNum().keys();
 	if (!keys_element.isEmpty()) {
-		foreach (QString str, keys_element) {ui->m_element_cb -> addItem(str);}
+		for (QString str: keys_element) {ui->m_element_cb -> addItem(str);}
 	}
 	setActive();
 }
@@ -237,7 +237,7 @@ void AutoNumberingDockWidget::folioAutoNumChanged() {
 	ui->m_folio_cb->addItem("");
 	QList <QString> keys_folio = m_project->folioAutoNum().keys();
 	if (!keys_folio.isEmpty()) {
-		foreach (QString str, keys_folio) { ui->m_folio_cb -> addItem(str);}
+		for (QString str: keys_folio) { ui->m_folio_cb -> addItem(str);}
 	}
 	setActive();
 }

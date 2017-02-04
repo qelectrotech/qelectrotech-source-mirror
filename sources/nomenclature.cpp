@@ -103,7 +103,7 @@ QString nomenclature::getNomenclature()
 
 	if(m_list_diagram.isEmpty()) return data;
 
-	foreach (Diagram *d, m_list_diagram) {
+	for (Diagram *d: m_list_diagram) {
 		//Get only simple, master and unlinked slave element.
 		ElementProvider ep(d);
 		QSettings settings;
@@ -120,7 +120,7 @@ QString nomenclature::getNomenclature()
 		
 		list_elements << ep.freeElement(Element::Slave);
 
-		foreach (Element *elmt, list_elements) {
+		for (Element *elmt: list_elements) {
 			data += getElementInfo(elmt);
 		}
 	}

@@ -72,7 +72,7 @@ bool ModifyTitleBlockCellCommand::mergeWith(const QUndoCommand *command) {
 */
 void ModifyTitleBlockCellCommand::undo() {
 	if (!modified_cell_) return;
-	foreach (QString attribute, old_values_.keys()) {
+	for (QString attribute: old_values_.keys()) {
 		modified_cell_ -> setAttribute(attribute, old_values_[attribute]);
 	}
 	if (view_) view_ -> refresh();
@@ -83,7 +83,7 @@ void ModifyTitleBlockCellCommand::undo() {
 */
 void ModifyTitleBlockCellCommand::redo() {
 	if (!modified_cell_) return;
-	foreach (QString attribute, new_values_.keys()) {
+	for (QString attribute: new_values_.keys()) {
 		modified_cell_ -> setAttribute(attribute, new_values_[attribute]);
 	}
 	if (view_) view_ -> refresh();
@@ -601,7 +601,7 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 	if (!spanning_cell_) return;
 	
 	// store the spanner_cell attribute of each cell implied in the merge
-	foreach(TitleBlockCell *cell, merged_cells.cells()) {
+	for (TitleBlockCell *cell: merged_cells.cells()) {
 		spanner_cells_before_merge_.insert(cell, cell -> spanner_cell);
 	}
 	
@@ -670,7 +670,7 @@ void MergeCellsCommand::undo() {
 	if (!isValid()) return;
 	
 	// restore the original spanning_cell attribute of all impacted cells
-	foreach (TitleBlockCell *cell, spanner_cells_before_merge_.keys()) {
+	for (TitleBlockCell *cell: spanner_cells_before_merge_.keys()) {
 		cell -> spanner_cell = spanner_cells_before_merge_[cell];
 	}
 	
@@ -691,7 +691,7 @@ void MergeCellsCommand::redo() {
 	if (!isValid()) return;
 	
 	// set the spanning_cell attributes of spanned cells to the spanning cell
-	foreach (TitleBlockCell *cell, spanner_cells_before_merge_.keys()) {
+	for (TitleBlockCell *cell: spanner_cells_before_merge_.keys()) {
 		if (cell == spanning_cell_) continue;
 		cell -> spanner_cell = spanning_cell_;
 	}
@@ -723,7 +723,7 @@ TitleBlockCell *MergeCellsCommand::getBottomRightCell(const TitleBlockTemplateCe
 	// we then look for the bottom right logical cell
 	int max_num_row = -1, max_num_col = -1;
 	TitleBlockCell *candidate = 0;
-	foreach(TitleBlockCell *cell, logical_cells) {
+	for (TitleBlockCell *cell: logical_cells) {
 		if (cell -> num_row > max_num_row) max_num_row = cell -> num_row;
 		if (cell -> num_col > max_num_col) max_num_col = cell -> num_col;
 		if (cell -> num_row == max_num_row && cell -> num_col == max_num_col) {
@@ -810,7 +810,7 @@ void SplitCellsCommand::undo() {
 	if (!isValid()) return;
 	
 	// the spanned cells are spanned again
-	foreach(TitleBlockCell *cell, spanned_cells_) {
+	for (TitleBlockCell *cell: spanned_cells_) {
 		cell -> spanner_cell = spanning_cell_;
 	}
 	
@@ -831,7 +831,7 @@ void SplitCellsCommand::redo() {
 	if (!isValid()) return;
 	
 	// the spanned cells are not spanned anymore
-	foreach(TitleBlockCell *cell, spanned_cells_) {
+	for (TitleBlockCell *cell: spanned_cells_) {
 		cell -> spanner_cell = 0;
 	}
 	
@@ -898,7 +898,7 @@ CutTemplateCellsCommand::~CutTemplateCellsCommand() {
 	Undo a cut operation
 */
 void CutTemplateCellsCommand::undo() {
-	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
+	for (TitleBlockCell *cell: cut_cells_.keys()) {
 		cell -> cell_type = cut_cells_.value(cell);
 	}
 	refreshView();
@@ -908,14 +908,14 @@ void CutTemplateCellsCommand::undo() {
 	Redo a cut operation
 */
 void CutTemplateCellsCommand::redo() {
-	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
+	for (TitleBlockCell *cell: cut_cells_.keys()) {
 		cell -> cell_type = TitleBlockCell::EmptyCell;
 	}
 	refreshView();
 }
 
 void CutTemplateCellsCommand::setCutCells(const QList<TitleBlockCell *> &cells) {
-	foreach (TitleBlockCell *cell, cells) {
+	for (TitleBlockCell *cell: cells) {
 		cut_cells_.insert(cell, cell -> cell_type);
 	}
 	updateText();
@@ -957,7 +957,7 @@ void PasteTemplateCellsCommand::updateText() {
 */
 void PasteTemplateCellsCommand::undo() {
 	bool span_management = erased_cells_.count() > 1;
-	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
+	for (TitleBlockCell *cell: erased_cells_.keys()) {
 		cell -> loadContentFromCell(erased_cells_.value(cell));
 	}
 	if (span_management) {
@@ -987,7 +987,7 @@ void PasteTemplateCellsCommand::redo() {
 	}
 	
 	// copy data from each pasted cell into each erased cell
-	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
+	for (TitleBlockCell *cell: erased_cells_.keys()) {
 		if (span_management) {
 			// the erased cell may be spanned by another cell
 			if (TitleBlockCell *spanning_cell = cell -> spanner_cell) {
@@ -1012,7 +1012,7 @@ void PasteTemplateCellsCommand::redo() {
 				
 				if (cell -> row_span || cell -> col_span) {
 					// browse newly spanned cells...
-					foreach (TitleBlockCell *spanned_cell, tbtemplate_ -> spannedCells(cell, true)) {
+					for (TitleBlockCell *spanned_cell: tbtemplate_ -> spannedCells(cell, true)) {
 						// ... to ensure they are not already spanned by other cells
 						if (spanned_cell -> spanner_cell && spanned_cell -> spanner_cell != cell) {
 							// if so, simply cancel the whole spanning

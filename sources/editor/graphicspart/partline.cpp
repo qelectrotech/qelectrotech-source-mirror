@@ -244,7 +244,7 @@ QPainterPath PartLine::shape() const
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
+		for (QRectF rect: m_handler.handlerRect(m_handler.pointsForLine(m_line)))
 			shape.addRect(rect);
 
 	return shape;
@@ -373,10 +373,10 @@ void PartLine::debugPaint(QPainter *painter)
 	
 	painter -> setPen(Qt::red);
 
-	foreach(QPointF pointy, fourEndPoints(m_line.p1(), m_line.p2(), first_length))
+	for (QPointF pointy: fourEndPoints(m_line.p1(), m_line.p2(), first_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
 
-	foreach(QPointF pointy, fourEndPoints(m_line.p2(), m_line.p1(), second_length))
+	for (QPointF pointy: fourEndPoints(m_line.p2(), m_line.p1(), second_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
 	
 	painter -> restore();
@@ -402,7 +402,7 @@ QRectF PartLine::boundingRect() const
 	bound = bound.normalized();
 	bound.adjust(-adjust, -adjust, adjust, adjust);
 
-	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
+	for (QRectF rect: m_handler.handlerRect(m_handler.pointsForLine(m_line)))
 		bound |= rect;
 
 	return bound;

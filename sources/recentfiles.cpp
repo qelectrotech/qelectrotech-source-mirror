@@ -173,7 +173,7 @@ void RecentFiles::buildMenu() {
 	}
 	
 	// remplit le menu
-	foreach (QString filepath, list_) {
+	for (QString filepath: list_) {
 		// creee une nouvelle action pour le fichier
 		QAction *action = new QAction(filepath, this);
 		if (!files_icon_.isNull()) {
