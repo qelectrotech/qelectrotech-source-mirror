@@ -236,7 +236,7 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		list.append(items());
 
 
-	for (QETProject *project: projects) {
+	foreach (QETProject *project, projects) {
 		addProject(project, false);
 		list.append(projectItems(project));
 	}
@@ -310,7 +310,7 @@ void ElementsCollectionModel::addLocation(ElementsLocation location)
 		for (int i=0 ; i<rowCount() ; i++)
 			child_list.append(static_cast<ElementCollectionItem *>(item(i)));
 
-		for (ElementCollectionItem *eci: child_list) {
+		foreach(ElementCollectionItem *eci, child_list) {
 
 			if (eci->type() == FileElementCollectionItem::Type) {
 				FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci);
@@ -393,14 +393,14 @@ void ElementsCollectionModel::highlightUnusedElement()
 {
 	QList <ElementsLocation> unused;
 
-	for (QETProject *project: m_project_list)
+	foreach (QETProject *project, m_project_list)
 		unused.append(project->unusedElements());
 
 	QBrush brush;
 	brush.setStyle(Qt::Dense4Pattern);
 	brush.setColor(Qt::red);
 
-	for (ElementsLocation location: unused) {
+	foreach (ElementsLocation location, unused) {
 		QModelIndex index = indexFromLocation(location);
 		if (index.isValid()) {
 			QStandardItem *qsi = itemFromIndex(index);
@@ -452,7 +452,7 @@ QList<ElementCollectionItem *> ElementsCollectionModel::projectItems(QETProject 
 void ElementsCollectionModel::hideElement()
 {
 	m_hide_element = true;
-	for (ElementCollectionItem *eci: items()) {
+	foreach(ElementCollectionItem *eci, items()) {
 		if (eci->isElement()) {
 			removeRow(eci->row(), indexFromItem(eci).parent());
 		}
@@ -473,7 +473,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &l
 	for (int i=0 ; i<rowCount() ; i++)
 		child_list.append(static_cast<ElementCollectionItem *>(item(i)));
 
-		foreach (ElementCollectionItem *eci, child_list) {
+		foreach(ElementCollectionItem *eci, child_list) {
 
 			ElementCollectionItem *match_eci = nullptr;
 
@@ -514,7 +514,7 @@ void ElementsCollectionModel::elementIntegratedToCollection(QString path)
 	QETProject *project = nullptr;
 
 		//Get the owner project of the collection
-	for (QETProject *prj: m_project_list) {
+	foreach (QETProject *prj, m_project_list) {
 		if (prj->embeddedElementCollection() == collection) {
 			project = prj;
 		}
@@ -547,7 +547,7 @@ void ElementsCollectionModel::itemRemovedFromCollection(QString path)
 	QETProject *project = nullptr;
 
 		//Get the owner project of the collection
-	for (QETProject *prj: m_project_list) {
+	foreach (QETProject *prj, m_project_list) {
 		if (prj->embeddedElementCollection() == collection) {
 			project = prj;
 		}
@@ -575,7 +575,7 @@ void ElementsCollectionModel::updateItem(QString path)
 	QETProject *project = nullptr;
 
 		//Get the owner project of the collection
-	for (QETProject *prj: m_project_list) {
+	foreach (QETProject *prj, m_project_list) {
 		if (prj->embeddedElementCollection() == collection) {
 			project = prj;
 		}

@@ -105,7 +105,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
  */
 NumerotationContext SelectAutonumW::toNumContext() const {
 	NumerotationContext nc;
-	for (NumPartEditorW *npew: num_part_list_) nc << npew -> toNumContext();
+	foreach (NumPartEditorW *npew, num_part_list_) nc << npew -> toNumContext();
 	return nc;
 }
 
@@ -228,7 +228,7 @@ void SelectAutonumW::applyEnableOnContextChanged(QString) {
 void SelectAutonumW::applyEnable(bool b) {
 	if (b){
 		bool valid= true;
-		for (NumPartEditorW *npe: num_part_list_) if (!npe -> isValid()) valid= false;
+		foreach (NumPartEditorW *npe, num_part_list_) if (!npe -> isValid()) valid= false;
 		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(valid);
 	}
 	else {

@@ -99,18 +99,18 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	for (QGraphicsItem *qgi: moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
+	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
 		if (qgi == movement_driver_) continue;
 		qgi -> setPos(qgi->pos() + movement);
 	}
 	
 	// Move some conductors
-	for (Conductor *conductor: moved_content_.conductorsToMove) {
+	foreach(Conductor *conductor, moved_content_.conductorsToMove) {
 		conductor -> setPos(conductor -> pos() + movement);
 	}
 	
 	// Recalcul the path of other conductors
-	for (Conductor *conductor: moved_content_.conductorsToUpdate) {
+	foreach(Conductor *conductor, moved_content_.conductorsToUpdate) {
 		conductor -> updatePath();
 	}
 }
@@ -168,7 +168,7 @@ void ElementsMover::endMovement()
 			{
 				use_properties = true;
 				others_properties = (*conductors_list.begin())->properties();
-				for (Conductor *cond: conductors_list)
+				foreach (Conductor *cond, conductors_list)
 					if (cond->properties() != others_properties)
 						use_properties = false;
 			}

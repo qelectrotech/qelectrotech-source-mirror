@@ -158,7 +158,7 @@ QList<TitleBlockCell *> TitleBlockTemplateView::copy() {
 	QDomDocument xml_export;
 	QDomElement tbtpartial = xml_export.createElement("titleblocktemplate-partial");
 	xml_export.appendChild(tbtpartial);
-	for (TitleBlockCell *cell: copied_cells) {
+	foreach (TitleBlockCell *cell, copied_cells) {
 		tbtemplate_ -> exportCellToXml(cell, tbtpartial);
 		tbtpartial.setAttribute("row", cell -> num_row);
 		tbtpartial.setAttribute("col", cell -> num_col);
@@ -248,7 +248,7 @@ void TitleBlockTemplateView::paste() {
 	normalizeCells(pasted_cells, erased_cell -> num_row, erased_cell -> num_col);
 	
 	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
-	for (TitleBlockCell cell: pasted_cells) {
+	foreach (TitleBlockCell cell, pasted_cells) {
 		TitleBlockCell *erased_cell = tbtemplate_ -> cell(cell.num_row, cell.num_col);
 		if (!erased_cell) continue;
 		paste_command -> addCell(erased_cell, *erased_cell, cell);
@@ -1056,7 +1056,7 @@ void TitleBlockTemplateView::removeItem(QGraphicsLayoutItem *item) {
 */
 TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &items) const {
 	TitleBlockTemplateCellsSet set(this);
-	for (QGraphicsItem *item: items) {
+	foreach (QGraphicsItem *item, items) {
 		if (TitleBlockTemplateVisualCell *cell_view = dynamic_cast<TitleBlockTemplateVisualCell *>(item)) {
 			if (cell_view -> cell() && cell_view -> cell() -> num_row != -1) {
 				set << cell_view;

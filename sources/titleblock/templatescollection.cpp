@@ -98,7 +98,7 @@ QETProject *TitleBlockTemplatesCollection::parentProject() {
 */
 QList<TitleBlockTemplateLocation> TitleBlockTemplatesCollection::templatesLocations() {
 	QList<TitleBlockTemplateLocation> locations;
-	for (QString template_name: templates()) {
+	foreach (QString template_name, templates()) {
 		locations << location(template_name);
 	}
 	return(locations);
@@ -320,7 +320,7 @@ bool TitleBlockTemplatesProjectCollection::isReadOnly(const QString &template_na
 	@param xml_element XML element to be parsed to load title block templates
 */
 void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_element) {
-	for (QDomElement e: QET::findInDomElement(xml_element, "titleblocktemplates", "titleblocktemplate")) {
+	foreach (QDomElement e, QET::findInDomElement(xml_element, "titleblocktemplates", "titleblocktemplate")) {
 		// each titleblock template must have a name
 		if (!e.hasAttribute("name")) continue;
 		QString titleblock_template_name = e.attribute("name");
@@ -340,7 +340,7 @@ void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_elemen
 void TitleBlockTemplatesProjectCollection::deleteUnusedTitleBlocKTemplates() {
 	if (!project_) return;
 	
-	for (QString template_name: templates()) {
+	foreach (QString template_name, templates()) {
 		if (!project_ -> usesTitleBlockTemplate(location(template_name))) {
 			removeTemplate(template_name);
 		}
@@ -390,7 +390,7 @@ QString TitleBlockTemplatesFilesCollection::path(const QString &template_name) c
 QStringList TitleBlockTemplatesFilesCollection::templates() {
 	QStringList templates_names;
 	QRegExp replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
-	for (QString name: dir_.entryList()) {
+	foreach(QString name, dir_.entryList()) {
 		templates_names << name.replace(replace_regexp, "");
 	}
 	return(templates_names);

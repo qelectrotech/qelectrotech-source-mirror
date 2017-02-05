@@ -259,7 +259,7 @@ QPainterPath QetShapeItem::shape() const
 		else
 			vector = m_polygon;
 
-		for (QRectF r: m_handler.handlerRect(vector))
+		foreach(QRectF r, m_handler.handlerRect(vector))
 			path.addRect(r);
 	}
 
@@ -562,7 +562,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		m_P2.setY(e.attribute("y2", 0).toDouble());
 	}
 	else
-		for (QDomElement de: QET::findInDomElement(e, "points", "point"))
+		foreach(QDomElement de, QET::findInDomElement(e, "points", "point"))
 			m_polygon << QPointF(de.attribute("x", 0).toDouble(), de.attribute("y", 0).toDouble());
 
 	return (true);
@@ -596,7 +596,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	else
 	{
 		QDomElement points = document.createElement("points");
-		for (QPointF p: m_polygon)
+		foreach(QPointF p, m_polygon)
 		{
 			QDomElement point = document.createElement("point");
 			QPointF pf = mapToScene(p);

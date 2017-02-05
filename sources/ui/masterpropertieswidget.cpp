@@ -150,7 +150,7 @@ void MasterPropertiesWidget::apply() {
  */
 void MasterPropertiesWidget::reset()
 {
-	for (QTreeWidgetItem *qtwi: m_qtwi_hash.keys())
+	foreach (QTreeWidgetItem *qtwi, m_qtwi_hash.keys())
 		delete qtwi;
 	
 	m_qtwi_hash.clear();
@@ -177,7 +177,7 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 	{
 		bool equal = true;
 
-		for (Element *elmt: to_link)
+		foreach(Element *elmt, to_link)
 			if (!linked_.contains(elmt))
 				equal = false;
 
@@ -224,7 +224,7 @@ void MasterPropertiesWidget::updateUi()
 
 		//Build the list of free available element
 	QList <QTreeWidgetItem *> items_list;
-	for (Element *elmt: elmt_prov.freeElement(Element::Slave))
+	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave))
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());
@@ -243,7 +243,7 @@ void MasterPropertiesWidget::updateUi()
 	items_list.clear();
 
 		//Build the list of already linked element
-	for (Element *elmt: m_element->linkedElements())
+	foreach(Element *elmt, m_element->linkedElements())
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());

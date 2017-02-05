@@ -155,7 +155,7 @@ void NewDiagramPage::applyConf() {
 
 		// default xref properties
 		QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
-		for (QString key: hash_xrp.keys()) {
+		foreach (QString key, hash_xrp.keys()) {
 			XRefProperties xrp = hash_xrp[key];
 			QString str("diagrameditor/defaultxref");
 			xrp.toSettings(settings, str += key);

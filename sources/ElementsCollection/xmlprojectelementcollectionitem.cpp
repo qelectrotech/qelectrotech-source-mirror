@@ -227,7 +227,7 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 	QList <QDomElement> dom_category = m_project->embeddedElementCollection()->directories(m_dom_element);
 	std::sort(dom_category.begin(), dom_category.end(), [](QDomElement a, QDomElement b){return (a.attribute("name") < b.attribute("name"));});
 
-	for (QDomElement element: dom_category)
+	foreach (QDomElement element, dom_category)
 	{
 		XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
 		appendRow(xpeci);
@@ -242,7 +242,7 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 	QList <QDomElement> dom_elements = m_project->embeddedElementCollection()->elements(m_dom_element);
 	std::sort(dom_elements.begin(), dom_elements.end(), [](QDomElement a, QDomElement b){return (a.attribute("name") < b.attribute("name"));});
 
-	for (QDomElement element: dom_elements)
+	foreach (QDomElement element, dom_elements)
 	{
 		XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
 		appendRow(xpeci);

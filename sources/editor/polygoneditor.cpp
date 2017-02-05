@@ -101,7 +101,7 @@ void PolygonEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
 	while(points_list.takeTopLevelItem(0)) {}
-	for (QPointF point: part -> polygon()) {
+	foreach(QPointF point, part -> polygon()) {
 		point = part -> mapToScene(point);
 		QStringList qsl;
 		qsl << QString("%1").arg(point.x()) << QString("%1").arg(point.y());

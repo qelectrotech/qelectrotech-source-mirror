@@ -72,7 +72,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplates
 {
 	ui->setupUi(this);
 	initDialog(current_date,project);
-	for (TitleBlockTemplatesCollection *c: tbt_collection)
+	foreach (TitleBlockTemplatesCollection *c, tbt_collection)
 		addCollection(c);
 	updateTemplateList();
 	setProperties(titleblock);
@@ -230,7 +230,7 @@ TitleBlockTemplateLocation TitleBlockPropertiesWidget::currentTitleBlockLocation
 {
 	QET::QetCollection qc = m_map_index_to_collection_type.at(ui->m_tbt_cb->currentIndex());
 	TitleBlockTemplatesCollection *collection = nullptr;
-	for (TitleBlockTemplatesCollection *c: m_tbt_collection_list)
+	foreach (TitleBlockTemplatesCollection *c, m_tbt_collection_list)
 		if (c -> collection() == qc)
 			collection = c;
 
@@ -307,7 +307,7 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 
 	if (project!= NULL){
 		keys_2 = project -> folioAutoNum().keys();
-		for (QString str: keys_2) { ui -> auto_page_cb -> addItem(str); }
+		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==NULL)
 			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
 	}
@@ -365,7 +365,7 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 	ui -> m_tbt_cb -> addItem(QET::Icons::QETLogo, tr("Modèle par défaut"));
 
 		//Add every title block stored in m_tbt_collection_list
-	for (TitleBlockTemplatesCollection *tbt_c: m_tbt_collection_list)
+	foreach (TitleBlockTemplatesCollection *tbt_c, m_tbt_collection_list)
 	{
 		QIcon icon;
 		QET::QetCollection qc = tbt_c -> collection();
@@ -376,7 +376,7 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 		else if (qc == QET::QetCollection::Embedded)
 			icon = QET::Icons::TitleBlock;
 
-		for (QString tbt_name: tbt_c -> templates())
+		foreach(QString tbt_name, tbt_c -> templates())
 		{
 			m_map_index_to_collection_type.append(qc);
 			ui -> m_tbt_cb -> addItem(icon, tbt_name, tbt_name);
@@ -394,7 +394,7 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 
 	QET::QetCollection qc = m_map_index_to_collection_type.at(index);
 	TitleBlockTemplatesCollection *collection = nullptr;
-	for (TitleBlockTemplatesCollection *c: m_tbt_collection_list)
+	foreach (TitleBlockTemplatesCollection *c, m_tbt_collection_list)
 		if (c -> collection() == qc)
 			collection = c;
 

@@ -82,7 +82,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 				if ((elmt_->linkType() & Element::Terminale) && !elmt_->terminals().isEmpty())
 				{
-					for (Terminal *t: elmt_->terminals())
+					foreach(Terminal *t, elmt_->terminals())
 					{
 						if (t->conductors().isEmpty()) continue;
 						conductor_in_potential = t->conductors().first();
@@ -106,7 +106,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 			c_list = conductor_in_potential->relatedPotentialConductors().toList();
 			c_list.append(conductor_in_potential);
-			for (Conductor *c: c_list)
+			foreach(Conductor *c, c_list)
 				properties_list.append(c->properties());
 		}
 
@@ -139,14 +139,14 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 				m_seq_num_1 = report->conductors().first()->sequenceNum();
 				m_conductors_list_1.append(report->conductors().first()->relatedPotentialConductors().toList());
 				m_conductors_list_1.append(report->conductors().first());
-				for (Conductor *c: m_conductors_list_1)
+				foreach(Conductor *c, m_conductors_list_1)
 					m_properties_list_1 << c->properties();
 
 				m_conductor_number_2 = other_report->conductors().first()->relatedPotentialConductors().size() + 1;
 				m_seq_num_2 = other_report->conductors().first()->sequenceNum();
 				m_conductors_list_2.append(other_report->conductors().first()->relatedPotentialConductors().toList());
 				m_conductors_list_2.append(other_report->conductors().first());
-				for (Conductor *c: m_conductors_list_2)
+				foreach(Conductor *c, m_conductors_list_2)
 					m_properties_list_2 << c->properties();
 
 					//We relink the report
@@ -283,7 +283,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 			new_seq.setValue(m_sequential_num);
 
 				//Set the new properties for each conductors of the new potential
-			for (Conductor *cond: m_conductors_to_change)
+			foreach(Conductor *cond, m_conductors_to_change)
 			{
 				ConductorProperties new_properties = cond->properties();
 				new_properties.applyForEqualAttributes(m_properties_list);
@@ -296,7 +296,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 			
 				//Check if formula of the new potential have incompatible variable with folio report
 			QRegularExpression rx ("%sequf_|%seqtf_|%seqhf_|%id|%F|%M|%LM");
-			for (ConductorProperties cp: m_properties_list)
+			foreach(ConductorProperties cp, m_properties_list)
 			{
 				if (cp.m_formula.contains(rx))
 				{
@@ -316,7 +316,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 					QString new_formula = fag.formula();
 					QSet <Conductor *> c_list = m_report->conductors().first()->relatedPotentialConductors();
 					c_list.insert(m_report->conductors().first());
-					for (Conductor *cond: c_list)
+					foreach(Conductor *cond, c_list)
 					{
 						old_value.setValue(cond->properties());
 						ConductorProperties new_properties = cond->properties();
@@ -351,7 +351,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
 
 			//Set the new properties for each conductors of the new potential
-		for (Conductor *cond: m_conductor->relatedPotentialConductors())
+		foreach(Conductor *cond, m_conductor->relatedPotentialConductors())
 		{
 			new_properties = cond->properties();
 			new_properties.applyForEqualAttributes(m_properties_list);

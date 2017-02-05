@@ -81,12 +81,12 @@ void DeleteElementsCommand::undo()
 {
 	diagram -> showMe();
 
-	for (QGraphicsItem *item: removed_content.items())
+	foreach(QGraphicsItem *item, removed_content.items())
 		diagram->addItem(item);
 
 		//We relink element after every element was added to diagram
-	for (Element *e: removed_content.elements)
-		for (Element *elmt: m_link_hash[e])
+	foreach(Element *e, removed_content.elements)
+		foreach (Element *elmt, m_link_hash[e])
 				e -> linkToElement(elmt);
 }
 
@@ -98,7 +98,7 @@ void DeleteElementsCommand::redo()
 {
 	diagram -> showMe();
 
-	for (Conductor *c: removed_content.conductors(DiagramContent::AnyConductor))
+	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor))
 	{
 			//If option one text per folio is enable, and the text item of
 			//current conductor is visible (that mean the conductor have the single displayed text)
@@ -113,14 +113,14 @@ void DeleteElementsCommand::redo()
 		}
 	}
 	
-	for (Element *e: removed_content.elements)
+	foreach(Element *e, removed_content.elements)
 	{
 			//Get linked element, for relink it at undo
 		if (!e->linkedElements().isEmpty())
 			m_link_hash.insert(e, e->linkedElements());
 	}
 
-	for (QGraphicsItem *item: removed_content.items())
+	foreach(QGraphicsItem *item, removed_content.items())
 		diagram->removeItem(item);
 }
 
@@ -158,7 +158,7 @@ void PasteDiagramCommand::undo()
 {
 	diagram -> showMe();
 
-	for (QGraphicsItem *item: content.items(filter))
+	foreach(QGraphicsItem *item, content.items(filter))
 		diagram->removeItem(item);
 }
 
@@ -175,7 +175,7 @@ void PasteDiagramCommand::redo()
 		first_redo = false;
 
 			//this is the first paste, we do some actions for the new element
-		for (Element *e: content.elements) {
+		foreach(Element *e, content.elements) {
 				//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
 
@@ -205,7 +205,7 @@ void PasteDiagramCommand::redo()
 				eti -> setPlainText("_");
 			
 				//Reset the text of conductors
-				for (Conductor *c: content.conductorsToMove) {
+				foreach (Conductor *c, content.conductorsToMove) {
 					ConductorProperties cp = c -> properties();
 					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
 					c -> setProperties(cp);
@@ -214,14 +214,14 @@ void PasteDiagramCommand::redo()
 }
 	}
 	else {
-		for (QGraphicsItem *item: content.items(filter)) {
+		foreach (QGraphicsItem *item, content.items(filter)) {
 			diagram->item_paste = true;
 			diagram->addItem(item);
 			diagram->item_paste = false;
 		}
 	}
 
-	for (QGraphicsItem *qgi: content.items())
+	foreach (QGraphicsItem *qgi, content.items())
 		qgi -> setSelected(true);
 }
 
@@ -335,7 +335,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	typedef DiagramContent dc;
 
 	//Move every movable item, except conductor
-	for (QGraphicsItem *qgi: content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
+	foreach (QGraphicsItem *qgi, content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
 		//If curent item have parent, and parent item is in content_to_move
 		//we don't apply movement to this item, because this item will be moved by is parent.
 		if (qgi->parentItem()) {
@@ -349,12 +349,12 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	}
 	
 	// Move some conductors
-	for (Conductor *conductor: content_to_move.conductorsToMove) {
+	foreach(Conductor *conductor, content_to_move.conductorsToMove) {
 		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
 	}
 	
 	// Recalcul the path of other conductor
-	for (Conductor *conductor: content_to_move.conductorsToUpdate) {
+	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
 		setupAnimation(conductor, "animPath", 1, 1);
 	}
 }
@@ -403,7 +403,7 @@ MoveConductorsTextsCommand::~MoveConductorsTextsCommand() {
 /// annule le deplacement
 void MoveConductorsTextsCommand::undo() {
 	diagram -> showMe();
-	for (ConductorTextItem *cti: texts_to_move_.keys()) {
+	foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
 		QPointF movement = texts_to_move_[cti].first;
 		bool was_already_moved = texts_to_move_[cti].second;
 		
@@ -420,7 +420,7 @@ void MoveConductorsTextsCommand::redo() {
 	if (first_redo) {
 		first_redo = false;
 	} else {
-		for (ConductorTextItem *cti: texts_to_move_.keys()) {
+		foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
 			QPointF movement = texts_to_move_[cti].first;
 			
 			cti -> forceMovedByUser(true);
@@ -539,10 +539,10 @@ RotateElementsCommand::~RotateElementsCommand() {
 /// defait le pivotement
 void RotateElementsCommand::undo() {
 	diagram -> showMe();
-	for (Element *e: elements_to_rotate) {
+	foreach(Element *e, elements_to_rotate) {
 		e -> rotateBy(-applied_rotation_angle_);
 	}
-	for (DiagramTextItem *dti: texts_to_rotate) {
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		//ConductorTextItem have a default rotation angle, we apply a specific treatment
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
 			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
@@ -551,16 +551,16 @@ void RotateElementsCommand::undo() {
 		}
 		else {dti -> rotateBy(-applied_rotation_angle_);}
 	}
-	for (DiagramImageItem *dii: images_to_rotate) dii -> rotateBy(-applied_rotation_angle_);
+	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(-applied_rotation_angle_);
 }
 
 /// refait le pivotement
 void RotateElementsCommand::redo() {
 	diagram -> showMe();
-	for (Element *e: elements_to_rotate) {
+	foreach(Element *e, elements_to_rotate) {
 		e -> rotateBy(applied_rotation_angle_);
 	}
-	for (DiagramTextItem *dti: texts_to_rotate) {
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		//we grab the previous rotation by user of each ConductorTextItem
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
 			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
@@ -568,7 +568,7 @@ void RotateElementsCommand::redo() {
 		}
 		dti -> rotateBy(applied_rotation_angle_);
 	}
-	for (DiagramImageItem *dii: images_to_rotate) dii -> rotateBy(applied_rotation_angle_);
+	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(applied_rotation_angle_);
 }
 
 /**
@@ -597,7 +597,7 @@ RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, do
 	applied_rotation_angle_(applied_rotation),
 	diagram(texts.first()->diagram())
 {
-	for (DiagramTextItem *text: texts) {
+	foreach(DiagramTextItem *text, texts) {
 		texts_to_rotate.insert(text, text -> rotationAngle());
 	}
 	defineCommandName();
@@ -614,7 +614,7 @@ RotateTextsCommand::~RotateTextsCommand() {
 */
 void RotateTextsCommand::undo() {
 	diagram -> showMe();
-	for (DiagramTextItem *text: texts_to_rotate.keys()) {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text))
 			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
 		text -> setRotationAngle(texts_to_rotate[text]);
@@ -626,7 +626,7 @@ void RotateTextsCommand::undo() {
 */
 void RotateTextsCommand::redo() {
 	diagram -> showMe();
-	for (DiagramTextItem *text: texts_to_rotate.keys()) {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
 			//we grab the previous rotation by user of each ConductorTextItem
 			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
@@ -741,7 +741,7 @@ ResetConductorCommand::~ResetConductorCommand() {
  */
 void ResetConductorCommand::undo() {
 	diagram -> showMe();
-	for (Conductor *c: conductors_profiles.keys()) {
+	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> setProfiles(conductors_profiles[c]);
 	}
 }
@@ -751,7 +751,7 @@ void ResetConductorCommand::undo() {
  */
 void ResetConductorCommand::redo() {
 	diagram -> showMe();
-	for (Conductor *c: conductors_profiles.keys()) {
+	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> textItem() -> forceMovedByUser  (false);
 		c -> textItem() -> forceRotateByUser (false);
 		c -> setProfiles(ConductorProfilesGroup());

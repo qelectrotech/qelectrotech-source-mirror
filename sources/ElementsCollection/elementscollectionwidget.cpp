@@ -311,7 +311,7 @@ void ElementsCollectionWidget::editElement()
 	QETApp *app = QETApp::instance();
 	app->openElementLocations(QList<ElementsLocation>() << location);
 
-	for (QETElementEditor *element_editor: app->elementEditors())
+	foreach (QETElementEditor *element_editor, app->elementEditors())
 		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
 }
 
@@ -442,7 +442,7 @@ void ElementsCollectionWidget::newElement()
 	elmt_wizard.preselectedLocation(loc);
 	elmt_wizard.exec();
 
-	for (QETElementEditor *element_editor: QETApp::instance()->elementEditors())
+	foreach (QETElementEditor *element_editor, QETApp::instance()->elementEditors())
 		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
 }
 
@@ -609,12 +609,12 @@ void ElementsCollectionWidget::search()
 	hideCollection(true);
 	QStringList text_list = text.split("+", QString::SkipEmptyParts);
 	QModelIndexList match_index;
-	for (QString txt: text_list) {
+	foreach (QString txt, text_list) {
 		match_index << m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
 									  Qt::DisplayRole, QVariant(txt), -1, Qt::MatchContains | Qt::MatchRecursive);
 	}
 
-	for (QModelIndex index: match_index)
+	foreach(QModelIndex index, match_index)
 		showAndExpandItem(index);
 }
 

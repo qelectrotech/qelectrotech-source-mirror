@@ -398,7 +398,7 @@ QString QET::stringToFileName(const QString &name) {
 	QString file_name(name.toLower());
 	
 	// remplace les caracteres interdits par des tirets
-	for (QChar c: QET::forbiddenCharacters()) {
+	foreach(QChar c, QET::forbiddenCharacters()) {
 		file_name.replace(c, '-');
 	}
 	
@@ -454,7 +454,7 @@ QStringList QET::splitWithSpaces(const QString &string) {
 	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
 	
 	QStringList returned_list;
-	for (QString escaped_string: escaped_strings) {
+	foreach(QString escaped_string, escaped_strings) {
 		returned_list << QET::unescapeSpaces(escaped_string);
 	}
 	return(returned_list);
@@ -670,7 +670,7 @@ QPointF QET::graphicsSceneEventPos(QEvent *event) {
  */
 bool QET::eachStrIsEqual(const QStringList &qsl) {
 	if (qsl.size() == 1) return true;
-	for (const QString t: qsl) {
+	foreach (const QString t, qsl) {
 		if (qsl.at(0) != t) return false;
 	}
 	return true;

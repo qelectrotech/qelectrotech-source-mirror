@@ -157,7 +157,7 @@ bool ElementInfoWidget::event(QEvent *event)
  */
 void ElementInfoWidget::enableLiveEdit()
 {
-	for (ElementInfoPartWidget *eipw: m_eipw_list)
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
 	{
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 		connect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
@@ -170,7 +170,7 @@ void ElementInfoWidget::enableLiveEdit()
  */
 void ElementInfoWidget::disableLiveEdit()
 {
-	for (ElementInfoPartWidget *eipw: m_eipw_list)
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
 	{
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 		disconnect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
@@ -183,7 +183,7 @@ void ElementInfoWidget::disableLiveEdit()
  */
 void ElementInfoWidget::buildInterface()
 {
-	for (QString str: QETApp::elementInfoKeys())
+	foreach (QString str, QETApp::elementInfoKeys())
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
@@ -199,7 +199,7 @@ void ElementInfoWidget::buildInterface()
  */
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {
-	for (ElementInfoPartWidget *eipw: m_eipw_list)
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
 	{
 		if (eipw->key() == key)
 			return eipw;
@@ -219,7 +219,7 @@ void ElementInfoWidget::updateUi()
 	if (m_live_edit) disableLiveEdit();
 
 	DiagramContext element_info = m_element->elementInformations();
-	for (ElementInfoPartWidget *eipw: m_eipw_list)
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
 	{
 
 		eipw -> setText (element_info[eipw->key()].toString());
@@ -246,7 +246,7 @@ DiagramContext ElementInfoWidget::currentInfo() const
 {
 	DiagramContext info_;
 
-	for (ElementInfoPartWidget *eipw: m_eipw_list)
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
 		if (!eipw->text().isEmpty()) //add value only if they're something to store
 			info_.addValue(eipw->key(), eipw->text(), eipw->mustShow());
 

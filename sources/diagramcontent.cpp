@@ -60,7 +60,7 @@ QList<Conductor *> DiagramContent::conductors(int filter) const {
 	if (filter & ConductorsToUpdate) result += conductorsToUpdate;
 	if (filter & OtherConductors)    result += otherConductors;
 	if (filter & SelectedOnly) {
-		for (Conductor *conductor: result) {
+		foreach(Conductor *conductor, result) {
 			if (!conductor -> isSelected()) result.remove(conductor);
 		}
 	}
@@ -89,19 +89,19 @@ int DiagramContent::removeNonMovableItems()
 {
 	int count_ = 0;
 
-	for (Element *elmt: elements) {
+	foreach(Element *elmt, elements) {
 		if (!elmt->isMovable()) {
 			elements.remove(elmt);
 			++count_;
 		}
 	}
-	for (DiagramImageItem *img: images) {
+	foreach(DiagramImageItem *img, images) {
 		if (!img->isMovable()) {
 			images.remove(img);
 			++count_;
 		}
 	}
-	for (QetShapeItem *shape: shapes) {
+	foreach (QetShapeItem *shape, shapes) {
 		if (!shape->isMovable()) {
 			shapes.remove(shape);
 			++count_;
@@ -116,7 +116,7 @@ int DiagramContent::removeNonMovableItems()
 */
 QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	QList<QGraphicsItem *> items_list;
-	for (QGraphicsItem *qgi: conductors(filter)) items_list << qgi;
+	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
 
 	if (filter & Elements)          foreach(QGraphicsItem *qgi, elements)           items_list << qgi;
 	if (filter & TextFields)        foreach(QGraphicsItem *qgi, textFields)         items_list << qgi;
@@ -124,7 +124,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	if (filter & Shapes)            foreach(QGraphicsItem *qgi, shapes)             items_list << qgi;
 
 	if (filter & SelectedOnly) {
-		for (QGraphicsItem *qgi: items_list) {
+		foreach(QGraphicsItem *qgi, items_list) {
 			if (!qgi -> isSelected()) items_list.removeOne(qgi);
 		}
 	}

@@ -308,7 +308,7 @@ void TitleBlockTemplateCellWidget::updateLogosComboBox(const TitleBlockTemplate 
 	logo_input_ -> setCurrentIndex(0);
 	
 	if (!parent_template) return;
-	for (QString logo: parent_template -> logos()) {
+	foreach (QString logo, parent_template -> logos()) {
 		logo_input_ -> addItem(logo, QVariant(logo));
 	}
 	int current_value_index = logo_input_ -> findData(current_value);

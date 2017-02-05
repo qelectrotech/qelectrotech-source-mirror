@@ -209,7 +209,7 @@ void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 		m_hovered_contact->setSelected(true);
 
 			//Zoom to the linked slave element
-		for (QGraphicsView *view: m_hovered_contact->diagram()->views())
+		foreach(QGraphicsView *view, m_hovered_contact->diagram()->views())
 		{
 			QRectF fit = m_hovered_contact->sceneBoundingRect();
 			fit.adjust(-200, -200, 200, 200);
@@ -230,7 +230,7 @@ void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 
 	if (m_hovered_contact)
 	{
-		for (QRectF rect: m_hovered_contacts_map.values(m_hovered_contact))
+		foreach(QRectF rect, m_hovered_contacts_map.values(m_hovered_contact))
 		{
 				//Mouse hover the same rect than previous hover event
 			if (rect.contains(pos))
@@ -243,9 +243,9 @@ void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 			//At this point, mouse don't hover previous rect
 		m_hovered_contact = nullptr;
 
-		for (Element *elmt: m_hovered_contacts_map.keys())
+		foreach (Element *elmt, m_hovered_contacts_map.keys())
 		{
-			for (QRectF rect: m_hovered_contacts_map.values(elmt))
+			foreach(QRectF rect, m_hovered_contacts_map.values(elmt))
 			{
 					//Mouse hover a contact
 				if (rect.contains(pos))
@@ -261,9 +261,9 @@ void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 	}
 	else
 	{
-		for (Element *elmt: m_hovered_contacts_map.keys())
+		foreach (Element *elmt, m_hovered_contacts_map.keys())
 		{
-			for (QRectF rect: m_hovered_contacts_map.values(elmt))
+			foreach(QRectF rect, m_hovered_contacts_map.values(elmt))
 			{
 					//Mouse hover a contact
 				if (rect.contains(pos))
@@ -344,9 +344,9 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	QStringList no_str, nc_str;
 
-	for (Element *elmt: NOElements())
+	foreach (Element *elmt, NOElements())
 		no_str.append(elementPositionText(elmt, true));
-	for (Element *elmt: NCElements())
+	foreach(Element *elmt, NCElements())
 		nc_str.append(elementPositionText(elmt, true));
 
 
@@ -358,7 +358,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 		//Bounding rect of the NO text
 	QRectF no_bounding;
-	for (QString str: no_str)
+	foreach(QString str, no_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		no_bounding = no_bounding.united(bounding);
@@ -371,7 +371,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 		//Bounding rect of the NC text
 	QRectF nc_bounding;
-	for (QString str: nc_str)
+	foreach(QString str, nc_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		nc_bounding = nc_bounding.united(bounding);
@@ -434,7 +434,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 	QRectF bounding_rect;
 
 	//Draw each linked contact
-	for (Element *elmt:  m_element->linkedElements())
+	foreach (Element *elmt,  m_element->linkedElements())
 	{
 		DiagramContext info = elmt->kindInformations();
 
@@ -627,7 +627,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 
 		//Fill NO
 	QPointF no_top_left(0, header);
-	for (Element *elmt: NOElements())
+	foreach(Element *elmt, NOElements())
 	{
 		QPen pen = painter.pen();
 		m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
@@ -651,7 +651,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 
 		//Fill NC
 	QPointF nc_top_left(middle_cross, header);
-	for (Element *elmt: NCElements())
+	foreach(Element *elmt, NCElements())
 	{
 		QPen pen = painter.pen();
 		m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
@@ -731,7 +731,7 @@ QList<Element *> CrossRefItem::NOElements() const
 {
 	QList<Element *> no_list;
 
-	for (Element *elmt: m_element->linkedElements())
+	foreach (Element *elmt, m_element->linkedElements())
 	{
 			//We continue if element is a power contact and xref propertie
 			//is set to don't show power contact
@@ -761,7 +761,7 @@ QList<Element *> CrossRefItem::NCElements() const
 {
 	QList<Element *> nc_list;
 
-	for (Element *elmt: m_element->linkedElements())
+	foreach (Element *elmt, m_element->linkedElements())
 	{
 			//We continue if element is a power contact and xref propertie
 			//is set to don't show power contact

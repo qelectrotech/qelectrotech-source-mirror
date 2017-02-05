@@ -59,7 +59,7 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 DiagramEventAddElement::~DiagramEventAddElement()
 {
 	if (m_element) delete m_element;
-	for (QGraphicsView *view: m_diagram->views())
+	foreach(QGraphicsView *view, m_diagram->views())
 		view -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }
 
@@ -159,7 +159,7 @@ bool DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
  */
 void DiagramEventAddElement::init()
 {
-	for (QGraphicsView *view: m_diagram->views())
+	foreach(QGraphicsView *view, m_diagram->views())
 		view->setContextMenuPolicy(Qt::NoContextMenu);
 }
 

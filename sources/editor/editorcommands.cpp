@@ -89,14 +89,14 @@ DeletePartsCommand::DeletePartsCommand(
 	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, 0, parent),
 	deleted_parts(parts)
 {
-	for (QGraphicsItem *qgi: deleted_parts) {
+	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene_ -> qgiManager().manage(qgi);
 	}
 }
 
 /// Destructeur : detruit egalement les parties supprimees
 DeletePartsCommand::~DeletePartsCommand() {
-	for (QGraphicsItem *qgi: deleted_parts) {
+	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene_ -> qgiManager().release(qgi);
 	}
 }
@@ -104,7 +104,7 @@ DeletePartsCommand::~DeletePartsCommand() {
 /// Restaure les parties supprimees
 void DeletePartsCommand::undo() {
 	editor_scene_ -> blockSignals(true);
-	for (QGraphicsItem *qgi: deleted_parts) {
+	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene_ -> addItem(qgi);
 	}
 	editor_scene_ -> blockSignals(false);
@@ -113,7 +113,7 @@ void DeletePartsCommand::undo() {
 /// Supprime les parties
 void DeletePartsCommand::redo() {
 	editor_scene_ -> blockSignals(true);
-	for (QGraphicsItem *qgi: deleted_parts) {
+	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene_ -> removeItem(qgi);
 	}
 	editor_scene_ -> blockSignals(false);
@@ -149,7 +149,7 @@ PastePartsCommand::~PastePartsCommand() {
 void PastePartsCommand::undo() {
 	// enleve les parties
 	editor_scene_ -> blockSignals(true);
-	for (QGraphicsItem *part: content_) {
+	foreach(QGraphicsItem *part, content_) {
 		editor_scene_ -> removeItem(part);
 	}
 	editor_scene_ -> blockSignals(false);
@@ -166,7 +166,7 @@ void PastePartsCommand::redo() {
 	else {
 		// pose les parties
 		editor_scene_ -> blockSignals(true);
-		for (QGraphicsItem *part: content_) {
+		foreach(QGraphicsItem *part, content_) {
 			editor_scene_ -> addItem(part);
 		}
 		editor_scene_ -> blockSignals(false);
@@ -240,7 +240,7 @@ MovePartsCommand::~MovePartsCommand() {
 
 /// Annule le deplacement
 void MovePartsCommand::undo() {
-	for (QGraphicsItem *qgi: moved_parts) qgi -> moveBy(-movement.x(), -movement.y());
+	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(-movement.x(), -movement.y());
 }
 
 /// Refait le deplacement
@@ -250,7 +250,7 @@ void MovePartsCommand::redo() {
 		first_redo = false;
 		return;
 	}
-	for (QGraphicsItem *qgi: moved_parts) qgi -> moveBy(movement.x(), movement.y());
+	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(movement.x(), movement.y());
 }
 
 /*** AddPartCommand ***/
@@ -353,7 +353,7 @@ ChangeZValueCommand::ChangeZValueCommand(
 	QList<QGraphicsItem *> items_list = editor_scene_ -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
 	
 	// prend un snapshot des zValues
-	for (QGraphicsItem *qgi: items_list) undo_hash.insert(qgi, qgi -> zValue());
+	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
 	
 	// choisit le nom en fonction du traitement
 	if (option == BringForward) {
@@ -377,12 +377,12 @@ ChangeZValueCommand::~ChangeZValueCommand() {
 
 /// Annule les changements de zValue
 void ChangeZValueCommand::undo() {
-	for (QGraphicsItem *qgi: undo_hash.keys()) qgi -> setZValue(undo_hash[qgi]);
+	foreach(QGraphicsItem *qgi, undo_hash.keys()) qgi -> setZValue(undo_hash[qgi]);
 }
 
 /// Refait les changements de zValue
 void ChangeZValueCommand::redo() {
-	for (QGraphicsItem *qgi: redo_hash.keys()) qgi -> setZValue(redo_hash[qgi]);
+	foreach(QGraphicsItem *qgi, redo_hash.keys()) qgi -> setZValue(redo_hash[qgi]);
 }
 
 /**
@@ -392,15 +392,15 @@ void ChangeZValueCommand::redo() {
 void ChangeZValueCommand::applyBringForward(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> non_selected_items = items_list;
 	QList<QGraphicsItem *> selected_items;
-	for (QGraphicsItem *qgi: non_selected_items) {
+	foreach(QGraphicsItem *qgi, non_selected_items) {
 		if (qgi -> isSelected()) {
 			selected_items << qgi;
 			non_selected_items.removeAt(non_selected_items.indexOf(qgi));
 		}
 	}
 	int z = 1;
-	for (QGraphicsItem *qgi: non_selected_items) redo_hash.insert(qgi, z ++);
-	for (QGraphicsItem *qgi:     selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
 }
 
 /**
@@ -418,7 +418,7 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 		}
 	}
 	int z = 1;
-	for (QGraphicsItem *qgi: my_items_list) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
 }
 
 /**
@@ -437,7 +437,7 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	}
 	
 	int z = 1;
-	for (QGraphicsItem *qgi: my_items_list) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
 }
 
 /**
@@ -447,15 +447,15 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> non_selected_items = items_list;
 	QList<QGraphicsItem *> selected_items;
-	for (QGraphicsItem *qgi: non_selected_items) {
+	foreach(QGraphicsItem *qgi, non_selected_items) {
 		if (qgi -> isSelected()) {
 			selected_items << qgi;
 			non_selected_items.removeAt(non_selected_items.indexOf(qgi));
 		}
 	}
 	int z = 1;
-	for (QGraphicsItem *qgi:     selected_items) redo_hash.insert(qgi, z ++);
-	for (QGraphicsItem *qgi: non_selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
 }
 
 /**
@@ -569,7 +569,7 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 	if (before == after) return;
 	if (!before.width() || !before.height()) return; // cowardly flee division by zero FIXME?
 	
-	for (CustomElementPart *part_item: scaled_primitives_) {
+	foreach (CustomElementPart *part_item, scaled_primitives_) {
 		part_item -> startUserTransformation(before);
 		part_item -> handleUserTransformation(before, after);
 	}

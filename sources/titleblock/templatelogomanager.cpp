@@ -137,7 +137,7 @@ void TitleBlockTemplateLogoManager::fillView() {
 	if (!managed_template_) return;
 	logos_view_ -> clear();
 	
-	for (QString logo_name: managed_template_ -> logos()) {
+	foreach (QString logo_name, managed_template_ -> logos()) {
 		QIcon current_icon;
 		QPixmap current_logo = managed_template_ -> bitmapLogo(logo_name);
 		if (!current_logo.isNull()) {

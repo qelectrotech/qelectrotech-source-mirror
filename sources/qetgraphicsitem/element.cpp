@@ -115,7 +115,7 @@ void Element::setHighlighted(bool hl) {
  */
 void Element::displayHelpLine(bool b)
 {
-	for (Terminal *t: terminals())
+	foreach (Terminal *t, terminals())
 		t->drawHelpLine(b);
 }
 
@@ -225,14 +225,14 @@ void Element::rotateBy(const qreal &angle) {
 	applyRotation(applied_angle + rotation());
 
 	//update the path of conductor
-	for (QGraphicsItem *qgi: childItems()) {
+	foreach(QGraphicsItem *qgi, childItems()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			p -> updateConductor();
 		}
 	}
 
 	// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
-	for (ElementTextItem *eti: texts()) {
+	foreach(ElementTextItem *eti, texts()) {
 		if (!eti -> followParentRotations())  {
 			// on souhaite pivoter le champ de texte par rapport a son centre
 			QPointF eti_center = eti -> boundingRect().center();
@@ -400,16 +400,16 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals;
-	for (QDomElement qde: QET::findInDomElement(e, "terminals", "terminal")) {
+	foreach(QDomElement qde, QET::findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 	
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
-	for (QGraphicsItem *qgi: childItems()) {
+	foreach(QGraphicsItem *qgi, childItems()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
-			for (QDomElement qde: liste_terminals) {
+			foreach(QDomElement qde, liste_terminals) {
 				if (p -> fromXml(qde)) {
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
@@ -426,25 +426,25 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		return(false);
 	} else {
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
-		for (int id_trouve: priv_id_adr.keys()) {
+		foreach(int id_trouve, priv_id_adr.keys()) {
 			if (table_id_adr.contains(id_trouve)) {
 				// cet element possede un id qui est deja reference (= conflit)
 				return(false);
 			}
 		}
 		// copie des associations id / adr
-		for (int id_trouve: priv_id_adr.keys()) {
+		foreach(int id_trouve, priv_id_adr.keys()) {
 			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
 		}
 	}
 
 		//import text filed value
 	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
-	for (QGraphicsItem *qgi: childItems())
+	foreach(QGraphicsItem *qgi, childItems())
 	{
 		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi))
 		{
-			for (QDomElement input: inputs)
+			foreach(QDomElement input, inputs)
 			{
 				eti -> fromXml(input);
 				etiToElementLabels(eti);
@@ -454,7 +454,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 
 	//load uuid of connected elements
 	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
-	for (QDomElement qdo: uuid_list) tmp_uuids_link << qdo.attribute("uuid");
+	foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
 	
 	//uuid of this element
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
@@ -540,7 +540,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	if (!table_adr_id.isEmpty()) {
 		// trouve le plus grand id
 		int max_id_t = -1;
-		for (int id_t: table_adr_id.values()) {
+		foreach (int id_t, table_adr_id.values()) {
 			if (id_t > max_id_t) max_id_t = id_t;
 		}
 		id_terminal = max_id_t + 1;
@@ -549,7 +549,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
-	for (Terminal *t: terminals()) {
+	foreach(Terminal *t, terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
 		terminal.setAttribute("id", id_terminal);
@@ -560,7 +560,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
-	for (ElementTextItem *eti: texts()) {
+	foreach(ElementTextItem *eti, texts()) {
 		inputs.appendChild(eti -> toXml(document));
 	}
 	element.appendChild(inputs);
@@ -569,7 +569,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	//save the uuid of each other elements
 	if (! isFree()) {
 		QDomElement links_uuids = document.createElement("links_uuids");
-		for (Element *elmt: connected_elements) {
+		foreach (Element *elmt, connected_elements) {
 			QDomElement link_uuid = document.createElement("link_uuid");
 			link_uuid.setAttribute("uuid", elmt->uuid().toString());
 			links_uuids.appendChild(link_uuid);
@@ -599,7 +599,7 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
 	QList <QPair <Terminal *, Terminal *> > list;
 
-	for (Terminal *terminal: terminals())
+	foreach (Terminal *terminal, terminals())
 	{
 		if (terminal->conductors().isEmpty())
 		{
@@ -627,7 +627,7 @@ void Element::initLink(QETProject *prj)
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
-	for (Element *elmt: ep.fromUuids(tmp_uuids_link)) {
+	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
 	tmp_uuids_link.clear();
@@ -676,7 +676,7 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
-	for (Terminal *t: terminals())
+	foreach (Terminal *t, terminals())
 	{
 		t -> drawHelpLine(true);
 	}
@@ -689,7 +689,7 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
-	for (Terminal *t: terminals())
+	foreach (Terminal *t, terminals())
 	{
 		t -> drawHelpLine(false);
 	}
@@ -704,7 +704,7 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 
-	for (Element *elmt: linkedElements())
+	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(true);
 
 	m_mouse_over = true;
@@ -721,7 +721,7 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 
-	for (Element *elmt: linkedElements())
+	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(false);
 
 	m_mouse_over = false;

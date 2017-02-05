@@ -210,7 +210,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 			removeObsoleteItems(project -> diagrams(), project_qtwi, QET::Diagram, false);
 		}
 		int index = 0;
-		for (Diagram *diagram: project -> diagrams()) {
+		foreach (Diagram *diagram, project -> diagrams()) {
 			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram, 0, options);
 			project_qtwi -> insertChild(index, diagram_qtwi);
 			++ index;
@@ -428,7 +428,7 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 		}
 		
 		int index = 0;
-		for (QString template_name: tbt_collection -> templates()) {
+		foreach (QString template_name, tbt_collection -> templates()) {
 			QTreeWidgetItem *template_item = addTemplate(tbt_collection -> location(template_name), 0, options);
 			tbt_collection_qtwi -> insertChild(index ++, template_item);
 		}
@@ -770,7 +770,7 @@ QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::It
 template<typename T>
 void GenericPanel::removeObsoleteItems(const QList<T> &expected_items, QTreeWidgetItem *item, QET::ItemType type, bool recursive) {
 	// remove items not found in expected_items
-	for (QTreeWidgetItem *child_item: childItems(item, type, recursive)) {
+	foreach (QTreeWidgetItem *child_item, childItems(item, type, recursive)) {
 		T child_value = valueForItem<T>(child_item);
 		if (!expected_items.contains(child_value)) {
 			deleteItem(child_item);

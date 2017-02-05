@@ -59,7 +59,7 @@ void QETMainWindow::initCommonActions() {
 		qet_app->configureQET();
 		//TODO we use reloadOldElementPanel only to keep up to date the string of the folio in the old element panel.
 		//then, if user change the option "Use labels of folio instead of their ID" the string of folio in the old element panel is up to date
-		for (QETDiagramEditor *qde: qet_app->diagramEditors())
+		foreach (QETDiagramEditor *qde, qet_app->diagramEditors())
 			qde->reloadOldElementPanel();
 	});
 	

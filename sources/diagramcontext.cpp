@@ -110,7 +110,7 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const {
 	named \a tag_name (defaults to "property").
 */
 void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const {
-	for (QString key : keys()) {
+	foreach (QString key, keys()) {
 		QDomElement property = e.ownerDocument().createElement(tag_name);
 		property.setAttribute("name", key);
 		property.setAttribute("show",content_show[key]);
@@ -125,7 +125,7 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const {
 	\a tag_name (defaults to "property").
 */
 void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
-	for (QDomElement property : QET::findInDomElement(e, tag_name)) {
+	foreach (QDomElement property, QET::findInDomElement(e, tag_name)) {
 		if (!property.hasAttribute("name")) continue;
 		addValue(property.attribute("name"), QVariant(property.text()));
 		content_show.insert(property.attribute("name"), property.attribute("show", "1").toInt());
@@ -139,7 +139,7 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 void DiagramContext::toSettings(QSettings &settings, const QString &array_name) const {
 	settings.beginWriteArray(array_name);
 	int i = 0;
-	for (QString key : content_.keys()) {
+	foreach (QString key, content_.keys()) {
 		settings.setArrayIndex(i);
 		settings.setValue("name", key);
 		settings.setValue("value", content_[key].toString());

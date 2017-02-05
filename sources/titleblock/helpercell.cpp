@@ -137,7 +137,7 @@ void HelperCell::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
 	if (actions_.isEmpty()) return;
 	
 	QMenu context_menu;
-	for (QAction *action: actions_) {
+	foreach (QAction *action, actions_) {
 		context_menu.addAction(action);
 	}
 	emit(contextMenuTriggered(this));

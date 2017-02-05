@@ -106,7 +106,7 @@ void AutoNumberingManagementW::on_m_apply_folios_rb_clicked() {
 		if (ui->m_from_folios_cb->count()<=0) {
 			ui->m_from_folios_cb->clear();
 			ui->m_from_folios_cb->addItem("");
-			for (Diagram *diagram: project_->diagrams()){
+			foreach (Diagram *diagram, project_->diagrams()){
 				if (diagram->title() != "")
 					ui->m_from_folios_cb->addItem(diagram->title(),diagram->folioIndex());
 				else ui->m_from_folios_cb->addItem(QString::number(diagram->folioIndex()),diagram->folioIndex());

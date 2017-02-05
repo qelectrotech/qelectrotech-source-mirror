@@ -211,7 +211,7 @@ QList<Terminal *> CustomElement::terminals() const {
 /// @return la liste des conducteurs rattaches a cet element
 QList<Conductor *> CustomElement::conductors() const {
 	QList<Conductor *> conductors;
-	for (Terminal *t: list_terminals) conductors << t -> conductors();
+	foreach(Terminal *t, list_terminals) conductors << t -> conductors();
 	return(conductors);
 }
 
@@ -850,7 +850,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 
 	// agit sur le QPen et la QBrush en fonction des valeurs rencontrees
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
-	for (QString style: styles) {
+	foreach (QString style, styles) {
 		if (rx.exactMatch(style)) {
 			QString style_name = rx.cap(1);
 			QString style_value = rx.cap(2);
@@ -988,7 +988,7 @@ ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString
  * @param tagg
  */
 ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
-	for (ElementTextItem *eti: list_texts_) {
+	foreach (ElementTextItem *eti, list_texts_) {
 		if (eti -> tagg() == tagg) return eti;
 	}
 	return NULL;

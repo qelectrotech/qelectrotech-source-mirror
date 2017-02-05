@@ -49,7 +49,7 @@ DiagramEventAddShape::~DiagramEventAddShape()
 	delete m_help_horiz;
 	delete m_help_verti;
 
-	for (QGraphicsView *v: m_diagram->views())
+	foreach (QGraphicsView *v, m_diagram->views())
 		v->setContextMenuPolicy(Qt::DefaultContextMenu);
 }
 
@@ -191,7 +191,7 @@ bool DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 
 void DiagramEventAddShape::init()
 {
-	for (QGraphicsView *v: m_diagram->views())
+	foreach (QGraphicsView *v, m_diagram->views())
 		v->setContextMenuPolicy(Qt::NoContextMenu);
 }
 

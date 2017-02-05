@@ -52,11 +52,11 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 	QList <Element *> free_elmt;
 
 	//serch in all diagram
-	for (Diagram *d: diag_list) {
+	foreach (Diagram *d, diag_list) {
 		//get all element in diagram d
 		QList <Element *> elmt_list;
 		elmt_list = d->elements();
-		for (Element *elmt: elmt_list) {
+		foreach (Element *elmt, elmt_list) {
 			if (filter & elmt->linkType())
 				if (elmt->isFree()) free_elmt << elmt;
 		}
@@ -72,8 +72,8 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 	QList <Element *> found_element;
 
-	for (Diagram *d: diag_list) {
-		for (Element *elmt: d->elements()) {
+	foreach (Diagram *d, diag_list) {
+		foreach(Element *elmt, d->elements()) {
 			if (uuid_list.contains(elmt->uuid())) {
 				found_element << elmt;
 				uuid_list.removeAll(elmt->uuid());
@@ -94,11 +94,11 @@ QList <Element *> ElementProvider::find(const int filter) const {
 	QList <Element *> elmt_;
 
 	//serch in all diagram
-	for (Diagram *d: diag_list) {
+	foreach (Diagram *d, diag_list) {
 		//get all element in diagram d
 		QList <Element *> elmt_list;
 		elmt_list = d->elements();
-		for (Element *elmt: elmt_list) {
+		foreach (Element *elmt, elmt_list) {
 			if (filter & elmt->linkType())
 				elmt_ << elmt;
 		}

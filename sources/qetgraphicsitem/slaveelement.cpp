@@ -83,7 +83,7 @@ void SlaveElement::unlinkAllElements()
 		// if this element is free no need to do something
 	if (!isFree())
 	{
-		for (Element *elmt: connected_elements)
+		foreach(Element *elmt, connected_elements)
 			unlinkElement(elmt);
 		emit linkedElementChanged();
 	}

@@ -219,7 +219,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 	
 		//Check each pair of style
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
-	for (QString style: styles)
+	foreach (QString style, styles)
 	{
 		if (!rx.exactMatch(style)) continue;
 		QString style_name = rx.cap(1);

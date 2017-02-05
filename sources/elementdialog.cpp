@@ -89,7 +89,7 @@ void ElementDialog::setUpWidget()
 	m_model = new ElementsCollectionModel(m_tree_view);
 
 	QList <QETProject *> prjs;
-	for (QETProject *prj: QETApp::registeredProjects())
+	foreach(QETProject *prj, QETApp::registeredProjects())
 			prjs.append(prj);
 
 	if (m_mode == OpenElement)

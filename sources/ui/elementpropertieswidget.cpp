@@ -61,7 +61,7 @@ void ElementPropertiesWidget::setElement(Element *element)
 			//If previous element is same type as new element we just call setElement for each editor
 		if(previous_element->linkType() == m_element->linkType())
 		{
-			for (AbstractElementPropertiesEditorWidget *aepew: m_list_editor)
+			foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
 			{
 				aepew->setElement(m_element);
 				addGeneralWidget();
@@ -81,21 +81,21 @@ void ElementPropertiesWidget::apply()
 {
 	QList <QUndoCommand *> undo_list;
 
-	for (PropertiesEditorWidget *pew: m_list_editor)
+	foreach (PropertiesEditorWidget *pew, m_list_editor)
 		if (QUndoCommand *undo = pew->associatedUndo())
 			undo_list << undo;
 
 	if (undo_list.isEmpty()) return;
 
 	QString str;
-	for (QUndoCommand *uc: undo_list) str += uc->text() += " ";
+	foreach(QUndoCommand *uc, undo_list) str += uc->text() += " ";
 
 	QUndoStack &stack = m_element -> diagram() -> undoStack();
 	stack.beginMacro(str);
-	for (QUndoCommand *uc: undo_list) stack.push(uc);
+	foreach(QUndoCommand *uc, undo_list) stack.push(uc);
 	stack.endMacro();
 
-	for (PropertiesEditorWidget *pew: m_list_editor)
+	foreach(PropertiesEditorWidget *pew, m_list_editor)
 		pew->updateUi();
 }
 
@@ -104,7 +104,7 @@ void ElementPropertiesWidget::apply()
  * Reset the edited properties
  */
 void ElementPropertiesWidget::reset() {
-	for (PropertiesEditorWidget *pew: m_list_editor) pew->reset();
+	foreach (PropertiesEditorWidget *pew, m_list_editor) pew->reset();
 }
 
 bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
@@ -112,7 +112,7 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
 	if (m_live_edit == live_edit) return true;
 	m_live_edit = live_edit;
 
-	for (AbstractElementPropertiesEditorWidget *aepew: m_list_editor)
+	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
 		aepew->setLiveEdit(m_live_edit);
 
 	return true;
@@ -205,7 +205,7 @@ void ElementPropertiesWidget::updateUi()
 	}
 
 		//Add each editors in tab widget
-	for (AbstractElementPropertiesEditorWidget *aepew: m_list_editor)
+	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
 	{
 		aepew->setLiveEdit(m_live_edit);
 		m_tab->addTab(aepew, aepew->title());

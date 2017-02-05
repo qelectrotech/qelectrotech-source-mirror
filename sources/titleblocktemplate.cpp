@@ -172,7 +172,7 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	copy -> information_ = information_;
 	
 	// this does not really duplicates pixmaps, only the objects that hold a key to the implicitly shared pixmaps
-	for (QString logo_key: bitmap_logos_.keys()) {
+	foreach (QString logo_key, bitmap_logos_.keys()) {
 		copy -> bitmap_logos_[logo_key] = QPixmap(bitmap_logos_[logo_key]);
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 		qDebug() << Q_FUNC_INFO << "copying " << bitmap_logos_[logo_key] -> cacheKey() << "to" << copy -> bitmap_logos_[logo_key] -> cacheKey();
@@ -180,7 +180,7 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	}
 	
 	// we have to create new QSvgRenderer objects from the data (no copy constructor)
-	for (QString logo_key: vector_logos_.keys()) {
+	foreach (QString logo_key, vector_logos_.keys()) {
 		copy -> vector_logos_[logo_key] = new QSvgRenderer(data_logos_[logo_key]);
 	}
 	
@@ -336,7 +336,7 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	bool conv_ok;
 	
 	QStringList rows_descriptions = rows_string.split(QChar(';'), QString::SkipEmptyParts);
-	for (QString rows_description: rows_descriptions) {
+	foreach (QString rows_description, rows_descriptions) {
 		if (row_size_format.exactMatch(rows_description)) {
 			int row_size = row_size_format.capturedTexts().at(1).toInt(&conv_ok);
 			if (conv_ok) rows_heights_ << row_size;
@@ -359,7 +359,7 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	bool conv_ok;
 	
 	QStringList cols_descriptions = cols_string.split(QChar(';'), QString::SkipEmptyParts);
-	for (QString cols_description: cols_descriptions) {
+	foreach (QString cols_description, cols_descriptions) {
 		if (abs_col_size_format.exactMatch(cols_description)) {
 			int col_size = abs_col_size_format.capturedTexts().at(1).toInt(&conv_ok);
 			if (conv_ok) columns_width_ << TitleBlockDimension(col_size, QET::Absolute);
@@ -370,7 +370,7 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 		}
 	}
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
-	for (TitleBlockColDimension icd, columns_width_) {
+	foreach (TitleBlockColDimension icd, columns_width_) {
 		qDebug() << Q_FUNC_INFO << QString("%1 [%2]").arg(icd.value).arg(QET::titleBlockColumnLengthToString(icd.type));
 	}
 #endif
@@ -423,7 +423,7 @@ void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
 */
 void TitleBlockTemplate::saveLogos(QDomElement &xml_element) const {
 	QDomElement logos_element = xml_element.ownerDocument().createElement("logos");
-	for (QString logo_name: type_logos_.keys()) {
+	foreach(QString logo_name, type_logos_.keys()) {
 		QDomElement logo_element = xml_element.ownerDocument().createElement("logo");
 		saveLogo(logo_name, logo_element);
 		logos_element.appendChild(logo_element);
@@ -462,8 +462,8 @@ void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const {
 	QDomElement grid_element = xml_element.ownerDocument().createElement("grid");
 	
 	QString rows_attr, cols_attr;
-	for (int row_height: rows_heights_) rows_attr += QString("%1;").arg(row_height);
-	for (TitleBlockDimension col_width: columns_width_) cols_attr += col_width.toShortString();
+	foreach(int row_height, rows_heights_) rows_attr += QString("%1;").arg(row_height);
+	foreach(TitleBlockDimension col_width, columns_width_) cols_attr += col_width.toShortString();
 	grid_element.setAttribute("rows", rows_attr);
 	grid_element.setAttribute("cols", cols_attr);
 	
@@ -719,7 +719,7 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 			int share = difference > 0 ? 1 : -1;
 			if (qAbs(difference) <= max_acceptable_difference) {
 				while (difference) {
-					for (int index: relative_columns) {
+					foreach (int index, relative_columns) {
 						final_widths[index] += share;
 						difference -= share;
 						if (!difference) break;
@@ -807,7 +807,7 @@ int TitleBlockTemplate::maximumWidth() {
 */
 int TitleBlockTemplate::width(int total_width) {
 	int width = 0;
-	for (int col_width: columnsWidth(total_width)) {
+	foreach (int col_width, columnsWidth(total_width)) {
 		width += col_width;
 	}
 	return(width);
@@ -818,7 +818,7 @@ int TitleBlockTemplate::width(int total_width) {
 */
 int TitleBlockTemplate::height() const {
 	int height = 0;
-	for (int row_height: rows_heights_) {
+	foreach(int row_height, rows_heights_) {
 		height += row_height;
 	}
 	return(height);
@@ -1011,7 +1011,7 @@ QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() cons
 	Restore a set of span parameters.
 */
 void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &spans) {
-	for (TitleBlockCell *cell: spans.keys()) {
+	foreach (TitleBlockCell *cell, spans.keys()) {
 		cell -> row_span = spans[cell].first;
 		cell -> col_span = spans[cell].second;
 	}
@@ -1362,7 +1362,7 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 */
 QString TitleBlockTemplate::interpreteVariables(const QString &string, const DiagramContext &diagram_context) const {
 	QString interpreted_string = string;
-	for (QString key: diagram_context.keys(DiagramContext::DecreasingLength)) {
+	foreach (QString key, diagram_context.keys(DiagramContext::DecreasingLength)) {
 		interpreted_string.replace("%{" + key + "}", diagram_context[key].toString());
 		interpreted_string.replace("%" + key,        diagram_context[key].toString());
 	}
@@ -1505,7 +1505,7 @@ void TitleBlockTemplate::forgetSpanning() {
 */
 void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modify_cell) {
 	if (!spanning_cell) return;
-	for (TitleBlockCell *spanned_cell: spannedCells(spanning_cell)) {
+	foreach (TitleBlockCell *spanned_cell, spannedCells(spanning_cell)) {
 		spanned_cell -> spanner_cell = 0;
 	}
 	if (modify_cell) {

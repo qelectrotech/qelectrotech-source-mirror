@@ -107,7 +107,7 @@ Diagram::~Diagram() {
 	
 	// list removable items
 	QList<QGraphicsItem *> deletable_items;
-	for (QGraphicsItem *qgi: items()) {
+	foreach(QGraphicsItem *qgi, items()) {
 		if (qgi -> parentItem()) continue;
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 		deletable_items << qgi;
@@ -251,7 +251,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 		if (!this->selectedContent().items(255).isEmpty()) {
 		switch(e -> key()) {
 			case Qt::Key_Left:
-				for (Element *item: selectedContent().elements) {
+				foreach (Element *item, selectedContent().elements) {
 					left_position = item->mapRectFromScene(item->boundingRect()).x();
 					if (left_position >= this->sceneRect().left() - item->boundingRect().width())
 					return;
@@ -260,7 +260,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 				break;
 			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
 			case Qt::Key_Up:
-				for (Element *item:selectedContent().elements) {
+				foreach (Element *item, selectedContent().elements) {
 					top_position = item->mapRectFromScene(item->boundingRect()).y();
 					if (top_position >= this->sceneRect().top() - item->boundingRect().height())
 						return;
@@ -382,14 +382,14 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 	
 	// deselectionne tous les elements
 	QList<QGraphicsItem *> selected_elmts = selectedItems();
-	for (QGraphicsItem *qgi: selected_elmts) qgi -> setSelected(false);
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
 	// effectue le rendu lui-meme
 	render(&p, QRect(QPoint(0, 0), image_size), source_area, aspectRatioMode);
 	p.end();
 	
 	// restaure les elements selectionnes
-	for (QGraphicsItem *qgi: selected_elmts) qgi -> setSelected(true);
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
 	
 	return(true);
 }
@@ -438,7 +438,7 @@ QList < QSet <Conductor *> > Diagram::potentials() {
 	do {
 		QSet <Conductor *> one_potential = conductors_list.first() -> relatedPotentialConductors();
 		one_potential << conductors_list.takeFirst();
-		for (Conductor *c: one_potential) conductors_list.removeOne(c);
+		foreach (Conductor *c, one_potential) conductors_list.removeOne(c);
 		potential_List << one_potential;
 	} while (!conductors_list.empty());
 
@@ -545,7 +545,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QList<QGraphicsItem *> list_items = items();
 	;
 	// Determine les elements a "XMLiser"
-	for (QGraphicsItem *qgi: list_items) {
+	foreach(QGraphicsItem *qgi, list_items) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			if (whole_content) list_elements << elmt;
 			else if (elmt -> isSelected()) list_elements << elmt;
@@ -574,7 +574,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// enregistrement des elements
 	if (!list_elements.isEmpty()) {
 		QDomElement elements = document.createElement("elements");
-		for (Element *elmt: list_elements) {
+		foreach(Element *elmt, list_elements) {
 			elements.appendChild(elmt -> toXml(document, table_adr_id));
 		}
 		racine.appendChild(elements);
@@ -583,7 +583,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// enregistrement des conducteurs
 	if (!list_conductors.isEmpty()) {
 		QDomElement conductors = document.createElement("conductors");
-		for (Conductor *cond: list_conductors) {
+		foreach(Conductor *cond, list_conductors) {
 			conductors.appendChild(cond -> toXml(document, table_adr_id));
 		}
 		racine.appendChild(conductors);
@@ -592,7 +592,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// enregistrement des champs de texte
 	if (!list_texts.isEmpty()) {
 		QDomElement inputs = document.createElement("inputs");
-		for (DiagramTextItem *dti: list_texts) {
+		foreach(DiagramTextItem *dti, list_texts) {
 			inputs.appendChild(dti -> toXml(document));
 		}
 		racine.appendChild(inputs);
@@ -601,7 +601,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// save of images
 	if (!list_images.isEmpty()) {
 		QDomElement images = document.createElement("images");
-		for (DiagramImageItem *dii: list_images) {
+		foreach (DiagramImageItem *dii, list_images) {
 			images.appendChild(dii -> toXml(document));
 		}
 		racine.appendChild(images);
@@ -610,7 +610,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// save of basic shapes
 	if (!list_shapes.isEmpty()) {
 		QDomElement shapes = document.createElement("shapes");
-		for (QetShapeItem *dii: list_shapes) {
+		foreach (QetShapeItem *dii, list_shapes) {
 			shapes.appendChild(dii -> toXml(document));
 		}
 		racine.appendChild(shapes);
@@ -768,7 +768,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			//in the embedded collection of this project
 		if (other_project && other_project != m_project) {
 			ElementCollectionHandler ech;
-			for (QDomElement element_xml: QET::findInDomElement(root, "elements", "element")) {
+			foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) {
 				if (!Element::valideXml(element_xml)) continue;
 
 				QString type_id = element_xml.attribute("type");
@@ -783,7 +783,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		//Load all elements from the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
-	for (QDomElement element_xml: QET::findInDomElement(root, "elements", "element"))
+	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element"))
 	{
 		if (!Element::valideXml(element_xml)) continue;
 		
@@ -822,7 +822,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// Load text
 	QList<IndependentTextItem *> added_texts;
-	for (QDomElement text_xml: QET::findInDomElement(root, "inputs", "input")) {
+	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
 		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
 		addItem(iti);
@@ -831,7 +831,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 	// Load image
 	QList<DiagramImageItem *> added_images;
-	for (QDomElement image_xml: QET::findInDomElement(root, "images", "image")) {
+	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
 		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
 		addItem(dii);
@@ -840,7 +840,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 	// Load shape
 	QList<QetShapeItem *> added_shapes;
-	for (QDomElement shape_xml: QET::findInDomElement(root, "shapes", "shape")) {
+	foreach (QDomElement shape_xml, QET::findInDomElement(root, "shapes", "shape")) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
 		addItem(dii);
@@ -849,7 +849,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 		// Load conductor
 	QList<Conductor *> added_conductors;
-	for (QDomElement f: QET::findInDomElement(root, "conductors", "conductor"))
+	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor"))
 	{
 		if (!Conductor::valideXml(f)) continue;
 
@@ -880,15 +880,15 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	if (position != QPointF()) {
 
 		QList<QGraphicsItem *> added_items;
-		for (Element          *added_element: added_elements  ) added_items << added_element;
-		for (Conductor        *added_cond:    added_conductors) added_items << added_cond;
-		for (QetShapeItem     *added_shape:   added_shapes    ) added_items << added_shape;
-		for (DiagramTextItem  *added_text:    added_texts     ) added_items << added_text;
-		for (DiagramImageItem *added_image:   added_images    ) added_items << added_image;
+		foreach (Element          *added_element, added_elements  ) added_items << added_element;
+		foreach (Conductor        *added_cond,    added_conductors) added_items << added_cond;
+		foreach (QetShapeItem     *added_shape,   added_shapes    ) added_items << added_shape;
+		foreach (DiagramTextItem  *added_text,    added_texts     ) added_items << added_text;
+		foreach (DiagramImageItem *added_image,   added_images    ) added_items << added_image;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
-		for (QGraphicsItem *item: added_items) {
+		foreach (QGraphicsItem *item, added_items) {
 			items_rect = items_rect.united(item -> mapToScene(item -> boundingRect()).boundingRect());
 		}
 
@@ -897,7 +897,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 													position.y() - point_.y()));
 
 		//Translate all added items
-		for (QGraphicsItem *qgi: added_items)
+		foreach (QGraphicsItem *qgi, added_items)
 			qgi -> setPos( qgi -> pos() += pos_);
 	}
 	
@@ -923,7 +923,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
  * @param type of sequential
  */
 void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq, QString type, QString autonumFolioSeqType) {
-	for (QDomElement folioSeqAutoNum: QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
+	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
 		for(QDomElement folioseq = folioSeqAutoNum.firstChildElement(type); !folioseq.isNull(); folioseq = folioseq.nextSiblingElement(type)) {
 			QString title = folioseq.attribute("title");
 			QStringList list;
@@ -987,10 +987,10 @@ QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
  */
 void Diagram::refreshContents() {
 
-	for (Element *elmt: elements())
+	foreach (Element *elmt, elements())
 		elmt->initLink(project());
 
-	for (Conductor *conductor: conductors())
+	foreach (Conductor *conductor, conductors())
 		conductor->refreshText();
 }
 
@@ -1127,7 +1127,7 @@ void Diagram::selectAll() {
 	if (items().isEmpty()) return;
 	
 	blockSignals(true);
-	for (QGraphicsItem *qgi: items()) qgi -> setSelected(true);
+	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
 	blockSignals(false);
 	emit(selectionChanged());
 }
@@ -1148,7 +1148,7 @@ void Diagram::invertSelection() {
 	if (items().isEmpty()) return;
 	
 	blockSignals(true);
-	for (QGraphicsItem *item: items()) item -> setSelected(!item -> isSelected());
+	foreach (QGraphicsItem *item, items()) item -> setSelected(!item -> isSelected());
 	blockSignals(false);
 	emit(selectionChanged());
 }
@@ -1159,11 +1159,11 @@ void Diagram::invertSelection() {
  * in their labels.
  */
 void Diagram::updateLabels() {
-	for (Element *elmt: elements()) {
+	foreach (Element *elmt, elements()) {
 		if (elmt->elementInformations()["label"].toString().contains(("%F")))
 			elmt->updateLabel();
 	}
-	for (Conductor *cnd: content().conductors()) {
+	foreach (Conductor *cnd, content().conductors()) {
 		cnd->refreshText();
 	}
 }
@@ -1341,7 +1341,7 @@ QString Diagram::title() const {
 */
 QList<CustomElement *> Diagram::customElements() const {
 	QList<CustomElement *> elements_list;
-	for (QGraphicsItem *qgi: items()) {
+	foreach(QGraphicsItem *qgi, items()) {
 		if (CustomElement *elmt = qgraphicsitem_cast<CustomElement *>(qgi)) {
 			elements_list << elmt;
 		}
@@ -1351,7 +1351,7 @@ QList<CustomElement *> Diagram::customElements() const {
 
 QList <Element *> Diagram::elements() const {
 	QList<Element *> element_list;
-	for (QGraphicsItem *qgi: items()) {
+	foreach (QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi))
 			element_list <<elmt;
 	}
@@ -1364,7 +1364,7 @@ QList <Element *> Diagram::elements() const {
  */
 QList <Conductor *> Diagram::conductors() const {
 	QList<Conductor *> cnd_list;
-	for (QGraphicsItem *qgi: items()) {
+	foreach (QGraphicsItem *qgi, items()) {
 		if (Conductor *cnd = qgraphicsitem_cast<Conductor *>(qgi))
 			cnd_list <<cnd;
 	}
@@ -1433,7 +1433,7 @@ void Diagram::endMoveElementTexts() {
 	@return true si l'element location est utilise sur ce schema, false sinon
 */
 bool Diagram::usesElement(const ElementsLocation &location) {
-	for (CustomElement *element: customElements()) {
+	foreach(CustomElement *element, customElements()) {
 		if (element -> location() == location) {
 			return(true);
 		}
@@ -1455,7 +1455,7 @@ bool Diagram::usesTitleBlockTemplate(const QString &name) {
  * Freeze every existent element label.
  */
 void Diagram::freezeElements(bool freeze) {
-	for (Element *elmt: elements()) {
+	foreach (Element *elmt, elements()) {
 		elmt->freezeLabel(freeze);
 	}
 }
@@ -1465,7 +1465,7 @@ void Diagram::freezeElements(bool freeze) {
  * Unfreeze every existent element label.
  */
 void Diagram::unfreezeElements() {
-	for (Element *elmt: elements()) {
+	foreach (Element *elmt, elements()) {
 		elmt->freezeLabel(false);
 	}
 }
@@ -1491,7 +1491,7 @@ bool Diagram::freezeNewElements() {
  * Freeze every existent conductor label.
  */
 void Diagram::freezeConductors(bool freeze) {
-	for (Conductor *cnd: conductors()) {
+	foreach (Conductor *cnd, conductors()) {
 		cnd->setFreezeLabel(freeze);
 	}
 }
@@ -1595,7 +1595,7 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	@param dt true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
-	for (QGraphicsItem *qgi: items()) {
+	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
 			t -> setVisible(dt);
 		}
@@ -1616,7 +1616,7 @@ void Diagram::setDrawColoredConductors(bool dcc) {
 */
 QSet<Conductor *> Diagram::selectedConductors() const {
 	QSet<Conductor *> conductors_set;
-	for (QGraphicsItem *qgi: selectedItems()) {
+	foreach(QGraphicsItem *qgi, selectedItems()) {
 		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			conductors_set << c;
 		}
@@ -1630,7 +1630,7 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 */
 QSet<DiagramTextItem *> Diagram::selectedTexts() const {
 	QSet<DiagramTextItem *> selected_texts;
-	for (QGraphicsItem *item: selectedItems()) {
+	foreach(QGraphicsItem *item, selectedItems()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
 			selected_texts << cti;
 		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
@@ -1648,7 +1648,7 @@ QSet<DiagramTextItem *> Diagram::selectedTexts() const {
  */
 QSet<ConductorTextItem *> Diagram::selectedConductorTexts() const {
 	QSet<ConductorTextItem *> selected_texts;
-	for (QGraphicsItem *item: selectedItems()) {
+	foreach(QGraphicsItem *item, selectedItems()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
 			selected_texts << cti;
 		}
@@ -1662,7 +1662,7 @@ QSet<ConductorTextItem *> Diagram::selectedConductorTexts() const {
  */
 QSet<ElementTextItem*> Diagram::selectedElementTexts() const {
 	QSet<ElementTextItem *> selected_texts;
-	for (QGraphicsItem *item: selectedItems()) {
+	foreach(QGraphicsItem *item, selectedItems()) {
 		if (ElementTextItem *cti = qgraphicsitem_cast< ElementTextItem*>(item)) {
 			selected_texts << cti;
 		}
@@ -1750,7 +1750,7 @@ bool Diagram::isReadOnly() const
 */
 DiagramContent Diagram::content() const {
 	DiagramContent dc;
-	for (QGraphicsItem *qgi: items()) {
+	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			dc.elements << e;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
@@ -1769,7 +1769,7 @@ DiagramContent Diagram::selectedContent() {
 	DiagramContent dc;
 	
 	// recupere les elements deplaces
-	for (QGraphicsItem *item: selectedItems()) {
+	foreach (QGraphicsItem *item, selectedItems()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
 			dc.elements << elmt;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
@@ -1790,9 +1790,9 @@ DiagramContent Diagram::selectedContent() {
 	}
 	
 	// pour chaque element deplace, determine les conducteurs qui seront modifies
-	for (Element *elmt: dc.elements) {
-		for (Terminal *terminal: elmt -> terminals()) {
-			for (Conductor *conductor: terminal -> conductors()) {
+	foreach(Element *elmt, dc.elements) {
+		foreach(Terminal *terminal, elmt -> terminals()) {
+			foreach(Conductor *conductor, terminal -> conductors()) {
 				Terminal *other_terminal;
 				if (conductor -> terminal1 == terminal) {
 					other_terminal = conductor -> terminal2;
@@ -1818,7 +1818,7 @@ DiagramContent Diagram::selectedContent() {
 	et qu'au moins l'un d'entre eux peut etre pivote.
 */
 bool Diagram::canRotateSelection() const {
-	for (QGraphicsItem * qgi: selectedItems()) {
+	foreach(QGraphicsItem * qgi, selectedItems()) {
 		if (qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
 		qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
 		qgraphicsitem_cast<DiagramImageItem *>(qgi) ||

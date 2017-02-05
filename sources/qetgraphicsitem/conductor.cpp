@@ -280,13 +280,13 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 ) const {
 	// construit le QHash qui sera retourne
 	QHash<ConductorSegmentProfile *, qreal> segments_hash;
-	for (ConductorSegmentProfile *csp: segments_list) {
+	foreach(ConductorSegmentProfile *csp, segments_list) {
 		segments_hash.insert(csp, csp -> length);
 	}
 	
 	// memorise le signe de la longueur de chaque segement
 	QHash<ConductorSegmentProfile *, int> segments_signs;
-	for (ConductorSegmentProfile *csp: segments_hash.keys()) {
+	foreach(ConductorSegmentProfile *csp, segments_hash.keys()) {
 		segments_signs.insert(csp, getSign(csp -> length));
 	}
 	
@@ -297,12 +297,12 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 	while (remaining_offset > precision || remaining_offset < -precision) {
 		// recupere le nombre de segments differents ayant une longueur non nulle
 		uint segments_count = 0;
-		for (ConductorSegmentProfile *csp: segments_hash.keys()) if (segments_hash[csp]) ++ segments_count;
+		foreach(ConductorSegmentProfile *csp, segments_hash.keys()) if (segments_hash[csp]) ++ segments_count;
 		//qDebug() << "  remaining_offset =" << remaining_offset;
 		qreal local_offset = remaining_offset / segments_count;
 		//qDebug() << "  repartition d'un offset local de" << local_offset << "px sur" << segments_count << "segments";
 		remaining_offset = 0.0;
-		for (ConductorSegmentProfile *csp: segments_hash.keys()) {
+		foreach(ConductorSegmentProfile *csp, segments_hash.keys()) {
 			// ignore les segments de longueur nulle
 			if (!segments_hash[csp]) continue;
 			// applique l'offset au segment
@@ -526,7 +526,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp -> setPen(final_conductor_pen);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
-		for (QPointF point: junctions_list) {
+		foreach(QPointF point, junctions_list) {
 			qp -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
 		}
 	}
@@ -764,7 +764,7 @@ QPainterPath Conductor::shape() const
 		https://qelectrotech.org/forum/viewtopic.php?pid=5067#p5067
 	**/
 //	if (isSelected()) {
-//		for (QRectF rect, m_handler.handlerRect(handlerPoints())) {
+//		foreach (QRectF rect, m_handler.handlerRect(handlerPoints())) {
 //			shape_.addRect(rect);
 //		}
 //	}
@@ -792,7 +792,7 @@ uint Conductor::segmentsCount(QET::ConductorSegmentType type) const {
 	QList<ConductorSegment *> segments_list = segmentsList();
 	if (type == QET::Both) return(segments_list.count());
 	uint nb_seg = 0;
-	for (ConductorSegment *conductor_segment: segments_list) {
+	foreach(ConductorSegment *conductor_segment, segments_list) {
 		if (conductor_segment -> type() == type) ++ nb_seg;
 	}
 	return(nb_seg);
@@ -895,7 +895,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 	{
 		// parcours et export des segments
 		QDomElement current_segment;
-		for (ConductorSegment *segment: segmentsList())
+		foreach(ConductorSegment *segment, segmentsList())
 		{
 			current_segment = dom_document.createElement("segment");
 			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
@@ -954,8 +954,8 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
 	qreal width = 0.0, height = 0.0;
-	for (qreal t: segments_x) width  += t;
-	for (qreal t: segments_y) height += t;
+	foreach (qreal t, segments_x) width  += t;
+	foreach (qreal t, segments_y) height += t;
 	QPointF t1 = terminal1 -> dockConductor();
 	QPointF t2 = terminal2 -> dockConductor();
 	qreal expected_width  = t2.x() - t1.x();
@@ -1009,7 +1009,7 @@ QVector<QPointF> Conductor::handlerPoints() const
 
 	QVector <QPointF> middle_points;
 
-	for (ConductorSegment *segment: sl)
+	foreach(ConductorSegment *segment, sl)
 		middle_points.append(segment->middle());
 
 	return middle_points;
@@ -1145,7 +1145,7 @@ void Conductor::calculateTextItemPosition() {
 		}
 
 		//At this point this conductor is the longuest conductor we hide all text of conductor_list
-		for (Conductor *c: relatedPotentialConductors(false)) {
+		foreach (Conductor *c, relatedPotentialConductors(false)) {
 					c -> textItem() -> setVisible(false);
 			}
 		//Make sure text item is visible
@@ -1295,7 +1295,7 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property, bool
 	setProperties(property);
 	QSet <Conductor *> potential_list = relatedPotentialConductors();
 
-	for (Conductor *other_conductor: potential_list)
+	foreach(Conductor *other_conductor, potential_list)
 	{
 		if (only_text)
 		{
@@ -1400,7 +1400,7 @@ void Conductor::displayedTextChanged()
 	{
 		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
-		for (Conductor *potential_conductor: relatedPotentialConductors())
+		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
 			old_value.setValue(potential_conductor->properties());
 			ConductorProperties new_properties = potential_conductor->properties();
@@ -1436,7 +1436,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 	this_terminal << terminal1 << terminal2;
 
 	// Return all conductor of terminal 1 and 2
-	for (Terminal *terminal: this_terminal) {
+	foreach (Terminal *terminal, this_terminal) {
 		if (!t_list -> contains(terminal)) {
 			t_list -> append(terminal);
 			QList <Conductor *> other_conductors_list_t = terminal -> conductors();
@@ -1450,7 +1450,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 
 			other_conductors_list_t.removeAll(this);
 			// Research the conductors connected to conductors already found
-			for (Conductor *c: other_conductors_list_t) {
+			foreach (Conductor *c, other_conductors_list_t) {
 				other_conductors += c -> relatedPotentialConductors(all_diagram, t_list);
 			}
 			other_conductors += other_conductors_list_t.toSet();
@@ -1554,7 +1554,7 @@ QList<QPointF> Conductor::junctions() const {
 		// determine si le point est une bifurcation ou non
 		bool is_bend = false;
 		Qt::Corner current_bend_type = Qt::TopLeftCorner;
-		for (ConductorBend cb: bends_list) {
+		foreach(ConductorBend cb, bends_list) {
 			if (cb.first == point) {
 				is_bend = true;
 				current_bend_type = cb.second;
@@ -1566,7 +1566,7 @@ QList<QPointF> Conductor::junctions() const {
 		
 		bool is_junction = false;
 		QPointF scene_point = mapToScene(point);
-		for (Conductor *c: other_conductors) {
+		foreach(Conductor *c, other_conductors) {
 			// exprime le point dans les coordonnees de l'autre conducteur
 			QPointF conductor_point = c -> mapFromScene(scene_point);
 			// recupere les segments de l'autre conducteur
@@ -1580,7 +1580,7 @@ QList<QPointF> Conductor::junctions() const {
 					is_junction = true;
 					// ce point commun ne doit pas etre une bifurcation identique a celle-ci
 					QList<ConductorBend> other_conductor_bends = c -> bends();
-					for (ConductorBend cb: other_conductor_bends) {
+					foreach(ConductorBend cb, other_conductor_bends) {
 						if (cb.first == conductor_point && cb.second == current_bend_type) {
 							is_junction = false;
 						}
@@ -1714,7 +1714,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
 	QList<QLineF> lines;
 	QList<QPointF> points;
-	for (QPolygonF polygon: polygons) {
+	foreach(QPolygonF polygon, polygons) {
 		if (polygon.count() <= 1) continue;
 		
 		// on recense les lignes et les points
@@ -1727,7 +1727,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	// on fait des projetes orthogonaux du point sur les differents segments du
 	// polygone, en les triant par longueur croissante
 	QMap<qreal, QPointF> intersections;
-	for (QLineF line: lines) {
+	foreach (QLineF line, lines) {
 		QPointF intersection_point;
 		if (QET::orthogonalProjection(point, line, &intersection_point)) {
 			intersections.insert(QLineF(intersection_point, point).length(), intersection_point);
@@ -1764,7 +1764,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram) {
 	Conductor *longuest_conductor = conductor;
 	//Search the longuest conductor
-	for (Conductor *c: conductor -> relatedPotentialConductors(all_diagram))
+	foreach (Conductor *c, conductor -> relatedPotentialConductors(all_diagram))
 		if (c -> length() > longuest_conductor -> length())
 			longuest_conductor = c;
 

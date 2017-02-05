@@ -408,7 +408,7 @@ void QETPrintPreviewDialog::updateZoomList() {
 	int current_zoom_index = -1;
 	zoom_box_ -> blockSignals(true);
 	zoom_box_ -> clear();
-	for (qreal z: zooms_real) {
+	foreach (qreal z, zooms_real) {
 		zoom_box_ -> addItem(QString(tr("%1 %")).arg(z * 100.0, 0, 'f', 2), z);
 		if (z == current_zoom) current_zoom_index = zoom_box_ -> count() - 1;
 	}

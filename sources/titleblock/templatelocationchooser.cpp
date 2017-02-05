@@ -116,7 +116,7 @@ void TitleBlockTemplateLocationChooser::updateCollections() {
 	collections_index_.clear();
 	
 	int index = 0;
-	for (TitleBlockTemplatesCollection *collection: QETApp::availableTitleBlockTemplatesCollections()) {
+	foreach(TitleBlockTemplatesCollection *collection, QETApp::availableTitleBlockTemplatesCollections()) {
 		collections_ -> addItem(collection -> title());
 		collections_index_.insert(index, collection);
 		++ index;
@@ -136,7 +136,7 @@ void TitleBlockTemplateLocationChooser::updateTemplates() {
 	
 	QStringList available_templates = current_collection -> templates();
 	if (available_templates.count()) {
-		for (QString template_name: available_templates) {
+		foreach (QString template_name, available_templates) {
 			templates_ -> addItem(template_name, QVariant(true));
 		}
 	}

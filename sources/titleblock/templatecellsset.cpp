@@ -50,7 +50,7 @@ TitleBlockTemplateCellsSet::~TitleBlockTemplateCellsSet() {
 */
 QPainterPath TitleBlockTemplateCellsSet::painterPath() const {
 	QPainterPath cells_path;
-	for (TitleBlockTemplateVisualCell *cell: *this) {
+	foreach (TitleBlockTemplateVisualCell *cell, *this) {
 		cells_path.addRect(cell -> geometry());
 	}
 	return(cells_path);
@@ -74,7 +74,7 @@ bool TitleBlockTemplateCellsSet::isRectangle() const {
 	@return true if all cells within this set are selected
 */
 bool TitleBlockTemplateCellsSet::allCellsAreSelected() const {
-	for (TitleBlockTemplateVisualCell *cell: *this) {
+	foreach (TitleBlockTemplateVisualCell *cell, *this) {
 		if (!cell -> isSelected()) {
 			return(false);
 		}
@@ -91,7 +91,7 @@ bool TitleBlockTemplateCellsSet::hasExternalSpan() const {
 	QSet<TitleBlockCell *> all_cells = cells(true);
 	
 	// look for cells spanned by cells that do not belong to this set
-	for (TitleBlockCell *cell: all_cells) {
+	foreach (TitleBlockCell *cell, all_cells) {
 		if (cell -> spanner_cell && !all_cells.contains(cell -> spanner_cell)) {
 			return(true);
 		}
@@ -108,7 +108,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	
 	// look for cells at the top
 	QMultiMap<int, TitleBlockTemplateVisualCell *> top_cells;
-	for (TitleBlockTemplateVisualCell *cell_view: *this) {
+	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
 			top_cells.insertMulti(cell -> num_row, cell_view);
 		}
@@ -119,7 +119,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	// look for the cell at the left
 	int lowest_num_col = 100000;
 	TitleBlockTemplateVisualCell *candidate = 0;
-	for (TitleBlockTemplateVisualCell *cell_view: candidates) {
+	foreach (TitleBlockTemplateVisualCell *cell_view, candidates) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
 			if (cell -> num_col < lowest_num_col) {
 				lowest_num_col = cell -> num_col;
@@ -139,7 +139,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() cons
 	
 	// look for cells at the bottom
 	QMultiMap<qreal, TitleBlockTemplateVisualCell *> bottom_cells;
-	for (TitleBlockTemplateVisualCell *cell_view: *this) {
+	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		bottom_cells.insertMulti(cell_view -> geometry().bottom(), cell_view);
 	}
 	QList<TitleBlockTemplateVisualCell *> candidates = bottom_cells.values(bottom_cells.keys().last());
@@ -148,7 +148,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() cons
 	// look for the cell at the right
 	qreal highest_right = -100000;
 	TitleBlockTemplateVisualCell *candidate = 0;
-	for (TitleBlockTemplateVisualCell *cell_view: candidates) {
+	foreach (TitleBlockTemplateVisualCell *cell_view, candidates) {
 		qreal right = cell_view -> geometry().right();
 		if (right > highest_right) {
 			highest_right = right;
@@ -197,10 +197,10 @@ TitleBlockTemplateCellsSet TitleBlockTemplateCellsSet::mergeArea(const QRectF &r
 */
 QSet<TitleBlockCell *> TitleBlockTemplateCellsSet::cells(bool include_spanned) const {
 	QSet<TitleBlockCell *> set;
-	for (TitleBlockTemplateVisualCell *cell_view: *this) {
+	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
 			if (include_spanned) {
-				for (TitleBlockCell *cell: cell_view -> cells()) {
+				foreach (TitleBlockCell *cell, cell_view -> cells()) {
 					set << cell;
 				}
 			} else {

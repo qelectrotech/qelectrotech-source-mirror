@@ -136,7 +136,7 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element, const
 
 	if (found_dom_element.isEmpty()) return QDomElement();
 
-	for (QDomElement elmt: found_dom_element)
+	foreach (QDomElement elmt, found_dom_element)
 		if (elmt.attribute("name") == child_name)
 			return elmt;
 
@@ -154,7 +154,7 @@ QDomElement XmlElementCollection::child(const QString &path) const
 	if (path_list.isEmpty()) return QDomElement();
 
 	QDomElement parent_element = root();
-	for (QString str: path_list)
+	foreach (QString str, path_list)
 	{
 		QDomElement child_element = child(parent_element, str);
 
@@ -198,7 +198,7 @@ QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_ele
 	QList <QDomElement> childs = directories(parent_element);
 	QStringList names;
 
-	for (QDomElement child: childs)
+	foreach (QDomElement child, childs)
 	{
 		QString name = child.attribute("name");
 		if (!name.isEmpty())
@@ -239,7 +239,7 @@ QStringList XmlElementCollection::elementsNames(const QDomElement &parent_elemen
 	QList <QDomElement> childs = elements(parent_element);
 	QStringList names;
 
-	for (QDomElement child: childs)
+	foreach (QDomElement child, childs)
 	{
 		QString name = child.attribute("name");
 		if (!name.isEmpty())
@@ -325,7 +325,7 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 		if (!dir.exists())
 			return QString();
 
-		for (QString str: splitted_path) {
+		foreach(QString str, splitted_path) {
 			QDomElement child_element = child(parent_element, str);
 
 				//Child doesn't exist, we create it
@@ -369,7 +369,7 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 	}
 	else if (location.isProject()) {
 		QString path;
-		for (QString str: splitted_path) {
+		foreach(QString str, splitted_path) {
 			if (path.isEmpty())
 				path = str;
 			else
@@ -585,7 +585,7 @@ QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_e
 		//get element childs
 	QList <QDomElement> element_list = elements(dom_element);
 
-	for (QDomElement elmt: element_list) {
+	foreach (QDomElement elmt, element_list) {
 		ElementsLocation location = domToLocation(elmt);
 		if (location.exist())
 			location_list << location;
@@ -594,7 +594,7 @@ QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_e
 		//get directory childs
 	QList <QDomElement> directory_list = directories(dom_element);
 
-	for (QDomElement dir: directory_list) {
+	foreach (QDomElement dir, directory_list) {
 		ElementsLocation location = domToLocation(dir);
 		if (location.exist())
 			location_list << location;
@@ -638,7 +638,7 @@ ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) co
  */
 void XmlElementCollection::cleanUnusedElement()
 {
-	for (ElementsLocation loc: m_project->unusedElements())
+	foreach (ElementsLocation loc, m_project->unusedElements())
 		removeElement(loc.collectionPath(false));
 }
 
@@ -705,7 +705,7 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 		if (deep_copy)
 		{
 				//Append all directories of source to the new created directory
-			for (QString str: source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+			foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 			{
 				ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
 				copyDirectory(sub_source, created_location);
@@ -713,7 +713,7 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 
 				//Append all elements of source to the new created directory
 			source_dir.setNameFilters(QStringList() << "*.elmt");
-			for (QString str: source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+			foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 			{
 				ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
 				copyElement(sub_source, created_location);

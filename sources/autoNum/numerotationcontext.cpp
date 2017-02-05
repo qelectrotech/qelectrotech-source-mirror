@@ -154,7 +154,7 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, QString str) {
  */
 void NumerotationContext::fromXml(QDomElement &e) {
 	clear();
-	for (QDomElement qde: QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt(), qde.attribute("initialvalue").toInt());
+	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt(), qde.attribute("initialvalue").toInt());
 }
 
 /**

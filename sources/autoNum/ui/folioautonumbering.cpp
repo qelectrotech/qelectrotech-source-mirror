@@ -51,7 +51,7 @@ FolioAutonumberingW::~FolioAutonumberingW()
  * construct autonums in the comboBox selected in the @autonum_chooser QcomboBox
  */
 void FolioAutonumberingW::setContext(QList <QString> autonums) {
-	for (QString str: autonums) { ui->m_autonums_cb->addItem(str);}
+	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
 }
 
 /**
@@ -123,7 +123,7 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
 	if (ui->m_from_cb->count()<=0){
 		ui->m_from_cb->clear();
 		ui->m_from_cb->addItem("");
-		for (Diagram *diagram: project_->diagrams()){
+		foreach (Diagram *diagram, project_->diagrams()){
 			ui->m_from_cb->addItem(diagram->title());
 		}
 	}

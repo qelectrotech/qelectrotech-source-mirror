@@ -177,7 +177,7 @@ void LinkElementCommand::setLink(Element *element_)
  */
 void LinkElementCommand::unlink(QList<Element *> element_list)
 {
-	for (Element *elmt: element_list)
+	foreach(Element *elmt, element_list)
 		m_linked_after.removeAll(elmt);
 }
 
@@ -218,7 +218,7 @@ void LinkElementCommand::redo()
 		c_list << m_element->conductors().first();
 			//fill list of text
 		QStringList strl;
-		for (const Conductor *c: c_list) strl<<(c->properties().text);
+		foreach (const Conductor *c, c_list) strl<<(c->properties().text);
 
 			//check text list, isn't same in potential, ask user what to do
 		if (!QET::eachStrIsEqual(strl))
@@ -245,7 +245,7 @@ void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool
 		//if m_element isn't master (may be a report or slave) we can connect only one element
 	if (m_element->linkType() == Element::Master || element_list.size() == 1)
 	{
-		for (Element *elmt: element_list)
+		foreach(Element *elmt, element_list)
 			if (isLinkable(m_element, elmt, already_link))
 				m_linked_after << elmt;
 	}
@@ -253,7 +253,7 @@ void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool
 	{
 		qDebug() << "LinkElementCommand::setUpNewLink : try to link several elements to a report element or slave element,"
 					" only the first element of the list will be taken to be linked";
-		for (Element *elmt: element_list)
+		foreach(Element *elmt, element_list)
 			if (isLinkable(m_element, elmt, already_link))
 			{
 				m_linked_after << elmt;
@@ -278,17 +278,17 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 	}
 
 		//We link all element from element_list
-	for (Element *elmt: element_list)
+	foreach(Element *elmt, element_list)
 		m_element->linkToElement(elmt);
 
 		//At this point may be there are unwanted linked elements to m_element. We must to unlink it.
 		//Elements from @element_list are wanted so we compare @element_list to current linked element of @m_element
 	QList<Element *> to_unlink = m_element->linkedElements();
-	for (Element *elmt: element_list)
+	foreach(Element *elmt, element_list)
 		to_unlink.removeAll(elmt);
 
 		//All elements stored in to_unlink is unwanted we unlink it from m_element
 	if (!to_unlink.isEmpty())
-		for (Element *elmt: to_unlink)
+		foreach(Element *elmt, to_unlink)
 			m_element->unlinkElement(elmt);
 }

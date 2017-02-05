@@ -62,7 +62,7 @@ QETProject *DiagramsChooser::project() const {
 */
 QList<Diagram *> DiagramsChooser::selectedDiagrams() const {
 	QList<Diagram *> selected_diagrams;
-	for (Diagram *diagram: project_ -> diagrams()) {
+	foreach(Diagram *diagram, project_ -> diagrams()) {
 		QCheckBox *check_box = diagrams_[diagram];
 		if (check_box && check_box -> isChecked()) {
 			selected_diagrams << diagram;
@@ -76,7 +76,7 @@ QList<Diagram *> DiagramsChooser::selectedDiagrams() const {
 */
 QList<Diagram *> DiagramsChooser::nonSelectedDiagrams() const {
 	QList<Diagram *> selected_diagrams;
-	for (Diagram *diagram: diagrams_.keys()) {
+	foreach(Diagram *diagram, diagrams_.keys()) {
 		if (!(diagrams_[diagram] -> isChecked())) {
 			selected_diagrams << diagram;
 		}
@@ -107,14 +107,14 @@ void DiagramsChooser::setSelectedDiagrams(const QList<Diagram *> &diagrams_list,
 	
 	// deselectionne tous les schemas si demande
 	if (reset) {
-		for (QCheckBox *check_box: diagrams_.values()) {
+		foreach(QCheckBox *check_box, diagrams_.values()) {
 			check_box -> setChecked(false);
 		}
 	}
 	
 	int changes = 0;
 	QCheckBox *check_box;
-	for (Diagram *diagram: diagrams_list) {
+	foreach(Diagram *diagram, diagrams_list) {
 		if ((check_box = diagrams_[diagram])) {
 			if (check_box -> isChecked() != select) {
 				check_box -> setChecked(select);
@@ -136,7 +136,7 @@ void DiagramsChooser::setSelectedDiagrams(const QList<Diagram *> &diagrams_list,
 */
 void DiagramsChooser::setSelectedAllDiagrams(bool select) {
 	blockSignals(true);
-	for (QCheckBox *check_box: diagrams_.values()) {
+	foreach(QCheckBox *check_box, diagrams_.values()) {
 		check_box -> setChecked(select);
 	}
 	blockSignals(false);
@@ -159,7 +159,7 @@ void DiagramsChooser::updateList() {
 	buildLayout();
 	
 	// recree les checkbox necessaires
-	for (Diagram *diagram: project_ -> diagrams()) {
+	foreach(Diagram *diagram, project_ -> diagrams()) {
 		// titre du schema
 		QString diagram_title = diagram -> title();
         if (diagram_title.isEmpty()) diagram_title = tr("Folio sans titre");

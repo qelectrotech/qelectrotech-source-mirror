@@ -211,7 +211,7 @@ void LinkSingleElementWidget::buildTree()
 	
 	if (m_element->linkType() == Element::Slave)
 	{
-		for (Element *elmt: availableElements())
+		foreach(Element *elmt, availableElements())
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -255,7 +255,7 @@ void LinkSingleElementWidget::buildTree()
 	
 	else if (m_element->linkType() & Element::AllReport)
 	{	
-		for (Element *elmt: availableElements())
+		foreach(Element *elmt, availableElements())
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -362,7 +362,7 @@ void LinkSingleElementWidget::setUpCompleter()
 		delete ui->m_search_field->completer();
 	
 	QStringList search;
-	for (QStringList strl: m_qtwi_strl_hash.values())
+	foreach(QStringList strl , m_qtwi_strl_hash.values())
 		search.append(strl);
 	
 	QCompleter *c = new QCompleter(search, ui->m_search_field);
@@ -385,7 +385,7 @@ void LinkSingleElementWidget::clearTreeWidget()
 			delete qtwi;
 	}
 	
-	for (QTreeWidgetItem *qtwi: m_qtwi_elmt_hash.keys())
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
 		delete qtwi;
 	
 	m_qtwi_elmt_hash.clear();
@@ -589,14 +589,14 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 {
 		//Show all items if arg1 is empty, if not hide all items
-	for (QTreeWidgetItem *qtwi: m_qtwi_elmt_hash.keys())
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
 		qtwi->setHidden(!arg1.isEmpty());
 	
 	QList <QTreeWidgetItem *> qtwi_list;
 	
-	for (QTreeWidgetItem *qtwi: m_qtwi_strl_hash.keys())
+	foreach(QTreeWidgetItem *qtwi, m_qtwi_strl_hash.keys())
 	{
-		for (QString str: m_qtwi_strl_hash.value(qtwi))
+		foreach(QString str, m_qtwi_strl_hash.value(qtwi))
 		{
 			if(str.contains(arg1, Qt::CaseInsensitive))
 			{
@@ -607,6 +607,6 @@ void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 	}
 	
 		//Show items which match with arg1
-	for (QTreeWidgetItem *qtwi: qtwi_list)
+	foreach(QTreeWidgetItem *qtwi, qtwi_list)
 		qtwi->setHidden(false);
 }

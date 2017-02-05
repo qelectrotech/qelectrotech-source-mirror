@@ -125,7 +125,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 	}
 
-	for (PropertiesEditorWidget *pew: editors())
+	foreach (PropertiesEditorWidget *pew, editors())
 		pew->setLiveEdit(true);
 }
 

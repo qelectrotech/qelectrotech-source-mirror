@@ -70,7 +70,7 @@ ConfigDialog::~ConfigDialog() {
 */
 void ConfigDialog::buildPagesList() {
 	pages_list -> clear();
-	for (ConfigPage *page: pages) {
+	foreach(ConfigPage *page, pages) {
 		addPageToList(page);
 	}
 }
@@ -90,7 +90,7 @@ void ConfigDialog::addPageToList(ConfigPage *page) {
 	Applique la configuration de toutes les pages
 */
 void ConfigDialog::applyConf() {
-	for (ConfigPage *page: pages) {
+	foreach(ConfigPage *page, pages) {
 		page -> applyConf();
 	}
 	accept();

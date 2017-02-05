@@ -737,7 +737,7 @@ QDomDocument QETProject::toXml() {
 	// titleblock templates, if any
 	if (titleblocks_.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
-		for (QString template_name: titleblocks_.templates()) {
+		foreach (QString template_name, titleblocks_.templates()) {
 			QDomElement e = titleblocks_.getTemplateXmlDescription(template_name);
 			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
 		}
@@ -758,7 +758,7 @@ QDomDocument QETProject::toXml() {
 	
 	// qDebug() << "Export XML de" << diagrams_.count() << "schemas";
 	int order_num = 1;
-	for (Diagram *diagram: diagrams_) {
+	foreach(Diagram *diagram, diagrams_) {
 
 		// Write the diagram to XML only if it is not of type DiagramFolioList.
 		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
@@ -848,7 +848,7 @@ bool QETProject::isEmpty() const {
 	
 	// compte le nombre de schemas non vides
 	int pertinent_diagrams = 0;
-	for (Diagram *diagram: diagrams_) {
+	foreach(Diagram *diagram, diagrams_) {
 		if (!diagram -> isEmpty()) ++ pertinent_diagrams;
 	}
 	
@@ -988,7 +988,7 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 */
 bool QETProject::usesElement(const ElementsLocation &location) const
 {
-	for (Diagram *diagram: diagrams()) {
+	foreach(Diagram *diagram, diagrams()) {
 		if (diagram -> usesElement(location)) {
 			return(true);
 		}
@@ -1007,7 +1007,7 @@ QList<ElementsLocation> QETProject::unusedElements() const
 {
 	QList <ElementsLocation> unused_list;
 
-	for (ElementsLocation location: m_elements_collection->elementsLocation())
+	foreach(ElementsLocation location, m_elements_collection->elementsLocation())
 		if (location.isElement() && !usesElement(location))
 			unused_list << location;
 
@@ -1023,7 +1023,7 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 	// a diagram can only use a title block template embedded wihtin its parent project
 	if (location.parentProject() != this) return(false);
 	
-	for (Diagram *diagram: diagrams()) {
+	foreach (Diagram *diagram, diagrams()) {
 		if (diagram -> usesTitleBlockTemplate(location.name())) {
 			return(true);
 		}
@@ -1279,12 +1279,12 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 	}
 	
 		//Add the diagrams according to there "order" attribute
-	for (Diagram *diagram: loaded_diagrams.values())
+	foreach(Diagram *diagram, loaded_diagrams.values())
 		addDiagram(diagram);
 
 		//Initialise links between elements in this project
 		//and refresh the text of conductor
-	for (Diagram *d: diagrams())
+	foreach (Diagram *d, diagrams())
 		d->refreshContents();
 
 	delete dlgWaiting;
@@ -1323,7 +1323,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
  */
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
-	for (QDomElement e: QET::findInDomElement(xml_project.documentElement(), "properties"))
+	foreach (QDomElement e, QET::findInDomElement(xml_project.documentElement(), "properties"))
 		project_properties_.fromXml(e);
 }
 
@@ -1381,7 +1381,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
 	if (!xref_elmt.isNull())
 	{
-		for (QDomElement elmt: QET::findInDomElement(xref_elmt, "xref"))
+		foreach(QDomElement elmt, QET::findInDomElement(xref_elmt, "xref"))
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
@@ -1392,7 +1392,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_conductor_autonum = conds_autonums.attribute("current_autonum");
 		m_freeze_new_conductors = conds_autonums.attribute("freeze_new_conductors") == "true";
-		for (QDomElement elmt: QET::findInDomElement(conds_autonums, "conductor_autonum"))
+		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum"))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
@@ -1401,7 +1401,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	}
 	if (!folio_autonums.isNull())
 	{
-		for (QDomElement elmt: QET::findInDomElement(folio_autonums, "folio_autonum"))
+		foreach (QDomElement elmt, QET::findInDomElement(folio_autonums, "folio_autonum"))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
@@ -1412,7 +1412,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_element_autonum = element_autonums.attribute("current_autonum");
 		m_freeze_new_elements = element_autonums.attribute("freeze_new_elements") == "true";
-		for (QDomElement elmt: QET::findInDomElement(element_autonums, "element_autonum"))
+		foreach (QDomElement elmt, QET::findInDomElement(element_autonums, "element_autonum"))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
@@ -1463,7 +1463,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 
 	// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-	for (QString key: defaultXRefProperties().keys()) {
+	foreach (QString key, defaultXRefProperties().keys()) {
 		QDomElement xref_elmt = xml_document.createElement("xref");
 		xref_elmt.setAttribute("type", key);
 		defaultXRefProperties()[key].toXml(xref_elmt);
@@ -1475,7 +1475,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
-	for (QString key: conductorAutoNum().keys()) {
+	foreach (QString key, conductorAutoNum().keys()) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {
 			conductor_autonum.setAttribute("title", key);
@@ -1487,7 +1487,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	for (QString key: folioAutoNum().keys()) {
+	foreach (QString key, folioAutoNum().keys()) {
 	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
 		folio_autonum.setAttribute("title", key);
 		folio_autonums.appendChild(folio_autonum);
@@ -1498,7 +1498,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
-	for (QString key: elementAutoNum().keys()) {
+	foreach (QString key, elementAutoNum().keys()) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {
 			element_autonum.setAttribute("title", key);
@@ -1652,7 +1652,7 @@ void QETProject::updateDiagramsFolioData() {
 void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
 	Q_UNUSED(collection)
 	
-	for (Diagram *diagram: diagrams_) {
+	foreach (Diagram *diagram, diagrams_) {
 		diagram -> titleBlockTemplateChanged(template_name);
 	}
 }
@@ -1666,7 +1666,7 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 	Q_UNUSED(collection)
 	
 	// warn diagrams that the given template is about to be removed
-	for (Diagram *diagram: diagrams_) {
+	foreach (Diagram *diagram, diagrams_) {
 		diagram -> titleBlockTemplateRemoved(template_name);
 	}
 }

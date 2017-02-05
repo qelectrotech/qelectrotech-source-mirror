@@ -385,19 +385,19 @@ void ProjectAutoNumConfigPage::readValuesFromProject() {
 	//Conductor Tab
 	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
 	if (!keys_conductor.isEmpty()){
-	for (QString str: keys_conductor) { m_context_cb_conductor-> addItem(str); }
+	foreach (QString str, keys_conductor) { m_context_cb_conductor-> addItem(str); }
 	}
 
 	//Element Tab
 	QList <QString> keys_element = m_project->elementAutoNum().keys();
 	if (!keys_element.isEmpty()){
-	for (QString str: keys_element) { m_context_cb_element -> addItem(str);}
+	foreach (QString str, keys_element) { m_context_cb_element -> addItem(str);}
 	}
 
 	//Folio Tab
 	QList <QString> keys_folio = m_project->folioAutoNum().keys();
 	if (!keys_folio.isEmpty()){
-	for (QString str: keys_folio) { m_context_cb_folio -> addItem(str);}
+	foreach (QString str, keys_folio) { m_context_cb_folio -> addItem(str);}
 	}
 
 	//Folio AutoNumbering Tab

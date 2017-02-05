@@ -36,7 +36,7 @@ QGIManager::QGIManager(QGraphicsScene *sc) :
 */
 QGIManager::~QGIManager(){
 	if (!destroy_qgi_on_delete) return;
-	for (QGraphicsItem *qgi: qgi_manager.keys()) {
+	foreach(QGraphicsItem *qgi, qgi_manager.keys()) {
 		if (!scene -> items().contains(qgi)) delete qgi;
 	}
 }
@@ -71,7 +71,7 @@ void QGIManager::release(QGraphicsItem *qgi) {
 	@param qgis QGraphicsItems a gerer
 */
 void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
-	for (QGraphicsItem *qgi: qgis) manage(qgi);
+	foreach(QGraphicsItem *qgi, qgis) manage(qgi);
 }
 
 /**
@@ -82,7 +82,7 @@ void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
 	@param qgis QGraphicsItems a ne plus gerer
 */
 void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
-	for (QGraphicsItem *qgi: qgis) release(qgi);
+	foreach(QGraphicsItem *qgi, qgis) release(qgi);
 }
 
 /**

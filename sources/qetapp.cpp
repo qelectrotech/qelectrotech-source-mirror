@@ -360,7 +360,7 @@ QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesColle
 	collections_list << common_tbt_collection_;
 	collections_list << custom_tbt_collection_;
 
-	for (QETProject *opened_project: registered_projects_) {
+	foreach(QETProject *opened_project, registered_projects_) {
 		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
 	}
 
@@ -582,7 +582,7 @@ QStringList QETApp::handledFileExtensions() {
 */
 QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
 	QList<QString> filepaths;
-	for (QUrl url: urls) {
+	foreach (QUrl url, urls) {
 		if (url.scheme() != "file") continue;
 		QString local_path = url.toLocalFile();
 		QFileInfo local_path_info(local_path);
@@ -604,7 +604,7 @@ QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 	if (filepath.isEmpty()) return(0);
 
 	QETApp *qet_app(QETApp::instance());
-	for (QETDiagramEditor *diagram_editor: qet_app -> diagramEditors()) {
+	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors()) {
 		if (diagram_editor -> viewForFile(filepath)) {
 			return(diagram_editor);
 		}
@@ -621,7 +621,7 @@ QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
  */
 QETDiagramEditor *QETApp::diagramEditorAncestorOf (const QWidget *child)
 {
-	for (QETDiagramEditor *qde: QETApp::diagramEditors()) {
+	foreach (QETDiagramEditor *qde, QETApp::diagramEditors()) {
 		if (qde->isAncestorOf(child)) {
 			return qde;
 		}
@@ -713,14 +713,14 @@ QString QETApp::languagesPath() {
 bool QETApp::closeEveryEditor() {
 	// s'assure que toutes les fenetres soient visibles avant de quitter
 	restoreEveryEditor();
-	for (QETProject *project: registered_projects_) {
+	foreach(QETProject *project, registered_projects_) {
 		project -> close();
 	}
 	bool every_window_closed = true;
-	for (QETDiagramEditor *e: diagramEditors()) {
+	foreach(QETDiagramEditor *e, diagramEditors()) {
 		every_window_closed = every_window_closed && e -> close();
 	}
-	for (QETElementEditor *e: elementEditors()) {
+	foreach(QETElementEditor *e, elementEditors()) {
 		every_window_closed = every_window_closed && e -> close();
 	}
 	return(every_window_closed);
@@ -782,8 +782,8 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProjec
 	QList<QETTitleBlockTemplateEditor *> editors;
 	if (!project) return(editors);
 
-	// for  known template editor
-	for (QETTitleBlockTemplateEditor *tbt_editor: titleBlockTemplateEditors()) {
+	// foreach known template editor
+	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
 		if (tbt_editor -> location().parentProject() == project) {
 			editors << tbt_editor;
 		}
@@ -839,7 +839,7 @@ QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 	if (!project) return(editors);
 
 	// pour chaque editeur d'element...
-	for (QETElementEditor *elmt_editor: elementEditors()) {
+	foreach(QETElementEditor *elmt_editor, elementEditors()) {
 		// on recupere l'emplacement de l'element qu'il edite
 		ElementsLocation elmt_editor_loc(elmt_editor -> location());
 
@@ -867,7 +867,7 @@ void QETApp::cleanup() {
 */
 template <class T> QList<T *> QETApp::detectWindows() const {
 	QList<T *> windows;
-	for (QWidget *widget: topLevelWidgets()) {
+	foreach(QWidget *widget, topLevelWidgets()) {
 		if (!widget -> isWindow()) continue;
 		if (T *window = qobject_cast<T *>(widget)) {
 			windows << window;
@@ -881,7 +881,7 @@ template <class T> QList<T *> QETApp::detectWindows() const {
 	@param visible whether detected main windows should be visible
 */
 template <class T> void QETApp::setMainWindowsVisible(bool visible) {
-	for (T *e: detectWindows<T>()) {
+	foreach(T *e, detectWindows<T>()) {
 		setMainWindowVisible(e, visible);
 	}
 }
@@ -912,7 +912,7 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 		window_states.insert(window, window -> saveState());
 		window -> hide();
 		// cache aussi les toolbars et les docks
-		for (QWidget *qw: floatingToolbarsAndDocksForMainWindow(window)) {
+		foreach (QWidget *qw, floatingToolbarsAndDocksForMainWindow(window)) {
 			qw -> hide();
 		}
 	} else {
@@ -1044,7 +1044,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 	// s'il y a des editeur de schemas ouvert, on cherche ceux qui sont visibles
 	if (diagrams_editors.count()) {
 		QList<QETDiagramEditor *> visible_diagrams_editors;
-		for (QETDiagramEditor *de: diagrams_editors) {
+		foreach(QETDiagramEditor *de, diagrams_editors) {
 			if (de -> isVisible()) visible_diagrams_editors << de;
 		}
 
@@ -1058,7 +1058,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 		}
 
 		// ouvre les fichiers dans l'editeur ainsi choisi
-		for (QString file: files_list) {
+		foreach(QString file, files_list) {
 			de_open -> openAndAddProject(file);
 		}
 	} else {
@@ -1077,7 +1077,7 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 
 	// evite autant que possible les doublons dans la liste fournie
 	QSet<QString> files_set;
-	for (QString file: files_list) {
+	foreach(QString file, files_list) {
 		QString canonical_filepath = QFileInfo(file).canonicalFilePath();
 		if (!canonical_filepath.isEmpty()) files_set << canonical_filepath;
 	}
@@ -1088,9 +1088,9 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 	QList<QETElementEditor *> element_editors = elementEditors();
 
 	// on traite les fichiers a la queue leu leu...
-	for (QString element_file: files_set) {
+	foreach(QString element_file, files_set) {
 		bool already_opened_in_existing_element_editor = false;
-		for (QETElementEditor *element_editor: element_editors) {
+		foreach(QETElementEditor *element_editor, element_editors) {
 			if (element_editor -> isEditing(element_file)) {
 				// ce fichier est deja ouvert dans un editeur
 				already_opened_in_existing_element_editor = true;
@@ -1120,9 +1120,9 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	QList<QETElementEditor *> element_editors = elementEditors();
 
 	// on traite les emplacements  a la queue leu leu...
-	for (ElementsLocation element_location: locations_list) {
+	foreach(ElementsLocation element_location, locations_list) {
 		bool already_opened_in_existing_element_editor = false;
-		for (QETElementEditor *element_editor: element_editors) {
+		foreach(QETElementEditor *element_editor, element_editors) {
 			if (element_editor -> isEditing(element_location)) {
 				// cet emplacement est deja ouvert dans un editeur
 				already_opened_in_existing_element_editor = true;
@@ -1175,7 +1175,7 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 
 	// avoid duplicates in the provided files list
 	QSet<QString> files_set;
-	for (QString file: files_list) {
+	foreach (QString file, files_list) {
 		QString canonical_filepath = QFileInfo(file).canonicalFilePath();
 		if (!canonical_filepath.isEmpty()) files_set << canonical_filepath;
 	}
@@ -1185,9 +1185,9 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 	// opened title block template editors
 	QList<QETTitleBlockTemplateEditor *> tbt_editors = titleBlockTemplateEditors();
 
-	for (QString tbt_file: files_set) {
+	foreach(QString tbt_file, files_set) {
 		bool already_opened_in_existing_tbt_editor = false;
-		for (QETTitleBlockTemplateEditor *tbt_editor: tbt_editors) {
+		foreach(QETTitleBlockTemplateEditor *tbt_editor, tbt_editors) {
 			if (tbt_editor -> isEditing(tbt_file)) {
 				// this file is already opened
 				already_opened_in_existing_tbt_editor = true;
@@ -1267,7 +1267,7 @@ void QETApp::aboutQET() {
 */
 QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *window) const {
 	QList<QWidget *> widgets;
-	for (QWidget *qw: topLevelWidgets()) {
+	foreach(QWidget *qw, topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
 		if (qobject_cast<QToolBar *>(qw) || qobject_cast<QDockWidget *>(qw)) {
 			if (qw -> parent() == window) widgets << qw;
@@ -1455,7 +1455,7 @@ void QETApp::initSystemTray() {
 */
 template <class T> void QETApp::addWindowsListToMenu(QMenu *menu, const QList<T *> &windows) {
 	menu -> addSeparator();
-	for (QMainWindow *window: windows) {
+	foreach (QMainWindow *window, windows) {
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
 		current_menu -> setCheckable(true);
 		current_menu -> setChecked(window -> isVisible());
@@ -1547,19 +1547,19 @@ void QETApp::fetchWindowStats(
 ) {
 	// compte le nombre de schemas visibles
 	int visible_diagrams = 0;
-	for (QMainWindow *w: diagrams) if (w -> isVisible()) ++ visible_diagrams;
+	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
 	every_diagram_reduced = !visible_diagrams;
 	every_diagram_visible = visible_diagrams == diagrams.count();
 
 	// compte le nombre de schemas visibles
 	int visible_elements = 0;
-	for (QMainWindow *w: elements) if (w -> isVisible()) ++ visible_elements;
+	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
 	every_element_reduced = !visible_elements;
 	every_element_visible = visible_elements == elements.count();
 
 	// count visible template editors
 	int visible_templates = 0;
-	for (QMainWindow *window: tbtemplates) {
+	foreach(QMainWindow *window, tbtemplates) {
 		if (window -> isVisible()) ++ visible_templates;
 	}
 	every_template_reduced = !visible_templates;
@@ -1683,7 +1683,7 @@ QETProject *QETApp::project(const uint &id) {
 	@return l'id du projet en parametre si celui-ci est enregistre, -1 sinon
 */
 int QETApp::projectId(const QETProject *project) {
-	for (int id: registered_projects_.keys()) {
+	foreach(int id, registered_projects_.keys()) {
 		if (registered_projects_[id] == project) {
 			return(id);
 		}

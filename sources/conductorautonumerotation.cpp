@@ -85,7 +85,7 @@ void ConductorAutoNumerotation::applyText(QString t)
 		if (!m_parent_undo)
 			undo->setText(QObject::tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
-		for (Conductor *cond: conductor_list)
+		foreach (Conductor *cond, conductor_list)
 		{
 			ConductorProperties cp2 = cond -> properties();
 			old_value.setValue(cp2);
@@ -107,7 +107,7 @@ void ConductorAutoNumerotation::numeratePotential()
 {
 	ConductorProperties cp = conductor_list.first()->properties();
 	bool properties_equal = true;
-	for (const Conductor *conductor: conductor_list)
+	foreach (const Conductor *conductor, conductor_list)
 	{
 		if (conductor->properties() != cp)
 			properties_equal = false;
@@ -122,7 +122,7 @@ void ConductorAutoNumerotation::numeratePotential()
 
 	QStringList text_list;
 	QStringList formula_list;
-	for (const Conductor *cc: conductor_list)
+	foreach (const Conductor *cc, conductor_list)
 	{
 		ConductorProperties cp = cc->properties();
 		text_list << cp.text;
@@ -134,7 +134,7 @@ void ConductorAutoNumerotation::numeratePotential()
 	if (QET::eachStrIsEqual(text_list) && QET::eachStrIsEqual(formula_list))
 	{
 		QList<ConductorProperties> cp_list;
-		for (Conductor *c: conductor_list)
+		foreach(Conductor *c, conductor_list)
 			cp_list<<c->properties();
 
 		ConductorProperties cp = m_conductor->properties();
