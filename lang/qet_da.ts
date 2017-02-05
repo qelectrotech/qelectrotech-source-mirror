@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 QElectroTech udviklere {2006-2017 ?}</translation>
+        <translation>2006-2017 QElectroTech udviklere</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
@@ -2264,7 +2264,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="308"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
-        <translation>Nyt sprog (kræver QElectroTech genstart)</translation>
+        <translation>Det nye sprog træder i kraft ved næste QElectroTech start.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="371"/>
