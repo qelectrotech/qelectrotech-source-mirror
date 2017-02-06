@@ -2649,7 +2649,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
@@ -2688,17 +2688,17 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr geleider</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Functie</translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Spanning / regels</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2732,7 +2732,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Indeling opslaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
@@ -2854,7 +2854,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Indeling opslaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
