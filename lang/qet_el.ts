@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">Οι προγραμματιστές του QElectroTech 2006-2016 {2006-2017 ?}</translation>
+        <translation>Οι προγραμματιστές του QElectroTech 2006-2017</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="110"/>
@@ -298,22 +298,22 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Autonumerotation Séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή αυτόματης αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="44"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="57"/>
         <source>Conductor</source>
-        <translation type="unfinished">Αγωγός</translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Folio</source>
-        <translation type="unfinished">Σελίδα</translation>
+        <translation>Σελίδα</translation>
     </message>
 </context>
 <context>
@@ -321,104 +321,104 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="113"/>
         <source>Project Status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάσταση έργου:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Έκταση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="159"/>
         <source>Apply to Selected Locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή σε Επιλεγμένες Τοποθεσίες</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="166"/>
         <source>Apply to Selected Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή σε Επιλεγμένες Σελίδες</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="173"/>
         <source>Apply to Entire Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή όλο το Έργο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="192"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>Από</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="215"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέχρι</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="238"/>
         <source>Update Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολιτική Ενημέρωσης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="253"/>
         <source>Conductor</source>
-        <translation type="unfinished">Αγωγός</translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="270"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="344"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="409"/>
         <source>Only New</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο Νέοι</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="260"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="328"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="429"/>
         <source>Both</source>
-        <translation type="unfinished"></translation>
+        <translation>Αμφότεροι</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="290"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="376"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="439"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Απενεργοποίηση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="315"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="280"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Only Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Μόνο Υπάρχοντες</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="402"/>
         <source>Folio</source>
-        <translation type="unfinished">Σελίδα</translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="419"/>
         <source>Existent</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχοντες</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπο Ανάπτυξη</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="63"/>
@@ -429,7 +429,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="184"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση Αυτόματης Αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="185"/>
@@ -765,7 +765,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη %1</translation>
     </message>
 </context>
 <context>
@@ -1082,7 +1082,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/elementdialog.cpp" line="232"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πρέπει να επιλέξετε ένα στοιχείο ή κατηγορία με ένα όνομα για το στοιχείο.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="200"/>
@@ -1416,13 +1416,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το αντικείμενο δεν είναι κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το ζητούμενο αντικείμενο δεν είναι κατηγορία. Εγκατάληψη.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
@@ -1558,7 +1558,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες του φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
@@ -1625,38 +1625,38 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="503"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο φάκελος %1 περιέχει </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="504"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n στοιχείο(α), τμήμα(τα)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>στον(ους) φάκελο(υς) %n</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="506"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή της συλλογής:  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή στο σύστημα αρχείων:  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες του φακέλου %1</translation>
     </message>
 </context>
 <context>
@@ -2130,12 +2130,12 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μοτίβο Αυτόματης Ονομασίας</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="59"/>
@@ -2620,56 +2620,57 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° σελίδας</translation>
+        <translation>N° σελίδας </translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Τίτλος σελίδας</translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Τίτλος σελίδας</translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Position</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>N° αγωγού</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
@@ -2688,17 +2689,17 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του βοηθητικού στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
@@ -2750,25 +2751,25 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° σελίδας</translation>
+        <translation>N° σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Τίτλος σελίδας</translation>
+        <translation>Ετικέτα σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Τίτλος σελίδας</translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2805,22 +2806,22 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποσύνδεση στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του κύριου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
@@ -2830,7 +2831,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Διασταυρούμενες αναφορές (master)</translation>
     </message>
 </context>
 <context>
@@ -3066,7 +3067,7 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="175"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="292"/>
         <source>Chiffre 1 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 1 - σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
@@ -3074,7 +3075,7 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="179"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="296"/>
         <source>Chiffre 01 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 01 - σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
@@ -3082,7 +3083,7 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="183"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="300"/>
         <source>Chiffre 001 - Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 001 - σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
@@ -3090,7 +3091,7 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="191"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="308"/>
         <source>Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Μηχανή</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="89"/>
@@ -3098,21 +3099,21 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="193"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="310"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="195"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="312"/>
         <source>Element Line</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="197"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="314"/>
         <source>Element Column</source>
-        <translation type="unfinished"></translation>
+        <translation>Στήλη στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="95"/>
@@ -3301,7 +3302,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="343"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="359"/>
@@ -4240,12 +4241,12 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="134"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Έργα</translation>
+        <translation>Έργα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="165"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Συλλογές</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -4366,12 +4367,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Afficher la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση του δικτυώματος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνκση ή απόκρυψη του δικτυώματος της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -4432,13 +4433,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished">Προσθήκη γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Απομάκρυνση γραμμής</translation>
+        <translation>Αφαίρεση γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
@@ -4509,7 +4510,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished">Προσθήκη γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
@@ -5254,18 +5255,18 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="76"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγχειρίδιο Online</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="86"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανάλι Youtube</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <location filename="../sources/qetmainwindow.cpp" line="97"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished"></translation>
+        <translation>Λήψη νέας έκδοσης (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
@@ -5540,7 +5541,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Έργο « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
@@ -6433,7 +6434,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
         <source>Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
@@ -6459,7 +6460,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία εικόνων (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -6673,20 +6674,20 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Ανώνυμο έργο</translation>
+        <translation>Ανώνυμο έργο</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
         <source>Collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Συλλογή</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/elementsmover.cpp" line="158"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Προσθήκη %n αγωγού</numerusform>
+            <numerusform>Προσθήκη %n αγωγών</numerusform>
         </translation>
     </message>
 </context>
@@ -7735,7 +7736,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="334"/>
         <source>à droite </source>
-        <translation type="unfinished"></translation>
+        <translation>στα δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
@@ -7775,12 +7776,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="197"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως μεταβλητή %locmach στα πρότυπα πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="204"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως μεταβλητή %machine στα πρότυπα πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
@@ -7840,17 +7841,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγκατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="368"/>
         <source>Localisation</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="375"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως μεταβλητή %indexrev στα πρότυπα πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
