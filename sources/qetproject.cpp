@@ -383,12 +383,15 @@ void QETProject::setDefaultConductorProperties(const ConductorProperties &conduc
 }
 
 QString QETProject::defaultReportProperties() const {
-	return default_report_properties_;
+	return m_default_report_properties;
 }
 
-void QETProject::setDefaultReportProperties(const QString &properties) {
-	default_report_properties_ = properties;
-	emit reportPropertiesChanged(properties);
+void QETProject::setDefaultReportProperties(const QString &properties)
+{
+	QString old = m_default_report_properties;
+	m_default_report_properties = properties;
+	
+	emit reportPropertiesChanged(old, properties);
 }
 
 void QETProject::setDefaultXRefProperties(const QString type, const XRefProperties &properties) {
@@ -1345,7 +1348,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	default_border_properties_	   = BorderProperties::    defaultProperties();
 	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
 	default_conductor_properties_  = ConductorProperties:: defaultProperties();
-	default_report_properties_	   = ReportProperties::    defaultProperties();
+	m_default_report_properties	   = ReportProperties::    defaultProperties();
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project

@@ -183,7 +183,7 @@ class QETProject : public QObject
 		void projectDiagramsOrderChanged(QETProject *, int, int);
 		void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void readOnlyChanged(QETProject *, bool);
-		void reportPropertiesChanged(QString);
+		void reportPropertiesChanged(const QString &old_str, const QString &new_str);
 		void XRefPropertiesChanged ();
 		void addAutoNumDiagram();
 		void elementAutoNumAdded(QString name);
@@ -242,7 +242,7 @@ class QETProject : public QObject
 			/// Default title block properties for new diagrams created within the project
 		TitleBlockProperties default_titleblock_properties_;
 			/// Default report properties
-		QString default_report_properties_;
+		QString m_default_report_properties;
 			/// Default xref properties
 		QHash <QString, XRefProperties> m_default_xref_properties;
 			/// Embedded title block templates collection

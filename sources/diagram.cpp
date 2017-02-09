@@ -1697,15 +1697,11 @@ void Diagram::setProject(QETProject *project)
 	if (m_project == project) return;
 
 	if (m_project)
-	{
-		disconnect (m_project, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
 		disconnect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
-	}
 
 	m_project = project;
 	setParent (project);
-
-	connect (m_project, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+	
 	connect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 }
 

@@ -255,7 +255,6 @@ class Diagram : public QGraphicsScene
 		void diagramTitleChanged(Diagram *, const QString &);
 		void findElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to locate an element from the diagram within elements collection
 		void editElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to edit an element from the diagram
-		void reportPropertiesChanged(QString);
 		void XRefPropertiesChanged();
 		void diagramActivated();
 };

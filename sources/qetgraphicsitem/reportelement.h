@@ -39,8 +39,8 @@ class ReportElement : public CustomElement
 		virtual void unlinkElement(Element *elmt);
 
 	private:
-		int              inverse_report;
-		QString          label_;
+		int              m_inverse_report;
+		QString          m_label;
 		ElementTextItem *m_text_field;
 		Conductor *m_watched_conductor;
 
@@ -51,6 +51,7 @@ class ReportElement : public CustomElement
 	private slots:
 		void setLabel (QString label);
 		void updateLabel();
+		void reportPropertiesChange(const QString &old_str, const QString &new_str);
 };
 
 #endif // REPORTELEMENT_H

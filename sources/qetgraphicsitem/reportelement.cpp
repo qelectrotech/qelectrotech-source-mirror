@@ -41,7 +41,7 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 		m_text_field -> setNoEditable();
 
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
-	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
+	link_type == "next_report"? m_inverse_report=PreviousReport : m_inverse_report=NextReport;
 
 		//We make these connections, to be always aware about the conductor properties
 	if (terminals().size())
@@ -84,14 +84,14 @@ void ReportElement::linkToElement(Element * elmt)
 		i = false;
 
 		//ensure elmt is an inverse report of this element
-	if ((elmt->linkType() == inverse_report) && i)
+	if ((elmt->linkType() == m_inverse_report) && i)
 	{
 		unlinkAllElements();
 		connected_elements << elmt;
 
 		connect(elmt,                   SIGNAL( xChanged() ),                                       this, SLOT( updateLabel()     ));
 		connect(elmt,                   SIGNAL( yChanged() ),                                       this, SLOT( updateLabel()     ));
-		connect(diagram(),              SIGNAL( reportPropertiesChanged(QString) ),                 this, SLOT( setLabel(QString) ));
+		connect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
 		connect(diagram() -> project(), SIGNAL( projectDiagramsOrderChanged(QETProject*,int,int) ), this, SLOT( updateLabel()     ));
 		if (elmt->terminals().size())
 		{
@@ -99,7 +99,7 @@ void ReportElement::linkToElement(Element * elmt)
 			connect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
 		}
 
-		label_ = diagram() -> defaultReportProperties();
+		m_label = diagram() -> defaultReportProperties();
 
 		if (!m_watched_conductor && elmt->conductors().size())
 			conductorWasAdded(elmt->conductors().first());
@@ -126,6 +126,7 @@ void ReportElement::unlinkAllElements()
 	{
 		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
+		disconnect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
 		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		if (elmt->terminals().size())
 		{
@@ -202,7 +203,7 @@ void ReportElement::conductorWasRemoved(Conductor *conductor)
  * @param label new label
  */
 void ReportElement::setLabel(QString label) {
-	label_ = label;
+	m_label = label;
 	updateLabel();
 }
 
@@ -218,7 +219,7 @@ void ReportElement::updateLabel()
 	if (!connected_elements.isEmpty())
 	{
 		Element *elmt = connected_elements.at(0);
-		QString label = label_;
+		QString label = m_label;
 		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 		m_text_field -> setPlainText(label);
 	}
@@ -227,4 +228,10 @@ void ReportElement::updateLabel()
 
 	setTaggedText("function", (m_watched_conductor? m_watched_conductor->properties().m_function : ""));
 	setTaggedText("tension-protocol", (m_watched_conductor? m_watched_conductor->properties().m_tension_protocol : ""));
+}
+
+void ReportElement::reportPropertiesChange(const QString &old_str, const QString &new_str)
+{
+	Q_UNUSED(old_str);
+	setLabel(new_str);
 }
