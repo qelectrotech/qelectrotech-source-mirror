@@ -149,13 +149,14 @@ class Element : public QetGraphicsItem
 		void freezeNewAddedElement();
 
 	protected:
-		void setUpConnectionForFormula(QString old_formula, QString new_formula);
+		virtual void setUpConnectionForFormula(QString old_formula, QString new_formula);
 
 		//ATTRIBUTES
 	protected:
 		DiagramContext m_element_informations, kind_informations_;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
+		QString m_F_str;
 
 	/**
 		Draw this element

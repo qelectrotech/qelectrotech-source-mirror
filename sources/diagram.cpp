@@ -1694,15 +1694,11 @@ QETProject *Diagram::project() const {
  */
 void Diagram::setProject(QETProject *project)
 {
-	if (m_project == project) return;
-
-	if (m_project)
-		disconnect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
+	if (m_project == project)
+		return;
 
 	m_project = project;
 	setParent (project);
-	
-	connect (m_project, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 }
 
 /**

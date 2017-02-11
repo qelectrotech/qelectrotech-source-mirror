@@ -877,7 +877,10 @@ void Element::setUpConnectionForFormula(QString old_formula, QString new_formula
 		//Because the variable %F is a reference to another text which can contain variables,
 		//we must to replace %F by the real text, to check if the real text contain the variable %id
 	if (diagram() && old_formula.contains("%F"))
-		old_formula.replace("%F", diagram()->border_and_titleblock.folio());
+	{
+		disconnect(&diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &Element::updateLabel);
+		old_formula.replace("%F", m_F_str);
+	}
 
 	if (diagram() && (old_formula.contains("%f") || old_formula.contains("%id")))
 		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
@@ -891,7 +894,11 @@ void Element::setUpConnectionForFormula(QString old_formula, QString new_formula
 		return;
 	
 	if (diagram() && new_formula.contains("%F"))
-		new_formula.replace("%F", diagram()->border_and_titleblock.folio());
+	{
+		m_F_str = diagram()->border_and_titleblock.folio();
+		new_formula.replace("%F", m_F_str);
+		connect(&diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &Element::updateLabel);
+	}
 	
 	if (diagram() && (new_formula.contains("%f") || new_formula.contains("%id")))
 		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);

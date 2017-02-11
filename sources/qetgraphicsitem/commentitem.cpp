@@ -54,11 +54,13 @@ QRectF CommentItem::boundingRect() const {
  * @brief CommentItem::autoPos
  * Adjust the position of this item.
  */
-void CommentItem::autoPos() {
+void CommentItem::autoPos()
+{
 	if (m_text_parent)
 		centerToParentBottom(this);
-	else {
-		XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	else
+	{
+		XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
 		centerToBottomDiagram(this, m_element, xrp.offset());
 	}
 }

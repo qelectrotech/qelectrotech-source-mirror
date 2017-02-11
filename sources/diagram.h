@@ -129,18 +129,14 @@ class Diagram : public QGraphicsScene
 	
 	public:
 		void setEventInterface (DiagramEventInterface *event_interface);
-
-		//methods related to xref properties
-		QString		   defaultReportProperties () const {return m_project -> defaultReportProperties();}
-		XRefProperties defaultXRefProperties   (const QString &str) const {return m_project -> defaultXRefProperties(str);}
-
-		//methods related to autonum
+			
+			//methods related to autonum
 		QString conductorsAutonumName() const;
 		void setConductorsAutonumName(const QString &name);
 
 		static bool clipboardMayContainDiagram();
 	
-		// methods related to parent project
+			// methods related to parent project
 		QETProject *project() const;
 		void        setProject(QETProject *);
 		int         folioIndex() const;
@@ -148,88 +144,88 @@ class Diagram : public QGraphicsScene
 		void        showMe() {emit showDiagram(this);}
 		bool        isReadOnly() const;
 	
-	// methods related to conductor creation
-	void setConductor(bool);
-	void setConductorStart (QPointF);
-	void setConductorStop(QPointF);
-	QList < QSet <Conductor *> > potentials();
+			// methods related to conductor creation
+		void setConductor(bool);
+		void setConductorStart (QPointF);
+		void setConductorStop(QPointF);
+		QList < QSet <Conductor *> > potentials();
 	
-	// methods related to XML import/export
-	QDomDocument toXml(bool = true);
-	bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-	bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-	void write();
-	void write(const QDomElement &);
-	bool wasWritten() const;
-	QDomElement writeXml(QDomDocument &) const;
-	void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
-	void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
-
-	void refreshContents();
-
-		// methods related to graphics items addition/removal on the diagram
-	virtual void addItem    (QGraphicsItem *item);
-	virtual void removeItem (QGraphicsItem *item);
+		// methods related to XML import/export
+		QDomDocument toXml(bool = true);
+		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+		void write();
+		void write(const QDomElement &);
+		bool wasWritten() const;
+		QDomElement writeXml(QDomDocument &) const;
+		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
+		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
 	
-	// methods related to graphics options
-	ExportProperties applyProperties(const ExportProperties &);
-	void setDisplayGrid(bool);
-	bool displayGrid();
-	void setUseBorder(bool);
-	bool useBorder();
-	void setBorderOptions(BorderOptions);
-	BorderOptions borderOptions();
-	DiagramPosition convertPosition(const QPointF &);
-	static QPointF snapToGrid(const QPointF &p);
+		void refreshContents();
 	
-	bool drawTerminals() const;
-	void setDrawTerminals(bool);
-	bool drawColoredConductors() const;
-	void setDrawColoredConductors(bool);
-
-	QString title() const;
-	bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
-	QSize imageSize() const;
+			// methods related to graphics items addition/removal on the diagram
+		virtual void addItem    (QGraphicsItem *item);
+		virtual void removeItem (QGraphicsItem *item);
 	
-	bool isEmpty() const;
+			// methods related to graphics options
+		ExportProperties applyProperties(const ExportProperties &);
+		void setDisplayGrid(bool);
+		bool displayGrid();
+		void setUseBorder(bool);
+		bool useBorder();
+		void setBorderOptions(BorderOptions);
+		BorderOptions borderOptions();
+		DiagramPosition convertPosition(const QPointF &);
+		static QPointF snapToGrid(const QPointF &p);
 	
-	QList<CustomElement *> customElements() const;
-	QList<Element *> elements() const;
-	QList<Conductor *> conductors() const;
-	QSet<DiagramTextItem *> selectedTexts() const;
-	QSet<ConductorTextItem *> selectedConductorTexts() const;
-	QSet<ElementTextItem*> selectedElementTexts() const;
-	QSet<Conductor *> selectedConductors() const;
-	DiagramContent content() const;
-	DiagramContent selectedContent();
-	bool canRotateSelection() const;
-	int  beginMoveElements(QGraphicsItem * = 0);
-	void continueMoveElements(const QPointF &);
-	void endMoveElements();
-	int  beginMoveElementTexts(QGraphicsItem * = 0);
-	void continueMoveElementTexts(const QPointF &);
-	void endMoveElementTexts();
-	bool usesElement(const ElementsLocation &);
-	bool usesTitleBlockTemplate(const QString &);
+		bool drawTerminals() const;
+		void setDrawTerminals(bool);
+		bool drawColoredConductors() const;
+		void setDrawColoredConductors(bool);
 	
-	QUndoStack &undoStack();
-	QGIManager &qgiManager();
+		QString title() const;
+		bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
+		QSize imageSize() const;
+		
+		bool isEmpty() const;
 	
-	//methods related to element label Update Policy
-	void freezeElements(bool freeze);
-	void unfreezeElements();
-	void setFreezeNewElements(bool);
-	bool freezeNewElements();
-
-		//methods related to conductor label Update Policy
-	void freezeConductors(bool freeze);
-	void setFreezeNewConductors(bool);
-	bool freezeNewConductors();
-
-	//methods related to insertion and loading of folio sequential
-	void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
-	void loadFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
+		QList<CustomElement *> customElements() const;
+		QList<Element *> elements() const;
+		QList<Conductor *> conductors() const;
+		QSet<DiagramTextItem *> selectedTexts() const;
+		QSet<ConductorTextItem *> selectedConductorTexts() const;
+		QSet<ElementTextItem*> selectedElementTexts() const;
+		QSet<Conductor *> selectedConductors() const;
+		DiagramContent content() const;
+		DiagramContent selectedContent();
+		bool canRotateSelection() const;
+		int  beginMoveElements(QGraphicsItem * = 0);
+		void continueMoveElements(const QPointF &);
+		void endMoveElements();
+		int  beginMoveElementTexts(QGraphicsItem * = 0);
+		void continueMoveElementTexts(const QPointF &);
+		void endMoveElementTexts();
+		bool usesElement(const ElementsLocation &);
+		bool usesTitleBlockTemplate(const QString &);
+		
+		QUndoStack &undoStack();
+		QGIManager &qgiManager();
+	
+			//methods related to element label Update Policy
+		void freezeElements(bool freeze);
+		void unfreezeElements();
+		void setFreezeNewElements(bool);
+		bool freezeNewElements();
+	
+			//methods related to conductor label Update Policy
+		void freezeConductors(bool freeze);
+		void setFreezeNewConductors(bool);
+		bool freezeNewConductors();
+	
+			//methods related to insertion and loading of folio sequential
+		void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
+		void loadFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
 
 
 	public slots:
@@ -243,7 +239,7 @@ class Diagram : public QGraphicsScene
 		void loadElmtFolioSeq();
 		void loadCndFolioSeq();
 	
-		// methods related to graphics items selection
+			// methods related to graphics items selection
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
@@ -255,7 +251,6 @@ class Diagram : public QGraphicsScene
 		void diagramTitleChanged(Diagram *, const QString &);
 		void findElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to locate an element from the diagram within elements collection
 		void editElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to edit an element from the diagram
-		void XRefPropertiesChanged();
 		void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)

@@ -37,21 +37,22 @@ class ReportElement : public CustomElement
 		virtual void linkToElement(Element *);
 		virtual void unlinkAllElements();
 		virtual void unlinkElement(Element *elmt);
-
-	private:
-		int              m_inverse_report;
-		QString          m_label;
-		ElementTextItem *m_text_field;
-		Conductor *m_watched_conductor;
-
+		
 	private:
 		void conductorWasAdded(Conductor *conductor);
 		void conductorWasRemoved(Conductor *conductor);
-
-	private slots:
-		void setLabel (QString label);
+		void setFormula (QString label);
 		void updateLabel();
 		void reportPropertiesChange(const QString &old_str, const QString &new_str);
+		void setConnectionForFormula(const QString &str);
+		void removeConnectionForFormula(const QString &str);
+		void updateFormulaConnection();
+		
+	private:
+		int              m_inverse_report;
+		QString          m_formula;
+		ElementTextItem *m_text_field;
+		Conductor       *m_watched_conductor;
 };
 
 #endif // REPORTELEMENT_H

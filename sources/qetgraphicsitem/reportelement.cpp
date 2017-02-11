@@ -88,25 +88,22 @@ void ReportElement::linkToElement(Element * elmt)
 	{
 		unlinkAllElements();
 		connected_elements << elmt;
-
-		connect(elmt,                   SIGNAL( xChanged() ),                                       this, SLOT( updateLabel()     ));
-		connect(elmt,                   SIGNAL( yChanged() ),                                       this, SLOT( updateLabel()     ));
+		m_formula = diagram()->project()->defaultReportProperties();
+		setConnectionForFormula(m_formula);
 		connect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
-		connect(diagram() -> project(), SIGNAL( projectDiagramsOrderChanged(QETProject*,int,int) ), this, SLOT( updateLabel()     ));
+		
 		if (elmt->terminals().size())
 		{
 			connect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
 			connect(elmt->terminals().first(), &Terminal::conductorWasRemoved, this, &ReportElement::conductorWasRemoved);
 		}
-
-		m_label = diagram() -> defaultReportProperties();
-
+		
 		if (!m_watched_conductor && elmt->conductors().size())
 			conductorWasAdded(elmt->conductors().first());
 		else
 			updateLabel();
 
-		elmt -> linkToElement(this);
+		elmt->linkToElement(this);
 
 		emit linkedElementChanged();
 	}
@@ -118,16 +115,16 @@ void ReportElement::linkToElement(Element * elmt)
  */
 void ReportElement::unlinkAllElements()
 {
-	if (isFree()) return;
+	if (isFree())
+		return;
 
-	QList <Element *> tmp_elmt = connected_elements;
+	const QList <Element *> tmp_elmt = connected_elements;
 
-	foreach(Element *elmt, connected_elements)
+	for (Element *elmt : tmp_elmt)
 	{
-		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
+		removeConnectionForFormula(m_formula);
 		disconnect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
-		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+		
 		if (elmt->terminals().size())
 		{
 			disconnect(elmt->terminals().first(), &Terminal::conductorWasAdded, this, &ReportElement::conductorWasAdded);
@@ -140,11 +137,12 @@ void ReportElement::unlinkAllElements()
 	}
 	updateLabel();
 
-	foreach(Element *elmt, tmp_elmt)
+	for(Element *elmt : tmp_elmt)
 	{
 		elmt -> setHighlighted(false);
 		elmt -> unlinkAllElements();
 	}
+	
 	emit linkedElementChanged();
 }
 /**
@@ -198,12 +196,15 @@ void ReportElement::conductorWasRemoved(Conductor *conductor)
 }
 
 /**
- * @brief ReportElement::setLabel
- * Set new label and call updatelabel
- * @param label new label
+ * @brief ReportElement::setFormula
+ * Set new Formula and call updatelabel
+ * @param formula : the new formula
  */
-void ReportElement::setLabel(QString label) {
-	m_label = label;
+void ReportElement::setFormula(QString formula)
+{
+	removeConnectionForFormula(m_formula);
+	m_formula = formula;
+	setConnectionForFormula(m_formula);
 	updateLabel();
 }
 
@@ -219,7 +220,7 @@ void ReportElement::updateLabel()
 	if (!connected_elements.isEmpty())
 	{
 		Element *elmt = connected_elements.at(0);
-		QString label = m_label;
+		QString label = m_formula;
 		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 		m_text_field -> setPlainText(label);
 	}
@@ -233,5 +234,73 @@ void ReportElement::updateLabel()
 void ReportElement::reportPropertiesChange(const QString &old_str, const QString &new_str)
 {
 	Q_UNUSED(old_str);
-	setLabel(new_str);
+	setFormula(new_str);
+}
+
+/**
+ * @brief ReportElement::setConnectionForFormula
+ * Set up the required connection for the formula @str.
+ * @param str
+ */
+void ReportElement::setConnectionForFormula(const QString &str)
+{
+	if (connected_elements.isEmpty() || str.isEmpty())
+		return;
+	
+	QString string = str;
+	Element *other_elmt = connected_elements.first();
+	Diagram *other_diagram = other_elmt->diagram();
+	
+		//Because the variable %F is a reference to another text which can contain variables,
+		//we must to replace %F by the real text, to check if the real text contain the variable %id
+	if (other_diagram && string.contains("%F"))
+	{
+		m_F_str = other_diagram->border_and_titleblock.folio();
+		string.replace("%F", m_F_str);
+		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &ReportElement::updateFormulaConnection);
+	}
+	
+	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &ReportElement::updateLabel);
+	if (string.contains("%l"))
+		connect(other_elmt, &Element::yChanged, this, &ReportElement::updateLabel);
+	if (string.contains("%c"))
+		connect(other_elmt, &Element::xChanged, this, &ReportElement::updateLabel);
+}
+
+/**
+ * @brief ReportElement::removeConnectionForFormula
+ * Remove the existing connection made for the formula @str
+ * @param str
+ */
+void ReportElement::removeConnectionForFormula(const QString &str)
+{
+	if (connected_elements.isEmpty() || str.isEmpty())
+		return;
+	
+	QString string = str;
+	Element *other_element = connected_elements.first();
+	Diagram *other_diagram = other_element->diagram();
+	
+		//Because the variable %F is a reference to another text which can contain variables,
+		//we must to replace %F by the real text, to check if the real text contain the variable %id
+	if (other_diagram && string.contains("%F"))
+	{
+		string.replace("%F", m_F_str);
+		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &ReportElement::updateFormulaConnection);
+	}
+	
+	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &ReportElement::updateLabel);
+	if (string.contains("%l"))
+		disconnect(other_element, &Element::yChanged, this, &ReportElement::updateLabel);
+	if (string.contains("%c"))
+		disconnect(other_element, &Element::xChanged, this, &ReportElement::updateLabel);
+}
+
+void ReportElement::updateFormulaConnection()
+{
+	removeConnectionForFormula(m_formula);
+	setConnectionForFormula(m_formula);
+	updateLabel();
 }

@@ -60,13 +60,14 @@ void SlaveElement::linkToElement(Element *elmt)
 		this->disconnect();
 		connected_elements << elmt;
 
-		connect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
-		connect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
-		connect(elmt,                 SIGNAL(elementInfoChange(DiagramContext, DiagramContext)),this, SLOT(updateLabel()));
-		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-		connect(diagram()->project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
-		connect(elmt -> diagram(),    SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateLabel()));
-		connect(elmt,                 SIGNAL(updateLabel()),                                    this, SLOT(updateLabel()));
+		QETProject *project = elmt->diagram()->project();
+		connect(elmt,    SIGNAL(xChanged()),                                        this, SLOT(updateLabel()));
+		connect(elmt,    SIGNAL(yChanged()),                                        this, SLOT(updateLabel()));
+		connect(elmt,    SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel()));
+		connect(project, SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)),  this, SLOT(updateLabel()));
+		connect(project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),              this, SLOT(updateLabel()));
+		connect(project, SIGNAL(XRefPropertiesChanged()),                           this, SLOT(updateLabel()));
+		connect(elmt,    SIGNAL(updateLabel()),                                     this, SLOT(updateLabel()));
 
 		updateLabel();
 		elmt -> linkToElement(this);
@@ -141,11 +142,11 @@ void SlaveElement::updateLabel()
 	{
 		no_editable = true;
 		Element *elmt = linkedElements().first();
-		label = elmt -> elementInformations()["label"].toString();
-		XRefProperties xrp = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
+		label = elmt->elementInformations()["label"].toString();
+		
+		XRefProperties xrp = elmt->diagram()->project()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 		Xreflabel = xrp.slaveLabel();
 		Xreflabel = autonum::AssignVariables::formulaToLabel(Xreflabel, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 	}
 	else
 		label = autonum::AssignVariables::formulaToLabel(label, m_autoNum_seq, diagram(), this);

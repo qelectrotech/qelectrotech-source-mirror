@@ -65,6 +65,7 @@ void MasterElement::linkToElement(Element *elmt)
 		connect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
 		connect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
 		connect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
+		connect(&elmt->diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, m_Xref_item, &CrossRefItem::updateLabel);
 		m_Xref_item -> updateLabel();
 		emit linkedElementChanged();
 	}
@@ -103,6 +104,7 @@ void MasterElement::unlinkElement(Element *elmt)
 		disconnect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
+		disconnect(&elmt->diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, m_Xref_item, &CrossRefItem::updateLabel);
 
 		m_Xref_item -> updateLabel();
 		aboutDeleteXref();

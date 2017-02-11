@@ -45,15 +45,17 @@ CrossRefItem::CrossRefItem(Element *elmt) :
 {
 	Q_ASSERT_X(elmt->diagram(), "CrossRefItem constructor", "Parent element is not in a diagram");
 
-	m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
+	m_properties = elmt->diagram()->project()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 	setAcceptHoverEvents(true);
 
-	connect(elmt -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	connect(elmt -> diagram() -> project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
-	connect(elmt -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
+	QETProject *project = elmt->diagram()->project();
+	connect(project, &QETProject::projectDiagramsOrderChanged, this, &CrossRefItem::updateLabel);
+	connect(project, &QETProject::diagramRemoved,              this, &CrossRefItem::updateLabel);
+	connect(project, &QETProject::XRefPropertiesChanged,       this, &CrossRefItem::updateProperties);
 
 	//set specific behavior related to the parent item.
-	if(m_properties.snapTo() == XRefProperties::Bottom) {
+	if(m_properties.snapTo() == XRefProperties::Bottom)
+	{
 		connect(elmt, SIGNAL(yChanged()),        this, SLOT(autoPos()));
 		connect(elmt, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
 	} else {
@@ -92,7 +94,7 @@ QPainterPath CrossRefItem::shape() const{
  */
 QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_prefix) const
 {
-	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
 	QString formula = xrp.masterLabel();
 	autonum::sequentialNumbers seq;
 	QString txt = autonum::AssignVariables::formulaToLabel(formula, seq, elmt->diagram(), elmt);
@@ -110,16 +112,22 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
  * @brief CrossRefItem::updateProperties
  * update the curent properties
  */
-void CrossRefItem::updateProperties() {
-	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+void CrossRefItem::updateProperties()
+{
+	XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
 
-	if (m_properties != xrp) {
-		if (m_properties.snapTo() != xrp.snapTo()) {
-			if (xrp.snapTo() == XRefProperties::Bottom) {
+	if (m_properties != xrp)
+	{
+		if (m_properties.snapTo() != xrp.snapTo())
+		{
+			if (xrp.snapTo() == XRefProperties::Bottom)
+			{
 				setParentItem(m_element);
 				connect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
 				connect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
-			} else {
+			}
+			else
+			{
 				setTextParent();
 				disconnect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
 				disconnect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
