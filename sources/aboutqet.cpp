@@ -124,9 +124,10 @@ QWidget *AboutQET::authorsTab() const {
 	addAuthor(authors, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
 	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Développement"));
 	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("Développement"));
-	addAuthor(authors, "Davi Fochi",          "davi@fochi.com.br",          tr("Développement"));
-	addAuthor(authors, "Ronny Desmedt",       "r.desmedt@live.be",          tr("Convertisseur DXF"));
-	addAuthor(authors, "Abhishek Bansal",     "abhishek@qelectrotech.org",  tr("Développement"));
+	addAuthor(authors, "Davi Fochi",         "davi@fochi.com.br",           tr("Développement"));
+	addAuthor(authors, "Ronny Desmedt",      "r.desmedt@live.be",           tr("Convertisseur DXF"));
+	addAuthor(authors, "Raul Roda",          "raulroda8@gmail.com",         tr("Plugin Bornier"));
+	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("Développement"));
 
 
 
