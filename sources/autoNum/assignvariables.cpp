@@ -462,30 +462,17 @@ namespace autonum
 		}
 
 		// Only Electric labels created so far
-		if (current_location.fileName() != "10_electric"){
-		QString custom_labels = "qet_labels.xml";
-		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
-		QFile file(customfilepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text))
-			return QString();
-		
-		rxml.setDevice(&file);
-		rxml.readNext();
-		}
-		
-		if (current_location.fileName() == "10_electric"){
+		//if (current_location.fileName() != "10_electric")
 		QString qet_labels = "10_electric/qet_labels.xml";
 		QString filepath = QETApp::commonElementsDir().append(qet_labels);
 		QFile file(filepath);
 		file.isReadable();
+
 		if (!file.open(QFile::ReadOnly | QFile::Text))
 			return QString();
-		
+
 		rxml.setDevice(&file);
 		rxml.readNext();
-		}
-	
 
 		while(!rxml.atEnd())
 		{
