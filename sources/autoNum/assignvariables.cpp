@@ -467,9 +467,20 @@ namespace autonum
 		QString filepath = QETApp::commonElementsDir().append(qet_labels);
 		QFile file(filepath);
 		file.isReadable();
-
 		if (!file.open(QFile::ReadOnly | QFile::Text))
 			return QString();
+		
+		if (current_location.fileName() != "10_electric"){
+		QString custom_labels = "qet_labels.xml";
+		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
+		QFile file(customfilepath);
+		file.isReadable();
+		if (!file.open(QFile::ReadOnly | QFile::Text))
+			return QString();
+		}
+		
+
+		
 
 		rxml.setDevice(&file);
 		rxml.readNext();
