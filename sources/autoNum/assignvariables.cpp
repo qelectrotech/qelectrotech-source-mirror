@@ -479,9 +479,6 @@ namespace autonum
 			return QString();
 		}
 		
-
-		
-
 		rxml.setDevice(&file);
 		rxml.readNext();
 
