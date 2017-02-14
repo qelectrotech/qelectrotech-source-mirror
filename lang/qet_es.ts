@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -222,7 +222,7 @@
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 Los desarrolladores de QElectroTech {2006-2017 ?}</translation>
+        <translation>2006-2016 Los desarrolladores de QElectroTech {2006-2017 ?}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
@@ -1387,19 +1387,19 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <name>ElementSelectorWidget</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <source>N° fil : </source>
-        <translation type="vanished">N° hilo : </translation>
+        <translation>N° hilo : </translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <source>Voir l&apos;élément</source>
-        <translation type="vanished">Ver el elemento</translation>
+        <translation>Ver el elemento</translation>
     </message>
 </context>
 <context>
@@ -1653,7 +1653,7 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="509"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished">Ruta de acceso al sistema de archivos: %1</translation>
+        <translation>Ruta de acceso al sistema de archivos: %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="512"/>
@@ -2158,7 +2158,7 @@ El campos &quot;Incrementación&quot; no se utiliza.</translation>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Formula:</source>
-        <translation>Fórmula</translation>
+        <translation>Fórmula:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="85"/>
@@ -2645,41 +2645,41 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Busqueda</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Label</source>
-        <translation type="unfinished">Etiqueta</translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentario</translation>
+        <translation>Comentario</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° de folio</translation>
+        <translation>N° de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Etiqueta del folio</translation>
+        <translation>Etiqueta del folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Título del folio</translation>
+        <translation>Título del folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="389"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Position</source>
-        <translation type="unfinished">Posición</translation>
+        <translation>Posición</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
@@ -2689,7 +2689,7 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
         <source>Fonction</source>
-        <translation type="unfinished">Función</translation>
+        <translation>Función</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="391"/>
@@ -2698,7 +2698,7 @@ Las entradas de texto y números
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Busca en el folio:</translation>
+        <translation>Buscar en el folio:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -2713,22 +2713,22 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Enlazar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar el elemento esclavo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar la disposición</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
@@ -2742,11 +2742,11 @@ Las entradas de texto y números
     </message>
     <message>
         <source>Tous</source>
-        <translation type="vanished">Todos</translation>
+        <translation>Todos</translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -2755,7 +2755,7 @@ Las entradas de texto y números
     </message>
     <message>
         <source>Rechercher</source>
-        <translation type="vanished">Buscar</translation>
+        <translation>Buscar</translation>
     </message>
 </context>
 <context>
@@ -2769,31 +2769,31 @@ Las entradas de texto y números
         <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="135"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Viñeta</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="78"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="140"/>
         <source>N° de folio</source>
-        <translation type="unfinished">N° de folio</translation>
+        <translation>N° de folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="145"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Etiqueta del folio</translation>
+        <translation>Etiqueta del folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="88"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="150"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Título del folio</translation>
+        <translation>Título del folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="93"/>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="155"/>
         <source>Position</source>
-        <translation type="unfinished">Posición</translation>
+        <translation>Posición</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="173"/>
@@ -2817,45 +2817,45 @@ Las entradas de texto y números
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Folio  %1 (%2), posición %3.</translation>
+        <translation>Folio  %1 (%2), posición %3.</translation>
     </message>
     <message>
         <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Referencia cruzada (maestro)</translation>
+        <translation>Referencia cruzada (maestro)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="45"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Enlazar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenlazar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar el elemento maestro</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar la disposición</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia cruzada (maestro)</translation>
     </message>
 </context>
 <context>
@@ -8464,7 +8464,7 @@ Ancho máximo : %2xp</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation>Mostrar contactos</translation>
+        <translation>Mostra&amp;r contactos</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
