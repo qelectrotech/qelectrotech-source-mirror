@@ -461,16 +461,58 @@ namespace autonum
 			dirLevel = 0;
 		}
 
-		// Only Electric labels created so far
-		//if (current_location.fileName() != "10_electric")
+		// Create Custom labels if qet_labels.xml if exit in customElementsDir
+		if (current_location.fileName() != "10_electric"){
+		QString custom_labels = "qet_labels.xml";
+		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
+		
+		QFile file(customfilepath);
+		file.isReadable();
+		if (!file.open(QFile::ReadOnly | QFile::Text))
+			return QString();
+				rxml.setDevice(&file);
+				rxml.readNext();
+
+		while(!rxml.atEnd())
+		{
+			if (rxml.attributes().value("name").toString() == path[i])
+			{
+				rxml.readNext();
+				i=i-1;
+					//reached element directory
+				if (i==0)
+				{
+					for (int j=i; j<= dirLevel; j = j +1)
+					{
+							//if there is a prefix available apply prefix
+						if(rxml.name()=="prefix")
+						{
+							return rxml.readElementText();
+						}
+							//if there isn't a prefix available, find parent prefix in parent folder
+						else
+						{
+							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							{
+								rxml.skipCurrentElement();
+								rxml.readNext();
+							}
+						}
+					}
+				}
+			}
+			rxml.readNext();
+			}
+		}
+		else
+		{
 		QString qet_labels = "10_electric/qet_labels.xml";
 		QString filepath = QETApp::commonElementsDir().append(qet_labels);
 		QFile file(filepath);
 		file.isReadable();
-
 		if (!file.open(QFile::ReadOnly | QFile::Text))
 			return QString();
-
+			
 		rxml.setDevice(&file);
 		rxml.readNext();
 
@@ -504,7 +546,7 @@ namespace autonum
 			}
 			rxml.readNext();
 		}
-
+}
 		return QString();
 	}
 }
