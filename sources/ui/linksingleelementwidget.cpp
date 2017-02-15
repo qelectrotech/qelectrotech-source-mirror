@@ -209,9 +209,11 @@ void LinkSingleElementWidget::buildTree()
 	setUpHeaderLabels();
 	QSettings settings;
 	
+	const QList <Element *> elmt_list = availableElements();
 	if (m_element->linkType() == Element::Slave)
 	{
-		foreach(Element *elmt, availableElements())
+		
+		for(Element *elmt : elmt_list)
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -225,21 +227,22 @@ void LinkSingleElementWidget::buildTree()
 			
 			if (Diagram *diag = elmt->diagram())
 			{
-			if (settings.value("genericpanel/folio", false).toBool()){
-				str_list << QString::number(diag->folioIndex() + 1);
+				if (settings.value("genericpanel/folio", false).toBool())
+				{
+					autonum::sequentialNumbers seq;
+					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+					str_list << F;
 				}
 				else
 				{
-				autonum::sequentialNumbers seq;
-				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
-				str_list << F;
+					str_list << QString::number(diag->folioIndex() + 1);
 				}
 				str_list << diag->convertPosition(elmt->scenePos()).toString();
 				str_list << diag->title();
 			}
 			else
 			{
-				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
+				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
 			}
 			
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
@@ -255,7 +258,7 @@ void LinkSingleElementWidget::buildTree()
 	
 	else if (m_element->linkType() & Element::AllReport)
 	{	
-		foreach(Element *elmt, availableElements())
+		for(Element *elmt : elmt_list)
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -278,21 +281,22 @@ void LinkSingleElementWidget::buildTree()
 			
 			if (Diagram *diag = elmt->diagram())
 			{
-			if (settings.value("genericpanel/folio", false).toBool()){
-				str_list << QString::number(diag->folioIndex() + 1);
+				if (settings.value("genericpanel/folio", false).toBool())
+				{
+					autonum::sequentialNumbers seq;
+					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+					str_list << F;
 				}
 				else
 				{
-				autonum::sequentialNumbers seq;
-				QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
-				str_list << F;
+					str_list << QString::number(diag->folioIndex() + 1);
 				}
 				str_list << diag->convertPosition(elmt->scenePos()).toString();
 				str_list << diag->title();
 			}
 			else
 			{
-				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provied element must have be in a diagram";
+				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
 			}
 			
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
@@ -396,23 +400,28 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 {
 	QStringList list;
 	QSettings settings;
-	if (m_element->linkType() == Element::Slave){
-	if (settings.value("genericpanel/folio", false).toBool()){
-		list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+	
+	if (m_element->linkType() == Element::Slave)
+	{
+		if (settings.value("genericpanel/folio", false).toBool())
+		{
+			list << tr("Label") << tr("Commentaire") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
 		}
 		else
 		{
-		list << tr("Label") << tr("Commentaire") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
 		}
 	}
 	
-	if (m_element->linkType() & Element::AllReport){
-	if (settings.value("genericpanel/folio", false).toBool()){
-		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+	if (m_element->linkType() & Element::AllReport)
+	{
+		if (settings.value("genericpanel/folio", false).toBool())
+		{
+			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
 		}
 		else
 		{
-		list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
 		}
 	}
 	
