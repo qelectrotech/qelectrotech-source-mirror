@@ -75,7 +75,7 @@ class DiagramContext {
 	static bool stringLongerThan(const QString &, const QString &);
 	bool keyIsAcceptable(const QString &) const;
 	/// Diagram context data (key/value pairs)
-	QHash<QString, QVariant> content_;
-	QHash<QString, bool> content_show;
+	QHash<QString, QVariant> m_content;
+	QHash<QString, bool> m_content_show;
 };
 #endif

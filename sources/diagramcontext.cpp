@@ -23,13 +23,16 @@
 /**
 	@return a list containing all the keys in the context object.
 */
-QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const {
+QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const
+{
 	if (order == None) {
-		return content_.keys();
-	} else {
-		QList<QString> keys_list = content_.keys();
+		return m_content.keys();
+	}
+	else
+	{
+		QList<QString> keys_list = m_content.keys();
 		if (order == Alphabetical) {
-			qSort(keys_list);
+			std::sort(keys_list.begin(), keys_list.end());
 		} else {
 			std::sort(keys_list.begin(), keys_list.end(), DiagramContext::stringLongerThan);
 		}
@@ -42,14 +45,14 @@ QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const {
 	@return true if that key is known to the diagram context, false otherwise
 */
 bool DiagramContext::contains(const QString &key) const {
-	return(content_.contains(key));
+	return(m_content.contains(key));
 }
 
 /**
 	@param key
 */
 const QVariant DiagramContext::operator[](const QString &key) const {
-	return(content_[key]);
+	return(m_content[key]);
 }
 
 /**
@@ -64,8 +67,8 @@ const QVariant DiagramContext::operator[](const QString &key) const {
 */
 bool DiagramContext::addValue(const QString &key, const QVariant &value, bool show) {
 	if (keyIsAcceptable(key)) {
-		content_.insert(key, value);
-		content_show.insert(key, show);
+		m_content.insert(key, value);
+		m_content_show.insert(key, show);
 		return(true);
 		}
 	return(false);
@@ -75,15 +78,15 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value, bool sh
 	Clear the content of this diagram context.
 */
 void DiagramContext::clear() {
-	content_.clear();
-	content_show.clear();
+	m_content.clear();
+	m_content_show.clear();
 }
 
 /**
 	@return the number of key/value pairs stored in this object.
 */
 int DiagramContext::count() {
-	return(content_.count());
+	return(m_content.count());
 }
 
 /**
@@ -91,14 +94,14 @@ int DiagramContext::count() {
  * @return the value pairs with key, if key no found, return false
  */
 bool DiagramContext::keyMustShow(const QString &key) const {
-	if (content_show.contains(key))
-		return content_show[key];
+	if (m_content_show.contains(key))
+		return m_content_show[key];
 	return false;
 }
 
 bool DiagramContext::operator==(const DiagramContext &dc) const {
-	return(content_     == dc.content_ &&
-		   content_show == dc.content_show);
+	return(m_content     == dc.m_content &&
+		   m_content_show == dc.m_content_show);
 }
 
 bool DiagramContext::operator!=(const DiagramContext &dc) const {
@@ -113,8 +116,8 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const {
 	foreach (QString key, keys()) {
 		QDomElement property = e.ownerDocument().createElement(tag_name);
 		property.setAttribute("name", key);
-		property.setAttribute("show",content_show[key]);
-		QDomText value = e.ownerDocument().createTextNode(content_[key].toString());
+		property.setAttribute("show",m_content_show[key]);
+		QDomText value = e.ownerDocument().createTextNode(m_content[key].toString());
 		property.appendChild(value);
 		e.appendChild(property);
 	}
@@ -128,7 +131,7 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 	foreach (QDomElement property, QET::findInDomElement(e, tag_name)) {
 		if (!property.hasAttribute("name")) continue;
 		addValue(property.attribute("name"), QVariant(property.text()));
-		content_show.insert(property.attribute("name"), property.attribute("show", "1").toInt());
+		m_content_show.insert(property.attribute("name"), property.attribute("show", "1").toInt());
 	}
 }
 
@@ -139,10 +142,10 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 void DiagramContext::toSettings(QSettings &settings, const QString &array_name) const {
 	settings.beginWriteArray(array_name);
 	int i = 0;
-	foreach (QString key, content_.keys()) {
+	foreach (QString key, m_content.keys()) {
 		settings.setArrayIndex(i);
 		settings.setValue("name", key);
-		settings.setValue("value", content_[key].toString());
+		settings.setValue("value", m_content[key].toString());
 		++ i;
 	}
 	settings.endArray();
