@@ -68,31 +68,6 @@
      <attribute name="headerStretchLastSection">
       <bool>true</bool>
      </attribute>
-     <column>
-      <property name="text">
-       <string>Vignette</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>N° de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Label de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Titre de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Position</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="1" column="2" colspan="3">
@@ -130,31 +105,6 @@
      <attribute name="headerStretchLastSection">
       <bool>true</bool>
      </attribute>
-     <column>
-      <property name="text">
-       <string>Vignette</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>N° de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Label de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Titre de folio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Position</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="0" column="2">

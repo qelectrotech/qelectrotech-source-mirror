@@ -41,6 +41,17 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	ui->m_free_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 	ui->m_link_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 	
+	QStringList list;
+	QSettings settings;
+	if (settings.value("genericpanel/folio", false).toBool()) {
+		list << tr("Vignette") << tr("Label de folio") << tr("Titre de folio") << tr("Position");
+	}
+	else {
+		list << tr("Vignette") << tr("N° de folio") << tr("Titre de folio") << tr("Position");
+	}
+	ui->m_free_tree_widget->setHeaderLabels(list);
+	ui->m_link_tree_widget->setHeaderLabels(list);
+	
 	m_context_menu  = new QMenu(this);
 	m_link_action   = new QAction(tr("Lier l'élément"), this);
 	m_unlink_action = new QAction(tr("Délier l'élément"), this);
@@ -221,19 +232,29 @@ void MasterPropertiesWidget::updateUi()
 		return;
 
 	ElementProvider elmt_prov(m_project);
+	QSettings settings;
 
 		//Build the list of free available element
 	QList <QTreeWidgetItem *> items_list;
-	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave))
+	const QList<Element *> free_list = elmt_prov.freeElement(Element::Slave);
+	for(Element *elmt : free_list)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());
-		qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
 		
-		autonum::sequentialNumbers seq;
-		QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
-		qtwi->setText(2, F);
-		qtwi->setText(3, elmt->diagram()->title());
+		if(settings.value("genericpanel/folio", false).toBool())
+		{
+			autonum::sequentialNumbers seq;
+			QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+			qtwi->setText(1, F);
+		}
+		else
+		{
+			qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+		}
+		
+
+		qtwi->setText(2, elmt->diagram()->title());
 		qtwi->setText(4, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
 		items_list.append(qtwi);
 		m_qtwi_hash.insert(qtwi, elmt);
@@ -243,24 +264,32 @@ void MasterPropertiesWidget::updateUi()
 	items_list.clear();
 
 		//Build the list of already linked element
-	foreach(Element *elmt, m_element->linkedElements())
+	const QList<Element *> link_list = m_element->linkedElements();
+	for(Element *elmt : link_list)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());
-		qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
 		
-		autonum::sequentialNumbers seq;
-		QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
-		qtwi->setText(2, F);
-		qtwi->setText(3, elmt->diagram()->title());
-		qtwi->setText(4, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		if(settings.value("genericpanel/folio", false).toBool())
+		{
+			autonum::sequentialNumbers seq;
+			QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+			qtwi->setText(1, F);
+		}
+		else
+		{
+			qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+		}
+
+		qtwi->setText(2, elmt->diagram()->title());
+		qtwi->setText(3, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
 		items_list.append(qtwi);
 		m_qtwi_hash.insert(qtwi, elmt);
 	}
+	
 	if(items_list.count())
 		ui->m_link_tree_widget->addTopLevelItems(items_list);
 	
-	QSettings settings;
 	QVariant v = settings.value("link-element-widget/master-state");
 	if(!v.isNull())
 	{
