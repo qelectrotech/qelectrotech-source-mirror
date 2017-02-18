@@ -58,7 +58,7 @@ class ProjectView : public QWidget {
 	public:
 	QETProject *project();
 	void setProject(QETProject *);
-	QList<DiagramView *> diagrams() const;
+	QList<DiagramView *> diagram_views() const;
 	QList<Diagram *> getDiagrams(ProjectSaveOptions options);
 	DiagramView *currentDiagram() const;
 	void closeEvent(QCloseEvent *);
@@ -68,48 +68,48 @@ class ProjectView : public QWidget {
 	void changeLastTab();
 
 	public slots:
-	void addNewDiagram();
-	void addNewDiagramFolioList();
-	void addDiagram(DiagramView *);
-	void removeDiagram(DiagramView *);
-	void removeDiagram(Diagram *);
-	void showDiagram(DiagramView *);
-	void showDiagram(Diagram *);
-	void editProjectProperties();
-	void editCurrentDiagramProperties();
-	void editDiagramProperties(DiagramView *);
-	void editDiagramProperties(Diagram *);
-	void moveDiagramUp(DiagramView *);
-	void moveDiagramUp(Diagram *);
-	void moveDiagramDown(DiagramView *);
-	void moveDiagramDown(Diagram *);
-	void moveDiagramUpTop(DiagramView *);
-	void moveDiagramUpTop(Diagram *);
-	void moveDiagramUpx10(DiagramView *);
-	void moveDiagramUpx10(Diagram *);
-	void moveDiagramDownx10(DiagramView *);
-	void moveDiagramDownx10(Diagram *);
-	void printProject();
-	void exportProject();
-	QETResult save();
-	QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams));
-	QETResult doSave(ProjectSaveOptions);
-	void saveDiagrams(const QList<Diagram *> &);
-	int cleanProject();
-	void updateWindowTitle();
-	void updateTabTitle(DiagramView *, const QString &);
-	void tabMoved(int, int);
+		void addNewDiagram();
+		void addNewDiagramFolioList();
+		void addDiagram(DiagramView *);
+		void removeDiagram(DiagramView *);
+		void removeDiagram(Diagram *);
+		void showDiagram(DiagramView *);
+		void showDiagram(Diagram *);
+		void editProjectProperties();
+		void editCurrentDiagramProperties();
+		void editDiagramProperties(DiagramView *);
+		void editDiagramProperties(Diagram *);
+		void moveDiagramUp(DiagramView *);
+		void moveDiagramUp(Diagram *);
+		void moveDiagramDown(DiagramView *);
+		void moveDiagramDown(Diagram *);
+		void moveDiagramUpTop(DiagramView *);
+		void moveDiagramUpTop(Diagram *);
+		void moveDiagramUpx10(DiagramView *);
+		void moveDiagramUpx10(Diagram *);
+		void moveDiagramDownx10(DiagramView *);
+		void moveDiagramDownx10(Diagram *);
+		void printProject();
+		void exportProject();
+		QETResult save();
+		QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams));
+		QETResult doSave(ProjectSaveOptions);
+		void saveDiagrams(const QList<Diagram *> &);
+		int cleanProject();
+		void updateWindowTitle();
+		void updateTabTitle(DiagramView *);
+		void updateAllTabsTitle();
+		void tabMoved(int, int);
 
 	signals:
-	void diagramAdded(DiagramView *);
-	void diagramRemoved(DiagramView *);
-	void diagramActivated(DiagramView *);
-	void diagramOrderChanged(ProjectView *, int, int);
-	void projectClosed(ProjectView *);
-	void errorEncountered(const QString &);
-	// relayed signals
-	void findElementRequired(const ElementsLocation &);
-	void editElementRequired(const ElementsLocation &);
+		void diagramAdded(DiagramView *);
+		void diagramRemoved(DiagramView *);
+		void diagramActivated(DiagramView *);
+		void projectClosed(ProjectView *);
+		void errorEncountered(const QString &);
+			// relayed signals
+		void findElementRequired(const ElementsLocation &);
+		void editElementRequired(const ElementsLocation &);
 
 	private:
 	void initActions();
@@ -142,7 +142,7 @@ class ProjectView : public QWidget {
 	QWidget *fallback_widget_;
 	QLabel *fallback_label_;
 	QTabWidget *m_tab;
-	QMap<int, DiagramView *> diagram_ids_;
+	QMap<int, DiagramView *> m_diagram_ids;
 	QList<DiagramView *> m_diagram_view_list;
 };
 Q_DECLARE_OPERATORS_FOR_FLAGS(ProjectView::ProjectSaveOptions)

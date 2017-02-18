@@ -1055,7 +1055,7 @@ CustomElement *QETDiagramEditor::currentCustomElement() const {
 */
 ProjectView *QETDiagramEditor::findProject(DiagramView *diagram_view) const {
 	foreach(ProjectView *project_view, openedProjects()) {
-		if (project_view -> diagrams().contains(diagram_view)) {
+		if (project_view -> diagram_views().contains(diagram_view)) {
 			return(project_view);
 		}
 	}
@@ -1069,7 +1069,7 @@ ProjectView *QETDiagramEditor::findProject(DiagramView *diagram_view) const {
 */
 ProjectView *QETDiagramEditor::findProject(Diagram *diagram) const {
 	foreach(ProjectView *project_view, openedProjects()) {
-		foreach(DiagramView *diagram_view, project_view -> diagrams()) {
+		foreach(DiagramView *diagram_view, project_view -> diagram_views()) {
 			if (diagram_view -> diagram() == diagram) {
 				return(project_view);
 			}
@@ -1284,7 +1284,7 @@ void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 void QETDiagramEditor::slot_setSelectionMode()
 {
 	if (ProjectView *pv = currentProject())
-		foreach(DiagramView *dv, pv -> diagrams())
+		foreach(DiagramView *dv, pv -> diagram_views())
 			dv -> setSelectionMode();
 }
 
@@ -1295,7 +1295,7 @@ void QETDiagramEditor::slot_setSelectionMode()
 void QETDiagramEditor::slot_setVisualisationMode()
 {
 	if (ProjectView *pv = currentProject())
-		foreach(DiagramView *dv, pv -> diagrams())
+		foreach(DiagramView *dv, pv -> diagram_views())
 			dv -> setVisualisationMode();
 }
 
@@ -1506,7 +1506,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 {
 	if (!project_view) return;
 
-	foreach(DiagramView *dv, project_view -> diagrams())
+	foreach(DiagramView *dv, project_view -> diagram_views())
 		diagramWasAdded(dv);
 	
 		//Manage the close event of project
@@ -2035,7 +2035,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 
 			// if the removed diagram was a folio sheet, then delete all the remaining folio sheets also.
 			if (isFolioList) {
-				foreach (DiagramView *diag, current_project -> diagrams()) {
+				foreach (DiagramView *diag, current_project -> diagram_views()) {
 					if (dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
 						current_project -> removeDiagram(diag);
 					}
@@ -2043,8 +2043,8 @@ void QETDiagramEditor::removeDiagramFromProject() {
 
 			  // else if after diagram removal, the total diagram quantity becomes a factor of 58, then
 			  // remove one (last) folio sheet.
-			} else if (current_project -> diagrams().size() % 58 == 0) {
-				foreach (DiagramView *diag, current_project -> diagrams()) {
+			} else if (current_project -> diagram_views().size() % 58 == 0) {
+				foreach (DiagramView *diag, current_project -> diagram_views()) {
 					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
 					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
 						current_project -> removeDiagram(diag);

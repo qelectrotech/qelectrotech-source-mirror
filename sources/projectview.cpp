@@ -32,6 +32,7 @@
 #include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
 #include "xmlelementcollection.h"
+#include "autoNum/assignvariables.h"
 
 /**
 	Constructeur
@@ -55,8 +56,8 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 */
 ProjectView::~ProjectView() {
 	// qDebug() << "Suppression du ProjectView" << ((void *)this);
-	foreach(int id, diagram_ids_.keys()) {
-		DiagramView *diagram_view = diagram_ids_.take(id);
+	foreach(int id, m_diagram_ids.keys()) {
+		DiagramView *diagram_view = m_diagram_ids.take(id);
 		delete diagram_view;
 	}
 }
@@ -88,7 +89,7 @@ void ProjectView::setProject(QETProject *project) {
 /**
 	@return la liste des schemas ouverts dans le projet
 */
-QList<DiagramView *> ProjectView::diagrams() const {
+QList<DiagramView *> ProjectView::diagram_views() const {
 	return(m_diagram_view_list);
 }
 
@@ -123,7 +124,7 @@ DiagramView *ProjectView::currentDiagram() const {
 	int current_tab_index = m_tab -> currentIndex();
 	if (current_tab_index == -1)
 		return nullptr;
-	return(diagram_ids_[current_tab_index]);
+	return(m_diagram_ids[current_tab_index]);
 }
 
 /**
@@ -157,8 +158,8 @@ void ProjectView::changeTabDown(){
 DiagramView *ProjectView::nextDiagram() {
 	int current_tab_index = m_tab -> currentIndex();
 	int next_tab_index = current_tab_index + 1;	//get next tab index
-	if (next_tab_index<diagram_ids_.count()) //if next tab index >= greatest tab the last tab is activated so no need to change tab.
-		return(diagram_ids_[next_tab_index]);
+	if (next_tab_index<m_diagram_ids.count()) //if next tab index >= greatest tab the last tab is activated so no need to change tab.
+		return(m_diagram_ids[next_tab_index]);
 	else
 		return NULL;
 }
@@ -181,7 +182,7 @@ DiagramView *ProjectView::previousDiagram() {
 	int current_tab_index = m_tab -> currentIndex();
 	int previous_tab_index = current_tab_index - 1;	//get previous tab index
 	if (previous_tab_index>=0) //if previous tab index = 0 then the first tab is activated so no need to change tab.
-		return(diagram_ids_[previous_tab_index]);
+		return(m_diagram_ids[previous_tab_index]);
 	else
 		return NULL;
 }
@@ -198,7 +199,7 @@ void ProjectView::changeLastTab(){
 	@return last folio of current project
 */
 DiagramView *ProjectView::lastDiagram(){
-	return(diagram_ids_.last());
+	return(m_diagram_ids.last());
 }
 
 /**
@@ -213,7 +214,7 @@ void ProjectView::changeFirstTab(){
 	@return first folio of current project
 */
 DiagramView *ProjectView::firstDiagram(){
-	return(diagram_ids_.first());
+	return(m_diagram_ids.first());
 }
 
 
@@ -393,41 +394,41 @@ void ProjectView::addNewDiagramFolioList() {
 		DiagramView *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
-		m_tab->tabBar()->moveTab(diagrams().size()-1, i);
+		m_tab->tabBar()->moveTab(diagram_views().size()-1, i);
 		i++;
 	}
 }
 
 /**
-	Ajoute un schema au ProjectView
-	@param diagram Schema a ajouter
-*/
-/**
  * @brief ProjectView::addDiagram
- * Add new digram to this project view
- * @param diagram added diagram
- * @param front: true add page at front
- *				 false add page at back
+ * Add diagram view to this project view
+ * @param diagram_view
  */
-void ProjectView::addDiagram(DiagramView *diagram_view) {
-	if (!diagram_view) return;
+void ProjectView::addDiagram(DiagramView *diagram_view)
+{
+	if (!diagram_view) 
+		return;
 
-	// check diagram isn't present in the project
-	if (diagram_ids_.values().contains(diagram_view)) return;
+		//Check if diagram isn't present in the project
+	if (m_diagram_ids.values().contains(diagram_view))
+		return;
 
-	// Add new tab for the diagram
-	m_tab -> addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
-	diagram_view -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
+		// Add new tab for the diagram
+	m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
+	diagram_view->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
 	m_diagram_view_list << diagram_view;
 
 	rebuildDiagramsMap();
+	updateTabTitle(diagram_view);
+	
 	connect(diagram_view, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
-	connect(diagram_view, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
+	connect(diagram_view, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *)));
 	connect(diagram_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	connect(diagram_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
+	connect(&diagram_view->diagram()->border_and_titleblock , &BorderTitleBlock::titleBlockFolioChanged, [this, diagram_view]() {this->updateTabTitle(diagram_view);});
 
-	// signal diagram was added
+		// signal diagram view was added
 	emit(diagramAdded(diagram_view));
 }
 
@@ -440,7 +441,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	if (m_project -> isReadOnly()) return;
 
 	// verifie que le schema est bien present dans le projet
-	if (!diagram_ids_.values().contains(diagram_view)) return;
+	if (!m_diagram_ids.values().contains(diagram_view)) return;
 
 
 	//Ask confirmation to user.
@@ -456,7 +457,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	}
 
 	// enleve le DiagramView des onglets
-	int diagram_tab_id = diagram_ids_.key(diagram_view);
+	int diagram_tab_id = m_diagram_ids.key(diagram_view);
 	m_tab -> removeTab(diagram_tab_id);
 	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
@@ -543,7 +544,7 @@ void ProjectView::editDiagramProperties(Diagram *diagram) {
 void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 	if (!diagram_view) return;
 
-	int diagram_view_position = diagram_ids_.key(diagram_view);
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
 	if (!diagram_view_position) {
 		// le schema est le premier du projet
 		return;
@@ -564,8 +565,8 @@ void ProjectView::moveDiagramUp(Diagram *diagram) {
 void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 	if (!diagram_view) return;
 
-	int diagram_view_position = diagram_ids_.key(diagram_view);
-	if (diagram_view_position + 1 == diagram_ids_.count()) {
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
+	if (diagram_view_position + 1 == m_diagram_ids.count()) {
 		// le schema est le dernier du projet
 		return;
 	}
@@ -586,12 +587,12 @@ void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
 {
 	if (!diagram_view) return;
 
-	int diagram_view_position = diagram_ids_.key(diagram_view);
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
 	if (!diagram_view_position) {
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, (diagrams().size(), 0));
+	m_tab -> tabBar() -> moveTab(diagram_view_position, (diagram_views().size(), 0));
 }
 
 /*
@@ -608,7 +609,7 @@ void ProjectView::moveDiagramUpTop(Diagram *diagram)
 void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
 	if (!diagram_view) return;
 
-	int diagram_view_position = diagram_ids_.key(diagram_view);
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
 	if (!diagram_view_position) {
 		// le schema est le premier du projet
 		return;
@@ -629,8 +630,8 @@ void ProjectView::moveDiagramUpx10(Diagram *diagram) {
 void ProjectView::moveDiagramDownx10(DiagramView *diagram_view) {
 	if (!diagram_view) return;
 
-	int diagram_view_position = diagram_ids_.key(diagram_view);
-	if (diagram_view_position + 1 == diagram_ids_.count()) {
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
+	if (diagram_view_position + 1 == m_diagram_ids.count()) {
 		// le schema est le dernier du projet
 		return;
 	}
@@ -903,7 +904,7 @@ void ProjectView::loadDiagrams() {
 	// If project have the folios list, move it at the beginning of the project
 	if (m_project -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
-		m_tab -> tabBar() -> moveTab(diagrams().size()-1, + 1);
+		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + 1);
 	}
 }
 
@@ -938,32 +939,63 @@ void ProjectView::adjustReadOnlyState() {
 }
 
 /**
-	Met a jour le titre d'un onglet
-	@param diagram Schema
-	@param diagram_title Titre du schema
-*/
-void ProjectView::updateTabTitle(DiagramView *diagram, const QString &diagram_title) {
-	int diagram_tab_id = diagram_ids_.key(diagram, -1);
-	if (diagram_tab_id != -1) {
-		m_tab -> setTabText(diagram_tab_id, diagram_title);
+ * @brief ProjectView::updateTabTitle
+ * Update the title of the tab which display the diagram view @diagram_view.
+ * @param diagram : The diagram view.
+ */
+void ProjectView::updateTabTitle(DiagramView *diagram_view)
+{
+	int diagram_tab_id = m_diagram_ids.key(diagram_view, -1);
+	
+	if (diagram_tab_id != -1)
+	{
+		QSettings settings;
+		QString title;
+		Diagram *diagram = diagram_view->diagram();
+		
+		if (settings.value("genericpanel/folio", false).toBool())
+		{
+			QString formula = diagram->border_and_titleblock.folio();
+			autonum::sequentialNumbers seq;
+			title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
+		}
+		else
+			title = QString::number(diagram->folioIndex() + 1);
+		
+		title += " - ";
+		title += diagram->title();
+		m_tab->setTabText(diagram_tab_id ,title);
 	}
+}
+
+/**
+ * @brief ProjectView::updateAllTabsTitle
+ * Update all tabs title
+ */
+void ProjectView::updateAllTabsTitle()
+{
+	for (DiagramView *dv : m_diagram_ids.values())
+		updateTabTitle(dv);
 }
 
 /**
 	@param from Index de l'onglet avant le deplacement
 	@param to   Index de l'onglet apres le deplacement
 */
-void ProjectView::tabMoved(int from, int to) {
-	if (!m_project) return;
-
-	// signale au QETProject le changement d'ordre des schemas
-	m_project -> diagramOrderChanged(from, to);
-
-	// reconstruit la liste associant les index des onglets aux schemas
+void ProjectView::tabMoved(int from, int to)
+{
+	if (!m_project)
+		return;
+	
+	m_project->diagramOrderChanged(from, to);
 	rebuildDiagramsMap();
-
-	// emet un signal pour informer le reste du monde que l'ordre des schemas a change
-	emit(diagramOrderChanged(this, from, to));
+	
+		//Rebuild the title of each diagram in range from - to
+	for (int i= qMin(from,to) ; i< qMax(from,to)+1 ; ++i)
+	{
+		DiagramView *dv = m_diagram_ids.value(i);
+		updateTabTitle(dv);
+	}
 }
 
 /**
@@ -972,7 +1004,7 @@ void ProjectView::tabMoved(int from, int to) {
 	le schema n'est pas trouve
 */
 DiagramView *ProjectView::findDiagram(Diagram *diagram) {
-	foreach(DiagramView *diagram_view, diagrams()) {
+	foreach(DiagramView *diagram_view, diagram_views()) {
 		if (diagram_view -> diagram() == diagram) {
 			return(diagram_view);
 		}
@@ -985,12 +1017,12 @@ DiagramView *ProjectView::findDiagram(Diagram *diagram) {
 */
 void ProjectView::rebuildDiagramsMap() {
 	// vide la map
-	diagram_ids_.clear();
+	m_diagram_ids.clear();
 
 	foreach(DiagramView *diagram_view, m_diagram_view_list) {
 		int dv_idx = m_tab -> indexOf(diagram_view);
 		if (dv_idx == -1) continue;
-		diagram_ids_.insert(dv_idx, diagram_view);
+		m_diagram_ids.insert(dv_idx, diagram_view);
 	}
 }
 
@@ -1007,9 +1039,9 @@ void ProjectView::tabChanged(int tab_id) {
 	else if(m_tab->count() == 1)
 		setDisplayFallbackWidget(false);
 
-	emit(diagramActivated(diagram_ids_[tab_id]));
-	if (diagram_ids_[tab_id] != nullptr)
-		diagram_ids_[tab_id]->diagram()->diagramActivated();
+	emit(diagramActivated(m_diagram_ids[tab_id]));
+	if (m_diagram_ids[tab_id] != nullptr)
+		m_diagram_ids[tab_id]->diagram()->diagramActivated();
 }
 
 /**
@@ -1018,7 +1050,7 @@ void ProjectView::tabChanged(int tab_id) {
 */
 void ProjectView::tabDoubleClicked(int tab_id) {
 	// repere le schema concerne
-	DiagramView *diagram_view = diagram_ids_[tab_id];
+	DiagramView *diagram_view = m_diagram_ids[tab_id];
 	if (!diagram_view) return;
 
 	diagram_view -> editDiagramProperties();
