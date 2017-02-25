@@ -1514,7 +1514,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="129"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Open overeenkomend bestand</translation>
+        <translation>Open de collectie map</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="130"/>
@@ -1544,7 +1544,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="135"/>
         <source>Nouveau dossier</source>
-        <translation>Nieuw dossier</translation>
+        <translation>Nieuwe collectie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="136"/>
@@ -1554,17 +1554,17 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="137"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation>Enkel dit dossier weergeven</translation>
+        <translation>Enkedeze collectie weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="138"/>
         <source>Afficher tous les dossiers</source>
-        <translation>Alle dossiers weergeven</translation>
+        <translation>Alle collecties weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="139"/>
         <source>Propriété du dossier</source>
-        <translation>Eigenschappen dossier</translation>
+        <translation>Eigenschappen van collectie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
