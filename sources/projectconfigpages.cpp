@@ -262,119 +262,46 @@ void ProjectAutoNumConfigPage::initWidgets()
 	tab_widget->addTab(m_amw, tr("Management"));
 	
 		//Conductor tab
-	QWidget *conductor_widget = new QWidget();
-	QVBoxLayout *conductor_layout = new QVBoxLayout(conductor_widget);
-	QHBoxLayout *bp_conductor_layout = new QHBoxLayout();
-	
-	QLabel *label_conductor = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
-	m_context_cb_conductor= new QComboBox();
-	m_context_cb_conductor->setEditable(true);
-	m_context_cb_conductor->lineEdit()->setClearButtonEnabled(true);
-	m_context_cb_conductor->addItem(tr("Nom de la nouvelle numérotation"));
-	
-	m_remove_pb_conductor= new QPushButton(QET::Icons::EditDelete, QString());
-	m_remove_pb_conductor-> setToolTip(tr("Supprimer la numérotation"));
-	
 	m_saw_conductor = new SelectAutonumW(1);
-	
-	bp_conductor_layout->addWidget(label_conductor);
-	bp_conductor_layout->addStretch();
-	bp_conductor_layout->addWidget(m_context_cb_conductor);
-	bp_conductor_layout->addWidget(m_remove_pb_conductor);
-	
-	conductor_layout->addLayout(bp_conductor_layout);
-	conductor_layout->addWidget(m_saw_conductor);
-	
-	tab_widget->addTab(conductor_widget, tr("Conducteur"));
+	tab_widget->addTab(m_saw_conductor, tr("Conducteur"));
 	
 		//Element tab
-	QWidget *element_widget = new QWidget();
-	QVBoxLayout *element_layout = new QVBoxLayout(element_widget);
-	QHBoxLayout *bp_element_layout = new QHBoxLayout();
-	
-	QLabel *label_element = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
-	
-	m_context_cb_element = new QComboBox();
-	m_context_cb_element->setEditable(true);
-	m_context_cb_element->lineEdit()->setClearButtonEnabled(true);
-	m_context_cb_element->addItem(tr("Nom de la nouvelle numérotation"));
-	
-	m_remove_pb_element = new QPushButton(QET::Icons::EditDelete, QString());
-	m_remove_pb_element -> setToolTip(tr("Supprimer la numérotation"));
-	
 	m_saw_element = new SelectAutonumW(0);
-	
-	bp_element_layout->addWidget(label_element);
-	bp_element_layout->addStretch();
-	bp_element_layout->addWidget(m_context_cb_element);
-	bp_element_layout->addWidget(m_remove_pb_element);
-	
-	element_layout->addLayout(bp_element_layout);
-	element_layout->addWidget(m_saw_element);
-	
-	tab_widget->addTab(element_widget, tr("Element"));
+	tab_widget->addTab(m_saw_element, tr("Element"));
 	
 		//Folio Tab
-	QWidget *folio_widget = new QWidget();
-	QVBoxLayout *folio_layout = new QVBoxLayout(folio_widget);
-	QHBoxLayout *bp_folio_layout = new QHBoxLayout();
-	
-	QLabel *label_folio = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
-	
-	m_context_cb_folio = new QComboBox();
-	m_context_cb_folio->setEditable(true);
-	m_context_cb_folio->lineEdit()->setClearButtonEnabled(true);
-	m_context_cb_folio->addItem(tr("Nom de la nouvelle numérotation"));
-	
-	m_remove_pb_folio = new QPushButton(QET::Icons::EditDelete, QString());
-	m_remove_pb_folio -> setToolTip(tr("Supprimer la numérotation"));
-	
 	m_saw_folio = new SelectAutonumW(2);
-	
-	bp_folio_layout->addWidget(label_folio);
-	bp_folio_layout->addStretch();
-	bp_folio_layout->addWidget(m_context_cb_folio);
-	bp_folio_layout->addWidget(m_remove_pb_folio);
-	
-	folio_layout->addLayout(bp_folio_layout);
-	folio_layout->addWidget(m_saw_folio);
-	
-	tab_widget->addTab(folio_widget, tr("Folio"));
+	tab_widget->addTab(m_saw_folio, tr("Folio"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
 	tab_widget->addTab(m_faw, tr("Folio autonumérotation"));
 	
-	m_main_layout = new QHBoxLayout();
-	m_main_layout->addWidget(tab_widget);
-	setLayout(m_main_layout);
+	QHBoxLayout *main_layout = new QHBoxLayout();
+	main_layout->addWidget(tab_widget);
+	setLayout(main_layout);
 }
 
 /**
  * @brief ProjectAutoNumConfigPage::readValuesFromProject
  * Read value stored on project, and update display
  */
-void ProjectAutoNumConfigPage::readValuesFromProject() {
-	//Conductor Tab
-	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
-	if (!keys_conductor.isEmpty()){
-	foreach (QString str, keys_conductor) { m_context_cb_conductor-> addItem(str); }
-	}
-
-	//Element Tab
-	QList <QString> keys_element = m_project->elementAutoNum().keys();
-	if (!keys_element.isEmpty()){
-	foreach (QString str, keys_element) { m_context_cb_element -> addItem(str);}
-	}
-
-	//Folio Tab
-	QList <QString> keys_folio = m_project->folioAutoNum().keys();
-	if (!keys_folio.isEmpty()){
-	foreach (QString str, keys_folio) { m_context_cb_folio -> addItem(str);}
-	}
-
-	//Folio AutoNumbering Tab
-	m_faw->setContext(keys_folio);
+void ProjectAutoNumConfigPage::readValuesFromProject()
+{
+		//Conductor Tab
+	const QStringList strlc(m_project->conductorAutoNum().keys());
+	m_saw_conductor->contextComboBox()->addItems(strlc);
+	
+		//Element Tab
+	const QStringList strle(m_project->elementAutoNum().keys());
+	m_saw_element->contextComboBox()->addItems(strle);
+	
+		//Folio Tab
+	const QStringList strlf(m_project->folioAutoNum().keys());
+	m_saw_folio->contextComboBox()->addItems(strlf);
+	
+		//Folio AutoNumbering Tab
+	m_faw->setContext(m_project->folioAutoNum().keys());
 }
 
 /**
@@ -388,32 +315,27 @@ void ProjectAutoNumConfigPage::adjustReadOnly() {
  * @brief ProjectAutoNumConfigPage::buildConnections
  * setup some connections
  */
-void ProjectAutoNumConfigPage::buildConnections() {
-	
-	//connect(m_tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
-
-	//Management Tab
+void ProjectAutoNumConfigPage::buildConnections()
+{
+		//Management Tab
 	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
 
-	//Conductor Tab
-	connect (m_context_cb_conductor, SIGNAL (currentTextChanged(QString)),  m_saw_conductor, SLOT (applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_conductor, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_conductor(QString)));
-	connect (m_saw_conductor,        SIGNAL (applyPressed()),               this, SLOT (saveContext_conductor()));
-	connect (m_remove_pb_conductor,  SIGNAL (clicked()),                    this, SLOT (removeContext_conductor()));
+		//Conductor Tab
+	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
+	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
+	connect(m_saw_conductor->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextConductor(QString)));
 
 		//Element Tab
-	connect (m_context_cb_element, SIGNAL (currentTextChanged(QString)),  m_saw_element, SLOT(applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_element, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContextElement(QString)));
-	connect (m_saw_element,        SIGNAL (applyPressed()),               this, SLOT (saveContextElement()));
-	connect (m_remove_pb_element,  SIGNAL (clicked()),                    this, SLOT (removeContextElement()));
+	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
+	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
+	connect(m_saw_element->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextElement(QString)));
 
-	//Folio Tab
-	connect (m_context_cb_folio, SIGNAL (currentTextChanged(QString)),  m_saw_folio, SLOT(applyEnableOnContextChanged(QString)));
-	connect (m_context_cb_folio, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext_folio(QString)));
-	connect (m_saw_folio,        SIGNAL (applyPressed()),               this, SLOT (saveContext_folio()));
-	connect (m_remove_pb_folio,  SIGNAL (clicked()),                    this, SLOT (removeContext_folio()));
+		//Folio Tab
+	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
+	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
+	connect(m_saw_folio->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextFolio(QString)));
 
-	//	Auto Folio Numbering
+		//	Auto Folio Numbering
 	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
 }
 
@@ -422,7 +344,7 @@ void ProjectAutoNumConfigPage::buildConnections() {
  * Display the current selected context for conductor
  * @param str, key of context stored in project
  */
-void ProjectAutoNumConfigPage::updateContext_conductor(QString str) {
+void ProjectAutoNumConfigPage::updateContextConductor(QString str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
 	else m_saw_conductor ->setContext(m_project->conductorAutoNum(str));
 }
@@ -432,7 +354,7 @@ void ProjectAutoNumConfigPage::updateContext_conductor(QString str) {
  * Display the current selected context for folio
  * @param str, key of context stored in project
  */
-void ProjectAutoNumConfigPage::updateContext_folio(QString str) {
+void ProjectAutoNumConfigPage::updateContextFolio(QString str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
 	else m_saw_folio ->setContext(m_project->folioAutoNum(str));
 }
@@ -462,26 +384,26 @@ void ProjectAutoNumConfigPage::saveContextElement()
 {
 		// If the text is the default text "Name of new numerotation" save the edited context
 		// With the the name "No name"
-	if (m_context_cb_element->currentText() == tr("Nom de la nouvelle numérotation"))
+	if (m_saw_element->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
 	{
 		QString title(tr("Sans nom"));
 
 		m_project->addElementAutoNum (title, m_saw_element -> toNumContext());
 		m_project->setCurrrentElementAutonum(title);
-		m_context_cb_element->addItem(tr("Sans nom"));
+		m_saw_element->contextComboBox()->addItem(tr("Sans nom"));
 	}
 		// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> elementAutoNum().keys().contains( m_context_cb_element->currentText()))
+	else if ( !m_project -> elementAutoNum().keys().contains( m_saw_element->contextComboBox()->currentText()))
 	{
-		m_project->addElementAutoNum(m_context_cb_element->currentText(), m_saw_element->toNumContext());
-		m_project->setCurrrentElementAutonum(m_context_cb_element->currentText());
-		m_context_cb_element->addItem(m_context_cb_element->currentText());
+		m_project->addElementAutoNum(m_saw_element->contextComboBox()->currentText(), m_saw_element->toNumContext());
+		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
+		m_saw_element->contextComboBox()->addItem(m_saw_element->contextComboBox()->currentText());
 	}
 		// Else, the text already exist in the autonum of the project, just update the context
 	else
 	{
-		m_project->addElementAutoNum (m_context_cb_element -> currentText(), m_saw_element -> toNumContext());
-		m_project->setCurrrentElementAutonum(m_context_cb_element->currentText());
+		m_project->addElementAutoNum (m_saw_element->contextComboBox() -> currentText(), m_saw_element -> toNumContext());
+		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
 	}
 }
 
@@ -492,37 +414,38 @@ void ProjectAutoNumConfigPage::saveContextElement()
 void ProjectAutoNumConfigPage::removeContextElement()
 {
 		//if default text, return
-	if (m_context_cb_element->currentText() == tr("Nom de la nouvelle numérotation"))
+	if (m_saw_element->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
 		return;
-	m_project->removeElementAutoNum (m_context_cb_element->currentText());
-	m_context_cb_element->removeItem (m_context_cb_element->currentIndex());
+	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
+	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
 }
 
 /**
  * @brief ProjectAutoNumConfigPage::saveContext_conductor
  * Save the current displayed conductor context in project
  */
-void ProjectAutoNumConfigPage::saveContext_conductor() {
-	// If the text is the default text "Name of new numerotation" save the edited context
-	// With the the name "No name"
-	if (m_context_cb_conductor-> currentText() == tr("Nom de la nouvelle numérotation"))
+void ProjectAutoNumConfigPage::saveContextConductor()
+{
+		// If the text is the default text "Name of new numerotation" save the edited context
+		// With the the name "No name"
+	if (m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation"))
 	{
 		m_project->addConductorAutoNum (tr("Sans nom"), m_saw_conductor -> toNumContext());
 		project()->setCurrentConductorAutoNum(tr("Sans nom"));
-		m_context_cb_conductor-> addItem(tr("Sans nom"));
+		m_saw_conductor->contextComboBox()-> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> conductorAutoNum().keys().contains( m_context_cb_conductor->currentText()))
+	else if ( !m_project -> conductorAutoNum().keys().contains( m_saw_conductor->contextComboBox()->currentText()))
 	{
-		project()->addConductorAutoNum(m_context_cb_conductor->currentText(), m_saw_conductor->toNumContext());
-		project()->setCurrentConductorAutoNum(m_context_cb_conductor->currentText());
-		m_context_cb_conductor-> addItem(m_context_cb_conductor->currentText());
+		project()->addConductorAutoNum(m_saw_conductor->contextComboBox()->currentText(), m_saw_conductor->toNumContext());
+		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
+		m_saw_conductor->contextComboBox()-> addItem(m_saw_conductor->contextComboBox()->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
 	else
 	{
-		project()->setCurrentConductorAutoNum(m_context_cb_conductor->currentText());
-		m_project->addConductorAutoNum (m_context_cb_conductor-> currentText(), m_saw_conductor -> toNumContext());
+		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
+		m_project->addConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText(), m_saw_conductor -> toNumContext());
 	}
 	project()->conductorAutoNumAdded();
 }
@@ -531,21 +454,21 @@ void ProjectAutoNumConfigPage::saveContext_conductor() {
  * @brief ProjectAutoNumConfigPage::saveContext_folio
  * Save the current displayed folio context in project
  */
-void ProjectAutoNumConfigPage::saveContext_folio() {
+void ProjectAutoNumConfigPage::saveContextFolio() {
 	// If the text is the default text "Name of new numerotation" save the edited context
 	// With the the name "No name"
-	if (m_context_cb_folio -> currentText() == tr("Nom de la nouvelle numérotation")) {
+	if (m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation")) {
 		m_project->addFolioAutoNum (tr("Sans nom"), m_saw_folio -> toNumContext());
-		m_context_cb_folio -> addItem(tr("Sans nom"));
+		m_saw_folio->contextComboBox() -> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> folioAutoNum().keys().contains( m_context_cb_folio->currentText())) {
-		project()->addFolioAutoNum(m_context_cb_folio->currentText(), m_saw_folio->toNumContext());
-		m_context_cb_folio -> addItem(m_context_cb_folio->currentText());
+	else if ( !m_project -> folioAutoNum().keys().contains( m_saw_folio->contextComboBox()->currentText())) {
+		project()->addFolioAutoNum(m_saw_folio->contextComboBox()->currentText(), m_saw_folio->toNumContext());
+		m_saw_folio->contextComboBox() -> addItem(m_saw_folio->contextComboBox()->currentText());
 	}
 	// Else, the text already exist in the autonum of the project, just update the context
 	else {
-		m_project->addFolioAutoNum (m_context_cb_folio -> currentText(), m_saw_folio -> toNumContext());
+		m_project->addFolioAutoNum (m_saw_folio->contextComboBox() -> currentText(), m_saw_folio -> toNumContext());
 	}
 	project()->folioAutoNumAdded();
 }
@@ -672,11 +595,11 @@ void ProjectAutoNumConfigPage::applyManagement() {
  * @brief ProjectAutoNumConfigPage::removeContext
  * Remove from project the current conductor numerotation context
  */
-void ProjectAutoNumConfigPage::removeContext_conductor() {
+void ProjectAutoNumConfigPage::removeContextConductor() {
 	//if default text, return
-	if ( m_context_cb_conductor-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
-	m_project -> removeConductorAutoNum (m_context_cb_conductor-> currentText() );
-	m_context_cb_conductor-> removeItem (m_context_cb_conductor-> currentIndex() );
+	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
+	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
+	m_saw_conductor->contextComboBox()-> removeItem (m_saw_conductor->contextComboBox()-> currentIndex() );
 	project()->conductorAutoNumRemoved();
 }
 
@@ -684,11 +607,11 @@ void ProjectAutoNumConfigPage::removeContext_conductor() {
  * @brief ProjectAutoNumConfigPage::removeContext_folio
  * Remove from project the current folio numerotation context
  */
-void ProjectAutoNumConfigPage::removeContext_folio() {
+void ProjectAutoNumConfigPage::removeContextFolio() {
 	//if default text, return
-	if ( m_context_cb_folio -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
-	m_project -> removeFolioAutoNum (m_context_cb_folio -> currentText() );
-	m_context_cb_folio -> removeItem (m_context_cb_folio -> currentIndex() );
+	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
+	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
+	m_saw_folio->contextComboBox() -> removeItem (m_saw_folio->contextComboBox() -> currentIndex() );
 	project()->folioAutoNumRemoved();
 }
 

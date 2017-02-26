@@ -25,6 +25,7 @@
 class NumPartEditorW;
 class QAbstractButton;
 class FormulaAutonumberingW;
+class QComboBox;
 
 namespace Ui {
 	class SelectAutonumW;
@@ -44,24 +45,25 @@ class SelectAutonumW : public QWidget
 		NumerotationContext toNumContext() const;
 		void contextToFormula ();
 		QString formula();
+		QComboBox *contextComboBox() const;
 
 	signals:
 		void applyPressed();
+		void removeClicked();
 
-	//SLOT
-	public slots:
-		void applyEnableOnContextChanged(QString);
-
+		//SLOT
 	private slots:
 		void on_add_button_clicked();
 		void on_remove_button_clicked();
 		void on_buttonBox_clicked(QAbstractButton *);
 		void applyEnable (bool = true);
-
-	//ATTRIBUTES
 		void on_m_next_pb_clicked();
 		void on_m_previous_pb_clicked();
-
+		void on_m_comboBox_currentTextChanged(const QString &arg1);
+		
+		//ATTRIBUTES
+		void on_m_remove_pb_clicked();
+		
 	private:
 		Ui::SelectAutonumW *ui;
 		QList <NumPartEditorW *> num_part_list_;

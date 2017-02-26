@@ -28,13 +28,9 @@ class DiagramContextWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
 class SelectAutonumW;
-class QComboBox;
-class QPushButton;
 class FolioAutonumberingW;
 class FormulaAutonumberingW;
 class AutoNumberingManagementW;
-class QScrollArea;
-class QHBoxLayout;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -140,12 +136,12 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	private:
 		void buildConnections();
 	private slots:
-		void updateContext_conductor(QString);//conductor
-		void saveContext_conductor();
-		void removeContext_conductor();
-		void updateContext_folio(QString);//folio
-		void saveContext_folio();
-		void removeContext_folio();
+		void updateContextConductor(QString);//conductor
+		void saveContextConductor();
+		void removeContextConductor();
+		void updateContextFolio(QString);//folio
+		void saveContextFolio();
+		void removeContextFolio();
 		void updateContextElement(QString);//element
 		void saveContextElement();
 		void removeContextElement();
@@ -161,19 +157,6 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Attributes
 	private:
-		QHBoxLayout           *m_main_layout = nullptr;
-		QWidget               *m_management_tab_widget;
-		QWidget               *conductor_tab_widget;
-		QWidget               *element_tab_widget;
-		QWidget               *folio_tab_widget;
-		QWidget               *autoNumbering_tab_widget;
-		QScrollArea           *scrollArea;
-		QComboBox             *m_context_cb_conductor;
-		QComboBox             *m_context_cb_folio;
-		QComboBox             *m_context_cb_element;
-		QPushButton           *m_remove_pb_conductor;
-		QPushButton           *m_remove_pb_folio;
-		QPushButton           *m_remove_pb_element;
 		SelectAutonumW        *m_saw_conductor;
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;

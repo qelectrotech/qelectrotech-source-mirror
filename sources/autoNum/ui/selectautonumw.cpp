@@ -34,6 +34,7 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 {
 
 	ui->setupUi(this);
+	ui->m_comboBox->lineEdit()->setClearButtonEnabled(true);
 	if (m_edited_type == 0)
 	{
 		m_feaw = new FormulaAutonumberingW();
@@ -162,6 +163,11 @@ QString SelectAutonumW::formula()
 		return "";
 }
 
+QComboBox *SelectAutonumW::contextComboBox() const
+{
+	return ui->m_comboBox;
+}
+
 /**
  * @brief SelectAutonumW::on_buttonBox_clicked
  * Action on @buttonBox clicked
@@ -227,14 +233,6 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
- * @brief SelectAutonumW::applyEnableOnContextChanged
- * enable/disable the apply button after changing the autonum name
- */
-void SelectAutonumW::applyEnableOnContextChanged(QString) {
-	applyEnable(true);
-}
-
-/**
  * @brief SelectAutonumW::applyEnable
  * enable/disable the apply button
  */
@@ -276,7 +274,8 @@ void SelectAutonumW::contextToFormula()
  * @brief SelectAutonumW::on_m_next_pb_clicked
  * Increase NumerotationContext
  */
-void SelectAutonumW::on_m_next_pb_clicked() {
+void SelectAutonumW::on_m_next_pb_clicked()
+{
 	NumerotationContextCommands ncc (toNumContext());
 	setContext(ncc.next());
 	applyEnable(true);
@@ -286,8 +285,20 @@ void SelectAutonumW::on_m_next_pb_clicked() {
  * @brief SelectAutonumW::on_m_previous_pb_clicked
  * Decrease NumerotationContext
  */
-void SelectAutonumW::on_m_previous_pb_clicked() {
+void SelectAutonumW::on_m_previous_pb_clicked()
+{
 	NumerotationContextCommands ncc (toNumContext());
 	setContext(ncc.previous());
 	applyEnable(true);
+}
+
+void SelectAutonumW::on_m_comboBox_currentTextChanged(const QString &arg1)
+{
+	Q_UNUSED(arg1);
+	applyEnable(true);
+}
+
+void SelectAutonumW::on_m_remove_pb_clicked()
+{
+	emit removeClicked();
 }
