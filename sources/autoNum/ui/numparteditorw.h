@@ -35,37 +35,39 @@ class NumPartEditorW : public QWidget
 {
 	Q_OBJECT
 	
-	//METHODS
+		//METHODS
 	public:
-	explicit NumPartEditorW(QWidget *parent = 0);
-	NumPartEditorW (NumerotationContext &, int, QWidget *parent=0);
-	~NumPartEditorW();
+		explicit NumPartEditorW(int type, QWidget *parent = 0);
+		NumPartEditorW (NumerotationContext &, int, int type, QWidget *parent=0);
+		~NumPartEditorW();
 
-	enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
-			   string,idfolio,folio,machine,locmach,
-			   elementline,elementcolumn,elementprefix,
-			  };
-	NumerotationContext toNumContext();
-	bool isValid ();
-	type type_;
+		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
+				   string,idfolio,folio,machine,locmach,
+				   elementline,elementcolumn,elementprefix,
+				  };
+		NumerotationContext toNumContext();
+		bool isValid ();
+		type type_;
 
 	private:
-	void setVisibleItems();
-	void disableItem(int index);
-	void setCurrentIndex(NumPartEditorW::type);
+		void setVisibleItems();
+		void disableItem(int index);
+		void setCurrentIndex(NumPartEditorW::type);
 
 	private slots:
-	void on_type_cb_activated(int);
-	void on_value_field_textEdited();
-	void on_increase_spinBox_valueChanged(int);
-	void setType (NumPartEditorW::type t, bool=false);
+		void on_type_cb_activated(int);
+		void on_value_field_textEdited();
+		void on_increase_spinBox_valueChanged(int);
+		void setType (NumPartEditorW::type t, bool=false);
 
 	signals:
-	void changed ();
+		void changed ();
 	
 	private:
-	Ui::NumPartEditorW *ui;
-	QValidator *intValidator;
+		Ui::NumPartEditorW *ui;
+		QValidator *intValidator;
+		int m_edited_type = -1; //0 == element : 1 == conductor : 2 == folio
+	
 
 
 };

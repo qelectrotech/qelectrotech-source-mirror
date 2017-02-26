@@ -43,8 +43,6 @@
 #include "elementscollectionwidget.h"
 #include "autonumberingdockwidget.h"
 
-#include "ui/dialogautonum.h"
-
 #include <QMessageBox>
 #include <QStandardPaths>
 

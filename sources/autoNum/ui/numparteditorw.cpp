@@ -22,10 +22,11 @@
 /**
  * Constructor
  */
-NumPartEditorW::NumPartEditorW(QWidget *parent) :
+NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
-	intValidator (new QIntValidator(0,99999,this))
+	intValidator (new QIntValidator(0,99999,this)),
+	m_edited_type(type)
 {
 	ui -> setupUi(this);
 	setVisibleItems();
@@ -36,10 +37,11 @@ NumPartEditorW::NumPartEditorW(QWidget *parent) :
  * Constructor
  * Build with value of @context at position i
  */
-NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *parent):
+NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
-	intValidator (new QIntValidator(0,99999,this))
+	intValidator (new QIntValidator(0,99999,this)),
+	m_edited_type(type)
 {
 	ui -> setupUi(this);
 	setVisibleItems();
@@ -75,15 +77,18 @@ NumPartEditorW::~NumPartEditorW()
 	delete ui;
 }
 
-void NumPartEditorW::setVisibleItems() {
+void NumPartEditorW::setVisibleItems()
+{
 	ui->type_cb->setInsertPolicy(QComboBox::InsertAtBottom);
 	QStringList items;
-	if (parentWidget()->parentWidget()->objectName()=="FolioTab") {
+	if (m_edited_type == 2)
+	{
 		items	<< tr("Chiffre 1") << tr("Chiffre 01")
 				<< tr("Chiffre 001")
 				<< tr("Texte");
 	}
-	else if (parentWidget()->parentWidget()->objectName()=="ConductorTab") {
+	else if (m_edited_type == 1)
+	{
 		items	<< tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
 				<< tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
 				<< tr("Texte") << tr("N° folio") << tr("Folio") << tr("Machine") << tr("Locmach");

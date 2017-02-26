@@ -27,36 +27,44 @@
 /**
  * Constructor
  */
-SelectAutonumW::SelectAutonumW(QWidget *parent) :
+SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::SelectAutonumW)
+	ui(new Ui::SelectAutonumW),
+	m_edited_type(type)
 {
 
 	ui->setupUi(this);
-	if (this->parentWidget() -> objectName()=="ElementTab"){
+	if (m_edited_type == 0)
+	{
 		m_feaw = new FormulaAutonumberingW();
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_feaw);
+		m_feaw->ui->label->setHidden(true);
+		ui->m_widget->layout()->addWidget(m_feaw);
 	}
-	else if (this->parentWidget() -> objectName()=="ConductorTab"){
+	else if (m_edited_type == 1)
+	{
 		m_fcaw = new FormulaAutonumberingW();
 		m_fcaw->ui->label->setHidden(true);
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_fcaw);
+		ui->m_widget->layout()->addWidget(m_fcaw);
 	}
 	setContext(NumerotationContext());
 }
 
-SelectAutonumW::SelectAutonumW(const NumerotationContext &context, QWidget *parent) :
+SelectAutonumW::SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::SelectAutonumW)
+	ui(new Ui::SelectAutonumW),
+	m_edited_type(type)
 {
-	if (this->parentWidget() -> objectName()=="ElementTab"){
+	if (m_edited_type == 0)
+	{
 		m_feaw = new FormulaAutonumberingW();
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_feaw);
+		m_feaw->ui->label->setHidden(true);
+		ui->m_widget->layout()->addWidget(m_feaw);
 	}
-	else if (this->parentWidget() -> objectName()=="ConductorTab"){
+	else if (m_edited_type == 1)
+	{
 		m_fcaw = new FormulaAutonumberingW();
 		m_fcaw->ui->label->setHidden(true);
-		ui->scrollAreaWidgetContents->layout()->addWidget(m_fcaw);
+		ui->m_widget->layout()->addWidget(m_fcaw);
 	}
 	ui->setupUi(this);
 	setContext(context);
@@ -85,7 +93,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 	}
 	else {
 		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
-			NumPartEditorW *part= new NumPartEditorW(m_context, i, this);
+			NumPartEditorW *part= new NumPartEditorW(m_context, i, m_edited_type, this);
 			connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 			num_part_list_ << part;
 			ui -> editor_layout -> addWidget(part);
@@ -113,9 +121,10 @@ NumerotationContext SelectAutonumW::toNumContext() const {
  * @brief SelectAutonumW::on_add_button_clicked
  *	Action on add_button, add a @NumPartEditor
  */
-void SelectAutonumW::on_add_button_clicked() {
+void SelectAutonumW::on_add_button_clicked()
+{
 	applyEnable(false);
-	NumPartEditorW *part = new NumPartEditorW(this);
+	NumPartEditorW *part = new NumPartEditorW(m_edited_type, this);
 	connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 	num_part_list_ << part;
 	ui -> editor_layout -> addWidget(part);
@@ -143,12 +152,14 @@ void SelectAutonumW::on_remove_button_clicked() {
  * @brief SelectAutonumW::formula
  * @return autonumbering widget formula
  */
-QString SelectAutonumW::formula() {
-	if (this->parentWidget() -> objectName()=="ElementTab")
-	return m_feaw->formula();
-	else if (this->parentWidget() ->objectName()=="ConductorTab")
-	return m_fcaw->formula();
-	else return "";
+QString SelectAutonumW::formula()
+{
+	if (m_edited_type == 0)
+		return m_feaw->formula();
+	else if (m_edited_type == 1)
+		return m_fcaw->formula();
+	else
+		return "";
 }
 
 /**
@@ -165,7 +176,8 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 			break;
 			//help dialog
 		case QDialogButtonBox::HelpRole:
-			if (this->parentWidget() -> objectName()=="FolioTab"){
+			if (m_edited_type == 2)
+			{
 				QMessageBox::information (this, tr("Folio Autonumérotation", "title window"),
 																		tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.\n"
 																		   "-Une numérotation est composée d'une variable minimum.\n"
@@ -183,7 +195,8 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 																		   ));
 				break;
 			}
-			else{
+			else
+			{
 				QMessageBox::information (this, tr("Conducteur Autonumérotation", "title window"),
 																		tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
 																		   "-Une numérotation est composée d'une variable minimum.\n"
@@ -234,9 +247,9 @@ void SelectAutonumW::applyEnable(bool b) {
 	else {
 		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
 	}
-	if (this->parentWidget() -> objectName()=="ElementTab")
+	if (m_edited_type == 0)
 		contextToFormula();
-	if (this->parentWidget()->objectName()=="ConductorTab")
+	if (m_edited_type == 1)
 		contextToFormula();
 }
 
@@ -247,9 +260,9 @@ void SelectAutonumW::applyEnable(bool b) {
 void SelectAutonumW::contextToFormula()
 {
 	FormulaAutonumberingW* m_faw = nullptr;
-	if (this->parentWidget() -> objectName()=="ElementTab")
+	if (m_edited_type == 0)
 		m_faw = m_feaw;
-	else if (this->parentWidget()->objectName()=="ConductorTab")
+	else if (m_edited_type == 1)
 		m_faw = m_fcaw;
 
 	if (m_faw)

@@ -33,8 +33,8 @@ class QPushButton;
 class FolioAutonumberingW;
 class FormulaAutonumberingW;
 class AutoNumberingManagementW;
-class QTabWidget;
 class QScrollArea;
+class QHBoxLayout;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -134,7 +134,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		virtual void    changeToTab(int);
 	protected:
 		virtual void initWidgets();
-		virtual void initLayout();
+		virtual void initLayout() {}
 		virtual void readValuesFromProject();
 		virtual void adjustReadOnly();
 	private:
@@ -153,8 +153,6 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void applyAutoNum();
 		void applyManagement();
 
-		void tabChanged(int);
-
 	signals:
 		void setAutoNum(QString);
 		void setAutoNum(int,int);
@@ -163,16 +161,13 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Attributes
 	private:
-		QTabWidget            *tab_widget;
-		QWidget               *management_tab_widget;
+		QHBoxLayout           *m_main_layout = nullptr;
+		QWidget               *m_management_tab_widget;
 		QWidget               *conductor_tab_widget;
 		QWidget               *element_tab_widget;
 		QWidget               *folio_tab_widget;
 		QWidget               *autoNumbering_tab_widget;
 		QScrollArea           *scrollArea;
-		QLabel                *m_label_conductor;
-		QLabel                *m_label_folio;
-		QLabel                *m_label_element;
 		QComboBox             *m_context_cb_conductor;
 		QComboBox             *m_context_cb_folio;
 		QComboBox             *m_context_cb_element;

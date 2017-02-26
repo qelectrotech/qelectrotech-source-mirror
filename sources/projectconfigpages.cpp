@@ -222,7 +222,6 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget
 	ProjectConfigPage(project, parent)
 {
 	initWidgets();
-	initLayout();
 	buildConnections();
 	readValuesFromProject();
 }
@@ -254,127 +253,101 @@ void ProjectAutoNumConfigPage::applyProjectConf() {}
  * @brief ProjectAutoNumConfigPage::initWidgets
  * Init some widget of this page
  */
-void ProjectAutoNumConfigPage::initWidgets() {
-
-	tab_widget = new QTabWidget(this);
-
-	management_tab_widget = new QWidget(this);
-	m_amw = new AutoNumberingManagementW(project(), management_tab_widget);
-
-	//Conductor Tab
-	conductor_tab_widget = new QWidget(this);
-	conductor_tab_widget->setObjectName("ConductorTab");
-
-	m_label_conductor = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), conductor_tab_widget);
-
-	m_context_cb_conductor= new QComboBox(conductor_tab_widget);
+void ProjectAutoNumConfigPage::initWidgets()
+{
+	QTabWidget *tab_widget = new QTabWidget(this);
+	
+		//Management tab
+	m_amw = new AutoNumberingManagementW(project());
+	tab_widget->addTab(m_amw, tr("Management"));
+	
+		//Conductor tab
+	QWidget *conductor_widget = new QWidget();
+	QVBoxLayout *conductor_layout = new QVBoxLayout(conductor_widget);
+	QHBoxLayout *bp_conductor_layout = new QHBoxLayout();
+	
+	QLabel *label_conductor = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
+	m_context_cb_conductor= new QComboBox();
 	m_context_cb_conductor->setEditable(true);
 	m_context_cb_conductor->lineEdit()->setClearButtonEnabled(true);
 	m_context_cb_conductor->addItem(tr("Nom de la nouvelle numérotation"));
-
-	m_remove_pb_conductor= new QPushButton(QET::Icons::EditDelete, QString(), conductor_tab_widget);
+	
+	m_remove_pb_conductor= new QPushButton(QET::Icons::EditDelete, QString());
 	m_remove_pb_conductor-> setToolTip(tr("Supprimer la numérotation"));
-
-	m_saw_conductor = new SelectAutonumW(conductor_tab_widget);
-
-	//Element Tab
-	element_tab_widget = new QWidget(this);
-	element_tab_widget->setObjectName("ElementTab");
-
-	m_label_element = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), element_tab_widget);
-
-	m_context_cb_element = new QComboBox(element_tab_widget);
+	
+	m_saw_conductor = new SelectAutonumW(1);
+	
+	bp_conductor_layout->addWidget(label_conductor);
+	bp_conductor_layout->addStretch();
+	bp_conductor_layout->addWidget(m_context_cb_conductor);
+	bp_conductor_layout->addWidget(m_remove_pb_conductor);
+	
+	conductor_layout->addLayout(bp_conductor_layout);
+	conductor_layout->addWidget(m_saw_conductor);
+	
+	tab_widget->addTab(conductor_widget, tr("Conducteur"));
+	
+		//Element tab
+	QWidget *element_widget = new QWidget();
+	QVBoxLayout *element_layout = new QVBoxLayout(element_widget);
+	QHBoxLayout *bp_element_layout = new QHBoxLayout();
+	
+	QLabel *label_element = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
+	
+	m_context_cb_element = new QComboBox();
 	m_context_cb_element->setEditable(true);
 	m_context_cb_element->lineEdit()->setClearButtonEnabled(true);
 	m_context_cb_element->addItem(tr("Nom de la nouvelle numérotation"));
-
-	m_remove_pb_element = new QPushButton(QET::Icons::EditDelete, QString(), element_tab_widget);
+	
+	m_remove_pb_element = new QPushButton(QET::Icons::EditDelete, QString());
 	m_remove_pb_element -> setToolTip(tr("Supprimer la numérotation"));
-
-	m_saw_element = new SelectAutonumW(element_tab_widget);
-
-	//Folio Tab
-	folio_tab_widget = new QWidget(this);
-	folio_tab_widget->setObjectName("FolioTab");
-
-	m_label_folio = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), folio_tab_widget);
-
-	m_context_cb_folio = new QComboBox(folio_tab_widget);
+	
+	m_saw_element = new SelectAutonumW(0);
+	
+	bp_element_layout->addWidget(label_element);
+	bp_element_layout->addStretch();
+	bp_element_layout->addWidget(m_context_cb_element);
+	bp_element_layout->addWidget(m_remove_pb_element);
+	
+	element_layout->addLayout(bp_element_layout);
+	element_layout->addWidget(m_saw_element);
+	
+	tab_widget->addTab(element_widget, tr("Element"));
+	
+		//Folio Tab
+	QWidget *folio_widget = new QWidget();
+	QVBoxLayout *folio_layout = new QVBoxLayout(folio_widget);
+	QHBoxLayout *bp_folio_layout = new QHBoxLayout();
+	
+	QLabel *label_folio = new QLabel(tr("Numérotations disponibles :", "availables numerotations"));
+	
+	m_context_cb_folio = new QComboBox();
 	m_context_cb_folio->setEditable(true);
 	m_context_cb_folio->lineEdit()->setClearButtonEnabled(true);
 	m_context_cb_folio->addItem(tr("Nom de la nouvelle numérotation"));
-
-	m_remove_pb_folio = new QPushButton(QET::Icons::EditDelete, QString(), folio_tab_widget);
+	
+	m_remove_pb_folio = new QPushButton(QET::Icons::EditDelete, QString());
 	m_remove_pb_folio -> setToolTip(tr("Supprimer la numérotation"));
-
-	m_saw_folio = new SelectAutonumW(folio_tab_widget);
-
-	//AutoNumbering Tab
-	autoNumbering_tab_widget = new QWidget(this);
-	m_faw = new FolioAutonumberingW(project(),autoNumbering_tab_widget);
-}
-
-/**
- * @brief ProjectAutoNumConfigPage::initLayout
- * Init the layout of this page
- */
-void ProjectAutoNumConfigPage::initLayout() {
-
-	//Management Tab
-	tab_widget->addTab(management_tab_widget, tr("Management"));
-
-	//Conductor Tab
-	tab_widget->addTab(conductor_tab_widget, tr("Conductor"));
-
-	QHBoxLayout *context_layout_conductor = new QHBoxLayout();
-	context_layout_conductor -> addWidget (m_label_conductor);
-	context_layout_conductor -> addWidget (m_context_cb_conductor);
-	context_layout_conductor -> addWidget (m_remove_pb_conductor);
-
-	QVBoxLayout *main_layout_conductor = new QVBoxLayout();
-	QVBoxLayout *aux_layout_conductor = new QVBoxLayout();
-	aux_layout_conductor->addLayout(context_layout_conductor);
-	aux_layout_conductor->addWidget(m_saw_conductor);
-
-	main_layout_conductor->addLayout(aux_layout_conductor);
-	conductor_tab_widget -> setLayout (main_layout_conductor);
-
-	//Element Tab
-	tab_widget->addTab(element_tab_widget,tr ("Element"));
-
-	QHBoxLayout *element_context_layout = new QHBoxLayout();
-	element_context_layout -> addWidget (m_label_element);
-	element_context_layout -> addWidget (m_context_cb_element);
-	element_context_layout -> addWidget (m_remove_pb_element);
-
-	QVBoxLayout *main_layout_element = new QVBoxLayout();
-	QVBoxLayout *aux_layout_element = new QVBoxLayout();
-	aux_layout_element->addLayout(element_context_layout);
-	aux_layout_element->addWidget(m_saw_element);
-
-	main_layout_element->addLayout(aux_layout_element);
-	element_tab_widget->setLayout(main_layout_element);
-
-	// Folio Tab
-	tab_widget->addTab(folio_tab_widget, tr("Folio"));
-
-	QHBoxLayout *context_layout_folio = new QHBoxLayout();
-	context_layout_folio -> addWidget (m_label_folio);
-	context_layout_folio -> addWidget (m_context_cb_folio);
-	context_layout_folio -> addWidget (m_remove_pb_folio);
-
-	QVBoxLayout *main_layout_folio = new QVBoxLayout();
-	QVBoxLayout *aux_layout_folio = new QVBoxLayout();
-	aux_layout_folio->addLayout(context_layout_folio);
-	aux_layout_folio->addWidget(m_saw_folio);
-
-	main_layout_folio->addLayout(aux_layout_folio);
-	folio_tab_widget->setLayout(main_layout_folio);
-
-	//Auto Numbering Tab
-	tab_widget->addTab(autoNumbering_tab_widget,tr ("Folio Auto Numbering"));
-
-	tab_widget->resize(850,590);
+	
+	m_saw_folio = new SelectAutonumW(2);
+	
+	bp_folio_layout->addWidget(label_folio);
+	bp_folio_layout->addStretch();
+	bp_folio_layout->addWidget(m_context_cb_folio);
+	bp_folio_layout->addWidget(m_remove_pb_folio);
+	
+	folio_layout->addLayout(bp_folio_layout);
+	folio_layout->addWidget(m_saw_folio);
+	
+	tab_widget->addTab(folio_widget, tr("Folio"));
+	
+		//AutoNumbering Tab
+	m_faw = new FolioAutonumberingW(project());
+	tab_widget->addTab(m_faw, tr("Folio autonumérotation"));
+	
+	m_main_layout = new QHBoxLayout();
+	m_main_layout->addWidget(tab_widget);
+	setLayout(m_main_layout);
 }
 
 /**
@@ -417,7 +390,7 @@ void ProjectAutoNumConfigPage::adjustReadOnly() {
  */
 void ProjectAutoNumConfigPage::buildConnections() {
 	
-	connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
+	//connect(m_tab_widget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 
 	//Management Tab
 	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
@@ -724,26 +697,7 @@ void ProjectAutoNumConfigPage::removeContext_folio() {
  * @param tab index
  * Change to Selected Tab
  */
-void ProjectAutoNumConfigPage::changeToTab(int i){
-		tab_widget->setCurrentIndex(i);
-}
-
-/**
- * @brief ProjectAutoNumConfigPage::tabChanged
- * @param tab index
- * Used to resize window to correct size
- */
-void ProjectAutoNumConfigPage::tabChanged(int i){
-	if (i>=1){
-		if (tab_widget->currentIndex() == 4){
-			tab_widget->resize(520,tab_widget->height());
-		}
-		else if (tab_widget->currentIndex() == 1 || tab_widget->currentIndex() == 2 ){
-			tab_widget->resize(495,tab_widget->height());
-		}
-		else tab_widget->resize(475,tab_widget->height());
-	}
-	else {
-		tab_widget->resize(850,tab_widget->height());
-	}
+void ProjectAutoNumConfigPage::changeToTab(int i)
+{
+	Q_UNUSED(i);
 }

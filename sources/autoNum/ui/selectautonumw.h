@@ -36,8 +36,8 @@ class SelectAutonumW : public QWidget
 	
 	//METHODS
 	public:
-		explicit SelectAutonumW(QWidget *parent = 0);
-		explicit SelectAutonumW(const NumerotationContext &context, QWidget *parent = 0);
+		explicit SelectAutonumW(int type, QWidget *parent = 0);
+		explicit SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent = 0);
 		~SelectAutonumW();
 
 		void setContext (const NumerotationContext &context);
@@ -68,6 +68,7 @@ class SelectAutonumW : public QWidget
 		NumerotationContext m_context;
 		FormulaAutonumberingW *m_feaw;
 		FormulaAutonumberingW *m_fcaw;
+		int m_edited_type = -1; //0 == element : 1 == conductor : 2 == folio
 };
 
 #endif // SELECTAUTONUMW_H
