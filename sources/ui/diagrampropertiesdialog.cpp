@@ -20,7 +20,6 @@
 #include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "diagramcommands.h"
-#include "autonumselectorwidget.h"
 #include "projectpropertiesdialog.h"
 #include "diagram.h"
 
@@ -62,34 +61,38 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	connect(titleblock_infos,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(editAutoFolioNum()));
-	titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
+	//titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
-	//Conductor widget
-	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors, this);
-	cpw -> setReadOnly(diagram_is_read_only);
+		//Conductor widget
+	m_cpw = new ConductorPropertiesWidget(conductors, this);
+	m_cpw -> setReadOnly(diagram_is_read_only);
+	
+	QComboBox *autonum_combobox = m_cpw->autonumComboBox();
+	autonum_combobox->addItems(diagram->project()->conductorAutoNum().keys());
+	autonum_combobox->setCurrentIndex(autonum_combobox->findText(diagram->conductorsAutonumName()));
+	
+	connect(m_cpw->editAutonumPushButton(), &QPushButton::clicked, this, &DiagramPropertiesDialog::editAutonum);
 
-	//Conductor autonum
-	m_asw = new AutonumSelectorWidget(diagram -> project() -> conductorAutoNum().keys(), this);
-	m_asw -> setCurrentItem(diagram -> conductorsAutonumName());
-	connect (m_asw, SIGNAL(openAutonumEditor()), this, SLOT(editAutonum()));
-	cpw->addAutonumWidget(m_asw);
-
-	// Buttons
+		// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), this, SLOT(reject()));
-	//Layout
-	QGridLayout glayout(this);
-	glayout.addWidget(border_infos,0,0);
-	glayout.addWidget(titleblock_infos, 1, 0);
-	glayout.addWidget(cpw, 0, 1, 0, 1, Qt::AlignTop);
-	glayout.addWidget(&boutons, 2, 1);
+	
+	QGridLayout *glayout = new QGridLayout;
+	glayout->addWidget(border_infos,0,0);
+	glayout->addWidget(titleblock_infos, 1, 0);
+	glayout->addWidget(m_cpw, 0, 1, 0, 1);
+	
+	QVBoxLayout vlayout(this);
+	vlayout.addLayout(glayout);
+	vlayout.addWidget(&boutons);
 
 	// if dialog is accepted
-	if (this -> exec() == QDialog::Accepted && !diagram_is_read_only) {
+	if (this -> exec() == QDialog::Accepted && !diagram_is_read_only)
+	{
 		TitleBlockProperties new_titleblock = titleblock_infos  -> properties();
 		BorderProperties     new_border     = border_infos -> properties();
-		ConductorProperties  new_conductors = cpw -> properties();
+		ConductorProperties  new_conductors = m_cpw -> properties();
 
 		// Title block have change
 		if (new_titleblock != titleblock) {
@@ -107,9 +110,10 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 			diagram -> defaultConductorProperties = new_conductors;
 		}
 
-		// Conductor autonum name
-		if (m_asw -> text() != diagram -> conductorsAutonumName()) {
-			diagram -> setConductorsAutonumName (m_asw -> text());
+			// Conductor autonum name
+		if (autonum_combobox->currentText() != diagram->conductorsAutonumName())
+		{
+			diagram->setConductorsAutonumName (autonum_combobox->currentText());
 			diagram->project()->conductorAutoNumChanged();
 		}
 	}
@@ -129,11 +133,13 @@ void DiagramPropertiesDialog::diagramPropertiesDialog(Diagram *diagram, QWidget 
  * @brief DiagramPropertiesDialog::editAutonum
  * Open conductor autonum editor
  */
-void DiagramPropertiesDialog::editAutonum() {
+void DiagramPropertiesDialog::editAutonum()
+{
 	ProjectPropertiesDialog ppd (m_diagram->project(), this);
 	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
 	ppd.exec();
-	m_asw -> setItems (m_diagram -> project() -> conductorAutoNum().keys());
+	m_cpw->autonumComboBox()->clear();
+	m_cpw->autonumComboBox()->addItems(m_diagram->project()->conductorAutoNum().keys());
 }
 
 /**

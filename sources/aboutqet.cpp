@@ -27,17 +27,16 @@
 #include <QScrollArea>
 
 /**
-	Constructeur
-	@param parent The parent of the dialog QWidget
-*/
-AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
-	// Title, size, behavior ...
+ * @brief AboutQET::AboutQET
+ * @param parent
+ */
+AboutQET::AboutQET(QWidget *parent) :
+	QDialog(parent)
+{
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
-	setFixedSize (690, 610);
 	setModal(true);
 
-	// Three tabs
-	QTabWidget *tabs = new QTabWidget(this);
+	QTabWidget *tabs = new QTabWidget();
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
@@ -45,30 +44,13 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	tabs -> addTab(titleTab(),        tr("&Version",           "tab title"));
 	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
 
-
-	
-	// All in a vertical arrangement
-	QVBoxLayout *vlayout = new QVBoxLayout();
-	vlayout -> addWidget(tabs);
-	setLayout(vlayout);
-
-	QScrollArea *scrollArea = new QScrollArea(this);
-	scrollArea->setWidgetResizable(true);
-	scrollArea->setFixedSize (690, 610);
-	scrollArea->setWidget(tabs);
-
-	// A button to close the dialog box
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
 	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
-
-	QHBoxLayout *hlayout = new QHBoxLayout();
-	vlayout -> addStretch();
-	vlayout -> addWidget(buttons);
-	setLayout(hlayout);
-
-
-
+	
+	QVBoxLayout *vlayout = new QVBoxLayout(this);
+	vlayout->addWidget(tabs);
+	vlayout->addWidget(buttons);
 }
 
 /**

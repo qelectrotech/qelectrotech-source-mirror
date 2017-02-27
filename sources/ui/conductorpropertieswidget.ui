@@ -37,7 +37,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QGridLayout" name="gridLayout_3">
+           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0">
             <item row="0" column="0">
              <widget class="QLabel" name="label_2">
               <property name="text">
@@ -45,14 +45,44 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
+            <item row="5" column="1">
              <widget class="QLineEdit" name="m_function_le">
               <property name="clearButtonEnabled">
                <bool>true</bool>
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="m_tension_protocol_le">
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QCheckBox" name="m_show_text_cb">
+              <property name="toolTip">
+               <string>Texte visible</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="3">
+             <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+              <property name="toolTip">
+               <string>activer l'option un texte par potentiel</string>
+              </property>
+              <property name="text">
+               <string>Afficher un texte de potentiel par folio. </string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
              <widget class="QSpinBox" name="m_text_size_sb">
               <property name="toolTip">
                <string>Taille du texte</string>
@@ -74,17 +104,16 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="2">
-             <widget class="QLineEdit" name="m_tension_protocol_le">
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="m_formula_le"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="m_text_le">
+              <property name="toolTip">
+               <string>Texte</string>
+              </property>
               <property name="clearButtonEnabled">
                <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Tension / Protocole :</string>
               </property>
              </widget>
             </item>
@@ -95,33 +124,10 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="5" column="0">
              <widget class="QLabel" name="label_8">
               <property name="text">
                <string>Fonction :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLineEdit" name="m_text_le">
-              <property name="toolTip">
-               <string>Texte</string>
-              </property>
-              <property name="clearButtonEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QCheckBox" name="m_show_text_cb">
-              <property name="toolTip">
-               <string>Texte visible</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -132,24 +138,41 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QLineEdit" name="m_formula_le"/>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Tension / Protocole :</string>
+              </property>
+             </widget>
             </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="m_autonum_layout">
-            <item>
-             <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+            <item row="3" column="0">
+             <widget class="QLabel" name="m_autonum_label">
+              <property name="text">
+               <string>Autonumérotation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QComboBox" name="m_available_autonum_cb"/>
+            </item>
+            <item row="3" column="2">
+             <widget class="QPushButton" name="m_edit_autonum_pb">
               <property name="toolTip">
-               <string>activer l'option un texte par potentiel</string>
+               <string>éditer les numérotations</string>
               </property>
               <property name="text">
-               <string>Afficher un texte de potentiel par folio. </string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../../qelectrotech.qrc">
+                <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
               </property>
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="m_autonum_layout"/>
           </item>
           <item>
            <layout class="QGridLayout" name="m_text_angle_gl">

@@ -174,6 +174,28 @@ void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
 }
 
 /**
+ * @brief ConductorPropertiesWidget::setHiddenAvailableAutonum
+ * Hide the label, combo box and push button of available autonum
+ * @param hide
+ */
+void ConductorPropertiesWidget::setHiddenAvailableAutonum(const bool &hide)
+{
+	ui->m_autonum_label->setHidden(hide);
+	ui->m_available_autonum_cb->setHidden(hide);
+	ui->m_edit_autonum_pb->setHidden(hide);
+}
+
+QComboBox *ConductorPropertiesWidget::autonumComboBox() const
+{
+	return ui->m_available_autonum_cb;
+}
+
+QPushButton *ConductorPropertiesWidget::editAutonumPushButton() const
+{
+	return ui->m_edit_autonum_pb;
+}
+
+/**
  * @brief ConductorPropertiesWidget::initWidget
  */
 void ConductorPropertiesWidget::initWidget() {

@@ -21,7 +21,7 @@
 #include "qdialog.h"
 
 class Diagram;
-class AutonumSelectorWidget;
+class ConductorPropertiesWidget;
 
 /**
  * @brief The DiagramPropertiesDialog class
@@ -41,7 +41,7 @@ class DiagramPropertiesDialog : public QDialog {
 
 	private:
 		Diagram               *m_diagram;
-		AutonumSelectorWidget *m_asw;
+		ConductorPropertiesWidget *m_cpw;
 };
 
 #endif // DIAGRAMPROPERTIESDIALOG_H

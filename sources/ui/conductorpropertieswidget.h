@@ -21,6 +21,8 @@
 #include <QWidget>
 #include "conductorproperties.h"
 class QTextOrientationSpinBoxWidget;
+class QComboBox;
+class QPushButton;
 
 namespace Ui {
 	class ConductorPropertiesWidget;
@@ -43,6 +45,9 @@ class ConductorPropertiesWidget : public QWidget
 		void addAutonumWidget (QWidget *widget);
 		void setHiddenOneTextPerFolio   (const bool &hide);
 		void setDisabledShowText        (const bool &disable = true);
+		void setHiddenAvailableAutonum (const bool &hide);
+		QComboBox *autonumComboBox() const;
+		QPushButton *editAutonumPushButton() const;
 
 	private:
 		void initWidget();

@@ -50,7 +50,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
 	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true, project, parent);
 	// default conductor properties
-	cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
+	m_cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
+	m_cpw->setHiddenAvailableAutonum(true);
 	// default propertie of report label
 	rpw = new ReportPropertieWidget(ReportProperties::defaultProperties());
 	// default properties of xref
@@ -59,7 +60,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	//If there is a project, we edit his properties
 	if (m_project) {
 		bpw	   -> setProperties		  (m_project -> defaultBorderProperties());
-		cpw	   -> setProperties       (m_project -> defaultConductorProperties());
+		m_cpw	   -> setProperties       (m_project -> defaultConductorProperties());
 		ipw    -> setProperties       (m_project -> defaultTitleBlockProperties());
 		rpw	   -> setReportProperties (m_project -> defaultReportProperties());
 		xrefpw -> setProperties		  (m_project -> defaultXRefProperties());
@@ -76,7 +77,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	diagram_layout -> addWidget(ipw);
 
 	tab_widget -> addTab (diagram_widget, tr("Folio"));
-	tab_widget -> addTab (cpw,            tr("Conducteur"));
+	tab_widget -> addTab (m_cpw,            tr("Conducteur"));
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
 
@@ -116,9 +117,9 @@ void NewDiagramPage::applyConf() {
 			modified_project = true;
 		}
 
-		ConductorProperties new_conductor_prop = cpw -> properties();
+		ConductorProperties new_conductor_prop = m_cpw -> properties();
 		if (m_project -> defaultConductorProperties() != new_conductor_prop) {
-			m_project -> setDefaultConductorProperties(cpw -> properties());
+			m_project -> setDefaultConductorProperties(m_cpw -> properties());
 			modified_project = true;
 		}
 
@@ -148,7 +149,7 @@ void NewDiagramPage::applyConf() {
 		ipw-> properties().toSettings(settings, "diagrameditor/default");
 
 		// proprietes par defaut des conducteurs
-		cpw -> properties().toSettings(settings, "diagrameditor/defaultconductor");
+		m_cpw -> properties().toSettings(settings, "diagrameditor/defaultconductor");
 
 		// default report propertie
 		rpw->toSettings(settings, "diagrameditor/defaultreport");

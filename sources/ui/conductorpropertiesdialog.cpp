@@ -36,6 +36,7 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidg
 	ui->setupUi(this);
 	m_cpw = new ConductorPropertiesWidget(conductor->properties());
 	m_cpw -> setHiddenOneTextPerFolio(true);
+	m_cpw->setHiddenAvailableAutonum(true);
 	if (conductor -> diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
 		conductor -> relatedPotentialConductors().size()) {
 		m_cpw->setDisabledShowText();
