@@ -33,10 +33,9 @@ TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem
 	m_location_item (nullptr)
 {
 	link_type_ = Terminale;
+	
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-	connect(this, SIGNAL(xChanged()),this, SLOT(changeElementInfo()));
-	connect(this, SIGNAL(yChanged()),this, SLOT(changeElementInfo()));
-	connect(this, SIGNAL(updateLabel()),this,SLOT(changeElementInfo()));
+	connect(this, &Element::updateLabel, [this]() {this->updateLabel(this->elementInformations(), this->elementInformations());});
 }
 
 TerminalElement::~TerminalElement() {
@@ -53,39 +52,35 @@ void TerminalElement::initLink(QETProject *project) {
 }
 
 /**
- * @brief SimpleElement::changeElementInfo()
- * Update label if it contains %c, %l, %f or %F variables
- */
-void TerminalElement::changeElementInfo(){
-	QString temp_label = this->elementInformations()["label"].toString();
-	if (temp_label.contains("\%")) {
-		if (this->diagram()!=NULL)
-			this->updateLabel(this->elementInformations(),this->elementInformations());
-	}
-}
-
-/**
  * @brief SimpleElement::updateLabel
  * update label of this element
  */
 void TerminalElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
 {
-	QString label = autonum::AssignVariables::formulaToLabel(new_info["label"].toString(), m_autoNum_seq, diagram(), this);
+	QString old_formula = old_info["formula"].toString();
+	QString new_formula = new_info["formula"].toString();
 
-	//Label of element
-	if (old_info["label"].toString() != label) {
-		if (new_info["label"].toString().isEmpty())
-			setTaggedText("label", "_", false);
-		else {
-			setTaggedText("label", label, true);
-		}
+	setUpConnectionForFormula(old_formula, new_formula);
+
+	QString label = autonum::AssignVariables::formulaToLabel(new_formula, m_autoNum_seq, diagram(), this);
+
+	if (label.isEmpty())
+	{
+		setTaggedText("label", new_info["label"].toString());
+	}
+	else
+	{
+		bool visible = m_element_informations.contains("label") ? m_element_informations.keyMustShow("label") : true;
+		m_element_informations.addValue("label", label, visible);
+		setTaggedText("label", label);
 	}
 
-	if (ElementTextItem *eti = taggedText("label")) {
+	if (ElementTextItem *eti = taggedText("label"))
+	{
 		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
 	}
 
-	//Comment and Location of element
+		//Comment and Location of element
 	QString comment   = new_info["comment"].toString();
 	bool    must_show = new_info.keyMustShow("comment");
 	QString location  = new_info["location"].toString();

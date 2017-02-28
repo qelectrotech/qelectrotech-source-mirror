@@ -30,12 +30,9 @@ class TerminalElement : public CustomElement
 		TerminalElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
 		~TerminalElement();
 		virtual void initLink(QETProject *project);
-		
-		signals:
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
-		void changeElementInfo();
 
 	private:
 		CommentItem *m_comment_item;
