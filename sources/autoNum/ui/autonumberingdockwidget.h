@@ -31,7 +31,7 @@ class AutoNumberingDockWidget : public QDockWidget
 		Q_OBJECT
 
 	public:
-		explicit AutoNumberingDockWidget(QWidget *parent = 0, QETProject *project = nullptr);
+		explicit AutoNumberingDockWidget(QWidget *parent = 0);
 		~AutoNumberingDockWidget();
 
 		void setContext();
@@ -49,14 +49,17 @@ class AutoNumberingDockWidget : public QDockWidget
 		void elementAutoNumChanged();
 		void folioAutoNumChanged();
 		void clear();
+		void projectClosed();
 
+		void on_m_configure_pb_clicked();
+		
 	signals:
 		void folioAutoNumChanged(QString);
 
 	private:
 		Ui::AutoNumberingDockWidget *ui;
-		QETProject* m_project;
-		ProjectView* m_project_view;
+		QETProject* m_project = nullptr;
+		ProjectView* m_project_view = nullptr;
 
 };
 
