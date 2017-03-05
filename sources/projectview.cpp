@@ -297,10 +297,6 @@ int ProjectView::tryClosingDiagrams() {
 								   | QMessageBox::Cancel,
 								   QMessageBox::Save);
 
-	if (close_dialog == QMessageBox::Save) {
-		saveDiagrams(project()->diagrams());
-	}
-
 	return(close_dialog);
 }
 
@@ -708,30 +704,11 @@ QETResult ProjectView::doSave()
 		return(saveAs());
 	}
 
-	// look for diagrams matching the required save options
-	saveDiagrams(m_project->diagrams());
-
 	// write to file
 	QETResult result = m_project -> write();
 	updateWindowTitle();
 	project()->undoStack()->clear();
 	return(result);
-}
-
-/**
-	Save \a diagrams without emitting the written() signal and without writing
-	the project file itself.
-*/
-void ProjectView::saveDiagrams(const QList<Diagram *> &diagrams) {
-	foreach (Diagram *diagram, diagrams) {
-		// Diagram::write() emits the written() signal, which is connected
-		// to QETProject::write() through QETProject::componentWritten().
-		// We do not want to write the project immediately, so we block
-		// this signal.
-		diagram -> blockSignals(true);
-		diagram -> write();
-		diagram -> blockSignals(false);
-	}
 }
 
 /**

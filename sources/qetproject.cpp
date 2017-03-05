@@ -121,7 +121,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
  */
 QETProject::~QETProject()
 {
-	qDeleteAll(diagrams_);
+	qDeleteAll(m_diagrams_list);
 	delete undo_stack_;
 }
 
@@ -154,7 +154,7 @@ void QETProject::setFolioSheetsQuantity(int quantity) {
 	@return la liste des schemas de ce projet
 */
 QList<Diagram *> QETProject::diagrams() const {
-	return(diagrams_);
+	return(m_diagrams_list);
 }
 
 /**
@@ -165,7 +165,7 @@ QList<Diagram *> QETProject::diagrams() const {
 */
 int QETProject::folioIndex(const Diagram *diagram) const {
 	// QList::indexOf returns -1 if no item matched.
-	return(diagrams_.indexOf(const_cast<Diagram *>(diagram)));
+	return(m_diagrams_list.indexOf(const_cast<Diagram *>(diagram)));
 }
 
 /**
@@ -601,7 +601,7 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
  */
 void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->freezeConductors(freeze);
+		m_diagrams_list.at(i)->freezeConductors(freeze);
 	}
 }
 
@@ -613,7 +613,7 @@ void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
  */
 void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewConductors(freeze);
+		m_diagrams_list.at(i)->setFreezeNewConductors(freeze);
 	}
 }
 
@@ -641,7 +641,7 @@ void QETProject::setFreezeNewConductors(bool set) {
  */
 void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->freezeElements(freeze);
+		m_diagrams_list.at(i)->freezeElements(freeze);
 	}
 }
 
@@ -653,7 +653,7 @@ void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
  */
 void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
-		diagrams_.at(i)->setFreezeNewElements(freeze);
+		m_diagrams_list.at(i)->setFreezeNewElements(freeze);
 	}
 }
 
@@ -710,16 +710,16 @@ void QETProject::autoFolioNumberingNewFolios(){
  * rename folios with selected autonum
  */
 void QETProject::autoFolioNumberingSelectedFolios(int from, int to, QString autonum){
-	int total_folio = diagrams_.count();
+	int total_folio = m_diagrams_list.count();
 	DiagramContext project_wide_properties = project_properties_;
 	for (int i=from; i<=to; i++) {
-		QString title = diagrams_[i] -> title();
+		QString title = m_diagrams_list[i] -> title();
 		NumerotationContext nC = folioAutoNum(autonum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		diagrams_[i] -> border_and_titleblock.setFolio("%autonum");
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
-		diagrams_[i] -> project() -> addFolioAutoNum(autonum,nCC.next());
-		diagrams_[i] -> update();
+		m_diagrams_list[i] -> border_and_titleblock.setFolio("%autonum");
+		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
+		m_diagrams_list[i] -> project() -> addFolioAutoNum(autonum,nCC.next());
+		m_diagrams_list[i] -> update();
 	}
 }
 
@@ -761,13 +761,18 @@ QDomDocument QETProject::toXml() {
 	
 	// qDebug() << "Export XML de" << diagrams_.count() << "schemas";
 	int order_num = 1;
-	foreach(Diagram *diagram, diagrams_) {
-
+	const QList<Diagram *> diagrams_list = m_diagrams_list;
+	for(Diagram *diagram : diagrams_list)
+	{
 		// Write the diagram to XML only if it is not of type DiagramFolioList.
 		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
-		if ( !ptr ) {
+		if ( !ptr )
+		{
 			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
-			QDomNode appended_diagram = project_root.appendChild(diagram -> writeXml(xml_doc));
+			QDomElement xml_diagram = diagram->toXml().documentElement();
+			QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
+			
+			QDomNode appended_diagram = project_root.appendChild(xml_node);
 			appended_diagram.toElement().setAttribute("order", order_num ++);
 		}
 	}
@@ -851,7 +856,7 @@ bool QETProject::isEmpty() const {
 	
 	// compte le nombre de schemas non vides
 	int pertinent_diagrams = 0;
-	foreach(Diagram *diagram, diagrams_) {
+	foreach(Diagram *diagram, m_diagrams_list) {
 		if (!diagram -> isEmpty()) ++ pertinent_diagrams;
 	}
 	
@@ -1035,14 +1040,6 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 }
 
 /**
-	Gere la reecriture du projet
-*/
-void QETProject::componentWritten() {
-	// reecrit tout le projet
-	write();
-}
-
-/**
 	Ajoute un nouveau schema au projet et emet le signal diagramAdded
 */
 Diagram *QETProject::addNewDiagram() {
@@ -1110,9 +1107,9 @@ QList <Diagram *> QETProject::addNewDiagramFolioList() {
 void QETProject::removeDiagram(Diagram *diagram) {
 	// ne fait rien si le projet est en lecture seule
 	if (isReadOnly()) return;	
-	if (!diagram || !diagrams_.contains(diagram)) return;
+	if (!diagram || !m_diagrams_list.contains(diagram)) return;
 
-	if (diagrams_.removeAll(diagram)) {
+	if (m_diagrams_list.removeAll(diagram)) {
 		emit(diagramRemoved(this, diagram));
 		delete diagram;
 	}
@@ -1131,10 +1128,10 @@ void QETProject::removeDiagram(Diagram *diagram) {
 void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	if (old_index < 0 || new_index < 0) return;
 	
-	int diagram_max_index = diagrams_.size() - 1;
+	int diagram_max_index = m_diagrams_list.size() - 1;
 	if (old_index > diagram_max_index || new_index > diagram_max_index) return;
 	
-	diagrams_.move(old_index, new_index);
+	m_diagrams_list.move(old_index, new_index);
 	updateDiagramsFolioData();
 	setModified(true);
 	emit(projectDiagramsOrderChanged(this, old_index, new_index));
@@ -1528,8 +1525,6 @@ void QETProject::addDiagram(Diagram *diagram) {
 	// Ensure diagram know is parent project
 	diagram -> setProject(this);
 	
-	// If diagram is write, we must rewrite the project
-	connect(diagram, SIGNAL(written()), this, SLOT(componentWritten()));
 	connect(
 		&(diagram -> border_and_titleblock),
 		SIGNAL(needFolioData()),
@@ -1542,7 +1537,7 @@ void QETProject::addDiagram(Diagram *diagram) {
 	);
 	
 	// add diagram to project
-		diagrams_ << diagram;
+		m_diagrams_list << diagram;
 	
 	updateDiagramsFolioData();
 }
@@ -1626,24 +1621,24 @@ bool QETProject::projectWasModified() {
 	folio le projet contient.
 */
 void QETProject::updateDiagramsFolioData() {
-	int total_folio = diagrams_.count();
+	int total_folio = m_diagrams_list.count();
 	
 	DiagramContext project_wide_properties = project_properties_;
 	project_wide_properties.addValue("projecttitle", title());
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		QString title = diagrams_[i] -> title();
-		QString autopagenum = diagrams_[i]->border_and_titleblock.autoPageNum();
+		QString title = m_diagrams_list[i] -> title();
+		QString autopagenum = m_diagrams_list[i]->border_and_titleblock.autoPageNum();
 		NumerotationContext nC = folioAutoNum(autopagenum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		if((diagrams_[i]->border_and_titleblock.folio().contains("%autonum"))&&(!autopagenum.isNull())){
-			diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
-			diagrams_[i]->project()->addFolioAutoNum(autopagenum,nCC.next());
+		if((m_diagrams_list[i]->border_and_titleblock.folio().contains("%autonum"))&&(!autopagenum.isNull())){
+			m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
+			m_diagrams_list[i]->project()->addFolioAutoNum(autopagenum,nCC.next());
 		}
 		else{
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, NULL, project_wide_properties);
+		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, NULL, project_wide_properties);
 		}
-		diagrams_[i] -> update();
+		m_diagrams_list[i] -> update();
 	}
 }
 
@@ -1655,7 +1650,7 @@ void QETProject::updateDiagramsFolioData() {
 void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
 	Q_UNUSED(collection)
 	
-	foreach (Diagram *diagram, diagrams_) {
+	foreach (Diagram *diagram, m_diagrams_list) {
 		diagram -> titleBlockTemplateChanged(template_name);
 	}
 }
@@ -1669,7 +1664,7 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 	Q_UNUSED(collection)
 	
 	// warn diagrams that the given template is about to be removed
-	foreach (Diagram *diagram, diagrams_) {
+	foreach (Diagram *diagram, m_diagrams_list) {
 		diagram -> titleBlockTemplateRemoved(template_name);
 	}
 }

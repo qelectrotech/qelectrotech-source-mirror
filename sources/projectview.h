@@ -85,7 +85,6 @@ class ProjectView : public QWidget
 		QETResult save();
 		QETResult saveAs();
 		QETResult doSave();
-		void saveDiagrams(const QList<Diagram *> &);
 		int cleanProject();
 		void updateWindowTitle();
 		void updateTabTitle(DiagramView *);

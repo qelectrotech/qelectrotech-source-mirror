@@ -166,7 +166,6 @@ class QETProject : public QObject
 		QUndoStack* undoStack() {return undo_stack_;}
 	
 	public slots:
-		void componentWritten();
 		Diagram *addNewDiagram();
 		QList <Diagram *> addNewDiagramFolioList();
 		void removeDiagram(Diagram *);
@@ -224,7 +223,7 @@ class QETProject : public QObject
 			/// Current state of the project
 		ProjectState state_;
 			/// Diagrams carried by the project
-		QList<Diagram *> diagrams_;
+		QList<Diagram *> m_diagrams_list;
 			/// Project title
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time

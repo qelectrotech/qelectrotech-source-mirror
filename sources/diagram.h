@@ -155,9 +155,6 @@ class Diagram : public QGraphicsScene
 		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
 		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
 		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-		void write();
-		void write(const QDomElement &);
-		QDomElement writeXml(QDomDocument &) const;
 		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
 		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
 	
@@ -245,7 +242,6 @@ class Diagram : public QGraphicsScene
 
 	signals:
 		void showDiagram (Diagram *);
-		void written();
 		void usedTitleBlockTemplateChanged(const QString &);
 		void diagramTitleChanged(Diagram *, const QString &);
 		void findElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to locate an element from the diagram within elements collection

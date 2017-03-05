@@ -675,12 +675,6 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
 	// import le contenu et les proprietes du schema depuis l'element XML fourni en parametre
 	bool from_xml = fromXml(document, position, consider_informations, content_ptr);
 	
-	// initialise le document XML interne a partir de l'element XML fourni en parametre
-	if (from_xml) {
-		xml_document_.clear();
-		xml_document_.appendChild(xml_document_.importNode(document, true));
-		// a ce stade, le document XML interne contient le code XML qui a ete importe, et non pas une version re-exporte par la methode toXml()
-	}
 	return(from_xml);
 }
 
@@ -744,7 +738,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 	// if child haven't got a child, loading is finish (diagram is empty)
 	if (root.firstChild().isNull()) {
-		write(document);
 		return(true);
 	}
 	
@@ -935,42 +928,6 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QS
 			hash->insert(title,list);
 		}
 	}
-}
-
-/**
-	Enregistre le schema XML dans son document XML interne et emet le signal
-	written().
-*/
-void Diagram::write()
-{
-	qDebug() << qPrintable(QString("Diagram::write() : saving changes from diagram \"%1\"").arg(title())) << "[" << this << "]";
-	write(toXml().documentElement());
-}
-
-/**
-	Enregistre un element XML dans son document XML interne et emet le signal
-	written().
-	@param element xml a enregistrer
-*/
-void Diagram::write(const QDomElement &element) {
-	xml_document_.clear();
-	xml_document_.appendChild(xml_document_.importNode(element, true));
-	emit(written());
-}
-
-/**
-	@return le schema en XML tel qu'il doit etre enregistre dans le fichier projet
-	@param xml_doc document XML a utiliser pour creer l'element
-*/
-QDomElement Diagram::writeXml(QDomDocument &xml_doc) const
-{
-		//If diagram was not explicitely saved, we write nothing.
-	if (xml_document_.isNull())
-		return(QDomElement());
-	
-	QDomElement diagram_elmt = xml_document_.documentElement();
-	QDomNode new_node = xml_doc.importNode(diagram_elmt, true);
-	return(new_node.toElement());
 }
 
 /**
