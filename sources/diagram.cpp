@@ -959,20 +959,14 @@ void Diagram::write(const QDomElement &element) {
 }
 
 /**
-	@return true si la fonction write a deja ete appele (pour etre plus exact :
-	si le document XML utilise en interne n'est pas vide), false sinon
-*/
-bool Diagram::wasWritten() const {
-	return(!xml_document_.isNull());
-}
-
-/**
 	@return le schema en XML tel qu'il doit etre enregistre dans le fichier projet
 	@param xml_doc document XML a utiliser pour creer l'element
 */
-QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
-	// si le schema n'a pas ete enregistre explicitement, on n'ecrit rien
-	if (!wasWritten()) return(QDomElement());
+QDomElement Diagram::writeXml(QDomDocument &xml_doc) const
+{
+		//If diagram was not explicitely saved, we write nothing.
+	if (xml_document_.isNull())
+		return(QDomElement());
 	
 	QDomElement diagram_elmt = xml_document_.documentElement();
 	QDomNode new_node = xml_doc.importNode(diagram_elmt, true);

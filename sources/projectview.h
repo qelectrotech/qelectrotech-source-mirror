@@ -35,37 +35,28 @@ class QVBoxLayout;
 	This class provides a widget displaying the diagrams of a particular
 	project using tabs.
 */
-class ProjectView : public QWidget {
+class ProjectView : public QWidget
+{
 	Q_OBJECT
-
+		
+		// constructors, destructor
 	public:
-	enum ProjectSaveOption {
-		CurrentDiagram = 2,
-		AllDiagramsButCurrent = 4,
-		AllDiagrams = 6
-	};
-	Q_DECLARE_FLAGS(ProjectSaveOptions, ProjectSaveOption)
-
-
-	// constructors, destructor
-	public:
-	ProjectView(QETProject *, QWidget * = 0);
-	virtual ~ProjectView();
+		ProjectView(QETProject *, QWidget * = 0);
+		virtual ~ProjectView();
 	private:
-	ProjectView(const ProjectView &);
+		ProjectView(const ProjectView &);
 
-	// methods
+		// methods
 	public:
-	QETProject *project();
-	void setProject(QETProject *);
-	QList<DiagramView *> diagram_views() const;
-	QList<Diagram *> getDiagrams(ProjectSaveOptions options);
-	DiagramView *currentDiagram() const;
-	void closeEvent(QCloseEvent *);
-	void changeTabUp();
-	void changeTabDown();
-	void changeFirstTab();
-	void changeLastTab();
+		QETProject *project();
+		void setProject(QETProject *);
+		QList<DiagramView *> diagram_views() const;
+		DiagramView *currentDiagram() const;
+		void closeEvent(QCloseEvent *);
+		void changeTabUp();
+		void changeTabDown();
+		void changeFirstTab();
+		void changeLastTab();
 
 	public slots:
 		void addNewDiagram();
@@ -92,8 +83,8 @@ class ProjectView : public QWidget {
 		void printProject();
 		void exportProject();
 		QETResult save();
-		QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams));
-		QETResult doSave(ProjectSaveOptions);
+		QETResult saveAs();
+		QETResult doSave();
 		void saveDiagrams(const QList<Diagram *> &);
 		int cleanProject();
 		void updateWindowTitle();
@@ -112,38 +103,38 @@ class ProjectView : public QWidget {
 		void editElementRequired(const ElementsLocation &);
 
 	private:
-	void initActions();
-	void initWidgets();
-	void initLayout();
-	void loadDiagrams();
-	DiagramView *findDiagram(Diagram *);
-	DiagramView *nextDiagram();
-	DiagramView *previousDiagram();
-	DiagramView *firstDiagram();
-	DiagramView *lastDiagram();
-	void rebuildDiagramsMap();
-	bool tryClosing();
-	bool tryClosingElementEditors();
-	int tryClosingDiagrams();
-	QString askUserForFilePath(bool = true);
-	QETResult noProjectResult() const;
+		void initActions();
+		void initWidgets();
+		void initLayout();
+		void loadDiagrams();
+		DiagramView *findDiagram(Diagram *);
+		DiagramView *nextDiagram();
+		DiagramView *previousDiagram();
+		DiagramView *firstDiagram();
+		DiagramView *lastDiagram();
+		void rebuildDiagramsMap();
+		bool tryClosing();
+		bool tryClosingElementEditors();
+		int tryClosingDiagrams();
+		QString askUserForFilePath(bool = true);
+		QETResult noProjectResult() const;
 
 	private slots:
-	void tabChanged(int);
-	void tabDoubleClicked(int);
-	void setDisplayFallbackWidget(bool);
-	void adjustReadOnlyState();
+		void tabChanged(int);
+		void tabDoubleClicked(int);
+		void setDisplayFallbackWidget(bool);
+		void adjustReadOnlyState();
 
-	// attributes
+		// attributes
 	private:
-	QAction *add_new_diagram_;
-	QETProject *m_project;
-	QVBoxLayout *layout_;
-	QWidget *fallback_widget_;
-	QLabel *fallback_label_;
-	QTabWidget *m_tab;
-	QMap<int, DiagramView *> m_diagram_ids;
-	QList<DiagramView *> m_diagram_view_list;
+		QAction *add_new_diagram_;
+		QETProject *m_project;
+		QVBoxLayout *layout_;
+		QWidget *fallback_widget_;
+		QLabel *fallback_label_;
+		QTabWidget *m_tab;
+		QMap<int, DiagramView *> m_diagram_ids;
+		QList<DiagramView *> m_diagram_view_list;
 };
-Q_DECLARE_OPERATORS_FOR_FLAGS(ProjectView::ProjectSaveOptions)
+
 #endif

@@ -157,7 +157,6 @@ class Diagram : public QGraphicsScene
 		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
 		void write();
 		void write(const QDomElement &);
-		bool wasWritten() const;
 		QDomElement writeXml(QDomDocument &) const;
 		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
 		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);

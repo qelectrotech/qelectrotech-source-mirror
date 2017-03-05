@@ -94,29 +94,6 @@ QList<DiagramView *> ProjectView::diagram_views() const {
 }
 
 /**
-	@return A list containing child diagrams matching provided \a options.
-*/
-QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
-	QList<Diagram *> selection;
-	if ((options & AllDiagrams) == AllDiagrams) {
-		selection << m_project -> diagrams();
-	} else {
-		Diagram *current = 0;
-		if (DiagramView *view = currentDiagram()) {
-			current = view -> diagram();
-		}
-		if (options & CurrentDiagram) {
-			if (current) selection << current;
-		} else if (options & AllDiagramsButCurrent) {
-			selection = m_project -> diagrams();
-			selection.removeOne(current);
-		}
-	}
-
-	return(selection);
-}
-
-/**
  * @brief ProjectView::currentDiagram
  * @return The current active diagram view or nullptr if there isn't diagramView in this project view.
  */
@@ -696,7 +673,7 @@ void ProjectView::exportProject() {
 	@return a QETResult object reflecting the situation
 */
 QETResult ProjectView::save() {
-	return(doSave(AllDiagrams));
+	return(doSave());
 }
 
 /**
@@ -706,38 +683,38 @@ QETResult ProjectView::save() {
 	@return a QETResult object reflecting the situation; note that a valid
 	QETResult object is returned if the operation was cancelled.
 */
-QETResult ProjectView::saveAs(ProjectSaveOptions options) {
+QETResult ProjectView::saveAs()
+{
 	if (!m_project) return(noProjectResult());
 
 	QString filepath = askUserForFilePath();
 	if (filepath.isEmpty()) return(QETResult());
-	return(doSave(options));
+	return(doSave());
 }
 
 /**
-	Save project content according to \a options, then write the project file. May
+	Save project content, then write the project file. May
 	call saveAs if no filepath was provided before.
-	@param options May be used to specify what should be saved (e.g. modified
-	diagrams only).
 	@return a QETResult object reflecting the situation; note that a valid
 	QETResult object is returned if the operation was cancelled.
 */
-QETResult ProjectView::doSave(ProjectSaveOptions options) {
+QETResult ProjectView::doSave()
+{
 	if (!m_project) return(noProjectResult());
 
 	if (m_project -> filePath().isEmpty()) {
 		// The project has not been saved to a file yet,
 		// so save() actually means saveAs().
-		return(saveAs(options));
+		return(saveAs());
 	}
 
 	// look for diagrams matching the required save options
-	saveDiagrams(getDiagrams(options));
+	saveDiagrams(m_project->diagrams());
 
 	// write to file
 	QETResult result = m_project -> write();
 	updateWindowTitle();
-	if (options == AllDiagrams) project()->undoStack()->clear();
+	project()->undoStack()->clear();
 	return(result);
 }
 
