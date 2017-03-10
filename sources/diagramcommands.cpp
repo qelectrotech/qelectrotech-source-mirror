@@ -171,57 +171,74 @@ void PasteDiagramCommand::redo()
 	diagram -> showMe();
 	QSettings settings;
 
-	if (first_redo) {
+	if (first_redo)
+	{
 		first_redo = false;
 
 			//this is the first paste, we do some actions for the new element
-		foreach(Element *e, content.elements) {
+		const QList <Element *> elmts_list = content.elements.toList();
+		for (Element *e : elmts_list)
+		{
 				//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
-
+			
 				//Reset the text of report element
-			if (e -> linkType() & Element::AllReport) {
-
+			if (e -> linkType() & Element::AllReport)
+			{
+				
 					//Befor commit 3559 there isn't text field tagged label,
 					//so if not found we take the first text field
 				if (ElementTextItem *eti = e->taggedText("label"))
 					eti->setPlainText("/");
 				else if (e->texts().size())
 					e->texts().first()->setPlainText("/");
-
+				
 				if (ElementTextItem *eti = e->taggedText("function"))
 					eti->setPlainText("_");
 				if (ElementTextItem *eti = e->taggedText("tension-protocol"))
 					eti->setPlainText("_");
 			}
-				if (settings.value("diagramcommands/save-label", true).toBool()){
-				//Reset the information about the label, the comment and location
+			if (settings.value("diagramcommands/save-label", true).toBool())
+			{
+					//Reset the information about the label, the comment and location
+				e -> rElementInformations().addValue("formula", "");
 				e -> rElementInformations().addValue("label", "");
 				e -> rElementInformations().addValue("comment", "");
 				e -> rElementInformations().addValue("location", "");
-
-				//Reset the text field tagged "label
+				
+					//Reset the text field tagged "label
 				if (ElementTextItem *eti = e ->taggedText("label"))
-				eti -> setPlainText("_");
-			
-				//Reset the text of conductors
-				foreach (Conductor *c, content.conductorsToMove) {
+					eti -> setPlainText("_");
+				
+					//Reset the text of conductors
+				const QList <Conductor *> conductors_list = content.conductorsToMove.toList();
+				for (Conductor *c : conductors_list)
+				{
 					ConductorProperties cp = c -> properties();
 					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
 					c -> setProperties(cp);
+				}
+			}
+			else
+			{	
+					//We call update label, notably to setup the connection required by the formula of the element
+				e->updateLabel();
 			}
 		}
-}
 	}
-	else {
-		foreach (QGraphicsItem *item, content.items(filter)) {
+	else
+	{
+		const QList <QGraphicsItem *> qgis_list = content.items(filter);
+		for (QGraphicsItem *item : qgis_list)
+		{
 			diagram->item_paste = true;
 			diagram->addItem(item);
 			diagram->item_paste = false;
 		}
 	}
 
-	foreach (QGraphicsItem *qgi, content.items())
+	const QList <QGraphicsItem *> qgis_list = content.items();
+	for (QGraphicsItem *qgi : qgis_list)
 		qgi -> setSelected(true);
 }
 
