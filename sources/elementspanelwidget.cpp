@@ -45,7 +45,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	// initialise les actions
 	open_directory        = new QAction(QET::Icons::DocumentOpen,              tr("Ouvrir le dossier correspondant"),     this);
 	copy_path             = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier le chemin"),                    this);
-	reload                = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
 	prj_activate          = new QAction(QET::Icons::ProjectFile,               tr("Basculer vers ce projet"),             this);
 	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
 	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du projet"),          this);
@@ -72,7 +71,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
 	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
-	connect(reload,                SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
 	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
 	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
 	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
@@ -148,13 +146,11 @@ void ElementsPanelWidget::copyPathForSelectedItem() {
 */
 void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
-	reload -> setEnabled(false);
 	elements_panel -> reload(true);
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
 	}
-	reload -> setEnabled(true);
 }
 
 /**

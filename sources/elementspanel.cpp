@@ -78,20 +78,6 @@ ElementsPanel::~ElementsPanel() {
 }
 
 /**
-	Gere l'entree d'un drag'n drop. L'evenement est accepte si les donnees
-	fournies contiennent un type MIME representant une categorie ou un element
-	QET.
-	@param e QDragEnterEvent decrivant l'entree du drag'n drop
-*/
-void ElementsPanel::dragEnterEvent(QDragEnterEvent *e) {
-	if (e -> mimeData() -> hasFormat("application/x-qet-category-uri")) {
-		e -> acceptProposedAction();
-	} else if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
-		e -> acceptProposedAction();
-	}
-}
-
-/**
 	Gere le debut des drag'n drop
 	@param supportedActions Les actions supportees
 */
@@ -182,20 +168,6 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 }
 
 /**
-	@return true if \a item matches the current filter, false otherwise
-*/
-bool ElementsPanel::matchesCurrentFilter(const QTreeWidgetItem *item) const {
-	if (!item) return(false);
-	
-	// no filter => we consider the item matches
-	if (filter_.isEmpty()) return(true);
-	
-	bool item_matches = item -> text(0).contains(filter_, Qt::CaseInsensitive);
-	
-	return(item_matches);
-}
-
-/**
 	@return true if \a item matches the  filter, false otherwise
 */
 bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, QString filter) const {
@@ -215,7 +187,6 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, QString filter) c
  * @param reload_collections true for read all collections since their sources (files, projects ...)
  */
 void ElementsPanel::reload(bool reload_collections) {
-
 	Q_UNUSED(reload_collections);
 	
 	QIcon system_icon(":/ico/16x16/qet.png");

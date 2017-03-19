@@ -82,7 +82,6 @@ class GenericPanel : public QTreeWidget {
 	// diagram-related methods
 	public:
 	virtual QTreeWidgetItem *addDiagram(Diagram *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
-	virtual QTreeWidgetItem *itemForDiagram(Diagram *);
 	protected:
 	virtual QTreeWidgetItem *getItemForDiagram(Diagram *, bool * = 0);
 	virtual QTreeWidgetItem *updateDiagramItem(QTreeWidgetItem *, Diagram *, PanelOptions = AddAllChild, bool = false);
@@ -100,7 +99,6 @@ class GenericPanel : public QTreeWidget {
 	// title block templates methods
 	public:
 	virtual QTreeWidgetItem *addTemplate(const TitleBlockTemplateLocation &, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
-	virtual QTreeWidgetItem *itemForTemplate(const TitleBlockTemplateLocation &);
 	protected:
 	virtual QTreeWidgetItem *getItemForTemplate(const TitleBlockTemplateLocation &, bool * = 0);
 	virtual QTreeWidgetItem *updateTemplateItem(QTreeWidgetItem *, const TitleBlockTemplateLocation &, PanelOptions = AddAllChild, bool = false);
@@ -127,14 +125,12 @@ class GenericPanel : public QTreeWidget {
 	virtual QIcon   defaultIcon(QET::ItemType);
 	virtual QTreeWidgetItem *makeItem(QET::ItemType, QTreeWidgetItem * = 0, const QString & = QString(), const QIcon & = QIcon());
 	virtual void deleteItem(QTreeWidgetItem *, bool = false);
-	virtual void markItemAsContainer(QTreeWidgetItem *);
 	virtual void markItemAsUnused(QTreeWidgetItem *);
 	virtual void reparent(QTreeWidgetItem *, QTreeWidgetItem *);
 	QList<QTreeWidgetItem *> childItems(QTreeWidgetItem *, QET::ItemType, bool = false) const;
 	template<typename T> void removeObsoleteItems(const QList<T> &, QTreeWidgetItem *, QET::ItemType, bool);
 	template<typename T> T valueForItem(QTreeWidgetItem *) const;
 	void unregisterItem(QTreeWidgetItem *);
-	void clearPanel();
 	
 	bool event(QEvent *);
 	

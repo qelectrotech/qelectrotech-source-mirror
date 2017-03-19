@@ -40,7 +40,6 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	ElementsPanel *elements_panel;
 	QAction *open_directory, *copy_path;
-	QAction *reload;
 	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_top, *prj_move_diagram_down, *prj_move_diagram_upx10, *prj_move_diagram_downx10;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QMenu *context_menu;

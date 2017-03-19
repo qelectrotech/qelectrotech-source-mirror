@@ -254,14 +254,6 @@ QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *par
 /**
 	
 */
-QTreeWidgetItem *GenericPanel::itemForDiagram(Diagram *diagram) {
-	if (!diagram) return(0);
-	return(diagrams_.value(diagram, 0));
-}
-
-/**
-	
-*/
 QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created) {
 	if (!diagram) return(0);
 	
@@ -450,13 +442,6 @@ QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_
 	fillTemplateItem(tb_template_qtwi, tb_template, options, creation_required);
 	
 	return(tb_template_qtwi);
-}
-
-/**
-	
-*/
-QTreeWidgetItem *GenericPanel::itemForTemplate(const TitleBlockTemplateLocation &tb_template) {
-	return(tb_templates_.value(tb_template, 0));
 }
 
 /**
@@ -705,17 +690,6 @@ void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
 }
 
 /**
-	Mark an item as being a container (collection, category, ...)
-*/
-void GenericPanel::markItemAsContainer(QTreeWidgetItem *qtwi) {
-	if (!qtwi) return;
-	QLinearGradient t(0, 0, 200, 0);
-	t.setColorAt(0, QColor("#e8e8e8"));
-	t.setColorAt(1, QColor("#ffffff"));
-	qtwi -> setBackground(0, QBrush(t));
-}
-
-/**
 	Mark the provided QTreeWidgetItem as unused in its parent project.
 	@param qtwi A QTreeWidgetItem
 */
@@ -807,16 +781,6 @@ void GenericPanel::unregisterItem(QTreeWidgetItem *item) {
 	} else if (type == QET::Project) {
 		projects_.remove(valueForItem<QETProject *>(item));
 	}
-}
-
-/**
-	
-*/
-void GenericPanel::clearPanel() {
-	clear();
-	projects_.clear();
-	diagrams_.clear();
-	tb_templates_.clear();
 }
 
 /**
