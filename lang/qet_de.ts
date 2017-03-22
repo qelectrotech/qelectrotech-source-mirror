@@ -87,7 +87,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="111"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenplan-Plugin</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="132"/>
@@ -316,17 +316,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Leiter</translation>
+        <translation>Leiter</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummerierungsregel konfigurieren</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurieren</translation>
     </message>
     <message>
         <source>Conductor</source>
@@ -658,12 +658,12 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Nummerierung bearbeiten</translation>
+        <translation>Nummerierung bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -3334,7 +3334,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Leiter</translation>
+        <translation>Leiter</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3349,7 +3349,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Folien-Auto-Nummerierung</translation>
     </message>
     <message>
         <source>Folio Auto Numbering</source>
@@ -6893,17 +6893,17 @@ verwendet werden:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Verfügbare Nummerierungsregeln:</translation>
+        <translation>Verfügbare Nummerierungsregeln:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Name der neuen Nummerierungsregel</translation>
+        <translation>Name der neuen Nummerierungsregel</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Nummerierung löschen</translation>
+        <translation>Nummerierungsregel löschen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7851,7 +7851,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %folio verfügbar.
+Folgende Variablen stehen im Feld Folie zur Verfügung:
+%id: aktuelle Foliennummer
+%total: gesamte Folienanzahl
+%autonum: aktuelle Foliennummer (generiert durch Nummerierungsregel)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
