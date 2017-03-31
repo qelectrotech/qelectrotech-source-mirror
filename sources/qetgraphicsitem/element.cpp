@@ -394,7 +394,14 @@ bool Element::valideXml(QDomElement &e) {
 	@return true si l'import a reussi, false sinon
 	
 */
-bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation) {
+bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation)
+{
+	QDomDocument doc = e.ownerDocument();
+	QDomElement root = doc.documentElement();
+	double saved_version = -1;
+	if(root.tagName() == "project")
+		saved_version = root.attribute("version", "-1").toDouble();
+		
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
@@ -482,6 +489,30 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	if (m_element_informations["label"].toString().contains("%") && m_element_informations["formula"].toString().isNull())
 	{
 		m_element_informations.addValue("formula", m_element_informations["label"]);
+	}
+	
+		/**
+		  * At the start of the 0.51 devel, if the text item with tagg "label" was edited directly in the diagram,
+		  * the text was not write to the element information value "formula".
+		  * During the devel, this behavior change, when user edit the text item direclty in the diagram,
+		  * the text was also write in the element information.
+		  * Then when open a .qet file, the text item with tagg "label", is write with the value stored in the element information.
+		  * The mistake is :
+		  * if user write directly in the diagram  with a version befor the change (so the text is not in the element information),
+		  * and open the project with a version after the change, then the text item with tagg "label" is empty. 
+		  * The code below fix this.
+		  */
+	if (saved_version > -1 && saved_version <= 0.51)
+	{
+		if (ElementTextItem *eti = taggedText("label"))
+		{
+			if (m_element_informations["label"].toString().isEmpty() &&
+				m_element_informations["formula"].toString().isEmpty() &&
+				!eti->toPlainText().isEmpty())
+			{
+				m_element_informations.addValue("formula", eti->toPlainText());
+			}
+		}
 	}
 
 	//Position and selection.
