@@ -91,7 +91,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="111"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka listw zaciskowych</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="132"/>
@@ -313,17 +313,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Przewód</translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguracja automatycznej numeracji</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguracja</translation>
     </message>
     <message>
         <source>Conductor</source>
@@ -682,12 +682,12 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Edycja numeracji</translation>
+        <translation>Edycja numeracji</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -3337,7 +3337,7 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Przewód</translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3352,7 +3352,7 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <source>Folio Auto Numbering</source>
@@ -6916,17 +6916,17 @@ Stwórz własny tekst używając następujących zmiennych:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Numeracje dostępne:</translation>
+        <translation>Numeracje dostępne:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Nazwa nowej numeracji</translation>
+        <translation>Nazwa nowej numeracji</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Usuń numerację</translation>
+        <translation>Usuń numerację</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7895,7 +7895,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępny jako %folio dla szablonów tabliczek rysunkowych
+Les variables suivantes sont utilisables :
+- %id: numer bieżącego arkusza w projekcie 
+- %total: łączna liczba arkuszy w projekcie 
+- %autonum: automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
