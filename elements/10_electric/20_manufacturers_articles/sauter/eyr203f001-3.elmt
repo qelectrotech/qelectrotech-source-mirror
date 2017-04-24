@@ -1,0 +1,54 @@
+<definition width="770" version="0.5" type="element" orientation="dyyy" link_type="simple" height="160" hotspot_x="424" hotspot_y="67">
+    <uuid uuid="{ec0ae29f-1f71-40df-82da-47553334dd15}"/>
+    <names>
+        <name lang="fr">EYR203F001 SORTIES ANALOGIQUES</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="43" y2="43" y3="51.25" x1="85" y4="43" x2="75" x3="80.5" x4="85" antialias="true" closed="false"/>
+        <line length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="47.8771" y2="52.0374" x1="-373.473" x2="-373.473" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="44" y2="44" y3="52.25" x1="-117" y4="44" x2="-127" x3="-121.5" x4="-117" antialias="true" closed="false"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="44" y2="44" y3="52.25" x1="-276" y4="44" x2="-286" x3="-280.5" x4="-276" antialias="true" closed="false"/>
+        <line length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="52.1809" y2="52.1809" x1="-377.187" x2="-370.038" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <input text="12" tagg="none" rotate="true" x="-132" y="67.8" size="9"/>
+        <input text="11" tagg="none" rotate="true" x="-292" y="68" size="9"/>
+        <input text="13" tagg="none" rotate="true" x="70" y="66.8" size="9"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="44" y2="44" y3="52.25" x1="195" y4="44" x2="185" x3="190.5" x4="195" antialias="true" closed="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="-131" y="57.8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="71" y="56.8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="-290" y="57.8"/>
+        <input text="22" tagg="none" rotate="true" x="70" y="27.7897" size="9"/>
+        <input text="21" tagg="none" rotate="true" x="-132" y="28.7897" size="9"/>
+        <input text="20" tagg="none" rotate="true" x="-291" y="28.7897" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="17" height="16.746" antialias="false" x="-288.45" y="19.5794"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="17" height="16.746" antialias="false" x="72.55" y="18.5794"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="17" height="16.746" antialias="false" x="-129.45" y="19.5794"/>
+        <line length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="47.8771" y2="52.0374" x1="270.87" x2="270.87" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="52.1809" y2="52.1809" x1="267.526" x2="273.962" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <input text="" tagg="label" rotate="true" x="-56.5" y="48.7" size="9"/>
+        <input text="" tagg="label" rotate="true" x="-412" y="38" size="9"/>
+        <input text="14" tagg="none" rotate="true" x="180" y="67.8" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="181" y="57.8"/>
+        <input text="15" tagg="none" rotate="true" x="259" y="68" size="9"/>
+        <input text="" tagg="label" rotate="true" x="-398.5" y="-64.3" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="260" y="58"/>
+        <input text="_" tagg="label" rotate="true" x="-412" y="11" size="9"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="78.45" y2="78.45" x1="-420.5" x2="339.5" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <input text="10" tagg="none" rotate="true" x="-385" y="69.2" size="9"/>
+        <input text="" tagg="none" rotate="true" x="-421.5" y="67.7" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" height="20" antialias="false" x="-384" y="59"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="79.7" y2="-60.3" x1="-419.5" x2="-419.5" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="77.7" y2="-61.3" x1="339.5" x2="340.5" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-62.3" y2="-61.3" x1="-420.5" x2="339.5" end1="none" end2="none" antialias="false" length1="1.5"/>
+        <input text="23" tagg="none" rotate="true" x="180" y="28.7897" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="17" height="16.746" antialias="false" x="182.55" y="19.5794"/>
+        <input text="EYR203 F001" tagg="none" rotate="true" x="-397" y="-24" size="9"/>
+        <input text="Sorties Analogiques 0...10V" tagg="none" rotate="true" x="-86" y="-8" size="9"/>
+        <terminal orientation="n" x="80" y="80"/>
+        <terminal orientation="n" x="-279.5" y="79.7"/>
+        <terminal orientation="n" x="190" y="80"/>
+        <terminal orientation="n" x="-120.5" y="79.9"/>
+        <terminal orientation="n" x="-374.5" y="79.7"/>
+        <terminal orientation="n" x="270" y="80"/>
+    </description>
+</definition>

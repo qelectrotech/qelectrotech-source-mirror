@@ -1,0 +1,70 @@
+<definition type="element" width="320" version="0.5" height="150" link_type="simple" hotspot_x="275" orientation="dyyy" hotspot_y="74">
+    <uuid uuid="{bc7af774-82fd-4c2a-8168-0034f8058f2f}"/>
+    <names>
+        <name lang="fr">rmz782</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input tagg="none" x="-113" y="50" size="5" rotate="true" text="N1"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-10.5" y2="-1.5" x1="-12" x2="-17" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-10.5" y2="-1.5" x1="26" x2="21" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-39.5" y2="-10.5" x1="-12" x2="-12" antialias="false" length1="1.5"/>
+        <input tagg="none" x="14" y="49.5" size="5" rotate="true" text="Q14"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-110" y="57.5" width="10" height="8" antialias="false"/>
+        <input tagg="none" x="-241.5" y="-16" size="12" rotate="true" text="Siemens "/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-1.5" y2="39.5" x1="-12" x2="-12" antialias="false" length1="1.5"/>
+        <input tagg="none" x="15" y="-48.5" size="5" rotate="true" text="Q13"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="19" y="57" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="19" y="-64" width="10" height="8" antialias="false"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-39.5" y2="-10.5" x1="26" x2="26" antialias="false" length1="1.5"/>
+        <input tagg="label" x="-98" y="12" size="9" rotate="true" text="_"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-1.5" y2="39.5" x1="26" x2="26" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-10.5" y2="-1.5" x1="-48" x2="-53" antialias="false" length1="1.5"/>
+        <input tagg="none" x="-61" y="-48.5" size="5" rotate="true" text="Y13"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-270.5" y="-69.5" width="310.5" height="139" antialias="false"/>
+        <input tagg="none" x="-180" y="12.5" size="12" text="RMZ782 "/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-39.5" y2="-10.5" x1="-48" x2="-48" antialias="false" length1="1.5"/>
+        <line length2="1.5" style="line-style:dashed;line-weight:thin;filling:black;color:black" end1="none" end2="none" y1="-1.5" y2="39.5" x1="-48" x2="-48" antialias="false" length1="1.5"/>
+        <input tagg="none" x="-24" y="49.5" size="5" rotate="true" text="Y24"/>
+        <input tagg="none" x="-59" y="49.5" size="5" rotate="true" text="Y14"/>
+        <input tagg="none" x="-196.5" y="49.5" size="5" rotate="true" text="G0"/>
+        <input tagg="none" x="-167.5" y="49.5" size="5" rotate="true" text="Y9"/>
+        <input tagg="none" x="-229.5" y="49" size="5" rotate="true" text="G1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-54" y="57" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19" y="57" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-226.5" y="56.5" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-266" y="-64" width="10" height="8" antialias="false"/>
+        <input tagg="none" x="-145" y="-47.5" size="5" rotate="true" text="X3"/>
+        <input tagg="none" x="-177.5" y="-47.5" size="5" rotate="true" text="M"/>
+        <input tagg="none" x="-234.5" y="-47.5" size="5" rotate="true" text="M"/>
+        <input tagg="none" x="-269" y="-47.5" size="5" rotate="true" text="B1"/>
+        <input tagg="none" x="-207" y="-47.5" size="5" rotate="true" text="X2"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-203" y="-64" width="10" height="8" antialias="false"/>
+        <input tagg="none" x="-109" y="-46.5" size="5" rotate="true" text="M"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-143" y="-64" width="10" height="8" antialias="false"/>
+        <input tagg="none" x="-26" y="-48.5" size="5" rotate="true" text="Y23"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-57" y="-64" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" y="-64" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-193.5" y="57" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-175.5" y="-64" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-106" y="-64" width="10" height="8" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-164.5" y="57" width="10" height="8" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-232.5" y="-64" width="10" height="8" antialias="false"/>
+        <terminal x="-14" y="69" orientation="s"/>
+        <terminal x="-49" y="69" orientation="s"/>
+        <terminal x="-52" y="-69" orientation="n"/>
+        <terminal x="-138" y="-69" orientation="n"/>
+        <terminal x="-227.5" y="-69" orientation="n"/>
+        <terminal x="-188.5" y="69" orientation="s"/>
+        <terminal x="-261" y="-69" orientation="n"/>
+        <terminal x="-159.5" y="69" orientation="s"/>
+        <terminal x="-101" y="-69" orientation="n"/>
+        <terminal x="-170.5" y="-69" orientation="n"/>
+        <terminal x="-221.5" y="68.5" orientation="s"/>
+        <terminal x="-198" y="-69" orientation="n"/>
+        <terminal x="24" y="69" orientation="s"/>
+        <terminal x="-16" y="-69" orientation="n"/>
+        <terminal x="24" y="-69" orientation="n"/>
+        <terminal x="-105" y="69.5" orientation="s"/>
+    </description>
+</definition>

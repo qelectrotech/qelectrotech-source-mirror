@@ -1,0 +1,72 @@
+<definition version="0.5" link_type="simple" width="390" hotspot_x="277" hotspot_y="70" type="element" orientation="dyyy" height="150">
+    <uuid uuid="{5196b458-042a-40ac-945f-421b30c95409}"/>
+    <names>
+        <name lang="fr">rmz781</name>
+    </names>
+    <informations/>
+    <description>
+        <input rotate="true" size="5" x="-116" y="-42" text="M" tagg="none"/>
+        <line x2="14" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="-6.5" end2="none" y2="2.5" length1="1.5" length2="1.5" x1="19"/>
+        <input rotate="true" size="5" x="-203" y="65" text="K54" tagg="none"/>
+        <input rotate="true" size="5" x="10" y="-43" text="K63" tagg="none"/>
+        <input rotate="true" size="5" x="67" y="-43" text="Q21" tagg="none"/>
+        <input rotate="true" size="5" x="5" y="54" text="K64" tagg="none"/>
+        <input rotate="true" size="5" x="-140" y="63" text="K53" tagg="none"/>
+        <input rotate="true" size="12" x="-246.5" y="-11" text="Siemens " tagg="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="71" width="10" antialias="false" y="-58.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="14" width="10" antialias="false" y="-58.5" height="8"/>
+        <input rotate="true" size="5" x="-66" y="-43" text="K43" tagg="none"/>
+        <input rotate="true" size="5" x="86" y="54" text="Q24" tagg="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-62" width="10" antialias="false" y="-58.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" width="10" antialias="false" y="61.5" height="8"/>
+        <input rotate="true" size="5" x="44" y="54" text="Q22" tagg="none"/>
+        <line x2="19" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="-35.5" end2="none" y2="-6.5" length1="1.5" length2="1.5" x1="19"/>
+        <input rotate="true" size="9" x="-36.5" y="18" text="_" tagg="label"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="49" width="10" antialias="false" y="61.5" height="8"/>
+        <line x2="19" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="2.5" end2="none" y2="43.5" length1="1.5" length2="1.5" x1="19"/>
+        <line x2="-60" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="-6.5" end2="none" y2="2.5" length1="1.5" length2="1.5" x1="-55"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="91" width="10" antialias="false" y="61.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-275.5" width="385.5" antialias="false" y="-64.5" height="139"/>
+        <input size="12" x="-139" y="-19.5" text="RMZ781 " tagg="none"/>
+        <line x2="-55" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="-35.5" end2="none" y2="-6.5" length1="1.5" length2="1.5" x1="-55"/>
+        <line x2="-55" style="line-style:dashed;line-weight:thin;filling:black;color:black" antialias="false" end1="none" y1="2.5" end2="none" y2="43.5" length1="1.5" length2="1.5" x1="-55"/>
+        <input rotate="true" size="5" x="-68" y="54" text="K44" tagg="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63" width="10" antialias="false" y="61.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-267" width="10" antialias="false" y="-59.5" height="8"/>
+        <input rotate="true" size="5" x="-144" y="-42" text="X3" tagg="none"/>
+        <input rotate="true" size="5" x="-182.5" y="-42.5" text="M" tagg="none"/>
+        <input rotate="true" size="5" x="-239.5" y="-42.5" text="M" tagg="none"/>
+        <input rotate="true" size="5" x="-270" y="-43" text="B2" tagg="none"/>
+        <input rotate="true" size="5" x="-209" y="-42" text="B7" tagg="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-205" width="10" antialias="false" y="-58.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-113.5" width="10" antialias="false" y="-59" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-180.5" width="10" antialias="false" y="-59" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-141" width="10" antialias="true" y="-59.5" height="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-237.5" width="10" antialias="false" y="-59" height="8"/>
+        <line x2="77" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-36" end2="none" y2="-6" length1="1.5" length2="1.5" x1="77"/>
+        <line x2="67" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-6" end2="none" y2="4" length1="1.5" length2="1.5" x1="77"/>
+        <line x2="57" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="4" end2="none" y2="44" length1="1.5" length2="1.5" x1="57"/>
+        <line x2="97" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="4" end2="none" y2="44" length1="1.5" length2="1.5" x1="97"/>
+        <line x2="72" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="3" end2="none" y2="3" length1="1.5" length2="1.5" x1="57"/>
+        <line x2="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="70" end2="none" y2="10" length1="1.5" length2="1.5" x1="-180"/>
+        <line x2="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="10" end2="none" y2="10" length1="1.5" length2="1.5" x1="-180"/>
+        <line x2="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="10" end2="none" y2="30" length1="1.5" length2="1.5" x1="-140"/>
+        <line x2="-160" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="30" end2="none" y2="50" length1="1.5" length2="1.5" x1="-140"/>
+        <line x2="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="75" end2="none" y2="50" length1="1.5" length2="1.5" x1="-140"/>
+        <terminal x="76" y="-63.5" orientation="n"/>
+        <terminal x="-57" y="-63.5" orientation="n"/>
+        <terminal x="19" y="-63.5" orientation="n"/>
+        <terminal x="-58" y="73.5" orientation="s"/>
+        <terminal x="-232.5" y="-64" orientation="n"/>
+        <terminal x="-136" y="-64.5" orientation="n"/>
+        <terminal x="-262" y="-64.5" orientation="n"/>
+        <terminal x="-108.5" y="-64" orientation="n"/>
+        <terminal x="-175.5" y="-64" orientation="n"/>
+        <terminal x="-141" y="73.5" orientation="s"/>
+        <terminal x="-180" y="73.5" orientation="s"/>
+        <terminal x="-200" y="-63.5" orientation="n"/>
+        <terminal x="15" y="73.5" orientation="s"/>
+        <terminal x="96" y="73.5" orientation="s"/>
+        <terminal x="54" y="73.5" orientation="s"/>
+    </description>
+</definition>
