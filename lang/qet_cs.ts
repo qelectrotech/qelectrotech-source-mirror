@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="88"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 vývojáři QElectroTechu {2006-2017 ?}</translation>
+        <translation>2006-2017 vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="92"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="111"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Přídavný modul svorkový pásek</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="132"/>
@@ -313,21 +313,21 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavit pravidla pro automatické číslování</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavit</translation>
     </message>
     <message>
         <source>Conductor</source>
-        <translation type="vanished">Vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -465,15 +465,15 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <name>AutonumSelectorWidget</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Autonumérotation :</source>
-        <translation type="vanished">Automatické číslování:</translation>
+        <translation>Automatické číslování:</translation>
     </message>
     <message>
         <source>éditer les numérotations</source>
-        <translation type="vanished">Upravit číslování</translation>
+        <translation>Upravit číslování</translation>
     </message>
 </context>
 <context>
@@ -667,7 +667,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="137"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorec textu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
@@ -677,12 +677,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Upravit číslování</translation>
+        <translation>Upravit číslování</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -937,58 +937,58 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <name>DialogAutoNum</name>
     <message>
         <source>Annotation des schémas</source>
-        <translation type="vanished">Vysvětlivky k výkresům</translation>
+        <translation>Vysvětlivky k výkresům</translation>
     </message>
     <message>
         <source>Configuration</source>
-        <translation type="vanished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <source>Annotation</source>
-        <translation type="vanished">Vysvětlivka</translation>
+        <translation>Vysvětlivka</translation>
     </message>
     <message>
         <source>Sélection</source>
-        <translation type="vanished">Výběr</translation>
+        <translation>Výběr</translation>
     </message>
     <message>
         <source>Conducteurs</source>
-        <translation type="vanished">Vodiče</translation>
+        <translation>Vodiče</translation>
     </message>
     <message>
         <source>Composants</source>
-        <translation type="vanished">Součástky</translation>
+        <translation>Součástky</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Annotation (alpha)</source>
-        <translation type="vanished">Vysvětlivka.(alfa)</translation>
+        <translation>Vysvětlivka.(alfa)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu odstraněno&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu odstraněno&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Smazat vysvětlivku</translation>
+        <translation>Smazat vysvětlivku</translation>
     </message>
     <message>
         <source>Fermer</source>
-        <translation type="vanished">Zavřít</translation>
+        <translation>Zavřít</translation>
     </message>
     <message>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="vanished">Odstranění vysvětlivek k vodičům</translation>
+        <translation>Odstranění vysvětlivek k vodičům</translation>
     </message>
     <message>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="vanished">Opravdu chcete odstranit vysvětlivky k vodičům:
+        <translation>Opravdu chcete odstranit vysvětlivky k vodičům:
 
 %1?</translation>
     </message>
@@ -996,14 +996,14 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="vanished">Opravdu chcete opatřit vysvětlivkami vodiče:
+        <translation>Opravdu chcete opatřit vysvětlivkami vodiče:
 
 %1?</translation>
     </message>
     <message>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="vanished">Vysvětlivky k vodičům</translation>
+        <translation>Vysvětlivky k vodičům</translation>
     </message>
 </context>
 <context>
@@ -1396,19 +1396,19 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <name>ElementSelectorWidget</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>N° fil : </source>
-        <translation type="vanished">Č. listu: </translation>
+        <translation>Č.drátu: </translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <source>Voir l&apos;élément</source>
-        <translation type="vanished">Vidět prvek</translation>
+        <translation>Vidět prvek</translation>
     </message>
 </context>
 <context>
@@ -1725,7 +1725,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <name>ElementsPanelWidget</name>
     <message>
         <source>Recharger les collections</source>
-        <translation type="vanished">Nahrát sbírky znovu</translation>
+        <translation>Nahrát sbírky znovu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
@@ -2123,17 +2123,17 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Průvodce vzorcem</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Textový štítek</translation>
+        <translation>Textový štítek</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorec</translation>
     </message>
 </context>
 <context>
@@ -2639,31 +2639,31 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledání</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="408"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
         <source>Label</source>
-        <translation type="unfinished">Štítek</translation>
+        <translation>Štítek</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="408"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Poznámka</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Číslo listu</translation>
+        <translation>Číslo listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="408"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Štítek listu</translation>
+        <translation>Štítek listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="408"/>
@@ -2671,7 +2671,7 @@ textu a čísel.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Název listu</translation>
+        <translation>Název listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="408"/>
@@ -2679,29 +2679,29 @@ textu a čísel.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Č.drátu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkce</translation>
+        <translation>Funkce</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Napětí/Protokol</translation>
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Hledat v listu:</translation>
+        <translation>Hledat v listu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -2716,22 +2716,22 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojit prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat podřízený prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit rozložení</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="180"/>
@@ -2745,11 +2745,11 @@ textu a čísel.</translation>
     </message>
     <message>
         <source>Tous</source>
-        <translation type="vanished">Vše</translation>
+        <translation>Vše</translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -2758,7 +2758,7 @@ textu a čísel.</translation>
     </message>
     <message>
         <source>Rechercher</source>
-        <translation type="vanished">Hledat</translation>
+        <translation>Hledat</translation>
     </message>
 </context>
 <context>
@@ -2772,29 +2772,29 @@ textu a čísel.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Stručný popis</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Číslo listu</translation>
+        <translation>Číslo listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Štítek listu</translation>
+        <translation>Štítek listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Název listu</translation>
+        <translation>Název listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
@@ -2818,45 +2818,45 @@ textu a čísel.</translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">List %1 (%2), poloha %3.</translation>
+        <translation>List %1 (%2), poloha %3.</translation>
     </message>
     <message>
         <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Křížový odkaz (nadřízený)</translation>
+        <translation>Křížový odkaz (nadřízený)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojit prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojit prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat nadřízený prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="60"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit rozložení</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Křížový odkaz (nadřízený)</translation>
     </message>
 </context>
 <context>
@@ -2916,7 +2916,7 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="81"/>
         <source>Reports de folio</source>
-        <translation>Zprávy o listech</translation>
+        <translation>Odkazy na listy</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="82"/>
@@ -3280,7 +3280,10 @@ Vyberte, prosím, vlastnosti, které se mají použít na nový potenciál.</tra
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorec nového potenciálu obsahuje proměnné neslučitelné s odkazy na listy.
+Zadejte, prosím, vzorec slučitelný s tímto vzorcem.
+Následující proměnné jsou neslučitelné:
+%sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
 <context>
@@ -3302,11 +3305,11 @@ Les variables suivantes sont incompatibles :
     <message>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="vanished">Dostupná číslování:</translation>
+        <translation>Dostupná číslování:</translation>
     </message>
     <message>
         <source>Supprimer la numérotation</source>
-        <translation type="vanished">Smazat číslování</translation>
+        <translation>Smazat číslování</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -3315,12 +3318,12 @@ Les variables suivantes sont incompatibles :
     </message>
     <message>
         <source>Conductor</source>
-        <translation type="vanished">Vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3335,11 +3338,11 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování listů</translation>
     </message>
     <message>
         <source>Folio Auto Numbering</source>
-        <translation type="vanished">Automatické číslování listů</translation>
+        <translation>Automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3698,7 +3701,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorec štítku</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -3966,7 +3969,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation>Spustit přídavný modul na tvoření svorek (zakončení)</translation>
+        <translation>Spustit přídavný modul na tvoření svorkového pásku</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
@@ -5564,7 +5567,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
@@ -6863,7 +6866,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Můžete stanovit vlastní štítek pro odkazování na listy.
+Vytvořte svůj vlastní text s pomocí následujících proměnných:
+%f : číslo listu 
+%F: štítek listu
+%M:  přístroj 
+%LM: umístění
+%l : číslo řádku
+%c : číslo sloupce</translation>
     </message>
 </context>
 <context>
@@ -6891,17 +6901,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Dostupná číslování:</translation>
+        <translation>Dostupná číslování:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Název nového číslování</translation>
+        <translation>Název nového číslování</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Smazat číslování</translation>
+        <translation>Smazat číslování</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7778,7 +7788,7 @@ Les autres champs ne sont pas utilisés.</source>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">V poli List se používají následující proměnné:
+        <translation>V poli List se používají následující proměnné:
 -% Id: číslo nynějšího listu v projektu
 -% Total: celkový počet listů v projektu
 -% Autonum: automatické číslování listů</translation>
@@ -7815,7 +7825,7 @@ Les autres champs ne sont pas utilisés.</source>
     </message>
     <message>
         <source>Afficher :</source>
-        <translation type="vanished">Zobrazit:</translation>
+        <translation>Zobrazit:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
@@ -7849,7 +7859,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupné jako %folio pro vzory záhlaví výkresů
+Používají se následující proměnné:
+-%id: nynější počet listů v projektu
+-%total: celkový počet listů v projektu
+-%autonum: automatické číslování listů</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
@@ -7873,7 +7887,7 @@ Les variables suivantes sont utilisables :
     </message>
     <message>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Dostupné jako %folio pro vzory záhlaví výkresů</translation>
+        <translation>Dostupné jako %folio pro vzory záhlaví výkresů</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
@@ -8064,7 +8078,7 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ve výchozím nastavení jsou dostupné následující proměnné: &lt;ul&gt;&lt;li&gt;%{author}: autor listu&lt;/li&gt;&lt;li&gt;%{date}: datum listu&lt;/li&gt;&lt;li&gt;%{title}: název listu&lt;/li&gt;&lt;li&gt;%{filename}: název souboru s projektem&lt;/li&gt;&lt;li&gt;%{machine} : název funkční skupiny projektu - přístroj&lt;/li&gt;&lt;li&gt;%{locmach} : název umístění ve funkční skupině projektu&lt;/li&gt;&lt;li&gt;%{indexrev} : číslo změny listu&lt;/li&gt;&lt;li&gt;%{version} : verze programu&lt;/li&gt;&lt;li&gt;%{folio}: údaje vztahující se k listu&lt;/li&gt;&lt;li&gt;%{folio-id}: umístění číslo) listu v projektu&lt;/li&gt;&lt;li&gt;%{folio-total}: celkový počet listů v projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -8495,7 +8509,13 @@ Největší délka: %2px</translation>
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořte svůj vlastní text s pomocí následujících proměnných:
+%f : číslo listu 
+%F: štítek listu
+%l : číslo řádku
+%c : číslo sloupce
+%M:  přístroj 
+%LM: umístění</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>

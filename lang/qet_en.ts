@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.0" language="en">
 <context>
     <name>AboutQET</name>
     <message>
@@ -327,7 +327,7 @@
     </message>
     <message>
         <source>Conductor</source>
-        <translation type="vanished">Conductor</translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -470,15 +470,15 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <name>AutonumSelectorWidget</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Autonumérotation :</source>
-        <translation type="vanished">Auto Numbering :</translation>
+        <translation>Auto Numbering :</translation>
     </message>
     <message>
         <source>éditer les numérotations</source>
-        <translation type="vanished">Edit numbering</translation>
+        <translation>Edit numbering</translation>
     </message>
 </context>
 <context>
@@ -942,58 +942,58 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <name>DialogAutoNum</name>
     <message>
         <source>Annotation des schémas</source>
-        <translation type="vanished">Diagram annotation</translation>
+        <translation>Diagram annotation</translation>
     </message>
     <message>
         <source>Configuration</source>
-        <translation type="vanished">Settings</translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <source>Annotation</source>
-        <translation type="vanished">Annotation</translation>
+        <translation>Annotation</translation>
     </message>
     <message>
         <source>Sélection</source>
-        <translation type="vanished">Choice</translation>
+        <translation>Choice</translation>
     </message>
     <message>
         <source>Conducteurs</source>
-        <translation type="vanished">Conductors</translation>
+        <translation>Conductors</translation>
     </message>
     <message>
         <source>Composants</source>
-        <translation type="vanished">Components</translation>
+        <translation>Components</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;numbering.the selected diagram&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;numbering.the selected diagram&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Annotation (alpha)</source>
-        <translation type="vanished">Annotation.(alpha)</translation>
+        <translation>Annotation.(alpha)</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removed numbering selected diagram&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Removed numbering selected diagram&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Deletion of the annotation</translation>
+        <translation>Deletion of the annotation</translation>
     </message>
     <message>
         <source>Fermer</source>
-        <translation type="vanished">Close</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="vanished">Removing annotations conductors</translation>
+        <translation>Removing annotations conductors</translation>
     </message>
     <message>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="vanished">Do you really want to delete conductors annotations:
+        <translation>Do you really want to delete conductors annotations:
 
 %1 ?</translation>
     </message>
@@ -1001,14 +1001,14 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="vanished">Do you really want to annotate conductors:
+        <translation>Do you really want to annotate conductors:
 
 %1 ?</translation>
     </message>
     <message>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="vanished">Annotation conductors</translation>
+        <translation>Annotation conductors</translation>
     </message>
 </context>
 <context>
@@ -1401,19 +1401,19 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <name>ElementSelectorWidget</name>
     <message>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>N° fil : </source>
-        <translation type="vanished">N° wire :</translation>
+        <translation>N° wire :</translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Untitled</translation>
+        <translation>Untitled</translation>
     </message>
     <message>
         <source>Voir l&apos;élément</source>
-        <translation type="vanished">See element</translation>
+        <translation>See element</translation>
     </message>
 </context>
 <context>
@@ -1728,7 +1728,7 @@ All the elements and contents file in this folder will be deleted.</translation>
     <name>ElementsPanelWidget</name>
     <message>
         <source>Recharger les collections</source>
-        <translation type="vanished">Reload collections</translation>
+        <translation>Reload collections</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
@@ -2262,7 +2262,7 @@ that you create. Text and number inputs are
     </message>
     <message>
         <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="vanished">Keep projects in read-only, their files will cannot be over written</translation>
+        <translation>Keep projects in read-only, their files will cannot be over written</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="309"/>
@@ -2710,7 +2710,7 @@ that you create. Text and number inputs are
     </message>
     <message>
         <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Search in the folio :</translation>
+        <translation>Search in the folio :</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -2754,11 +2754,11 @@ that you create. Text and number inputs are
     </message>
     <message>
         <source>Tous</source>
-        <translation type="vanished">All</translation>
+        <translation>All</translation>
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Untitled</translation>
+        <translation>Untitled</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -2767,7 +2767,7 @@ that you create. Text and number inputs are
     </message>
     <message>
         <source>Rechercher</source>
-        <translation type="vanished">Search</translation>
+        <translation>Search</translation>
     </message>
 </context>
 <context>
@@ -2827,15 +2827,15 @@ that you create. Text and number inputs are
     </message>
     <message>
         <source>Sans titre</source>
-        <translation type="vanished">Untitled</translation>
+        <translation>Untitled</translation>
     </message>
     <message>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Folio  %1 (%2), position %3.</translation>
+        <translation>Folio  %1 (%2), position %3.</translation>
     </message>
     <message>
         <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Cross-reference (master)</translation>
+        <translation>Cross-reference (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
@@ -3314,11 +3314,11 @@ The following variables are incompatible:
     <message>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="vanished">Availables numbering :</translation>
+        <translation>Availables numbering :</translation>
     </message>
     <message>
         <source>Supprimer la numérotation</source>
-        <translation type="vanished">Delete numbering</translation>
+        <translation>Delete numbering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -7804,7 +7804,7 @@ The other fields are not used.</translation>
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">The following variables are available to use in the field Folio:
+        <translation>The following variables are available to use in the field Folio:
 -%id: current number of folios in the project
 -%total: total number of folios in the project
 -%autonum: folio auto numbering</translation>
@@ -7841,7 +7841,7 @@ The other fields are not used.</translation>
     </message>
     <message>
         <source>Afficher :</source>
-        <translation type="vanished">Display:</translation>
+        <translation>Display:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
@@ -7903,7 +7903,7 @@ The following variables can be used:
     </message>
     <message>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Available as variable %folio for title blocks</translation>
+        <translation>Available as variable %folio for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
