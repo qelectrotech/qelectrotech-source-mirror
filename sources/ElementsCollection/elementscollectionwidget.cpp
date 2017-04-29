@@ -46,6 +46,14 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	QWidget(parent),
 	m_model(nullptr)
 {
+		//The connection in the method ElementsCollectionWidget::reload  return a warning message at compilation :
+		//**********
+		//QObject::connect: Cannot queue arguments of type 'QVector<int>'
+		//(Make sure 'QVector<int>' is registered using qRegisterMetaType().)
+		//**********
+		//Register meta type has recommended by the message.
+	qRegisterMetaType<QVector<int>>();
+	
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
@@ -103,7 +111,8 @@ void ElementsCollectionWidget::removeProject(QETProject *project) {
  */
 void ElementsCollectionWidget::highlightUnusedElement()
 {
-	m_model->highlightUnusedElement();
+	if (m_model)
+		m_model->highlightUnusedElement();
 }
 
 bool ElementsCollectionWidget::event(QEvent *event)
