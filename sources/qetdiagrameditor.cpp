@@ -671,19 +671,29 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
-	Gere les evenements du l'editeur de schema
-	Reimplemente ici pour :
-	  * eviter un conflit sur le raccourci clavier "Ctrl+W" (QKeySequence::Close)
-	@param e Evenement
-*/
-bool QETDiagramEditor::event(QEvent *e) {
-	if (e -> type() == QEvent::ShortcutOverride) {
+ * @brief QETDiagramEditor::event
+ * Reimplemented to :
+ * -avoid conflic with shortcut "Ctrl+W" (QKeySequence::Close)
+ * -Load elements collection when WindowActivate.
+ * @param e
+ * @return 
+ */
+bool QETDiagramEditor::event(QEvent *e)
+{
+	if (e -> type() == QEvent::ShortcutOverride)
+	{
 		QKeyEvent *shortcut_event = static_cast<QKeyEvent *>(e);
-		if (shortcut_event && shortcut_event -> matches(QKeySequence::Close)) {
+		if (shortcut_event && shortcut_event -> matches(QKeySequence::Close))
+		{
 			close_file -> trigger();
 			e -> accept();
 			return(true);
 		}
+	}
+	if (m_first_show && e->type() == QEvent::WindowActivate)
+	{
+		m_first_show = false;
+		QTimer::singleShot(250, m_element_collection_widget, SLOT(reload()));
 	}
 	return(QETMainWindow::event(e));
 }

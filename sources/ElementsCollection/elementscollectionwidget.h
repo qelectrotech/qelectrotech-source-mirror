@@ -54,7 +54,6 @@ class ElementsCollectionWidget : public QWidget
 		void setCurrentLocation(const ElementsLocation &location);
 
 	protected:
-		virtual bool event(QEvent *event);
 		virtual void leaveEvent(QEvent *event);
 
 	private:
@@ -78,7 +77,7 @@ class ElementsCollectionWidget : public QWidget
 		void showAndExpandItem (const QModelIndex &index, bool parent = true, bool child = false);
 		ElementCollectionItem *elementCollectionItemForIndex (const QModelIndex &index);
 
-	private slots:
+	public slots:
 		void reload();
 
 	private:

@@ -72,7 +72,7 @@ class QETDiagramEditor : public QETMainWindow {
 		bool drawGrid() const;
 
 	protected:
-	virtual bool event(QEvent *);
+		virtual bool event(QEvent *);
 	
 	private:
 	bool addProject(QETProject *, bool = true);
@@ -239,5 +239,6 @@ class QETDiagramEditor : public QETMainWindow {
 		// AutoNumbering Selection Dock
 		AutoNumberingDockWidget *m_autonumbering_dock;
 		int activeSubWindowIndex;
+		bool m_first_show = true;
 };
 #endif

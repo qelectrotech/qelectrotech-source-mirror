@@ -128,17 +128,6 @@ void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &locati
 	m_tree_view->setCurrentIndex(m_model->indexFromLocation(location));
 }
 
-bool ElementsCollectionWidget::event(QEvent *event)
-{
-	if (m_first_show && event->type() == QEvent::Show)
-	{
-		m_first_show = false;
-		QTimer::singleShot(250, this, SLOT(reload()));
-	}
-
-	return QWidget::event(event);
-}
-
 void ElementsCollectionWidget::leaveEvent(QEvent *event)
 {
 	if (QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this))
