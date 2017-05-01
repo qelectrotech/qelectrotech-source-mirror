@@ -130,7 +130,8 @@ void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &locati
 
 bool ElementsCollectionWidget::event(QEvent *event)
 {
-	if (m_first_show && event->type() == QEvent::WindowActivate) {
+	if (m_first_show && event->type() == QEvent::Show)
+	{
 		m_first_show = false;
 		QTimer::singleShot(250, this, SLOT(reload()));
 	}
