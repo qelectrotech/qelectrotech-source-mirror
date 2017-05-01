@@ -115,6 +115,19 @@ void ElementsCollectionWidget::highlightUnusedElement()
 		m_model->highlightUnusedElement();
 }
 
+/**
+ * @brief ElementsCollectionWidget::setCurrentLocation
+ * Set the current item to be the item for @location
+ * @param location
+ */
+void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &location)
+{
+	if (!location.exist())
+		return;
+	
+	m_tree_view->setCurrentIndex(m_model->indexFromLocation(location));
+}
+
 bool ElementsCollectionWidget::event(QEvent *event)
 {
 	if (m_first_show && event->type() == QEvent::WindowActivate) {

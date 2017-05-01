@@ -1516,8 +1516,8 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)), this, SLOT(slot_updateActions()));
 	
 		//Manage request for edit or find element and titleblock
-	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)),                    this,               SLOT(findElementInPanel(const ElementsLocation &)));
-	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)),                    this,               SLOT(editElementInEditor(const ElementsLocation &)));
+	connect (project_view, &ProjectView::findElementRequired, this, &QETDiagramEditor::findElementInPanel);
+	connect (project_view, &ProjectView::editElementRequired, this, &QETDiagramEditor::editElementInEditor);
 	
 		// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
@@ -2065,12 +2065,13 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 }
 
 /**
-	@param location Emplacement de l'element a retrouver dans le panel
-	d'elements.
-*/
-void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
-	//@TODO implement this method for the new element panel
-	Q_UNUSED (location);
+ * @brief QETDiagramEditor::findElementInPanel
+ * Find the item for @location in the element panel
+ * @param location
+ */
+void QETDiagramEditor::findElementInPanel(const ElementsLocation &location)
+{
+	m_element_collection_widget->setCurrentLocation(location);
 }
 
 /**
