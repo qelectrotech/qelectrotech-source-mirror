@@ -341,7 +341,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
         <source>Project Status:</source>
-        <translation type="unfinished">Projectstatus:</translation>
+        <translation type="unfinished">Projectstatus :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="32"/>
@@ -433,12 +433,12 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Installing</source>
-        <translation type="unfinished">Installeren</translation>
+        <translation type="unfinished">Installatie</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Built</source>
-        <translation type="unfinished">Gecompileerd</translation>
+        <translation type="unfinished">Gebouwd</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="184"/>
@@ -735,7 +735,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="409"/>
         <source>size:</source>
-        <translation type="unfinished">Grootte:</translation>
+        <translation type="unfinished">Grootte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -751,12 +751,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="353"/>
         <source>Couleur :</source>
-        <translation>Kleur:</translation>
+        <translation type="unfinished">Kleur :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
         <source>Style :</source>
-        <translation>Stijl:</translation>
+        <translation type="unfinished">Stijl :</translation>
     </message>
 </context>
 <context>
@@ -1200,7 +1200,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished">Verwijzend-element</translation>
+        <translation type="unfinished">Verwijzer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
@@ -1216,7 +1216,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Maître</source>
-        <translation type="unfinished">Verwijzend element</translation>
+        <translation type="unfinished">Verwijzer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="75"/>
@@ -2155,7 +2155,7 @@ Het veld &quot;Increment&quot; is nu niet van belang.</translation>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Autonaamgevingspatroon:</translation>
+        <translation type="unfinished">Autonaamgevingspatroon :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2165,7 +2165,7 @@ Het veld &quot;Increment&quot; is nu niet van belang.</translation>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formula:</source>
-        <translation type="unfinished">Formule:</translation>
+        <translation type="unfinished">Formule :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
@@ -2181,8 +2181,8 @@ that you create. Text and number inputs are
  also available.</source>
         <translation type="unfinished">U kunt de volgende variabelen in uw formule gebruiken:
  -%prefix: Standaard elementprefix
- -%l: Element lijn
- -%c: Element kolom
+ -%l: Elementrij
+ -%c: Elementkolom
  -%F: Paginatitel
  -%f of %d: Pagina-ID
  -%total: Alle pagina&apos;s
@@ -2642,7 +2642,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished">Dit element is al verbonden</translation>
+        <translation type="unfinished">Element is verbonden</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
@@ -2719,7 +2719,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Voir l&apos;élément lié</source>
-        <translation>Toon het verbonden element</translation>
+        <translation type="unfinished">Toon verbonden element</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
@@ -2749,7 +2749,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Kruisverwijzing (doelelement)</translation>
+        <translation type="unfinished">Kruisverwijzing (doel)</translation>
     </message>
     <message>
         <source>Tous</source>
@@ -2850,7 +2850,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished">Toon verwijzend-element</translation>
+        <translation type="unfinished">Toon verwijzer</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="60"/>
@@ -2860,7 +2860,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished">Kruisverwijzing (verwijzend element)</translation>
+        <translation type="unfinished">Kruisverwijzing (verwijzer)</translation>
     </message>
 </context>
 <context>
@@ -4178,7 +4178,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
         <source>Zoom adapté</source>
-        <translation type="unfinished">Passend in venster</translation>
+        <translation type="unfinished">Zoom kader</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="396"/>
@@ -5003,7 +5003,7 @@ Opties :
         <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Fout&lt;/b  &gt; :&lt;br&gt;De elementen van het type &apos;verwijzend&apos;, &apos;doel&apos; en &apos;eenvoudig&apos; en paginaverwijzingen moeten een tekstveld &apos;label&apos; bevatten.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt; :&lt;br&gt;Voeg een tekstveld toe van het type &apos;label&apos;</translation>
+        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Fout&lt;/b  &gt; :&lt;br&gt;De elementen van het type &apos;verwijzer&apos;, &apos;doel&apos; en &apos;eenvoudig&apos; en paginaverwijzingen moeten een tekstveld &apos;label&apos; bevatten.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt; :&lt;br&gt;Voeg een tekstveld toe van het type &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="721"/>
@@ -5636,13 +5636,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation>&amp;Open</translation>
+        <translation type="unfinished">&amp;Open</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Open uit een bestand</translation>
+        <translation type="unfinished">Open uit bestand</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="335"/>
@@ -7824,7 +7824,7 @@ De andere velden zijn nu niet van belang.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revisie-index</translation>
+        <translation type="unfinished">Revisie-index :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="186"/>
@@ -7877,7 +7877,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
-        <translation>Bestand: </translation>
+        <translation type="unfinished">Bestand :</translation>
     </message>
     <message>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
@@ -7901,7 +7901,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="311"/>
         <source>Page Num:</source>
-        <translation type="unfinished">Paginanummer. :</translation>
+        <translation type="unfinished">Paginanummer :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
@@ -7911,7 +7911,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="332"/>
         <source>Localisation</source>
-        <translation type="unfinished">Lokatie</translation>
+        <translation type="unfinished">Lokatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
@@ -8475,7 +8475,7 @@ Maximale afmeting : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="132"/>
         <source>Maitre</source>
-        <translation type="unfinished">Verwijzend element</translation>
+        <translation type="unfinished">Verwijzer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="142"/>
@@ -8485,7 +8485,7 @@ Maximale afmeting : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="165"/>
         <source>Esclave</source>
-        <translation type="unfinished">Doelelement  </translation>
+        <translation type="unfinished">Doel</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
@@ -8501,7 +8501,7 @@ Maximale afmeting : %2px</translation>
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished">Stel uw tekst samen met behulp van de volgende variabelen :
+        <translation type="unfinished">Stel labeltekst samen met behulp van de volgende variabelen :
 %f : het paginanummer
 %F : het paginalabel
 %l : het rijnummer
@@ -8517,7 +8517,7 @@ Maximale afmeting : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="211"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished">Vermogenscontacten tonen in het kruis</translation>
+        <translation type="unfinished">Toon vermogenscontacten in het kruis</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="220"/>
