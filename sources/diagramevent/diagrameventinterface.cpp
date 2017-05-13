@@ -72,7 +72,7 @@ bool DiagramEventInterface::keyPressEvent(QKeyEvent *event) {
 	return false;
 }
 
-bool DiagramEventInterface::KeyReleaseEvent(QKeyEvent *event) {
+bool DiagramEventInterface::keyReleaseEvent(QKeyEvent *event) {
 	Q_UNUSED (event);
 	return false;
 }

@@ -179,7 +179,15 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
  */
 void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface && m_event_interface->mouseDoubleClickEvent(event)) return;
+	if (m_event_interface)
+		if(m_event_interface->mouseDoubleClickEvent(event))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	QGraphicsScene::mouseDoubleClickEvent(event);
 }
@@ -191,7 +199,15 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface && m_event_interface->mousePressEvent(event)) return;
+	if (m_event_interface)
+		if(m_event_interface->mousePressEvent(event))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	QGraphicsScene::mousePressEvent(event);
 }
@@ -203,7 +219,15 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface && m_event_interface->mouseMoveEvent(event)) return;
+	if (m_event_interface)
+		if(m_event_interface->mouseMoveEvent(event))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	QGraphicsScene::mouseMoveEvent(event);
 }
@@ -215,7 +239,15 @@ void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface && m_event_interface->mouseReleaseEvent(event)) return;
+	if (m_event_interface)
+		if(m_event_interface->mouseReleaseEvent(event))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	QGraphicsScene::mouseReleaseEvent(event);
 }
@@ -227,7 +259,15 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-	if (m_event_interface && m_event_interface->wheelEvent(event)) return;
+	if (m_event_interface)
+		if(m_event_interface->wheelEvent(event))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	QGraphicsScene::wheelEvent(event);
 }
@@ -240,7 +280,15 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
  */
 void Diagram::keyPressEvent(QKeyEvent *e)
 {
-	if (m_event_interface && m_event_interface->keyPressEvent(e)) return;
+	if (m_event_interface)
+		if(m_event_interface->keyPressEvent(e))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
 
 	bool transmit_event = true;
 	if (!isReadOnly()) {
@@ -290,8 +338,16 @@ void Diagram::keyPressEvent(QKeyEvent *e)
  */
 void Diagram::keyReleaseEvent(QKeyEvent *e)
 {
-	if (m_event_interface && m_event_interface->KeyReleaseEvent(e)) return;
-
+	if (m_event_interface)
+		if(m_event_interface->keyReleaseEvent(e))
+		{
+			if(!m_event_interface->isRunning())
+			{
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
@@ -328,7 +384,6 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 		event_interface -> init();
 	}
 	m_event_interface = event_interface;
-	connect (m_event_interface, &DiagramEventInterface::finish, this, [this]() { delete this->m_event_interface; this->m_event_interface = nullptr;}, Qt::QueuedConnection);
 }
 
 /**

@@ -58,7 +58,7 @@ class DiagramEventInterface : public QObject
 		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
 		virtual bool wheelEvent            (QGraphicsSceneWheelEvent *event);
 		virtual bool keyPressEvent         (QKeyEvent *event);
-		virtual bool KeyReleaseEvent       (QKeyEvent *event);
+		virtual bool keyReleaseEvent       (QKeyEvent *event);
 		virtual bool isRunning () const;
 		virtual void init();
 
