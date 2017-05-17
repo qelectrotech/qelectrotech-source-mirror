@@ -688,7 +688,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation>Rotatie van tekst van geleider :</translation>
+        <translation type="unfinished">Rotatie tekstlabel geleider :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
@@ -735,7 +735,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="409"/>
         <source>size:</source>
-        <translation type="unfinished">Grootte :</translation>
+        <translation type="unfinished">Dikte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -1525,12 +1525,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="130"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Bewerken element</translation>
+        <translation type="unfinished">Bewerk element</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="131"/>
         <source>Supprimer l&apos;élément</source>
-        <translation type="unfinished">Verwijderen element</translation>
+        <translation type="unfinished">Verwijder element</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="132"/>
@@ -7872,7 +7872,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="63"/>
         <source>en bas</source>
-        <translation type="unfinished">onderaan</translation>
+        <translation type="unfinished">onder</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
@@ -8057,7 +8057,7 @@ Door associatie van de naam &quot;volta&quot; en de waarde &quot;1745&quot; word
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished">Pas lettergrootte indien nodig aan</translation>
+        <translation type="unfinished">Pas lettergrootte aan indien nodig</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
@@ -8717,7 +8717,7 @@ Maximale afmeting : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation>Toevoegen lijn</translation>
+        <translation type="unfinished">Link invoegen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
