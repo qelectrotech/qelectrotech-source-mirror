@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>309</height>
+    <height>358</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,7 +75,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Créer de nouveaux Folios</string>
+           <string>C&amp;réer de nouveaux Folios</string>
           </property>
          </widget>
         </item>
@@ -220,10 +220,6 @@
     </widget>
    </item>
   </layout>
-  <zorder>buttonBox</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>gridLayoutWidget</zorder>
-  <zorder>verticalSpacer</zorder>
  </widget>
  <resources/>
  <connections/>
