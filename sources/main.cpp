@@ -31,10 +31,6 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
 		//Creation and execution of the application
-#ifdef Q_OS_WIN
-    SetProcessDPIAware(); // call before the main event loop
-#endif // Q_OS_WIN 
-
 #if QT_VERSION >= QT_VERSION_CHECK(5,6,0)
     QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
 #else
