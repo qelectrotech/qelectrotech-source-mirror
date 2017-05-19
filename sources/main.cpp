@@ -31,10 +31,15 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
 		//Creation and execution of the application
-#if QT_VERSION >= QT_VERSION_CHECK(5,6,0)
-    QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
+		//HighDPI
+#if QT_VERSION >= QT_VERSION_CHECK (5, 6, 0)
+#if defined Q_OS_MAC
+    QApplication::setAttribute (Qt::AA_EnableHighDpiScaling);
+#elif !defined(Q_OS_MAC)
+    QApplication::setAttribute (Qt::AA_DisableHighDpiScaling);
 #else
     qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("1"));
-#endif 
+#endif
+#endif
 	return(QETApp(argc, argv).exec());
 }
