@@ -1656,7 +1656,7 @@ Alle elementen in het dossier worden verwijderd.</translation>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="505"/>
         <source>dans %n dossier(s).</source>
         <translation>
-            <numerusform>in %n dosssier(s).</numerusform>
+            <numerusform>in %n dossier(s).</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
