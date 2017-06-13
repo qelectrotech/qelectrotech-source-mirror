@@ -8,6 +8,7 @@ $ qmake (qmake-qt5 for Debian-based systems)
 $ make
 # umask 0022
 # make install
+
 [fr]
 Pré-requis :
 libQt5 (paquets libqt5*)
