@@ -91,6 +91,7 @@ void ReportElement::linkToElement(Element * elmt)
 		m_formula = diagram()->project()->defaultReportProperties();
 		setConnectionForFormula(m_formula);
 		connect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
+        connect(diagram()->project(), &QETProject::diagramRemoved, this, &ReportElement::updateLabel);
 		
 		if (elmt->terminals().size())
 		{
@@ -124,6 +125,7 @@ void ReportElement::unlinkAllElements()
 	{
 		removeConnectionForFormula(m_formula);
 		disconnect(diagram()->project(), &QETProject::reportPropertiesChanged, this, &ReportElement::reportPropertiesChange);
+        disconnect(diagram()->project(), &QETProject::diagramRemoved, this, &ReportElement::updateLabel);
 		
 		if (elmt->terminals().size())
 		{

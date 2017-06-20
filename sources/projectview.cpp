@@ -393,7 +393,7 @@ void ProjectView::addDiagram(DiagramView *diagram_view)
 	m_diagram_view_list << diagram_view;
 
 	rebuildDiagramsMap();
-	updateTabTitle(diagram_view);
+	updateAllTabsTitle();
 	
 	connect(diagram_view, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
 	connect(diagram_view, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *)));
@@ -406,18 +406,21 @@ void ProjectView::addDiagram(DiagramView *diagram_view)
 }
 
 /**
-	Enleve un schema du ProjectView
-	@param diagram_view Schema a enlever
-*/
-void ProjectView::removeDiagram(DiagramView *diagram_view) {
-	if (!diagram_view) return;
-	if (m_project -> isReadOnly()) return;
+ * @brief ProjectView::removeDiagram
+ * Remove a diagram (folio) of the project
+ * @param diagram_view : diagram view to remove
+ */
+void ProjectView::removeDiagram(DiagramView *diagram_view)
+{
+	if (!diagram_view)
+        return;
+	if (m_project -> isReadOnly())
+        return;
+	if (!m_diagram_ids.values().contains(diagram_view))
+        return;
 
-	// verifie que le schema est bien present dans le projet
-	if (!m_diagram_ids.values().contains(diagram_view)) return;
 
-
-	//Ask confirmation to user.
+        //Ask confirmation to user.
 	int answer = QET::QetMessageBox::question(
 		this,
 		tr("Supprimer le folio ?", "message box title"),
@@ -429,21 +432,20 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 		return;
 	}
 
-	// enleve le DiagramView des onglets
-	int diagram_tab_id = m_diagram_ids.key(diagram_view);
-	m_tab -> removeTab(diagram_tab_id);
+        //Remove the diagram view of the tabs widget
+	int index_to_remove = m_diagram_ids.key(diagram_view);
+	m_tab->removeTab(index_to_remove);
 	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
-
-	// supprime le DiagramView, puis le Diagram
+    
 	m_project -> removeDiagram(diagram_view -> diagram());
 	delete diagram_view;
 
-	// signale le retrait du schema
 	emit(diagramRemoved(diagram_view));
 
-	// rend definitif le retrait du schema
+        //Make definitve the withdrawal
 	m_project -> write();
+    updateAllTabsTitle();
 }
 
 /**
@@ -899,27 +901,27 @@ void ProjectView::adjustReadOnlyState() {
  */
 void ProjectView::updateTabTitle(DiagramView *diagram_view)
 {
-	int diagram_tab_id = m_diagram_ids.key(diagram_view, -1);
-	
-	if (diagram_tab_id != -1)
-	{
-		QSettings settings;
-		QString title;
-		Diagram *diagram = diagram_view->diagram();
-		
-		if (settings.value("genericpanel/folio", false).toBool())
-		{
-			QString formula = diagram->border_and_titleblock.folio();
-			autonum::sequentialNumbers seq;
-			title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
-		}
-		else
-			title = QString::number(diagram->folioIndex() + 1);
-		
-		title += " - ";
-		title += diagram->title();
-		m_tab->setTabText(diagram_tab_id ,title);
-	}
+    int diagram_tab_id = m_diagram_ids.key(diagram_view, -1);
+    
+    if (diagram_tab_id != -1)
+    {
+        QSettings settings;
+        QString title;
+        Diagram *diagram = diagram_view->diagram();
+        
+        if (settings.value("genericpanel/folio", false).toBool())
+        {
+            QString formula = diagram->border_and_titleblock.folio();
+            autonum::sequentialNumbers seq;
+            title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
+        }
+        else
+            title = QString::number(diagram->folioIndex() + 1);
+        
+        title += " - ";
+        title += diagram->title();
+        m_tab->setTabText(diagram_tab_id ,title);
+    }
 }
 
 /**

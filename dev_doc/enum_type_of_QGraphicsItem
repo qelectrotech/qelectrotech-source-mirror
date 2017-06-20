@@ -21,3 +21,6 @@ part terminal   + 1106
 part text       + 1107
 part text field + 1108
 part rectangle  + 1109
+
+###QetGraphicsHandlerItem###
+QetGraphicsHandlerItem = 1200
