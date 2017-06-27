@@ -67,9 +67,15 @@ QWidget *AboutQET::titleTab() const {
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech V " + QET::displayedVersion + "</span>");
 	QString compilation_info = "<br />" + tr("Compilation : ");
 #ifdef __GNUC__
+#ifdef __APPLE_CC__
+	compilation_info += "  CLANG " + QString(__clang_version__ );
+	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
+	compilation_info += " - run with Qt "+ QString(qVersion());
+#else
 	compilation_info += "  GCC " + QString(__VERSION__);
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
 	compilation_info += " - run with Qt "+ QString(qVersion());
+#endif
 #endif
 	title -> setAlignment(Qt::AlignCenter);
 	title -> setText(title->text() + compilation_info);
