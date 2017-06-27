@@ -146,7 +146,7 @@ fi
 
 # genere le Makefile
 echo "Generating new makefile..."
-qmake -spec macx-g++ 
+qmake -spec macx-clang 
 
 # compilation
 if [ -e Makefile.Release ] ; then
@@ -178,7 +178,7 @@ if [ -e Makefile.Release ] ; then
 	echo
 	echo "The time of compilation is $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec" 
 else
-    echo "ERROR: Makefile not found. This script requires the macx-g++ makespec"
+    echo "ERROR: Makefile not found. This script requires the macx-clang makespec"
     exit
 fi
 
@@ -233,13 +233,12 @@ fi
 if [ -d "${QET_LANG_DIR}" ]; then
     echo "Copying translations in the bundle... "
     mkdir $BUNDLE/Contents/Resources/lang
-    gcp -R ${current_dir}/lang/*.qm $BUNDLE/Contents/Resources/lang
+    cp ${current_dir}/lang/*.qm $BUNDLE/Contents/Resources/lang
 fi
 
 if [ -d "${LANG_DIR}" ]; then
-echo "Copying translations in the bundle... "
-#mkdir $BUNDLE/Contents/Resources/lang
-gcp -R ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
+   echo "Copying translations in the bundle... "
+   cp ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
 
 fi
 
@@ -332,12 +331,12 @@ fi
 echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$tagName"_"r$revAp.dmg", n/Y?.\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" /Users/amdosx/MAC_OS_X/
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/amdosx/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" /Users/laurent/MAC_OS_X/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/laurent/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
 if [ $? != 0 ]; then
 {
 echo "RSYNC ERROR: problem syncing ${APPNAME} $tagName r$revAp.dmg"
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/amdosx/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/laurent/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
 
 } fi
 
