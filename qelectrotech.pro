@@ -147,11 +147,6 @@ TARGET = qelectrotech
 # Ajustement des bibliotheques utilisees lors de l'edition des liens
 unix:QMAKE_LIBS_THREAD -= -lpthread
 
-macx {
-LIBS += -stdlib=libc++
-QMAKE_CXXFLAGS += -std=c++11 -stdlib=libc++
-}
-
 # Enable C++11
 QMAKE_CXXFLAGS += -std=c++11
 
