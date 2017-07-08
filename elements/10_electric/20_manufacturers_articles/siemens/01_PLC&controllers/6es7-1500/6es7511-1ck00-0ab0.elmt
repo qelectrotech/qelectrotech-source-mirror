@@ -1,0 +1,59 @@
+<definition width="320" hotspot_x="15" orientation="dyyy" height="110" type="element" version="0.5" link_type="simple" hotspot_y="43">
+    <uuid uuid="{93aac1e7-0d99-4111-89c6-f1c2b8f004de}"/>
+    <names>
+        <name lang="es">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="el">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="en">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="it">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="ar">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="pl">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="cs">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="fr">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="nl">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+        <name lang="pt">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="-18.5" x="39" text="2L+" size="5" rotate="true" tagg="none"/>
+        <input y="-6" x="251" text="P1" size="7" rotate="true" tagg="none"/>
+        <input y="-6" x="19" text="24V DC" size="7" rotate="true" tagg="none"/>
+        <input y="-6" x="271" text="P2" size="7" rotate="true" tagg="none"/>
+        <line x2="67" length2="1.5" x1="53" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <line x2="47" length2="1.5" x1="33" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <line x2="277" length2="1.5" x1="263" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <input y="-18.5" x="63" text="M" size="5" rotate="true" tagg="none"/>
+        <line x2="261" length2="1.5" x1="261" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <circle y="-30.5" x="67.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle y="-30.5" x="47.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line x2="300" length2="1.5" x1="283" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <line x2="259" length2="1.5" x1="259" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <line x2="281" length2="1.5" x1="281" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <line x2="260" length2="1.5" x1="260" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <circle y="-30.5" x="7.4999" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <arc width="6" y="-32" x="257" height="6" start="0" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line x2="279" length2="1.5" x1="279" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <input y="24.5" x="0" text="CPU 1511C-1 PN" size="9" tagg="none"/>
+        <input y="-18.5" x="252" text="X1" size="5" rotate="true" tagg="none"/>
+        <line x2="280" length2="1.5" x1="280" end1="none" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" length1="1.5" antialias="false"/>
+        <line x2="27" length2="1.5" x1="13" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <arc width="6" y="-32" x="277" height="6" start="0" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line x2="257" length2="1.5" x1="73" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <line x2="300" length2="1.5" x1="300" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="60" length1="1.5" antialias="false"/>
+        <line x2="-10" length2="1.5" x1="-10" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="60" length1="1.5" antialias="false"/>
+        <line x2="7" length2="1.5" x1="-10" end1="none" y1="-28" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-28" length1="1.5" antialias="false"/>
+        <input y="-18.5" x="272" text="X2" size="5" rotate="true" tagg="none"/>
+        <input y="-18.5" x="23" text="M" size="5" rotate="true" tagg="none"/>
+        <input y="-18.5" x="-1" text="1L+" size="5" rotate="true" tagg="none"/>
+        <circle y="-30.5" x="27.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <input y="45.5" x="0" text="6ES 7511-1CK00-0AB0" size="9" rotate="true" tagg="none"/>
+        <line x2="300" length2="1.5" x1="-10" end1="none" y1="60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="60" length1="1.5" antialias="false"/>
+        <input y="-16" x="301" text="_" size="9" rotate="true" tagg="label"/>
+        <terminal y="-31" x="30" orientation="n"/>
+        <terminal y="-31" x="10" orientation="n"/>
+        <terminal y="-35" x="280" orientation="n"/>
+        <terminal y="-35" x="260" orientation="n"/>
+        <terminal y="-31" x="50" orientation="n"/>
+        <terminal y="-31" x="70" orientation="n"/>
+    </description>
+</definition>

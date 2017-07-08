@@ -1,0 +1,77 @@
+<definition height="110" hotspot_x="17" orientation="dyyy" width="770" type="element" hotspot_y="51" version="0.5" link_type="simple">
+    <uuid uuid="{89e2399c-d700-4ca2-b118-b4b032518602}"/>
+    <names>
+        <name lang="en">6ES7 522-1BL00-0AA0 (part 4/4)</name>
+        <name lang="it">6ES7 522-1BL00-0AA0 (parte 4/4)</name>
+        <name lang="es">6ES7 522-1BL00-0AA0 (parte 4/4)</name>
+        <name lang="fr">6ES7 522-1BL00-0AA0 (part 4/4)</name>
+        <name lang="pt">6ES7 522-1BL00-0AA0 (parte 4/4)</name>
+        <name lang="ar">6ES7 522-1BL00-0AA0 (part 4/4)</name>
+        <name lang="pl">6ES7 522-1BL00-0AA0 (część 4/4)</name>
+        <name lang="cs">6ES7 522-1BL00-0AA0 (část 4/4)</name>
+        <name lang="el">6ES7 522-1BL00-0AA0 (μέρος 4/4)</name>
+        <name lang="nl">6ES7 522-1BL00-0AA0 (deel 4/4)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="/" rotate="true" y="4" size="9" tagg="none" x="-55"/>
+        <input text="Q103.x" rotate="true" y="9" size="9" tagg="none" x="345"/>
+        <line x1="750" end2="none" antialias="false" y2="48" length2="1.5" y1="-40" end1="none" x2="750" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-10" x5="-10" antialias="true" y2="6" y4="3" y1="53" y5="0" y6="-45" x2="-10" x3="-15" y3="3" x4="-5" x6="-10" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="733" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="750" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="4M" rotate="true" y="27" size="7" tagg="none" x="720"/>
+        <input text="Qx.7" rotate="true" y="27" size="7" tagg="none" x="636"/>
+        <input text="Qx.6" rotate="true" y="27" size="7" tagg="none" x="556"/>
+        <input text="Qx.5" rotate="true" y="27" size="7" tagg="none" x="476"/>
+        <input text="Qx.4" rotate="true" y="27" size="7" tagg="none" x="396"/>
+        <input text="Qx.3" rotate="true" y="27" size="7" tagg="none" x="316"/>
+        <input text="Qx.2" rotate="true" y="26" size="7" tagg="none" x="236"/>
+        <input text="Qx.1" rotate="true" y="27" size="7" tagg="none" x="156"/>
+        <circle antialias="true" y="45.5" diameter="5" x="727.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="653" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="727" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="573" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="647" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="493" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="567" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="413" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="487" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="333" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="407" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="253" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="327" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="173" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="247" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="40" rotate="true" y="39.5" size="5" tagg="none" x="722"/>
+        <circle antialias="true" y="45.5" diameter="5" x="647.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="567.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="487.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="407.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="327.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="247.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="167.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="4L+" rotate="true" y="27" size="7" tagg="none" x="-1"/>
+        <input text="38" rotate="true" y="39.5" size="5" tagg="none" x="642"/>
+        <input text="37" rotate="true" y="39.5" size="5" tagg="none" x="562"/>
+        <input text="36" rotate="true" y="39.5" size="5" tagg="none" x="482"/>
+        <input text="35" rotate="true" y="39.5" size="5" tagg="none" x="402"/>
+        <input text="34" rotate="true" y="39.5" size="5" tagg="none" x="322"/>
+        <input text="33" rotate="true" y="39.5" size="5" tagg="none" x="242"/>
+        <input text="32" rotate="true" y="39.5" size="5" tagg="none" x="162"/>
+        <input text="Qx.0" rotate="true" y="27" size="7" tagg="none" x="76"/>
+        <line x1="93" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="167" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="13" end2="none" antialias="false" y2="48" length2="1.5" y1="48" end1="none" x2="87" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="87.5001" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" y="45.5" diameter="5" x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="31" rotate="true" y="39.5" size="5" tagg="none" x="82"/>
+        <input text="39" rotate="true" y="39.5" size="5" tagg="none" x="2"/>
+        <input text="6ES7 522-1BL00-0AA0   DO 32 x DC24V/0,5A   part 4 of 4" rotate="true" y="-26.5" size="9" tagg="none" x="0"/>
+        <line x1="-10" end2="none" antialias="false" y2="-40" length2="1.5" y1="-40" end1="none" x2="750" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" rotate="true" y="-28" size="9" tagg="label" x="751"/>
+        <terminal orientation="s" y="51" x="10"/>
+        <terminal orientation="s" y="51" x="90"/>
+        <terminal orientation="s" y="51" x="170"/>
+        <terminal orientation="s" y="51" x="250"/>
+        <terminal orientation="s" y="51" x="330"/>
+        <terminal orientation="s" y="51" x="410"/>
+        <terminal orientation="s" y="51" x="490"/>
+        <terminal orientation="s" y="51" x="570"/>
+        <terminal orientation="s" y="51" x="650"/>
+        <terminal orientation="s" y="51" x="730"/>
+    </description>
+</definition>

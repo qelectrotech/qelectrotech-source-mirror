@@ -1,0 +1,54 @@
+<definition height="180" link_type="simple" type="element" version="0.5" hotspot_y="83" orientation="dyyy" width="400" hotspot_x="195">
+    <uuid uuid="{37593b83-2c14-45d2-ba3d-f3a22f6d8206}"/>
+    <names>
+        <name lang="ar">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="pl">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="it">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="es">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="en">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="el">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="pt">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="cs">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="fr">SITOP PM 70W 6EP1332-2BA00</name>
+        <name lang="nl">SITOP PM 70W 6EP1332-2BA00</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="none" y="87" size="8" x="130.5" rotation="270" rotate="true" text="L+"/>
+        <input tagg="label" y="-99.45" size="9" x="-147" rotate="true" text="_"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-72.5"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="27.5"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="77.5"/>
+        <input tagg="none" y="86" size="8" x="180" rotation="270" rotate="true" text="M"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-122.5"/>
+        <line end1="none" end2="none" x1="200" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="-80" length2="1.5" x2="200"/>
+        <input tagg="none" y="86" size="8" x="-120" rotation="270" rotate="true" text="N"/>
+        <input tagg="none" y="86" size="8" x="-70" rotation="270" rotate="true" text="PE"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="177.5"/>
+        <input tagg="none" y="86" size="8" x="80.5" rotation="270" rotate="true" text="M"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="127.5"/>
+        <line end1="none" end2="none" x1="133" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="177"/>
+        <line end1="none" end2="none" x1="83" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="127"/>
+        <line end1="none" end2="none" x1="33" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="77"/>
+        <line end1="none" end2="none" x1="-67" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="27"/>
+        <line end1="none" end2="none" x1="183" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="200"/>
+        <line end1="none" end2="none" x1="-117" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="-73"/>
+        <input tagg="none" y="87" size="8" x="30.5" rotation="270" rotate="true" text="L+"/>
+        <input tagg="none" y="86" size="8" x="-169" rotation="270" rotate="true" text="L1"/>
+        <text y="-46" size="10" x="45" text="6EP1332-4BA00"/>
+        <text y="-46" size="15" x="-177" text="SITOP PM 70"/>
+        <circle diameter="5" y="87.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-172.5"/>
+        <line end1="none" end2="none" x1="-167" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="-123"/>
+        <line end1="none" end2="none" x1="-190" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="-80" length2="1.5" x2="-190"/>
+        <line end1="none" end2="none" x1="-190" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" length1="1.5" antialias="false" y2="90" length2="1.5" x2="-173"/>
+        <line end1="none" end2="none" x1="-190" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" length1="1.5" antialias="false" y2="-80" length2="1.5" x2="200"/>
+        <terminal y="92" x="80" orientation="s"/>
+        <terminal y="92" x="180" orientation="s"/>
+        <terminal y="92" x="-120" orientation="s"/>
+        <terminal y="92" x="-70" orientation="s"/>
+        <terminal y="92" x="30" orientation="s"/>
+        <terminal y="92" x="130" orientation="s"/>
+        <terminal y="92" x="-170" orientation="s"/>
+    </description>
+</definition>
