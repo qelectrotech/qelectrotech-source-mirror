@@ -1579,7 +1579,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="171"/>
         <source>Chargement</source>
-        <translation>Ładuj</translation>
+        <translation>Ładowanie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="332"/>
@@ -8589,7 +8589,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
         <source>Commutateur / bouton</source>
-        <translation>Łącznik popkrętny/przyciskowy</translation>
+        <translation>Łącznik pokrętny/przyciskowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="98"/>
