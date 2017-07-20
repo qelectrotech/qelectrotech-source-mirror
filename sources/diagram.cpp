@@ -91,23 +91,28 @@ Diagram::Diagram(QETProject *project) :
  * @brief Diagram::~Diagram
  * Destructor
  */
-Diagram::~Diagram() {
-	// clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
+Diagram::~Diagram()
+{
+        //First clear every selection to close an hypothetical editor
+    clearSelection();
+        // clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
 	undoStack().clear();
-	//delete of QGIManager, every elements he knows are removed
+        //delete of QGIManager, every elements he knows are removed
 	delete qgi_manager_;
-	// remove of conductor setter
+        // remove of conductor setter
 	delete conductor_setter_;
 	
-	// delete of object for manage movement
+        // delete of object for manage movement
 	delete elements_mover_;
 	delete element_texts_mover_;
 
-	if (m_event_interface) delete m_event_interface;
+	if (m_event_interface)
+        delete m_event_interface;
 	
-	// list removable items
+        // list removable items
 	QList<QGraphicsItem *> deletable_items;
-	foreach(QGraphicsItem *qgi, items()) {
+	for(QGraphicsItem *qgi : items())
+    {
 		if (qgi -> parentItem()) continue;
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 		deletable_items << qgi;
