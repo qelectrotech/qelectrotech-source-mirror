@@ -989,15 +989,22 @@ void ProjectView::rebuildDiagramsMap() {
  * we display the fallback widget.
  * @param tab_id
  */
-void ProjectView::tabChanged(int tab_id) {
+void ProjectView::tabChanged(int tab_id)
+{
 	if (tab_id == -1)
 		setDisplayFallbackWidget(true);
 	else if(m_tab->count() == 1)
 		setDisplayFallbackWidget(false);
-
+	
 	emit(diagramActivated(m_diagram_ids[tab_id]));
+	
 	if (m_diagram_ids[tab_id] != nullptr)
 		m_diagram_ids[tab_id]->diagram()->diagramActivated();
+
+		//Clear the event interface of the previous diagram
+	if (DiagramView *dv = m_diagram_ids[m_previous_tab_index])
+		dv->diagram()->clearEventInterface();
+	m_previous_tab_index = tab_id;
 }
 
 /**

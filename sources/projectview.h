@@ -133,6 +133,7 @@ class ProjectView : public QWidget
 		QLabel *fallback_label_;
 		QTabWidget *m_tab;
 		QMap<int, DiagramView *> m_diagram_ids;
+		int m_previous_tab_index = -1;
 		QList<DiagramView *> m_diagram_view_list;
 };
 

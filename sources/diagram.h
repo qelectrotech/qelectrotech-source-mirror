@@ -129,6 +129,7 @@ class Diagram : public QGraphicsScene
 	
 	public:
 		void setEventInterface (DiagramEventInterface *event_interface);
+		void clearEventInterface();
 			
 			//methods related to autonum
 		QString conductorsAutonumName() const;

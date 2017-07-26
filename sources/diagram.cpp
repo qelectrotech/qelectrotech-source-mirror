@@ -377,8 +377,6 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
  * Diagram become the ownership of event_interface
  * If there is a previous interface, they will be delete before
  * and call init() to the new interface.
- * The derivated class of DiagramEventInterface need to emit the signal "finish" when the job is done,
- * diagram use this signal to delete the interface. If the signal isn't send, the interface will never be deleted.
  * @param event_interface
  */
 void Diagram::setEventInterface(DiagramEventInterface *event_interface)
@@ -389,6 +387,19 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 		event_interface -> init();
 	}
 	m_event_interface = event_interface;
+}
+
+/**
+ * @brief Diagram::clearEventInterface
+ * Clear the current event interface.
+ */
+void Diagram::clearEventInterface()
+{
+	if(m_event_interface)
+	{
+		delete m_event_interface;
+		m_event_interface = nullptr;
+	}
 }
 
 /**
