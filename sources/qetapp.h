@@ -175,7 +175,6 @@ class QETApp : public QETSingleApplication {
 	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
-	static AboutQET *about_dialog_;
 	static TitleBlockTemplate *default_titleblock_template_;
 	
 	public slots:

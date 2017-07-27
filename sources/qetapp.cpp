@@ -48,13 +48,12 @@ QString QETApp::config_dir = QString();
 QString QETApp::lang_dir = QString();
 TitleBlockTemplatesFilesCollection *QETApp::common_tbt_collection_;
 TitleBlockTemplatesFilesCollection *QETApp::custom_tbt_collection_;
-ElementsCollectionCache *QETApp::collections_cache_ = 0;
+ElementsCollectionCache *QETApp::collections_cache_ = nullptr;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
 uint QETApp::next_project_id = 0;
-RecentFiles *QETApp::projects_recent_files_ = 0;
-RecentFiles *QETApp::elements_recent_files_ = 0;
-AboutQET *QETApp::about_dialog_ = 0;
-TitleBlockTemplate *QETApp::default_titleblock_template_ = 0;
+RecentFiles *QETApp::projects_recent_files_ = nullptr;
+RecentFiles *QETApp::elements_recent_files_ = nullptr;
+TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 
 /**
 	Constructeur
@@ -125,9 +124,6 @@ QETApp::~QETApp() {
 	delete splash_screen_;
 	delete elements_recent_files_;
 	delete projects_recent_files_;
-	if (about_dialog_) {
-		delete about_dialog_;
-	}
 	delete qsti;
 	if (custom_tbt_collection_) delete custom_tbt_collection_;
 	if (common_tbt_collection_) delete common_tbt_collection_;
@@ -1233,32 +1229,17 @@ void QETApp::configureQET() {
 }
 
 /**
-	Dialogue "A propos de QElectroTech"
-	Le dialogue en question est cree lors du premier appel de cette fonction.
-	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
-	le dialogue n'a pas a etre recree et il apparait instantanement. Il est
-	detruit en meme temps que l'application.
-*/
-void QETApp::aboutQET() {
-	// determine le widget parent a utiliser pour le dialogue
-	QWidget *parent_widget = activeWindow();
-
-	// cree le dialogue si cela n'a pas deja ete fait
-	if (!about_dialog_) {
-		about_dialog_ = new AboutQET();
-	}
-
-	// associe le dialogue a un eventuel widget parent
-	if (parent_widget) {
-#ifdef Q_OS_MAC
-		about_dialog_ -> setWindowFlags(Qt::Sheet);
+ * @brief QETApp::aboutQET
+ * Open the dialog about qet.
+ */
+void QETApp::aboutQET()
+{
+	AboutQET aq(activeWindow());
+	
+#ifdef Q_OS_MACOS
+	aq.setWindowFlags(Qt::Sheet);
 #endif
-		about_dialog_ -> setParent(parent_widget, about_dialog_ -> windowFlags());
-	}
-
-	// affiche le dialogue puis evite de le lier a un quelconque widget parent
-	about_dialog_ -> exec();
-	about_dialog_ -> setParent(0, about_dialog_ -> windowFlags());
+	aq.exec();
 }
 
 /**
