@@ -834,6 +834,8 @@ bool QETElementEditor::toFile(const QString &fn)
 {
 	m_elmt_scene->clearEventInterface();
 	m_elmt_scene->clearSelection();
+	UncheckAddPrimitive();
+	
 	QDomDocument element_xml = m_elmt_scene->toXml();
 	bool writing = QET::writeXmlFile(element_xml, fn);
 	if (!writing) {
@@ -857,6 +859,7 @@ bool QETElementEditor::toLocation(const ElementsLocation &location)
 {
 	m_elmt_scene->clearEventInterface();
 	m_elmt_scene->clearSelection();
+	UncheckAddPrimitive();
 	
 	if (!location.setXml(m_elmt_scene->toXml()))
 	{
