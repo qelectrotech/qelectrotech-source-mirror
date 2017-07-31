@@ -44,16 +44,16 @@
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	m_elmt_type("simple"),
-	qgi_manager(this),
-	element_editor(editor)
+	m_qgi_manager(this),
+	m_element_editor(editor)
 {
-	behavior = Normal;
+	m_behavior = Normal;
 	setItemIndexMethod(NoIndex);
 	setGrid(1, 1);
 	initPasteArea();
-	undo_stack.setClean();
+	m_undo_stack.setClean();
 	m_decorator_lock = new QMutex(QMutex::NonRecursive);
-	connect(&undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
+	connect(&m_undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(managePrimitivesGroups()));
 }
 
@@ -63,7 +63,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 ElementScene::~ElementScene()
 {
 		//Disconnect to avoid crash, see bug report N° 122.
-	disconnect(&undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
+	disconnect(&m_undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
 	delete m_decorator_lock;
 
 	if (m_event_interface)
@@ -92,10 +92,10 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (!(e -> modifiers() & Qt::ControlModifier))
 		event_pos = snapToGrid(event_pos);
 	
-	if (behavior == PasteArea) {
-		QRectF current_rect(paste_area_ -> rect());
+	if (m_behavior == PasteArea) {
+		QRectF current_rect(m_paste_area -> rect());
 		current_rect.moveCenter(event_pos);
-		paste_area_ -> setRect(current_rect);
+		m_paste_area -> setRect(current_rect);
 		return;
 	}
 
@@ -135,11 +135,11 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		}
 	}
 	
-	if (behavior == PasteArea) {
-		defined_paste_area_ = paste_area_ -> rect();
-		removeItem(paste_area_);
-		emit(pasteAreaDefined(defined_paste_area_));
-		behavior = Normal;
+	if (m_behavior == PasteArea) {
+		m_defined_paste_area = m_paste_area -> rect();
+		removeItem(m_paste_area);
+		emit(pasteAreaDefined(m_defined_paste_area));
+		m_behavior = Normal;
 		return;
 	}
 
@@ -189,8 +189,8 @@ void ElementScene::keyPressEvent(QKeyEvent *event) {
  */
 void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
-	if (behavior == ElementScene::Normal)
-		element_editor -> contextMenu(event->screenPos());
+	if (m_behavior == ElementScene::Normal)
+		m_element_editor -> contextMenu(event->screenPos());
 }
 
 /**
@@ -221,8 +221,10 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
  * Set a new event interface
  * @param interface
  */
-void ElementScene::setEventInterface(ESEventInterface *event_interface) {
-	if (m_event_interface) {
+void ElementScene::setEventInterface(ESEventInterface *event_interface)
+{
+	if (m_event_interface)
+	{
 		delete m_event_interface;
 		//We must to re-init because previous interface
 		//Reset his own init when deleted
@@ -232,27 +234,40 @@ void ElementScene::setEventInterface(ESEventInterface *event_interface) {
 }
 
 /**
+ * @brief ElementScene::clearEventInterface
+ * Clear the current event interface
+ */
+void ElementScene::clearEventInterface()
+{
+	if(m_event_interface)
+	{
+		delete m_event_interface;
+		m_event_interface = nullptr;
+	}
+}
+
+/**
  * @brief ElementScene::setBehavior
  * Modifie the current behavior of this scene
  * @param b
  */
 void ElementScene::setBehavior(ElementScene::Behavior b)
 {
-	behavior = b;
+	m_behavior = b;
 }
 
 /**
 	@return la taille horizontale de la grille
 */
 int ElementScene::xGrid() const {
-	return(x_grid);
+	return(m_x_grid);
 }
 
 /**
 	@return la taille verticale de la grille
 */
 int ElementScene::yGrid() const {
-	return(y_grid);
+	return(m_y_grid);
 }
 
 /**
@@ -260,8 +275,8 @@ int ElementScene::yGrid() const {
 	@param y_g Taille verticale de la grille
 */
 void ElementScene::setGrid(int x_g, int y_g) {
-	x_grid = x_g ? x_g : 1;
-	y_grid = y_g ? y_g : 1;
+	m_x_grid = x_g ? x_g : 1;
+	m_y_grid = y_g ? y_g : 1;
 }
 
 /**
@@ -315,7 +330,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.appendChild(uuid);
 	
 		//names of element
-	root.appendChild(_names.toXml(xml_document));
+	root.appendChild(m_names_list.toXml(xml_document));
 
 	if (m_elmt_type == "slave" || m_elmt_type == "master")
 	{
@@ -444,14 +459,14 @@ bool ElementScene::containsTerminals() const {
 	@return la pile d'annulations de cet editeur d'element
 */
 QUndoStack &ElementScene::undoStack() {
-	return(undo_stack);
+	return(m_undo_stack);
 }
 
 /**
 	@return le gestionnaire de QGraphicsItem de cet editeur d'element
 */
 QGIManager &ElementScene::qgiManager() {
-	return(qgi_manager);
+	return(m_qgi_manager);
 }
 
 /**
@@ -469,7 +484,7 @@ bool ElementScene::clipboardMayContainElement() {
 	@return true si clipboard_content a ete copie depuis cet element.
 */
 bool ElementScene::wasCopiedFromThisElement(const QString &clipboard_content) {
-	return(clipboard_content == last_copied_);
+	return(clipboard_content == m_last_copied);
 }
 
 /**
@@ -501,11 +516,11 @@ void ElementScene::copy() {
 	clipboard -> setText(clipboard_content);
 	
 	// retient le dernier contenu copie
-	last_copied_ = clipboard_content;
+	m_last_copied = clipboard_content;
 }
 
 QETElementEditor* ElementScene::editor() const {
-	return element_editor;
+	return m_element_editor;
 }
 
 /**
@@ -553,7 +568,7 @@ void ElementScene::slot_delete() {
 	if (selected_items.isEmpty()) return;
 	
 	// efface tout ce qui est selectionne
-	undo_stack.push(new DeletePartsCommand(this, selected_items));
+	m_undo_stack.push(new DeletePartsCommand(this, selected_items));
 	
 	// removing items does not trigger QGraphicsScene::selectionChanged()
 	emit(partsRemoved());
@@ -566,10 +581,10 @@ void ElementScene::slot_delete() {
 	sur l'auteur de l'element, sa licence, etc.
 */
 void ElementScene::slot_editAuthorInformations() {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
+	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
 	
 	// cree un dialogue
-	QDialog dialog_author(element_editor);
+	QDialog dialog_author(m_element_editor);
 	dialog_author.setModal(true);
 #ifdef Q_OS_MAC
 	dialog_author.setWindowFlags(Qt::Sheet);
@@ -623,10 +638,10 @@ void  ElementScene::slot_editProperties() {
 	Lance un dialogue pour editer les noms de cet element
 */
 void ElementScene::slot_editNames() {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
+	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
 	
 	// cree un dialogue
-	QDialog dialog(element_editor);
+	QDialog dialog(m_element_editor);
 #ifdef Q_OS_MAC
 	dialog.setWindowFlags(Qt::Sheet);
 #endif
@@ -643,7 +658,7 @@ void ElementScene::slot_editNames() {
 	
 	// ajoute un NamesListWidget au dialogue
 	NamesListWidget *names_widget = new NamesListWidget();
-	names_widget -> setNames(_names);
+	names_widget -> setNames(m_names_list);
 	names_widget -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(names_widget);
 	
@@ -657,7 +672,7 @@ void ElementScene::slot_editNames() {
 	// lance le dialogue
 	if (dialog.exec() == QDialog::Accepted && !is_read_only) {
 		NamesList new_names(names_widget -> names());
-		if (new_names != _names) undoStack().push(new ChangeNamesCommand(this, _names, new_names));
+		if (new_names != m_names_list) undoStack().push(new ChangeNamesCommand(this, m_names_list, new_names));
 	}
 }
 
@@ -780,11 +795,11 @@ ElementContent ElementScene::selectedContent() const {
 */
 void ElementScene::getPasteArea(const QRectF &to_paste) {
 	// on le dessine sur la scene
-	paste_area_ -> setRect(to_paste);
-	addItem(paste_area_);
+	m_paste_area -> setRect(to_paste);
+	addItem(m_paste_area);
 	
 	// on passe la scene en mode "recherche de zone pour copier/coller"
-	behavior = PasteArea;
+	m_behavior = PasteArea;
 }
 
 /**
@@ -846,7 +861,7 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 	m_elmt_kindInfo.fromXml(root.firstChildElement("kindInformations"), "kindInformation");
 
 	//Extract names of xml definition
-	_names.fromXml(root);
+	m_names_list.fromXml(root);
 	
 	//extract additional informations
 	setInformations(QString());
@@ -893,15 +908,15 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 				QDomElement qde = n.toElement();
 				if (qde.isNull()) continue;
 				CustomElementPart *cep;
-				if      (qde.tagName() == "line")     cep = new PartLine     (element_editor);
-				else if (qde.tagName() == "rect")     cep = new PartRectangle(element_editor);
-				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (element_editor);
-				else if (qde.tagName() == "circle")   cep = new PartEllipse  (element_editor);
-				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (element_editor);
-				else if (qde.tagName() == "terminal") cep = new PartTerminal (element_editor);
-				else if (qde.tagName() == "text")     cep = new PartText     (element_editor);
-				else if (qde.tagName() == "input")    cep = new PartTextField(element_editor);
-				else if (qde.tagName() == "arc")      cep = new PartArc      (element_editor);
+				if      (qde.tagName() == "line")     cep = new PartLine     (m_element_editor);
+				else if (qde.tagName() == "rect")     cep = new PartRectangle(m_element_editor);
+				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (m_element_editor);
+				else if (qde.tagName() == "circle")   cep = new PartEllipse  (m_element_editor);
+				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (m_element_editor);
+				else if (qde.tagName() == "terminal") cep = new PartTerminal (m_element_editor);
+				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
+				else if (qde.tagName() == "input")    cep = new PartTextField(m_element_editor);
+				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
 				else continue;
 				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) {
 					if (!qgi -> zValue()) qgi -> setZValue(z++);
@@ -967,8 +982,8 @@ void ElementScene::addPrimitive(QGraphicsItem *primitive) {
 	Initialise la zone de collage
 */
 void ElementScene::initPasteArea() {
-	paste_area_ = new QGraphicsRectItem();
-	paste_area_ -> setZValue(1000000);
+	m_paste_area = new QGraphicsRectItem();
+	m_paste_area -> setZValue(1000000);
 	
 	QPen paste_area_pen;
 	paste_area_pen.setStyle(Qt::DashDotLine);
@@ -978,8 +993,8 @@ void ElementScene::initPasteArea() {
 	paste_area_brush.setStyle(Qt::SolidPattern);
 	paste_area_brush.setColor(QColor(90, 167, 255, 64));
 	
-	paste_area_ -> setPen(paste_area_pen);
-	paste_area_ -> setBrush(paste_area_brush);
+	m_paste_area -> setPen(paste_area_pen);
+	m_paste_area -> setBrush(paste_area_brush);
 }
 
 /**
@@ -989,8 +1004,8 @@ void ElementScene::initPasteArea() {
 	
 */
 QPointF ElementScene::snapToGrid(QPointF point) {
-	point.rx() = qRound(point.x() / x_grid) * x_grid;
-	point.ry() = qRound(point.y() / y_grid) * y_grid;
+	point.rx() = qRound(point.x() / m_x_grid) * m_x_grid;
+	point.ry() = qRound(point.y() / m_y_grid) * m_y_grid;
 	return point;
 }
 

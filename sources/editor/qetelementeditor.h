@@ -53,7 +53,7 @@ class QETElementEditor : public QETMainWindow {
 	/// view widget for the editing scene
 	ElementView *ce_view;
 	/// editing scene
-	ElementScene *ce_scene;
+	ElementScene *m_elmt_scene;
 	/// container for widgets dedicated to primitive edition
 	QDockWidget *tools_dock;
 	/// Stack of widgets for tools_dock
@@ -164,7 +164,7 @@ class QETElementEditor : public QETMainWindow {
 	@param nameslist the new list of names for the currently edited element
 */
 inline void QETElementEditor::setNames(const NamesList &nameslist) {
-	ce_scene -> setNames(nameslist);
+	m_elmt_scene -> setNames(nameslist);
 }
 
 /**
@@ -185,7 +185,7 @@ inline QString QETElementEditor::fileName() const {
 	@return the editing scene
 */
 inline ElementScene *QETElementEditor::elementScene() const {
-	return(ce_scene);
+	return(m_elmt_scene);
 }
 
 #endif
