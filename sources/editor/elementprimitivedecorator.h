@@ -66,7 +66,6 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 	protected:
 	void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 	void mousePressEvent(QGraphicsSceneMouseEvent *);
-	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	void keyPressEvent(QKeyEvent *);

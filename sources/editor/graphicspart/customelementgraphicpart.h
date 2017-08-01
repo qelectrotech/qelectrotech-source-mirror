@@ -118,7 +118,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		Filling _filling ;
 		Color _color;
 		bool _antialiased;
-		QPointF m_origin_pos, m_mouse_to_origin_pos;
+        QPointF m_origin_pos;
 };
 
 typedef CustomElementGraphicPart CEGP;

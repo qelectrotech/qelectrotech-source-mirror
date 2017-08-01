@@ -50,16 +50,6 @@ QGraphicsItem *CustomElementPart::toItem() {
 }
 
 /**
-	This method is called by the decorator when it manages only a single
-	primitive. This brings the possibility to implement custom behaviour, such
-	as text edition, points edition or specific resizing.
-	The default implementation does nothing.
-*/
-void CustomElementPart::setDecorator(ElementPrimitiveDecorator *decorator) {
-	Q_UNUSED(decorator)
-}
-
-/**
 	This method is called by the decorator when it needs to determine the best
 	way to interactively scale a primitive. It is typically called when only a
 	single primitive is being scaled.
@@ -68,46 +58,6 @@ void CustomElementPart::setDecorator(ElementPrimitiveDecorator *decorator) {
 */
 QET::ScalingMethod CustomElementPart::preferredScalingMethod() const {
 	return(QET::SnapScalingPointToGrid);
-}
-
-/**
-	This method is called by the decorator when it manages only a single
-	primitive and it received a mouse press event.
-	The implementation should return true if the primitive accepts the event, false otherwise.
-	The default implementation returns false.
-*/
-bool CustomElementPart::singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
-	return(false);
-}
-
-/**
-	This method is called by the decorator when it manages only a single
-	primitive and it received a mouse move event.
-	The implementation should return true if the primitive accepts the event, false otherwise.
-	The default implementation returns false.
-*/
-bool CustomElementPart::singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
-	return(false);
-}
-
-/**
-	This method is called by the decorator when it manages only a single
-	primitive and it received a mouse release event.
-	The implementation should return true if the primitive accepts the event, false otherwise.
-	The default implementation returns false.
-*/
-bool CustomElementPart::singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
-	return(false);
-}
-
-/**
-	This method is called by the decorator when it manages only a single
-	primitive and it received a mouse double click event.
-	The implementation should return true if the primitive accepts the event, false otherwise.
-	The default implementation returns false.
-*/
-bool CustomElementPart::singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
-	return(false);
 }
 
 /**

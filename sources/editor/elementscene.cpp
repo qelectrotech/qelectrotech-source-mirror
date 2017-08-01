@@ -1064,12 +1064,8 @@ void ElementScene::managePrimitivesGroups()
 	
 		// should we hide the decorator?
 	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
-	if (selected_items.size() == 0)
+    if (selected_items.size() <= 1)
 		m_decorator -> hide();
-	else if (selected_items.size() == 1 &&
-			 selected_items.first()->type() != PartText::Type &&
-			 selected_items.first()->type() != PartTextField::Type)
-		m_decorator->hide();
 	else
 	{
 		m_decorator -> setZValue(1000000);

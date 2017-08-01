@@ -109,31 +109,10 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 /**
 	@param items the new list of items this decorator is suposed to manipulate.
 */
-void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items) {
-	if (CustomElementPart *single_item = singleItem()) {
-		if (items.count() == 1 && items.first() == single_item) {
-			// no actual change
-			goto end_setItems;
-		}
-		
-		// break any connection between the former single selected item (if any) and
-		// the decorator
-		single_item -> setDecorator(0);
-		if (QGraphicsObject *single_object = dynamic_cast<QGraphicsObject *>(single_item)) {
-			disconnect(single_object, 0, this, 0);
-		}
-	}
-	
+void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items)
+{
 	decorated_items_ = items;
-	
-	// when only a single primitive is selected, the decorator behaves specially
-	// to enable extra features, such as text edition, internal points movements,
-	// etc.
-	if (CustomElementPart *single_item = singleItem()) {
-		single_item -> setDecorator(this);
-	}
-	
-	end_setItems:
+
 	adjust();
 	show();
 	if (focusItem() != this) {
@@ -224,15 +203,6 @@ void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	{
 		if (internalBoundingRect().contains(pos))
 		{
-			if (CustomElementPart *single_item = singleItem())
-			{
-				bool event_accepted = single_item -> singleItemPressEvent(this, event);
-				if (event_accepted)
-				{
-					event -> ignore();
-					return;
-				}
-			}
 			current_operation_square_ = QET::MoveArea;
 			accept = true;
 		}
@@ -253,21 +223,6 @@ void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 	else
 		event -> ignore();
-}
-
-/**
-	Handle events generated when mouse buttons are double clicked.
-	@param event Object describing the mouse event
-*/
-void ElementPrimitiveDecorator::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	//QGraphicsObject::mouseDoubleClickEvent(event);
-	if (CustomElementPart *single_item = singleItem()) {
-		bool event_accepted = single_item -> singleItemDoubleClickEvent(this, event);
-		if (event_accepted) {
-			event -> ignore();
-			return;
-		}
-	}
 }
 
 /**
@@ -320,17 +275,6 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		QPointF rounded_current_position = snapConstPointToGrid(current_position);
 		movement = rounded_current_position - decorated_items_.at(0) -> toItem() -> scenePos();
 	}
-	else {
-		// Neither a movement nor a scaling operation -- perhaps the underlying item
-		// is interested in the mouse event for custom operations?
-		if (CustomElementPart *single_item = singleItem()) {
-			bool event_accepted = single_item -> singleItemMoveEvent(this, event);
-			if (event_accepted) {
-				event -> ignore();
-				return;
-			}
-		}
-	}
 	
 	QRectF bounding_rect = modified_bounding_rect_;
 	applyMovementToRect(current_operation_square_, movement, modified_bounding_rect_);
@@ -370,15 +314,7 @@ void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *even
 			MovePartsCommand *move_command = new MovePartsCommand(movement, 0, graphicsItems());
 			command = move_command;
 		}
-	} else {
-		if (CustomElementPart *single_item = singleItem()) {
-			bool event_accepted = single_item -> singleItemReleaseEvent(this, event);
-			if (event_accepted) {
-				event -> ignore();
-				return;
-			}
-		}
-	}
+    }
 	
 	if (command) {
 		emit(actionFinished(command));
