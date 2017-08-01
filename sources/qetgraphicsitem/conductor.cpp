@@ -456,18 +456,19 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 }
 
 /**
-	Dessine le conducteur sans antialiasing.
-	@param qp Le QPainter a utiliser pour dessiner le conducteur
-	@param options Les options de style pour le conducteur
-	@param qw Le QWidget sur lequel on dessine 
-*/
+ * @brief Conductor::paint
+ * Draw the conductor
+ * @param qp
+ * @param options
+ * @param qw
+ */
 void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
 	Q_UNUSED(qw);
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
-	// determine la couleur du conducteur
+		// Set the color of conductor
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
 		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
@@ -486,24 +487,38 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		//Draw the conductor bigger when is hovered
 	conductor_pen.setWidthF(m_mouse_over? (m_properties.cond_size) +4 : (m_properties.cond_size));
 
-	// affectation du QPen et de la QBrush modifies au QPainter
+		//Set the QPen and QBrush to the QPainter
 	qp -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 	
-	// modification du QPen generique pour lui affecter la couleur et le style adequats
+		//Set the conductor style
 	final_conductor_pen.setColor(final_conductor_color);
 	final_conductor_pen.setStyle(m_properties.style);
-	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // meilleur rendu des pointilles
+	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 	
-	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
+		//Use a cosmetique line, below a certain zoom
 	if (options && options -> levelOfDetail < 1.0) {
 		final_conductor_pen.setCosmetic(true);
 	}
 	
-	qp -> setPen(final_conductor_pen);
+	qp->setPen(final_conductor_pen);
 	
-	// dessin du conducteur
+		//Draw the conductor
 	qp -> drawPath(path());
+		//Draw the second color
+	if(m_properties.m_bicolor)
+	{
+		final_conductor_pen.setColor(m_properties.m_color_2);
+		final_conductor_pen.setStyle(Qt::CustomDashLine);
+		QVector<qreal> dash_pattern;
+		dash_pattern << m_properties.m_dash_size-2 << m_properties.m_dash_size;
+		final_conductor_pen.setDashPattern(dash_pattern);
+		qp->save();
+		qp->setPen(final_conductor_pen);
+		qp->drawPath(path());
+		qp->restore();
+	}
+	
 	if (m_properties.type == ConductorProperties::Single) {
 		qp -> setBrush(final_conductor_color);
 		m_properties.singleLineProperties.draw(
@@ -518,17 +533,18 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	if (isSelected())
 		m_handler.drawHandler(qp, handlerPoints());
 	
-	// dessine les eventuelles jonctions
-	QList<QPointF> junctions_list = junctions();
-	if (!junctions_list.isEmpty()) {
+		//Draw the junctions
+	const QList<QPointF> junctions_list = junctions();
+	if (!junctions_list.isEmpty())
+	{
 		final_conductor_pen.setStyle(Qt::SolidLine);
 		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
 		qp -> setPen(final_conductor_pen);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
-		foreach(QPointF point, junctions_list) {
+		
+		for(QPointF point : junctions_list)
 			qp -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
-		}
 	}
 
 	qp -> restore();

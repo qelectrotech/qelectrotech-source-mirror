@@ -68,13 +68,18 @@ ConductorPropertiesWidget::~ConductorPropertiesWidget()
  */
 void ConductorPropertiesWidget::setProperties(const ConductorProperties &properties)
 {
-	if (m_properties == properties) return;
+	if (m_properties == properties)
+		return;
+	
 	m_properties = properties;
 
 	setColorButton(m_properties.color);
+	setColorButton2(m_properties.m_color_2);
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
+	ui->m_color_2_gb            -> setChecked  (m_properties.m_bicolor);
+	ui->m_dash_size_sb          -> setValue    (m_properties.m_dash_size);
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
@@ -107,6 +112,9 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	else if (ui -> m_singlewire_gb -> isChecked()) properties_.type = ConductorProperties::Single;
 
 	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
+	properties_.m_bicolor				= ui->m_color_2_gb->isChecked();
+	properties_.m_color_2				= ui->m_color_2_pb->palette().color(QPalette::Button);
+	properties_.m_dash_size				= ui->m_dash_size_sb->value();
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
@@ -295,10 +303,22 @@ void ConductorPropertiesWidget::on_m_color_pb_clicked() {
  * Set m_color_pb to @color
  * @param color
  */
-void ConductorPropertiesWidget::setColorButton(const QColor &color) {
+void ConductorPropertiesWidget::setColorButton(const QColor &color){
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
 	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
+}
+
+/**
+ * @brief ConductorPropertiesWidget::setColorButton2
+ * Set m_color_2_pb to @color
+ * @param color
+ */
+void ConductorPropertiesWidget::setColorButton2(const QColor &color)
+{
+	QPalette palette;
+	palette.setColor(QPalette::Button, color);
+	ui->m_color_2_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
 }
 
 /**
@@ -310,4 +330,15 @@ void ConductorPropertiesWidget::setColorButton(const QColor &color) {
  */
 void ConductorPropertiesWidget::on_m_update_preview_pb_clicked() {
 	updatePreview();
+}
+
+/**
+ * @brief ConductorPropertiesWidget::on_m_color_2_pb_clicked
+ * Open a color dialog, for choose the second color of conductor
+ */
+void ConductorPropertiesWidget::on_m_color_2_pb_clicked()
+{
+	QColor color = QColorDialog::getColor(m_properties.m_color_2, this);
+	if (color.isValid())
+		setColorButton2(color);
 }

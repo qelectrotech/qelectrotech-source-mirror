@@ -65,8 +65,11 @@ class ConductorPropertiesWidget : public QWidget
 		void on_m_neutral_cb_toggled(bool checked);
 		void on_m_color_pb_clicked();
 		void setColorButton (const QColor &color);
+		void setColorButton2 (const QColor &color);
 		void on_m_update_preview_pb_clicked();
 
+		void on_m_color_2_pb_clicked();
+		
 	private:
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
