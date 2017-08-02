@@ -78,17 +78,16 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2),
 	m_mouse_over(false),
-	m_handler(10),
 	m_text_item(0),
 	segments(NULL),
-	moving_segment(false),
+	m_moving_segment(false),
 	modified_path(false),
 	has_to_save_profile(false),
 	must_highlight_(Conductor::None)
 {
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
-	previous_z_value = zValue();
+	m_previous_z_value = zValue();
 
 		//Add this conductor to the list of conductor of each of the two terminal
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -117,7 +116,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 
 		//Generate the path of this conductor.
 	generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
-	setFlags(QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsScenePositionChanges);
 	setAcceptHoverEvents(true);
 	
 		// Add the text field
@@ -137,6 +136,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
  */
 Conductor::~Conductor()
 {
+	removeHandler();
 	terminal1->removeConductor(this);
 	terminal2->removeConductor(this);
 	deleteSegments();
@@ -171,30 +171,39 @@ void Conductor::updatePath(const QRectF &rect) {
 }
 
 /**
-	Genere le QPainterPath a partir de la liste des points
-*/
-void Conductor::segmentsToPath() {
-	// chemin qui sera dessine
+ * @brief Conductor::segmentsToPath
+ * Generate the QPainterPath from the list of points
+ */
+void Conductor::segmentsToPath()
+{
 	QPainterPath path;
 	
-	// s'il n'y a pa des segments, on arrete la
-	if (segments == NULL) setPath(path);
+	if (segments == NULL)
+		setPath(path);
 	
-	// demarre le chemin
+		//Start the path
 	path.moveTo(segments -> firstPoint());
-	
-	// parcourt les segments pour dessiner le chemin
+		//Each segments
 	ConductorSegment *segment = segments;
 	while(segment -> hasNextSegment()) {
 		path.lineTo(segment -> secondPoint());
 		segment = segment -> nextSegment();
 	}
-	
-	// termine le chemin
+		//Finish the path
 	path.lineTo(segment -> secondPoint());
 	
-	// affecte le chemin au conducteur
 	setPath(path);
+	
+		//If conductor is selected and he's not being modified
+		//we update the position of the handlers
+	if (isSelected() && !m_moving_segment)
+	{
+		if(handlerPoints().size() == m_handler_vector.size())
+			adjusteHandlerPos();
+		else
+			removeHandler();
+			addHandler();
+	}
 }
 
 /**
@@ -456,12 +465,11 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 }
 
 /**
- * @brief Conductor::paint
- * Draw the conductor
- * @param qp
- * @param options
- * @param qw
- */
+	Dessine le conducteur sans antialiasing.
+	@param qp Le QPainter a utiliser pour dessiner le conducteur
+	@param options Les options de style pour le conducteur
+	@param qw Le QWidget sur lequel on dessine 
+*/
 void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
 	Q_UNUSED(qw);
@@ -501,7 +509,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		final_conductor_pen.setCosmetic(true);
 	}
 	
-	qp->setPen(final_conductor_pen);
+	qp -> setPen(final_conductor_pen);
 	
 		//Draw the conductor
 	qp -> drawPath(path());
@@ -529,22 +537,17 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
 	
-		//Draw the squares used to modify the path of conductor when he is selected
-	if (isSelected())
-		m_handler.drawHandler(qp, handlerPoints());
-	
 		//Draw the junctions
-	const QList<QPointF> junctions_list = junctions();
-	if (!junctions_list.isEmpty())
-	{
+	QList<QPointF> junctions_list = junctions();
+	if (!junctions_list.isEmpty()) {
 		final_conductor_pen.setStyle(Qt::SolidLine);
 		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
 		qp -> setPen(final_conductor_pen);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
-		
-		for(QPointF point : junctions_list)
+		foreach(QPointF point, junctions_list) {
 			qp -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
+		}
 	}
 
 	qp -> restore();
@@ -603,70 +606,18 @@ void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
  */
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-		//Left clic
-	if (event->buttons() & Qt::LeftButton)
-	{
-			//If user click on a handler (square used to modify the path of conductor),
-			//we get the segment corresponding to the handler
-		int index = m_handler.pointIsHoverHandler(event->pos(), handlerPoints());
-		if (index > -1)
-		{
-			moving_segment = true;
-			moved_segment = segmentsList().at(index+1);
-			before_mov_text_pos_ = m_text_item -> pos();
-		}
-	}
-
 	QGraphicsPathItem::mousePressEvent(event);
-
-	if (event -> modifiers() & Qt::ControlModifier)
+	
+	if (event->modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
 }
 
 /**
- * @brief Conductor::mouseMoveEvent
- * Manage the mouse move event
- * @param event
- */
-void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-		//Left clic
-	if ((event->buttons() & Qt::LeftButton) && moving_segment)
-	{
-			//Snap the mouse pos to grid
-		QPointF pos_ = Diagram::snapToGrid(event->pos());
-
-			//Position of the last point
-		QPointF p = moved_segment -> middle();
-
-			//Calcul the movement
-		moved_segment -> moveX(pos_.x() - p.x());
-		moved_segment -> moveY(pos_.y() - p.y());
-			
-			//Apply the movement
-		modified_path = true;
-		has_to_save_profile = true;
-		segmentsToPath();
-		calculateTextItemPosition();
-	}
-
-	QGraphicsPathItem::mouseMoveEvent(event);
-}
-
-/**
  * @brief Conductor::mouseReleaseEvent
- * Manage the mouse release event
  * @param event
  */
 void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	moving_segment = false;
-	if (has_to_save_profile)
-	{
-		saveProfile();
-		has_to_save_profile = false;
-	}
-
 	if (!(event -> modifiers() & Qt::ControlModifier))
 		QGraphicsPathItem::mouseReleaseEvent(event);
 }
@@ -694,56 +645,209 @@ void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 }
 
 /**
- * @brief Conductor::hoverMoveEvent conductor
- * @param e QGraphicsSceneHoverEvent describing the event
+ * @brief Conductor::itemChange
+ * @param change
+ * @param value
+ * @return 
  */
-void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 {
-	if (isSelected())
+	if (change == QGraphicsItem::ItemSelectedChange)
 	{
-			//If user hover an handler (square used to modify the path of conductor),
-			//we get the segment corresponding to the handler
-		int index = m_handler.pointIsHoverHandler(event->pos(), handlerPoints());
-		if (index > -1)
+		if (value.toBool())
 		{
-			ConductorSegment *segment_ = segmentsList().at(index+1);
-			if (m_handler.pointIsInHandler(event->pos(), segment_->secondPoint()))
-				setCursor(Qt::ForbiddenCursor);
-			else if (m_handler.pointIsInHandler(event->pos(), segment_->middle()))
-				setCursor(segmentsList().at(index+1)->isVertical() ? Qt::SplitHCursor : Qt::SplitVCursor);
+			m_previous_z_value = zValue();
+			setZValue(qAbs(m_previous_z_value) + 10000);
+			addHandler();
 		}
 		else
-			setCursor(Qt::ArrowCursor);
+		{
+			setZValue(m_previous_z_value);
+			removeHandler();
+		}
 	}
-
-	QGraphicsPathItem::hoverMoveEvent(event);
+	else if (change == QGraphicsItem::ItemSceneHasChanged)
+	{
+		calculateTextItemPosition();
+		
+		if(!scene())
+			removeHandler();
+		else if (scene() && isSelected())
+			addHandler();
+	}
+	else if (change == QGraphicsItem::ItemVisibleHasChanged) {
+		calculateTextItemPosition();
+	}
+	else if (change == QGraphicsItem::ItemPositionHasChanged && isSelected()) {
+		adjusteHandlerPos();
+	}
+	
+	return(QGraphicsPathItem::itemChange(change, value));
 }
 
 /**
-	Gere les changements relatifs au conducteur
-	Reimplemente ici pour :
-	  * positionner le conducteur en avant-plan lorsqu'il est selectionne
-	@param change Type de changement
-	@param value  Valeur relative au changement
-*/
-QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemSelectedChange) {
-		if (value.toBool()) {
-			// le conducteur vient de se faire selectionner
-			previous_z_value = zValue();
-			setZValue(qAbs(previous_z_value) + 10000);
-		} else {
-			// le conducteur vient de se faire deselectionner
-			setZValue(previous_z_value);
+ * @brief Conductor::sceneEventFilter
+ * @param watched
+ * @param event
+ * @return 
+ */
+bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
+{
+		//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
+	{
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
+		{
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
+			{
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+			}
 		}
-	} else if (change == QGraphicsItem::ItemSceneHasChanged) {
-		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
-		calculateTextItemPosition();
-	} else if (change == QGraphicsItem::ItemVisibleHasChanged) {
-		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
-		calculateTextItemPosition();
 	}
-	return(QGraphicsPathItem::itemChange(change, value));
+	
+	return false;
+}
+
+/**
+ * @brief Conductor::adjusteHandlerPos
+ * Adjust the position of the handler item
+ */
+void Conductor::adjusteHandlerPos()
+{
+	if (m_handler_vector.isEmpty())
+		return;
+	
+	if (m_handler_vector.size() == handlerPoints().size())
+	{
+		QVector <QPointF> points_vector = mapToScene(handlerPoints());
+		for (int i = 0 ; i < points_vector.size() ; ++i)
+			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}
+}
+
+/**
+ * @brief Conductor::handlerMousePressEvent
+ * @param qghi
+ * @param event
+ */
+void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(event);
+	
+		//we get the segment corresponding to the handler
+	if (m_vector_index > -1)
+	{
+		qghi->setColor(Qt::cyan);
+		m_moving_segment = true;
+		m_moved_segment = segmentsList().at(m_vector_index+1);
+		before_mov_text_pos_ = m_text_item -> pos();
+		
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+			if(handler != qghi)
+				handler->hide();
+	}
+}
+
+/**
+ * @brief Conductor::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	if (m_moving_segment)
+	{
+			//Snap the mouse pos to grid
+		QPointF pos_ = Diagram::snapToGrid(mapFromItem(qghi, event->pos()));
+		
+			//Position of the last point
+		QPointF p = m_moved_segment -> middle();
+		
+			//Calcul the movement
+		m_moved_segment -> moveX(pos_.x() - p.x());
+		m_moved_segment -> moveY(pos_.y() - p.y());
+		
+			//Apply the movement
+		modified_path = true;
+		has_to_save_profile = true;
+		segmentsToPath();
+		calculateTextItemPosition();
+		qghi->setPos(mapToScene(m_moved_segment->middle()));
+	}
+}
+
+/**
+ * @brief Conductor::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(event);
+	Q_UNUSED(qghi);
+	
+	m_vector_index = -1;
+	
+	m_moving_segment = false;
+	if (has_to_save_profile)
+	{
+		saveProfile();
+		has_to_save_profile = false;
+	}
+		//When handler is released, the conductor can have more segment than befor the handler was moved
+		//then we remove all handles and new ones are added
+	removeHandler();
+	addHandler();
+}
+
+/**
+ * @brief Conductor::addHandler
+ * Add handlers for this item
+ */
+void Conductor::addHandler()
+{
+	if (m_handler_vector.isEmpty() && scene())
+	{		
+		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(handlerPoints()));
+		
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		{
+			handler->setColor(Qt::blue);
+			scene()->addItem(handler);
+			handler->installSceneEventFilter(this);
+			handler->setZValue(this->zValue()+1);
+		}
+	}
+}
+
+/**
+ * @brief Conductor::removeHandler
+ * Remove the handlers of this item
+ */
+void Conductor::removeHandler()
+{
+	if (!m_handler_vector.isEmpty())
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+	}
 }
 
 /**
@@ -768,23 +872,7 @@ QPainterPath Conductor::shape() const
 	pps.setJoinStyle(conductor_pen.joinStyle());
 
 	QPainterPath shape_(pps.createStroke(path()));
-
-	/**
-		Add handle rect to path, occur a weird bug.
-		when the conductor is removed from the scene he continue to be painted in the scene and make artefact.
-		If we save (exactly when we clear the undo stack of project when saving), Qet crash,
-		Don't add the handle rect to the path seem to work well.
-		More information here :
-		https://qelectrotech.org/bugtracker/view.php?id=107
-		https://qelectrotech.org/forum/viewtopic.php?pid=5619#p5619
-		https://qelectrotech.org/forum/viewtopic.php?pid=5067#p5067
-	**/
-//	if (isSelected()) {
-//		foreach (QRectF rect, m_handler.handlerRect(handlerPoints())) {
-//			shape_.addRect(rect);
-//		}
-//	}
-
+	
 	return shape_;
 }
 

@@ -19,6 +19,7 @@
 #include <cmath>
 #include "elementscene.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 
 /**
@@ -33,14 +34,16 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
 	first_length(1.5),
 	second_end(Qet::None),
 	second_length(1.5),
-	m_handler(10),
-	m_handler_index(-1),
 	m_undo_command(nullptr)
 {}
 
 /// Destructeur
-PartLine::~PartLine() {
-	if(m_undo_command) delete m_undo_command;
+PartLine::~PartLine()
+{
+	if(m_undo_command)
+		delete m_undo_command;
+	
+	removeHandler();
 }
 
 /**
@@ -90,9 +93,6 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	if (m_hovered)
 		drawShadowShape(painter);
 
-	if (isSelected() && scene()->selectedItems().size() == 1)
-		m_handler.drawHandler(painter, m_handler.pointsForLine(m_line));
-
 	painter->restore();
 }
 
@@ -140,69 +140,206 @@ void PartLine::fromXml(const QDomElement &qde) {
 }
 
 /**
- * @brief PartLine::mousePressEvent
- * Handle mouse press event
- * @param event
+ * @brief PartLine::itemChange
+ * @param change
+ * @param value
+ * @return 
  */
-void PartLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
+QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-	if(event->button() == Qt::LeftButton)
+	if (change == ItemSelectedHasChanged && scene())
 	{
-		setCursor(Qt::ClosedHandCursor);
-
-		if (isSelected())
+		if (value.toBool() == true)
 		{
-			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line));
+				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
+				//according to the number of selected items.
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged); 
+			
+			if (scene()->selectedItems().size() == 1)
+				addHandler();
+		}
+		else
+		{
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged);
+			removeHandler();
+		}
+	}
+	else if (change == ItemPositionHasChanged)
+	{
+		adjusteHandlerPos();
+	}
+	else if (change == ItemSceneChange)
+	{
+		if(scene())
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged);
+		
+		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
+	}
+	
+	return QGraphicsItem::itemChange(change, value);
+}
 
-			if(m_handler_index >= 0 && m_handler_index <= 1) //User click on an handler
+/**
+ * @brief PartLine::sceneEventFilter
+ * @param watched
+ * @param event
+ * @return 
+ */
+bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
+{
+	//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
+	{
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
+		{
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
 			{
-				m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
-				m_undo_command->setText(tr("Modifier une ligne"));
-				m_undo_command->enableAnimation();
-				return;
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
 			}
 		}
 	}
-
-	CustomElementGraphicPart::mousePressEvent(event);
+	
+	return false;
 }
 
 /**
- * @brief PartLine::mouseMoveEvent
- * Handle pouse move event
- * @param event
+ * @brief PartLine::adjusteHandlerPos
+ * Adjust the position of the handler item
  */
-void PartLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void PartLine::adjusteHandlerPos()
 {
-	if(m_handler_index >= 0 && m_handler_index <= 1)
+	if(m_handler_vector.isEmpty())
+		return;
+	
+	QVector<QPointF> points_vector;
+	points_vector << m_line.p1() << m_line.p2();
+	
+	if (m_handler_vector.size() == points_vector.size())
 	{
-		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
-		prepareGeometryChange();
-		setLine(m_handler.lineForPosAtIndex(m_line, pos_, m_handler_index));
+		points_vector = mapToScene(points_vector);
+		for (int i = 0 ; i < points_vector.size() ; ++i)
+			m_handler_vector.at(i)->setPos(points_vector.at(i));
 	}
-	else
-		CustomElementGraphicPart::mouseMoveEvent(event);
 }
 
 /**
- * @brief PartLine::mouseReleaseEvent
- * Handle mouse release event
+ * @brief PartLine::handlerMousePressEvent
+ * @param qghi
  * @param event
  */
-void PartLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton)
-		setCursor(Qt::OpenHandCursor);
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
+	m_undo_command->setText(tr("Modifier une ligne"));
+	m_undo_command->enableAnimation();
+	return;
+}
 
-	if (m_handler_index >= 0 && m_handler_index <= 1)
-	{
-		m_undo_command->setNewValue(QVariant(m_line));
-		elementScene()->undoStack().push(m_undo_command);
-		m_undo_command = nullptr;
-		m_handler_index = -1;
-	}
+/**
+ * @brief PartLine::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	
+	QPointF new_pos = event->scenePos();
+	if (event->modifiers() != Qt::ControlModifier)
+		new_pos = elementScene()->snapToGrid(event->scenePos());
+	new_pos = mapFromScene(new_pos);
+	
+	prepareGeometryChange();
+	if (m_vector_index == 0)
+		m_line.setP1(new_pos);
 	else
-		CustomElementGraphicPart::mouseReleaseEvent(event);
+		m_line.setP2(new_pos);
+	
+	adjusteHandlerPos();
+}
+
+/**
+ * @brief PartLine::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void PartLine::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	m_undo_command->setNewValue(QVariant(m_line));
+	elementScene()->undoStack().push(m_undo_command);
+	m_undo_command = nullptr;
+	m_vector_index = -1;
+}
+
+/**
+ * @brief PartLine::sceneSelectionChanged
+ * When the scene selection change, if there are several primitive selected, we remove the handler of this item
+ */
+void PartLine::sceneSelectionChanged()
+{
+	if (this->isSelected() && scene()->selectedItems().size() == 1)
+		addHandler();
+	else
+		removeHandler();
+}
+
+/**
+ * @brief PartLine::addHandler
+ * Add handlers for this item
+ */
+void PartLine::addHandler()
+{
+	if (m_handler_vector.isEmpty() && scene())
+	{
+		QVector<QPointF> points_vector;
+		points_vector << m_line.p1() << m_line.p2();
+		
+		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
+		
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		{
+			handler->setColor(Qt::blue);
+			scene()->addItem(handler);
+			handler->installSceneEventFilter(this);
+			handler->setZValue(this->zValue()+1);
+		}
+	}
+}
+
+/**
+ * @brief PartLine::removeHandler
+ * Remove the handlers of this item
+ */
+void PartLine::removeHandler()
+{
+	if (!m_handler_vector.isEmpty())
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+	}
 }
 
 /**
@@ -242,10 +379,6 @@ QPainterPath PartLine::shape() const
 	QPainterPathStroker pps;
 	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
-
-	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
-			shape.addRect(rect);
 
 	return shape;
 }
@@ -402,9 +535,6 @@ QRectF PartLine::boundingRect() const
 	bound = bound.normalized();
 	bound.adjust(-adjust, -adjust, adjust, adjust);
 
-	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
-		bound |= rect;
-
 	return bound;
 }
 
@@ -496,6 +626,7 @@ void PartLine::setLine(const QLineF &line)
 	if (m_line == line) return;
 	prepareGeometryChange();
 	m_line = line;
+	adjusteHandlerPos();
 	emit lineChanged();
 }
 
@@ -531,20 +662,6 @@ void PartLine::setSecondEndLength(const qreal &l)
 	prepareGeometryChange();
 	second_length = length;
 	emit secondEndLengthChanged();
-}
-
-void PartLine::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (!isSelected())
-	{
-		CustomElementGraphicPart::hoverMoveEvent(event);
-		return;
-	}
-
-	if (m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line)) >= 0)
-		setCursor(Qt::SizeAllCursor);
-	else
-		CustomElementGraphicPart::hoverMoveEvent(event);
 }
 
 /**

@@ -20,10 +20,9 @@
 
 #include <QPolygonF>
 #include "customelementgraphicpart.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
-
 
 class QPropertyUndoCommand;
+class QetGraphicsHandlerItem;
 
 /**
  * @brief The PartPolygon class
@@ -85,17 +84,25 @@ class PartPolygon : public CustomElementGraphicPart
 		void setClosed (bool close);
 
 	protected:
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 	
 	private:
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void sceneSelectionChanged ();
+		
+		void addHandler();
+		void removeHandler();
+		
+		
 		bool m_closed;
 		QList<QPointF> saved_points_;
 		QPolygonF m_polygon;
-		QetGraphicsHandlerUtility m_handler;
-		int m_handler_index;
 		QPropertyUndoCommand *m_undo_command;
+		int m_vector_index = -1;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

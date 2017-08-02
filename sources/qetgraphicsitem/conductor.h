@@ -20,7 +20,6 @@
 
 #include "conductorproperties.h"
 #include <QGraphicsPathItem>
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "assignvariables.h"
 
 class ConductorProfile;
@@ -32,6 +31,8 @@ class ConductorTextItem;
 class Element;
 class QETDiagramEditor;
 class NumerotationContext;
+class QetGraphicsHandlerItem;
+
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**
@@ -133,36 +134,45 @@ class Conductor : public QObject, public QGraphicsPathItem
 	protected:
 		virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
 		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
 		virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
+        virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 	private:
+		void adjusteHandlerPos();
+		
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void addHandler();
+		void removeHandler();
+		
+		
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		int m_vector_index = -1;
 		bool m_mouse_over;
-		QetGraphicsHandlerUtility m_handler;
-		/// Functional properties
+			/// Functional properties
 		ConductorProperties m_properties;
-		/// Text input for non simple, non-singleline conductors
+			/// Text input for non simple, non-singleline conductors
 		ConductorTextItem *m_text_item;
-		/// Segments composing the conductor
+			/// Segments composing the conductor
 		ConductorSegment *segments;
-		/// Attributs related to mouse interaction
-		bool moving_segment;
+			/// Attributs related to mouse interaction
+		bool m_moving_segment;
 		int moved_point;
-		qreal previous_z_value;
-		ConductorSegment *moved_segment;
+		qreal m_previous_z_value;
+		ConductorSegment *m_moved_segment;
 		QPointF before_mov_text_pos_;
-		/// Whether the conductor was manually modified by users
+			/// Whether the conductor was manually modified by users
 		bool modified_path;
-		/// Whether the current profile should be saved as soon as possible
+			/// Whether the current profile should be saved as soon as possible
 		bool has_to_save_profile;
-		/// conductor profile: "photography" of what the conductor is supposed to look
-		/// like - there is one profile per kind of traject
+			/// conductor profile: "photography" of what the conductor is supposed to look
+			/// like - there is one profile per kind of traject
 		ConductorProfilesGroup conductor_profiles;
-		/// Define whether and how the conductor should be highlighted
+			/// Define whether and how the conductor should be highlighted
 		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;

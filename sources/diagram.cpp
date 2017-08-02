@@ -91,30 +91,31 @@ Diagram::Diagram(QETProject *project) :
  * @brief Diagram::~Diagram
  * Destructor
  */
-Diagram::~Diagram()
-{
-        //First clear every selection to close an hypothetical editor
-    clearSelection();
-        // clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
+Diagram::~Diagram() {
+	// clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
 	undoStack().clear();
-        //delete of QGIManager, every elements he knows are removed
+	//delete of QGIManager, every elements he knows are removed
 	delete qgi_manager_;
-        // remove of conductor setter
+	// remove of conductor setter
 	delete conductor_setter_;
 	
-        // delete of object for manage movement
+	// delete of object for manage movement
 	delete elements_mover_;
 	delete element_texts_mover_;
 
-	if (m_event_interface)
-        delete m_event_interface;
+	if (m_event_interface) delete m_event_interface;
 	
-        // list removable items
+	// list removable items
 	QList<QGraphicsItem *> deletable_items;
 	for(QGraphicsItem *qgi : items())
-    {
-		if (qgi -> parentItem()) continue;
-		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
+	{
+		if (qgi->parentItem())
+			continue;
+		if (qgi->type() == Conductor::Type)
+			continue;
+		if (qgi->type() == QetGraphicsHandlerItem::Type)
+			continue;
+		
 		deletable_items << qgi;
 	}
 
@@ -377,6 +378,8 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
  * Diagram become the ownership of event_interface
  * If there is a previous interface, they will be delete before
  * and call init() to the new interface.
+ * The derivated class of DiagramEventInterface need to emit the signal "finish" when the job is done,
+ * diagram use this signal to delete the interface. If the signal isn't send, the interface will never be deleted.
  * @param event_interface
  */
 void Diagram::setEventInterface(DiagramEventInterface *event_interface)

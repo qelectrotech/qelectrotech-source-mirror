@@ -44,13 +44,13 @@ class ElementScene : public QGraphicsScene
 	public:
 		enum Behavior { Normal, PasteArea, AddPart };
 		enum ItemOption {
-				SortByZValue = 1,
-				IncludeTerminals = 2,
-				IncludeHelperItems = 4,
-				Selected = 8,
-				NonSelected = 16,
-				SelectedOrNot = 24
-			};
+			SortByZValue = 1,
+			IncludeTerminals = 2,
+			IncludeHelperItems = 4,
+			Selected = 8,
+			NonSelected = 16,
+			SelectedOrNot = 24
+		};
 		Q_DECLARE_FLAGS(ItemOptions, ItemOption)
 	
 		// constructors, destructor
@@ -82,7 +82,7 @@ class ElementScene : public QGraphicsScene
 		QETElementEditor *m_element_editor = nullptr;
 	
 			/// Variables to manage the paste area on the scene
-		QGraphicsRectItem *m_paste_area = nullptr;
+		QGraphicsRectItem *m_paste_area;
 		QRectF m_defined_paste_area;
 	
 			/// Variables to handle copy/paste with offset

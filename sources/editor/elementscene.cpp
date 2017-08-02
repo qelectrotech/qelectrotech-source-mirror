@@ -32,8 +32,9 @@
 #include "nameslist.h"
 #include "ui/elementpropertieseditorwidget.h"
 #include "eseventinterface.h"
-#include <algorithm>
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
+#include <algorithm>
 #include <QKeyEvent>
 
 /**
@@ -524,27 +525,45 @@ QETElementEditor* ElementScene::editor() const {
 }
 
 /**
-	Selectionne une liste de parties
-	@param content liste des parties a selectionner
-*/
-void ElementScene::slot_select(const ElementContent &content) {
+ * @brief ElementScene::slot_select
+ * Select the item in content, every others items in the scene are deselected
+ * @param content
+ */
+void ElementScene::slot_select(const ElementContent &content)
+{
 	blockSignals(true);
+	
+	//Befor clear selection, we must to remove the handlers items in @content,
+	//because if in @content there are a selected item, but also its handlers items,
+	//When item is deselected, the item delete its handlers items,
+	//then handlers in content doesn't exist anymore and cause segfault
+	QList<QGraphicsItem*> items_list;
+	for (QGraphicsItem *qgi : content)
+	{
+		if(qgi->type() != QetGraphicsHandlerItem::Type)
+			items_list << qgi;
+	}
 	clearSelection();
-	foreach(QGraphicsItem *qgi, content) qgi -> setSelected(true);
+
+	foreach(QGraphicsItem *qgi, items_list)
+		qgi -> setSelected(true);
+	
 	blockSignals(false);
 	emit(selectionChanged());
 }
 
 /**
-	Selectionne tout
-*/
+ * @brief ElementScene::slot_selectAll
+ * Select all items
+ */
 void ElementScene::slot_selectAll() {
 	slot_select(items());
 }
 
 /**
-	Deselectionne tout
-*/
+ * @brief ElementScene::slot_deselectAll
+ * deselect all item
+ */
 void ElementScene::slot_deselectAll() {
 	slot_select(ElementContent());
 }
@@ -811,7 +830,15 @@ void ElementScene::reset()
 	clearSelection();
 	undoStack().clear();
 
-	foreach (QGraphicsItem *qgi, items())
+		//We don't add handlers, because it's the role of the primitive or decorator to remove it.
+	QList<QGraphicsItem*> items_list;
+	for (QGraphicsItem *qgi : items())
+	{
+		if(qgi->type() != QetGraphicsHandlerItem::Type)
+			items_list << qgi;
+	}
+	
+	for (QGraphicsItem *qgi : items_list)
 	{
 		removeItem(qgi);
 		qgiManager().release(qgi);
@@ -1065,9 +1092,16 @@ void ElementScene::managePrimitivesGroups()
 		// should we hide the decorator?
 	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
     if (selected_items.size() <= 1)
+	{
 		m_decorator -> hide();
+	}
 	else
 	{
+		for(QGraphicsItem *qgi : selected_items)
+		{
+				//We recall set selected, then every primitive will remove there handler because there are several item selected
+			qgi->setSelected(true);
+		}
 		m_decorator -> setZValue(1000000);
 		m_decorator -> setPos(0, 0);
 		m_decorator -> setItems(selected_items);

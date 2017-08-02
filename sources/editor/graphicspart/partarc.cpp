@@ -18,6 +18,8 @@
 #include "partarc.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 
 /**
@@ -37,8 +39,10 @@ PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
  * @brief PartArc::~PartArc
  * Destructor
  */
-PartArc::~PartArc() {
+PartArc::~PartArc()
+{
 	if(m_undo_command) delete m_undo_command;
+	removeHandler();
 }
 
 /**
@@ -82,15 +86,7 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		drawShadowShape(painter);
 
 	if (isSelected())
-	{
 		drawCross(m_rect.center(), painter);
-		if (scene()->selectedItems().size() == 1) {
-			if (m_resize_mode == 3)
-				m_handler.drawHandler(painter, m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16));
-			else
-				m_handler.drawHandler(painter, m_handler.pointsForRect(m_rect));
-		}
-	}
 }
 
 /**
@@ -129,16 +125,6 @@ void PartArc::fromXml(const QDomElement &qde) {
 	m_span_angle  = qde.attribute("angle", "-1440").toDouble() * 16;
 }
 
-QRectF PartArc::boundingRect() const
-{
-	QRectF r = AbstractPartEllipse::boundingRect();
-
-	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
-		r |= rect;
-
-	return r;
-}
-
 /**
  * @brief PartArc::shape
  * @return the shape of this item
@@ -152,10 +138,6 @@ QPainterPath PartArc::shape() const
 	QPainterPathStroker pps;
 	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
-
-	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
-			shape.addRect(rect);
 
 	return shape;
 }
@@ -172,135 +154,6 @@ QPainterPath PartArc::shadowShape() const
 	return (pps.createStroke(shape));
 }
 
-void PartArc::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (!isSelected())
-	{
-		CustomElementGraphicPart::hoverMoveEvent(event);
-		return;
-	}
-
-	if (m_resize_mode == 1 || m_resize_mode == 2) {
-		int handler = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
-
-		if (handler >= 0)
-		{
-			if (handler == 0 || handler == 2 || handler == 5 || handler == 7)
-				setCursor(Qt::SizeAllCursor);
-			else if (handler == 1 || handler == 6)
-				setCursor(Qt::SizeVerCursor);
-			else if (handler == 3 || handler == 4)
-				setCursor(Qt::SizeHorCursor);
-
-			return;
-		}
-	}
-	else if (m_resize_mode == 3) {
-		if (m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16)) >= 0) {
-			setCursor(Qt::SizeAllCursor);
-			return;
-		}
-	}
-
-	CustomElementGraphicPart::hoverMoveEvent(event);
-}
-
-/**
- * @brief PartArc::mousePressEvent
- * Handle mouse press event
- * @param event
- */
-void PartArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-	if (event->button() == Qt::LeftButton)
-	{
-		setCursor(Qt::ClosedHandCursor);
-		if (isSelected())
-		{
-				//resize rect
-			if (m_resize_mode == 1 || m_resize_mode == 2) {
-				m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
-
-				if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
-				{
-					m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-					m_undo_command->setText(tr("Modifier un arc"));
-					m_undo_command->enableAnimation();
-					return;
-				}
-			}
-				//resize angle
-			if (m_resize_mode == 3) {
-				m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16));
-				if (m_handler_index == 0) {
-					m_span_point = m_handler.pointsForArc(m_rect, m_start_angle /16, m_span_angle /16).at(1);
-
-					m_undo_command = new QPropertyUndoCommand(this, "startAngle", QVariant(m_start_angle));
-					m_undo_command->setText(tr("Modifier un arc"));
-					m_undo_command->enableAnimation();
-
-					m_undo_command2 = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle), m_undo_command);
-					m_undo_command2->setText(tr("Modifier un arc"));
-					m_undo_command2->enableAnimation();
-
-					return;
-				}
-				else if (m_handler_index == 1) {
-					m_undo_command = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle));
-					m_undo_command->setText(tr("Modifier un arc"));
-					m_undo_command->enableAnimation();
-
-					return;
-				}
-			}
-
-		}
-	}
-
-	CustomElementGraphicPart::mousePressEvent(event);
-}
-
-/**
- * @brief PartArc::mouseMoveEvent
- * Handle mouse move event
- * @param event
- */
-void PartArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-	if (m_resize_mode == 1 || m_resize_mode == 2) {
-		if (m_handler_index >= 0 && m_handler_index <= 7) {
-			QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
-			prepareGeometryChange();
-
-			if (m_resize_mode == 1)
-				setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
-			else
-				setRect(m_handler.mirrorRectForPosAtIndex(m_rect, pos_, m_handler_index));
-
-			return;
-		}
-	}
-	else if (m_resize_mode == 3) {
-		if (m_handler_index == 0 || m_handler_index == 1) {
-			QLineF line(m_rect.center(), event->pos());
-			prepareGeometryChange();
-
-			if (m_handler_index == 0) {
-				setStartAngle(line.angle()*16);
-				setSpanAngle(line.angleTo(QLineF(m_rect.center(), m_span_point))*16);
-			}
-			else if (m_handler_index == 1) {
-				QLineF line2(m_rect.center(), m_handler.pointsForArc(m_rect, m_start_angle/16, m_span_angle/16).at(0));
-				setSpanAngle (line2.angleTo(line)*16);
-			}
-
-			return;
-		}
-	}
-
-	CustomElementGraphicPart::mouseMoveEvent(event);
-}
-
 /**
  * @brief PartArc::mouseReleaseEvent
  * Handle mouse release event
@@ -308,59 +161,317 @@ void PartArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton) {
-		setCursor(Qt::OpenHandCursor);
-		if (event->buttonDownPos(Qt::LeftButton) == event->pos())
-			switchResizeMode();
-	}
+	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
+		switchResizeMode();
 
-	if (m_resize_mode == 1 || m_resize_mode == 2) {
-		if (m_handler_index >= 0 && m_handler_index <= 7) {
-			if (!m_rect.isValid())
-				m_rect = m_rect.normalized();
+	CustomElementGraphicPart::mouseReleaseEvent(event);
+}
 
-			m_undo_command->setNewValue(QVariant(m_rect));
-			elementScene()->undoStack().push(m_undo_command);
-			m_undo_command = nullptr;
-			m_handler_index = -1;
-			return;
+/**
+ * @brief PartArc::itemChange
+ * @param change
+ * @param value
+ * @return 
+ */
+QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+	if (change == ItemSelectedHasChanged && scene())
+	{
+		if (value.toBool() == true)
+		{
+				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
+				//according to the number of selected items.
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged); 
+			
+			if (scene()->selectedItems().size() == 1)
+				addHandler();
+		}
+		else
+		{
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
+			removeHandler();
 		}
 	}
-	else if (m_resize_mode == 3) {
-		if (m_handler_index == 0) {
+	else if (change == ItemPositionHasChanged)
+	{
+		adjusteHandlerPos();
+	}
+	else if (change == ItemSceneChange)
+	{
+		if(scene())
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
+		
+		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
+	}
+	
+	return QGraphicsItem::itemChange(change, value);
+}
+
+/**
+ * @brief PartArc::sceneEventFilter
+ * @param watched
+ * @param event
+ * @return 
+ */
+bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
+{
+		//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
+	{
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
+		{
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
+			{
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
+}
+
+/**
+ * @brief PartArc::switchResizeMode
+ */
+void PartArc::switchResizeMode()
+{	
+	if (m_resize_mode == 1)
+	{
+		m_resize_mode = 2;
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setColor(Qt::darkGreen);
+	}
+	else if (m_resize_mode == 2)
+	{		
+		m_resize_mode = 3;
+			
+			//From rect mode to angle mode, then numbers of handlers change
+		removeHandler();
+		addHandler();
+		
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setColor(Qt::magenta);
+	}
+	else
+	{		
+		m_resize_mode = 1;
+		
+			//From angle mode to rect mode, then numbers of handlers change
+		removeHandler();
+		addHandler();
+		
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setColor(Qt::blue);
+	}
+}
+
+/**
+ * @brief PartArc::adjusteHandlerPos
+ */
+void PartArc::adjusteHandlerPos()
+{
+	if (m_handler_vector.isEmpty())
+		return;
+	
+	QVector <QPointF> points_vector;
+	
+	if(m_resize_mode == 3)
+		points_vector = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16);
+	else
+		points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
+		
+	
+	if (m_handler_vector.size() == points_vector.size())
+	{
+		points_vector = mapToScene(points_vector);
+		for (int i = 0 ; i < points_vector.size() ; ++i)
+			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}	
+}
+
+/**
+ * @brief PartArc::handlerMousePressEvent
+ * @param qghi
+ * @param event
+ */
+void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	if (m_resize_mode == 3) //Resize angle
+	{
+		if (m_vector_index == 0)
+		{
+			m_span_point = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle /16, m_span_angle /16).at(1);
+
+			m_undo_command = new QPropertyUndoCommand(this, "startAngle", QVariant(m_start_angle));
+			m_undo_command->setText(tr("Modifier un arc"));
+			m_undo_command->enableAnimation();
+
+			m_undo_command2 = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle), m_undo_command);
+			m_undo_command2->setText(tr("Modifier un arc"));
+			m_undo_command2->enableAnimation();
+		}
+		else if (m_vector_index == 1)
+		{
+			m_undo_command = new QPropertyUndoCommand(this, "spanAngle", QVariant(m_span_angle));
+			m_undo_command->setText(tr("Modifier un arc"));
+			m_undo_command->enableAnimation();
+		}
+	}
+	else //resize rect
+	{
+		m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
+		m_undo_command->setText(tr("Modifier un arc"));
+		m_undo_command->enableAnimation();
+	}
+}
+
+/**
+ * @brief PartArc::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	
+	QPointF new_pos = event->scenePos();
+	if (event->modifiers() != Qt::ControlModifier)
+		new_pos = elementScene()->snapToGrid(event->scenePos());
+	new_pos = mapFromScene(new_pos);
+	
+	if (m_resize_mode == 1)
+		setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(m_rect, new_pos, m_vector_index));
+	else if (m_resize_mode == 2)
+		setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(m_rect, new_pos, m_vector_index));
+	else
+	{
+		QLineF line(m_rect.center(), mapFromItem(qghi, event->pos()));
+		prepareGeometryChange();
+
+		if (m_vector_index == 0) {
+			setStartAngle(line.angle()*16);
+			setSpanAngle(line.angleTo(QLineF(m_rect.center(), m_span_point))*16);
+		}
+		else if (m_vector_index == 1) {
+			QLineF line2(m_rect.center(), QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16).at(0));
+			setSpanAngle (line2.angleTo(line)*16);
+		}
+	}
+}
+
+/**
+ * @brief PartArc::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	if (m_resize_mode == 3)
+	{
+		if (m_vector_index == 0)
+		{
 			m_undo_command->setNewValue(QVariant(m_start_angle));
 			m_undo_command2->setNewValue(QVariant(m_span_angle));
 			elementScene()->undoStack().push(m_undo_command);
 			m_undo_command = nullptr;
 			m_undo_command2 = nullptr;
-			m_handler_index = -1;
-			return;
+			m_vector_index = -1;
 		}
-		else if (m_handler_index == 1) {
+		else if (m_vector_index == 1)
+		{
 			m_undo_command->setNewValue(QVariant(m_span_angle));
 			elementScene()->undoStack().push(m_undo_command);
 			m_undo_command = nullptr;
-			m_handler_index = -1;
-			return;
+			m_vector_index = -1;
 		}
 	}
+	else
+	{
+		if (!m_rect.isValid())
+			m_rect = m_rect.normalized();
 
-	CustomElementGraphicPart::mouseReleaseEvent(event);
+		m_undo_command->setNewValue(QVariant(m_rect));
+		elementScene()->undoStack().push(m_undo_command);
+		m_undo_command = nullptr;
+		m_vector_index = -1;
+	}
 }
 
-void PartArc::switchResizeMode()
+/**
+ * @brief PartArc::sceneSelectionChanged
+ * When the scene selection change, if there are several primitive selected, we remove the handler of this item
+ */
+void PartArc::sceneSelectionChanged()
 {
-	if (m_resize_mode == 1) {
-		m_resize_mode = 2;
-		m_handler.setOuterColor(Qt::darkGreen);
+	if (this->isSelected() && scene()->selectedItems().size() == 1)
+		addHandler();
+	else
+		removeHandler();
+}
+
+/**
+ * @brief PartArc::addHandler
+ * Add handlers for this item
+ */
+void PartArc::addHandler()
+{
+	if (m_handler_vector.isEmpty() && scene())
+	{
+		if(m_resize_mode == 3)
+		{
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16)));
+		}
+		else
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
+		
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		{
+			QColor color = Qt::blue;
+			if (m_resize_mode == 2)
+				color = Qt::darkGreen;
+			else if (m_resize_mode == 3)
+				color = Qt::magenta;
+			
+			handler->setColor(color);
+			scene()->addItem(handler);
+			handler->installSceneEventFilter(this);
+			handler->setZValue(this->zValue()+1);
+		}
 	}
-	else if (m_resize_mode == 2 ) {
-		m_resize_mode = 3;
-		m_handler.setOuterColor(Qt::magenta);
+}
+
+/**
+ * @brief PartArc::removeHandler
+ * Remove the handlers of this item
+ */
+void PartArc::removeHandler()
+{
+	if (!m_handler_vector.isEmpty())
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
 	}
-	else {
-		m_resize_mode = 1;
-		m_handler.setOuterColor(Qt::blue);
-	}
-	update();
 }

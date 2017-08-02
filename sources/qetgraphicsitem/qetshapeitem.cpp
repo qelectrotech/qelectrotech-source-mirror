@@ -22,6 +22,7 @@
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "qetxml.h"
 
 /**
@@ -37,18 +38,20 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_shapeType(type),
 	m_P1 (p1),
 	m_P2 (p2),
-	m_hovered(false),
-	m_mouse_grab_handler(false),
-	m_handler(10)
+	m_hovered(false)
 {
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 	m_pen.setStyle(Qt::DashLine);
 
 }
 
-QetShapeItem::~QetShapeItem() {}
+QetShapeItem::~QetShapeItem()
+{
+    if(!m_handler_vector.isEmpty())
+        qDeleteAll(m_handler_vector);
+}
 
 /**
  * @brief QetShapeItem::setPen
@@ -109,6 +112,7 @@ bool QetShapeItem::setLine(const QLineF &line)
 	prepareGeometryChange();
 	m_P1 = line.p1();
 	m_P2 = line.p2();
+	adjusteHandlerPos();
 	return true;
 }
 
@@ -125,6 +129,7 @@ bool QetShapeItem::setRect(const QRectF &rect)
 		prepareGeometryChange();
 		m_P1 = rect.topLeft();
 		m_P2 = rect.bottomRight();
+		adjusteHandlerPos();
 		return true;
 	}
 
@@ -142,6 +147,7 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 	if (Q_UNLIKELY(m_shapeType != Polygon)) return false;
 	prepareGeometryChange();
 	m_polygon = polygon;
+	adjusteHandlerPos();
 	return true;
 }
 
@@ -246,23 +252,6 @@ QPainterPath QetShapeItem::shape() const
 	pps.setJoinStyle(Qt::RoundJoin);
 	path = pps.createStroke(path);
 
-	if (isSelected())
-	{
-		QVector <QPointF> vector;
-
-		if (m_shapeType == Line)
-			vector << m_P1 << m_P2;
-		else if (m_shapeType == Rectangle || m_shapeType == Ellipse) {
-			QRectF rect (m_P1, m_P2);
-			vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
-		}
-		else
-			vector = m_polygon;
-
-		foreach(QRectF r, m_handler.handlerRect(vector))
-			path.addRect(r);
-	}
-
 	return (path);
 }
 
@@ -293,35 +282,16 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter -> drawPath (shape());
 		painter -> restore  ();
 	}
-
-		//Draw the shape and handlers if is selected
-	switch (m_shapeType)
-	{
-		case Line:
-			painter->drawLine(QLineF(m_P1, m_P2));
-			if (isSelected())
-				m_handler.drawHandler(painter, QVector<QPointF>{m_P1, m_P2});
-			break;
-
-		case Rectangle:
-			painter->drawRect(QRectF(m_P1, m_P2));
-			if (isSelected())
-				m_handler.drawHandler(painter, m_handler.pointsForRect(QRectF(m_P1, m_P2)));
-			break;
-
-		case Ellipse:
-			painter->drawEllipse(QRectF(m_P1, m_P2));
-			if (isSelected())
-				m_handler.drawHandler(painter, m_handler.pointsForRect(QRectF(m_P1, m_P2)));
-			break;
-
-		case Polygon:
-			m_close ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon);
-			if (isSelected())
-				m_handler.drawHandler(painter, m_polygon);
-			break;
-	}
-	painter->restore();
+	
+    switch (m_shapeType)
+    {
+        case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
+        case Rectangle: painter->drawRect(QRectF(m_P1, m_P2)); break;
+        case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
+        case Polygon:   m_close ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
+    }
+    
+    painter->restore();
 }
 
 /**
@@ -329,41 +299,10 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
  * Handle hover enter event
  * @param event
  */
-void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
+void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
 	m_hovered = true;
 	QetGraphicsItem::hoverEnterEvent(event);
-}
-
-void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (!isSelected()) return;
-
-	QVector <QPointF> vector;
-	switch (m_shapeType)
-	{
-		case Line:      vector << m_P1 << m_P2;                               break;
-		case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-		case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-		case Polygon:   vector = m_polygon;                                   break;
-	}
-
-	int handler = m_handler.pointIsHoverHandler(event->pos(), vector);
-	if (handler >= 0)
-	{
-		if (m_shapeType & (Line | Polygon)) {
-			setCursor(Qt::SizeAllCursor);
-			return;
-		}
-
-		if (handler == 0 || handler == 2 || handler == 5 || handler == 7)
-			setCursor(Qt::SizeAllCursor);
-		else if (handler == 1 || handler == 6)
-			setCursor(Qt::SizeVerCursor);
-		else if (handler == 3 || handler == 4)
-			setCursor(Qt::SizeHorCursor);
-	}
-	else
-		setCursor(Qt::OpenHandCursor);
 }
 
 /**
@@ -371,98 +310,10 @@ void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
  * Handle hover leave event
  * @param event
  */
-void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
 	m_hovered = false;
-	unsetCursor();
 	QetGraphicsItem::hoverLeaveEvent(event);
-}
-
-/**
- * @brief QetShapeItem::mousePressEvent
- * Handle mouse press event
- * @param event
- */
-void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-	if (event->button() == Qt::LeftButton)
-	{
-		setCursor(Qt::ClosedHandCursor);
-			//Shape is selected, we see if user click in a handler
-		if (isSelected())
-		{
-			QVector <QPointF> vector;
-			switch (m_shapeType)
-			{
-				case Line:      vector << m_P1 << m_P2;                               break;
-				case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-				case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-				case Polygon:  vector = m_polygon;                                   break;
-			}
-
-			m_vector_index = m_handler.pointIsHoverHandler(event->pos(), vector);
-			if (m_vector_index != -1)
-			{
-					//User click on an handler
-				m_mouse_grab_handler = true;
-				m_old_P1 = m_P1;
-				m_old_P2 = m_P2;
-				m_old_polygon = m_polygon;
-				return;
-			}
-		}
-	}
-
-	QetGraphicsItem::mousePressEvent(event);
-}
-
-/**
- * @brief QetShapeItem::mouseMoveEvent
- * Handle move event
- * @param event
- */
-void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-	if (m_mouse_grab_handler)
-	{
-		QPointF new_pos = event->pos();
-		if (event->modifiers() != Qt::ControlModifier)
-			new_pos = mapFromScene(Diagram::snapToGrid(event->scenePos()));
-
-		switch (m_shapeType)
-		{
-			case Line:
-				prepareGeometryChange();
-				m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
-				break;
-
-			case Rectangle:
-				if (m_resize_mode == 1) {
-					setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
-					break;
-				}
-				else {
-					setRect(m_handler.mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
-					break;
-				}
-			case Ellipse:
-				if (m_resize_mode == 1) {
-					setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
-					break;
-				}
-				else {
-					setRect(m_handler.mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
-					break;
-				}
-
-			case Polygon:
-				prepareGeometryChange();
-				m_polygon.replace(m_vector_index, new_pos);
-				break;
-		}	//End switch
-		return;
-	}
-
-	QetGraphicsItem::mouseMoveEvent(event);
 }
 
 /**
@@ -472,52 +323,251 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if ((m_shapeType & (Rectangle | Ellipse)) && event->buttonDownPos(Qt::LeftButton) == event->pos())
+	if (event->buttonDownPos(Qt::LeftButton) == event->pos())
 		switchResizeMode();
 
-	if (m_mouse_grab_handler)
-	{
-		m_mouse_grab_handler = false;
-		if (diagram())
-		{
-			QPropertyUndoCommand *undo = nullptr;
-			if ((m_shapeType & (Line | Rectangle | Ellipse)) && (m_P1 != m_old_P1 || m_P2 != m_old_P2))
-			{
-				switch(m_shapeType)
-				{
-					case Line:      undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2)); break;
-					case Rectangle: undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
-					case Ellipse:   undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
-					case Polygon: break;
-				}
-				if (undo) undo->enableAnimation();
-			}
-			else if (m_shapeType == Polygon && (m_polygon != m_old_polygon))
-				undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
-
-			if(undo)
-			{
-				undo->setText(tr("Modifier %1").arg(name()));
-				diagram()->undoStack().push(undo);
-			}
-		}
-		setCursor(Qt::OpenHandCursor);
-	}
-
-	QetGraphicsItem::mouseReleaseEvent(event);
+    QetGraphicsItem::mouseReleaseEvent(event);
 }
 
+/**
+ * @brief QetShapeItem::itemChange
+ * @param change
+ * @param value
+ * @return 
+ */
+QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+    if (change == ItemSelectedHasChanged)
+    {
+        if (value.toBool() == true) //If this is selected, wa add handlers.
+        {
+            QVector <QPointF> points_vector;
+            switch (m_shapeType)
+            {
+                case Line:      points_vector << m_P1 << m_P2; break;
+                case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+                case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+                case Polygon:   points_vector = m_polygon; break;
+            }
+
+            if(!points_vector.isEmpty() && scene())
+            {
+                m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
+
+                for(QetGraphicsHandlerItem *handler : m_handler_vector)
+				{
+					handler->setColor(Qt::blue);
+                    scene()->addItem(handler);
+					handler->installSceneEventFilter(this);
+				}
+            }
+        }
+        else //Else this is deselected, we remove handlers
+        {
+            if(!m_handler_vector.isEmpty())
+            {
+                qDeleteAll(m_handler_vector);
+                m_handler_vector.clear();
+            }
+        }
+    }
+    else if (change == ItemPositionHasChanged)
+    {
+		adjusteHandlerPos();
+    }
+	else if (change == ItemSceneHasChanged)
+	{
+		if (!scene()) //This is removed from scene, then we deselect this, and so, the handlers is also removed.
+		{
+			setSelected(false);
+		}
+	}
+
+    return QGraphicsItem::itemChange(change, value);
+}
+
+/**
+ * @brief QetShapeItem::sceneEventFilter
+ * @param watched
+ * @param event
+ * @return 
+ */
+bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
+{
+		//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
+	{
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
+		{
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
+			{
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
+}
+
+/**
+ * @brief QetShapeItem::switchResizeMode
+ */
 void QetShapeItem::switchResizeMode()
 {
-	if (m_resize_mode == 1) {
-		m_resize_mode = 2;
-		m_handler.setOuterColor(Qt::darkGreen);
+	if (m_shapeType & (Rectangle | Ellipse))
+	{
+		if (m_resize_mode == 1)
+		{
+			m_resize_mode = 2;
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+				qghi->setColor(Qt::darkGreen);
+		}
+		else
+		{
+			m_resize_mode = 1;
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+				qghi->setColor(Qt::blue);
+		}
 	}
-	else {
-		m_resize_mode = 1;
-		m_handler.setOuterColor(Qt::blue);
+}
+
+/**
+ * @brief QetShapeItem::adjusteHandlerPos
+ * Adjust the position of the handler item
+ */
+void QetShapeItem::adjusteHandlerPos()
+{
+	QVector <QPointF> points_vector;
+	switch (m_shapeType)
+	{
+		case Line:      points_vector << m_P1 << m_P2; break;
+		case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+		case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+		case Polygon:   points_vector = m_polygon; break;
 	}
-	update();
+	
+	if (m_handler_vector.size() == points_vector.size())
+	{
+		points_vector = mapToScene(points_vector);
+		for (int i = 0 ; i < points_vector.size() ; ++i)
+			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}
+}
+
+/**
+ * @brief QetShapeItem::handlerMousePressEvent
+ * @param qghi
+ * @param event
+ */
+void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	m_old_P1 = m_P1;
+	m_old_P2 = m_P2;
+	m_old_polygon = m_polygon;
+}
+
+/**
+ * @brief QetShapeItem::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	
+	QPointF new_pos = event->scenePos();
+	if (event->modifiers() != Qt::ControlModifier)
+		new_pos = Diagram::snapToGrid(event->scenePos());
+	new_pos = mapFromScene(new_pos);
+
+	switch (m_shapeType)
+	{
+		case Line:
+			prepareGeometryChange();
+			m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
+			adjusteHandlerPos();
+			break;
+
+		case Rectangle:
+			if (m_resize_mode == 1) {
+				setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+				break;
+			}
+			else {
+				setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+				break;
+			}
+		case Ellipse:
+			if (m_resize_mode == 1) {
+				setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+				break;
+			}
+			else {
+				setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+				break;
+			}
+
+		case Polygon:
+			prepareGeometryChange();
+			m_polygon.replace(m_vector_index, new_pos);
+			adjusteHandlerPos();
+			break;
+	}	//End switch
+}
+
+/**
+ * @brief QetShapeItem::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void QetShapeItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	if (diagram())
+	{
+		QPropertyUndoCommand *undo = nullptr;
+		if ((m_shapeType & (Line | Rectangle | Ellipse)) && (m_P1 != m_old_P1 || m_P2 != m_old_P2))
+		{
+			switch(m_shapeType)
+			{
+				case Line:      undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2)); break;
+				case Rectangle: undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
+				case Ellipse:   undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
+				case Polygon: break;
+			}
+			if (undo) undo->enableAnimation();
+		}
+		else if (m_shapeType == Polygon && (m_polygon != m_old_polygon))
+			undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
+		
+		if(undo)
+		{
+			undo->setText(tr("Modifier %1").arg(name()));
+			diagram()->undoStack().push(undo);
+		}
+	}
 }
 
 /**

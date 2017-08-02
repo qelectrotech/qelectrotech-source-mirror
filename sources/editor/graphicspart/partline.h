@@ -20,9 +20,9 @@
 
 #include "customelementgraphicpart.h"
 #include "qet.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class QPropertyUndoCommand;
+class QetGraphicsHandlerItem;
 
 /**
 	This class represents a line primitive which may be used to compose the
@@ -96,19 +96,26 @@ class PartLine : public CustomElementGraphicPart
 		void setSecondEndLength(const qreal &l);
 
 	protected:
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-	
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		
 	private:
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void sceneSelectionChanged ();
+		
+		void addHandler();
+		void removeHandler();
+		
 		QPainterPath path() const;
-
 		QList<QPointF> fourShapePoints() const;
 		QRectF firstEndCircleRect() const;
 		QRectF secondEndCircleRect() const;
 		void debugPaint(QPainter *);
 
+		/*****************/
 		Qet::EndType first_end;
 		qreal        first_length;
 
@@ -116,8 +123,8 @@ class PartLine : public CustomElementGraphicPart
 		qreal        second_length;
 		QList<QPointF> saved_points_;
 		QLineF m_line;
-		QetGraphicsHandlerUtility m_handler;
-		int m_handler_index;
+		int m_vector_index = -1;
 		QPropertyUndoCommand *m_undo_command;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

@@ -16,111 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicshandlerutility.h"
-#include <QPainter>
+//#include <QVector>
+//#include <QPointF>
+#include <QPainterPath>
 
-/**
- * @brief QetGraphicsHandlerUtility::QetGraphicsHandlerUtility
- * Constructor
- * @param size : the size of the handler
- */
-QetGraphicsHandlerUtility::QetGraphicsHandlerUtility(qreal size) :
-	m_size (size)
-{}
-
-/**
- * @brief QetGraphicsHandlerUtility::drawHandler
- * Draw the handler at pos @point, using the QPainter @painter.
- * @param painter : painter to use for drawing the handler
- * @param point : point to draw the handler
- */
-void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point)
-{
-		//Setup the zoom factor to draw the handler in the same size at screen,
-		//no matter the zoom of the QPainter
-	m_zoom_factor = 1.0/painter->transform().m11();
-
-	painter->save();
-	painter->setBrush(QBrush(m_inner_color));
-	QPen square_pen(QBrush(m_outer_color), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
-	square_pen.setCosmetic(true);
-	painter->setPen(square_pen);
-	painter->drawRect(getRect(point));
-	painter->restore();
-}
-
-/**
- * @brief QetGraphicsHandlerUtility::drawHandler
- * Conveniance method for void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point)
- * @param painter
- * @param points
- * @param color2
- */
-void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QVector<QPointF> &points) {
-	foreach(QPointF point, points)
-		drawHandler(painter, point);
-}
-
-/**
- * @brief QetGraphicsHandlerUtility::pointIsInHandler
- * @param point : point to compare
- * @param key_point : point at the center of handler (the point to modify, for exemple the corner of a rectangle)
- * @return true if point is in a handler. else false
- */
-bool QetGraphicsHandlerUtility::pointIsInHandler(const QPointF &point, const QPointF &key_point) const {
-	return (getRect(key_point).contains(point));
-}
-
-/**
- * @brief QetGraphicsHandlerUtility::pointIsHoverHandler
- * @param point : point to compare
- * @param vector : vector of key_point (the point to modify, for exemple the corners of a rectangle)
- * @return if point is hover an handler, return the index of the hovered key_point in the vector, else return -1
- */
-int QetGraphicsHandlerUtility::pointIsHoverHandler(const QPointF &point, const QVector<QPointF> &vector) const
-{
-	foreach (QPointF key_point, vector)
-		if (pointIsInHandler(point, key_point))
-			return vector.indexOf(key_point);
-
-	return -1;
-}
-
-/**
- * @brief QetGraphicsHandlerUtility::handlerRect
- * Return the rect of the handler for all key_point in vector (the point to modify, for exemple the corners of a rectangle)
- * The order of rect in the returned vector is the same as the given vector.
- * @param vector
- * @return
- */
-QVector<QRectF> QetGraphicsHandlerUtility::handlerRect(const QVector<QPointF> &vector) const
-{
-	QVector <QRectF> rect_vector;
-
-	foreach(QPointF point, vector)
-		rect_vector << getRect(point);
-
-	return rect_vector;
-}
-
-void QetGraphicsHandlerUtility::setInnerColor(QColor color) {
-	m_inner_color = color;
-}
-
-void QetGraphicsHandlerUtility::setOuterColor(QColor color) {
-	m_outer_color = color;
-}
-
-/**
- * @brief QetGraphicsHandlerUtility::getRect
- * @param point
- * @return
- */
-QRectF QetGraphicsHandlerUtility::getRect(const QPointF &point) const
-{
-	qreal rect_size = m_size * m_zoom_factor;
-	QRectF rect(point.x() - rect_size/2, point.y() - rect_size/2, rect_size, rect_size);
-	return rect;
-}
 
 /**
  * @brief QetGraphicsHandlerUtility::pointsForRect
@@ -169,7 +68,6 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForLine(const QLineF &line) {
 	return (QVector<QPointF> {line.p1(), line.p2()});
 }
 
-#include <QDebug>
 /**
  * @brief QetGraphicsHandlerUtility::pointsForArc
  * Return the points for the given arc.

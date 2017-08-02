@@ -20,11 +20,11 @@
 
 #include <QGraphicsObject>
 #include "qet.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class ElementEditionCommand;
 class ElementScene;
 class CustomElementPart;
+class QetGraphicsHandlerItem;
 
 /**
 	This class represents a decorator rendered above selected items so users
@@ -42,72 +42,85 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 	Q_OBJECT
 	
 	public:
-	ElementPrimitiveDecorator(QGraphicsItem * = 0);
-	virtual ~ElementPrimitiveDecorator();
-	
-	enum { Type = UserType + 2200 };
-	
-	// methods
-	QRectF internalBoundingRect() const;
-	virtual QRectF boundingRect () const;
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
-	virtual int type() const { return Type; }
-	void setItems(const QList<QGraphicsItem *> &);
-	void setItems(const QList<CustomElementPart *> &);
-	QList<CustomElementPart *> items() const;
-	QList<QGraphicsItem *> graphicsItems() const;
+		ElementPrimitiveDecorator(QGraphicsItem * = 0);
+		virtual ~ElementPrimitiveDecorator();
+		
+		enum { Type = UserType + 2200 };
+		
+			// methods
+		QRectF internalBoundingRect() const;
+		virtual QRectF boundingRect () const;
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual int type() const { return Type; }
+		void setItems(const QList<QGraphicsItem *> &);
+		void setItems(const QList<CustomElementPart *> &);
+		QList<CustomElementPart *> items() const;
+		QList<QGraphicsItem *> graphicsItems() const;
 	
 	public slots:
-	void adjust();
+		void adjust();
 	
 	signals:
-	void actionFinished(ElementEditionCommand *);
+		void actionFinished(ElementEditionCommand *);
 	
 	protected:
-	void hoverMoveEvent(QGraphicsSceneHoverEvent *);
-	void mousePressEvent(QGraphicsSceneMouseEvent *);
-	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	void keyPressEvent(QKeyEvent *);
-	void keyReleaseEvent(QKeyEvent *);
-	QPointF deltaForRoundScaling(const QRectF &, const QRectF &, qreal);
-	QPointF snapConstPointToGrid(const QPointF &) const;
-	void snapPointToGrid(QPointF &) const;
-	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
-	QET::ScalingMethod scalingMethod(QGraphicsSceneMouseEvent *);
+		void mousePressEvent(QGraphicsSceneMouseEvent *);
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+		void keyPressEvent(QKeyEvent *);
+		void keyReleaseEvent(QKeyEvent *);
+		QPointF deltaForRoundScaling(const QRectF &, const QRectF &, qreal);
+		QPointF snapConstPointToGrid(const QPointF &) const;
+		void snapPointToGrid(QPointF &) const;
+		bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
+		QET::ScalingMethod scalingMethod(QGraphicsSceneMouseEvent *);
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 	
 	private:
-	void init();
-	void saveOriginalBoundingRect();
-	void adjustEffectiveBoundingRect();
-	void startMovement();
-	void applyMovementToRect(int, const QPointF &, QRectF &);
-	CustomElementPart *singleItem() const;
-	void translateItems(const QPointF &);
-	void scaleItems(const QRectF &, const QRectF &);
-	QRectF getSceneBoundingRect(QGraphicsItem *) const;
-	QVector <QPointF> getResizingsPoints() const;
+		void init();
+		void saveOriginalBoundingRect();
+		void adjustEffectiveBoundingRect();
+		void startMovement();
+		void applyMovementToRect(int, const QPointF &, QRectF &);
+		CustomElementPart *singleItem() const;
+		void translateItems(const QPointF &);
+		void scaleItems(const QRectF &, const QRectF &);
+		QRectF getSceneBoundingRect(QGraphicsItem *) const;
+		QVector <QPointF> getResizingsPoints() const;
 	
-	// attributes
+		
 	private:
-	QList<CustomElementPart *> decorated_items_;
-	QRectF effective_bounding_rect_; ///< actual, effective bounding rect -- never shrinks
-	QRectF original_bounding_rect_; ///< original bounding rect
-	QRectF modified_bounding_rect_; ///< new bounding rect, after the user moved or resized items
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		
+		void addHandler();
+		void removeHandler();
+		
+		
+		
+		
+		QList<CustomElementPart *> decorated_items_;
+		QRectF effective_bounding_rect_; ///< actual, effective bounding rect -- never shrinks
+		QRectF original_bounding_rect_; ///< original bounding rect
+		QRectF modified_bounding_rect_; ///< new bounding rect, after the user moved or resized items
 	
-	/**
-		Index of the square leading the current operation (resizing, etc.) or -1 if no
-		operation is occurring, -2 for a move operation.
-	*/
-	int current_operation_square_;
-	int grid_step_x_;              ///< Grid horizontal step
-	int grid_step_y_;              ///< Grid horizontal step
-	QPointF first_pos_;            ///< First point involved within the current resizing operation
-	QPointF latest_pos_;           ///< Latest point involved within the current resizing operation
-	QPointF mouse_offset_;         ///< Offset between the mouse position and the point to be snapped to grid when moving selection
-	bool moving_by_keys_;          ///< Whether we are currently moving our decorated items using the arrow keys
-	QPointF keys_movement_;           ///< Movement applied to our decorated items using the arrow keys
-	QetGraphicsHandlerUtility m_handler;
+			/**
+				Index of the square leading the current operation (resizing, etc.) or -1 if no
+				operation is occurring, -2 for a move operation.
+			*/
+		int current_operation_square_;
+		int grid_step_x_;              ///< Grid horizontal step
+		int grid_step_y_;              ///< Grid horizontal step
+		QPointF first_pos_;            ///< First point involved within the current resizing operation
+		QPointF latest_pos_;           ///< Latest point involved within the current resizing operation
+		QPointF mouse_offset_;         ///< Offset between the mouse position and the point to be snapped to grid when moving selection
+		bool moving_by_keys_;          ///< Whether we are currently moving our decorated items using the arrow keys
+		QPointF keys_movement_;           ///< Movement applied to our decorated items using the arrow keys
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		int m_vector_index = -1;
 };
 
 #endif

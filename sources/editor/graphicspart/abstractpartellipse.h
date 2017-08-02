@@ -20,6 +20,8 @@
 
 #include "customelementgraphicpart.h"
 
+class QetGraphicsHandlerItem;
+
 /**
  * @brief The AbstractPartEllipse class
  * This is the base class for all ellipse based item like ellipse, circle, arc.
@@ -61,20 +63,21 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 		virtual QPointF sceneTopLeft()       const;
 
 		QRectF rect() const;
-		void   setRect (const QRectF &rect);
+		virtual void   setRect (const QRectF &rect);
 		virtual bool isUseless() const;
 
 		int  startAngle() const {return m_start_angle;}
-		void setStartAngle (const int &start_angle);
+		virtual void setStartAngle (const int &start_angle);
 
 		int  spanAngle () const {return m_span_angle;}
-		void setSpanAngle (const int &span_angle);
+		virtual void setSpanAngle (const int &span_angle);
 
 	protected:
 		QList<QPointF> saved_points_;
 		QRectF m_rect;
 		qreal m_start_angle;
 		qreal m_span_angle;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 
 #endif // ABSTRACTPARTELLIPSE_H

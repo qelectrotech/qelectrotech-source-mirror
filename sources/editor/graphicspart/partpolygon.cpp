@@ -18,6 +18,7 @@
 #include "partpolygon.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 
 /**
@@ -29,16 +30,16 @@
 PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	m_closed(false),
-	m_handler(10),
-	m_handler_index(-1),
 	m_undo_command(nullptr)
 {}
 
 /**
  * @brief PartPolygon::~PartPolygon
  */
-PartPolygon::~PartPolygon() {
+PartPolygon::~PartPolygon()
+{
 	if(m_undo_command) delete m_undo_command;
+	removeHandler();
 }
 
 /**
@@ -64,9 +65,6 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
 	if (m_hovered)
 		drawShadowShape(painter);
-
-	if (isSelected() && scene()->selectedItems().size() == 1)
-		m_handler.drawHandler(painter, m_polygon);
 }
 
 /**
@@ -199,6 +197,7 @@ void PartPolygon::setPolygon(const QPolygonF &polygon)
 	if (m_polygon == polygon) return;
 	prepareGeometryChange();
 	m_polygon = polygon;
+	adjusteHandlerPos();
 	emit polygonChanged();
 }
 
@@ -248,83 +247,195 @@ void PartPolygon::setClosed(bool close)
 	emit closedChange();
 }
 
-void PartPolygon::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+/**
+ * @brief PartPolygon::itemChange
+ * @param change
+ * @param value
+ * @return 
+ */
+QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-	if (!isSelected())
+	if (change == ItemSelectedHasChanged && scene())
 	{
-		CustomElementGraphicPart::hoverMoveEvent(event);
-		return;
+		if (value.toBool() == true)
+		{
+				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
+				//according to the number of selected items.
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged); 
+			
+			if (scene()->selectedItems().size() == 1)
+				addHandler();
+		}
+		else
+		{
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
+			removeHandler();
+		}
 	}
-
-	if (m_handler.pointIsHoverHandler(event->pos(), m_polygon) >= 0)
-		setCursor(Qt::SizeAllCursor);
-	else
-		CustomElementGraphicPart::hoverMoveEvent(event);
+	else if (change == ItemPositionHasChanged)
+	{
+		adjusteHandlerPos();
+	}
+	else if (change == ItemSceneChange)
+	{
+		if(scene())
+			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
+		
+		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
+	}
+	
+	return QGraphicsItem::itemChange(change, value);
 }
 
 /**
- * @brief PartPolygon::mousePressEvent
- * Handle mouse press event
+ * @brief PartPolygon::sceneEventFilter
+ * @param watched
  * @param event
+ * @return 
  */
-void PartPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event)
+bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
-	if (event->button() == Qt::LeftButton)
+		//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
-		setCursor(Qt::ClosedHandCursor);
-		if(isSelected())
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
-			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_polygon);
-
-			if(m_handler_index >= 0) //User click on an handler
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
 			{
-				m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
-				m_undo_command->setText(tr("Modifier un polygone"));
-				return;
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
 			}
 		}
 	}
-
-	CustomElementGraphicPart::mousePressEvent(event);
+	
+	return false;
 }
 
 /**
- * @brief PartPolygon::mouseMoveEvent
- * Handle mouse move event
- * @param event
+ * @brief PartPolygon::adjusteHandlerPos
  */
-void PartPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void PartPolygon::adjusteHandlerPos()
 {
-	if(m_handler_index >= 0)
+	if(m_handler_vector.isEmpty())
+		return;
+	
+	if (m_handler_vector.size() == m_polygon.size())
 	{
-		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
-		prepareGeometryChange();
-		m_polygon.replace(m_handler_index, pos_);
-		emit polygonChanged();
+		QVector <QPointF> points_vector = mapToScene(m_polygon);
+		for (int i = 0 ; i < points_vector.size() ; ++i)
+			m_handler_vector.at(i)->setPos(points_vector.at(i));
 	}
-	else
-		CustomElementGraphicPart::mouseMoveEvent(event);
 }
 
 /**
- * @brief PartPolygon::mouseReleaseEvent
- * Handle mouse release event
+ * @brief PartPolygon::handlerMousePressEvent
+ * @param qghi
  * @param event
  */
-void PartPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void PartPolygon::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton)
-		setCursor(Qt::OpenHandCursor);
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
+	m_undo_command->setText(tr("Modifier un polygone"));
+}
 
-	if (m_handler_index >= 0)
-	{
-		m_undo_command->setNewValue(QVariant(m_polygon));
-		elementScene()->undoStack().push(m_undo_command);
-		m_undo_command = nullptr;
-		m_handler_index = -1;
-	}
+/**
+ * @brief PartPolygon::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void PartPolygon::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	
+	QPointF new_pos = event->scenePos();
+	if (event->modifiers() != Qt::ControlModifier)
+		new_pos = elementScene()->snapToGrid(event->scenePos());
+	new_pos = mapFromScene(new_pos);
+	
+	prepareGeometryChange();
+	m_polygon.replace(m_vector_index, new_pos);
+	adjusteHandlerPos();
+	emit polygonChanged();
+}
+
+/**
+ * @brief PartPolygon::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void PartPolygon::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	m_undo_command->setNewValue(QVariant(m_polygon));
+	elementScene()->undoStack().push(m_undo_command);
+	m_undo_command = nullptr;
+	m_vector_index = -1;
+}
+
+/**
+ * @brief PartPolygon::sceneSelectionChanged
+ * When the scene selection change, if there are several primitive selected, we remove the handler of this item
+ */
+void PartPolygon::sceneSelectionChanged()
+{
+	if (this->isSelected() && scene()->selectedItems().size() == 1)
+		addHandler();
 	else
-		CustomElementGraphicPart::mouseReleaseEvent(event);
+		removeHandler();
+}
+
+/**
+ * @brief PartPolygon::addHandler
+ * Add handlers for this item
+ */
+void PartPolygon::addHandler()
+{
+	if (m_handler_vector.isEmpty() && scene())
+	{		
+		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(m_polygon));
+		
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		{
+			handler->setColor(Qt::blue);
+			scene()->addItem(handler);
+			handler->installSceneEventFilter(this);
+			handler->setZValue(this->zValue()+1);
+		}
+	}
+}
+
+/**
+ * @brief PartPolygon::removeHandler
+ * Remove the handlers of this item
+ */
+void PartPolygon::removeHandler()
+{
+	if (!m_handler_vector.isEmpty())
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+	}
 }
 
 /**
@@ -342,10 +453,6 @@ QPainterPath PartPolygon::shape() const
 	QPainterPathStroker pps;
 	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
-
-	if (isSelected())
-		foreach(QRectF rect, m_handler.handlerRect(m_polygon))
-			shape.addRect(rect);
 
 	return shape;
 }
@@ -378,9 +485,6 @@ QRectF PartPolygon::boundingRect() const
 	if (penWeight() == 0) adjust += 0.5;
 
 	r.adjust(-adjust, -adjust, adjust, adjust);
-
-	foreach(QRectF rect, m_handler.handlerRect(m_polygon))
-		r |=rect;
 
 	return(r);
 }
