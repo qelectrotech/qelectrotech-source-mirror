@@ -201,8 +201,10 @@ void Conductor::segmentsToPath()
 		if(handlerPoints().size() == m_handler_vector.size())
 			adjusteHandlerPos();
 		else
+		{
 			removeHandler();
 			addHandler();
+		}
 	}
 }
 
