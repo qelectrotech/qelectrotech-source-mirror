@@ -26,7 +26,7 @@
 */
 ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent),
-	scene_(scene),
+	m_scene(scene),
 	offset_paste_count_(0)
 {
 	grabGesture(Qt::PinchGesture);
@@ -36,8 +36,8 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
-	connect(scene_, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
-	connect(scene_, SIGNAL(needZoomFit()), this, SLOT(zoomFit()));
+	connect(m_scene, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
+	connect(m_scene, SIGNAL(needZoomFit()), this, SLOT(zoomFit()));
 }
 
 /// Destructeur
@@ -46,7 +46,7 @@ ElementView::~ElementView() {
 
 /// @return l'ElementScene visualisee par cette ElementView
 ElementScene *ElementView::scene() const {
-	return(scene_);
+	return(m_scene);
 }
 
 /**
@@ -73,7 +73,7 @@ QRectF ElementView::viewedSceneRect() const {
 */
 void ElementView::setScene(ElementScene *s) {
 	QGraphicsView::setScene(s);
-	scene_ = s;
+	m_scene = s;
 }
 
 /**
@@ -144,14 +144,14 @@ void ElementView::zoomReset() {
 }
 
 /**
-	Ajuste le sceneRect (zone du schéma visualisée par l'ElementView) afin que
-	celui-ci inclut à la fois les primitives de l'élément ainsi que le viewport
-	de la scène avec une marge de 1/4 d'elle-même.
-*/
+ * @brief ElementView::adjustSceneRect
+ * Adjust the scenRect, so that he include all primitives of element
+ * plus the viewport of the scene with a margin of 1/3 of herself
+ */
 void ElementView::adjustSceneRect() {
-	QRectF esgr = scene_ -> elementSceneGeometricRect();
+	QRectF esgr = m_scene -> elementSceneGeometricRect();
 	QRectF vpbr = mapToScene(this -> viewport()->rect()).boundingRect();
-	QRectF new_scene_rect = vpbr.adjusted(-vpbr.width()/4, -vpbr.height()/4, vpbr.width()/4, vpbr.height()/4);
+	QRectF new_scene_rect = vpbr.adjusted(-vpbr.width()/3, -vpbr.height()/3, vpbr.width()/3, vpbr.height()/3);
 	setSceneRect(new_scene_rect.united(esgr));
 }
 
@@ -161,7 +161,7 @@ void ElementView::adjustSceneRect() {
  * celui-ci inclut uniquement les primitives de l'élément dessiné.
  */
 void ElementView::resetSceneRect() {
-	setSceneRect(scene_ -> elementSceneGeometricRect());
+	setSceneRect(m_scene -> elementSceneGeometricRect());
 }
 
 /**
@@ -170,7 +170,7 @@ void ElementView::resetSceneRect() {
 */
 void ElementView::cut() {
 	// delegue cette action a la scene
-	scene_ -> cut();
+	m_scene -> cut();
 	offset_paste_count_ = -1;
 }
 
@@ -180,7 +180,7 @@ void ElementView::cut() {
 */
 void ElementView::copy() {
 	// delegue cette action a la scene
-	scene_ -> copy();
+	m_scene -> copy();
 	offset_paste_count_ = 0;
 }
 
@@ -201,12 +201,12 @@ void ElementView::paste() {
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 	
-	if (scene_ -> wasCopiedFromThisElement(clipboard_text)) {
+	if (m_scene -> wasCopiedFromThisElement(clipboard_text)) {
 		// copier/coller avec decalage
 		pasteWithOffset(document_xml);
 	} else {
 		// copier/coller par choix de la zone de collage
-		QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(document_xml);
+		QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(document_xml);
 		if (pasted_content_bounding_rect.isEmpty()) return;
 		
 		to_paste_in_area_ = clipboard_text;
@@ -225,7 +225,7 @@ void ElementView::pasteInArea() {
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 	
-	QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(document_xml);
+	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(document_xml);
 	if (pasted_content_bounding_rect.isEmpty()) return;
 	
 	// copier/coller par choix de la zone de collage
@@ -264,7 +264,7 @@ void ElementView::getPasteArea(const QRectF &to_paste) {
 	} else {
 		used_rect.moveCenter(QPointF(0.0, 0.0));
 	}
-	scene_ -> getPasteArea(used_rect);
+	m_scene -> getPasteArea(used_rect);
 }
 
 /**
@@ -291,13 +291,13 @@ ElementContent ElementView::pasteAreaDefined(const QRectF &target_rect) {
 ElementContent ElementView::paste(const QDomDocument &xml_document, const QPointF &pos) {
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
-	scene_ -> fromXml(xml_document, pos, false, &content_pasted);
+	m_scene -> fromXml(xml_document, pos, false, &content_pasted);
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
-		scene_ -> clearSelection();
+		m_scene -> clearSelection();
 		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
-		scene_ -> undoStack().push(undo_object);
+		m_scene -> undoStack().push(undo_object);
 	}
 	return(content_pasted);
 }
@@ -311,7 +311,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	ElementContent content_pasted;
 	
 	// rectangle source
-	QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(xml_document);
+	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(xml_document);
 	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
 	
 	// copier/coller avec decalage
@@ -338,14 +338,14 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	}
 	QPointF old_start_top_left_corner = start_top_left_corner_;
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
-	scene_ -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
+	m_scene -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
-		scene_ -> clearSelection();
+		m_scene -> clearSelection();
 		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
 		undo_object -> setOffset(offset_paste_count_ - 1, old_start_top_left_corner, offset_paste_count_, start_top_left_corner_);
-		scene_ -> undoStack().push(undo_object);
+		m_scene -> undoStack().push(undo_object);
 	}
 	return(content_pasted);
 }
@@ -390,6 +390,7 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 void ElementView::mouseReleaseEvent(QMouseEvent *e) {
 	if (e -> button() == Qt::MidButton) {
 		setCursor(Qt::ArrowCursor);
+		adjustSceneRect();
 		return;
 	}
 	QGraphicsView::mouseReleaseEvent(e);
@@ -503,7 +504,7 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		draw_cross = true;
 	}
 
-	scene_->setGrid(drawn_x_grid, drawn_y_grid);
+	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
 	
 	if (draw_grid) {
 		// draw the dot of the grid

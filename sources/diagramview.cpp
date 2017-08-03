@@ -53,7 +53,7 @@
 */
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	QGraphicsView     (parent),
-	scene             (diagram),
+	m_scene             (diagram),
 	m_event_interface (nullptr),
 	m_first_activation (true)
 {
@@ -74,8 +74,8 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setRenderHint(QPainter::TextAntialiasing, true);
 	setRenderHint(QPainter::SmoothPixmapTransform, true);
 
-	setScene(scene);
-	scene -> undoStack().setClean();
+	setScene(m_scene);
+	m_scene -> undoStack().setClean();
 	setWindowIcon(QET::Icons::QETLogo);
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
@@ -83,17 +83,17 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setSelectionMode();
 	adjustSceneRect();
 	updateWindowTitle();
-	scene->loadElmtFolioSeq();
-	scene->loadCndFolioSeq();
+	m_scene->loadElmtFolioSeq();
+	m_scene->loadCndFolioSeq();
 
 	context_menu = new QMenu(this);
 	paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 
-	connect(scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
-	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
-	connect(scene, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
+	connect(m_scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
+	connect(m_scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
+	connect(m_scene, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
+	connect(&(m_scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 
@@ -111,31 +111,31 @@ DiagramView::~DiagramView() {
 	Selectionne tous les objets du schema
 */
 void DiagramView::selectAll() {
-	scene -> selectAll();
+	m_scene -> selectAll();
 }
 
 /**
 	Deslectionne tous les objets selectionnes
 */
 void DiagramView::selectNothing() {
-	scene -> deselectAll();
+	m_scene -> deselectAll();
 }
 
 /**
 	Inverse l'etat de selection de tous les objets du schema
 */
 void DiagramView::selectInvert() {
-	scene -> invertSelection();
+	m_scene -> invertSelection();
 }
 
 /**
 	Supprime les composants selectionnes
 */
 void DiagramView::deleteSelection() {
-	if (scene -> isReadOnly()) return;
-	DiagramContent removed_content = scene -> selectedContent();
-	scene -> clearSelection();
-	scene -> undoStack().push(new DeleteElementsCommand(scene, removed_content));
+	if (m_scene -> isReadOnly()) return;
+	DiagramContent removed_content = m_scene -> selectedContent();
+	m_scene -> clearSelection();
+	m_scene -> undoStack().push(new DeleteElementsCommand(m_scene, removed_content));
 	adjustSceneRect();
 }
 
@@ -143,13 +143,13 @@ void DiagramView::deleteSelection() {
 	Pivote les composants selectionnes
 */
 void DiagramView::rotateSelection() {
-	if (scene -> isReadOnly()) return;
+	if (m_scene -> isReadOnly()) return;
 
 	// recupere les elements et les champs de texte a pivoter
 	QList<Element *> elements_to_rotate;
 	QList<DiagramTextItem *> texts_to_rotate;
 	QList<DiagramImageItem *> images_to_rotate;
-	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+	foreach (QGraphicsItem *item, m_scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate << e;
 		} else if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
@@ -168,15 +168,15 @@ void DiagramView::rotateSelection() {
 
 	// effectue les rotations s'il y a quelque chose a pivoter
 	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty() && images_to_rotate.isEmpty()) return;
-	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate, images_to_rotate));
+	m_scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate, images_to_rotate));
 }
 
 void DiagramView::rotateTexts() {
-	if (scene -> isReadOnly()) return;
+	if (m_scene -> isReadOnly()) return;
 
 	// recupere les champs de texte a orienter
 	QList<DiagramTextItem *> texts_to_rotate;
-	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+	foreach (QGraphicsItem *item, m_scene -> selectedItems()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
 			texts_to_rotate << cti;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
@@ -221,7 +221,7 @@ void DiagramView::rotateTexts() {
 
 	// si le dialogue est accepte
 	if (ori_text_dialog.exec() == QDialog::Accepted) {
-		scene -> undoStack().push(new RotateTextsCommand(texts_to_rotate, ori_widget -> orientation()));
+		m_scene -> undoStack().push(new RotateTextsCommand(texts_to_rotate, ori_widget -> orientation()));
 	}
 }
 
@@ -307,11 +307,11 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 	if (tbt_loc.isValid())
 	{
 			// fetch the current title block properties
-		TitleBlockProperties titleblock_properties_before = scene->border_and_titleblock.exportTitleBlock();
+		TitleBlockProperties titleblock_properties_before = m_scene->border_and_titleblock.exportTitleBlock();
 
 			// check the provided template is not already applied
 		QETProject *tbt_parent_project = tbt_loc.parentProject();
-		if (tbt_parent_project && tbt_parent_project == scene -> project())
+		if (tbt_parent_project && tbt_parent_project == m_scene -> project())
 		{
 				// same parent project and same name = same title block template
 			if (tbt_loc.name() == titleblock_properties_before.template_name)
@@ -324,7 +324,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 		{
 			IntegrationMoveTitleBlockTemplatesHandler *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
 			//QString error_message;
-			integrated_template_name = scene->project()->integrateTitleBlockTemplate(tbt_loc, handler);
+			integrated_template_name = m_scene->project()->integrateTitleBlockTemplate(tbt_loc, handler);
 
 			if (integrated_template_name.isEmpty())
 				return;
@@ -336,7 +336,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 
 		TitleBlockProperties titleblock_properties_after = titleblock_properties_before;
 		titleblock_properties_after.template_name = integrated_template_name;
-		scene->undoStack().push(new ChangeTitleBlockCommand(scene, titleblock_properties_before, titleblock_properties_after));
+		m_scene->undoStack().push(new ChangeTitleBlockCommand(m_scene, titleblock_properties_before, titleblock_properties_after));
 
 		adjustSceneRect();
 	}
@@ -348,7 +348,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
  * @param e the QDropEvent describing the current drag'n drop
  */
 void DiagramView::handleTextDrop(QDropEvent *e) {
-	if (scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
+	if (m_scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
 
 	IndependentTextItem *iti = new IndependentTextItem (e -> mimeData() -> text());
 
@@ -356,7 +356,7 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 		iti -> setHtml (e -> mimeData() -> text());
 	}
 
-	scene -> undoStack().push(new AddItemCommand<IndependentTextItem *>(iti, scene, mapToScene(e->pos())));
+	m_scene -> undoStack().push(new AddItemCommand<IndependentTextItem *>(iti, m_scene, mapToScene(e->pos())));
 }
 
 /**
@@ -398,8 +398,9 @@ void DiagramView::zoom(const qreal zoom_factor)
 			(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
 			scale(zoom_factor, zoom_factor);
 	}
-	scene->adjustSceneRect();
+	m_scene->adjustSceneRect();
 	adjustGridToZoom();
+	adjustSceneRect();
 }
 
 /**
@@ -409,7 +410,7 @@ void DiagramView::zoom(const qreal zoom_factor)
 */
 void DiagramView::zoomFit() {
 	adjustSceneRect();
-	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+	fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
 }
 
@@ -417,7 +418,7 @@ void DiagramView::zoomFit() {
 	Adjust zoom to fit all elements in the view, regardless of diagram borders.
 */
 void DiagramView::zoomContent() {
-	fitInView(scene -> itemsBoundingRect(), Qt::KeepAspectRatio);
+	fitInView(m_scene -> itemsBoundingRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
 }
 
@@ -434,9 +435,9 @@ void DiagramView::zoomReset() {
 */
 void DiagramView::cut() {
 	copy();
-	DiagramContent cut_content = scene -> selectedContent();
-	scene -> clearSelection();
-	scene -> undoStack().push(new CutDiagramCommand(scene, cut_content));
+	DiagramContent cut_content = m_scene -> selectedContent();
+	m_scene -> clearSelection();
+	m_scene -> undoStack().push(new CutDiagramCommand(m_scene, cut_content));
 }
 
 /**
@@ -444,7 +445,7 @@ void DiagramView::cut() {
 */
 void DiagramView::copy() {
 	QClipboard *presse_papier = QApplication::clipboard();
-	QString contenu_presse_papier = scene -> toXml(false).toString(4);
+	QString contenu_presse_papier = m_scene -> toXml(false).toString(4);
 	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
 	presse_papier -> setText(contenu_presse_papier);
 }
@@ -456,7 +457,7 @@ void DiagramView::copy() {
 	@param clipboard_mode Type de presse-papier a prendre en compte
 */
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
-	if (!isInteractive() || scene -> isReadOnly()) return;
+	if (!isInteractive() || m_scene -> isReadOnly()) return;
 
 	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
 	if ((texte_presse_papier).isEmpty()) return;
@@ -467,12 +468,12 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	DiagramContent content_pasted;
 	this->diagram()->item_paste = true;
-	scene -> fromXml(document_xml, pos, false, &content_pasted);
+	m_scene -> fromXml(document_xml, pos, false, &content_pasted);
 
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
-		scene -> clearSelection();
-		scene -> undoStack().push(new PasteDiagramCommand(scene, content_pasted));
+		m_scene -> clearSelection();
+		m_scene -> undoStack().push(new PasteDiagramCommand(m_scene, content_pasted));
 		adjustSceneRect();
 	}
 	this->diagram()->item_paste = false;
@@ -526,6 +527,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		rubber_band_origin = e -> pos();
 		h -> setValue(h -> value() + pos.x());
 		v -> setValue(v -> value() + pos.y());
+		adjustSceneRect();
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
@@ -639,10 +641,10 @@ switch(e -> key())
 		case Qt::Key_Home:
 			if (!hasTextItems()) {
 				if (
-					qgraphicsitem_cast<IndependentTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<ElementTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(scene->focusItem())
+					qgraphicsitem_cast<IndependentTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<ElementTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<ConductorTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<DiagramTextItem *>(m_scene->focusItem())
 					)
 					break;
 				current_project->changeFirstTab();
@@ -652,10 +654,10 @@ switch(e -> key())
 		case Qt::Key_End:
 			if (!hasTextItems()) {
 				if (
-					qgraphicsitem_cast<IndependentTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<ElementTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<ConductorTextItem *>(scene->focusItem()) ||
-					qgraphicsitem_cast<DiagramTextItem *>(scene->focusItem())
+					qgraphicsitem_cast<IndependentTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<ElementTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<ConductorTextItem *>(m_scene->focusItem()) ||
+					qgraphicsitem_cast<DiagramTextItem *>(m_scene->focusItem())
 					)
 					break;
 				current_project->changeLastTab();
@@ -675,19 +677,19 @@ switch(e -> key())
 			if (e->modifiers() & Qt::ControlModifier)
 				zoom(1.15);
 		case Qt::Key_Up:
-			if(!(scene->selectedContent().items(255).isEmpty())){
+			if(!(m_scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Down:
-			if(!(scene->selectedContent().items(255).isEmpty())){
+			if(!(m_scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Left:
-			if(!(scene->selectedContent().items(255).isEmpty())){
+			if(!(m_scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 		case Qt::Key_Right:
-			if(!(scene->selectedContent().items(255).isEmpty())){
+			if(!(m_scene->selectedContent().items(255).isEmpty())){
 				scrollOnMovement(e);
 			}
 	}
@@ -712,7 +714,7 @@ void DiagramView::keyReleaseEvent(QKeyEvent *e) {
 	or below the editor SceneRect is expanded
 */
 void DiagramView::scrollOnMovement(QKeyEvent *e){
-			QList<QGraphicsItem *> selected_elmts = scene->selectedContent().items(255);
+			QList<QGraphicsItem *> selected_elmts = m_scene->selectedContent().items(255);
 			QRectF viewed_scene = viewedSceneRect();
 			foreach (QGraphicsItem *qgi, selected_elmts){
 				if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
@@ -753,10 +755,10 @@ void DiagramView::scrollOnMovement(QKeyEvent *e){
 							h_increment = 2*qgi->boundingRect().right();
 							if (h_increment == 0) h_increment = -2*qgi->boundingRect().width();
 						}
-						if (((elmt_right  >= scene->sceneRect().right() -  qgi->boundingRect().right())  ||
-							(elmt_bottom >= scene->sceneRect().bottom() - qgi->boundingRect().bottom())) &&
+						if (((elmt_right  >= m_scene->sceneRect().right() -  qgi->boundingRect().right())  ||
+							(elmt_bottom >= m_scene->sceneRect().bottom() - qgi->boundingRect().bottom())) &&
 							(e->key()==Qt::Key_Right || e->key()==Qt::Key_Down)){
-							scene->adjustSceneRect();
+							m_scene->adjustSceneRect();
 						}
 						h -> setValue(h -> value() + h_increment);
 						v -> setValue(v -> value() + v_increment);
@@ -773,7 +775,7 @@ void DiagramView::scrollOnMovement(QKeyEvent *e){
 */
 QString DiagramView::title() const {
 	QString view_title;
-	QString diagram_title(scene -> title());
+	QString diagram_title(m_scene -> title());
 	if (diagram_title.isEmpty()) {
 		view_title = tr("Sans titre", "what to display for untitled diagrams");
 	} else {
@@ -787,14 +789,14 @@ QString DiagramView::title() const {
  * Edit the properties of the viewed digram
  */
 void DiagramView::editDiagramProperties() {
-	DiagramPropertiesDialog::diagramPropertiesDialog(scene, diagramEditor());
+	DiagramPropertiesDialog::diagramPropertiesDialog(m_scene, diagramEditor());
 }
 
 /**
 	@return true s'il y a des items selectionnes sur le schema, false sinon
 */
 bool DiagramView::hasSelectedItems() {
-	return(scene -> selectedItems().size() > 0);
+	return(m_scene -> selectedItems().size() > 0);
 }
 
 /**
@@ -802,7 +804,7 @@ bool DiagramView::hasSelectedItems() {
 	peuvent etre copies dans le presse-papier, false sinon
 */
 bool DiagramView::hasCopiableItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	foreach(QGraphicsItem *qgi, m_scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
@@ -819,7 +821,7 @@ bool DiagramView::hasCopiableItems() {
 	@return true if there is any Text Item selected
 */
 bool DiagramView::hasTextItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	foreach(QGraphicsItem *qgi, m_scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
 			qgraphicsitem_cast<ElementTextItem *>(qgi) ||
@@ -837,7 +839,7 @@ bool DiagramView::hasTextItems() {
 	peuvent etre supprimes, false sinon
 */
 bool DiagramView::hasDeletableItems() {
-	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+	foreach(QGraphicsItem *qgi, m_scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<Conductor *>(qgi) ||
@@ -855,55 +857,64 @@ bool DiagramView::hasDeletableItems() {
 	Ajoute une colonne au schema.
 */
 void DiagramView::addColumn() {
-	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
+	if (m_scene -> isReadOnly()) return;
+	BorderProperties old_bp = m_scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = m_scene -> border_and_titleblock.exportBorder();
 	new_bp.columns_count += 1;
-	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
+	m_scene -> undoStack().push(new ChangeBorderCommand(m_scene, old_bp, new_bp));
 }
 
 /**
 	Enleve une colonne au schema.
 */
 void DiagramView::removeColumn() {
-	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
+	if (m_scene -> isReadOnly()) return;
+	BorderProperties old_bp = m_scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = m_scene -> border_and_titleblock.exportBorder();
 	new_bp.columns_count -= 1;
-	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
+	m_scene -> undoStack().push(new ChangeBorderCommand(m_scene, old_bp, new_bp));
 }
 
 /**
 	Agrandit le schema en hauteur
 */
 void DiagramView::addRow() {
-	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
+	if (m_scene -> isReadOnly()) return;
+	BorderProperties old_bp = m_scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = m_scene -> border_and_titleblock.exportBorder();
 	new_bp.rows_count += 1;
-	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
+	m_scene -> undoStack().push(new ChangeBorderCommand(m_scene, old_bp, new_bp));
 }
 
 /**
 	Retrecit le schema en hauteur
 */
 void DiagramView::removeRow() {
-	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
+	if (m_scene -> isReadOnly()) return;
+	BorderProperties old_bp = m_scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = m_scene -> border_and_titleblock.exportBorder();
 	new_bp.rows_count -= 1;
-	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
+	m_scene -> undoStack().push(new ChangeBorderCommand(m_scene, old_bp, new_bp));
 }
 
 /**
  * @brief DiagramView::adjustSceneRect
  * Calcul and set the area of the scene visualized by this view
- * The area are diagram sceneRect * 2.
  */
 void DiagramView::adjustSceneRect()
 {
-	QRectF scene_rect = scene->sceneRect();
+	QRectF scene_rect = m_scene->sceneRect();
 	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
+	
+	QSettings settings;
+	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool())
+	{
+			//When zoom out beyong of folio is active,
+			//we always adjust the scene rect to be 1/3 bigger than the wiewport
+		QRectF vpbr = mapToScene(viewport()->rect()).boundingRect();
+		vpbr.adjust(0, 0, vpbr.width()/3, vpbr.height()/3);
+		scene_rect = scene_rect.united(vpbr);
+	}
 	setSceneRect(scene_rect);
 }
 
@@ -920,9 +931,9 @@ void DiagramView::updateWindowTitle() {
 void DiagramView::adjustGridToZoom() {
 	QRectF viewed_scene = viewedSceneRect();
 	if (diagramEditor()->drawGrid())
-		scene->setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
+		m_scene->setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
 	else
-		scene->setDisplayGrid(false);
+		m_scene->setDisplayGrid(false);
 }
 
 /**
@@ -954,7 +965,7 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 	QETProject *tbt_parent_project = tbt_loc.parentProject();
 	if (!tbt_parent_project) return(true);
 
-	return(tbt_parent_project != scene -> project());
+	return(tbt_parent_project != m_scene -> project());
 }
 
 /**
@@ -962,9 +973,9 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 	seule
 */
 void DiagramView::applyReadOnly() {
-	if (!scene) return;
+	if (!m_scene) return;
 
-	bool is_writable = !scene -> isReadOnly();
+	bool is_writable = !m_scene -> isReadOnly();
 	setInteractive(is_writable);
 	setAcceptDrops(is_writable);
 }
@@ -974,7 +985,7 @@ void DiagramView::applyReadOnly() {
 */
 void DiagramView::editSelectionProperties() {
 	// get selection
-	DiagramContent selection = scene -> selectedContent();
+	DiagramContent selection = m_scene -> selectedContent();
 
 	// if selection contains nothing return
 	int selected_items_count = selection.count(DiagramContent::All | DiagramContent::SelectedOnly);
@@ -1011,7 +1022,7 @@ void DiagramView::editSelectionProperties() {
 */
 void DiagramView::editSelectedConductorColor() {
 	// retrieve selected content
-	DiagramContent selection = scene -> selectedContent();
+	DiagramContent selection = m_scene -> selectedContent();
 
 	// we'll focus on the selected conductor (we do not handle multiple conductors edition)
 	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
@@ -1026,7 +1037,7 @@ void DiagramView::editSelectedConductorColor() {
 */
 void DiagramView::editConductorColor(Conductor *edited_conductor)
 {
-	if (scene -> isReadOnly() || !edited_conductor) return;
+	if (m_scene -> isReadOnly() || !edited_conductor) return;
 
 		// store the initial properties of the provided conductor
 	ConductorProperties initial_properties = edited_conductor -> properties();
@@ -1062,9 +1073,9 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 	Reinitialise le profil des conducteurs selectionnes
 */
 void DiagramView::resetConductors() {
-	if (scene -> isReadOnly()) return;
+	if (m_scene -> isReadOnly()) return;
 	// recupere les conducteurs selectionnes
-	QSet<Conductor *> selected_conductors = scene -> selectedConductors();
+	QSet<Conductor *> selected_conductors = m_scene -> selectedConductors();
 
 	// repere les conducteurs modifies (= profil non nul)
 	QHash<Conductor *, ConductorProfilesGroup> conductors_and_profiles;
@@ -1081,7 +1092,7 @@ void DiagramView::resetConductors() {
 	}
 
 	if (conductors_and_profiles.isEmpty()) return;
-	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
+	m_scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
 }
 
 /**
@@ -1175,9 +1186,9 @@ bool DiagramView::isCtrlShifting(QInputEvent *e) {
 */
 bool DiagramView::selectedItemHasFocus() {
 	return(
-		scene -> hasFocus() &&
-		scene -> focusItem() &&
-		scene -> focusItem() -> isSelected()
+		m_scene -> hasFocus() &&
+		m_scene -> focusItem() &&
+		m_scene -> focusItem() -> isSelected()
 	);
 }
 
@@ -1186,9 +1197,9 @@ bool DiagramView::selectedItemHasFocus() {
  * Edit the selected item if he can be edited and if only  one item is selected
  */
 void DiagramView::editSelection() {
-	if (scene -> isReadOnly() || scene -> selectedItems().size() != 1 ) return;
+	if (m_scene -> isReadOnly() || m_scene -> selectedItems().size() != 1 ) return;
 
-	QGraphicsItem *item = scene->selectedItems().first();
+	QGraphicsItem *item = m_scene->selectedItems().first();
 
 		//We use dynamic_cast instead of qgraphicsitem_cast for QetGraphicsItem
 		//because they haven't got they own type().
@@ -1219,14 +1230,14 @@ void DiagramView::setEventInterface(DVEventInterface *event_interface)
 	@param e Evenement decrivant la demande de menu contextuel
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
-	if (QGraphicsItem *qgi = scene -> itemAt(mapToScene(e -> pos()), transform())) {
-		if (!qgi -> isSelected()) scene -> clearSelection();
+	if (QGraphicsItem *qgi = m_scene -> itemAt(mapToScene(e -> pos()), transform())) {
+		if (!qgi -> isSelected()) m_scene -> clearSelection();
 		qgi -> setSelected(true);
 	}
 
 	if (QETDiagramEditor *qde = diagramEditor()) {
 		context_menu -> clear();
-		if (scene -> selectedItems().isEmpty()) {
+		if (m_scene -> selectedItems().isEmpty()) {
 			paste_here_pos = e -> pos();
 			paste_here -> setEnabled(Diagram::clipboardMayContainDiagram());
 			context_menu -> addAction(paste_here);
@@ -1269,7 +1280,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;
 
-	BorderTitleBlock &bi = scene -> border_and_titleblock;
+	BorderTitleBlock &bi = m_scene -> border_and_titleblock;
 
 	//Get the click pos on the diagram
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());

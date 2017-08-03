@@ -83,7 +83,7 @@ class ElementView : public QGraphicsView {
 	
 	// attributes
 	private:
-	ElementScene *scene_;
+	ElementScene *m_scene;
 	QString to_paste_in_area_;
 	int offset_paste_count_;
 	QPointF start_top_left_corner_;

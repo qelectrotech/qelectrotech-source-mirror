@@ -49,7 +49,7 @@ class DiagramView : public QGraphicsView
 	
 		// attributes
 
-		Diagram          *scene;
+		Diagram          *m_scene;
 		DVEventInterface *m_event_interface;
 		QMenu            *context_menu;
 		QAction          *paste_here;
@@ -66,7 +66,7 @@ class DiagramView : public QGraphicsView
 		void addRow();
 		void removeRow();
 		/// @return the diagram rendered by this view
-		Diagram *diagram() { return(scene); }
+		Diagram *diagram() { return(m_scene); }
 		QETDiagramEditor *diagramEditor() const;
 		bool hasSelectedItems();
 		bool hasCopiableItems();
