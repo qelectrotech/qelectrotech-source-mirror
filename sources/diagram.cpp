@@ -968,7 +968,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			qgi -> setPos( qgi -> pos() += pos_);
 	}
 	
-	// remplissage des listes facultatives
+        //Filling of optional lists
 	if (content_ptr) {
 		content_ptr -> elements         = added_elements.toSet();
 		content_ptr -> conductorsToMove = added_conductors.toSet();
@@ -976,6 +976,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> images			= added_images.toSet();
 		content_ptr -> shapes			= added_shapes.toSet();
 	}
+    
+        //Ensure the texts of conductor are inside the border of the folio
+        //and so don't cause the annoying margin on the left border of the folio.
+    for(Conductor *cond : added_conductors)
+        cond->textItem()->setPos(cond->textItem()->pos());
+    
 	adjustSceneRect();
 	return(true);
 }

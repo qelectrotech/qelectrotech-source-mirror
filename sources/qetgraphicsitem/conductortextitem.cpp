@@ -137,7 +137,42 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 	rotate_by_user_ = rotate_by_user;
 	if (!rotate_by_user && parent_conductor_) {
 		parent_conductor_ -> calculateTextItemPosition();
-	}
+    }
+}
+
+/**
+ * @brief ConductorTextItem::setPos
+ * @param pos
+ */
+void ConductorTextItem::setPos(const QPointF &pos)
+{
+    /*
+     * In some condition the conductor text item is outside the border of folio in the left.
+     * They cause a margin on the left of folio and in most case this margin is unwanted and annoying the user.
+     * If the text is empty and the scene position is outside the border (left and top),
+     * we can say that this position, is unwanted by user.
+     * So we move this text item to the top left of the bounding rect of parent conductors, because we sure this position is wanted by user.
+     */
+    DiagramTextItem::setPos(pos);
+    if(toPlainText().isEmpty() && (scenePos().x() < 0 || scenePos().y() < 0))
+    {
+        Conductor *cond = parentConductor();
+        if(cond)
+            DiagramTextItem::setPos(cond->boundingRect().topLeft());
+        else
+            DiagramTextItem::setPos(0,0);
+    }
+}
+
+/**
+ * @brief ConductorTextItem::setPos
+ * @param x
+ * @param y
+ */
+void ConductorTextItem::setPos(qreal x, qreal y)
+{
+    QPointF p(x,y);
+    setPos(p);
 }
 
 /**
@@ -238,5 +273,5 @@ void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 */
 void ConductorTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
-	QGraphicsTextItem::hoverMoveEvent(e);
+    QGraphicsTextItem::hoverMoveEvent(e);
 }

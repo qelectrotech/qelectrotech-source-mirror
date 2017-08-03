@@ -26,47 +26,44 @@ class Conductor;
 	Its movements are however limited to a particular distance around its
 	parent conductor.
 */
-class ConductorTextItem : public DiagramTextItem {
+class ConductorTextItem : public DiagramTextItem
+{
 	Q_OBJECT
 	
-	// constructors, destructor
+        // constructors, destructor
 	public:
-	ConductorTextItem(Conductor * = 0);
-	ConductorTextItem(const QString &, Conductor * = 0);
-	virtual ~ConductorTextItem();
+        ConductorTextItem(Conductor * = 0);
+        ConductorTextItem(const QString &, Conductor * = 0);
+        virtual ~ConductorTextItem();
 	private:
-	ConductorTextItem(const ConductorTextItem &);
-	
-	// attributes
-	public:
-	enum { Type = UserType + 1006 };
-	Conductor *parentConductor() const;
-	virtual void fromXml(const QDomElement &);
-	virtual void toXml  (QDomElement &xml) const;
-	
-	// methods
-	public:
-	virtual int type() const { return Type; }
-	virtual bool wasMovedByUser() const;
-	virtual bool wasRotateByUser() const;
-	virtual void forceMovedByUser(bool);
-	virtual void forceRotateByUser(bool);
-	
-	protected:
-	virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
-	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
-	
-	protected:
-	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+        ConductorTextItem(const ConductorTextItem &);
 
-	// attributes
+	public:
+        enum { Type = UserType + 1006 };
+        Conductor *parentConductor() const;
+        virtual void fromXml(const QDomElement &);
+        virtual void toXml  (QDomElement &xml) const;
+        virtual int type() const { return Type; }
+        virtual bool wasMovedByUser() const;
+        virtual bool wasRotateByUser() const;
+        virtual void forceMovedByUser(bool);
+        virtual void forceRotateByUser(bool);
+        virtual void setPos(const QPointF &pos);
+        virtual void setPos(qreal x, qreal y);
+	
+	protected:
+        virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
+        virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
+        virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+        virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
+        virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
+        virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+
+        // attributes
 	private:
-	Conductor *parent_conductor_;
-	bool moved_by_user_;
-	bool rotate_by_user_;
-	QPointF before_mov_pos_;
+        Conductor *parent_conductor_;
+        bool moved_by_user_;
+        bool rotate_by_user_;
+        QPointF before_mov_pos_;
 };
 #endif
