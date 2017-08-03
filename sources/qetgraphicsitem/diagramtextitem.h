@@ -32,6 +32,13 @@ class QDomDocument;
 class DiagramTextItem : public QGraphicsTextItem
 {
 	Q_OBJECT
+    
+    Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
+    Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
+	
+	signals:
+		void fontSizeChanged(int size);
+		void colorChanged(QColor color);
 
 	public:
 		DiagramTextItem(QGraphicsItem * = 0);
@@ -42,7 +49,7 @@ class DiagramTextItem : public QGraphicsTextItem
 	
 	public:
 		enum { Type = UserType + 1004 };
-		virtual int type() const { return Type; }
+		virtual int type() const override { return Type; }
 
 		Diagram *diagram() const;
 		virtual void fromXml(const QDomElement &) = 0;
@@ -57,35 +64,43 @@ class DiagramTextItem : public QGraphicsTextItem
 		QPointF mapMovementToParent   (const QPointF &) const;
 		QPointF mapMovementFromParent (const QPointF &) const;
 
-		void setFontSize(int &s);
-		void setNoEditable(bool e = true) {no_editable = e;}
+		void setFontSize(int s);
+        int fontSize()const;
+        
+        void setColor(QColor color);
+        QColor color() const;
+        
+		void setNoEditable(bool e = true) {m_no_editable = e;}
 
 	protected:
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-		virtual void focusInEvent(QFocusEvent *);
-		virtual void focusOutEvent(QFocusEvent *);
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		virtual void focusInEvent(QFocusEvent *) override;
+		virtual void focusOutEvent(QFocusEvent *) override;
 
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
 
-		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
-		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
+		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
 
 		virtual void applyRotation(const qreal &);
 
 	signals:
-			/// signal emitted after text was changed
 		void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+		void textEdited(const QString &old_str, const QString &new_str);
 	
 	protected:
-		bool m_mouse_hover;
-		QString previous_text_;
-		qreal rotation_angle_;
-		bool no_editable;
-		bool m_first_move;
+		bool m_mouse_hover = false,
+			 m_first_move = true,
+		     m_no_editable;
+
+		QString m_previous_html_text,
+				m_previous_text;
+		
+		qreal m_rotation_angle;
 		QPointF m_mouse_to_origin_movement;
 };
 #endif

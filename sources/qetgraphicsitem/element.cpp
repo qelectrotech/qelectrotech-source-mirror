@@ -29,6 +29,7 @@
 #include "numerotationcontextcommands.h"
 #include "diagramcontext.h"
 #include "changeelementinformationcommand.h"
+#include "dynamicelementtextitem.h"
 
 class ElementXmlRetroCompatibility
 {
@@ -77,7 +78,9 @@ Element::Element(QGraphicsItem *parent) :
 /**
 	Destructeur
 */
-Element::~Element() {
+Element::~Element()
+{
+    qDeleteAll(m_dynamic_text_list);
 }
 
 void Element::editProperty()
@@ -529,6 +532,15 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	} else {
 		applyRotation(90*read_ori);
 	}
+    
+        //Dynamic texts
+    for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
+    {
+        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+        addDynamicTextItem(deti);
+        deti->fromXml(qde);
+    }
+    
 	return(true);
 }
 
@@ -608,14 +620,59 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		element.appendChild(links_uuids);
 	}
 
-	//save information of this element
+        //save information of this element
 	if (! m_element_informations.keys().isEmpty()) {
 		QDomElement infos = document.createElement("elementInformations");
 		m_element_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
+    
+        //Dynamic texts
+    QDomElement dyn_text = document.createElement("dynamic_texts");
+    for (DynamicElementTextItem *deti : m_dynamic_text_list)
+        dyn_text.appendChild(deti->toXml(document));
+    element.appendChild(dyn_text);
 
-	return(element);
+    return(element);
+}
+
+/**
+ * @brief Element::addDynamiqueTextItem
+ * Add @deti as a dynamic text item of this element
+ * If @deti is null, a new DynamicElementTextItem is created and added to this element.
+ * @param deti
+ */
+void Element::addDynamicTextItem(DynamicElementTextItem *deti)
+{
+    if (deti && !m_dynamic_text_list.contains(deti))
+	{
+        m_dynamic_text_list.append(deti);
+	}
+    else
+    {
+        DynamicElementTextItem *text = new DynamicElementTextItem(this);
+        m_dynamic_text_list.append(text);
+    }
+}
+
+/**
+ * @brief Element::removeDynamicTextItem
+ * Remove @deti as dynamic text item of this element.
+ * The parent item of deti stay this item.
+ * @param deti
+ */
+void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
+{
+    if (m_dynamic_text_list.contains(deti))
+        m_dynamic_text_list.removeOne(deti);
+}
+
+/**
+ * @brief Element::dynamicTextItems
+ * @return all dynamic text items of this element
+ */
+QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
+    return m_dynamic_text_list;
 }
 
 /**

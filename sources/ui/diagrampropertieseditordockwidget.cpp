@@ -23,6 +23,7 @@
 #include "imagepropertieswidget.h"
 #include "qetshapeitem.h"
 #include "shapegraphicsitempropertieswidget.h"
+#include "dynamicelementtextitem.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -56,7 +57,7 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 	if (diagram)
 	{
 		m_diagram = diagram;
-		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()), Qt::QueuedConnection);
 		connect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
 		selectionChanged();
 	}
@@ -118,6 +119,22 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ShapeGraphicsItemPropertiesWidget(static_cast<QetShapeItem*>(item), this));
+			break; }
+			
+		case DynamicElementTextItem::Type: {
+			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(item);
+			
+				//For dynamic element text, we open the element editor
+				//We already edit an element, just update the editor with a new element
+			if (m_edited_qgi_type == Element::Type)
+			{
+				static_cast<ElementPropertiesWidget*>(editors().first())->setElement(deti->ParentElement());
+				return;
+			}
+			
+			clear();
+			m_edited_qgi_type = Element::Type;
+			addEditor(new ElementPropertiesWidget(deti->ParentElement(), this));
 			break; }
 
 		default:

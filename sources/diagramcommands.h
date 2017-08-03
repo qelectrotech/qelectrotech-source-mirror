@@ -26,6 +26,7 @@
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "conductorprofile.h"
 #include "diagram.h"
+#include "undocommand/deleteqgraphicsitemcommand.h"
 
 class DiagramTextItem;
 class Element;
@@ -81,32 +82,6 @@ QString itemText(const IndependentTextItem *item);
 QString itemText(const Conductor           *item);
 
 /**
-	This command removes content from a particular diagram.
-*/
-class DeleteElementsCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	DeleteElementsCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
-	virtual ~DeleteElementsCommand();
-	private:
-	DeleteElementsCommand(const DeleteElementsCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	private:
-	/// removed content
-	DiagramContent removed_content;
-	/// diagram which the content is removed from
-	Diagram *diagram;
-	/// keep linked element for each removed element linked to other element.
-	QHash <Element *, QList<Element *> > m_link_hash;
-};
-
-/**
 	This command pastes some content onto a particular diagram.
 */
 class PasteDiagramCommand : public QUndoCommand {
@@ -137,7 +112,7 @@ class PasteDiagramCommand : public QUndoCommand {
 /**
 	This command cuts content from a particular diagram.
 */
-class CutDiagramCommand : public DeleteElementsCommand {
+class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 	// constructors, destructor
 	public:
 	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
@@ -275,32 +250,32 @@ class RotateElementsCommand : public QUndoCommand {
 	This command directs several text items to a same particular angle of
 	rotation.
 */
-class RotateTextsCommand : public QUndoCommand {
+class RotateTextsCommand : public QUndoCommand
+{
 	// constructors, destructor
 	public:
-	RotateTextsCommand(const QHash<DiagramTextItem *, double> &, double, QUndoCommand * = 0);
-	RotateTextsCommand(const QList<DiagramTextItem *> &,         double, QUndoCommand * = 0);
-	virtual ~RotateTextsCommand();
+		RotateTextsCommand(const QList<DiagramTextItem *> &, double, QUndoCommand * = nullptr);
+		virtual ~RotateTextsCommand() override;
 	private:
-	RotateTextsCommand(const RotateTextsCommand &);
+		RotateTextsCommand(const RotateTextsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+		virtual void undo() override;
+		virtual void redo() override;
 	
 	private:
-	void defineCommandName();
+		void defineCommandName();
 	
 	// attributes
 	private:
-	/// hold rotated text items along with their former angle of rotation
-	QHash<DiagramTextItem *, double> texts_to_rotate;
-	/// angle of rotation of all text items after the command
-	double applied_rotation_angle_;
-	/// previous state of each conductor text item
-	QHash<ConductorTextItem *, bool> previous_rotate_by_user_;
-	Diagram *diagram;
+		/// hold rotated text items along with their former angle of rotation
+		QHash<DiagramTextItem *, double> m_texts_to_rotate;
+		/// angle of rotation of all text items after the command
+		double m_applied_rotation_angle;
+		/// previous state of each conductor text item
+		QHash<ConductorTextItem *, bool> m_previous_rotate_by_user;
+		Diagram *m_diagram;
 };
 
 /**

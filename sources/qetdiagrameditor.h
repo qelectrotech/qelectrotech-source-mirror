@@ -174,9 +174,9 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *redo;               ///< Redo the latest cancelled operation
 	public:
 		QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
-		QAction *conductor_reset;    ///< Reset paths of selected conductors
-		QAction *cut;                ///< Cut selection to clipboard
-		QAction *copy;               ///< Copy selection to clipboard
+		QAction *m_conductor_reset;    ///< Reset paths of selected conductors
+		QAction *m_cut;                ///< Cut selection to clipboard
+		QAction *m_copy;               ///< Copy selection to clipboard
 	private:
 		QAction *paste;              ///< Paste clipboard content on the current diagram
 		QAction *m_auto_conductor;   ///< Enable/Disable the use of auto conductor
@@ -194,7 +194,7 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *cascade_window;     ///< Show MDI subwindows as cascade
 		QAction *prev_window;        ///< Switch to the previous document
 		QAction *next_window;        ///< Switch to the next document
-		QAction *edit_selection;	 ///< To edit selected item
+		QAction *m_edit_selection;	 ///< To edit selected item
 
 		QActionGroup m_add_item_actions_group; ///Action related to adding (add text image shape...)
 
@@ -207,10 +207,10 @@ class QETDiagramEditor : public QETMainWindow {
 		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
 		QActionGroup m_selection_actions_group; ///Action related to edit a selected item
 	private:
-		QAction *delete_selection;				///< Delete selection
-		QAction *rotate_selection;				///< Rotate selected elements and text items by 90 degrees
-		QAction *rotate_texts;					///< Direct selected text items to a specific angle
-		QAction *find_element;					///< Find the selected element in the panel
+		QAction *m_delete_selection;				///< Delete selection
+		QAction *m_rotate_selection;				///< Rotate selected elements and text items by 90 degrees
+		QAction *m_rotate_texts;					///< Direct selected text items to a specific angle
+		QAction *m_find_element;					///< Find the selected element in the panel
 
 		QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
 		QAction *close_file;			   ///< Close current project file

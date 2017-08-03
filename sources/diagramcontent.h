@@ -27,6 +27,7 @@ class IndependentTextItem;
 class DiagramImageItem;
 class ElementTextItem;
 class QetShapeItem;
+class DynamicElementTextItem;
 
 /**
 	This class provides a container that makes the transmission of diagram content
@@ -37,48 +38,43 @@ class QetShapeItem;
 	Please note this container does not systematically contains a whole
 	diagram: it may describe only a part of it, e.g. selected items.
 */
-class DiagramContent {
+class DiagramContent
+{
 	public:
-	DiagramContent();
-	DiagramContent(const DiagramContent &);
-	~DiagramContent();
-	
-	/// Used to filter the different items carried by this container.
-	enum Filter {
-		Elements = 1,
-		TextFields = 2,
-		ElementTextFields = 4,
-		Images = 8,
-		ConductorsToMove = 16,
-		ConductorsToUpdate = 32,
-		OtherConductors = 64,
-		AnyConductor = 112,
-		Shapes = 128,
-		All = 255,
-		SelectedOnly = 256
-	};
-	
-	/// Hold electrical elements
-	QSet<Element *> elements;
-	/// Hold independent text items
-	QSet<IndependentTextItem *> textFields;
-	/// Hold image
-	QSet<DiagramImageItem *> images;
-	/// Hold shape
-	QSet<QetShapeItem *> shapes;
-	/// Hold conductors that would get updated considering electrical elements are moved
-	QSet<Conductor *> conductorsToUpdate;
-	/// Hold conductors that would be moved as is considering electrical elements are moved
-	QSet<Conductor *> conductorsToMove;
-	/// Hold conductors that would be left untouched considering electrical elements are moved
-	QSet<Conductor *> otherConductors;
-	
-	QList<Conductor *> conductors(int = AnyConductor) const;
-	QList<QGraphicsItem *> items(int = All) const;
-	QString sentence(int = All) const;
-	int count(int = All) const;
-	void clear();
-	int removeNonMovableItems();
+		DiagramContent();
+		DiagramContent(const DiagramContent &);
+		~DiagramContent();
+		
+		/// Used to filter the different items carried by this container.
+		enum Filter {
+			Elements = 1,
+			TextFields = 2,
+			ElementTextFields = 4,
+			Images = 8,
+			ConductorsToMove = 16,
+			ConductorsToUpdate = 32,
+			OtherConductors = 64,
+			AnyConductor = 112,
+			Shapes = 128,
+			All = 255,
+			SelectedOnly = 256
+		};
+		
+		QSet<Element *> m_elements;
+		QSet<IndependentTextItem *> m_text_fields;
+		QSet<DiagramImageItem *> m_images;
+		QSet<QetShapeItem *> m_shapes;
+		QSet<Conductor *> m_conductors_to_update;
+		QSet<Conductor *> m_conductors_to_move;
+		QSet<Conductor *> m_other_conductors;
+		QSet<DynamicElementTextItem *> m_element_texts;
+		
+		QList<Conductor *> conductors(int = AnyConductor) const;
+		QList<QGraphicsItem *> items(int = All) const;
+		QString sentence(int = All) const;
+		int count(int = All) const;
+		void clear();
+		int removeNonMovableItems();
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif

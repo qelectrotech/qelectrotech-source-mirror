@@ -36,11 +36,8 @@ class DiagramTextItem;
 class Element;
 class ElementsLocation;
 class ElementsMover;
-class ElementTextItem;
-class IndependentTextItem;
 class QETProject;
 class Terminal;
-class ConductorTextItem;
 class DiagramImageItem;
 class ElementTextsMover;
 class DiagramEventInterface;
@@ -96,7 +93,7 @@ class Diagram : public QGraphicsScene
 	private:
 		QGraphicsLineItem *conductor_setter_;
 		ElementsMover     *elements_mover_;
-		ElementTextsMover *element_texts_mover_;
+		ElementTextsMover *m_element_texts_mover;
 		QGIManager        *qgi_manager_;
 		QETProject        *m_project;
 
@@ -191,8 +188,6 @@ class Diagram : public QGraphicsScene
 		QList<Element *> elements() const;
 		QList<Conductor *> conductors() const;
 		QSet<DiagramTextItem *> selectedTexts() const;
-		QSet<ConductorTextItem *> selectedConductorTexts() const;
-		QSet<ElementTextItem*> selectedElementTexts() const;
 		QSet<Conductor *> selectedConductors() const;
 		DiagramContent content() const;
 		DiagramContent selectedContent();

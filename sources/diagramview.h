@@ -49,15 +49,14 @@ class DiagramView : public QGraphicsView
 	
 		// attributes
 
-		Diagram          *m_scene;
-		DVEventInterface *m_event_interface;
-		QMenu            *context_menu;
-		QAction          *paste_here;
-		QPoint            paste_here_pos;
-		QPointF           rubber_band_origin;
-		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
-		bool m_first_activation;
-
+		Diagram          *m_diagram;
+		DVEventInterface *m_event_interface = nullptr;
+		QMenu            *m_context_menu;
+		QAction          *m_paste_here;
+		QPoint            m_paste_here_pos;
+		QPointF           m_rubber_band_origin;
+		bool              m_fresh_focus_in,
+						  m_first_activation = true;
 	public:
 		QString title() const;
 		void editDiagramProperties();
@@ -66,7 +65,7 @@ class DiagramView : public QGraphicsView
 		void addRow();
 		void removeRow();
 		/// @return the diagram rendered by this view
-		Diagram *diagram() { return(m_scene); }
+		Diagram *diagram() { return(m_diagram); }
 		QETDiagramEditor *diagramEditor() const;
 		bool hasSelectedItems();
 		bool hasCopiableItems();

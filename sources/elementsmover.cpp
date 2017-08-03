@@ -105,12 +105,12 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 	}
 	
 	// Move some conductors
-	foreach(Conductor *conductor, moved_content_.conductorsToMove) {
+	foreach(Conductor *conductor, moved_content_.m_conductors_to_move) {
 		conductor -> setPos(conductor -> pos() + movement);
 	}
 	
 	// Recalcul the path of other conductors
-	foreach(Conductor *conductor, moved_content_.conductorsToUpdate) {
+	foreach(Conductor *conductor, moved_content_.m_conductors_to_update) {
 		conductor -> updatePath();
 	}
 }
@@ -142,7 +142,7 @@ void ElementsMover::endMovement()
 		moved_content_.items(dc::Elements).size() == 1 &&
 		diagram_ -> project() -> autoConductor())
 	{
-		Element *elmt = moved_content_.elements.toList().first();
+		Element *elmt = moved_content_.m_elements.toList().first();
 
 		int acc = elmt->AlignedFreeTerminals().size();
 

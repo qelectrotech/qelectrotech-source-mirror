@@ -43,88 +43,6 @@ QString itemText(const Conductor *item) {
 }
 
 /**
-	Constructeur
-	@param dia Schema dont on supprime des elements et conducteurs
-	@param content Contenu supprime
-	@param parent QUndoCommand parent
-*/
-DeleteElementsCommand::DeleteElementsCommand(
-	Diagram *dia,
-	const DiagramContent &content,
-	QUndoCommand *parent
-) :
-	QUndoCommand(parent),
-	removed_content(content),
-	diagram(dia)
-{
-	setText(
-		QString(
-			QObject::tr(
-				"supprimer %1",
-				"undo caption - %1 is a sentence listing the removed content"
-			)
-		).arg(removed_content.sentence(DiagramContent::All))
-	);
-	diagram -> qgiManager().manage(removed_content.items(DiagramContent::All));
-}
-
-/// Destructeur
-DeleteElementsCommand::~DeleteElementsCommand() {
-	diagram -> qgiManager().release(removed_content.items(DiagramContent::All));
-}
-
-/**
- * @brief DeleteElementsCommand::undo
- * Undo this command
- */
-void DeleteElementsCommand::undo()
-{
-	diagram -> showMe();
-
-	foreach(QGraphicsItem *item, removed_content.items())
-		diagram->addItem(item);
-
-		//We relink element after every element was added to diagram
-	foreach(Element *e, removed_content.elements)
-		foreach (Element *elmt, m_link_hash[e])
-				e -> linkToElement(elmt);
-}
-
-/**
- * @brief DeleteElementsCommand::redo
- * Redo the delete command
- */
-void DeleteElementsCommand::redo()
-{
-	diagram -> showMe();
-
-	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor))
-	{
-			//If option one text per folio is enable, and the text item of
-			//current conductor is visible (that mean the conductor have the single displayed text)
-			//We call adjustTextItemPosition to other conductor at the same potential to keep
-			//a visible text on this potential.
-		if (diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible())
-		{
-			QList <Conductor *> conductor_list;
-			conductor_list << c -> relatedPotentialConductors(false).toList();
-			if (conductor_list.count())
-				conductor_list.first() -> calculateTextItemPosition();
-		}
-	}
-	
-	foreach(Element *e, removed_content.elements)
-	{
-			//Get linked element, for relink it at undo
-		if (!e->linkedElements().isEmpty())
-			m_link_hash.insert(e, e->linkedElements());
-	}
-
-	foreach(QGraphicsItem *item, removed_content.items())
-		diagram->removeItem(item);
-}
-
-/**
  * @brief PasteDiagramCommand::PasteDiagramCommand
  * Constructor
  * @param dia : diagram where we must to paste
@@ -176,7 +94,7 @@ void PasteDiagramCommand::redo()
 		first_redo = false;
 
 			//this is the first paste, we do some actions for the new element
-		const QList <Element *> elmts_list = content.elements.toList();
+		const QList <Element *> elmts_list = content.m_elements.toList();
 		for (Element *e : elmts_list)
 		{
 				//make new uuid, because old uuid are the uuid of the copied element
@@ -211,7 +129,7 @@ void PasteDiagramCommand::redo()
 					eti -> setPlainText("_");
 				
 					//Reset the text of conductors
-				const QList <Conductor *> conductors_list = content.conductorsToMove.toList();
+				const QList <Conductor *> conductors_list = content.m_conductors_to_move.toList();
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
@@ -253,7 +171,7 @@ CutDiagramCommand::CutDiagramCommand(
 	const DiagramContent &content,
 	QUndoCommand *parent
 ) : 
-	DeleteElementsCommand(dia, content, parent)
+	DeleteQGraphicsItemCommand(dia, content, parent)
 {
 	setText(
 		QString(
@@ -366,12 +284,12 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	}
 	
 	// Move some conductors
-	foreach(Conductor *conductor, content_to_move.conductorsToMove) {
+	foreach(Conductor *conductor, content_to_move.m_conductors_to_move) {
 		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
 	}
 	
 	// Recalcul the path of other conductor
-	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
+	foreach(Conductor *conductor, content_to_move.m_conductors_to_update) {
 		setupAnimation(conductor, "animPath", 1, 1);
 	}
 }
@@ -590,32 +508,17 @@ void RotateElementsCommand::redo() {
 
 /**
 	Constructeur
-	@param previous_state Hash associant les textes impactes par l'action et leur angle de rotation avant l'action
-	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
-	@param parent QUndoCommand parent
-*/
-RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &previous_state, double applied_rotation, QUndoCommand *parent) :
-	QUndoCommand(parent),
-	texts_to_rotate(previous_state),
-	applied_rotation_angle_(applied_rotation),
-	diagram(previous_state.key(0)->diagram())
-{
-	defineCommandName();
-}
-
-/**
-	Constructeur
 	@param texts Liste des textes impactes par l'action. L'objet retiendra leur angle de rotation au moment de sa construction.
 	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
 	@param parent QUndoCommand parent
 */
 RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, double applied_rotation, QUndoCommand *parent) :
 	QUndoCommand(parent),
-	applied_rotation_angle_(applied_rotation),
-	diagram(texts.first()->diagram())
+	m_applied_rotation_angle(applied_rotation),
+	m_diagram(texts.first()->diagram())
 {
 	foreach(DiagramTextItem *text, texts) {
-		texts_to_rotate.insert(text, text -> rotationAngle());
+		m_texts_to_rotate.insert(text, text -> rotationAngle());
 	}
 	defineCommandName();
 }
@@ -630,11 +533,11 @@ RotateTextsCommand::~RotateTextsCommand() {
 	Annule la rotation des textes
 */
 void RotateTextsCommand::undo() {
-	diagram -> showMe();
-	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+	m_diagram -> showMe();
+	foreach(DiagramTextItem *text, m_texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text))
-			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
-		text -> setRotationAngle(texts_to_rotate[text]);
+			cti -> forceRotateByUser(m_previous_rotate_by_user[cti]);
+		text -> setRotationAngle(m_texts_to_rotate[text]);
 	}
 }
 
@@ -642,14 +545,14 @@ void RotateTextsCommand::undo() {
 	Applique l'angle de rotation aux textes
 */
 void RotateTextsCommand::redo() {
-	diagram -> showMe();
-	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+	m_diagram -> showMe();
+	foreach(DiagramTextItem *text, m_texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
 			//we grab the previous rotation by user of each ConductorTextItem
-			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
+			m_previous_rotate_by_user.insert(cti, cti -> wasRotateByUser());
 			cti -> forceRotateByUser(true);
 		}
-		text -> setRotationAngle(applied_rotation_angle_);
+		text -> setRotationAngle(m_applied_rotation_angle);
 	}
 }
 
@@ -663,8 +566,8 @@ void RotateTextsCommand::defineCommandName() {
 				"orienter %1 à %2°",
 				"undo caption - %1 looks like '42 texts', %2 is a rotation angle"
 			)
-		).arg(QET::ElementsAndConductorsSentence(0, 0, texts_to_rotate.count()))
-		.arg(applied_rotation_angle_)
+		).arg(QET::ElementsAndConductorsSentence(0, 0, m_texts_to_rotate.count()))
+		.arg(m_applied_rotation_angle)
 	);
 }
 

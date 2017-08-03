@@ -10,6 +10,7 @@ ConductorTextItem + 1006
 DiagramImageItem + 1007
 QetShapItem + 1008
 crossRefItem + 1009
+DynamiqueElementTextItem + 1010
 ElementPrimitiveDecorator + 2200
 
 ###ELEMENT EDITOR###
@@ -21,3 +22,6 @@ part terminal   + 1106
 part text       + 1107
 part text field + 1108
 part rectangle  + 1109
+
+###QetGraphicsHandlerItem###
+QetGraphicsHandlerItem = 1200

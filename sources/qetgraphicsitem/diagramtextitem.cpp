@@ -27,10 +27,7 @@
  */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
-	m_mouse_hover(false),
-	previous_text_(),
-	rotation_angle_(0.0),
-	m_first_move (true)
+	m_rotation_angle(0.0)
 { build(); }
 
 /**
@@ -41,8 +38,8 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 	QGraphicsTextItem(text, parent),
 	m_mouse_hover(false),
-	previous_text_(text),
-	rotation_angle_(0.0)
+	m_previous_html_text(text),
+	m_rotation_angle(0.0)
 { build(); }
 
 /**
@@ -83,7 +80,7 @@ QDomElement DiagramTextItem::toXml(QDomDocument &) const {
 	@return l'angle de rotation actuel de ce texte
 */
 qreal DiagramTextItem::rotationAngle() const {
-	return(rotation_angle_);
+	return(m_rotation_angle);
 }
 
 /**
@@ -94,8 +91,8 @@ qreal DiagramTextItem::rotationAngle() const {
 */
 void DiagramTextItem::setRotationAngle(const qreal &rotation) {
 	qreal applied_rotation = QET::correctAngle(rotation);
-	applyRotation(applied_rotation - rotation_angle_);
-	rotation_angle_ = applied_rotation;
+	applyRotation(applied_rotation - m_rotation_angle);
+	m_rotation_angle = applied_rotation;
 }
 
 /**
@@ -106,7 +103,7 @@ void DiagramTextItem::setRotationAngle(const qreal &rotation) {
 */
 void DiagramTextItem::rotateBy(const qreal &added_rotation) {
 	qreal applied_added_rotation = QET::correctAngle(added_rotation);
-	rotation_angle_ = QET::correctAngle(rotation_angle_ + applied_added_rotation);
+	m_rotation_angle = QET::correctAngle(m_rotation_angle + applied_added_rotation);
 	applyRotation(applied_added_rotation);
 }
 
@@ -186,8 +183,25 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 	return(local_movement_point - local_origin);
 }
 
-void DiagramTextItem::setFontSize(int &s) {
-	setFont(QETApp::diagramTextsFont(s));
+void DiagramTextItem::setFontSize(int s)
+{
+    setFont(QETApp::diagramTextsFont(s));
+	emit fontSizeChanged(s);
+}
+
+int DiagramTextItem::fontSize() const
+{
+    return font().pointSize();
+}
+
+void DiagramTextItem::setColor(QColor color)
+{
+    setDefaultTextColor(color);
+	emit colorChanged(color);
+}
+
+QColor DiagramTextItem::color() const {
+	return defaultTextColor();
 }
 
 /**
@@ -226,42 +240,39 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 }
 
 /**
-	Gere la prise de focus du champ de texte
-	@param e Objet decrivant la prise de focus
-*/
-void DiagramTextItem::focusInEvent(QFocusEvent *e) {
-	QGraphicsTextItem::focusInEvent(e);
-	
-	// empeche le deplacement du texte pendant son edition
+ * @brief DiagramTextItem::focusInEvent
+ * @param e
+ */
+void DiagramTextItem::focusInEvent(QFocusEvent *event)
+{
+	QGraphicsTextItem::focusInEvent(event);
+
 	setFlag(QGraphicsItem::ItemIsMovable, false);
 	
-	// memorise le texte avant que l'utilisateur n'y touche
-	previous_text_ = toHtml();
-	// cela permettra de determiner si l'utilisateur a modifie le texte a la fin de l'edition
+	m_previous_html_text = toHtml();
+	m_previous_text = toPlainText();
 }
 
 /**
-	Gere la perte de focus du champ de texte
-	@param e Objet decrivant la perte de focus
-*/
-void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
-	QGraphicsTextItem::focusOutEvent(e);
+ * @brief DiagramTextItem::focusOutEvent
+ * @param event
+ */
+void DiagramTextItem::focusOutEvent(QFocusEvent *event)
+{
+	QGraphicsTextItem::focusOutEvent(event);
+
+	if (toHtml() != m_previous_html_text)
+		emit(diagramTextChanged(this, m_previous_html_text, toHtml()));
+	if(toPlainText() != m_previous_text)
+		emit textEdited(m_previous_text, toPlainText());
 	
-	// signale la modification du texte si besoin
-	if (toPlainText() != previous_text_) {
-		emit(diagramTextChanged(this, previous_text_, toHtml()));
-		previous_text_ = toHtml();
-	}
-	
-	// deselectionne le texte
 	QTextCursor cursor = textCursor();
 	cursor.clearSelection();
 	setTextCursor(cursor);
-	
-	// hack a la con pour etre re-entrant
+
+		//Bad hack to be re-entrant
 	setTextInteractionFlags(Qt::NoTextInteraction);
-	
-	// autorise de nouveau le deplacement du texte
+
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
 }
@@ -271,7 +282,7 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	if (!(textInteractionFlags() & Qt::TextEditable) && !no_editable) {
+	if (!(textInteractionFlags() & Qt::TextEditable) && !m_no_editable) {
 		// rend le champ de texte editable
 		setTextInteractionFlags(Qt::TextEditorInteraction);
 		

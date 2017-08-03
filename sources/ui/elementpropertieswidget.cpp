@@ -24,6 +24,7 @@
 #include "diagram.h"
 #include "diagramposition.h"
 #include "qeticons.h"
+#include "dynamicelementtextitemeditor.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
@@ -203,9 +204,10 @@ void ElementPropertiesWidget::updateUi()
 		default:
 			break;
 	}
+    m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget
-	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+	for (AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
 	{
 		aepew->setLiveEdit(m_live_edit);
 		m_tab->addTab(aepew, aepew->title());
@@ -296,7 +298,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
 	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
-	QHBoxLayout *hlayout_ = new QHBoxLayout;
+    QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);
 	vlayout_->addLayout(hlayout_);

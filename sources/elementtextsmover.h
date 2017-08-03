@@ -22,7 +22,7 @@
 #include <QPointF>
 
 class QGraphicsItem;
-class ElementTextItem;
+class DiagramTextItem;
 class Diagram;
 
 /**
@@ -38,14 +38,14 @@ class ElementTextsMover
 	
 	public:
 		bool isReady() const;
-		int  beginMovement(Diagram *, QGraphicsItem * = 0);
+		int  beginMovement(Diagram *diagram, QGraphicsItem *driver_item = nullptr);
 		void continueMovement(const QPointF &);
 		void endMovement();
 	
 	private:
-		bool movement_running_;
-		Diagram *diagram_;
-		QGraphicsItem *movement_driver_;
-		QHash <ElementTextItem *, QPointF> m_texts_item_H;
+		bool m_movement_running = false;
+		Diagram *m_diagram = nullptr;
+		QGraphicsItem *m_movement_driver = nullptr;
+		QHash <DiagramTextItem *, QPointF> m_texts_item_H;
 };
 #endif

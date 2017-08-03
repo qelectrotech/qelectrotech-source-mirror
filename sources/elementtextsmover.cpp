@@ -19,15 +19,12 @@
 #include "elementtextitem.h"
 #include "diagram.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "dynamicelementtextitem.h"
 
 /**
  * @brief ElementTextsMover::ElementTextsMover
  */
-ElementTextsMover::ElementTextsMover() :
-	movement_running_(false),
-	diagram_(nullptr),
-	movement_driver_(nullptr)
-{}
+ElementTextsMover::ElementTextsMover() {}
 
 /**
  * @brief ElementTextsMover::isReady
@@ -35,7 +32,7 @@ ElementTextsMover::ElementTextsMover() :
  * False if this ElementTextsMover is actually process a movement
  */
 bool ElementTextsMover::isReady() const {
-	return(!movement_running_);
+	return(!m_movement_running);
 }
 
 /**
@@ -47,24 +44,24 @@ bool ElementTextsMover::isReady() const {
  */
 int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
-	if (movement_running_ || !diagram) return(-1);
+	if (m_movement_running || !diagram) return(-1);
 
-	diagram_ = diagram;
-	movement_driver_ = driver_item;
+	m_diagram = diagram;
+	m_movement_driver = driver_item;
 	m_texts_item_H.clear();
 
-	foreach(QGraphicsItem *item, diagram -> selectedItems())
+	for(QGraphicsItem *item : diagram->selectedItems())
 	{
-		if (item->type() == ElementTextItem::Type)
+		if (item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
 		{
-			ElementTextItem *eti = static_cast<ElementTextItem *> (item);
-			m_texts_item_H.insert(eti, eti->pos());
+			DiagramTextItem *dti = static_cast<DiagramTextItem *> (item);
+			m_texts_item_H.insert(dti, dti->pos());
 		}
 	}
 	
 	if (!m_texts_item_H.size()) return(-1);
 	
-	movement_running_ = true;
+	m_movement_running = true;
 	
 	return(m_texts_item_H.size());
 }
@@ -77,13 +74,14 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
  */
 void ElementTextsMover::continueMovement(const QPointF &movement)
 {
-	if (!movement_running_ || movement.isNull()) return;
+	if (!m_movement_running || movement.isNull()) return;
 	
-	foreach(ElementTextItem *text_item, m_texts_item_H.keys())
+	for(DiagramTextItem *text_item : m_texts_item_H.keys())
 	{
-		if (text_item == movement_driver_) continue;
-		QPointF applied_movement = text_item -> mapMovementToParent(text_item-> mapMovementFromScene(movement));
-		text_item -> setPos(text_item -> pos() + applied_movement);
+		if (text_item == m_movement_driver)
+			continue;
+		QPointF applied_movement = text_item->mapMovementToParent(text_item->mapMovementFromScene(movement));
+		text_item->setPos(text_item->pos() + applied_movement);
 	}
 }
 
@@ -94,31 +92,25 @@ void ElementTextsMover::continueMovement(const QPointF &movement)
 void ElementTextsMover::endMovement()
 {
 		//No movement running, or no text to move
-	if (!movement_running_ || m_texts_item_H.isEmpty()) return;
-		//Movement is null
-	ElementTextItem *eti = m_texts_item_H.keys().first();
-	if (eti->pos() == m_texts_item_H.value(eti)) return;
+	if (!m_movement_running || m_texts_item_H.isEmpty())
+		return;
 	
-	QPropertyUndoCommand *undo = nullptr;
-
-	foreach (ElementTextItem *eti, m_texts_item_H.keys())
+		//Movement is null
+	DiagramTextItem *dti = m_texts_item_H.keys().first();
+	if (dti->pos() == m_texts_item_H.value(dti))
+		return;
+	
+	QUndoCommand *undo = new QUndoCommand(m_texts_item_H.size() == 1 ? QString(QObject::tr("Déplacer un texte d'élément"))  :
+																	   QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_item_H.size())));
+	
+	for (DiagramTextItem *dti : m_texts_item_H.keys())
 	{
-		if (undo)
-		{
-			QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(eti, "pos", m_texts_item_H.value(eti), eti->pos(), undo);
-			child_undo->enableAnimation();
-		}
-		else
-		{
-			undo = new QPropertyUndoCommand(eti, "pos", m_texts_item_H.value(eti), eti->pos());
-			undo->enableAnimation();
-			QString txt = m_texts_item_H.size() == 1? QString(QObject::tr("Déplacer un texte d'élément")) :
-													  QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_item_H.size()));
-			undo->setText(txt);
-		}
+		QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(dti, "pos", m_texts_item_H.value(dti), dti->pos(), undo);
+		child_undo->enableAnimation();
+
 	}
 
-	diagram_->undoStack().push(undo);
+	m_diagram->undoStack().push(undo);
 	
-	movement_running_ = false;
+	m_movement_running = false;
 }

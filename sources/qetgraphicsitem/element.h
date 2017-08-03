@@ -30,6 +30,7 @@ class Terminal;
 class Conductor;
 class NumerotationContext;
 class DiagramTextItem;
+class DynamicElementTextItem;
 
 /**
 	This is the base class for electrical elements.
@@ -158,9 +159,6 @@ class Element : public QetGraphicsItem
 		bool m_freeze_label = false;
 		QString m_F_str;
 
-	/**
-		Draw this element
-	*/
 	public:
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 		/// @return This element type ID
@@ -177,25 +175,29 @@ class Element : public QetGraphicsItem
 		QSize size() const;
 		QPixmap pixmap();
 	
-	// methods related to the hotspot
-	QPoint setHotspot(QPoint);
-	QPoint hotspot() const;
-	
-	// selection-related methods
-	void select();
-	void deselect();
-	
-	virtual void rotateBy(const qreal &);
-	virtual void editProperty();
-	
-	// methods related to XML import/export
-	static bool valideXml(QDomElement &);
-	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
-	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
-	QUuid uuid() const;
-
-	// orientation-related methods
-	int orientation() const;
+            // methods related to the hotspot
+        QPoint setHotspot(QPoint);
+        QPoint hotspot() const;
+        
+            // selection-related methods
+        void select();
+        void deselect();
+        
+        virtual void rotateBy(const qreal &);
+        virtual void editProperty();
+        
+            // methods related to XML import/export
+        static bool valideXml(QDomElement &);
+        virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
+        virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
+        QUuid uuid() const;
+        
+            // orientation-related methods
+        int orientation() const;
+        
+        void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
+        void removeDynamicTextItem(DynamicElementTextItem *deti);
+        QList<DynamicElementTextItem *> dynamicTextItems() const;
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -216,6 +218,7 @@ class Element : public QetGraphicsItem
 	private:
 		bool m_mouse_over;
 		QString m_prefix;
+        QList <DynamicElementTextItem *> m_dynamic_text_list;
 
 };
 

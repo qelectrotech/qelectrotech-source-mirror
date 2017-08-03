@@ -23,61 +23,67 @@
 #include "diagramimageitem.h"
 #include "elementtextitem.h"
 #include "qetshapeitem.h"
+#include "dynamicelementtextitem.h"
 
 /**
-	Constructeur par defaut. Ne contient rien.
-*/
-DiagramContent::DiagramContent() {
-}
+ * @brief DiagramContent::DiagramContent
+ */
+DiagramContent::DiagramContent() {}
 
 /**
-	Constructeur de copie.
-*/
+ * @brief DiagramContent::DiagramContent
+ * Copy constructor
+ * @param other
+ */
 DiagramContent::DiagramContent(const DiagramContent &other) :
-	elements(other.elements),
-	textFields(other.textFields),
-	images(other.images),
-	shapes(other.shapes),
-	conductorsToUpdate(other.conductorsToUpdate),
-	conductorsToMove(other.conductorsToMove),
-	otherConductors(other.otherConductors)
+	m_elements(other.m_elements),
+	m_text_fields(other.m_text_fields),
+	m_images(other.m_images),
+	m_shapes(other.m_shapes),
+	m_conductors_to_update(other.m_conductors_to_update),
+	m_conductors_to_move(other.m_conductors_to_move),
+	m_other_conductors(other.m_other_conductors),
+	m_element_texts(other.m_element_texts)
+{}
+
+/**
+ * @brief DiagramContent::~DiagramContent
+ */
+DiagramContent::~DiagramContent() {}
+
+/**
+ * @brief DiagramContent::conductors
+ * @param filter
+ * @return Every conductors according to the filter
+ */
+QList<Conductor *> DiagramContent::conductors(int filter) const
 {
-}
-
-/**
-	Constructeur
-*/
-DiagramContent::~DiagramContent() {
-}
-
-/**
-	@param filter Types de conducteurs desires
-	@return tous les conducteurs
-*/
-QList<Conductor *> DiagramContent::conductors(int filter) const {
 	QSet<Conductor *> result;
-	if (filter & ConductorsToMove)   result += conductorsToMove;
-	if (filter & ConductorsToUpdate) result += conductorsToUpdate;
-	if (filter & OtherConductors)    result += otherConductors;
+	if (filter & ConductorsToMove)   result += m_conductors_to_move;
+	if (filter & ConductorsToUpdate) result += m_conductors_to_update;
+	if (filter & OtherConductors)    result += m_other_conductors;
 	if (filter & SelectedOnly) {
-		foreach(Conductor *conductor, result) {
-			if (!conductor -> isSelected()) result.remove(conductor);
+		for(Conductor *conductor : result) {
+			if (!conductor->isSelected()) result.remove(conductor);
 		}
 	}
 	return(result.toList());
 }
 
 /**
-	Vide le conteneur
-*/
-void DiagramContent::clear() {
-	elements.clear();
-	textFields.clear();
-	images.clear();
-	shapes.clear();
-	conductorsToUpdate.clear();
-	conductorsToMove.clear();
-	otherConductors.clear();
+ * @brief DiagramContent::clear
+ * Remove all items from the diagram content
+ */
+void DiagramContent::clear()
+{
+	m_elements.clear();
+	m_text_fields.clear();
+	m_images.clear();
+	m_shapes.clear();
+	m_conductors_to_update.clear();
+	m_conductors_to_move.clear();
+	m_other_conductors.clear();
+	m_element_texts.clear();
 }
 
 /**
@@ -89,42 +95,47 @@ int DiagramContent::removeNonMovableItems()
 {
 	int count_ = 0;
 
-	foreach(Element *elmt, elements) {
+	for(Element *elmt : m_elements) {
 		if (!elmt->isMovable()) {
-			elements.remove(elmt);
+			m_elements.remove(elmt);
 			++count_;
 		}
 	}
-	foreach(DiagramImageItem *img, images) {
+	for(DiagramImageItem *img : m_images) {
 		if (!img->isMovable()) {
-			images.remove(img);
+			m_images.remove(img);
 			++count_;
 		}
 	}
-	foreach (QetShapeItem *shape, shapes) {
+	for(QetShapeItem *shape : m_shapes) {
 		if (!shape->isMovable()) {
-			shapes.remove(shape);
+			m_shapes.remove(shape);
 			++count_;
 		}
 	}
 
 	return count_;
 }
-/**
-	@param filter Types desires
-	@return la liste des items formant le contenu du schema
-*/
-QList<QGraphicsItem *> DiagramContent::items(int filter) const {
-	QList<QGraphicsItem *> items_list;
-	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
 
-	if (filter & Elements)          foreach(QGraphicsItem *qgi, elements)           items_list << qgi;
-	if (filter & TextFields)        foreach(QGraphicsItem *qgi, textFields)         items_list << qgi;
-	if (filter & Images)            foreach(QGraphicsItem *qgi, images)             items_list << qgi;
-	if (filter & Shapes)            foreach(QGraphicsItem *qgi, shapes)             items_list << qgi;
+/**
+ * @brief DiagramContent::items
+ * @param filter
+ * @return The items of this diagram content according to @filter
+ */
+QList<QGraphicsItem *> DiagramContent::items(int filter) const
+{
+	QList<QGraphicsItem *> items_list;
+	
+	for(QGraphicsItem *qgi : conductors(filter)) items_list << qgi;
+
+	if (filter & Elements)          for(QGraphicsItem *qgi : m_elements)      items_list << qgi;
+	if (filter & TextFields)        for(QGraphicsItem *qgi : m_text_fields)   items_list << qgi;
+	if (filter & Images)            for(QGraphicsItem *qgi : m_images)        items_list << qgi;
+	if (filter & Shapes)            for(QGraphicsItem *qgi : m_shapes)        items_list << qgi;
+	if (filter & ElementTextFields) for(QGraphicsItem *qgi : m_element_texts) items_list << qgi;
 
 	if (filter & SelectedOnly) {
-		foreach(QGraphicsItem *qgi, items_list) {
+		for(QGraphicsItem *qgi : items_list) {
 			if (!qgi -> isSelected()) items_list.removeOne(qgi);
 		}
 	}
@@ -132,44 +143,50 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 }
 
 /**
-	@param filter Types desires
-	@return le nombre d'items formant le contenu du schema
-*/
-int DiagramContent::count(int filter) const {
+ * @brief DiagramContent::count
+ * @param filter
+ * @return The number of items, according to @filter
+ */
+int DiagramContent::count(int filter) const
+{
 	int count = 0;
 	if (filter & SelectedOnly) {
-		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
-		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
-		if (filter & Images)             foreach(DiagramImageItem *dii, images)                   { if (dii       -> isSelected()) ++ count; }
-		if (filter & Shapes)             foreach(QetShapeItem *dsi, shapes)                       { if (dsi       -> isSelected()) ++ count; }
-		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
-		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
-		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
+		if (filter & Elements)           for(Element *element :     m_elements)               { if (element   -> isSelected()) ++ count; }
+		if (filter & TextFields)         for(DiagramTextItem *dti : m_text_fields)            { if (dti       -> isSelected()) ++ count; }
+		if (filter & Images)             for(DiagramImageItem *dii : m_images)                { if (dii       -> isSelected()) ++ count; }
+		if (filter & Shapes)             for(QetShapeItem *dsi : m_shapes)                    { if (dsi       -> isSelected()) ++ count; }
+		if (filter & ConductorsToMove)   for(Conductor *conductor : m_conductors_to_move)     { if (conductor -> isSelected()) ++ count; }
+		if (filter & ConductorsToUpdate) for(Conductor *conductor : m_conductors_to_update)   { if (conductor -> isSelected()) ++ count; }
+		if (filter & OtherConductors)    for(Conductor *conductor : m_other_conductors)       { if (conductor -> isSelected()) ++ count; }
+		if (filter & ElementTextFields)   for(DynamicElementTextItem *deti : m_element_texts) { if (deti      -> isSelected()) ++ count; }
 	}
 	else {
-		if (filter & Elements)           count += elements.count();
-		if (filter & TextFields)         count += textFields.count();
-		if (filter & Images)             count += images.count();
-		if (filter & Shapes)             count += shapes.count();
-		if (filter & ConductorsToMove)   count += conductorsToMove.count();
-		if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
-		if (filter & OtherConductors)    count += otherConductors.count();
+		if (filter & Elements)           count += m_elements.count();
+		if (filter & TextFields)         count += m_text_fields.count();
+		if (filter & Images)             count += m_images.count();
+		if (filter & Shapes)             count += m_shapes.count();
+		if (filter & ConductorsToMove)   count += m_conductors_to_move.count();
+		if (filter & ConductorsToUpdate) count += m_conductors_to_update.count();
+		if (filter & OtherConductors)    count += m_other_conductors.count();
+		if (filter & ElementTextFields)  count += m_element_texts.count();
 	}
 	return(count);
 }
 
 /**
-	Permet de composer rapidement la proposition "x elements, y conducteurs et
-	z champs de texte".
-	@param filter Types desires
-	@return la proposition decrivant le contenu.
-*/
-QString DiagramContent::sentence(int filter) const {
-	int elements_count   = (filter & Elements) ? elements.count() : 0;
+ * @brief DiagramContent::sentence
+ * @param filter
+ * @return A string that describe the items of the diagram content according to @filter.
+ * Exemple : X elements, Y conductors etc....
+ */
+QString DiagramContent::sentence(int filter) const
+{
+	int elements_count   = (filter & Elements) ? m_elements.count() : 0;
 	int conductors_count = conductors(filter).count();
-	int textfields_count = (filter & TextFields) ? (textFields.count()) : 0;
-	int images_count	 = (filter & Images) ? images.count() : 0;
-	int shapes_count	 = (filter & Shapes) ? shapes.count() : 0;
+	int textfields_count = (filter & TextFields) ? (m_text_fields.count()) : 0;
+	int images_count	 = (filter & Images) ? m_images.count() : 0;
+	int shapes_count	 = (filter & Shapes) ? m_shapes.count() : 0;
+	int elmt_text_count  = (filter & ElementTextFields) ? m_element_texts.count() : 0;
 	
 	return(
 		QET::ElementsAndConductorsSentence(
@@ -177,16 +194,18 @@ QString DiagramContent::sentence(int filter) const {
 			conductors_count,
 			textfields_count,
 			images_count,
-			shapes_count
+			shapes_count,
+			elmt_text_count		
 		)
 	);
 }
 
 /**
-	Permet de debugger un contenu de schema
-	@param d Object QDebug a utiliser pour l'affichage des informations de debug
-	@param content Contenu de schema a debugger
-*/
+ * @brief operator << Use to debug a diagram content
+ * @param d : QDebug to use for display the debug info
+ * @param content : content to debug
+ * @return 
+ */
 QDebug &operator<<(QDebug d, DiagramContent &content) {
 	Q_UNUSED(content);
 	d << "DiagramContent {" << "\n";

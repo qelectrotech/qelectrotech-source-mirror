@@ -42,6 +42,9 @@
 #include "diagrameventaddtext.h"
 #include "elementscollectionwidget.h"
 #include "autonumberingdockwidget.h"
+#include "dynamicelementtextitem.h"
+#include "conductortextitem.h"
+#include "elementtextitem.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -242,24 +245,24 @@ void QETDiagramEditor::setUpActions()
 	redo -> setStatusTip(tr("Restaure l'action annulée", "status bar tip"));
 
 		//cut copy past action
-	cut   = new QAction(QET::Icons::EditCut,   tr("Co&uper"), this);
-	copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
+	m_cut   = new QAction(QET::Icons::EditCut,   tr("Co&uper"), this);
+	m_copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
 	paste = new QAction(QET::Icons::EditPaste, tr("C&oller"), this);
 
-	cut   -> setShortcut(QKeySequence::Cut);
-	copy  -> setShortcut(QKeySequence::Copy);
+	m_cut   -> setShortcut(QKeySequence::Cut);
+	m_copy  -> setShortcut(QKeySequence::Copy);
 	paste -> setShortcut(QKeySequence::Paste);
 
-	cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
-	copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
+	m_cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
+	m_copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	paste -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
 
-	connect(cut,   SIGNAL(triggered()), this, SLOT(slot_cut()));
-	connect(copy,  SIGNAL(triggered()), this, SLOT(slot_copy()));
+	connect(m_cut,   SIGNAL(triggered()), this, SLOT(slot_cut()));
+	connect(m_copy,  SIGNAL(triggered()), this, SLOT(slot_copy()));
 	connect(paste, SIGNAL(triggered()), this, SLOT(slot_paste()));
 
-	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
-	conductor_reset  -> setShortcut( QKeySequence( tr("Ctrl+K")		) );
+	m_conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
+	m_conductor_reset  -> setShortcut( QKeySequence( tr("Ctrl+K")		) );
 
 	m_auto_conductor = new QAction   (QET::Icons::Autoconnect, tr("Création automatique de conducteur(s)","Tool tip of auto conductor"), this);
 	m_auto_conductor -> setStatusTip (tr("Utiliser la création automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
@@ -348,27 +351,27 @@ void QETDiagramEditor::setUpActions()
 	connect(&m_row_column_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::rowColumnGroupTriggered);
 
 		//Selections Actions (related to a selected item)
-	delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
-	rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
-	rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
-	find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
-	edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné")  );
+	m_delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
+	m_rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
+	m_rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
+	m_find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
+	m_edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné")  );
 
-	delete_selection -> setShortcut( QKeySequence::Delete);
-	rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
-	rotate_texts     -> setShortcut( QKeySequence( tr("Ctrl+Space") ) );
-	edit_selection	 -> setShortcut( QKeySequence( tr("Ctrl+E")		) );
+	m_delete_selection -> setShortcut( QKeySequence::Delete);
+	m_rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
+	m_rotate_texts     -> setShortcut( QKeySequence( tr("Ctrl+Space") ) );
+	m_edit_selection	 -> setShortcut( QKeySequence( tr("Ctrl+E")		) );
 
-	delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
-	rotate_selection -> setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
-	rotate_texts     -> setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
-	find_element     -> setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
+	m_delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
+	m_rotate_selection -> setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
+	m_rotate_texts     -> setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
+	m_find_element     -> setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
 
-	delete_selection ->setData("delete_selection");
-	rotate_selection ->setData("rotate_selection");
-	rotate_texts     ->setData("rotate_selected_text");
-	find_element     ->setData("find_selected_element");
-	edit_selection   ->setData("edit_selected_element");
+	m_delete_selection ->setData("delete_selection");
+	m_rotate_selection ->setData("rotate_selection");
+	m_rotate_texts     ->setData("rotate_selected_text");
+	m_find_element     ->setData("find_selected_element");
+	m_edit_selection   ->setData("edit_selected_element");
 
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
@@ -452,7 +455,7 @@ void QETDiagramEditor::setUpActions()
 	export_diagram    -> setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
-	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
+	m_conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
 
 	windowed_view_mode -> setStatusTip(tr("Présente les différents projets ouverts dans des sous-fenêtres", "status bar tip"));
@@ -503,7 +506,7 @@ void QETDiagramEditor::setUpActions()
 	connect(cascade_window,     SIGNAL(triggered()), &workspace, SLOT(cascadeSubWindows())         );
 	connect(next_window,        SIGNAL(triggered()), &workspace, SLOT(activateNextSubWindow())     );
 	connect(prev_window,        SIGNAL(triggered()), &workspace, SLOT(activatePreviousSubWindow()) );
-	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
+	connect(m_conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 }
 
@@ -526,12 +529,12 @@ void QETDiagramEditor::setUpToolBar() {
 	main_bar -> addAction(undo);
 	main_bar -> addAction(redo);
 	main_bar -> addSeparator();
-	main_bar -> addAction(cut);
-	main_bar -> addAction(copy);
+	main_bar -> addAction(m_cut);
+	main_bar -> addAction(m_copy);
 	main_bar -> addAction(paste);
 	main_bar -> addSeparator();
-	main_bar -> addAction(delete_selection);
-	main_bar -> addAction(rotate_selection);
+	main_bar -> addAction(m_delete_selection);
+	main_bar -> addAction(m_rotate_selection);
 
 	// Modes selection / visualisation et zoom
 	view_bar -> addAction(mode_selection);
@@ -543,7 +546,7 @@ void QETDiagramEditor::setUpToolBar() {
 	view_bar -> addActions(m_zoom_action_toolBar);
 
 	diagram_bar -> addAction (infos_diagram);
-	diagram_bar -> addAction (conductor_reset);
+	diagram_bar -> addAction (m_conductor_reset);
 	diagram_bar -> addAction (m_auto_conductor);
 
 	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
@@ -592,15 +595,15 @@ void QETDiagramEditor::setUpMenu() {
 	menu_edition -> addAction(undo);
 	menu_edition -> addAction(redo);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(cut);
-	menu_edition -> addAction(copy);
+	menu_edition -> addAction(m_cut);
+	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(paste);
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_selection_actions_group.actions());
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(conductor_reset);
+	menu_edition -> addAction(m_conductor_reset);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addActions(m_row_column_actions_group.actions());
@@ -1039,7 +1042,7 @@ Element *QETDiagramEditor::currentElement() const {
 	DiagramView *dv = currentDiagram();
 	if (!dv) return(0);
 	
-	QList<Element *> selected_elements = dv -> diagram() -> selectedContent().elements.toList();
+	QList<Element *> selected_elements = dv -> diagram() -> selectedContent().m_elements.toList();
 	if (selected_elements.count() != 1) return(0);
 	
 	return(selected_elements.first());
@@ -1383,76 +1386,90 @@ void QETDiagramEditor::slot_updateUndoStack()
  * Manage the actions who need some conditions to be enable or not.
  * This method does nothing if there is no project opened
  */
-void QETDiagramEditor::slot_updateComplexActions() {
+void QETDiagramEditor::slot_updateComplexActions()
+{
 	DiagramView *dv = currentDiagram();
-	bool editable_diagram = (dv && !dv -> diagram() -> isReadOnly());
+	if(!dv)
+	{
+		QList <QAction *> action_list;
+		action_list << m_conductor_reset << m_find_element << m_cut << m_copy << m_delete_selection << m_rotate_selection << m_edit_selection;
+		for(QAction *action : action_list)
+			action->setEnabled(false);
+		
+		return;
+	}
+	
+	Diagram *diagram_ = dv->diagram();
+	bool ro = diagram_->isReadOnly();
+	
 
 		//Number of selected conductors
-	int selected_conductors_count = dv ? dv -> diagram() -> selectedConductors().count() : 0;
-	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
+	int selected_conductors_count = diagram_->selectedConductors().count();
+	m_conductor_reset->setEnabled(!ro && selected_conductors_count);
 	
 		// number of selected elements
-	int selected_elements_count = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Elements) : 0;
-	find_element -> setEnabled(selected_elements_count == 1);
+	int selected_elements_count = diagram_->selectedContent().count(DiagramContent::Elements);
+	m_find_element->setEnabled(selected_elements_count == 1);
 	
 		//Action that need items (elements, conductors, texts...) selected, to be enabled
-	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
-	bool deletable_items = dv ? (dv -> hasDeletableItems()) : false;
-	cut              -> setEnabled(editable_diagram && copiable_items);
-	copy             -> setEnabled(copiable_items);
-	delete_selection -> setEnabled(editable_diagram && deletable_items);
-	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
+	bool copiable_items  = dv->hasCopiableItems();
+	bool deletable_items = dv->hasDeletableItems();
+	m_cut              -> setEnabled(!ro && copiable_items);
+	m_copy             -> setEnabled(copiable_items);
+	m_delete_selection -> setEnabled(!ro && deletable_items);
+	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 
 		//Action that need selected texts
-	int selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
-	int selected_conductor_texts = dv ? (dv -> diagram() -> selectedConductorTexts().count()) : 0;
-	int selected_element_texts = dv ? (dv -> diagram() -> selectedElementTexts().count()) : 0;
-	rotate_texts -> setEnabled(editable_diagram && selected_texts);
+	int selected_texts = diagram_->selectedTexts().count();
+	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
+	int selected_element_texts     = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == ElementTextItem::Type) selected_element_texts++;}
+	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
+	m_rotate_texts -> setEnabled(!ro && selected_texts);
 
 		// actions need only one editable item
-	int selected_image = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Images) : 0;
+	int selected_image = diagram_-> selectedContent().count(DiagramContent::Images);
 
-	int selected_shape = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Shapes) : 0;
+	int selected_shape = diagram_-> selectedContent().count(DiagramContent::Shapes);
 	int selected_editable = selected_elements_count +
-							(selected_texts - selected_conductor_texts - selected_element_texts) +
+							(selected_texts - selected_conductor_texts - selected_element_texts - selected_dynamic_elmt_text) +
 							selected_image +
 							selected_shape +
 							selected_conductors_count;
 
 	if (selected_editable == 1)
 	{
-		edit_selection -> setEnabled(true);
+		m_edit_selection -> setEnabled(true);
 			//edit element
 		if (selected_elements_count)
 		{
-			edit_selection -> setText(tr("Éditer l'élement", "edit element"));
-			edit_selection -> setIcon(QET::Icons::ElementEdit);
+			m_edit_selection -> setText(tr("Éditer l'élement", "edit element"));
+			m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		}
 			//edit text field
 		else if (selected_texts)
 		{
-			edit_selection -> setText(tr("Éditer le champ de texte", "edit text field"));
-			edit_selection -> setIcon(QET::Icons::EditText);
+			m_edit_selection -> setText(tr("Éditer le champ de texte", "edit text field"));
+			m_edit_selection -> setIcon(QET::Icons::EditText);
 		}
 			//edit image
 		else if (selected_image)
 		{
-			edit_selection -> setText(tr("Éditer l'image", "edit image"));
-			edit_selection -> setIcon(QET::Icons::resize_image);
+			m_edit_selection -> setText(tr("Éditer l'image", "edit image"));
+			m_edit_selection -> setIcon(QET::Icons::resize_image);
 		}
 			//edit conductor
 		else if (selected_conductors_count)
 		{
-			edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
-			edit_selection -> setIcon(QET::Icons::ElementEdit);
+			m_edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
+			m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		}
 	}
 		//not an editable item
 	else
 	{
-		edit_selection -> setText(tr("Éditer l'objet sélectionné", "edit selected item"));
-		edit_selection -> setIcon(QET::Icons::ElementEdit);
-		edit_selection -> setEnabled(false);
+		m_edit_selection -> setText(tr("Éditer l'objet sélectionné", "edit selected item"));
+		m_edit_selection -> setIcon(QET::Icons::ElementEdit);
+		m_edit_selection -> setEnabled(false);
 	}
 }
 

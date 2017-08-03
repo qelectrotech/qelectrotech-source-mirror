@@ -38,6 +38,7 @@
 #include "elementcollectionhandler.h"
 #include "element.h"
 #include "diagramview.h"
+#include "dynamicelementtextitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -75,7 +76,7 @@ Diagram::Diagram(QETProject *project) :
 	
 		//Init object for manage movement
 	elements_mover_      = new ElementsMover();
-	element_texts_mover_ = new ElementTextsMover();
+	m_element_texts_mover = new ElementTextsMover();
 
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
@@ -91,31 +92,30 @@ Diagram::Diagram(QETProject *project) :
  * @brief Diagram::~Diagram
  * Destructor
  */
-Diagram::~Diagram() {
-	// clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
+Diagram::~Diagram()
+{
+        //First clear every selection to close an hypothetical editor
+    clearSelection();
+        // clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
 	undoStack().clear();
-	//delete of QGIManager, every elements he knows are removed
+        //delete of QGIManager, every elements he knows are removed
 	delete qgi_manager_;
-	// remove of conductor setter
+        // remove of conductor setter
 	delete conductor_setter_;
 	
-	// delete of object for manage movement
+        // delete of object for manage movement
 	delete elements_mover_;
-	delete element_texts_mover_;
+	delete m_element_texts_mover;
 
-	if (m_event_interface) delete m_event_interface;
+	if (m_event_interface)
+        delete m_event_interface;
 	
-	// list removable items
+        // list removable items
 	QList<QGraphicsItem *> deletable_items;
 	for(QGraphicsItem *qgi : items())
-	{
-		if (qgi->parentItem())
-			continue;
-		if (qgi->type() == Conductor::Type)
-			continue;
-		if (qgi->type() == QetGraphicsHandlerItem::Type)
-			continue;
-		
+    {
+		if (qgi -> parentItem()) continue;
+		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 		deletable_items << qgi;
 	}
 
@@ -302,10 +302,10 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 		qreal top_position = 0;
 		qreal left_position = 0;
 		QList<QGraphicsItem*> selected_elmts = this->selectedContent().items();
-		if (!this->selectedContent().items(255).isEmpty()) {
+		if (!this->selectedContent().items(DiagramContent::All).isEmpty()) {
 		switch(e -> key()) {
 			case Qt::Key_Left:
-				foreach (Element *item, selectedContent().elements) {
+				foreach (Element *item, selectedContent().m_elements) {
 					left_position = item->mapRectFromScene(item->boundingRect()).x();
 					if (left_position >= this->sceneRect().left() - item->boundingRect().width())
 					return;
@@ -314,7 +314,7 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 				break;
 			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
 			case Qt::Key_Up:
-				foreach (Element *item, selectedContent().elements) {
+				foreach (Element *item, selectedContent().m_elements) {
 					top_position = item->mapRectFromScene(item->boundingRect()).y();
 					if (top_position >= this->sceneRect().top() - item->boundingRect().height())
 						return;
@@ -378,8 +378,6 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
  * Diagram become the ownership of event_interface
  * If there is a previous interface, they will be delete before
  * and call init() to the new interface.
- * The derivated class of DiagramEventInterface need to emit the signal "finish" when the job is done,
- * diagram use this signal to delete the interface. If the signal isn't send, the interface will never be deleted.
  * @param event_interface
  */
 void Diagram::setEventInterface(DiagramEventInterface *event_interface)
@@ -968,20 +966,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			qgi -> setPos( qgi -> pos() += pos_);
 	}
 	
-        //Filling of optional lists
+	// remplissage des listes facultatives
 	if (content_ptr) {
-		content_ptr -> elements         = added_elements.toSet();
-		content_ptr -> conductorsToMove = added_conductors.toSet();
-		content_ptr -> textFields       = added_texts.toSet();
-		content_ptr -> images			= added_images.toSet();
-		content_ptr -> shapes			= added_shapes.toSet();
+		content_ptr -> m_elements         = added_elements.toSet();
+		content_ptr -> m_conductors_to_move = added_conductors.toSet();
+		content_ptr -> m_text_fields       = added_texts.toSet();
+		content_ptr -> m_images			= added_images.toSet();
+		content_ptr -> m_shapes			= added_shapes.toSet();
 	}
-    
-        //Ensure the texts of conductor are inside the border of the folio
-        //and so don't cause the annoying margin on the left border of the folio.
-    for(Conductor *cond : added_conductors)
-        cond->textItem()->setPos(cond->textItem()->pos());
-    
 	adjustSceneRect();
 	return(true);
 }
@@ -1438,7 +1430,7 @@ void Diagram::endMoveElements() {
 	@see ElementTextsMover
 */
 int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
-	return(element_texts_mover_ -> beginMovement(this, driver_item));
+	return(m_element_texts_mover -> beginMovement(this, driver_item));
 }
 
 /**
@@ -1447,7 +1439,7 @@ int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
 	@see ElementTextsMover
 */
 void Diagram::continueMoveElementTexts(const QPointF &movement) {
-	element_texts_mover_ -> continueMovement(movement);
+	m_element_texts_mover -> continueMovement(movement);
 }
 
 /**
@@ -1455,7 +1447,7 @@ void Diagram::continueMoveElementTexts(const QPointF &movement) {
 	@see ElementTextsMover
 */
 void Diagram::endMoveElementTexts() {
-	element_texts_mover_ -> endMovement();
+	m_element_texts_mover -> endMovement();
 }
 
 /**
@@ -1656,52 +1648,23 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 }
 
 /**
-	@return la liste de tous les textes selectionnes : les textes independants,
-	mais aussi ceux rattaches a des conducteurs ou des elements
-*/
-QSet<DiagramTextItem *> Diagram::selectedTexts() const {
+ * @brief Diagram::selectedTexts
+ * @return A list of every selected texts (every kind of texts)
+ */
+QSet<DiagramTextItem *> Diagram::selectedTexts() const
+{
 	QSet<DiagramTextItem *> selected_texts;
-	foreach(QGraphicsItem *item, selectedItems()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
-			selected_texts << cti;
-		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
-			selected_texts << eti;
-		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
-			selected_texts << iti;
-		}
+	for(QGraphicsItem *qgi : selectedItems())
+	{
+		if (qgi->type() == ConductorTextItem::Type ||
+			qgi->type() == ElementTextItem::Type ||
+			qgi->type() == IndependentTextItem::Type ||
+			qgi->type() == DynamicElementTextItem::Type)
+				selected_texts << static_cast<DiagramTextItem *>(qgi);
 	}
+	
 	return(selected_texts);
 }
-
-/**
- * @brief Diagram::selectedConductorTexts
- * @return the list of conductor texts selected
- */
-QSet<ConductorTextItem *> Diagram::selectedConductorTexts() const {
-	QSet<ConductorTextItem *> selected_texts;
-	foreach(QGraphicsItem *item, selectedItems()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
-			selected_texts << cti;
-		}
-	}
-	return(selected_texts);
-}
-
-/**
- * @brief Diagram::selectedElementTexts
- * @return the list of element texts selected
- */
-QSet<ElementTextItem*> Diagram::selectedElementTexts() const {
-	QSet<ElementTextItem *> selected_texts;
-	foreach(QGraphicsItem *item, selectedItems()) {
-		if (ElementTextItem *cti = qgraphicsitem_cast< ElementTextItem*>(item)) {
-			selected_texts << cti;
-		}
-	}
-	return(selected_texts);
-}
-
-
 
 /// @return true si le presse-papier semble contenir un schema
 bool Diagram::clipboardMayContainDiagram() {
@@ -1775,47 +1738,53 @@ DiagramContent Diagram::content() const {
 	DiagramContent dc;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
-			dc.elements << e;
+			dc.m_elements << e;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
-			dc.textFields << iti;
+			dc.m_text_fields << iti;
 		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
-			dc.conductorsToMove << c;
+			dc.m_conductors_to_move << c;
 		}
 	}
 	return(dc);
 }
 
 /**
-	@return le contenu selectionne du schema.
-*/
-DiagramContent Diagram::selectedContent() {
+ * @brief Diagram::selectedContent
+ * @return the selected items, stored in a DiagramContent
+ */
+DiagramContent Diagram::selectedContent()
+{
 	DiagramContent dc;
-	
-	// recupere les elements deplaces
-	foreach (QGraphicsItem *item, selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			dc.elements << elmt;
-		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
-			dc.textFields << iti;
-		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item)) {
+
+		//Get the selected items
+	for (QGraphicsItem *item : selectedItems())
+	{
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item))
+			dc.m_elements << elmt;
+		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
+			dc.m_text_fields << iti;
+		else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
+		{
 			// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
 			if (
 				!c -> terminal1 -> parentItem() -> isSelected() &&\
 				!c -> terminal2 -> parentItem() -> isSelected()
 			) {
-				dc.otherConductors << c;
+				dc.m_other_conductors << c;
 			}
-		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item)) {
-			dc.images << dii;
-		} else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item)) {
-			dc.shapes << dsi;
 		}
+		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
+			dc.m_images << dii;
+		else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item))
+			dc.m_shapes << dsi;
+		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
+			dc.m_element_texts << deti;
 	}
 	
-	// pour chaque element deplace, determine les conducteurs qui seront modifies
-	foreach(Element *elmt, dc.elements) {
-		foreach(Terminal *terminal, elmt -> terminals()) {
-			foreach(Conductor *conductor, terminal -> conductors()) {
+		//For each selected element, we determine if conductors must be moved or updated.
+	for(Element *elmt : dc.m_elements) {
+		for(Terminal *terminal : elmt -> terminals()) {
+			for(Conductor *conductor : terminal -> conductors()) {
 				Terminal *other_terminal;
 				if (conductor -> terminal1 == terminal) {
 					other_terminal = conductor -> terminal2;
@@ -1823,10 +1792,10 @@ DiagramContent Diagram::selectedContent() {
 					other_terminal = conductor -> terminal1;
 				}
 				// si les deux elements du conducteur sont deplaces
-				if (dc.elements.contains(other_terminal -> parentElement())) {
-					dc.conductorsToMove << conductor;
+				if (dc.m_elements.contains(other_terminal -> parentElement())) {
+					dc.m_conductors_to_move << conductor;
 				} else {
-					dc.conductorsToUpdate << conductor;
+					dc.m_conductors_to_update << conductor;
 				}
 			}
 		}
@@ -1836,17 +1805,20 @@ DiagramContent Diagram::selectedContent() {
 }
 
 /**
-	@return true s'il est possible de tourner les elements selectionnes.
-	Concretement, cette methode retourne true s'il y a des elements selectionnes
-	et qu'au moins l'un d'entre eux peut etre pivote.
-*/
-bool Diagram::canRotateSelection() const {
-	foreach(QGraphicsItem * qgi, selectedItems()) {
-		if (qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-		qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
-		qgraphicsitem_cast<DiagramImageItem *>(qgi) ||
-		qgraphicsitem_cast<ElementTextItem *>(qgi) ||
-		qgraphicsitem_cast<Element *>(qgi)) return (true);
+ * @brief Diagram::canRotateSelection
+ * @return True if a least one of selected items can be rotated
+ */
+bool Diagram::canRotateSelection() const
+{
+	for (QGraphicsItem *qgi : selectedItems())
+	{
+		if (qgi->type() == IndependentTextItem::Type ||
+			qgi->type() == ConductorTextItem::Type ||
+			qgi->type() == DiagramImageItem::Type ||
+			qgi->type() == ElementTextItem::Type ||
+			qgi->type() == Element::Type ||
+			qgi->type() == DynamicElementTextItem::Type) return true;
 	}
-	return(false);
+	
+	return false;
 }
