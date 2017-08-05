@@ -38,7 +38,7 @@ class NewDiagramPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	NewDiagramPage(QETProject *project = 0, QWidget * = 0, ProjectPropertiesDialog *teste = NULL);
+	NewDiagramPage(QETProject *project = nullptr, QWidget * = nullptr, ProjectPropertiesDialog *teste = nullptr);
 	virtual ~NewDiagramPage();
 	private:
 	NewDiagramPage(const NewDiagramPage &);
@@ -76,7 +76,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	GeneralConfigurationPage(QWidget * = 0);
+	GeneralConfigurationPage(QWidget * = nullptr);
 	virtual ~GeneralConfigurationPage();
 	private:
 	GeneralConfigurationPage(const GeneralConfigurationPage &);
@@ -121,7 +121,7 @@ class ExportConfigPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	ExportConfigPage(QWidget * = 0);
+	ExportConfigPage(QWidget * = nullptr);
 	virtual ~ExportConfigPage();
 	private:
 	ExportConfigPage(const ExportConfigPage &);
@@ -144,7 +144,7 @@ class PrintConfigPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	PrintConfigPage(QWidget * = 0);
+	PrintConfigPage(QWidget * = nullptr);
 	virtual ~PrintConfigPage();
 	private:
 	PrintConfigPage(const PrintConfigPage &);

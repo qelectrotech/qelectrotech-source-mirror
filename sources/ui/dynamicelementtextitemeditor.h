@@ -34,7 +34,7 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
     Q_OBJECT
     
 	public:
-	   explicit DynamicElementTextItemEditor(Element *element, QWidget *parent = 0);
+	   explicit DynamicElementTextItemEditor(Element *element, QWidget *parent = nullptr);
 		~DynamicElementTextItemEditor();
 	
 		virtual void setElement(Element *element);

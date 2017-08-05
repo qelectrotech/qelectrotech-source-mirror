@@ -30,7 +30,7 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	
 	// constructor, destructor
 	public:
-	HelperCell(QGraphicsItem * = 0);
+	HelperCell(QGraphicsItem * = nullptr);
 	virtual ~HelperCell();
 	private:
 	HelperCell(const HelperCell &);
@@ -48,7 +48,7 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	virtual void setGeometry(const QRectF &);
 	virtual QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const;
 	virtual QRectF boundingRect() const;
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 	virtual void setType(QET::TitleBlockColumnLength);
 	virtual void setActions(const QList<QAction *> &);
 	virtual QList<QAction *> actions() const;

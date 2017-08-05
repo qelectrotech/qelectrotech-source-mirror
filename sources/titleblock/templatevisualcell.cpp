@@ -26,8 +26,8 @@
 TitleBlockTemplateVisualCell::TitleBlockTemplateVisualCell(QGraphicsItem *parent) :
 	QGraphicsLayoutItem(),
 	QGraphicsItem(parent),
-	template_(0),
-	cell_(0)
+	template_(nullptr),
+	cell_(nullptr)
 {
 	setGraphicsItem(this);
 	setFlag(QGraphicsItem::ItemIsSelectable, true);

@@ -35,7 +35,7 @@ class ProjectPropertiesDialog : public QObject {
 			Autonum = 2
 		};
 
-		ProjectPropertiesDialog(QETProject *project, QWidget *parent = 0);
+		ProjectPropertiesDialog(QETProject *project, QWidget *parent = nullptr);
 		~ProjectPropertiesDialog();
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);

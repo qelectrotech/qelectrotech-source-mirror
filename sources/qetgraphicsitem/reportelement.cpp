@@ -59,7 +59,7 @@ ReportElement::~ReportElement()
 {
 	unlinkAllElements();
 	if (terminals().size())
-		disconnect(terminals().first(), 0, 0, 0);
+		disconnect(terminals().first(), nullptr, nullptr, nullptr);
 	if (m_watched_conductor)
 		disconnect(m_watched_conductor, &Conductor::propertiesChange, this, &ReportElement::updateLabel);
 }

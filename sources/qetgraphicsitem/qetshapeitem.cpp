@@ -606,14 +606,14 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 
 	if (m_shapeType != Polygon)
 	{
-		m_P1.setX(e.attribute("x1", 0).toDouble());
-		m_P1.setY(e.attribute("y1", 0).toDouble());
-		m_P2.setX(e.attribute("x2", 0).toDouble());
-		m_P2.setY(e.attribute("y2", 0).toDouble());
+		m_P1.setX(e.attribute("x1", nullptr).toDouble());
+		m_P1.setY(e.attribute("y1", nullptr).toDouble());
+		m_P2.setX(e.attribute("x2", nullptr).toDouble());
+		m_P2.setY(e.attribute("y2", nullptr).toDouble());
 	}
 	else
 		foreach(QDomElement de, QET::findInDomElement(e, "points", "point"))
-			m_polygon << QPointF(de.attribute("x", 0).toDouble(), de.attribute("y", 0).toDouble());
+			m_polygon << QPointF(de.attribute("x", nullptr).toDouble(), de.attribute("y", nullptr).toDouble());
 
 	return (true);
 }

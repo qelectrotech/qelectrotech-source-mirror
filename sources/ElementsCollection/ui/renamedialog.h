@@ -30,7 +30,7 @@ class RenameDialog : public QDialog
     Q_OBJECT
 
     public:
-        explicit RenameDialog(QString path, QWidget *parent = 0);
+        explicit RenameDialog(QString path, QWidget *parent = nullptr);
         ~RenameDialog();
 
 		QString newName() const {return m_new_name;}

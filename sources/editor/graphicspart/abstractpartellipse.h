@@ -41,7 +41,7 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 
 		// constructors, destructor
 	public:
-		AbstractPartEllipse(QETElementEditor *editor, QGraphicsItem * parent = 0);
+		AbstractPartEllipse(QETElementEditor *editor, QGraphicsItem * parent = nullptr);
 		virtual ~AbstractPartEllipse();
 
 	private:

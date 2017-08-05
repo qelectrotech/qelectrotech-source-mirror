@@ -107,7 +107,7 @@ bool TextEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
 	{
-		part = 0;
+		part = nullptr;
 		return(true);
 	}
 	if (PartText *part_text = dynamic_cast<PartText *>(new_part))

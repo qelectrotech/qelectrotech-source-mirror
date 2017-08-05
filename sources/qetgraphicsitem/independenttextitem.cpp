@@ -23,7 +23,7 @@
 	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
 IndependentTextItem::IndependentTextItem() :
-	DiagramTextItem(0)
+	DiagramTextItem(nullptr)
 {}
 
 /**
@@ -32,7 +32,7 @@ IndependentTextItem::IndependentTextItem() :
 	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
 IndependentTextItem::IndependentTextItem(const QString &text) :
-	DiagramTextItem(text, 0)
+	DiagramTextItem(text, nullptr)
 {}
 
 /// Destructeur

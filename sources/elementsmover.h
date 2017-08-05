@@ -46,7 +46,7 @@ class ElementsMover {
 	// methods
 	public:
 	bool isReady() const;
-	int  beginMovement(Diagram *, QGraphicsItem * = 0);
+	int  beginMovement(Diagram *, QGraphicsItem * = nullptr);
 	void continueMovement(const QPointF &);
 	void endMovement();
 	

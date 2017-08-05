@@ -41,7 +41,7 @@
 */
 ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	QWidget(parent),
-	m_project(0)
+	m_project(nullptr)
 {
 	initActions();
 	initWidgets();
@@ -123,7 +123,7 @@ void ProjectView::closeEvent(QCloseEvent *qce) {
 */
 void ProjectView::changeTabDown(){
 	DiagramView *nextDiagramView = this->nextDiagram();
-	if (nextDiagramView!=NULL){
+	if (nextDiagramView!=nullptr){
 		rebuildDiagramsMap();
 		m_tab -> setCurrentWidget(nextDiagramView);
 	}
@@ -138,7 +138,7 @@ DiagramView *ProjectView::nextDiagram() {
 	if (next_tab_index<m_diagram_ids.count()) //if next tab index >= greatest tab the last tab is activated so no need to change tab.
 		return(m_diagram_ids[next_tab_index]);
 	else
-		return NULL;
+		return nullptr;
 }
 
 /**
@@ -146,7 +146,7 @@ DiagramView *ProjectView::nextDiagram() {
 */
 void ProjectView::changeTabUp(){
 	DiagramView *previousDiagramView = this->previousDiagram();
-	if (previousDiagramView!=NULL){
+	if (previousDiagramView!=nullptr){
 		rebuildDiagramsMap();
 		m_tab -> setCurrentWidget(previousDiagramView);
 	}
@@ -161,7 +161,7 @@ DiagramView *ProjectView::previousDiagram() {
 	if (previous_tab_index>=0) //if previous tab index = 0 then the first tab is activated so no need to change tab.
 		return(m_diagram_ids[previous_tab_index]);
 	else
-		return NULL;
+		return nullptr;
 }
 
 /**
@@ -965,7 +965,7 @@ DiagramView *ProjectView::findDiagram(Diagram *diagram) {
 			return(diagram_view);
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**

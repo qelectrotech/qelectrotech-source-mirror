@@ -37,7 +37,7 @@ class TextFieldEditor : public ElementItemEditor
 
 		// Constructors, destructor
 	public:
-		TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
+		TextFieldEditor(QETElementEditor *, PartTextField * = nullptr, QWidget * = nullptr);
 		virtual ~TextFieldEditor();
 	private:
 		TextFieldEditor(const TextFieldEditor &);

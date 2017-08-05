@@ -43,7 +43,7 @@ class QETDiagramEditor : public QETMainWindow {
 	
 	// constructors, destructor
 	public:
-		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = 0);
+		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = nullptr);
 		virtual ~QETDiagramEditor();
 	
 	private:

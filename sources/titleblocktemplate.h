@@ -36,14 +36,14 @@ class TitleBlockTemplate : public QObject {
 	
 	// constructors, destructor
 	public:
-	TitleBlockTemplate(QObject * = 0);
+	TitleBlockTemplate(QObject * = nullptr);
 	virtual ~TitleBlockTemplate();
 	private:
 	TitleBlockTemplate(const TitleBlockTemplate &);
 	
 	// methods
 	public:
-	TitleBlockCell *createCell(const TitleBlockCell * = 0);
+	TitleBlockCell *createCell(const TitleBlockCell * = nullptr);
 	static QFont fontForCell(const TitleBlockCell &);
 	bool loadFromXmlFile(const QString &);
 	bool loadFromXmlElement(const QDomElement &);
@@ -126,7 +126,7 @@ class TitleBlockTemplate : public QObject {
 	private:
 	void parseRows(const QString &);
 	void parseColumns(const QString &);
-	bool checkCell(const QDomElement &, TitleBlockCell ** = 0);
+	bool checkCell(const QDomElement &, TitleBlockCell ** = nullptr);
 	void flushCells();
 	void initCells();
 	int lengthRange(int, int, const QList<int> &) const;

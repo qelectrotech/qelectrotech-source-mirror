@@ -31,7 +31,7 @@ class PropertiesEditorWidget : public QWidget
 {
 		Q_OBJECT
 	public:
-		explicit PropertiesEditorWidget(QWidget *parent = 0);
+		explicit PropertiesEditorWidget(QWidget *parent = nullptr);
 
 		virtual void apply() {}
 		virtual void reset() {}

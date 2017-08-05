@@ -39,9 +39,9 @@ class TitleBlockPropertiesWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
-		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
-		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = NULL, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
+		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
+		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
 		~TitleBlockPropertiesWidget();
 
 		void setProperties(const TitleBlockProperties &properties);

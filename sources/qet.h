@@ -140,9 +140,9 @@ namespace QET {
 	QetCollection qetCollectionFromString (const QString &str);
 	
 	bool lineContainsPoint(const QLineF &, const QPointF &);
-	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = 0);
-	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
-	bool attributeIsAReal(const QDomElement &, QString , qreal * = NULL);
+	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
+	bool attributeIsAnInteger(const QDomElement &, QString , int * = nullptr);
+	bool attributeIsAReal(const QDomElement &, QString , qreal * = nullptr);
 	QString ElementsAndConductorsSentence(int, int, int = 0, int = 0, int = 0, int = 0);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
@@ -160,7 +160,7 @@ namespace QET {
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
-	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
+	bool writeXmlFile(QDomDocument &, const QString &, QString * = nullptr);
 	QPointF graphicsSceneEventPos(QEvent *);
 	bool eachStrIsEqual (const QStringList &qsl);
 }

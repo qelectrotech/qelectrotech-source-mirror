@@ -37,9 +37,9 @@ class Terminal : public QGraphicsObject
 	
 		// constructors, destructor
 	public:
-		Terminal(QPointF,      Qet::Orientation, Element * = 0);
-		Terminal(qreal, qreal, Qet::Orientation, Element * = 0);
-		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = 0);
+		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
+		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
+		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = nullptr);
 		virtual ~Terminal();
 	
 	private:

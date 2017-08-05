@@ -34,7 +34,7 @@ class BorderPropertiesWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit BorderPropertiesWidget(const BorderProperties &bp, QWidget *parent = 0);
+		explicit BorderPropertiesWidget(const BorderProperties &bp, QWidget *parent = nullptr);
 		~BorderPropertiesWidget();
 
 		void setProperties(const BorderProperties &bp);

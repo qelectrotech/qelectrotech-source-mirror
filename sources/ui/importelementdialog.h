@@ -30,7 +30,7 @@ class ImportElementDialog : public QDialog
 		Q_OBJECT
 
 	public:
-		explicit ImportElementDialog(QWidget *parent = 0);
+		explicit ImportElementDialog(QWidget *parent = nullptr);
 		~ImportElementDialog();
 
 		QET::Action action() const;

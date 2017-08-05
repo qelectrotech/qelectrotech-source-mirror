@@ -32,8 +32,8 @@ class ConductorTextItem : public DiagramTextItem
 	
         // constructors, destructor
 	public:
-        ConductorTextItem(Conductor * = 0);
-        ConductorTextItem(const QString &, Conductor * = 0);
+        ConductorTextItem(Conductor * = nullptr);
+        ConductorTextItem(const QString &, Conductor * = nullptr);
         virtual ~ConductorTextItem();
 	private:
         ConductorTextItem(const ConductorTextItem &);

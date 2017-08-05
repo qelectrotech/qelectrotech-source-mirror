@@ -26,7 +26,7 @@
 class GridLayoutAnimation : public QVariantAnimation {
 	// Constructors, destructor
 	public:
-	GridLayoutAnimation(QGraphicsGridLayout * = 0, QObject * = 0);
+	GridLayoutAnimation(QGraphicsGridLayout * = nullptr, QObject * = nullptr);
 	virtual ~GridLayoutAnimation();
 	
 	// methods

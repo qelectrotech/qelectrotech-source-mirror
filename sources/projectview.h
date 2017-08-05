@@ -41,7 +41,7 @@ class ProjectView : public QWidget
 		
 		// constructors, destructor
 	public:
-		ProjectView(QETProject *, QWidget * = 0);
+		ProjectView(QETProject *, QWidget * = nullptr);
 		virtual ~ProjectView();
 	private:
 		ProjectView(const ProjectView &);

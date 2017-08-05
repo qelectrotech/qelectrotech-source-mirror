@@ -28,8 +28,8 @@ class QETArguments : public QObject {
 	
 	// constructors, destructor
 	public:
-	QETArguments(QObject * = 0);
-	QETArguments(const QList<QString> &, QObject * = 0);
+	QETArguments(QObject * = nullptr);
+	QETArguments(const QList<QString> &, QObject * = nullptr);
 	QETArguments(const QETArguments &);
 	QETArguments &operator=(const QETArguments &);
 	virtual ~QETArguments();

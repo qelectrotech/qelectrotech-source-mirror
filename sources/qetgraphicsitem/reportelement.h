@@ -32,7 +32,7 @@ class ReportElement : public CustomElement
 	Q_OBJECT
 
 	public :
-		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = 0, int * = 0);
+		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = nullptr, int * = nullptr);
 		~ReportElement();
 		virtual void linkToElement(Element *);
 		virtual void unlinkAllElements();

@@ -31,7 +31,7 @@ class PropertiesEditorDockWidget : public QDockWidget
 		Q_OBJECT
 
 	public:
-		explicit PropertiesEditorDockWidget(QWidget *parent = 0);
+		explicit PropertiesEditorDockWidget(QWidget *parent = nullptr);
 		~PropertiesEditorDockWidget();
 
 		virtual void clear();

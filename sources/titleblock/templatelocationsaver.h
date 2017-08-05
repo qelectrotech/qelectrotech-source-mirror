@@ -31,7 +31,7 @@ class TitleBlockTemplateLocationSaver : public TitleBlockTemplateLocationChooser
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocation &, QWidget * = 0);
+	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocation &, QWidget * = nullptr);
 	~TitleBlockTemplateLocationSaver();
 	private:
 	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocationSaver &);

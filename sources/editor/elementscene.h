@@ -55,7 +55,7 @@ class ElementScene : public QGraphicsScene
 	
 		// constructors, destructor
 	public:
-		ElementScene(QETElementEditor *, QObject * = 0);
+		ElementScene(QETElementEditor *, QObject * = nullptr);
 		virtual ~ElementScene();
 	
 	private:
@@ -113,7 +113,7 @@ class ElementScene : public QGraphicsScene
 		virtual void setGrid(int, int);
 		virtual const QDomDocument toXml(bool = true);
 		virtual QRectF boundingRectFromXml(const QDomDocument &);
-		virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = 0);
+		virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = nullptr);
 		virtual void reset();
 		virtual QList<CustomElementPart *> primitives() const;
 		virtual QList<QGraphicsItem *> zItems(ItemOptions options = ItemOptions(SortByZValue | IncludeTerminals | SelectedOrNot)) const;
@@ -141,10 +141,10 @@ class ElementScene : public QGraphicsScene
 	
 	private:
 		QRectF elementContentBoundingRect(const ElementContent &) const;
-		bool applyInformations(const QDomDocument &, QString * = 0);
-		ElementContent loadContent(const QDomDocument &, QString * = 0);
-		ElementContent addContent(const ElementContent &, QString * = 0);
-		ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = 0);
+		bool applyInformations(const QDomDocument &, QString * = nullptr);
+		ElementContent loadContent(const QDomDocument &, QString * = nullptr);
+		ElementContent addContent(const ElementContent &, QString * = nullptr);
+		ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = nullptr);
 		void addPrimitive(QGraphicsItem *);
 		void initPasteArea();
 		static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);

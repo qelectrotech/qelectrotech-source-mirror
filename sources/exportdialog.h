@@ -32,7 +32,7 @@ class ExportDialog : public QDialog {
 	
 	// constructors, destructor
 	public:
-	ExportDialog(QETProject *, QWidget * = 0);
+	ExportDialog(QETProject *, QWidget * = nullptr);
 	virtual ~ExportDialog();
 	
 	private:

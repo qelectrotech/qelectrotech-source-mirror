@@ -36,7 +36,7 @@ class QETElementEditor : public QETMainWindow {
 	
 	// constructor, destructor
 	public:
-		QETElementEditor(QWidget * = 0);
+		QETElementEditor(QWidget * = nullptr);
 		virtual ~QETElementEditor();
 	private:
 		QETElementEditor(const QETElementEditor &);
@@ -109,7 +109,7 @@ class QETElementEditor : public QETMainWindow {
 	void readSettings();
 	void writeSettings();
 	static QPointF pasteOffset();
-	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
+	static QString getOpenElementFileName(QWidget * = nullptr, const QString & = QString());
 	void contextMenu(QPoint p);
 
 	signals:

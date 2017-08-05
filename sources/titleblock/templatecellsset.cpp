@@ -103,7 +103,7 @@ bool TitleBlockTemplateCellsSet::hasExternalSpan() const {
 	@return the top left cell within this set, or 0 if this set is empty
 */
 TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
-	if (empty()) return(0);
+	if (empty()) return(nullptr);
 	if (count() == 1) return(first());
 	
 	// look for cells at the top
@@ -118,7 +118,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	
 	// look for the cell at the left
 	int lowest_num_col = 100000;
-	TitleBlockTemplateVisualCell *candidate = 0;
+	TitleBlockTemplateVisualCell *candidate = nullptr;
 	foreach (TitleBlockTemplateVisualCell *cell_view, candidates) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
 			if (cell -> num_col < lowest_num_col) {
@@ -134,7 +134,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	@return the bottom right cell within this set, or 0 if this set is empty
 */
 TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() const {
-	if (empty()) return(0);
+	if (empty()) return(nullptr);
 	if (count() == 1) return(first());
 	
 	// look for cells at the bottom
@@ -147,7 +147,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() cons
 	
 	// look for the cell at the right
 	qreal highest_right = -100000;
-	TitleBlockTemplateVisualCell *candidate = 0;
+	TitleBlockTemplateVisualCell *candidate = nullptr;
 	foreach (TitleBlockTemplateVisualCell *cell_view, candidates) {
 		qreal right = cell_view -> geometry().right();
 		if (right > highest_right) {

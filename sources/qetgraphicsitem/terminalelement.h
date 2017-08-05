@@ -27,7 +27,7 @@ class TerminalElement : public CustomElement
 {
 		Q_OBJECT
 	public:
-		TerminalElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		TerminalElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
 		~TerminalElement();
 		virtual void initLink(QETProject *project);
 

@@ -89,7 +89,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 			//Build the element for set the pixmap of the QDrag
 		int elmt_creation_state;
-		Element *temp_elmt = ElementFactory::Instance()->createElement(location, 0, &elmt_creation_state);
+		Element *temp_elmt = ElementFactory::Instance()->createElement(location, nullptr, &elmt_creation_state);
 		if (elmt_creation_state)
 		{
 			delete temp_elmt;

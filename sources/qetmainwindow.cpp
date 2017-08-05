@@ -33,7 +33,7 @@
 */
 QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 	QMainWindow(widget, flags),
-	display_toolbars_(0),
+	display_toolbars_(nullptr),
 	first_activation_(true)
 {
 	initCommonActions();
@@ -161,8 +161,8 @@ upgrade_M -> setVisible(true);
 upgrade_M -> setVisible(false);
 #endif
 
-	insertMenu(0, settings_menu_);
-	insertMenu(0, help_menu_);
+	insertMenu(nullptr, settings_menu_);
+	insertMenu(nullptr, help_menu_);
 }
 
 /**
@@ -185,7 +185,7 @@ void QETMainWindow::insertMenu(QMenu *before, QMenu *menu, bool customize) {
 	@return the action returned when inserting \a menu
 */
 QAction *QETMainWindow::actionForMenu(QMenu *menu) {
-	return(menu_actions_.value(menu, 0));
+	return(menu_actions_.value(menu, nullptr));
 }
 
 /**

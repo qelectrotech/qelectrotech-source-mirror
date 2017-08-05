@@ -88,7 +88,7 @@ void TitleBlockTemplatesCollection::setCollection(QET::QetCollection c) {
 	collection is not related to any project.
 */
 QETProject *TitleBlockTemplatesCollection::parentProject() {
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -195,7 +195,7 @@ TitleBlockTemplate *TitleBlockTemplatesProjectCollection::getTemplate(const QStr
 	
 	// No? Do we even know of it?
 	if (!titleblock_templates_xml_.contains(template_name)) {
-		return(0);
+		return(nullptr);
 	}
 	
 	// Ok, we have its XML description, we have to generate a TitleBlockTemplate object
@@ -204,7 +204,7 @@ TitleBlockTemplate *TitleBlockTemplatesProjectCollection::getTemplate(const QStr
 		titleblock_templates_.insert(template_name, titleblock_template);
 		return(titleblock_template);
 	} else {
-		return(0);
+		return(nullptr);
 	}
 }
 
@@ -401,7 +401,7 @@ QStringList TitleBlockTemplatesFilesCollection::templates() {
 	could not be loaded.
 */
 TitleBlockTemplate *TitleBlockTemplatesFilesCollection::getTemplate(const QString &template_name) {
-	if (!templates().contains(template_name)) return(0);
+	if (!templates().contains(template_name)) return(nullptr);
 	
 	TitleBlockTemplate *tbtemplate = new TitleBlockTemplate();
 	QString tbt_file_path = path(template_name);
@@ -409,7 +409,7 @@ TitleBlockTemplate *TitleBlockTemplatesFilesCollection::getTemplate(const QStrin
 	bool loading = tbtemplate -> loadFromXmlFile(tbt_file_path);
 	if (!loading) {
 		delete tbtemplate;
-		return(0);
+		return(nullptr);
 	}
 	return(tbtemplate);
 }

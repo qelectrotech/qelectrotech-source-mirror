@@ -7,7 +7,7 @@
 */
 TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 	QObject(parent),
-	titleblock_template_(0),
+	titleblock_template_(nullptr),
 	use_cache_(true),
 	last_known_titleblock_width_(-1)
 {

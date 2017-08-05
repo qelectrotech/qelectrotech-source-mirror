@@ -110,7 +110,7 @@ void SlaveElement::unlinkElement(Element *elmt)
 		disconnect(elmt -> diagram(),    SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateLabel()));
 		disconnect(elmt,                 SIGNAL(updateLabel()),                                    this, SLOT(updateLabel()));
 
-		delete m_xref_item; m_xref_item = NULL;
+		delete m_xref_item; m_xref_item = nullptr;
 		
 		if (ElementTextItem *eti = this->taggedText("label"))
 			eti->setPlainText("_");

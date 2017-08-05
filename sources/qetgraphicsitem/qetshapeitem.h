@@ -56,7 +56,7 @@ class QetShapeItem : public QetGraphicsItem
 
 		enum { Type = UserType + 1008 };
 
-		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = 0);
+		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = nullptr);
 		virtual ~QetShapeItem();
 
 			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a QetShapeItem @return the QGraphicsItem type

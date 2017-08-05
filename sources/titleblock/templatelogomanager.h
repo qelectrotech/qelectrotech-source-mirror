@@ -28,7 +28,7 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	TitleBlockTemplateLogoManager(TitleBlockTemplate *, QWidget * = 0);
+	TitleBlockTemplateLogoManager(TitleBlockTemplate *, QWidget * = nullptr);
 	virtual ~TitleBlockTemplateLogoManager();
 	
 	// methods

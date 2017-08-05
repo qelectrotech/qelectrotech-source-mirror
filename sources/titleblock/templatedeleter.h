@@ -27,7 +27,7 @@ class TitleBlockTemplateDeleter : public QWidget {
 	Q_OBJECT
 	// Constructors, destructor
 	public:
-	TitleBlockTemplateDeleter(const TitleBlockTemplateLocation &, QWidget * = 0);
+	TitleBlockTemplateDeleter(const TitleBlockTemplateLocation &, QWidget * = nullptr);
 	virtual ~TitleBlockTemplateDeleter();
 	private:
 	TitleBlockTemplateDeleter(const TitleBlockTemplateDeleter &);

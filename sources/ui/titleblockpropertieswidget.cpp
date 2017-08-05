@@ -305,10 +305,10 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 
 	connect(ui->m_tbt_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentTitleBlockTemplate(int)));
 
-	if (project!= NULL){
+	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
-		if (ui->auto_page_cb->currentText()==NULL)
+		if (ui->auto_page_cb->currentText()==nullptr)
 			ui->auto_page_cb->addItem(tr("Créer un Folio Numérotation Auto"));
 	}
 	else{
@@ -402,7 +402,7 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 
 		// get template
 	TitleBlockTemplate *tpl = collection -> getTemplate(ui -> m_tbt_cb -> currentText());
-	if(tpl != 0) {
+	if(tpl != nullptr) {
 			// get all template fields
 		QStringList fields = tpl -> listOfVariables();
 			// set fields to additional_fields_ widget

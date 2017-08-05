@@ -37,7 +37,7 @@ class BorderTitleBlock : public QObject
 		Q_OBJECT
 	
 	public:
-		BorderTitleBlock(QObject * = 0);
+		BorderTitleBlock(QObject * = nullptr);
 		virtual ~BorderTitleBlock();
 	
 	private:
@@ -153,7 +153,7 @@ class BorderTitleBlock : public QObject
 		btb_folio_ = folio;
 		emit (titleBlockFolioChanged(folio));
 	}
-	void setFolioData(int, int, QString = NULL, const DiagramContext & = DiagramContext());
+	void setFolioData(int, int, QString = nullptr, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setMachine(const QString &machine) { btb_machine_ = machine; }
 	void setLocMach(const QString &locmach) { btb_locmach_ = locmach; }
@@ -180,7 +180,7 @@ class BorderTitleBlock : public QObject
 	
 	public slots:
 	void titleBlockTemplateChanged(const QString &);
-	void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = 0);
+	void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = nullptr);
 	
 	// methods to set display options
 	void displayTitleBlock(bool);

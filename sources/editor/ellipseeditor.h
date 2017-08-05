@@ -33,7 +33,7 @@ class EllipseEditor : public ElementItemEditor
 
 		// constructors, destructor
 	public:
-		EllipseEditor(QETElementEditor *, PartEllipse * = 0, QWidget * = 0);
+		EllipseEditor(QETElementEditor *, PartEllipse * = nullptr, QWidget * = nullptr);
 		virtual ~EllipseEditor();
 	private:
 		EllipseEditor(const EllipseEditor &);

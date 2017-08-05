@@ -64,7 +64,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		// constructors, destructor
 	public:
 
-		CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent = 0);
+		CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
 		virtual ~CustomElementGraphicPart();
 
 		static void drawCross (const QPointF &center, QPainter *painter);

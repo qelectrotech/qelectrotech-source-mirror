@@ -33,8 +33,8 @@ class ConductorPropertiesWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit ConductorPropertiesWidget(QWidget *parent = 0);
-		explicit ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent = 0);
+		explicit ConductorPropertiesWidget(QWidget *parent = nullptr);
+		explicit ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent = nullptr);
 		~ConductorPropertiesWidget();
 
 	//METHODS

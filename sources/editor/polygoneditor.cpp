@@ -130,8 +130,8 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 			disconnect(part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
 			disconnect(part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
 		}
-		part = 0;
-		style_ -> setPart(0);
+		part = nullptr;
+		style_ -> setPart(nullptr);
 		return(true);
 	}
 	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))

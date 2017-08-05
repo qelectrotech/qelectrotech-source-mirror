@@ -31,7 +31,7 @@ class ElementsCollectionCache : public QObject
 {
 	public:
 	// constructor, destructor
-	ElementsCollectionCache(const QString &database_path, QObject * = 0);
+	ElementsCollectionCache(const QString &database_path, QObject * = nullptr);
 	virtual ~ElementsCollectionCache();
 	
 	// methods

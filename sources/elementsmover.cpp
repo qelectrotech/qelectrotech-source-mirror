@@ -32,8 +32,8 @@
 ElementsMover::ElementsMover() :
 	movement_running_(false),
 	current_movement_(),
-	diagram_(0),
-	movement_driver_(0),
+	diagram_(nullptr),
+	movement_driver_(nullptr),
 	moved_content_()
 {
 	

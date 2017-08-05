@@ -29,7 +29,7 @@ class TitleBlockTemplatesCollection;
 class TitleBlockTemplateLocation {
 	// constructor, destructor
 	public:
-	TitleBlockTemplateLocation(const QString & = QString(), TitleBlockTemplatesCollection * = 0);
+	TitleBlockTemplateLocation(const QString & = QString(), TitleBlockTemplatesCollection * = nullptr);
 	virtual ~TitleBlockTemplateLocation();
 	
 	// static methods

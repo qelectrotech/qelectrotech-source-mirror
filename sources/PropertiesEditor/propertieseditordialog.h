@@ -39,7 +39,7 @@ class PropertiesEditorDialog : public QDialog
 		Q_OBJECT
 	public:
 		template<typename T>
-		PropertiesEditorDialog(T editor, QWidget *parent = 0) :
+		PropertiesEditorDialog(T editor, QWidget *parent = nullptr) :
 		QDialog (parent)
 		{
 				//Set dialog title

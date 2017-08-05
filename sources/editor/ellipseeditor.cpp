@@ -83,8 +83,8 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 	{
 		if (part)
 			disconnect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
-		part = 0;
-		style_ -> setPart(0);
+		part = nullptr;
+		style_ -> setPart(nullptr);
 		return(true);
 	}
 	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part))

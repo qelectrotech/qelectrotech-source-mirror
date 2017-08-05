@@ -30,7 +30,7 @@ class AbstractElementPropertiesEditorWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT
 	public:
-		explicit AbstractElementPropertiesEditorWidget(QWidget *parent = 0);
+		explicit AbstractElementPropertiesEditorWidget(QWidget *parent = nullptr);
 		virtual void setElement(Element *element) =0;
 
 	protected:

@@ -110,8 +110,8 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 			disconnect(part, &PartLine::firstEndLengthChanged, this, &LineEditor::updateForm);
 			disconnect(part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
 		}
-		part = 0;
-		style_ -> setPart(0);
+		part = nullptr;
+		style_ -> setPart(nullptr);
 		return(true);
 	}
 	if (PartLine *part_line = dynamic_cast<PartLine *>(new_part))

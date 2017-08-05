@@ -41,8 +41,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		void colorChanged(QColor color);
 
 	public:
-		DiagramTextItem(QGraphicsItem * = 0);
-		DiagramTextItem(const QString &, QGraphicsItem * = 0);
+		DiagramTextItem(QGraphicsItem * = nullptr);
+		DiagramTextItem(const QString &, QGraphicsItem * = nullptr);
 
 	private:
 		void build();

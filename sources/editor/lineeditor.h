@@ -33,7 +33,7 @@ class LineEditor : public ElementItemEditor
 	Q_OBJECT
 		// constructors, destructor
 	public:
-		LineEditor(QETElementEditor *, PartLine * = 0, QWidget * = 0);
+		LineEditor(QETElementEditor *, PartLine * = nullptr, QWidget * = nullptr);
 		virtual ~LineEditor();
 	private:
 		LineEditor(const LineEditor &);

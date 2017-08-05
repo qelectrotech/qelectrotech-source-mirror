@@ -55,7 +55,7 @@ QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const {
 	if (item && item -> type() == QET::Project) {
 		return(valueForItem<QETProject *>(item));
 	}
-	return(0);
+	return(nullptr);
 	
 }
 
@@ -66,7 +66,7 @@ Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
 	if (item && item -> type() == QET::Diagram) {
 		return(valueForItem<Diagram *>(item));
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -104,7 +104,7 @@ TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const {
 	
 */
 QTreeWidgetItem *GenericPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!project) return(0);
+	if (!project) return(nullptr);
 	bool creation_required;
 	
 	QTreeWidgetItem *project_qtwi = getItemForProject(project, &creation_required);
@@ -121,8 +121,8 @@ QTreeWidgetItem *GenericPanel::addProject(QETProject *project, QTreeWidgetItem *
 	project does not appear within this panel.
 */
 QTreeWidgetItem *GenericPanel::itemForProject(QETProject *project) {
-	if (!project) return(0);
-	return(projects_.value(project, 0));
+	if (!project) return(nullptr);
+	return(projects_.value(project, nullptr));
 }
 
 /**
@@ -134,9 +134,9 @@ QTreeWidgetItem *GenericPanel::itemForProject(QETProject *project) {
 	appear within this panel, it is created.
 */
 QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *created) {
-	if (!project) return(0);
+	if (!project) return(nullptr);
 	
-	QTreeWidgetItem *project_qtwi = projects_.value(project, 0);
+	QTreeWidgetItem *project_qtwi = projects_.value(project, nullptr);
 	if (project_qtwi) {
 		if (created) *created = false;
 		return(project_qtwi);
@@ -152,7 +152,7 @@ QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *crea
 */
 QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
-	if (!project_qtwi || !project) return(0);
+	if (!project_qtwi || !project) return(nullptr);
 	
 	if (freshly_created) {
 		project_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(project));
@@ -188,7 +188,7 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 	
 */
 QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
-	if (!project_qtwi || !project) return(0);
+	if (!project_qtwi || !project) return(nullptr);
 	
 	
 	if (options & AddChildDiagrams) {
@@ -211,7 +211,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 		}
 		int index = 0;
 		foreach (Diagram *diagram, project -> diagrams()) {
-			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram, 0, options);
+			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram, nullptr, options);
 			project_qtwi -> insertChild(index, diagram_qtwi);
 			++ index;
 		}
@@ -239,7 +239,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 */
 QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *parent_item, PanelOptions options) {
 	Q_UNUSED(options)
-	if (!diagram) return(0);
+	if (!diagram) return(nullptr);
 	
 	bool creation_required;
 	
@@ -255,9 +255,9 @@ QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *par
 	
 */
 QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created) {
-	if (!diagram) return(0);
+	if (!diagram) return(nullptr);
 	
-	QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram, 0);
+	QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram, nullptr);
 	if (diagram_qtwi) {
 		if (created) *created = false;
 		return(diagram_qtwi);
@@ -273,7 +273,7 @@ QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created
 */
 QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, Diagram *diagram, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
-	if (!diagram || !diagram_qtwi) return(0);
+	if (!diagram || !diagram_qtwi) return(nullptr);
 	QSettings settings;
 	
 	QString displayed_title = diagram -> title();
@@ -342,7 +342,7 @@ QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi, Di
 	
 */
 QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!tbt_collection) return(0);
+	if (!tbt_collection) return(nullptr);
 	bool creation_required;
 	
 	QTreeWidgetItem *tbt_collection_qtwi = getItemForTemplatesCollection(tbt_collection, &creation_required);
@@ -357,16 +357,16 @@ QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollect
 	
 */
 QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
-	if (!tbt_collection) return(0);
-	return(tb_templates_.value(tbt_collection -> location(), 0));
+	if (!tbt_collection) return(nullptr);
+	return(tb_templates_.value(tbt_collection -> location(), nullptr));
 }
 
 /**
 	
 */
 QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, bool *created) {
-	if (!tbt_collection) return(0);
-	QTreeWidgetItem *tbt_collection_item = tb_templates_.value(tbt_collection -> location(), 0);
+	if (!tbt_collection) return(nullptr);
+	QTreeWidgetItem *tbt_collection_item = tb_templates_.value(tbt_collection -> location(), nullptr);
 	if (tbt_collection_item) {
 		if (created) *created = false;
 		return(tbt_collection_item);
@@ -421,7 +421,7 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 		
 		int index = 0;
 		foreach (QString template_name, tbt_collection -> templates()) {
-			QTreeWidgetItem *template_item = addTemplate(tbt_collection -> location(template_name), 0, options);
+			QTreeWidgetItem *template_item = addTemplate(tbt_collection -> location(template_name), nullptr, options);
 			tbt_collection_qtwi -> insertChild(index ++, template_item);
 		}
 	}
@@ -433,7 +433,7 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 	
 */
 QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_template, QTreeWidgetItem *parent_item, PanelOptions options) {
-	if (!tb_template.isValid()) return(0);
+	if (!tb_template.isValid()) return(nullptr);
 	bool creation_required;
 	
 	QTreeWidgetItem *tb_template_qtwi = getItemForTemplate(tb_template, &creation_required);
@@ -448,9 +448,9 @@ QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_
 	
 */
 QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocation &tb_template, bool *created) {
-	if (!tb_template.isValid()) return(0);
+	if (!tb_template.isValid()) return(nullptr);
 	
-	QTreeWidgetItem *tb_template_qtwi = tb_templates_.value(tb_template, 0);
+	QTreeWidgetItem *tb_template_qtwi = tb_templates_.value(tb_template, nullptr);
 	if (tb_template_qtwi) {
 		if (created) *created = false;
 		return(tb_template_qtwi);
@@ -530,7 +530,7 @@ QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi, PanelOptions opti
 	
 */
 void GenericPanel::projectInformationsChanged(QETProject *project) {
-	addProject(project, 0, 0);
+	addProject(project, nullptr, nullptr);
 	emit(panelContentChanged());
 }
 
@@ -539,7 +539,7 @@ void GenericPanel::projectInformationsChanged(QETProject *project) {
 */
 void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
-	addProject(project, 0, GenericPanel::AddChildDiagrams);
+	addProject(project, nullptr, GenericPanel::AddChildDiagrams);
 	emit(panelContentChanged());
 }
 
@@ -548,7 +548,7 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 */
 void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
-	addProject(project, 0, GenericPanel::AddChildDiagrams);
+	addProject(project, nullptr, GenericPanel::AddChildDiagrams);
 	emit(panelContentChanged());
 }
 

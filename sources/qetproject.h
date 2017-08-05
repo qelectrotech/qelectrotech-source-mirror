@@ -49,8 +49,8 @@ class QETProject : public QObject
 	
 		// constructors, destructor
 	public:
-		QETProject (int = 1, QObject * = 0);
-		QETProject (const QString &, QObject * = 0);
+		QETProject (int = 1, QObject * = nullptr);
+		QETProject (const QString &, QObject * = nullptr);
 		virtual ~QETProject();
 	
 	private:

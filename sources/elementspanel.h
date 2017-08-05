@@ -36,7 +36,7 @@ class ElementsPanel : public GenericPanel {
 	
 	// constructors, destructor
 	public:
-	ElementsPanel(QWidget * = 0);
+	ElementsPanel(QWidget * = nullptr);
 	virtual ~ElementsPanel();
 	
 	private:

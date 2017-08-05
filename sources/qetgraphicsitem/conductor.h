@@ -113,7 +113,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		void calculateTextItemPosition();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
-		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
+		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=nullptr);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 

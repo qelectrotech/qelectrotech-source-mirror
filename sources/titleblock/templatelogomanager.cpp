@@ -160,7 +160,7 @@ void TitleBlockTemplateLogoManager::fillView() {
 	}
 	
 	QListWidgetItem *current_item = logos_view_ -> currentItem();
-	updateLogoInformations(current_item, 0);
+	updateLogoInformations(current_item, nullptr);
 }
 
 /**
@@ -181,9 +181,9 @@ QSize TitleBlockTemplateLogoManager::iconsize() const {
 */
 QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_name) {
 	QString name = initial_name;
-	QDialog *rename_dialog = 0;
-	QLabel *rd_label = 0;
-	QLineEdit *rd_input = 0;
+	QDialog *rename_dialog = nullptr;
+	QLabel *rd_label = nullptr;
+	QLineEdit *rd_input = nullptr;
 	while (managed_template_ -> logos().contains(name)) {
 		if (!rename_dialog) {
 			rename_dialog = new QDialog(this);

@@ -45,7 +45,7 @@ class PartLine : public CustomElementGraphicPart
 
 		// constructors, destructor
 	public:
-		PartLine(QETElementEditor *, QGraphicsItem * = 0);
+		PartLine(QETElementEditor *, QGraphicsItem * = nullptr);
 		virtual ~PartLine();
 	private:
 		PartLine(const PartLine &);
@@ -67,7 +67,7 @@ class PartLine : public CustomElementGraphicPart
 		  * @return the QGraphicsItem type
 		  */
 		virtual int type() const { return Type; }
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 		virtual QString name() const { return(QObject::tr("ligne", "element part name")); }
 		virtual QString xmlName() const { return(QString("line")); }
 		virtual const QDomElement toXml(QDomDocument &) const;

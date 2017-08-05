@@ -37,7 +37,7 @@ class ElementPropertiesEditorWidget : public QDialog
 
 	//METHODS
 	public:
-	explicit ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &dc, QWidget *parent = 0);
+	explicit ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &dc, QWidget *parent = nullptr);
 	~ElementPropertiesEditorWidget();
 
 	void upDateInterface();

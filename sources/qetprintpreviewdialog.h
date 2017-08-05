@@ -36,7 +36,7 @@ class QETPrintPreviewDialog : public QDialog {
 	
 	// constructors, destructor
 	public:
-	QETPrintPreviewDialog(QETProject *, QPrinter *, QWidget * = 0, Qt::WindowFlags = 0);
+	QETPrintPreviewDialog(QETProject *, QPrinter *, QWidget * = nullptr, Qt::WindowFlags = nullptr);
 	virtual ~QETPrintPreviewDialog();
 	private:
 	QETPrintPreviewDialog(const QETPrintPreviewDialog &);

@@ -35,7 +35,7 @@ class FolioAutonumberingW : public QWidget
 	
 	//METHODS
 	public:
-		explicit FolioAutonumberingW(QETProject *project, QWidget *parent = 0);
+		explicit FolioAutonumberingW(QETProject *project, QWidget *parent = nullptr);
 		~FolioAutonumberingW();
 
 		void setContext (QList <QString> autonums);

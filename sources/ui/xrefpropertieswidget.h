@@ -34,7 +34,7 @@ class XRefPropertiesWidget : public QWidget
 	Q_OBJECT
 
 	public:
-	XRefPropertiesWidget(QHash <QString, XRefProperties> properties = QHash <QString, XRefProperties>(), QWidget *parent = 0);
+	XRefPropertiesWidget(QHash <QString, XRefProperties> properties = QHash <QString, XRefProperties>(), QWidget *parent = nullptr);
 	~XRefPropertiesWidget();
 
 	void setProperties (const QHash <QString, XRefProperties> &properties);

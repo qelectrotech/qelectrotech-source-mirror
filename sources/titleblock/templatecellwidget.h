@@ -33,7 +33,7 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	
 	// constructor, destructor
 	public:
-	TitleBlockTemplateCellWidget(TitleBlockTemplate * = 0, QWidget * = 0);
+	TitleBlockTemplateCellWidget(TitleBlockTemplate * = nullptr, QWidget * = nullptr);
 	virtual ~TitleBlockTemplateCellWidget();
 	private:
 	TitleBlockTemplateCellWidget(const TitleBlockTemplateCellWidget &);

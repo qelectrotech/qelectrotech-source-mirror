@@ -29,7 +29,7 @@ class FixedElement : public Element {
 	
 	// constructors, destructor
 	public:
-	FixedElement(QGraphicsItem * = 0);
+	FixedElement(QGraphicsItem * = nullptr);
 	virtual ~FixedElement();
 	
 	// methods

@@ -167,7 +167,7 @@ void AutoNumberingDockWidget::setContext() {
  * @param dv: activated diagramview
  */
 void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
-	if (dv!=NULL) {
+	if (dv!=nullptr) {
 		QString conductor_autonum = dv->diagram()->conductorsAutonumName();
 		int conductor_index = ui->m_conductor_cb->findText(conductor_autonum);
 		ui->m_conductor_cb->setCurrentIndex(conductor_index);
@@ -180,7 +180,7 @@ void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
  */
 void AutoNumberingDockWidget::setActive() {
 
-	if (m_project_view!=NULL) {
+	if (m_project_view!=nullptr) {
 			//Conductor
 		if (m_project_view->currentDiagram()) {
 			QString conductor_autonum = m_project_view->currentDiagram()->diagram()->conductorsAutonumName();

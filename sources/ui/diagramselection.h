@@ -32,7 +32,7 @@ class diagramselection : public QWidget
 	Q_OBJECT
 	
 	public:
-	explicit diagramselection(QETProject *prj, QWidget *parent = 0);
+	explicit diagramselection(QETProject *prj, QWidget *parent = nullptr);
 	~diagramselection();
 	
 	QList<Diagram *> list_of_DiagramSelected();

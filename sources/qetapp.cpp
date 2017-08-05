@@ -62,7 +62,7 @@ TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 */
 QETApp::QETApp(int &argc, char **argv) :
 	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName())),
-	splash_screen_(0),
+	splash_screen_(nullptr),
 	non_interactive_execution_(false)
 {
 	parseArguments();
@@ -378,7 +378,7 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QStri
 			return(project -> embeddedTitleBlockTemplatesCollection());
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -597,7 +597,7 @@ QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
 	n'est pas edite par l'application.
 */
 QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
-	if (filepath.isEmpty()) return(0);
+	if (filepath.isEmpty()) return(nullptr);
 
 	QETApp *qet_app(QETApp::instance());
 	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors()) {
@@ -606,7 +606,7 @@ QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 		}
 	}
 
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1225,7 +1225,7 @@ void QETApp::configureQET() {
 
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
-	cd.setParent(0, cd.windowFlags());
+	cd.setParent(nullptr, cd.windowFlags());
 }
 
 /**
@@ -1471,7 +1471,7 @@ int QETApp::projectIdFromString(const QString &url) {
 */
 QETProject *QETApp::projectFromString(const QString &url) {
 	int project_id = projectIdFromString(url);
-	if (project_id == -1) return(0);
+	if (project_id == -1) return(nullptr);
 	return(project(project_id));
 }
 
@@ -1655,7 +1655,7 @@ QETProject *QETApp::project(const uint &id) {
 	if (registered_projects_.contains(id)) {
 		return(registered_projects_[id]);
 	} else {
-		return(0);
+		return(nullptr);
 	}
 }
 

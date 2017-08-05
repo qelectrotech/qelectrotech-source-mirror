@@ -41,7 +41,7 @@ class DiagramView : public QGraphicsView
 	
 		// constructors, destructor
 	public:
-		DiagramView(Diagram *diagram, QWidget * = 0);
+		DiagramView(Diagram *diagram, QWidget * = nullptr);
 		virtual ~DiagramView();
 
 	private:

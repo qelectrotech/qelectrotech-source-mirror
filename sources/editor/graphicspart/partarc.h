@@ -33,7 +33,7 @@ class PartArc : public AbstractPartEllipse
 		Q_OBJECT
 
 	public:
-		PartArc(QETElementEditor *editor, QGraphicsItem *parent = 0);
+		PartArc(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
 		virtual ~PartArc();
 	
 	private:
@@ -46,7 +46,7 @@ class PartArc : public AbstractPartEllipse
 			 * @return the QGraphicsItem type
 			 */
 		virtual int type() const { return Type; }
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 
 			//Name and XML
 		virtual QString name()    const { return(QObject::tr("arc", "element part name")); }

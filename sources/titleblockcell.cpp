@@ -9,7 +9,7 @@ TitleBlockCell::TitleBlockCell() {
 	row_span = col_span = 0;
 	applied_row_span = applied_col_span = 0;
 	span_state = TitleBlockCell::Enabled;
-	spanner_cell = 0;
+	spanner_cell = nullptr;
 	display_label = true;
 	alignment = Qt::AlignCenter | Qt::AlignVCenter;
 	font_size = 9;

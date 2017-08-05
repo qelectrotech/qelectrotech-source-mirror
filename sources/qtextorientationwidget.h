@@ -26,7 +26,7 @@ class QTextOrientationWidget : public QWidget {
 	
 	// constructors, destructor
 	public:
-	QTextOrientationWidget(QWidget * = 0);
+	QTextOrientationWidget(QWidget * = nullptr);
 	virtual ~QTextOrientationWidget();
 	private:
 	QTextOrientationWidget(const QTextOrientationWidget &);
@@ -82,6 +82,6 @@ class QTextOrientationWidget : public QWidget {
 	private:
 	QString getMostUsableStringForRadius(const qreal &);
 	void generateTextSizeHash();
-	bool positionIsASquare(const QPointF &, double * = 0);
+	bool positionIsASquare(const QPointF &, double * = nullptr);
 };
 #endif

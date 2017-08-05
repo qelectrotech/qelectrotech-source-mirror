@@ -249,7 +249,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
-			ui -> value_field -> setValidator(0);
+			ui -> value_field -> setValidator(nullptr);
 			ui -> value_field -> setEnabled(true);
 		}
 		else if (t==folio) {

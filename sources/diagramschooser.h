@@ -29,7 +29,7 @@ class DiagramsChooser : public QScrollArea {
 	
 	// constructors, destructor
 	public:
-	DiagramsChooser(QETProject *, QWidget * = 0);
+	DiagramsChooser(QETProject *, QWidget * = nullptr);
 	virtual ~DiagramsChooser();
 	private:
 	DiagramsChooser(const DiagramsChooser &);

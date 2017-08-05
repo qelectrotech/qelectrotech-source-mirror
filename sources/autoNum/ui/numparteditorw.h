@@ -37,8 +37,8 @@ class NumPartEditorW : public QWidget
 	
 		//METHODS
 	public:
-		explicit NumPartEditorW(int type, QWidget *parent = 0);
-		NumPartEditorW (NumerotationContext &, int, int type, QWidget *parent=0);
+		explicit NumPartEditorW(int type, QWidget *parent = nullptr);
+		NumPartEditorW (NumerotationContext &, int, int type, QWidget *parent=nullptr);
 		~NumPartEditorW();
 
 		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,

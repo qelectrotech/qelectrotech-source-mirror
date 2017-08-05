@@ -87,7 +87,7 @@ QString itemText(const Conductor           *item);
 class PasteDiagramCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	PasteDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
+	PasteDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
 	virtual ~PasteDiagramCommand();
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
@@ -115,7 +115,7 @@ class PasteDiagramCommand : public QUndoCommand {
 class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 	// constructors, destructor
 	public:
-	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
+	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
 	virtual ~CutDiagramCommand();
 	private:
 	CutDiagramCommand(const CutDiagramCommand &);
@@ -127,7 +127,7 @@ class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 class MoveElementsCommand : public QUndoCommand {
 		// constructors, destructor
 	public:
-		MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = 0);
+		MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = nullptr);
 		virtual ~MoveElementsCommand();
 	private:
 		MoveElementsCommand(const MoveElementsCommand &);
@@ -162,7 +162,7 @@ class MoveElementsCommand : public QUndoCommand {
 class MoveConductorsTextsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = 0);
+	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = nullptr);
 	virtual ~MoveConductorsTextsCommand();
 	private:
 	MoveConductorsTextsCommand(const MoveConductorsTextsCommand &);
@@ -192,7 +192,7 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 class ChangeDiagramTextCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = 0);
+	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = nullptr);
 	virtual ~ChangeDiagramTextCommand();
 	private:
 	ChangeDiagramTextCommand(const ChangeDiagramTextCommand &);
@@ -221,7 +221,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 class RotateElementsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = 0);
+	RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = nullptr);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
@@ -284,7 +284,7 @@ class RotateTextsCommand : public QUndoCommand
 class ChangeConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = 0);
+	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = nullptr);
 	virtual ~ChangeConductorCommand();
 	private:
 	ChangeConductorCommand(const ChangeConductorCommand &);
@@ -320,7 +320,7 @@ class ChangeConductorCommand : public QUndoCommand {
 class ResetConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = 0);
+	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = nullptr);
 	virtual ~ResetConductorCommand();
 	private:
 	ResetConductorCommand(const ResetConductorCommand &);
@@ -343,7 +343,7 @@ class ResetConductorCommand : public QUndoCommand {
 class ChangeTitleBlockCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = 0);
+	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = nullptr);
 	virtual ~ChangeTitleBlockCommand();
 	private:
 	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
@@ -369,7 +369,7 @@ class ChangeTitleBlockCommand : public QUndoCommand {
 class ChangeBorderCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = 0);
+	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = nullptr);
 	virtual ~ChangeBorderCommand();
 	private:
 	ChangeBorderCommand(const ChangeBorderCommand &);

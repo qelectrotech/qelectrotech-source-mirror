@@ -36,7 +36,7 @@ class PartRectangle :  public CustomElementGraphicPart
 
 		// constructors, destructor
 	public:
-		PartRectangle(QETElementEditor *, QGraphicsItem *parent = 0);
+		PartRectangle(QETElementEditor *, QGraphicsItem *parent = nullptr);
 		virtual ~PartRectangle();
 	
 	private:
@@ -53,7 +53,7 @@ class PartRectangle :  public CustomElementGraphicPart
 			 * @return the QGraphicsItem type
 			 */
 		virtual int     type  () const { return Type; }
-		virtual void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 		virtual QString name  () const { return(QObject::tr("rectangle", "element part name")); }
 
 		virtual QString           xmlName () const { return(QString("rect")); }

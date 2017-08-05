@@ -955,8 +955,8 @@ QList<TitleBlockCell *> TitleBlockTemplate::createColumn() {
 	@return the cell located at (row, col)
 */
 TitleBlockCell *TitleBlockTemplate::cell(int row, int col) const {
-	if (row >= rows_heights_.count()) return(0);
-	if (col >= columns_width_.count()) return(0);
+	if (row >= rows_heights_.count()) return(nullptr);
+	if (col >= columns_width_.count()) return(nullptr);
 	
 	return(cells_[col][row]);
 }
@@ -1188,7 +1188,7 @@ QSvgRenderer *TitleBlockTemplate::vectorLogo(const QString &logo_name) const {
 	if (vector_logos_.contains(logo_name)) {
 		return vector_logos_[logo_name];
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1494,7 +1494,7 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path, const QString &te
 void TitleBlockTemplate::forgetSpanning() {
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 		for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
-			cells_[i][j] -> spanner_cell = 0;
+			cells_[i][j] -> spanner_cell = nullptr;
 		}
 	}
 }
@@ -1506,7 +1506,7 @@ void TitleBlockTemplate::forgetSpanning() {
 void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modify_cell) {
 	if (!spanning_cell) return;
 	foreach (TitleBlockCell *spanned_cell, spannedCells(spanning_cell)) {
-		spanned_cell -> spanner_cell = 0;
+		spanned_cell -> spanner_cell = nullptr;
 	}
 	if (modify_cell) {
 		spanning_cell -> row_span = 0;

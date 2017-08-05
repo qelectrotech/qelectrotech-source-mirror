@@ -34,7 +34,7 @@
 DiagramPrintDialog::DiagramPrintDialog(QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	project_(project),
-	dialog_(0)
+	dialog_(nullptr)
 {
 	// initialise l'imprimante
 	printer_ = new QPrinter();

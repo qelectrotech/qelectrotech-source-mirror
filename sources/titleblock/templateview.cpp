@@ -39,9 +39,9 @@
 */
 TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 	QGraphicsView(parent),
-	tbtemplate_(0),
-	tbgrid_(0),
-	form_(0),
+	tbtemplate_(nullptr),
+	tbgrid_(nullptr),
+	form_(nullptr),
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
 	apply_rows_heights_count_(0),
@@ -57,8 +57,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 */
 TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent),
-	tbtemplate_(0),
-	tbgrid_(0),
+	tbtemplate_(nullptr),
+	tbgrid_(nullptr),
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
 	apply_rows_heights_count_(0),

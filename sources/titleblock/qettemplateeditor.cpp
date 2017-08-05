@@ -35,8 +35,8 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	opened_from_file_(false),
 	read_only_(false),
 	duplicate_(false),
-	tb_template_(0),
-	logo_manager_(0)
+	tb_template_(nullptr),
+	logo_manager_(nullptr)
 {
 	setWindowIcon(QET::Icons::QETLogo);
 	setAttribute(Qt::WA_DeleteOnClose);

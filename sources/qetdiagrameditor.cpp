@@ -983,7 +983,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// met a jour le panel d'elements
 	if (update_panel) {
 		pa -> elementsPanel().projectWasOpened(project);
-		if (currentDiagram() != NULL)
+		if (currentDiagram() != nullptr)
 		m_autonumbering_dock->setProject(project, project_view);
 	}
 	
@@ -1010,15 +1010,15 @@ QList<ProjectView *> QETDiagramEditor::openedProjects() const {
 */
 ProjectView *QETDiagramEditor::currentProject() const {
 	QMdiSubWindow *current_window = workspace.activeSubWindow();
-	if (!current_window) return(0);
+	if (!current_window) return(nullptr);
 	
 	QWidget *current_widget = current_window -> widget();
-	if (!current_widget) return(0);
+	if (!current_widget) return(nullptr);
 	
 	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
 		return(project_view);
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1029,7 +1029,7 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 	if (ProjectView *project_view = currentProject()) {
 		return(project_view -> currentDiagram());
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1040,10 +1040,10 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 */
 Element *QETDiagramEditor::currentElement() const {
 	DiagramView *dv = currentDiagram();
-	if (!dv) return(0);
+	if (!dv) return(nullptr);
 	
 	QList<Element *> selected_elements = dv -> diagram() -> selectedContent().m_elements.toList();
-	if (selected_elements.count() != 1) return(0);
+	if (selected_elements.count() != 1) return(nullptr);
 	
 	return(selected_elements.first());
 }
@@ -1070,7 +1070,7 @@ ProjectView *QETDiagramEditor::findProject(DiagramView *diagram_view) const {
 			return(project_view);
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1086,7 +1086,7 @@ ProjectView *QETDiagramEditor::findProject(Diagram *diagram) const {
 			}
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1099,7 +1099,7 @@ ProjectView *QETDiagramEditor::findProject(QETProject *project) const {
 			return(opened_project);
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1115,7 +1115,7 @@ ProjectView *QETDiagramEditor::findProject(const QString &filepath) const {
 			}
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1129,7 +1129,7 @@ QMdiSubWindow *QETDiagramEditor::subWindowForWidget(QWidget *widget) const {
 			return(sub_window);
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1357,7 +1357,7 @@ void QETDiagramEditor::slot_updateActions()
 void QETDiagramEditor::slot_updateAutoNumDock() {
 	if ( workspace.subWindowList().indexOf(workspace.activeSubWindow()) != activeSubWindowIndex) {
 			activeSubWindowIndex = workspace.subWindowList().indexOf(workspace.activeSubWindow());
-			if (currentProject() != NULL && currentDiagram() != NULL) {
+			if (currentProject() != nullptr && currentDiagram() != nullptr) {
 				m_autonumbering_dock->setProject(currentProject()->project(),currentProject());
 			}
 	}
@@ -1584,12 +1584,12 @@ QList<QString> QETDiagramEditor::editedFiles() const {
 	pas edite par cet editeur de schemas.
 */
 ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
-	if (filepath.isEmpty()) return(0);
+	if (filepath.isEmpty()) return(nullptr);
 	
 	QString searched_can_file_path = QFileInfo(filepath).canonicalFilePath();
 	if (searched_can_file_path.isEmpty()) {
 		// QFileInfo returns an empty path for non-existent files
-		return(0);
+		return(nullptr);
 	}
 	foreach (ProjectView *project_view, openedProjects()) {
 		QString project_can_file_path = QFileInfo(project_view -> project() -> filePath()).canonicalFilePath();
@@ -1597,7 +1597,7 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 			return(project_view);
 		}
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1606,15 +1606,15 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
  */
 ProjectView *QETDiagramEditor::acessCurrentProject (){
 	QMdiSubWindow *current_window = workspace.activeSubWindow();
-	if (!current_window) return(0);
+	if (!current_window) return(nullptr);
 
 	QWidget *current_widget = current_window -> widget();
-	if (!current_widget) return(0);
+	if (!current_widget) return(nullptr);
 
 	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
 	return(project_view);
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -1633,7 +1633,7 @@ DiagramView *QETDiagramEditor::acessCurrentDiagramView () {
 	if (ProjectView *project_view = currentProject()) {
 		return(project_view -> currentDiagram());
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -2191,7 +2191,7 @@ success = process->startDetached("/Library/Frameworks/Python.framework/Versions/
 success = process->startDetached("qet_tb_generator");
 #endif
 if ( !success ) {
-QMessageBox::warning(0,
+QMessageBox::warning(nullptr,
 "Error launching plugin", 
 "To install the plugin qet_tb_generator\nVisit https://pypi.python.org/pypi/qet-tb-generator/\n"
 					 "\n"

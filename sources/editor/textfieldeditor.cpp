@@ -106,7 +106,7 @@ bool TextFieldEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
 	{
-		part = 0;
+		part = nullptr;
 		return(true);
 	}
 	if (PartTextField *part_textfield = dynamic_cast<PartTextField *>(new_part))

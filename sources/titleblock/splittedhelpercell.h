@@ -26,14 +26,14 @@
 class SplittedHelperCell : public HelperCell {
 	Q_OBJECT
 	public:
-	SplittedHelperCell(QGraphicsItem * = 0);
+	SplittedHelperCell(QGraphicsItem * = nullptr);
 	virtual ~SplittedHelperCell();
 	private:
 	SplittedHelperCell(const SplittedHelperCell &);
 	
 	// methods
 	public:
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 	
 	// attributes
 	QColor split_background_color; ///< Background color on the split side

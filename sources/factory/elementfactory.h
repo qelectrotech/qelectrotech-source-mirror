@@ -52,7 +52,7 @@ class ElementFactory
 			if (factory_) {
 				mutex.lock();
 				delete factory_;
-				factory_ = 0;
+				factory_ = nullptr;
 				mutex.unlock();
 			}
 		}
@@ -69,7 +69,7 @@ class ElementFactory
 		~ElementFactory() {}
 
 	public:
-		Element *createElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		Element *createElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
 };
 //ElementFactory ElementFactory::factory_ = 0;
 #endif // ELEMENTFACTORY_H

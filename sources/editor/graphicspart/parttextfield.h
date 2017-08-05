@@ -35,7 +35,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart
 	
 	// constructors, destructor
 	public:
-    PartTextField(QETElementEditor *, QGraphicsItem * = 0);
+    PartTextField(QETElementEditor *, QGraphicsItem * = nullptr);
 	virtual ~PartTextField();
 	
 	private:

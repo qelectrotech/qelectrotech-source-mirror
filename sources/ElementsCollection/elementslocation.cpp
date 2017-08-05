@@ -649,7 +649,7 @@ QIcon ElementsLocation::icon() const
 	{
 		ElementFactory *factory = ElementFactory::Instance();
 		int state;
-		Element *elmt = factory->createElement(*this, 0, &state);
+		Element *elmt = factory->createElement(*this, nullptr, &state);
 
 		if (state == 0)
 			return QIcon(elmt->pixmap());

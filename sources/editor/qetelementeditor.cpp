@@ -1267,11 +1267,11 @@ bool QETElementEditor::canClose() {
 */
 QWidget *QETElementEditor::clearToolsDock() {
 	if (QWidget *previous_widget = tools_dock_scroll_area_ -> takeWidget()) {
-		previous_widget -> setParent(0);
+		previous_widget -> setParent(nullptr);
 		previous_widget -> hide();
 		return(previous_widget);
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**

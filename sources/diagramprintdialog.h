@@ -36,7 +36,7 @@ class DiagramPrintDialog : public QWidget
 	Q_OBJECT
 	// Constructors, destructor
 	public:
-	DiagramPrintDialog(QETProject *, QWidget * = 0);
+	DiagramPrintDialog(QETProject *, QWidget * = nullptr);
 	virtual ~DiagramPrintDialog();
 	private:
 	DiagramPrintDialog(const DiagramPrintDialog &);
@@ -63,7 +63,7 @@ class DiagramPrintDialog : public QWidget
 	
 	private slots:
 	void print(const QList<Diagram *> &, bool, const ExportProperties);
-	void printDiagram(Diagram *, bool, const ExportProperties &, QPainter *, QPrinter * = 0);
+	void printDiagram(Diagram *, bool, const ExportProperties &, QPainter *, QPrinter * = nullptr);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();
 	void browseFilePrintTypeDialog();

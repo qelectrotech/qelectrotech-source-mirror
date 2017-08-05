@@ -1044,7 +1044,7 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 */
 Diagram *QETProject::addNewDiagram() {
 	// ne fait rien si le projet est en lecture seule
-	if (isReadOnly()) return(0);
+	if (isReadOnly()) return(nullptr);
 	
 	// cree un nouveau schema
 	Diagram *diagram = new Diagram(this);
@@ -1189,7 +1189,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 			if (conv_ok && QET::version.toDouble() < project_qet_version_)
 			{
 				int ret = QET::QetMessageBox::warning(
-							  0,
+							  nullptr,
 							  tr("Avertissement", "message box title"),
 							  tr(
 								  "Ce document semble avoir été enregistré avec "
@@ -1636,7 +1636,7 @@ void QETProject::updateDiagramsFolioData() {
 			m_diagrams_list[i]->project()->addFolioAutoNum(autopagenum,nCC.next());
 		}
 		else{
-		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, NULL, project_wide_properties);
+		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nullptr, project_wide_properties);
 		}
 		m_diagrams_list[i] -> update();
 	}

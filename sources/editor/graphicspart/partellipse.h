@@ -33,7 +33,7 @@ class PartEllipse : public  AbstractPartEllipse
 
 		// constructors, destructor
 	public:
-		PartEllipse(QETElementEditor *editor, QGraphicsItem * parent = 0);
+		PartEllipse(QETElementEditor *editor, QGraphicsItem * parent = nullptr);
 		virtual ~PartEllipse();
 	
 	private:
@@ -47,7 +47,7 @@ class PartEllipse : public  AbstractPartEllipse
 			 * @return the QGraphicsItem type
 			 */
 		virtual int type() const { return Type; }	
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 
 			//Name and XML
 		virtual QString name()    const { return(QObject::tr("ellipse", "element part name")); }

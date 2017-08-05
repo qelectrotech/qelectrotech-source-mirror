@@ -33,7 +33,7 @@ class RectangleEditor : public ElementItemEditor
 
 		// constructors, destructor
 	public:
-		RectangleEditor(QETElementEditor *, PartRectangle * = 0, QWidget * = 0);
+		RectangleEditor(QETElementEditor *, PartRectangle * = nullptr, QWidget * = nullptr);
 		virtual ~RectangleEditor();
 	private:
 		RectangleEditor(const RectangleEditor &);

@@ -61,5 +61,5 @@ void ElementItemEditor::setElementTypeName(const QString &name) {
 	@see setPart
 */
 void ElementItemEditor::detach() {
-	setPart(0);
+	setPart(nullptr);
 }

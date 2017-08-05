@@ -34,8 +34,8 @@ class QFileNameEdit : public QLineEdit {
 	
 	// constructors, destructor
 	public:
-	QFileNameEdit(QWidget * = 0);
-	QFileNameEdit(const QString &, QWidget * = 0);
+	QFileNameEdit(QWidget * = nullptr);
+	QFileNameEdit(const QString &, QWidget * = nullptr);
 	virtual ~QFileNameEdit();
 	private:
 	QFileNameEdit(const QFileNameEdit &);

@@ -43,7 +43,7 @@ class nomenclature
 	
 	// constructors, destructor
 	public:
-	nomenclature(QETProject *project, QWidget *parent =0);
+	nomenclature(QETProject *project, QWidget *parent =nullptr);
 	virtual ~nomenclature();
 	
 	// attributes

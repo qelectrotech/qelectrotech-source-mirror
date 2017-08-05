@@ -38,7 +38,7 @@ class PartPolygon : public CustomElementGraphicPart
 
 		// constructors, destructor
 	public:
-		PartPolygon(QETElementEditor *editor, QGraphicsItem *parent = 0);
+		PartPolygon(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
 		virtual ~PartPolygon();
 	
 	private:

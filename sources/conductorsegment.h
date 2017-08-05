@@ -26,7 +26,7 @@ class ConductorSegment {
 	
 	// constructors, destructor
 	public:
-	ConductorSegment(const QPointF &, const QPointF &, ConductorSegment * = NULL, ConductorSegment * = NULL);
+	ConductorSegment(const QPointF &, const QPointF &, ConductorSegment * = nullptr, ConductorSegment * = nullptr);
 	virtual ~ConductorSegment();
 	
 	private:

@@ -24,7 +24,7 @@
 NumerotationContextCommands::NumerotationContextCommands(const NumerotationContext &nc, Diagram *d):
 	diagram_ (d),
 	context_ (nc),
-	strategy_ (NULL)
+	strategy_ (nullptr)
 {}
 
 /**

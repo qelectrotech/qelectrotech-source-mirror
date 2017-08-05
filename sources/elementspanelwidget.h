@@ -30,7 +30,7 @@ class ElementsPanelWidget : public QWidget {
 	
 	// constructors, destructor
 	public:
-	ElementsPanelWidget(QWidget * = 0);
+	ElementsPanelWidget(QWidget * = nullptr);
 	virtual ~ElementsPanelWidget();
 	
 	private:

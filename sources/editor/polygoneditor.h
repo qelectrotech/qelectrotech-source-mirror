@@ -35,7 +35,7 @@ class PolygonEditor : public ElementItemEditor {
 	
 	// constructors, destructor
 	public:
-	PolygonEditor(QETElementEditor *, PartPolygon * = 0, QWidget * = 0);
+	PolygonEditor(QETElementEditor *, PartPolygon * = nullptr, QWidget * = nullptr);
 	virtual ~PolygonEditor();
 	
 	private:

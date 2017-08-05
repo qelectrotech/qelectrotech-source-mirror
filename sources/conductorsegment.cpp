@@ -477,14 +477,14 @@ void ConductorSegment::setSecondPoint(const QPointF &p) {
 	@return true si le segment a un segment precedent, false sinon
 */
 bool ConductorSegment::hasPreviousSegment() const {
-	return(previous_segment != NULL);
+	return(previous_segment != nullptr);
 }
 
 /**
 	@return true si le segment a un segment suivant, false sinon
 */
 bool ConductorSegment::hasNextSegment() const {
-	return(next_segment != NULL);
+	return(next_segment != nullptr);
 }
 
 /**

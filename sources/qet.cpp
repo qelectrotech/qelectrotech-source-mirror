@@ -199,7 +199,7 @@ bool QET::attributeIsAnInteger(const QDomElement &e, QString nom_attribut, int *
 	bool ok;
 	int tmp = e.attribute(nom_attribut).toInt(&ok);
 	if (!ok) return(false);
-	if (entier != NULL) *entier = tmp;
+	if (entier != nullptr) *entier = tmp;
 	return(true);
 }
 
@@ -218,7 +218,7 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, qreal *re
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
-	if (reel != NULL) *reel = tmp;
+	if (reel != nullptr) *reel = tmp;
 	return(true);
 }
 

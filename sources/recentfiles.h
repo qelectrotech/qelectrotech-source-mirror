@@ -28,7 +28,7 @@ class RecentFiles : public QObject {
 	
 	// constructors, destructor
 	public:
-	RecentFiles(const QString &, int = 10, QObject * = 0);
+	RecentFiles(const QString &, int = 10, QObject * = nullptr);
 	virtual ~RecentFiles();
 	private:
 	RecentFiles(const RecentFiles &);

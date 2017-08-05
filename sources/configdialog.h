@@ -32,7 +32,7 @@ class ConfigDialog : public QDialog {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	ConfigDialog(QWidget * = 0);
+	ConfigDialog(QWidget * = nullptr);
 	virtual ~ConfigDialog();
 	private:
 	ConfigDialog(const ConfigDialog &);

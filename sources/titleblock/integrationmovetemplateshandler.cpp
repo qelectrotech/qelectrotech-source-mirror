@@ -26,7 +26,7 @@
 IntegrationMoveTitleBlockTemplatesHandler::IntegrationMoveTitleBlockTemplatesHandler(QWidget *parent) :
 	MoveTitleBlockTemplatesHandler(parent),
 	parent_widget_(parent),
-	integ_dialog_(0)
+	integ_dialog_(nullptr)
 {
 }
 

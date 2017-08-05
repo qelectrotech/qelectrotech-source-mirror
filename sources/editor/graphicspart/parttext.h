@@ -31,7 +31,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	
 	// constructors, destructor
 	public:
-    PartText(QETElementEditor *, QGraphicsItem * = 0);
+    PartText(QETElementEditor *, QGraphicsItem * = nullptr);
 	virtual ~PartText();
 	
 	private:

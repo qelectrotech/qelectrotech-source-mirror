@@ -33,8 +33,8 @@ class DiagramImageItem : public QetGraphicsItem {
 
 	// constructors, destructor
 	public:
-	DiagramImageItem(QetGraphicsItem * = 0);
-	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = 0);
+	DiagramImageItem(QetGraphicsItem * = nullptr);
+	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = nullptr);
 	virtual ~DiagramImageItem();
 	
 	// attributes

@@ -34,8 +34,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	
 	// constructors, destructor
 	public:
-	TitleBlockTemplateView(QWidget * = 0);
-	TitleBlockTemplateView(QGraphicsScene *, QWidget * = 0);
+	TitleBlockTemplateView(QWidget * = nullptr);
+	TitleBlockTemplateView(QGraphicsScene *, QWidget * = nullptr);
 	virtual ~TitleBlockTemplateView();
 	private:
 	TitleBlockTemplateView(const TitleBlockTemplateView &);
@@ -69,8 +69,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	void addRowBefore();
 	void addColumnAfter();
 	void addRowAfter();
-	void editColumn(HelperCell * = 0);
-	void editRow(HelperCell * = 0);
+	void editColumn(HelperCell * = nullptr);
+	void editRow(HelperCell * = nullptr);
 	void deleteColumn();
 	void deleteRow();
 	void mergeSelectedCells();

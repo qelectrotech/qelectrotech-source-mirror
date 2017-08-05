@@ -222,14 +222,14 @@ void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *even
 {
 	Q_UNUSED(event)
 	
-	ElementEditionCommand *command = 0;
+	ElementEditionCommand *command = nullptr;
 
 	if (current_operation_square_ == QET::MoveArea)
 	{
 		QPointF movement = mapToScene(modified_bounding_rect_.topLeft()) - mapToScene(original_bounding_rect_.topLeft());
 		if (!movement.isNull())
 		{
-			MovePartsCommand *move_command = new MovePartsCommand(movement, 0, graphicsItems());
+			MovePartsCommand *move_command = new MovePartsCommand(movement, nullptr, graphicsItems());
 			command = move_command;
 		}
 		
@@ -282,7 +282,7 @@ void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 		moving_by_keys_  && !e -> isAutoRepeat()
 	) {
 		// cree un objet d'annulation pour le mouvement qui vient de se finir
-		emit(actionFinished(new MovePartsCommand(keys_movement_, 0, graphicsItems())));
+		emit(actionFinished(new MovePartsCommand(keys_movement_, nullptr, graphicsItems())));
 		keys_movement_ = QPointF();
 		moving_by_keys_ = false;
 	}
@@ -378,7 +378,7 @@ CustomElementPart *ElementPrimitiveDecorator::singleItem() const {
 	if (decorated_items_.count() == 1) {
 		return(decorated_items_.first());
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -538,7 +538,7 @@ void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem 
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
 	
-	ElementEditionCommand *command = 0;
+	ElementEditionCommand *command = nullptr;
 	if (current_operation_square_ > QET::NoOperation)
 	{
 		ScalePartsCommand *scale_command = new ScalePartsCommand();

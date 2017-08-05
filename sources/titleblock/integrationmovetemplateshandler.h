@@ -29,7 +29,7 @@ class IntegrationMoveTitleBlockTemplatesHandler : public MoveTitleBlockTemplates
 	
 	// constructors, destructor
 	public:
-	IntegrationMoveTitleBlockTemplatesHandler(QWidget * = 0);
+	IntegrationMoveTitleBlockTemplatesHandler(QWidget * = nullptr);
 	virtual ~IntegrationMoveTitleBlockTemplatesHandler();
 	private:
 	IntegrationMoveTitleBlockTemplatesHandler(const IntegrationMoveTitleBlockTemplatesHandler &);

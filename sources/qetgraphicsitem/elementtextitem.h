@@ -31,8 +31,8 @@ class ElementTextItem : public DiagramTextItem {
 	Q_OBJECT
 		// constructors, destructor
 	public:
-		ElementTextItem(Element * = 0);
-		ElementTextItem(const QString &, Element * = 0);
+		ElementTextItem(Element * = nullptr);
+		ElementTextItem(const QString &, Element * = nullptr);
 		virtual ~ElementTextItem();
 	
 		// attributes

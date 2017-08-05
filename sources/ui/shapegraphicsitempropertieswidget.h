@@ -35,7 +35,7 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		Q_OBJECT
 
 	public:
-		explicit ShapeGraphicsItemPropertiesWidget(QetShapeItem *item, QWidget *parent = 0);
+		explicit ShapeGraphicsItemPropertiesWidget(QetShapeItem *item, QWidget *parent = nullptr);
 		~ShapeGraphicsItemPropertiesWidget();
 
 		void setItem(QetShapeItem *shape);

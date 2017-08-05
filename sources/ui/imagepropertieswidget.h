@@ -35,7 +35,7 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		Q_OBJECT
 
 	public:
-		explicit ImagePropertiesWidget(DiagramImageItem *image = nullptr, QWidget *parent = 0);
+		explicit ImagePropertiesWidget(DiagramImageItem *image = nullptr, QWidget *parent = nullptr);
 		~ImagePropertiesWidget();
 		void setImageItem (DiagramImageItem *image);
 

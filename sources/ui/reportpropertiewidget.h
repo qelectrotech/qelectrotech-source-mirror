@@ -31,7 +31,7 @@ class ReportPropertieWidget : public QWidget
 	Q_OBJECT
 
 	public:
-	explicit ReportPropertieWidget(QString value, QWidget *parent = 0);
+	explicit ReportPropertieWidget(QString value, QWidget *parent = nullptr);
 	~ReportPropertieWidget();
 	void toSettings (QSettings &settings, const QString &prefix);
 	void setReportProperties (QString label);

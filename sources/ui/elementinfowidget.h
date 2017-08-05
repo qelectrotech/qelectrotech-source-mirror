@@ -41,7 +41,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 		//METHODS
 	public:
-		explicit ElementInfoWidget(Element *elmt, QWidget *parent = 0);
+		explicit ElementInfoWidget(Element *elmt, QWidget *parent = nullptr);
 		~ElementInfoWidget();
 
 		void setElement(Element *element);

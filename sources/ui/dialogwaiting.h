@@ -30,7 +30,7 @@ class DialogWaiting : public QDialog
 	Q_OBJECT
 
 public:
-	explicit DialogWaiting(QWidget *parent = 0);
+	explicit DialogWaiting(QWidget *parent = nullptr);
 	~DialogWaiting();
 
 	void setProgressBar(int val);

@@ -31,7 +31,7 @@ class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructors, destructor
 	public:
-	TerminalEditor(QETElementEditor *, PartTerminal * = 0, QWidget * = 0);
+	TerminalEditor(QETElementEditor *, PartTerminal * = nullptr, QWidget * = nullptr);
 	virtual ~TerminalEditor();
 	private:
 	TerminalEditor(const TerminalEditor &);

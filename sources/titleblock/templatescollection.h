@@ -85,7 +85,7 @@ class TitleBlockTemplatesProjectCollection : public TitleBlockTemplatesCollectio
 	
 	// Constructors, destructor
 	public:
-	TitleBlockTemplatesProjectCollection(QETProject *, QObject *parent = 0);
+	TitleBlockTemplatesProjectCollection(QETProject *, QObject *parent = nullptr);
 	virtual ~TitleBlockTemplatesProjectCollection();
 	private:
 	TitleBlockTemplatesProjectCollection(const TitleBlockTemplatesProjectCollection &);
@@ -126,7 +126,7 @@ class TitleBlockTemplatesFilesCollection : public TitleBlockTemplatesCollection 
 	
 	// Constructors, destructor
 	public:
-	TitleBlockTemplatesFilesCollection(const QString &, QObject * = 0);
+	TitleBlockTemplatesFilesCollection(const QString &, QObject * = nullptr);
 	virtual ~TitleBlockTemplatesFilesCollection();
 	private:
 	TitleBlockTemplatesFilesCollection(const TitleBlockTemplatesFilesCollection &);

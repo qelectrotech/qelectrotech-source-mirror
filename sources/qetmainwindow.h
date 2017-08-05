@@ -28,7 +28,7 @@ class QETMainWindow : public QMainWindow {
 	
 	// constructor, destructor
 	public:
-	QETMainWindow(QWidget * = 0, Qt::WindowFlags = 0);
+	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = nullptr);
 	virtual ~QETMainWindow();
 	
 	// methods

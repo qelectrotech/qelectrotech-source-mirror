@@ -38,7 +38,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	
 	// constructor, destructor
 	public:
-	QETTitleBlockTemplateEditor(QWidget * = 0);
+	QETTitleBlockTemplateEditor(QWidget * = nullptr);
 	virtual ~QETTitleBlockTemplateEditor();
 	private:
 	QETTitleBlockTemplateEditor(const QETTitleBlockTemplateEditor &);

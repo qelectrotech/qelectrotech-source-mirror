@@ -86,7 +86,7 @@ DeletePartsCommand::DeletePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, 0, parent),
+	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, nullptr, parent),
 	deleted_parts(parts)
 {
 	foreach(QGraphicsItem *qgi, deleted_parts) {
@@ -131,7 +131,7 @@ PastePartsCommand::PastePartsCommand(
 	const ElementContent &c,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(view ? view -> scene() : 0, view, parent),
+	ElementEditionCommand(view ? view -> scene() : nullptr, view, parent),
 	content_(c),
 	uses_offset(false),
 	first_redo(true)
@@ -227,7 +227,7 @@ MovePartsCommand::MovePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("déplacement", "undo caption"), scene, 0, parent),
+	ElementEditionCommand(QObject::tr("déplacement", "undo caption"), scene, nullptr, parent),
 	movement(m),
 	first_redo(true)
 {
@@ -267,7 +267,7 @@ AddPartCommand::AddPartCommand(
 	QGraphicsItem *p,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), scene, 0, parent),
+	ElementEditionCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), scene, nullptr, parent),
 	part(p),
 	first_redo(true)
 {
@@ -315,7 +315,7 @@ ChangeNamesCommand::ChangeNamesCommand(
 	const NamesList &after,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("modification noms", "undo caption"), element_scene, 0, parent),
+	ElementEditionCommand(QObject::tr("modification noms", "undo caption"), element_scene, nullptr, parent),
 	names_before(before),
 	names_after(after)
 {
@@ -346,7 +346,7 @@ ChangeZValueCommand::ChangeZValueCommand(
 	ChangeZValueCommand::Option o,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(elmt, 0, parent),
+	ElementEditionCommand(elmt, nullptr, parent),
 	option(o)
 {
 	// retrieve all primitives but terminals
@@ -466,7 +466,7 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	@param parent QUndoCommand parent
 */
 ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const QString &old_infos, const QString &new_infos, QUndoCommand *parent) :
-	ElementEditionCommand(QObject::tr("modification informations complementaires", "undo caption"), elmt, 0, parent),
+	ElementEditionCommand(QObject::tr("modification informations complementaires", "undo caption"), elmt, nullptr, parent),
 	old_informations_(old_infos),
 	new_informations_(new_infos)
 {
@@ -492,7 +492,7 @@ void ChangeInformationsCommand::redo() {
 	@param parent Parent QUndoCommand
 */
 ScalePartsCommand::ScalePartsCommand(ElementScene *scene, QUndoCommand * parent) :
-	ElementEditionCommand(scene, 0, parent),
+	ElementEditionCommand(scene, nullptr, parent),
 	first_redo(true)
 {}
 
@@ -594,7 +594,7 @@ void ScalePartsCommand::adjustText() {
  * @param parent: parent undo
  */
 ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent) :
-	ElementEditionCommand(scene, 0, parent)
+	ElementEditionCommand(scene, nullptr, parent)
 {
 	m_type << scene->m_elmt_type << type;
 	m_info << scene->m_elmt_kindInfo << info;

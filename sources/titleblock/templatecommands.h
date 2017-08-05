@@ -33,7 +33,7 @@ class TitleBlockTemplate;
 class ModifyTitleBlockCellCommand : public QUndoCommand {
 	// constructor, destructor
 	public:
-	ModifyTitleBlockCellCommand(TitleBlockCell *, QUndoCommand * = 0);
+	ModifyTitleBlockCellCommand(TitleBlockCell *, QUndoCommand * = nullptr);
 	virtual ~ModifyTitleBlockCellCommand();
 	private:
 	ModifyTitleBlockCellCommand(const ModifyTitleBlockCellCommand &);
@@ -66,7 +66,7 @@ class ModifyTitleBlockCellCommand : public QUndoCommand {
 class TitleBlockTemplateCommand : public QUndoCommand {
 	// Constructors, destructor
 	public:
-	TitleBlockTemplateCommand(TitleBlockTemplate * = 0, QUndoCommand * = 0);
+	TitleBlockTemplateCommand(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
 	virtual ~TitleBlockTemplateCommand();
 	private:
 	TitleBlockTemplateCommand(const TitleBlockTemplateCommand &);
@@ -100,7 +100,7 @@ class ModifyTemplateGridCommand : public TitleBlockTemplateCommand {
 	
 	// Constructors, destructor
 	public:
-	ModifyTemplateGridCommand(TitleBlockTemplate * = 0, QUndoCommand * = 0);
+	ModifyTemplateGridCommand(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
 	virtual ~ModifyTemplateGridCommand();
 	private:
 	ModifyTemplateGridCommand(const ModifyTemplateGridCommand &);
@@ -140,7 +140,7 @@ class ModifyTemplateGridCommand : public TitleBlockTemplateCommand {
 class ModifyTemplateDimension : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
-	ModifyTemplateDimension(TitleBlockTemplate * = 0, QUndoCommand * = 0);
+	ModifyTemplateDimension(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
 	virtual ~ModifyTemplateDimension();
 	private:
 	ModifyTemplateDimension(const ModifyTemplateDimension &);
@@ -177,7 +177,7 @@ class ModifyTemplateDimension : public TitleBlockTemplateCommand {
 class MergeCellsCommand : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
-	MergeCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = 0, QUndoCommand * = 0);
+	MergeCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
 	virtual ~MergeCellsCommand();
 	
 	// methods
@@ -211,7 +211,7 @@ class MergeCellsCommand : public TitleBlockTemplateCommand {
 class SplitCellsCommand : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
-	SplitCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = 0, QUndoCommand * = 0);
+	SplitCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
 	virtual ~SplitCellsCommand();
 	
 	// methods
@@ -239,7 +239,7 @@ class SplitCellsCommand : public TitleBlockTemplateCommand {
 class ChangeTemplateInformationsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeTemplateInformationsCommand(TitleBlockTemplate *, const QString &, const QString &, QUndoCommand * = 0);
+	ChangeTemplateInformationsCommand(TitleBlockTemplate *, const QString &, const QString &, QUndoCommand * = nullptr);
 	virtual ~ChangeTemplateInformationsCommand();
 	private:
 	ChangeTemplateInformationsCommand(const ChangeTemplateInformationsCommand &);
@@ -265,7 +265,7 @@ class ChangeTemplateInformationsCommand : public QUndoCommand {
 class CutTemplateCellsCommand : public TitleBlockTemplateCommand {
 	// constructors, destructor
 	public:
-	CutTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = 0);
+	CutTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = nullptr);
 	virtual ~CutTemplateCellsCommand();
 	private:
 	CutTemplateCellsCommand(const CutTemplateCellsCommand &);
@@ -290,7 +290,7 @@ class CutTemplateCellsCommand : public TitleBlockTemplateCommand {
 class PasteTemplateCellsCommand : public TitleBlockTemplateCommand {
 	// constructors, destructor
 	public:
-	PasteTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = 0);
+	PasteTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = nullptr);
 	virtual ~PasteTemplateCellsCommand();
 	private:
 	PasteTemplateCellsCommand(const PasteTemplateCellsCommand &);

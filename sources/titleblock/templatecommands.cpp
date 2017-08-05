@@ -30,7 +30,7 @@
 */
 ModifyTitleBlockCellCommand::ModifyTitleBlockCellCommand(TitleBlockCell *cell, QUndoCommand *parent) :
 	QUndoCommand(parent),
-	view_(0),
+	view_(nullptr),
 	modified_cell_(cell)
 {
 }
@@ -159,7 +159,7 @@ void ModifyTitleBlockCellCommand::addModification(const QString &attribute, cons
 TitleBlockTemplateCommand::TitleBlockTemplateCommand(TitleBlockTemplate *tbtemplate, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	tbtemplate_(tbtemplate),
-	view_(0)
+	view_(nullptr)
 {
 }
 
@@ -223,7 +223,7 @@ void TitleBlockTemplateCommand::refreshLayout() {
 	@return a ModifyTemplateGridCommand object, or 0 if something went wrong.
 */
 ModifyTemplateGridCommand *ModifyTemplateGridCommand::addRow(TitleBlockTemplate *tbtemplate, int index) {
-	if (!tbtemplate) return(0);
+	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
 	ModifyTemplateGridCommand *add_row_command = new ModifyTemplateGridCommand(tbtemplate);
@@ -244,7 +244,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::addRow(TitleBlockTemplate 
 	@return a ModifyTemplateGridCommand object, or 0 if something went wrong.
 */
 ModifyTemplateGridCommand *ModifyTemplateGridCommand::addColumn(TitleBlockTemplate *tbtemplate, int index) {
-	if (!tbtemplate) return(0);
+	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
 	ModifyTemplateGridCommand *add_column_command = new ModifyTemplateGridCommand(tbtemplate);
@@ -265,7 +265,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::addColumn(TitleBlockTempla
 	@return a ModifyTemplateGridCommand object, or 0 if something went wrong.
 */
 ModifyTemplateGridCommand *ModifyTemplateGridCommand::deleteRow(TitleBlockTemplate *tbtemplate, int index) {
-	if (!tbtemplate) return(0);
+	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
 	ModifyTemplateGridCommand *del_row_command = new ModifyTemplateGridCommand(tbtemplate);
@@ -284,7 +284,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::deleteRow(TitleBlockTempla
 	@return a ModifyTemplateGridCommand object, or 0 if something went wrong.
 */
 ModifyTemplateGridCommand *ModifyTemplateGridCommand::deleteColumn(TitleBlockTemplate *tbtemplate, int index) {
-	if (!tbtemplate) return(0);
+	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
 	ModifyTemplateGridCommand *del_column_command = new ModifyTemplateGridCommand(tbtemplate);
@@ -588,7 +588,7 @@ void ModifyTemplateDimension::apply(const TitleBlockDimension &dimension) {
 */
 MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_cells, TitleBlockTemplate *tbtemplate, QUndoCommand *parent) :
 	TitleBlockTemplateCommand(tbtemplate, parent),
-	spanning_cell_(0),
+	spanning_cell_(nullptr),
 	row_span_after_(-1),
 	col_span_after_(-1)
 {
@@ -713,16 +713,16 @@ void MergeCellsCommand::redo() {
 TitleBlockCell *MergeCellsCommand::getBottomRightCell(const TitleBlockTemplateCellsSet &cells_set) {
 	// first, we get the visual cell at the bottom right
 	TitleBlockTemplateVisualCell *bottom_right_cell = cells_set.bottomRightCell();
-	if (!bottom_right_cell) return(0);
+	if (!bottom_right_cell) return(nullptr);
 	
 	// next, we get its logical cells: the painted one and the spanned ones (if any)
 	QSet<TitleBlockCell *> logical_cells = bottom_right_cell -> cells();
-	if (logical_cells.isEmpty()) return(0);
+	if (logical_cells.isEmpty()) return(nullptr);
 	if (logical_cells.count() == 1) return(logical_cells.toList().first());
 	
 	// we then look for the bottom right logical cell
 	int max_num_row = -1, max_num_col = -1;
-	TitleBlockCell *candidate = 0;
+	TitleBlockCell *candidate = nullptr;
 	foreach(TitleBlockCell *cell, logical_cells) {
 		if (cell -> num_row > max_num_row) max_num_row = cell -> num_row;
 		if (cell -> num_col > max_num_col) max_num_col = cell -> num_col;
@@ -743,7 +743,7 @@ TitleBlockCell *MergeCellsCommand::getBottomRightCell(const TitleBlockTemplateCe
 */
 SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_cells, TitleBlockTemplate *tbtemplate, QUndoCommand *parent) :
 	TitleBlockTemplateCommand(tbtemplate, parent),
-	spanning_cell_(0),
+	spanning_cell_(nullptr),
 	row_span_before_(-1),
 	col_span_before_(-1)
 {
@@ -832,7 +832,7 @@ void SplitCellsCommand::redo() {
 	
 	// the spanned cells are not spanned anymore
 	foreach(TitleBlockCell *cell, spanned_cells_) {
-		cell -> spanner_cell = 0;
+		cell -> spanner_cell = nullptr;
 	}
 	
 	// the spanning cell does not span anymore

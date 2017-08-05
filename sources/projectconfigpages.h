@@ -40,7 +40,7 @@ class ProjectConfigPage : public ConfigPage {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	ProjectConfigPage(QETProject *, QWidget * = 0);
+	ProjectConfigPage(QETProject *, QWidget * = nullptr);
 	virtual ~ProjectConfigPage();
 	private:
 	ProjectConfigPage(const ProjectConfigPage &);
@@ -90,7 +90,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	ProjectMainConfigPage(QETProject *, QWidget * = 0);
+	ProjectMainConfigPage(QETProject *, QWidget * = nullptr);
 	virtual ~ProjectMainConfigPage();
 	private:
 	ProjectMainConfigPage(const ProjectMainConfigPage &);
@@ -122,7 +122,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Methods
 	public:
-		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = 0);
+		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = nullptr);
 
 		virtual QString title() const;
 		virtual QIcon   icon() const;

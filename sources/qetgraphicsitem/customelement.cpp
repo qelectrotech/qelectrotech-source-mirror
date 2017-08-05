@@ -692,7 +692,7 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 		!QET::attributeIsAReal(e, "x", &pos_x) ||\
 		!QET::attributeIsAReal(e, "y", &pos_y) ||\
 		!QET::attributeIsAnInteger(e, "size", &size)
-	) return(0);
+	) return(nullptr);
 
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
@@ -733,14 +733,14 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	// verifie la presence et la validite des attributs obligatoires
 	qreal terminalx, terminaly;
 	Qet::Orientation terminalo;
-	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(0);
-	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(0);
-	if (!e.hasAttribute("orientation")) return(0);
+	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(nullptr);
+	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(nullptr);
+	if (!e.hasAttribute("orientation")) return(nullptr);
 	if (e.attribute("orientation") == "n") terminalo = Qet::North;
 	else if (e.attribute("orientation") == "s") terminalo = Qet::South;
 	else if (e.attribute("orientation") == "e") terminalo = Qet::East;
 	else if (e.attribute("orientation") == "w") terminalo = Qet::West;
-	else return(0);
+	else return(nullptr);
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
 	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
 	list_terminals << new_terminal;
@@ -991,5 +991,5 @@ ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
 	foreach (ElementTextItem *eti, list_texts_) {
 		if (eti -> tagg() == tagg) return eti;
 	}
-	return NULL;
+	return nullptr;
 }

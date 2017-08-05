@@ -29,7 +29,7 @@ class TitleBlockTemplate;
 class TitleBlockTemplateVisualCell : public QGraphicsLayoutItem, public QGraphicsItem {
 	// constructor, destructor
 	public:
-	TitleBlockTemplateVisualCell(QGraphicsItem * parent = 0);
+	TitleBlockTemplateVisualCell(QGraphicsItem * parent = nullptr);
 	virtual ~TitleBlockTemplateVisualCell();
 	private:
 	TitleBlockTemplateVisualCell(const TitleBlockTemplateVisualCell &);
@@ -39,7 +39,7 @@ class TitleBlockTemplateVisualCell : public QGraphicsLayoutItem, public QGraphic
 	virtual void setGeometry(const QRectF &);
 	virtual QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const;
 	virtual QRectF boundingRect() const;
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 	
 	public slots:
 	void setTemplateCell(TitleBlockTemplate *, TitleBlockCell *);

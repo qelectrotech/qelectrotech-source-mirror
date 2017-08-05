@@ -88,7 +88,7 @@ bool TerminalEditor::setPart(CustomElementPart *new_part)
 	{
 		if (part)
 			disconnect(part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
-		part = 0;
+		part = nullptr;
 		return(true);
 	}
 	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part))

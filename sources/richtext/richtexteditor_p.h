@@ -71,7 +71,7 @@ class RichTextEditorDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit RichTextEditorDialog(QWidget *parent = 0);
+    explicit RichTextEditorDialog(QWidget *parent = nullptr);
     ~RichTextEditorDialog();
 
     int showDialog();

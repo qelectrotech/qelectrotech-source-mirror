@@ -180,7 +180,7 @@ bool DiagramEventAddElement::buildElement()
 
 	int state;
 	ElementsLocation loc(m_integrate_path);
-	m_element = ElementFactory::Instance() -> createElement(loc, 0, &state);
+	m_element = ElementFactory::Instance() -> createElement(loc, nullptr, &state);
 		//The creation of element failed, we delete it
 	if (state) {
 		delete m_element;
@@ -200,9 +200,9 @@ void DiagramEventAddElement::addElement()
 	int state;
 	Element *element;
 	if (m_integrate_path.isEmpty())
-		element = ElementFactory::Instance() -> createElement(m_location, 0, &state);
+		element = ElementFactory::Instance() -> createElement(m_location, nullptr, &state);
 	else
-		element = ElementFactory::Instance() -> createElement(ElementsLocation(m_integrate_path), 0, &state);
+		element = ElementFactory::Instance() -> createElement(ElementsLocation(m_integrate_path), nullptr, &state);
 
 		//Build failed
 	if (state)

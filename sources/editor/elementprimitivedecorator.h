@@ -42,7 +42,7 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 	Q_OBJECT
 	
 	public:
-		ElementPrimitiveDecorator(QGraphicsItem * = 0);
+		ElementPrimitiveDecorator(QGraphicsItem * = nullptr);
 		virtual ~ElementPrimitiveDecorator();
 		
 		enum { Type = UserType + 2200 };
@@ -50,7 +50,7 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 			// methods
 		QRectF internalBoundingRect() const;
 		virtual QRectF boundingRect () const;
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
 		virtual int type() const { return Type; }
 		void setItems(const QList<QGraphicsItem *> &);
 		void setItems(const QList<CustomElementPart *> &);

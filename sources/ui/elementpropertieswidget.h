@@ -31,7 +31,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		Q_OBJECT
 
 	public:
-		explicit ElementPropertiesWidget(Element *elmt, QWidget *parent = 0);
+		explicit ElementPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
 		void setElement(Element *element);
 		void apply();
 		void reset();

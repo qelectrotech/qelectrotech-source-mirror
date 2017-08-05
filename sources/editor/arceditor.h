@@ -34,7 +34,7 @@ class ArcEditor : public ElementItemEditor
 
 		// constructors, destructor
 	public:
-		ArcEditor(QETElementEditor *, PartArc * = 0, QWidget * = 0);
+		ArcEditor(QETElementEditor *, PartArc * = nullptr, QWidget * = nullptr);
 		virtual ~ArcEditor();
 	private:
 		ArcEditor(const ArcEditor &);

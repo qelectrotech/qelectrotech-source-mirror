@@ -33,8 +33,8 @@ class QObject;
 class QPropertyUndoCommand : public QUndoCommand
 {
 	public:
-		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, const QVariant &new_value, QUndoCommand *parent = 0);
-		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, QUndoCommand *parent = 0);
+		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, const QVariant &new_value, QUndoCommand *parent = nullptr);
+		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, QUndoCommand *parent = nullptr);
 
 		void setNewValue(const QVariant &new_value);
 		void enableAnimation (bool animate = true);

@@ -28,7 +28,7 @@ class QetGraphicsItem : public QGraphicsObject
 
 	public:
 			//constructor destructor
-		QetGraphicsItem(QGraphicsItem *parent = 0);
+		QetGraphicsItem(QGraphicsItem *parent = nullptr);
 		virtual ~QetGraphicsItem() = 0;
 
 			//public methode

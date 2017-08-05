@@ -31,9 +31,9 @@ class DiagramPropertiesDialog : public QDialog {
 		Q_OBJECT
 
 	public:
-		DiagramPropertiesDialog(Diagram *diagram, QWidget *parent = 0);
+		DiagramPropertiesDialog(Diagram *diagram, QWidget *parent = nullptr);
 
-		static void diagramPropertiesDialog(Diagram *diagram, QWidget *parent = 0);
+		static void diagramPropertiesDialog(Diagram *diagram, QWidget *parent = nullptr);
 
 	public slots:
 		void editAutonum ();

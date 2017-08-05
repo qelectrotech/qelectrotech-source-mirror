@@ -30,7 +30,7 @@ class ElementView : public QGraphicsView {
 	
 	// constructors, destructor
 	public:
-	ElementView(ElementScene *, QWidget * = 0);
+	ElementView(ElementScene *, QWidget * = nullptr);
 	virtual ~ElementView();
 	
 	private:

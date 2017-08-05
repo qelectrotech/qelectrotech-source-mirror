@@ -24,7 +24,7 @@ class TitleBlockTemplateRenderer : public QObject {
 	Q_OBJECT
 	
 	public:
-	TitleBlockTemplateRenderer(QObject * = 0);
+	TitleBlockTemplateRenderer(QObject * = nullptr);
 	virtual ~TitleBlockTemplateRenderer();
 	const TitleBlockTemplate *titleBlockTemplate() const;
 	void setTitleBlockTemplate(const TitleBlockTemplate *);

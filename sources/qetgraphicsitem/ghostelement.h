@@ -36,7 +36,7 @@ class GhostElement : public CustomElement {
 	
 	// constructor, destructor
 	public:
-	GhostElement(const ElementsLocation &, QGraphicsItem * = 0);
+	GhostElement(const ElementsLocation &, QGraphicsItem * = nullptr);
 	virtual ~GhostElement();
 	
 	// methods

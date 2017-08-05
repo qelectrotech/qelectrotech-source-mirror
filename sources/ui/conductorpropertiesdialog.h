@@ -34,8 +34,8 @@ class ConductorPropertiesDialog : public QDialog
 		Q_OBJECT
 
 	public:
-		explicit ConductorPropertiesDialog (Conductor *conductor, QWidget *parent = 0);
-		static void PropertiesDialog (Conductor *conductor, QWidget *parent = 0);
+		explicit ConductorPropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
+		static void PropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
 		~ConductorPropertiesDialog();
 
 		ConductorProperties properties() const;

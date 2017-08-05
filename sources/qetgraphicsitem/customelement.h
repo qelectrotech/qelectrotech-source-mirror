@@ -36,7 +36,7 @@ class CustomElement : public FixedElement
 	
 		// constructors, destructor
 	public:
-		CustomElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
+		CustomElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
 
 	virtual ~CustomElement();
 	
@@ -78,7 +78,7 @@ class CustomElement : public FixedElement
 	ElementTextItem* taggedText(const QString &tagg) const;
 	
 	protected:
-	virtual bool buildFromXml(const QDomElement &, int * = 0);
+	virtual bool buildFromXml(const QDomElement &, int * = nullptr);
 	virtual bool parseElement(QDomElement &, QPainter &);
 	virtual bool parseLine(QDomElement &, QPainter &);
 	virtual bool parseRect(QDomElement &, QPainter &);

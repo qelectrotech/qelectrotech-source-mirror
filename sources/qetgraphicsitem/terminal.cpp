@@ -62,7 +62,7 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	
 	// QRectF null
 	br_ = new QRectF();
-	previous_terminal_ = 0;
+	previous_terminal_ = nullptr;
 	// divers
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
@@ -559,7 +559,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  */
 void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 {
-	previous_terminal_ = 0;
+	previous_terminal_ = nullptr;
 	hovered_color_     = neutralColor;
 
 	if (!diagram()) return;

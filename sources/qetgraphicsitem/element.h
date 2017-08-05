@@ -41,7 +41,7 @@ class Element : public QetGraphicsItem
 	
 		// constructors, destructor
 	public:
-		Element(QGraphicsItem * = 0);
+		Element(QGraphicsItem * = nullptr);
 		virtual ~Element();
 	private:
 		Element(const Element &);

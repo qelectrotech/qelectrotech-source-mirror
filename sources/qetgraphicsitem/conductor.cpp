@@ -74,12 +74,12 @@ class ConductorXmlRetroCompatibility
  */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	QObject(),
-	QGraphicsPathItem(0),
+	QGraphicsPathItem(nullptr),
 	terminal1(p1),
 	terminal2(p2),
 	m_mouse_over(false),
-	m_text_item(0),
-	segments(NULL),
+	m_text_item(nullptr),
+	segments(nullptr),
 	m_moving_segment(false),
 	modified_path(false),
 	has_to_save_profile(false),
@@ -178,7 +178,7 @@ void Conductor::segmentsToPath()
 {
 	QPainterPath path;
 	
-	if (segments == NULL)
+	if (segments == nullptr)
 		setPath(path);
 	
 		//Start the path
@@ -913,7 +913,7 @@ QList<QPointF> Conductor::segmentsToPoints() const {
 	QList<QPointF> points_list;
 	
 	// on retourne la liste tout de suite s'il n'y a pas de segments
-	if (segments == NULL) return(points_list);
+	if (segments == nullptr) return(points_list);
 	
 	// recupere le premier point
 	points_list << segments -> firstPoint();
@@ -941,7 +941,7 @@ void Conductor::pointsToSegments(QList<QPointF> points_list) {
 	deleteSegments();
 	
 	// cree les segments a partir de la liste de points
-	ConductorSegment *last_segment = NULL;
+	ConductorSegment *last_segment = nullptr;
 	for (int i = 0 ; i < points_list.size() - 1 ; ++ i) {
 		last_segment = new ConductorSegment(points_list.at(i), points_list.at(i + 1), last_segment);
 		if (!i) segments = last_segment;
@@ -956,8 +956,8 @@ void Conductor::pointsToSegments(QList<QPointF> points_list) {
  */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
-	setPos(dom_element.attribute("x", 0).toDouble(),
-		   dom_element.attribute("y", 0).toDouble());
+	setPos(dom_element.attribute("x", nullptr).toDouble(),
+		   dom_element.attribute("y", nullptr).toDouble());
 
 	bool return_ = pathFromXml(dom_element);
 
@@ -1123,7 +1123,7 @@ QVector<QPointF> Conductor::handlerPoints() const
 
 /// @return les segments de ce conducteur
 const QList<ConductorSegment *> Conductor::segmentsList() const {
-	if (segments == NULL) return(QList<ConductorSegment *>());
+	if (segments == nullptr) return(QList<ConductorSegment *>());
 	
 	QList<ConductorSegment *> segments_vector;
 	ConductorSegment *segment = segments;
@@ -1148,7 +1148,7 @@ qreal Conductor::length() const{
 	@return Le segment qui contient le point au milieu du conducteur
 */
 ConductorSegment *Conductor::middleSegment() {
-	if (segments == NULL) return(NULL);
+	if (segments == nullptr) return(nullptr);
 	
 	qreal half_length = length() / 2.0;
 	
@@ -1532,7 +1532,7 @@ void Conductor::displayedTextChanged()
  */
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list) {
 	bool declar_t_list = false;
-	if (t_list == 0) {
+	if (t_list == nullptr) {
 		declar_t_list = true;
 		t_list = new QList <Terminal *>;
 	}
@@ -1802,10 +1802,10 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 
 /// Supprime les segments
 void Conductor::deleteSegments() {
-	if (segments != NULL) {
+	if (segments != nullptr) {
 		while (segments -> hasNextSegment()) delete segments -> nextSegment();
 		delete segments;
-		segments = NULL;
+		segments = nullptr;
 	}
 }
 

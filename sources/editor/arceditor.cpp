@@ -93,8 +93,8 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 			disconnect(part, &PartArc::spanAngleChanged, this, &ArcEditor::updateForm);
 			disconnect(part, &PartArc::startAngleChanged, this, &ArcEditor::updateForm);
 		}
-		part = 0;
-		style_ -> setPart(0);
+		part = nullptr;
+		style_ -> setPart(nullptr);
 		return(true);
 	}
 

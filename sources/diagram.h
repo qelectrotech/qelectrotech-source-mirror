@@ -150,9 +150,9 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool = true);
-		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
-		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
+		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
+		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
 		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
 		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
 	
@@ -192,10 +192,10 @@ class Diagram : public QGraphicsScene
 		DiagramContent content() const;
 		DiagramContent selectedContent();
 		bool canRotateSelection() const;
-		int  beginMoveElements(QGraphicsItem * = 0);
+		int  beginMoveElements(QGraphicsItem * = nullptr);
 		void continueMoveElements(const QPointF &);
 		void endMoveElements();
-		int  beginMoveElementTexts(QGraphicsItem * = 0);
+		int  beginMoveElementTexts(QGraphicsItem * = nullptr);
 		void continueMoveElementTexts(const QPointF &);
 		void endMoveElementTexts();
 		bool usesElement(const ElementsLocation &);

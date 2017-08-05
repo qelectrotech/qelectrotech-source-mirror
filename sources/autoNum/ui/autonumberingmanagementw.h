@@ -34,7 +34,7 @@ class AutoNumberingManagementW : public QWidget
 	
 	//METHODS
 	public:
-		explicit AutoNumberingManagementW(QETProject *project, QWidget *parent = 0);
+		explicit AutoNumberingManagementW(QETProject *project, QWidget *parent = nullptr);
 		~AutoNumberingManagementW();
 		Ui::AutoNumberingManagementW *ui;
 		void setProjectContext ();

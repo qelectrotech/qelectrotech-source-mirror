@@ -38,7 +38,7 @@ class TextEditor : public ElementItemEditor
 
 		// Constructors, destructor
 	public:
-		TextEditor(QETElementEditor *, PartText * = 0, QWidget * = 0);
+		TextEditor(QETElementEditor *, PartText * = nullptr, QWidget * = nullptr);
 		virtual ~TextEditor();
 	private:
 		TextEditor(const TextEditor &);

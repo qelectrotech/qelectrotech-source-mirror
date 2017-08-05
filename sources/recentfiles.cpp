@@ -30,7 +30,7 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	QObject(parent),
 	identifier_(identifier.isEmpty() ? "unnamed" : identifier),
 	size_(size > 0 ? size : 10),
-	menu_(0)
+	menu_(nullptr)
 {
 	mapper_ = new QSignalMapper(this);
 	connect(mapper_, SIGNAL(mapped(const QString &)), this, SLOT(handleMenuRequest(const QString &)));

@@ -337,7 +337,7 @@ void Element::updatePixmap() {
 	// Translation de l'origine du repere de la pixmap
 	p.translate(hotspot_coord);
 	// L'element se dessine sur la pixmap
-	paint(&p, 0);
+	paint(&p, nullptr);
 }
 
 /**

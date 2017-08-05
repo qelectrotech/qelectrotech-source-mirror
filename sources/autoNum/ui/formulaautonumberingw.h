@@ -38,7 +38,7 @@ class FormulaAutonumberingW : public QWidget
 	
 	//METHODS
 	public:
-		explicit FormulaAutonumberingW(QWidget *parent = 0);
+		explicit FormulaAutonumberingW(QWidget *parent = nullptr);
 		~FormulaAutonumberingW();
 		QString formula();
 		void setContext(QString);

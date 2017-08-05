@@ -113,7 +113,7 @@ QETProject *TitleBlockTemplateLocation::parentProject() const {
 	if (collection_) {
 		return(collection_ -> parentProject());
 	}
-	return(0);
+	return(nullptr);
 }
 
 /**
@@ -141,7 +141,7 @@ QDomElement TitleBlockTemplateLocation::getTemplateXmlDescription() const {
 	parentCollection() -> getTemplate(...).
 */
 TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const {
-	if (!collection_ || name_.isEmpty()) return(0);
+	if (!collection_ || name_.isEmpty()) return(nullptr);
 	return(collection_ -> getTemplate(name_));
 }
 

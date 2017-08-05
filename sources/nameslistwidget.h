@@ -28,7 +28,7 @@ class NamesListWidget : public QWidget {
 	
 	// constructors, destructor
 	public:
-	NamesListWidget(QWidget * = 0);
+	NamesListWidget(QWidget * = nullptr);
 	virtual ~NamesListWidget();
 	
 	private:

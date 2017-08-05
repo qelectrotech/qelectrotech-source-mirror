@@ -29,7 +29,7 @@ class DiagramContextWidget : public QWidget {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	DiagramContextWidget(QWidget *parent = 0);
+	DiagramContextWidget(QWidget *parent = nullptr);
 	virtual ~DiagramContextWidget();
 	private:
 	DiagramContextWidget(const DiagramContextWidget &);

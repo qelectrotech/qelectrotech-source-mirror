@@ -37,8 +37,8 @@ class SelectAutonumW : public QWidget
 	
 	//METHODS
 	public:
-		explicit SelectAutonumW(int type, QWidget *parent = 0);
-		explicit SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent = 0);
+		explicit SelectAutonumW(int type, QWidget *parent = nullptr);
+		explicit SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent = nullptr);
 		~SelectAutonumW();
 
 		void setContext (const NumerotationContext &context);

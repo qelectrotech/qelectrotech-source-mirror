@@ -55,7 +55,7 @@ class GenericPanel : public QTreeWidget {
 	
 	// Constructors, destructor
 	public:
-	GenericPanel(QWidget * = 0);
+	GenericPanel(QWidget * = nullptr);
 	virtual ~GenericPanel();
 	
 	public:
@@ -72,35 +72,35 @@ class GenericPanel : public QTreeWidget {
 	
 	// project-related methods
 	public:
-	virtual QTreeWidgetItem *addProject(QETProject *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
+	virtual QTreeWidgetItem *addProject(QETProject *, QTreeWidgetItem * = nullptr, PanelOptions = AddAllChild);
 	virtual QTreeWidgetItem *itemForProject(QETProject *);
 	protected:
-	virtual QTreeWidgetItem *getItemForProject(QETProject *, bool * = 0);
+	virtual QTreeWidgetItem *getItemForProject(QETProject *, bool * = nullptr);
 	virtual QTreeWidgetItem *updateProjectItem(QTreeWidgetItem *, QETProject *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillProjectItem  (QTreeWidgetItem *, QETProject *, PanelOptions = AddAllChild, bool = false);
 	
 	// diagram-related methods
 	public:
-	virtual QTreeWidgetItem *addDiagram(Diagram *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
+	virtual QTreeWidgetItem *addDiagram(Diagram *, QTreeWidgetItem * = nullptr, PanelOptions = AddAllChild);
 	protected:
-	virtual QTreeWidgetItem *getItemForDiagram(Diagram *, bool * = 0);
+	virtual QTreeWidgetItem *getItemForDiagram(Diagram *, bool * = nullptr);
 	virtual QTreeWidgetItem *updateDiagramItem(QTreeWidgetItem *, Diagram *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillDiagramItem  (QTreeWidgetItem *, Diagram *, PanelOptions = AddAllChild, bool = false);
 	
 	// title block templates collections methods
 	public:
-	virtual QTreeWidgetItem *addTemplatesCollection(TitleBlockTemplatesCollection *, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
+	virtual QTreeWidgetItem *addTemplatesCollection(TitleBlockTemplatesCollection *, QTreeWidgetItem * = nullptr, PanelOptions = AddAllChild);
 	virtual QTreeWidgetItem *itemForTemplatesCollection(TitleBlockTemplatesCollection *);
 	protected:
-	virtual QTreeWidgetItem *getItemForTemplatesCollection(TitleBlockTemplatesCollection *, bool * = 0);
+	virtual QTreeWidgetItem *getItemForTemplatesCollection(TitleBlockTemplatesCollection *, bool * = nullptr);
 	virtual QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillTemplatesCollectionItem  (QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false);
 	
 	// title block templates methods
 	public:
-	virtual QTreeWidgetItem *addTemplate(const TitleBlockTemplateLocation &, QTreeWidgetItem * = 0, PanelOptions = AddAllChild);
+	virtual QTreeWidgetItem *addTemplate(const TitleBlockTemplateLocation &, QTreeWidgetItem * = nullptr, PanelOptions = AddAllChild);
 	protected:
-	virtual QTreeWidgetItem *getItemForTemplate(const TitleBlockTemplateLocation &, bool * = 0);
+	virtual QTreeWidgetItem *getItemForTemplate(const TitleBlockTemplateLocation &, bool * = nullptr);
 	virtual QTreeWidgetItem *updateTemplateItem(QTreeWidgetItem *, const TitleBlockTemplateLocation &, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillTemplateItem  (QTreeWidgetItem *, const TitleBlockTemplateLocation &, PanelOptions = AddAllChild, bool = false);
 	
@@ -123,7 +123,7 @@ class GenericPanel : public QTreeWidget {
 	protected:
 	virtual QString defaultText(QET::ItemType);
 	virtual QIcon   defaultIcon(QET::ItemType);
-	virtual QTreeWidgetItem *makeItem(QET::ItemType, QTreeWidgetItem * = 0, const QString & = QString(), const QIcon & = QIcon());
+	virtual QTreeWidgetItem *makeItem(QET::ItemType, QTreeWidgetItem * = nullptr, const QString & = QString(), const QIcon & = QIcon());
 	virtual void deleteItem(QTreeWidgetItem *, bool = false);
 	virtual void markItemAsUnused(QTreeWidgetItem *);
 	virtual void reparent(QTreeWidgetItem *, QTreeWidgetItem *);

@@ -31,7 +31,7 @@ class AutoNumberingDockWidget : public QDockWidget
 		Q_OBJECT
 
 	public:
-		explicit AutoNumberingDockWidget(QWidget *parent = 0);
+		explicit AutoNumberingDockWidget(QWidget *parent = nullptr);
 		~AutoNumberingDockWidget();
 
 		void setContext();

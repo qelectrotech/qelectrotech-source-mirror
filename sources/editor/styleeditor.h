@@ -36,7 +36,7 @@ class StyleEditor : public ElementItemEditor
 		Q_OBJECT
 		// constructors, destructor
 	public:
-		StyleEditor(QETElementEditor *, CustomElementGraphicPart * = 0, QWidget * = 0);
+		StyleEditor(QETElementEditor *, CustomElementGraphicPart * = nullptr, QWidget * = nullptr);
 		virtual ~StyleEditor();
 	
 	private:

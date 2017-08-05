@@ -127,7 +127,7 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	bool first_add = (first_reload_ || !projects_to_display_.contains(project));
 	
 	// create the QTreeWidgetItem representing the project
-	QTreeWidgetItem *qtwi_project = GenericPanel::addProject(project, 0, GenericPanel::All);
+	QTreeWidgetItem *qtwi_project = GenericPanel::addProject(project, nullptr, GenericPanel::All);
 	// the project will be inserted right before the common tb templates collection
 	invisibleRootItem() -> insertChild(
 		indexOfTopLevelItem(common_tbt_collection_item_),

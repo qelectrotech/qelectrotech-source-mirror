@@ -27,8 +27,8 @@
 DiagramsChooser::DiagramsChooser(QETProject *project, QWidget *parent) :
 	QScrollArea(parent),
 	project_(project),
-	widget0_(0),
-	vlayout0_(0)
+	widget0_(nullptr),
+	vlayout0_(nullptr)
 {
 	setFrameShadow(QFrame::Sunken);
 	setFrameShape(QFrame::StyledPanel);

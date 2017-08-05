@@ -31,7 +31,7 @@ class Element;
 class LinkElementCommand : public QUndoCommand
 {
 	public:
-		LinkElementCommand(Element *element_, QUndoCommand *parent = 0);
+		LinkElementCommand(Element *element_, QUndoCommand *parent = nullptr);
 
 		virtual int id() const {return 2;}
 		virtual bool mergeWith(const QUndoCommand *other);

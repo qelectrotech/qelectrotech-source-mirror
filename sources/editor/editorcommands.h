@@ -33,8 +33,8 @@ class ElementEditionCommand : public QUndoCommand
 {
 		// constructors, destructor
 	public:
-		ElementEditionCommand(ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
-		ElementEditionCommand(const QString &, ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
+		ElementEditionCommand(ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
+		ElementEditionCommand(const QString &, ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
 		virtual ~ElementEditionCommand();
 	private:
 		ElementEditionCommand(const ElementEditionCommand &);
@@ -60,7 +60,7 @@ class ElementEditionCommand : public QUndoCommand
 class DeletePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
 	virtual ~DeletePartsCommand();
 	private:
 	DeletePartsCommand(const DeletePartsCommand &);
@@ -82,7 +82,7 @@ class DeletePartsCommand : public ElementEditionCommand {
 class PastePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = 0);
+	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = nullptr);
 	virtual ~PastePartsCommand();
 	private:
 	PastePartsCommand(const PastePartsCommand &);
@@ -113,7 +113,7 @@ class PastePartsCommand : public ElementEditionCommand {
 class CutPartsCommand : public DeletePartsCommand {
 	// constructors, destructor
 	public:
-	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
 	virtual ~CutPartsCommand();
 	private:
 	CutPartsCommand(const CutPartsCommand &);
@@ -125,7 +125,7 @@ class CutPartsCommand : public DeletePartsCommand {
 class MovePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
 	virtual ~MovePartsCommand();
 	private:
 	MovePartsCommand(const MovePartsCommand &);
@@ -151,7 +151,7 @@ class MovePartsCommand : public ElementEditionCommand {
 class AddPartCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = 0);
+	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = nullptr);
 	virtual ~AddPartCommand();
 	private:
 	AddPartCommand(const AddPartCommand &);
@@ -175,7 +175,7 @@ class AddPartCommand : public ElementEditionCommand {
 class ChangeNamesCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = 0);
+	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = nullptr);
 	virtual ~ChangeNamesCommand();
 	private:
 	ChangeNamesCommand(const ChangeNamesCommand &);
@@ -207,7 +207,7 @@ class ChangeZValueCommand : public ElementEditionCommand {
 		Lower,        ///< Send primitives one layer below their current one; zValues are decremented
 		SendBackward  ///< Send primitives to the background so they have the lowest zValue
 	};
-	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = 0);
+	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = nullptr);
 	virtual ~ChangeZValueCommand();
 	private:
 	ChangeZValueCommand(const ChangeZValueCommand &);
@@ -239,7 +239,7 @@ class ChangeZValueCommand : public ElementEditionCommand {
 class ChangeInformationsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = 0);
+	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = nullptr);
 	virtual ~ChangeInformationsCommand();
 	private:
 	ChangeInformationsCommand(const ChangeInformationsCommand &);
@@ -263,7 +263,7 @@ class ChangeInformationsCommand : public ElementEditionCommand {
 class ScalePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	ScalePartsCommand(ElementScene * = 0, QUndoCommand * = 0);
+	ScalePartsCommand(ElementScene * = nullptr, QUndoCommand * = nullptr);
 	virtual ~ScalePartsCommand();
 	private:
 	ScalePartsCommand(const ScalePartsCommand &);
@@ -296,7 +296,7 @@ class ScalePartsCommand : public ElementEditionCommand {
 
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
-	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent=0);
+	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent=nullptr);
 	virtual ~ChangePropertiesCommand ();
 
 	virtual void undo();

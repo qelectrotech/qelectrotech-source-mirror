@@ -28,8 +28,8 @@ class ExportPropertiesWidget : public QWidget {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	ExportPropertiesWidget(QWidget * = 0);
-	ExportPropertiesWidget(const ExportProperties &, QWidget * = 0);
+	ExportPropertiesWidget(QWidget * = nullptr);
+	ExportPropertiesWidget(const ExportProperties &, QWidget * = nullptr);
 	virtual ~ExportPropertiesWidget();
 	private:
 	ExportPropertiesWidget(const ExportPropertiesWidget &);

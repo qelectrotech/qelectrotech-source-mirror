@@ -35,7 +35,7 @@ class ElementItemEditor : public QWidget
 		Q_OBJECT
 		// constructors, destructor
 	public:
-		ElementItemEditor(QETElementEditor *, QWidget * = 0);
+		ElementItemEditor(QETElementEditor *, QWidget * = nullptr);
 		virtual ~ElementItemEditor() {};
 	private:
 		ElementItemEditor(const ElementItemEditor &);

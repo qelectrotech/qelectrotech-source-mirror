@@ -35,7 +35,7 @@ class PartTerminal : public CustomElementGraphicPart
 	
 	public:
 		// constructors, destructor
-		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = 0);
+		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
 		virtual ~PartTerminal();
 	private:
 		PartTerminal(const PartTerminal &);
