@@ -27,7 +27,7 @@ class GridLayoutAnimation : public QVariantAnimation {
 	// Constructors, destructor
 	public:
 	GridLayoutAnimation(QGraphicsGridLayout * = nullptr, QObject * = nullptr);
-	virtual ~GridLayoutAnimation();
+	~GridLayoutAnimation() override;
 	
 	// methods
 	public:
@@ -39,7 +39,7 @@ class GridLayoutAnimation : public QVariantAnimation {
 	void setActsOnRows(bool);
 	
 	protected:
-	void updateCurrentValue(const QVariant &);
+	void updateCurrentValue(const QVariant &) override;
 	
 	// attributes
 	private:

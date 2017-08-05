@@ -35,7 +35,7 @@ class ArcEditor : public ElementItemEditor
 		// constructors, destructor
 	public:
 		ArcEditor(QETElementEditor *, PartArc * = nullptr, QWidget * = nullptr);
-		virtual ~ArcEditor();
+		~ArcEditor() override;
 	private:
 		ArcEditor(const ArcEditor &);
 	
@@ -49,14 +49,14 @@ class ArcEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void updateArcS();
 		void updateArcA();
 		void updateArcRect();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);

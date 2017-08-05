@@ -42,7 +42,7 @@ class Element : public QetGraphicsItem
 		// constructors, destructor
 	public:
 		Element(QGraphicsItem * = nullptr);
-		virtual ~Element();
+		~Element() override;
 	private:
 		Element(const Element &);
 	
@@ -53,7 +53,7 @@ class Element : public QetGraphicsItem
 			 * @return the QGraphicsItem type
 			 */
 		enum { Type = UserType + 1000 };
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 
 			/**
 			 * @brief The kind enum
@@ -164,13 +164,13 @@ class Element : public QetGraphicsItem
 		/// @return This element type ID
 		virtual QString typeId() const = 0;
 		/// @return the human name for this element
-		virtual QString name() const = 0;
+		QString name() const override = 0;
 	
 		virtual bool isHighlighted() const;
 		virtual void setHighlighted(bool);
 		void displayHelpLine(bool b = true);
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-		QRectF boundingRect() const;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		QRectF boundingRect() const override;
 		QSize setSize(int, int);
 		QSize size() const;
 		QPixmap pixmap();
@@ -183,8 +183,8 @@ class Element : public QetGraphicsItem
         void select();
         void deselect();
         
-        virtual void rotateBy(const qreal &);
-        virtual void editProperty();
+        void rotateBy(const qreal &) override;
+        void editProperty() override;
         
             // methods related to XML import/export
         static bool valideXml(QDomElement &);
@@ -210,10 +210,10 @@ class Element : public QetGraphicsItem
 		void etiToElementLabels(ElementTextItem*);
 
 	protected:
-		virtual void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event );
-		virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent *event );
-		virtual void hoverEnterEvent   ( QGraphicsSceneHoverEvent * );
-		virtual void hoverLeaveEvent   ( QGraphicsSceneHoverEvent * );
+		void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event ) override;
+		void mouseReleaseEvent ( QGraphicsSceneMouseEvent *event ) override;
+		void hoverEnterEvent   ( QGraphicsSceneHoverEvent * ) override;
+		void hoverLeaveEvent   ( QGraphicsSceneHoverEvent * ) override;
 
 	private:
 		bool m_mouse_over;

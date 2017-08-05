@@ -44,19 +44,19 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		///Methods
 	public:
 		explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = nullptr);
-		~LinkSingleElementWidget();
+		~LinkSingleElementWidget() override;
 
-		void setElement (Element *element);
-		void apply();
-		QUndoCommand *associatedUndo() const;
-		QString title() const;
+		void setElement (Element *element) override;
+		void apply() override;
+		QUndoCommand *associatedUndo() const override;
+		QString title() const override;
 
 	public slots:
-		void updateUi();
+		void updateUi() override;
 		void buildTree();
 
 	public:
-		bool setLiveEdit(bool live_edit);
+		bool setLiveEdit(bool live_edit) override;
 
 	private :
 		QList <Element *> availableElements();

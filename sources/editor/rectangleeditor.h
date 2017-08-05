@@ -34,7 +34,7 @@ class RectangleEditor : public ElementItemEditor
 		// constructors, destructor
 	public:
 		RectangleEditor(QETElementEditor *, PartRectangle * = nullptr, QWidget * = nullptr);
-		virtual ~RectangleEditor();
+		~RectangleEditor() override;
 	private:
 		RectangleEditor(const RectangleEditor &);
 	
@@ -47,12 +47,12 @@ class RectangleEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 		QPointF editedTopLeft () const;
 	
 	public slots:
-		void updateForm();
+		void updateForm() override;
 		void editingFinished();
 	
 	private:

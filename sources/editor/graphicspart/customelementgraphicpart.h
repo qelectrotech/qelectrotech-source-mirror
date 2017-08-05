@@ -65,7 +65,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 	public:
 
 		CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
-		virtual ~CustomElementGraphicPart();
+		~CustomElementGraphicPart() override;
 
 		static void drawCross (const QPointF &center, QPainter *painter);
 
@@ -89,8 +89,8 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 
 
 			//Rediriged to QObject Q_PROPERTY system
-		virtual void     setProperty (const char *name, const QVariant &value) {QObject::setProperty(name, value);}
-		virtual QVariant property    (const char *name) const                  {return QObject::property(name);}
+		void     setProperty (const char *name, const QVariant &value) override {QObject::setProperty(name, value);}
+		QVariant property    (const char *name) const override                  {return QObject::property(name);}
 
 		virtual QPainterPath shadowShape ()const = 0;
 
@@ -101,14 +101,14 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		void applyStylesToQPainter(QPainter &) const;
 		void drawShadowShape (QPainter *painter);
 
-		QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
-		void hoverMoveEvent (QGraphicsSceneHoverEvent *event);
-		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverMoveEvent (QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 		// attributes
 		bool m_hovered;

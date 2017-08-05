@@ -42,7 +42,7 @@ class ProjectView : public QWidget
 		// constructors, destructor
 	public:
 		ProjectView(QETProject *, QWidget * = nullptr);
-		virtual ~ProjectView();
+		~ProjectView() override;
 	private:
 		ProjectView(const ProjectView &);
 
@@ -52,7 +52,7 @@ class ProjectView : public QWidget
 		void setProject(QETProject *);
 		QList<DiagramView *> diagram_views() const;
 		DiagramView *currentDiagram() const;
-		void closeEvent(QCloseEvent *);
+		void closeEvent(QCloseEvent *) override;
 		void changeTabUp();
 		void changeTabDown();
 		void changeFirstTab();

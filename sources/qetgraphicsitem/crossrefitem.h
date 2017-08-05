@@ -42,10 +42,10 @@ class CrossRefItem : public QGraphicsObject
 		//Methods
 	public:
 		explicit CrossRefItem(Element *elmt);
-		~CrossRefItem();
+		~CrossRefItem() override;
 
 		enum { Type = UserType + 1009 };
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 
 		enum CONTACTS {
 			NO       = 1,
@@ -58,8 +58,8 @@ class CrossRefItem : public QGraphicsObject
 			Delay    = 48
 		};
 
-		QRectF boundingRect			() const;
-		virtual QPainterPath shape	() const;
+		QRectF boundingRect			() const override;
+		QPainterPath shape	() const override;
 		QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
 
 	public slots:
@@ -68,11 +68,11 @@ class CrossRefItem : public QGraphicsObject
 		void autoPos	   ();
 
 	protected:
-		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
-		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+		void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event ) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
 	private:
 		void buildHeaderContact		();

@@ -51,7 +51,7 @@ class DiagramEventInterface : public QObject
 
 	public:
 		DiagramEventInterface(Diagram *diagram);
-		virtual ~DiagramEventInterface() = 0;
+		~DiagramEventInterface() override = 0;
 		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
 		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
 		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);

@@ -32,10 +32,10 @@ class ESEventAddTextField : public ESEventInterface
 {
 	public:
 		ESEventAddTextField(ElementScene *scene);
-		virtual ~ESEventAddTextField();
+		~ESEventAddTextField() override;
 
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		PartTextField *m_text;

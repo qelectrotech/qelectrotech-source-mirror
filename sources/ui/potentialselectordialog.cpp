@@ -57,7 +57,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			m_is_valid = true;
 		}
 
-		bool isValid() const {return m_is_valid;}
+		bool isValid() const override {return m_is_valid;}
 
 		/**
 		 * @brief getPotential
@@ -110,7 +110,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 				properties_list.append(c->properties());
 		}
 
-		~NewConductorPotentialSelector() {}
+		~NewConductorPotentialSelector() override {}
 
 	private :
 		bool m_is_valid;
@@ -155,9 +155,9 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 			}
 		}
 
-		~LinkReportPotentialSelector() {}
+		~LinkReportPotentialSelector() override {}
 
-		bool isValid() const {return m_is_valid;}
+		bool isValid() const override {return m_is_valid;}
 
 	private:
 		bool m_is_valid;

@@ -37,12 +37,12 @@ class GhostElement : public CustomElement {
 	// constructor, destructor
 	public:
 	GhostElement(const ElementsLocation &, QGraphicsItem * = nullptr);
-	virtual ~GhostElement();
+	~GhostElement() override;
 	
 	// methods
 	public:
-	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
-	virtual kind linkType() const {return Simple;}
+	bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false) override;
+	kind linkType() const override {return Simple;}
 	
 	protected:
 	QRectF minimalBoundingRect() const;

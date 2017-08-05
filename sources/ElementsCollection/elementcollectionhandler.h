@@ -45,7 +45,7 @@ class ECHSFileToFile : public ECHStrategy
 {
     public:
 		ECHSFileToFile (ElementsLocation &source, ElementsLocation &destination);
-		ElementsLocation copy();
+		ElementsLocation copy() override;
 
     private:
 		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
@@ -60,7 +60,7 @@ class ECHSXmlToFile : public ECHStrategy
 {
 	public:
 		ECHSXmlToFile (ElementsLocation &source, ElementsLocation &destination);
-		ElementsLocation copy();
+		ElementsLocation copy() override;
 
 	private:
 		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
@@ -76,7 +76,7 @@ class ECHSToXml : public ECHStrategy
 {
 	public:
 		ECHSToXml (ElementsLocation &source, ElementsLocation &destination);
-		ElementsLocation copy();
+		ElementsLocation copy() override;
 };
 
 /**

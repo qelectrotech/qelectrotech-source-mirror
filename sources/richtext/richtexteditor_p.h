@@ -72,7 +72,7 @@ class RichTextEditorDialog : public QDialog
     Q_OBJECT
 public:
     explicit RichTextEditorDialog(QWidget *parent = nullptr);
-    ~RichTextEditorDialog();
+    ~RichTextEditorDialog() override;
 
     int showDialog();
     void setDefaultFont(const QFont &font);

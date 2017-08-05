@@ -39,7 +39,7 @@ class SelectAutonumW : public QWidget
 	public:
 		explicit SelectAutonumW(int type, QWidget *parent = nullptr);
 		explicit SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent = nullptr);
-		~SelectAutonumW();
+		~SelectAutonumW() override;
 
 		void setContext (const NumerotationContext &context);
 		NumerotationContext toNumContext() const;

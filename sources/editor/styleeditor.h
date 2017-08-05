@@ -37,7 +37,7 @@ class StyleEditor : public ElementItemEditor
 		// constructors, destructor
 	public:
 		StyleEditor(QETElementEditor *, CustomElementGraphicPart * = nullptr, QWidget * = nullptr);
-		virtual ~StyleEditor();
+		~StyleEditor() override;
 	
 	private:
 		StyleEditor(const StyleEditor &);
@@ -53,14 +53,14 @@ class StyleEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual bool setParts(QList<CustomElementPart *>);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		bool setParts(QList<CustomElementPart *>) override;
+		CustomElementPart *currentPart() const override;
 
 		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	
 	public slots:
-		void updateForm();
+		void updateForm() override;
 		void updatePartAntialiasing();
 		void updatePartColor();
 		void updatePartLineStyle();

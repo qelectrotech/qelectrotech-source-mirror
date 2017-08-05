@@ -29,7 +29,7 @@ class RecentFiles : public QObject {
 	// constructors, destructor
 	public:
 	RecentFiles(const QString &, int = 10, QObject * = nullptr);
-	virtual ~RecentFiles();
+	~RecentFiles() override;
 	private:
 	RecentFiles(const RecentFiles &);
 	

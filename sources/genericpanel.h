@@ -56,7 +56,7 @@ class GenericPanel : public QTreeWidget {
 	// Constructors, destructor
 	public:
 	GenericPanel(QWidget * = nullptr);
-	virtual ~GenericPanel();
+	~GenericPanel() override;
 	
 	public:
 	// convenience methods to obtain what an item represents
@@ -132,7 +132,7 @@ class GenericPanel : public QTreeWidget {
 	template<typename T> T valueForItem(QTreeWidgetItem *) const;
 	void unregisterItem(QTreeWidgetItem *);
 	
-	bool event(QEvent *);
+	bool event(QEvent *) override;
 	
 	signals:
 	bool firstActivated();

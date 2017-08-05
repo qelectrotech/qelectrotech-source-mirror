@@ -34,7 +34,7 @@ class PartEllipse : public  AbstractPartEllipse
 		// constructors, destructor
 	public:
 		PartEllipse(QETElementEditor *editor, QGraphicsItem * parent = nullptr);
-		virtual ~PartEllipse();
+		~PartEllipse() override;
 	
 	private:
 		PartEllipse(const PartEllipse &);
@@ -46,22 +46,22 @@ class PartEllipse : public  AbstractPartEllipse
 			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartEllipse.
 			 * @return the QGraphicsItem type
 			 */
-		virtual int type() const { return Type; }	
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
+		int type() const override { return Type; }	
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 
 			//Name and XML
-		virtual QString name()    const { return(QObject::tr("ellipse", "element part name")); }
-		virtual QString xmlName() const { return(QString("ellipse")); }
-		virtual const QDomElement toXml   (QDomDocument &) const;
-		virtual void              fromXml (const QDomElement &);
-		virtual QPainterPath shape() const;
-		virtual QPainterPath shadowShape() const;
-		virtual void setRect(const QRectF &rect) {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
+		QString name()    const override { return(QObject::tr("ellipse", "element part name")); }
+		QString xmlName() const override { return(QString("ellipse")); }
+		const QDomElement toXml   (QDomDocument &) const override;
+		void              fromXml (const QDomElement &) override;
+		QPainterPath shape() const override;
+		QPainterPath shadowShape() const override;
+		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
 
 	protected:
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void switchResizeMode();

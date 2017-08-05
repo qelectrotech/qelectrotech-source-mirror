@@ -54,7 +54,7 @@ class ElementsCollectionWidget : public QWidget
 		void setCurrentLocation(const ElementsLocation &location);
 
 	protected:
-		virtual void leaveEvent(QEvent *event);
+		void leaveEvent(QEvent *event) override;
 
 	private:
 		void setUpAction();

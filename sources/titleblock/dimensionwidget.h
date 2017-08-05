@@ -30,7 +30,7 @@ class TitleBlockDimensionWidget : public QDialog {
 	// constructors, destructor
 	public:
 	TitleBlockDimensionWidget(bool, QWidget * parent = nullptr);
-	virtual ~TitleBlockDimensionWidget();
+	~TitleBlockDimensionWidget() override;
 	private:
 	TitleBlockDimensionWidget(const TitleBlockDimensionWidget &);
 	

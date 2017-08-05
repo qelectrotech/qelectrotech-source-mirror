@@ -57,10 +57,10 @@ class QetShapeItem : public QetGraphicsItem
 		enum { Type = UserType + 1008 };
 
 		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = nullptr);
-		virtual ~QetShapeItem();
+		~QetShapeItem() override;
 
 			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a QetShapeItem @return the QGraphicsItem type
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 
 			///METHODS
 		QPen pen() const {return m_pen;}
@@ -73,8 +73,8 @@ class QetShapeItem : public QetGraphicsItem
 		virtual QDomElement toXml	(QDomDocument &document) const;
 		virtual bool		toDXF	(const QString &filepath);
 
-		virtual void editProperty();
-		virtual QString name() const;
+		void editProperty() override;
+		QString name() const override;
 
 		void setP2      (const QPointF &P2);
 		QLineF line() const{return QLineF(m_P1, m_P2);}
@@ -91,16 +91,16 @@ class QetShapeItem : public QetGraphicsItem
 		void setNextPoint (QPointF P);
 		void removePoints (int number = 1);
 
-		QRectF boundingRect() const;
-		QPainterPath shape()  const;
+		QRectF boundingRect() const override;
+		QPainterPath shape()  const override;
 
 	protected:
-		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-		virtual void hoverEnterEvent   (QGraphicsSceneHoverEvent *event);
-		virtual void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event);
-		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
-        virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-        virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		void hoverEnterEvent   (QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event) override;
+		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+        QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+        bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void switchResizeMode();

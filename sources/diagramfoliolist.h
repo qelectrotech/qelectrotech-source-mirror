@@ -25,7 +25,7 @@ class DiagramFolioList : public Diagram
 {
 	public:
 	DiagramFolioList(QETProject *project);
-	virtual ~DiagramFolioList();
+	~DiagramFolioList() override;
 	virtual QList<QLineF *> lines() const		{return list_lines_;}
 	virtual QList<QRectF *> rectangles() const	{return list_rectangles_;}
 	void setId(int i) {id = i;}
@@ -34,7 +34,7 @@ class DiagramFolioList : public Diagram
 	static qreal colWidths[7];
 
 	protected:
-	void drawBackground(QPainter *, const QRectF &);
+	void drawBackground(QPainter *, const QRectF &) override;
 
 	private:
 	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString, QString, QString, QString);

@@ -35,7 +35,7 @@ class ElementEditionCommand : public QUndoCommand
 	public:
 		ElementEditionCommand(ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
 		ElementEditionCommand(const QString &, ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
-		virtual ~ElementEditionCommand();
+		~ElementEditionCommand() override;
 	private:
 		ElementEditionCommand(const ElementEditionCommand &);
 	
@@ -61,14 +61,14 @@ class DeletePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
-	virtual ~DeletePartsCommand();
+	~DeletePartsCommand() override;
 	private:
 	DeletePartsCommand(const DeletePartsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -83,14 +83,14 @@ class PastePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = nullptr);
-	virtual ~PastePartsCommand();
+	~PastePartsCommand() override;
 	private:
 	PastePartsCommand(const PastePartsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	virtual void setOffset(int, const QPointF &, int, const QPointF &);
 	
 	// attributes
@@ -114,7 +114,7 @@ class CutPartsCommand : public DeletePartsCommand {
 	// constructors, destructor
 	public:
 	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
-	virtual ~CutPartsCommand();
+	~CutPartsCommand() override;
 	private:
 	CutPartsCommand(const CutPartsCommand &);
 };
@@ -126,14 +126,14 @@ class MovePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
-	virtual ~MovePartsCommand();
+	~MovePartsCommand() override;
 	private:
 	MovePartsCommand(const MovePartsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -152,14 +152,14 @@ class AddPartCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = nullptr);
-	virtual ~AddPartCommand();
+	~AddPartCommand() override;
 	private:
 	AddPartCommand(const AddPartCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -176,14 +176,14 @@ class ChangeNamesCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = nullptr);
-	virtual ~ChangeNamesCommand();
+	~ChangeNamesCommand() override;
 	private:
 	ChangeNamesCommand(const ChangeNamesCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -208,14 +208,14 @@ class ChangeZValueCommand : public ElementEditionCommand {
 		SendBackward  ///< Send primitives to the background so they have the lowest zValue
 	};
 	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = nullptr);
-	virtual ~ChangeZValueCommand();
+	~ChangeZValueCommand() override;
 	private:
 	ChangeZValueCommand(const ChangeZValueCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	private:
 	void applyBringForward(const QList<QGraphicsItem *> &);
@@ -240,14 +240,14 @@ class ChangeInformationsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = nullptr);
-	virtual ~ChangeInformationsCommand();
+	~ChangeInformationsCommand() override;
 	private:
 	ChangeInformationsCommand(const ChangeInformationsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -264,14 +264,14 @@ class ScalePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ScalePartsCommand(ElementScene * = nullptr, QUndoCommand * = nullptr);
-	virtual ~ScalePartsCommand();
+	~ScalePartsCommand() override;
 	private:
 	ScalePartsCommand(const ScalePartsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	ElementScene *elementScene() const;
 	void setScaledPrimitives(const QList<CustomElementPart *> &);
 	QList<CustomElementPart *> scaledPrimitives() const;
@@ -297,10 +297,10 @@ class ScalePartsCommand : public ElementEditionCommand {
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
 	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent=nullptr);
-	virtual ~ChangePropertiesCommand ();
+	~ChangePropertiesCommand () override;
 
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 
 	private:
 	QList <QString> m_type;

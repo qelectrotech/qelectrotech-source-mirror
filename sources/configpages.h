@@ -39,7 +39,7 @@ class NewDiagramPage : public ConfigPage {
 	// constructors, destructor
 	public:
 	NewDiagramPage(QETProject *project = nullptr, QWidget * = nullptr, ProjectPropertiesDialog *teste = nullptr);
-	virtual ~NewDiagramPage();
+	~NewDiagramPage() override;
 	private:
 	NewDiagramPage(const NewDiagramPage &);
 public slots:
@@ -51,9 +51,9 @@ public slots:
 	
 	// methods
 	public:
-	void applyConf();
-	QString title() const;
-	QIcon icon() const;
+	void applyConf() override;
+	QString title() const override;
+	QIcon icon() const override;
 	
 	// attributes
 	private:
@@ -77,15 +77,15 @@ class GeneralConfigurationPage : public ConfigPage {
 	// constructors, destructor
 	public:
 	GeneralConfigurationPage(QWidget * = nullptr);
-	virtual ~GeneralConfigurationPage();
+	~GeneralConfigurationPage() override;
 	private:
 	GeneralConfigurationPage(const GeneralConfigurationPage &);
 	
 	// methods
 	public:
-	void applyConf();
-	QString title() const;
-	QIcon icon() const;
+	void applyConf() override;
+	QString title() const override;
+	QIcon icon() const override;
 
 	private:
 	void fillLang(QSettings &);
@@ -122,15 +122,15 @@ class ExportConfigPage : public ConfigPage {
 	// constructors, destructor
 	public:
 	ExportConfigPage(QWidget * = nullptr);
-	virtual ~ExportConfigPage();
+	~ExportConfigPage() override;
 	private:
 	ExportConfigPage(const ExportConfigPage &);
 	
 	// methods
 	public:
-	void applyConf();
-	QString title() const;
-	QIcon icon() const;
+	void applyConf() override;
+	QString title() const override;
+	QIcon icon() const override;
 	
 	// attributes
 	public:
@@ -145,15 +145,15 @@ class PrintConfigPage : public ConfigPage {
 	// constructors, destructor
 	public:
 	PrintConfigPage(QWidget * = nullptr);
-	virtual ~PrintConfigPage();
+	~PrintConfigPage() override;
 	private:
 	PrintConfigPage(const PrintConfigPage &);
 	
 	// methods
 	public:
-	void applyConf();
-	QString title() const;
-	QIcon icon() const;
+	void applyConf() override;
+	QString title() const override;
+	QIcon icon() const override;
 	
 	// attributes
 	public:

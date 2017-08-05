@@ -31,7 +31,7 @@ class DialogWaiting : public QDialog
 
 public:
 	explicit DialogWaiting(QWidget *parent = nullptr);
-	~DialogWaiting();
+	~DialogWaiting() override;
 
 	void setProgressBar(int val);
 	void setProgressBarRange(int min, int max);

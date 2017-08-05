@@ -42,7 +42,7 @@ class DiagramView : public QGraphicsView
 		// constructors, destructor
 	public:
 		DiagramView(Diagram *diagram, QWidget * = nullptr);
-		virtual ~DiagramView();
+		~DiagramView() override;
 
 	private:
 		DiagramView(const DiagramView &);
@@ -75,26 +75,26 @@ class DiagramView : public QGraphicsView
 		void setEventInterface (DVEventInterface *event_interface);
 	
 	protected:
-		virtual void mouseDoubleClickEvent(QMouseEvent *);
-		virtual void contextMenuEvent(QContextMenuEvent *);
-		virtual void wheelEvent(QWheelEvent *);
-		virtual void focusInEvent(QFocusEvent *);
-		virtual void keyPressEvent(QKeyEvent *);
-		virtual void keyReleaseEvent(QKeyEvent *);
-		virtual bool event(QEvent *);
+		void mouseDoubleClickEvent(QMouseEvent *) override;
+		void contextMenuEvent(QContextMenuEvent *) override;
+		void wheelEvent(QWheelEvent *) override;
+		void focusInEvent(QFocusEvent *) override;
+		void keyPressEvent(QKeyEvent *) override;
+		void keyReleaseEvent(QKeyEvent *) override;
+		bool event(QEvent *) override;
 		virtual bool switchToVisualisationModeIfNeeded(QInputEvent *e);
 		virtual bool switchToSelectionModeIfNeeded(QInputEvent *e);
 		virtual bool isCtrlShifting(QInputEvent *);
 		virtual bool selectedItemHasFocus();
 	
 	private:
-		void mousePressEvent(QMouseEvent *);
-		void mouseMoveEvent(QMouseEvent *);
-		void mouseReleaseEvent(QMouseEvent *);
-		void dragEnterEvent(QDragEnterEvent *);
-		void dragLeaveEvent(QDragLeaveEvent *);
-		void dragMoveEvent(QDragMoveEvent *);
-		void dropEvent(QDropEvent *);
+		void mousePressEvent(QMouseEvent *) override;
+		void mouseMoveEvent(QMouseEvent *) override;
+		void mouseReleaseEvent(QMouseEvent *) override;
+		void dragEnterEvent(QDragEnterEvent *) override;
+		void dragLeaveEvent(QDragLeaveEvent *) override;
+		void dragMoveEvent(QDragMoveEvent *) override;
+		void dropEvent(QDropEvent *) override;
 		void handleElementDrop(QDropEvent *);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);

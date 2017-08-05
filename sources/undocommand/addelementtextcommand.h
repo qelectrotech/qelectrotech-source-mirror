@@ -27,10 +27,10 @@ class AddElementTextCommand : public QUndoCommand
 {
 	public:
 		AddElementTextCommand(Element *element, DynamicElementTextItem *deti, QUndoCommand *parent = nullptr);
-		virtual ~AddElementTextCommand();
+		~AddElementTextCommand() override;
 		
-		virtual void undo();
-		virtual void redo();
+		void undo() override;
+		void redo() override;
 		
 	private:
 		Element *m_element = nullptr;

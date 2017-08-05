@@ -30,7 +30,7 @@ class IndependentTextItem : public DiagramTextItem {
 	public:
 	IndependentTextItem();
 	IndependentTextItem(const QString &);
-	virtual ~IndependentTextItem();
+	~IndependentTextItem() override;
 	
 	// attributes
 	public:
@@ -43,9 +43,9 @@ class IndependentTextItem : public DiagramTextItem {
 		IndependentTextItem.
 		@return le type de QGraphicsItem
 	*/
-	virtual int type() const { return Type; }
-	virtual void fromXml(const QDomElement &);
-	virtual QDomElement toXml(QDomDocument &) const;
+	int type() const override { return Type; }
+	void fromXml(const QDomElement &) override;
+	QDomElement toXml(QDomDocument &) const override;
 	
 	private:
 	QPointF mouse_to_origin_movement_;

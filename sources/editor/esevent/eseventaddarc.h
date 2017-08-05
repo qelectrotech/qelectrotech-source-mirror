@@ -32,12 +32,12 @@ class ESEventAddArc : public ESEventInterface
 {
 	public:
 		ESEventAddArc(ElementScene *scene);
-		virtual ~ESEventAddArc();
+		~ESEventAddArc() override;
 
-		virtual bool mousePressEvent   (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
-		virtual bool keyPressEvent     (QKeyEvent *event);
+		bool mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+		bool keyPressEvent     (QKeyEvent *event) override;
 
 	private:
 		void updateArc ();

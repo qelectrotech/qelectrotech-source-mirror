@@ -31,24 +31,24 @@ class FileElementCollectionItem : public ElementCollectionItem
 		FileElementCollectionItem();
 
 		enum { Type = UserType+2 };
-		virtual int type() const { return Type;}
+		int type() const override { return Type;}
 
 		bool setRootPath(QString path, bool set_data = true, bool hide_element = false);
 		QString fileSystemPath() const;
 		QString dirPath() const;
 
-		virtual bool isDir() const;
-		virtual bool isElement() const;
-		virtual QString localName();
-		virtual QString name() const;
-		virtual QString collectionPath() const;
-		virtual bool isCollectionRoot() const;
+		bool isDir() const override;
+		bool isElement() const override;
+		QString localName() override;
+		QString name() const override;
+		QString collectionPath() const override;
+		bool isCollectionRoot() const override;
 		bool isCommonCollection() const;
 		bool isCustomCollection() const;
-		virtual void addChildAtPath(const QString &collection_name);
+		void addChildAtPath(const QString &collection_name) override;
 
-		void setUpData();
-		void setUpIcon();
+		void setUpData() override;
+		void setUpIcon() override;
 
 		void hire();
 

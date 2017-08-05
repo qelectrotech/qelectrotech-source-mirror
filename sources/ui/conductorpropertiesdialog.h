@@ -36,7 +36,7 @@ class ConductorPropertiesDialog : public QDialog
 	public:
 		explicit ConductorPropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
 		static void PropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
-		~ConductorPropertiesDialog();
+		~ConductorPropertiesDialog() override;
 
 		ConductorProperties properties() const;
 		bool applyAll() const;

@@ -33,21 +33,21 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 		XmlProjectElementCollectionItem();
 
 		enum {Type = UserType+3};
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 
-		virtual bool isDir() const;
-		virtual bool isElement() const;
-		virtual QString localName();
-		virtual QString name() const;
-		virtual QString collectionPath() const;
+		bool isDir() const override;
+		bool isElement() const override;
+		QString localName() override;
+		QString name() const override;
+		QString collectionPath() const override;
 		virtual QString embeddedPath() const;
-		virtual bool isCollectionRoot() const;
-		virtual void addChildAtPath(const QString &collection_name);
+		bool isCollectionRoot() const override;
+		void addChildAtPath(const QString &collection_name) override;
 		QETProject * project() const;
 
 		void setProject (QETProject *project, bool set_data = true, bool hide_element = false);
-		void setUpData();
-		void setUpIcon();
+		void setUpData() override;
+		void setUpIcon() override;
 
 	private:
 		void populate(bool set_data = true, bool hide_element = false);

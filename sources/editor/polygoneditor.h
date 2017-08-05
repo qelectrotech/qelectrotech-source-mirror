@@ -36,7 +36,7 @@ class PolygonEditor : public ElementItemEditor {
 	// constructors, destructor
 	public:
 	PolygonEditor(QETElementEditor *, PartPolygon * = nullptr, QWidget * = nullptr);
-	virtual ~PolygonEditor();
+	~PolygonEditor() override;
 	
 	private:
 	PolygonEditor(const PolygonEditor &);
@@ -50,8 +50,8 @@ class PolygonEditor : public ElementItemEditor {
 	
 	// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+	bool setPart(CustomElementPart *) override;
+	CustomElementPart *currentPart() const override;
 	
 	private:
 	QVector<QPointF> getPointsFromTree();
@@ -59,7 +59,7 @@ class PolygonEditor : public ElementItemEditor {
 	public slots:
 	void updatePolygonPoints();
 	void updatePolygonClosedState();
-	void updateForm();
+	void updateForm() override;
 	void validColumn(QTreeWidgetItem *qtwi, int column);
 	
 	private:

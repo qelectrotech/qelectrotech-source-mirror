@@ -34,16 +34,16 @@ class ConductorTextItem : public DiagramTextItem
 	public:
         ConductorTextItem(Conductor * = nullptr);
         ConductorTextItem(const QString &, Conductor * = nullptr);
-        virtual ~ConductorTextItem();
+        ~ConductorTextItem() override;
 	private:
         ConductorTextItem(const ConductorTextItem &);
 
 	public:
         enum { Type = UserType + 1006 };
         Conductor *parentConductor() const;
-        virtual void fromXml(const QDomElement &);
+        void fromXml(const QDomElement &) override;
         virtual void toXml  (QDomElement &xml) const;
-        virtual int type() const { return Type; }
+        int type() const override { return Type; }
         virtual bool wasMovedByUser() const;
         virtual bool wasRotateByUser() const;
         virtual void forceMovedByUser(bool);
@@ -52,12 +52,12 @@ class ConductorTextItem : public DiagramTextItem
         virtual void setPos(qreal x, qreal y);
 	
 	protected:
-        virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
-        virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-        virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
-        virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
-        virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
-        virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+        void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
+        void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+        void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+        void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
+        void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+        void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
 
         // attributes
 	private:

@@ -35,11 +35,11 @@ class ElementsCollectionModel : public QStandardItemModel
 	public:
 		ElementsCollectionModel(QObject *parent = Q_NULLPTR);
 
-		virtual QVariant data(const QModelIndex &index, int role) const;
-		virtual QMimeData *mimeData(const QModelIndexList &indexes) const;
-		virtual QStringList mimeTypes() const;
-		virtual bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const;
-		virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
+		QVariant data(const QModelIndex &index, int role) const override;
+		QMimeData *mimeData(const QModelIndexList &indexes) const override;
+		QStringList mimeTypes() const override;
+		bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const override;
+		bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) override;
 
 		void loadCollections(bool common_collection, bool custom_collection, QList<QETProject *> projects);
 

@@ -32,7 +32,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	// constructors, destructor
 	public:
     PartText(QETElementEditor *, QGraphicsItem * = nullptr);
-	virtual ~PartText();
+	~PartText() override;
 	
 	private:
 	PartText(const PartText &);
@@ -45,20 +45,20 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		PartText.
 		@return the QGraphicsItem type
 	*/
-	virtual int type() const { return Type; }
-	virtual QString name() const { return(QObject::tr("texte", "element part name")); }
-	virtual QString xmlName() const { return(QString("text")); }
-	void fromXml(const QDomElement &);
-	const QDomElement toXml(QDomDocument &) const;
+	int type() const override { return Type; }
+	QString name() const override { return(QObject::tr("texte", "element part name")); }
+	QString xmlName() const override { return(QString("text")); }
+	void fromXml(const QDomElement &) override;
+	const QDomElement toXml(QDomDocument &) const override;
 	void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
-	virtual bool isUseless() const;
-	virtual QRectF sceneGeometricRect() const;
-	virtual void startUserTransformation(const QRectF &);
-	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+	bool isUseless() const override;
+	QRectF sceneGeometricRect() const override;
+	void startUserTransformation(const QRectF &) override;
+	void handleUserTransformation(const QRectF &, const QRectF &) override;
 
 	///PROPERTY
-	void setProperty(const char *name, const QVariant &value) {QGraphicsTextItem::setProperty(name, value);}
-	QVariant property(const char *name) const {return QGraphicsTextItem::property(name);}
+	void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
+	QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}
 	// Size value
 	Q_PROPERTY(qreal size READ size WRITE setSize)
 		qreal size () const {return font().pointSize();}
@@ -81,15 +81,15 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
         void endEdition();
 	
 	protected:
-        virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-        virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-        virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-        virtual void focusInEvent(QFocusEvent *);
-        virtual void focusOutEvent(QFocusEvent *);
-        virtual void keyPressEvent(QKeyEvent *);
-        virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-        virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
-        QRectF boundingRect() const;
+        void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+        void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+        void focusInEvent(QFocusEvent *) override;
+        void focusOutEvent(QFocusEvent *) override;
+        void keyPressEvent(QKeyEvent *) override;
+        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *) override;
+        QVariant itemChange(GraphicsItemChange, const QVariant &) override;
+        QRectF boundingRect() const override;
 	
 	private:
         QPointF margin() const;

@@ -32,7 +32,7 @@ class QETArguments : public QObject {
 	QETArguments(const QList<QString> &, QObject * = nullptr);
 	QETArguments(const QETArguments &);
 	QETArguments &operator=(const QETArguments &);
-	virtual ~QETArguments();
+	~QETArguments() override;
 	
 	// methods
 	public:

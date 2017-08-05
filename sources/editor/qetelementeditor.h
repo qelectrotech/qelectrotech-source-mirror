@@ -37,7 +37,7 @@ class QETElementEditor : public QETMainWindow {
 	// constructor, destructor
 	public:
 		QETElementEditor(QWidget * = nullptr);
-		virtual ~QETElementEditor();
+		~QETElementEditor() override;
 	private:
 		QETElementEditor(const QETElementEditor &);
 		void setupActions();
@@ -116,8 +116,8 @@ class QETElementEditor : public QETMainWindow {
 		void saveToLocation(ElementsLocation loc);
 
 	protected:
-	void closeEvent(QCloseEvent *);
-	virtual void firstActivation(QEvent *);
+	void closeEvent(QCloseEvent *) override;
+	void firstActivation(QEvent *) override;
 
 	private:
 		bool canClose();

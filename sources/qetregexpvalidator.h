@@ -29,13 +29,13 @@ class QETRegExpValidator : public QRegExpValidator {
 	public:
 	QETRegExpValidator(QObject *);
 	QETRegExpValidator(const QRegExp &, QObject *);
-	virtual ~QETRegExpValidator();
+	~QETRegExpValidator() override;
 	private:
 	QETRegExpValidator(const QETRegExpValidator &);
 	
 	// methods
 	public:
-	virtual QValidator::State validate(QString &, int &) const;
+	QValidator::State validate(QString &, int &) const override;
 	
 	signals:
 	void validationFailed() const;

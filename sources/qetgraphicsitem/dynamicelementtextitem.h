@@ -44,7 +44,7 @@ class DynamicElementTextItem : public DiagramTextItem
 			ElementInfo
 		};
 		enum {Type = UserType + 1010};
-		virtual int type() const override {return Type;}
+		int type() const override {return Type;}
 		
 	signals:
 		void taggChanged(QString tagg);
@@ -53,13 +53,13 @@ class DynamicElementTextItem : public DiagramTextItem
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
-		virtual ~DynamicElementTextItem() override;
+		~DynamicElementTextItem() override;
 	private:
 		DynamicElementTextItem(const DynamicElementTextItem &);
 		
 	public:
-		virtual QDomElement toXml(QDomDocument &dom_doc) const override;
-		virtual void fromXml(const QDomElement &dom_elmt) override;
+		QDomElement toXml(QDomDocument &dom_doc) const override;
+		void fromXml(const QDomElement &dom_elmt) override;
 		
 		Element *ParentElement() const;
 		
@@ -72,8 +72,8 @@ class DynamicElementTextItem : public DiagramTextItem
         static QString xmlTaggName() {return QString("dynamic_elmt_text");}
 		
 	protected:
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		
 	private:
 		Element *m_parent_element = nullptr;

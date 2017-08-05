@@ -29,7 +29,7 @@ class QETMainWindow : public QMainWindow {
 	// constructor, destructor
 	public:
 	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = nullptr);
-	virtual ~QETMainWindow();
+	~QETMainWindow() override;
 	
 	// methods
 	protected:
@@ -39,9 +39,9 @@ class QETMainWindow : public QMainWindow {
 	QAction *actionForMenu(QMenu *);
 	
 	protected:
-	virtual bool event(QEvent *);
-	virtual void dragEnterEvent(QDragEnterEvent *e);
-	virtual void dropEvent(QDropEvent *e);
+	bool event(QEvent *) override;
+	void dragEnterEvent(QDragEnterEvent *e) override;
+	void dropEvent(QDropEvent *e) override;
 	virtual void firstActivation(QEvent *);
 	
 	// slots

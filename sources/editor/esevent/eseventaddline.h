@@ -32,11 +32,11 @@ class ESEventAddLine : public ESEventInterface
 {
 	public:
 		ESEventAddLine(ElementScene *scene);
-		virtual ~ESEventAddLine();
+		~ESEventAddLine() override;
 
-		virtual bool mousePressEvent   (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+		bool mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		PartLine *m_line;

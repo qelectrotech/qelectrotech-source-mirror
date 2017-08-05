@@ -45,7 +45,7 @@ class DynamicElementTextModel : public QStandardItemModel
         };
         
 		DynamicElementTextModel(QObject *parent = nullptr);
-		~DynamicElementTextModel();
+		~DynamicElementTextModel() override;
 		
 		void addText(DynamicElementTextItem *deti);
 		void removeText(DynamicElementTextItem *deti);
@@ -69,8 +69,8 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
     public:
         DynamicTextItemDelegate(QObject *parent = Q_NULLPTR);
         
-        virtual QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-        virtual void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
+        QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+        void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
 };
 
 #endif // DYNAMICELEMENTTEXTMODEL_H

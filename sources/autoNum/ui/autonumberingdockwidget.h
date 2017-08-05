@@ -32,7 +32,7 @@ class AutoNumberingDockWidget : public QDockWidget
 
 	public:
 		explicit AutoNumberingDockWidget(QWidget *parent = nullptr);
-		~AutoNumberingDockWidget();
+		~AutoNumberingDockWidget() override;
 
 		void setContext();
 		void setProject(QETProject*, ProjectView*);

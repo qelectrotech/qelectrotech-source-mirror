@@ -27,13 +27,13 @@ class DeleteQGraphicsItemCommand : public QUndoCommand
 {
 	public:
 		DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand * parent = nullptr);
-		virtual ~DeleteQGraphicsItemCommand() override;
+		~DeleteQGraphicsItemCommand() override;
 	private:
 		DeleteQGraphicsItemCommand(const DeleteQGraphicsItemCommand &);
 
 	public:
-		virtual void undo() override;
-		virtual void redo() override;
+		void undo() override;
+		void redo() override;
 		
 		// attributes
 	private:

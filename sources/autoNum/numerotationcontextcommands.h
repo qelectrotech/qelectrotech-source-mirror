@@ -64,99 +64,99 @@ class UnitNum: public NumStrategy
 {
 	public:
 	UnitNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class UnitFNum: public NumStrategy
 {
 	public:
 	UnitFNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class TenNum: public NumStrategy
 {
 	public:
 	TenNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class TenFNum: public NumStrategy
 {
 	public:
 	TenFNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class HundredNum: public NumStrategy
 {
 	public:
 	HundredNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class HundredFNum: public NumStrategy
 {
 	public:
 	HundredFNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class StringNum: public NumStrategy
 {
 	public:
 	StringNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class IdFolioNum: public NumStrategy
 {
 	public:
 	IdFolioNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class FolioNum: public NumStrategy
 {
 	public:
 	FolioNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class MachineNum: public NumStrategy
 {
 	public:
 	MachineNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class LocmachNum: public NumStrategy
 {
 	public:
 	LocmachNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 
@@ -164,27 +164,27 @@ class ElementLineNum: public NumStrategy
 {
 	public:
 	ElementLineNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class ElementColumnNum: public NumStrategy
 {
 	public:
 	ElementColumnNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 class ElementPrefixNum: public NumStrategy
 {
 	public:
 	ElementPrefixNum (Diagram *);
-	QString toRepresentedString(const QString) const;
-	NumerotationContext next     (const NumerotationContext &, const int) const;
-	NumerotationContext previous (const NumerotationContext &, const int) const;
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
 

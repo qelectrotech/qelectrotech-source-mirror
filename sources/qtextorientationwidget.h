@@ -27,7 +27,7 @@ class QTextOrientationWidget : public QWidget {
 	// constructors, destructor
 	public:
 	QTextOrientationWidget(QWidget * = nullptr);
-	virtual ~QTextOrientationWidget();
+	~QTextOrientationWidget() override;
 	private:
 	QTextOrientationWidget(const QTextOrientationWidget &);
 	QTextOrientationWidget &operator=(const QTextOrientationWidget &);
@@ -48,11 +48,11 @@ class QTextOrientationWidget : public QWidget {
 	void setOrientation(const double &);
 	
 	protected:
-	virtual QSize sizeHint () const;
-	int heightForWidth(int) const;
-	virtual void paintEvent(QPaintEvent *);
-	void mouseMoveEvent(QMouseEvent *);
-	void mouseReleaseEvent(QMouseEvent *);
+	QSize sizeHint () const override;
+	int heightForWidth(int) const override;
+	void paintEvent(QPaintEvent *) override;
+	void mouseMoveEvent(QMouseEvent *) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
 	
 	signals:
 	/**

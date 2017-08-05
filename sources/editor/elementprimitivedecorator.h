@@ -43,15 +43,15 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 	
 	public:
 		ElementPrimitiveDecorator(QGraphicsItem * = nullptr);
-		virtual ~ElementPrimitiveDecorator();
+		~ElementPrimitiveDecorator() override;
 		
 		enum { Type = UserType + 2200 };
 		
 			// methods
 		QRectF internalBoundingRect() const;
-		virtual QRectF boundingRect () const;
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
-		virtual int type() const { return Type; }
+		QRectF boundingRect () const override;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		int type() const override { return Type; }
 		void setItems(const QList<QGraphicsItem *> &);
 		void setItems(const QList<CustomElementPart *> &);
 		QList<CustomElementPart *> items() const;
@@ -64,18 +64,18 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 		void actionFinished(ElementEditionCommand *);
 	
 	protected:
-		void mousePressEvent(QGraphicsSceneMouseEvent *);
-		void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-		void keyPressEvent(QKeyEvent *);
-		void keyReleaseEvent(QKeyEvent *);
+		void mousePressEvent(QGraphicsSceneMouseEvent *) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
+		void keyPressEvent(QKeyEvent *) override;
+		void keyReleaseEvent(QKeyEvent *) override;
 		QPointF deltaForRoundScaling(const QRectF &, const QRectF &, qreal);
 		QPointF snapConstPointToGrid(const QPointF &) const;
 		void snapPointToGrid(QPointF &) const;
 		bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
 		QET::ScalingMethod scalingMethod(QGraphicsSceneMouseEvent *);
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 	
 	private:
 		void init();

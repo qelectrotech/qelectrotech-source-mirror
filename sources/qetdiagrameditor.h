@@ -44,7 +44,7 @@ class QETDiagramEditor : public QETMainWindow {
 	// constructors, destructor
 	public:
 		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = nullptr);
-		virtual ~QETDiagramEditor();
+		~QETDiagramEditor() override;
 	
 	private:
 		QETDiagramEditor(const QETDiagramEditor &);
@@ -61,7 +61,7 @@ class QETDiagramEditor : public QETMainWindow {
 	
 		// methods
 	public:
-		void                 closeEvent        (QCloseEvent *);
+		void                 closeEvent        (QCloseEvent *) override;
 		QList<ProjectView *> openedProjects    () const;
 		void                 addProjectView    (ProjectView *);
 		bool                 openAndAddProject (const QString &, bool = true, bool = true);
@@ -72,7 +72,7 @@ class QETDiagramEditor : public QETMainWindow {
 		bool drawGrid() const;
 
 	protected:
-		virtual bool event(QEvent *);
+		bool event(QEvent *) override;
 	
 	private:
 	bool addProject(QETProject *, bool = true);

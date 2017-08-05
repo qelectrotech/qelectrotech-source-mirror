@@ -33,7 +33,7 @@ class MoveTitleBlockTemplatesHandler : public QObject {
 	// Constructors, destructor
 	public:
 	MoveTitleBlockTemplatesHandler(QObject * = nullptr) {}
-	virtual ~MoveTitleBlockTemplatesHandler() {}
+	~MoveTitleBlockTemplatesHandler() override {}
 	private:
 	MoveTitleBlockTemplatesHandler(const MoveTitleBlockTemplatesHandler &);
 	

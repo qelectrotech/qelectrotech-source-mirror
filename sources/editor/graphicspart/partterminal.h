@@ -36,7 +36,7 @@ class PartTerminal : public CustomElementGraphicPart
 	public:
 		// constructors, destructor
 		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
-		virtual ~PartTerminal();
+		~PartTerminal() override;
 	private:
 		PartTerminal(const PartTerminal &);
 
@@ -56,20 +56,20 @@ class PartTerminal : public CustomElementGraphicPart
 			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartTerminal.
 			 * @return the QGraphicsItem type
 			 */
-		virtual int type() const { return Type; }
-		virtual QString name() const { return(QObject::tr("borne", "element part name")); }
-		virtual QString xmlName() const { return(QString("terminal")); }
-		virtual void fromXml(const QDomElement &);
-		virtual const QDomElement toXml(QDomDocument &) const;
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+		int type() const override { return Type; }
+		QString name() const override { return(QObject::tr("borne", "element part name")); }
+		QString xmlName() const override { return(QString("terminal")); }
+		void fromXml(const QDomElement &) override;
+		const QDomElement toXml(QDomDocument &) const override;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 
-		virtual QPainterPath shape() const;
-		virtual QPainterPath shadowShape() const {return shape();}
-		virtual QRectF boundingRect() const;
-		virtual bool isUseless() const;
-		virtual QRectF sceneGeometricRect() const;
-		virtual void startUserTransformation(const QRectF &);
-		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+		QPainterPath shape() const override;
+		QPainterPath shadowShape() const override {return shape();}
+		QRectF boundingRect() const override;
+		bool isUseless() const override;
+		QRectF sceneGeometricRect() const override;
+		void startUserTransformation(const QRectF &) override;
+		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
 		Qet::Orientation orientation() const {return m_orientation;}
 		void setOrientation(Qet::Orientation ori);

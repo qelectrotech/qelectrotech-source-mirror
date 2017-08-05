@@ -30,7 +30,7 @@ class QTextOrientationSpinBoxWidget : public QWidget {
 	// constructors, destructor
 	public:
 	QTextOrientationSpinBoxWidget(QWidget * = nullptr);
-	virtual ~QTextOrientationSpinBoxWidget();
+	~QTextOrientationSpinBoxWidget() override;
 	private:
 	QTextOrientationSpinBoxWidget(const QTextOrientationSpinBoxWidget &);
 	

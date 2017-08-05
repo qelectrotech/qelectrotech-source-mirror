@@ -36,7 +36,7 @@ class ProjectPropertiesDialog : public QObject {
 		};
 
 		ProjectPropertiesDialog(QETProject *project, QWidget *parent = nullptr);
-		~ProjectPropertiesDialog();
+		~ProjectPropertiesDialog() override;
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
         void changeToFolio();

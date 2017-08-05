@@ -33,7 +33,7 @@ class ConfigPage : public QWidget {
 	*/
 	ConfigPage(QWidget *parent) : QWidget(parent) {};
 	/// Destructor
-	virtual ~ConfigPage() {};
+	~ConfigPage() override {};
 	/// Apply the configuration after user input
 	virtual void applyConf() = 0;
 	/// @return the configuration page title

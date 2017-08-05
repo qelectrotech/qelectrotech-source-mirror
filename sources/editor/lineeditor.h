@@ -34,7 +34,7 @@ class LineEditor : public ElementItemEditor
 		// constructors, destructor
 	public:
 		LineEditor(QETElementEditor *, PartLine * = nullptr, QWidget * = nullptr);
-		virtual ~LineEditor();
+		~LineEditor() override;
 	private:
 		LineEditor(const LineEditor &);
 	
@@ -49,8 +49,8 @@ class LineEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 		QPointF editedP1() const;
 		QPointF editedP2() const;
 	
@@ -60,7 +60,7 @@ class LineEditor : public ElementItemEditor
 		void updateLineEndType2();
 		void updateLineEndLength2();
 		void lineEditingFinished();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);

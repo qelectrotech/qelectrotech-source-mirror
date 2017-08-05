@@ -40,7 +40,7 @@ class Terminal : public QGraphicsObject
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
 		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = nullptr);
-		virtual ~Terminal();
+		~Terminal() override;
 	
 	private:
 		Terminal(const Terminal &);
@@ -49,12 +49,12 @@ class Terminal : public QGraphicsObject
 	public:
 			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a Terminal
 			//@return the QGraphicsItem type
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 	
-		void   paint        (QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+		void   paint        (QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 		void   drawHelpLine (bool draw = true);
 		QLineF HelpLine     () const;
-		QRectF boundingRect () const;
+		QRectF boundingRect () const override;
 	
 			// methods to manage conductors attached to the terminal
 		Terminal* alignedWithTerminal () const;
@@ -82,12 +82,12 @@ class Terminal : public QGraphicsObject
 	
 	protected:
 	// methods related to events management
-	void hoverEnterEvent  (QGraphicsSceneHoverEvent *);
-	void hoverMoveEvent   (QGraphicsSceneHoverEvent *);
-	void hoverLeaveEvent  (QGraphicsSceneHoverEvent *);
-	void mousePressEvent  (QGraphicsSceneMouseEvent *);
-	void mouseMoveEvent   (QGraphicsSceneMouseEvent *);
-	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	void hoverEnterEvent  (QGraphicsSceneHoverEvent *) override;
+	void hoverMoveEvent   (QGraphicsSceneHoverEvent *) override;
+	void hoverLeaveEvent  (QGraphicsSceneHoverEvent *) override;
+	void mousePressEvent  (QGraphicsSceneMouseEvent *) override;
+	void mouseMoveEvent   (QGraphicsSceneMouseEvent *) override;
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
 	
 	// attributes
 	public:

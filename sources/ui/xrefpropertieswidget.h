@@ -35,7 +35,7 @@ class XRefPropertiesWidget : public QWidget
 
 	public:
 	XRefPropertiesWidget(QHash <QString, XRefProperties> properties = QHash <QString, XRefProperties>(), QWidget *parent = nullptr);
-	~XRefPropertiesWidget();
+	~XRefPropertiesWidget() override;
 
 	void setProperties (const QHash <QString, XRefProperties> &properties);
 	QHash <QString, XRefProperties> properties();

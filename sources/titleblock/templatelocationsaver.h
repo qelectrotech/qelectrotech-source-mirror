@@ -32,20 +32,20 @@ class TitleBlockTemplateLocationSaver : public TitleBlockTemplateLocationChooser
 	// Constructor, destructor
 	public:
 	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocation &, QWidget * = nullptr);
-	~TitleBlockTemplateLocationSaver();
+	~TitleBlockTemplateLocationSaver() override;
 	private:
 	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocationSaver &);
 	
 	// methods
-	virtual QString name() const;
-	virtual void setLocation(const TitleBlockTemplateLocation &);
+	QString name() const override;
+	void setLocation(const TitleBlockTemplateLocation &) override;
 	
 	private:
 	void init();
 	
 	// slots
 	protected slots:
-	virtual void updateTemplates();
+	void updateTemplates() override;
 	virtual void updateNewName();
 	
 	// attributes

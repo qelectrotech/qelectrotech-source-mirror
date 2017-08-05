@@ -36,18 +36,18 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 
 	public:
 		explicit ShapeGraphicsItemPropertiesWidget(QetShapeItem *item, QWidget *parent = nullptr);
-		~ShapeGraphicsItemPropertiesWidget();
+		~ShapeGraphicsItemPropertiesWidget() override;
 
 		void setItem(QetShapeItem *shape);
 
 	public slots:
-		virtual void apply();
-		virtual void reset();
+		void apply() override;
+		void reset() override;
 	public:
-		virtual QUndoCommand* associatedUndo() const;
-		virtual QString title() const { return tr("Éditer les propriétés d'une primitive "); }
-		virtual void updateUi();
-		virtual bool setLiveEdit(bool live_edit);
+		QUndoCommand* associatedUndo() const override;
+		QString title() const override { return tr("Éditer les propriétés d'une primitive "); }
+		void updateUi() override;
+		bool setLiveEdit(bool live_edit) override;
 
 	private:
 		void setPenColorButton(const QColor &color);

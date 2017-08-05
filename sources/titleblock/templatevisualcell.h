@@ -30,16 +30,16 @@ class TitleBlockTemplateVisualCell : public QGraphicsLayoutItem, public QGraphic
 	// constructor, destructor
 	public:
 	TitleBlockTemplateVisualCell(QGraphicsItem * parent = nullptr);
-	virtual ~TitleBlockTemplateVisualCell();
+	~TitleBlockTemplateVisualCell() override;
 	private:
 	TitleBlockTemplateVisualCell(const TitleBlockTemplateVisualCell &);
 	
 	// methods
 	public:
-	virtual void setGeometry(const QRectF &);
-	virtual QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const;
-	virtual QRectF boundingRect() const;
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
+	void setGeometry(const QRectF &) override;
+	QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const override;
+	QRectF boundingRect() const override;
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 	
 	public slots:
 	void setTemplateCell(TitleBlockTemplate *, TitleBlockCell *);

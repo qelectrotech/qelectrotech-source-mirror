@@ -27,13 +27,13 @@ class SplittedHelperCell : public HelperCell {
 	Q_OBJECT
 	public:
 	SplittedHelperCell(QGraphicsItem * = nullptr);
-	virtual ~SplittedHelperCell();
+	~SplittedHelperCell() override;
 	private:
 	SplittedHelperCell(const SplittedHelperCell &);
 	
 	// methods
 	public:
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 	
 	// attributes
 	QColor split_background_color; ///< Background color on the split side

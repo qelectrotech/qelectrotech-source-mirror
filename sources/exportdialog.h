@@ -33,7 +33,7 @@ class ExportDialog : public QDialog {
 	// constructors, destructor
 	public:
 	ExportDialog(QETProject *, QWidget * = nullptr);
-	virtual ~ExportDialog();
+	~ExportDialog() override;
 	
 	private:
 	ExportDialog(const ExportDialog &);

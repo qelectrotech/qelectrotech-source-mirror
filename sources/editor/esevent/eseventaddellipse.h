@@ -33,11 +33,11 @@ class ESEventAddEllipse : public ESEventInterface
 {
 	public:
 		ESEventAddEllipse(ElementScene *scene);
-		~ESEventAddEllipse();
+		~ESEventAddEllipse() override;
 
-		virtual bool mousePressEvent   (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+		bool mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		PartEllipse *m_ellipse;

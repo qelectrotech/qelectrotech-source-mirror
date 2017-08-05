@@ -30,15 +30,15 @@ class IntegrationMoveTitleBlockTemplatesHandler : public MoveTitleBlockTemplates
 	// constructors, destructor
 	public:
 	IntegrationMoveTitleBlockTemplatesHandler(QWidget * = nullptr);
-	virtual ~IntegrationMoveTitleBlockTemplatesHandler();
+	~IntegrationMoveTitleBlockTemplatesHandler() override;
 	private:
 	IntegrationMoveTitleBlockTemplatesHandler(const IntegrationMoveTitleBlockTemplatesHandler &);
 	
 	// methods
 	public:
-	virtual QET::Action templateAlreadyExists(const TitleBlockTemplateLocation &src, const TitleBlockTemplateLocation &dst);
-	virtual QET::Action errorWithATemplate(const TitleBlockTemplateLocation &, const QString &);
-	virtual QString nameForRenamingOperation();
+	QET::Action templateAlreadyExists(const TitleBlockTemplateLocation &src, const TitleBlockTemplateLocation &dst) override;
+	QET::Action errorWithATemplate(const TitleBlockTemplateLocation &, const QString &) override;
+	QString nameForRenamingOperation() override;
 	
 	private:
 	QString dateString() const;

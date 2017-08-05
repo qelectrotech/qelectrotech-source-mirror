@@ -33,12 +33,12 @@ class ElementTextItem : public DiagramTextItem {
 	public:
 		ElementTextItem(Element * = nullptr);
 		ElementTextItem(const QString &, Element * = nullptr);
-		virtual ~ElementTextItem();
+		~ElementTextItem() override;
 	
 		// attributes
 	public:
 		enum { Type = UserType + 1003 };
-		virtual int type () const { return Type; }
+		int type () const override { return Type; }
 	
 	private:
 		Element *parent_element_;
@@ -50,8 +50,8 @@ class ElementTextItem : public DiagramTextItem {
 		// methods
 	public:	
 		Element     *parentElement            () const;
-		void         fromXml                  ( const QDomElement & );
-		QDomElement  toXml                    ( QDomDocument & ) const;
+		void         fromXml                  ( const QDomElement & ) override;
+		QDomElement  toXml                    ( QDomDocument & ) const override;
 		void         setOriginalPos           ( const QPointF & );
 		QPointF      originalPos              () const;
 		void         setOriginalRotationAngle ( const qreal & );
@@ -66,11 +66,11 @@ class ElementTextItem : public DiagramTextItem {
 		void adjustItemPosition(int = 0);
 	
 	protected:
-		virtual void mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *event );
-		virtual void mouseMoveEvent        ( QGraphicsSceneMouseEvent *event );
-		virtual void mouseReleaseEvent     ( QGraphicsSceneMouseEvent *event );
-		virtual void hoverEnterEvent       ( QGraphicsSceneHoverEvent *event );
-		virtual void hoverLeaveEvent       ( QGraphicsSceneHoverEvent *event );
+		void mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *event ) override;
+		void mouseMoveEvent        ( QGraphicsSceneMouseEvent *event ) override;
+		void mouseReleaseEvent     ( QGraphicsSceneMouseEvent *event ) override;
+		void hoverEnterEvent       ( QGraphicsSceneHoverEvent *event ) override;
+		void hoverLeaveEvent       ( QGraphicsSceneHoverEvent *event ) override;
 
 	private:
 		void build ();

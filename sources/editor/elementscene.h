@@ -56,7 +56,7 @@ class ElementScene : public QGraphicsScene
 		// constructors, destructor
 	public:
 		ElementScene(QETElementEditor *, QObject * = nullptr);
-		virtual ~ElementScene();
+		~ElementScene() override;
 	
 	private:
 		ElementScene(const ElementScene &);
@@ -130,14 +130,14 @@ class ElementScene : public QGraphicsScene
 		QETElementEditor* editor() const;
 	
 	protected:
-		virtual void mouseMoveEvent         (QGraphicsSceneMouseEvent *);
-		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *);
-		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *);
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual void keyPressEvent         (QKeyEvent *event);
-		virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
+		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void keyPressEvent         (QKeyEvent *event) override;
+		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 
-		virtual void drawForeground(QPainter *, const QRectF &);
+		void drawForeground(QPainter *, const QRectF &) override;
 	
 	private:
 		QRectF elementContentBoundingRect(const ElementContent &) const;

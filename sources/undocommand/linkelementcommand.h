@@ -33,8 +33,8 @@ class LinkElementCommand : public QUndoCommand
 	public:
 		LinkElementCommand(Element *element_, QUndoCommand *parent = nullptr);
 
-		virtual int id() const {return 2;}
-		virtual bool mergeWith(const QUndoCommand *other);
+		int id() const override {return 2;}
+		bool mergeWith(const QUndoCommand *other) override;
 
 		static bool isLinkable (Element *element_a, Element *element_b, bool already_linked = false);
 
@@ -45,8 +45,8 @@ class LinkElementCommand : public QUndoCommand
 		void unlink  (QList<Element *> element_list);
 		void unlinkAll ();
 
-		void undo();
-		void redo();
+		void undo() override;
+		void redo() override;
 
 	private:
 		void setUpNewLink (const QList<Element *> &element_list, bool already_link);

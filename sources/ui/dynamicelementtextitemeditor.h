@@ -35,12 +35,12 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
     
 	public:
 	   explicit DynamicElementTextItemEditor(Element *element, QWidget *parent = nullptr);
-		~DynamicElementTextItemEditor();
+		~DynamicElementTextItemEditor() override;
 	
-		virtual void setElement(Element *element);
-        virtual QString title() const {return tr("Textes");}
-		virtual bool setLiveEdit(bool live_edit);
-		virtual void apply();
+		void setElement(Element *element) override;
+        QString title() const override {return tr("Textes");}
+		bool setLiveEdit(bool live_edit) override;
+		void apply() override;
 	
 	private:
 		void dataEdited(QStandardItem *qsi);

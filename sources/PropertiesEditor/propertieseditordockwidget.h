@@ -32,7 +32,7 @@ class PropertiesEditorDockWidget : public QDockWidget
 
 	public:
 		explicit PropertiesEditorDockWidget(QWidget *parent = nullptr);
-		~PropertiesEditorDockWidget();
+		~PropertiesEditorDockWidget() override;
 
 		virtual void clear();
 		virtual void apply();

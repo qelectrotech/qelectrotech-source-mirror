@@ -51,7 +51,7 @@ class QETProject : public QObject
 	public:
 		QETProject (int = 1, QObject * = nullptr);
 		QETProject (const QString &, QObject * = nullptr);
-		virtual ~QETProject();
+		~QETProject() override;
 	
 	private:
 		QETProject(const QETProject &);

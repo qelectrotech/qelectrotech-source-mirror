@@ -34,7 +34,7 @@ class ElementsTreeView : public QTreeView
 		ElementsTreeView(QWidget *parent = nullptr);
 
 	protected:
-		virtual void startDrag(Qt::DropActions supportedActions);
+		void startDrag(Qt::DropActions supportedActions) override;
 		virtual void startElementDrag(const ElementsLocation &location);
 };
 

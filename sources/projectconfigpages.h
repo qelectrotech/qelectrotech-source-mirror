@@ -41,7 +41,7 @@ class ProjectConfigPage : public ConfigPage {
 	// Constructor, destructor
 	public:
 	ProjectConfigPage(QETProject *, QWidget * = nullptr);
-	virtual ~ProjectConfigPage();
+	~ProjectConfigPage() override;
 	private:
 	ProjectConfigPage(const ProjectConfigPage &);
 	
@@ -49,7 +49,7 @@ class ProjectConfigPage : public ConfigPage {
 	public:
 	virtual QETProject *project() const;
 	virtual QETProject *setProject(QETProject *project, bool = true);
-	virtual void applyConf();
+	void applyConf() override;
 	/**
 		Apply configuration to the project after user input. This method is
 		automatically called when the ConfigDialog is validated, and only if the
@@ -91,22 +91,22 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	// Constructor, destructor
 	public:
 	ProjectMainConfigPage(QETProject *, QWidget * = nullptr);
-	virtual ~ProjectMainConfigPage();
+	~ProjectMainConfigPage() override;
 	private:
 	ProjectMainConfigPage(const ProjectMainConfigPage &);
 	
 	// methods
 	public:
-	QString title() const;
-	QIcon icon() const;
-	void applyProjectConf();
+	QString title() const override;
+	QIcon icon() const override;
+	void applyProjectConf() override;
 	QString projectTitle() const;
 	
 	protected:
-	void initWidgets();
-	void initLayout();
-	void readValuesFromProject();
-	void adjustReadOnly();
+	void initWidgets() override;
+	void initLayout() override;
+	void readValuesFromProject() override;
+	void adjustReadOnly() override;
 	
 	// attributes
 	protected:
@@ -124,15 +124,15 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	public:
 		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = nullptr);
 
-		virtual QString title() const;
-		virtual QIcon   icon() const;
-		virtual void    applyProjectConf();
+		QString title() const override;
+		QIcon   icon() const override;
+		void    applyProjectConf() override;
 		virtual void    changeToTab(int);
 	protected:
-		virtual void initWidgets();
-		virtual void initLayout() {}
-		virtual void readValuesFromProject();
-		virtual void adjustReadOnly();
+		void initWidgets() override;
+		void initLayout() override {}
+		void readValuesFromProject() override;
+		void adjustReadOnly() override;
 	private:
 		void buildConnections();
 	private slots:

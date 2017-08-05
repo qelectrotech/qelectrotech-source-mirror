@@ -31,7 +31,7 @@ class ElementsPanelWidget : public QWidget {
 	// constructors, destructor
 	public:
 	ElementsPanelWidget(QWidget * = nullptr);
-	virtual ~ElementsPanelWidget();
+	~ElementsPanelWidget() override;
 	
 	private:
 	ElementsPanelWidget(const ElementsPanelWidget &);
@@ -86,7 +86,7 @@ class ElementsPanelWidget : public QWidget {
 	void filterEdited(const QString &);
 
 	protected:
-	virtual void keyPressEvent   (QKeyEvent *e);
+	void keyPressEvent   (QKeyEvent *e) override;
 	
 	private:
 	QString previous_filter_;

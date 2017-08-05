@@ -53,7 +53,7 @@ class Diagram : public QGraphicsScene
 		// constructors, destructor
 	public:
 		Diagram(QETProject *project);
-		virtual ~Diagram();
+		~Diagram() override;
 	private:
 		Diagram(const Diagram &diagram);
 	
@@ -114,15 +114,15 @@ class Diagram : public QGraphicsScene
 	
 	// METHODS
 	protected:
-		virtual void drawBackground(QPainter *, const QRectF &);
+		void drawBackground(QPainter *, const QRectF &) override;
 
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
-		virtual void wheelEvent            (QGraphicsSceneWheelEvent *event);
-		virtual void keyPressEvent   (QKeyEvent *);
-		virtual void keyReleaseEvent (QKeyEvent *);
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
+		void keyPressEvent   (QKeyEvent *) override;
+		void keyReleaseEvent (QKeyEvent *) override;
 	
 	public:
 		void setEventInterface (DiagramEventInterface *event_interface);

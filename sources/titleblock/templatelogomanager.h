@@ -29,7 +29,7 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	// Constructor, destructor
 	public:
 	TitleBlockTemplateLogoManager(TitleBlockTemplate *, QWidget * = nullptr);
-	virtual ~TitleBlockTemplateLogoManager();
+	~TitleBlockTemplateLogoManager() override;
 	
 	// methods
 	public:

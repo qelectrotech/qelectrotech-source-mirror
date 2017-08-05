@@ -42,7 +42,7 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 		// constructors, destructor
 	public:
 		AbstractPartEllipse(QETElementEditor *editor, QGraphicsItem * parent = nullptr);
-		virtual ~AbstractPartEllipse();
+		~AbstractPartEllipse() override;
 
 	private:
 		AbstractPartEllipse(const AbstractPartEllipse &);
@@ -54,17 +54,17 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 
 		// methods
 	public:
-		virtual void startUserTransformation  (const QRectF &);
-		virtual void handleUserTransformation (const QRectF &, const QRectF &);
+		void startUserTransformation  (const QRectF &) override;
+		void handleUserTransformation (const QRectF &, const QRectF &) override;
 
 			//Coordinates
-		virtual QRectF  boundingRect()       const;
-		virtual QRectF  sceneGeometricRect() const;
+		QRectF  boundingRect()       const override;
+		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft()       const;
 
 		QRectF rect() const;
 		virtual void   setRect (const QRectF &rect);
-		virtual bool isUseless() const;
+		bool isUseless() const override;
 
 		int  startAngle() const {return m_start_angle;}
 		virtual void setStartAngle (const int &start_angle);

@@ -38,7 +38,7 @@ class CustomElement : public FixedElement
 	public:
 		CustomElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
 
-	virtual ~CustomElement();
+	~CustomElement() override;
 	
 	private:
 		CustomElement(const CustomElement &);
@@ -62,20 +62,20 @@ class CustomElement : public FixedElement
 	
 	// methods
 	public:
-	virtual QList<Terminal *> terminals() const;
-	virtual QList<Conductor *> conductors() const;
-	virtual QList<ElementTextItem *> texts() const;
-	virtual QList<QLineF *> lines() const;
-	virtual QList<QRectF *> rectangles() const;
-	virtual QList<QRectF *> circles() const;
-	virtual QList<QVector<QPointF> *> polygons() const;
-	virtual QList<QVector<qreal> *> arcs() const;
-	virtual int terminalsCount() const;
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
-	QString typeId() const;
+	QList<Terminal *> terminals() const override;
+	QList<Conductor *> conductors() const override;
+	QList<ElementTextItem *> texts() const override;
+	QList<QLineF *> lines() const override;
+	QList<QRectF *> rectangles() const override;
+	QList<QRectF *> circles() const override;
+	QList<QVector<QPointF> *> polygons() const override;
+	QList<QVector<qreal> *> arcs() const override;
+	int terminalsCount() const override;
+	void paint(QPainter *, const QStyleOptionGraphicsItem *) override;
+	QString typeId() const override;
 	ElementsLocation location() const;
-	QString name() const;
-	ElementTextItem* taggedText(const QString &tagg) const;
+	QString name() const override;
+	ElementTextItem* taggedText(const QString &tagg) const override;
 	
 	protected:
 	virtual bool buildFromXml(const QDomElement &, int * = nullptr);

@@ -30,7 +30,7 @@ class ExportPropertiesWidget : public QWidget {
 	public:
 	ExportPropertiesWidget(QWidget * = nullptr);
 	ExportPropertiesWidget(const ExportProperties &, QWidget * = nullptr);
-	virtual ~ExportPropertiesWidget();
+	~ExportPropertiesWidget() override;
 	private:
 	ExportPropertiesWidget(const ExportPropertiesWidget &);
 	

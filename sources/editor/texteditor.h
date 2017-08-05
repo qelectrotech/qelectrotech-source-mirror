@@ -39,7 +39,7 @@ class TextEditor : public ElementItemEditor
 		// Constructors, destructor
 	public:
 		TextEditor(QETElementEditor *, PartText * = nullptr, QWidget * = nullptr);
-		virtual ~TextEditor();
+		~TextEditor() override;
 	private:
 		TextEditor(const TextEditor &);
 	
@@ -56,8 +56,8 @@ class TextEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void updateTextT();
@@ -65,7 +65,7 @@ class TextEditor : public ElementItemEditor
 		void updateTextC();
 		void updateTextRotationAngle();
 		void updatePos();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);

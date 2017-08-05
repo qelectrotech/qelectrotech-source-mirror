@@ -29,7 +29,7 @@ class QetGraphicsItem : public QGraphicsObject
 	public:
 			//constructor destructor
 		QetGraphicsItem(QGraphicsItem *parent = nullptr);
-		virtual ~QetGraphicsItem() = 0;
+		~QetGraphicsItem() override = 0;
 
 			//public methode
 		Diagram *diagram       () const;
@@ -46,10 +46,10 @@ class QetGraphicsItem : public QGraphicsObject
 
 		//protected method
 	protected:
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *e);
-		virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *e);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
+		void mousePressEvent(QGraphicsSceneMouseEvent *e) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *e) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *e) override;
 
 	protected:
 		bool is_movable_;

@@ -36,7 +36,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	public:
 	TitleBlockTemplateView(QWidget * = nullptr);
 	TitleBlockTemplateView(QGraphicsScene *, QWidget * = nullptr);
-	virtual ~TitleBlockTemplateView();
+	~TitleBlockTemplateView() override;
 	private:
 	TitleBlockTemplateView(const TitleBlockTemplateView &);
 	
@@ -91,14 +91,14 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual void updateColumnsHelperCells();
 	
 	protected:
-	virtual void drawBackground(QPainter *, const QRectF &);
+	void drawBackground(QPainter *, const QRectF &) override;
 	virtual void addCells();
 	virtual void loadTemplate(TitleBlockTemplate *);
 	virtual void init();
-	virtual void wheelEvent(QWheelEvent *);
+	void wheelEvent(QWheelEvent *) override;
 	virtual qreal zoomFactor() const;
 	virtual void fillWithEmptyCells();
-	virtual bool event(QEvent *);
+	bool event(QEvent *) override;
 	virtual void normalizeCells(QList<TitleBlockCell> &, int x = 0, int y = 0) const;
 	
 	signals:

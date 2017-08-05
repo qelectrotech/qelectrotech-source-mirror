@@ -32,7 +32,7 @@ class ElementCollectionItem : public QStandardItem
 		ElementCollectionItem();
 
 		enum {Type = UserType+1};
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 
 		virtual bool isDir() const = 0;
 		virtual bool isElement() const = 0;

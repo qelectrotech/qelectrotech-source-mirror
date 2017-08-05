@@ -32,12 +32,12 @@ class DiagramEventAddShape : public DiagramEventInterface
 	public:
 		DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type);
 
-		virtual ~DiagramEventAddShape();
-		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual void init();
+		~DiagramEventAddShape() override;
+		bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void init() override;
 
 	private:
 		void updateHelpCross (const QPointF &p);

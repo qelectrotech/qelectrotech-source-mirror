@@ -33,10 +33,10 @@ class ReportElement : public CustomElement
 
 	public :
 		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = nullptr, int * = nullptr);
-		~ReportElement();
-		virtual void linkToElement(Element *);
-		virtual void unlinkAllElements();
-		virtual void unlinkElement(Element *elmt);
+		~ReportElement() override;
+		void linkToElement(Element *) override;
+		void unlinkAllElements() override;
+		void unlinkElement(Element *elmt) override;
 		
 	private:
 		void conductorWasAdded(Conductor *conductor);

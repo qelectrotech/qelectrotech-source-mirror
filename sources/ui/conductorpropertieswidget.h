@@ -35,7 +35,7 @@ class ConductorPropertiesWidget : public QWidget
 	public:
 		explicit ConductorPropertiesWidget(QWidget *parent = nullptr);
 		explicit ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent = nullptr);
-		~ConductorPropertiesWidget();
+		~ConductorPropertiesWidget() override;
 
 	//METHODS
 		void setProperties(const ConductorProperties &properties);
@@ -54,7 +54,7 @@ class ConductorPropertiesWidget : public QWidget
 		void setConductorType(ConductorProperties::ConductorType type);
 
 	protected:
-		virtual bool event(QEvent *event);
+		bool event(QEvent *event) override;
 
 	//SLOTS
 	public slots:

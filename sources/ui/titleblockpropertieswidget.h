@@ -42,7 +42,7 @@ class TitleBlockPropertiesWidget : public QWidget
 		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
 		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
 		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
-		~TitleBlockPropertiesWidget();
+		~TitleBlockPropertiesWidget() override;
 
 		void setProperties(const TitleBlockProperties &properties);
 		TitleBlockProperties properties() const;

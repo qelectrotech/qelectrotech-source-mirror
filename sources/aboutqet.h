@@ -28,7 +28,7 @@ class AboutQET : public QDialog {
 	// constructors, destructor
 	public:
 	AboutQET(QWidget * = nullptr);
-	virtual ~AboutQET();
+	~AboutQET() override;
 	
 	private:
 	AboutQET(AboutQET &);

@@ -31,7 +31,7 @@ class ElementView : public QGraphicsView {
 	// constructors, destructor
 	public:
 	ElementView(ElementScene *, QWidget * = nullptr);
-	virtual ~ElementView();
+	~ElementView() override;
 	
 	private:
 	ElementView(const ElementView &);
@@ -43,13 +43,13 @@ class ElementView : public QGraphicsView {
 	QRectF viewedSceneRect() const;
 	
 	protected:
-	void mousePressEvent(QMouseEvent *);
-	void mouseMoveEvent(QMouseEvent *);
-	void mouseReleaseEvent(QMouseEvent *);
+	void mousePressEvent(QMouseEvent *) override;
+	void mouseMoveEvent(QMouseEvent *) override;
+	void mouseReleaseEvent(QMouseEvent *) override;
 	bool gestureEvent(QGestureEvent *event);
-	bool event(QEvent *event);
-	void wheelEvent(QWheelEvent *);
-	virtual void drawBackground(QPainter *, const QRectF &);
+	bool event(QEvent *event) override;
+	void wheelEvent(QWheelEvent *) override;
+	void drawBackground(QPainter *, const QRectF &) override;
 	
 	private:
 	QRectF applyMovement(const QRectF &, const QPointF &);

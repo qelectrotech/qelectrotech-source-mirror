@@ -29,7 +29,7 @@ class NamesListWidget : public QWidget {
 	// constructors, destructor
 	public:
 	NamesListWidget(QWidget * = nullptr);
-	virtual ~NamesListWidget();
+	~NamesListWidget() override;
 	
 	private:
 	NamesListWidget(const NamesListWidget &);

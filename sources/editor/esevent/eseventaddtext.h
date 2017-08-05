@@ -32,10 +32,10 @@ class ESEventAddText : public ESEventInterface
 {
 	public:
 		ESEventAddText(ElementScene *scene);
-		virtual ~ESEventAddText();
+		~ESEventAddText() override;
 
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		PartText *m_text;

@@ -35,7 +35,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	public:
 	DiagramImageItem(QetGraphicsItem * = nullptr);
 	DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem * = nullptr);
-	virtual ~DiagramImageItem();
+	~DiagramImageItem() override;
 	
 	// attributes
 	public:
@@ -48,17 +48,17 @@ class DiagramImageItem : public QetGraphicsItem {
 		DiagramImageItem
 		@return the QGraphicsItem type
 	*/
-	virtual int type() const { return Type; }
+	int type() const override { return Type; }
 	
 	virtual bool fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
-	virtual void editProperty();
+	void editProperty() override;
 	void setPixmap(const QPixmap &pixmap);
-	virtual QRectF boundingRect() const;
-	virtual QString name() const;
+	QRectF boundingRect() const override;
+	QString name() const override;
 	
 	protected:
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 	
 	protected:
 	QPixmap pixmap_;

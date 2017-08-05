@@ -31,7 +31,7 @@ class RenameDialog : public QDialog
 
     public:
         explicit RenameDialog(QString path, QWidget *parent = nullptr);
-        ~RenameDialog();
+        ~RenameDialog() override;
 
 		QString newName() const {return m_new_name;}
 		QET::Action selectedAction() const {return m_action;}

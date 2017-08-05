@@ -25,7 +25,7 @@ class TitleBlockTemplateRenderer : public QObject {
 	
 	public:
 	TitleBlockTemplateRenderer(QObject * = nullptr);
-	virtual ~TitleBlockTemplateRenderer();
+	~TitleBlockTemplateRenderer() override;
 	const TitleBlockTemplate *titleBlockTemplate() const;
 	void setTitleBlockTemplate(const TitleBlockTemplate *);
 	void setContext(const DiagramContext &context);

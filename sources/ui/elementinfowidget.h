@@ -42,21 +42,21 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		//METHODS
 	public:
 		explicit ElementInfoWidget(Element *elmt, QWidget *parent = nullptr);
-		~ElementInfoWidget();
+		~ElementInfoWidget() override;
 
-		void setElement(Element *element);
-		void apply();
-		QUndoCommand *associatedUndo () const;
-		QString title() const {return tr("Informations");}
-		bool setLiveEdit(bool live_edit);
-		virtual void updateUi();
+		void setElement(Element *element) override;
+		void apply() override;
+		QUndoCommand *associatedUndo () const override;
+		QString title() const override {return tr("Informations");}
+		bool setLiveEdit(bool live_edit) override;
+		void updateUi() override;
 		DiagramContext currentInfo() const;
 
 
 	protected:
-		virtual bool event(QEvent *event);
-		virtual void enableLiveEdit();
-		virtual void disableLiveEdit();
+		bool event(QEvent *event) override;
+		void enableLiveEdit() override;
+		void disableLiveEdit() override;
 
 	private:
 		void buildInterface();

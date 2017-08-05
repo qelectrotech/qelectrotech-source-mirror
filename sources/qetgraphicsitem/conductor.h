@@ -53,7 +53,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 	
 	public:
 		Conductor(Terminal *, Terminal *);
-		virtual ~Conductor();
+		~Conductor() override;
 
 		bool isValid() const;
 	
@@ -72,7 +72,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a conductor.
 			 * @return the QGraphicsItem type
 			*/
-		virtual int type() const { return Type; }
+		int type() const override { return Type; }
 		Diagram *diagram() const;
 		ConductorTextItem *textItem() const;
 		void updatePath(const QRectF & = QRectF());
@@ -82,9 +82,9 @@ class Conductor : public QObject, public QGraphicsPathItem
 		void updatePathAnimate(const int = 1) {updatePath();}
 		int fakePath() {return 1;}
 
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-		QRectF boundingRect() const;
-		virtual QPainterPath shape() const;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		QRectF boundingRect() const override;
+		QPainterPath shape() const override;
 		virtual QPainterPath nearShape() const;
 		qreal length() const;
 		ConductorSegment *middleSegment();
@@ -132,13 +132,13 @@ class Conductor : public QObject, public QGraphicsPathItem
 		void displayedTextChanged();
 	
 	protected:
-		virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
-		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
-		virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
-        virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+		QVariant itemChange(GraphicsItemChange, const QVariant &) override;
+        bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void adjusteHandlerPos();

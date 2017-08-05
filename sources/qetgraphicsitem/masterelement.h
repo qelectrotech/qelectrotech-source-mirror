@@ -34,12 +34,12 @@ class MasterElement : public CustomElement
 	
 	public:
 		explicit MasterElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
-		~MasterElement();
+		~MasterElement() override;
 
-		virtual void linkToElement     (Element *elmt);
-		virtual void unlinkAllElements ();
-		virtual void unlinkElement     (Element *elmt);
-		virtual void initLink          (QETProject *project);
+		void linkToElement     (Element *elmt) override;
+		void unlinkAllElements () override;
+		void unlinkElement     (Element *elmt) override;
+		void initLink          (QETProject *project) override;
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);

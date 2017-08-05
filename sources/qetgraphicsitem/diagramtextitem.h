@@ -49,7 +49,7 @@ class DiagramTextItem : public QGraphicsTextItem
 	
 	public:
 		enum { Type = UserType + 1004 };
-		virtual int type() const override { return Type; }
+		int type() const override { return Type; }
 
 		Diagram *diagram() const;
 		virtual void fromXml(const QDomElement &) = 0;
@@ -73,18 +73,18 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setNoEditable(bool e = true) {m_no_editable = e;}
 
 	protected:
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
-		virtual void focusInEvent(QFocusEvent *) override;
-		virtual void focusOutEvent(QFocusEvent *) override;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		void focusInEvent(QFocusEvent *) override;
+		void focusOutEvent(QFocusEvent *) override;
 
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
-		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
 
-		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
-		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
 
 		virtual void applyRotation(const qreal &);
 

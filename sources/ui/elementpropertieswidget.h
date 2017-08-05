@@ -32,10 +32,10 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 
 	public:
 		explicit ElementPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
-		void setElement(Element *element);
-		void apply();
-		void reset();
-		bool setLiveEdit(bool live_edit);
+		void setElement(Element *element) override;
+		void apply() override;
+		void reset() override;
+		bool setLiveEdit(bool live_edit) override;
 
 	public slots:
 		void findInPanel ();
@@ -43,7 +43,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 
 	private:
 		void buildGui();
-		void updateUi();
+		void updateUi() override;
 		void addGeneralWidget();
 		QWidget *generalWidget();
 

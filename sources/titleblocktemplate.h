@@ -37,7 +37,7 @@ class TitleBlockTemplate : public QObject {
 	// constructors, destructor
 	public:
 	TitleBlockTemplate(QObject * = nullptr);
-	virtual ~TitleBlockTemplate();
+	~TitleBlockTemplate() override;
 	private:
 	TitleBlockTemplate(const TitleBlockTemplate &);
 	

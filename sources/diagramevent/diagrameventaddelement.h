@@ -34,14 +34,14 @@ class DiagramEventAddElement : public DiagramEventInterface
 
 	public:
 		DiagramEventAddElement(ElementsLocation &location, Diagram *diagram, QPointF pos = QPointF(0,0));
-		virtual ~DiagramEventAddElement();
+		~DiagramEventAddElement() override;
 
-		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual bool keyPressEvent (QKeyEvent *event);
-		virtual void init();
+		bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		bool keyPressEvent (QKeyEvent *event) override;
+		void init() override;
 
 	private:
 		bool buildElement();

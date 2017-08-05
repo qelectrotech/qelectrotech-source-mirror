@@ -26,10 +26,10 @@ class SlaveElement : public CustomElement
 	Q_OBJECT
 	public:
 	explicit SlaveElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
-	~SlaveElement();
-	virtual void linkToElement(Element *elmt);
-	virtual void unlinkAllElements();
-	virtual void unlinkElement(Element *elmt);
+	~SlaveElement() override;
+	void linkToElement(Element *elmt) override;
+	void unlinkAllElements() override;
+	void unlinkElement(Element *elmt) override;
 
 	signals:
 

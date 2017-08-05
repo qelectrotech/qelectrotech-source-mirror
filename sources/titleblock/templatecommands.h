@@ -34,16 +34,16 @@ class ModifyTitleBlockCellCommand : public QUndoCommand {
 	// constructor, destructor
 	public:
 	ModifyTitleBlockCellCommand(TitleBlockCell *, QUndoCommand * = nullptr);
-	virtual ~ModifyTitleBlockCellCommand();
+	~ModifyTitleBlockCellCommand() override;
 	private:
 	ModifyTitleBlockCellCommand(const ModifyTitleBlockCellCommand &);
 	
 	// methods
 	public:
-	virtual int id() const;
-	virtual bool mergeWith(const QUndoCommand *);
-	virtual void undo();
-	virtual void redo();
+	int id() const override;
+	bool mergeWith(const QUndoCommand *) override;
+	void undo() override;
+	void redo() override;
 	TitleBlockCell *cell() const;
 	void setCell(TitleBlockCell *);
 	TitleBlockTemplateView *view() const;
@@ -67,7 +67,7 @@ class TitleBlockTemplateCommand : public QUndoCommand {
 	// Constructors, destructor
 	public:
 	TitleBlockTemplateCommand(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
-	virtual ~TitleBlockTemplateCommand();
+	~TitleBlockTemplateCommand() override;
 	private:
 	TitleBlockTemplateCommand(const TitleBlockTemplateCommand &);
 	
@@ -101,7 +101,7 @@ class ModifyTemplateGridCommand : public TitleBlockTemplateCommand {
 	// Constructors, destructor
 	public:
 	ModifyTemplateGridCommand(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
-	virtual ~ModifyTemplateGridCommand();
+	~ModifyTemplateGridCommand() override;
 	private:
 	ModifyTemplateGridCommand(const ModifyTemplateGridCommand &);
 	
@@ -117,8 +117,8 @@ class ModifyTemplateGridCommand : public TitleBlockTemplateCommand {
 	void setType(bool);
 	bool isInsertion() const;
 	void setInsertion(bool);
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	private:
 	void updateText();
@@ -141,7 +141,7 @@ class ModifyTemplateDimension : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
 	ModifyTemplateDimension(TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
-	virtual ~ModifyTemplateDimension();
+	~ModifyTemplateDimension() override;
 	private:
 	ModifyTemplateDimension(const ModifyTemplateDimension &);
 	
@@ -155,8 +155,8 @@ class ModifyTemplateDimension : public TitleBlockTemplateCommand {
 	void setDimensionBefore(const TitleBlockDimension &);
 	TitleBlockDimension dimensionAfter() const;
 	void setDimensionAfter(const TitleBlockDimension &);
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	private:
 	void updateText();
@@ -178,14 +178,14 @@ class MergeCellsCommand : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
 	MergeCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
-	virtual ~MergeCellsCommand();
+	~MergeCellsCommand() override;
 	
 	// methods
 	public:
 	static bool canMerge(const TitleBlockTemplateCellsSet &, TitleBlockTemplate *);
 	bool isValid() const;
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	private:
 	static TitleBlockCell *getBottomRightCell(const TitleBlockTemplateCellsSet &);
 	
@@ -212,14 +212,14 @@ class SplitCellsCommand : public TitleBlockTemplateCommand {
 	// Constructor, destructor
 	public:
 	SplitCellsCommand(const TitleBlockTemplateCellsSet &, TitleBlockTemplate * = nullptr, QUndoCommand * = nullptr);
-	virtual ~SplitCellsCommand();
+	~SplitCellsCommand() override;
 	
 	// methods
 	public:
 	static bool canSplit(const TitleBlockTemplateCellsSet &splitted_cells, TitleBlockTemplate *tbtemplate);
 	bool isValid() const;
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -240,14 +240,14 @@ class ChangeTemplateInformationsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ChangeTemplateInformationsCommand(TitleBlockTemplate *, const QString &, const QString &, QUndoCommand * = nullptr);
-	virtual ~ChangeTemplateInformationsCommand();
+	~ChangeTemplateInformationsCommand() override;
 	private:
 	ChangeTemplateInformationsCommand(const ChangeTemplateInformationsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -266,14 +266,14 @@ class CutTemplateCellsCommand : public TitleBlockTemplateCommand {
 	// constructors, destructor
 	public:
 	CutTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = nullptr);
-	virtual ~CutTemplateCellsCommand();
+	~CutTemplateCellsCommand() override;
 	private:
 	CutTemplateCellsCommand(const CutTemplateCellsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	virtual void setCutCells(const QList<TitleBlockCell *> &);
 	protected:
 	virtual void updateText();
@@ -291,14 +291,14 @@ class PasteTemplateCellsCommand : public TitleBlockTemplateCommand {
 	// constructors, destructor
 	public:
 	PasteTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = nullptr);
-	virtual ~PasteTemplateCellsCommand();
+	~PasteTemplateCellsCommand() override;
 	private:
 	PasteTemplateCellsCommand(const PasteTemplateCellsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	virtual void addPastedCell(TitleBlockCell *, const TitleBlockCell &);
 	virtual void addErasedCell(TitleBlockCell *, const TitleBlockCell &);
 	virtual void addCell(TitleBlockCell *, const TitleBlockCell &, const TitleBlockCell &);

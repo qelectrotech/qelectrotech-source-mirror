@@ -32,11 +32,11 @@ class ESEventAddTerminal : public ESEventInterface
 {
 	public:
 		ESEventAddTerminal(ElementScene *scene);
-		virtual ~ESEventAddTerminal();
+		~ESEventAddTerminal() override;
 
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
-		virtual bool keyPressEvent     (QKeyEvent *event);
+		bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+		bool keyPressEvent     (QKeyEvent *event) override;
 
 	private:
 		PartTerminal *m_terminal;

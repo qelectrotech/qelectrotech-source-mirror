@@ -32,12 +32,12 @@ class ESEventAddPolygon : public ESEventInterface
 {
 	public:
 		ESEventAddPolygon(ElementScene *scene);
-		virtual ~ESEventAddPolygon();
+		~ESEventAddPolygon() override;
 
-		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+		bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		PartPolygon *m_polygon;

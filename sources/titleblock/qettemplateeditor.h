@@ -39,7 +39,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	// constructor, destructor
 	public:
 	QETTitleBlockTemplateEditor(QWidget * = nullptr);
-	virtual ~QETTitleBlockTemplateEditor();
+	~QETTitleBlockTemplateEditor() override;
 	private:
 	QETTitleBlockTemplateEditor(const QETTitleBlockTemplateEditor &);
 	
@@ -90,8 +90,8 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	
 	protected:
 	bool canClose();
-	virtual void firstActivation(QEvent *);
-	void closeEvent(QCloseEvent *);
+	void firstActivation(QEvent *) override;
+	void closeEvent(QCloseEvent *) override;
 	
 	private:
 	void initActions();

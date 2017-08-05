@@ -36,7 +36,7 @@ class QFileNameEdit : public QLineEdit {
 	public:
 	QFileNameEdit(QWidget * = nullptr);
 	QFileNameEdit(const QString &, QWidget * = nullptr);
-	virtual ~QFileNameEdit();
+	~QFileNameEdit() override;
 	private:
 	QFileNameEdit(const QFileNameEdit &);
 	

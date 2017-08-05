@@ -35,7 +35,7 @@ class BorderPropertiesWidget : public QWidget
 
 	public:
 		explicit BorderPropertiesWidget(const BorderProperties &bp, QWidget *parent = nullptr);
-		~BorderPropertiesWidget();
+		~BorderPropertiesWidget() override;
 
 		void setProperties(const BorderProperties &bp);
 		const BorderProperties &properties();

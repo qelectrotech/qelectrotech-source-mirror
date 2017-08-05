@@ -38,7 +38,7 @@ class TextFieldEditor : public ElementItemEditor
 		// Constructors, destructor
 	public:
 		TextFieldEditor(QETElementEditor *, PartTextField * = nullptr, QWidget * = nullptr);
-		virtual ~TextFieldEditor();
+		~TextFieldEditor() override;
 	private:
 		TextFieldEditor(const TextFieldEditor &);
 	
@@ -55,8 +55,8 @@ class TextFieldEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void updateTextFieldT();
@@ -65,7 +65,7 @@ class TextFieldEditor : public ElementItemEditor
 		void updateTextFieldRotationAngle();
 		void updateTagg();
 		void updatePos();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);

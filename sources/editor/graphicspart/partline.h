@@ -46,7 +46,7 @@ class PartLine : public CustomElementGraphicPart
 		// constructors, destructor
 	public:
 		PartLine(QETElementEditor *, QGraphicsItem * = nullptr);
-		virtual ~PartLine();
+		~PartLine() override;
 	private:
 		PartLine(const PartLine &);
 
@@ -66,21 +66,21 @@ class PartLine : public CustomElementGraphicPart
 		  * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
 		  * @return the QGraphicsItem type
 		  */
-		virtual int type() const { return Type; }
-		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
-		virtual QString name() const { return(QObject::tr("ligne", "element part name")); }
-		virtual QString xmlName() const { return(QString("line")); }
-		virtual const QDomElement toXml(QDomDocument &) const;
-		virtual void fromXml(const QDomElement &);
+		int type() const override { return Type; }
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		QString name() const override { return(QObject::tr("ligne", "element part name")); }
+		QString xmlName() const override { return(QString("line")); }
+		const QDomElement toXml(QDomDocument &) const override;
+		void fromXml(const QDomElement &) override;
 		virtual QPointF sceneP1() const;
 		virtual QPointF sceneP2() const;
-		virtual QPainterPath shape() const;
-		virtual QPainterPath shadowShape() const;
-		virtual QRectF boundingRect() const;
-		virtual bool isUseless() const;
-		virtual QRectF sceneGeometricRect() const;
-		virtual void startUserTransformation(const QRectF &);
-		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+		QPainterPath shape() const override;
+		QPainterPath shadowShape() const override;
+		QRectF boundingRect() const override;
+		bool isUseless() const override;
+		QRectF sceneGeometricRect() const override;
+		void startUserTransformation(const QRectF &) override;
+		void handleUserTransformation(const QRectF &, const QRectF &) override;
 		static uint requiredLengthForEndType(const Qet::EndType &);
 		static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
 
@@ -96,8 +96,8 @@ class PartLine : public CustomElementGraphicPart
 		void setSecondEndLength(const qreal &l);
 
 	protected:
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 		
 	private:
 		void adjusteHandlerPos();

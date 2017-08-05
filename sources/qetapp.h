@@ -55,7 +55,7 @@ class QETApp : public QETSingleApplication {
 	// constructors, destructor
 	public:
 	QETApp(int &, char **);
-	virtual ~QETApp();
+	~QETApp() override;
 	
 	private:
 	QETApp(const QETApp &);

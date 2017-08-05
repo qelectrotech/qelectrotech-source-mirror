@@ -30,15 +30,15 @@ class FixedElement : public Element {
 	// constructors, destructor
 	public:
 	FixedElement(QGraphicsItem * = nullptr);
-	virtual ~FixedElement();
+	~FixedElement() override;
 	
 	// methods
 	public:
-	int minTerminalsCount() const;
-	int maxTerminalsCount() const;
-	virtual int terminalsCount() const = 0;
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
-	virtual QString typeId() const = 0;
-	virtual QString name() const = 0;
+	int minTerminalsCount() const override;
+	int maxTerminalsCount() const override;
+	int terminalsCount() const override = 0;
+	void paint(QPainter *, const QStyleOptionGraphicsItem *) override = 0;
+	QString typeId() const override = 0;
+	QString name() const override = 0;
 };
 #endif

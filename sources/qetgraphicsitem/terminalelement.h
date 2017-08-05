@@ -28,8 +28,8 @@ class TerminalElement : public CustomElement
 		Q_OBJECT
 	public:
 		TerminalElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
-		~TerminalElement();
-		virtual void initLink(QETProject *project);
+		~TerminalElement() override;
+		void initLink(QETProject *project) override;
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);

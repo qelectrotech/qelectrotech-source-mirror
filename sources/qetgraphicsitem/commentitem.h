@@ -34,7 +34,7 @@ class CommentItem : public QGraphicsObject
 	public:
 		explicit CommentItem(Element *elmt);
 
-		virtual QRectF boundingRect() const;
+		QRectF boundingRect() const override;
 
 	signals:
 
@@ -43,8 +43,8 @@ class CommentItem : public QGraphicsObject
 		void updateLabel();
 
 	protected:
-		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
+		void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event ) override;
 		virtual bool setTextParent ();
 
 	private:

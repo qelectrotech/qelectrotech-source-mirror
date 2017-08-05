@@ -31,15 +31,15 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 {
     public:
         QetGraphicsHandlerItem(qreal size = 15);
-        virtual QRectF boundingRect() const;
+        QRectF boundingRect() const override;
 		
 		enum { Type = UserType + 1200};
-		virtual int type() const {return Type;}
+		int type() const override {return Type;}
 		
 		void setColor(QColor color);
 
     protected:
-        virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
     private:
         qreal m_size,

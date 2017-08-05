@@ -53,17 +53,17 @@ class AddItemCommand : public QUndoCommand {
 			m_diagram -> qgiManager().manage(m_item);
 		}
 
-		virtual ~AddItemCommand() {
+		~AddItemCommand() override {
 			m_diagram -> qgiManager().release(m_item);
 		}
 
-		virtual void undo() {
+		void undo() override {
 			m_diagram -> showMe();
 			m_diagram -> removeItem(m_item);
 			QUndoCommand::undo();
 		}
 
-		virtual void redo() {
+		void redo() override {
 			m_diagram -> showMe();
 			m_diagram -> addItem(m_item);
 			m_item    -> setPos(m_pos);
@@ -88,14 +88,14 @@ class PasteDiagramCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	PasteDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
-	virtual ~PasteDiagramCommand();
+	~PasteDiagramCommand() override;
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -116,7 +116,7 @@ class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 	// constructors, destructor
 	public:
 	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
-	virtual ~CutDiagramCommand();
+	~CutDiagramCommand() override;
 	private:
 	CutDiagramCommand(const CutDiagramCommand &);
 };
@@ -128,14 +128,14 @@ class MoveElementsCommand : public QUndoCommand {
 		// constructors, destructor
 	public:
 		MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = nullptr);
-		virtual ~MoveElementsCommand();
+		~MoveElementsCommand() override;
 	private:
 		MoveElementsCommand(const MoveElementsCommand &);
 	
 		// methods
 	public:
-		virtual void undo();
-		virtual void redo();
+		void undo() override;
+		void redo() override;
 		virtual void move(const QPointF &);
 
 	private:
@@ -163,14 +163,14 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = nullptr);
-	virtual ~MoveConductorsTextsCommand();
+	~MoveConductorsTextsCommand() override;
 	private:
 	MoveConductorsTextsCommand(const MoveConductorsTextsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	virtual void addTextMovement(ConductorTextItem *, const QPointF &, const QPointF &, bool = false);
 	
 	private:
@@ -193,14 +193,14 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = nullptr);
-	virtual ~ChangeDiagramTextCommand();
+	~ChangeDiagramTextCommand() override;
 	private:
 	ChangeDiagramTextCommand(const ChangeDiagramTextCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -222,14 +222,14 @@ class RotateElementsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = nullptr);
-	virtual ~RotateElementsCommand();
+	~RotateElementsCommand() override;
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -255,14 +255,14 @@ class RotateTextsCommand : public QUndoCommand
 	// constructors, destructor
 	public:
 		RotateTextsCommand(const QList<DiagramTextItem *> &, double, QUndoCommand * = nullptr);
-		virtual ~RotateTextsCommand() override;
+		~RotateTextsCommand() override;
 	private:
 		RotateTextsCommand(const RotateTextsCommand &);
 	
 	// methods
 	public:
-		virtual void undo() override;
-		virtual void redo() override;
+		void undo() override;
+		void redo() override;
 	
 	private:
 		void defineCommandName();
@@ -285,14 +285,14 @@ class ChangeConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = nullptr);
-	virtual ~ChangeConductorCommand();
+	~ChangeConductorCommand() override;
 	private:
 	ChangeConductorCommand(const ChangeConductorCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	virtual void setConductorTextItemMove(const QPointF &, const QPointF &);
 	
 	// attributes
@@ -321,14 +321,14 @@ class ResetConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = nullptr);
-	virtual ~ResetConductorCommand();
+	~ResetConductorCommand() override;
 	private:
 	ResetConductorCommand(const ResetConductorCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -344,14 +344,14 @@ class ChangeTitleBlockCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = nullptr);
-	virtual ~ChangeTitleBlockCommand();
+	~ChangeTitleBlockCommand() override;
 	private:
 	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:
@@ -370,14 +370,14 @@ class ChangeBorderCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
 	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = nullptr);
-	virtual ~ChangeBorderCommand();
+	~ChangeBorderCommand() override;
 	private:
 	ChangeBorderCommand(const ChangeBorderCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+	void undo() override;
+	void redo() override;
 	
 	// attributes
 	private:

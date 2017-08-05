@@ -37,7 +37,7 @@ class TitleBlockTemplatesCollection : public QObject {
 	// Constructors, destructor
 	public:
 	TitleBlockTemplatesCollection(QObject *parent);
-	virtual ~TitleBlockTemplatesCollection();
+	~TitleBlockTemplatesCollection() override;
 	private:
 	TitleBlockTemplatesCollection(const TitleBlockTemplatesCollection &);
 	
@@ -86,24 +86,24 @@ class TitleBlockTemplatesProjectCollection : public TitleBlockTemplatesCollectio
 	// Constructors, destructor
 	public:
 	TitleBlockTemplatesProjectCollection(QETProject *, QObject *parent = nullptr);
-	virtual ~TitleBlockTemplatesProjectCollection();
+	~TitleBlockTemplatesProjectCollection() override;
 	private:
 	TitleBlockTemplatesProjectCollection(const TitleBlockTemplatesProjectCollection &);
 	
 	// methods
 	public:
-	virtual QString title() const;
-	virtual QString protocol() const;
-	virtual QETProject *parentProject();
-	virtual QStringList templates();
-	virtual TitleBlockTemplate *getTemplate(const QString &);
-	virtual QDomElement getTemplateXmlDescription(const QString &);
-	virtual bool setTemplateXmlDescription(const QString &, const QDomElement &);
-	virtual void removeTemplate(const QString &);
-	virtual TitleBlockTemplateLocation location(const QString & = QString());
-	virtual bool hasFilePath();
-	virtual QString filePath();
-	virtual bool isReadOnly(const QString & = QString()) const;
+	QString title() const override;
+	QString protocol() const override;
+	QETProject *parentProject() override;
+	QStringList templates() override;
+	TitleBlockTemplate *getTemplate(const QString &) override;
+	QDomElement getTemplateXmlDescription(const QString &) override;
+	bool setTemplateXmlDescription(const QString &, const QDomElement &) override;
+	void removeTemplate(const QString &) override;
+	TitleBlockTemplateLocation location(const QString & = QString()) override;
+	bool hasFilePath() override;
+	QString filePath() override;
+	bool isReadOnly(const QString & = QString()) const override;
 	virtual void fromXml(const QDomElement &);
 	virtual void deleteUnusedTitleBlocKTemplates();
 	
@@ -127,22 +127,22 @@ class TitleBlockTemplatesFilesCollection : public TitleBlockTemplatesCollection 
 	// Constructors, destructor
 	public:
 	TitleBlockTemplatesFilesCollection(const QString &, QObject * = nullptr);
-	virtual ~TitleBlockTemplatesFilesCollection();
+	~TitleBlockTemplatesFilesCollection() override;
 	private:
 	TitleBlockTemplatesFilesCollection(const TitleBlockTemplatesFilesCollection &);
 	
 	// methods
 	public:
 	QString path(const QString & = QString()) const;
-	virtual QStringList templates();
-	virtual TitleBlockTemplate *getTemplate(const QString &);
-	virtual QDomElement getTemplateXmlDescription(const QString &);
-	virtual bool setTemplateXmlDescription(const QString &, const QDomElement &);
-	virtual void removeTemplate(const QString &);
-	virtual TitleBlockTemplateLocation location(const QString & = QString());
-	virtual bool hasFilePath();
-	virtual QString filePath();
-	virtual bool isReadOnly(const QString & = QString()) const;
+	QStringList templates() override;
+	TitleBlockTemplate *getTemplate(const QString &) override;
+	QDomElement getTemplateXmlDescription(const QString &) override;
+	bool setTemplateXmlDescription(const QString &, const QDomElement &) override;
+	void removeTemplate(const QString &) override;
+	TitleBlockTemplateLocation location(const QString & = QString()) override;
+	bool hasFilePath() override;
+	QString filePath() override;
+	bool isReadOnly(const QString & = QString()) const override;
 	
 	static QString toTemplateName(const QString &);
 	static QString toFileName(const QString &);

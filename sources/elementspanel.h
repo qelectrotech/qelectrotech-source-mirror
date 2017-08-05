@@ -37,7 +37,7 @@ class ElementsPanel : public GenericPanel {
 	// constructors, destructor
 	public:
 	ElementsPanel(QWidget * = nullptr);
-	virtual ~ElementsPanel();
+	~ElementsPanel() override;
 	
 	private:
 	ElementsPanel(const ElementsPanel &);
@@ -66,7 +66,7 @@ class ElementsPanel : public GenericPanel {
 	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
 	
 	protected:
-	void startDrag(Qt::DropActions);
+	void startDrag(Qt::DropActions) override;
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
 	bool matchesFilter(const QTreeWidgetItem *, QString) const;
 	
@@ -75,8 +75,8 @@ class ElementsPanel : public GenericPanel {
 	
 	private:
 	virtual QTreeWidgetItem *addProject   (QETProject *);
-	virtual QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false);
-	virtual QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
+	QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false) override;
+	QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false) override;
 	
 	// attributes
 	private:

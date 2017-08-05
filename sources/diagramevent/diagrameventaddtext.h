@@ -32,9 +32,9 @@ class DiagramEventAddText : public DiagramEventInterface
 
         public:
             DiagramEventAddText(Diagram *diagram);
-            virtual ~DiagramEventAddText();
+            ~DiagramEventAddText() override;
 
-            virtual bool mousePressEvent (QGraphicsSceneMouseEvent *event);
+            bool mousePressEvent (QGraphicsSceneMouseEvent *event) override;
 };
 
 #endif // DIAGRAMEVENTADDTEXT_H

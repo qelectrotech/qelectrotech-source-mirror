@@ -36,7 +36,7 @@ class ElementsCategoryEditor : public QDialog
 
 	public:
 		ElementsCategoryEditor(const ElementsLocation &location, bool edit = true, QWidget *parent = nullptr);
-		virtual ~ElementsCategoryEditor();
+		~ElementsCategoryEditor() override;
 
 		ElementsLocation createdLocation() const;
 	

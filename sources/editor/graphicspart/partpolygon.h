@@ -39,7 +39,7 @@ class PartPolygon : public CustomElementGraphicPart
 		// constructors, destructor
 	public:
 		PartPolygon(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
-		virtual ~PartPolygon();
+		~PartPolygon() override;
 	
 	private:
 		PartPolygon(const PartPolygon &);
@@ -55,23 +55,23 @@ class PartPolygon : public CustomElementGraphicPart
 			* Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartPolygon.
 			* @return the QGraphicsItem type
 			*/
-		virtual int type() const { return Type; }
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+		int type() const override { return Type; }
+		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 
-		virtual QString name() const { return(QObject::tr("polygone", "element part name")); }
-		virtual QString xmlName() const { return(QString("polygon")); }
-		void fromXml(const QDomElement &);
-		const QDomElement toXml(QDomDocument &) const;
+		QString name() const override { return(QObject::tr("polygone", "element part name")); }
+		QString xmlName() const override { return(QString("polygon")); }
+		void fromXml(const QDomElement &) override;
+		const QDomElement toXml(QDomDocument &) const override;
 
-		virtual QPainterPath shape () const;
-		virtual QPainterPath shadowShape() const;
-		virtual QRectF boundingRect() const;
-		virtual bool isUseless() const;
-		virtual QRectF sceneGeometricRect() const;
+		QPainterPath shape () const override;
+		QPainterPath shadowShape() const override;
+		QRectF boundingRect() const override;
+		bool isUseless() const override;
+		QRectF sceneGeometricRect() const override;
 
-		virtual void startUserTransformation(const QRectF &);
-		virtual void handleUserTransformation(const QRectF &, const QRectF &);
-		virtual QET::ScalingMethod preferredScalingMethod() const;
+		void startUserTransformation(const QRectF &) override;
+		void handleUserTransformation(const QRectF &, const QRectF &) override;
+		QET::ScalingMethod preferredScalingMethod() const override;
 
 		QPolygonF polygon () const;
 		void setPolygon   (const QPolygonF &polygon);
@@ -84,8 +84,8 @@ class PartPolygon : public CustomElementGraphicPart
 		void setClosed (bool close);
 
 	protected:
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 	
 	private:
 		void adjusteHandlerPos();

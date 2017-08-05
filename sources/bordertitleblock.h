@@ -38,7 +38,7 @@ class BorderTitleBlock : public QObject
 	
 	public:
 		BorderTitleBlock(QObject * = nullptr);
-		virtual ~BorderTitleBlock();
+		~BorderTitleBlock() override;
 	
 	private:
 		BorderTitleBlock(const BorderTitleBlock &);

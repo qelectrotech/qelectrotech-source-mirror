@@ -33,9 +33,9 @@ class SimpleElement : public CustomElement {
 
 	public  :
 		explicit SimpleElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
-		~SimpleElement();
+		~SimpleElement() override;
 
-		virtual void initLink(QETProject *project);
+		void initLink(QETProject *project) override;
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);

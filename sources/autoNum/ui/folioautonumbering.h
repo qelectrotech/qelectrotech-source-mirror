@@ -36,7 +36,7 @@ class FolioAutonumberingW : public QWidget
 	//METHODS
 	public:
 		explicit FolioAutonumberingW(QETProject *project, QWidget *parent = nullptr);
-		~FolioAutonumberingW();
+		~FolioAutonumberingW() override;
 
 		void setContext (QList <QString> autonums);
 		NumerotationContext toNumContext() const;

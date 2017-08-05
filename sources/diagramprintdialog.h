@@ -37,7 +37,7 @@ class DiagramPrintDialog : public QWidget
 	// Constructors, destructor
 	public:
 	DiagramPrintDialog(QETProject *, QWidget * = nullptr);
-	virtual ~DiagramPrintDialog();
+	~DiagramPrintDialog() override;
 	private:
 	DiagramPrintDialog(const DiagramPrintDialog &);
 	

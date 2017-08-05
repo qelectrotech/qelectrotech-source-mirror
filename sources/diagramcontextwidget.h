@@ -30,7 +30,7 @@ class DiagramContextWidget : public QWidget {
 	// Constructor, destructor
 	public:
 	DiagramContextWidget(QWidget *parent = nullptr);
-	virtual ~DiagramContextWidget();
+	~DiagramContextWidget() override;
 	private:
 	DiagramContextWidget(const DiagramContextWidget &);
 	

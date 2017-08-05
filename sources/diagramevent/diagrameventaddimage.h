@@ -33,12 +33,12 @@ class DiagramEventAddImage : public DiagramEventInterface
 
         public:
             DiagramEventAddImage(Diagram *diagram);
-            virtual ~DiagramEventAddImage();
+            ~DiagramEventAddImage() override;
 
-            virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
-            virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-            virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-            virtual bool wheelEvent            (QGraphicsSceneWheelEvent *event);
+            bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+            bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+            bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+            bool wheelEvent            (QGraphicsSceneWheelEvent *event) override;
 
             bool isNull () const;
     private:

@@ -41,7 +41,7 @@ class DVEventInterface : public QObject
 
 	public:
 		DVEventInterface(DiagramView *dv);
-		virtual ~DVEventInterface () = 0;
+		~DVEventInterface () override = 0;
 		virtual bool mouseDoubleClickEvent (QMouseEvent *event);
 		virtual bool mousePressEvent       (QMouseEvent *event);
 		virtual bool mouseMoveEvent        (QMouseEvent *event);

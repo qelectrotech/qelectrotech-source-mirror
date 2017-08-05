@@ -37,7 +37,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		// constructors, destructor
 	public:
 		PartRectangle(QETElementEditor *, QGraphicsItem *parent = nullptr);
-		virtual ~PartRectangle();
+		~PartRectangle() override;
 	
 	private:
 		PartRectangle(const PartRectangle &);
@@ -52,32 +52,32 @@ class PartRectangle :  public CustomElementGraphicPart
 			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartRectangle.
 			 * @return the QGraphicsItem type
 			 */
-		virtual int     type  () const { return Type; }
-		virtual void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
-		virtual QString name  () const { return(QObject::tr("rectangle", "element part name")); }
+		int     type  () const override { return Type; }
+		void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		QString name  () const override { return(QObject::tr("rectangle", "element part name")); }
 
-		virtual QString           xmlName () const { return(QString("rect")); }
-		virtual const QDomElement toXml   (QDomDocument &) const;
-		virtual void              fromXml (const QDomElement &);
+		QString           xmlName () const override { return(QString("rect")); }
+		const QDomElement toXml   (QDomDocument &) const override;
+		void              fromXml (const QDomElement &) override;
 
 		QRectF rect() const;
 		void   setRect(const QRectF &rect);
 
-		virtual QRectF  sceneGeometricRect() const;
+		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft() const;
 
-		virtual QPainterPath shape () const;
-		virtual QPainterPath shadowShape() const;
-		virtual QRectF boundingRect() const;
-		virtual bool   isUseless() const;
+		QPainterPath shape () const override;
+		QPainterPath shadowShape() const override;
+		QRectF boundingRect() const override;
+		bool   isUseless() const override;
 
-		virtual void startUserTransformation(const QRectF &);
-		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+		void startUserTransformation(const QRectF &) override;
+		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
 	protected:
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void switchResizeMode();

@@ -40,10 +40,10 @@ class XRefProperties : public PropertiesInterface
 		Label
 	};
 
-	virtual void toSettings	  (QSettings &settings, const QString = QString()) const;
-	virtual void fromSettings (const QSettings &settings, const QString = QString());
-	virtual void toXml		  (QDomElement &xml_element) const;
-	virtual void fromXml	  (const QDomElement &xml_element);
+	void toSettings	  (QSettings &settings, const QString = QString()) const override;
+	void fromSettings (const QSettings &settings, const QString = QString()) override;
+	void toXml		  (QDomElement &xml_element) const override;
+	void fromXml	  (const QDomElement &xml_element) override;
 
 	static QHash<QString, XRefProperties> defaultProperties();
 

@@ -34,7 +34,7 @@ class EllipseEditor : public ElementItemEditor
 		// constructors, destructor
 	public:
 		EllipseEditor(QETElementEditor *, PartEllipse * = nullptr, QWidget * = nullptr);
-		virtual ~EllipseEditor();
+		~EllipseEditor() override;
 	private:
 		EllipseEditor(const EllipseEditor &);
 	
@@ -47,12 +47,12 @@ class EllipseEditor : public ElementItemEditor
 	
 		// methods
 	public:
-		virtual bool setPart(CustomElementPart *);
-		virtual CustomElementPart *currentPart() const;
+		bool setPart(CustomElementPart *) override;
+		CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void editingFinished();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);

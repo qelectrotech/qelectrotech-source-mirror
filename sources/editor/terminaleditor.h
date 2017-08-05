@@ -32,7 +32,7 @@ class TerminalEditor : public ElementItemEditor {
 	// Constructors, destructor
 	public:
 	TerminalEditor(QETElementEditor *, PartTerminal * = nullptr, QWidget * = nullptr);
-	virtual ~TerminalEditor();
+	~TerminalEditor() override;
 	private:
 	TerminalEditor(const TerminalEditor &);
 	
@@ -45,13 +45,13 @@ class TerminalEditor : public ElementItemEditor {
 	
 	// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+	bool setPart(CustomElementPart *) override;
+	CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void updateTerminalO();
 		void updatePos();
-		void updateForm();
+		void updateForm() override;
 	
 	private:
 	void activeConnections(bool);

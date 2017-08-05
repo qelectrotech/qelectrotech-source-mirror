@@ -46,17 +46,17 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 
 	public:
 		explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
-		~MasterPropertiesWidget();
+		~MasterPropertiesWidget() override;
 
-		void setElement (Element *element);
-		void apply();
-		void reset();
-		QUndoCommand *associatedUndo () const;
-		QString title() const {return tr("Référence croisée (maître)");}
-		bool setLiveEdit(bool live_edit);
+		void setElement (Element *element) override;
+		void apply() override;
+		void reset() override;
+		QUndoCommand *associatedUndo () const override;
+		QString title() const override {return tr("Référence croisée (maître)");}
+		bool setLiveEdit(bool live_edit) override;
 
 	public slots:
-		void updateUi();
+		void updateUi() override;
 
 	private slots:
 		void headerCustomContextMenuRequested(const QPoint &pos);

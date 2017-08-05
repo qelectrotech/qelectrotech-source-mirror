@@ -31,7 +31,7 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	// constructor, destructor
 	public:
 	HelperCell(QGraphicsItem * = nullptr);
-	virtual ~HelperCell();
+	~HelperCell() override;
 	private:
 	HelperCell(const HelperCell &);
 	
@@ -45,18 +45,18 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	
 	// methods
 	public:
-	virtual void setGeometry(const QRectF &);
-	virtual QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const;
-	virtual QRectF boundingRect() const;
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr);
+	void setGeometry(const QRectF &) override;
+	QSizeF sizeHint(Qt::SizeHint, const QSizeF & = QSizeF()) const override;
+	QRectF boundingRect() const override;
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 	virtual void setType(QET::TitleBlockColumnLength);
 	virtual void setActions(const QList<QAction *> &);
 	virtual QList<QAction *> actions() const;
 	virtual void setLabel(const QString &text, bool = true);
 	
 	protected:
-	void contextMenuEvent(QGraphicsSceneContextMenuEvent *);
-	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+	void contextMenuEvent(QGraphicsSceneContextMenuEvent *) override;
+	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *) override;
 	
 	signals:
 	void contextMenuTriggered(HelperCell *);

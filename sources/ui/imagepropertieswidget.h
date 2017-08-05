@@ -36,16 +36,16 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 
 	public:
 		explicit ImagePropertiesWidget(DiagramImageItem *image = nullptr, QWidget *parent = nullptr);
-		~ImagePropertiesWidget();
+		~ImagePropertiesWidget() override;
 		void setImageItem (DiagramImageItem *image);
 
-		void apply();
-		void reset();
-		bool setLiveEdit(bool live_edit);
+		void apply() override;
+		void reset() override;
+		bool setLiveEdit(bool live_edit) override;
 		QUndoCommand* associatedUndo();
 
 	private:
-		void updateUi();
+		void updateUi() override;
 
 	private slots:
 		void on_m_scale_slider_valueChanged(int value);

@@ -42,7 +42,7 @@ class NewElementWizard : public QWizard
 		// constructors, destructor
 	public:
 		NewElementWizard(QWidget * = nullptr, Qt::WindowFlags = nullptr);
-		virtual ~NewElementWizard();
+		~NewElementWizard() override;
 
 		void preselectedLocation(const ElementsLocation &location);
 	
@@ -66,7 +66,7 @@ class NewElementWizard : public QWizard
 		QWizardPage *buildStep3();
 		bool validStep1();
 		bool validStep2();
-		bool validateCurrentPage();
+		bool validateCurrentPage() override;
 		void createNewElement();
 };
 #endif
