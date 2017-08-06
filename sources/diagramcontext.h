@@ -45,37 +45,39 @@
  * frozenLabel                    -> label locked at a given time
  *
  */
-class DiagramContext {
+class DiagramContext
+{
 	public:
-	enum KeyOrder {
-		None,
-		Alphabetical,
-		DecreasingLength
-	};
-
-	QList<QString> keys(KeyOrder = None) const;
-	bool contains(const QString &) const;
-	const QVariant operator[](const QString &) const;
-	bool addValue(const QString &, const QVariant &, bool show = true);
-	void clear();
-	int count();
-	bool keyMustShow (const QString &) const;
+		enum KeyOrder {
+			None,
+			Alphabetical,
+			DecreasingLength
+		};
 	
-	bool operator==(const DiagramContext &) const;
-	bool operator!=(const DiagramContext &) const;
-	
-	void toXml(QDomElement &, const QString & = "property") const;
-	void fromXml(const QDomElement &, const QString & = "property");
-	void toSettings(QSettings &, const QString &) const;
-	void fromSettings(QSettings &, const QString &);
-	
-	static QString validKeyRegExp();
+		QList<QString> keys(KeyOrder = None) const;
+		bool contains(const QString &) const;
+		const QVariant operator[](const QString &) const;
+		bool addValue(const QString &, const QVariant &, bool show = true);
+		QVariant value(const QString &key) const;
+		void clear();
+		int count();
+		bool keyMustShow (const QString &) const;
+		
+		bool operator==(const DiagramContext &) const;
+		bool operator!=(const DiagramContext &) const;
+		
+		void toXml(QDomElement &, const QString & = "property") const;
+		void fromXml(const QDomElement &, const QString & = "property");
+		void toSettings(QSettings &, const QString &) const;
+		void fromSettings(QSettings &, const QString &);
+		
+		static QString validKeyRegExp();
 	
 	private:
-	static bool stringLongerThan(const QString &, const QString &);
-	bool keyIsAcceptable(const QString &) const;
-	/// Diagram context data (key/value pairs)
-	QHash<QString, QVariant> m_content;
-	QHash<QString, bool> m_content_show;
+		static bool stringLongerThan(const QString &, const QString &);
+		bool keyIsAcceptable(const QString &) const;
+			/// Diagram context data (key/value pairs)
+		QHash<QString, QVariant> m_content;
+		QHash<QString, bool> m_content_show;
 };
 #endif

@@ -36,6 +36,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(QString tagg READ tagg WRITE setTagg NOTIFY taggChanged)
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY TextFromChanged)
+	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY InfoNameChanged)
 	
 	public:
 		Q_ENUMS(TextFrom)
@@ -50,6 +51,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void taggChanged(QString tagg);
 		void textChanged(QString text);
 		void TextFromChanged(DynamicElementTextItem::TextFrom text_from);
+		void InfoNameChanged(QString info);
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -70,16 +72,21 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString text() const;
 		void setText(const QString &text);
         static QString xmlTaggName() {return QString("dynamic_elmt_text");}
+		void setInfoName(const QString &info_name);
+		QString infoName() const;
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		
 	private:
+		void elementInfoChanged();
+		
+	private:
 		Element *m_parent_element = nullptr;
 		QString m_tagg,
 				m_text,
-				m_elmt_info_name;
+				m_info_name;
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;		
 };

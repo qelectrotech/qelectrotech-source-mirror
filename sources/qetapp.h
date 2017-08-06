@@ -72,7 +72,7 @@ class QETApp : public QETSingleApplication {
 	
 	static ElementsCollectionCache *collectionCache();
 	static QStringList elementInfoKeys();
-	static QString elementTranslatedInfoKey(QString &);
+	static QString elementTranslatedInfoKey(const QString &);
 	
 	static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 	static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();

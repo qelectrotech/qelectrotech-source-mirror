@@ -24,6 +24,8 @@
 #include <QComboBox>
 #include <QUndoCommand>
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetapp.h"
+#include "element.h"
 
 DynamicElementTextModel::DynamicElementTextModel(QObject *parent) :
 QStandardItemModel(parent)
@@ -85,9 +87,10 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	QStandardItem *info = new QStandardItem(tr("Information"));
     info->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     
-    QStandardItem *infoa = new QStandardItem(deti->toPlainText());
+    QStandardItem *infoa = new QStandardItem(QETApp::elementTranslatedInfoKey(deti->infoName()));
     infoa->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
-    infoa->setData(DynamicElementTextModel::infoText, Qt::UserRole+1);
+    infoa->setData(DynamicElementTextModel::infoText, Qt::UserRole+1); //Use to know the edited thing
+	infoa->setData(deti->infoName(), Qt::UserRole+2); //Use to know to element info name
     
 	qsi_list.clear();
     qsi_list << info << infoa;
@@ -218,9 +221,18 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	else if ((from == tr("Information de l'élément")) && (deti->textFrom() != DynamicElementTextItem::ElementInfo))
 		new QPropertyUndoCommand(deti, "textFrom", QVariant(deti->textFrom()), QVariant(DynamicElementTextItem::ElementInfo), undo);
 	
-	QString text = text_qsi->child(0,0)->child(0,1)->data(Qt::DisplayRole).toString();
-	if (text != deti->text())
-		new QPropertyUndoCommand(deti, "text", QVariant(deti->text()), QVariant(text), undo);
+	if(from == tr("Texte utilisateur"))
+	{
+		QString text = text_qsi->child(0,0)->child(0,1)->data(Qt::DisplayRole).toString();
+		if (text != deti->text())
+			new QPropertyUndoCommand(deti, "text", QVariant(deti->text()), QVariant(text), undo);
+	}
+	else if (from == tr("Information de l'élément"))
+	{
+		QString info_name = text_qsi->child(0,0)->child(1,1)->data(Qt::UserRole+2).toString();
+		if(info_name != deti->infoName())
+			new QPropertyUndoCommand(deti, "infoName", QVariant(deti->infoName()), QVariant(info_name), undo);
+	}
 	
 	int fs = text_qsi->child(1,1)->data(Qt::EditRole).toInt();
 	if (fs != deti->fontSize()) 
@@ -280,6 +292,11 @@ void DynamicElementTextModel::dataEdited(QStandardItem *qsi)
 	{
 		QString text = qsi->data(Qt::DisplayRole).toString();
 		m_texts_list.value(deti)->setData(text, Qt::DisplayRole);
+	}
+	else if (qsi->data().toInt() == infoText && deti->ParentElement())
+	{
+		QString info = qsi->data(Qt::UserRole+2).toString();
+		m_texts_list.value(deti)->setData(deti->ParentElement()->elementInformations().value(info), Qt::DisplayRole);
 	}
 }
 
@@ -374,9 +391,36 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			qcb->addItem(tr("Information de l'élément"));
 			return qcb;
 		}
+		case DynamicElementTextModel::infoText:
+		{
+			const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
+			QStandardItem *qsi = detm->itemFromIndex(index);
+			
+			if(!qsi)
+				break;
+			
+			DynamicElementTextItem *deti = detm->textFromIndex(index);
+			if(!deti)
+				break;
+				
+				//We use a QMap because the keys of the map are sorted, then no matter the curent local,
+				//the value of the combo box are always alphabetically sorted
+			QMap <QString, QString> info_map;
+			for(QString str : availableInfo(deti)) {
+				info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+			}
+			
+			QComboBox *qcb = new QComboBox(parent);
+			qcb->setObjectName("info_text");
+			for (QString key : info_map.keys()) {
+				qcb->addItem(key, info_map.value(key));
+			}
+			return qcb;
+		}
 		case DynamicElementTextModel::color:
 		{
 			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>());
+			cd->setObjectName("color_dialog");
 			return cd;
 		}
 	}
@@ -386,22 +430,61 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
 	if (index.isValid())
-	{        
-		if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
+	{
+		if(editor->objectName() == "color_dialog")
 		{
-			QStandardItem *qsi = qsim->itemFromIndex(index);
-			if(qsi)
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
-				if(QColorDialog *cd = dynamic_cast<QColorDialog *> (editor))
+				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
+					QColorDialog *cd = static_cast<QColorDialog *> (editor);
 					qsi->setData(cd->selectedColor(), Qt::EditRole);
 					qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
 					return;
 				}
+				
 			}
-			
+		}
+		else if (editor->objectName() == "info_text")
+		{
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
+			{
+				if(QStandardItem *qsi = qsim->itemFromIndex(index))
+				{
+					QComboBox *cb = static_cast<QComboBox *>(editor);
+					qsi->setData(cb->currentText(), Qt::DisplayRole);
+					qsi->setData(cb->currentData(), Qt::UserRole+2);
+					return;
+				}
+				
+			}
 		}
 	}
 	
 	QStyledItemDelegate::setModelData(editor, model, index);
+}
+
+/**
+ * @brief DynamicTextItemDelegate::availableInfo
+ * @param deti
+ * @return A list of available info of element
+ */
+QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti) const
+{
+	QStringList qstrl;
+	Element *elmt = deti->ParentElement();
+	if(!elmt)
+		return qstrl;
+	
+	QStringList info_list = QETApp::elementInfoKeys();
+	info_list.removeAll("formula"); //No need to have formula
+	DiagramContext dc = elmt->elementInformations();
+	
+	for(QString info : info_list)
+	{
+		if(dc.contains(info))
+			qstrl << info;
+	}
+	
+	return qstrl;
 }

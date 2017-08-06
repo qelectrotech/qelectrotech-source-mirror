@@ -36,6 +36,7 @@ DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWi
     m_tree_view->header()->setDefaultSectionSize(150);
     m_tree_view->setItemDelegate(new DynamicTextItemDelegate(m_tree_view));
 	m_tree_view->setAlternatingRowColors(true);
+	m_tree_view->setEditTriggers(QAbstractItemView::CurrentChanged);
     ui->verticalLayout->addWidget(m_tree_view);
     setElement(element);
 }

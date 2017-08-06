@@ -76,6 +76,14 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
     QDomElement dom_text = dom_doc.createElement("text");
     dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
     root_element.appendChild(dom_text);
+	
+		//Info name
+	if(!m_info_name.isEmpty())
+	{
+		QDomElement dom_info_name = dom_doc.createElement("info_name");
+		dom_info_name.appendChild(dom_doc.createTextNode(m_info_name));
+		root_element.appendChild(dom_info_name);
+	}
     
 		//tagg
 	if (!m_tagg.isEmpty())
@@ -116,12 +124,24 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("TextFrom"));
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
-	setNoEditable(m_text_from == ElementInfo? true : false);
+	if(m_text_from == ElementInfo)
+	{
+		setNoEditable(true);
+		connect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	}
+	else {
+		setNoEditable(false);
+	}
 
 		//Text
     QDomElement dom_text = dom_elmt.firstChildElement("text");
 	if (!dom_text.isNull())
         setPlainText(dom_text.text());
+	
+		//Info name
+	QDomElement dom_info_name = dom_elmt.firstChildElement("info_name");
+	if(!dom_info_name.isNull())
+		m_info_name = dom_info_name.text();
     
 		//tagg
     QDomElement dom_tagg = dom_elmt.firstChildElement("tagg");
@@ -159,6 +179,18 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 {
 	m_text_from = text_from;
 	setNoEditable(m_text_from == ElementInfo? true : false);
+	
+	if(m_text_from == UserText)
+	{
+		setPlainText(m_text);
+		disconnect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	}
+	else if (m_text_from == ElementInfo && m_parent_element)
+	{
+		setPlainText(m_parent_element->elementInformations().value(m_info_name).toString());
+		connect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	}
+	
 	emit TextFromChanged(m_text_from);
 }
 
@@ -199,6 +231,26 @@ void DynamicElementTextItem::setText(const QString &text)
 	m_text = text;
 	setPlainText(m_text);
 	emit textChanged(m_text);
+}
+
+/**
+ * @brief DynamicElementTextItem::setInfoName
+ * Set the information name of the parent element.
+ * @param info_name
+ */
+void DynamicElementTextItem::setInfoName(const QString &info_name)
+{
+	m_info_name = info_name;
+	
+	if(m_parent_element) {
+		setPlainText(m_parent_element->elementInformations().value(info_name).toString());
+	}
+	
+	emit InfoNameChanged(info_name);
+}
+
+QString DynamicElementTextItem::infoName() const {
+	return m_info_name;
 }
 
 /**
@@ -251,5 +303,10 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	
 	if(!(event->modifiers() & Qt::ControlModifier))
 		QGraphicsTextItem::mouseReleaseEvent(event);
+}
+
+void DynamicElementTextItem::elementInfoChanged()
+{
+	setPlainText(m_parent_element->elementInformations().value(m_info_name).toString());
 }
 

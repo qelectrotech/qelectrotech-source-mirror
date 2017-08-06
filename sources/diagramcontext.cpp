@@ -74,6 +74,10 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value, bool sh
 	return(false);
 }
 
+QVariant DiagramContext::value(const QString &key) const {
+	return m_content.value(key);
+}
+
 /**
 	Clear the content of this diagram context.
 */

@@ -302,7 +302,7 @@ QStringList QETApp::elementInfoKeys()
  * @param info the key to be translated
  * @return
  */
-QString QETApp::elementTranslatedInfoKey(QString &info)
+QString QETApp::elementTranslatedInfoKey(const QString &info)
 {
 	if (info == "formula") return tr("formule du label");
 	else if (info == "label") return tr("Label");
