@@ -18,6 +18,5 @@
 #include "abstractelementpropertieseditorwidget.h"
 
 AbstractElementPropertiesEditorWidget::AbstractElementPropertiesEditorWidget(QWidget *parent) :
-	PropertiesEditorWidget(parent),
-	m_element (nullptr)
+	PropertiesEditorWidget(parent)
 {}

@@ -19,6 +19,7 @@
 #define ABSTRACTELEMENTPROPERTIESEDITORWIDGET_H
 
 #include "PropertiesEditor/propertieseditorwidget.h"
+#include "QPointer"
 
 class Element;
 
@@ -34,7 +35,7 @@ class AbstractElementPropertiesEditorWidget : public PropertiesEditorWidget
 		virtual void setElement(Element *element) =0;
 
 	protected:
-		Element *m_element;
+		QPointer <Element> m_element;
 
 
 };

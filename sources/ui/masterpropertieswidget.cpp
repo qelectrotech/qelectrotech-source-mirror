@@ -33,7 +33,6 @@
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
-	m_showed_element (nullptr),
 	m_project(nullptr)
 {
 	ui->setupUi(this);
@@ -99,7 +98,8 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
 	if (m_showed_element)
 		m_showed_element->setHighlighted(false);
 	
-	m_element->setHighlighted(false);
+	if(m_element)
+		m_element->setHighlighted(false);
 	
 	delete ui;
 }

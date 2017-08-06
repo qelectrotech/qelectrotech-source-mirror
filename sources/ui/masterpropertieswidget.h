@@ -71,7 +71,7 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	Ui::MasterPropertiesWidget *ui;
 	QHash <QTreeWidgetItem *, Element *> m_qtwi_hash;
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr;
-	Element *m_showed_element;
+	QPointer <Element> m_showed_element;
 	QETProject *m_project;
 	QMenu *m_context_menu;
 	QAction *m_link_action,
