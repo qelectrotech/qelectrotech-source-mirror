@@ -638,13 +638,18 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 }
 
 /**
-	Handles "key press" events. Reimplemented here to switch to visualisation
-	mode if needed.
-*/
-void DiagramView::keyPressEvent(QKeyEvent *e) {
-	if (m_event_interface && m_event_interface->keyPressEvent(e)) return;
+ * @brief DiagramView::keyPressEvent
+ * 	Handles "key press" events. Reimplemented here to switch to visualisation
+ *	mode if needed.
+ * @param e
+ */
+void DiagramView::keyPressEvent(QKeyEvent *e)
+{
+	if (m_event_interface && m_event_interface->keyPressEvent(e))
+		return;
+	
 	ProjectView *current_project = this->diagramEditor()->acessCurrentProject();
-switch(e -> key())
+	switch(e -> key())
 	{
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
@@ -684,29 +689,38 @@ switch(e -> key())
 		case Qt::Key_ZoomIn:
 			zoom(1.15);
 			return;
-		case Qt::Key_Minus:
+		case Qt::Key_Minus: {
 			if (e->modifiers() & Qt::ControlModifier)
 				zoom(0.85);
-		case Qt::Key_Plus:
+		}
+			break;
+		case Qt::Key_Plus: {
 			if (e->modifiers() & Qt::ControlModifier)
 				zoom(1.15);
-		case Qt::Key_Up:
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty())){
+		}
+			break;
+		case Qt::Key_Up: {
+			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
-			}
-		case Qt::Key_Down:
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty())){
+		}
+			break;
+		case Qt::Key_Down: {
+			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
-			}
-		case Qt::Key_Left:
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty())){
+		}
+			break;
+		case Qt::Key_Left: {
+			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
-			}
-		case Qt::Key_Right:
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty())){
+		}
+			break;
+		case Qt::Key_Right: {
+			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
-			}
+		}
+			break;
 	}
+	
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
 }
