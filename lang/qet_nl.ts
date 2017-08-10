@@ -673,7 +673,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished">Toon tekst per pagina.</translation>
+        <translation type="unfinished">Toon tekst per pagina. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -866,7 +866,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="48"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation type="unfinished">Paginaeigenschappen</translation>
+        <translation type="unfinished">Pagina-eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -1680,7 +1680,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="153"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van deze titelblokverzameling</translation>
+        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van deze titelblokcollectie</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="162"/>
@@ -1698,32 +1698,32 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="199"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van QET titelblokken</translation>
+        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van QET titelbloksjablonen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="200"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dit is de titelblokverzameling van QET. Deze zijn niet te wijzigen, wel te kopieren.</translation>
+        <translation type="unfinished">Dit is de titelbloksjablonencollectie van QET. Deze zijn niet te wijzigen, wel te kopieren.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="207"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van titelblokverzameling</translation>
+        <translation type="unfinished">Dubbelklik voor in- of uitvouwen van uw persoonlijke titelblokcollectie</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="208"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dit is een gebruikerverzameling van titelblokken; gebruik deze voor het toevoegen,verwijderen en wijzigen van uw eigen titelblokken.</translation>
+        <translation type="unfinished">Dit is de gebruikercollectie van titelbloksjablonen; gebruik deze voor het toevoegen,verwijderen en wijzigen van uw eigen titelbloksjablonen.</translation>
     </message>
 </context>
 <context>
     <name>ElementsPanelWidget</name>
     <message>
         <source>Recharger les collections</source>
-        <translation type="unfinished">Herlaad verzamelingen</translation>
+        <translation type="unfinished">Herlaad collecties</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
@@ -1763,7 +1763,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="51"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished">Paginaeigenschappen</translation>
+        <translation type="unfinished">Pagina-eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="52"/>
@@ -2215,7 +2215,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished">Gebruik paginalabels op de plaats van hun ID</translation>
+        <translation type="unfinished">Gebruik paginalabels in plaats van hun ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="254"/>
@@ -3492,7 +3492,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation type="unfinished">Eigenschappen van selectie</translation>
+        <translation type="unfinished">Eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -3619,14 +3619,15 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="1602"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation type="unfinished">  --common-elements-dir=DIR     Definieer de map voor de elementenverzameling
+        <translation type="unfinished">  --common-elements-dir=DIR     Definieer de map voor de elementencollectie
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1605"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished">  --common-tbt-dir=DIR          Definieer de map voor titelbloksjablonenverzameling</translation>
+        <translation type="unfinished">  --common-tbt-dir=DIR          Definieer de map voor de titelbloksjablonen
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1608"/>
@@ -3639,13 +3640,14 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="1610"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation type="unfinished">  --lang-dir=DIR                Definieer de taalbestandenmap</translation>
+        <translation type="unfinished">  --lang-dir=DIR                Definieer de taalbestandenmap
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="102"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished">Laden... Initialisatie van de elementenverzameling-cache </translation>
+        <translation type="unfinished">Laden... Initialisatie van de cache van de elementencollectie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="111"/>
@@ -3699,13 +3701,13 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished">QET titelblokken</translation>
+        <translation type="unfinished">QET titelbloksjablonen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="346"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished">Gebruiker titelblokken</translation>
+        <translation type="unfinished">Gebruiker titelbloksjablonen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="809"/>
@@ -3772,7 +3774,9 @@ Wilt u de wijzigingen opslaan?</translation>
         <source> [options] [fichier]...
 
 </source>
-        <translation type="unfinished">[opties] [bestanden].....</translation>
+        <translation type="unfinished"> [opties] [bestanden].....
+
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1596"/>
@@ -3892,7 +3896,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>&amp;Fermer</source>
-        <translation type="unfinished">&amp;Afsluiten</translation>
+        <translation type="unfinished">&amp;Sluiten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
@@ -3945,22 +3949,22 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished">Paginaeigenschappen</translation>
+        <translation type="unfinished">Pagina-eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished">Voeg een pagina toe</translation>
+        <translation type="unfinished">Pagina toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
         <source>Supprimer le folio</source>
-        <translation type="unfinished">Verwijder de pagina</translation>
+        <translation type="unfinished">Pagina verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished">Start de terminal-plugin om een terminal te maken</translation>
+        <translation type="unfinished">Start de terminal-plugin voor het maken van een terminal</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
@@ -4127,7 +4131,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="456"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Bewerk de paginaeigenschappen (afmetingen, titelblokinformatie, geleidereigenschappen...)</translation>
+        <translation type="unfinished">Bewerk de pagina-eigenschappen (afmetingen, titelblokinformatie, geleidereigenschappen...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
@@ -4243,7 +4247,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="423"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Toevoegen van een tekstveld</translation>
+        <translation type="unfinished">Tekstveld toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="183"/>
@@ -4296,7 +4300,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="902"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation type="unfinished">Bestand openen mislukt. Heeft u de juiste machtigingen?</translation>
+        <translation type="unfinished">Bestand openen mislukt. Controleer of u de juiste machtigingen heeft.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="916"/>
@@ -5028,7 +5032,7 @@ Opties :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="739"/>
         <source> et</source>
-        <translation type="unfinished">en</translation>
+        <translation type="unfinished"> en</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
@@ -6357,7 +6361,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished">Splitsen van één cel naar %1 </translation>
+        <translation type="unfinished">Splitsen van één cel naar %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
@@ -6497,7 +6501,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.h" line="51"/>
         <source>Ajouter </source>
-        <translation type="unfinished">Voeg toe</translation>
+        <translation type="unfinished">Toevoegen </translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="70"/>
@@ -6580,7 +6584,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Opslaan als ...</translation>
+        <translation type="unfinished">Opslaan als ... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="55"/>
@@ -6593,12 +6597,13 @@ Que désirez vous faire ?</source>
 
 </source>
         <translation type="unfinished">Kan bestand niet vervangen!
+
 </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">NAAMGEVING:</translation>
+        <translation type="unfinished">NAAMGEVING : </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -6764,17 +6769,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
-        <translation type="unfinished">Linkerbovenhoek</translation>
+        <translation type="unfinished">Linkerbovenhoek : </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Dimensions : </source>
-        <translation type="unfinished">Afmetingen :</translation>
+        <translation type="unfinished">Afmetingen : </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="56"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Breedte:</translation>
+        <translation type="unfinished">Breedte :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="58"/>
@@ -8557,7 +8562,7 @@ Maximale afmeting : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="99"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished">Onder het labelelement</translation>
+        <translation type="unfinished">Onder het elementlabel</translation>
     </message>
 </context>
 <context>
