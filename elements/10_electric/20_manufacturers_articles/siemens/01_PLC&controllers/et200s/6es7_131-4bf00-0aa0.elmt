@@ -1,0 +1,65 @@
+<definition width="190" orientation="dyyy" version="0.5" height="90" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
+    <uuid uuid="{3ba82e93-be0f-4f56-8af2-0a0d8012ac08}"/>
+    <names>
+        <name lang="en">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+        <name lang="cs">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+        <name lang="pl">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+        <name lang="ar">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+        <name lang="pt">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+        <name lang="fr">ET200S 8DI 6ES7131-4BF00-0AA0</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="x.6" x="64" y="-3" size="6"/>
+        <text text="x.5" x="124" y="-3" size="6"/>
+        <text text="x.7" x="144" y="-3" size="6"/>
+        <text text="x.4" x="44" y="-3" size="6"/>
+        <text text="x.2" x="24" y="-3" size="6"/>
+        <text text="x.1" x="84" y="-3" size="6"/>
+        <text text="x.3" x="104" y="-3" size="6"/>
+        <text text="8DI DC" x="65" y="38" size="6"/>
+        <text text="x.0" x="4" y="-3" size="6"/>
+        <text text="1" x="8" y="-14" size="6"/>
+        <text text="ET200S" x="65" y="28" size="6"/>
+        <text text="8" x="147" y="-14" size="6"/>
+        <text text="5" x="87" y="-14" size="6"/>
+        <text text="4" x="67" y="-14" size="6"/>
+        <text text="3" x="47" y="-14" size="6"/>
+        <text text="2" x="27" y="-14" size="6"/>
+        <text text="7" x="127" y="-14" size="6"/>
+        <text text="6" x="107" y="-14" size="6"/>
+        <line x1="13" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="27" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="53" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="67" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="133" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="147" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="113" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="127" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="33" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="47" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="107.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="7.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="87.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="73" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="87" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="127.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="67.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="47.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="93" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="107" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="147.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="27.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="170" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="153" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="I:" x="-5" y="-3" size="6"/>
+        <line x1="170" y2="49" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="170" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="170" y2="50" length1="1.5" y1="50" end2="none" length2="1.5" antialias="false" x2="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y2="50" length1="1.5" y1="50" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="50" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="?U?" tagg="label" x="143" y="61.5" size="9"/>
+        <input rotate="true" text="I???.x" tagg="none" x="59" y="10" size="9"/>
+        <terminal orientation="n" x="10" y="-30"/>
+        <terminal orientation="n" x="30" y="-30"/>
+        <terminal orientation="n" x="50" y="-30"/>
+        <terminal orientation="n" x="70" y="-30"/>
+        <terminal orientation="n" x="90" y="-30"/>
+        <terminal orientation="n" x="110" y="-30"/>
+        <terminal orientation="n" x="130" y="-30"/>
+        <terminal orientation="n" x="150" y="-30"/>
+    </description>
+</definition>

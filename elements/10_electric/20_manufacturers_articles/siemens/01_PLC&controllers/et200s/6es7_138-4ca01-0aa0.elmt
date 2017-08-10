@@ -1,0 +1,43 @@
+<definition width="110" orientation="dyyy" version="0.5" height="90" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
+    <uuid uuid="{27c46472-c062-4df3-8247-e606bbda0014}"/>
+    <names>
+        <name lang="en">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+        <name lang="cs">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+        <name lang="pl">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+        <name lang="ar">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+        <name lang="pt">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+        <name lang="fr">ET200S PM-E-DC24V 6ES7 138-4CA01-0AA0</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="M" x="27" y="-3" size="6"/>
+        <text text="M" x="67" y="-3" size="6"/>
+        <text text="L+" x="47" y="-3" size="6"/>
+        <text text="PM-E DC24V" x="9" y="33" size="6"/>
+        <text text="L+" x="7" y="-3" size="6"/>
+        <text text="ET200S" x="9" y="18" size="6"/>
+        <text text="3" x="28" y="-15" size="6"/>
+        <text text="2" x="8" y="-15" size="6"/>
+        <text text="7" x="68" y="-15" size="6"/>
+        <text text="6" x="48" y="-15" size="6"/>
+        <line x1="13" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="27" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="53" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="67" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="33" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="47" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="7.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="67.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="47.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="27.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="90" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="73" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="90" y2="49" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y2="50" length1="1.5" y1="50" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="50" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" y2="50" length1="1.5" y1="50" end2="none" length2="1.5" antialias="false" x2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="?U?" tagg="label" x="63" y="61.5" size="9"/>
+        <terminal orientation="n" x="10" y="-31"/>
+        <terminal orientation="n" x="30" y="-31"/>
+        <terminal orientation="n" x="50" y="-31"/>
+        <terminal orientation="n" x="70" y="-31"/>
+    </description>
+</definition>
