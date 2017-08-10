@@ -1,0 +1,36 @@
+<definition link_type="master" width="80" height="50" hotspot_x="51" orientation="dyyy" version="0.60" type="element" hotspot_y="24">
+    <uuid uuid="{a2740e69-3632-4ab0-8bd1-0591adc0b909}"/>
+    <names>
+        <name lang="fr">Interrupteur sectionneur triphasé</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" y3="20" closed="false" x2="0" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="-10" x3="0"/>
+        <circle y="10" antialias="true" x="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle y="-12" antialias="true" x="18" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle y="-12" antialias="true" x="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle y="-12" antialias="true" x="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <polygon antialias="true" y3="20" closed="false" x2="0" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="-10" x3="0"/>
+        <polygon antialias="true" y3="20" closed="false" x2="20" x1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="-10" x3="20"/>
+        <polygon antialias="true" y3="20" closed="false" x2="-20" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="-10" x3="-20"/>
+        <input y="3" x="22.75" size="9" text="_" tagg="label"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-20"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="-2" x1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-12"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="-20" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-20"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="-22" x1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-12"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="20" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-20"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="18" x1="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" y1="-12"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="-40" x1="15" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="0" y1="0"/>
+        <line length1="1.5" antialias="false" length2="1.5" end1="none" end2="none" x2="-45" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" y1="10"/>
+        <terminal y="-20" x="0" orientation="n"/>
+        <terminal y="20" x="0" orientation="s"/>
+        <terminal y="-20" x="20" orientation="n"/>
+        <terminal y="20" x="20" orientation="s"/>
+        <terminal y="-20" x="-20" orientation="n"/>
+        <terminal y="20" x="-20" orientation="s"/>
+    </description>
+</definition>

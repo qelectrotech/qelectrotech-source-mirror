@@ -1,0 +1,47 @@
+<definition width="70" orientation="dyyy" version="0.5" height="60" type="element" hotspot_y="27" link_type="simple" hotspot_x="44">
+    <uuid uuid="{90f11615-a2f2-4324-8d2c-c2a9b7377dfa}"/>
+    <names>
+        <name lang="it">Motore trifase PE + BRAKE</name>
+        <name lang="en">Three-phase engine PE + BRAKE</name>
+        <name lang="ru">Трёхфазный эл. мотор PE + BRAKE</name>
+        <name lang="cs">Trojfázový motor PE + BRAKE</name>
+        <name lang="es">Motor trifásico PE + BRAKE</name>
+        <name lang="pl">Silnik trójfazowy PE + BRAKE</name>
+        <name lang="de">Drehstrom Motor PE + BRAKE</name>
+        <name lang="pt">Motor trifásico PE + BRAKE</name>
+        <name lang="fr">Moteur triphasé PE + BRAKE</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="W1" rotation="270" x="8" y="-9" size="5"/>
+        <text text="V1" rotation="270" x="-2" y="-11" size="5"/>
+        <text text="PE" rotation="270" x="18" y="-11" size="5"/>
+        <text text="M" x="-10.25" y="18" size="18"/>
+        <circle diameter="30" antialias="true" x="-15" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="M_" tagg="label" x="-21" y="41" size="9"/>
+        <line x1="0" y2="-5" length1="1.5" y1="-20" end2="none" length2="1.5" antialias="false" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" y2="-1.5" length1="1.5" y1="-20" end2="none" length2="1.5" antialias="false" x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="-1.5" length1="1.5" y1="-20" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y2="10" length1="1.5" y1="-16" end2="none" length2="1.5" antialias="false" x2="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="30" angle="-70" width="35" height="35" antialias="true" x="-17.5" y="-7.5" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y2="12" length1="1.5" y1="10" end2="none" length2="1.5" antialias="false" x2="18" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" y2="20" length1="1.5" y1="0" end2="none" length2="1.5" antialias="false" x2="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" y2="2" length1="1.5" y1="0" end2="none" length2="1.5" antialias="false" x2="-23" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" y2="18" length1="1.5" y1="20" end2="none" length2="1.5" antialias="false" x2="-23" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-23" y2="18" length1="1.5" y1="2" end2="none" length2="1.5" antialias="false" x2="-23" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" height="8" antialias="false" x="-35" y="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-25" y2="10" length1="1.5" y1="10" end2="none" length2="1.5" antialias="false" x2="-24" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-30" y2="-17" length1="1.5" y1="6" end2="none" length2="1.5" antialias="false" x2="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-30" y2="20" length1="1.5" y1="14" end2="none" length2="1.5" antialias="false" x2="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-30" y2="20" length1="1.5" y1="20" end2="none" length2="1.5" antialias="false" x2="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-40" y2="-17" length1="1.5" y1="20" end2="none" length2="1.5" antialias="false" x2="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="U1" rotation="270" x="-12" y="-10" size="5"/>
+        <terminal orientation="n" x="-40" y="-21"/>
+        <terminal orientation="n" x="0" y="-21"/>
+        <terminal orientation="n" x="10" y="-21"/>
+        <terminal orientation="n" x="-10" y="-21"/>
+        <terminal orientation="n" x="-30" y="-21"/>
+        <terminal orientation="n" x="20" y="-21"/>
+    </description>
+</definition>

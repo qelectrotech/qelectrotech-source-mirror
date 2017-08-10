@@ -1,0 +1,26 @@
+<definition type="element" hotspot_y="44" version="0.60" hotspot_x="43" link_type="slave" orientation="dyyy" width="60" height="60">
+    <uuid uuid="{9f95f940-7ebe-43df-9f35-c4c07eb2e047}"/>
+    <names>
+        <name lang="fr">Contact NF disjoncteur magnéto-thermique GV</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="state" show="1">NC</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+    </kindInformations>
+    <informations></informations>
+    <description>
+        <polygon x3="-22" x6="-27" y4="-26" y2="-20" closed="false" x5="-27" y5="-26" y6="-30" x7="-27" x4="-22" x2="-27" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y1="-16" x1="-27" y7="-30"/>
+        <rect y="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-37" width="20" height="28"/>
+        <text y="-5" text="I>" size="9" x="-34"/>
+        <input y="-13.5" text="_" size="8" tagg="label" rotate="true" x="4"/>
+        <line length1="1.5" length2="1.5" y2="-16" end2="none" x2="-17" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-16" x1="-37"/>
+        <line length1="1.5" length2="1.5" y2="-40" end2="none" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-25" x1="0"/>
+        <line length1="1.5" length2="1.5" y2="-25" end2="none" x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-5" x1="0"/>
+        <line length1="1.5" length2="1.5" y2="-5" end2="none" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="10" x1="0"/>
+        <line length1="1.5" length2="1.5" y2="-15" end2="none" x2="0" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-15" x1="-15"/>
+        <line length1="1.5" length2="1.5" y2="-25" end2="none" x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-25" x1="0"/>
+        <terminal y="10" orientation="s" x="0"/>
+        <terminal y="-40" orientation="n" x="0"/>
+    </description>
+</definition>
