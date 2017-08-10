@@ -1,0 +1,58 @@
+<definition width="110" orientation="dyyy" version="0.5" height="210" type="element" hotspot_y="35" link_type="simple" hotspot_x="15">
+    <uuid uuid="{96d2097e-5f1c-445f-8b52-fccda10ca9c3}"/>
+    <names>
+        <name lang="en">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+        <name lang="cs">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+        <name lang="pl">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+        <name lang="ar">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+        <name lang="pt">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+        <name lang="fr">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="P3" x="44" y="154" size="7"/>
+        <text text="P4" x="65" y="154" size="7"/>
+        <text text="L+" x="5" y="-15" size="6"/>
+        <text text="CSM 1277" x="-4" y="64" size="6"/>
+        <text text="X1" x="1" y="128" size="6"/>
+        <text text="24VDC" x="17" y="-2" size="6"/>
+        <text text="M" x="26" y="-15" size="6"/>
+        <line x1="13" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="27" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="90" y2="168" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="167" length1="1.5" y1="91" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="0" length1="1.5" y1="-27" end2="none" length2="1.5" antialias="false" x2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="2" y2="0" length1="1.5" y1="-27" end2="none" length2="1.5" antialias="false" x2="2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="90" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="33" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="47" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="47.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="27.5" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="48" y2="-13" length1="1.5" y1="-13" end2="none" length2="1.5" antialias="false" x2="52" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="7.4999" y="-30.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="49" y2="-11" length1="1.5" y1="-11" end2="none" length2="1.5" antialias="false" x2="51" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="46" y2="-15" length1="1.5" y1="-15" end2="none" length2="1.5" antialias="false" x2="54" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" y2="-25" length1="1.5" y1="-15" end2="none" length2="1.5" antialias="false" x2="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="P1" x="4" y="154" size="7"/>
+        <text text="P2" x="24" y="154" size="7"/>
+        <line x1="-10" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="83" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y2="167" length1="1.5" y1="132" end2="none" length2="1.5" antialias="false" x2="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" y2="167" length1="1.5" y1="131" end2="none" length2="1.5" antialias="false" x2="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" y2="168" length1="1.5" y1="131" end2="none" length2="1.5" antialias="false" x2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="80" y2="168" length1="1.5" y1="131" end2="none" length2="1.5" antialias="false" x2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="131" length1="1.5" y1="131" end2="none" length2="1.5" antialias="false" x2="79" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y2="167" length1="1.5" y1="131" end2="none" length2="1.5" antialias="false" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="83" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="90" y2="50" length1="1.5" y1="50" end2="none" length2="1.5" antialias="false" x2="-9" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="90" y2="90" length1="1.5" y1="90" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="53" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="89" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="2" y2="0" length1="1.5" y1="0" end2="none" length2="1.5" antialias="false" x2="59" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="U?" tagg="label" x="66" y="181.5" size="9"/>
+        <terminal orientation="n" x="10" y="-31"/>
+        <terminal orientation="n" x="30" y="-31"/>
+        <terminal orientation="n" x="50" y="-31"/>
+        <terminal orientation="s" x="10" y="169"/>
+        <terminal orientation="s" x="30" y="169"/>
+        <terminal orientation="s" x="50" y="169"/>
+        <terminal orientation="s" x="70" y="169"/>
+    </description>
+</definition>

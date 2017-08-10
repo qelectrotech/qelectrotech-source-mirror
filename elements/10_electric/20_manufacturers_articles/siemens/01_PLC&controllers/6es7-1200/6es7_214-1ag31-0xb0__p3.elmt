@@ -1,0 +1,56 @@
+<definition width="170" orientation="dyyy" version="0.5" height="130" type="element" hotspot_y="16" link_type="simple" hotspot_x="15">
+    <uuid uuid="{631abbd8-1471-40ce-a963-eee0921920dc}"/>
+    <names>
+        <name lang="en">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+        <name lang="cs">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+        <name lang="pl">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+        <name lang="ar">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+        <name lang="pt">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+        <name lang="fr">CPU 1214C 6ES7214-1AG31-0XB0 PART3</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x1="0" y2="20" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="PART 3/5" x="96" y="98" size="6"/>
+        <text text="DC/DC/DC" x="-1" y="98" size="6"/>
+        <text text="DIb" x="25" y="17" size="6"/>
+        <text text=".0" x="27" y="5" size="6"/>
+        <text text="1M" x="4" y="5" size="6"/>
+        <text text="CPU 1214C" x="-1" y="88" size="6"/>
+        <text text="24VDC INPUTS" x="34" y="31" size="6"/>
+        <text text=".4" x="107" y="5" size="6"/>
+        <text text=".3" x="87" y="5" size="6"/>
+        <text text=".2" x="67" y="5" size="6"/>
+        <text text=".1" x="47" y="5" size="6"/>
+        <text text=".5" x="127" y="5" size="6"/>
+        <line x1="140" y2="20" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="140" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="113" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="127" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="93" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="107" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="73" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="87" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="53" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="67" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="33" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="47" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="13" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="27" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="127.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="107.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="87.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="67.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="47.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="27.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="7.5" y="-10.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="133" y2="-8" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="150" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="1" y2="20" length1="1.5" y1="20" end2="none" length2="1.5" antialias="false" x2="140" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="109" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="110" length1="1.5" y1="110" end2="none" length2="1.5" antialias="false" x2="150" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="150" y2="110" length1="1.5" y1="-8" end2="none" length2="1.5" antialias="false" x2="150" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="70" length1="1.5" y1="70" end2="none" length2="1.5" antialias="false" x2="150" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="?U?" tagg="label" x="117" y="123.5" size="9"/>
+        <terminal orientation="n" x="10" y="-11"/>
+        <terminal orientation="n" x="30" y="-11"/>
+        <terminal orientation="n" x="50" y="-11"/>
+        <terminal orientation="n" x="70" y="-11"/>
+        <terminal orientation="n" x="90" y="-11"/>
+        <terminal orientation="n" x="110" y="-11"/>
+        <terminal orientation="n" x="130" y="-11"/>
+    </description>
+</definition>
