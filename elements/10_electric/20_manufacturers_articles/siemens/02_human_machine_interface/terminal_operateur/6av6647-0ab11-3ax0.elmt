@@ -1,0 +1,44 @@
+<definition width="240" orientation="dyyy" version="0.5" height="210" type="element" hotspot_y="32" link_type="simple" hotspot_x="15">
+    <uuid uuid="{f546bbb2-058e-4b4d-9f4c-cb7509c42a85}"/>
+    <names>
+        <name lang="en">6AV6647-0AB11-3AX0</name>
+        <name lang="cs">6AV6647-0AB11-3AX0</name>
+        <name lang="pl">6AV6647-0AB11-3AX0</name>
+        <name lang="ar">6AV6647-0AB11-3AX0</name>
+        <name lang="pt">6AV6647-0AB11-3AX0</name>
+        <name lang="fr">6AV6647-0AB11-3AX0</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="P1" x="28" y="150" size="6"/>
+        <text text="PROFINET" x="6" y="136" size="6"/>
+        <text text="L+" x="166" y="160" size="6"/>
+        <text text="X1" x="14" y="150" size="6"/>
+        <text text="KTP600 BASIC MONO" x="-6" y="-17" size="6"/>
+        <text text="24VDC" x="168" y="150" size="6"/>
+        <text text="M" x="187" y="160" size="6"/>
+        <line x1="15" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="167" length1="1.5" y1="91" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="90" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="187.5" y="165.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="173" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="187" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="167.5" y="165.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="15" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="86" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="166" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="167" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" height="28" antialias="false" x="10" y="140" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="160" y2="140" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="160" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="161" y2="140" length1="1.5" y1="140" end2="none" length2="1.5" antialias="false" x2="200" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="200" y2="168" length1="1.5" y1="140" end2="none" length2="1.5" antialias="false" x2="200" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="193" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="199" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-9" y2="-28" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="220" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="220" y2="167" length1="1.5" y1="-28" end2="none" length2="1.5" antialias="false" x2="220" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="220" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="200" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="86" y2="168" length1="1.5" y1="168" end2="none" length2="1.5" antialias="false" x2="166" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="191" height="130" antialias="false" x="10" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="26" height="3" antialias="false" x="12" y="165" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="?U?" tagg="label" x="192" y="181.5" size="9"/>
+        <terminal orientation="s" x="25" y="169"/>
+        <terminal orientation="s" x="190" y="171"/>
+        <terminal orientation="s" x="170" y="171"/>
+    </description>
+</definition>

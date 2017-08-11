@@ -1,0 +1,41 @@
+<definition width="100" orientation="dyyy" version="0.5" height="130" type="element" hotspot_y="45" link_type="simple" hotspot_x="15">
+    <uuid uuid="{0bb6efba-bc9e-40f3-b451-2de11b859ecb}"/>
+    <names>
+        <name lang="en">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+        <name lang="cs">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+        <name lang="pl">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+        <name lang="ar">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+        <name lang="pt">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+        <name lang="fr">CPU 1214C 6ES7214-1AG31-0XB0 PART4</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="PART 4/5" x="-4" y="74" size="6"/>
+        <text text="INPUTS" x="14" y="14" size="6"/>
+        <text text="DC/DC/DC" x="-4" y="64" size="6"/>
+        <text text="0" x="28" y="-23" size="6"/>
+        <text text="AI" x="25" y="-11" size="6"/>
+        <text text="CPU 1214C" x="-4" y="54" size="6"/>
+        <text text="2M" x="5" y="-23" size="6"/>
+        <text text="1" x="48" y="-23" size="6"/>
+        <line x1="2" y2="-9" length1="1.5" y1="-9" end2="none" length2="1.5" antialias="false" x2="58" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="ANALOG" x="13" y="1" size="6"/>
+        <line x1="2" y2="-10" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="58" y2="-10" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="58" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="33" y2="-37" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="47" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="13" y2="-37" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="27" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="47.5" y="-39.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="27.5" y="-39.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="7.5" y="-39.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="53" y2="-37" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" y2="-37" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" y2="81" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="-10" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="80" y2="81" length1="1.5" y1="-37" end2="none" length2="1.5" antialias="false" x2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="80" y2="81" length1="1.5" y1="81" end2="none" length2="1.5" antialias="false" x2="-9" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <line x1="80" y2="41" length1="1.5" y1="41" end2="none" length2="1.5" antialias="false" x2="-9" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" text="?U?" tagg="label" x="46" y="93.5" size="9"/>
+        <terminal orientation="n" x="10" y="-40"/>
+        <terminal orientation="n" x="30" y="-40"/>
+        <terminal orientation="n" x="50" y="-40"/>
+    </description>
+</definition>
