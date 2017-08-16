@@ -154,6 +154,31 @@ namespace autonum
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
+	
+	/**
+	 * @brief AssignVariables::replaceVariable
+	 * Replace the variables in @formula in form %{my-var} to the corresponding value stored in @dc
+	 * @param formula
+	 * @param dc
+	 * @return 
+	 */
+	QString AssignVariables::replaceVariable(const QString &formula, const DiagramContext &dc)
+	{
+		QString str = formula;
+		str.replace("%{label}", dc.value("label").toString());
+		str.replace("%{comment}", dc.value("comment").toString());
+		str.replace("%{designation}", dc.value("designation").toString());
+		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
+		str.replace("%{manufacturer-reference}", dc.value("manufacturer-reference").toString());
+		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
+		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
+		str.replace("%{machine-manufacturer-reference}", dc.value("machine-manufacturer-reference").toString());
+		str.replace("%{location}", dc.value("location").toString());
+		str.replace("%{function}", dc.value("function").toString());
+		str.replace("%{void}", QString());
+
+		return str;
+	}
 
 	AssignVariables::AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),

@@ -319,6 +319,29 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 }
 
 /**
+ * @brief QETApp::elementInfoToVar
+ * @param info
+ * @return var in form %{my-var} corresponding to the info, if there is not available var for the given info
+ * the returned var is %{void}
+ */
+QString QETApp::elementInfoToVar(const QString &info)
+{
+	if (info == "formula")                             return QString("%{formula}");
+	else if (info == "label")                          return QString("%{label}");
+	else if (info == "comment")                        return QString("%{comment}");
+	else if (info == "designation")                    return QString("%{designation}");
+	else if (info == "manufacturer")                   return QString("%{manufacturer}");
+	else if (info == "manufacturer-reference")         return QString("%{manufacturer-reference}");
+	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
+	else if (info == "auxiliary2")                     return QString("%{auxiliary2}");
+	else if (info == "machine-manufacturer-reference") return QString("%{machine-manufacturer-reference}");
+	else if (info == "location")                       return QString("%{location}");
+	else if (info == "function")                       return QString("%{function}");
+	
+	return (QString ("%{void}"));
+}
+
+/**
 	@return the common title block templates collection, i.e. the one provided
 	by QElecrotTech
 */

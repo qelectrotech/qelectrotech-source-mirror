@@ -39,6 +39,7 @@ class DynamicElementTextModel : public QStandardItemModel
             textFrom =1,
 			userText,
 			infoText,
+			compositeText,
             size,
             tagg,
             color

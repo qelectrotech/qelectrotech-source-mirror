@@ -84,6 +84,14 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_info_name.appendChild(dom_doc.createTextNode(m_info_name));
 		root_element.appendChild(dom_info_name);
 	}
+	
+		//Composite text
+	if(!m_composite_text.isEmpty())
+	{
+		QDomElement dom_comp_text = dom_doc.createElement("composite_text");
+		dom_comp_text.appendChild(dom_doc.createTextNode(m_composite_text));
+		root_element.appendChild(dom_comp_text);
+	}
     
 		//tagg
 	if (!m_tagg.isEmpty())
@@ -142,6 +150,11 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_info_name = dom_elmt.firstChildElement("info_name");
 	if(!dom_info_name.isNull())
 		m_info_name = dom_info_name.text();
+	
+		//Composite text
+	QDomElement dom_comp_text = dom_elmt.firstChildElement("composite_text");
+	if(!dom_comp_text.isNull())
+		m_composite_text = dom_comp_text.text();
     
 		//tagg
     QDomElement dom_tagg = dom_elmt.firstChildElement("tagg");
@@ -177,21 +190,29 @@ DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
  */
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
-	m_text_from = text_from;
-	setNoEditable(m_text_from == ElementInfo? true : false);
+	setNoEditable(text_from == ElementInfo? true : false);
 	
-	if(m_text_from == UserText)
+	if(text_from == UserText)
 	{
 		setPlainText(m_text);
-		disconnect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+		disconnect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
-	else if (m_text_from == ElementInfo && m_parent_element)
+	else if (text_from == ElementInfo && m_parent_element)
 	{
 		setPlainText(m_parent_element->elementInformations().value(m_info_name).toString());
-		connect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+		
+		if(m_text_from == UserText)
+			connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	}
+	else if (text_from == CompositeText && m_parent_element)
+	{
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations()));
+		if(m_text_from == UserText)
+			connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
 	
-	emit TextFromChanged(m_text_from);
+	m_text_from = text_from;
+	emit textFromChanged(m_text_from);
 }
 
 /**
@@ -246,11 +267,27 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 		setPlainText(m_parent_element->elementInformations().value(info_name).toString());
 	}
 	
-	emit InfoNameChanged(info_name);
+	emit infoNameChanged(info_name);
 }
 
 QString DynamicElementTextItem::infoName() const {
 	return m_info_name;
+}
+
+void DynamicElementTextItem::setCompositeText(const QString &text)
+{
+	m_composite_text = text;
+
+	
+	if(m_parent_element) {
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations()));
+	}
+	emit compositeTextChanged(m_composite_text);
+}
+
+QString DynamicElementTextItem::compositeText() const
+{
+	return m_composite_text;
 }
 
 /**
@@ -307,6 +344,16 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 void DynamicElementTextItem::elementInfoChanged()
 {
-	setPlainText(m_parent_element->elementInformations().value(m_info_name).toString());
+	if(!m_parent_element)
+		return;
+	
+	QString final_text;
+	
+	if (m_text_from == ElementInfo)
+		final_text = m_parent_element->elementInformations().value(m_info_name).toString();
+	else if (m_text_from == CompositeText)
+		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations());
+	
+	setPlainText(final_text);
 }
 

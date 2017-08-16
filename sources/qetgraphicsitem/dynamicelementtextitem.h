@@ -20,6 +20,7 @@
 
 #include "diagramtextitem.h"
 #include <QUuid>
+#include <QPointer>
 
 class Element;
 
@@ -35,14 +36,16 @@ class DynamicElementTextItem : public DiagramTextItem
     
 	Q_PROPERTY(QString tagg READ tagg WRITE setTagg NOTIFY taggChanged)
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
-	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY TextFromChanged)
-	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY InfoNameChanged)
+	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
+	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
+	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	
 	public:
 		Q_ENUMS(TextFrom)
 		enum TextFrom {
 			UserText,
-			ElementInfo
+			ElementInfo,
+			CompositeText
 		};
 		enum {Type = UserType + 1010};
 		int type() const override {return Type;}
@@ -50,8 +53,9 @@ class DynamicElementTextItem : public DiagramTextItem
 	signals:
 		void taggChanged(QString tagg);
 		void textChanged(QString text);
-		void TextFromChanged(DynamicElementTextItem::TextFrom text_from);
-		void InfoNameChanged(QString info);
+		void textFromChanged(DynamicElementTextItem::TextFrom text_from);
+		void infoNameChanged(QString info);
+		void compositeTextChanged(QString text);
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -74,6 +78,8 @@ class DynamicElementTextItem : public DiagramTextItem
         static QString xmlTaggName() {return QString("dynamic_elmt_text");}
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
+		void setCompositeText(const QString &text);
+		QString compositeText() const;
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -83,10 +89,11 @@ class DynamicElementTextItem : public DiagramTextItem
 		void elementInfoChanged();
 		
 	private:
-		Element *m_parent_element = nullptr;
+		QPointer <Element> m_parent_element;
 		QString m_tagg,
 				m_text,
-				m_info_name;
+				m_info_name,
+				m_composite_text;
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;		
 };

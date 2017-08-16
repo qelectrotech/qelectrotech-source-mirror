@@ -19,7 +19,7 @@
 #define ABSTRACTELEMENTPROPERTIESEDITORWIDGET_H
 
 #include "PropertiesEditor/propertieseditorwidget.h"
-#include "QPointer"
+#include <QPointer>
 
 class Element;
 

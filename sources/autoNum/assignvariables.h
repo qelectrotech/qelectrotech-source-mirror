@@ -23,6 +23,7 @@
 #include <QStringList>
 
 #include "numerotationcontext.h"
+#include "diagramcontext.h"
 
 class Diagram;
 class Element;
@@ -61,6 +62,7 @@ namespace autonum
 	{
 		public:
 			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt = nullptr);
+			static QString replaceVariable (const QString &formula, const DiagramContext &dc);
 
 		private:
 			AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt = nullptr);
