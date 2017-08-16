@@ -416,6 +416,7 @@ void DiagramView::zoom(const qreal zoom_factor)
 	}
 	m_diagram->adjustSceneRect();
 	adjustGridToZoom();
+	adjustSceneRect();
 }
 
 /**
@@ -542,6 +543,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		m_rubber_band_origin = e -> pos();
 		h -> setValue(h -> value() + pos.x());
 		v -> setValue(v -> value() + pos.y());
+		adjustSceneRect();
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
@@ -928,12 +930,21 @@ void DiagramView::removeRow() {
 /**
  * @brief DiagramView::adjustSceneRect
  * Calcul and set the area of the scene visualized by this view
- * The area are diagram sceneRect * 2.
  */
 void DiagramView::adjustSceneRect()
 {
 	QRectF scene_rect = m_diagram->sceneRect();
 	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
+	
+	QSettings settings;
+	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool())
+	{
+			//When zoom out beyong of folio is active,
+			//we always adjust the scene rect to be 1/3 bigger than the wiewport
+		QRectF vpbr = mapToScene(viewport()->rect()).boundingRect();
+		vpbr.adjust(0, 0, vpbr.width()/3, vpbr.height()/3);
+		scene_rect = scene_rect.united(vpbr);
+	}
 	setSceneRect(scene_rect);
 }
 
