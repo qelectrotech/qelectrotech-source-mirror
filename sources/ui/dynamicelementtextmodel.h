@@ -52,6 +52,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		void removeText(DynamicElementTextItem *deti);
         DynamicElementTextItem *textFromIndex(const QModelIndex &index) const;
         DynamicElementTextItem *textFromItem(QStandardItem *item) const;
+		QModelIndex indexFromText(DynamicElementTextItem *text) const;
 		QUndoCommand *undoForEditedText(DynamicElementTextItem *deti) const;
         
     private:

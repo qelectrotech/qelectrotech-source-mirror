@@ -38,13 +38,13 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 	const QSet<DynamicElementTextItem *> elmt_set = m_removed_contents.m_element_texts;
 	for(DynamicElementTextItem *deti : elmt_set)
 	{
-		if (m_removed_contents.m_elements.contains(deti->ParentElement()))
+		if (m_removed_contents.m_elements.contains(deti->parentElement()))
 			m_removed_contents.m_element_texts.remove(deti);
 			
 	}
 	
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
-		m_elmt_text_hash.insert(deti, deti->ParentElement());
+		m_elmt_text_hash.insert(deti, deti->parentElement());
 	
 	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
@@ -109,7 +109,7 @@ void DeleteQGraphicsItemCommand::redo()
 	
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
-		deti->ParentElement()->removeDynamicTextItem(deti);
+		deti->parentElement()->removeDynamicTextItem(deti);
 		deti->setParentItem(nullptr);
 	}
 

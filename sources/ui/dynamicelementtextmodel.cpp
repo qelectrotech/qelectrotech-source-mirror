@@ -107,7 +107,7 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	
 	QStandardItem *compositea = new QStandardItem(deti->compositeText().isEmpty() ?
 													  tr("Mon texte composé") :
-													  autonum::AssignVariables::replaceVariable(deti->compositeText(), deti->ParentElement()->elementInformations()));
+													  autonum::AssignVariables::replaceVariable(deti->compositeText(), deti->parentElement()->elementInformations()));
 	compositea->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	compositea->setData(DynamicElementTextModel::compositeText, Qt::UserRole+1); //Use to know the edited thing
 	compositea->setData(deti->compositeText(), Qt::UserRole+2); //Use to know to element composite formula
@@ -217,6 +217,19 @@ DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *ite
 		return m_texts_list.key(text_item);
 	else
 		return nullptr;
+}
+
+/**
+ * @brief DynamicElementTextModel::indexFromText
+ * @param text
+ * @return the QModelIndex for @text, or a default QModelIndex if not match
+ */
+QModelIndex DynamicElementTextModel::indexFromText(DynamicElementTextItem *text) const
+{
+	if(!m_texts_list.contains(text))
+		return QModelIndex();
+	
+	return m_texts_list.value(text)->index();
 }
 
 /**
@@ -332,15 +345,15 @@ void DynamicElementTextModel::dataEdited(QStandardItem *qsi)
 		QString text = qsi->data(Qt::DisplayRole).toString();
 		m_texts_list.value(deti)->setData(text, Qt::DisplayRole);
 	}
-	else if (qsi->data().toInt() == infoText && deti->ParentElement())
+	else if (qsi->data().toInt() == infoText && deti->parentElement())
 	{
 		QString info = qsi->data(Qt::UserRole+2).toString();
-		m_texts_list.value(deti)->setData(deti->ParentElement()->elementInformations().value(info), Qt::DisplayRole);
+		m_texts_list.value(deti)->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
 	}
-	else if (qsi->data().toInt() == compositeText && deti->ParentElement())
+	else if (qsi->data().toInt() == compositeText && deti->parentElement())
 	{
 		QString compo = qsi->data(Qt::UserRole+2).toString();
-		m_texts_list.value(deti)->setData(autonum::AssignVariables::replaceVariable(compo, deti->ParentElement()->elementInformations()), Qt::DisplayRole);
+		m_texts_list.value(deti)->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
 	}
 	
 	blockSignals(false);
@@ -546,7 +559,7 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 					DynamicElementTextItem *deti = detm->textFromIndex(index);
 					if(deti)
 					{
-						DiagramContext dc = deti->ParentElement()->elementInformations();
+						DiagramContext dc = deti->parentElement()->elementInformations();
 						assigned_text = autonum::AssignVariables::replaceVariable(edited_text, dc);
 					}
 					
@@ -569,7 +582,7 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti) const
 {
 	QStringList qstrl;
-	Element *elmt = deti->ParentElement();
+	Element *elmt = deti->parentElement();
 	if(!elmt)
 		return qstrl;
 	

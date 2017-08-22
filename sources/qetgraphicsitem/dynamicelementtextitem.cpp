@@ -171,7 +171,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
  * @brief DynamicElementTextItem::ParentElement
  * @return a pointer to the parent element. Note the pointer can be null.
  */
-Element *DynamicElementTextItem::ParentElement() const {
+Element *DynamicElementTextItem::parentElement() const {
 	return m_parent_element;
 }
 

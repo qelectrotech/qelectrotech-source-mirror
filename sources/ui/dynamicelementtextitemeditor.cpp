@@ -105,6 +105,21 @@ void DynamicElementTextItemEditor::apply()
 		deti->blockSignals(false);
 }
 
+/**
+ * @brief DynamicElementTextItemEditor::setCurrentText
+ * Expand and select the item for text @text
+ * @param text
+ */
+void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
+{
+	QModelIndex index = m_model->indexFromText(text);
+	if(!index.isValid())
+		return;
+	
+	m_tree_view->expand(index);
+	m_tree_view->setCurrentIndex(index);
+}
+
 void DynamicElementTextItemEditor::dataEdited(QStandardItem *qsi)
 {
 	Q_UNUSED(qsi)

@@ -25,6 +25,7 @@
 #include "diagramposition.h"
 #include "qeticons.h"
 #include "dynamicelementtextitemeditor.h"
+#include "dynamicelementtextitem.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
@@ -44,6 +45,27 @@ ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent)
 {
 	buildGui();
 	setElement(elmt);
+}
+
+/**
+ * @brief ElementPropertiesWidget::ElementPropertiesWidget
+ * Same as default constructor, the edited element, is the parent element of @text.
+ * The only difference with default constructor, is that the current tab is the tab for dynamic texts,
+ * and the item in the tree that represent @text is expanded and selected.
+ * @param text
+ * @param parent
+ */
+ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, QWidget *parent) :
+	AbstractElementPropertiesEditorWidget (parent),
+	m_tab (nullptr),
+	m_general_widget(nullptr)
+{
+	if(text->parentElement())
+	{
+		m_diagram = text->parentElement()->diagram();
+		buildGui();
+		setDynamicText(text);
+	}
 }
 
 /**
@@ -71,6 +93,29 @@ void ElementPropertiesWidget::setElement(Element *element)
 		}
 	}
 	updateUi();
+}
+
+/**
+ * @brief ElementPropertiesWidget::setDynamicText
+ * convenience function: same as call : ElementPropertiesWidget::setElement, with parameter the parent element of @text.
+ * Set the dynamics text tab as current tab, expand and select the item that represent @text
+ * @param text
+ */
+void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
+{
+	if(text->parentElement())
+	{
+		setElement(text->parentElement());
+		for(AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
+		{
+			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
+			{
+				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
+				m_tab->setCurrentWidget(detie);
+				detie->setCurrentText(text);
+			}
+		}
+	}
 }
 
 /**

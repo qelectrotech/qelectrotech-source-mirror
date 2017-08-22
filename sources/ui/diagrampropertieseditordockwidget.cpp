@@ -128,13 +128,13 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 				//We already edit an element, just update the editor with a new element
 			if (m_edited_qgi_type == Element::Type)
 			{
-				static_cast<ElementPropertiesWidget*>(editors().first())->setElement(deti->ParentElement());
+				static_cast<ElementPropertiesWidget*>(editors().first())->setDynamicText(deti);
 				return;
 			}
 			
 			clear();
 			m_edited_qgi_type = Element::Type;
-			addEditor(new ElementPropertiesWidget(deti->ParentElement(), this));
+			addEditor(new ElementPropertiesWidget(deti, this));
 			break; }
 
 		default:

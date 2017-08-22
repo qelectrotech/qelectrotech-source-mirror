@@ -41,6 +41,7 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
         QString title() const override {return tr("Textes");}
 		bool setLiveEdit(bool live_edit) override;
 		void apply() override;
+		void setCurrentText(DynamicElementTextItem *text);
 	
 	private:
 		void dataEdited(QStandardItem *qsi);
