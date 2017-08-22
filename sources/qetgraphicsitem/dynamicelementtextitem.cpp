@@ -135,7 +135,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	if(m_text_from == ElementInfo)
 	{
 		setNoEditable(true);
-		connect(m_parent_element, &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+		connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
 	else {
 		setNoEditable(false);

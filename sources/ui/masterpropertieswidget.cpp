@@ -135,10 +135,10 @@ void MasterPropertiesWidget::setElement(Element *element)
 
 		//Keep up to date this widget when the linked elements of m_element change
 	if (m_element)
-		disconnect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+		disconnect(m_element.data(), &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
 	
 	m_element = element;
-	connect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+	connect(m_element.data(), &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
 
 	updateUi();
 }

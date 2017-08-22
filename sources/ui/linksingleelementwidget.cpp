@@ -104,7 +104,7 @@ void LinkSingleElementWidget::setElement(Element *element)
 	if (m_element)
 	{
 		disconnect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
-		disconnect(m_element, &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi);
+		disconnect(m_element.data(), &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi);
 		m_element->setHighlighted(false);
 	}
 	
@@ -127,7 +127,7 @@ void LinkSingleElementWidget::setElement(Element *element)
 		m_filter = Element::Simple;
 
 	connect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
-	connect(m_element, &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
+	connect(m_element.data(), &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
 
 	updateUi();
 }

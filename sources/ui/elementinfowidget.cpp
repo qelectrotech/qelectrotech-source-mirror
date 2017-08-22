@@ -59,7 +59,7 @@ void ElementInfoWidget::setElement(Element *element)
 	if (m_element == element) return;
 
 	if (m_element)
-		disconnect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
+		disconnect(m_element.data(), &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
 
 	m_element = element;
 	updateUi();
@@ -80,7 +80,7 @@ void ElementInfoWidget::setElement(Element *element)
 		});
 	}
 
-	connect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
+	connect(m_element.data(), &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
 }
 
 /**
