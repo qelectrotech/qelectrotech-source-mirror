@@ -545,7 +545,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="20"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Eigenschappen toepassen op alle geleiders van hetzelfde potentiaal</translation>
+        <translation type="unfinished">Eigenschappen toepassen op alle geleiders met hetzelfde potentiaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="72"/>
@@ -1401,7 +1401,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     </message>
     <message>
         <source>N° fil : </source>
-        <translation type="unfinished">Draadnummer :</translation>
+        <translation type="unfinished">Draadnummer : </translation>
     </message>
     <message>
         <source>Sans titre</source>
@@ -1593,7 +1593,8 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Wilt u dit element werkelijk verwijderen ?</translation>
+        <translation type="unfinished">Wilt u dit element werkelijk verwijderen ?
+</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -2055,7 +2056,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation type="unfinished">Opties voor nummering</translation>
+        <translation type="unfinished"> Opties voor nummering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
@@ -2090,7 +2091,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation type="unfinished">Autonummering van pagina&apos;s</translation>
+        <translation type="unfinished">Autonummering van pagina&apos;s :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="173"/>
@@ -2124,7 +2125,8 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Als er in het veld &quot;Waarde&quot; een getal wordt ingevuld met minder decimalen dan het gekozen type wordt dit getal aangevuld met ervoor geplaatste nullen.
 
 -Het type &quot;Tekst&quot; staat voor een vaste tekst.
-Het veld &quot;Increment&quot; is nu niet van belang.</translation>
+Het veld &quot;Increment&quot; is nu niet van belang.
+</translation>
     </message>
 </context>
 <context>
@@ -4360,7 +4362,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="187"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Ongedaan maken</translation>
+        <translation type="unfinished">Geschiedenis</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
@@ -4975,7 +4977,7 @@ Opties :
         <location filename="../sources/editor/qetelementeditor.cpp" line="520"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Annuleer</translation>
+        <translation type="unfinished">Geschiedenis</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="538"/>
@@ -5862,7 +5864,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="483"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Annuleer</translation>
+        <translation type="unfinished">Geschiedenis</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="502"/>
@@ -7799,7 +7801,7 @@ De andere velden zijn nu niet van belang.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
-        <translation type="unfinished">rechts</translation>
+        <translation type="unfinished">rechts </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
