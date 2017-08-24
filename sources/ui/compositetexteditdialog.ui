@@ -35,11 +35,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QPlainTextEdit" name="m_plain_text_edit">
-     <property name="placeholderText">
-      <string>Entrée votre votre texte composé ici, en vous aidant des variables disponible</string>
-     </property>
-    </widget>
+    <widget class="QPlainTextEdit" name="m_plain_text_edit"/>
    </item>
   </layout>
  </widget>

@@ -12,6 +12,9 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	ui->setupUi(this);
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
+#if QT_VERSION >= 0x050300
+	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
+#endif
 	setUpComboBox();
 }
 
