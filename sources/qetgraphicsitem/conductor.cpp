@@ -720,6 +720,11 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
 					return true;
 				}
+				else if (event->type() == QEvent::GraphicsSceneMouseDoubleClick) //Double click
+				{
+					editProperty();
+					return true;
+				}
 			}
 		}
 	}
