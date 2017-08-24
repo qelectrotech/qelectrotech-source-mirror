@@ -44,7 +44,7 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 		void setCurrentText(DynamicElementTextItem *text);
 	
 	private:
-		void dataEdited(QStandardItem *qsi);
+		void dataEdited(DynamicElementTextItem *deti);
     
     private slots:
         void on_m_add_text_clicked();

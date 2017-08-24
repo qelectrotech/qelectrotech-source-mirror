@@ -54,10 +54,13 @@ class DynamicElementTextModel : public QStandardItemModel
         DynamicElementTextItem *textFromItem(QStandardItem *item) const;
 		QModelIndex indexFromText(DynamicElementTextItem *text) const;
 		QUndoCommand *undoForEditedText(DynamicElementTextItem *deti) const;
+		
+	signals:
+		void dataForTextChanged(DynamicElementTextItem *text);
         
     private:
 		void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
-        void dataEdited(QStandardItem *qsi);
+        void itemDataChanged(QStandardItem *qsi);
 		void setConnection(DynamicElementTextItem *deti, bool set);
 		void updateDataFromText(DynamicElementTextItem *deti, DynamicElementTextModel::ValueType type);
 		

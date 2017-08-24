@@ -35,7 +35,7 @@ QStandardItemModel(parent)
     setHeaderData(0, Qt::Horizontal, tr("Propriété"), Qt::DisplayRole);
     setHeaderData(1, Qt::Horizontal, tr("Valeur"), Qt::DisplayRole);
     
-    connect(this, &DynamicElementTextModel::itemChanged, this, &DynamicElementTextModel::dataEdited);
+	connect(this, &DynamicElementTextModel::itemChanged, this, &DynamicElementTextModel::itemDataChanged);
 }
 
 DynamicElementTextModel::~DynamicElementTextModel()
@@ -56,7 +56,7 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
         return;
     
     QList <QStandardItem *> qsi_list;
-    
+
 	QStandardItem *qsi = new QStandardItem(deti->toPlainText());
     qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
@@ -300,7 +300,7 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 {
 	if (!m_texts_list.contains(deti))
 		return;
-	
+
 	QStandardItem *qsi = m_texts_list.value(deti)->child(0,0);
 	
 	bool usr = false, info = false, compo = false;
@@ -308,9 +308,9 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	switch (tf) {
 		case DynamicElementTextItem::UserText: usr = true; break;
 		case DynamicElementTextItem::ElementInfo: info = true; break;
-		case DynamicElementTextItem::CompositeText: compo = true; break;
+		case DynamicElementTextItem::CompositeText: compo = true;break;
 	}
-	
+
 		//User text
 	qsi->child(0,0)->setEnabled(usr);
 	qsi->child(0,1)->setEnabled(usr);
@@ -322,41 +322,59 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	qsi->child(2,1)->setEnabled(compo);
 }
 
-void DynamicElementTextModel::dataEdited(QStandardItem *qsi)
+void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 {
 	DynamicElementTextItem *deti = textFromItem(qsi);
 	if (!deti)
 		return;
 	
-	blockSignals(true);
+	QStandardItem *text_qsi = m_texts_list.value(deti);
 	
 	if (qsi->data().toInt() == textFrom)
 	{
+		QStandardItem *text_from_qsi = text_qsi->child(0,0);
 		QString from = qsi->data(Qt::DisplayRole).toString();
+		
 		if (from == tr("Texte utilisateur"))
+		{
 			enableSourceText(deti, DynamicElementTextItem::UserText);
+			text_qsi->setData(text_from_qsi->child(0,1)->data(Qt::DisplayRole).toString());
+		}
 		else if (from == tr("Information de l'élément"))
+		{
 			enableSourceText(deti, DynamicElementTextItem::ElementInfo);
+			QString info = text_from_qsi->child(1,1)->data(Qt::UserRole+2).toString();
+			text_qsi->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
+		}
 		else
+		{
 			enableSourceText(deti, DynamicElementTextItem::CompositeText);
+			QString compo = text_from_qsi->child(2,1)->data(Qt::UserRole+2).toString();
+			text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
+		}
+		
+		
 	}
 	else if (qsi->data().toInt() == userText)
 	{
 		QString text = qsi->data(Qt::DisplayRole).toString();
-		m_texts_list.value(deti)->setData(text, Qt::DisplayRole);
+		text_qsi->setData(text, Qt::DisplayRole);
 	}
 	else if (qsi->data().toInt() == infoText && deti->parentElement())
 	{
 		QString info = qsi->data(Qt::UserRole+2).toString();
-		m_texts_list.value(deti)->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
+		text_qsi->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
 	}
 	else if (qsi->data().toInt() == compositeText && deti->parentElement())
 	{
 		QString compo = qsi->data(Qt::UserRole+2).toString();
-		m_texts_list.value(deti)->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
+		text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
 	}
 	
-	blockSignals(false);
+		//We emit the signal only if @qsi is in the second column, because the data are stored on this column
+		//the first column is use only for display the title of the property
+	if(qsi->column() == 1)
+		emit dataForTextChanged(deti);
 }
 
 /**
@@ -377,8 +395,10 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::colorChanged,    [deti,this](){this->updateDataFromText(deti, color);});
 		connection_list << connect(deti, &DynamicElementTextItem::fontSizeChanged, [deti,this](){this->updateDataFromText(deti, size);});
 		connection_list << connect(deti, &DynamicElementTextItem::taggChanged,     [deti,this](){this->updateDataFromText(deti, tagg);});
-		connection_list << connect(deti, &DynamicElementTextItem::textChanged,     [deti,this](){this->updateDataFromText(deti, userText);});
 		connection_list << connect(deti, &DynamicElementTextItem::textFromChanged, [deti,this](){this->updateDataFromText(deti, textFrom);});
+		connection_list << connect(deti, &DynamicElementTextItem::textChanged,     [deti,this](){this->updateDataFromText(deti, userText);});
+		connection_list << connect(deti, &DynamicElementTextItem::infoNameChanged, [deti,this](){this->updateDataFromText(deti, infoText);});
+		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
 		
 		m_hash_text_connect.insert(deti, connection_list);
 	}
@@ -404,24 +424,42 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 	{
 		case textFrom:
 		{
-			switch (deti->textFrom()) {
+			switch (deti->textFrom())
+			{
 				case DynamicElementTextItem::UserText: qsi->child(0,1)->setData(tr("Texte utilisateur"), Qt::DisplayRole); break;
 				case DynamicElementTextItem::ElementInfo : qsi->child(0,1)->setData(tr("Information de l'élément"), Qt::DisplayRole); break;
 				case DynamicElementTextItem::CompositeText : qsi->child(0,1)->setData(tr("Texte composé"), Qt::DisplayRole); break;
 			}
+			enableSourceText(deti, deti->textFrom());
+			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			break;
 		}
 		case userText:
 		{
+			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			QStandardItem *qsia = qsi->child(0,0);
 			qsia->child(0,1)->setData(deti->toPlainText(), Qt::DisplayRole);
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			break;
 		}
 		case infoText:
+		{
+			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
+			QStandardItem *qsia = qsi->child(0,0);
+			QString info_name = deti->infoName();
+			qsia->child(1,1)->setData(info_name, Qt::UserRole+2);
+			qsia->child(1,1)->setData(QETApp::elementTranslatedInfoKey(info_name), Qt::DisplayRole);
 			break;
+		}
 		case compositeText:
+		{
+			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
+			QStandardItem *qsia = qsi->child(0,0);
+			qsia->child(2,1)->setData(deti->compositeText(), Qt::UserRole+2);
+			qsia->child(2,1)->setData(deti->toPlainText(), Qt::DisplayRole);
+			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			break;
+		}
 		case size:
 			qsi->child(1,1)->setData(deti->fontSize(), Qt::EditRole);
 			break;

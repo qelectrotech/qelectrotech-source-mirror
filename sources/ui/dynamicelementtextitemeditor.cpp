@@ -55,7 +55,7 @@ void DynamicElementTextItemEditor::setElement(Element *element)
     
     DynamicElementTextModel *old_model = m_model;
     m_model = new DynamicElementTextModel(m_tree_view);
-	connect(m_model, &DynamicElementTextModel::itemChanged, this, &DynamicElementTextItemEditor::dataEdited);
+	connect(m_model, &DynamicElementTextModel::dataForTextChanged, this, &DynamicElementTextItemEditor::dataEdited);
     
     for (DynamicElementTextItem *deti : m_element->dynamicTextItems())
         m_model->addText(deti);
@@ -120,9 +120,9 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 	m_tree_view->setCurrentIndex(index);
 }
 
-void DynamicElementTextItemEditor::dataEdited(QStandardItem *qsi)
+void DynamicElementTextItemEditor::dataEdited(DynamicElementTextItem *deti)
 {
-	Q_UNUSED(qsi)
+	Q_UNUSED(deti)
 	if (m_live_edit)
 		apply();
 }
