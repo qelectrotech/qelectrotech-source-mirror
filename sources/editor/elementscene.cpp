@@ -771,7 +771,8 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 		QGraphicsItem *qgi = i.value();
 		if (
 			qgi -> type() == ElementPrimitiveDecorator::Type ||
-			qgi -> type() == QGraphicsRectItem::Type
+			qgi -> type() == QGraphicsRectItem::Type ||
+			qgi->type() == QetGraphicsHandlerItem::Type
 		) {
 			i.remove();
 			helpers << qgi;
