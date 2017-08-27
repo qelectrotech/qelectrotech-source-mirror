@@ -215,8 +215,27 @@ PotentialSelectorDialog::~PotentialSelectorDialog()
  */
 void PotentialSelectorDialog::buildWidget()
 {
-	QRadioButton *rb1 = new QRadioButton(tr("Le potentiel avec numero de fil %1 est présent %2 fois").arg(m_potential_selector->m_properties_list_1.first().text).arg(m_potential_selector->m_conductor_number_1), this);
-	QRadioButton *rb2 = new QRadioButton(tr("Le potentiel avec numero de fil %1 est présent %2 fois").arg(m_potential_selector->m_properties_list_2.first().text).arg(m_potential_selector->m_conductor_number_2), this);
+	QString text1(tr("%n conducteurs composent potentiel suivant :", "", m_potential_selector->m_conductor_number_1));
+	ConductorProperties cp1 = m_potential_selector->m_properties_list_1.first();
+
+	if(!cp1.text.isEmpty())
+		text1.append(tr("\nNumero : %1").arg(cp1.text));
+	if(!cp1.m_function.isEmpty())
+		text1.append(tr("\nFonction : %1").arg(cp1.m_function));
+	if(!cp1.m_tension_protocol.isEmpty())
+		text1.append(tr("\nTension/protocole : %1").arg(cp1.m_tension_protocol));
+			
+	QString text2(tr("%n conducteurs composent le potentiel suivant :", "", m_potential_selector->m_conductor_number_2));
+	ConductorProperties cp2 = m_potential_selector->m_properties_list_2.first();
+	if(!cp2.text.isEmpty())
+		text2.append(tr("\nNumero : %1").arg(cp2.text));
+	if(!cp2.m_function.isEmpty())
+		text2.append(tr("\nFonction : %1").arg(cp2.m_function));
+	if(!cp2.m_tension_protocol.isEmpty())
+		text2.append(tr("\nTension/protocole : %1").arg(cp2.m_tension_protocol));
+			
+	QRadioButton *rb1 = new QRadioButton(text1, this);
+	QRadioButton *rb2 = new QRadioButton(text2, this);
 
 	connect(rb1, &QRadioButton::toggled, [this](bool t)
 	{
@@ -252,7 +271,6 @@ void PotentialSelectorDialog::buildWidget()
 		rb2->setChecked(true);
 	}
 }
-#include <QDebug>
 
 /**
  * @brief PotentialSelectorDialog::on_buttonBox_accepted

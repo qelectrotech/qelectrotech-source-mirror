@@ -83,10 +83,12 @@ LinkSingleElementWidget::~LinkSingleElementWidget()
 	if(m_showed_element)
 		m_showed_element->setHighlighted(false);
 	
-	m_element->setHighlighted(false);
-	
-	if (!m_element->isFree())
-		m_element->linkedElements().first()->setHighlighted(false);
+	if(m_element)
+	{
+		m_element->setHighlighted(false);		
+		if (!m_element->isFree())
+			m_element->linkedElements().first()->setHighlighted(false);
+	}
 	delete ui;
 }
 
