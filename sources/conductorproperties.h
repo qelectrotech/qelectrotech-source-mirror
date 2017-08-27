@@ -78,24 +78,21 @@ class ConductorProperties
 			//Attributes
 		ConductorType type;
 		
-		QColor  color,
-				m_color_2;
+		QColor  color;
 		
 		QString text,
 				m_function,
 				m_tension_protocol,
 				m_formula;
 		
-		int text_size,
-			m_dash_size = 1;
+		int text_size;
 		
 		double  cond_size,
 				verti_rotate_text,
 				horiz_rotate_text;
 		
 		bool	m_show_text,
-				m_one_text_per_folio,
-				m_bicolor = false;
+				m_one_text_per_folio;
 		
 		Qt::PenStyle style;
 		

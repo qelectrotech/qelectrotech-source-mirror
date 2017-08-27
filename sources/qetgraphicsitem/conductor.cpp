@@ -513,19 +513,6 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	
 		//Draw the conductor
 	qp -> drawPath(path());
-		//Draw the second color
-	if(m_properties.m_bicolor)
-	{
-		final_conductor_pen.setColor(m_properties.m_color_2);
-		final_conductor_pen.setStyle(Qt::CustomDashLine);
-		QVector<qreal> dash_pattern;
-		dash_pattern << m_properties.m_dash_size-2 << m_properties.m_dash_size;
-		final_conductor_pen.setDashPattern(dash_pattern);
-		qp->save();
-		qp->setPen(final_conductor_pen);
-		qp->drawPath(path());
-		qp->restore();
-	}
 	
 	if (m_properties.type == ConductorProperties::Single) {
 		qp -> setBrush(final_conductor_color);
@@ -716,6 +703,11 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
 				{
 					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseDoubleClick) //Double click
+				{
+					editProperty();
 					return true;
 				}
 			}
