@@ -31,7 +31,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	
 	// constructors, destructor
 	public:
-	PartText(QETElementEditor *, QGraphicsItem * = 0, ElementScene * = 0);
+    PartText(QETElementEditor *, QGraphicsItem * = 0);
 	virtual ~PartText();
 	
 	private:
@@ -55,12 +55,6 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
-	virtual void setDecorator(ElementPrimitiveDecorator *);
-	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
-	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
-	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
-	virtual bool singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 
 	///PROPERTY
 	void setProperty(const char *name, const QVariant &value) {QGraphicsTextItem::setProperty(name, value);}
@@ -81,31 +75,29 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText)
 	
 	public slots:
-	void adjustItemPosition(int = 0);
-	void setEditable(bool);
-	void startEdition();
-	void endEdition();
+        void adjustItemPosition(int = 0);
+        void setEditable(bool);
+        void startEdition();
+        void endEdition();
 	
 	protected:
-	virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *);
-	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
-	virtual bool sceneEventFilter(QGraphicsItem *, QEvent *);
-	virtual void focusInEvent(QFocusEvent *);
-	virtual void focusOutEvent(QFocusEvent *);
-	virtual void keyPressEvent(QKeyEvent *);
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
-	QRectF boundingRect() const;
+        virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+        virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+        virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+        virtual void focusInEvent(QFocusEvent *);
+        virtual void focusOutEvent(QFocusEvent *);
+        virtual void keyPressEvent(QKeyEvent *);
+        virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+        virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
+        QRectF boundingRect() const;
 	
 	private:
-	QPointF margin() const;
-#ifdef QET_DEBUG_EDITOR_TEXTS
-	void drawPoint(QPainter *, const QPointF &);
-#endif
-	QString previous_text;
-	qreal real_font_size_;
-	QPointF saved_point_;
-	qreal saved_font_size_;
-	QGraphicsItem *decorator_;
+        QPointF margin() const;
+        QString previous_text;
+        qreal real_font_size_;
+        QPointF saved_point_;
+        qreal saved_font_size_;
+        QGraphicsItem *decorator_;
+        QPointF m_origine_pos;
 };
 #endif

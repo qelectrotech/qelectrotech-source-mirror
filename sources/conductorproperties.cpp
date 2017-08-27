@@ -250,6 +250,10 @@ void ConductorProperties::toXml(QDomElement &e) const
 	if (color != QColor(Qt::black))
 		e.setAttribute("color", color.name());
 	
+	e.setAttribute("bicolor", m_bicolor? "true" : "false");
+	e.setAttribute("color2", m_color_2.name());
+	e.setAttribute("dash-size", QString::number(m_dash_size));
+	
 	if (type == Single)
 		singleLineProperties.toXml(e);
 
@@ -280,6 +284,14 @@ void ConductorProperties::fromXml(QDomElement &e)
 		// get conductor color
 	QColor xml_color= QColor(e.attribute("color"));
 	color = (xml_color.isValid()? xml_color : QColor(Qt::black));
+	
+	QString bicolor_str = e.attribute("bicolor", "false");
+	m_bicolor = bicolor_str == "true"? true : false;
+	
+    QColor xml_color_2 = QColor(e.attribute("color2"));
+	m_color_2 = xml_color_2.isValid()? xml_color_2 : QColor(Qt::black);
+	
+	m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
 	
 		// read style of conductor
 	readStyle(e.attribute("style"));
@@ -317,6 +329,9 @@ void ConductorProperties::fromXml(QDomElement &e)
 void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const
 {
 	settings.setValue(prefix + "color", color.name());
+	settings.setValue(prefix + "bicolor", m_bicolor);
+	settings.setValue(prefix + "color2", m_color_2.name());
+	settings.setValue(prefix + "dash-size", m_dash_size);
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
@@ -340,6 +355,12 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 {
 	QColor settings_color = QColor(settings.value(prefix + "color").toString());
 	color = (settings_color.isValid()? settings_color : QColor(Qt::black));
+	
+	QColor settings_color_2 = QColor(settings.value(prefix + "color2").toString());
+	m_color_2 = (settings_color_2.isValid()? settings_color_2 : QColor(Qt::black));
+	
+	m_bicolor   = settings.value(prefix + "bicolor", false).toBool();
+	m_dash_size = settings.value(prefix + "dash-size", 1).toInt();
 	
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	type = (setting_type == typeToString(Single)? Single : Multi);
@@ -388,13 +409,18 @@ void ConductorProperties::setText(QString text) {
  */
 void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> list)
 {
-	if (list.isEmpty())
+	const QList<ConductorProperties> clist = list;
+	
+	if (clist.isEmpty())
 		return;
 
-	if (list.size() == 1)
+	if (clist.size() == 1)
 	{
-		ConductorProperties cp = list.first();
+		ConductorProperties cp = clist.first();
 		color                = cp.color;
+		m_bicolor            = cp.m_bicolor;
+		m_color_2            = cp.m_color_2;
+		m_dash_size          = cp.m_dash_size;
 		text                 = cp.text;
 		m_formula            = cp.m_formula;
 		m_function           = cp.m_function;
@@ -410,9 +436,15 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 
 	bool equal = true;
+	QColor c_value;
+	bool b_value;
+	QString s_value;
+	int i_value;
+	double d_value;
+	
 		//Color
-	QColor c_value = list.first().color;
-	foreach(ConductorProperties cp, list)
+	c_value = clist.first().color;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.color != c_value)
 			equal = false;
@@ -420,10 +452,43 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		color = c_value;
 	equal = true;
+	
+		//bicolor
+	b_value = clist.first().m_bicolor;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_bicolor != b_value)
+			equal = false;
+	}
+	if (equal)
+		m_bicolor = b_value;
+	equal = true;
+	
+		//second color
+	c_value = clist.first().m_color_2;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_color_2 != c_value)
+			equal = false;
+	}
+	if (equal)
+		m_color_2 = c_value;
+	equal = true;
+	
+		//Dash size
+	i_value = clist.first().m_dash_size;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_dash_size != i_value)
+			equal = false;
+	}
+	if (equal)
+		m_dash_size = i_value;
+	equal = true;
 
 		//text
-	QString s_value = list.first().text;
-	foreach(ConductorProperties cp, list)
+	s_value = clist.first().text;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.text != s_value)
 			equal = false;
@@ -433,8 +498,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//formula
-	s_value = list.first().m_formula;
-	foreach(ConductorProperties cp, list)
+	s_value = clist.first().m_formula;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_formula != s_value)
 			equal = false;
@@ -444,8 +509,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//function
-	s_value = list.first().m_function;
-	foreach(ConductorProperties cp, list)
+	s_value = clist.first().m_function;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_function != s_value)
 			equal = false;
@@ -455,8 +520,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//Tension protocol
-	s_value = list.first().m_tension_protocol;
-	foreach(ConductorProperties cp, list)
+	s_value = clist.first().m_tension_protocol;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_tension_protocol != s_value)
 			equal = false;
@@ -466,8 +531,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//text size
-	int i_value = list.first().text_size;
-	foreach(ConductorProperties cp, list)
+	i_value = clist.first().text_size;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.text_size != i_value)
 			equal = false;
@@ -477,8 +542,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//conductor size
-	double d_value = list.first().cond_size;
-	foreach(ConductorProperties cp, list)
+	d_value = clist.first().cond_size;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.cond_size != d_value)
 			equal = false;
@@ -488,8 +553,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//show text
-	bool b_value = list.first().m_show_text;
-	foreach(ConductorProperties cp, list)
+	b_value = clist.first().m_show_text;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_show_text != b_value)
 			equal = false;
@@ -499,8 +564,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//One text per folio
-	b_value = list.first().m_one_text_per_folio;
-	foreach(ConductorProperties cp, list)
+	b_value = clist.first().m_one_text_per_folio;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_one_text_per_folio != b_value)
 			equal = false;
@@ -510,8 +575,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//Text rotation for vertical conducor
-	d_value = list.first().verti_rotate_text;
-	foreach(ConductorProperties cp, list)
+	d_value = clist.first().verti_rotate_text;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.verti_rotate_text != d_value)
 			equal = false;
@@ -521,8 +586,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	equal = true;
 
 		//Text rotation for horizontal conducor
-	d_value = list.first().horiz_rotate_text;
-	foreach(ConductorProperties cp, list)
+	d_value = clist.first().horiz_rotate_text;
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.horiz_rotate_text != d_value)
 			equal = false;
@@ -556,6 +621,9 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 	return(
 		other.type == type &&\
 		other.color == color &&\
+		other.m_bicolor == m_bicolor &&\
+		other.m_color_2 == m_color_2 &&\
+		other.m_dash_size == m_dash_size &&\
 		other.style == style &&\
 		other.text == text &&\
 		other.m_formula == m_formula &&\

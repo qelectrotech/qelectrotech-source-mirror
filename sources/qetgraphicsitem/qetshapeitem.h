@@ -20,10 +20,11 @@
 
 #include <QPen>
 #include "qetgraphicsitem.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 class QDomElement;
 class QDomDocument;
+class QetGraphicsHandlerItem;
 
 /**
  * @brief The QetShapeItem class
@@ -96,14 +97,18 @@ class QetShapeItem : public QetGraphicsItem
 	protected:
 		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 		virtual void hoverEnterEvent   (QGraphicsSceneHoverEvent *event);
-		virtual void hoverMoveEvent    (QGraphicsSceneHoverEvent *event);
 		virtual void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+        virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+        virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 	private:
 		void switchResizeMode();
+		void adjusteHandlerPos();
+		
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 
 		///ATTRIBUTES
 	private:
@@ -112,11 +117,10 @@ class QetShapeItem : public QetGraphicsItem
 		QBrush       m_brush;
 		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
 		QPolygonF	 m_polygon, m_old_polygon;
-		bool		 m_hovered,
-					 m_mouse_grab_handler;
+		bool		 m_hovered;
 		int			 m_vector_index;
-		QetGraphicsHandlerUtility m_handler;
 		bool m_close = false;
 		int m_resize_mode = 1;
+        QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif // QETSHAPEITEM_H

@@ -24,23 +24,24 @@
 #include <QGraphicsSceneHoverEvent>
 #include <QStyleOptionGraphicsItem>
 #include <QGraphicsScene>
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 /**
 	Constructor
 	@param parent Parent QGraphicsItem
 */
 ElementPrimitiveDecorator::ElementPrimitiveDecorator(QGraphicsItem *parent):
-	QGraphicsObject(parent),
-	m_handler(10)
+	QGraphicsObject(parent)
 {
 	init();
-	m_handler.setOuterColor(Qt::darkGreen);
 }
 
 /**
 	Destructor
 */
-ElementPrimitiveDecorator::~ElementPrimitiveDecorator() {
+ElementPrimitiveDecorator::~ElementPrimitiveDecorator()
+{
+	removeHandler();
 }
 
 /**
@@ -68,12 +69,7 @@ QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 */
 QRectF ElementPrimitiveDecorator::boundingRect() const
 {
-	QVector<QRectF> rect_vector = m_handler.handlerRect(getResizingsPoints());
-	
-	QRectF rect = effective_bounding_rect_;
-	rect |= rect_vector.first();
-	rect |= rect_vector.last();
-	return(rect);
+	return effective_bounding_rect_;
 }
 
 /**
@@ -96,9 +92,6 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 	pen.setCosmetic(true);
 	painter -> setPen(pen);
 	painter -> drawRect(modified_bounding_rect_);
-
-		//Draw the handlers
-	m_handler.drawHandler(painter, getResizingsPoints());
 	
 	// uncomment to draw the real bouding rect (=adjusted internal bounding rect)
 	// painter -> setBrush(QBrush(QColor(240, 0, 0, 127)));
@@ -109,45 +102,28 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 /**
 	@param items the new list of items this decorator is suposed to manipulate.
 */
-void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items) {
-	if (CustomElementPart *single_item = singleItem()) {
-		if (items.count() == 1 && items.first() == single_item) {
-			// no actual change
-			goto end_setItems;
-		}
-		
-		// break any connection between the former single selected item (if any) and
-		// the decorator
-		single_item -> setDecorator(0);
-		if (QGraphicsObject *single_object = dynamic_cast<QGraphicsObject *>(single_item)) {
-			disconnect(single_object, 0, this, 0);
-		}
-	}
-	
+void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items)
+{
 	decorated_items_ = items;
-	
-	// when only a single primitive is selected, the decorator behaves specially
-	// to enable extra features, such as text edition, internal points movements,
-	// etc.
-	if (CustomElementPart *single_item = singleItem()) {
-		single_item -> setDecorator(this);
-	}
-	
-	end_setItems:
+
 	adjust();
 	show();
 	if (focusItem() != this) {
 		setFocus();
 	}
+	adjusteHandlerPos();
 }
 
 /**
 	@param items the new list of items this decorator is suposed to manipulate.
 */
-void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items) {
+void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items)
+{
 	QList<CustomElementPart *> primitives;
-	foreach (QGraphicsItem *item, items) {
-		if (CustomElementPart *part_item = dynamic_cast<CustomElementPart *>(item)) {
+	for(QGraphicsItem *item : items)
+	{
+		if (CustomElementPart *part_item = dynamic_cast<CustomElementPart *>(item))
+		{
 			primitives << part_item;
 		}
 	}
@@ -178,32 +154,11 @@ QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const {
 	Adjust the visual decorator according to the currently assigned items.
 	It is notably called by setItems().
 */
-void ElementPrimitiveDecorator::adjust() {
+void ElementPrimitiveDecorator::adjust()
+{
 	saveOriginalBoundingRect();
 	modified_bounding_rect_ = original_bounding_rect_;
 	adjustEffectiveBoundingRect();
-}
-
-/**
-	Handle events generated when the mouse hovers over the decorator.
-	@param event Object describing the hover event.
-*/
-void ElementPrimitiveDecorator::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-	int p = m_handler.pointIsHoverHandler(event->pos(), getResizingsPoints());
-
-	if (p == 0 || p == 7)
-		setCursor(Qt::SizeFDiagCursor);
-	else if (p == 2 || p == 5)
-		setCursor(Qt::SizeBDiagCursor);
-	else if (p == 1 || p ==6)
-		setCursor(Qt::SizeVerCursor);
-	else if (p == 3 || p == 4)
-		setCursor(Qt::SizeHorCursor);
-	else if (p == -1 && modified_bounding_rect_.normalized().contains(event->pos()))
-		setCursor(Qt::SizeAllCursor);
-	else
-		setCursor(Qt::ArrowCursor);
 }
 
 /**
@@ -211,63 +166,19 @@ void ElementPrimitiveDecorator::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 	@param event Object describing the mouse event
 */
 void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-	QPointF pos = event -> pos();
-	QVector <QPointF> points = getResizingsPoints();
-	
-	current_operation_square_ = m_handler.pointIsHoverHandler(pos, points);
-	bool accept = false;
-
-	if (current_operation_square_ != QET::NoOperation)
-		accept = true;
-	else
+{	
+	if (internalBoundingRect().contains(event->pos()))
 	{
-		if (internalBoundingRect().contains(pos))
-		{
-			if (CustomElementPart *single_item = singleItem())
-			{
-				bool event_accepted = single_item -> singleItemPressEvent(this, event);
-				if (event_accepted)
-				{
-					event -> ignore();
-					return;
-				}
-			}
-			current_operation_square_ = QET::MoveArea;
-			accept = true;
-		}
-	}
-	
-	if (accept)
-	{
-		if (current_operation_square_ > QET::NoOperation)
-			first_pos_ = latest_pos_ = mapToScene(points.at(current_operation_square_));
-		else
-		{
-			first_pos_ = decorated_items_.at(0) -> toItem() -> scenePos();
-			latest_pos_ = event -> scenePos();
-			mouse_offset_ = event -> scenePos() - first_pos_;
-		}
+		current_operation_square_ = QET::MoveArea;
+		
+		first_pos_ = decorated_items_.at(0) -> toItem() -> scenePos();
+		latest_pos_ = event -> scenePos();
+		mouse_offset_ = event -> scenePos() - first_pos_;
 		startMovement();
-		event -> accept();
+		event->accept();
 	}
 	else
-		event -> ignore();
-}
-
-/**
-	Handle events generated when mouse buttons are double clicked.
-	@param event Object describing the mouse event
-*/
-void ElementPrimitiveDecorator::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	//QGraphicsObject::mouseDoubleClickEvent(event);
-	if (CustomElementPart *single_item = singleItem()) {
-		bool event_accepted = single_item -> singleItemDoubleClickEvent(this, event);
-		if (event_accepted) {
-			event -> ignore();
-			return;
-		}
-	}
+		event->ignore();
 }
 
 /**
@@ -280,70 +191,25 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	QPointF scene_pos = event -> scenePos();
 	QPointF movement = scene_pos - latest_pos_;
 	
-	if (current_operation_square_ > QET::NoOperation) {
-		// This is a scaling operation.
-		
-		// For convenience purposes, we may need to adjust mouse movements.
-		QET::ScalingMethod scaling_method = scalingMethod(event);
-		if (scaling_method > QET::FreeScaling) {
-			// real, non-rounded movement from the mouse press event
-			QPointF global_movement = scene_pos - first_pos_;
-			
-			QPointF rounded_global_movement;
-			if (scaling_method == QET::SnapScalingPointToGrid) {
-				// real, rounded movement from the mouse press event
-				rounded_global_movement = snapConstPointToGrid(global_movement);
-			}
-			else {
-				QRectF new_bounding_rect = original_bounding_rect_;
-				applyMovementToRect(current_operation_square_, global_movement, new_bounding_rect);
-				
-				const qreal scale_epsilon = 20.0; // rounds to 0.05
-				QPointF delta = deltaForRoundScaling(original_bounding_rect_, new_bounding_rect, scale_epsilon);
-				
-				// real, rounded movement from the mouse press event
-				rounded_global_movement = global_movement + delta;
-			}
-			
-			// rounded position of the current mouse move event
-			QPointF rounded_scene_pos = first_pos_ + rounded_global_movement;
-			
-			// when scaling the selection, consider the center of the currently dragged resizing rectangle
-			QPointF current_position = mapToScene(getResizingsPoints().at(current_operation_square_));
-			// determine the final, effective movement
-			movement = rounded_scene_pos - current_position;
-		}
-	}
-	else if (current_operation_square_ == QET::MoveArea) {
+	if (current_operation_square_ == QET::MoveArea)
+	{
 		// When moving the selection, consider the position of the first selected item
 		QPointF current_position = scene_pos - mouse_offset_;
 		QPointF rounded_current_position = snapConstPointToGrid(current_position);
 		movement = rounded_current_position - decorated_items_.at(0) -> toItem() -> scenePos();
-	}
-	else {
-		// Neither a movement nor a scaling operation -- perhaps the underlying item
-		// is interested in the mouse event for custom operations?
-		if (CustomElementPart *single_item = singleItem()) {
-			bool event_accepted = single_item -> singleItemMoveEvent(this, event);
-			if (event_accepted) {
-				event -> ignore();
-				return;
-			}
+		
+		QRectF bounding_rect = modified_bounding_rect_;
+		applyMovementToRect(current_operation_square_, movement, modified_bounding_rect_);
+		if (modified_bounding_rect_ != bounding_rect) {
+			adjustEffectiveBoundingRect();
 		}
-	}
-	
-	QRectF bounding_rect = modified_bounding_rect_;
-	applyMovementToRect(current_operation_square_, movement, modified_bounding_rect_);
-	if (modified_bounding_rect_ != bounding_rect) {
-		adjustEffectiveBoundingRect();
-	}
-	latest_pos_ = event -> scenePos();
-	
-	if (current_operation_square_ == QET::MoveArea) {
+		latest_pos_ = event -> scenePos();
 		translateItems(movement);
-	} else {
-		scaleItems(original_bounding_rect_, modified_bounding_rect_);
 	}
+	
+
+	
+
 }
 
 /**
@@ -352,39 +218,25 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	@param event Object describing the mouse event
 	@see QGraphicsScene::mouseGrabberItem()
 */
-void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
 	Q_UNUSED(event)
 	
 	ElementEditionCommand *command = 0;
-	if (current_operation_square_ > QET::NoOperation) {
-		ScalePartsCommand *scale_command = new ScalePartsCommand();
-		scale_command -> setScaledPrimitives(items());
-		scale_command -> setTransformation(
-			mapToScene(original_bounding_rect_).boundingRect(),
-			mapToScene(modified_bounding_rect_).boundingRect()
-		);
-		command = scale_command;
-	} else if (current_operation_square_ == QET::MoveArea) {
+
+	if (current_operation_square_ == QET::MoveArea)
+	{
 		QPointF movement = mapToScene(modified_bounding_rect_.topLeft()) - mapToScene(original_bounding_rect_.topLeft());
-		if (!movement.isNull()) {
+		if (!movement.isNull())
+		{
 			MovePartsCommand *move_command = new MovePartsCommand(movement, 0, graphicsItems());
 			command = move_command;
 		}
-	} else {
-		if (CustomElementPart *single_item = singleItem()) {
-			bool event_accepted = single_item -> singleItemReleaseEvent(this, event);
-			if (event_accepted) {
-				event -> ignore();
-				return;
-			}
+		
+		if (command) {
+			emit(actionFinished(command));
 		}
-	}
-	
-	if (command) {
-		emit(actionFinished(command));
-	}
-	
-	if (current_operation_square_ != QET::NoOperation) {
+		
 		adjust();
 	}
 	
@@ -440,7 +292,8 @@ void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 /**
 	Initialize an ElementPrimitiveDecorator
 */
-void ElementPrimitiveDecorator::init() {
+void ElementPrimitiveDecorator::init()
+{
 	setFlag(QGraphicsItem::ItemIsFocusable, true);
 	grid_step_x_ = grid_step_y_ = 1;
 	setAcceptHoverEvents(true);
@@ -461,6 +314,7 @@ void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
 	prepareGeometryChange();
 	effective_bounding_rect_ = modified_bounding_rect_ | effective_bounding_rect_;
 	update();
+	adjusteHandlerPos();
 }
 
 /**
@@ -593,6 +447,152 @@ QVector<QPointF> ElementPrimitiveDecorator::getResizingsPoints() const
 }
 
 /**
+ * @brief ElementPrimitiveDecorator::adjusteHandlerPos
+ */
+void ElementPrimitiveDecorator::adjusteHandlerPos()
+{
+	QVector <QPointF> points_vector = mapToScene(getResizingsPoints());
+	for (int i = 0 ; i < points_vector.size() ; ++i)
+		m_handler_vector.at(i)->setPos(points_vector.at(i));
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::handlerMousePressEvent
+ * @param qghi
+ * @param event
+ */
+void ElementPrimitiveDecorator::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(event);
+	
+	QVector <QPointF> points = getResizingsPoints();
+	
+	current_operation_square_ = m_handler_vector.indexOf(qghi);
+	
+	first_pos_ = latest_pos_ = mapToScene(points.at(current_operation_square_));
+	startMovement();
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::handlerMouseMoveEvent
+ * @param qghi
+ * @param event
+ */
+void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	
+	QPointF scene_pos = event -> scenePos();
+	QPointF movement = scene_pos - latest_pos_;
+	
+		// For convenience purposes, we may need to adjust mouse movements.
+	QET::ScalingMethod scaling_method = scalingMethod(event);
+	if (scaling_method > QET::FreeScaling)
+	{
+			// real, non-rounded movement from the mouse press event
+		QPointF global_movement = scene_pos - first_pos_;
+		
+		QPointF rounded_global_movement;
+		if (scaling_method == QET::SnapScalingPointToGrid)
+		{
+				// real, rounded movement from the mouse press event
+			rounded_global_movement = snapConstPointToGrid(global_movement);
+		}
+		else
+		{
+			QRectF new_bounding_rect = original_bounding_rect_;
+			applyMovementToRect(current_operation_square_, global_movement, new_bounding_rect);
+			
+			const qreal scale_epsilon = 20.0; // rounds to 0.05
+			QPointF delta = deltaForRoundScaling(original_bounding_rect_, new_bounding_rect, scale_epsilon);
+			
+				// real, rounded movement from the mouse press event
+			rounded_global_movement = global_movement + delta;
+		}
+		
+			// rounded position of the current mouse move event
+		QPointF rounded_scene_pos = first_pos_ + rounded_global_movement;
+		
+			// when scaling the selection, consider the center of the currently dragged resizing rectangle
+		QPointF current_position = mapToScene(getResizingsPoints().at(current_operation_square_));
+			// determine the final, effective movement
+		movement = rounded_scene_pos - current_position;
+	}
+	
+	QRectF bounding_rect = modified_bounding_rect_;
+	applyMovementToRect(current_operation_square_, movement, modified_bounding_rect_);
+	if (modified_bounding_rect_ != bounding_rect) {
+		adjustEffectiveBoundingRect();
+	}
+	latest_pos_ = event -> scenePos();
+	scaleItems(original_bounding_rect_, modified_bounding_rect_);
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::handlerMouseReleaseEvent
+ * @param qghi
+ * @param event
+ */
+void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(qghi);
+	Q_UNUSED(event);
+	
+	ElementEditionCommand *command = 0;
+	if (current_operation_square_ > QET::NoOperation)
+	{
+		ScalePartsCommand *scale_command = new ScalePartsCommand();
+		scale_command -> setScaledPrimitives(items());
+		scale_command -> setTransformation(
+					mapToScene(original_bounding_rect_).boundingRect(),
+					mapToScene(modified_bounding_rect_).boundingRect()
+					);
+		command = scale_command;
+	}
+	
+	if (command) {
+		emit(actionFinished(command));
+	}
+	
+	adjust();
+	
+	current_operation_square_ = QET::NoOperation;
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::addHandler
+ * Add handlers for this item
+ */
+void ElementPrimitiveDecorator::addHandler()
+{
+	if (m_handler_vector.isEmpty() && scene())
+	 {
+		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapFromScene(getResizingsPoints()));
+		 
+		 for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		 { 
+			 scene()->addItem(handler);
+			 handler->setColor(Qt::darkGreen);
+			 handler->installSceneEventFilter(this);
+			 handler->setZValue(this->zValue()+1);
+		 }
+	 }
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::removeHandler
+ * Remove the handlers of this item
+ */
+void ElementPrimitiveDecorator::removeHandler()
+{
+	if (!m_handler_vector.isEmpty())
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+	}
+}
+
+/**
 	Receive two rects, assuming they share a common corner and current is a \a
 	scaled version of \a original.
 	Calculate the scale ratios implied by this assumption, round them to the
@@ -660,4 +660,74 @@ QET::ScalingMethod ElementPrimitiveDecorator::scalingMethod(QGraphicsSceneMouseE
 		return single_item -> preferredScalingMethod();
 	}
 	return QET::RoundScaleRatios;
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::itemChange
+ * @param change
+ * @param value
+ * @return 
+ */
+QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+	if (change == ItemSceneHasChanged)
+	{
+		if(scene()) //Item is added to scene, we also add handlers
+			addHandler();
+		else //Item is removed from scene, we also remove the handlers
+			removeHandler();
+	}
+	else if (change == ItemVisibleHasChanged)
+	{
+		bool visible = value.toBool();
+		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setVisible(visible);
+	}
+	else if (change == ItemZValueHasChanged && !m_handler_vector.isEmpty())
+	{
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setZValue(this->zValue()+1);
+	}
+	
+	return QGraphicsObject::itemChange(change, value);
+}
+
+/**
+ * @brief ElementPrimitiveDecorator::sceneEventFilter
+ * @param watched
+ * @param event
+ * @return 
+ */
+bool ElementPrimitiveDecorator::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
+{
+	//Watched must be an handler
+	if(watched->type() == QetGraphicsHandlerItem::Type)
+	{
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		
+		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
+		{
+			m_vector_index = m_handler_vector.indexOf(qghi);
+			if (m_vector_index != -1)
+			{
+				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
+				{
+					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
+				{
+					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
+				{
+					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
 }

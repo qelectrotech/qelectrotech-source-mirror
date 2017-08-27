@@ -20,26 +20,24 @@
 #include "elementprimitivedecorator.h"
 #include "qetapp.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 /**
 	Constructeur
 	@param editor L'editeur d'element concerne
 	@param parent Le QGraphicsItem parent de ce champ de texte
-	@param scene La scene sur laquelle figure ce champ de texte
 */
-PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
+PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
 	follow_parent_rotations(true),
 	m_tagg("none"),
-	previous_text(),
-	decorator_(0)
+    previous_text()
 {
-	Q_UNUSED(scene);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
+    setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
 	setAcceptHoverEvents(true);
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
 	
@@ -112,73 +110,43 @@ QPointF PartTextField::margin() const {
 	return(QPointF(0.0, boundingRect().bottom() / 2.0));
 }
 
-/**
-	Handle context menu events.
-	@param event Object describing the context menu event to handle.
-*/
-void PartTextField::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
-	Q_UNUSED(event);
+void PartTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    if((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable))
+    {
+        QPointF pos = event->scenePos() + (m_origine_pos - event->buttonDownScenePos(Qt::LeftButton));
+        event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
+    }
+    else
+        QGraphicsObject::mouseMoveEvent(event);
+}
+
+void PartTextField::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+        m_origine_pos = this->pos();
+
+    QGraphicsObject::mousePressEvent(event);
+}
+
+void PartTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origine_pos != pos())
+    {
+        QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
+        undo->setText(tr("Déplacer un champ texte"));
+        undo->enableAnimation();
+        elementScene()->undoStack().push(undo);
+    }
+
+    QGraphicsObject::mouseReleaseEvent(event);
 }
 
 /**
-	Handle events generated when the mouse hovers over the decorator.
-	@param event Object describing the hover event.
-*/
-void PartTextField::hoverMoveEvent(QGraphicsSceneHoverEvent *event) {
-	// force the cursor when the text is being edited
-	if (hasFocus() && decorator_) {
-		decorator_ -> setCursor(Qt::IBeamCursor);
-	}
-	QGraphicsTextItem::hoverMoveEvent(event);
-}
-
-/**
-	@reimp QGraphicsItem::sceneEventFilter(QGraphicsItem *, QEvent *).
-	Intercepts events before they reach the watched target, i.e. typically the
-	primitives decorator.
-	This method mainly works with key strokes (F2, escape) and double clicks to
-	begin or end text edition.
-*/
-bool PartTextField::sceneEventFilter(QGraphicsItem *watched, QEvent *event) {
-	if (watched != decorator_) return(false);
-	
-	QPointF event_scene_pos = QET::graphicsSceneEventPos(event);
-	if (!event_scene_pos.isNull()) {
-		if (contains(mapFromScene(event_scene_pos))) {
-			if (hasFocus()) {
-				return sceneEvent(event); // manually deliver the event to this item
-				return(true); // prevent this event from being delivered to any item
-			} else {
-				if (event -> type() == QEvent::GraphicsSceneMouseDoubleClick) {
-					mouseDoubleClickEvent(static_cast<QGraphicsSceneMouseEvent *>(event));
-				}
-			}
-		}
-	}
-	else if (event -> type() == QEvent::KeyRelease || event -> type() == QEvent::KeyPress) {
-		// Intercept F2 and escape keystrokes to focus in and out
-		QKeyEvent *key_event = static_cast<QKeyEvent *>(event);
-		if (!hasFocus() && key_event -> key() == Qt::Key_F2) {
-			setEditable(true);
-			QTextCursor qtc = textCursor();
-			qtc.setPosition(qMax(0, document()->characterCount() - 1));
-			setTextCursor(qtc);
-		} else if (hasFocus() && key_event -> key() == Qt::Key_Escape) {
-			endEdition();
-		}
-		if (hasFocus()) {
-			sceneEvent(event); // manually deliver the event to this item
-			return(true); // prevent this event from being delivered to any item
-		}
-	}
-	return(false);
-}
-
-/*
-	@reimp QGraphicsItem::focusInEvent(QFocusEvent *)
-	@param e The QFocusEvent object describing the focus gain.
-	Start text edition when the item gains focus.
-*/
+ * @brief PartTextField::focusInEvent
+ * @param e The QFocusEvent object describing the focus gain.
+    Start text edition when the item gains focus.
+ */
 void PartTextField::focusInEvent(QFocusEvent *e) {
 	startEdition();
 	QGraphicsTextItem::focusInEvent(e);
@@ -286,88 +254,6 @@ void PartTextField::handleUserTransformation(const QRectF &initial_selection_rec
 	qreal new_font_size = saved_font_size_ * sy;
 	setProperty("real_size", qMax(1, qRound(new_font_size)));
 }
-/**
-	Dessine le texte statique.
-	@param painter QPainter a utiliser pour effectuer le rendu
-	@param qsogi   Pptions de dessin
-	@param widget  Widget sur lequel on dessine (facultatif)
-*/
-void PartTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *widget) {
-	// According to the source code of QGraphicsTextItem::paint(), this should
-	// avoid the drawing of the dashed rectangle around the text.
-	QStyleOptionGraphicsItem our_qsogi(*qsogi);
-	our_qsogi.state = QStyle::State_None;
-	
-	QGraphicsTextItem::paint(painter, &our_qsogi, widget);
-#ifdef QET_DEBUG_EDITOR_TEXTS
-	painter -> setPen(Qt::blue);
-	painter -> drawRect(boundingRect());
-	
-	painter -> setPen(Qt::red);
-	drawPoint(painter, QPointF(0, 0));
-	
-	painter -> setPen(QColor("#800000"));
-	drawPoint(painter, mapFromScene(pos()));
-#endif
-}
-
-/**
-	@reimp CustomElementPart::setDecorator(ElementPrimitiveDecorator *)
-	Install or remove a sceneEventFilter on the decorator and ensure it will
-	adjust itself while the text is being edited.
-*/
-void PartTextField::setDecorator(ElementPrimitiveDecorator *decorator) {
-	if (decorator) {
-		decorator -> installSceneEventFilter(this);
-		// ensure the decorator will adjust itself when the text area expands or shrinks
-		connect(document(), SIGNAL(contentsChanged()), decorator, SLOT(adjust()));
-	}
-	else {
-		decorator_ -> removeSceneEventFilter(this);
-		endEdition();
-	}
-	decorator_ = decorator;
-}
-
-/**
-	Accept the mouse \a event relayed by \a decorator if this text item has focus.
-*/
-bool PartTextField::singleItemPressEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED(decorator)
-	Q_UNUSED(event)
-	return(hasFocus());
-}
-
-/**
-	Accept the mouse \a event relayed by \a decorator if this text item has focus.
-*/
-bool PartTextField::singleItemMoveEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED(decorator)
-	Q_UNUSED(event)
-	return(hasFocus());
-}
-
-/**
-	Accept the mouse \a event relayed by \a decorator if this text item has focus.
-*/
-bool PartTextField::singleItemReleaseEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED(decorator)
-	Q_UNUSED(event)
-	return(hasFocus());
-}
-
-/**
-	Accept the mouse \a event relayed by \a decorator if this text item has focus.
-*/
-bool PartTextField::singleItemDoubleClickEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED(decorator)
-	// calling mouseDoubleClickEvent() will set this text item editable and grab keyboard focus
-	if (event -> button() == Qt::LeftButton) {
-		mouseDoubleClickEvent(event);
-		return(true);
-	}
-	return(false);
-}
 
 /**
 	Cette methode s'assure que la position du champ de texte est coherente
@@ -434,27 +320,4 @@ void PartTextField::endEdition()
 	setTextCursor(qtc);
 	
 	setEditable(false);
-	if (decorator_) {
-		decorator_ -> setFocus();
-	}
 }
-
-#ifdef QET_DEBUG_EDITOR_TEXTS
-/**
-	Dessine deux petites fleches pour mettre un point en valeur
-	@param painter QPainter a utiliser pour effectuer le rendu
-	@param point   Point a dessiner
-*/
-void PartTextField::drawPoint(QPainter *painter, const QPointF &point) {
-	qreal px = point.x();
-	qreal py = point.y();
-	qreal size_1 = 5.0;
-	qreal size_2 = 1.0;
-	painter -> drawLine(QLineF(px, py, px + size_1, py));
-	painter -> drawLine(QLineF(px + size_1 - size_2, py - size_2, px + size_1, py));
-	painter -> drawLine(QLineF(px + size_1 - size_2, py + size_2, px + size_1, py));
-	painter -> drawLine(QLineF(px, py, px, py + size_1));
-	painter -> drawLine(QLineF(px, py + size_1, px - size_2, py + size_1 - size_2));
-	painter -> drawLine(QLineF(px, py + size_1, px + size_2, py + size_1 - size_2));
-}
-#endif

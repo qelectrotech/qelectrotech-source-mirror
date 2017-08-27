@@ -19,9 +19,9 @@
 #define PART_ARC_H
 
 #include "abstractpartellipse.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class QPropertyUndoCommand;
+class QetGraphicsHandlerItem;
 
 /**
  * @brief The PartArc class
@@ -54,25 +54,34 @@ class PartArc : public AbstractPartEllipse
 		virtual const QDomElement toXml   (QDomDocument &) const;
 		virtual void              fromXml (const QDomElement &);
 
-		virtual QRectF boundingRect()  const;
 		virtual QPainterPath shape() const;
 		virtual QPainterPath shadowShape() const;
+		virtual void setRect(const QRectF &rect) {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
+		virtual void setStartAngle(const int &start_angle) {AbstractPartEllipse::setStartAngle(start_angle); adjusteHandlerPos();}
+		virtual void setSpanAngle(const int &span_angle) {AbstractPartEllipse::setSpanAngle(span_angle); adjusteHandlerPos();}
 
 	protected:
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 	private:
 		void switchResizeMode();
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void sceneSelectionChanged ();
+		
+		void addHandler();
+		void removeHandler();
 
 	private:
-		QetGraphicsHandlerUtility m_handler = 10;
-		int m_handler_index = -1;
 		QPropertyUndoCommand *m_undo_command = nullptr;
 		QPropertyUndoCommand *m_undo_command2 = nullptr;
-		int m_resize_mode = 1;
+		int m_resize_mode = 1,
+			m_vector_index = -1;
 		QPointF m_span_point;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

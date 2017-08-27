@@ -19,7 +19,6 @@
 #define PART_ELLIPSE_H
 
 #include "abstractpartellipse.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class QPropertyUndoCommand;
 
@@ -55,24 +54,29 @@ class PartEllipse : public  AbstractPartEllipse
 		virtual QString xmlName() const { return(QString("ellipse")); }
 		virtual const QDomElement toXml   (QDomDocument &) const;
 		virtual void              fromXml (const QDomElement &);
-
-		virtual QRectF boundingRect()  const;
 		virtual QPainterPath shape() const;
 		virtual QPainterPath shadowShape() const;
+		virtual void setRect(const QRectF &rect) {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
 
 	protected:
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 	private:
 		void switchResizeMode();
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void sceneSelectionChanged ();
+		
+		void addHandler();
+		void removeHandler();
 
 	private:
-		QetGraphicsHandlerUtility m_handler;
-		int m_handler_index;
 		QPropertyUndoCommand *m_undo_command;
-		int m_resize_mode = 1;
+		int m_resize_mode = 1,
+			m_vector_index = -1;
 };
 #endif

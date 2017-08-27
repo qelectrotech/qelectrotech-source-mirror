@@ -19,9 +19,9 @@
 #define PART_RECTANGLE_H
 
 #include "customelementgraphicpart.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class QPropertyUndoCommand;
+class QetGraphicsHandlerItem;
 
 /**
  * This class represents a rectangle primitive which may be used to compose the
@@ -75,20 +75,27 @@ class PartRectangle :  public CustomElementGraphicPart
 		virtual void handleUserTransformation(const QRectF &, const QRectF &);
 
 	protected:
-		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
 
 	private:
 		void switchResizeMode();
+		void adjusteHandlerPos();
+		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void sceneSelectionChanged ();
+		
+		void addHandler();
+		void removeHandler();
 	
 	private:
 		QRectF m_rect;
 		QList<QPointF> saved_points_;
-		QetGraphicsHandlerUtility m_handler;
-		int m_handler_index;
 		QPropertyUndoCommand *m_undo_command;
-		int m_resize_mode = 1;
+		int m_resize_mode = 1,
+			m_vector_index = -1;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

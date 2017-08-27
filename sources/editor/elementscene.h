@@ -51,7 +51,7 @@ class ElementScene : public QGraphicsScene
 			NonSelected = 16,
 			SelectedOrNot = 24
 		};
-	Q_DECLARE_FLAGS(ItemOptions, ItemOption)
+		Q_DECLARE_FLAGS(ItemOptions, ItemOption)
 	
 		// constructors, destructor
 	public:
@@ -82,7 +82,7 @@ class ElementScene : public QGraphicsScene
 		QETElementEditor *m_element_editor = nullptr;
 	
 			/// Variables to manage the paste area on the scene
-		QGraphicsRectItem *m_paste_area = nullptr;
+		QGraphicsRectItem *m_paste_area;
 		QRectF m_defined_paste_area;
 	
 			/// Variables to handle copy/paste with offset
@@ -168,15 +168,15 @@ class ElementScene : public QGraphicsScene
 		void stackAction(ElementEditionCommand *);
 	
 	signals:
-			/// Signal emitted after one or several parts were added
+		/// Signal emitted after one or several parts were added
 		void partsAdded();
-			/// Signal emitted after one or several parts were removed
+		/// Signal emitted after one or several parts were removed
 		void partsRemoved();
-			/// Signal emitted when the zValue of one or several parts change
+		/// Signal emitted when the zValue of one or several parts change
 		void partsZValueChanged();
-			/// Signal emitted when users have defined the copy/paste area
+		/// Signal emitted when users have defined the copy/paste area
 		void pasteAreaDefined(const QRectF &);
-			/// Signal emitted when need zoomFit
+		/// Signal emitted when need zoomFit
 		void needZoomFit();
 };
 

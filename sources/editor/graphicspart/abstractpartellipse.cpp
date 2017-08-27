@@ -118,6 +118,7 @@ void AbstractPartEllipse::setRect(const QRectF &rect)
 	if (rect == m_rect) return;
 	prepareGeometryChange();
 	m_rect = rect;
+	
 	emit rectChanged();
 }
 
