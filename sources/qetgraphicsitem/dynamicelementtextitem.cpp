@@ -49,6 +49,15 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		}
 		
 	});
+
+		//If the parent is slave, we keep aware about the changement of master.
+	if(parent_element->linkType() == Element::Slave)
+	{
+		connect(parent_element, &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			//The parent is already linked, wa call master changed for init the connection
+		if(!parent_element->linkedElements().isEmpty())
+			masterChanged();
+	}
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
@@ -132,10 +141,11 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("TextFrom"));
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
-	if(m_text_from == ElementInfo)
+	if(m_text_from == ElementInfo || m_text_from == CompositeText)
 	{
 		setNoEditable(true);
-		connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+		if (elementUseForInfo())
+			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
 	else {
 		setNoEditable(false);
@@ -176,6 +186,47 @@ Element *DynamicElementTextItem::parentElement() const {
 }
 
 /**
+ * @brief DynamicElementTextItem::elementUseForInfo
+ * @return a pointer to the element we must use for the variable information.
+ * If this text is owned by a simple element, the simple element is returned, this is the same element returned by the function parentElement().
+ * If this text is owned by a master element, the master element is returned, this is the same element returned by the function parentElement().
+ * If this text is owned by a report element, the report element is returned, this is the same element returned by the function parentElement().
+ * If this text is owned by a terminal element, the terminal element is returned, this is the same element returned by the function parentElement().
+ * If this text is owned by a slave element, we return the master element set as master of the parent slave element,
+ * if the parent slave is not linked to a master, this function return a nullptr.
+ * If this text have no parent element, return nullptr
+ */
+Element *DynamicElementTextItem::elementUseForInfo() const
+{
+	Element *elmt = parentElement();
+	if(!elmt)
+		return nullptr;
+	
+	switch (elmt->linkType())
+	{
+		case Element::Simple:
+			return elmt;
+		case Element::NextReport:
+			return elmt;
+		case Element::PreviousReport:
+			return elmt;
+		case Element::Master:
+			return elmt;
+		case Element::Slave:
+		{
+			if(elmt->linkedElements().isEmpty())
+				return nullptr;
+			else
+				return elmt->linkedElements().first();
+		}
+		case Element::Terminale:
+			return elmt;
+		default:
+			return elmt;
+	}
+}
+
+/**
  * @brief DynamicElementTextItem::textFrom
  * @return what the final text is created from.
  */
@@ -190,29 +241,32 @@ DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
  */
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
-	setNoEditable(text_from == ElementInfo? true : false);
+	setNoEditable(text_from == UserText? false : true);
 	
 	if(text_from == UserText)
 	{
 		setPlainText(m_text);
 		disconnect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
-	else if (text_from == ElementInfo && m_parent_element)
+	else if (text_from == ElementInfo && elementUseForInfo())
 	{
-		setPlainText(m_parent_element->elementInformations().value(m_info_name).toString());
+		setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
 		
 		if(m_text_from == UserText)
-			connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
-	else if (text_from == CompositeText && m_parent_element)
+	else if (text_from == CompositeText && elementUseForInfo())
 	{
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations()));
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
 		if(m_text_from == UserText)
-			connect(m_parent_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
 	
-	m_text_from = text_from;
-	emit textFromChanged(m_text_from);
+	if(m_text_from != text_from)
+	{
+		m_text_from = text_from;
+		emit textFromChanged(m_text_from);
+	}
 }
 
 /**
@@ -263,8 +317,8 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 {
 	m_info_name = info_name;
 	
-	if(m_parent_element) {
-		setPlainText(m_parent_element->elementInformations().value(info_name).toString());
+	if(elementUseForInfo()) {
+		setPlainText(elementUseForInfo()->elementInformations().value(info_name).toString());
 	}
 	
 	emit infoNameChanged(info_name);
@@ -278,10 +332,11 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 {
 	m_composite_text = text;
 
+	DiagramContext dc;
+	if(elementUseForInfo())
+		dc = elementUseForInfo()->elementInformations();
+	setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 	
-	if(m_parent_element) {
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations()));
-	}
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -342,18 +397,74 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		QGraphicsTextItem::mouseReleaseEvent(event);
 }
 
+/**
+ * @brief DynamicElementTextItem::mouseDoubleClickEvent
+ * Reimplemented functions, for add extra feature when this text is owned by a slave.
+ * In this case if the parent slave element is linked to a master, and this text display the label of the master
+ * (both if the 'text from' is 'element info' or 'composite text') the QGraphicsView go to master and select it.
+ * @param event
+ */
+void DynamicElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	DiagramTextItem::mouseDoubleClickEvent(event);
+	
+	if(m_parent_element && m_parent_element.data()->linkType() == Element::Slave && m_master_element)
+	{
+		if ((m_text_from == ElementInfo && m_info_name == "label") ||
+			(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+		{
+				//Unselect and ungrab mouse to prevent unwanted
+				//move when linked element is in the same scene of this.
+			setSelected(false);
+			ungrabMouse();
+			
+			if(scene() != m_master_element.data()->scene())
+				m_master_element.data()->diagram()->showMe();
+			m_master_element.data()->setSelected(true);
+			
+				//Zoom to the master element
+			for(QGraphicsView *view : m_master_element.data()->scene()->views())
+			{
+				QRectF fit = m_master_element.data()->sceneBoundingRect();
+				fit.adjust(-200, -200, 200, 200);
+				view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
+			}
+		}
+	}
+}
+
 void DynamicElementTextItem::elementInfoChanged()
 {
-	if(!m_parent_element)
-		return;
+	DiagramContext dc;
+	if(elementUseForInfo())
+		dc = elementUseForInfo()->elementInformations();
 	
 	QString final_text;
-	
+
 	if (m_text_from == ElementInfo)
-		final_text = m_parent_element->elementInformations().value(m_info_name).toString();
+		final_text = dc.value(m_info_name).toString();
 	else if (m_text_from == CompositeText)
-		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, m_parent_element->elementInformations());
+		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+	else if (m_text_from  == UserText)
+		final_text = m_text;
 	
 	setPlainText(final_text);
+}
+
+void DynamicElementTextItem::masterChanged()
+{
+		//First we remove the old connection
+	if(!m_master_element.isNull() && (m_text_from == ElementInfo || m_text_from == CompositeText))
+		disconnect(m_master_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	
+	if(elementUseForInfo())
+	{
+		m_master_element = elementUseForInfo();
+		if(m_text_from == ElementInfo || m_text_from == CompositeText)
+			connect(m_master_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
+	}
+		
+		//Because master changed we update this text
+	elementInfoChanged();
 }
 

@@ -38,6 +38,7 @@ class SlaveElement : public CustomElement
 
 	private:
 		QGraphicsTextItem *m_xref_item;
+		QList<QMetaObject::Connection> m_connections;
 };
 
 #endif // SLAVEELEMENT_H

@@ -37,7 +37,7 @@ QString CompositeTextEditDialog::plainText() const {
 void CompositeTextEditDialog::setUpComboBox()
 {
 	QStringList qstrl;
-	Element *elmt = m_text->parentElement();
+	Element *elmt = m_text->elementUseForInfo();
 	if(!elmt)
 		return;
 	

@@ -56,18 +56,23 @@ void SlaveElement::linkToElement(Element *elmt)
 		// check if element is master and if isn't already linked
 	if (elmt->linkType() == Master && !connected_elements.contains(elmt))
 	{
-		if(!isFree()) unlinkAllElements();
-		this->disconnect();
+		if(!isFree())
+			unlinkAllElements();
+		
+		for(QMetaObject::Connection c : m_connections)
+			this->disconnect(c);
+		m_connections.clear();
+
 		connected_elements << elmt;
 
 		QETProject *project = elmt->diagram()->project();
-		connect(elmt,    SIGNAL(xChanged()),                                        this, SLOT(updateLabel()));
-		connect(elmt,    SIGNAL(yChanged()),                                        this, SLOT(updateLabel()));
-		connect(elmt,    SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel()));
-		connect(project, SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)),  this, SLOT(updateLabel()));
-		connect(project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),              this, SLOT(updateLabel()));
-		connect(project, SIGNAL(XRefPropertiesChanged()),                           this, SLOT(updateLabel()));
-		connect(elmt,    SIGNAL(updateLabel()),                                     this, SLOT(updateLabel()));
+		m_connections << connect(elmt,    SIGNAL(xChanged()),                                        this, SLOT(updateLabel()));
+		m_connections << connect(elmt,    SIGNAL(yChanged()),                                        this, SLOT(updateLabel()));
+		m_connections << connect(elmt,    SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel()));
+		m_connections << connect(project, SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)),  this, SLOT(updateLabel()));
+		m_connections << connect(project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),              this, SLOT(updateLabel()));
+		m_connections << connect(project, SIGNAL(XRefPropertiesChanged()),                           this, SLOT(updateLabel()));
+		m_connections << connect(elmt,    SIGNAL(updateLabel()),                                     this, SLOT(updateLabel()));
 
 		updateLabel();
 		elmt -> linkToElement(this);

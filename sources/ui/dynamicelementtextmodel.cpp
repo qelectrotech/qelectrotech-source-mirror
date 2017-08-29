@@ -105,9 +105,12 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	QStandardItem *composite = new QStandardItem(tr("Texte composé"));
 	composite->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
+	DiagramContext dc;
+	if(deti->elementUseForInfo())
+		dc = deti->elementUseForInfo()->elementInformations();
 	QStandardItem *compositea = new QStandardItem(deti->compositeText().isEmpty() ?
 													  tr("Mon texte composé") :
-													  autonum::AssignVariables::replaceVariable(deti->compositeText(), deti->parentElement()->elementInformations()));
+													  autonum::AssignVariables::replaceVariable(deti->compositeText(), dc));
 	compositea->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	compositea->setData(DynamicElementTextModel::compositeText, Qt::UserRole+1); //Use to know the edited thing
 	compositea->setData(deti->compositeText(), Qt::UserRole+2); //Use to know to element composite formula
@@ -329,6 +332,9 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		return;
 	
 	QStandardItem *text_qsi = m_texts_list.value(deti);
+	DiagramContext dc;
+	if(deti->elementUseForInfo())
+		dc = deti->elementUseForInfo()->elementInformations();
 	
 	if (qsi->data().toInt() == textFrom)
 	{
@@ -344,13 +350,13 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		{
 			enableSourceText(deti, DynamicElementTextItem::ElementInfo);
 			QString info = text_from_qsi->child(1,1)->data(Qt::UserRole+2).toString();
-			text_qsi->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
+			text_qsi->setData(dc.value(info), Qt::DisplayRole);
 		}
 		else
 		{
 			enableSourceText(deti, DynamicElementTextItem::CompositeText);
 			QString compo = text_from_qsi->child(2,1)->data(Qt::UserRole+2).toString();
-			text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
+			text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, dc), Qt::DisplayRole);
 		}
 		
 		
@@ -360,15 +366,15 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		QString text = qsi->data(Qt::DisplayRole).toString();
 		text_qsi->setData(text, Qt::DisplayRole);
 	}
-	else if (qsi->data().toInt() == infoText && deti->parentElement())
+	else if (qsi->data().toInt() == infoText && deti->elementUseForInfo())
 	{
 		QString info = qsi->data(Qt::UserRole+2).toString();
-		text_qsi->setData(deti->parentElement()->elementInformations().value(info), Qt::DisplayRole);
+		text_qsi->setData(dc.value(info), Qt::DisplayRole);
 	}
-	else if (qsi->data().toInt() == compositeText && deti->parentElement())
+	else if (qsi->data().toInt() == compositeText && deti->elementUseForInfo())
 	{
 		QString compo = qsi->data(Qt::UserRole+2).toString();
-		text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, deti->parentElement()->elementInformations()), Qt::DisplayRole);
+		text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, dc), Qt::DisplayRole);
 	}
 	
 		//We emit the signal only if @qsi is in the second column, because the data are stored on this column
@@ -597,7 +603,9 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 					DynamicElementTextItem *deti = detm->textFromIndex(index);
 					if(deti)
 					{
-						DiagramContext dc = deti->parentElement()->elementInformations();
+						DiagramContext dc;
+						if(deti->elementUseForInfo())
+							dc = deti->elementUseForInfo()->elementInformations();
 						assigned_text = autonum::AssignVariables::replaceVariable(edited_text, dc);
 					}
 					
@@ -620,9 +628,10 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti) const
 {
 	QStringList qstrl;
-	Element *elmt = deti->parentElement();
+	Element *elmt = deti->elementUseForInfo();
 	if(!elmt)
 		return qstrl;
+
 	
 	QStringList info_list = QETApp::elementInfoKeys();
 	info_list.removeAll("formula"); //No need to have formula

@@ -68,6 +68,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void fromXml(const QDomElement &dom_elmt) override;
 		
 		Element *parentElement() const;
+		Element *elementUseForInfo() const;
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
@@ -84,12 +85,15 @@ class DynamicElementTextItem : public DiagramTextItem
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		
 	private:
 		void elementInfoChanged();
+		void masterChanged();
 		
 	private:
-		QPointer <Element> m_parent_element;
+		QPointer <Element> m_parent_element,
+						   m_master_element;
 		QString m_tagg,
 				m_text,
 				m_info_name,
