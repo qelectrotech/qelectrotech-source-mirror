@@ -458,7 +458,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>V této nabídce můžete stanovit, zda chcete, aby se automatické číslování aktualizovalo, nebo ne. Pro prvek automatické číslování máte 4 možnosti obnovovací politiky:
+- Obojí: Budou aktualizovány jak nový tak stávající štítky prvku. Toto je výchozí volba.
+- Aktualizovat pouze nový: Budou aktualizovány pouze nově vytvořené prvky. Existent element labels will be frozen.
+- Aktualizovat pouze stávající: Budou aktualizovány pouze stávající prvky. Novým prvkům bude přiřazen jejich vzorec chování, ale jakmile byly jednou vytvořeny, nebudou již aktulizovány.
+- Zakázat: Nové prvky ani stávající nebudou aktualizovány. Toto stejně tak platí pro nové listy.
+Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, ovlivní jen jeho obnovovací politiku.</translation>
     </message>
 </context>
 <context>
@@ -2115,7 +2120,18 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové listy číslovány.
+Číslování se skládá z nejmenší proměnné.
+- Můžete přidat nebo smazat proměnnou číslování tlačítkem - a +.
+Proměnná číslování obsahuje: typ, hodnotu a přírůstek.
+
+- typy &quot;Číslo 1&quot;,&quot;Číslo 01&quot;; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, který je na každém novém listu zvýšen o hodnotu &quot;zvýšení&quot;;.
+- &quot;Číslo 01&quot;; a ;&quot;Číslo 001&quot;;, jsou v uvedeném pořadí ukazovány v nákresu s nejméně dvěma a třemi číslicemi.
+Pokud má číslo stanovené v poli Hodnota méně číslic než má zvolený typ, bude mít na začátku jednu nebo dvě 0, aby splňovalo svůj typ.
+
+-Typ &quot;text&quot;; je pevný text.
+Pole &quot;;zvýšení&quot;; se nepoužívá.
+</translation>
     </message>
 </context>
 <context>
@@ -6959,7 +6975,18 @@ Si le chiffre définie dans le champs Valeur posséde moins de digits que le typ
 Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové listy číslovány.
+Číslování se skládá z nejmenší proměnné.
+- Můžete přidat nebo smazat proměnnou číslování tlačítkem - a +.
+Proměnná číslování obsahuje: typ, hodnotu a přírůstek.
+
+- typy &quot;Číslo 1&quot;,&quot;Číslo 01&quot;; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, který je na každém novém listu zvýšen o hodnotu &quot;zvýšení&quot;;.
+- &quot;Číslo 01&quot;; a ;&quot;Číslo 001&quot;;, jsou v uvedeném pořadí ukazovány v nákresu s nejméně dvěma a třemi číslicemi.
+Pokud má číslo stanovené v poli Hodnota méně číslic než má zvolený typ, bude mít na začátku jednu nebo dvě 0, aby splňovalo svůj typ.
+
+-Typ &quot;text&quot;; je pevný text.
+Pole &quot;;zvýšení&quot;; se nepoužívá.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -6987,7 +7014,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové listy číslovány.
+Číslování se skládá z nejmenší proměnné.
+- Můžete přidat nebo smazat proměnnou číslování tlačítkem - a +.
+Proměnná číslování obsahuje: typ, hodnotu a přírůstek.
+
+- typy &quot;Číslo 1&quot;,&quot;Číslo 01&quot;; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, který je na každém novém listu zvýšen o hodnotu &quot;zvýšení&quot;;.
+- &quot;Číslo 01&quot;; a ;&quot;Číslo 001&quot;;, jsou v uvedeném pořadí ukazovány v nákresu s nejméně dvěma a třemi číslicemi.
+Pokud má číslo stanovené v poli Hodnota méně číslic než má zvolený typ, bude mít na začátku jednu nebo dvě 0, aby splňovalo svůj typ.
+
+- Typ &quot;text&quot;; je pevný text.
+Pole &quot;;zvýšení&quot;; se nepoužívá.
+
+- Typ &quot;číslo listu&quot; představuje číslo nynějšího listu.
+Ostatní pole se nepoužívají.
+
+-Typ &quot;list&quot; představuje název nynějšího listu.
+Ostatní pole se nepoužívají.</translation>
     </message>
 </context>
 <context>
