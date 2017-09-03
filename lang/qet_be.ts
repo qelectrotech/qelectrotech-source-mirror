@@ -3734,12 +3734,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Désignation</source>
-        <translation>Aanwijzen</translation>
+        <translation>Bestemming</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="320"/>
         <source>Localisation</source>
-        <translation>Plaats</translation>
+        <translation>lokalisatie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="321"/>
@@ -3792,7 +3792,7 @@ Beschikbare opties:
         <location filename="../sources/qetapp.cpp" line="1217"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Configureer QElectroTech</translation>
+        <translation>QElectroTech instellen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1343"/>
@@ -5285,7 +5285,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Configureer QElectroTech</translation>
+        <translation>&amp;Instellen QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
@@ -5318,7 +5318,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <location filename="../sources/qetmainwindow.cpp" line="105"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation>Nieuwe versie downloaden (dev)</translation>
+        <translation>Nieuwste versie downloaden (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
@@ -5534,12 +5534,12 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Adapter le folio à la page</source>
-        <translation>aanpassenschema bladzijde aan bladzijde</translation>
+        <translation>Aanpassenschema bladzijde aan bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="249"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>Als deze optie aan gekruist is, schema wordt aangepast aan de beschibare afdrukruimte op het gekozen papier formaat.</translation>
+        <translation>Als deze optie aan gekruist is, wordthet schema aangepast aan de beschibare afdrukruimte van het gekozen papier formaat.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="369"/>
@@ -5569,19 +5569,19 @@ les conditions requises ne sont pas valides</source>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation>Dit document lijkt te zijn bewaart met een latere versie van QElectroTech. Het is mogelijk dat de openen van sommige of alle onderdelen van dit document ontbreken.
+        <translation>Dit document lijkt te zijn bewaart met een oudere versie van QElectroTech. Het is mogelijk dat bij het openen van deze versie sommige of alle onderdelen van dit document ontbreken.
 Wat wilt u doen?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1253"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation>&lt;b&gt; Openen van het project ... &lt;/ b&gt;</translation>
+        <translation>&lt;b&gt;Bezig met openen van het project ... &lt;/ b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1193"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
-        <translation>Waarschuwing</translation>
+        <translation>Aankondiging</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="239"/>
@@ -5752,7 +5752,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation>Bewaar als</translation>
+        <translation>Bewaaren als</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
@@ -5854,7 +5854,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation>Wijzig &amp;e</translation>
+        <translation>Wijzig &amp;en</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
@@ -5890,7 +5890,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="483"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Annuleren</translation>
+        <translation>Afbreken</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="502"/>
@@ -5920,7 +5920,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation>QElectroTech - Titel blok sjabloon editor</translation>
+        <translation>QElectroTech - Titel blok sjabloon bewerker</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="674"/>
@@ -8186,7 +8186,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="77"/>
         <source>Gestionnaire de logos</source>
-        <translation>Beheren van de logo&apos;s</translation>
+        <translation>Beheren logo&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="80"/>
@@ -8452,13 +8452,13 @@ Maximale lengte : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="138"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Naamloos project (id %1) title blokken</translation>
+        <translation>Titelblokken vannaamloos project (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="146"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>&quot;%1&quot; project titel blokken</translation>
+        <translation>Titel blokken van project &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -8550,7 +8550,7 @@ Maximale lengte : %2px
         <translation>Creëer uw eigen tekst door het gebruiken van de volgende variabelen:
 % F: het bladzijde nummer
 % F: folio label
-% S: het rijnummer
+% S: rijnummer
 % C: kolomnummer
 % M: Installatie
 % LM: Location</translation>
@@ -8593,7 +8593,7 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
         <source>Commutateur / bouton</source>
-        <translation>Schakelaa / drukknop</translation>
+        <translation>Schakelaar / drukknop</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="98"/>
@@ -8667,7 +8667,7 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation>Insert HTML entity</translation>
+        <translation>Invoegen HTML entitieit</translation>
     </message>
 </context>
 <context>
@@ -8675,12 +8675,12 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="756"/>
         <source>Edit text</source>
-        <translation>Edit tekst</translation>
+        <translation>Bewerk tekst</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="779"/>
         <source>Rich Text</source>
-        <translation>Rich Tekst</translation>
+        <translation>Tekst met opmaak</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="780"/>
@@ -8695,7 +8695,7 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="788"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Stop</translation>
+        <translation>&amp;Afbreken</translation>
     </message>
 </context>
 <context>
