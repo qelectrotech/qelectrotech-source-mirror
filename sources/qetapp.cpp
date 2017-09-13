@@ -315,6 +315,7 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "machine-manufacturer-reference") return tr("Référence fabricant machine");
 	else if (info == "location") return tr("Localisation");
 	else if (info == "function") return tr("Fonction");
+	else if (info == "tension-protocol") return tr("Tension / Protocole");
 	return (info);
 }
 
@@ -337,6 +338,7 @@ QString QETApp::elementInfoToVar(const QString &info)
 	else if (info == "machine-manufacturer-reference") return QString("%{machine-manufacturer-reference}");
 	else if (info == "location")                       return QString("%{location}");
 	else if (info == "function")                       return QString("%{function}");
+	else if (info == "tension-protocol")               return QString("%{tension-protocol}");
 	
 	return (QString ("%{void}"));
 }

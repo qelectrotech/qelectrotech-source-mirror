@@ -23,6 +23,7 @@
 #include <QPointer>
 
 class Element;
+class Conductor;
 
 /**
  * @brief The DynamicElementTextItem class
@@ -32,6 +33,9 @@ class Element;
  */
 class DynamicElementTextItem : public DiagramTextItem
 {
+	friend class DynamicTextItemDelegate;
+	friend class CompositeTextEditDialog;
+	
     Q_OBJECT
     
 	Q_PROPERTY(QString tagg READ tagg WRITE setTagg NOTIFY taggChanged)
@@ -83,23 +87,43 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString compositeText() const;
 		
 	protected:
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 		
 	private:
 		void elementInfoChanged();
 		void masterChanged();
+		void reportChanged();
+		void reportFormulaChanged();
+		void setConnectionForReportFormula(const QString &formula);
+		void removeConnectionForReportFormula(const QString &formula);
+		void updateReportFormulaConnection();
+		void updateReportText();
+		void conductorWasAdded(Conductor *conductor);
+		void conductorWasRemoved(Conductor *conductor);
+		void setPotentialConductor();
+		void conductorPropertiesChanged();
+		QString reportReplacedCompositeText() const;
 		
 	private:
 		QPointer <Element> m_parent_element,
-						   m_master_element;
+						   m_master_element,
+						   m_other_report;
+		QPointer <Conductor> m_watched_conductor;
 		QString m_tagg,
 				m_text,
 				m_info_name,
-				m_composite_text;
+				m_composite_text,
+				m_report_formula,
+				m_F_str;
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
-		QUuid m_uuid;		
+		QUuid m_uuid;
+		QMetaObject::Connection m_report_formula_con;
+		QColor m_user_color;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

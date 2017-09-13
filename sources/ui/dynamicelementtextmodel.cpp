@@ -27,6 +27,8 @@
 #include "qetapp.h"
 #include "element.h"
 #include "compositetexteditdialog.h"
+#include "terminal.h"
+#include "conductor.h"
 
 DynamicElementTextModel::DynamicElementTextModel(QObject *parent) :
 QStandardItemModel(parent)
@@ -628,20 +630,38 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti) const
 {
 	QStringList qstrl;
-	Element *elmt = deti->elementUseForInfo();
-	if(!elmt)
-		return qstrl;
-
 	
-	QStringList info_list = QETApp::elementInfoKeys();
-	info_list.removeAll("formula"); //No need to have formula
-	DiagramContext dc = elmt->elementInformations();
-	
-	for(QString info : info_list)
+	if(deti->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
 	{
-		if(dc.contains(info))
-			qstrl << info;
+		qstrl << "label";
+		
+		if(!deti->m_watched_conductor.isNull())
+		{
+			Conductor *cond = deti->m_watched_conductor.data();
+			if (!cond->properties().m_function.isEmpty())
+				qstrl << "function";
+			if(!cond->properties().m_tension_protocol.isEmpty())
+				qstrl << "tension-protocol";
+		}
+		 
+		 return qstrl;
 	}
-	
+	else
+	{
+		Element *elmt = deti->elementUseForInfo();
+		if(!elmt)
+			return qstrl;
+		
+		
+		QStringList info_list = QETApp::elementInfoKeys();
+		info_list.removeAll("formula"); //No need to have formula
+		DiagramContext dc = elmt->elementInformations();
+		
+		for(QString info : info_list)
+		{
+			if(dc.contains(info))
+				qstrl << info;
+		}
+	}
 	return qstrl;
 }
