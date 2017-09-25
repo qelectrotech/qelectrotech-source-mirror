@@ -40,6 +40,7 @@
 #include "partterminal.h"
 #include "parttextfield.h"
 #include "styleeditor.h"
+#include "dynamictextfieldeditor.h"
 
 #include "eseventaddline.h"
 #include "eseventaddrect.h"
@@ -49,6 +50,7 @@
 #include "eseventaddtext.h"
 #include "eseventaddtextfield.h"
 #include "eseventaddterminal.h"
+#include "eseventadddynamictextfield.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -101,8 +103,8 @@ QETElementEditor::~QETElementEditor() {
 	clearToolsDock();
 	
 	// supprime les editeurs de primitives
-	qDeleteAll(editors_.begin(), editors_.end());
-	editors_.clear();
+	qDeleteAll(m_editors.begin(), m_editors.end());
+	m_editors.clear();
 }
 
 /**
@@ -202,10 +204,10 @@ void QETElementEditor::setupActions() {
 	connect(selectall,       SIGNAL(triggered()), m_elmt_scene, SLOT(slot_selectAll()));
 	connect(deselectall,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_deselectAll()));
 	connect(inv_select,      SIGNAL(triggered()), m_elmt_scene, SLOT(slot_invertSelection()));
-	connect(cut,             SIGNAL(triggered()), ce_view,  SLOT(cut()));
-	connect(copy,            SIGNAL(triggered()), ce_view,  SLOT(copy()));
-	connect(paste,           SIGNAL(triggered()), ce_view,  SLOT(paste()));
-	connect(paste_in_area,   SIGNAL(triggered()), ce_view,  SLOT(pasteInArea()));
+	connect(cut,             SIGNAL(triggered()), m_view,  SLOT(cut()));
+	connect(copy,            SIGNAL(triggered()), m_view,  SLOT(copy()));
+	connect(paste,           SIGNAL(triggered()), m_view,  SLOT(paste()));
+	connect(paste_in_area,   SIGNAL(triggered()), m_view,  SLOT(pasteInArea()));
 	connect(paste_from_file, SIGNAL(triggered()), this,     SLOT(pasteFromFile()));
 	connect(paste_from_elmt, SIGNAL(triggered()), this,     SLOT(pasteFromElement()));
 	connect(edit_delete,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_delete()));
@@ -255,10 +257,10 @@ void QETElementEditor::setupActions() {
 	zoom_fit   -> setShortcut(QKeySequence(tr("Ctrl+9")));
 	zoom_reset -> setShortcut(QKeySequence(tr("Ctrl+0")));
 
-	connect(zoom_in,    SIGNAL(triggered()), ce_view,  SLOT(zoomIn()    ));
-	connect(zoom_out,   SIGNAL(triggered()), ce_view,  SLOT(zoomOut()   ));
-	connect(zoom_fit,   SIGNAL(triggered()), ce_view,  SLOT(zoomFit()   ));
-	connect(zoom_reset, SIGNAL(triggered()), ce_view,  SLOT(zoomReset() ));
+	connect(zoom_in,    SIGNAL(triggered()), m_view,  SLOT(zoomIn()    ));
+	connect(zoom_out,   SIGNAL(triggered()), m_view,  SLOT(zoomOut()   ));
+	connect(zoom_fit,   SIGNAL(triggered()), m_view,  SLOT(zoomFit()   ));
+	connect(zoom_reset, SIGNAL(triggered()), m_view,  SLOT(zoomReset() ));
 
 
 	/*
@@ -275,6 +277,7 @@ void QETElementEditor::setupActions() {
 	QAction *add_arc       = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),  parts);
 	QAction *add_terminal  = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),         parts);
 	QAction *add_textfield = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"), parts);
+	QAction *add_dynamic_text_field = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ texte dynamique"), parts);
 
 	foreach (QAction *action, parts -> actions()) action -> setCheckable(true);
 
@@ -286,6 +289,7 @@ void QETElementEditor::setupActions() {
 	connect(add_arc,       SIGNAL(triggered()), this, SLOT(addArc()       ));
 	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(addTerminal()  ));
 	connect(add_textfield, SIGNAL(triggered()), this, SLOT(addTextField() ));
+	connect(add_dynamic_text_field, &QAction::triggered, this, &QETElementEditor::addDynamicTextField);
 
 	
 	parts_toolbar =  addToolBar(tr("Parties", "toolbar title"));
@@ -440,7 +444,7 @@ void QETElementEditor::slot_updateMenus() {
 	inv_select      -> setEnabled(!read_only);
 	paste_from_file -> setEnabled(!read_only);
 	paste_from_elmt -> setEnabled(!read_only);
-	parts_list      -> setEnabled(!read_only);
+	m_parts_list      -> setEnabled(!read_only);
 	
 	// Action enabled if primitive selected
 	deselectall     -> setEnabled(selected_items);
@@ -479,69 +483,70 @@ void QETElementEditor::slot_updateTitle() {
 void QETElementEditor::setupInterface() {
 	// editeur
 	m_elmt_scene = new ElementScene(this, this);
-	ce_view = new ElementView(m_elmt_scene, this);
+	m_view = new ElementView(m_elmt_scene, this);
 	slot_setRubberBandToView();
-	setCentralWidget(ce_view);
+	setCentralWidget(m_view);
 	
 	// widget par defaut dans le QDockWidget
-	default_informations = new QLabel();
+	m_default_informations = new QLabel();
 	
 	// ScrollArea pour accueillir un widget d'edition (change a la volee)
-	tools_dock_scroll_area_ = new QScrollArea();
-	tools_dock_scroll_area_ -> setFrameStyle(QFrame::NoFrame);
-	tools_dock_scroll_area_ -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+	m_tools_dock_scroll_area = new QScrollArea();
+	m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
+	m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 	
 	// Pile de widgets pour accueillir les deux widgets precedents
-	tools_dock_stack_ = new QStackedWidget();
-	tools_dock_stack_ -> insertWidget(0, default_informations);
-	tools_dock_stack_ -> insertWidget(1, tools_dock_scroll_area_);
+	m_tools_dock_stack = new QStackedWidget();
+	m_tools_dock_stack -> insertWidget(0, m_default_informations);
+	m_tools_dock_stack -> insertWidget(1, m_tools_dock_scroll_area);
 	
 	// widgets d'editions pour les parties
-	editors_["arc"]       = new ArcEditor(this);
-	editors_["ellipse"]   = new EllipseEditor(this);
-	editors_["line"]      = new LineEditor(this);
-	editors_["polygon"]   = new PolygonEditor(this);
-	editors_["rect"]      = new RectangleEditor(this);
-	editors_["terminal"]  = new TerminalEditor(this);
-	editors_["text"]      = new TextEditor(this);
-	editors_["input"]     = new TextFieldEditor(this);
-	editors_["style"]     = new StyleEditor(this);
+	m_editors["arc"]       = new ArcEditor(this);
+	m_editors["ellipse"]   = new EllipseEditor(this);
+	m_editors["line"]      = new LineEditor(this);
+	m_editors["polygon"]   = new PolygonEditor(this);
+	m_editors["rect"]      = new RectangleEditor(this);
+	m_editors["terminal"]  = new TerminalEditor(this);
+	m_editors["text"]      = new TextEditor(this);
+	m_editors["input"]     = new TextFieldEditor(this);
+	m_editors["style"]     = new StyleEditor(this);
+	m_editors["dynamic_text"] = new DynamicTextFieldEditor(this);
 	
 	// panel sur le cote pour editer les parties
-	tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
-	tools_dock -> setObjectName("informations");
-	tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	tools_dock -> setMinimumWidth(380);
-	addDockWidget(Qt::RightDockWidgetArea, tools_dock);
-	tools_dock -> setWidget(tools_dock_stack_);
+	m_tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
+	m_tools_dock -> setObjectName("informations");
+	m_tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	//m_tools_dock -> setMinimumWidth(380);
+	addDockWidget(Qt::RightDockWidgetArea, m_tools_dock);
+	m_tools_dock -> setWidget(m_tools_dock_stack);
 	
 	// panel sur le cote pour les annulations
-	undo_dock = new QDockWidget(tr("Annulations", "dock title"), this);
-	undo_dock -> setObjectName("undo");
-	undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	undo_dock -> setMinimumWidth(290);
-	addDockWidget(Qt::RightDockWidgetArea, undo_dock);
+	m_undo_dock = new QDockWidget(tr("Annulations", "dock title"), this);
+	m_undo_dock -> setObjectName("undo");
+	m_undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	m_undo_dock -> setMinimumWidth(290);
+	addDockWidget(Qt::RightDockWidgetArea, m_undo_dock);
 	QUndoView* undo_view = new QUndoView(&(m_elmt_scene -> undoStack()), this);
 	undo_view -> setEmptyLabel(tr("Aucune modification"));
-	undo_dock -> setWidget(undo_view);
+	m_undo_dock -> setWidget(undo_view);
 	
 	// panel sur le cote pour la liste des parties
-	parts_list = new QListWidget(this);
-	parts_list -> setSelectionMode(QAbstractItemView::ExtendedSelection);
+	m_parts_list = new QListWidget(this);
+	m_parts_list -> setSelectionMode(QAbstractItemView::ExtendedSelection);
 	connect(m_elmt_scene,   SIGNAL(partsAdded()),           this, SLOT(slot_createPartsList()));
 	connect(m_elmt_scene,   SIGNAL(partsRemoved()),         this, SLOT(slot_createPartsList()));
 	connect(m_elmt_scene,   SIGNAL(partsZValueChanged()),   this, SLOT(slot_createPartsList()));
 	connect(m_elmt_scene,   SIGNAL(selectionChanged()),     this, SLOT(slot_updatePartsList()));
-	connect(parts_list, SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
-	parts_dock = new QDockWidget(tr("Parties", "dock title"), this);
-	parts_dock -> setObjectName("parts_list");
-	parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	parts_dock -> setMinimumWidth(290);
-	tabifyDockWidget(undo_dock, parts_dock);
-	parts_dock -> setWidget(parts_list);
+	connect(m_parts_list, SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
+	m_parts_dock = new QDockWidget(tr("Parties", "dock title"), this);
+	m_parts_dock -> setObjectName("parts_list");
+	m_parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	m_parts_dock -> setMinimumWidth(290);
+	tabifyDockWidget(m_undo_dock, m_parts_dock);
+	m_parts_dock -> setWidget(m_parts_list);
 	
 	slot_updateInformations();
 	slot_createPartsList();
@@ -555,14 +560,14 @@ void QETElementEditor::setupInterface() {
 	elements selectionnes et il est possible d'utiliser un rectangle de selection.
 */
 void QETElementEditor::slot_setRubberBandToView() {
-	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
+	m_view -> setDragMode(QGraphicsView::RubberBandDrag);
 }
 
 /**
 	Passe l'editeur d'element en mode immobile (utilise pour la lecture seule)
 */
 void QETElementEditor::slot_setNoDragToView() {
-	ce_view -> setDragMode(QGraphicsView::NoDrag);
+	m_view -> setDragMode(QGraphicsView::NoDrag);
 }
 
 /**
@@ -570,7 +575,8 @@ void QETElementEditor::slot_setNoDragToView() {
 	Si plusieurs primitives sont selectionnees, seule leur quantite est
 	affichee. Sinon, un widget d'edition approprie est mis en place.
 */
-void QETElementEditor::slot_updateInformations() {
+void QETElementEditor::slot_updateInformations()
+{
 	QList<QGraphicsItem *> selected_qgis = m_elmt_scene -> selectedItems();
 	QList<CustomElementPart *> cep_list;
 	bool style_editable = false;
@@ -591,7 +597,21 @@ void QETElementEditor::slot_updateInformations() {
 
 	}
 	
-	clearToolsDock();
+	if(selected_qgis.size() == 1)
+	{
+		QGraphicsItem *qgi = selected_qgis.first();
+		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		{
+			if (QWidget *widget = m_tools_dock_scroll_area->widget())
+			{
+				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+				{
+					if(editor->currentPart() == selection)
+						return;
+				}
+			}
+		}
+	}
 	
 		//There's one selected item
 	if (selected_qgis.size() == 1)
@@ -599,15 +619,22 @@ void QETElementEditor::slot_updateInformations() {
 		QGraphicsItem *qgi = selected_qgis.first();
 		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
 		{
-			// on en ajoute le widget d'edition
+				//The current editor already edit the selected part
+			if (QWidget *widget = m_tools_dock_scroll_area->widget())
+				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+					if(editor->currentPart() == selection)
+						return;
+			
+			clearToolsDock();
+				//We add the editor widget
 			QString selection_xml_name = selection -> xmlName();
-			ElementItemEditor *selection_editor = editors_[selection_xml_name];
+			ElementItemEditor *selection_editor = m_editors[selection_xml_name];
 			if (selection_editor)
 			{
-				if (selection_editor -> setPart(selection))
+				if (selection_editor->setPart(selection))
 				{
-					tools_dock_scroll_area_ -> setWidget(selection_editor);
-					tools_dock_stack_ -> setCurrentIndex(1);
+					m_tools_dock_scroll_area -> setWidget(selection_editor);
+					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else
 				{
@@ -619,13 +646,14 @@ void QETElementEditor::slot_updateInformations() {
 		//There's several parts selecteds and all can be edited by style editor.
 	else if (style_editable)
 	{
-		ElementItemEditor *selection_editor = editors_["style"];
+		clearToolsDock();
+		ElementItemEditor *selection_editor = m_editors["style"];
 		if (selection_editor)
 		{
 			if (selection_editor -> setParts(cep_list))
 			{
-				tools_dock_scroll_area_ -> setWidget(selection_editor);
-				tools_dock_stack_ -> setCurrentIndex(1);
+				m_tools_dock_scroll_area -> setWidget(selection_editor);
+				m_tools_dock_stack -> setCurrentIndex(1);
 			}
 			else
 			{
@@ -636,24 +664,13 @@ void QETElementEditor::slot_updateInformations() {
 		//Else we only display the number of selected items
 	else
 	{
-		default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
+		clearToolsDock();
+		m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
 										   "",
 										   selected_qgis.size()));
-		default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
-		tools_dock_stack_ -> setCurrentIndex(0);
+		m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+		m_tools_dock_stack -> setCurrentIndex(0);
 	}
-}
-
-/**
-	Affiche le code XML correspondant a l'element dans son etat actuel dans
-	une boite de dialogue.
-*/
-void QETElementEditor::xmlPreview() {
-	QET::QetMessageBox::information(
-		this,
-		"Export XML",
-		m_elmt_scene -> toXml().toString(4)
-	);
 }
 
 /**
@@ -919,7 +936,7 @@ void QETElementEditor::setReadOnly(bool ro) {
 	read_only = ro;
 	
 	// active / desactive les interactions avec la scene
-	ce_view -> setInteractive(!ro);
+	m_view -> setInteractive(!ro);
 	
 	slot_updateMenus();
 }
@@ -993,6 +1010,14 @@ void QETElementEditor::addTextField() {
  */
 void QETElementEditor::addTerminal() {
 	m_elmt_scene -> setEventInterface(new ESEventAddTerminal(m_elmt_scene));
+}
+
+/**
+ * @brief QETElementEditor::addDynamicTextField
+ * Set dynamic text field creation interface to scene
+ */
+void QETElementEditor::addDynamicTextField() {
+	m_elmt_scene->setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));
 }
 
 /**
@@ -1266,7 +1291,7 @@ bool QETElementEditor::canClose() {
 	@return le widget enleve, ou 0 s'il n'y avait pas de widget a enlever
 */
 QWidget *QETElementEditor::clearToolsDock() {
-	if (QWidget *previous_widget = tools_dock_scroll_area_ -> takeWidget()) {
+	if (QWidget *previous_widget = m_tools_dock_scroll_area -> takeWidget()) {
 		previous_widget -> setParent(nullptr);
 		previous_widget -> hide();
 		return(previous_widget);
@@ -1293,7 +1318,7 @@ void QETElementEditor::copyAndPasteXml(const QDomDocument &xml_document) {
 	}
 	clipboard -> setText(clipboard_content);
 	
-	ce_view -> pasteInArea();
+	m_view -> pasteInArea();
 }
 
 /**
@@ -1314,15 +1339,15 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 */
 void QETElementEditor::firstActivation(QEvent *event) {
 	Q_UNUSED(event)
-	QTimer::singleShot(250, ce_view, SLOT(zoomFit()));
+	QTimer::singleShot(250, m_view, SLOT(zoomFit()));
 }
 
 /**
 	Remplit la liste des parties
 */
 void QETElementEditor::slot_createPartsList() {
-	parts_list -> blockSignals(true);
-	parts_list -> clear();
+	m_parts_list -> blockSignals(true);
+	m_parts_list -> clear();
 	QList<QGraphicsItem *> qgis = m_elmt_scene -> zItems();
 	
 	// on ne construit plus la liste a partir de 200 primitives
@@ -1337,14 +1362,14 @@ void QETElementEditor::slot_createPartsList() {
 				QVariant v;
 				v.setValue<QGraphicsItem *>(qgi);
 				qlwi -> setData(42, v);
-				parts_list -> addItem(qlwi);
+				m_parts_list -> addItem(qlwi);
 				qlwi -> setSelected(qgi -> isSelected());
 			}
 		}
 	} else {
-		parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
+		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
 	}
-	parts_list -> blockSignals(false);
+	m_parts_list -> blockSignals(false);
 }
 
 /**
@@ -1352,19 +1377,19 @@ void QETElementEditor::slot_createPartsList() {
 */
 void QETElementEditor::slot_updatePartsList() {
 	int items_count = m_elmt_scene -> items().count();
-	if (parts_list -> count() != items_count) {
+	if (m_parts_list -> count() != items_count) {
 		slot_createPartsList();
 	} else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
-		parts_list -> blockSignals(true);
+		m_parts_list -> blockSignals(true);
 		int i = 0;
 		QList<QGraphicsItem *> items = m_elmt_scene -> zItems();
 		for (int j = items.count() - 1 ; j >= 0 ; -- j) {
 			QGraphicsItem *qgi = items[j];
-			QListWidgetItem *qlwi = parts_list -> item(i);
+			QListWidgetItem *qlwi = m_parts_list -> item(i);
 			if (qlwi) qlwi -> setSelected(qgi -> isSelected());
 			++ i;
 		}
-		parts_list -> blockSignals(false);
+		m_parts_list -> blockSignals(false);
 	}
 }
 
@@ -1374,15 +1399,15 @@ void QETElementEditor::slot_updatePartsList() {
 */
 void QETElementEditor::slot_updateSelectionFromPartsList() {
 	m_elmt_scene  -> blockSignals(true);
-	parts_list -> blockSignals(true);
-	for (int i = 0 ; i < parts_list -> count() ; ++ i) {
-		QListWidgetItem *qlwi = parts_list -> item(i);
+	m_parts_list -> blockSignals(true);
+	for (int i = 0 ; i < m_parts_list -> count() ; ++ i) {
+		QListWidgetItem *qlwi = m_parts_list -> item(i);
 		QGraphicsItem *qgi = qlwi -> data(42).value<QGraphicsItem *>();
 		if (qgi) {
 			qgi -> setSelected(qlwi -> isSelected());
 		}
 	}
-	parts_list -> blockSignals(false);
+	m_parts_list -> blockSignals(false);
 	m_elmt_scene -> blockSignals(false);
 	slot_updateInformations();
 	slot_updateMenus();
@@ -1570,10 +1595,10 @@ void QETElementEditor::pasteFromElement()
 */
 void QETElementEditor::updateCurrentPartEditor() {
 	// si aucun widget d'edition n'est affiche, on ne fait rien
-	if (!tools_dock_stack_ -> currentIndex()) return;
+	if (!m_tools_dock_stack -> currentIndex()) return;
 	
 	// s'il y a un widget d'edition affiche, on le met a jour
-	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(tools_dock_scroll_area_ -> widget())) {
+	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_scroll_area -> widget())) {
 		current_editor -> updateForm();
 	}
 }

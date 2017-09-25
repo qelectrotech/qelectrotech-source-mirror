@@ -141,10 +141,10 @@ class ElementScene : public QGraphicsScene
 	
 	private:
 		QRectF elementContentBoundingRect(const ElementContent &) const;
-		bool applyInformations(const QDomDocument &, QString * = nullptr);
-		ElementContent loadContent(const QDomDocument &, QString * = nullptr);
-		ElementContent addContent(const ElementContent &, QString * = nullptr);
-		ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = nullptr);
+		bool applyInformations(const QDomDocument &);
+		ElementContent loadContent(const QDomDocument &);
+		ElementContent addContent(const ElementContent &);
+		ElementContent addContentAtPos(const ElementContent &, const QPointF &);
 		void addPrimitive(QGraphicsItem *);
 		void initPasteArea();
 		static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);

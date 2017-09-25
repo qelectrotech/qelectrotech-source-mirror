@@ -33,6 +33,7 @@
 #include "ui/elementpropertieseditorwidget.h"
 #include "eseventinterface.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "partdynamictextfield.h"
 
 #include <algorithm>
 #include <QKeyEvent>
@@ -395,33 +396,25 @@ QRectF ElementScene::boundingRectFromXml(const QDomDocument &xml_document) {
 	il sera rempli avec le contenu ajoute a l'element par le fromXml
 	@return true si l'import a reussi, false sinon
 */
-void ElementScene::fromXml(
-	const QDomDocument &xml_document,
-	const QPointF &position,
-	bool consider_informations,
-	ElementContent *content_ptr
-) {
-	QString error_message;
+void ElementScene::fromXml(const QDomDocument &xml_document, const QPointF &position, bool consider_informations, ElementContent *content_ptr)
+{
 	bool state = true;
 	
-	// prend en compte les informations de l'element
+		//Consider the informations of the element
 	if (consider_informations) {
-		state = applyInformations(xml_document, &error_message);
+		state = applyInformations(xml_document);
 	}
 	
-	// parcours des enfants de la definition : parties de l'element
-	if (state) {
-		ElementContent loaded_content = loadContent(xml_document, &error_message);
-		if (position != QPointF()) {
-			addContentAtPos(loaded_content, position, &error_message);
-		} else {
-			addContent(loaded_content, &error_message);
-		}
+	if (state)
+	{
+		ElementContent loaded_content = loadContent(xml_document);
+		if (position != QPointF())
+			addContentAtPos(loaded_content, position);
+		else
+			addContent(loaded_content);
 		
-		// renvoie le contenu ajoute a l'element
-		if (content_ptr) {
+		if (content_ptr)
 			*content_ptr = loaded_content;
-		}
 	}
 }
 
@@ -433,9 +426,10 @@ void ElementScene::fromXml(
 QRectF ElementScene::elementSceneGeometricRect() const{
 	QRectF esgr;
 	foreach (QGraphicsItem *qgi, items()) {
-		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
-		if (qgi -> type() == QGraphicsRectItem::Type) continue;
-		if (qgi -> type() == PartTextField::Type) continue;
+		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi->type() == QGraphicsRectItem::Type) continue;
+		if (qgi->type() == PartTextField::Type) continue;
+		if (qgi->type() == PartDynamicTextField::Type) continue;
 		if (CustomElementPart *cep = dynamic_cast <CustomElementPart*> (qgi)) {
 			esgr |= cep -> sceneGeometricRect();
 		}
@@ -869,20 +863,16 @@ QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) c
 	Applique les informations (dimensions, hostpot, orientations, connexions
 	internes, noms et informations complementaires) contenu dans un document XML.
 	@param xml_document Document XML a analyser
-	@param error_message pointeur vers une QString ; si error_message est
-	different de 0, un message d'erreur sera stocke dedans si necessaire
 	@return true si la lecture et l'application des informations s'est bien
 	passee, false sinon.
 */
-bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *error_message) {
-	// Root must be an element definition
+bool ElementScene::applyInformations(const QDomDocument &xml_document)
+{
+		// Root must be an element definition
 	QDomElement root = xml_document.documentElement();
-	if (root.tagName() != "definition" || root.attribute("type") != "element") {
-		if (error_message) {
-			*error_message = tr("Ce document XML n'est pas une définition d'élément.", "error message");
-		}
+	
+	if (root.tagName() != "definition" || root.attribute("type") != "element")
 		return(false);
-	}
 
 	//Extract info about element type
 	m_elmt_type = root.attribute("link_type", "simple");
@@ -912,30 +902,44 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 	@param error_message pointeur vers une QString ; si error_message est
 	different de 0, un message d'erreur sera stocke dedans si necessaire
 */
-ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QString *error_message) {
+/**
+ * @brief ElementScene::loadContent
+ * @param xml_document : xml dom document to analyze
+ * @return 
+ */
+/**
+ * @brief ElementScene::loadContent
+ * Create and load the content describe in the xml document.
+ * @param xml_document
+ * @return the loaded content
+ */
+ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
+{
 	ElementContent loaded_parts;
 	
-	// la racine est supposee etre une definition d'element
+		//The root is supposed to be an element definition
 	QDomElement root = xml_document.documentElement();
-	if (root.tagName() != "definition" || root.attribute("type") != "element") {
-		if (error_message) {
-			*error_message = tr("Ce document XML n'est pas une définition d'élément.", "error message");
-		}
-		return(loaded_parts);
-	}
 	
-	// chargement de la description graphique de l'element
-	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	if (root.tagName() != "definition" || root.attribute("type") != "element")
+		return(loaded_parts);
+	
+		//Load the graphic description of the element
+	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling())
+	{
 		QDomElement elmts = node.toElement();
-		if (elmts.isNull()) continue;
-		if (elmts.tagName() == "description") {
-			
-			//  = parcours des differentes parties du dessin
+		if (elmts.isNull())
+			continue;
+		
+		if (elmts.tagName() == "description")
+		{
 			int z = 1;
-			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
+			{
 				QDomElement qde = n.toElement();
-				if (qde.isNull()) continue;
-				CustomElementPart *cep;
+				if (qde.isNull())
+					continue;
+				CustomElementPart *cep = nullptr;
+				
 				if      (qde.tagName() == "line")     cep = new PartLine     (m_element_editor);
 				else if (qde.tagName() == "rect")     cep = new PartRectangle(m_element_editor);
 				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (m_element_editor);
@@ -945,12 +949,19 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
 				else if (qde.tagName() == "input")    cep = new PartTextField(m_element_editor);
 				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
+				else if (qde.tagName() == "dynamic_text") cep = new PartDynamicTextField (m_element_editor);
 				else continue;
-				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) {
-					if (!qgi -> zValue()) qgi -> setZValue(z++);
-					loaded_parts << qgi;
+				
+				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep))
+				{
+					if (!qgi->zValue())
+						qgi->setZValue(z++);
+					
+					loaded_parts<<qgi;
+					cep->fromXml(qde);
 				}
-				cep -> fromXml(qde);
+				else
+					delete cep;
 			}
 		}
 	}
@@ -961,12 +972,9 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 /**
 	Ajoute le contenu content a cet element
 	@param content contenu ( = liste de parties) a charger
-	@param error_message pointeur vers une QString ; si error_message est
-	different de 0, un message d'erreur sera stocke dedans si necessaire
 	@return Le contenu ajoute
 */
-ElementContent ElementScene::addContent(const ElementContent &content, QString *error_message) {
-	Q_UNUSED(error_message);
+ElementContent ElementScene::addContent(const ElementContent &content) {
 	foreach(QGraphicsItem *part, content) {
 		addPrimitive(part);
 	}
@@ -977,12 +985,9 @@ ElementContent ElementScene::addContent(const ElementContent &content, QString *
 	Ajoute le contenu content a cet element
 	@param content contenu ( = liste de parties) a charger
 	@param pos Position du coin superieur gauche du contenu apres avoir ete ajoute
-	@param error_message pointeur vers une QString ; si error_message est
-	different de 0, un message d'erreur sera stocke dedans si necessaire
 	@return Le contenu ajoute
 */
-ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos, QString *error_message) {
-	Q_UNUSED(error_message);
+ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos) {
 	// calcule le boundingRect du contenu a ajouter
 	QRectF bounding_rect = elementContentBoundingRect(content);
 	

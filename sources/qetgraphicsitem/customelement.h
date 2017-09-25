@@ -54,45 +54,47 @@ class CustomElement : public FixedElement
 		bool forbid_antialiasing;
 
 
-	QList<QLineF *> list_lines_;
-	QList<QRectF *> list_rectangles_;
-	QList<QRectF *> list_circles_;
-	QList<QVector<QPointF> *> list_polygons_;
-	QList<QVector<qreal> *> list_arcs_;
+		QList<QLineF *> list_lines_;
+		QList<QRectF *> list_rectangles_;
+		QList<QRectF *> list_circles_;
+		QList<QVector<QPointF> *> list_polygons_;
+		QList<QVector<qreal> *> list_arcs_;
 	
 	// methods
 	public:
-	QList<Terminal *> terminals() const override;
-	QList<Conductor *> conductors() const override;
-	QList<ElementTextItem *> texts() const override;
-	QList<QLineF *> lines() const override;
-	QList<QRectF *> rectangles() const override;
-	QList<QRectF *> circles() const override;
-	QList<QVector<QPointF> *> polygons() const override;
-	QList<QVector<qreal> *> arcs() const override;
-	int terminalsCount() const override;
-	void paint(QPainter *, const QStyleOptionGraphicsItem *) override;
-	QString typeId() const override;
-	ElementsLocation location() const;
-	QString name() const override;
-	ElementTextItem* taggedText(const QString &tagg) const override;
+		QList<Terminal *> terminals() const override;
+		QList<Conductor *> conductors() const override;
+		QList<ElementTextItem *> texts() const override;
+		QList<QLineF *> lines() const override;
+		QList<QRectF *> rectangles() const override;
+		QList<QRectF *> circles() const override;
+		QList<QVector<QPointF> *> polygons() const override;
+		QList<QVector<qreal> *> arcs() const override;
+		int terminalsCount() const override;
+		void paint(QPainter *, const QStyleOptionGraphicsItem *) override;
+		QString typeId() const override;
+		ElementsLocation location() const;
+		QString name() const override;
+		ElementTextItem* taggedText(const QString &tagg) const override;
 	
 	protected:
-	virtual bool buildFromXml(const QDomElement &, int * = nullptr);
-	virtual bool parseElement(QDomElement &, QPainter &);
-	virtual bool parseLine(QDomElement &, QPainter &);
-	virtual bool parseRect(QDomElement &, QPainter &);
-	virtual bool parseEllipse(QDomElement &, QPainter &);
-	virtual bool parseCircle(QDomElement &, QPainter &);
-	virtual bool parseArc(QDomElement &, QPainter &);
-	virtual bool parsePolygon(QDomElement &, QPainter &);
-	virtual bool parseText(QDomElement &, QPainter &);
-	virtual ElementTextItem *parseInput(QDomElement &);
-	virtual Terminal *parseTerminal(QDomElement &);
-	virtual void setQPainterAntiAliasing(QPainter &, bool);
-	virtual bool validOrientationAttribute(const QDomElement &);
-	virtual void setPainterStyle(QDomElement &, QPainter &);
-	ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
+		virtual bool buildFromXml(const QDomElement &, int * = nullptr);
+		virtual bool parseElement(QDomElement &, QPainter &);
+		virtual bool parseLine(QDomElement &, QPainter &);
+		virtual bool parseRect(QDomElement &, QPainter &);
+		virtual bool parseEllipse(QDomElement &, QPainter &);
+		virtual bool parseCircle(QDomElement &, QPainter &);
+		virtual bool parseArc(QDomElement &, QPainter &);
+		virtual bool parsePolygon(QDomElement &, QPainter &);
+		virtual bool parseText(QDomElement &, QPainter &);
+		virtual ElementTextItem *parseInput(QDomElement &);
+		virtual DynamicElementTextItem *parseDynamicText(QDomElement &);
+		virtual Terminal *parseTerminal(QDomElement &);
+		
+		virtual void setQPainterAntiAliasing(QPainter &, bool);
+		virtual bool validOrientationAttribute(const QDomElement &);
+		virtual void setPainterStyle(QDomElement &, QPainter &);
+		ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
 
 };
 

@@ -35,6 +35,7 @@ class DynamicElementTextItem : public DiagramTextItem
 {
 	friend class DynamicTextItemDelegate;
 	friend class CompositeTextEditDialog;
+	friend class CustomElement;
 	
     Q_OBJECT
     
@@ -64,7 +65,9 @@ class DynamicElementTextItem : public DiagramTextItem
 	public:
 		DynamicElementTextItem(Element *parent_element);
 		~DynamicElementTextItem() override;
+		static QMetaEnum textFromMetaEnum();
 	private:
+		DynamicElementTextItem ();
 		DynamicElementTextItem(const DynamicElementTextItem &);
 		
 	public:

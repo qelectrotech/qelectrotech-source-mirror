@@ -24,6 +24,7 @@
 #include "terminal.h"
 #include "diagramposition.h"
 #include "diagramcontent.h"
+#include "dynamicelementtextitem.h"
 
 /**
 	Constructeur de la classe CustomElement. Permet d'instancier un element
@@ -95,11 +96,13 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		return(false);
 	}
 
-	// verifie basiquement que la version actuelle est capable de lire ce fichier
-	if (xml_def_elmt.hasAttribute("version")) {
+		//Check if the curent version can read the xml description
+	if (xml_def_elmt.hasAttribute("version"))
+	{
 		bool conv_ok;
 		qreal element_version = xml_def_elmt.attribute("version").toDouble(&conv_ok);
-		if (conv_ok && QET::version.toDouble() < element_version) {
+		if (conv_ok && QET::version.toDouble() < element_version)
+		{
 			std::cerr << qPrintable(
 				QObject::tr("Avertissement : l'élément "
 				" a été enregistré avec une version"
@@ -108,7 +111,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		}
 	}
 
-	// ces attributs doivent etre presents et valides
+		//This attribute must be present and valid
 	int w, h, hot_x, hot_y;
 	if (
 		!QET::attributeIsAnInteger(xml_def_elmt, QString("width"), &w) ||\
@@ -131,61 +134,81 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		return(false);
 	}
 
-	// initialisation du QPainter (pour dessiner l'element)
+		//Init the QPainter for draw the elemennt
 	QPainter qp;
 	qp.begin(&drawing);
 
 	QPainter low_zoom_qp;
 	low_zoom_qp.begin(&low_zoom_drawing);
 	QPen tmp;
-	tmp.setWidthF(1.0); // ligne vaudou pour prise en compte du setCosmetic - ne pas enlever
+	tmp.setWidthF(1.0); //Vaudoo line to take into account the setCosmetic - don't remove
 	tmp.setCosmetic(true);
 	low_zoom_qp.setPen(tmp);
 
-	// extrait les noms de la definition XML
+		//Extract the names
 	names.fromXml(xml_def_elmt);
 	setToolTip(name());
 
-	//load kind informations
+		//load kind informations
 	kind_informations_.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
 
-	// parcours des enfants de la definition : parties du dessin
+		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;
-	for (QDomNode node = xml_def_elmt.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	for (QDomNode node = xml_def_elmt.firstChild() ; !node.isNull() ; node = node.nextSibling())
+	{
 		QDomElement elmts = node.toElement();
-		if (elmts.isNull()) continue;
-		if (elmts.tagName() == "description") {
-			// gestion de la description graphique de l'element
-			//  = parcours des differentes parties du dessin
-			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+		if (elmts.isNull())
+			continue;
+		
+		if (elmts.tagName() == "description")
+		{
+				//Manage the graphic description = part of drawing
+			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
+			{
 				QDomElement qde = n.toElement();
-				if (qde.isNull()) continue;
-				if (parseElement(qde, qp)) {
+				if (qde.isNull())
+					continue;
+				
+				if (parseElement(qde, qp))
+				{
 					++ parsed_elements_count;
 					QString current_tag = qde.tagName();
-					if (current_tag != "terminal" && current_tag != "input") {
+					if (current_tag != "terminal" && current_tag != "input" && current_tag != "dynamic_text")
+					{
 						forbid_antialiasing = true;
 						parseElement(qde, low_zoom_qp);
 						forbid_antialiasing = false;
 					}
-				} else {
-					if (state) *state = 7;
+				}
+				else
+				{
+					if (state)
+						*state = 7;
+					
 					return(false);
 				}
 			}
 		}
 	}
 
-	// fin du dessin
+		//End of the drawing
 	qp.end();
 	low_zoom_qp.end();
 
-	// il doit y avoir au moins un element charge
-	if (!parsed_elements_count) {
-		if (state) *state = 8;
+
+		//They must be at least one parsed graphics part
+	if (!parsed_elements_count)
+	{
+		if (state)
+			*state = 8;
+		
 		return(false);
-	} else {
-		if (state) *state = 0;
+	}
+	else
+	{
+		if (state)
+			*state = 0;
+		
 		return(true);
 	}
 }
@@ -277,17 +300,19 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
-	if (e.tagName() == "terminal") return(parseTerminal(e));
-	else if (e.tagName() == "line") return(parseLine(e, qp));
-	else if (e.tagName() == "rect") return(parseRect(e, qp));
-	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
-	else if (e.tagName() == "circle") return(parseCircle(e, qp));
-	else if (e.tagName() == "arc") return(parseArc(e, qp));
-	else if (e.tagName() == "polygon") return(parsePolygon(e, qp));
-	else if (e.tagName() == "text") return(parseText(e, qp));
-	else if (e.tagName() == "input") return(parseInput(e));
-	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
+bool CustomElement::parseElement(QDomElement &e, QPainter &qp)
+{
+	if      (e.tagName() == "terminal")     return(parseTerminal(e));
+	else if (e.tagName() == "line")         return(parseLine(e, qp));
+	else if (e.tagName() == "rect")         return(parseRect(e, qp));
+	else if (e.tagName() == "ellipse")      return(parseEllipse(e, qp));
+	else if (e.tagName() == "circle")       return(parseCircle(e, qp));
+	else if (e.tagName() == "arc")          return(parseArc(e, qp));
+	else if (e.tagName() == "polygon")      return(parsePolygon(e, qp));
+	else if (e.tagName() == "text")         return(parseText(e, qp));
+	else if (e.tagName() == "input")        return(parseInput(e));
+	else if (e.tagName() == "dynamic_text") return(parseDynamicText(e));
+	else return(true);
 }
 
 /**
@@ -717,6 +742,27 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
 
 	return(eti);
+}
+
+/**
+ * @brief CustomElement::parseDynamicText
+ * Create the dynamic text field describ in @dom_element
+ * @param dom_element
+ * @return 
+ */
+DynamicElementTextItem *CustomElement::parseDynamicText(QDomElement &dom_element)
+{
+	DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+		//Because the xml description of a .elmt file is the same as how a dynamic text field is save to xml in a .qet file
+		//wa call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
+		//and the uuid (because the uuid, is the uuid of the descritpion and not the uuid of instantiated dynamic text field)
+	
+	QDomElement dom(dom_element.cloneNode(true).toElement());
+	dom.setTagName(DynamicElementTextItem::xmlTaggName());
+	deti->fromXml(dom);
+	deti->m_uuid = QUuid::createUuid();
+	this->addDynamicTextItem(deti);
+	return deti;
 }
 
 /**

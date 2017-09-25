@@ -51,25 +51,25 @@ class QETElementEditor : public QETMainWindow {
 	/// menus
 	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu;
 	/// view widget for the editing scene
-	ElementView *ce_view;
+	ElementView *m_view;
 	/// editing scene
 	ElementScene *m_elmt_scene;
 	/// container for widgets dedicated to primitive edition
-	QDockWidget *tools_dock;
+	QDockWidget *m_tools_dock;
 	/// Stack of widgets for tools_dock
-	QStackedWidget *tools_dock_stack_;
+	QStackedWidget *m_tools_dock_stack;
 	/// label displayed when several primitives are selected
-	QLabel *default_informations;
+	QLabel *m_default_informations;
 	/// Hash associating primitive names with their matching edition widget
-	QHash<QString, ElementItemEditor *> editors_;
+	QHash<QString, ElementItemEditor *> m_editors;
 	/// ScrollArea for the tools_dock DockWidget
-	QScrollArea *tools_dock_scroll_area_;
+	QScrollArea *m_tools_dock_scroll_area;
 	/// container for the undo list
-	QDockWidget *undo_dock;
+	QDockWidget *m_undo_dock;
 	/// Container for the list of existing primitives
-	QDockWidget *parts_dock;
+	QDockWidget *m_parts_dock;
 	/// List of primitives
-	QListWidget *parts_list;
+	QListWidget *m_parts_list;
 	/// actions for the "file" menu
 	QAction *new_element, *open, *open_dxf, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
 	/// actions for the "edit" menu
@@ -133,6 +133,7 @@ class QETElementEditor : public QETMainWindow {
 		void addText();
 		void addTextField();
 		void addTerminal();
+		void addDynamicTextField();
 		void UncheckAddPrimitive();
 
 	void slot_new();
@@ -153,7 +154,6 @@ class QETElementEditor : public QETMainWindow {
 	void slot_createPartsList();
 	void slot_updatePartsList();
 	void slot_updateSelectionFromPartsList();
-	void xmlPreview();
 	bool checkElement();
 	void pasteFromFile();
 	void pasteFromElement();

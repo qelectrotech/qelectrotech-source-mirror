@@ -87,6 +87,19 @@ DynamicElementTextItem::~DynamicElementTextItem()
 {}
 
 /**
+ * @brief DynamicElementTextItem::textFromMetaEnum
+ * @return The QMetaEnum of the enum TextFrom 
+ */
+QMetaEnum DynamicElementTextItem::textFromMetaEnum()
+{
+	DynamicElementTextItem deti;
+	return deti.metaObject()->enumerator(deti.metaObject()->indexOfEnumerator("TextFrom"));
+}
+
+DynamicElementTextItem::DynamicElementTextItem()
+{}
+
+/**
  * @brief DynamicElementTextItem::toXml
  * Export this text to xml
  * @param dom_doc
@@ -102,7 +115,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
 	
-	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("TextFrom"));
+	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
     QDomElement dom_text = dom_doc.createElement("text");
@@ -162,7 +175,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	
-	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("TextFrom"));
+	QMetaEnum me = textFromMetaEnum();
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
 	if(m_text_from == ElementInfo || m_text_from == CompositeText)
 	{
@@ -178,7 +191,10 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Text
     QDomElement dom_text = dom_elmt.firstChildElement("text");
 	if (!dom_text.isNull())
-        setPlainText(dom_text.text());
+	{
+		m_text = dom_text.text();
+		setPlainText(m_text);
+	}
 	
 		//Info name
 	QDomElement dom_info_name = dom_elmt.firstChildElement("info_name");

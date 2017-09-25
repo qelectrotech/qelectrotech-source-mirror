@@ -532,6 +532,12 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	} else {
 		applyRotation(90*read_ori);
 	}
+	
+		//Befor load the dynamic text field,
+		//we remove the dynamic text field created from the description of this element, to avoid doublons.
+	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+		delete deti;
+	m_dynamic_text_list.clear();
     
         //Dynamic texts
     for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
@@ -626,7 +632,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		m_element_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
-    
+    	
         //Dynamic texts
     QDomElement dyn_text = document.createElement("dynamic_texts");
     for (DynamicElementTextItem *deti : m_dynamic_text_list)
