@@ -81,6 +81,7 @@ INCLUDEPATH += sources \
                sources/editor \
                sources/editor/esevent \
                sources/editor/graphicspart \
+			   sources/editor/ui \
                sources/undocommand \
                sources/diagramevent \
                sources/ElementsCollection \
