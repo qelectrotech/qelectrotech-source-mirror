@@ -1347,7 +1347,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="276"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Lokatie : %1
+        <translation type="unfinished">Locatie : %1
 </translation>
     </message>
     <message>
@@ -8079,7 +8079,7 @@ Door associatie van de naam &quot;volta&quot; en de waarde &quot;1745&quot; word
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished">Standaard zijn de volgende variabelen beschikbaar :&lt;ul&gt;&lt;li&gt;%{author} : auteur van de pagina&lt;/li&gt;&lt;li&gt;%{date} : datum van de pagina&lt;/li&gt;&lt;li&gt;%{title} : paginatitel&lt;/li&gt;&lt;li&gt;%{filename} : projectbestandsnaam&lt;/li&gt;&lt;li&gt;%{machine} : naam van het projectonderdeel&lt;/li&gt;&lt;li&gt;%{locmach} : naam van de lokatie van het projectonderdeel&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van de pagina&lt;/li&gt;&lt;li&gt;%{version} : softwareversie&lt;/li&gt;&lt;li&gt;%{folio} : paginanummer&lt;/li&gt;&lt;li&gt;%{folio-id} : positie van de pagina in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : totaal aantal pagina&apos;s in het project&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation type="unfinished">Standaard zijn de volgende variabelen beschikbaar :&lt;ul&gt;&lt;li&gt;%{author} : auteur van de pagina&lt;/li&gt;&lt;li&gt;%{date} : datum van de pagina&lt;/li&gt;&lt;li&gt;%{title} : paginatitel&lt;/li&gt;&lt;li&gt;%{filename} : projectbestandsnaam&lt;/li&gt;&lt;li&gt;%{machine} : naam van het projectonderdeel&lt;/li&gt;&lt;li&gt;%{locmach} : naam van de locatie van het projectonderdeel&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van de pagina&lt;/li&gt;&lt;li&gt;%{version} : softwareversie&lt;/li&gt;&lt;li&gt;%{folio} : paginanummer&lt;/li&gt;&lt;li&gt;%{folio-id} : positie van de pagina in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : totaal aantal pagina&apos;s in het project&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
