@@ -108,7 +108,6 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart
         QRectF boundingRect() const override;
 	
 	private:
-        QPointF margin() const;
         QString previous_text;
         qreal real_font_size_;
         QPointF saved_point_;

@@ -42,6 +42,9 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
 	
 	public:
+		static bool canImportFromTextField(const QDomElement &dom_element);
+	
+	public:
 			///PROPERTY
 		void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
 		QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}
@@ -70,6 +73,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		
 		const QDomElement toXml(QDomDocument &dom_doc) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
+		void fromTextFieldXml(const QDomElement &dom_element);
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);

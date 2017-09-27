@@ -102,14 +102,6 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	return(xml_element);
 }
 
-/**
-	@return le decalage entre l'origine du QGraphicsItem et l'origine du champ de
-	texte.
-*/
-QPointF PartTextField::margin() const {
-	return(QPointF(0.0, boundingRect().bottom() / 2.0));
-}
-
 void PartTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable))

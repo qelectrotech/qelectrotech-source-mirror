@@ -23,12 +23,26 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QFont>
 #include <QColor>
+#include <QMatrix>
 
 /**
  * @brief PartDynamicTextField::PartDynamicTextField
+ * Return if a dynamic text field can import information from the xml definition of a text field
  * @param editor
  * @param parent
  */
+bool PartDynamicTextField::canImportFromTextField(const QDomElement &dom_element)
+{
+	if(dom_element.tagName() != "input")
+		return false;
+	
+	QString tagg = dom_element.attribute("tagg", "none");
+	if(tagg == "none")
+		return true;
+	else
+		return false;
+}
+
 PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
@@ -182,6 +196,35 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
 	if(!dom_color.isNull())
 		setColor(QColor(dom_color.text()));
+}
+
+/**
+ * @brief PartDynamicTextField::fromTextFieldXml
+ * Setup this text from the xml definition of a text field (The xml tagg of a text field is "input");
+ * @param dom_element
+ */
+void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
+{
+	if(canImportFromTextField(dom_element))
+	{
+		setFont(QETApp::diagramTextsFont(dom_element.attribute("size", QString::number(9)).toInt()));
+		setTextFrom(DynamicElementTextItem::UserText);
+		setText(dom_element.attribute("text", "_"));
+		QGraphicsTextItem::setRotation(dom_element.attribute("rotation", "0").toDouble());
+		
+			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
+			//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
+			//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
+		QMatrix matrix;
+			//First make the rotation
+		matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
+		QPointF pos = matrix.map(QPointF(0, -boundingRect().height()/2));
+		matrix.reset();
+			//Second translate to the pos
+		matrix.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
+						 dom_element.attribute("y", QString::number(0)).toDouble());
+		QGraphicsTextItem::setPos(matrix.map(pos));
+	}
 }
 
 /**
@@ -358,12 +401,10 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 QVariant PartDynamicTextField::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged)
 		updateCurrentPartEditor();
-	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
-		if (value.toBool() == true) {
-			updateCurrentPartEditor();
-		}
-	}
+	else if ((change == QGraphicsItem::ItemSelectedHasChanged) && (value.toBool() == true))
+		updateCurrentPartEditor();
+	
 	return(QGraphicsTextItem::itemChange(change, value));
 }
