@@ -939,6 +939,8 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				if (qde.isNull())
 					continue;
 				CustomElementPart *cep = nullptr;
+				PartDynamicTextField *pdtf = nullptr;
+				bool convertibleTextField = false;
 				
 				if      (qde.tagName() == "line")     cep = new PartLine     (m_element_editor);
 				else if (qde.tagName() == "rect")     cep = new PartRectangle(m_element_editor);
@@ -947,9 +949,17 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (m_element_editor);
 				else if (qde.tagName() == "terminal") cep = new PartTerminal (m_element_editor);
 				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
-				else if (qde.tagName() == "input")    cep = new PartTextField(m_element_editor);
 				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
 				else if (qde.tagName() == "dynamic_text") cep = new PartDynamicTextField (m_element_editor);
+					//For the input (aka the old text field) we try to convert it to the new partDynamicTextField
+				else if (qde.tagName() == "input")
+				{
+					convertibleTextField = PartDynamicTextField::canImportFromTextField(qde);
+					if(convertibleTextField)
+						cep = pdtf = new PartDynamicTextField(m_element_editor);
+					else
+						cep = new PartTextField(m_element_editor);
+				}
 				else continue;
 				
 				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep))
@@ -958,7 +968,11 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 						qgi->setZValue(z++);
 					
 					loaded_parts<<qgi;
-					cep->fromXml(qde);
+					
+					if(convertibleTextField)
+						pdtf->fromTextFieldXml(qde);
+					else
+						cep->fromXml(qde);
 				}
 				else
 					delete cep;
