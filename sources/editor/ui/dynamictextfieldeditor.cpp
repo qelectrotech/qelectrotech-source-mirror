@@ -67,14 +67,14 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
 	updateForm();
 	
 		//Setup the connection
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::colorChanged,    [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::fontSizeChanged, [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::taggChanged,     [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::textFromChanged, [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::textChanged,     [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::infoNameChanged, [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::rotationChanged, [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field, &PartDynamicTextField::compositeTextChanged, [this]() {this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,    [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontSizeChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,     [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged,     [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged, [this]() {this->updateForm();});
 	
 	return true;
 }
