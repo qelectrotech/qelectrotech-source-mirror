@@ -112,9 +112,9 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	else if (ui -> m_singlewire_gb -> isChecked()) properties_.type = ConductorProperties::Single;
 
 	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
-	properties_.m_bicolor				= ui->m_color_2_gb->isChecked();
-	properties_.m_color_2				= ui->m_color_2_pb->palette().color(QPalette::Button);
-	properties_.m_dash_size				= ui->m_dash_size_sb->value();
+	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
+	properties_.m_color_2               = ui->m_color_2_pb->palette().color(QPalette::Button);
+	properties_.m_dash_size             = ui->m_dash_size_sb->value();
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
