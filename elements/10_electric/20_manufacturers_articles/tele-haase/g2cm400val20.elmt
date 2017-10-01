@@ -1,0 +1,58 @@
+<definition orientation="dyyy" type="element" hotspot_y="49" version="0.5" hotspot_x="45" height="100" width="90" link_type="simple">
+    <uuid uuid="{30bb13bc-523a-4de7-b430-f34256ad27c2}"/>
+    <names>
+        <name lang="cs">Pump and fan monitor</name>
+    </names>
+    <informations>Patrik Augustin
+Pump and Fan monitor CH4X20
+The symbol is for free use</informations>
+    <description>
+        <line x2="-9" x1="-9" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="80" antialias="false" width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40"/>
+        <line x2="5" x1="-9" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="14" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-32" text="A1" x="-35" size="5"/>
+        <line x2="-2" x1="-2" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-33" text="L1I" x="-23" size="4"/>
+        <line x2="0" x1="-2" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="21" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-33" text="L1K" x="-8" size="4"/>
+        <line x2="10" x1="10" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-32" text="L2" x="11" size="4"/>
+        <line x2="8" x1="10" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="21" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-32" text="L3" x="27" size="4"/>
+        <line x2="1" x1="5" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="14" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="5" text="G2CM400VAL20" x="-29.9643" size="5"/>
+        <text y="46" text="15" x="-39" size="4"/>
+        <text y="46" text="16" x="-30" size="4"/>
+        <text y="46" text="18" x="-22" size="4"/>
+        <text y="46" text="25" x="-10" size="4"/>
+        <text y="46" text="26" x="-1" size="4"/>
+        <text y="46" text="28" x="8" size="4"/>
+        <text y="39" text="A2" x="26" size="5"/>
+        <line x2="-37" x1="-37" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-23" x1="-37" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="14" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-30" x1="-30" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-28" x1="-30" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="21" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-18" x1="-18" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="26" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-20" x1="-18" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="21" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-27" x1="-23" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="14" y2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-18" x1="-18" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-30" y2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-20" x1="-18" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-21" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-16" x1="-18" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-21" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-3" x1="-3" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-21" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-5" x1="-3" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-30" y2="-27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-1" x1="-3" end2="none" length2="1.5" length1="1.5" antialias="false" end1="none" y1="-30" y2="-27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" y="-10" tagg="label" text="_" x="50" size="9"/>
+        <terminal orientation="n" y="-45" x="-30"/>
+        <terminal orientation="n" y="-45" x="0"/>
+        <terminal orientation="n" y="-45" x="-15"/>
+        <terminal orientation="n" y="-45" x="30"/>
+        <terminal orientation="n" y="-45" x="15"/>
+        <terminal orientation="s" y="45" x="3"/>
+        <terminal orientation="s" y="45" x="-35"/>
+        <terminal orientation="s" y="45" x="-26"/>
+        <terminal orientation="s" y="45" x="-6"/>
+        <terminal orientation="s" y="45" x="12"/>
+        <terminal orientation="s" y="45" x="30"/>
+        <terminal orientation="s" y="45" x="-18"/>
+    </description>
+</definition>
