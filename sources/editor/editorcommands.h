@@ -49,8 +49,8 @@ class ElementEditionCommand : public QUndoCommand
 		// attributes
 	protected:
 		/// Element editor/view/scene the command should take place on
-		ElementScene *editor_scene_;
-		ElementView *editor_view_;
+		ElementScene *m_scene;
+		ElementView *m_view;
 };
 
 /**
@@ -296,7 +296,7 @@ class ScalePartsCommand : public ElementEditionCommand {
 
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
-	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent=nullptr);
+	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, DiagramContext elmt_info, QUndoCommand *parent=nullptr);
 	~ChangePropertiesCommand () override;
 
 	void undo() override;
@@ -304,7 +304,8 @@ class ChangePropertiesCommand : public ElementEditionCommand {
 
 	private:
 	QList <QString> m_type;
-	QList <DiagramContext> m_info;
+	QList <DiagramContext> m_kind_info;
+	QList < DiagramContext> m_elmt_info;
 };
 
 #endif

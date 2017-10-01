@@ -61,19 +61,20 @@ class ElementScene : public QGraphicsScene
 	private:
 		ElementScene(const ElementScene &);
 	
-	// attributes
+		// attributes
 	private:
-		/// List of localized names
+			/// List of localized names
 		NamesList m_names_list;
-		/// Extra informations
+			/// Extra informations
 		QString m_informations;
-		/// element type
+			/// element type
 		QString m_elmt_type;
-		/// element kind info
-		DiagramContext m_elmt_kindInfo;
-		/// QGraphicsItem manager
+			/// element kind info
+		DiagramContext m_elmt_kindInfo,
+					   m_elmt_information;
+			/// QGraphicsItem manager
 		QGIManager m_qgi_manager;
-		/// Undo stack
+			/// Undo stack
 		QUndoStack m_undo_stack;
 	
 			/// Variables related to drawing

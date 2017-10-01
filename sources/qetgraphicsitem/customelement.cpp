@@ -150,7 +150,9 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	setToolTip(name());
 
 		//load kind informations
-	kind_informations_.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
+	m_kind_informations.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
+		//load element information
+	m_element_informations.fromXml(xml_def_elmt.firstChildElement("elementInformations"), "elementInformation");
 
 		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;

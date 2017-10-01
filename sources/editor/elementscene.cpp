@@ -341,6 +341,13 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(kindInfo);
 	}
 	
+	if(m_elmt_type == "simple" || m_elmt_type == "master" || m_elmt_type == "terminal")
+	{
+		QDomElement element_info = xml_document.createElement("elementInformations");
+		m_elmt_information.toXml(element_info, "elementInformation");
+		root.appendChild(element_info);
+	}
+	
 		//complementary information about the element
 	QDomElement informations_element = xml_document.createElement("informations");
 	root.appendChild(informations_element);
@@ -638,13 +645,19 @@ void ElementScene::slot_editAuthorInformations() {
  * @brief ElementScene::slot_editProperties
  * Open dialog to edit the element properties
  */
-void  ElementScene::slot_editProperties() {
+void  ElementScene::slot_editProperties()
+{
 	QString type = m_elmt_type;
-	DiagramContext info = m_elmt_kindInfo;
-	ElementPropertiesEditorWidget epew(type, info);
+	DiagramContext kind_info = m_elmt_kindInfo;
+	DiagramContext elmt_info = m_elmt_information;
+	
+	ElementPropertiesEditorWidget epew(type, kind_info, elmt_info);
 	epew.exec();
-	if (type != m_elmt_type || info != m_elmt_kindInfo)
-		undoStack().push(new ChangePropertiesCommand(this, type, info));
+	
+	if (type != m_elmt_type ||
+		kind_info != m_elmt_kindInfo ||
+		elmt_info != m_elmt_information)
+		undoStack().push(new ChangePropertiesCommand(this, type, kind_info, elmt_info));
 }
 
 /**
@@ -874,9 +887,11 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document)
 	if (root.tagName() != "definition" || root.attribute("type") != "element")
 		return(false);
 
-	//Extract info about element type
+		//Extract info about element type
 	m_elmt_type = root.attribute("link_type", "simple");
 	m_elmt_kindInfo.fromXml(root.firstChildElement("kindInformations"), "kindInformation");
+		//Extract info of element
+	m_elmt_information.fromXml(root.firstChildElement("elementInformations"), "elementInformation");
 
 	//Extract names of xml definition
 	m_names_list.fromXml(root);

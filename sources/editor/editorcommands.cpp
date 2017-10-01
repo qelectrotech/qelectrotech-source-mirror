@@ -23,8 +23,8 @@
 */
 ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *view, QUndoCommand *parent):
 	QUndoCommand(parent),
-	editor_scene_(scene),
-	editor_view_(view)
+	m_scene(scene),
+	m_view(view)
 {
 }
 
@@ -35,8 +35,8 @@ ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *v
 */
 ElementEditionCommand::ElementEditionCommand(const QString &text, ElementScene *scene, ElementView *view, QUndoCommand *parent):
 	QUndoCommand(text, parent),
-	editor_scene_(scene),
-	editor_view_(view)
+	m_scene(scene),
+	m_view(view)
 {
 }
 
@@ -50,28 +50,28 @@ ElementEditionCommand::~ElementEditionCommand() {
 	@return the element editor/scene the command should take place on
 */
 ElementScene *ElementEditionCommand::elementScene() const {
-	return(editor_scene_);
+	return(m_scene);
 }
 
 /**
 	Define \a scene as the element editor/scene the command should take place
 */
 void ElementEditionCommand::setElementScene(ElementScene *scene) {
-	editor_scene_ = scene;
+	m_scene = scene;
 }
 
 /**
 	@return the view the effect of the command should be rendered on
 */
 ElementView *ElementEditionCommand::elementView() const {
-	return(editor_view_);
+	return(m_view);
 }
 
 /**
 	Define \a view as the view the effect of the command should be rendered on
 */
 void ElementEditionCommand::setElementView(ElementView *view) {
-	editor_view_ = view;
+	m_view = view;
 }
 
 /*** DeletePartsCommand ***/
@@ -90,33 +90,33 @@ DeletePartsCommand::DeletePartsCommand(
 	deleted_parts(parts)
 {
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene_ -> qgiManager().manage(qgi);
+		m_scene -> qgiManager().manage(qgi);
 	}
 }
 
 /// Destructeur : detruit egalement les parties supprimees
 DeletePartsCommand::~DeletePartsCommand() {
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene_ -> qgiManager().release(qgi);
+		m_scene -> qgiManager().release(qgi);
 	}
 }
 
 /// Restaure les parties supprimees
 void DeletePartsCommand::undo() {
-	editor_scene_ -> blockSignals(true);
+	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene_ -> addItem(qgi);
+		m_scene -> addItem(qgi);
 	}
-	editor_scene_ -> blockSignals(false);
+	m_scene -> blockSignals(false);
 }
 
 /// Supprime les parties
 void DeletePartsCommand::redo() {
-	editor_scene_ -> blockSignals(true);
+	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene_ -> removeItem(qgi);
+		m_scene -> removeItem(qgi);
 	}
-	editor_scene_ -> blockSignals(false);
+	m_scene -> blockSignals(false);
 }
 
 /*** CutPartsCommand ***/
@@ -137,27 +137,27 @@ PastePartsCommand::PastePartsCommand(
 	first_redo(true)
 {
 	setText(QObject::tr("coller"));
-	editor_scene_ -> qgiManager().manage(content_);
+	m_scene -> qgiManager().manage(content_);
 }
 
 /// Destructeur
 PastePartsCommand::~PastePartsCommand() {
-	editor_scene_ -> qgiManager().release(content_);
+	m_scene -> qgiManager().release(content_);
 }
 
 /// annule le coller
 void PastePartsCommand::undo() {
 	// enleve les parties
-	editor_scene_ -> blockSignals(true);
+	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *part, content_) {
-		editor_scene_ -> removeItem(part);
+		m_scene -> removeItem(part);
 	}
-	editor_scene_ -> blockSignals(false);
+	m_scene -> blockSignals(false);
 	if (uses_offset) {
-		editor_view_ -> offset_paste_count_    = old_offset_paste_count_;
-		editor_view_ -> start_top_left_corner_ = old_start_top_left_corner_;
+		m_view -> offset_paste_count_    = old_offset_paste_count_;
+		m_view -> start_top_left_corner_ = old_start_top_left_corner_;
 	}
-	editor_view_ -> adjustSceneRect();
+	m_view -> adjustSceneRect();
 }
 
 /// refait le coller
@@ -165,18 +165,18 @@ void PastePartsCommand::redo() {
 	if (first_redo) first_redo = false;
 	else {
 		// pose les parties
-		editor_scene_ -> blockSignals(true);
+		m_scene -> blockSignals(true);
 		foreach(QGraphicsItem *part, content_) {
-			editor_scene_ -> addItem(part);
+			m_scene -> addItem(part);
 		}
-		editor_scene_ -> blockSignals(false);
+		m_scene -> blockSignals(false);
 		if (uses_offset) {
-			editor_view_ -> offset_paste_count_    = new_offset_paste_count_;
-			editor_view_ -> start_top_left_corner_ = new_start_top_left_corner_;
+			m_view -> offset_paste_count_    = new_offset_paste_count_;
+			m_view -> start_top_left_corner_ = new_start_top_left_corner_;
 		}
 	}
-	editor_scene_ -> slot_select(content_);
-	editor_view_ -> adjustSceneRect();
+	m_scene -> slot_select(content_);
+	m_view -> adjustSceneRect();
 }
 
 /**
@@ -271,17 +271,17 @@ AddPartCommand::AddPartCommand(
 	part(p),
 	first_redo(true)
 {
-	editor_scene_ -> qgiManager().manage(part);
+	m_scene -> qgiManager().manage(part);
 }
 
 /// Destructeur
 AddPartCommand::~AddPartCommand() {
-	editor_scene_ -> qgiManager().release(part);
+	m_scene -> qgiManager().release(part);
 }
 
 /// Annule l'ajout
 void AddPartCommand::undo() {
-	editor_scene_ -> removeItem(part);
+	m_scene -> removeItem(part);
 }
 
 /// Refait l'ajout
@@ -291,15 +291,15 @@ void AddPartCommand::redo() {
 		if (!part -> zValue()) {
 			// the added part has no specific zValue already defined, we put it
 			// above existing items (but still under terminals)
-			QList<QGraphicsItem *> existing_items = editor_scene_ -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
+			QList<QGraphicsItem *> existing_items = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
 			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
 			part -> setZValue(z);
 		}
-		editor_scene_ -> clearSelection();
+		m_scene -> clearSelection();
 		first_redo = false;
 		return;
 	}
-	editor_scene_ -> addItem(part);
+	m_scene -> addItem(part);
 }
 
 /**
@@ -327,12 +327,12 @@ ChangeNamesCommand::~ChangeNamesCommand() {
 
 /// Annule le changement
 void ChangeNamesCommand::undo() {
-	editor_scene_ -> setNames(names_before);
+	m_scene -> setNames(names_before);
 }
 
 /// Refait le changement
 void ChangeNamesCommand::redo() {
-	editor_scene_ -> setNames(names_after);
+	m_scene -> setNames(names_after);
 }
 
 /**
@@ -350,7 +350,7 @@ ChangeZValueCommand::ChangeZValueCommand(
 	option(o)
 {
 	// retrieve all primitives but terminals
-	QList<QGraphicsItem *> items_list = editor_scene_ -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
+	QList<QGraphicsItem *> items_list = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
 	
 	// prend un snapshot des zValues
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
@@ -478,12 +478,12 @@ ChangeInformationsCommand::~ChangeInformationsCommand() {
 
 /// Annule le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::undo() {
-	editor_scene_ -> setInformations(old_informations_);
+	m_scene -> setInformations(old_informations_);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::redo() {
-	editor_scene_ -> setInformations(new_informations_);
+	m_scene -> setInformations(new_informations_);
 }
 
 /**
@@ -524,7 +524,7 @@ void ScalePartsCommand::redo() {
 	@return the element editor/scene the command should take place on
 */
 ElementScene *ScalePartsCommand::elementScene() const {
-	return(editor_scene_);
+	return(m_scene);
 }
 
 /**
@@ -593,24 +593,27 @@ void ScalePartsCommand::adjustText() {
  * @param context: new info about type.
  * @param parent: parent undo
  */
-ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent) :
+ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString type, DiagramContext info, DiagramContext elmt_info, QUndoCommand *parent) :
 	ElementEditionCommand(scene, nullptr, parent)
 {
 	m_type << scene->m_elmt_type << type;
-	m_info << scene->m_elmt_kindInfo << info;
+	m_kind_info << scene->m_elmt_kindInfo << info;
+	m_elmt_info << scene->m_elmt_information << elmt_info;
 	setText(QObject::tr("Modifier les propriétés"));
 }
 
 ChangePropertiesCommand::~ChangePropertiesCommand() {}
 
 void ChangePropertiesCommand::undo() {
-	editor_scene_-> m_elmt_type = m_type.first();
-	editor_scene_-> m_elmt_kindInfo = m_info.first();
+	m_scene->m_elmt_type = m_type.first();
+	m_scene->m_elmt_kindInfo = m_kind_info.first();
+	m_scene->m_elmt_information = m_elmt_info.first();
 }
 
 void ChangePropertiesCommand::redo() {
-	editor_scene_-> m_elmt_type = m_type.last();
-	editor_scene_-> m_elmt_kindInfo = m_info.last();
+	m_scene->m_elmt_type = m_type.last();
+	m_scene->m_elmt_kindInfo = m_kind_info.last();
+	m_scene->m_elmt_information = m_elmt_info.last();
 }
 
 

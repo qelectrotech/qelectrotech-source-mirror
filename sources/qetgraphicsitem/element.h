@@ -136,7 +136,7 @@ class Element : public QetGraphicsItem
 		DiagramContext  elementInformations    ()const              {return m_element_informations;}
 		DiagramContext& rElementInformations   ()                   {return m_element_informations;}
 		virtual void    setElementInformations (DiagramContext dc);
-		DiagramContext  kindInformations       () const             {return kind_informations_;}	//@kind_information_ is used to store more information
+		DiagramContext  kindInformations       () const             {return m_kind_informations;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 
@@ -154,7 +154,7 @@ class Element : public QetGraphicsItem
 
 		//ATTRIBUTES
 	protected:
-		DiagramContext m_element_informations, kind_informations_;
+		DiagramContext m_element_informations, m_kind_informations;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
 		QString m_F_str;

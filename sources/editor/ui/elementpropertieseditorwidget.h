@@ -37,24 +37,27 @@ class ElementPropertiesEditorWidget : public QDialog
 
 	//METHODS
 	public:
-	explicit ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &dc, QWidget *parent = nullptr);
-	~ElementPropertiesEditorWidget() override;
+		explicit ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &kind_info, DiagramContext &elmt_info, QWidget *parent = nullptr);
+		~ElementPropertiesEditorWidget() override;
 
-	void upDateInterface();
+		void upDateInterface();
 
 	private:
-	void setUpInterface();
+		void setUpInterface();
+		void updateTree();
+		void populateTree();
 
-	//SLOTS
+		//SLOTS
 	private slots:
-	void on_m_buttonBox_accepted();
-	void on_m_base_type_cb_currentIndexChanged(int index);
+		void on_m_buttonBox_accepted();
+		void on_m_base_type_cb_currentIndexChanged(int index);
 
-	//ATTRIBUTES
+		//ATTRIBUTES
 	private:
-	Ui::ElementPropertiesEditorWidget *ui;
-	QString &m_basic_type;
-	DiagramContext &m_dc;
+		Ui::ElementPropertiesEditorWidget *ui;
+		QString &m_basic_type;
+		DiagramContext &m_kind_info,
+					   &m_elmt_info;
 };
 
 #endif // ELEMENTPROPERTIESEDITORWIDGET_H
