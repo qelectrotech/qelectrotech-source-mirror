@@ -1649,7 +1649,7 @@ Alle elementen in het dossier worden verwijderd.</translation>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n element(en), verspreid(en)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n elementen, verspreiden</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -1657,7 +1657,7 @@ Alle elementen in het dossier worden verwijderd.</translation>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>in %n dossier(s).</numerusform>
-            <numerusform></numerusform>
+            <numerusform>in %n dossiers.</numerusform>
         </translation>
     </message>
     <message>
@@ -6742,7 +6742,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
             <numerusform>Toevoegen %n geleider(s)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>Toevoegen %n geleiders</numerusform>
         </translation>
     </message>
 </context>
@@ -7953,7 +7953,7 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="332"/>
         <source>Localisation</source>
-        <translation>Locatie :</translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
