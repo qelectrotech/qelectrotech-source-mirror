@@ -1,0 +1,116 @@
+<definition version="0.70" link_type="simple" height="60" hotspot_x="110" hotspot_y="32" orientation="dyyy" type="element" width="220">
+    <uuid uuid="{26751276-eb72-4ae2-aef1-9f37bab0e19c}"/>
+    <names>
+        <name lang="fr">regulateurSiemens RLU 236</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text y="12" x="-82" size="2" text="G1"/>
+        <text y="12" x="-47" size="2" text="G1"/>
+        <text y="12" x="7" size="2" text="GO"/>
+        <text y="12" x="-62" size="2" text="GO"/>
+        <text y="12" x="96" size="2" text="Q64"/>
+        <text y="-15" x="76" size="2" text="Q41"/>
+        <text y="12" x="36" size="2" text="Q14"/>
+        <text y="12" x="76" size="2" text="Q44"/>
+        <text y="12" x="86" size="2" text="Q54"/>
+        <text y="-15" x="46" size="2" text="Q23"/>
+        <text y="12" x="-27" size="2" text="GO"/>
+        <text y="12" x="-72" size="2" text="Y1"/>
+        <text y="12" x="66" size="2" text="Q42"/>
+        <text y="-15" x="36" size="2" text="Q11"/>
+        <text y="-15" x="96" size="2" text="Q63"/>
+        <text y="-15" x="9" size="2" text="M"/>
+        <text y="-15" x="18" size="2" text="D2"/>
+        <text y="12" x="46" size="2" text="Q24"/>
+        <text y="-15" x="24" size="2" text="M"/>
+        <text y="-15" x="86" size="2" text="Q53"/>
+        <text y="12" x="56" size="2" text="Q34"/>
+        <text y="12" x="18" size="2" text="Q12"/>
+        <text y="12" x="-12" size="2" text="G1"/>
+        <text y="-15" x="-47" size="2" text="X3"/>
+        <text y="12" x="-37" size="2" text="Y2"/>
+        <text y="12" x="-1" size="2" text="Y3"/>
+        <text y="-15" x="-67" size="2" text="X2"/>
+        <text y="-15" x="-6" size="2" text="M"/>
+        <text y="-15" x="-32" size="2" text="X4"/>
+        <text y="-15" x="3" size="2" text="D1"/>
+        <line x2="90" end1="none" end2="none" y1="5" y2="-9" length1="1.5" antialias="false" x1="95" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text y="-15" x="-22" size="2" text="G1"/>
+        <text y="-15" x="-41" size="2" text="M"/>
+        <line x2="80" end1="none" end2="none" y1="5" y2="-9" length1="1.5" antialias="false" x1="85" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect y="-20" x="-105" height="35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="210"/>
+        <text y="-15" x="-61" size="2" text="M"/>
+        <text y="-15" x="-26" size="2" text="M"/>
+        <text y="-15" x="-12" size="2" text="X5"/>
+        <line x2="50" end1="none" end2="none" y1="5" y2="-9" length1="1.5" antialias="false" x1="55" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="95" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="95" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="95" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="95" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="85" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="85" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="85" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="85" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="75" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="75" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="75" end1="none" end2="none" y1="5" y2="15" length1="1.5" antialias="false" x1="75" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="65" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="65" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="65" end1="none" end2="none" y1="5" y2="5" length1="1.5" antialias="false" x1="70" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="35" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="35" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="35" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="35" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="25" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="25" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="31" end1="none" end2="none" y1="5" y2="5" length1="1.5" antialias="false" x1="25" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="55" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="55" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="45" end1="none" end2="none" y1="-20" y2="-10" length1="1.5" antialias="false" x1="45" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="55" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="55" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="45" end1="none" end2="none" y1="15" y2="5" length1="1.5" antialias="false" x1="45" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="40" end1="none" end2="none" y1="5" y2="-9" length1="1.5" antialias="false" x1="45" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="29" end1="none" end2="none" y1="-10" y2="7" length1="1.5" antialias="false" x1="35" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="68" end1="none" end2="none" y1="-10" y2="6" length1="1.5" antialias="false" x1="75" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text y="-15" x="-96" size="2" text="G"/>
+        <text y="-15" x="56" size="2" text="Q33"/>
+        <text y="12" x="-98" size="2" text="GO"/>
+        <text y="-15" x="-87" size="2" text="X1"/>
+        <text y="-15" x="-81" size="2" text="M"/>
+        <text y="-15" x="-56" size="2" text="G1"/>
+        <input y="-45" tagg="label" x="95" size="9" text="_" rotate="true"/>
+        <text y="0" x="-100" size="7" text=" siemens RLU 236"/>
+        <terminal y="-25" x="-60" orientation="n"/>
+        <terminal y="-25" x="-25" orientation="n"/>
+        <terminal y="15" x="-60" orientation="n"/>
+        <terminal y="-25" x="-65" orientation="n"/>
+        <terminal y="-25" x="20" orientation="n"/>
+        <terminal y="-25" x="85" orientation="n"/>
+        <terminal y="-25" x="5" orientation="n"/>
+        <terminal y="-25" x="10" orientation="n"/>
+        <terminal y="-25" x="45" orientation="n"/>
+        <terminal y="15" x="10" orientation="n"/>
+        <terminal y="15" x="85" orientation="n"/>
+        <terminal y="-25" x="-30" orientation="n"/>
+        <terminal y="-25" x="-5" orientation="n"/>
+        <terminal y="15" x="0" orientation="n"/>
+        <terminal y="-25" x="-80" orientation="n"/>
+        <terminal y="-25" x="75" orientation="n"/>
+        <terminal y="-25" x="-10" orientation="n"/>
+        <terminal y="15" x="-45" orientation="n"/>
+        <terminal y="-25" x="-20" orientation="n"/>
+        <terminal y="15" x="-95" orientation="n"/>
+        <terminal y="-25" x="95" orientation="n"/>
+        <terminal y="15" x="-35" orientation="n"/>
+        <terminal y="-25" x="-85" orientation="n"/>
+        <terminal y="-25" x="-45" orientation="n"/>
+        <terminal y="-25" x="-40" orientation="n"/>
+        <terminal y="15" x="-80" orientation="n"/>
+        <terminal y="-25" x="55" orientation="n"/>
+        <terminal y="15" x="-70" orientation="n"/>
+        <terminal y="-25" x="-55" orientation="n"/>
+        <terminal y="-25" x="-95" orientation="n"/>
+        <terminal y="-25" x="25" orientation="n"/>
+        <terminal y="15" x="-25" orientation="n"/>
+        <terminal y="-25" x="35" orientation="n"/>
+        <terminal y="15" x="35" orientation="n"/>
+        <terminal y="15" x="65" orientation="n"/>
+        <terminal y="15" x="75" orientation="n"/>
+        <terminal y="15" x="55" orientation="n"/>
+        <terminal y="15" x="45" orientation="n"/>
+        <terminal y="15" x="-10" orientation="n"/>
+        <terminal y="15" x="25" orientation="n"/>
+        <terminal y="15" x="95" orientation="n"/>
+    </description>
+</definition>

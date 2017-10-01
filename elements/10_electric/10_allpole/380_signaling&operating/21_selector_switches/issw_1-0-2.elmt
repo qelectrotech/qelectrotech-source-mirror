@@ -1,0 +1,29 @@
+<definition width="90" orientation="dyyy" link_type="simple" height="80" type="element" hotspot_x="46" hotspot_y="34" version="0.5">
+    <uuid uuid="{9e65cc3c-3e37-4883-9f2d-f23d1acbe986}"/>
+    <names>
+        <name lang="cs">iSSW 1-0-2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line x1="-25" x2="-25" length2="1.5" y1="-25" length1="1.5" y2="15" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="-30" x2="-30" length2="1.5" y1="10" length1="1.5" y2="35" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="-20" x2="-20" length2="1.5" y1="10" length1="1.5" y2="35" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="-25" x2="-5" length2="1.5" y1="0" length1="1.5" y2="0" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="-5" x2="0" length2="1.5" y1="0" length1="1.5" y2="-5" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="0" x2="5" length2="1.5" y1="-5" length1="1.5" y2="0" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="5" x2="15" length2="1.5" y1="0" length1="1.5" y2="0" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="10" x2="20" length2="1.5" y1="10" length1="1.5" y2="-10" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="20" x2="20" length2="1.5" y1="-10" length1="1.5" y2="10" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="20" x2="30" length2="1.5" y1="-10" length1="1.5" y2="10" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="25" x2="40" length2="1.5" y1="0" length1="1.5" y2="0" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <line x1="38.5" x2="38.5" length2="1.5" y1="-11.45" length1="1.5" y2="-1.45" end2="none" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none"/>
+        <text x="-41" text="I" size="6" y="33"/>
+        <text x="-28" text="0" size="6" y="33"/>
+        <text x="-15" text="II" size="6" y="33"/>
+        <input x="5" text="_" size="9" tagg="none" y="45" rotate="true"/>
+        <input x="-16" text="ISSW 1-0-2&#xa;A9E18073" size="6" tagg="label" y="-28" rotate="true"/>
+        <terminal x="-25" y="-30" orientation="n"/>
+        <terminal x="-20" y="40" orientation="s"/>
+        <terminal x="-30" y="40" orientation="s"/>
+    </description>
+</definition>
