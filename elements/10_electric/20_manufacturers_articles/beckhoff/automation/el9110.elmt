@@ -1,0 +1,64 @@
+<definition hotspot_x="55" version="0.70" type="element" width="120" link_type="simple" height="390" hotspot_y="195" orientation="dyyy">
+    <uuid uuid="{11d2adcc-b789-41b3-b6db-09d3a3fd5cd5}"/>
+    <names>
+        <name lang="en">EL9110 Potential supply with diag.</name>
+    </names>
+    <elementInformations/>
+    <informations>
+		Author: RDS for QelectroTech
+    </informations>
+    <description>
+        <arc start="90" angle="180" width="6" x="54" y="75" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line y1="5" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="5" length1="1.5" length2="1.5" x1="55" end2="none" antialias="false"/>
+        <line y1="78" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="78" length1="1.5" length2="1.5" x1="54" end2="none" antialias="false"/>
+        <circle x="23.5" y="155.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <line y1="143" x2="25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="157" length1="1.5" length2="1.5" x1="25" end2="none" antialias="false"/>
+        <line y1="143" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="157" length1="1.5" length2="1.5" x1="-25" end2="none" antialias="false"/>
+        <arc start="90" angle="180" width="6" x="55" y="154" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line y1="157" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="157" length1="1.5" length2="1.5" x1="55" end2="none" antialias="false"/>
+        <circle x="23.5" y="3.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <rect width="99" x="-50" y="-190" height="382" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="true"/>
+        <circle x="23.5" y="76.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <arc start="90" angle="180" width="6" x="55" y="2" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <text x="11" y="-29" size="7" text="+"/>
+        <rect width="99" x="-50" y="165" height="27" style="line-style:normal;line-weight:normal;filling:gray;color:black" antialias="false"/>
+        <circle x="22" y="-93" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <text x="10" y="40" size="10" text="-"/>
+        <text x="7.5" y="123" size="7" text="PE"/>
+        <circle x="22" y="57" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <circle x="22" y="-13" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <circle x="22" y="137" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <text x="-40" y="123" size="7" text="PE"/>
+        <circle x="-28" y="-93" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <text x="-40" y="40" size="10" text="-"/>
+        <text x="-39" y="-29" size="7" text="+"/>
+        <circle x="-28" y="137" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <circle x="-28" y="-13" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <circle x="-28" y="57" diameter="6" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false"/>
+        <line y1="-6" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="5" length1="1.5" length2="1.5" x1="-25" end2="none" antialias="false"/>
+        <line y1="-7" x2="25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="4" length1="1.5" length2="1.5" x1="25" end2="none" antialias="false"/>
+        <line y1="63" x2="25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="78" length1="1.5" length2="1.5" x1="25" end2="none" antialias="false"/>
+        <line y1="63" x2="-25" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="78" length1="1.5" length2="1.5" x1="-25" end2="none" antialias="false"/>
+        <text x="9" y="-99" size="5" text="5"/>
+        <text x="19" y="-17" size="5" text="6"/>
+        <text x="20" y="53" size="5" text="7"/>
+        <text x="19" y="134" size="5" text="8"/>
+        <text x="-42" y="-99" size="5" text="1"/>
+        <text x="-31" y="134" size="5" text="4"/>
+        <text x="-46" y="-160" size="6" text="24V DC with diag. LED"/>
+        <text x="-30" y="53" size="5" text="3"/>
+        <text x="-31" y="-17" size="5" text="2"/>
+        <text x="-44" y="-176" size="8" text="Potential supply"/>
+        <text x="-45" y="175" size="6" text="Beckhoff"/>
+        <text x="-45" y="185" size="9" text="EL9110"/>
+        <input x="-22" y="205" size="9" rotate="true" text="A-Z" tagg="label"/>
+        <terminal x="25" y="138" orientation="n"/>
+        <terminal x="49" y="-190" orientation="e"/>
+        <terminal x="-25" y="58" orientation="n"/>
+        <terminal x="-25" y="138" orientation="n"/>
+        <terminal x="-25" y="-12" orientation="n"/>
+        <terminal x="25" y="58" orientation="n"/>
+        <terminal x="-50" y="-190" orientation="w"/>
+        <terminal x="25" y="-12" orientation="n"/>
+    </description>
+</definition>
