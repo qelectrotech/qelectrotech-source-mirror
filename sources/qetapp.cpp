@@ -284,6 +284,7 @@ QStringList QETApp::elementInfoKeys()
 	info_list << "formula"
 			  << "label"
 			  << "comment"
+			  << "description"
 			  << "designation"
 			  << "manufacturer"
 			  << "manufacturer-reference"
@@ -307,6 +308,7 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	if (info == "formula") return tr("formule du label");
 	else if (info == "label") return tr("Label");
 	else if (info == "comment") return tr("Commentaire");
+	else if (info == "descrition") return tr("Descrition");
 	else if (info == "designation") return tr("Désignation");
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Référence fabricant");
@@ -330,6 +332,7 @@ QString QETApp::elementInfoToVar(const QString &info)
 	if (info == "formula")                             return QString("%{formula}");
 	else if (info == "label")                          return QString("%{label}");
 	else if (info == "comment")                        return QString("%{comment}");
+	else if (info == "description")                    return QString("%{description}");
 	else if (info == "designation")                    return QString("%{designation}");
 	else if (info == "manufacturer")                   return QString("%{manufacturer}");
 	else if (info == "manufacturer-reference")         return QString("%{manufacturer-reference}");

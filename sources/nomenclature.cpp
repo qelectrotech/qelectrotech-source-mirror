@@ -91,6 +91,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
 	""+ QObject::tr("Désignation") +";"
+	""+ QObject::tr("Description") +";"
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
 	""+ QObject::tr("Reference") +";"
@@ -147,6 +148,7 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["description"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";

@@ -167,6 +167,7 @@ namespace autonum
 		QString str = formula;
 		str.replace("%{label}", dc.value("label").toString());
 		str.replace("%{comment}", dc.value("comment").toString());
+		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
 		str.replace("%{manufacturer-reference}", dc.value("manufacturer-reference").toString());

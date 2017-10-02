@@ -34,6 +34,7 @@
  * label                          -> label or identification of element
  * formula                        -> formula used to create the label (formula is make with variable)
  * designation                    -> exhaustive comment used to explain what the element does.
+ * description                    -> exhaustive description used to explain what the element does.
  * comment                        -> a little comment wich can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element
  * manufacturer-reference         -> the manufacturer reference of the element
