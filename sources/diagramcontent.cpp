@@ -94,20 +94,25 @@ void DiagramContent::clear()
 int DiagramContent::removeNonMovableItems()
 {
 	int count_ = 0;
-
-	for(Element *elmt : m_elements) {
+	
+	const QSet<Element *> elements_set = m_elements;
+	for(Element *elmt : elements_set) {
 		if (!elmt->isMovable()) {
 			m_elements.remove(elmt);
 			++count_;
 		}
 	}
-	for(DiagramImageItem *img : m_images) {
+	
+	const QSet<DiagramImageItem *> images_set = m_images;
+	for(DiagramImageItem *img : images_set) {
 		if (!img->isMovable()) {
 			m_images.remove(img);
 			++count_;
 		}
 	}
-	for(QetShapeItem *shape : m_shapes) {
+	
+	const QSet<QetShapeItem *> shapes_set = m_shapes;
+	for(QetShapeItem *shape : shapes_set) {
 		if (!shape->isMovable()) {
 			m_shapes.remove(shape);
 			++count_;
