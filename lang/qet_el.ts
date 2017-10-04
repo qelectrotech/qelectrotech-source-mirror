@@ -326,10 +326,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Conductor</source>
-        <translation type="vanished">Αγωγός</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
         <translation>Σελίδα</translation>
@@ -459,21 +455,6 @@
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Φόρμα</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translation type="vanished">Αυτόματη αρίθμηση</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translation type="vanished">επεξεργασία αριθμήσεων</translation>
     </message>
 </context>
 <context>
@@ -968,79 +949,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="vanished">Σήμανση των διαγραμμάτων</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Ρυθμίσεις</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Σήμανση</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="vanished">Επιλογή</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Αγωγοί</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Εξαρτήματα</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Σήμανση (άλφα)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αφαιρέθηκε η αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Διαγραφή της σήμανσης</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="vanished">Κλείσιμο</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Αφαίρεση της σήμανσης των αγωγών</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Θέλετε πράγματι να διαγράψετε τη σήμανση αγωγών:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Θέλετε πράγματι να σημάνετε τους αγωγούς:
-
-%1;</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Σήμανση των αγωγών</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1079,13 +987,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1234,7 +1142,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1651,34 +1559,10 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Μπορείτε να εισάγετε το όνομα του στοιχείου σε πολλές γλώσσες.</translation>
     </message>
     <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="vanished">Αυτό το αρχείο XML δεν είναι προσδιορισμός κάποιου στοιχείου.</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/elementscene.cpp" line="676"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ονομάτων</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Φόρμα</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="vanished">N° αγωγού</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ανώνυμο</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Εμφάνιση στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -1992,10 +1876,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 </context>
 <context>
     <name>ElementsPanelWidget</name>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="vanished">Επαναφόρτωση των συλλογών</translation>
-    </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Éditer ce modèle</source>
@@ -2352,10 +2232,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
         <source>Sélection:</source>
         <translation>Επιλογή:</translation>
-    </message>
-    <message>
-        <source>Créer de nouveaux Folios</source>
-        <translation type="vanished">Δημιουργία νέων σελίδων</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
@@ -2966,10 +2842,6 @@ that you create. Text and number inputs are
         <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Αναζήτηση στη σελίδα:</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Προβολή αυτού του στοιχείου</translation>
@@ -3010,21 +2882,9 @@ that you create. Text and number inputs are
         <translation>Διασταυρούμενες αναφορές (slave)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translation type="vanished">Όλες</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ανώνυμο</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translation>Αποσύνδεση</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translation type="vanished">Αναζήτηση</translation>
     </message>
 </context>
 <context>
@@ -3081,18 +2941,6 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Συνδεδεμένα στοιχεία</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ανώνυμο</translation>
-    </message>
-    <message>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Σελίδα  %1 (%2), θέση %3.</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Διασταυρούμενες αναφορές (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3442,10 +3290,6 @@ that you create. Text and number inputs are
 <context>
     <name>PartEllipse</name>
     <message>
-        <source>Modifier une ellipse</source>
-        <translation type="vanished">Επεξεργασία έλλειψης</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished"></translation>
@@ -3557,25 +3401,6 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Παρακαλώ επέλεξε τις ιδιότητες που θα εφαρμοστούν στο νέο δυναμικό.</translation>
     </message>
     <message>
-        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="vanished">Το δυναμικό με αριθμό αγωγού %1 υπάρχει %2 φορές</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
@@ -3590,12 +3415,20 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3629,22 +3462,9 @@ Les variables suivantes sont incompatibles :
         <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="vanished">Διαθέσιμες αριθμήσεις</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translation type="vanished">Διαγραφή της αρίθμησης</translation>
-    </message>
-    <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Conductor</source>
-        <translation type="vanished">Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
@@ -3665,10 +3485,6 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Folio Auto Numbering</source>
-        <translation type="vanished">Αυτόματη Αρίθμηση Σελίδων</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3839,18 +3655,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3982,12 +3793,9 @@ Options disponibles :
 </translation>
     </message>
     <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Κατασκευαστής</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="vanished">Κωδικός κατασκευαστή</translation>
+        <translation>Κατασκευαστής</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -3998,10 +3806,6 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="318"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Βοηθητικό μπλοκ 2</translation>
-    </message>
-    <message>
-        <source>Référence fabricant machine</source>
-        <translation type="vanished">Πλήρης κωδικός κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1244"/>
@@ -4074,10 +3878,6 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>Commentaire</source>
         <translation>Σχόλιο</translation>
-    </message>
-    <message>
-        <source>Désignation</source>
-        <translation type="vanished">Περιγραφή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="320"/>
@@ -6550,16 +6350,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n στοιχεία</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> και  </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6568,11 +6358,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n αγωγός</numerusform>
             <numerusform>%n αγωγοί</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> και </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8146,16 +7931,6 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Διαθέσιμο ως %filename στα πρότυπα πινακίδων </translation>
     </message>
     <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">Οι παρακάτω μεταβλητές χρησιμοποιούνται στο πεδίο Σελίδα:
--% Id: τρέχων αριθμός σελίδας στο έργο
--% Total: συνολικός αριθμός σελίδων στο έργο
--% Autonum: Αυτόματη αρίθμηση Σελίδας</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
         <translation>στα δεξιά</translation>
@@ -8184,10 +7959,6 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
         <translation>Πληροφορίες πινακίδων</translation>
-    </message>
-    <message>
-        <source>Afficher :</source>
-        <translation type="vanished">Προβολή:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
@@ -8242,10 +8013,6 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
         <translation>Αρχείο:</translation>
-    </message>
-    <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Διαθέσιμο ως %folio στα πρότυπα πινακίδων </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>

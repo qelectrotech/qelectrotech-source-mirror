@@ -992,13 +992,13 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <translation>Formulaire</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation></translation>
     </message>
 </context>
@@ -1147,7 +1147,7 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation></translation>
     </message>
     <message>
@@ -2380,10 +2380,6 @@ que vous créez. entrées de texte et nombres sont
         <translation></translation>
     </message>
     <message>
-        <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="vanished">Gardez les projets en lecture seule, leurs fichiers ne pourront pas être écrasés</translation>
-    </message>
-    <message>
         <location filename="../sources/configpages.cpp" line="254"/>
         <source>Gestion des éléments</source>
         <translation></translation>
@@ -3406,21 +3402,6 @@ que vous créez. entrées de texte et nombres sont
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <translation></translation>
     </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation></translation>
-    </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
@@ -3436,12 +3417,20 @@ Tension/protocole : %1</source>
         <translation></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3696,6 +3685,16 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
+        <source>Fabricant</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="316"/>
+        <source>Fournisseur</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
         <source>Bloc auxiliaire 1</source>
         <translation></translation>
@@ -3716,18 +3715,8 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
         <translation></translation>
     </message>
     <message>

@@ -338,10 +338,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Conductor</source>
-        <translation type="obsolete">Проводник</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
         <translation type="unfinished">Страница</translation>
@@ -471,23 +467,6 @@
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Форма</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translatorcomment>Автонумерация :</translatorcomment>
-        <translation type="vanished">Авто-нумерация :</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translatorcomment>context dependent</translatorcomment>
-        <translation type="vanished">Правка нумерации</translation>
     </message>
 </context>
 <context>
@@ -991,79 +970,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="vanished">Аннотация к схеме</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Настройки</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Аннотация</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="vanished">Выбор</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Проводники</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Компоненты</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нумерация выбранной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Аннотация (альфа)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Убрана нумерация выбраной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Удаление аннотаций</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="vanished">Закрыть</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Удаление аннотаций проводников</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Вы действительно хотите удалить аннотации проводников:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Вы действительно хотите добавить аннотацию к проводникам:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Аннотации проводников</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1103,13 +1009,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished">Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1258,7 +1164,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1682,30 +1588,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Вы можете задать имя элемента на разных языках.</translation>
     </message>
-    <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="vanished">Этот XML-документ не является определением элемента.</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Форма</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="vanished">№ провода:</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Без имени</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Смотреть элемент</translation>
-    </message>
 </context>
 <context>
     <name>ElementsCategoryEditor</name>
@@ -2029,10 +1911,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanelwidget.cpp" line="47"/>
         <source>Copier le chemin</source>
         <translation>Копировать полный путь в буфер обмена</translation>
-    </message>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="vanished">Перезагрузить коллекции</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="48"/>
@@ -3004,10 +2882,6 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Найти на странице:</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Просмотреть этот элемент</translation>
@@ -3048,24 +2922,10 @@ that you create. Text and number inputs are
         <translation>Ссылка (дочерний)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translatorcomment>??</translatorcomment>
-        <translation type="vanished">Все</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Без имени</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translatorcomment>??</translatorcomment>
         <translation>Разовать связь</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translatorcomment>Найти??</translatorcomment>
-        <translation type="vanished">Найти</translation>
     </message>
 </context>
 <context>
@@ -3124,18 +2984,6 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Связанные элементы</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Без имени</translation>
-    </message>
-    <message>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Страница  %1 (%2), позиция %3.</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Ссылка (главный)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3491,10 +3339,6 @@ that you create. Text and number inputs are
 <context>
     <name>PartEllipse</name>
     <message>
-        <source>Modifier une ellipse</source>
-        <translation type="vanished">Редактировать эллипс</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished"></translation>
@@ -3606,26 +3450,6 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Пожалуйста выберите свойства, которые будут применены к новому потенциалу.</translation>
     </message>
     <message>
-        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="vanished">&quot;Потенциал провода %1 присутствует %2 раз.&quot;</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
@@ -3640,6 +3464,7 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
@@ -3647,6 +3472,13 @@ Tension/protocole : %1</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3680,22 +3512,9 @@ Les variables suivantes sont incompatibles :
         <translation>Авто-нумерация</translation>
     </message>
     <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="vanished">Доступные нумерации:</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translation type="vanished">Удалить нумерацию</translation>
-    </message>
-    <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Conductor</source>
-        <translation type="vanished">Проводник</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
@@ -3716,10 +3535,6 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Folio Auto Numbering</source>
-        <translation type="vanished">Автонумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3919,16 +3734,9 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Аннотация</translation>
     </message>
     <message>
-        <source>Désignation</source>
-        <translation type="vanished">Назначение</translation>
-    </message>
-    <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Производитель</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="vanished">Информация производителя</translation>
+        <translation>Производитель</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -3941,11 +3749,6 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Внешний блок 2</translation>
     </message>
     <message>
-        <source>Référence fabricant machine</source>
-        <translatorcomment>поставщика оборудования?</translatorcomment>
-        <translation type="vanished">Информация производителя машины/оборудования</translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
         <translation type="unfinished"></translation>
@@ -3956,18 +3759,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6638,16 +6436,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n элементов</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> и </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6657,11 +6445,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n проводника</numerusform>
             <numerusform>%n проводников</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> и </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8257,10 +8040,6 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Информация штампа</translation>
     </message>
     <message>
-        <source>Afficher :</source>
-        <translation type="vanished">Показать:</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
         <source>Indice Rev</source>
         <translation type="unfinished"></translation>
@@ -8305,10 +8084,6 @@ Les variables suivantes sont utilisables :
         <translation>Файл :</translation>
     </message>
     <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Доступен как %folio шаблон для штампа</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
         <source>Date :</source>
         <translation>Дата :</translation>
@@ -8322,16 +8097,6 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="200"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Доступен как %title шаблон для штампа</translation>
-    </message>
-    <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">Переменные, использукмые в поле Страница:
--% Id: номер текущей страницы в проекте
--% Total: общее количество страниц в проекте
--% Autonum: Автонумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="59"/>

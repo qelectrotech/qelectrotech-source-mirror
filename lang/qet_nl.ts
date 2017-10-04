@@ -463,21 +463,6 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     </message>
 </context>
 <context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Dialoog</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translation type="obsolete">Autonummering :</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translation type="vanished">wijzig nummering</translation>
-    </message>
-</context>
-<context>
     <name>BorderPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
@@ -969,79 +954,6 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="obsolete">Paginanummering</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Configuratie</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Nummering</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="obsolete">Selectie</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Geleiders</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Componenten</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;nummer de geselecteerde pagina&apos;s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Nummeren (alpha)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummering verwijderd van geselecteerde pagina&apos;s.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="obsolete">Verwijderen van nummering</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="obsolete">Sluiten</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="obsolete">Verwijderen geleidernummering</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="obsolete">Wilt u de nummering van deze geleiders echt verwijderen:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="obsolete">Wilt u deze geleiders echt nummeren:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="obsolete">Nummering van geleiders</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1080,13 +992,13 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation type="unfinished">Dialoog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1235,7 +1147,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1652,34 +1564,10 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation type="unfinished">U kunt de elementnaam geven in meerdere talen.</translation>
     </message>
     <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="obsolete">Dit XML document is geen elementdefinitie.</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/elementscene.cpp" line="676"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Bewerk de namen</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Dialoog</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="obsolete">Draadnummer : </translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Zonder titel</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Toon element</translation>
     </message>
 </context>
 <context>
@@ -1992,10 +1880,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 </context>
 <context>
     <name>ElementsPanelWidget</name>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="obsolete">Herlaad collecties</translation>
-    </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
         <source>Ouvrir le dossier correspondant</source>
@@ -2980,10 +2864,6 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <translation type="unfinished">Voltage / Protocol</translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="obsolete">Zoek op de pagina :</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Toon dit element</translation>
@@ -3024,21 +2904,9 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <translation type="unfinished">Kruisverwijzing (doel)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translation type="vanished">Alles</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="obsolete">Naamloos</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translation>Verbinding verbreken</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translation type="vanished">Zoeken</translation>
     </message>
 </context>
 <context>
@@ -3095,14 +2963,6 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation type="unfinished">Verbonden elementen</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="obsolete">Naamloos</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="obsolete">Kruisreferentie (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3452,10 +3312,6 @@ Teksten en nummers zijn ook beschikbaar.</translation>
 <context>
     <name>PartEllipse</name>
     <message>
-        <source>Modifier une ellipse</source>
-        <translation type="obsolete">Ellips wijzigen</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished">Rechthoek wijzigen</translation>
@@ -3566,25 +3422,6 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <translation type="unfinished">U probeert twee verschillende potentialen te verbinden. Kies eigenschappen om nieuw potentiaal toe te passen.</translation>
     </message>
     <message>
-        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="obsolete">Het potentiaal met draadnummer %1 is %2 keer aanwezig</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
@@ -3599,12 +3436,20 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3639,15 +3484,6 @@ De volgende variabelen zijn compatibel :
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Auto numerotation</source>
         <translation type="unfinished">Autonummering</translation>
-    </message>
-    <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="obsolete">Beschikbare nummeringen :</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translation type="obsolete">Verwijder nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -3833,16 +3669,9 @@ Wilt u de wijzigingen opslaan?</translation>
 <context>
     <name>QETApp</name>
     <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Fabrikant</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="obsolete">Referentie fabrikant</translation>
-    </message>
-    <message>
-        <source>Référence fabricant machine</source>
-        <translation type="obsolete">Referentie machinefabrikant</translation>
+        <translation>Fabrikant</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -3855,18 +3684,13 @@ Wilt u de wijzigingen opslaan?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4048,10 +3872,6 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>Commentaire</source>
         <translation>Commentaar</translation>
-    </message>
-    <message>
-        <source>Désignation</source>
-        <translation type="vanished">Benaming</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -6486,16 +6306,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n elementen</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> en </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6504,11 +6314,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n geleider</numerusform>
             <numerusform>%n geleiders</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> en </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8273,10 +8078,6 @@ De volgende variabelen zijn te gebruiken:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
         <translation type="unfinished">Bestand :</translation>
-    </message>
-    <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="obsolete">Naam beschikbaar als %folio voor titelbloksjablonen</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>

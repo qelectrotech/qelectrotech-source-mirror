@@ -458,21 +458,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translation type="vanished">Numerotare automată :</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translation type="vanished">Editare numerotare</translation>
-    </message>
-</context>
-<context>
     <name>BorderPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
@@ -964,79 +949,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="vanished">Adnotare schemă</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Configurare</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Adnotare</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="vanished">Selecție</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Conductori</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Componente</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numerotează folio selectate&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Adnotări (alpha)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;S-a eliminat numerotarea schemei selectate&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Șterge adnotația</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="vanished">Închide</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Se șterge adnotarea conductorilor</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Sigur doriți să ștergeți adnotările conductorilor :
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Sigur adnotați conductorii:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Adnotare conductori</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1075,13 +987,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished">Formular</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1230,7 +1142,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1645,30 +1557,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Puteți specifica numele elementului in mai multe limbi.</translation>
     </message>
-    <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="vanished">Acest fișier XML nu este o definiție de element.</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="vanished">Nr fir : </translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Nedenumit</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Vizualizare element</translation>
-    </message>
 </context>
 <context>
     <name>ElementsCategoryEditor</name>
@@ -1990,10 +1878,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanelwidget.cpp" line="47"/>
         <source>Copier le chemin</source>
         <translation>Copiază calea întreagă</translation>
-    </message>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="vanished">Reâncarcă colecțiile</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="48"/>
@@ -2949,10 +2833,6 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Caută în folio :</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Vizualizați acest element</translation>
@@ -2993,21 +2873,9 @@ that you create. Text and number inputs are
         <translation type="unfinished">Referință încrucișată (sclav)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translation type="vanished">Tot</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Nedenumit</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translation>Desfă</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translation type="vanished">Caută</translation>
     </message>
 </context>
 <context>
@@ -3064,14 +2932,6 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Elemente referitoare</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Nedenumit</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="obsolete">Referință încrucișată (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3530,22 +3390,6 @@ that you create. Text and number inputs are
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
@@ -3561,6 +3405,7 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
@@ -3568,6 +3413,13 @@ Tension/protocole : %1</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3599,15 +3451,6 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Auto numerotation</source>
         <translation>Numerotare automată</translation>
-    </message>
-    <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="vanished">Numerotări disponibile :</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translation type="vanished">Șterge numerotarea</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -3832,16 +3675,9 @@ Doriți să se salveze modificările ?</translation>
         <translation>Comentariu</translation>
     </message>
     <message>
-        <source>Désignation</source>
-        <translation type="vanished">Denumire</translation>
-    </message>
-    <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Producător</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="vanished">Referință producător</translation>
+        <translation>Producător</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -3854,10 +3690,6 @@ Doriți să se salveze modificările ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Référence fabricant machine</source>
-        <translation type="vanished">Referință producător mașină</translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
         <translation type="unfinished"></translation>
@@ -3868,18 +3700,13 @@ Doriți să se salveze modificările ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6547,16 +6374,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n de elemente</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> și </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6566,11 +6383,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n conductori</numerusform>
             <numerusform>%n de conductori</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> și </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8201,10 +8013,6 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
         <translation>Fișier :</translation>
-    </message>
-    <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Disponibil ca % folio pentru modelele de cartușe</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>

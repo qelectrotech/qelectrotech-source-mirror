@@ -329,10 +329,6 @@
         <translation>Konfigurieren</translation>
     </message>
     <message>
-        <source>Conductor</source>
-        <translation type="vanished">Leiter</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
         <translation>Folie</translation>
@@ -468,21 +464,6 @@ Für Betriebsmittelkennzeichen (BMK) von Bauteilen gibt es 4 Richtlinien:
 - nur Vorhandene: nur BMK von vorhandenen Bauteilen werden aktualisiert. Neuen Bauteilen werden ihr BMK-Muster zugewiesen, werden aber im Nachhinein nicht aktualisiert.
 - nicht aktualisieren: neue und vorhandene BMK werden nicht aktualisiert. Dies gilt auch für neu angelegte Folien.
 Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</translation>
-    </message>
-</context>
-<context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translation type="vanished">Automatische Nummerierung:</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translation type="vanished">Nummerierung bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -977,79 +958,6 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="vanished">Leiterbeschriftung</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Einstellungen</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Beschriftung</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="vanished">Auswahl</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Leiter</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Komponenten</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung der ausgewählten Folien&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Beschriftung (alpha)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung in ausgewählten Folien entfernen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Beschriftung löschen</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="vanished">Schließen</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Leiterbeschriftungen löschen</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Möchten Sie wirklich die Leiterbeschriftungen entfernen von:
-
-%1 ?</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Leiterbeschriftung</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">Möchten Sie wirklich die Leiter beschriften von:
-
-%1 ?</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1088,13 +996,13 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1243,7 +1151,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1665,30 +1573,6 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Sie können den Namen des Bauteiles in verschiedenen Sprachen eingeben.</translation>
     </message>
-    <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="vanished">Dieses XML-Dokument ist keine gültige Bauteildefinition.</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="vanished">Draht-Nr.:</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ohne Titel</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Zeige Bauteil</translation>
-    </message>
 </context>
 <context>
     <name>ElementsCategoryEditor</name>
@@ -2009,10 +1893,6 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <location filename="../sources/elementspanelwidget.cpp" line="47"/>
         <source>Copier le chemin</source>
         <translation>Pfad in Zwischenablage kopieren</translation>
-    </message>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="vanished">Sammlungen neu laden</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="48"/>
@@ -2362,10 +2242,6 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <translation>Aktion auswählen:</translation>
     </message>
     <message>
-        <source>Créer de nouveaux Folios</source>
-        <translation type="vanished">Neue Folien anlegen</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>NumAuto des folios séléctionnés</source>
         <translation>Ausgewählte Folien nummerieren</translation>
@@ -2535,10 +2411,6 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <location filename="../sources/configpages.cpp" line="252"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Ansicht verkleinern über die Folie hinaus erlauben</translation>
-    </message>
-    <message>
-        <source>Keep projects in read-only, their files will cannot be over written</source>
-        <translation type="vanished">Projekte als schreibgeschützt setzen (Dateien können nicht mehr überschrieben werden)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="309"/>
@@ -2985,10 +2857,6 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Spannung/Protokoll</translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="vanished">In der Folie suchen: </translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Bauteil zeigen</translation>
@@ -3029,21 +2897,9 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Querverweis (Slave)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translation type="vanished">Alle</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ohne Titel</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translation>Trennen</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translation type="vanished">Suchen</translation>
     </message>
 </context>
 <context>
@@ -3100,18 +2956,6 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Gebundene Bauteile</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Ohne Titel</translation>
-    </message>
-    <message>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Folie  %1 (%2), Position %3.</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Querverweis (Master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3461,10 +3305,6 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
 <context>
     <name>PartEllipse</name>
     <message>
-        <source>Modifier une ellipse</source>
-        <translation type="vanished">Ellipse ändern</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished">Rechteck ändern</translation>
@@ -3576,25 +3416,6 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translation>
     </message>
     <message>
-        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="vanished">Das Potenzial mit der Nummer %1 ist %2 Mal vorhanden</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
@@ -3609,12 +3430,20 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3651,22 +3480,9 @@ Folgende Variablen sind inkompatibel:
         <translation>Auto-Nummerierung</translation>
     </message>
     <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="vanished">Verfügbare Nummerierungsregeln:</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translation type="vanished">Nummerierung löschen</translation>
-    </message>
-    <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
         <translation>Aktualisierungsrichtlinien</translation>
-    </message>
-    <message>
-        <source>Conductor</source>
-        <translation type="vanished">Leiter</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
@@ -3687,10 +3503,6 @@ Folgende Variablen sind inkompatibel:
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
         <translation>Folien-Auto-Nummerierung</translation>
-    </message>
-    <message>
-        <source>Folio Auto Numbering</source>
-        <translation type="vanished">Folien-Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3889,16 +3701,9 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <source>Désignation</source>
-        <translation type="vanished">Beschreibung</translation>
-    </message>
-    <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Hersteller</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="vanished">Artikelnummer Hersteller</translation>
+        <translation>Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -3911,10 +3716,6 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Zusatzfeld 2</translation>
     </message>
     <message>
-        <source>Référence fabricant machine</source>
-        <translation type="vanished">Artikelnummer Maschinenhersteller</translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
         <translation type="unfinished"></translation>
@@ -3925,18 +3726,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6597,16 +6393,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n Bauteile</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> und </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6615,11 +6401,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n Leiter</numerusform>
             <numerusform>%n Leiter</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> und </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8168,16 +7949,6 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Für Zeichnungskopf-Vorlagen als %filename verfügbar</translation>
     </message>
     <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">Folgende Variablen stehen im Feld Folie zur Verfügung:
-%id: aktuelle Foliennummer
-%total: gesamte Folienanzahl
-%autonum: aktueller Folienname</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
         <translation>rechts</translation>
@@ -8206,10 +7977,6 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
         <translation>Daten im Zeichnungskopf</translation>
-    </message>
-    <message>
-        <source>Afficher :</source>
-        <translation type="vanished">Position</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
@@ -8268,10 +8035,6 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
         <translation>Datei</translation>
-    </message>
-    <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Für Zeichnungskopf-Vorlagen als %folio verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>

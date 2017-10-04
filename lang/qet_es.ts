@@ -327,10 +327,6 @@
         <translation>Configurar</translation>
     </message>
     <message>
-        <source>Conductor</source>
-        <translation type="vanished">Conductor</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
         <translation>Folio</translation>
@@ -465,21 +461,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 -Existente: solo se actualizarán los elementos existentes. A los nuevos elementos se les asignará su fórmula pero no se actualizará una vez creada.
 -Deshabilitar: las etiquetas de elementos nuevos y existentes no se actualizarán. Esto es válido para folios nuevos también.
 Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo su Política de actualización.</translation>
-    </message>
-</context>
-<context>
-    <name>AutonumSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Forma</translation>
-    </message>
-    <message>
-        <source>Autonumérotation :</source>
-        <translation type="vanished">Autonumeración:</translation>
-    </message>
-    <message>
-        <source>éditer les numérotations</source>
-        <translation type="vanished">Editar la numeración</translation>
     </message>
 </context>
 <context>
@@ -977,75 +958,6 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     </message>
 </context>
 <context>
-    <name>DialogAutoNum</name>
-    <message>
-        <source>Annotation des schémas</source>
-        <translation type="vanished">Anotación de los esquemas</translation>
-    </message>
-    <message>
-        <source>Configuration</source>
-        <translation type="vanished">Configuración</translation>
-    </message>
-    <message>
-        <source>Annotation</source>
-        <translation type="vanished">Anotación</translation>
-    </message>
-    <message>
-        <source>Sélection</source>
-        <translation type="vanished">Selección</translation>
-    </message>
-    <message>
-        <source>Conducteurs</source>
-        <translation type="vanished">Conductores</translation>
-    </message>
-    <message>
-        <source>Composants</source>
-        <translation type="vanished">Componentes</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Número de folio seleccionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Annotation (alpha)</source>
-        <translation type="vanished">Anotación (alpha)</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elimina la numeración del folio seleccionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Supprimer l&apos;annotation</source>
-        <translation type="vanished">Eliminar la anotación</translation>
-    </message>
-    <message>
-        <source>Fermer</source>
-        <translation type="vanished">Cerrar</translation>
-    </message>
-    <message>
-        <source>Suppression des annotations conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Eliminar anotaciones de los conductores</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">¿Realmente quiere eliminar las anotaciones de los conductores: %1?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation type="vanished">¿Realmente quiere anotar los conductores de: %1?</translation>
-    </message>
-    <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="vanished">Anotación de los conductores</translation>
-    </message>
-</context>
-<context>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
@@ -1084,13 +996,13 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
-        <source>Modifier des texte d&apos;élément</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1239,7 +1151,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter 2un champ texte dynamique</source>
+        <source>Pivoter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1653,34 +1565,10 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <translation>Puede especificar el nombre del elemento en varios idiomas.</translation>
     </message>
     <message>
-        <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
-        <comment>error message</comment>
-        <translation type="vanished">Este documento XML no es una definición de elemento.</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/elementscene.cpp" line="676"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Edita los nombres</translation>
-    </message>
-</context>
-<context>
-    <name>ElementSelectorWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Forma</translation>
-    </message>
-    <message>
-        <source>N° fil : </source>
-        <translation type="vanished">N° hilo : </translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
-    </message>
-    <message>
-        <source>Voir l&apos;élément</source>
-        <translation type="vanished">Ver el elemento</translation>
     </message>
 </context>
 <context>
@@ -1994,10 +1882,6 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
 </context>
 <context>
     <name>ElementsPanelWidget</name>
-    <message>
-        <source>Recharger les collections</source>
-        <translation type="vanished">Recarga las colecciones</translation>
-    </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="48"/>
         <source>Basculer vers ce projet</source>
@@ -2355,10 +2239,6 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
         <source>Sélection:</source>
         <translation>selección:</translation>
-    </message>
-    <message>
-        <source>Créer de nouveaux Folios</source>
-        <translation type="vanished">Creación de nuevos folios</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
@@ -2990,10 +2870,6 @@ Las entradas de texto y números
         <translation>Tensión / Protocolo</translation>
     </message>
     <message>
-        <source>Rechercher dans le folio :</source>
-        <translation type="vanished">Buscar en el folio:</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>Ver este elemento</translation>
@@ -3034,21 +2910,9 @@ Las entradas de texto y números
         <translation>Referencia cruzada (esclavo)</translation>
     </message>
     <message>
-        <source>Tous</source>
-        <translation type="vanished">Todos</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
         <source>Délier</source>
         <translation>Desvincular</translation>
-    </message>
-    <message>
-        <source>Rechercher</source>
-        <translation type="vanished">Buscar</translation>
     </message>
 </context>
 <context>
@@ -3105,18 +2969,6 @@ Las entradas de texto y números
         <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
         <source>Éléments liés</source>
         <translation>Elementos enlazados</translation>
-    </message>
-    <message>
-        <source>Sans titre</source>
-        <translation type="vanished">Sin titulo</translation>
-    </message>
-    <message>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation type="vanished">Folio  %1 (%2), posición %3.</translation>
-    </message>
-    <message>
-        <source>Référence croisée (maitre)</source>
-        <translation type="vanished">Referencia cruzada (maestro)</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
@@ -3467,10 +3319,6 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
 <context>
     <name>PartEllipse</name>
     <message>
-        <source>Modifier une ellipse</source>
-        <translation type="vanished">Editar una elipse</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished"></translation>
@@ -3582,25 +3430,6 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Por favor, seleccione las propiedades que se aplicarán al nuevo potencial.</translation>
     </message>
     <message>
-        <source>Le potentiel avec numero de fil %1 est présent %2 fois</source>
-        <translation type="vanished">El potencial con número de hilo %1 está presente %2 veces</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <source>%n conducteurs composent potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
-        <source>
-Numero : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
@@ -3615,12 +3444,20 @@ Tension/protocole : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="222"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <source>
+Numéro : %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3657,23 +3494,9 @@ Las siguientes variables son incompatibles;
         <translation>Numeración automática</translation>
     </message>
     <message>
-        <source>Numérotations disponibles :</source>
-        <comment>availables numerotations</comment>
-        <translation type="vanished">Numeración disponible:</translation>
-    </message>
-    <message>
-        <source>Supprimer la numérotation</source>
-        <translatorcomment>Eliminar</translatorcomment>
-        <translation type="vanished">Borrar la numeración</translation>
-    </message>
-    <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
         <translation>Administración</translation>
-    </message>
-    <message>
-        <source>Conductor</source>
-        <translation type="vanished">Conductor</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
@@ -3694,10 +3517,6 @@ Las siguientes variables son incompatibles;
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
         <translation>Folio autonumeración</translation>
-    </message>
-    <message>
-        <source>Folio Auto Numbering</source>
-        <translation type="vanished">Numeración de folio automático</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3858,16 +3677,9 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
+        <location filename="../sources/qetapp.cpp" line="314"/>
         <source>Fabricant</source>
-        <translation type="vanished">Fabricante</translation>
-    </message>
-    <message>
-        <source>Référence fabricant</source>
-        <translation type="vanished">Referencia del fabricante</translation>
-    </message>
-    <message>
-        <source>Référence fabricant machine</source>
-        <translation type="vanished">Referencia del fabricante de la maquina</translation>
+        <translation>Fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
@@ -3880,18 +3692,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="314"/>
-        <source>Nom du Fabricant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
-        <source>Nom du Fournisseur</source>
+        <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4098,10 +3905,6 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="311"/>
         <source>Commentaire</source>
         <translation>Comentario</translation>
-    </message>
-    <message>
-        <source>Désignation</source>
-        <translation type="vanished">Designación</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="317"/>
@@ -6584,16 +6387,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n elementos</numerusform>
         </translation>
     </message>
-    <message>
-        <source>, </source>
-        <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
-        <translation type="vanished">, </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> y </translation>
-    </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="247"/>
         <source>%n conducteur(s)</source>
@@ -6602,11 +6395,6 @@ Que désirez vous faire ?</source>
             <numerusform>%n conductor</numerusform>
             <numerusform>%n conductores</numerusform>
         </translation>
-    </message>
-    <message>
-        <source> et </source>
-        <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation type="vanished"> y </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="256"/>
@@ -8213,16 +8001,6 @@ Los otros campos no se utilizan.</translation>
         <translation>Disponible como %filename para los rótulos del proyecto</translation>
     </message>
     <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du folio courant dans le projet 
-- %total : nombre total de folios dans le projet 
-- %autonum : Folio Auto Numeration</source>
-        <translation type="vanished">Las siguientes variables se utilizan en el campo Folio
-- %id : número de folio actual en el proyecto
-- %total : número total de folios en el proyecto 
-- %autonum : Numeración de folio automático</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
         <translation>a la derecha</translation>
@@ -8251,10 +8029,6 @@ Los otros campos no se utilizan.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
         <translation>Información del rótulo</translation>
-    </message>
-    <message>
-        <source>Afficher :</source>
-        <translation type="vanished">Archivo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
@@ -8313,10 +8087,6 @@ Se utilizan las siguientes variables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
         <source>Fichier :</source>
         <translation>Archivo:</translation>
-    </message>
-    <message>
-        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="vanished">Disponible como %folio para los rótulos del proyecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
