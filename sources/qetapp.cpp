@@ -311,9 +311,9 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "description") return tr("Description textuelle");
 	else if (info == "designation") return tr("Numéro d'article");
-	else if (info == "manufacturer") return tr("Nom du Fabricant");
+	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Numéro de commande");
-	else if (info == "provider") return tr("Nom du Fournisseur");
+	else if (info == "provider") return tr("Fournisseur");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");

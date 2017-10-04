@@ -94,7 +94,7 @@ void DynamicElementTextItemEditor::apply()
 		else
 		{
 			QUndoStack &us = m_element->diagram()->undoStack();
-			us.beginMacro(tr("Modifier des texte d'élément"));
+			us.beginMacro(tr("Modifier des textes d'élément"));
 			for (QUndoCommand *quc : undo_list)
 				us.push(quc);
 			us.endMacro();

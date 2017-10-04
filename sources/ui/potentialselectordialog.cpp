@@ -215,11 +215,11 @@ PotentialSelectorDialog::~PotentialSelectorDialog()
  */
 void PotentialSelectorDialog::buildWidget()
 {
-	QString text1(tr("%n conducteurs composent potentiel suivant :", "", m_potential_selector->m_conductor_number_1));
+	QString text1(tr("%n conducteurs composent le potentiel suivant :", "", m_potential_selector->m_conductor_number_1));
 	ConductorProperties cp1 = m_potential_selector->m_properties_list_1.first();
 
 	if(!cp1.text.isEmpty())
-		text1.append(tr("\nNumero : %1").arg(cp1.text));
+		text1.append(tr("\nNuméro : %1").arg(cp1.text));
 	if(!cp1.m_function.isEmpty())
 		text1.append(tr("\nFonction : %1").arg(cp1.m_function));
 	if(!cp1.m_tension_protocol.isEmpty())
@@ -228,7 +228,7 @@ void PotentialSelectorDialog::buildWidget()
 	QString text2(tr("%n conducteurs composent le potentiel suivant :", "", m_potential_selector->m_conductor_number_2));
 	ConductorProperties cp2 = m_potential_selector->m_properties_list_2.first();
 	if(!cp2.text.isEmpty())
-		text2.append(tr("\nNumero : %1").arg(cp2.text));
+		text2.append(tr("\nNuméro : %1").arg(cp2.text));
 	if(!cp2.m_function.isEmpty())
 		text2.append(tr("\nFonction : %1").arg(cp2.m_function));
 	if(!cp2.m_tension_protocol.isEmpty())

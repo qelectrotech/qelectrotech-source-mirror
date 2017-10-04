@@ -128,7 +128,7 @@ void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
 void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished()
 {
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "rotation", m_text_field.data()->rotation(), ui->m_rotation_sb->value());
-	undo->setText(tr("Pivoter 2un champ texte dynamique"));
+	undo->setText(tr("Pivoter un champ texte dynamique"));
 	undo->enableAnimation(true);
 	undoStack().push(undo);
 }
