@@ -91,7 +91,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Udvidelsesmodul klemme</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
@@ -313,17 +313,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Leder</translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsæt autonummeringsregler</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsætning</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -510,17 +510,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst redigering</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="23"/>
         <source>Ajouter une variable :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj variabel:</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="17"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast tekst her med fra tilgængelige variabler</translation>
     </message>
 </context>
 <context>
@@ -529,13 +529,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1507"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Rediger leder egenskab</translation>
+        <translation>Ændr leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1512"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Rediger egenskab for flere ledere</translation>
+        <translation>Ændr egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -554,13 +554,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="72"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Rediger leder egenskab</translation>
+        <translation>Ændr leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Rediger egenskab for flere ledere</translation>
+        <translation>Ændr egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -681,12 +681,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Rediger nummerering</translation>
+        <translation>Rediger nummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -743,17 +743,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekundær farve:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
         <source>px</source>
-        <translation type="unfinished">piksel</translation>
+        <translation>piksel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished"></translation>
+        <translation>Størrelse på funktion:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -942,7 +942,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/diagramview.cpp" line="1096"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Rediger leder egenskab</translation>
+        <translation>Ændr leder egenskab</translation>
     </message>
 </context>
 <context>
@@ -976,12 +976,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="41"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="49"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger symbol tekst</translation>
     </message>
 </context>
 <context>
@@ -989,17 +989,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændr symbol tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
         <source>Textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekster</translation>
     </message>
 </context>
 <context>
@@ -1007,17 +1007,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="37"/>
         <source>Propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskab</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="38"/>
         <source>Valeur</source>
-        <translation type="unfinished">Værdi</translation>
+        <translation>Værdi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Kildetekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
@@ -1026,7 +1026,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="437"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bruger tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="72"/>
@@ -1035,7 +1035,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="351"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol information</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
@@ -1044,42 +1044,42 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="82"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="94"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Information</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
         <source>Mon texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Sammensat tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="126"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Størrelse</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Tag</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
         <source>Couleur</source>
-        <translation type="unfinished">Farve</translation>
+        <translation>Farve</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger symbol tekst</translation>
     </message>
 </context>
 <context>
@@ -1087,88 +1087,88 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="27"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Kilde tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="34"/>
         <source>Couleur</source>
-        <translation type="unfinished">Farve</translation>
+        <translation>Farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="44"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Tag</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="52"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bruger tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol information</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="62"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="92"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Drej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="115"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="123"/>
         <source>Déplacer un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt dynamisk tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
         <source>Pivoter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Drej dynamisk tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
         <source>Modifier le texte d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændr dynamisk tekstfelt tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="146"/>
         <source>Modifier la taille d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændr dynamisk tekstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="153"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="158"/>
         <source>Modifier la couleur d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændr dynamisk tekstfelt farve</translation>
     </message>
 </context>
 <context>
@@ -1176,17 +1176,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bruger tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol information</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="505"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Sammensæt tekst</translation>
     </message>
 </context>
 <context>
@@ -1339,7 +1339,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
@@ -1379,17 +1379,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation type="unfinished">Informationer</translation>
+        <translation>Informationer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
         <source>Nom</source>
-        <translation type="unfinished">Navn</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
         <source>Valeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Værdier</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
@@ -1503,7 +1503,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="317"/>
         <source>Position : %1
 </source>
-        <translation>Position: %1
+        <translation>Placering: %1
 </translation>
     </message>
     <message>
@@ -1634,7 +1634,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementscategoryeditor.cpp" line="74"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Rediger rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
+        <translation>Ændr rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
@@ -2210,7 +2210,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;pret nye ark</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -2612,7 +2612,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation>Rediger billede størrelse</translation>
+        <translation>Ændr billede størrelse</translation>
     </message>
 </context>
 <context>
@@ -2783,7 +2783,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="223"/>
         <location filename="../sources/editor/lineeditor.cpp" line="239"/>
         <source>Modifier une ligne</source>
-        <translation>Rediger streg</translation>
+        <translation>Ændr streg</translation>
     </message>
 </context>
 <context>
@@ -2801,7 +2801,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>Søgning</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -2816,22 +2816,22 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol lænke</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis underordnet symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem opsætning</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
@@ -2847,19 +2847,19 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <source>Label</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>Etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Ark etiket</translation>
+        <translation>Ark etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
@@ -2867,7 +2867,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
@@ -2875,31 +2875,31 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Ark titel</translation>
+        <translation>Ark titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Antal ark</translation>
+        <translation>Ark nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktion</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Spænding / protokol</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -2938,59 +2938,59 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoved</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Label de folio</source>
-        <translation type="unfinished">Ark etiket</translation>
+        <translation>Ark etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">Ark titel</translation>
+        <translation>Ark titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>N° de folio</source>
-        <translation type="unfinished">Antal ark</translation>
+        <translation>Ark nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol lænke</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Firgør symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis hoved symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem opsætning</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencekors (overordnet)</translation>
     </message>
 </context>
 <context>
@@ -3290,7 +3290,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="336"/>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="343"/>
         <source>Modifier un arc</source>
-        <translation>Rediger cirkelbue</translation>
+        <translation>Ændr cirkelbue</translation>
     </message>
 </context>
 <context>
@@ -3299,12 +3299,12 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="60"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dynamisk tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="388"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Flyt tekstfelt</translation>
+        <translation>Flyt tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -3312,7 +3312,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished">Rediger rektangel</translation>
+        <translation>Ændr rektangel</translation>
     </message>
 </context>
 <context>
@@ -3320,7 +3320,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="253"/>
         <source>Modifier une ligne</source>
-        <translation>Rediger streg</translation>
+        <translation>Ændr streg</translation>
     </message>
 </context>
 <context>
@@ -3328,7 +3328,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="357"/>
         <source>Modifier un polygone</source>
-        <translation>Rediger flerkant</translation>
+        <translation>Ændr flerkant</translation>
     </message>
 </context>
 <context>
@@ -3336,7 +3336,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="373"/>
         <source>Modifier un rectangle</source>
-        <translation>Rediger rektangel</translation>
+        <translation>Ændr rektangel</translation>
     </message>
 </context>
 <context>
@@ -3344,12 +3344,12 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="256"/>
         <source>Déplacer un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
         <source>Modifier un champ texte</source>
-        <translation>Rediger tekstfelt</translation>
+        <translation>Ændr tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -3357,12 +3357,12 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="129"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Flyt tekstfelt</translation>
+        <translation>Flyt tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="303"/>
         <source>Modifier un champ texte</source>
-        <translation>Rediger tekstfelt</translation>
+        <translation>Ændr tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -3391,7 +3391,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>Modifier un polygone</source>
-        <translation>Rediger flerkant</translation>
+        <translation>Ændr flerkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
@@ -3424,9 +3424,9 @@ Vælg egenskab som tilføjes ny potentiale.</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n leder udgør følgende potentiale:</numerusform>
+            <numerusform>%n ledere udgør følgende potentiale:</numerusform>
         </translation>
     </message>
     <message>
@@ -3434,27 +3434,30 @@ Vælg egenskab som tilføjes ny potentiale.</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
         <source>
 Numéro : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Nummer: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="224"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
 Fonction : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Funktion: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="226"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="235"/>
         <source>
 Tension/protocole : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Spænding/protokol: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Rediger egenskab for flere leder</translation>
+        <translation>Ændr egenskab for flere leder</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="324"/>
@@ -3493,7 +3496,7 @@ nummerering</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Leder</translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3508,7 +3511,7 @@ nummerering</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ark autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3672,22 +3675,22 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre nummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leverandør</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Numéro interne</source>
-        <translation type="unfinished"></translation>
+        <translation>Internet nummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="322"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>Spænding / protokol</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1424"/>
@@ -3810,12 +3813,12 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstbeskrivelse</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished"></translation>
+        <translation>Varenummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="314"/>
@@ -4323,7 +4326,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="465"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>Tillader ark visning skrivebeskyttet</translation>
+        <translation>Tillader skrivebeskyttet ark visning</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
@@ -5104,7 +5107,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="280"/>
         <source>Ajouter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj dynamisk tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="349"/>
@@ -5240,7 +5243,7 @@ Kommandovalg:
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Fejl&lt;/b&gt;:&lt;br&gt;Symbol over-/underordnet og enk og ark rapport skal have et tekstfelt med mærke »etiket«.&lt;br&gt;&lt;b&gt;Løsning&lt;/b&gt;:&lt;br&gt;Indsæt tekstfelt med mærke »etiket«</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fejl&lt;/b&gt;:&lt;br&gt;Symbol over-/underordnet og enkel ark rapport skal have et tekstfelt med mærke »etiket«.&lt;br&gt;&lt;b&gt;Løsning&lt;/b&gt;:&lt;br&gt;Indsæt tekstfelt med mærke »etiket«</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
@@ -6209,7 +6212,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/diagramcommands.cpp" line="414"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation>rediger tekst</translation>
+        <translation>ændr tekst</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="462"/>
@@ -6227,7 +6230,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/diagramcommands.cpp" line="589"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation>rediger leder</translation>
+        <translation>ændr leder</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="646"/>
@@ -6239,13 +6242,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/diagramcommands.cpp" line="694"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>rediger titelblok</translation>
+        <translation>ændr titelblok</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="727"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation>Ændret ark størrelse</translation>
+        <translation>ændr ark størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6316,7 +6319,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="602"/>
         <source>Modifier les propriétés</source>
-        <translation>Rediger egenskab</translation>
+        <translation>Ændr egenskab</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -6421,9 +6424,9 @@ Hvad skal ske?</translation>
         <location filename="../sources/qet.cpp" line="283"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n symbol tekst</numerusform>
+            <numerusform>%n symbol tekster</numerusform>
         </translation>
     </message>
     <message>
@@ -6730,7 +6733,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation>Rediger symbol informationer: %1</translation>
+        <translation>Ændr symbol informationer: %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
@@ -6742,13 +6745,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/conductorautonumerotation.cpp" line="80"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Rediger egenskab for leder</translation>
+        <translation>Ændr egenskab for leder</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="86"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Rediger egenskab for flere leder</translation>
+        <translation>Ændr egenskab for flere leder</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="103"/>
@@ -6792,7 +6795,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>N° de folio</source>
-        <translation>Antal ark</translation>
+        <translation>Ark nummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
@@ -6812,7 +6815,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
@@ -6827,7 +6830,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
@@ -6907,12 +6910,12 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
         <source>Champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamisk tekst</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="28"/>
         <source>Ajouter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj symbol tekst</translation>
     </message>
 </context>
 <context>
@@ -6945,7 +6948,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="567"/>
         <source>Modifier %1</source>
-        <translation>Rediger %1</translation>
+        <translation>Ændr %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="699"/>
@@ -6988,7 +6991,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
         <source>Modifier un rectangle</source>
-        <translation>Rediger rektangel</translation>
+        <translation>Ændr rektangel</translation>
     </message>
 </context>
 <context>
@@ -7086,17 +7089,17 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Ledige nummerering:</translation>
+        <translation>Ledige nummere:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Navngiv ny nummerering</translation>
+        <translation>Navngiv ny nummerering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Slet nummerering</translation>
+        <translation>Slet nummerering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7342,7 +7345,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="229"/>
         <source>Verrouiller la position</source>
-        <translation>Lås position</translation>
+        <translation>Lås placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="236"/>
@@ -7357,12 +7360,12 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation>Rediger streg i form</translation>
+        <translation>Ændr streg i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation>Rediger fyld i form</translation>
+        <translation>Ændr fyld i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="143"/>
@@ -7704,7 +7707,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>Position : </source>
-        <translation>Position:</translation>
+        <translation>Placering:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
@@ -7724,7 +7727,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation>Rediger retning på klemme</translation>
+        <translation>Ændr retning på klemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
@@ -7754,7 +7757,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
         <source>Position : </source>
-        <translation>Position:</translation>
+        <translation>Placering: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="58"/>
@@ -7784,22 +7787,22 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt</translation>
+        <translation>Ændr tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt størrelse</translation>
+        <translation>Ændr tekstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt farve</translation>
+        <translation>Ændr tekstfelt farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt vinkel</translation>
+        <translation>Ændr tekstfelt vinkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
@@ -7822,7 +7825,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
         <source>Position : </source>
-        <translation>Position:</translation>
+        <translation>Placering: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="53"/>
@@ -7872,27 +7875,27 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt indhold</translation>
+        <translation>Ændr tekstfelt indhold</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Rediger teḱstfelt størrelse</translation>
+        <translation>Ændr teḱstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt egenskab</translation>
+        <translation>Ændr tekstfelt egenskab</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt rotationsvinkel</translation>
+        <translation>Ændr tekstfelt rotationsvinkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation>Rediger tekstfelt mærke</translation>
+        <translation>Ændr tekstfelt mærke</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
@@ -8056,7 +8059,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilgængelig som %folio for titelblokke
+Følgende variabler kan bruges:
+- %id : aktuel ark nummer i projektet
+- %total : antal ark i projektet
+- %autonum : Ark autonummerering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
@@ -8514,13 +8521,13 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation>Rediger kolonne størrelse</translation>
+        <translation>Ændr kolonne størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Rediger linje størrelse</translation>
+        <translation>Ændr linje størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
@@ -8538,7 +8545,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation>Rediger forhåndsvisningsbredde</translation>
+        <translation>Ændr forhåndsvisningsbredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
@@ -8632,7 +8639,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Positionner :</source>
-        <translation>Position:</translation>
+        <translation>Placeringer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
