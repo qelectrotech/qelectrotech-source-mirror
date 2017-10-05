@@ -999,7 +999,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana tekstu elementu</translation>
     </message>
 </context>
 <context>
@@ -1148,7 +1148,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
         <source>Pivoter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrót dynamicznego pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
@@ -2208,7 +2208,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux Folios</source>
-        <translation>Tworzenie nowych arkuszy</translation>
+        <translation>T&amp;worzenie nowych arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -3427,23 +3427,25 @@ Wybierz właściwości i zastosuj nowy potencjał..</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
 Fonction : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Funkcja: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="226"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="235"/>
         <source>
 Tension/protocole : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Napięcie/protokół: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n przewód ma następujący potencjał:</numerusform>
+            <numerusform>%n przewody mają następujący potencjał:</numerusform>
+            <numerusform>%n przewodów ma następujący potencjał:</numerusform>
         </translation>
     </message>
     <message>
@@ -3451,7 +3453,8 @@ Tension/protocole : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
         <source>
 Numéro : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Numer: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="288"/>
@@ -3673,32 +3676,33 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis tekstu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer artykułu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Numer zlecenia</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostawca</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Numéro interne</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer wewnętrzny</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="322"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Napięcie / Protokół</translation>
+        <translation>Napięcie / Protokół</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1424"/>
@@ -5103,7 +5107,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="280"/>
         <source>Ajouter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw dynamiczne pole tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="349"/>
@@ -6426,10 +6430,10 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/qet.cpp" line="283"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tekst elementu</numerusform>
+            <numerusform>%n teksty elementu</numerusform>
+            <numerusform>%n tekstów elementu</numerusform>
         </translation>
     </message>
     <message>
@@ -6835,7 +6839,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
@@ -6916,12 +6920,12 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
         <source>Champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamiczne pole tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="28"/>
         <source>Ajouter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw tekst elemenu</translation>
     </message>
 </context>
 <context>
