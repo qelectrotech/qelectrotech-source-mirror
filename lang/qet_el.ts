@@ -91,7 +91,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
@@ -225,7 +225,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσθετο Python qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="116"/>
@@ -313,17 +313,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Αγωγός</translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρύθμιση κανόνων αυτόματης αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρύθμιση</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -505,17 +505,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετο κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="23"/>
         <source>Ajouter une variable :</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη μεταβλητής</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="17"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Βάλε το σύνθετο κείμενο εδώ, χρησιμοποιώντας τις διαθέσιμες μεταβλητές</translation>
     </message>
 </context>
 <context>
@@ -676,12 +676,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">επεξεργασία αριθμήσεων</translation>
+        <translation>επεξεργασία αριθμήσεων</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -738,17 +738,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Δευτερεύων χρώμα:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>πξ</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος γραμμής:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -971,12 +971,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="41"/>
         <source>Texte</source>
-        <translation type="unfinished">Κείμενο</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="49"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κειμένου του στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -984,17 +984,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
         <source>Textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή των κειμένων του στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -1002,17 +1002,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="37"/>
         <source>Propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="38"/>
         <source>Valeur</source>
-        <translation type="unfinished">Τιμή</translation>
+        <translation>Τιμή</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Πηγή του κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
@@ -1021,7 +1021,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="437"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="72"/>
@@ -1030,7 +1030,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="351"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
@@ -1039,42 +1039,42 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετο κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="82"/>
         <source>Texte</source>
-        <translation type="unfinished">Κείμενο</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="94"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορία</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
         <source>Mon texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Το σύνθετο κείμενο μου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="126"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
         <source>Couleur</source>
-        <translation type="unfinished">Χρώμα</translation>
+        <translation>Χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κειμένου του στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -1082,88 +1082,88 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="27"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Πηγή του κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="34"/>
         <source>Couleur</source>
-        <translation type="unfinished">Χρώμα</translation>
+        <translation>Χρώμα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="44"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="52"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="62"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετο κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="92"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>Χ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Υ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="115"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="123"/>
         <source>Déplacer un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός δυναμικού πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
         <source>Pivoter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή ενός δυναμικού πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
         <source>Modifier le texte d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κειμένου ενος πεδίου δυναμικού κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="146"/>
         <source>Modifier la taille d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία μεγέθους ενος πεδίου δυναμικού κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="153"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="158"/>
         <source>Modifier la couleur d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία χρώματος ενος πεδίου δυναμικού κειμένου</translation>
     </message>
 </context>
 <context>
@@ -1171,17 +1171,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="505"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετο κείμενο</translation>
     </message>
 </context>
 <context>
@@ -1334,7 +1334,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation type="unfinished">Τύπος</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
@@ -1374,17 +1374,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation type="unfinished">Πληροφορίες</translation>
+        <translation>Πληροφορίες</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
         <source>Nom</source>
-        <translation type="unfinished">Όνομα</translation>
+        <translation>Όνομα</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
         <source>Valeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Τιμές</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
@@ -2206,7 +2206,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία νέων σελίδων</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -3292,7 +3292,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ορθογωνίου</translation>
     </message>
 </context>
 <context>
@@ -3324,7 +3324,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="256"/>
         <source>Déplacer un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
@@ -3337,7 +3337,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="129"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Μετακίνηση ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="303"/>
@@ -3405,14 +3405,16 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="233"/>
         <source>
 Fonction : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Λειτουργία : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="226"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="235"/>
         <source>
 Tension/protocole : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Τάση / Πρωτόκολλο: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
@@ -3469,7 +3471,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Αγωγός</translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3484,7 +3486,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση σελίδων</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3662,7 +3664,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Προμηθευτής</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
@@ -3672,7 +3674,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="322"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Τάση / πρωτόκολλο</translation>
+        <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1424"/>
@@ -5075,7 +5077,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="280"/>
         <source>Ajouter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη πεδίου δυναμικού κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="349"/>
@@ -6390,9 +6392,9 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="283"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n κείμενο στοιχείου</numerusform>
+            <numerusform>%n κείμενα στοιχείου</numerusform>
         </translation>
     </message>
     <message>
@@ -6796,7 +6798,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιγραφή</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
@@ -6876,12 +6878,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
         <source>Champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Πεδίο δυναμικού κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="28"/>
         <source>Ajouter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη κειμένου του στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -7048,17 +7050,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Διαθέσιμες αριθμήσεις</translation>
+        <translation>Διαθέσιμες αριθμήσεις</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Όνομα νέας αρίθμησης</translation>
+        <translation>Όνομα νέας αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Διαγραφή της αρίθμησης</translation>
+        <translation>Διαγραφή της αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7112,7 +7114,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -7808,7 +7810,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Μετακίνηση του περιοεχομένου ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση του περιεχομένου ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
