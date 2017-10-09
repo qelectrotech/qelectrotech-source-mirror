@@ -49,6 +49,13 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	m_qgi_manager(this),
 	m_element_editor(editor)
 {
+	setItemIndexMethod(QGraphicsScene::NoIndex);
+		//Set to no index, because they can be the source of the crash with conductor and shape ghost.
+		//https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
+		//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
+		//http://www.qtcentre.org/archive/index.php/t-33730.html
+		//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
+	
 	m_behavior = Normal;
 	setItemIndexMethod(NoIndex);
 	setGrid(1, 1);

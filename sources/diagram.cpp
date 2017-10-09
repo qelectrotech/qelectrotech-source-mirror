@@ -64,6 +64,13 @@ Diagram::Diagram(QETProject *project) :
 	m_freeze_new_elements   (false),
 	m_freeze_new_conductors_ (false)
 {
+	setItemIndexMethod(QGraphicsScene::NoIndex);
+		//Set to no index, because they can be the source of the crash with conductor and shape ghost.
+		//https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
+		//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
+		//http://www.qtcentre.org/archive/index.php/t-33730.html
+		//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
+	
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
