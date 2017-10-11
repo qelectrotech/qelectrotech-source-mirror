@@ -35,7 +35,7 @@ QRectF QetGraphicsHandlerItem::boundingRect() const
 {
     qreal rect_size = m_size * m_previous_zoom_factor;
     QRectF rect(0-rect_size/2, 0-rect_size/2, rect_size, rect_size);
-    rect.adjust(-2, -2, 2, 2);
+    rect.adjust(-0.1, -0.1, 0.1, 0.1);
 	return rect;
 }
 
