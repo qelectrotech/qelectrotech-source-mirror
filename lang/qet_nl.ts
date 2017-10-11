@@ -1548,23 +1548,23 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="613"/>
+        <location filename="../sources/editor/elementscene.cpp" line="620"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation type="unfinished">Bewerk informatie over de auteur</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="617"/>
+        <location filename="../sources/editor/elementscene.cpp" line="624"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>U kunt deze ruimte gebruiken om de auteurs van het element, de licentie, of enige andere informatie die u van belang acht te vermelden.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="680"/>
+        <location filename="../sources/editor/elementscene.cpp" line="687"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation type="unfinished">U kunt de elementnaam geven in meerdere talen.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="676"/>
+        <location filename="../sources/editor/elementscene.cpp" line="683"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Bewerk de namen</translation>
@@ -6842,27 +6842,32 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
+        <source>Fournisseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Bloc auxiliaire 1</source>
         <translation type="unfinished">Extern blok 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Bloc auxiliaire 2</source>
         <translation type="unfinished">Extern blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Machine-reference</source>
         <translation type="unfinished">Machinereferentie</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>Localisation</source>
         <translation type="unfinished">Plaats</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>Fonction</source>
         <translation type="unfinished">Functie</translation>
     </message>

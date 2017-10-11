@@ -1542,23 +1542,23 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="613"/>
+        <location filename="../sources/editor/elementscene.cpp" line="620"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Edycja informacji autora</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="617"/>
+        <location filename="../sources/editor/elementscene.cpp" line="624"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Możesz wykorzystać to puste pole na informacje o autorze, licencji i inne przydatne informacje.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="680"/>
+        <location filename="../sources/editor/elementscene.cpp" line="687"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Można podać nazwę elementu w kilku językach.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="676"/>
+        <location filename="../sources/editor/elementscene.cpp" line="683"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Edytuj nazwę</translation>
@@ -6858,27 +6858,32 @@ Co chcesz zrobić?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
+        <source>Fournisseur</source>
+        <translation type="unfinished">Dostawca</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Zestyki pomocnicze 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Zestyki pomocnicze 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Machine-reference</source>
         <translation>Numer maszyny</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>Localisation</source>
         <translation>Lokalizacja</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>Fonction</source>
         <translation>Funkcja</translation>
     </message>

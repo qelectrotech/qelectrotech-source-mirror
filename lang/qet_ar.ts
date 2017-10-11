@@ -1565,26 +1565,26 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="613"/>
+        <location filename="../sources/editor/elementscene.cpp" line="620"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير معلومات المؤلف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="617"/>
+        <location filename="../sources/editor/elementscene.cpp" line="624"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>يمكنكم استعمال هذا الحقل الحر لذكر المؤلفين , العنصر, ترخيصه أو أي معلومة أخرى ترونها ضرورية .</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="676"/>
+        <location filename="../sources/editor/elementscene.cpp" line="683"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير الأسماء</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="680"/>
+        <location filename="../sources/editor/elementscene.cpp" line="687"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>يمكنكم تعيين إسم العنصر بلغات متعدّدة .</translation>
     </message>
@@ -6894,27 +6894,32 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
+        <source>Fournisseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>Bloc auxiliaire 1</source>
         <translation>كتلة إضافية 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>Bloc auxiliaire 2</source>
         <translation>كتلة إضافية 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>Machine-reference</source>
         <translation>مرجع الآلة</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>Localisation</source>
         <translation>تحديد موقع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>Fonction</source>
         <translation>وظيفة</translation>
     </message>
