@@ -1,0 +1,35 @@
+<definition height="110" version="0.70" orientation="dyyy" width="150" hotspot_x="114" type="element" hotspot_y="105" link_type="simple">
+    <uuid uuid="{edf05b0e-4fe2-477c-bb9f-bbdbda7bb182}"/>
+    <names>
+        <name lang="fr">Coupleur optique
+Photocoupleur
+Isolateur optique, figuré avec diode
+luminescente et phototransistor</name>
+        <name lang="de">Optokoppler
+Photokoppler
+optischer Isolator, mit Leuchdiode und
+Phototransisto</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="30" y1="-60" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="0"/>
+        <line x2="30" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="0"/>
+        <line x2="-75" y1="-60" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="-110"/>
+        <line x2="-75" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-110"/>
+        <polygon x2="-65" y1="-45" x3="-75" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y4="-45" y2="-45" x4="-85" x1="-85" y3="-25"/>
+        <line x2="-65" y1="-25" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-25" x1="-85"/>
+        <line x2="-75" y1="-60" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-75"/>
+        <line x2="-20" y1="-45" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-25" x1="-20"/>
+        <line x2="0" y1="-30" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-20"/>
+        <line x2="0" y1="-40" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="-20"/>
+        <polygon x2="-9" y1="-23" x3="-13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y2="-19" x1="-11" y3="-21"/>
+        <line x2="-50" y1="-40" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" length1="1.5" end2="triangle" y2="-40" x1="-60"/>
+        <line x2="-50" y1="-30" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" length1="1.5" end2="triangle" y2="-30" x1="-60"/>
+        <line x2="-35" y1="-100" end1="none" length2="1.5" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-25" x1="-35"/>
+        <polygon y5="-70" x4="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" y8="0" x2="-45" y4="-15" x8="-90" x9="-90" y2="-70" x7="10" y6="-70" y9="-70" x1="-90" x5="-25" y7="0" y3="-15" x6="10" x3="-45" antialias="false" closed="false"/>
+        <terminal y="-60" orientation="e" x="30"/>
+        <terminal y="-10" orientation="e" x="30"/>
+    </description>
+</definition>

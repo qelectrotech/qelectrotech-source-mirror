@@ -1,0 +1,29 @@
+<definition link_type="simple" version="0.70" hotspot_x="95" hotspot_y="175" orientation="dyyy" type="element" height="180" width="100">
+    <uuid uuid="{38326335-6fed-411a-8407-90518d8c17f1}"/>
+    <names>
+        <name lang="fr">Commutateur à commande par bouton,
+actionné soit par pression soit par rotation</name>
+        <name lang="de">Druck-Dreh-Schalter, durch Drücken oder
+Drehen betätigt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" end2="none" x1="-60" y1="-140" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-60" y2="-10" antialias="false"/>
+        <line end1="none" end2="circle" x1="-70" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-40" antialias="false"/>
+        <line end1="none" end2="none" x1="-40" y1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-50" antialias="false"/>
+        <line end1="none" end2="circle" x1="-40" y1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-50" antialias="false"/>
+        <line end1="none" end2="circle" x1="-70" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-10" antialias="false"/>
+        <line end1="none" end2="circle" x1="-40" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="circle" x1="-40" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-100" antialias="false"/>
+        <line end1="none" end2="circle" x1="-70" y1="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-90" antialias="false"/>
+        <line end1="none" end2="none" x1="-40" y1="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-100" antialias="false"/>
+        <line end1="none" end2="circle" x1="-50" y1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-80" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" y="25" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-80" y1="-160" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-80" y2="-140" antialias="false"/>
+        <line end1="none" end2="none" x1="-80" y1="-140" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-140" antialias="false"/>
+        <line end1="none" end2="none" x1="-40" y1="-140" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-160" antialias="false"/>
+        <polygon x4="-70" x1="-90" y1="-150" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-150" y3="-160" x2="-90" y2="-160" antialias="false" x3="-70" closed="false"/>
+        <polygon x4="-30" x1="-50" y1="-170" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-150" y3="-160" x2="-50" y2="-160" antialias="false" x3="-30" closed="false"/>
+    </description>
+</definition>

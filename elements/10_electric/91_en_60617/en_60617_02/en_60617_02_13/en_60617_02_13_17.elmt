@@ -1,0 +1,20 @@
+<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="10" link_type="simple" hotspot_x="11" height="20">
+    <uuid uuid="{b3162826-a68d-49fb-a45f-32a12226b135}"/>
+    <names>
+        <name lang="fr">Profil de came</name>
+        <name lang="de">Nockenprofil</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12" y="-6" antialias="false"/>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <circle x="6" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" y="-4" antialias="false"/>
+        <line x2="3" y2="6" length2="1.5" length1="1.5" y1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="4" end2="none" antialias="false"/>
+        <line x2="6" y2="5" length2="1.5" length1="1.5" y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="5" end2="none" antialias="false"/>
+        <line x2="4" y2="7" length2="1.5" length1="1.5" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="6" end2="none" antialias="false"/>
+        <arc angle="180" width="10" x="-5" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="3" y="-7.5" antialias="true"/>
+        <line x2="-4" y2="-5" length2="1.5" length1="1.5" y1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-5" end2="none" antialias="false"/>
+        <line x2="4" y2="-5" length2="1.5" length1="1.5" y1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="5" end2="none" antialias="false"/>
+    </description>
+</definition>

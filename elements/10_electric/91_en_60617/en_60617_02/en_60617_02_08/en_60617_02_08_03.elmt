@@ -1,0 +1,15 @@
+<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="12" link_type="simple" hotspot_x="15" height="20">
+    <uuid uuid="{de3b2dec-3397-4c5f-8d22-27119c42735c}"/>
+    <names>
+        <name lang="fr">Effet magnétostrictif</name>
+        <name lang="de">magnetostriktive Wirkung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <arc angle="180" width="10" x="0" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" antialias="true"/>
+        <arc angle="180" width="10" x="-10" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" y="-3" antialias="true"/>
+        <line x2="10" y2="-7" length2="1.5" length1="1.5" y1="-7" style="line-style:normal;line-weight:normal;filling:black;color:black" end1="triangle" x1="-10" end2="triangle" antialias="false"/>
+    </description>
+</definition>

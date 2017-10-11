@@ -1,0 +1,13 @@
+<definition orientation="dyyy" type="element" width="20" height="10" hotspot_y="5" hotspot_x="10" version="0.70" link_type="simple">
+    <uuid uuid="{22c144a5-bb9f-468f-918f-26250bd84950}"/>
+    <names>
+        <name lang="de">Trennschalter-Funktion</name>
+        <name lang="fr">Fonction sectionneur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-5" y1="0" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+    </description>
+</definition>

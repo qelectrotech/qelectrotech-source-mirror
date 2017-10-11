@@ -1,0 +1,17 @@
+<definition hotspot_x="54" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="60" type="element" link_type="simple">
+    <uuid uuid="{bafc7129-e327-4178-a757-a1aa14c87ee1}"/>
+    <names>
+        <name lang="fr">Jack de coupure ou de séparation, type
+téléphone</name>
+        <name lang="de">Schalt-oder Trennklinke</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <circle y="-2.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle y="-22.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x2="-30" y2="-20" y1="-20" x3="-50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-3"/>
+        <polygon x2="-30" y2="0" y1="0" x3="-50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-20" x1="-3"/>
+    </description>
+</definition>

@@ -1,0 +1,44 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="81" height="110" width="150" hotspot_y="87" version="0.70">
+    <uuid uuid="{ba8b3ffe-0495-4666-b14d-29019510d463}"/>
+    <names>
+        <name lang="de">Drehstrom-Induktionssteller,
+(Drehtransformator)</name>
+        <name lang="fr">Régulateur à induction triphasé</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="-25" start="90"/>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="30" start="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="15" start="90"/>
+        <text y="-70" x="-74" size="9" text="Form 2 / Forme 2"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="-25" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="40" start="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="0" width="10" angle="-180" x="-25" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="0" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="-50" start="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="-40" start="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="-10" start="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-35" width="10" angle="180" x="0" start="0"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-30" y1="-30" x2="-60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-20" y1="-40" x2="-60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-30" y1="-30" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-20" y1="-40" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-30" y1="-30" x2="20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-20" y1="-40" x2="20"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="-65" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="-65" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="0" width="10" angle="-180" x="-65" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="20" y1="10" x2="-60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="20" y1="10" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="20" y1="10" x2="20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="15" y1="-30" x2="50"/>
+        <line length2="1.5" antialias="false" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="15" y1="15" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-30" y1="15" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="15" y1="-30" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-35" y1="10" x2="60"/>
+        <polygon antialias="false" y3="-36" x1="59" x4="59" y4="-33" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-36" x3="63" y1="-33" x2="58"/>
+    </description>
+</definition>

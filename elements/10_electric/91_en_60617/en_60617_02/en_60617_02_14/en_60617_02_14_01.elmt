@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="50" hotspot_y="12" orientation="dyyy" height="20" version="0.70" hotspot_x="39">
+    <uuid uuid="{1c0bf4c3-44c4-4bbe-a788-27b625e1eabd}"/>
+    <names>
+        <name lang="fr">Actionné par le niveau d'un liquide</name>
+        <name lang="de">ausgelöst durch Flüssigkeitspegel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="15"/>
+        <line x2="6" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-14" y2="0" length2="1.5"/>
+        <ellipse antialias="false" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-34" y="-5"/>
+        <line x2="-24" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-24" y2="-6" length2="1.5"/>
+    </description>
+</definition>

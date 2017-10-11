@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="10">
+    <uuid uuid="{05fbb6c1-f6bd-4030-97ad-97298b4d22cd}"/>
+    <names>
+        <name lang="de">Reduzierstück</name>
+        <name lang="fr">Élément de réduction</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="55" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="20" y2="20" x2="-40" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="15" y2="25" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="15" y2="25" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y5="10" y1="10" y2="0" y3="-5" closed="false" x2="10" antialias="false" x5="10" x1="10" x4="0" y4="15" x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" y="20" x="-40"/>
+        <terminal orientation="e" y="20" x="50"/>
+    </description>
+</definition>

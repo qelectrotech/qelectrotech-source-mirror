@@ -1,0 +1,20 @@
+<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="50" hotspot_y="31">
+    <uuid uuid="{edc2a7bd-7013-4e80-8ea9-3ce2f5cdd08c}"/>
+    <names>
+        <name lang="de">T-Abzweig</name>
+        <name lang="fr">Té, branchement à trois voies</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="35" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-40" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-25" y2="-15" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-25" y2="-15" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-15" length2="1.5" antialias="false" x1="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="0" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="s" y="0" x="-20"/>
+        <terminal orientation="w" y="-20" x="-40"/>
+        <terminal orientation="e" y="-20" x="0"/>
+    </description>
+</definition>

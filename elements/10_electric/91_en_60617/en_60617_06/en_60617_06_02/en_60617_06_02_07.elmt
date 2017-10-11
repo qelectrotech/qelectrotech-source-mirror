@@ -1,0 +1,15 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
+    <uuid uuid="{3924b0f1-2f35-4ab9-999f-e4acca248a43}"/>
+    <names>
+        <name lang="fr">Enroulement triphasé, en étoile</name>
+        <name lang="de">Dreiphasenwicklung, Sternschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-10" x2="0" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-10" x2="-20" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="40" width="50">
+    <uuid uuid="{1cc8b6b7-81ce-4787-ab8d-2ec28e67b3a5}"/>
+    <names>
+        <name lang="fr">Transistor à jonction unique avec base de type
+N</name>
+        <name lang="de">Unijunction-Transistor mit Basis vom N-Typ</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="45" size="9" x="25"/>
+        <line end1="none" end2="none" x1="10" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="25" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="30" y2="20" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="20" antialias="false"/>
+        <line end1="none" end2="none" x1="30" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="0" antialias="false"/>
+        <polygon x1="-6" y1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="19" x2="0" y2="15" antialias="false" x3="-5" closed="false"/>
+    </description>
+</definition>

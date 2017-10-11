@@ -1,0 +1,14 @@
+<definition height="20" version="0.70" orientation="dyyy" width="80" hotspot_x="35" type="element" hotspot_y="5" link_type="simple">
+    <uuid uuid="{4a1ad206-1594-4988-a0c4-e053ee5fc171}"/>
+    <names>
+        <name lang="fr">Électrodes de déviation latérale</name>
+        <name lang="de">Speicherelektrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="35" rotate="true" size="9" tagg="label" x="45" text="_"/>
+        <line x2="-30" y1="10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" x1="40"/>
+        <rect y="0" height="10" width="10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x="30"/>
+    </description>
+</definition>

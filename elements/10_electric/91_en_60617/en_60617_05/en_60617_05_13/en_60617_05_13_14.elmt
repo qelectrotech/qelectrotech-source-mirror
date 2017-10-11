@@ -1,0 +1,32 @@
+<definition hotspot_x="135" hotspot_y="225" orientation="dyyy" type="element" version="0.70" height="280" link_type="simple" width="140">
+    <uuid uuid="{912c0631-56c8-4482-9f44-76a35f06fa7c}"/>
+    <names>
+        <name lang="de">Rückwärtswellen-Oszillatorröhre, M-Typ
+(05-13-14, vereinfachte Form)</name>
+        <name lang="fr">Tube carcinotron oscillateur du type M
+(05-13-14, forme simplifiée)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" y="15" rotate="true" x="5" text="_" tagg="label"/>
+        <line x2="0" end2="none" end1="none" length1="1.5" y1="-60" y2="-120" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="-180" y="-120" height="120" x="-120" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="120"/>
+        <arc angle="180" y="-180" height="120" x="-120" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="120"/>
+        <line x2="-120" end2="none" end1="none" length1="1.5" y1="-120" y2="-60" antialias="false" x1="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-130" end2="none" end1="none" length1="1.5" y1="-60" y2="-60" antialias="false" x1="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-90" end2="none" end1="none" length1="1.5" y1="-60" y2="-110" antialias="false" x1="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="50" y2="-220" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-60" end2="none" end1="none" length1="1.5" y1="-65" y2="-95" antialias="false" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-60" y2="-60" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-70" y2="-70" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-80" y2="-80" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-90" y2="-90" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-100" y2="-100" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <polygon x2="-58" y4="-94" y1="-94" y2="-94" antialias="false" x1="-62" y3="-99" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="-60" x4="-62"/>
+        <rect y="-200" height="10" x="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="20" height="10" x="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <line x2="-90" end2="none" end1="none" length1="1.5" y1="-88" y2="-82" antialias="false" x1="-94" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-86" end2="none" end1="none" length1="1.5" y1="-82" y2="-88" antialias="false" x1="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="44" width="100" hotspot_y="42">
+    <uuid uuid="{8003632c-52b3-47bb-850f-20b08469eccf}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal, bestehend
+aus drei getrennten Kammern</name>
+        <name lang="fr">Élément droit comprenant trois compartiments
+séparés</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-30" size="6" x="10" text="A"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-40" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" y="25" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="-25" y2="-15" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-40" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-25" y2="-15" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-10" size="6" x="10" text="B"/>
+        <text y="10" size="6" x="10" text="C"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-35" height="20" antialias="false" x="-10" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-15" height="20" antialias="false" x="-10" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="5" height="20" antialias="false" x="-10" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="15" y2="15" x2="20" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="-10" x="50"/>
+        <terminal orientation="w" y="-10" x="-40"/>
+        <terminal orientation="e" y="-20" x="50"/>
+        <terminal orientation="w" y="-20" x="-40"/>
+    </description>
+</definition>

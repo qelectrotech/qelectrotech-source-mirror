@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+    <uuid uuid="{854b9884-853a-4207-b97b-36a372bf8425}"/>
+    <names>
+        <name lang="de">Scheinwerfer, allgemein</name>
+        <name lang="fr">Projecteur, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <arc y="-20" height="20" angle="180" antialias="true" x="-20" width="20" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-15" antialias="false" x="-15" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-7" length2="1.5" antialias="false" x1="-13" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-13" length2="1.5" antialias="false" x1="-7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

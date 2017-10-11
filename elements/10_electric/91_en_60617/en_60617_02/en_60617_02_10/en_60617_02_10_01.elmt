@@ -1,0 +1,15 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="40" type="element" link_type="simple">
+    <uuid uuid="{6fa7e6a2-4ced-4a4f-b4df-a63260fdf8a0}"/>
+    <names>
+        <name lang="fr">Impulsion positive</name>
+        <name lang="de">positiver Impuls</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <polygon x2="-10" x5="0" y2="0" y1="0" x3="-10" x4="0" y4="-20" y6="0" antialias="false" y5="0" x6="10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-20" x1="-20"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="0" x="-20" orientation="w"/>
+    </description>
+</definition>

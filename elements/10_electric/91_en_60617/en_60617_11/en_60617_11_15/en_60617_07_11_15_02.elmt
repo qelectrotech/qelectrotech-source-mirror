@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="55" width="60" hotspot_y="30">
+    <uuid uuid="{adaa3987-12b3-40e0-adab-f3ed5755eaf4}"/>
+    <names>
+        <name lang="de">Leuchtenauslaß auf Putz</name>
+        <name lang="fr">Point d'attente d'appareil d'éclairage en
+applique murale</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-25" y2="5" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="0" x2="-20" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="0" x2="0" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-10" length2="1.5" antialias="false" x1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

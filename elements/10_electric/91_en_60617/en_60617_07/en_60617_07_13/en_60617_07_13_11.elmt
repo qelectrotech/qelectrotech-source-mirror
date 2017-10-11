@@ -1,0 +1,15 @@
+<definition orientation="dyyy" type="element" width="40" height="40" hotspot_y="20" hotspot_x="20" version="0.70" link_type="simple">
+    <uuid uuid="{621e690c-d248-472c-9402-efe67e08c41a}"/>
+    <names>
+        <name lang="de">Auslöseeinrichtung</name>
+        <name lang="fr">Mécanisme à déclenchement libre</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-15" y1="0" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-15" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="15" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" x="-10"/>
+    </description>
+</definition>

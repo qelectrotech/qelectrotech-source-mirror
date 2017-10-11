@@ -1,0 +1,17 @@
+<definition link_type="simple" version="0.70" hotspot_x="33" hotspot_y="45" orientation="dyyy" type="element" height="50" width="70">
+    <uuid uuid="{ef8fe47e-a2e5-49c8-8987-62709a24f2a7}"/>
+    <names>
+        <name lang="fr">Région de semiconducteur avec plusieurs
+connexions</name>
+        <name lang="de">Halbleiterzone mit mehreren ohmschen
+Anschlüssen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-20" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="0" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <text text="Form 1 / Forme 1" y="-30" size="6" x="-30"/>
+    </description>
+</definition>

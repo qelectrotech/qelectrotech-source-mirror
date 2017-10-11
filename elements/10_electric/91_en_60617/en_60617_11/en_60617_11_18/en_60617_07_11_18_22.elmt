@@ -1,0 +1,21 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="165" width="170" hotspot_y="45">
+    <uuid uuid="{8005307a-84f1-4398-82d8-be40cfe03c93}"/>
+    <names>
+        <name lang="de">Verkehrszeichen,
+Wegweiser, RAMP</name>
+        <name lang="fr">Panneau de guidage pour le roulage: "RAMP"</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-120" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-160" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-80" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-15" size="9" x="-145" text="R"/>
+        <text y="-15" size="9" x="-65" text="M"/>
+        <text y="-15" size="9" x="-105" text="A"/>
+        <text y="-15" size="9" x="-25" text="P"/>
+    </description>
+</definition>

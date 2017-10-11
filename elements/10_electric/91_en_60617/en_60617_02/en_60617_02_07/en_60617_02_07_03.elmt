@@ -1,0 +1,15 @@
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+    <uuid uuid="{e2867150-23d3-4db9-b798-e9ecd01d5649}"/>
+    <names>
+        <name lang="de">flüssige Materie</name>
+        <name lang="fr">Matière liquide</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" width="14" angle="-180" start="0" antialias="true" height="6" x="0"/>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" width="40" antialias="false" height="20" x="-20"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" width="14" angle="-180" start="0" antialias="true" height="6" x="-14"/>
+    </description>
+</definition>

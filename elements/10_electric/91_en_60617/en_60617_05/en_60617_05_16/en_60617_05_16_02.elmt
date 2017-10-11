@@ -1,0 +1,28 @@
+<definition type="element" hotspot_y="175" orientation="dyyy" version="0.70" hotspot_x="85" width="90" height="190" link_type="simple">
+    <uuid uuid="{30d7b0ec-dddf-43d4-80fd-72e2d21f8d7e}"/>
+    <names>
+        <name lang="fr">Diode solion</name>
+        <name lang="de">Soliondiode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" y="15" tagg="label" rotate="true" x="5" size="9"/>
+        <arc y="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80" width="80" start="0" height="80" angle="-180" antialias="true"/>
+        <line x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-40" end1="none" y2="-120" antialias="false"/>
+        <line x1="-80" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-40" end1="none" y2="-120" antialias="false"/>
+        <arc y="-160" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80" width="80" start="0" height="80" angle="180" antialias="true"/>
+        <polygon x3="-25" closed="false" x1="-55" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-140" y4="-155" y1="-130" x4="-25" y2="-140" antialias="false"/>
+        <line x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-170" end1="none" y2="-120" antialias="false"/>
+        <line x1="-55" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-120" end1="none" y2="-120" antialias="false"/>
+        <circle diameter="20" y="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false"/>
+        <line x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="10" end1="none" y2="-20" antialias="false"/>
+        <line x1="-25" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-20" end1="none" y2="-20" antialias="false"/>
+        <circle diameter="20" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false"/>
+        <arc y="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" width="10" start="180" height="10" angle="180" antialias="true"/>
+        <arc y="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="10" start="180" height="10" angle="180" antialias="true"/>
+        <line x1="-40" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+        <line x1="-55" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+        <line x1="-25" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+    </description>
+</definition>

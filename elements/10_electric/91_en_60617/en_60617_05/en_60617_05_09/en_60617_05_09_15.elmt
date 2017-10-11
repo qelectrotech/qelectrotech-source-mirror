@@ -1,0 +1,16 @@
+<definition type="element" link_type="simple" height="30" width="60" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="25">
+    <uuid uuid="{333ee40c-7a9e-49ff-b825-872c208ad159}"/>
+    <names>
+        <name lang="fr">Structure à retard de couplage</name>
+        <name lang="de">Verzögerungsleitungs-Koppler</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="0" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-50"/>
+        <line antialias="false" x1="-40" y2="-20" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40"/>
+        <line antialias="false" x1="-50" y2="-10" length2="1.5" end1="none" length1="1.5" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40"/>
+        <line antialias="false" x1="-50" y2="-20" length2="1.5" end1="none" length1="1.5" y1="-20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40"/>
+    </description>
+</definition>

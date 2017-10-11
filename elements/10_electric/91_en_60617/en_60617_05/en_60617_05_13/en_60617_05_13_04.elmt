@@ -1,0 +1,33 @@
+<definition hotspot_x="195" hotspot_y="265" orientation="dyyy" type="element" version="0.70" height="290" link_type="simple" width="270">
+    <uuid uuid="{d10144ef-9e10-47e9-8fa4-9f7b0f7e553c}"/>
+    <names>
+        <name lang="de">Reflexklystron, diverse Formen und
+Ausführungen</name>
+        <name lang="fr">Klystron réflexe, réalisation et forme différentes</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" y="15" rotate="true" x="5" text="_" tagg="label"/>
+        <circle y="-65" x="-137" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
+        <line x2="0" end2="none" end1="none" length1="1.5" y1="-60" y2="-180" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <circle y="-85" x="-137" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
+        <arc angle="300" y="-100" height="60" x="-190" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="29" width="60"/>
+        <arc angle="-180" y="-120" height="120" x="-120" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="120"/>
+        <arc angle="180" y="-240" height="120" x="-120" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="120"/>
+        <line x2="-120" end2="none" end1="none" length1="1.5" y1="-180" y2="-60" antialias="false" x1="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <circle y="-144" x="7" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
+        <circle y="-164" x="7" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>
+        <arc angle="300" y="-179" height="60" x="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="209" width="60"/>
+        <line x2="-60" end2="none" end1="none" length1="1.5" y1="-240" y2="-220" antialias="false" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="40" end2="none" end1="none" length1="1.5" y1="-160" y2="-260" antialias="false" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-80" end2="none" end1="none" length1="1.5" y1="-4" y2="-60" antialias="false" x1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-4" y2="-60" antialias="false" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-40" y2="-40" antialias="false" x1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-160" end2="none" end1="none" length1="1.5" y1="-60" y2="20" antialias="false" x1="-160" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <circle y="-15" x="-165" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle y="-12.5" x="-162.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
+        <rect y="-220" height="10" x="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-220" y2="-220" antialias="false" x1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+    </description>
+</definition>

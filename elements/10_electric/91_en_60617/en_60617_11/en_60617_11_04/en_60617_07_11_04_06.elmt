@@ -1,0 +1,15 @@
+<definition type="element" width="30" version="0.70" hotspot_y="10" orientation="dyyy" height="20" link_type="simple" hotspot_x="25">
+    <uuid uuid="{d6f287ef-df37-4cbf-a6a3-a470065cacbd}"/>
+    <names>
+        <name lang="fr">Dispositif évitant le glissement d'un câble</name>
+        <name lang="de">Anti-Kriechstromgerät für Kabel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="0" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" y1="0" length1="1.5"/>
+        <line x2="-15" end2="none" antialias="false" end1="none" length2="1.5" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15" y1="-5" length1="1.5"/>
+        <arc antialias="true" width="5" x="-4.5" angle="180" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" start="270"/>
+    </description>
+</definition>

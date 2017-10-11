@@ -1,0 +1,25 @@
+<definition height="50" type="element" width="70" hotspot_y="45" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="34">
+    <uuid uuid="{92805336-a6e3-496d-8333-d2caba29fb1f}"/>
+    <names>
+        <name lang="fr">Ligne à retard, type à mercure avec transducteurs
+piézoélectriques</name>
+        <name lang="de">Quecksilber-Verzögerungsleitung mit
+piezoelektrischen Wandlern</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="15" length1="1.5" length2="1.5" y1="-30" y2="-30" x1="-15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="15" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-15" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="-15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="10" width="20" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="30" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="20" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-20" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-20" text="Hg" x="-5" size="6"/>
+        <line antialias="false" x2="6" length1="1.5" length2="1.5" y1="-2" y2="-2" x1="-6" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-20" orientation="e" x="30"/>
+        <terminal y="-20" orientation="w" x="-30"/>
+    </description>
+</definition>

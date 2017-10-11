@@ -1,0 +1,17 @@
+<definition type="element" width="30" version="0.70" hotspot_y="5" orientation="dyyy" height="30" link_type="simple" hotspot_x="5">
+    <uuid uuid="{0494478d-d4cf-420d-8554-2b29cc877daa}"/>
+    <names>
+        <name lang="fr">Concentrateur (automatique) de lignes</name>
+        <name lang="de">Leitungskonzentrator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="35" y="55" rotate="true"/>
+        <circle antialias="false" diameter="20" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0"/>
+        <line x2="10" end2="none" antialias="false" end1="none" length2="1.5" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="5" length1="1.5"/>
+        <line x2="17" end2="none" antialias="false" end1="none" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="10" length1="1.5"/>
+        <line x2="4" end2="none" antialias="false" end1="none" length2="1.5" y2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="6" length1="1.5"/>
+        <line x2="4" end2="none" antialias="false" end1="none" length2="1.5" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="14" length1="1.5"/>
+    </description>
+</definition>

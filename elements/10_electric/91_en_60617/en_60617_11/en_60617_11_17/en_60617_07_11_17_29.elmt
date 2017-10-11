@@ -1,0 +1,25 @@
+<definition orientation="dyyy" type="element" version="0.70" height="90" link_type="simple" hotspot_x="44" width="90" hotspot_y="15">
+    <uuid uuid="{dc8c4a12-8400-4d5d-8ba7-4a992f89a419}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal mit festem
+Abzweig und Geräte-Einbaukasten</name>
+        <name lang="fr">Élément droit avec dérivation fixe comprenant
+un coffret d'appareillage</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="30" height="20" antialias="false" x="-10" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input rotate="true" y="35" tagg="label" size="9" x="45" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x5="0" y10="42" y7="39" antialias="false" y11="43" y8="41" y9="43" y5="37" x4="-1" x8="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x7="3" x9="3" y3="39" y6="39" x1="-3" x3="-3" y1="43" x11="-3" x10="0" y4="39" y2="41" x6="1" x2="-2"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-10" antialias="false" x="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="30" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="50" y2="70" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="70" y2="70" x2="5" length2="1.5" antialias="false" x1="-5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="0" x="40"/>
+        <terminal orientation="w" y="0" x="-40"/>
+    </description>
+</definition>

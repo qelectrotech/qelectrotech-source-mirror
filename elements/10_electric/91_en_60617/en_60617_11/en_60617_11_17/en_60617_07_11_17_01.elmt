@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="24" width="50" hotspot_y="10">
+    <uuid uuid="{ef31ec00-9e49-4701-b765-24152e21e9bd}"/>
+    <names>
+        <name lang="de">Elektro-Installationskanal, allgemein</name>
+        <name lang="fr">Élément droit, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="45" tagg="label" size="9" x="25" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-20" length2="1.5" antialias="false" x1="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="20" length2="1.5" antialias="false" x1="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" y="0" x="-20"/>
+        <terminal orientation="e" y="0" x="20"/>
+    </description>
+</definition>

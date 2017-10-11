@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="42" width="70" hotspot_y="45">
+    <uuid uuid="{f1c002b9-f7da-40b5-a4b8-93e85a142dd2}"/>
+    <names>
+        <name lang="de">Hindernisfeuer,
+Gefahrenfeuer, rot blitzend, rund strahlend</name>
+        <name lang="fr">Feu d'obstacle,
+Feu de danger,
+faisceau omnidirectionnel, à éclats, rouge</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-35" antialias="false" x="-35" diameter="30" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y5="-30" y1="-30" y2="-30" y3="-40" closed="false" x2="15" antialias="false" x6="25" x5="20" y6="-30" x1="10" x4="20" y4="-40" x3="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

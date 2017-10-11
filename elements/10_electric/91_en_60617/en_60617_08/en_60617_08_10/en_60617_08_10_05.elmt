@@ -1,0 +1,20 @@
+<definition width="50" height="70" type="element" hotspot_x="17" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="54">
+    <uuid uuid="{72e46066-f5ba-4035-ba12-7a7dfbf2c1b3}"/>
+    <names>
+        <name lang="de">Horn,
+Huppe</name>
+        <name lang="fr">Avertisseur sonore,
+Klaxon</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="10" length1="1.5" y1="-10" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <rect width="10" height="20" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" antialias="false"/>
+        <polygon y3="-10" x4="-5" y2="-30" y5="-25" y1="-25" x5="-5" x1="-5" x2="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-15" x3="30" antialias="false"/>
+        <line y2="-50" length1="1.5" y1="-30" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <terminal orientation="n" x="-10" y="-50"/>
+        <terminal orientation="s" x="-10" y="10"/>
+    </description>
+</definition>

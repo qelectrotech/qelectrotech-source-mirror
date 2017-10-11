@@ -1,0 +1,22 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="110" version="0.70" width="110" type="element" height="120">
+    <uuid uuid="{60f5298e-50ed-4bce-9340-cdc0fb650b92}"/>
+    <names>
+        <name lang="fr">Transformateur de courant,
+transformateur d'impulsion</name>
+        <name lang="de">Stromwandler,
+Impulstransformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <line y1="-60" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-74" y="-90" text="Form 1 / Forme 1" size="9"/>
+        <line y1="-30" end1="none" length1="1.5" x1="-20" x2="10" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-40" y="-40" antialias="false" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-10" x2="0" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-5" x2="5" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-30" orientation="s" y="0"/>
+        <terminal x="-30" orientation="n" y="-60"/>
+    </description>
+</definition>

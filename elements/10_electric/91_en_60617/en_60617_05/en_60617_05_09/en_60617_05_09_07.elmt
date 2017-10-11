@@ -1,0 +1,23 @@
+<definition type="element" link_type="simple" height="90" width="70" version="0.70" orientation="dyyy" hotspot_x="27" hotspot_y="85">
+    <uuid uuid="{a3708837-a579-44a1-a5f0-465f62cf71e5}"/>
+    <names>
+        <name lang="fr">Electrode unique de concentration
+électrostatique</name>
+        <name lang="de">Elektrode zur elektrostatischen Fokussierung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="-30" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" x1="0" y2="-80" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-10" y2="-40" length2="1.5" end1="none" length1="1.5" y1="-40" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-10" y2="-50" length2="1.5" end1="none" length1="1.5" y1="-50" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-10" y2="-60" length2="1.5" end1="none" length1="1.5" y1="-60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-10" y2="-20" length2="1.5" end1="none" length1="1.5" y1="-20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-20" y2="-55" length2="1.5" end1="none" length1="1.5" y1="-20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+        <polygon antialias="false" y3="-60" x1="-15" y2="-45" x3="-20" y4="-45" y1="-45" x4="-15" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-25"/>
+        <line antialias="false" x1="5" y2="-20" length2="1.5" end1="none" length1="1.5" y1="-60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5"/>
+        <line antialias="false" x1="5" y2="-40" length2="1.5" end1="none" length1="1.5" y1="-40" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40"/>
+    </description>
+</definition>

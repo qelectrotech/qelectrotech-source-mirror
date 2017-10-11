@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" orientation="dyyy" version="0.70">
+    <uuid uuid="{526c8b69-3c7d-4218-8fa1-d0bc181f3fda}"/>
+    <names>
+        <name lang="de">Anschlußdose,
+Verbindungsdose</name>
+        <name lang="fr">Boîte de connexions,
+Boîte de dérivation</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <circle diameter="20" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-20"/>
+        <circle diameter="5" y="-12.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-12.5"/>
+    </description>
+</definition>

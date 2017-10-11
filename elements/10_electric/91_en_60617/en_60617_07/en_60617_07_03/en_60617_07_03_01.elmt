@@ -1,0 +1,19 @@
+<definition link_type="simple" type="element" width="20" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="13">
+    <uuid uuid="{e7da6dec-9676-41a9-9129-16eb5fa08309}"/>
+    <names>
+        <name lang="fr">Contact de passage fermant momentanément
+à l'action de son organe de commande</name>
+        <name lang="de">Wischer mit Kontaktgabe bei Betätigung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="-8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <line x2="-2" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="n" x="0" y="-40"/>
+    </description>
+</definition>

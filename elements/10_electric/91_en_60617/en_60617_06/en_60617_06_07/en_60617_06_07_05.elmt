@@ -1,0 +1,38 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="85" hotspot_y="106" version="0.70" width="90" type="element" height="110">
+    <uuid uuid="{0e9417ee-081e-4449-ba26-e7e1439d61ac}"/>
+    <names>
+        <name lang="fr">Commutatrice triphasée à excitation en
+dérivation</name>
+        <name lang="de">Drehstrom-Umformer mit
+Nebenschlußerregung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-70" y="-80" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-44" y="-52" text="C" size="9"/>
+        <text x="-55" y="-64" text="3" size="9"/>
+        <arc x="-45" start="0" angle="180" y="-71.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-35" start="0" angle="-180" y="-71.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-40" end1="none" length1="1.5" x1="-50" x2="-30" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-35" end1="none" length1="1.5" x1="-50" x2="-42" end2="none" antialias="false" y2="-35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-35" end1="none" length1="1.5" x1="-38" x2="-30" end2="none" antialias="false" y2="-35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-60" x2="-60" end2="none" antialias="false" y2="-73" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-40" x2="-40" end2="none" antialias="false" y2="-80" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-20" x2="-20" end2="none" antialias="false" y2="-73" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="-70" x2="-80" end2="none" antialias="false" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="-10" x2="0" end2="none" antialias="false" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="-80" x2="-80" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-80" x2="-60" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-20" x2="0" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-60" start="0" angle="180" y="-15" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-50" start="0" angle="180" y="-15" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-40" start="0" angle="180" y="-15" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-30" start="0" angle="180" y="-15" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-40" orientation="n" y="-100"/>
+        <terminal x="-20" orientation="n" y="-100"/>
+        <terminal x="-60" orientation="n" y="-100"/>
+    </description>
+</definition>

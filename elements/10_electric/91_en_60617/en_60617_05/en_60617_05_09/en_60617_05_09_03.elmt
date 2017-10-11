@@ -1,0 +1,16 @@
+<definition type="element" link_type="simple" height="90" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="85">
+    <uuid uuid="{c6b2b910-be2a-4ead-9fa1-85a3301aed9f}"/>
+    <names>
+        <name lang="fr">Sole non émissive pour structure à retard
+ouverte</name>
+        <name lang="de">Sohle, nicht emittierend, für offene
+Verzögerungsleitung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="0" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40"/>
+        <line antialias="false" x1="0" y2="-80" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+    </description>
+</definition>

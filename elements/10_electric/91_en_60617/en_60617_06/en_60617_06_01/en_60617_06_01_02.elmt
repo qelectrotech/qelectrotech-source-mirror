@@ -1,0 +1,15 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="5" version="0.70" width="20" type="element" height="30">
+    <uuid uuid="{24846d9b-12d6-4d92-80d0-1234e6e2bce5}"/>
+    <names>
+        <name lang="fr">Trois enroulements séparé</name>
+        <name lang="de">drei getrennte Wicklungen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="35" text="_" tagg="label" size="9"/>
+        <line y1="0" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-5" x2="-5" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

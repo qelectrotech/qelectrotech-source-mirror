@@ -1,0 +1,23 @@
+<definition hotspot_x="85" hotspot_y="105" orientation="dyyy" height="110" link_type="simple" version="0.70" type="element" width="110">
+    <uuid uuid="{0bdc546e-3d11-4ebd-b568-91f3c494a559}"/>
+    <names>
+        <name lang="de">Überstromrelais mit zwei Ausgängen</name>
+        <name lang="fr">Relais à maximum de courant avec deux
+sorties</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-100" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-35" size="9" text="5 x" x="-20"/>
+        <line y1="-20" length1="1.5" end2="none" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="20" length2="1.5" antialias="false" x1="0"/>
+        <line y1="-40" length1="1.5" end2="none" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="20" length2="1.5" antialias="false" x1="0"/>
+        <line y1="-60" length1="1.5" end2="none" y2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-80" length2="1.5" antialias="false" x1="-60"/>
+        <text y="-75" size="9" text="I >" x="-45"/>
+        <line y1="-20" length1="1.5" end2="none" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-5" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-25" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-5" length2="1.5" antialias="false" x1="-5"/>
+        <line y1="-25" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-25" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-24" length2="1.5" antialias="false" x1="-34"/>
+    </description>
+</definition>

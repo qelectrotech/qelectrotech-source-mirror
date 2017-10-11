@@ -1,0 +1,15 @@
+<definition hotspot_x="15" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="30" type="element" link_type="simple">
+    <uuid uuid="{315d5905-5375-49b9-bab0-bc3ab1a26d99}"/>
+    <names>
+        <name lang="fr">Action retardée</name>
+        <name lang="de">verzögerte Wirkung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="10" y2="-2" y1="-2" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9"/>
+        <line x2="-9" y2="2" y1="2" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <arc y="-10" x="-10" antialias="true" height="20" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" start="90"/>
+    </description>
+</definition>

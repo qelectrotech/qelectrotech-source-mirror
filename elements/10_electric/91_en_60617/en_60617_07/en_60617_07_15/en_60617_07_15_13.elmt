@@ -1,0 +1,22 @@
+<definition orientation="dyyy" type="element" width="90" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{ba85587a-4b5d-49e5-8ed2-fa4bcc367398}"/>
+    <names>
+        <name lang="de">elektromechanischer Antrieb eines
+Resonanzrelais</name>
+        <name lang="fr">Organe de commande d'un relais à résonance
+mécanique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" start="90" angle="-180" x="30"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" x="-20"/>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="20" y1="0" x2="60" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" start="90" angle="180" x="30"/>
+        <terminal orientation="n" y="-20" x="0"/>
+        <terminal orientation="s" y="20" x="0"/>
+    </description>
+</definition>

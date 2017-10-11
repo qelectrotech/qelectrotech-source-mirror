@@ -1,0 +1,17 @@
+<definition hotspot_x="10" version="0.70" orientation="dyyy" height="40" hotspot_y="25" width="20" type="element" link_type="simple">
+    <uuid uuid="{e9c63d06-fd70-42ce-b360-2c3f259b237b}"/>
+    <names>
+        <name lang="fr">Défaut (marquage de l'emplacement supposé
+d'un défaut)</name>
+        <name lang="de">Fehler (Anzeige eines angenommenen
+Fehlerorts)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-6" y2="0" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line x2="6" y2="-10" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6"/>
+        <line x2="0" y2="10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="6"/>
+    </description>
+</definition>

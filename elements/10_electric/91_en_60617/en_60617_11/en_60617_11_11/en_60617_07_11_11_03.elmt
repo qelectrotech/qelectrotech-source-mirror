@@ -1,0 +1,18 @@
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" orientation="dyyy" version="0.70">
+    <uuid uuid="{4e142847-03e0-46ba-9a05-4fca7fbbd1eb}"/>
+    <names>
+        <name lang="de">Neutralleiter mit Schutzfunktion (PEN)</name>
+        <name lang="fr">Conducteur de protection et neutre confondus</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="55" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-100" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-55" y1="0" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="3" y="-31.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-49"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-48" y1="-40" x2="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal y="-20" x="0" orientation="e"/>
+        <terminal y="-20" x="-100" orientation="w"/>
+    </description>
+</definition>

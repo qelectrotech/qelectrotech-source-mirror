@@ -1,0 +1,16 @@
+<definition link_type="simple" version="0.70" hotspot_x="7" hotspot_y="25" orientation="dyyy" type="element" height="30" width="10">
+    <uuid uuid="{fc56ac29-3e9e-4891-acfc-151c07ad77fd}"/>
+    <names>
+        <name lang="fr">Effet de claquage dans un seul sens
+effet Zene</name>
+        <name lang="de">Durchbruch-Effekt, in einer Richtung
+(unidirektional)
+Zener-Effekt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <polygon x1="0" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="0" x2="0" y2="0" antialias="false" x3="-5" closed="false"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="45" hotspot_y="10" version="0.70" width="50" type="element" height="20">
+    <uuid uuid="{e9a91826-722d-490d-a54d-6958d7bc040a}"/>
+    <names>
+        <name lang="fr">Enroulement d'excitation en dérivation ou
+séparé</name>
+        <name lang="de">Nebenschlußwicklung oder fremderregte
+Wicklung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <arc x="-40" start="0" angle="180" y="-5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-30" start="0" angle="180" y="-5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-20" start="0" angle="180" y="-5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="180" y="-5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

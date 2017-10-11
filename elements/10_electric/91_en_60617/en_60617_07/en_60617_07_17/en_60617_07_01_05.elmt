@@ -1,0 +1,16 @@
+<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{8236b959-f71f-4ab4-8236-65bd9c6d30d0}"/>
+    <names>
+        <name lang="de">Überstromrelais mit zwei Meßgliedern</name>
+        <name lang="fr">Relais à maximum de courant à deux éléments
+de mesure</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-15" size="9" text="5...10A" x="-48"/>
+        <text y="-40" size="9" text="2 ( I > )" x="-50"/>
+    </description>
+</definition>

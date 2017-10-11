@@ -1,0 +1,22 @@
+<definition width="50" height="70" type="element" hotspot_x="36" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+    <uuid uuid="{c1b611f9-d1eb-4cdd-a1da-c23f22d07b1a}"/>
+    <names>
+        <name lang="de">Leuchtmelder, versorgt durch eingebauten
+Transformator</name>
+        <name lang="fr">Lampe de signalisation alimentée par
+transformateur incorporé</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <circle diameter="20" x="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <line y2="-17" length1="1.5" y1="-3" length2="1.5" x1="-9" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-3" length1="1.5" y1="-17" length2="1.5" x1="-9" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <circle diameter="20" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <terminal orientation="n" x="-20" y="-40"/>
+        <terminal orientation="s" x="-20" y="20"/>
+    </description>
+</definition>

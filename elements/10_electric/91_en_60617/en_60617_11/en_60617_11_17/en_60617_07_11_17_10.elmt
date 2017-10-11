@@ -1,0 +1,21 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="90" hotspot_y="10">
+    <uuid uuid="{59d77b6b-0e55-48a9-aa15-2c5f468590d8}"/>
+    <names>
+        <name lang="de">Elktro-Installationskanal mit interner
+Blockierung</name>
+        <name lang="fr">Élément droit à blocage interne</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="45" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="-30" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="-30" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="5" length2="1.5" antialias="false" x1="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="20" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-5" height="10" angle="-180" antialias="true" x="16" width="4" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="10" x="50"/>
+        <terminal orientation="w" y="10" x="-30"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition hotspot_x="27" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="55" type="element" width="40">
+    <uuid uuid="{0778070b-9447-47ed-97ec-88d91beefeca}"/>
+    <names>
+        <name lang="fr">Phototransistor, type PNP</name>
+        <name lang="de">Phototransistor PNP</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" x="5" text="_" y="15" tagg="label"/>
+        <line x2="-10" antialias="false" y1="-50" length2="1.5" y2="-40" length1="1.5" end1="none" end2="triangle" x1="-20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x2="-15" antialias="false" y1="-45" length2="1.5" y2="-35" length1="1.5" end1="none" end2="triangle" x1="-25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x2="-10" antialias="false" y1="-30" length2="1.5" y2="-10" length1="1.5" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="10" antialias="false" y1="-25" length2="1.5" y2="-40" length1="1.5" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="10" antialias="false" y1="-15" length2="1.5" y2="0" length1="1.5" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="-6" closed="false" x3="-3" antialias="false" y1="-30" y3="-33" y2="-28" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+    <uuid uuid="{8315346a-6189-4c7c-ba8b-b7aca08b3257}"/>
+    <names>
+        <name lang="fr">Générateur</name>
+        <name lang="de">Generator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="G" size="9" y="-16" x="-24"/>
+    </description>
+</definition>

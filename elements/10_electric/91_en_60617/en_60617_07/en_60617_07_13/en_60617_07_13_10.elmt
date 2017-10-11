@@ -1,0 +1,23 @@
+<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="44" hotspot_x="43" version="0.70" link_type="simple">
+    <uuid uuid="{b01f7f51-6ba8-411b-9f58-2e4cb4a5fad8}"/>
+    <names>
+        <name lang="de">Trennschalter mit Blockiereinrichtung,
+handbetätigt</name>
+        <name lang="fr">Sectionneur à commande manuelle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-23" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-4" y1="-20" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-18" x="-30"/>
+        <line antialias="false" x1="-18" y1="-22" x2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-16" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-40" y1="-15" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-5" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-40" y1="-10" x2="-3" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="s" y="20" x="0"/>
+    </description>
+</definition>

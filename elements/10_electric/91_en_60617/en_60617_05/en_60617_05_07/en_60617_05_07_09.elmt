@@ -1,0 +1,16 @@
+<definition height="70" version="0.70" orientation="dyyy" width="30" hotspot_x="15" type="element" hotspot_y="65" link_type="simple">
+    <uuid uuid="{6f122152-ad17-4360-8dc0-6d33f8ff9be5}"/>
+    <names>
+        <name lang="fr">Cathode froide
+Cathode chauffée ioniquement</name>
+        <name lang="de">kalte Kathode
+ionenbeheizte Kathode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="0" y1="-40" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="0"/>
+        <circle y="-60" diameter="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10"/>
+    </description>
+</definition>

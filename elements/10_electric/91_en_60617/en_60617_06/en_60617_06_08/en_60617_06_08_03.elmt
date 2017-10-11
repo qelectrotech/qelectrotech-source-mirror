@@ -1,0 +1,31 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="75" hotspot_y="104" version="0.70" width="90" type="element" height="130">
+    <uuid uuid="{23d2bf12-5563-4484-80f7-08de6f8f1e9f}"/>
+    <names>
+        <name lang="fr">Moteur asynchrone triphasé à rotor à bagues</name>
+        <name lang="de">Drehstrom-Asynchronmotor mit
+Schleifringläufer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-70" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-34" y="-42" text="M" size="9"/>
+        <text x="-45" y="-25" text="3" size="9"/>
+        <arc x="-35" start="0" angle="180" y="-32.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-25" start="0" angle="-180" y="-32.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-70" y="-80" antialias="false" diameter="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-80" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="-75" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-100" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-75" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="-17" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-17" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-50" orientation="n" y="-100"/>
+        <terminal x="-50" orientation="s" y="20"/>
+        <terminal x="-10" orientation="s" y="20"/>
+        <terminal x="-30" orientation="s" y="20"/>
+        <terminal x="-10" orientation="n" y="-100"/>
+        <terminal x="-30" orientation="n" y="-100"/>
+    </description>
+</definition>

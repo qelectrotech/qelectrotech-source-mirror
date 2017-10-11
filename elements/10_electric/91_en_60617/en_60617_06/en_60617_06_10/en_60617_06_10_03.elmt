@@ -1,0 +1,27 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="180" version="0.70" width="110" type="element" height="200">
+    <uuid uuid="{0cb19cd3-db58-49ad-8ba5-147d24c2e58f}"/>
+    <names>
+        <name lang="fr">Transformateur à prise médiane sur un
+enroulement</name>
+        <name lang="de">Transformator mit Mittenanzapfung an einer
+Wicklung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-120" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-150" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-120" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-74" y="-160" text="Form 1 / Forme 1" size="9"/>
+        <circle x="-60" y="-80" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-130" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-140" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-135" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-145" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-90" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-90" end1="none" length1="1.5" x1="-30" x2="20" end2="none" antialias="false" y2="-90" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-30" orientation="s" y="10"/>
+        <terminal x="-30" orientation="n" y="-150"/>
+    </description>
+</definition>

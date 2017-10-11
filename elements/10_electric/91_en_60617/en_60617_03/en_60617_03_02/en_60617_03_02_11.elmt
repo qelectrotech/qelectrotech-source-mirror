@@ -1,0 +1,21 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="50" hotspot_y="34" width="90" type="element" link_type="simple">
+    <uuid uuid="{3a057903-46a4-44d7-9d6a-61012afb3010}"/>
+    <names>
+        <name lang="fr">Permutation des conducteurs
+Changement de l'ordre de succession de
+phases</name>
+        <name lang="de">Leiterverbindungen, Tausch von Leitern
+Wechsel von Phasenfolge</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <polygon x2="-30" y2="10" y1="10" x3="-10" x4="0" y4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-10" x1="-40"/>
+        <line x2="40" y2="10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20"/>
+        <text y="-15" x="15" text="n" size="9"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="0" x="40" orientation="e"/>
+    </description>
+</definition>

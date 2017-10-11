@@ -1,0 +1,21 @@
+<definition hotspot_x="25" version="0.70" orientation="dyyy" height="10" hotspot_y="2" width="50" type="element" link_type="simple">
+    <uuid uuid="{53309852-85c4-4017-8404-e234fbc91b25}"/>
+    <names>
+        <name lang="fr">Crantage
+Retour non automatique
+Dispositif de maintien dans une position
+donnée</name>
+        <name lang="de">Raste
+nicht selbsttätiger Rückgang
+Einrichtung zum Beibehalten einer gegebenen
+Stellung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-5" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <polygon x2="0" y2="5" y1="0" x3="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-5"/>
+        <line x2="20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="5"/>
+    </description>
+</definition>

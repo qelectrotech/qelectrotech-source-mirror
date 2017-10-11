@@ -1,0 +1,16 @@
+<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="85" orientation="dyyy" type="element" height="90" width="110">
+    <uuid uuid="{ca925849-2875-4272-baa7-7581d2b2c394}"/>
+    <names>
+        <name lang="fr">Commutateur complexe, symbole général</name>
+        <name lang="de">komplexer Schalter, allgemein</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="25" size="9" x="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" height="80" x="-100" antialias="false" width="100"/>
+        <polygon x1="-80" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-35" x2="-80" y2="-35" antialias="false" x3="-20" closed="false"/>
+        <line end1="none" end2="none" x1="-70" y1="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-70" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="-70" y1="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-70" y2="-30" antialias="false"/>
+    </description>
+</definition>

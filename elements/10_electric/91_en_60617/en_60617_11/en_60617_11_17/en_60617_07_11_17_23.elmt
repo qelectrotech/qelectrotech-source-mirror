@@ -1,0 +1,23 @@
+<definition orientation="dyyy" type="element" version="0.70" height="100" link_type="simple" hotspot_x="24" width="70" hotspot_y="42">
+    <uuid uuid="{66d6d59d-9889-4e70-b1b3-2e770ef90519}"/>
+    <names>
+        <name lang="de">Mitteneinspeisung mit Gräte-Einbaukasten</name>
+        <name lang="fr">Élément central d'alimentation avec coffret
+d'appareillage</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="85" tagg="label" size="9" x="45" text="_"/>
+        <line length1="1.5" end2="none" y1="50" y2="50" x2="-20" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="45" y2="55" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="45" y2="55" x2="40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="50" y2="30" x2="10" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="10" height="20" antialias="false" x="0" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x5="10" y10="22" y7="19" antialias="false" y11="23" y8="21" y9="23" y5="17" x4="9" x8="12" style="line-style:normal;line-weight:normal;filling:black;color:black" x7="13" x9="13" y3="19" y6="19" x1="7" x3="7" y1="23" x11="7" x10="10" y4="19" y2="21" x6="11" x2="8"/>
+        <polygon y1="0" y2="0" y3="-20" closed="false" x2="0" antialias="false" x1="20" x4="20" y4="0" x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="-40" x2="10" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="50" x="40"/>
+        <terminal orientation="w" y="50" x="-20"/>
+    </description>
+</definition>

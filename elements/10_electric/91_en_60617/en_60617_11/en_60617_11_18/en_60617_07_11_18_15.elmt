@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+    <uuid uuid="{d2ed26e6-2457-4cc6-8a0e-ec22ce4e7a67}"/>
+    <names>
+        <name lang="de">Anfluggleitwinkelfeuer, weiss/rot, einseitig
+strahlend</name>
+        <name lang="fr">Indicateur de trajectoire d'approche de
+précision, faisceau unidirectionnel blanc/rouge</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" y2="-20" y3="-20" x2="-40" antialias="false" x1="0" x4="0" y4="0" x3="0" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y1="-20" y2="-20" y3="-40" closed="false" x2="-40" antialias="false" x1="0" x4="0" y4="-20" x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition hotspot_x="15" type="element" width="30" hotspot_y="15" version="0.70" orientation="dyyy" height="20" link_type="simple">
+    <uuid uuid="{763704c5-1562-4522-98a9-25c4292fd2a9}"/>
+    <names>
+        <name lang="fr">03- Courant continu</name>
+        <name lang="de">03- Gleichstrom und -Spannung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="-10" x1="-10" length2="1.5" antialias="false" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end2="none" end1="none"/>
+        <line y1="0" x1="-10" length2="1.5" antialias="false" x2="10" length1="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="0" end2="none" end1="none"/>
+        <input text="_" size="9" rotate="true" x="5" tagg="label" y="15"/>
+    </description>
+</definition>

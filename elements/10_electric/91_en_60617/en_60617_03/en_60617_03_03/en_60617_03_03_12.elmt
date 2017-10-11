@@ -1,0 +1,23 @@
+<definition hotspot_x="84" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
+    <uuid uuid="{28789836-4734-48f0-94b2-8a678eee20f5}"/>
+    <names>
+        <name lang="fr">Fiche et jack, bipolaires, type téléphone</name>
+        <name lang="de">Stecker und Klinke, zweipolig</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <circle y="-2.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle y="-22.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x2="-25" y2="-20" y1="-20" x3="-30" x4="-35" y4="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-15" x1="-3"/>
+        <rect y="-22.5" x="-45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5"/>
+        <rect y="-2.5" x="-45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5"/>
+        <rect y="-22.5" x="-45" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5"/>
+        <line x2="-39" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3"/>
+        <rect y="-12.5" x="-70" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <rect y="-2.5" x="-70" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10"/>
+        <line x2="-70" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-80"/>
+        <line x2="-70" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-80"/>
+    </description>
+</definition>

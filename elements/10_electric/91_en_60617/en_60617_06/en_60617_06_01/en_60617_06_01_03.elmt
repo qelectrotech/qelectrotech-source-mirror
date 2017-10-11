@@ -1,0 +1,14 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="5" hotspot_y="17" version="0.70" width="20" type="element" height="30">
+    <uuid uuid="{de5ff5ec-f8a2-4e3a-9e20-3bcc4b78e149}"/>
+    <names>
+        <name lang="fr">Six enroulements séparés</name>
+        <name lang="de">sechs getrennte Wicklungen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <line y1="-10" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="5" y="0" text="6" size="6"/>
+    </description>
+</definition>

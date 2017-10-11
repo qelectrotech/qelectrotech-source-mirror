@@ -1,0 +1,29 @@
+<definition link_type="simple" type="element" width="60" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="47">
+    <uuid uuid="{52762c32-647a-451a-87f2-5344d744f12c}"/>
+    <names>
+        <name lang="fr">Interrupteur d'arrêt d'urgence à manœuvre
+positive d'ouverture</name>
+        <name lang="de">Pilz-Notdrucktaster</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" angle="180" width="10" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-45" y="-15"/>
+        <line x2="-30" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-40" y2="-10" length2="1.5"/>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="-40" antialias="false" y1="-15" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40" y2="-5" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <line x2="10" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-20" length2="1.5"/>
+        <line x2="-30" antialias="false" y1="-5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y2="-10" length2="1.5"/>
+        <line x2="-20" antialias="false" y1="-5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y2="-10" length2="1.5"/>
+        <line x2="3" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20" y2="-10" length2="1.5"/>
+        <circle antialias="false" diameter="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-32.5" y="-27.5"/>
+        <line x2="-20" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" y2="-20" length2="1.5"/>
+        <line x2="-23" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" y2="-16" length2="1.5"/>
+        <line x2="-23" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" y2="-24" length2="1.5"/>
+        <terminal orientation="n" x="0" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+    </description>
+</definition>

@@ -1,0 +1,15 @@
+<definition hotspot_x="14" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
+    <uuid uuid="{5efeb305-fbfc-4f1b-9f1c-af4d4650557d}"/>
+    <names>
+        <name lang="fr">Impression sur Bande</name>
+        <name lang="de">Drucken auf einen Streifen </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="10" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
+    </description>
+</definition>

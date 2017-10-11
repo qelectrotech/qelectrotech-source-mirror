@@ -1,0 +1,23 @@
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" orientation="dyyy" version="0.70">
+    <uuid uuid="{40384867-aeff-4594-b0e2-92bc7b919555}"/>
+    <names>
+        <name lang="de">Drei Leiter, ein Neutralleiter, ein Schutzleiter</name>
+        <name lang="fr">Canalisation triphasée avec conducteur neutre
+et conducteur de protection</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="55" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-100" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-85" y1="0" x2="-75" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-80" y1="0" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-75" y1="0" x2="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-55" y1="0" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-30" y1="0" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="3" y="-41.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-46.5"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-24" y1="-40" x2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal y="-20" x="-100" orientation="w"/>
+        <terminal y="-20" x="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+    <uuid uuid="{a51e69ce-47b0-48bd-b8a7-09c03a72a1e5}"/>
+    <names>
+        <name lang="de">Drehmelder </name>
+        <name lang="fr">Dispositif synchrone, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y3="-25" x4="-2" y2="-22" y1="-22" x1="-2" x2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-22" x3="0" antialias="false"/>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <circle diameter="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false"/>
+        <polygon y3="-20" x4="-2" y2="-19" y1="-22" x1="-2" x2="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-22" x3="-6" antialias="false"/>
+        <polygon y3="-20" x4="2" y2="-19" y1="-22" x1="2" x2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-22" x3="6" antialias="false"/>
+        <polygon y3="-15" x4="-2" y2="-17" y1="-19" x1="-2" x2="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-19" x3="-3" antialias="false"/>
+        <circle diameter="36" x="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-38" antialias="false"/>
+        <polygon y3="-15" x4="0" y2="-19" y1="-17" x1="0" x2="2" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-17" x3="4" antialias="false"/>
+        <rect width="4" height="4" x="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-22" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{0f9e0fd1-d663-4a84-9595-f18d7aa7d9fe}"/>
+    <names>
+        <name lang="de">Station,
+Umspannstation,
+Schaltstation, allgemein (in Betrieb oder
+undefiniert)</name>
+        <name lang="fr">Sous-station,
+Poste (en service ou indéterminé)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <circle y="-40" diameter="40" style="line-style:normal;line-weight:normal;filling:bdiag;color:black" x="-40" antialias="false"/>
+    </description>
+</definition>

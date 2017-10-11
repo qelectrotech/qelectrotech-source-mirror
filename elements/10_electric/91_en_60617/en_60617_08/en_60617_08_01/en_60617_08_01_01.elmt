@@ -1,0 +1,19 @@
+<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+    <uuid uuid="{762a9b90-edbb-4d9f-9098-21cdbd124ee7}"/>
+    <names>
+        <name lang="de">Meßgerät, anzeigend, allgemein</name>
+        <name lang="fr">Appareil indicateur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y1="-22" y3="-25" x2="2" y2="-22" antialias="false" y4="-22" x4="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-2" x3="0"/>
+        <polygon y1="-22" y3="-20" x2="-2" y2="-19" antialias="false" y4="-22" x4="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-2" x3="-6"/>
+        <input size="9" tagg="label" text="_" rotate="true" y="25" x="5"/>
+        <polygon y1="-22" y3="-20" x2="2" y2="-19" antialias="false" y4="-22" x4="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="2" x3="6"/>
+        <polygon y1="-19" y3="-15" x2="0" y2="-17" antialias="false" y4="-19" x4="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-2" x3="-3"/>
+        <polygon y1="-17" y3="-15" x2="2" y2="-19" antialias="false" y4="-17" x4="0" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="0" x3="4"/>
+        <rect width="4" height="4" antialias="false" y="-22" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-2"/>
+        <circle diameter="40" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20"/>
+    </description>
+</definition>

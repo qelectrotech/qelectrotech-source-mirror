@@ -1,0 +1,17 @@
+<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+    <uuid uuid="{d95d40d9-58d5-4dc8-ba9a-580c9ca04a81}"/>
+    <names>
+        <name lang="de">Synchronoskop </name>
+        <name lang="fr">Synchronoscope</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" rotate="true" y="25" x="5"/>
+        <circle diameter="40" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20"/>
+        <line y1="-5" end2="none" length1="1.5" x2="0" y2="-35" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5"/>
+        <arc width="35" height="35" antialias="true" angle="90" y="-35.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" x="-17.5"/>
+        <polygon y1="-30" y3="-31" x2="-11" y2="-33" closed="false" antialias="false" y4="-30" x4="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" x3="-10"/>
+        <polygon y1="-33" y3="-31" x2="13" y2="-30" closed="false" antialias="false" y4="-33" x4="11" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="11" x3="10"/>
+    </description>
+</definition>

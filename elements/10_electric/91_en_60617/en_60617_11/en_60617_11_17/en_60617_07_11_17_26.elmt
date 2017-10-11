@@ -1,0 +1,24 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="44" width="90" hotspot_y="26">
+    <uuid uuid="{9ee8f118-175b-43e3-960b-91f061d5d40e}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal mit
+beweglichem Abzweig</name>
+        <name lang="fr">Élément droit avec dérivation déplaçable de
+façon continue</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="35" tagg="label" size="9" x="45" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-10" antialias="false" x="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="20" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="15" length2="1.5" antialias="false" x1="-15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-18" y2="-22" y3="-20" x2="-16" antialias="false" x1="-16" x4="-16" y4="-18" x3="-22" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y1="-18" y2="-22" y3="-20" x2="16" antialias="false" x1="16" x4="16" y4="-18" x3="22" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal orientation="e" y="0" x="40"/>
+        <terminal orientation="w" y="0" x="-40"/>
+    </description>
+</definition>

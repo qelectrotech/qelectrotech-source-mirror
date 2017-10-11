@@ -1,0 +1,18 @@
+<definition width="20" orientation="dyyy" type="element" height="70" hotspot_x="6" version="0.70" hotspot_y="44" link_type="simple">
+    <uuid uuid="{f2bdbfc6-2f7f-4082-a79b-f11dcadf815f}"/>
+    <names>
+        <name lang="fr">Interrupteurs fonctionnement sous l'effet de la température</name>
+        <name lang="de">Temperaturabhängige Schalter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" y2="-40" length2="1.5" x1="0" y1="-20" end2="none"/>
+        <line length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" y2="20" length2="1.5" x1="0" y1="0" end2="none"/>
+        <line length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8" end1="none" y2="-23" length2="1.5" x1="0" y1="0" end2="none"/>
+        <input tagg="label" text="_" x="5" y="25" rotate="true" size="9"/>
+        <line length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" y2="-20" length2="1.5" x1="0" y1="-20" end2="none"/>
+        <terminal orientation="n" x="0" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="43">
+    <uuid uuid="{05ead3cd-a4d1-4bc2-b27c-c7a4c35a641e}"/>
+    <names>
+        <name lang="fr">Redresseur/onduleur</name>
+        <name lang="de">Gleichrichter/Wechselrichter (umschaltbar)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <line antialias="false" x1="-40" y2="-40" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-20" y2="-10" length2="1.5" end1="none" length1="1.5" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4"/>
+        <line antialias="false" x1="-20" y2="-6" length2="1.5" end1="none" length1="1.5" y1="-6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-14"/>
+        <line antialias="false" x1="-10" y2="-6" length2="1.5" end1="none" length1="1.5" y1="-6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4"/>
+        <arc antialias="true" height="5" width="10" start="0" y="-32.5" x="-35" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="5" width="10" start="0" y="-32.5" x="-25" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" y3="4" x1="-28" y2="0" x3="-28" y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-32"/>
+        <polygon closed="false" antialias="false" y3="4" x1="-16" y2="0" x3="-16" y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12"/>
+    </description>
+</definition>

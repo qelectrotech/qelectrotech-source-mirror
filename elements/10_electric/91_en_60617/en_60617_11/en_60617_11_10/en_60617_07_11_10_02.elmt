@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="105" hotspot_y="45" orientation="dyyy" version="0.70">
+    <uuid uuid="{33c7d857-0bd1-420a-af6d-0bb4ac3006ec}"/>
+    <names>
+        <name lang="de">Trennstelle</name>
+        <name lang="fr">Dispositif de blocage d'alimentation</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="55" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-100" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-55" y1="-40" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-45" y1="-40" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

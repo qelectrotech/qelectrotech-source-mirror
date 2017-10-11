@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="25" width="30" hotspot_y="36">
+    <uuid uuid="{70a26d57-801f-4539-a554-8f2a2dd1d9dd}"/>
+    <names>
+        <name lang="de">Schutzkontaktsteckdose</name>
+        <name lang="fr">Socle de prise de courant (puissance) avec
+contact pour conducteur de protection</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <arc y="-10" height="20" angle="180" antialias="true" x="-20" width="20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-30" y2="-10" x2="-10" length2="1.5" antialias="false" x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-20" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" y="-30" x="-10"/>
+    </description>
+</definition>

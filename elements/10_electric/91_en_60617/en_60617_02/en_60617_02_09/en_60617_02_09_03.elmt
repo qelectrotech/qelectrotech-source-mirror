@@ -1,0 +1,16 @@
+<definition hotspot_x="2" version="0.70" orientation="dyyy" height="20" hotspot_y="7" width="20" type="element" link_type="simple">
+    <uuid uuid="{9dc13e47-c0b9-4660-8a5e-2ef19c6078ab}"/>
+    <names>
+        <name lang="fr">Rayonnement ionisant</name>
+        <name lang="de">ionisierende Strahlung </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="25" rotate="true" text="_" size="9" tagg="label"/>
+        <polygon x2="8" y2="6" y1="8" x3="10" x4="6" y4="8" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="10" x1="6"/>
+        <polygon x2="13" y2="1" y1="3" x3="15" x4="11" y4="3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5" x1="11"/>
+        <polygon x2="8" x5="12" y2="-4" y1="-5" x3="8" x4="11" y4="1" antialias="false" y5="2" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="5"/>
+        <polygon x2="3" x5="7" y2="1" y1="0" x3="3" x4="6" y4="6" antialias="false" y5="7" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="5" x1="0"/>
+    </description>
+</definition>

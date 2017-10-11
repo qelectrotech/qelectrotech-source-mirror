@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="55">
+    <uuid uuid="{0f22441a-7a75-4388-a95e-aa07021d4152}"/>
+    <names>
+        <name lang="de">Schlüsselschalter,
+Wächtermelder</name>
+        <name lang="fr">Dispositif de commande ou de contrôle par clé,
+Dispositif de contrôle par vigile</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-45" antialias="false" x="-30" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-50" height="50" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-27" y2="-10" y3="-10" closed="false" x2="-30" antialias="false" x1="-26" x4="-14" y4="-27" x3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,23 @@
+<definition height="50" type="element" width="70" hotspot_y="45" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="34">
+    <uuid uuid="{2bfa28e9-1ca0-47a7-9070-c033748bd1e3}"/>
+    <names>
+        <name lang="fr">Ligne à retard, type ligne artificielle</name>
+        <name lang="de">Verzögerungsleitung als Leitungsnachbildung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="15" length1="1.5" length2="1.5" y1="-30" y2="-30" x1="-15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="15" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-15" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="-15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="5" length1="1.5" length2="1.5" y1="-25" y2="-25" x1="-5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="5" length1="1.5" length2="1.5" y1="-10" y2="-10" x1="-5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-25" y2="-10" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="30" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="20" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-30" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="-20" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-20" orientation="w" x="-30"/>
+        <terminal y="-20" orientation="e" x="30"/>
+    </description>
+</definition>

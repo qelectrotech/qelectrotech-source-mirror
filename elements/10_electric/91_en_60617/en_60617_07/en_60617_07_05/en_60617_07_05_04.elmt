@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" width="60" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="47">
+    <uuid uuid="{950a4877-12f6-4540-b253-778e496407a7}"/>
+    <names>
+        <name lang="fr">Contact à ouverture, retardé, dispositif n'étant
+plus activé</name>
+        <name lang="de">abfallverzögerter Öffner</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <line x2="10" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-20" length2="1.5"/>
+        <arc antialias="true" angle="180" width="20" start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" x="-45" y="-20"/>
+        <line x2="3" antialias="false" y1="-11" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y2="-11" length2="1.5"/>
+        <line x2="3" antialias="false" y1="-9" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y2="-9" length2="1.5"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="n" x="0" y="-40"/>
+    </description>
+</definition>

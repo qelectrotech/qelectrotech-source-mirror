@@ -1,0 +1,23 @@
+<definition type="element" link_type="simple" height="80" width="110" version="0.70" orientation="dyyy" hotspot_x="98" hotspot_y="70">
+    <uuid uuid="{a86d1383-d256-4e65-a938-6fb1ee22d256}"/>
+    <names>
+        <name lang="fr">Tétrapôle avec boucle de couplage</name>
+        <name lang="de">Quadrupol mit Schleifenkoppler</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <arc antialias="true" height="20" width="20" start="45" y="-20" x="-20" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="20" width="20" start="315" y="-60" x="-20" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="20" width="20" start="315" y="-20" x="-60" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="20" width="20" start="45" y="-60" x="-60" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="16" width="28" start="202" y="-68" x="-44" angle="134" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="28" width="16" start="112" y="-44" x="-8" angle="134" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="16" width="28" start="158" y="-8" x="-44" angle="-134" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="28" width="16" start="290" y="-44" x="-68" angle="134" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="10" width="10" start="90" y="-40" x="-70" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-65" y2="-30" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-95"/>
+        <circle antialias="false" diameter="4" y="-42" x="-67" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

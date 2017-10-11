@@ -1,0 +1,18 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
+    <uuid uuid="{a85ab32a-fdcd-4cd7-8fd4-346058dec64f}"/>
+    <names>
+        <name lang="fr">Paire coaxiale sous écran</name>
+        <name lang="de">Koaxialkabel, geschirmt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <circle y="-10" x="-10" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <circle y="-5" x="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line x2="5" y2="5" y1="5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="0" x="40" orientation="e"/>
+    </description>
+</definition>

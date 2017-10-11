@@ -1,0 +1,25 @@
+<definition type="element" link_type="simple" height="110" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="105">
+    <uuid uuid="{1ebbf930-bf4c-448d-9daa-c4857bff87cd}"/>
+    <names>
+        <name lang="fr">Générateur thermoélectrique, à source de
+chaleur par combustion</name>
+        <name lang="de">Thermoelektrischer Generator, betrieben durch
+Verbrennungswärme</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-30" y2="-5" length2="1.5" end1="none" length1="1.5" y1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" y3="-5" x1="-25" y2="-35" x3="-15" y4="-5" y1="-5" x4="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="60" width="60" y="-100" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" y3="-60" x1="0" y2="-50" x3="-40" y4="-70" y1="-50" x4="-30" y5="-70" x5="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <text text="G" size="9" y="-80" x="-25"/>
+        <circle antialias="false" diameter="5" y="-62.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

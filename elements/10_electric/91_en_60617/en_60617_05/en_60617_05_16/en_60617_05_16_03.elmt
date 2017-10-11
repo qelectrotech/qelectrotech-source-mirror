@@ -1,0 +1,37 @@
+<definition type="element" hotspot_y="225" orientation="dyyy" version="0.70" hotspot_x="105" width="130" height="250" link_type="simple">
+    <uuid uuid="{2f447c40-f858-4134-add7-a6608ff5a519}"/>
+    <names>
+        <name lang="fr">Tétrode solion</name>
+        <name lang="de">Soliontetrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" y="15" tagg="label" rotate="true" x="5" size="9"/>
+        <line x1="-40" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+        <line x1="-55" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+        <arc y="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80" width="80" start="0" height="80" angle="-180" antialias="true"/>
+        <line x1="-25" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-80" end1="none" y2="-60" antialias="false"/>
+        <line x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-40" end1="none" y2="-160" antialias="false"/>
+        <line x1="-80" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-40" end1="none" y2="-160" antialias="false"/>
+        <arc y="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80" width="80" start="0" height="80" angle="180" antialias="true"/>
+        <polygon x3="-25" closed="false" x1="-55" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-180" y4="-195" y1="-170" x4="-25" y2="-180" antialias="false"/>
+        <line x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-210" end1="none" y2="-160" antialias="false"/>
+        <line x1="-55" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-160" end1="none" y2="-160" antialias="false"/>
+        <circle diameter="20" y="-160" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false"/>
+        <line x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="10" end1="none" y2="-20" antialias="false"/>
+        <line x1="-25" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-20" end1="none" y2="-20" antialias="false"/>
+        <circle diameter="20" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false"/>
+        <arc y="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" width="10" start="180" height="10" angle="180" antialias="true"/>
+        <arc y="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="10" start="180" height="10" angle="180" antialias="true"/>
+        <line x1="-40" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-120" end1="none" y2="-100" antialias="false"/>
+        <line x1="-55" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-120" end1="none" y2="-100" antialias="false"/>
+        <line x1="-25" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-120" end1="none" y2="-100" antialias="false"/>
+        <line x1="-100" x2="-58" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-110" end1="none" y2="-110" antialias="false"/>
+        <line x1="-28" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="-70" end1="none" y2="-70" antialias="false"/>
+        <text text="G" y="-115" x="-95" size="9"/>
+        <text text="O" y="-75" x="10" size="9"/>
+        <text text="I" y="-205" x="-50" size="9"/>
+        <text text="C" y="15" x="-50" size="9"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition link_type="simple" type="element" width="60" height="70" hotspot_x="55" hotspot_y="65" orientation="dyyy" version="0.70">
+    <uuid uuid="{da352baa-78b4-4405-8fb7-8c19ff1b307a}"/>
+    <names>
+        <name lang="de">Verteiler</name>
+        <name lang="fr">Coffret de répartition</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <rect width="50" height="20" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-50"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-40" y1="-60" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-30" y1="-60" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-20" y1="-60" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-10" y1="-60" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-25" y1="-20" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

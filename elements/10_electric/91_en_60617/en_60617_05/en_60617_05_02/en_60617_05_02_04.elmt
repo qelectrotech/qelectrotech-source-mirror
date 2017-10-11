@@ -1,0 +1,14 @@
+<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" orientation="dyyy" type="element" height="30" width="20">
+    <uuid uuid="{caae6aa4-2413-4631-862b-2be1c369b5e2}"/>
+    <names>
+        <name lang="fr">Effet de claquage symétrique</name>
+        <name lang="de">Durchbruch-Effekt, in beiden Richtungen
+(bidirektional)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <polygon x4="-5" x1="5" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0" y3="0" x2="0" y2="-20" antialias="false" x3="0" closed="false"/>
+    </description>
+</definition>

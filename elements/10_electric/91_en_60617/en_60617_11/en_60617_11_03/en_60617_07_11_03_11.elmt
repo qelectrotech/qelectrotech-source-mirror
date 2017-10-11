@@ -1,0 +1,21 @@
+<definition type="element" width="150" version="0.70" hotspot_y="25" orientation="dyyy" height="30" link_type="simple" hotspot_x="144">
+    <uuid uuid="{3c604686-3e91-4fa3-a348-7a65df4987ae}"/>
+    <names>
+        <name lang="fr">Alimentation en courant alternatif par lignes de
+télécommunications</name>
+        <name lang="de">Fernmeldeleitung mit Wechselstrom-
+Fernspeisung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="-140" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="0" length1="1.5"/>
+        <arc antialias="true" width="10" x="-135" angle="180" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" start="0"/>
+        <arc antialias="true" width="10" x="-125" angle="-180" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" start="0"/>
+        <line x2="-110" end2="none" antialias="false" end1="none" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-135" y1="-20" length1="1.5"/>
+        <polygon x2="-110" antialias="false" x3="-100" y3="-20" y2="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-110" y1="-16" y4="-16" x4="-110"/>
+        <terminal x="-140" orientation="w" y="0"/>
+        <terminal x="0" orientation="e" y="0"/>
+    </description>
+</definition>

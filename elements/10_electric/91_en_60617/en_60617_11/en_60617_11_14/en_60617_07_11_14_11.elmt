@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+    <uuid uuid="{38937980-a4d9-4666-b43d-f537960b72ac}"/>
+    <names>
+        <name lang="de">Taster mit Leuchte</name>
+        <name lang="fr">Bouton-poussoir lumineux</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-15" antialias="false" x="-15" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-7" length2="1.5" antialias="false" x1="-13" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-13" length2="1.5" antialias="false" x1="-7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

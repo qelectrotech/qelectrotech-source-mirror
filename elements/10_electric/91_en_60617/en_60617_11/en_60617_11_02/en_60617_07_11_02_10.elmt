@@ -1,0 +1,19 @@
+<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{7fe9e01f-71ba-44e6-b5e3-dfa52eff791a}"/>
+    <names>
+        <name lang="de">Kraftwerk mit Sonnenenergie betrieben,
+Sonnenkraftwerk (in Betrieb oder undefiniert)</name>
+        <name lang="fr">Centrale solaire (en service ou indéterminé)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" width="40" antialias="false"/>
+        <line y1="-40" length1="1.5" end2="none" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-15" length2="1.5" antialias="false" x1="-25"/>
+        <line y1="-35" length1="1.5" end2="none" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-20" length2="1.5" antialias="false" x1="-30"/>
+        <polygon y1="-32" y4="-32" y2="-34" x4="-19" y3="-29" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-17" x3="-14" antialias="false" x1="-19"/>
+        <polygon y1="-29" y4="-29" y2="-24" x4="-22" y3="-27" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-19" x3="-24" antialias="false" x1="-22"/>
+        <rect y="-20" height="20" style="line-style:normal;line-weight:normal;filling:bdiag;color:black" x="-40" width="40" antialias="false"/>
+    </description>
+</definition>

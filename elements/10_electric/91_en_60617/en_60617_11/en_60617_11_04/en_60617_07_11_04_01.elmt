@@ -1,0 +1,16 @@
+<definition type="element" width="70" version="0.70" hotspot_y="55" orientation="dyyy" height="60" link_type="simple" hotspot_x="55">
+    <uuid uuid="{860e9293-dec8-43e6-9f1c-6e3046bb7044}"/>
+    <names>
+        <name lang="fr">Cabine ou armoire pour installation extérieure</name>
+        <name lang="de">Gehäuse, oberirdisch, wetterfest, allgemein</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <arc antialias="true" width="60" x="-50" angle="180" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" start="0"/>
+        <line x2="-40" end2="none" antialias="false" end1="none" length2="1.5" y2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40" y1="0" length1="1.5"/>
+        <line x2="0" end2="none" antialias="false" end1="none" length2="1.5" y2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="0" length1="1.5"/>
+        <line x2="0" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40" y1="0" length1="1.5"/>
+    </description>
+</definition>

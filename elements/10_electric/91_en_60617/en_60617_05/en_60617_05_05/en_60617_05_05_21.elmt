@@ -1,0 +1,19 @@
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="35" orientation="dyyy" type="element" height="80" width="60">
+    <uuid uuid="{47aa7803-fc8f-4460-964a-0ba23095c3cd}"/>
+    <names>
+        <name lang="fr">Transistor IGBT de type à déplétion, canal N</name>
+        <name lang="de">IGBT-Transistor, Verarmungstyp, N-Kana</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="45" size="9" x="5"/>
+        <polygon x1="-30" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-20" x2="-5" y2="20" antialias="false" x3="-5" closed="false"/>
+        <line end1="none" end2="none" x1="0" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="-30" antialias="false"/>
+        <line end1="none" end2="none" x1="0" y1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="40" antialias="false"/>
+        <line end1="none" end2="none" x1="0" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="15" y2="15" antialias="false"/>
+        <line end1="none" end2="none" x1="0" y1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="25" antialias="false"/>
+        <polygon x1="10" y1="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-22" x2="8" y2="-21" antialias="false" x3="12" closed="false"/>
+        <polygon x1="10" y1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="27" x2="11" y2="29" antialias="false" x3="8" closed="false"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="80" link_type="simple" hotspot_x="45" width="70" hotspot_y="50">
+    <uuid uuid="{595534b5-bee7-4729-8cca-ef7b45653ce1}"/>
+    <names>
+        <name lang="de">Wechselschalter, einpolig</name>
+        <name lang="fr">Interrupteur unipolaire va-et-vient</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-45" y2="-40" x2="20" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="25" y2="20" x2="-40" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="25" y2="-1" x2="-15" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-45" y2="-19" x2="-5" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

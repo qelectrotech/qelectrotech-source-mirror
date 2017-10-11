@@ -1,0 +1,21 @@
+<definition link_type="simple" version="0.70" hotspot_x="45" hotspot_y="55" orientation="dyyy" type="element" height="70" width="50">
+    <uuid uuid="{83815bf3-a9cd-48a4-89b9-3e4f32fcdc71}"/>
+    <names>
+        <name lang="fr">Plusieurs émetteurs N sur région P</name>
+        <name lang="de">Mehrere N-Emitter auf einer P-Zone</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" end2="none" x1="-20" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="10" antialias="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-30" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-20" y1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-50" antialias="false"/>
+        <polygon x1="-16" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-18" x2="-9" y2="-23" antialias="false" x3="-12" closed="false"/>
+        <polygon x1="-13" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="1" x2="-11" y2="2" antialias="false" x3="-16" closed="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-20" y2="0" antialias="false"/>
+        <polygon x1="-16" y1="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-38" x2="-9" y2="-43" antialias="false" x3="-12" closed="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-40" antialias="false"/>
+        <polygon x1="-24" y1="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-27" x2="-28" y2="-31" antialias="false" x3="-26" closed="false"/>
+    </description>
+</definition>

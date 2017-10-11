@@ -1,0 +1,14 @@
+<definition height="90" version="0.70" orientation="dyyy" width="90" hotspot_x="85" type="element" hotspot_y="85" link_type="simple">
+    <uuid uuid="{ba9867ec-513c-426a-81d7-0aa24953d866}"/>
+    <names>
+        <name lang="fr">Enveloppe contenant du gaz</name>
+        <name lang="de">gasgefüllter Röhrenkolben</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <circle y="-80" diameter="80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80"/>
+        <circle y="-25" diameter="10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-25"/>
+    </description>
+</definition>

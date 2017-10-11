@@ -1,0 +1,18 @@
+<definition hotspot_x="65" version="0.70" orientation="dyyy" height="40" hotspot_y="35" width="130" type="element" link_type="simple">
+    <uuid uuid="{7372c54a-66d5-45ea-8f13-42da864b65b5}"/>
+    <names>
+        <name lang="fr">Barrette à bornes</name>
+        <name lang="de">Anschlußleiste </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-30" x="-40" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="-30" x="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="-30" x="-60" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="-30" x="0" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="-30" x="20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+        <rect y="-30" x="40" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20"/>
+    </description>
+</definition>

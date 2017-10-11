@@ -1,0 +1,20 @@
+<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="21" link_type="simple" hotspot_x="15" height="40">
+    <uuid uuid="{05398aed-e651-4aa6-a8b7-7f2d2bc3e955}"/>
+    <names>
+        <name lang="fr">Terre, symbole général</name>
+        <name lang="de">Erde</name>
+        <name lang="en">Earth or ground,
+general symbol</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="35" text="_" size="9" rotate="true" tagg="label" y="25"/>
+        <line x2="10" y2="0" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" end2="none" antialias="false"/>
+        <line x2="0" y2="0" length2="1.5" length1="1.5" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <line x2="7" y2="5" length2="1.5" length1="1.5" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-7" end2="none" antialias="false"/>
+        <line x2="4" y2="10" length2="1.5" length1="1.5" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-4" end2="none" antialias="false"/>
+        <line x2="-0.5" y2="15" length2="1.5" length1="1.5" y1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0.5" end2="none" antialias="false"/>
+        <terminal orientation="n" x="0" y="-15"/>
+    </description>
+</definition>

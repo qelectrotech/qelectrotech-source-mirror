@@ -1,0 +1,27 @@
+<definition orientation="dyyy" type="element" width="60" height="70" hotspot_y="34" hotspot_x="54" version="0.70" link_type="simple">
+    <uuid uuid="{9570402a-a05f-4f8b-9648-afb01ba69045}"/>
+    <names>
+        <name lang="de">näherungsempfindlicher Schalter, (Schließer);
+betätigt durch die Annäherung von Magnet</name>
+        <name lang="fr">Dispositif sensible à une proximité, commandé
+à l'approche d'un aimant avec contact à
+fermeture</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="0" y1="-30" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="10" x2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="30" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-20" y1="0" x2="-3" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <polygon y4="0" antialias="false" closed="false" y5="-10" x1="-30" y1="-10" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x4="-20" x3="-30" x5="-30" y3="10"/>
+        <line antialias="false" x1="-34" y1="-6" x2="-34" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="6" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-26" y1="-6" x2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="6" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-10" x="-50"/>
+        <rect antialias="false" width="5" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-5" x="-50"/>
+        <rect antialias="false" width="10" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="5" x="-50"/>
+        <terminal orientation="s" y="30" x="0"/>
+        <terminal orientation="n" y="-30" x="0"/>
+    </description>
+</definition>

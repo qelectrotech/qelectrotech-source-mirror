@@ -1,0 +1,15 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="20" hotspot_y="14" width="50" type="element" link_type="simple">
+    <uuid uuid="{e415259d-7c4f-4e98-b76d-3ca3051f28cc}"/>
+    <names>
+        <name lang="fr">Onde en dents de scie</name>
+        <name lang="de">Sägezahn-Impuls</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <polygon x2="0" x5="20" y2="-10" y1="0" x3="0" x4="20" y4="-10" antialias="false" y5="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-20"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="20" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+    <uuid uuid="{cede6b8a-96e2-454b-b78f-0550e8588ff2}"/>
+    <names>
+        <name lang="fr">Enroulement hexaphasé, en étoile</name>
+        <name lang="de">Sechsphasenwicklung, Sternschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-5" x2="-5" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-15" x2="5" end2="none" antialias="false" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" end1="none" length1="1.5" x1="-15" x2="5" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-7.5" y="-12.5" antialias="false" diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

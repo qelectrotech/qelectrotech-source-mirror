@@ -1,0 +1,18 @@
+<definition type="element" width="70" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="45" version="0.70">
+    <uuid uuid="{7a9d2436-d434-45c8-ac8b-7ef3f2830edb}"/>
+    <names>
+        <name lang="de">Blindstrommeßgerät, anzeigend
+Amperemeter für Blindstrom</name>
+        <name lang="fr">Indicateur de maximum de puissance</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" rotate="true" y="25" x="5"/>
+        <circle diameter="40" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20"/>
+        <text size="9" text="W" y="-26" x="-5"/>
+        <text size="9" text="P max" y="-12" x="-17"/>
+        <line y1="-20" end2="none" length1="1.5" x2="-20" y2="-20" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40" length2="1.5"/>
+        <polygon y1="-24" y3="-16" x2="-28" y2="-20" closed="false" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-32" x3="-32"/>
+    </description>
+</definition>

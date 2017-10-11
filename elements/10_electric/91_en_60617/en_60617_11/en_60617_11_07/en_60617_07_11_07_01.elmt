@@ -1,0 +1,17 @@
+<definition link_type="simple" type="element" width="70" height="50" hotspot_x="65" hotspot_y="45" orientation="dyyy" version="0.70">
+    <uuid uuid="{05ea7c50-03fa-474d-b7de-576f84694c29}"/>
+    <names>
+        <name lang="de">Zweiwegverteiler</name>
+        <name lang="fr">Répartiteur à deux voies</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <arc angle="-180" width="40" height="40" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-55" start="90"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-35" y1="-40" x2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-60" y1="-20" x2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-25" length2="1.5" x1="0" y1="-40" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-15" length2="1.5" x1="0" y1="0" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

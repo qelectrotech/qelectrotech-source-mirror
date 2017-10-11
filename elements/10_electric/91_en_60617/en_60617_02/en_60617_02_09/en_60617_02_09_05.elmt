@@ -1,0 +1,21 @@
+<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="20" width="50" type="element" link_type="simple">
+    <uuid uuid="{078fc4df-bbc4-46a0-9856-5a48a183d991}"/>
+    <names>
+        <name lang="fr">Rayonnement cohérent, non ionisant,
+bidirectionnel</name>
+        <name lang="de">kohärente Strahlung, nicht ionisierend,
+bidirektional</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="19" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-19"/>
+        <line x2="19" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-19"/>
+        <polygon x2="-20" y2="-10" y1="-8" x3="-15" x4="-15" y4="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="-12" x1="-15"/>
+        <polygon x2="-20" y2="0" y1="-2" x3="-15" x4="-15" y4="-2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="2" x1="-15"/>
+        <polygon x2="15" y2="-12" y1="-8" x3="20" x4="15" y4="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="-10" x1="15"/>
+        <polygon x2="20" y2="0" y1="-2" x3="15" x4="15" y4="-2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="2" x1="15"/>
+        <line x2="0" y2="5" y1="-15" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+    </description>
+</definition>

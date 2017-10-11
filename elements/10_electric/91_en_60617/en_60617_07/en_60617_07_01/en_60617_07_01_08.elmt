@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
+    <uuid uuid="{e7bd7235-296d-4702-94af-25707a1b586a}"/>
+    <names>
+        <name lang="de">Funktion "nicht selbsttätiger Rückgang"</name>
+        <name lang="fr">Fonction retour non-automatique (à position
+maintenue)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <circle antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" x="-5"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="45" width="50" hotspot_y="25">
+    <uuid uuid="{bd48e992-916e-49fe-8a25-478cceb987c5}"/>
+    <names>
+        <name lang="de">Vorschaltgerät für Entladungslampen</name>
+        <name lang="fr">Appareil auxiliaire pour lampe à décharge</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-20" height="20" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-15" height="10" antialias="false" x="-30" width="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

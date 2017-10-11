@@ -1,0 +1,21 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="84" width="90" hotspot_y="25">
+    <uuid uuid="{223fbe4e-3834-4949-9e8f-9843fcbac1a0}"/>
+    <names>
+        <name lang="de">Flexibler Elektro-Installationskanal</name>
+        <name lang="fr">Élément flexible</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="-80" length2="1.5" antialias="false" x1="-80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-20" height="20" angle="180" antialias="true" x="-70" width="20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-20" height="20" angle="180" antialias="true" x="-30" width="20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-20" height="20" angle="-180" antialias="true" x="-50" width="20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-70" length2="1.5" antialias="false" x1="-80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="0" length2="1.5" antialias="false" x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="-10" x="0"/>
+        <terminal orientation="w" y="-10" x="-80"/>
+    </description>
+</definition>

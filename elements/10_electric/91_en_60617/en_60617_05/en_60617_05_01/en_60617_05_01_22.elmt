@@ -1,0 +1,18 @@
+<definition link_type="simple" version="0.70" hotspot_x="13" hotspot_y="45" orientation="dyyy" type="element" height="50" width="20">
+    <uuid uuid="{7d7df7b9-93ef-4fb6-93ce-2330d05e2059}"/>
+    <names>
+        <name lang="fr">Région intrinsèque entre deux régions du
+même type de conductivité formant une
+structure soit PIP soit NIN</name>
+        <name lang="de">Eigenleitende Zone zwischen Gebieten
+gleichen Leitertyps, PIP oder NIP Struktur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-10" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="0" antialias="false"/>
+        <polygon x4="-10" y5="-20" x1="-10" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-5" x5="-10" y3="0" x2="-2" y2="-15" antialias="false" x3="-2" closed="false"/>
+        <line end1="none" end2="none" x1="-5" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="3" y2="-5" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition height="60" version="0.70" orientation="dyyy" width="110" hotspot_x="45" type="element" hotspot_y="42" link_type="simple">
+    <uuid uuid="{aab25bf6-776f-44cf-80b1-044325f98c5c}"/>
+    <names>
+        <name lang="fr">Électrode de division du faisceau, relié
+intérieurment à la dernière électrode de
+concentration à diaphragme du canon à
+électron</name>
+        <name lang="de">strahlteilende Elektrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="35" rotate="true" size="9" tagg="label" x="65" text="_"/>
+        <line x2="-40" y1="10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" x1="0"/>
+        <rect y="5" height="10" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x="40"/>
+        <rect y="5" height="10" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x="0"/>
+        <polygon x2="-20" y1="10" x3="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y2="-10" x1="-20" y3="-10"/>
+        <line x2="30" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-40" x1="30"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition hotspot_x="35" type="element" width="50" hotspot_y="54" version="0.70" orientation="dyyy" height="70" link_type="simple">
+    <uuid uuid="{889a48e4-2cfb-4128-88a4-a5c3208d044b}"/>
+    <names>
+        <name lang="en">Buzzer</name>
+        <name lang="fr">Ronfleur</name>
+        <name lang="de">Schnarre,
+Summer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" rotate="true" x="5" tagg="label" y="25"/>
+        <line y1="-30" x1="-30" length2="1.5" antialias="false" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" end2="none" end1="none"/>
+        <arc width="40" start="0" angle="-180" antialias="true" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" height="40"/>
+        <line y1="-12" x1="-20" length2="1.5" antialias="false" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end2="none" end1="none"/>
+        <line y1="-12" x1="0" length2="1.5" antialias="false" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end2="none" end1="none"/>
+        <terminal x="-20" orientation="s" y="10"/>
+        <terminal x="0" orientation="s" y="10"/>
+    </description>
+</definition>

@@ -1,0 +1,15 @@
+<definition hotspot_x="45" version="0.70" orientation="dyyy" height="40" hotspot_y="25" width="90" type="element" link_type="simple">
+    <uuid uuid="{8e5a8aba-4301-4a30-8f36-fa5c2e347ddb}"/>
+    <names>
+        <name lang="fr">Liaison torsadée</name>
+        <name lang="de">verdrillte Verbindung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="40" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <polygon x2="-10" y2="10" y1="5" x3="15" x4="20" y4="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-20" x1="-15"/>
+    </description>
+</definition>

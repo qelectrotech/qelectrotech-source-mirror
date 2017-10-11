@@ -1,0 +1,18 @@
+<definition hotspot_x="15" type="element" width="30" hotspot_y="25" version="0.70" orientation="dyyy" height="30" link_type="simple">
+    <uuid uuid="{1ff0241f-1ced-43bd-8cc1-d3a91501e4cb}"/>
+    <names>
+        <name lang="en">Lamp, general symbol</name>
+        <name lang="fr">Lampe,
+Lampe de signalisation, symbole général</name>
+        <name lang="de">Lampe.
+Leuchtmelder, allgemein</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" rotate="true" x="5" tagg="label" y="25"/>
+        <circle diameter="20" antialias="false" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20"/>
+        <line y1="-3" x1="-7" length2="1.5" antialias="false" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-17" end2="none" end1="none"/>
+        <line y1="-17" x1="-7" length2="1.5" antialias="false" x2="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" end2="none" end1="none"/>
+    </description>
+</definition>

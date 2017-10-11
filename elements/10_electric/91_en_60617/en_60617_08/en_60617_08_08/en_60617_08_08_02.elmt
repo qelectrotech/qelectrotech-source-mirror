@@ -1,0 +1,16 @@
+<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+    <uuid uuid="{a2b761e1-a612-4a15-a9ac-0ce9f3db9039}"/>
+    <names>
+        <name lang="de">Hauptuhr</name>
+        <name lang="fr">Horloge - mère</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <circle diameter="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false"/>
+        <line y2="-20" length1="1.5" y1="-20" length2="1.5" x1="-14" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-36" length1="1.5" y1="-20" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <circle diameter="36" x="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-38" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="34" width="90" hotspot_y="0">
+    <uuid uuid="{e65b87f3-1005-466e-ad91-619aae681490}"/>
+    <names>
+        <name lang="de">Phasenwender</name>
+        <name lang="fr">Élément de permutation des conducteurs de
+phase</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="45" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="-30" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="-30" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="5" y2="5" y3="15" closed="false" x2="0" antialias="false" x1="-10" x4="30" y4="15" x3="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="10" x="50"/>
+        <terminal orientation="w" y="10" x="-30"/>
+    </description>
+</definition>

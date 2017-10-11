@@ -1,0 +1,18 @@
+<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{c6c7b458-424c-42d1-8dec-f91d9370e709}"/>
+    <names>
+        <name lang="de">Überstromrelais, verzögert</name>
+        <name lang="fr">Relais à maximum de courant, à action
+retardée</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-35" size="9" text="I >" x="-37"/>
+        <line y1="-15" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-18" length1="1.5" end2="none" y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-18" length1="1.5" end2="none" y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-10"/>
+    </description>
+</definition>

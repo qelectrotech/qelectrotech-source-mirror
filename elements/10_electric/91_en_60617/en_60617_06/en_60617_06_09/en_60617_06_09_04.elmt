@@ -1,0 +1,20 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="85" hotspot_y="157" version="0.70" width="120" type="element" height="160">
+    <uuid uuid="{2d2a672f-4d53-49b3-985a-4e86f7d8f46b}"/>
+    <names>
+        <name lang="fr">Transformateur à trois enroulements</name>
+        <name lang="de">Transformator mit drei Wicklungen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-110" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-129" end1="none" length1="1.5" x1="-31" x2="-31" end2="none" antialias="false" y2="-109" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-74" y="-140" text="Form 1 / Forme 1" size="9"/>
+        <circle x="-80" y="-80" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-30" y="-80" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-31" orientation="n" y="-129"/>
+    </description>
+</definition>

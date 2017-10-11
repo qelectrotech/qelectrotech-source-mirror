@@ -1,0 +1,20 @@
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="64" orientation="dyyy" type="element" height="70" width="30">
+    <uuid uuid="{e0462d57-7079-47fa-b4da-fd045fb47504}"/>
+    <names>
+        <name lang="fr">Diode à effet de claquage dans les deux sens</name>
+        <name lang="de">Durchbruch-Diode, bidirektional</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="0" y1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="-30" antialias="false"/>
+        <polygon x4="-10" x1="-10" y1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-50" y3="-30" x2="10" y2="-50" antialias="false" x3="0" closed="false"/>
+        <polygon x4="10" x1="10" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-10" y3="-30" x2="-10" y2="-10" antialias="false" x3="0" closed="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-35" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="-25" antialias="false"/>
+        <terminal orientation="n" y="-60" x="0"/>
+        <terminal orientation="s" y="0" x="0"/>
+    </description>
+</definition>

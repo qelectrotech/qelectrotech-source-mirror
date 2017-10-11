@@ -1,0 +1,17 @@
+<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{d1a39196-2849-4cee-b2f1-840c3683fdeb}"/>
+    <names>
+        <name lang="de">Kraftwerk nach dem MHD-Verfahren,
+Magnetohydrodynamisches Kraftwerk
+(Plasmakraftwerk) (in Planung)</name>
+        <name lang="fr">Centrale à plasma,
+Centrale MHD (en projet)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" width="40" antialias="false"/>
+        <polygon y1="-20" y4="-10" x5="-30" closed="false" y2="-30" x4="-20" y5="-20" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" x3="-10" antialias="false" x1="-30"/>
+    </description>
+</definition>

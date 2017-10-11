@@ -1,0 +1,30 @@
+<definition width="110" height="110" type="element" hotspot_x="75" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="107">
+    <uuid uuid="{b01ead0f-f700-4817-84e8-0b6eceed20e4}"/>
+    <names>
+        <name lang="de">Magnetspeicher-Matrix</name>
+        <name lang="fr">Matrice à tores de ferrite</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="-100" length1="1.5" y1="0" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-100" length1="1.5" y1="0" length2="1.5" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-100" length1="1.5" y1="0" length2="1.5" x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-70" length1="1.5" y1="-70" length2="1.5" x1="-70" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-50" length1="1.5" y1="-50" length2="1.5" x1="-70" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-30" length1="1.5" y1="-30" length2="1.5" x1="-70" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <polygon x8="-35" y10="-45" x10="25" x7="15" x6="5" x1="-65" x5="-45" x4="-55" y5="-75" y3="-15" y1="-55" y6="-25" antialias="false" y2="-5" y7="-35" x9="-25" x2="-15" closed="false" x3="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y9="-95" y4="-65" y8="-85"/>
+        <line y2="-65" length1="1.5" y1="-75" length2="1.5" x1="-35" x2="-45" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-65" length1="1.5" y1="-75" length2="1.5" x1="-15" x2="-25" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-45" length1="1.5" y1="-55" length2="1.5" x1="-35" x2="-45" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-25" length1="1.5" y1="-35" length2="1.5" x1="-35" x2="-45" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-45" length1="1.5" y1="-55" length2="1.5" x1="-15" x2="-25" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-65" length1="1.5" y1="-75" length2="1.5" x1="5" x2="-5" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-45" length1="1.5" y1="-55" length2="1.5" x1="5" x2="-5" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-25" length1="1.5" y1="-35" length2="1.5" x1="-15" x2="-25" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-25" length1="1.5" y1="-35" length2="1.5" x1="5" x2="-5" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <text size="9" text="x" x="-70" y="-75"/>
+        <text size="9" text="y" x="-55" y="-90"/>
+    </description>
+</definition>

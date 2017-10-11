@@ -1,0 +1,15 @@
+<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" orientation="dyyy" type="element" height="30" width="20">
+    <uuid uuid="{c346b575-72b8-45d0-8591-902c7c467243}"/>
+    <names>
+        <name lang="fr">Effet unitunnel</name>
+        <name lang="de">Rückwärts-Effekt (Unitunnel-Effekt) </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="0" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-4" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="4" y2="-20" antialias="false"/>
+        <line end1="none" end2="none" x1="4" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-4" y2="0" antialias="false"/>
+    </description>
+</definition>

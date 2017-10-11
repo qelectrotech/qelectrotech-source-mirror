@@ -1,0 +1,14 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+    <uuid uuid="{f4e1ee28-8a22-4294-83f3-5c9e10b836d2}"/>
+    <names>
+        <name lang="fr">Enroulement hexaphasé, en double triangle</name>
+        <name lang="de">Sechsphasenwicklung, Doppeldreieckschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <polygon y1="0" x4="-5" x1="-5" x2="-5" antialias="false" x3="10" y2="-20" y4="0" y3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <polygon y1="0" x4="5" x1="5" x2="5" antialias="false" x3="-10" y2="-20" y4="0" y3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+    </description>
+</definition>

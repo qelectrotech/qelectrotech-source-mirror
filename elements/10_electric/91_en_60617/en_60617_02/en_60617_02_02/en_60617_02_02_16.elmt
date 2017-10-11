@@ -1,0 +1,13 @@
+<definition type="element" width="20" height="20" version="0.70" hotspot_x="10" hotspot_y="7" orientation="dyyy" link_type="simple">
+    <uuid uuid="{36201f6f-66d4-4d2d-97aa-0afc80dee89f}"/>
+    <names>
+        <name lang="fr">Conducteur médian</name>
+        <name lang="de">Mittelleiter </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+        <text size="6" text="M" y="6" x="-3"/>
+    </description>
+</definition>

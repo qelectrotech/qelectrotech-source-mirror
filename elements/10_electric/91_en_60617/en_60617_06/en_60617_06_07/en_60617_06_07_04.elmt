@@ -1,0 +1,38 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="84" version="0.70" width="110" type="element" height="110">
+    <uuid uuid="{4fe3bf79-9c3a-4f59-a5cd-4b46aa6add23}"/>
+    <names>
+        <name lang="fr">Alternateur synchrone triphasé, à deux
+extrémités sorties pour chaque enroulement de
+phase</name>
+        <name lang="de">Drehstrom-Synchrongenerator, beide Enden
+jeder Wicklung herausgeführt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-38" y="-32" text="GS" size="9"/>
+        <arc x="9" start="90" angle="180" y="-30" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="9" start="90" angle="180" y="-40" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="9" start="90" angle="180" y="-50" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="-53" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-60" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-53" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-7" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-7" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="90" angle="180" y="-20" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="15" x2="40" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="40" x2="15" end2="none" antialias="false" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end1="none" length1="1.5" x1="-35" x2="-35" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end1="none" length1="1.5" x1="-25" x2="-25" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-50" orientation="s" y="20"/>
+        <terminal x="-30" orientation="s" y="20"/>
+        <terminal x="-50" orientation="n" y="-80"/>
+        <terminal x="-30" orientation="n" y="-80"/>
+        <terminal x="-10" orientation="n" y="-80"/>
+        <terminal x="-10" orientation="s" y="20"/>
+    </description>
+</definition>

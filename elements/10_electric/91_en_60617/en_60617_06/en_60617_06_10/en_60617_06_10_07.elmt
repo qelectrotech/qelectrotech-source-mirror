@@ -1,0 +1,31 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="180" version="0.70" width="110" type="element" height="200">
+    <uuid uuid="{6bba6327-36ef-48b2-a8f3-8459de8b6f40}"/>
+    <names>
+        <name lang="fr">Transformateur triphasé, couplage étoile-
+triangle</name>
+        <name lang="de">Drehstromtransformator,
+Stern/Dreieckschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-120" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-150" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-120" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-74" y="-160" text="Form 1 / Forme 1" size="9"/>
+        <circle x="-60" y="-80" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-130" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-140" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-135" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-145" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-35" x4="-40" x1="-40" x2="-20" antialias="false" x3="-30" y2="-35" y4="-35" y3="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <line y1="-85" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-95" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-95" end1="none" length1="1.5" x1="-30" x2="-20" end2="none" antialias="false" y2="-100" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-95" end1="none" length1="1.5" x1="-30" x2="-40" end2="none" antialias="false" y2="-100" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-125" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-135" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-30" orientation="s" y="10"/>
+        <terminal x="-30" orientation="n" y="-150"/>
+    </description>
+</definition>

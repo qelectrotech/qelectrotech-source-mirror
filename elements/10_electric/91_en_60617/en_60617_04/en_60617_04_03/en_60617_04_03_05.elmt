@@ -1,0 +1,23 @@
+<definition height="40" type="element" width="50" hotspot_y="35" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+    <uuid uuid="{ea7a531a-1648-4b62-9bfa-e97e3d44f901}"/>
+    <names>
+        <name lang="fr">Inductance variable de façon continue à noyau
+magnétique</name>
+        <name lang="de">Induktivität, stetig veränderbar mit Magnetkern</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-15" x="-20" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-15" x="-40" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-15" x="-10" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-15" x="-30" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="-40" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-40" length1="1.5" length2="1.5" y1="-10" y2="0" x1="-40" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-10" y2="0" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-10" length1="1.5" length2="1.5" y1="-5" y2="-25" x1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x2="-11" y3="-28" y1="-24" y2="-26" x1="-9" x4="-9" y4="-24" x3="-7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-25" y2="-30" x1="-5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

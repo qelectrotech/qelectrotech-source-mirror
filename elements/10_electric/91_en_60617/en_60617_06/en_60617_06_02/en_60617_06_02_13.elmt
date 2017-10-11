@@ -1,0 +1,25 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+    <uuid uuid="{e79f2559-53ff-4df0-a8b1-ae7e744a64aa}"/>
+    <names>
+        <name lang="fr">Enroulement hexaphasé, en double zigzag,
+avec neutre sorti</name>
+        <name lang="de">Sechsphasenwicklung, Gabelschaltung,
+Neutralleiter herausgeführt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <line y1="-16" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-10" x2="-4" end2="none" antialias="false" y2="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-6" end1="none" length1="1.5" x1="-16" x2="-10" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-16" x2="-10" end2="none" antialias="false" y2="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" end1="none" length1="1.5" x1="-10" x2="-4" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-4" x2="-4" end2="none" antialias="false" y2="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-6" end1="none" length1="1.5" x1="-4" x2="0" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-16" x2="-16" end2="none" antialias="false" y2="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-6" end1="none" length1="1.5" x1="-16" x2="-20" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-12.5" y="-12.5" antialias="false" diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-10" x2="0" end2="none" antialias="false" y2="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

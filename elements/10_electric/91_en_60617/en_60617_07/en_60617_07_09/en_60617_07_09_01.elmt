@@ -1,0 +1,23 @@
+<definition link_type="simple" type="element" width="40" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="12">
+    <uuid uuid="{f6f2098d-9087-49eb-adc7-39c0ad747071}"/>
+    <names>
+        <name lang="fr">Interrupteur fonctionnant sous l'effet de la
+température, contact à fermeture</name>
+        <name lang="de">Schließer, temperaturabhängig </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="-8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <arc antialias="true" angle="180" width="8" start="315" style="line-style:normal;line-weight:hight;filling:none;color:black" height="7" x="16" y="-23.5"/>
+        <arc antialias="true" angle="180" width="8" start="135" style="line-style:normal;line-weight:hight;filling:none;color:black" height="7" x="11" y="-18.5"/>
+        <line x2="12" antialias="false" y1="-22" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:hight;filling:none;color:black" x1="17" y2="-17" length2="1.5"/>
+        <line x2="18" antialias="false" y1="-17" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:hight;filling:none;color:black" x1="22" y2="-13" length2="1.5"/>
+        <line x2="23" antialias="false" y1="-18" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="13" y2="-18" length2="1.5"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="n" x="0" y="-40"/>
+    </description>
+</definition>

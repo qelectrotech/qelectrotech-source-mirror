@@ -1,0 +1,19 @@
+<definition type="element" hotspot_y="22" orientation="dyyy" version="0.70" hotspot_x="45" width="90" height="50" link_type="simple">
+    <uuid uuid="{0f1adeb9-f891-43f4-8dca-e2c6834374a3}"/>
+    <names>
+        <name lang="fr">Cellule de conductivité
+Élément pour mesurer le conductivité des
+liquides</name>
+        <name lang="de">Leitfähigkeits-Zelle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" y="45" tagg="label" rotate="true" x="5" size="9"/>
+        <polygon x3="-15" closed="false" x1="15" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="25" y4="-5" y1="-5" x4="-15" y2="25" antialias="false"/>
+        <polygon x3="-10" closed="false" x1="-40" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-20" y2="-20" antialias="false"/>
+        <polygon x3="10" closed="false" x1="40" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" y1="-20" y2="-20" antialias="false"/>
+        <arc y="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" width="10" start="0" height="10" angle="-180" antialias="true"/>
+        <arc y="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" width="10" start="0" height="10" angle="-180" antialias="true"/>
+    </description>
+</definition>

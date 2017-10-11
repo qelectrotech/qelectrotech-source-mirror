@@ -1,0 +1,17 @@
+<definition link_type="simple" type="element" width="90" height="30" hotspot_x="85" hotspot_y="25" orientation="dyyy" version="0.70">
+    <uuid uuid="{e07f2acd-ac67-4b7e-9e6c-7aa7eeff56d1}"/>
+    <names>
+        <name lang="de">Leitung, nach unten führend</name>
+        <name lang="fr">Canalisation descendante</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-80" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="0" y1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="4" y="-22" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-2"/>
+        <polygon y4="-3" x4="-19" x3="-21" y2="-1" x1="-19" y1="-3" x2="-17" y3="1" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <terminal y="-20" x="-80" orientation="w"/>
+    </description>
+</definition>

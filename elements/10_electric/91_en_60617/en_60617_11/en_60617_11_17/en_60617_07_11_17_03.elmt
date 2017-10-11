@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="36" width="40" hotspot_y="5">
+    <uuid uuid="{af420b5b-39f0-4330-a008-09b7cec6d61e}"/>
+    <names>
+        <name lang="de">Endabdeckung</name>
+        <name lang="fr">Obturateur d'extrémité</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="55" tagg="label" size="9" x="35" text="_"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="-10" length2="1.5" antialias="false" x1="-30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="0" y2="20" x2="-10" length2="1.5" antialias="false" x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="0" y2="0" y3="20" closed="false" x2="0" antialias="false" x1="-20" x4="-20" y4="20" x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" y="10" x="-30"/>
+    </description>
+</definition>

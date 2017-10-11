@@ -1,0 +1,17 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="100" type="element" height="70">
+    <uuid uuid="{aecd300f-78bf-499d-a2b6-8890464e0eba}"/>
+    <names>
+        <name lang="fr">Générateur à commande manuelle</name>
+        <name lang="de">Handgenerator
+Kurbelinduktor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-35" y="-25" text="G" size="9"/>
+        <rect x="0" y="-32" antialias="false" width="10" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-28" x1="10" x2="10" antialias="false" x3="30" y2="-20" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+    </description>
+</definition>

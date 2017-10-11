@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="85" width="90" hotspot_y="45">
+    <uuid uuid="{ad2a4c74-85f0-4d14-9ca4-47a338d2dd77}"/>
+    <names>
+        <name lang="de">Verkehrszeichen,
+Wegweiser, 4000/9000 feet</name>
+        <name lang="fr">Plaque d'avertissement de distance:
+"4000/9000 pieds"</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-80" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-15" size="9" x="-65" text="4"/>
+        <text y="-15" size="9" x="-25" text="9"/>
+    </description>
+</definition>

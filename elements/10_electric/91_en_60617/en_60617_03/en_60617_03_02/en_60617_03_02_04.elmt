@@ -1,0 +1,17 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="50" type="element" link_type="simple">
+    <uuid uuid="{237966ae-aa08-4c0b-b0e3-515b9f0f5adb}"/>
+    <names>
+        <name lang="fr">Liaison en T</name>
+        <name lang="de">T-Verbindung, Abzweigung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="20" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <line x2="0" y2="0" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <terminal y="-20" x="20" orientation="e"/>
+        <terminal y="-20" x="-20" orientation="w"/>
+        <terminal y="0" x="0" orientation="s"/>
+    </description>
+</definition>

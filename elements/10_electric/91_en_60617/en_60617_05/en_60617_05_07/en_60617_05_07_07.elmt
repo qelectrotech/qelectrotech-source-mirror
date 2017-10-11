@@ -1,0 +1,17 @@
+<definition height="80" version="0.70" orientation="dyyy" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
+    <uuid uuid="{9f3d1fb7-bdb4-489c-957a-4c1764ceaf6a}"/>
+    <names>
+        <name lang="fr">Filament chauffant d'une cathode chaude à
+chauffage indirect
+Élément chauffant pour thermocouple</name>
+        <name lang="de">Heizer einer indirekt geheizten heißen Kathode
+Heizer für ein Thermoelement</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="-40" y1="-50" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="-40"/>
+        <polygon x2="-20" y1="-50" x3="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y4="0" y2="-70" x4="0" x1="-40" y3="-50"/>
+    </description>
+</definition>

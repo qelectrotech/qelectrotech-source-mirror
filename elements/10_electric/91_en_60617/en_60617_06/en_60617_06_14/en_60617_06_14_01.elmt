@@ -1,0 +1,13 @@
+<definition type="element" link_type="simple" height="-30" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="5">
+    <uuid uuid="{5771d8e7-da09-486a-a167-592fb487e348}"/>
+    <names>
+        <name lang="fr">Convertisseur</name>
+        <name lang="de">Umrichter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <line antialias="false" x1="-40" y2="-40" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+    </description>
+</definition>

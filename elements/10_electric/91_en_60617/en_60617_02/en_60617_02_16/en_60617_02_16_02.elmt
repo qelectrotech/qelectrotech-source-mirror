@@ -1,0 +1,16 @@
+<definition type="element" version="0.70" hotspot_y="24" orientation="dyyy" link_type="simple" width="30" height="50" hotspot_x="15">
+    <uuid uuid="{3bd16745-0110-4b61-9bd2-b6e6ba40d1fa}"/>
+    <names>
+        <name lang="de">ideale Spannungsquelle</name>
+        <name lang="fr">Source idéale de tension</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" size="9" tagg="label" rotate="true" x="5" text="_"/>
+        <circle y="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y2="20" length2="1.5" antialias="false" x1="0" y1="-20" x2="0"/>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="-19" orientation="n" x="0"/>
+    </description>
+</definition>

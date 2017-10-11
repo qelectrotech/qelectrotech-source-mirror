@@ -1,0 +1,15 @@
+<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="5" link_type="simple" hotspot_x="14" height="10">
+    <uuid uuid="{f08d3519-b54a-4ec1-956b-71c326a7aed2}"/>
+    <names>
+        <name lang="fr">Temporisation</name>
+        <name lang="de">Verzögerung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <line x2="-10" y2="3" length2="1.5" length1="1.5" y1="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" end2="none" antialias="false"/>
+        <line x2="10" y2="0" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" end2="none" antialias="false"/>
+        <line x2="11" y2="3" length2="1.5" length1="1.5" y1="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="11" end2="none" antialias="false"/>
+    </description>
+</definition>

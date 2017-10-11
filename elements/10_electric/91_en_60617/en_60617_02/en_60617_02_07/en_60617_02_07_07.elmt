@@ -1,0 +1,16 @@
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+    <uuid uuid="{054e921c-b621-4dfa-84cf-f016a701260c}"/>
+    <names>
+        <name lang="de">Halbleiter</name>
+        <name lang="fr">Semi-conducteur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" width="40" antialias="false" height="20" x="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" length1="1.5" end2="none" antialias="false" x2="10" y1="0" y2="0" end1="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4" length1="1.5" end2="none" antialias="false" x2="4" y1="-6" y2="7" end1="none" length2="1.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-5" x1="3" y4="0" x4="3" antialias="false" x2="-5" closed="false" y3="7" y1="0" y2="-6"/>
+    </description>
+</definition>

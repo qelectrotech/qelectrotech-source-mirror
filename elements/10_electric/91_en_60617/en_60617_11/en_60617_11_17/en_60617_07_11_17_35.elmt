@@ -1,0 +1,29 @@
+<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="44" width="100" hotspot_y="25">
+    <uuid uuid="{d467a742-099a-4726-ad9d-dc5f5b2c14d3}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal, bestehend
+aus drei getrennten Kammern</name>
+        <name lang="fr">Élément droit comprenant trois compartiments
+séparés</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="10" size="6" x="10" text="A"/>
+        <input rotate="true" y="25" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-40" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="20" size="6" x="10" text="B"/>
+        <text y="29.55" size="6" x="10" text="C"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="40" x2="-35" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="40" y2="40" x2="-30" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="26" y2="26" x2="8" length2="1.5" antialias="false" x1="-26" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="18" y2="18" x2="8" length2="1.5" antialias="false" x1="-22" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="8" y2="8" x2="8" length2="1.5" antialias="false" x1="-16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="13" y2="13" x2="-16" length2="1.5" antialias="false" x1="-23" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="22" y2="22" x2="-21" length2="1.5" antialias="false" x1="-28" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" y="-10" x="-40"/>
+        <terminal orientation="e" y="-10" x="50"/>
+    </description>
+</definition>

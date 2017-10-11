@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="65" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{05d2e3c4-693e-4513-9b79-891c38b1487e}"/>
+    <names>
+        <name lang="de">Buchholzschutz</name>
+        <name lang="fr">Relais Buchholz</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-60" x="-20"/>
+        <rect antialias="false" width="40" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" x="-20"/>
+        <rect antialias="false" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-5"/>
+        <line antialias="false" x1="5" y1="-20" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-55" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-50" end1="none" length1="1.5" length2="1.5"/>
+        <arc antialias="true" width="20" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" start="90" angle="180" x="-10"/>
+        <arc antialias="true" width="20" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" start="270" angle="180" x="-10"/>
+    </description>
+</definition>

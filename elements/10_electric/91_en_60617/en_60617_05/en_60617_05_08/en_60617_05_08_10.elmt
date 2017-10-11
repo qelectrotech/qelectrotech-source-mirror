@@ -1,0 +1,16 @@
+<definition height="50" version="0.70" orientation="dyyy" width="90" hotspot_x="85" type="element" hotspot_y="35" link_type="simple">
+    <uuid uuid="{7fcdaef6-3ae1-4466-b290-8688cf41f5dc}"/>
+    <names>
+        <name lang="fr">Électrode de déviation radiale</name>
+        <name lang="de">radiale Ablenkelektrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="-20" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="0"/>
+        <line x2="-80" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-60"/>
+        <rect y="-30" height="40" width="40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60"/>
+        <rect y="-25" height="30" width="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-55"/>
+    </description>
+</definition>

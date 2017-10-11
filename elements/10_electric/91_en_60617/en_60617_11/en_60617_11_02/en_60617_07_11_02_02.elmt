@@ -1,0 +1,16 @@
+<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{80686217-0740-451c-8a40-fbf8595bb261}"/>
+    <names>
+        <name lang="de">Kraftwerk mit Wasserkraft betrieben,
+Wasserkraftwerk (in Betrieb oder undefiniert)</name>
+        <name lang="fr">Centrale hydraulique (en service ou
+indéterminé)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" width="40" antialias="false"/>
+        <polygon y1="0" y4="0" y2="-40" x4="-40" y3="-40" style="line-style:normal;line-weight:normal;filling:hor;color:black" x2="-40" x3="0" antialias="false" x1="-40"/>
+    </description>
+</definition>

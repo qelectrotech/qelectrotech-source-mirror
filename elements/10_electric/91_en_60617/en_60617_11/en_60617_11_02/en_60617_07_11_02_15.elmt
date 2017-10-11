@@ -1,0 +1,17 @@
+<definition hotspot_x="44" hotspot_y="57" orientation="dyyy" height="60" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{272ad9ae-2a0b-4552-bbf1-e45fb3277882}"/>
+    <names>
+        <name lang="de">Umrichterstation (in Planung)</name>
+        <name lang="fr">Sous-station de conversion (en projet)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <circle y="-55" diameter="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" antialias="false"/>
+        <arc y="-7.5" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-14" width="8" antialias="true" start="0"/>
+        <arc y="-7.5" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-6" width="8" antialias="true" start="0"/>
+        <line y1="-5" length1="1.5" end2="none" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-25" length2="1.5" antialias="false" x1="-40"/>
+        <line y1="-10" length1="1.5" end2="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-22" length2="1.5" antialias="false" x1="-18"/>
+    </description>
+</definition>

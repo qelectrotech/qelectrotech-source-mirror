@@ -1,0 +1,19 @@
+<definition type="element" link_type="simple" height="50" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="45">
+    <uuid uuid="{a589fd95-e192-4e4a-a310-bfd2054d1236}"/>
+    <names>
+        <name lang="fr">Source de chaleur par combustion</name>
+        <name lang="de">Verbrennungs-Heizquelle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-30" y2="-5" length2="1.5" end1="none" length1="1.5" y1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <polygon closed="false" antialias="false" y3="-5" x1="-25" y2="-35" x3="-15" y4="-5" y1="-5" x4="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+    </description>
+</definition>

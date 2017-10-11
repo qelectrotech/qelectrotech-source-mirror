@@ -1,0 +1,32 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="93" height="100" width="120" hotspot_y="87" version="0.70">
+    <uuid uuid="{e91f2955-0140-47a2-94bb-31e034240ea7}"/>
+    <names>
+        <name lang="de">Drehstrom-Spartransformator, Sternschaltung</name>
+        <name lang="fr">Autotransformateur, triphasé, couplage étoile</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50" width="10" angle="-180" x="5" start="90"/>
+        <text y="-70" x="-74" size="9" text="Form 2 / Forme 2"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50" width="10" angle="-180" x="-75" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-40" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-40" width="10" angle="-180" x="5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="-75" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="-75" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-40" width="10" angle="-180" x="-75" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="0" y1="-10" x2="-70"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="0" y1="0" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-10" y1="0" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="0" y1="-10" x2="-30"/>
+        <polygon antialias="false" y3="10" closed="false" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" x3="-90" y1="-20" x2="-90"/>
+        <polygon antialias="false" y3="10" closed="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" x3="-50" y1="-20" x2="-50"/>
+        <polygon antialias="false" y3="10" closed="false" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" x3="-10" y1="-20" x2="-10"/>
+    </description>
+</definition>

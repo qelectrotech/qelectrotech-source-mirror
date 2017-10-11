@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" hotspot_x="51" hotspot_y="70" version="0.70" orientation="dyyy" width="110" height="150">
+    <uuid uuid="{48897634-544d-4e10-99c4-2962ae8e4861}"/>
+    <names>
+        <name lang="de">Stromwandler mit zwei Kernen und einer
+Sekundärwicklung auf jedem Kern</name>
+        <name lang="fr">Transformateur de courant, à deux noyaux
+avec un enroulement secondaire sur chaque
+noyau</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" x="35" text="_" size="9" y="135" rotate="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" x="-20" y="-19" antialias="false"/>
+        <line x1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-20" x2="0" end1="none" length1="1.5" y1="-40" antialias="false"/>
+        <text x="-44" text="Form 1 / Forme 1" size="9" y="-50"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" x="-20" y="10" antialias="false"/>
+        <line x1="-0.125" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="71" x2="-0.125" end1="none" length1="1.5" y1="51" antialias="false"/>
+        <terminal x="-0.125" orientation="s" y="71"/>
+        <terminal x="0" orientation="n" y="-40"/>
+    </description>
+</definition>

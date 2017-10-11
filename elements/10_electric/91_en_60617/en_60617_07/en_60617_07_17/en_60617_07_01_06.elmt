@@ -1,0 +1,25 @@
+<definition hotspot_x="65" hotspot_y="155" orientation="dyyy" height="160" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{a9436bd1-e03c-44c8-86da-2a5d4cd51f69}"/>
+    <names>
+        <name lang="de">Nullspannungsrelais</name>
+        <name lang="fr">Relais à manque de tension</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-150" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-15" size="9" text="5...10s" x="-49"/>
+        <text y="-130" size="9" text="Q >" x="-41"/>
+        <text y="-95" size="9" text="1 Mvar" x="-48"/>
+        <line y1="-115" length1="1.5" end2="none" y2="-115" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-120" length1="1.5" end2="none" y2="-110" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-120" length1="1.5" end2="none" y2="-115" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-35" length2="1.5" antialias="false" x1="-30"/>
+        <line y1="-115" length1="1.5" end2="none" y2="-110" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-30" length2="1.5" antialias="false" x1="-35"/>
+        <line y1="-50" length1="1.5" end2="none" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-45" length1="1.5" end2="none" y2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-50"/>
+        <line y1="-50" length1="1.5" end2="none" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-10"/>
+        <line y1="-35" length1="1.5" end2="none" y2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-20" length2="1.5" antialias="false" x1="-45"/>
+        <line y1="-63" length1="1.5" end2="none" y2="-57" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-17" length2="1.5" antialias="false" x1="-23"/>
+    </description>
+</definition>

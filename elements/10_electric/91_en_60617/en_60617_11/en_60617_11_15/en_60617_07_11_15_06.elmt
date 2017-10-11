@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="60" hotspot_y="12">
+    <uuid uuid="{40af52c8-f1f1-45d3-b83f-9f6eba1fce0b}"/>
+    <names>
+        <name lang="de">Leuchte mit fünf Leuchtstofflampen</name>
+        <name lang="fr">Luminaire à cinq tubes fluorescents</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="45" tagg="label" size="9" x="35" text="_"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="30" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="30" length2="1.5" antialias="false" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="15" y2="5" x2="10" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="5" size="6" x="10" text="5"/>
+    </description>
+</definition>

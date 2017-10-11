@@ -1,0 +1,20 @@
+<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{81368e50-1f41-4d30-8dd2-55c66cf7b7b1}"/>
+    <names>
+        <name lang="de">Meßrelais zum Erkennen der Rotorblockierung</name>
+        <name lang="fr">Relais de mesure de détection de rotor bloqué</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <arc y="-43.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-31.5" width="5" antialias="true" start="0"/>
+        <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <arc y="-43.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36.5" width="5" antialias="true" start="0"/>
+        <text y="-15" size="9" text="I >" x="-39"/>
+        <text y="-41" size="9" text="n" x="-48"/>
+        <text y="-41" size="9" text="0" x="-19"/>
+        <arc y="-46.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-31.5" width="5" antialias="true" start="0"/>
+        <arc y="-46.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36.5" width="5" antialias="true" start="0"/>
+    </description>
+</definition>

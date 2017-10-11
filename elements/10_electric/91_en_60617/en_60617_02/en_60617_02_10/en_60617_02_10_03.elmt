@@ -1,0 +1,23 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+    <uuid uuid="{6bce70ca-75fa-47c6-ab46-db10c884c99f}"/>
+    <names>
+        <name lang="fr">Impulsion de courant alternatif</name>
+        <name lang="de">Wechselstrom-Impuls</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-15" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <line x2="20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="15"/>
+        <arc y="0" x="-4" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8" start="180"/>
+        <arc y="-10" x="-13" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8" start="0"/>
+        <arc y="-10" x="5" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8" start="0"/>
+        <line x2="-13" y2="-6" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15"/>
+        <line x2="-4" y2="5" y1="-6" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <line x2="5" y2="-5" y1="5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4"/>
+        <line x2="15" y2="0" y1="-6" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="13"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="0" x="-20" orientation="w"/>
+    </description>
+</definition>

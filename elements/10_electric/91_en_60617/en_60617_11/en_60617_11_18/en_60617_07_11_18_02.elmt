@@ -1,0 +1,13 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+    <uuid uuid="{268f619d-235f-4d1f-a472-b49a4fb36a04}"/>
+    <names>
+        <name lang="de">Flugplatzfeuer, Unterflur, allgemein</name>
+        <name lang="fr">Feu aéronautique au sol, en surface</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-40" antialias="false" x="-40" diameter="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

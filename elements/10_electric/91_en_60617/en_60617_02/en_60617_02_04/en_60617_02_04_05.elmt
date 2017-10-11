@@ -1,0 +1,21 @@
+<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="10">
+    <uuid uuid="{1dc3f121-5674-4234-a170-02293a704e41}"/>
+    <names>
+        <name lang="de">bidirektionale kreisförmige Bewegung
+bidirektionale Drehung
+bidirektionales Drehmoment</name>
+        <name lang="fr">Mouvement circulaire bidirectionnel
+Rotation bidirectionnelle
+Couple bidirectionnel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" width="10" angle="90" start="45" antialias="true" height="10" x="-5"/>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x3="-6" x1="-3" y4="-2" x4="-3" antialias="false" x2="-5" y3="-1" y1="-2" y2="-4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x3="6" x1="5" y4="-4" x4="5" antialias="false" x2="3" y3="-1" y1="-4" y2="-2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8" length1="1.5" end2="none" antialias="false" x2="5" y1="-2" y2="1" end1="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8" length1="1.5" end2="none" antialias="false" x2="-5" y1="-2" y2="1" end1="none" length2="1.5"/>
+    </description>
+</definition>

@@ -1,0 +1,41 @@
+<definition orientation="dyyy" type="element" width="120" height="110" hotspot_y="104" hotspot_x="95" version="0.70" link_type="simple">
+    <uuid uuid="{3a26be64-7e0e-4bb2-af69-f99930a6a17e}"/>
+    <names>
+        <name lang="de">dreipoliger Schalter mit selbsttätiger Auslösung
+durch den Schlagbolzen jeder einzelnen
+Sicherung</name>
+        <name lang="fr">Interrupteur triphasé à ouverture automatique
+par l'un quelconque des fusibles à percuteur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-40" y1="-100" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-80" y1="-100" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-100" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-85" x="-45"/>
+        <rect antialias="false" width="10" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-85" x="-85"/>
+        <rect antialias="false" width="10" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-85" x="-5"/>
+        <line antialias="false" x1="-80" y1="-20" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-80" y1="-20" x2="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-40" y1="-20" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-10" y1="-40" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-85" y1="-30" x2="20" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="20" y1="-30" x2="20" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-70" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="20" y1="-70" x2="5" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-70" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-75" y1="-70" x2="-60" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-70" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-35" y1="-70" x2="-20" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-70" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-20" y1="-70" x2="-20" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-45" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-60" y1="-70" x2="-60" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-45" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-60" y1="-45" x2="20" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-45" end1="none" length1="1.5" length2="1.5"/>
+        <terminal orientation="s" y="0" x="0"/>
+        <terminal orientation="n" y="-100" x="0"/>
+        <terminal orientation="n" y="-100" x="-40"/>
+        <terminal orientation="s" y="0" x="-40"/>
+        <terminal orientation="s" y="0" x="-80"/>
+        <terminal orientation="n" y="-100" x="-80"/>
+    </description>
+</definition>

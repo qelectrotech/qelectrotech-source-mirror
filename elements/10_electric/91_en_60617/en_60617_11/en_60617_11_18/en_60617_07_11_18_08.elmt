@@ -1,0 +1,15 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="15" width="50" hotspot_y="15">
+    <uuid uuid="{b2b53552-a26b-45cc-8e15-66a66b538ed1}"/>
+    <names>
+        <name lang="de">Flugplatzfeuer, weiss, rundstrahlend</name>
+        <name lang="fr">Feu aéronautique au sol, faisceau blanc et
+omnidirectionnel (en surface)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="55" tagg="label" size="9" x="35" text="_"/>
+        <ellipse height="38" y="-9" antialias="false" width="40" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-5" antialias="false" x="-5" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

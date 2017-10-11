@@ -1,0 +1,20 @@
+<definition hotspot_x="75" version="0.70" orientation="dyyy" height="80" hotspot_y="47" width="130" type="element" link_type="simple">
+    <uuid uuid="{0665e8f5-750d-4c63-8159-c11708855ee2}"/>
+    <names>
+        <name lang="fr">Boîte pour une dérivation avec trois
+conducteurs</name>
+        <name lang="de">Abzweigmuffe</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="50" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70"/>
+        <line x2="50" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70"/>
+        <line x2="50" y2="-30" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70"/>
+        <line x2="-20" y2="30" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <line x2="-10" y2="30" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <line x2="0" y2="30" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <polygon x4="-30" x8="10" y6="-35" y7="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-40" x2="-40" y3="-35" y1="5" x5="10" y8="5" closed="false" x7="20" x1="-30" y9="5" x9="-30" y4="-45" x6="20" y2="-5" y5="-45"/>
+    </description>
+</definition>

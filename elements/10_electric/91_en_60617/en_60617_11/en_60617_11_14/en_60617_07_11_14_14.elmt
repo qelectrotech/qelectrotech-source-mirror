@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="75" width="80" hotspot_y="45">
+    <uuid uuid="{4ad08085-d941-47f0-903a-7450c5ea275a}"/>
+    <names>
+        <name lang="de">Schaltuhr </name>
+        <name lang="fr">Interrupteur horaire</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-30" antialias="false" x="-60" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-70" width="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-50" length2="1.5" antialias="false" x1="-57" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-28" x2="-50" length2="1.5" antialias="false" x1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-25" length2="1.5" antialias="false" x1="-35" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-15" length2="1.5" antialias="false" x1="-5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-16" x2="-25" length2="1.5" antialias="false" x1="-15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

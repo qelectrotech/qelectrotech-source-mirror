@@ -1,0 +1,15 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+    <uuid uuid="{baf3b132-9f39-4ef0-bdfc-75ff16980ad5}"/>
+    <names>
+        <name lang="fr">Moteur pas à pas</name>
+        <name lang="de">Schrittmotor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-35" y="-25" text="M" size="9"/>
+        <polygon y1="-5" x4="-25" x1="-35" x2="-35" antialias="false" x3="-25" y2="-10" y4="-15" y3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+    </description>
+</definition>

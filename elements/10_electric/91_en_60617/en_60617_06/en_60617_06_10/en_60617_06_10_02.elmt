@@ -1,0 +1,28 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
+    <uuid uuid="{f84088cd-ecf5-402d-8e17-eb0e4e6a6093}"/>
+    <names>
+        <name lang="fr">Transformateur monophasé à deux
+enroulements avec écran</name>
+        <name lang="de">Einphasentransformator mit zwei Wicklungen
+und Schirm</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="35" rotate="true" y="85" text="_" tagg="label" size="9"/>
+        <text x="-44" y="-30" text="Form 2 / Forme 2" size="9"/>
+        <line y1="50" end1="none" length1="1.5" x1="30" x2="30" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="20" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="20" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="30" x2="30" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-10" x2="30" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

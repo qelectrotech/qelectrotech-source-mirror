@@ -1,0 +1,14 @@
+<definition height="80" version="0.70" orientation="dyyy" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
+    <uuid uuid="{ae841f75-d048-43f6-8e2d-0968cc3f00e7}"/>
+    <names>
+        <name lang="fr">Cathode chaude, à chauffage indirect</name>
+        <name lang="de">heiße Kathode, indirekt geheizt </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <arc y="-70" height="40" width="40" angle="180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" start="0"/>
+        <line x2="-40" y1="-50" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="-40"/>
+    </description>
+</definition>

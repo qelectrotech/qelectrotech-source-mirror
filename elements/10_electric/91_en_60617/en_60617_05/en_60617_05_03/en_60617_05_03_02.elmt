@@ -1,0 +1,20 @@
+<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+    <uuid uuid="{52cf23a8-aef4-49f5-8720-1939bc9d3815}"/>
+    <names>
+        <name lang="fr">Diode électroluminescente (LED), (symbole
+général)</name>
+        <name lang="de">Leuchtdiode (LED)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="0" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="-10" antialias="false"/>
+        <polygon x4="-10" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-30" y3="-10" x2="10" y2="-30" antialias="false" x3="0" closed="false"/>
+        <line end1="none" end2="triangle" x1="10" y1="-20" style="line-style:normal;line-weight:normal;filling:black;color:black" length1="1.5" length2="1.5" x2="20" y2="-30" antialias="false"/>
+        <line end1="none" end2="triangle" x1="15" y1="-15" style="line-style:normal;line-weight:normal;filling:black;color:black" length1="1.5" length2="1.5" x2="25" y2="-25" antialias="false"/>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="s" y="0" x="0"/>
+    </description>
+</definition>

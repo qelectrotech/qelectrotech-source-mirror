@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+    <uuid uuid="{426cd82b-535e-4351-9f15-6b48becb8d66}"/>
+    <names>
+        <name lang="fr">Commande par moteur électrique</name>
+        <name lang="de">Betätigung durch elektrischen Motor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="15"/>
+        <line x2="6" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-14" y2="0" length2="1.5"/>
+        <circle antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-24" y="-5"/>
+        <text text="M" size="6" x="-22" y="3"/>
+    </description>
+</definition>

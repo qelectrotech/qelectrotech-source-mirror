@@ -1,0 +1,27 @@
+<definition type="element" link_type="simple" height="110" width="90" version="0.70" orientation="dyyy" hotspot_x="75" hotspot_y="105">
+    <uuid uuid="{146fcbf7-9256-47e5-9dbb-23680ef1f9c8}"/>
+    <names>
+        <name lang="fr">Générateur thermoélectrique à source de
+chaleur par rayonnement non ionisant</name>
+        <name lang="de">Thermoelektrischer Generator, betrieben durch
+nichtionisierende Strahlungswärme</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <polygon closed="false" antialias="false" y3="-59.2" x1="1.25" y2="-49.2" x3="-38.75" y4="-69.2" y1="-49.2" x4="-28.75" y5="-69.2" x5="1.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-28.75"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="G" size="9" y="-79.2" x="-23.75"/>
+        <circle antialias="false" diameter="5" y="-61.7" x="-41.25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="60" width="60" y="-100" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-55" y2="-25" length2="1.5" end1="none" length1="1.5" y1="-15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-65"/>
+        <line antialias="false" x1="-60" y2="-20" length2="1.5" end1="none" length1="1.5" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70"/>
+        <polygon antialias="false" y3="-14" x1="-59" y2="-19" x3="-54" y4="-16" y1="-16" x4="-59" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-56"/>
+        <polygon antialias="false" y3="-9" x1="-61" y2="-11" x3="-59" y4="-14" y1="-14" x4="-61" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-64"/>
+    </description>
+</definition>

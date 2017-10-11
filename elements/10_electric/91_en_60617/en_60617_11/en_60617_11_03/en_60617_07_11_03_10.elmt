@@ -1,0 +1,19 @@
+<definition type="element" width="150" version="0.70" hotspot_y="20" orientation="dyyy" height="40" link_type="simple" hotspot_x="144">
+    <uuid uuid="{844d8b1d-38bc-4a52-acce-b7acd69efcee}"/>
+    <names>
+        <name lang="fr">Ligne avec bouchon d'étanchéité à gaz ou
+d'huile, avec contournement</name>
+        <name lang="de">Leiter mit Umgehung der Abschottung von Gas
+oder Öl</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="-140" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="0" length1="1.5"/>
+        <line x2="-70" end2="none" antialias="false" end1="none" length2="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" y1="-10" length1="1.5"/>
+        <arc antialias="true" width="30" x="-85" angle="-180" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" start="0"/>
+        <terminal x="-140" orientation="w" y="0"/>
+        <terminal x="0" orientation="e" y="0"/>
+    </description>
+</definition>

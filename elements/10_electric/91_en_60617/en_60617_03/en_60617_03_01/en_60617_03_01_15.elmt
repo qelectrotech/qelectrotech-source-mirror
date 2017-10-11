@@ -1,0 +1,19 @@
+<definition hotspot_x="46" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
+    <uuid uuid="{c496f40b-02f0-4dd2-8978-5d73e44310ef}"/>
+    <names>
+        <name lang="fr">Extrémité d’un conducteur ou d’un cable, non
+connectée et spécialement isolée</name>
+        <name lang="de">Leitung, nicht angeschlossen, besonders
+isoliert</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="30" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <arc y="-20" x="20" antialias="true" height="20" angle="225" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" start="270"/>
+        <line x2="10" y2="-10" y1="-17" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <line x2="-10" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <terminal y="0" x="-40" orientation="w"/>
+    </description>
+</definition>

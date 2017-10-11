@@ -1,0 +1,18 @@
+<definition orientation="dyyy" version="0.70" width="100" type="element" hotspot_y="10" link_type="simple" hotspot_x="26" height="20">
+    <uuid uuid="{8bae1a3d-0b56-4f57-a8e0-d3b9dbada539}"/>
+    <names>
+        <name lang="fr">Courant alternatif</name>
+        <name lang="de">Wechselstrom und -Spannung </name>
+        <name lang="en">Alternating current</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc angle="124" width="7" x="-7.5" start="56" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" antialias="true"/>
+        <arc angle="124" width="7" x="1.5" start="234" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="-2.5" antialias="true"/>
+        <line x2="3" y2="2" length2="1.5" length1="1.5" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-2" end2="none" antialias="false"/>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <text x="10" text="400/230 V 50 Hz" size="6" y="3"/>
+        <text x="-21" text="3/N" size="6" y="3"/>
+    </description>
+</definition>

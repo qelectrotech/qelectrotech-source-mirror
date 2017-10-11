@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="125" width="130" hotspot_y="45">
+    <uuid uuid="{c34e2693-601d-4112-8ca8-ce33d6dedb4a}"/>
+    <names>
+        <name lang="de">Verkehrszeichen,
+Wegweiser, allgemein</name>
+        <name lang="fr">Plaque d'avertissement
+Panneau de guidage, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-80" width="40" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-120" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

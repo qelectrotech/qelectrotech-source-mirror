@@ -1,0 +1,23 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="60" hotspot_y="30" width="110" type="element" link_type="simple">
+    <uuid uuid="{3d1e99a2-c6bf-443f-85cb-da920139a5c3}"/>
+    <names>
+        <name lang="fr">Permutation des conducteurs
+Inversion de polarité</name>
+        <name lang="de">Leiterverbindungen, Tausch von Leitern
+Wechsel von Polarität</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="60" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <polygon x2="-30" y2="10" y1="10" x3="-10" x4="0" y4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-10" x1="-40"/>
+        <line x2="40" y2="10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20"/>
+        <text y="-10" x="-10" text="L1" size="6"/>
+        <line x2="50" y2="10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30"/>
+        <line x2="60" y2="10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40"/>
+        <text y="20" x="-40" text="L3" size="6"/>
+        <terminal y="0" x="60" orientation="e"/>
+        <terminal y="0" x="-40" orientation="w"/>
+    </description>
+</definition>

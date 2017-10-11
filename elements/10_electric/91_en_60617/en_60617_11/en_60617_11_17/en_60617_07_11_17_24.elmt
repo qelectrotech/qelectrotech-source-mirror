@@ -1,0 +1,20 @@
+<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="90" hotspot_y="15">
+    <uuid uuid="{0390d5f9-3377-43d3-b76d-ec7b4050017f}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal mit festem
+Abzweig</name>
+        <name lang="fr">Élément droit avec dérivation fixe</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="35" tagg="label" size="9" x="45" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-10" antialias="false" x="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="20" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="0" x="40"/>
+        <terminal orientation="w" y="0" x="-40"/>
+    </description>
+</definition>

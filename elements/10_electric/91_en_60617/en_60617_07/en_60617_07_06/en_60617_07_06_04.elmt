@@ -1,0 +1,24 @@
+<definition link_type="simple" type="element" width="30" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="14">
+    <uuid uuid="{882b476f-f8e2-4629-9c33-7bbda6d8d1de}"/>
+    <names>
+        <name lang="fr">Contact à deux directions avec position
+médiane de coupure avec et sans retour
+automatique</name>
+        <name lang="de">Zweiwegeschließer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="10" antialias="false" y1="-26" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="2" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="0" antialias="false" y1="-2" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <circle antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" y="-2"/>
+        <line x2="-10" antialias="false" y1="-40" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" y2="-20" length2="1.5"/>
+        <polygon x2="-7" antialias="false" y1="-20" x3="-10" x4="-10" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" closed="false" y2="-23" y3="-25"/>
+        <circle antialias="false" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5" y="-25.5"/>
+        <terminal orientation="n" x="-10" y="-40"/>
+        <terminal orientation="n" x="10" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+    </description>
+</definition>

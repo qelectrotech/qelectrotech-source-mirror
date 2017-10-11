@@ -1,0 +1,40 @@
+<definition height="180" type="element" width="130" hotspot_y="160" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="105">
+    <uuid uuid="{15a620f0-fe65-4fc6-add2-486a67b04377}"/>
+    <names>
+        <name lang="fr">Ligne à retard, type magnétostrictif avec
+enroulements, en représentation assemblée</name>
+        <name lang="de">magnetostriktive Verzögerungsleitung mit
+Wicklungen, aufgelöste Darstellung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <arc angle="180" antialias="true" height="10" width="10" y="-70" x="-35.5" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="180" antialias="true" height="10" width="10" y="-10" x="-5" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="180" antialias="true" height="10" width="10" y="-80" x="-35.5" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-10.5" length1="1.5" length2="1.5" y1="-60" y2="-60" x1="-30.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="180" antialias="true" height="10" width="10" y="-20" x="-5" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-40.5" length1="1.5" length2="1.5" y1="-60" y2="-80" x1="-40.5" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line antialias="false" x2="20" length1="1.5" length2="1.5" y1="0" y2="0" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="20" length1="1.5" length2="1.5" y1="-20" y2="-20" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-30" y2="-30" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-80" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-35" y2="-25" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-65" length1="1.5" length2="1.5" y1="-140" y2="-120" x1="-65" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line antialias="false" x2="-10" length1="1.5" length2="1.5" y1="0" y2="-20" x1="-10" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-140" x="-85" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-130" x="-85" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-100" length1="1.5" length2="1.5" y1="-140" y2="-140" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-80" length1="1.5" length2="1.5" y1="-120" y2="-120" x1="-100" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-90" y2="-90" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-80" length1="1.5" length2="1.5" y1="-95" y2="-85" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-95" y2="-85" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-150" y2="-150" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="-155" y2="-145" x1="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-80" length1="1.5" length2="1.5" y1="-155" y2="-145" x1="-80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="-10" length1="1.5" length2="1.5" y1="-80" y2="-80" x1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-45" text="50 µs" x="-40" size="6"/>
+        <text y="15" text="100 µs" x="-10" size="6"/>
+    </description>
+</definition>

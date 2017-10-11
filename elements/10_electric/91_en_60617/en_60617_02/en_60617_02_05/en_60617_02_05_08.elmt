@@ -1,0 +1,15 @@
+<definition type="element" width="20" height="10" version="0.70" hotspot_x="9" hotspot_y="5" orientation="dyyy" link_type="simple">
+    <uuid uuid="{2acf818e-2db5-4885-b3f1-57fbb1db5d41}"/>
+    <names>
+        <name lang="fr">Transit de l'énergie dans les deux sens</name>
+        <name lang="de">Energiefluß, bidirektional</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-6" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="simple" x2="6"/>
+        <line antialias="false" x1="0" length2="1.5" end1="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="none" x2="7"/>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+        <line antialias="false" x1="-6" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="2" y1="-2" end2="none" x2="-6"/>
+    </description>
+</definition>

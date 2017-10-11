@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="70" height="80" hotspot_x="45" hotspot_y="75" orientation="dyyy" version="0.70">
+    <uuid uuid="{4128fcf6-cacf-48d6-afc1-492336090c5f}"/>
+    <names>
+        <name lang="de">Kabelkopf (Empfangsstelle) mit Ortsantenne</name>
+        <name lang="fr">Tête de réseau avec antenne locale</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <circle diameter="40" y="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-40"/>
+        <polygon y4="-60" x4="-37" x3="-20" y2="-60" x1="-37" y1="-60" x2="-3" y3="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" closed="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-20" y1="-60" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-20" length2="1.5" x1="-4" y1="-37" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

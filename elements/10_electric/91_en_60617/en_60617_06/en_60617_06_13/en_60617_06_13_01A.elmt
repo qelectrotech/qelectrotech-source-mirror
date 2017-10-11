@@ -1,0 +1,19 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="51" height="150" width="110" hotspot_y="70" version="0.70">
+    <uuid uuid="{fa2a609e-e9ec-496f-ae7a-b54eabf136de}"/>
+    <names>
+        <name lang="de">Spannungswandler</name>
+        <name lang="fr">Transformateur de tension</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="135" x="35" size="9" text="_" tagg="label"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-19" x="-20" diameter="40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-20" y1="-40" x2="0"/>
+        <text y="-50" x="-44" size="9" text="Form 1 / Forme 1"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="10" x="-20" diameter="40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-0.125" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="71" y1="51" x2="-0.125"/>
+        <terminal orientation="s" y="71" x="-0.125"/>
+        <terminal orientation="n" y="-40" x="0"/>
+    </description>
+</definition>

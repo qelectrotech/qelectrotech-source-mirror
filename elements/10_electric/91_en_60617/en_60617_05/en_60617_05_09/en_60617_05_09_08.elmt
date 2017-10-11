@@ -1,0 +1,20 @@
+<definition type="element" link_type="simple" height="70" width="70" version="0.70" orientation="dyyy" hotspot_x="65" hotspot_y="65">
+    <uuid uuid="{ae936a83-f11a-4a82-981b-b9cdd48dbdd9}"/>
+    <names>
+        <name lang="fr">Structure à retard fermée</name>
+        <name lang="de">Verzögerungsleitung, geschlossen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <circle antialias="false" diameter="60" y="-60" x="-60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="40" y="-50" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-30" y2="-45" length2="1.5" end1="none" length1="1.5" y1="-50" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" x1="-30" y2="-15" length2="1.5" end1="none" length1="1.5" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" x1="-12" y2="-37" length2="1.5" end1="none" length1="1.5" y1="-39" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-16"/>
+        <line antialias="false" x1="-46" y2="-39" length2="1.5" end1="none" length1="1.5" y1="-42" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-42"/>
+        <line antialias="false" x1="-14" y2="-21" length2="1.5" end1="none" length1="1.5" y1="-18" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18"/>
+        <line antialias="false" x1="-48" y2="-23" length2="1.5" end1="none" length1="1.5" y1="-21" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-44"/>
+    </description>
+</definition>

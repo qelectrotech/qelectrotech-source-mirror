@@ -1,0 +1,21 @@
+<definition link_type="simple" version="0.70" hotspot_x="5" hotspot_y="0" orientation="dyyy" type="element" height="20" width="30">
+    <uuid uuid="{b7c28458-9458-4cdd-b2da-ee9a6ee601df}"/>
+    <names>
+        <name lang="fr">Jonction influeçant une région semiconductrice
+par un champ électrique, par exemple dans un
+transistor de champ:
+- région N influençant une région P</name>
+        <name lang="de">Sperrschicht, die mit einem elektrischen Feld
+eine Halbleiterzone beeinflußt, z. B. in einem
+Feldeffekt-Transistor:
+- N-Gebiet, das eine P-Zone beeinflußt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="35" size="9" x="25"/>
+        <line end1="none" end2="none" x1="0" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="10" antialias="false"/>
+        <line end1="none" end2="none" x1="20" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="15" antialias="false"/>
+        <polygon x1="15" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="15" x2="10" y2="10" antialias="false" x3="15" closed="false"/>
+    </description>
+</definition>

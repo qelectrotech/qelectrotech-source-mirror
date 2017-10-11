@@ -1,0 +1,13 @@
+<definition type="element" width="20" height="20" version="0.70" hotspot_x="10" hotspot_y="11" orientation="dyyy" link_type="simple">
+    <uuid uuid="{add4681a-c9e3-45bd-a58e-10b0ecd944da}"/>
+    <names>
+        <name lang="fr">Conducteur neutre</name>
+        <name lang="de">Neutralleiter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+        <text size="6" text="N" y="6" x="-3"/>
+    </description>
+</definition>

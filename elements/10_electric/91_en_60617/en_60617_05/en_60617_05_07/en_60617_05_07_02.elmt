@@ -1,0 +1,15 @@
+<definition height="100" version="0.70" orientation="dyyy" width="110" hotspot_x="87" type="element" hotspot_y="90" link_type="simple">
+    <uuid uuid="{4ebf67a3-d801-4e56-88fb-b744f6ad93c2}"/>
+    <names>
+        <name lang="fr">Enveloppe avec écran externe</name>
+        <name lang="de">Röhrenkolben mit externem Schirm</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <circle y="-80" diameter="80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80"/>
+        <arc y="-85" height="90" width="90" angle="-180" antialias="true" style="line-style:dashed;line-weight:normal;filling:none;color:black" x="-85" start="90"/>
+        <line x2="5" y1="-40" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-40" x1="20"/>
+    </description>
+</definition>

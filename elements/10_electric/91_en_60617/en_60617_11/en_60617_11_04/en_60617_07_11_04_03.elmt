@@ -1,0 +1,17 @@
+<definition type="element" width="70" version="0.70" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" hotspot_x="45">
+    <uuid uuid="{5cb89a64-e3a4-4eb6-8bc0-3e336635a7ea}"/>
+    <names>
+        <name lang="fr">Point de répartition</name>
+        <name lang="de">Querverbindungspunkt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <circle antialias="false" diameter="40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40"/>
+        <circle antialias="false" diameter="30" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-35"/>
+        <line x2="0" end2="none" antialias="false" end1="none" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" y1="-20" length1="1.5"/>
+        <line x2="-2" end2="none" antialias="false" end1="none" length2="1.5" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" y1="-10" length1="1.5"/>
+        <line x2="-2" end2="none" antialias="false" end1="none" length2="1.5" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" y1="-30" length1="1.5"/>
+    </description>
+</definition>

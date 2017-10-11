@@ -1,0 +1,19 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="20" hotspot_y="12" width="90" type="element" link_type="simple">
+    <uuid uuid="{9a182bfd-b6b7-439f-9817-6f6139083eb6}"/>
+    <names>
+        <name lang="fr">Circuit à courant continu</name>
+        <name lang="de">Gleichstromkreis</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="-8" y2="-7" y1="-7" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15"/>
+        <line x2="-8" y2="-5" y1="-5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" x1="-15"/>
+        <input y="-6" x="-9" rotate="true" text="110 V" size="6" tagg="none"/>
+        <input y="5" x="-25" text="2 x 120 mm² AI" size="6" tagg="none"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="0" x="40" orientation="e"/>
+    </description>
+</definition>

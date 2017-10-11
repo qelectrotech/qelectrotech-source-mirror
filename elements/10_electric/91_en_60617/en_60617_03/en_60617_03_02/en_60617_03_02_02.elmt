@@ -1,0 +1,13 @@
+<definition hotspot_x="4" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
+    <uuid uuid="{707b0bd8-0480-47b8-b00d-8e9493ce20b1}"/>
+    <names>
+        <name lang="fr">Borne</name>
+        <name lang="de">Anschluß, z. B. Klemme</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <circle y="-2.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
+    </description>
+</definition>

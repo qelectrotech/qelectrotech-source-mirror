@@ -1,0 +1,28 @@
+<definition hotspot_x="95" hotspot_y="84" orientation="dyyy" type="element" version="0.70" height="110" link_type="simple" width="170">
+    <uuid uuid="{527f8ec7-f0bc-4f7d-87ca-438d399172d4}"/>
+    <names>
+        <name lang="de">Magnetron mit Spannungsabstimmung
+(05-13-18, vereinfachte Form)</name>
+        <name lang="fr">Tube oscillateur à onde progressive inverse
+(magnétron accordable par la tension)
+(05-13-18, forme simplifiée)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" y="15" rotate="true" x="5" text="_" tagg="label"/>
+        <circle y="-80" x="-80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="100"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="-80" y2="-70" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="20" y2="10" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="5" end2="none" end1="none" length1="1.5" y1="-54" y2="-49" antialias="false" x1="14" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="2" end2="none" end1="none" length1="1.5" y1="1" y2="-5" antialias="false" x1="9" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-66" end2="none" end1="none" length1="1.5" y1="-6" y2="-11" antialias="false" x1="-74" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-62" end2="none" end1="none" length1="1.5" y1="-61" y2="-55" antialias="false" x1="-69" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <rect y="-40" height="20" x="40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10"/>
+        <line x2="70" end2="none" end1="none" length1="1.5" y1="-30" y2="-30" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y1="20" y2="-80" antialias="false" x1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <polygon x2="16" y4="-76" y1="-76" y2="-79" antialias="false" x1="19" y3="-82" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="22" x4="19"/>
+        <text size="12" y="-30" x="-40" text="f"/>
+        <text size="12" y="20" x="-90" text="U"/>
+    </description>
+</definition>

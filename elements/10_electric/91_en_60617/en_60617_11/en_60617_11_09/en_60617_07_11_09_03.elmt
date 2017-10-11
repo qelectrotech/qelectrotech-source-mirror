@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="45" hotspot_y="15" orientation="dyyy" version="0.70">
+    <uuid uuid="{f6976491-e766-4cbe-94eb-5206024ea045}"/>
+    <names>
+        <name lang="de">Dämpfungsglied (zur Darstellung auf einem
+topographischen Plan)</name>
+        <name lang="fr">Affaiblisseur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="85" x="65" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="10" length2="1.5" x1="-40" y1="10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect width="40" height="40" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-10"/>
+        <line end2="none" end1="none" length1="1.5" y2="10" length2="1.5" x1="30" y1="10" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="18" length2="1.5" x1="13" y1="22" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="14" length2="1.5" x1="7" y1="18" x2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="10" length2="1.5" x1="13" y1="14" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="6" length2="1.5" x1="7" y1="10" x2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="2" length2="1.5" x1="13" y1="6" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-2" length2="1.5" x1="7" y1="2" x2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition type="element" width="150" version="0.70" hotspot_y="34" orientation="dyyy" height="40" link_type="simple" hotspot_x="144">
+    <uuid uuid="{4feba9c7-b782-415f-8af6-ac4a7966fd15}"/>
+    <names>
+        <name lang="fr">Ligne dans un conduit,
+Ligne dans un fourreau</name>
+        <name lang="de">Leiter in einem Kabelkanal,
+Leiter in einer Trasse</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="-140" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="0" length1="1.5"/>
+        <circle antialias="false" diameter="20" x="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30"/>
+        <terminal x="-140" orientation="w" y="0"/>
+        <terminal x="0" orientation="e" y="0"/>
+    </description>
+</definition>

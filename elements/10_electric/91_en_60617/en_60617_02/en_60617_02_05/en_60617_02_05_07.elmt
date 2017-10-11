@@ -1,0 +1,15 @@
+<definition type="element" width="20" height="10" version="0.70" hotspot_x="6" hotspot_y="5" orientation="dyyy" link_type="simple">
+    <uuid uuid="{87bdc413-6293-42ae-b053-c49432600903}"/>
+    <names>
+        <name lang="fr">Transit de l'énergie vers les barres</name>
+        <name lang="de">Energiefluß zur Sammelschiene hin</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="none" x2="3"/>
+        <line antialias="false" x1="3" length2="1.5" end1="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="none" x2="10"/>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+        <line antialias="false" x1="-3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="2" y1="-2" end2="none" x2="-3"/>
+    </description>
+</definition>

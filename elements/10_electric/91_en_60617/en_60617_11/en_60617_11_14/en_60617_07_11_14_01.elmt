@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="25" width="40" hotspot_y="47">
+    <uuid uuid="{e4061ce3-f1a0-46a0-bd79-8081ee9341c2}"/>
+    <names>
+        <name lang="de">Schalter, allgemein</name>
+        <name lang="fr">Interrupteur, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-45" y2="-19" x2="-5" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

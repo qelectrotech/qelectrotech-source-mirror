@@ -1,0 +1,29 @@
+<definition hotspot_x="115" hotspot_y="145" orientation="dyyy" type="element" version="0.70" height="240" link_type="simple" width="210">
+    <uuid uuid="{61df7210-6ce5-4d25-9f2f-8b8449f0b1d2}"/>
+    <names>
+        <name lang="de">Magnetron</name>
+        <name lang="fr">Tube oscillateur magnétron</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" y="15" rotate="true" x="5" text="_" tagg="label"/>
+        <circle y="-110" x="-110" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="160"/>
+        <circle y="-80" x="-80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="100"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="-80" y2="-70" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="20" y2="10" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="5" end2="none" end1="none" length1="1.5" y1="-54" y2="-49" antialias="false" x1="14" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="2" end2="none" end1="none" length1="1.5" y1="1" y2="-5" antialias="false" x1="9" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-66" end2="none" end1="none" length1="1.5" y1="-6" y2="-11" antialias="false" x1="-74" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-62" end2="none" end1="none" length1="1.5" y1="-61" y2="-55" antialias="false" x1="-69" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <polygon x5="-25" y7="-125" x8="-25" x2="-35" x1="-25" x4="-25" x6="-30" y4="-140" x7="-30" y3="-140" y6="-135" y1="-120" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y2="-120" x9="-25" y9="-120" y8="-125" y5="-135" x3="-35"/>
+        <circle y="-40" x="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <rect y="-40" height="20" x="70" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10"/>
+        <line x2="90" end2="none" end1="none" length1="1.5" y1="-30" y2="-30" antialias="false" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="180" y="0" height="40" x="-50" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="40"/>
+        <arc angle="135" y="-20" height="80" x="-70" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" width="80"/>
+        <line x2="-50" end2="none" end1="none" length1="1.5" y1="20" y2="90" antialias="false" x1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-10" end2="none" end1="none" length1="1.5" y1="20" y2="90" antialias="false" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-70" end2="none" end1="none" length1="1.5" y1="20" y2="90" antialias="false" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+    </description>
+</definition>

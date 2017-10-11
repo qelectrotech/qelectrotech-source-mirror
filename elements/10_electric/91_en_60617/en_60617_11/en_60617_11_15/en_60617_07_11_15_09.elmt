@@ -1,0 +1,20 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="26" width="40" hotspot_y="25">
+    <uuid uuid="{8b3da9f6-e0d7-4bfd-96b7-09817c2bb9a1}"/>
+    <names>
+        <name lang="de">Flutlichtleuchte</name>
+        <name lang="fr">Projecteur d'illumination</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <arc y="-20" height="20" angle="180" antialias="true" x="-20" width="20" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-15" antialias="false" x="-15" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-7" length2="1.5" antialias="false" x1="-13" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-13" y2="-7" x2="-13" length2="1.5" antialias="false" x1="-7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-20" x2="5" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="0" x2="5" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-19" y2="-21" y3="-23" x2="4" antialias="false" x1="6" x4="6" y4="-19" x3="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y1="1" y2="-1" y3="3" x2="6" antialias="false" x1="4" x4="4" y4="1" x3="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

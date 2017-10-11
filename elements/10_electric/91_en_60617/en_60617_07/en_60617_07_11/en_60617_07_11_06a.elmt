@@ -1,0 +1,24 @@
+<definition link_type="simple" version="0.70" hotspot_x="64" hotspot_y="38" orientation="dyyy" type="element" height="50" width="70">
+    <uuid uuid="{a99899f7-0c4f-491b-8b68-114482257281}"/>
+    <names>
+        <name lang="fr">Commutateur multipolaire à quatre directions</name>
+        <name lang="de">Mehrstellungsschalter (geringe Anzahl von
+Schaltstellungen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" end2="none" x1="-29.25" y1="0.8" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-39.25" y2="-19.2" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" y="25" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-29.25" y1="0.8" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-19.25" y2="-19.2" antialias="false"/>
+        <line end1="none" end2="none" x1="-29.25" y1="0.8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0.75" y2="-19.2" antialias="false"/>
+        <line end1="none" end2="none" x1="-29.25" y1="0.8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-59.25" y2="-19.2" antialias="false"/>
+        <text text="1" y="-23.2" size="6" x="-61.25"/>
+        <text text="2" y="-23.2" size="6" x="-41.25"/>
+        <text text="3" y="-23.2" size="6" x="-21.25"/>
+        <text text="4" y="-23.2" size="6" x="-2.25"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" height="22" x="-50" angle="109" antialias="true" width="40" start="34"/>
+        <polygon x4="-42" x1="-42" y1="-11" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-11" y3="-11" x2="-44" y2="-14" antialias="false" x3="-46"/>
+        <polygon x4="-17" x1="-17" y1="-11" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-11" y3="-10" x2="-15" y2="-13" antialias="false" x3="-13"/>
+    </description>
+</definition>

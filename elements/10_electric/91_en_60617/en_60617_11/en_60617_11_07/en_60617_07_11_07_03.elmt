@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="110" height="80" hotspot_x="105" hotspot_y="75" orientation="dyyy" version="0.70">
+    <uuid uuid="{bb396f15-4981-4afd-bb7f-a1246635e4d3}"/>
+    <names>
+        <name lang="de">Richtungskoppler</name>
+        <name lang="fr">Coupleur directif</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-50" y1="-35" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-50" length2="1.5" x1="-100" y1="-50" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-50" length2="1.5" x1="-50" y1="-35" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="40" y="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-70"/>
+    </description>
+</definition>

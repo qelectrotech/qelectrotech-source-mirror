@@ -1,0 +1,17 @@
+<definition link_type="simple" type="element" width="110" height="40" hotspot_x="45" hotspot_y="10" orientation="dyyy" version="0.70">
+    <uuid uuid="{3326f49f-4868-4bce-91b0-e43a7ca1dceb}"/>
+    <names>
+        <name lang="de">Entzerrer, veränderbar</name>
+        <name lang="fr">Égaliseur variable</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="45" x="65" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="9" length2="1.5" x1="-40" y1="9" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon y4="19" x4="10" y5="9" x3="30" y2="-1" x1="-10" y1="9" x2="10" y3="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" closed="false" x5="-10"/>
+        <line end2="none" end1="none" length1="1.5" y2="9" length2="1.5" x1="30" y1="9" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-5" length2="1.5" x1="-10" y1="25" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon y4="-1" x4="27" x3="31" y2="-3" x1="27" y1="-1" x2="25" y3="-6" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="15" hotspot_x="10" version="0.70" link_type="simple">
+    <uuid uuid="{c7e545a6-5835-46d6-a0cb-0c23a60e6267}"/>
+    <names>
+        <name lang="de">Schütz-Funktion</name>
+        <name lang="fr">Fonction contacteur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="0" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <arc antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" start="90" angle="180" x="-5"/>
+    </description>
+</definition>

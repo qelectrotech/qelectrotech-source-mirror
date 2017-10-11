@@ -1,0 +1,14 @@
+<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" orientation="dyyy" version="0.70">
+    <uuid uuid="{f0362182-8e50-42f0-904f-3a808518a837}"/>
+    <names>
+        <name lang="de">Dose,
+Leerdose, allgemein</name>
+        <name lang="fr">Boîte, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <circle diameter="20" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-20"/>
+    </description>
+</definition>

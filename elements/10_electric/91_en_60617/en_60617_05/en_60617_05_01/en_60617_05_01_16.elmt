@@ -1,0 +1,15 @@
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" orientation="dyyy" type="element" height="30" width="30">
+    <uuid uuid="{a9660c36-2f8a-455e-864f-8a9a879ef041}"/>
+    <names>
+        <name lang="fr">Emetteur: N sur région P</name>
+        <name lang="de">N-Emitter auf einer P-Zone</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-20" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-20" antialias="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-20" y2="0" antialias="false"/>
+        <polygon x1="-15" y1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-8" x2="-9" y2="-13" antialias="false" x3="-12" closed="false"/>
+    </description>
+</definition>

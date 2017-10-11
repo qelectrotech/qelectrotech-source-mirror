@@ -1,0 +1,16 @@
+<definition height="30" version="0.70" orientation="dyyy" width="90" hotspot_x="85" type="element" hotspot_y="25" link_type="simple">
+    <uuid uuid="{90b2cefe-6587-4a2c-a97d-fa07daa0db6f}"/>
+    <names>
+        <name lang="fr">Électrodes de déviation latérale</name>
+        <name lang="de">Ablenkelektroden</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="-20" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="0"/>
+        <line x2="-80" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-60"/>
+        <polygon x2="-60" y1="-20" x3="-50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y2="-10" x1="-50" y3="0"/>
+        <polygon x2="-20" y1="0" x3="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y2="-10" x1="-30" y3="-20"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="42" width="50" hotspot_y="45">
+    <uuid uuid="{472fddd6-a348-46e4-989a-7ae3708578c1}"/>
+    <names>
+        <name lang="de">Kurvenfeuer, grün/grün, zweiseitig strahlend</name>
+        <name lang="fr">Feu de virage, faisceau vert/vert et
+bidirectionnel (en surface)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-40" antialias="false" x="-40" diameter="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-5" width="10" style="line-style:normal;line-weight:normal;filling:white;color:white"/>
+        <circle y="-35" antialias="false" x="-35" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-5" length2="1.5" antialias="false" x1="-35" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-29" antialias="false" x="-22" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle y="-15" antialias="false" x="-22" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

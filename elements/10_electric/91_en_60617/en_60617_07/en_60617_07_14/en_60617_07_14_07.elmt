@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{826368b9-a470-4650-839a-8db3d510069e}"/>
+    <names>
+        <name lang="de">Anlasser mit Spartransformator</name>
+        <name lang="fr">Démarreur par autotransformateur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-20"/>
+        <polygon antialias="false" closed="false" x1="-20" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x3="20" y3="-20"/>
+        <circle antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" x="-5"/>
+        <line antialias="false" x1="-10" y1="0" x2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="10" y1="0" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="2" y1="5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+    </description>
+</definition>

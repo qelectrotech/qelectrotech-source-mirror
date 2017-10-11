@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" width="30" height="50" hotspot_y="24" hotspot_x="15" version="0.70" link_type="simple">
+    <uuid uuid="{6f3f7cf5-4f86-4ba6-91ad-6885f0c8b402}"/>
+    <names>
+        <name lang="de">elektronischer Schalter, allgemein</name>
+        <name lang="fr">Interrupteur à semiconducteur (statique),
+symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-10" y1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="10" x2="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-11" end1="none" length1="1.5" length2="1.5"/>
+        <terminal orientation="n" y="-20" x="0"/>
+        <terminal orientation="s" y="20" x="0"/>
+    </description>
+</definition>

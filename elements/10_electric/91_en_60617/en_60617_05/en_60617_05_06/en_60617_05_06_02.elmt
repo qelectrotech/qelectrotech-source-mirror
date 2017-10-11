@@ -1,0 +1,23 @@
+<definition hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="50">
+    <uuid uuid="{a3138171-c5d8-4c0e-9cf8-82a597dba2d3}"/>
+    <names>
+        <name lang="fr">Photodiode
+Cellule photoconductrice à conductivité
+asymétrique</name>
+        <name lang="de">Photodiode
+lichtempfindliches Element mit
+unsymmetrischer Leitfähigkeit</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" x="5" text="_" y="15" tagg="label"/>
+        <line x2="0" antialias="false" y1="-50" length2="1.5" y2="0" length1="1.5" end1="none" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-15" antialias="false" y1="-35" length2="1.5" y2="-25" length1="1.5" end1="none" end2="triangle" x1="-25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x2="-20" antialias="false" y1="-30" length2="1.5" y2="-20" length1="1.5" end1="none" end2="triangle" x1="-30" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x2="10" antialias="false" y1="-10" length2="1.5" y2="-10" length1="1.5" end1="none" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="10" closed="false" x3="0" antialias="false" y1="-30" y3="-10" y2="-30" y4="-30" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-10"/>
+        <terminal orientation="n" x="0" y="-50"/>
+        <terminal orientation="s" x="0" y="0"/>
+    </description>
+</definition>

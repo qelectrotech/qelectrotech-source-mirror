@@ -1,0 +1,17 @@
+<definition hotspot_x="38" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="50" type="element" link_type="simple">
+    <uuid uuid="{f982b872-7d1a-466a-9edc-ba1cdbe37062}"/>
+    <names>
+        <name lang="fr">Contact femelle (d’une prise ou d’une fiche)
+Prise</name>
+        <name lang="de">Pol einer Steckbuchse
+Buchse</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-30" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <arc y="-5" x="-5" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" start="90"/>
+        <terminal y="0" x="-30" orientation="w"/>
+    </description>
+</definition>

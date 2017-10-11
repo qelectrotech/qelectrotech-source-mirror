@@ -1,0 +1,68 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="70" height="160" width="160" hotspot_y="67" version="0.70">
+    <uuid uuid="{30e36d2a-38c7-4849-83ee-ae7ca9c8ce13}"/>
+    <names>
+        <name lang="de">Drehstromtransformator,
+Stern/Dreieckschaltung</name>
+        <name lang="fr">Transformateur triphasé, couplage étoile-
+triangle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="155" x="85" size="9" text="_" tagg="label"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="-5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="55" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="-5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="-5" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="55" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="-35" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="-65" start="90"/>
+        <text y="-50" x="-20" size="9" text="Form 2 / Forme 2"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="-65" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="-65" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="15" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="55" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="-60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="50" x2="-60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="40" x2="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="75" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="50" x2="-30"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="45" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="75" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="45" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="75" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="45" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="50" y1="40" x2="0"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="70" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50" width="10" angle="-180" x="15" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-20" width="10" angle="-180" x="-25" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-10" width="10" angle="-180" x="-25" start="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-30" width="10" angle="-180" x="-25" start="90"/>
+        <line length2="1.5" antialias="false" end1="none" x1="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="80"/>
+        <line length2="1.5" antialias="false" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="50"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="90" y1="80" x2="20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="50" x2="20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="40" x2="40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="80" y1="40" x2="40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="80" y1="80" x2="50"/>
+        <line length2="1.5" antialias="false" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="50" x2="50"/>
+        <line length2="1.5" antialias="false" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="40" y1="40" x2="70"/>
+        <line length2="1.5" antialias="false" end1="none" x1="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="80" y1="40" x2="70"/>
+        <line length2="1.5" antialias="false" end1="none" x1="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="80" y1="80" x2="80"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="80" y1="80" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="30" y1="80" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="30" y1="30" x2="80"/>
+        <line length2="1.5" antialias="false" end1="none" x1="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="50" y1="30" x2="80"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="0" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="10" x2="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="0" y1="10" x2="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="0" x2="20"/>
+    </description>
+</definition>

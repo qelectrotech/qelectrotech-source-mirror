@@ -1,0 +1,18 @@
+<definition link_type="simple" type="element" width="100" height="70" hotspot_x="95" hotspot_y="64" orientation="dyyy" version="0.70">
+    <uuid uuid="{60c369a8-ca6d-4e21-9745-b4b2f566a885}"/>
+    <names>
+        <name lang="de">Durchgangs- und Abzweigverstärker</name>
+        <name lang="fr">Amplificateur de ligne avec dérivations</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-30" length2="1.5" x1="0" y1="-30" x2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon y4="-30" x4="-35" x3="-60" y2="-15" x1="-35" y1="-30" x2="-60" y3="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" closed="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-30" length2="1.5" x1="-90" y1="-30" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-50" y1="-21" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-42" length2="1.5" x1="-43" y1="-58" x2="-53" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="-37" length2="1.5" x1="-34" y1="-54" x2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

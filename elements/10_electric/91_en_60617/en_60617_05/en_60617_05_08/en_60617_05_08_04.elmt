@@ -1,0 +1,17 @@
+<definition type="element" hotspot_y="10" orientation="dyyy" version="0.70" hotspot_x="55" width="110" height="20" link_type="simple">
+    <uuid uuid="{50e0d3f3-9ed4-4375-9b83-5402bab274ac}"/>
+    <names>
+        <name lang="fr">Électrodes de concentration à diaphragme
+Plaque formant le faisceau</name>
+        <name lang="de">Fokussierelektrode
+Strahlformungs-Elektrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" y="25" tagg="label" rotate="true" x="55" size="9"/>
+        <line x1="-10" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end2="none" y1="0" end1="none" y2="0" antialias="false"/>
+        <rect y="-5" style="line-style:normal;line-weight:normal;filling:black;color:black" x="30" width="20" height="10" antialias="false"/>
+        <rect y="-5" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-10" width="20" height="10" antialias="false"/>
+    </description>
+</definition>

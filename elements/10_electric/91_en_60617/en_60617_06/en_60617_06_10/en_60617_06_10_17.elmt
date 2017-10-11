@@ -1,0 +1,40 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="83" height="200" width="110" hotspot_y="180" version="0.70">
+    <uuid uuid="{2f6a2518-ce88-4d2e-af09-1701307c1f4b}"/>
+    <names>
+        <name lang="de">Drehstromtransformator,
+Stern/Stern/Dreieckschaltung</name>
+        <name lang="fr">Transformateur triphasé, couplage étoile-étoile-
+triangle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" x="-39" diameter="60"/>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="-20" x2="-9"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-120" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-120" y1="-150" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-10" y1="0" x2="1"/>
+        <text y="-160" x="-74" size="9" text="Form 1 / Forme 1"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-5" y1="5" x2="1"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" x="-80" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="-20" x2="-50"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-140" y1="-130" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-145" y1="-135" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-10" y1="0" x2="-40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-5" y1="5" x2="-40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-135" y1="-125" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-15" y1="-5" x2="-40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-15" y1="-5" x2="0"/>
+        <polygon antialias="false" y3="-55" closed="false" x1="-10" x4="-10" y4="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-35" x3="0" y1="-35" x2="10"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-40" y1="-30" x2="-55"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-45" y1="-40" x2="-45"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-45" y1="-40" x2="-65"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-90" y1="-80" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-95" y1="-90" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-95" y1="-90" x2="-40"/>
+        <terminal orientation="s" y="10" x="-50"/>
+        <terminal orientation="n" y="-150" x="-30"/>
+        <terminal orientation="s" y="10" x="-9"/>
+    </description>
+</definition>

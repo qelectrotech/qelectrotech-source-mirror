@@ -1,0 +1,21 @@
+<definition type="element" link_type="simple" height="50" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="45">
+    <uuid uuid="{9a5a0bc9-a50d-4cdc-8e03-12edb224adf3}"/>
+    <names>
+        <name lang="fr">Source de chaleur radioisotopique</name>
+        <name lang="de">Radioisotopen-Heizquelle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x7="-25" x8="-26" x9="-26" y5="-13" closed="false" x4="-20" y2="-18" y1="-20" antialias="false" y7="-12" y4="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-20" y3="-18" x6="-21" y6="-12" y9="-9" x1="-15" x2="-17" y8="-11" x3="-19"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" y3="-29" x1="-18" y2="-27" x3="-16" y4="-23" y1="-23" x4="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-22"/>
+        <polygon closed="false" antialias="false" y3="-24" x1="-17" y2="-18" x3="-11" y4="-22" y1="-22" x4="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13"/>
+        <polygon x7="-30" x8="-31" x9="-31" y5="-18" closed="false" x4="-25" y2="-23" y1="-25" antialias="false" y7="-17" y4="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-25" y3="-23" x6="-26" y6="-17" y9="-14" x1="-20" x2="-22" y8="-16" x3="-24"/>
+    </description>
+</definition>

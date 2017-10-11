@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="60" height="50" hotspot_x="22" hotspot_y="20" orientation="dyyy" version="0.70">
+    <uuid uuid="{b8c95e49-e409-4637-8a68-b1f170133f0b}"/>
+    <names>
+        <name lang="de">Endverstärker </name>
+        <name lang="fr">Amplificateur terminal de ligne, secondaire ou
+tertiaire</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="65" x="75" rotate="true"/>
+        <polygon y4="10" x4="35" x3="10" y2="25" x1="35" y1="10" x2="10" y3="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" closed="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="10" length2="1.5" x1="-20" y1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end2="none" end1="none" length1="1.5" y2="2" length2="1.5" x1="34" y1="-15" x2="23" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

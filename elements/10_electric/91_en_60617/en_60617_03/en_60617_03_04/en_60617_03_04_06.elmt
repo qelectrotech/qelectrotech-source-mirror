@@ -1,0 +1,25 @@
+<definition hotspot_x="64" version="0.70" orientation="dyyy" height="80" hotspot_y="24" width="140" type="element" link_type="simple">
+    <uuid uuid="{0ee4e231-6287-4f80-94bc-123e6e697d22}"/>
+    <names>
+        <name lang="fr">Boîte pour une dérivation avec trois
+conducteurs, représentation unifilaire</name>
+        <name lang="de">Abzweigmuffe, einpolige Darstellung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="45" x="35" rotate="true" text="_" size="9" tagg="label"/>
+        <text y="20" x="13" text="3" size="6"/>
+        <line x2="60" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-60"/>
+        <polygon x2="0" x5="-20" y2="-10" y1="0" x3="20" x4="0" y4="10" antialias="false" y5="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-20"/>
+        <line x2="-30" y2="-10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50"/>
+        <line x2="50" y2="-10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30"/>
+        <text y="-12" x="-30" text="3" size="6"/>
+        <text y="-2" x="60" text="3" size="6"/>
+        <line x2="0" y2="10" y1="50" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line x2="10" y2="20" y1="40" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <terminal y="50" x="0" orientation="s"/>
+        <terminal y="10" x="-50" orientation="w"/>
+        <terminal y="10" x="70" orientation="e"/>
+    </description>
+</definition>

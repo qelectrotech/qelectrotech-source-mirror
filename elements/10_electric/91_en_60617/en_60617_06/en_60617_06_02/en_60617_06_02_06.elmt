@@ -1,0 +1,13 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="15" version="0.70" width="30" type="element" height="20">
+    <uuid uuid="{0fcaa04f-371e-44fe-9792-234847b8962e}"/>
+    <names>
+        <name lang="fr">Enroulement triphasé, en triangle ouvert</name>
+        <name lang="de">Dreiphasenwicklung, offene Dreieckschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <polygon y1="-10" x4="-7" x1="-13" x2="-20" antialias="false" x3="0" y2="0" y4="-10" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+    </description>
+</definition>

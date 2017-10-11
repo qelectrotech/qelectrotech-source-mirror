@@ -1,0 +1,19 @@
+<definition hotspot_x="8" version="0.70" orientation="dyyy" height="30" hotspot_y="13" width="30" type="element" link_type="simple">
+    <uuid uuid="{39c28d06-57da-49f5-955e-ca6dcd393fe7}"/>
+    <names>
+        <name lang="fr">Rayonnement cohérent, non ionisant, par
+exemple lumière cohérente</name>
+        <name lang="de">kohärente Strahlung, nicht ionisierend, z.B.::
+kohärentes Licht</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="25" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="14" y2="4" y1="-5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5"/>
+        <line x2="9" y2="9" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <polygon x2="8" y2="6" y1="8" x3="10" x4="6" y4="8" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="10" x1="6"/>
+        <polygon x2="13" y2="1" y1="3" x3="15" x4="11" y4="3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y3="5" x1="11"/>
+        <line x2="7" y2="-7" y1="2" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2"/>
+    </description>
+</definition>

@@ -1,0 +1,33 @@
+<definition hotspot_x="84" version="0.70" orientation="dyyy" height="50" hotspot_y="44" width="90" type="element" link_type="simple">
+    <uuid uuid="{4f255b3b-fbff-460b-8945-6316096bda31}"/>
+    <names>
+        <name lang="fr">Fiche et jack, tripolaires, type téléphone, jack
+avec contacts de rupture</name>
+        <name lang="de">Stecker und Klinke mit Öffnerkontakt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="-22.5" x="-70" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="15"/>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <circle y="-12.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line x2="-70" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-80"/>
+        <circle y="-42.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x2="-25" y2="-40" y1="-40" x3="-30" x4="-35" y4="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-35" x1="-3"/>
+        <line x2="-39" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3"/>
+        <rect y="-32.5" x="-70" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <rect y="-12.5" x="-70" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10"/>
+        <line x2="-70" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-80"/>
+        <line x2="-70" y2="-30" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-80"/>
+        <circle y="-22.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle y="-2.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <rect y="-40" x="-45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5"/>
+        <circle y="-32.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x2="-10" y2="-30" y1="-42" x3="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-30" x1="-10"/>
+        <polygon x2="-10" y2="-20" y1="-8" x3="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-20" x1="-10"/>
+        <polygon x2="-24" y2="-10" y1="-10" x3="-30" x4="-36" y4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-16" x1="-3"/>
+        <rect y="-15" x="-45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5"/>
+        <rect y="-40" x="-45" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5"/>
+        <line x2="-40" y2="0" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+    </description>
+</definition>

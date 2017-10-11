@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+    <uuid uuid="{ee2f2ead-9fa4-4ae6-afac-898c880ce51e}"/>
+    <names>
+        <name lang="de">Taster</name>
+        <name lang="fr">Bouton-poussoir</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-15" antialias="false" x="-15" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition type="element" width="150" version="0.70" hotspot_y="14" orientation="dyyy" height="20" link_type="simple" hotspot_x="144">
+    <uuid uuid="{23372b21-dc97-4161-b0f0-177e86bdb505}"/>
+    <names>
+        <name lang="fr">Ligne immergée</name>
+        <name lang="de">Leiter im Gewässer,
+Seekabe</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="-140" end2="none" antialias="false" end1="none" length2="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="0" length1="1.5"/>
+        <arc antialias="true" width="10" x="-80" angle="-180" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" start="0"/>
+        <arc antialias="true" width="10" x="-70" angle="-180" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" start="0"/>
+        <terminal x="-140" orientation="w" y="0"/>
+        <terminal x="0" orientation="e" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="70" hotspot_y="15">
+    <uuid uuid="{daf82945-6ad4-4aa7-93e7-6b05394fb4a5}"/>
+    <names>
+        <name lang="de">Endeinspeisung</name>
+        <name lang="fr">Élément d'alimentation d'extrémité</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="35" tagg="label" size="9" x="35" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-30" length2="1.5" antialias="false" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="30" length2="1.5" antialias="false" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y2="10" y3="0" closed="false" x2="10" antialias="false" x1="10" x4="10" y4="-10" x3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="0" x="30"/>
+        <terminal orientation="w" y="0" x="-30"/>
+    </description>
+</definition>

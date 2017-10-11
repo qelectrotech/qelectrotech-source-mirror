@@ -1,0 +1,14 @@
+<definition height="10" version="0.70" orientation="dyyy" width="90" hotspot_x="35" type="element" hotspot_y="5" link_type="simple">
+    <uuid uuid="{4639e956-de6e-4ef9-9494-f71e92d00736}"/>
+    <names>
+        <name lang="fr">Grille</name>
+        <name lang="de">Gitter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="55" text="_"/>
+        <line x2="10" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="50"/>
+        <line x2="-30" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="10"/>
+    </description>
+</definition>

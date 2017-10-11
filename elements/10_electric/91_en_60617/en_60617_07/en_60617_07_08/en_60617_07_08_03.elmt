@@ -1,0 +1,31 @@
+<definition link_type="simple" type="element" width="80" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="74">
+    <uuid uuid="{98cfb761-8855-4f87-8383-fda7b690485b}"/>
+    <names>
+        <name lang="fr">Interrupteur de position, contact à ouverture à
+manœuvre positive d'ouverture</name>
+        <name lang="de">Endschalter, zwei Richtungen, getrennte
+Stromkreise</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="-6" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-64" y2="-10" length2="1.5"/>
+        <line x2="-70" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="-70" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" y2="20" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="-62" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" y2="-23" length2="1.5"/>
+        <line x2="-8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <line x2="-60" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" y2="-20" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <line x2="-1" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" y2="-12" length2="1.5"/>
+        <line x2="-2" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" y2="-6" length2="1.5"/>
+        <line x2="-2" antialias="false" y1="-12" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" y2="-6" length2="1.5"/>
+        <line x2="-69" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-64" y2="-12" length2="1.5"/>
+        <line x2="-68" antialias="false" y1="-12" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-69" y2="-5" length2="1.5"/>
+        <line x2="-64" antialias="false" y1="-5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-68" y2="-10" length2="1.5"/>
+        <terminal orientation="n" x="0" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="n" x="-70" y="-40"/>
+    </description>
+</definition>

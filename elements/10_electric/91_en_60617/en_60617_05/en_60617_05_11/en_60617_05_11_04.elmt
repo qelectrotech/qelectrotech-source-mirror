@@ -1,0 +1,45 @@
+<definition hotspot_x="75" hotspot_y="85" orientation="dyyy" type="element" version="0.70" height="230" link_type="simple" width="230">
+    <uuid uuid="{426b7cb2-a26e-49f2-89d0-6cac1f3aae0d}"/>
+    <names>
+        <name lang="de">Triode/Hexode</name>
+        <name lang="fr">Triode-hexode, avec cathode à chauffage
+indirect</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" y="145" rotate="true" x="35" text="_" tagg="label"/>
+        <line x2="-1" end2="none" end1="none" length1="1.5" y1="-80" y2="-40" antialias="false" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="40" y2="40" antialias="false" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y1="-40" y2="-40" antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y1="40" y2="40" antialias="false" x1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="69" end2="none" end1="none" length1="1.5" y1="-70" y2="-30" antialias="false" x1="69" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="90" end2="none" end1="none" length1="1.5" y1="-30" y2="-30" antialias="false" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="-20" y2="-20" antialias="false" x1="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y1="-20" y2="-20" antialias="false" x1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-10" end2="none" end1="none" length1="1.5" y1="90" y2="140" antialias="false" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-25" end2="none" end1="none" length1="1.5" y1="0" y2="0" antialias="false" x1="20" style="line-style:dashed;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="90" y="70" height="40" x="80" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" width="40"/>
+        <line x2="120" end2="none" end1="none" length1="1.5" y1="90" y2="-40" antialias="false" x1="120" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="90" y="-60" height="40" x="80" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="40"/>
+        <line x2="-21" end2="none" end1="none" length1="1.5" y1="-60" y2="-60" antialias="false" x1="99" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="90" y="-60" height="40" x="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" width="40"/>
+        <line x2="-40" end2="none" end1="none" length1="1.5" y1="-40" y2="90" antialias="false" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="90" y="70" height="40" x="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" width="40"/>
+        <line x2="-20" end2="none" end1="none" length1="1.5" y1="110" y2="110" antialias="false" x1="100" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y1="20" y2="20" antialias="false" x1="-30" style="line-style:dashed;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="-30" end2="none" end1="none" length1="1.5" y1="-20" y2="20" antialias="false" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="40" end2="none" end1="none" length1="1.5" y1="0" y2="20" antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="90" end2="none" end1="none" length1="1.5" y1="20" y2="20" antialias="false" x1="50" style="line-style:dashed;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="150" end2="none" end1="none" length1="1.5" y1="20" y2="20" antialias="false" x1="90" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="50" end2="none" end1="none" length1="1.5" y1="20" y2="20" antialias="false" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="150" end2="none" end1="none" length1="1.5" y1="100" y2="100" antialias="false" x1="90" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="90" y="70" height="60" x="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="60"/>
+        <line x2="80" end2="none" end1="none" length1="1.5" y1="140" y2="90" antialias="false" x1="80" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="180" y="80" height="20" x="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="20"/>
+        <arc angle="180" y="80" height="20" x="60" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" width="20"/>
+        <line x2="60" end2="none" end1="none" length1="1.5" y1="90" y2="90" antialias="false" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line x2="60" end2="none" end1="none" length1="1.5" y1="70" y2="70" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <arc angle="30" y="70" height="60" x="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" width="60"/>
+    </description>
+</definition>

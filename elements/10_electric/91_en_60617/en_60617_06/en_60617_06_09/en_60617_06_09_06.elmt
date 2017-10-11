@@ -1,0 +1,18 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="137" version="0.70" width="110" type="element" height="170">
+    <uuid uuid="{feb5205b-f916-4b24-823b-27b263219504}"/>
+    <names>
+        <name lang="fr">Autotransformateur</name>
+        <name lang="de">Spartransformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-110" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-90" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-74" y="-120" text="Form 1 / Forme 1" size="9"/>
+        <line y1="0" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-60" start="0" angle="90" y="-90" antialias="true" width="60" height="120" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-30" orientation="n" y="-110"/>
+    </description>
+</definition>

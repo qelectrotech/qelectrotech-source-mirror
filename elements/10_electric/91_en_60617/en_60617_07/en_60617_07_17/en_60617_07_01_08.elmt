@@ -1,0 +1,17 @@
+<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{c9c1e8b9-8105-408e-bc0a-c260bf460e5f}"/>
+    <names>
+        <name lang="de">Stromrelais mit einstellbarem Höchst- und
+Tiefstwert</name>
+        <name lang="fr">Relais à maximum et minimum de courant</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-15" size="9" text="&lt; 3A" x="-33"/>
+        <text y="-27" size="9" text="I" x="-47"/>
+        <text y="-36" size="9" text="> 5A" x="-33"/>
+    </description>
+</definition>

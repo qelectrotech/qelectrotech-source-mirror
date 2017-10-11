@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="24" width="50" hotspot_y="47">
+    <uuid uuid="{78c07923-dfdd-4f8a-a08c-e50e9ad15e02}"/>
+    <names>
+        <name lang="de">Zeitschalter, einpolig</name>
+        <name lang="fr">Interrupteur à temps de fermeture limité,
+unipolaire</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-45" y2="-19" x2="-5" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-45" y2="-40" x2="20" length2="1.5" antialias="false" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-30" size="9" x="15" text="t"/>
+    </description>
+</definition>

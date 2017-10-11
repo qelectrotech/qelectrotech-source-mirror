@@ -1,0 +1,25 @@
+<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="19">
+    <uuid uuid="{6ca7783b-de9c-4856-b6a1-b6423aeacc8e}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal, bestehend
+aus zwei Verdrahtungskanal-Systemen, A und
+B</name>
+        <name lang="fr">Élément droit comprenant deux systèmes de
+canalisations A et B</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="3.55" size="6" x="12.5" text="A"/>
+        <input rotate="true" y="25" tagg="label" size="9" x="55" text="_"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-40" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="13.55" size="6" x="12.5" text="B"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="50" length2="1.5" antialias="false" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="10" x2="-10" length2="1.5" antialias="false" x1="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="10" length2="1.5" antialias="false" x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="10" length2="1.5" antialias="false" x1="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="-10" x="50"/>
+        <terminal orientation="w" y="-10" x="-40"/>
+    </description>
+</definition>

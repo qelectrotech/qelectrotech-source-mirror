@@ -1,0 +1,19 @@
+<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="42" orientation="dyyy" type="element" height="50" width="20">
+    <uuid uuid="{9d5e4e96-8407-49de-bba8-b78338376f2b}"/>
+    <names>
+        <name lang="fr">Région intrinsèque entre un collecteur et une
+région de type de conductivité différente
+formant une structure soit PIP soit NIN</name>
+        <name lang="de">Eigenleitende Zone zwischen einem Kollektor
+und einem Gebiet anderen Leitertyps, PIP oder
+NIP Struktur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-10" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="0" antialias="false"/>
+        <polygon x4="-10" y5="-25" x1="-10" y1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-5" x5="-10" y3="0" x2="-2" y2="-20" antialias="false" x3="-2" closed="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="6" y2="5" antialias="false"/>
+    </description>
+</definition>

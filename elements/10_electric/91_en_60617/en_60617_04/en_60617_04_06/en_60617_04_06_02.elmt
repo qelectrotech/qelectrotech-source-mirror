@@ -1,0 +1,41 @@
+<definition width="130" height="100" type="element" hotspot_x="75" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="95">
+    <uuid uuid="{703bd10f-43ff-4b35-bc5f-102dee979641}"/>
+    <names>
+        <name lang="de">Magnetkern-Matrix aus magnetischen
+Schichten</name>
+        <name lang="fr">Matrice à mémoire magnétique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="-90" length1="1.5" y1="0" length2="1.5" x1="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-90" length1="1.5" y1="0" length2="1.5" x1="-50" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-90" length1="1.5" y1="0" length2="1.5" x1="-60" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-55" length1="1.5" y1="-55" length2="1.5" x1="-70" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-35" length1="1.5" y1="-35" length2="1.5" x1="-70" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-15" length1="1.5" y1="-15" length2="1.5" x1="-70" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-75" length1="1.5" y1="-75" length2="1.5" x1="-70" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-90" length2="1.5" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-90" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-90" length2="1.5" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <circle diameter="15" x="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-82.5" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-90" length2="1.5" x1="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-90" length2="1.5" x1="40" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <circle diameter="15" x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-82.5" antialias="false"/>
+        <circle diameter="15" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-82.5" antialias="false"/>
+        <circle diameter="15" x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-82.5" antialias="false"/>
+        <circle diameter="15" x="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-62.5" antialias="false"/>
+        <circle diameter="15" x="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42.5" antialias="false"/>
+        <circle diameter="15" x="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22.5" antialias="false"/>
+        <circle diameter="15" x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-62.5" antialias="false"/>
+        <circle diameter="15" x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42.5" antialias="false"/>
+        <circle diameter="15" x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22.5" antialias="false"/>
+        <circle diameter="15" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-62.5" antialias="false"/>
+        <circle diameter="15" x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-62.5" antialias="false"/>
+        <circle diameter="15" x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42.5" antialias="false"/>
+        <circle diameter="15" x="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22.5" antialias="false"/>
+        <circle diameter="15" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22.5" antialias="false"/>
+        <circle diameter="15" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42.5" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+    <uuid uuid="{700f651c-8869-4e77-8462-ed0780264d4c}"/>
+    <names>
+        <name lang="fr">Redresseur</name>
+        <name lang="de">Gleichrichter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <line antialias="false" x1="-40" y2="-40" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-20" y2="-8" length2="1.5" end1="none" length1="1.5" y1="-8" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4"/>
+        <line antialias="false" x1="-20" y2="-4" length2="1.5" end1="none" length1="1.5" y1="-4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-14"/>
+        <line antialias="false" x1="-10" y2="-4" length2="1.5" end1="none" length1="1.5" y1="-4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4"/>
+        <arc antialias="true" height="5" width="10" start="0" y="-32.5" x="-35" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="5" width="10" start="0" y="-32.5" x="-25" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

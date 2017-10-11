@@ -1,0 +1,45 @@
+<definition orientation="dyyy" type="element" width="170" height="70" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
+    <uuid uuid="{6f8e213b-b446-4976-af94-3ac8e4ebf53a}"/>
+    <names>
+        <name lang="de">3 poliges thermisches Überlastrelais</name>
+        <name lang="fr">Relais thermique de surcharge avec
+interrupteurs à semiconducteur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="82" y1="10" x2="102" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="92" y1="10" x2="92" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-50"/>
+        <line antialias="false" x1="-30" y1="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="92" y1="-10" x2="92" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="92" y1="10" x2="85" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-11" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="50" y1="10" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="60" y1="10" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="60" y1="-10" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="60" y1="10" x2="68" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-11" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-10" y1="0" x2="88" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="60" y1="-10" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-40" y1="-20" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-20" y1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-40" y1="20" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-20" y1="20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="10" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="-10" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <polygon y4="10" antialias="false" closed="false" y6="15" y5="10" x1="-35" y1="-15" x2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-35" y2="-10" x4="-20" x3="-20" x5="-35" y3="-10"/>
+        <terminal orientation="n" y="-20" x="60"/>
+        <terminal orientation="n" y="-30" x="-30"/>
+        <terminal orientation="n" y="-20" x="92"/>
+        <terminal orientation="s" y="20" x="92"/>
+        <terminal orientation="s" y="30" x="-30"/>
+        <terminal orientation="n" y="-30" x="-40"/>
+        <terminal orientation="s" y="20" x="60"/>
+        <terminal orientation="s" y="30" x="-40"/>
+        <terminal orientation="s" y="30" x="-20"/>
+        <terminal orientation="n" y="-30" x="-20"/>
+        <terminal orientation="w" y="10" x="-60"/>
+        <terminal orientation="w" y="-10" x="-60"/>
+    </description>
+</definition>

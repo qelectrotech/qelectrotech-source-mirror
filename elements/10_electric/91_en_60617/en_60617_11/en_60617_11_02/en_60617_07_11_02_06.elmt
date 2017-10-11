@@ -1,0 +1,15 @@
+<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+    <uuid uuid="{f75d9326-021e-45c0-84e3-1b304eafbe79}"/>
+    <names>
+        <name lang="de">Kraftwerk mit Kernenergie betrieben,
+Kernkraftwerk (in Betrieb oder undefiniert)</name>
+        <name lang="fr">Centrale nucléaire (en service ou indéterminé)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" width="40" antialias="false"/>
+        <circle y="-30" diameter="20" style="line-style:normal;line-weight:normal;filling:bdiag;color:black" x="-30" antialias="false"/>
+    </description>
+</definition>

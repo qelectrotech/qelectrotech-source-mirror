@@ -1,0 +1,18 @@
+<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+    <uuid uuid="{7d2254db-7479-4730-b602-176bc1bd57b3}"/>
+    <names>
+        <name lang="de">Uhr mit Kontaktgebe</name>
+        <name lang="fr">Horloge à contact</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <circle diameter="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false"/>
+        <line y2="-20" length1="1.5" y1="-20" length2="1.5" x1="-14" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-36" length1="1.5" y1="-20" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-14" length1="1.5" y1="-14" length2="1.5" x1="-16" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-14" length1="1.5" y1="-10" length2="1.5" x1="-6" x2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-14" length1="1.5" y1="-14" length2="1.5" x1="6" x2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+    </description>
+</definition>

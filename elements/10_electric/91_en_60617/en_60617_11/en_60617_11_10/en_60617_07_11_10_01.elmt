@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="50" height="90" hotspot_x="45" hotspot_y="85" orientation="dyyy" version="0.70">
+    <uuid uuid="{18354d1a-d5dc-421a-a8e5-9a177b6225c0}"/>
+    <names>
+        <name lang="de">Fernspeise-Netzgerät</name>
+        <name lang="fr">Dispositif d'alimentation de ligne</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="55" x="35" rotate="true"/>
+        <rect width="40" height="40" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-40"/>
+        <line end2="none" end1="none" length1="1.5" y2="-40" length2="1.5" x1="-20" y1="-80" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <arc angle="180" width="10" height="5" y="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-30" start="0"/>
+        <arc angle="-180" width="10" height="5" y="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-20" start="0"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{366cf72b-d6b8-40d7-af2d-e0d12dad407c}"/>
+    <names>
+        <name lang="de">selbsttätige Wiedereinschalt-Einrichtung,
+KU-Relais</name>
+        <name lang="fr">Dispositif de réenclenchement automatique,
+Relais de réenclenchement automatique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-20"/>
+        <circle antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" x="-18"/>
+        <line antialias="false" x1="15" y1="-15" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-5" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-15" y1="5" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="15" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="15" y1="5" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="15" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-15" y1="10" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-5" y1="-10" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <polygon y4="-8" antialias="false" x1="4" y1="-8" x2="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-12" x4="4" x3="10" y3="-10"/>
+    </description>
+</definition>

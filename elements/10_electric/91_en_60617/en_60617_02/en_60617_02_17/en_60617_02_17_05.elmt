@@ -1,0 +1,14 @@
+<definition hotspot_x="4" version="0.70" orientation="dyyy" height="30" hotspot_y="14" width="10" type="element" link_type="simple">
+    <uuid uuid="{f60e93f6-ebf9-4c74-93f8-62381735a914}"/>
+    <names>
+        <name lang="fr">Indicateur de point de contrôle</name>
+        <name lang="de">Prüfpunkthinweis</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="0" y2="-10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="0"/>
+        <terminal y="10" x="0" orientation="s"/>
+    </description>
+</definition>

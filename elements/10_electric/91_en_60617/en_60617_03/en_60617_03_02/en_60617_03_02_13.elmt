@@ -1,0 +1,17 @@
+<definition hotspot_x="56" version="0.70" orientation="dyyy" height="50" hotspot_y="47" width="60" type="element" link_type="simple">
+    <uuid uuid="{250eb5f4-8368-446c-9e81-4c0e0c76a84e}"/>
+    <names>
+        <name lang="fr">Point neutre</name>
+        <name lang="de">Neutralpunkt in einem Mehrphasensystem</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="0" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50"/>
+        <polygon x2="0" y2="-40" y1="-40" x3="0" x4="-10" y4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-10"/>
+        <line x2="-20" y2="-10" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <text y="-30" x="-45" text="n" size="6"/>
+        <terminal y="-20" x="-50" orientation="w"/>
+    </description>
+</definition>

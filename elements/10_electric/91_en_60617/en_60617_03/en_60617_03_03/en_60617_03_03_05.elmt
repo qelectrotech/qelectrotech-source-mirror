@@ -1,0 +1,18 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="70" type="element" link_type="simple">
+    <uuid uuid="{b3035bd1-9a08-4db7-8332-c76f4ac255ba}"/>
+    <names>
+        <name lang="fr">Fiche et prise</name>
+        <name lang="de">Stecker und Buchse</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-3" x="0" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20"/>
+        <line x2="-20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6"/>
+        <arc y="-5" x="-5" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" start="90"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="0" x="40" orientation="e"/>
+    </description>
+</definition>

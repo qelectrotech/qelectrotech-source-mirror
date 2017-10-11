@@ -1,0 +1,21 @@
+<definition link_type="simple" type="element" width="50" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="39">
+    <uuid uuid="{f43ad5b8-94c8-4ef8-8c8e-c69962cd5271}"/>
+    <names>
+        <name lang="fr">Commande par came et galet</name>
+        <name lang="de">Betätigung durch Nocken und Rolle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="15"/>
+        <line x2="8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-22" y2="0" length2="1.5"/>
+        <circle antialias="false" diameter="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-37" y="-6"/>
+        <circle antialias="false" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-24.5" y="-2.5"/>
+        <arc antialias="true" angle="180" width="10" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="3" x="-36" y="-8.5"/>
+        <line x2="-35" antialias="false" y1="-7" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-36" y2="-5" length2="1.5"/>
+        <line x2="-27" antialias="false" y1="-7" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-26" y2="-5" length2="1.5"/>
+        <line x2="-25" antialias="false" y1="4" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-26" y2="5" length2="1.5"/>
+        <line x2="-27" antialias="false" y1="5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y2="7" length2="1.5"/>
+        <line x2="-28" antialias="false" y1="7" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-27" y2="6" length2="1.5"/>
+    </description>
+</definition>

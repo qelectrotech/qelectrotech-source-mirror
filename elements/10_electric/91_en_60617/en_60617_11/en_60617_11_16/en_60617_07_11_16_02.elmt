@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="75" width="80" hotspot_y="45">
+    <uuid uuid="{fe8bf639-b106-4e89-864b-c10c58223bde}"/>
+    <names>
+        <name lang="de">Ventilator</name>
+        <name lang="fr">Ventilateur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-20" y2="-20" x2="-40" length2="1.5" antialias="false" x1="-70" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="6" y="-23" antialias="false" width="10" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse height="6" y="-23" antialias="false" width="10" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

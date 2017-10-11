@@ -1,0 +1,13 @@
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+    <uuid uuid="{d3c5350d-5655-4e5f-a99e-ac0bcda68a3c}"/>
+    <names>
+        <name lang="de">Isolierstoff oder Dielektrikum</name>
+        <name lang="fr">Isolant ou diélectrique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:bdiag;color:black" y="-10" width="40" antialias="false" height="20" x="-20"/>
+    </description>
+</definition>

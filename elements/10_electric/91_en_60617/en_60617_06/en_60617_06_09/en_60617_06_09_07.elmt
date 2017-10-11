@@ -1,0 +1,20 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="87" version="0.70" width="110" type="element" height="90">
+    <uuid uuid="{3a9454a1-437d-4ff7-b3ff-91096f6bba4d}"/>
+    <names>
+        <name lang="fr">Autotransformateur</name>
+        <name lang="de">Spartransformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <text x="-74" y="-70" text="Form 2 / Forme 2" size="9"/>
+        <line y1="-30" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" end1="none" length1="1.5" x1="-40" x2="-40" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-40" start="0" angle="-180" y="-35" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-30" start="0" angle="-180" y="-35" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-20" start="0" angle="-180" y="-35" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="-180" y="-35" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="-20" x2="-20" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

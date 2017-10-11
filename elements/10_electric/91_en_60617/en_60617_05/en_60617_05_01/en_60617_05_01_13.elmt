@@ -1,0 +1,14 @@
+<definition link_type="simple" version="0.70" hotspot_x="5" hotspot_y="7" orientation="dyyy" type="element" height="20" width="30">
+    <uuid uuid="{f0bc1e6a-c85a-4ac5-9b03-6bf283ba6e51}"/>
+    <names>
+        <name lang="fr">Grille isolée</name>
+        <name lang="de">Gate, isoliert </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="35" size="9" x="25"/>
+        <line end1="none" end2="none" x1="0" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="10" antialias="false"/>
+        <line end1="none" end2="none" x1="20" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="10" antialias="false"/>
+    </description>
+</definition>

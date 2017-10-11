@@ -1,0 +1,13 @@
+<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+    <uuid uuid="{85b1d9c4-659c-49de-abcc-b067e93a62b0}"/>
+    <names>
+        <name lang="fr">Impression sur page</name>
+        <name lang="de">Drucken auf Blatt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-10" x="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40"/>
+    </description>
+</definition>

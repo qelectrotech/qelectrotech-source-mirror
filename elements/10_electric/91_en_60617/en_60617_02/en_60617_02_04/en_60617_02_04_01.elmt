@@ -1,0 +1,15 @@
+<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="5">
+    <uuid uuid="{6e115e10-8487-4f56-af34-edc4f8f1a16d}"/>
+    <names>
+        <name lang="de">einfachgerichtete Kraft
+einfachgerichtete, geradlinige Bewegung</name>
+        <name lang="fr">Effort unidirectionnel,
+Mouvement rectilinéaire unidirectionnel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" length1="1.5" end2="simple" antialias="false" x2="5" y1="0" y2="0" end1="none" length2="1.5"/>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+    </description>
+</definition>

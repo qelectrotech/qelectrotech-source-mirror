@@ -1,0 +1,17 @@
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+    <uuid uuid="{c38edb8f-aa58-4602-aa55-1fd62159ae14}"/>
+    <names>
+        <name lang="de">Abschirmung
+Schirm</name>
+        <name lang="fr">Écran
+Blindage</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20" length1="1.5" end2="none" antialias="false" x2="-20" y1="10" y2="-10" end1="none" length2="1.5"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20" length1="1.5" end2="none" antialias="false" x2="20" y1="-10" y2="-10" end1="none" length2="1.5"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="20" length1="1.5" end2="none" antialias="false" x2="20" y1="-10" y2="10" end1="none" length2="1.5"/>
+    </description>
+</definition>

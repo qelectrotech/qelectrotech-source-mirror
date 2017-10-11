@@ -1,0 +1,16 @@
+<definition height="20" type="element" width="70" hotspot_y="10" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="64">
+    <uuid uuid="{baff5aa7-bc0b-4e88-aab1-01a68104343f}"/>
+    <names>
+        <name lang="fr">Perle de ferrite sur un conducteur</name>
+        <name lang="de">Ferrit-Perle auf einem Leiter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <line antialias="false" x2="0" length1="1.5" length2="1.5" y1="0" y2="0" x1="-60" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x2="-40" closed="false" y3="-5" y1="5" y2="-5" x1="-40" x4="-20" y4="5" x3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="w" x="-60"/>
+        <terminal y="0" orientation="e" x="0"/>
+    </description>
+</definition>

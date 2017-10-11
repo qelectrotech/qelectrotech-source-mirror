@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="81" height="170" width="110" hotspot_y="137" version="0.70">
+    <uuid uuid="{8011ccf1-b6b6-4db6-911c-85c41887a6ee}"/>
+    <names>
+        <name lang="de">Spartransformator, einphasig</name>
+        <name lang="fr">Autotransformateur, monophasé</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-60" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-90" y1="-110" x2="-30"/>
+        <text y="-120" x="-74" size="9" text="Form 1 / Forme 1"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="20" y1="0" x2="-30"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="120" y="-90" width="60" angle="90" x="-60" start="0"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-100" y1="-95" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-105" y1="-100" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="15" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="5" y1="10" x2="-20"/>
+        <terminal orientation="n" y="-110" x="-30"/>
+    </description>
+</definition>

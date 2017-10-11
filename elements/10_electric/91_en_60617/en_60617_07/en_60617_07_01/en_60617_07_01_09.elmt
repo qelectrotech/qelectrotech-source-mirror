@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{6352cf68-21aa-43cb-8b7d-7356e2b69205}"/>
+    <names>
+        <name lang="de">zwangsläufige Betätigung eines Schalters </name>
+        <name lang="fr">Manœuvre positive d'un interrupteur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <ellipse antialias="false" width="42" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-21"/>
+        <line antialias="false" x1="-15" y1="0" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="15" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="4" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="15" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-5" end1="none" length1="1.5" length2="1.5"/>
+    </description>
+</definition>

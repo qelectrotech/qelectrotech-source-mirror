@@ -1,0 +1,19 @@
+<definition orientation="dyyy" version="0.70" width="50" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="60">
+    <uuid uuid="{75f4f150-7c5c-42dc-89a4-65dbedb3144d}"/>
+    <names>
+        <name lang="fr">Terre sans bruit</name>
+        <name lang="de">fremdspannungsarme Erde</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="35" text="_" size="9" rotate="true" tagg="label" y="25"/>
+        <line x2="10" y2="0" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" end2="none" antialias="false"/>
+        <line x2="0" y2="0" length2="1.5" length1="1.5" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <line x2="7" y2="5" length2="1.5" length1="1.5" y1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-7" end2="none" antialias="false"/>
+        <line x2="4" y2="10" length2="1.5" length1="1.5" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-4" end2="none" antialias="false"/>
+        <line x2="-0.5" y2="15" length2="1.5" length1="1.5" y1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0.5" end2="none" antialias="false"/>
+        <arc angle="180" width="40" x="-20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="-5" antialias="true"/>
+        <terminal orientation="n" x="0" y="-15"/>
+    </description>
+</definition>

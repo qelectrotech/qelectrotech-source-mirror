@@ -1,0 +1,31 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="77" height="200" width="110" hotspot_y="180" version="0.70">
+    <uuid uuid="{d5d15e31-3175-480e-bfb7-86a807c921e3}"/>
+    <names>
+        <name lang="de">Drehstromeinheit aus
+Einphasentransformatoren,
+Stern/Dreieckschaltung</name>
+        <name lang="fr">Groupe de trois transformateurs monophasés,
+couplage étoile-triangle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-120" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-120" y1="-150" x2="-30"/>
+        <text y="-160" x="-74" size="9" text="Form 1 / Forme 1"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="-20" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-140" y1="-130" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-145" y1="-135" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-10" y1="0" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-5" y1="5" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-90" y1="-80" x2="20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-95" y1="-90" x2="30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-95" y1="-90" x2="10"/>
+        <polygon antialias="false" y3="-45" closed="false" x1="10" x4="10" y4="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" x3="20" y1="-30" x2="30"/>
+        <text y="-55" x="15" size="9" text="3"/>
+        <terminal orientation="n" y="-150" x="-30"/>
+        <terminal orientation="s" y="10" x="-30"/>
+    </description>
+</definition>

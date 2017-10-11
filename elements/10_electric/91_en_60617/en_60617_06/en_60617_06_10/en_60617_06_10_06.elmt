@@ -1,0 +1,27 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
+    <uuid uuid="{5b979adf-3498-4807-b9e4-eada0335e8f7}"/>
+    <names>
+        <name lang="fr">Transformateur à couplage réglable</name>
+        <name lang="de">Transformator mit veränderbarer Kopplung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="35" rotate="true" y="85" text="_" tagg="label" size="9"/>
+        <text x="-44" y="-30" text="Form 2 / Forme 2" size="9"/>
+        <line y1="50" end1="none" length1="1.5" x1="30" x2="30" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="20" start="0" angle="180" y="25" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="20" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-10" start="0" angle="-180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="30" x2="30" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45" end1="none" length1="1.5" x1="-5" x2="25" end2="none" antialias="false" y2="-5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-2" x4="25" x1="25" x2="22" antialias="false" x3="26" y2="-4" y4="-2" y3="-7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

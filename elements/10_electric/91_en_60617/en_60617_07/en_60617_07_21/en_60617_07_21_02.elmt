@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="34" hotspot_x="10" version="0.70" link_type="simple">
+    <uuid uuid="{26cf3904-377f-496d-ae80-051814cc962f}"/>
+    <names>
+        <name lang="de">Sicherung, der Anschluss unter Spannung
+gekennzeichnet</name>
+        <name lang="fr">Fusible, extrémité restant sous tension</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="0" y1="-30" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="30" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" x="-5"/>
+        <rect antialias="false" width="10" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-15" x="-5"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="s" y="30" x="0"/>
+    </description>
+</definition>

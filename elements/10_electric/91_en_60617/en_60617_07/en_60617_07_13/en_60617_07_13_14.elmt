@@ -1,0 +1,49 @@
+<definition orientation="dyyy" type="element" width="130" height="70" hotspot_y="44" hotspot_x="124" version="0.70" link_type="simple">
+    <uuid uuid="{6a677ddc-b7c0-4277-90ed-d0e3e59f7bb6}"/>
+    <names>
+        <name lang="de">Schalter mit zwangsläufiger Öffnung der
+Hauptkontakte</name>
+        <name lang="fr">Interrupteur de sécurité, trois contacts
+principaux à manœuvre positive d'ouverture</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-50" y1="-20" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-70" y1="-20" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="-20" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-40" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-70" y1="0" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="0" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="0" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-70" y1="0" x2="-62" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-23" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="0" x2="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-23" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="0" x2="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-23" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-23" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-50" y1="-20" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-70" y1="-20" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <circle antialias="false" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" x="-120"/>
+        <line antialias="false" x1="-110" y1="-10" x2="-4" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-100" y1="10" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-74" y1="8" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-70" y1="10" x2="-74" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="12" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-54" y1="8" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="10" x2="-54" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="12" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-34" y1="8" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-30" y1="10" x2="-34" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="12" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-115" y1="10" x2="-105" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-108" y1="8" x2="-104" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-104" y1="10" x2="-108" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="12" end1="none" length1="1.5" length2="1.5"/>
+        <terminal orientation="s" y="20" x="-30"/>
+        <terminal orientation="s" y="20" x="0"/>
+        <terminal orientation="n" y="-40" x="-30"/>
+        <terminal orientation="n" y="-40" x="-50"/>
+        <terminal orientation="n" y="-40" x="-70"/>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="s" y="20" x="-70"/>
+        <terminal orientation="s" y="20" x="-50"/>
+    </description>
+</definition>

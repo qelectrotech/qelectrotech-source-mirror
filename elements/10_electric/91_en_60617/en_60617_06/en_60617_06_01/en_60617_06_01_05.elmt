@@ -1,0 +1,17 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="2" hotspot_y="7" version="0.70" width="50" type="element" height="30">
+    <uuid uuid="{a5d55be8-093c-4c72-a96a-f1815a267f1c}"/>
+    <names>
+        <name lang="fr">Enroulement polyphasé, à m phases séparées</name>
+        <name lang="de">m getrennte Wicklungen, m-Phasensystem</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc x="25" start="0" angle="180" y="12.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="5" rotate="true" y="35" text="_" tagg="label" size="9"/>
+        <arc x="35" start="0" angle="-180" y="12.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="5" y="10" text="m" size="6"/>
+        <text x="15" y="20" text="m" size="6"/>
+    </description>
+</definition>

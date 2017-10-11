@@ -1,0 +1,17 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="51" hotspot_y="37" version="0.70" width="110" type="element" height="50">
+    <uuid uuid="{ce55ce63-fc3e-4b18-8e58-c3fa595bc40e}"/>
+    <names>
+        <name lang="fr">Inductance</name>
+        <name lang="de">Drossel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="15" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <arc x="0" start="180" angle="-180" y="0" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-20" start="180" angle="-180" y="0" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="10" start="180" angle="-180" y="0" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-44" y="-20" text="Form 2 / Forme 2" size="9"/>
+        <arc x="-10" start="180" angle="-180" y="0" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

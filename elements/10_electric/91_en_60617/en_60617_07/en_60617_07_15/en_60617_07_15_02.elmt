@@ -1,0 +1,19 @@
+<definition orientation="dyyy" type="element" width="50" height="40" hotspot_y="26" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{920044a1-5e49-4ff6-8c85-5d80ee434e0d}"/>
+    <names>
+        <name lang="de">elektromechanischer Antrieb,
+Relaisspule, allgemein</name>
+        <name lang="fr">Organe de commande,
+bobine de relais, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="10" y1="-20" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" x="-20"/>
+        <line antialias="false" x1="-10" y1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <terminal orientation="n" y="-20" x="10"/>
+        <terminal orientation="n" y="-20" x="-10"/>
+    </description>
+</definition>

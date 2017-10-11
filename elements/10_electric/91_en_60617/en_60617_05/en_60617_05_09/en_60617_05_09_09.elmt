@@ -1,0 +1,20 @@
+<definition type="element" link_type="simple" height="250" width="160" version="0.70" orientation="dyyy" hotspot_x="125" hotspot_y="245">
+    <uuid uuid="{19d35122-7ded-46f2-aac4-ce140e911cbe}"/>
+    <names>
+        <name lang="fr">Cavité résonnante faisant partie intégrante du
+tube</name>
+        <name lang="de">Hohlraumresonator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="-180" length2="1.5" end1="none" length1="1.5" y1="-60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <arc antialias="true" height="120" width="120" start="0" y="-120" x="-120" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="120" width="120" start="0" y="-240" x="-120" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-120" y2="-60" length2="1.5" end1="none" length1="1.5" y1="-180" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-120"/>
+        <circle antialias="false" diameter="10" y="-115" x="-33" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle antialias="false" diameter="10" y="-135" x="-33" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <arc antialias="true" height="60" width="60" start="209" y="-150" x="-30" angle="300" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

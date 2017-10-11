@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" width="10" height="20" hotspot_y="10" hotspot_x="7" version="0.70" link_type="simple">
+    <uuid uuid="{9c0ebc95-789c-4344-9229-48725393d4b0}"/>
+    <names>
+        <name lang="de">Funktion "selbsttätiger Rückgang"</name>
+        <name lang="fr">Fonction retour automatique, par exemple
+retour à ressort</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <polygon y4="5" antialias="false" closed="false" x1="0" y1="5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" x4="0" x3="-5" y3="0"/>
+    </description>
+</definition>

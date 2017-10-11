@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="27">
+    <uuid uuid="{844d5793-1630-4cf9-b04f-762ddecd219a}"/>
+    <names>
+        <name lang="fr">Commande par pédale</name>
+        <name lang="de">Betätigung durch Pedal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="15"/>
+        <line x2="8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-16" y2="0" length2="1.5"/>
+        <line x2="-19" antialias="false" y1="-5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-14" y2="5" length2="1.5"/>
+        <line x2="-22" antialias="false" y1="5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19" y2="3" length2="1.5"/>
+    </description>
+</definition>

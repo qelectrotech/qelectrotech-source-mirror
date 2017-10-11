@@ -1,0 +1,17 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="10" hotspot_y="5" width="50" type="element" link_type="simple">
+    <uuid uuid="{84d001cd-0aa3-4c5a-a6b1-9030a7c1ea2b}"/>
+    <names>
+        <name lang="fr">Contact mâle (d’une prise ou d’une fiche)
+Fiche</name>
+        <name lang="de">Pol eines Steckers
+Stecker</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-3" x="-40" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <line x2="0" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25"/>
+        <terminal y="0" x="0" orientation="e"/>
+    </description>
+</definition>

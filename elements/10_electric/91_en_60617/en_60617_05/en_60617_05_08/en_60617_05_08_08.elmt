@@ -1,0 +1,18 @@
+<definition height="30" version="0.70" orientation="dyyy" width="60" hotspot_x="55" type="element" hotspot_y="25" link_type="simple">
+    <uuid uuid="{27d4cc67-2dd4-477f-a934-d611f6bb7feb}"/>
+    <names>
+        <name lang="fr">Électrode cylindrique de concentration avec
+grille associée</name>
+        <name lang="de">zylindrische Fokussierelektrode, mit Gitter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="-50" y1="-10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="-30"/>
+        <line x2="-30" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" x1="-30"/>
+        <line x2="0" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" x1="0"/>
+        <line x2="-20" y1="-20" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="-20"/>
+        <line x2="-10" y1="-20" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="0" x1="-10"/>
+    </description>
+</definition>

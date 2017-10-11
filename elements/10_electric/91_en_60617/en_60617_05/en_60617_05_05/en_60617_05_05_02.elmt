@@ -1,0 +1,21 @@
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" orientation="dyyy" type="element" height="50" width="50">
+    <uuid uuid="{dc2f8e18-c2c8-4254-b514-95aa9ffaeb26}"/>
+    <names>
+        <name lang="fr">Transistor NPN, avec collecteur relié à
+l'enveloppe</name>
+        <name lang="de">NPN-Transistor, Kollektor mit dem Gehäuse
+verbunden</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-30" y2="-20" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-25" antialias="false"/>
+        <polygon x4="-3" x1="-5" y1="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-28" y3="-28" x2="-7" y2="-27" antialias="false" x3="-3" closed="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" x="-30" diameter="40" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-7" x="1" diameter="4" antialias="false"/>
+    </description>
+</definition>

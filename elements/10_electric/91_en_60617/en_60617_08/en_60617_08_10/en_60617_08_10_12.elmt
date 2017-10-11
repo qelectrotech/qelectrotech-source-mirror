@@ -1,0 +1,17 @@
+<definition width="40" height="80" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="64">
+    <uuid uuid="{d89252e0-1324-4936-b2ef-98fe5ec9ec60}"/>
+    <names>
+        <name lang="de">Pfeife, elektrisch betätigt </name>
+        <name lang="fr">Sifflet à commande électrique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="10" length1="1.5" y1="-10" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="10" length1="1.5" y1="-10" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <polygon x8="-20" x7="10" x6="10" x1="-20" x5="0" x4="10" y5="-20" y3="-60" y1="-10" y6="-20" antialias="false" y2="-60" y7="-10" x2="-20" closed="false" x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-40" y8="-10"/>
+        <terminal orientation="s" x="0" y="10"/>
+        <terminal orientation="s" x="-10" y="10"/>
+    </description>
+</definition>

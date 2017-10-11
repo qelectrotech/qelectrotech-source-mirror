@@ -1,0 +1,35 @@
+<definition orientation="dyyy" type="element" width="100" height="50" hotspot_y="24" hotspot_x="36" version="0.70" link_type="simple">
+    <uuid uuid="{a66661f0-2ac5-4199-97e9-95e4ddda8bc2}"/>
+    <names>
+        <name lang="de">polarisiertes Relais mit neutraler Mittelstellung,
+selbsttätig rückstellend, arbeitet bei beiden
+Stromrichtungen</name>
+        <name lang="fr">Relais polarisé à position médiane et
+retournant à la position médiane après coupure</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" x="-20"/>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" x="-30"/>
+        <rect antialias="false" width="10" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-10" x="-30"/>
+        <rect antialias="false" width="10" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="5" x="-30"/>
+        <rect antialias="false" width="5" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-5" x="-25"/>
+        <line antialias="false" x1="30" y1="-20" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="50" y1="-20" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="40" y1="8" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-12" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="40" y1="12" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="20" y1="0" x2="39" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <circle antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="13" x="8"/>
+        <circle antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-17" x="53"/>
+        <circle antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y="8" x="38"/>
+        <terminal orientation="s" y="20" x="0"/>
+        <terminal orientation="n" y="-20" x="50"/>
+        <terminal orientation="n" y="-20" x="30"/>
+        <terminal orientation="s" y="20" x="40"/>
+        <terminal orientation="n" y="-20" x="0"/>
+    </description>
+</definition>

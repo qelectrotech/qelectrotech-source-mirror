@@ -1,0 +1,16 @@
+<definition height="60" version="0.70" orientation="dyyy" width="30" hotspot_x="15" type="element" hotspot_y="53" link_type="simple">
+    <uuid uuid="{79e50efd-f8bd-4984-8a8e-2e0264d8bce2}"/>
+    <names>
+        <name lang="fr">Anode fluorescente</name>
+        <name lang="de">Leuchtanode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="0" y1="-50" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-10" x1="0"/>
+        <line x2="10" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-20" x1="-10"/>
+        <line x2="-10" y1="-4" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="4" x1="-10"/>
+        <line x2="10" y1="-24" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-16" x1="10"/>
+    </description>
+</definition>

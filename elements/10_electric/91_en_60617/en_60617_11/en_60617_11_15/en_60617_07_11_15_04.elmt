@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="25" width="60" hotspot_y="0">
+    <uuid uuid="{803a542f-a537-4d7c-832f-8c208c49990b}"/>
+    <names>
+        <name lang="de">Leuchte für Leuchtstofflampe, allgemein</name>
+        <name lang="fr">Luminaire,
+Lampe à fluorescence, symbole généra</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="45" tagg="label" size="9" x="35" text="_"/>
+        <line length1="1.5" end2="none" y1="10" y2="10" x2="30" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="5" y2="15" x2="30" length2="1.5" antialias="false" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

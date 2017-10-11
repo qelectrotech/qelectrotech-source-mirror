@@ -1,0 +1,18 @@
+<definition height="50" version="0.70" orientation="dyyy" width="70" hotspot_x="25" type="element" hotspot_y="15" link_type="simple">
+    <uuid uuid="{5c788718-993a-4a75-8c8f-175ab12b69d3}"/>
+    <names>
+        <name lang="fr">Électrode cylindrique de concentration
+Électrode de dérive
+Électrode d'espace de glissement
+Élément de lentille électronique</name>
+        <name lang="de">zylindrische Fokussierelektrode
+elektronische Linse</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="35" rotate="true" size="9" tagg="label" x="65" text="_"/>
+        <line x2="-20" y1="10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" x1="20"/>
+        <rect y="-10" height="40" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20"/>
+    </description>
+</definition>

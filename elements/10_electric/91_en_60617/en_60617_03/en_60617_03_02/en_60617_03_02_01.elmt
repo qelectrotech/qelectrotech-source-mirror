@@ -1,0 +1,15 @@
+<definition hotspot_x="4" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
+    <uuid uuid="{8dde5b2e-ac66-401d-a3e6-f791310732ea}"/>
+    <names>
+        <name lang="fr">Dérivation
+Point de liaison</name>
+        <name lang="de">Kreuzungspunkt
+Verbindungspunkt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <circle y="-2.5" x="-2.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+    </description>
+</definition>

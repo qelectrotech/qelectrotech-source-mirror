@@ -1,0 +1,16 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="65" width="70" hotspot_y="25">
+    <uuid uuid="{bb26c66e-2918-4da7-9ff0-8eb4e4d28831}"/>
+    <names>
+        <name lang="de">Türöffner</name>
+        <name lang="fr">Gâche électrique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <polygon y1="0" y2="0" y3="-20" closed="false" x2="-20" antialias="false" x1="0" x4="0" y4="0" x3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-20" height="20" antialias="false" x="-60" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-12.5" height="7" angle="180" antialias="true" x="-50" width="10" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-12.5" height="7" angle="180" antialias="true" x="-40" width="10" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

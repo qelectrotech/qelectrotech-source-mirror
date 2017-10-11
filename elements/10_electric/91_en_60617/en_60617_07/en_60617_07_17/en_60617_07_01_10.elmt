@@ -1,0 +1,18 @@
+<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{00503f4a-9568-42ae-af68-87cdd3758817}"/>
+    <names>
+        <name lang="de">Meßrelais zum Erfassen von
+Windungsschlüssen</name>
+        <name lang="fr">Relais de détection de court-circuit entre spires</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-35" size="9" text="N &lt;" x="-41"/>
+        <arc y="-15" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-45" width="10" antialias="true" start="0"/>
+        <arc y="-15" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-35" width="10" antialias="true" start="0"/>
+        <arc y="-15" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-25" width="10" antialias="true" start="0"/>
+    </description>
+</definition>

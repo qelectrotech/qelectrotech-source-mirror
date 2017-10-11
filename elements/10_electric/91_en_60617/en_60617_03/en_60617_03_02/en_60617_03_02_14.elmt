@@ -1,0 +1,27 @@
+<definition hotspot_x="54" version="0.70" orientation="dyyy" height="130" hotspot_y="126" width="110" type="element" link_type="simple">
+    <uuid uuid="{7f9218fc-2dbb-4674-a847-889698c35c80}"/>
+    <names>
+        <name lang="fr">Alternateur triphasé</name>
+        <name lang="de">Drehstrom-Synchrongenerator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="0" y2="-30" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <polygon x2="-20" y2="0" y1="-10" x3="20" x4="20" y4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="-20"/>
+        <circle y="-90" x="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="60"/>
+        <line x2="0" y2="-110" y1="-90" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line x2="50" y2="-110" y1="-110" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50"/>
+        <text y="-113" x="-40" text="3~" size="6"/>
+        <line x2="-10" y2="-120" y1="-100" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30"/>
+        <line x2="0" y2="-120" y1="-100" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <line x2="-20" y2="-120" y1="-100" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="-10" y2="-40" y1="-50" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <line x2="0" y2="-40" y1="-50" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line x2="10" y2="-40" y1="-50" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <text y="-65" x="-8" text="GS" size="9"/>
+        <terminal y="-110" x="-50" orientation="w"/>
+        <terminal y="-110" x="50" orientation="e"/>
+    </description>
+</definition>

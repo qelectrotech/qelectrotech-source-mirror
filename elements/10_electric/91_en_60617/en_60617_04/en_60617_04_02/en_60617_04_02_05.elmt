@@ -1,0 +1,22 @@
+<definition width="50" height="60" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="22">
+    <uuid uuid="{b10f1573-1aaa-4cd4-a261-3596de858273}"/>
+    <names>
+        <name lang="de">gepolter Kondensator, z.B. Elektrolyt-
+Kondensator</name>
+        <name lang="fr">Condensateur polarisé Pae exemple
+électrolytique</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="45"/>
+        <line y2="10" length1="1.5" y1="10" length2="1.5" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="5" length1="1.5" y1="5" length2="1.5" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="30" length1="1.5" y1="10" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-15" length1="1.5" y1="5" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-10" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-5" length1="1.5" y1="-5" length2="1.5" x1="-15" x2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <terminal orientation="n" x="0" y="-15"/>
+        <terminal orientation="s" x="0" y="30"/>
+    </description>
+</definition>

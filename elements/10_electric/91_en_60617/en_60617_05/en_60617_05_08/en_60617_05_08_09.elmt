@@ -1,0 +1,17 @@
+<definition height="10" version="0.70" orientation="dyyy" width="80" hotspot_x="34" type="element" hotspot_y="-5" link_type="simple">
+    <uuid uuid="{78c5805e-c135-40af-96ac-c336ef4a41eb}"/>
+    <names>
+        <name lang="fr">Électrode à ouvertures multiples</name>
+        <name lang="de">Mehrfachelektrode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="45" rotate="true" size="9" tagg="label" x="45" text="_"/>
+        <line x2="-30" y1="10" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="10" x1="8"/>
+        <circle y="8" diameter="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="38"/>
+        <circle y="8" diameter="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="28"/>
+        <circle y="8" diameter="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="18"/>
+        <circle y="8" diameter="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition hotspot_x="54" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="140" type="element" link_type="simple">
+    <uuid uuid="{758545be-8868-434d-98a3-c1e9db84a635}"/>
+    <names>
+        <name lang="fr">Fiche coaxiale et prise coaxiale</name>
+        <name lang="de">Buchse und Stecker, koaxial </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-5" x="17" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <line x2="80" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="37"/>
+        <line x2="-50" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <arc y="-10" x="-10" antialias="true" height="20" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" start="90"/>
+        <circle y="-10" x="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <line x2="60" y2="10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50"/>
+        <circle y="-10" x="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <line x2="-20" y2="10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30"/>
+        <terminal y="0" x="80" orientation="e"/>
+        <terminal y="0" x="-50" orientation="w"/>
+    </description>
+</definition>

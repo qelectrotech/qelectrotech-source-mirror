@@ -1,0 +1,16 @@
+<definition orientation="dyyy" version="0.70" width="10" type="element" hotspot_y="5" link_type="simple" hotspot_x="5" height="10">
+    <uuid uuid="{f3642959-f43c-4c1a-b131-db7ae9fcd7a2}"/>
+    <names>
+        <name lang="fr">Actionné lorsque la grandeur caractéristique
+dépasse la valeur d'ajustement</name>
+        <name lang="de">auslösend, wenn die charakteristische Größe
+höher als der eingestellte Wert ist</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <line x2="1" y2="0" length2="1.5" length1="1.5" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-1" end2="none" antialias="false"/>
+        <line x2="-1" y2="2" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="1" end2="none" antialias="false"/>
+    </description>
+</definition>

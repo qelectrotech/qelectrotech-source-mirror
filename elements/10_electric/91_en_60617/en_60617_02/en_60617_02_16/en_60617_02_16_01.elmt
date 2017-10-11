@@ -1,0 +1,18 @@
+<definition type="element" hotspot_y="24" width="30" height="50" hotspot_x="15" version="0.70" link_type="simple" orientation="dyyy">
+    <uuid uuid="{ce787c30-d996-4559-8971-3cc9b1bd49f1}"/>
+    <names>
+        <name lang="de">ideale Stromquelle</name>
+        <name lang="fr">Source idéale de courant</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" y="15" rotate="true" size="9" x="5" tagg="label"/>
+        <circle diameter="20" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-10"/>
+        <line y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y1="0" end2="none" length2="1.5" x1="-10" x2="9"/>
+        <line y2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y1="-20" end2="none" length2="1.5" x1="0" x2="0"/>
+        <line y2="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" y1="10" end2="none" length2="1.5" x1="0" x2="0"/>
+        <terminal y="-20" x="0" orientation="n"/>
+        <terminal y="20" x="0" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+    <uuid uuid="{9b42e36d-d18b-46b0-a62a-6f69ea709f68}"/>
+    <names>
+        <name lang="fr">Machine, par example (au lieu de
+l’astérisque):
+C Commutatrice
+G Génératrice
+GS Alternateur synchrone
+M Moteur
+MG Moteur/génératrice
+MS Moteur synchrone</name>
+        <name lang="de">Maschine, z.B. (anstele von Asteriskus):
+C Rotierender Umformer
+G Generator
+GS Synchrogenerator
+M Motor
+MG Motor/Synchrogenerator
+MS Synchromotor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y1="-27" x4="-31" x10="-30" y9="-27" y2="-29" y5="-33" y10="-28" x1="-33" x7="-27" x5="-30" y4="-31" x2="-32" y3="-31" y11="-27" y7="-31" x3="-33" x9="-27" x11="-33" x6="-29" y8="-29" antialias="false" x8="-28" style="line-style:normal;line-weight:normal;filling:black;color:black" y6="-31"/>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

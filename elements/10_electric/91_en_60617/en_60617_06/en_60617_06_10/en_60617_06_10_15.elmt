@@ -1,0 +1,37 @@
+<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="81" height="200" width="110" hotspot_y="180" version="0.70">
+    <uuid uuid="{94f0ea2a-6e2c-407d-97c1-d905b922e264}"/>
+    <names>
+        <name lang="de">Drehstromtransformator,
+Stern/Zickzackschaltung, Zickzackschaltung
+mit Neutralleiter</name>
+        <name lang="fr">Transformateur triphasé, couplage étoile-
+zigzag avec neutre sorti</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-35" y1="-40" x2="-35"/>
+        <input rotate="true" y="25" x="5" size="9" text="_" tagg="label"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-35" y1="-40" x2="-25"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-120" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-38" y1="-35" x2="-40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-120" y1="-150" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-30" y1="-35" x2="-25"/>
+        <text y="-160" x="-74" size="9" text="Form 1 / Forme 1"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" x="-60" diameter="60"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-45" y1="-40" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="10" y1="-20" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-48" y1="-45" x2="-25"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-140" y1="-130" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-145" y1="-135" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-10" y1="0" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-5" y1="5" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-95" y1="-85" x2="-30"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-100" y1="-95" x2="-20"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-100" y1="-95" x2="-40"/>
+        <line length2="1.5" antialias="false" end1="none" x1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-40" y1="-40" x2="-20"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-42" x="-32" diameter="4"/>
+        <terminal orientation="s" y="10" x="-30"/>
+        <terminal orientation="n" y="-150" x="-30"/>
+    </description>
+</definition>

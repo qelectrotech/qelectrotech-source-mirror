@@ -1,0 +1,25 @@
+<definition hotspot_x="30" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
+    <uuid uuid="{8ad4403d-c696-4a89-94f2-6ebb383bba5c}"/>
+    <names>
+        <name lang="fr">Photorésistance
+Cellule photoconductrice
+Dispositif photoconducteur à conductivité
+symétrique</name>
+        <name lang="de">Photowiderstand
+lichtempfindliche Zelle
+lichtempfindliches Element mit symmetrischer
+Leitfähigkeit</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" x="5" text="_" y="15" tagg="label"/>
+        <line x2="0" antialias="false" y1="-10" length2="1.5" y2="0" length1="1.5" end1="none" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="30" x="-5" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10"/>
+        <line x2="0" antialias="false" y1="-50" length2="1.5" y2="-40" length1="1.5" end1="none" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-10" antialias="false" y1="-40" length2="1.5" y2="-30" length1="1.5" end1="none" end2="triangle" x1="-20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x2="-15" antialias="false" y1="-35" length2="1.5" y2="-25" length1="1.5" end1="none" end2="triangle" x1="-25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal orientation="n" x="0" y="-50"/>
+        <terminal orientation="s" x="0" y="0"/>
+    </description>
+</definition>

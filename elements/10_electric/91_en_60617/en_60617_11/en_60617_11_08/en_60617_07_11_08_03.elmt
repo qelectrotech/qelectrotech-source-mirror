@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="5" orientation="dyyy" version="0.70">
+    <uuid uuid="{4afe5652-ad3f-49a2-82fc-6006b0dea044}"/>
+    <names>
+        <name lang="de">Durchschleifdose</name>
+        <name lang="fr">Prise directe,
+Prise boîte à boîte</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="75" x="65" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="0" length2="1.5" x1="-40" y1="0" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="20" y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="0"/>
+    </description>
+</definition>

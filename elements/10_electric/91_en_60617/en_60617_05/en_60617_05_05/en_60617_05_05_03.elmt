@@ -1,0 +1,18 @@
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" orientation="dyyy" type="element" height="50" width="70">
+    <uuid uuid="{50437c65-4169-4ad2-a0e3-405dbf88498b}"/>
+    <names>
+        <name lang="fr">Transistor avalanche NPN</name>
+        <name lang="de">NPN-Avalanche-Transistor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-30" y2="-20" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-25" antialias="false"/>
+        <polygon x4="-3" x1="-5" y1="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-28" y3="-28" x2="-1" y2="-32" antialias="false" x3="-3" closed="false"/>
+        <polygon x1="10" y1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-20" x2="10" y2="-20" antialias="false" x3="30" closed="false"/>
+    </description>
+</definition>

@@ -1,0 +1,13 @@
+<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" orientation="dyyy" type="element" height="30" width="20">
+    <uuid uuid="{97380da3-672d-45d4-9778-2fccbc2b309c}"/>
+    <names>
+        <name lang="fr">Effet Schottky</name>
+        <name lang="de">Schottky-Effekt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <polygon x4="0" y5="0" x1="5" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y6="-5" y4="0" x5="-5" y3="-20" x2="5" y2="-20" antialias="false" x3="0" closed="false" x6="-5"/>
+    </description>
+</definition>

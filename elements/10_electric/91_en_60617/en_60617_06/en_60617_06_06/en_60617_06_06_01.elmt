@@ -1,0 +1,26 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="78" hotspot_y="86" version="0.70" width="100" type="element" height="90">
+    <uuid uuid="{544e4e45-ecba-4d8e-a51a-1536e9e2bdb1}"/>
+    <names>
+        <name lang="fr">Moteur série, monophasé</name>
+        <name lang="de">Reihenschlußmotor, einphasig</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-34" y="-32" text="M" size="9"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-70" x2="-70" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="-70" x2="-60" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="0" x2="10" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="10" x2="10" end2="none" antialias="false" y2="-50" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="5" start="90" angle="180" y="-60" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="5" start="90" angle="180" y="-70" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="5" start="90" angle="180" y="-80" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-45" y="-15" text="1" size="9"/>
+        <arc x="-35" start="0" angle="180" y="-22.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-25" start="0" angle="-180" y="-22.5" antialias="true" width="10" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-70" orientation="n" y="-80"/>
+        <terminal x="10" orientation="n" y="-80"/>
+    </description>
+</definition>

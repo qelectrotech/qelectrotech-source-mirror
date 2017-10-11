@@ -1,0 +1,22 @@
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="65" orientation="dyyy" type="element" height="70" width="50">
+    <uuid uuid="{66689d3b-2bd8-42ba-a6ae-f914fa76fb1b}"/>
+    <names>
+        <name lang="fr">Transistor PNIN avec connexion à la région
+intrinsèque</name>
+        <name lang="de">PNIN-Transistor mit Anschluss zur
+eigenleitenden Zone</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-10" y1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-30" y2="-20" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-45" antialias="false"/>
+        <polygon x4="-3" x1="-5" y1="-51" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-48" y3="-48" x2="-7" y2="-47" antialias="false" x3="-3" closed="false"/>
+        <line end1="none" end2="none" x1="-30" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-40" antialias="false"/>
+        <polygon x1="-10" y1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-8" x2="0" y2="-20" antialias="false" x3="0" closed="false"/>
+        <line end1="none" end2="none" x1="-4" y1="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="4" y2="-11" antialias="false"/>
+    </description>
+</definition>

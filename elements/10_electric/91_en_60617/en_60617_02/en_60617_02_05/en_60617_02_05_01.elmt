@@ -1,0 +1,18 @@
+<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" orientation="dyyy" link_type="simple">
+    <uuid uuid="{29d30dbf-6a4f-4c7e-bf34-d5a25e863322}"/>
+    <names>
+        <name lang="fr">Propagation dans un seul sens
+Ecoulement dans un seul sens
+(énergie, signal, information)</name>
+        <name lang="de">Ausbreitung in einer Richtung (simplex)
+Fluß in einer Richtung (simplex)
+(Energie-, Signal-, Information-)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-10" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="simple" x2="0"/>
+        <line antialias="false" x1="0" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="none" x2="10"/>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" orientation="dyyy" height="50" link_type="simple">
+    <uuid uuid="{bfa60c5b-9f75-4e82-a5eb-4c51ce86e38a}"/>
+    <names>
+        <name lang="fr">Relais à minimum de puissance active</name>
+        <name lang="de">Minimalwirkleistungsrelais</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" rotate="true" x="5" tagg="label" y="25"/>
+        <rect width="60" antialias="false" x="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="40"/>
+        <text text="P  &lt;" size="9" x="-42" y="-15"/>
+    </description>
+</definition>

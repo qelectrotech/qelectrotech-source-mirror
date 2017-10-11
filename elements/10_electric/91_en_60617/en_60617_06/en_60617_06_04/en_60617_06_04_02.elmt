@@ -1,0 +1,15 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+    <uuid uuid="{837f528f-c277-470b-bbea-a1b40318fba8}"/>
+    <names>
+        <name lang="fr">Moteur linéaire</name>
+        <name lang="de">Linearmotor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-35" y="-25" text="M" size="9"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-60" x2="0" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

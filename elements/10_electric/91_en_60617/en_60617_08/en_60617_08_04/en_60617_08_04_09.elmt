@@ -1,0 +1,17 @@
+<definition width="50" height="70" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="65">
+    <uuid uuid="{0494779e-5c16-4b5e-9ab9-e52f59193e9e}"/>
+    <names>
+        <name lang="de">Überverbrauchszähler, Spitzenzähler</name>
+        <name lang="fr">Compteur d'énergie active à dépassement</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <rect width="40" height="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false"/>
+        <text size="9" text="Wh" x="-8" y="-26"/>
+        <rect width="40" height="20" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-60" antialias="false"/>
+        <text size="9" text="P" x="-7" y="-10"/>
+        <polygon y3="-12" y2="-15" y1="-17" x1="4" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="4" antialias="false"/>
+    </description>
+</definition>

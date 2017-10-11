@@ -1,0 +1,18 @@
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="40" width="50">
+    <uuid uuid="{a37db8bb-78f5-4562-9632-277283b60376}"/>
+    <names>
+        <name lang="fr">Transistor à effet de champ à grille-jonction
+avec canal de type N</name>
+        <name lang="de">Sperrschicht-Feldeffekt-Transistor (JFET) mit
+N-Kana</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="45" size="9" x="25"/>
+        <line end1="none" end2="none" x1="30" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="10" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="25" antialias="false"/>
+        <line end1="none" end2="none" x1="30" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="20" antialias="false"/>
+        <polygon x1="0" y1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="25" x2="5" y2="20" antialias="false" x3="0" closed="false"/>
+    </description>
+</definition>

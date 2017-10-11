@@ -1,0 +1,25 @@
+<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="44" width="90" hotspot_y="15">
+    <uuid uuid="{429d3ff2-3c63-4c75-9018-f4634766ec89}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal mit festem
+Abzweig und Geräte-Steckdose mit
+Schutzkontakt</name>
+        <name lang="fr">Élément droit avec dérivation fixe comprenant
+un socle de prise de courant, avec contact pour
+conducteur de protection</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="35" tagg="label" size="9" x="45" text="_"/>
+        <line length1="1.5" end2="none" y1="0" y2="0" x2="-40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="-40" length2="1.5" antialias="false" x1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-5" y2="5" x2="40" length2="1.5" antialias="false" x1="40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-10" antialias="false" x="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="30" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="30" y2="30" x2="10" length2="1.5" antialias="false" x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="30" height="20" angle="180" antialias="true" x="-10" width="20" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="e" y="0" x="40"/>
+        <terminal orientation="w" y="0" x="-40"/>
+    </description>
+</definition>

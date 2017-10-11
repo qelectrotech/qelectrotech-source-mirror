@@ -1,0 +1,16 @@
+<definition hotspot_x="65" hotspot_y="85" orientation="dyyy" height="90" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{ff4a357f-034d-4b75-a353-1a1bb2b6a06b}"/>
+    <names>
+        <name lang="de">Unterspannungsrelais</name>
+        <name lang="fr">Relais à minimum de tension</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-80" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
+        <text y="-15" size="9" text="130 %" x="-49"/>
+        <text y="-40" size="9" text="50...80 V" x="-55"/>
+        <text y="-61" size="9" text="U &lt;" x="-41"/>
+    </description>
+</definition>

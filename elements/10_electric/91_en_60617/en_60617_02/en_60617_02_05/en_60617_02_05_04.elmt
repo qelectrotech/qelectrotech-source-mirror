@@ -1,0 +1,15 @@
+<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="4" orientation="dyyy" link_type="simple">
+    <uuid uuid="{27e6ed0b-2c94-468a-97a0-bde41ab792b4}"/>
+    <names>
+        <name lang="fr">Emission</name>
+        <name lang="de">Senden</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-10" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="simple" x2="3"/>
+        <line antialias="false" x1="-3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y2="0" y1="0" end2="none" x2="10"/>
+        <input size="9" text="_" y="15" tagg="label" x="5" rotate="true"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" y="-1.5" x="-4.5"/>
+    </description>
+</definition>

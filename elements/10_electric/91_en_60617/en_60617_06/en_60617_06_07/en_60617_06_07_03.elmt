@@ -1,0 +1,39 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="64" hotspot_y="86" version="0.70" width="80" type="element" height="120">
+    <uuid uuid="{9814a7a8-3860-48ee-a449-b596c681fd17}"/>
+    <names>
+        <name lang="fr">Alternateur synchrone, triphasé à induit monté
+en étoile, neutre sorti</name>
+        <name lang="de">Drehstrom-Synchrongenerator, Sternschaltung,
+Neutralleiter herausgeführt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <arc x="-50" start="0" angle="180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-40" start="0" angle="180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-30" start="0" angle="180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-37" y="-32" text="GS" size="9"/>
+        <arc x="-20" start="0" angle="180" y="5" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="15" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-40" x2="-32" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" end1="none" length1="1.5" x1="-27" x2="-20" end2="none" antialias="false" y2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-50" x2="-50" end2="none" antialias="false" y2="-53" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-60" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="-10" x2="-10" end2="none" antialias="false" y2="-53" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" end1="none" length1="1.5" x1="10" x2="10" end2="none" antialias="false" y2="-60" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-60" end1="none" length1="1.5" x1="10" x2="-4" end2="none" antialias="false" y2="-46" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-20" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-30" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-20" end2="none" antialias="false" y2="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-30" x2="-40" end2="none" antialias="false" y2="-25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-32" y="-22" antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-50" orientation="n" y="-80"/>
+        <terminal x="-30" orientation="n" y="-80"/>
+        <terminal x="-10" orientation="n" y="-80"/>
+        <terminal x="10" orientation="n" y="-80"/>
+    </description>
+</definition>

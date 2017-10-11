@@ -1,0 +1,22 @@
+<definition height="190" version="0.70" orientation="dyyy" width="160" hotspot_x="115" type="element" hotspot_y="185" link_type="simple">
+    <uuid uuid="{8ba98b6c-ee89-482f-9fa0-9ef906f926b9}"/>
+    <names>
+        <name lang="fr">Revêtement conducteur sur la surface interne
+de l’enveloppe</name>
+        <name lang="de">Röhrenkolben mit leitendem Belag auf der
+Innenseite</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" rotate="true" size="9" tagg="label" x="5" text="_"/>
+        <line x2="-60" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="-60"/>
+        <line x2="0" y1="0" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="0"/>
+        <line x2="-100" y1="-60" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-160" x1="-60"/>
+        <line x2="40" y1="-60" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-160" x1="0"/>
+        <arc y="-180" height="40" width="140" angle="180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-100" start="0"/>
+        <line x2="-50" y1="-160" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="-90"/>
+        <line x2="-10" y1="-160" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-60" x1="30"/>
+        <line x2="-75" y1="-120" end1="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-120" x1="-110"/>
+    </description>
+</definition>

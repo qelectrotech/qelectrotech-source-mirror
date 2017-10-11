@@ -1,0 +1,19 @@
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+    <uuid uuid="{0a2d34ae-a49a-4a4d-90bf-a937fdf92ec7}"/>
+    <names>
+        <name lang="fr">Onduleur</name>
+        <name lang="de">Wechselrichter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" height="5" width="10" start="0" y="-10.5" x="-25" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <line antialias="false" x1="-40" y2="-40" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <arc antialias="true" height="5" width="10" start="0" y="-10.5" x="-15" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-36" y2="-36" length2="1.5" end1="none" length1="1.5" y1="-36" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+        <line antialias="false" x1="-36" y2="-32" length2="1.5" end1="none" length1="1.5" y1="-32" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" x1="-26" y2="-32" length2="1.5" end1="none" length1="1.5" y1="-32" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+    </description>
+</definition>

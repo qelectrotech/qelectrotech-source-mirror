@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+    <uuid uuid="{55860212-6993-4087-84b4-f184de12a7e0}"/>
+    <names>
+        <name lang="de">Sicherheitsleuchte,
+Notleuchte mit getrenntem Stromkreis,
+Rettungszeichenleuchte</name>
+        <name lang="fr">Appareil d'éclairage de sécurité sur circuit
+spécial</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-20" y2="0" x2="0" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="0" y2="-20" x2="0" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-12.5" antialias="false" x="-12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,14 @@
+<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
+    <uuid uuid="{1462fd0b-ff9e-43a4-848e-2644b39dee82}"/>
+    <names>
+        <name lang="fr">Effet ou dépendance de champ magnétique</name>
+        <name lang="de">Magnetfeld-Wirkung oder -Abhängigkeit </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <line x2="5" y2="5" length2="1.5" length1="1.5" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-5" end2="none" antialias="false"/>
+        <line x2="-5" y2="5" length2="1.5" length1="1.5" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="5" end2="none" antialias="false"/>
+    </description>
+</definition>

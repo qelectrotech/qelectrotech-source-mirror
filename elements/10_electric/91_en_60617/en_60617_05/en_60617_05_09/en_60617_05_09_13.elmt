@@ -1,0 +1,26 @@
+<definition type="element" link_type="simple" height="100" width="120" version="0.70" orientation="dyyy" hotspot_x="115" hotspot_y="95">
+    <uuid uuid="{e1ac2342-10d9-46c8-8b17-905426bebed3}"/>
+    <names>
+        <name lang="fr">Tétrapôle</name>
+        <name lang="de">Quadrupol</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="0" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-110"/>
+        <line antialias="false" x1="0" y2="-80" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-50" y2="-20" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-50"/>
+        <line antialias="false" x1="-50" y2="-80" length2="1.5" end1="none" length1="1.5" y1="-80" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-50" y2="-60" length2="1.5" end1="none" length1="1.5" y1="-80" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-50"/>
+        <line antialias="false" x1="-30" y2="-40" length2="1.5" end1="none" length1="1.5" y1="-40" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" x1="-10" y2="-90" length2="1.5" end1="none" length1="1.5" y1="-40" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" x1="-10" y2="-90" length2="1.5" end1="none" length1="1.5" y1="-90" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-110"/>
+        <line antialias="false" x1="-90" y2="-40" length2="1.5" end1="none" length1="1.5" y1="-90" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-90"/>
+        <line antialias="false" x1="-90" y2="-40" length2="1.5" end1="none" length1="1.5" y1="-40" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70"/>
+        <arc antialias="true" height="10" width="30" start="0" y="-20" x="-65" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="10" width="30" start="0" y="-70" x="-65" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="30" width="10" start="90" y="-55" x="-30" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="30" width="10" start="90" y="-55" x="-80" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

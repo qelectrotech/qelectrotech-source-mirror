@@ -1,0 +1,13 @@
+<definition hotspot_x="15" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="30" type="element" link_type="simple">
+    <uuid uuid="{0a6b6f75-1c45-452e-b233-54e3e5dc87b1}"/>
+    <names>
+        <name lang="fr">Aimant permanent</name>
+        <name lang="de">Dauermagnet</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <polygon x4="10" x8="-5" y6="-5" y7="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="10" x2="-10" y3="0" y1="-10" x5="5" y8="-10" x7="-5" x1="-10" y9="-10" x9="-10" y4="-10" x6="5" y2="0" y5="-10"/>
+    </description>
+</definition>

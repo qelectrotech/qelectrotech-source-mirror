@@ -1,0 +1,22 @@
+<definition width="80" height="70" type="element" hotspot_x="75" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+    <uuid uuid="{6ed4f2ca-fed7-4e5f-b825-3386da69b48b}"/>
+    <names>
+        <name lang="de">Zähleinrichtung, betätigt durch Nocke</name>
+        <name lang="fr">Dispositif de comptage commandé par came</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <rect width="20" height="20" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <circle diameter="10" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="-20" x2="-5" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-20" length1="1.5" y1="0" length2="1.5" x1="0" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="-40" x2="-50" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <arc width="20" height="20" x="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" start="90" angle="270" antialias="true"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="-60" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-20" length2="1.5" x1="-60" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+    </description>
+</definition>

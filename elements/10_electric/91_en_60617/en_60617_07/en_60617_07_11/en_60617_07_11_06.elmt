@@ -1,0 +1,27 @@
+<definition link_type="simple" version="0.70" hotspot_x="156" hotspot_y="65" orientation="dyyy" type="element" height="70" width="160">
+    <uuid uuid="{ef20de80-d3a4-4802-8405-f9428d2e08db}"/>
+    <names>
+        <name lang="fr">Commutateur avec diagramme de position</name>
+        <name lang="de">Mehrstellungsschalter, Beispiel mit
+Schaltstellungsdiagramm</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="25" size="9" x="5"/>
+        <line end1="none" end2="none" x1="0" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="-60" antialias="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-20" y2="-60" antialias="false"/>
+        <line end1="none" end2="none" x1="-40" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-40" y2="-60" antialias="false"/>
+        <line end1="none" end2="none" x1="-60" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-60" y2="-60" antialias="false"/>
+        <polygon x1="-20" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-35" x2="-20" y2="-20" antialias="false" x3="-40" closed="false"/>
+        <line end1="none" end2="none" x1="-120" y1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-130" y2="-36" antialias="false"/>
+        <line end1="none" end2="none" x1="-120" y1="-16" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-110" y2="-36" antialias="false"/>
+        <line end1="none" end2="none" x1="-120" y1="-16" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-90" y2="-36" antialias="false"/>
+        <line end1="none" end2="none" x1="-120" y1="-16" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-150" y2="-36" antialias="false"/>
+        <text text="1" y="-40" size="6" x="-152"/>
+        <text text="2" y="-40" size="6" x="-132"/>
+        <text text="3" y="-40" size="6" x="-112"/>
+        <text text="4" y="-40" size="6" x="-93"/>
+        <line end1="none" end2="none" x1="-124" y1="-25" style="line-style:dashed;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-27" y2="-25" antialias="false"/>
+    </description>
+</definition>

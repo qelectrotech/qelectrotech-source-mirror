@@ -1,0 +1,17 @@
+<definition hotspot_x="65" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="70">
+    <uuid uuid="{c4c9d8b3-d648-44c5-b40e-eaf4f9885d84}"/>
+    <names>
+        <name lang="de">Heizkraftwerk (in Betrieb oder undefiniert)</name>
+        <name lang="fr">Centrale de production combinée d'énergie
+électrique et de chaleur (en service ou
+indéterminé)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="40" antialias="false"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" width="10" antialias="false"/>
+        <rect y="-40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" width="10" antialias="false"/>
+    </description>
+</definition>

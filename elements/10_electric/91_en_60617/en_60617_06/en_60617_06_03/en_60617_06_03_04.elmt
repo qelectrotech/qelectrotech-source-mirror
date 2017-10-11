@@ -1,0 +1,15 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="17" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+    <uuid uuid="{fabfd7ec-bc79-401c-953c-b036f71122cd}"/>
+    <names>
+        <name lang="fr">Balai (sur bague ou sur collecteur à lames)</name>
+        <name lang="de">Bürste</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <arc x="-15" start="90" angle="-180" y="-20" antialias="true" width="10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end1="none" length1="1.5" x1="-5" x2="10" end2="none" antialias="false" y2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-5" y="-13" antialias="false" width="5" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

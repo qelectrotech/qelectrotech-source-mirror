@@ -1,0 +1,13 @@
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="5">
+    <uuid uuid="{53319cb9-b296-46e0-8f5a-f1fd90784518}"/>
+    <names>
+        <name lang="de">Begrenzungslinie</name>
+        <name lang="fr">Séparation</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" rotate="true" y="15" x="5" text="_" size="9"/>
+        <line style="line-style:dashdotted;line-weight:normal;filling:none;color:black" x1="-20" length1="1.5" end2="none" antialias="false" x2="20" y1="0" y2="0" end1="none" length2="1.5"/>
+    </description>
+</definition>

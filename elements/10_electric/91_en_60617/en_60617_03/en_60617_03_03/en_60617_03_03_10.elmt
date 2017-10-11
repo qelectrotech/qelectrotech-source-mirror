@@ -1,0 +1,20 @@
+<definition hotspot_x="36" version="0.70" orientation="dyyy" height="50" hotspot_y="45" width="50" type="element" link_type="simple">
+    <uuid uuid="{9eab2b4a-0985-418f-8815-60caa4b2db71}"/>
+    <names>
+        <name lang="fr">Connecteur, partie mobile d'un ensemble</name>
+        <name lang="de">Steckverbinder, bewegliches Teil</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-10" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30"/>
+        <line x2="10" y2="-40" y1="-40" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line x2="10" y2="0" y1="-40" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line x2="0" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line x2="-10" y2="-30" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <arc y="-40" x="-10" antialias="true" height="20" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" start="90"/>
+        <arc y="-20" x="-10" antialias="true" height="20" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" start="180"/>
+        <terminal y="-20" x="-30" orientation="w"/>
+    </description>
+</definition>

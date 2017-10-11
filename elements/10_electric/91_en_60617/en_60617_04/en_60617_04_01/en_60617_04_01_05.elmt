@@ -1,0 +1,19 @@
+<definition width="50" height="40" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="28">
+    <uuid uuid="{ea9456cf-0493-4dec-a107-061dfe3a9a69}"/>
+    <names>
+        <name lang="de">Widerstand mit beweglichem Kontakt</name>
+        <name lang="fr">Résistance variable à contact mobile</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="0" length1="1.5" y1="0" length2="1.5" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <rect width="30" height="10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="false"/>
+        <line y2="-20" length1="1.5" y1="-20" length2="1.5" x1="20" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-5" length1="1.5" y1="-20" length2="1.5" x1="5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <polygon y3="-5" x4="3" y2="-9" y1="-9" x1="3" x2="7" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-9" x3="5" antialias="false"/>
+        <terminal orientation="w" x="-20" y="0"/>
+        <terminal orientation="e" x="20" y="-20"/>
+    </description>
+</definition>

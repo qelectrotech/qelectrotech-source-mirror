@@ -1,0 +1,15 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+    <uuid uuid="{09c20960-fc7c-4b12-9fee-dc8926bfea28}"/>
+    <names>
+        <name lang="de">Flugplatzfeuer, weiss, einseitig strahlend</name>
+        <name lang="fr">Feu aéronautique au sol, faisceau blanc et
+unidirectionnel (en hauteur)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-40" y2="-20" y3="0" closed="false" x2="-40" antialias="false" x1="0" x4="0" y4="-40" x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

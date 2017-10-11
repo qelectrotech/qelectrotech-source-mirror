@@ -1,0 +1,23 @@
+<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="94" width="100" hotspot_y="45">
+    <uuid uuid="{3a5311fc-7ec0-4a12-bc08-4b2e3575e72f}"/>
+    <names>
+        <name lang="de">Gerader Elektro-Installationskanal mit innerer
+Drucktrennwand</name>
+        <name lang="fr">Élément droit avec traversée étanche</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <line length1="1.5" end2="none" y1="-10" y2="-10" x2="-90" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="-90" length2="1.5" antialias="false" x1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-15" y2="-5" x2="0" length2="1.5" antialias="false" x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y5="-5" y1="-5" y2="-15" y3="-20" closed="false" x2="-40" antialias="false" x5="-40" x1="-40" x4="-50" y4="0" x3="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-18" y2="-25" x2="-45" length2="1.5" antialias="false" x1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-30" y2="-40" x2="-45" length2="1.5" antialias="false" x1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-2" y2="5" x2="-45" length2="1.5" antialias="false" x1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="10" y2="20" x2="-45" length2="1.5" antialias="false" x1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" y="-10" x="-90"/>
+        <terminal orientation="e" y="-10" x="0"/>
+    </description>
+</definition>

@@ -1,0 +1,15 @@
+<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="6" orientation="dyyy" version="0.70">
+    <uuid uuid="{367883aa-e54f-4158-8530-1c1f26689b64}"/>
+    <names>
+        <name lang="de">Entzerrer</name>
+        <name lang="fr">Égaliseur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="45" x="65" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="9" length2="1.5" x1="-40" y1="9" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon y4="19" x4="10" y5="9" x3="30" y2="-1" x1="-10" y1="9" x2="10" y3="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" closed="false" x5="-10"/>
+        <line end2="none" end1="none" length1="1.5" y2="9" length2="1.5" x1="30" y1="9" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+    </description>
+</definition>

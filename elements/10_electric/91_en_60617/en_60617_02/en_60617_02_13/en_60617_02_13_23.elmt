@@ -1,0 +1,18 @@
+<definition link_type="simple" type="element" width="50" hotspot_y="14" orientation="dyyy" height="30" version="0.70" hotspot_x="39">
+    <uuid uuid="{b77a5249-6577-4746-9984-fa0dee94359a}"/>
+    <names>
+        <name lang="fr">Actionné par effet électromagnétique</name>
+        <name lang="de">ausgelöst durch elektromagnetischen Effekt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="15"/>
+        <line x2="6" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-14" y2="0" length2="1.5"/>
+        <rect antialias="false" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" x="-34" y="-5"/>
+        <line x2="-24" antialias="false" y1="-5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-24" y2="-10" length2="1.5"/>
+        <line x2="-24" antialias="false" y1="5" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-24" y2="10" length2="1.5"/>
+        <terminal orientation="n" x="-24" y="-10"/>
+        <terminal orientation="s" x="-24" y="10"/>
+    </description>
+</definition>

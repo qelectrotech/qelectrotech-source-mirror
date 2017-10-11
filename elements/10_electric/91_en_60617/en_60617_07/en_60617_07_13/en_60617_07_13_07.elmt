@@ -1,0 +1,22 @@
+<definition orientation="dyyy" type="element" width="60" height="70" hotspot_y="44" hotspot_x="30" version="0.70" link_type="simple">
+    <uuid uuid="{6c0f49b1-2f91-434b-8ef5-6d69f1122cb1}"/>
+    <names>
+        <name lang="de">Zweiwege-Trennschalter</name>
+        <name lang="fr">Sectionneur à deux directions</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="0" y1="4" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-24" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-20" y1="-40" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="20" y1="-40" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-24" y1="-20" x2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="16" y1="-20" x2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <circle antialias="false" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" x="-2"/>
+        <terminal orientation="n" y="-40" x="-20"/>
+        <terminal orientation="s" y="20" x="0"/>
+        <terminal orientation="n" y="-40" x="20"/>
+    </description>
+</definition>

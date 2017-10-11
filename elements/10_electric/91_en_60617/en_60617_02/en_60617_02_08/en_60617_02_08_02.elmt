@@ -1,0 +1,17 @@
+<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="14" link_type="simple" hotspot_x="10" height="30">
+    <uuid uuid="{d9dd9c48-c5b1-45fe-acf0-3d0e5b2743b8}"/>
+    <names>
+        <name lang="fr">Effet électromagnétique</name>
+        <name lang="de">elektromagnetische Wirkung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <line x2="0" y2="-4" length2="1.5" length1="1.5" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <line x2="0" y2="10" length2="1.5" length1="1.5" y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <arc angle="180" width="8" x="-4" start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" y="-4" antialias="true"/>
+        <terminal orientation="s" x="0" y="10"/>
+        <terminal orientation="n" x="0" y="-10"/>
+    </description>
+</definition>

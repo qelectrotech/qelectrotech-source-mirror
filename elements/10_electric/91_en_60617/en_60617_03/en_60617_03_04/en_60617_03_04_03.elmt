@@ -1,0 +1,16 @@
+<definition hotspot_x="105" version="0.70" orientation="dyyy" height="60" hotspot_y="47" width="130" type="element" link_type="simple">
+    <uuid uuid="{712fbf74-d3e9-4d36-b3a2-615fed91d6db}"/>
+    <names>
+        <name lang="fr">Boîte de jonction avec trois conducteurs</name>
+        <name lang="de">Verbindungsmuffe</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="20" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-100"/>
+        <line x2="20" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-100"/>
+        <line x2="20" y2="-30" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-100"/>
+        <polygon x2="0" x5="-80" y2="-5" y1="10" x3="0" x4="-40" y4="-45" y6="-5" antialias="false" x7="-40" y7="10" y5="-35" x6="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-35" x1="-40"/>
+    </description>
+</definition>

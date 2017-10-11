@@ -1,0 +1,23 @@
+<definition hotspot_x="25" version="0.70" orientation="dyyy" height="10" hotspot_y="5" width="50" type="element" link_type="simple">
+    <uuid uuid="{1dadd58a-33a1-431d-b752-e34d4a243220}"/>
+    <names>
+        <name lang="fr">Liaison, par exemple:
+- mécanique
+- pneumatique
+- hydraulique
+- optique
+- fonctionnelle</name>
+        <name lang="de">Wirkverbindung, z.B.:
+- mechanische
+- pneumatische
+- hydraulische
+- optische
+- funktionelle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20"/>
+    </description>
+</definition>

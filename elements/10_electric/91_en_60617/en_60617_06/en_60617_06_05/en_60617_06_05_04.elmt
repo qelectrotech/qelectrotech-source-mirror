@@ -1,0 +1,32 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="155" hotspot_y="85" version="0.70" width="190" type="element" height="90">
+    <uuid uuid="{9f9fec3c-2609-41b8-9fa3-521e4201fdf8}"/>
+    <names>
+        <name lang="fr">Convertisseur rotatif, DC/DC avec excitation
+commune par aimant permanent</name>
+        <name lang="de">Gleichstrom-Umformer, rotierend, mit
+gemeinsamer Dauermagneterregung
+(Einankerumformer)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-120" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-94" y="-32" text="M" size="9"/>
+        <text x="-34" y="-32" text="G" size="9"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-100" x2="-80" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-100" x2="-92" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-89" x2="-80" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-40" x2="-32" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-29" x2="-20" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="-120" x2="-150" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-145" x2="-135" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-140" x2="-130" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" end1="none" length1="1.5" x1="0" x2="30" end2="none" antialias="false" y2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="10" x2="20" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="15" x2="25" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-70" x4="-20" y9="-70" y2="-70" y5="-70" x1="-85" x7="-30" x5="-20" y4="-80" x2="-95" y3="-80" y7="-75" x3="-95" x9="-85" x6="-30" y8="-75" antialias="false" x8="-85" style="line-style:normal;line-weight:normal;filling:black;color:black" y6="-70"/>
+    </description>
+</definition>

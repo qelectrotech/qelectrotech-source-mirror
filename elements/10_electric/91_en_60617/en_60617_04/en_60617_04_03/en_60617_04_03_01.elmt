@@ -1,0 +1,22 @@
+<definition height="20" type="element" width="50" hotspot_y="15" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+    <uuid uuid="{a2de7e88-fade-484c-85e3-04485578b544}"/>
+    <names>
+        <name lang="fr">Inductance
+Bobine
+Enroulement
+Piège</name>
+        <name lang="de">Induktivität
+Spule
+Wicklung
+Drossel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="25" tagg="label" text="_" rotate="true" x="5" size="9"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-10" x="-20" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-10" x="-40" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-10" x="-10" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-180" antialias="true" height="10" width="10" y="-10" x="-30" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

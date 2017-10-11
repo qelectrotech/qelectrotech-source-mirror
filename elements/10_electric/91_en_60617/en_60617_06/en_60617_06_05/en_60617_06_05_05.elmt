@@ -1,0 +1,38 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="165" hotspot_y="97" version="0.70" width="190" type="element" height="100">
+    <uuid uuid="{34faf335-d71b-447d-8990-0373e2c11564}"/>
+    <names>
+        <name lang="fr">Convertisseur rotatif, DC/DC avec enroulement
+d'excitation commun</name>
+        <name lang="de">Gleichstrom-Umformer, rotierend, mit
+gemeinsamer Feldwicklung
+(Einankerumformer)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-120" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="5" rotate="true" y="25" text="_" tagg="label" size="9"/>
+        <circle x="-60" y="-60" antialias="false" diameter="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-94" y="-32" text="M" size="9"/>
+        <text x="-34" y="-32" text="G" size="9"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-100" x2="-80" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-100" x2="-92" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-40" x2="-20" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-89" x2="-80" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-40" x2="-32" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-29" x2="-20" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-40" end1="none" length1="1.5" x1="-1" x2="20" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-1" x2="20" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-40" end1="none" length1="1.5" x1="-119" x2="-160" end2="none" antialias="false" y2="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-40" end1="none" length1="1.5" x1="-130" x2="-130" end2="none" antialias="false" y2="-85" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-85" end1="none" length1="1.5" x1="-130" x2="-80" end2="none" antialias="false" y2="-85" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-80" start="180" angle="180" y="-90" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-70" start="180" angle="180" y="-90" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-60" start="180" angle="180" y="-90" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-50" start="180" angle="180" y="-90" antialias="true" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-85" end1="none" length1="1.5" x1="-40" x2="-40" end2="none" antialias="false" y2="-95" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-95" end1="none" length1="1.5" x1="-40" x2="-140" end2="none" antialias="false" y2="-95" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-95" end1="none" length1="1.5" x1="-140" x2="-140" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" end1="none" length1="1.5" x1="-119" x2="-160" end2="none" antialias="false" y2="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

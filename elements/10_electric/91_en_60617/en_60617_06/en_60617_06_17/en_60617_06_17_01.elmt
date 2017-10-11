@@ -1,0 +1,17 @@
+<definition type="element" link_type="simple" height="50" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="45">
+    <uuid uuid="{9d8ac118-e354-489e-b590-25b7d2e73af8}"/>
+    <names>
+        <name lang="fr">Source de chaleur</name>
+        <name lang="de">Heizquelle </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

@@ -1,0 +1,15 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{7f748c57-b23d-4476-a490-0570592d3037}"/>
+    <names>
+        <name lang="de">Anlasser, Betätigung stufenweise</name>
+        <name lang="fr">Démarreur opérant par échelons</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-20"/>
+        <polygon antialias="false" closed="false" x1="-20" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x3="20" y3="-20"/>
+        <polygon y4="-5" antialias="false" closed="false" x1="-10" y1="5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x4="10" x3="10" y3="0"/>
+    </description>
+</definition>

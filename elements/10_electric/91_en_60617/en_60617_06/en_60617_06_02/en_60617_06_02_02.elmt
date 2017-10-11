@@ -1,0 +1,14 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
+    <uuid uuid="{cca21743-ea04-4eb8-aa7a-7f610afaa82f}"/>
+    <names>
+        <name lang="fr">Enroulement triphasé partiel, en V (60°)</name>
+        <name lang="de">Dreiphasenwicklung, V-Schaltung (60°)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" rotate="true" y="15" text="_" tagg="label" size="9"/>
+        <line y1="-15" end1="none" length1="1.5" x1="-20" x2="-10" end2="none" antialias="false" y2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end1="none" length1="1.5" x1="-10" x2="0" end2="none" antialias="false" y2="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

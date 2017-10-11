@@ -1,0 +1,15 @@
+<definition type="element" link_type="simple" height="70" width="70" version="0.70" orientation="dyyy" hotspot_x="25" hotspot_y="25">
+    <uuid uuid="{2c63837a-5b3d-4ea8-a2ec-f660aae70e91}"/>
+    <names>
+        <name lang="fr">Régulateur en boucle fermée</name>
+        <name lang="de">Regler</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x7="13" x8="12" x9="13" y5="7" x11="7" x4="9" y2="11" y1="13" antialias="false" x10="10" y7="9" y4="9" style="line-style:normal;line-weight:normal;filling:black;color:black" x5="10" y3="9" x6="11" y11="13" y6="9" y10="12" y9="13" x1="7" x2="8" y8="11" x3="7"/>
+        <input text="_" size="9" tagg="label" y="115" x="35" rotate="true"/>
+        <rect antialias="false" height="60" width="60" y="-20" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon closed="false" antialias="false" y3="40" x1="10" y2="10" x3="10" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40"/>
+    </description>
+</definition>

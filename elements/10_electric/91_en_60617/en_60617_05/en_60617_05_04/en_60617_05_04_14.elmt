@@ -1,0 +1,22 @@
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+    <uuid uuid="{942678c2-2179-44a7-96e9-52ee0e8fa79e}"/>
+    <names>
+        <name lang="fr">Thyristor triode passant en inverse, gâchette P
+(commandé côté cathode)</name>
+        <name lang="de">rückwärts leitende Thyristortriode, P-Gate
+(Kathode gesteuert)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="0" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="10" y2="-10" antialias="false"/>
+        <polygon x4="-10" x1="-10" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-30" y3="-10" x2="10" y2="-30" antialias="false" x3="0" closed="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="20" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="8" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="8" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="5" y2="-10" antialias="false"/>
+        <terminal orientation="s" y="0" x="0"/>
+        <terminal orientation="n" y="-40" x="0"/>
+    </description>
+</definition>

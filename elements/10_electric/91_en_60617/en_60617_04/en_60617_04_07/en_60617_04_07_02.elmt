@@ -1,0 +1,22 @@
+<definition width="70" height="70" type="element" hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="34">
+    <uuid uuid="{0e1976ea-13ae-4d0f-bfef-c3dbad05098a}"/>
+    <names>
+        <name lang="de">piezoelektrischer Kristall mit drei Elektroden</name>
+        <name lang="fr">Cristal piézoélectrique avec trois électrodes</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <rect width="60" height="10" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-30" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="30" length1="1.5" y1="10" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="-20" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="10" length1="1.5" y1="10" length2="1.5" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="2" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-30" length2="1.5" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <terminal orientation="n" x="-10" y="-30"/>
+        <terminal orientation="s" x="0" y="30"/>
+        <terminal orientation="n" x="10" y="-30"/>
+    </description>
+</definition>

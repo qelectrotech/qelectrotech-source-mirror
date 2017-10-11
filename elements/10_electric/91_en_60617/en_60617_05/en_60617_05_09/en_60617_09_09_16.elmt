@@ -1,0 +1,19 @@
+<definition type="element" link_type="simple" height="40" width="40" version="0.70" orientation="dyyy" hotspot_x="37" hotspot_y="35">
+    <uuid uuid="{fc240473-6a93-474e-8a97-2e2e530fa9d2}"/>
+    <names>
+        <name lang="fr">Sole non émissive pour structure à retard
+ouverte</name>
+        <name lang="de">Sohle, nicht emittierend, für offene
+Verzögerungsleitung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" height="10" width="10" start="50" y="-31" x="-35" angle="265" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="10" width="10" start="47" y="-17" x="-35" angle="268" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <arc antialias="true" height="10" width="10" start="47" y="-24" x="-35" angle="268" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="0" y2="0" length2="1.5" end1="none" length1="1.5" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <arc antialias="true" height="10" width="10" start="47" y="-10" x="-35" angle="223" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

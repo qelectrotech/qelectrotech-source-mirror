@@ -1,0 +1,14 @@
+<definition orientation="dyyy" link_type="simple" hotspot_x="2" hotspot_y="2" version="0.70" width="20" type="element" height="20">
+    <uuid uuid="{f46391cc-dfb6-40e1-9513-4d136cf07c98}"/>
+    <names>
+        <name lang="fr">Enroulement diphasé, quatre fils</name>
+        <name lang="de">zwei getrennte Wicklungen, Vierleitersystem</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="25" rotate="true" y="33" text="_" tagg="label" size="9"/>
+        <line y1="0" end1="none" length1="1.5" x1="0" x2="0" end2="none" antialias="false" y2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="15" end1="none" length1="1.5" x1="5" x2="15" end2="none" antialias="false" y2="15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

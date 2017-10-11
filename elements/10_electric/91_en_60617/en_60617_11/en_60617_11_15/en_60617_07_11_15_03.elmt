@@ -1,0 +1,15 @@
+<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+    <uuid uuid="{ccae5e9d-5c0e-4b31-a613-82e609cca749}"/>
+    <names>
+        <name lang="de">Leuchte, allgemein </name>
+        <name lang="fr">Lampe, symbole général</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-20" antialias="false" x="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-17" y2="-3" x2="-4" length2="1.5" antialias="false" x1="-16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-17" y2="-3" x2="-17" length2="1.5" antialias="false" x1="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

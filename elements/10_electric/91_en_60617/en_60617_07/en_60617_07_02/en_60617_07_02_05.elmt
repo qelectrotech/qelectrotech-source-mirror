@@ -1,0 +1,21 @@
+<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="44" link_type="simple" hotspot_x="14" height="70">
+    <uuid uuid="{cab8cba1-0908-4b67-a21e-ea3592c27d38}"/>
+    <names>
+        <name lang="fr">Contact à deux directions avec position
+médiane de coupure</name>
+        <name lang="de">Wechsler mit Mittelstellung "Aus"</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="10" y2="-40" length2="1.5" length1="1.5" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" end2="none" antialias="false"/>
+        <line x2="0" y2="20" length2="1.5" length1="1.5" y1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <line x2="0" y2="-23" length2="1.5" length1="1.5" y1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="25"/>
+        <circle x="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" y="-2" antialias="false"/>
+        <line x2="-10" y2="-20" length2="1.5" length1="1.5" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" end2="none" antialias="false"/>
+        <terminal orientation="n" x="-10" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="n" x="10" y="-40"/>
+    </description>
+</definition>

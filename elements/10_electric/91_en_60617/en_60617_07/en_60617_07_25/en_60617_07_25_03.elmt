@@ -1,0 +1,28 @@
+<definition orientation="dyyy" type="element" width="80" height="60" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
+    <uuid uuid="{f80316bf-4843-47fa-855c-9526c6f8ec71}"/>
+    <names>
+        <name lang="de">elektronischer Schalter, nur in einer Richtung
+stromdurchlässig</name>
+        <name lang="fr">Interrupteur à semiconducteur, (statique)
+passage du courant dans un seul sens</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y4="15" antialias="false" closed="false" x1="-50" y1="15" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x4="-50" x3="-40" y3="0"/>
+        <line antialias="false" x1="-60" y1="15" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="15" end1="none" length1="1.5" length2="1.5"/>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <line antialias="false" x1="-10" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="0" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="-20" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-30" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-50" y1="0" x2="-57" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-21" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="0" x2="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-21" end1="none" length1="1.5" length2="1.5"/>
+        <polygon y4="15" antialias="false" closed="false" x1="10" y1="15" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x4="10" x3="0" y3="0"/>
+        <terminal orientation="s" y="20" x="0"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="s" y="20" x="-50"/>
+        <terminal orientation="n" y="-30" x="-50"/>
+    </description>
+</definition>

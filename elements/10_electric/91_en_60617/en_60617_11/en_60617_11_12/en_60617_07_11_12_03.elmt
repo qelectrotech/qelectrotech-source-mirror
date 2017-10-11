@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="40" height="40" hotspot_x="35" hotspot_y="35" orientation="dyyy" version="0.70">
+    <uuid uuid="{b001daae-3d5b-4ac1-9481-ca7bca442afd}"/>
+    <names>
+        <name lang="de">Leitung, nach unten und oben durchführend</name>
+        <name lang="fr">Canalisation traversant verticalement</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="25" x="5" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="-30" length2="1.5" x1="-30" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="4" y="-17" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-17"/>
+        <polygon y4="-28" x4="0" x3="2" y2="-30" x1="0" y1="-28" x2="-2" y3="-32" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <polygon y4="0" x4="-28" x3="-32" y2="-2" x1="-28" y1="0" x2="-30" y3="2" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+    </description>
+</definition>

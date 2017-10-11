@@ -1,0 +1,42 @@
+<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="108" orientation="dyyy" type="element" height="230" width="230">
+    <uuid uuid="{22d0943c-77a3-40f5-b20d-a4517df61565}"/>
+    <names>
+        <name lang="fr">Commutateur à tambour à six positions</name>
+        <name lang="de">Steuerwalzenschalter mit sechs Stellungen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" end2="none" x1="-60" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-60" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="-20" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-20" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="20" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="60" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="60" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="100" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="100" y2="-50" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="-40" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="-40" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="-10" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="-10" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="20" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="20" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="50" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="50" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="80" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="80" antialias="false"/>
+        <line end1="none" end2="none" x1="-90" y1="110" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="110" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" y="135" size="9" x="135"/>
+        <text text="A" y="-90" size="9" x="-55"/>
+        <text text="B" y="-90" size="9" x="-15"/>
+        <text text="C" y="-90" size="9" x="25"/>
+        <text text="D" y="-90" size="9" x="65"/>
+        <text text="E" y="-90" size="9" x="105"/>
+        <text text="1" y="-35" size="9" x="-100"/>
+        <text text="2" y="-5" size="9" x="-100"/>
+        <text text="3" y="25" size="9" x="-100"/>
+        <text text="4" y="55" size="9" x="-100"/>
+        <text text="5" y="85" size="9" x="-100"/>
+        <text text="6" y="115" size="9" x="-100"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y6="-25" x5="95" x9="55" x6="105" y5="-25" y4="15" y9="-25" x7="105" y1="-25" x4="95" antialias="false" x8="55" x3="65" y8="25" x2="65" y3="15" y2="-25" x1="55" y7="25"/>
+        <polygon y10="75" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y6="55" x5="55" x9="95" x6="65" y5="55" y4="105" y9="75" x7="65" y1="65" x13="10" y13="65" x4="55" y12="115" y11="115" antialias="false" x8="95" x11="105" x3="20" x10="105" y8="105" x2="20" y3="105" x12="10" y2="65" x1="10" y7="105"/>
+        <polygon x4="15" y23="45" x11="-15" y19="75" x16="-15" y7="5" y12="45" y14="60" x6="25" antialias="false" x29="-65" y4="-15" y22="55" y8="5" x1="-65" x2="-55" x21="-25" y13="60" x12="25" x20="-25" y17="85" x8="10" y26="-5" y5="-25" y25="-5" y6="-25" y20="75" y24="45" x22="-65" x17="-15" y18="85" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="25" y16="55" closed="false" y11="45" x27="-55" y1="-25" x26="-55" x9="10" x18="-65" x19="-65" x10="-15" y2="-25" x14="10" x13="25" y3="-15" x15="10" x28="-65" x5="15" x25="-25" y10="-5" y28="25" y9="-5" x23="-65" x3="-55" y21="55" y29="-25" y15="55" x24="-25" y27="25"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-60" height="10" x="-62" antialias="false" width="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-60" height="10" x="-22" antialias="false" width="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-60" height="10" x="18" antialias="false" width="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-60" height="10" x="58" antialias="false" width="4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-60" height="10" x="98" antialias="false" width="4"/>
+    </description>
+</definition>

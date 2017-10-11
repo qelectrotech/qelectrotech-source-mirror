@@ -1,0 +1,18 @@
+<definition type="element" width="60" version="0.70" hotspot_y="51" orientation="dyyy" height="60" link_type="simple" hotspot_x="46">
+    <uuid uuid="{1bb135c9-007b-483c-b67c-bad260004d3e}"/>
+    <names>
+        <name lang="fr">Anode de protection en magnésium</name>
+        <name lang="de">Magnesium-Schutzanode</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" x="5" y="25" rotate="true"/>
+        <line x2="-15" end2="none" antialias="false" end1="none" length2="1.5" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" y1="-15" length1="1.5"/>
+        <line x2="-10" end2="none" antialias="false" end1="none" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" y1="-20" length1="1.5"/>
+        <line x2="-5" end2="none" antialias="false" end1="none" length2="1.5" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-35" y1="-25" length1="1.5"/>
+        <polygon x2="0" antialias="false" x3="-20" y3="0" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40" y1="-30" y4="-30" x4="-40" closed="false"/>
+        <line x2="-20" end2="none" antialias="false" end1="none" length2="1.5" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" y1="-45" length1="1.5"/>
+        <text size="9" text="Mg" x="-10" y="0"/>
+    </description>
+</definition>

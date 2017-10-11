@@ -1,0 +1,15 @@
+<definition hotspot_x="14" version="0.70" orientation="dyyy" height="30" hotspot_y="14" width="30" type="element" link_type="simple">
+    <uuid uuid="{945048be-2a49-4e12-929c-592723b9bf64}"/>
+    <names>
+        <name lang="fr">Fonction échelon négative</name>
+        <name lang="de">negative Schrittfunktion</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <polygon x2="0" y2="-10" y1="-10" x3="0" x4="10" y4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="10" x1="-10"/>
+        <terminal y="10" x="10" orientation="e"/>
+        <terminal y="-10" x="-10" orientation="w"/>
+    </description>
+</definition>

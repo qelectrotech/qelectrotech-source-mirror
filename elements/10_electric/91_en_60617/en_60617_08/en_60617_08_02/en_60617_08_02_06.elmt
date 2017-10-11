@@ -1,0 +1,16 @@
+<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+    <uuid uuid="{fe5c16fb-132e-4ef4-8dd7-4b8d6f93bde7}"/>
+    <names>
+        <name lang="de">Phasenwinkelmeßgerät, anzeigend</name>
+        <name lang="fr">Phasemètre,
+Indicateur de dephasage</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" tagg="label" text="_" rotate="true" y="25" x="5"/>
+        <circle diameter="40" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20"/>
+        <arc width="9.9" height="6.6" antialias="true" angle="321" y="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" start="110" x="-5"/>
+        <line y1="-25" end2="none" length1="1.5" x2="1.6" y2="-15.1" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="1.6" length2="1.5"/>
+    </description>
+</definition>

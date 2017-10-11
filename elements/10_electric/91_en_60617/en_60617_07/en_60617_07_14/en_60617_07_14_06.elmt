@@ -1,0 +1,18 @@
+<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+    <uuid uuid="{d94868b7-b865-49b7-8337-8adb6cbbff83}"/>
+    <names>
+        <name lang="de">Anlasser für Stern-Dreieck-Schaltung</name>
+        <name lang="fr">Démarreur étoile-triangle</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <rect antialias="false" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" x="-20"/>
+        <polygon antialias="false" closed="false" x1="-20" y1="-20" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x3="20" y3="-20"/>
+        <polygon y4="15" antialias="false" closed="false" x1="10" y1="15" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x4="10" x3="0" y3="-5"/>
+        <line antialias="false" x1="-10" y1="15" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="7" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-5" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="0" y1="7" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="15" end1="none" length1="1.5" length2="1.5"/>
+    </description>
+</definition>

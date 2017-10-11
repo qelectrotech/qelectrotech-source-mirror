@@ -1,0 +1,14 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+    <uuid uuid="{b0f560d0-288d-4a31-b09a-9c4debeedc53}"/>
+    <names>
+        <name lang="de">Windrichtungsanzeiger</name>
+        <name lang="fr">Indicateur de direction du vent</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y2="-30" y3="-20" closed="false" x2="-10" antialias="false" x1="-10" x4="-10" y4="-10" x3="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

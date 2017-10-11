@@ -1,0 +1,21 @@
+<definition width="60" height="50" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="18">
+    <uuid uuid="{e31fc5d4-1fe9-4f5f-90bc-6ac418037ecb}"/>
+    <names>
+        <name lang="de">Widerstand, spannungsabhängig
+Varistor</name>
+        <name lang="fr">Résistance dépendant de la tension
+Varistance</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <line y2="0" length1="1.5" y1="0" length2="1.5" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <rect width="30" height="10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="false"/>
+        <line y2="0" length1="1.5" y1="0" length2="1.5" x1="20" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <polygon y3="-15" y2="15" y1="15" x1="-15" x2="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="15" antialias="false"/>
+        <text size="6" text="U" x="-15" y="25"/>
+        <terminal orientation="e" x="30" y="0"/>
+        <terminal orientation="w" x="-20" y="0"/>
+    </description>
+</definition>

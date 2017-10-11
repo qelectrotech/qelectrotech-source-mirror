@@ -1,0 +1,17 @@
+<definition hotspot_y="27" hotspot_x="85" height="30" version="0.70" width="90" orientation="dyyy" link_type="simple" type="element">
+    <uuid uuid="{1051c32a-6fe8-4f19-8118-a88d7013f923}"/>
+    <names>
+        <name lang="de">Abzweigverstärker</name>
+        <name lang="fr">Amplificateur de dérivation</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input tagg="label" size="9" x="5" y="25" rotate="true" text="_"/>
+        <line end1="none" length1="1.5" length2="1.5" x2="-80" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="0" y2="0"/>
+        <polygon x2="-50" y3="-25" y4="0" x4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" closed="false" x3="-35" x1="-20" y2="0"/>
+        <line end1="none" length1="1.5" length2="1.5" x2="-42" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-20" antialias="false" x1="-60" y2="-11"/>
+        <line end1="none" length1="1.5" length2="1.5" x2="-26" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" antialias="false" x1="-15" y2="-11"/>
+        <line end1="none" length1="1.5" length2="1.5" x2="-31" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" antialias="false" x1="-20" y2="-19"/>
+    </description>
+</definition>

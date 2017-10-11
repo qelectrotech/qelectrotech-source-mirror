@@ -1,0 +1,29 @@
+<definition type="element" link_type="simple" height="110" width="90" version="0.70" orientation="dyyy" hotspot_x="75" hotspot_y="105">
+    <uuid uuid="{38355b7f-8d5b-4225-9e1e-c82591f6a2c0}"/>
+    <names>
+        <name lang="fr">Générateur thermoïonique à semiconducteur à
+source de chaleur par rayonnement non
+ionisant</name>
+        <name lang="de">Thermodiodengenerator, betrieben durch
+nichtionisierende Strahlungswärme</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <rect antialias="false" height="40" width="40" y="-40" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="G" size="9" y="-79.2" x="-23.75"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="40" width="5" y="-40" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" height="60" width="60" y="-100" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-55" y2="-25" length2="1.5" end1="none" length1="1.5" y1="-15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-65"/>
+        <line antialias="false" x1="-60" y2="-20" length2="1.5" end1="none" length1="1.5" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70"/>
+        <polygon antialias="false" y3="-14" x1="-59" y2="-19" x3="-54" y4="-16" y1="-16" x4="-59" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-56"/>
+        <polygon antialias="false" y3="-9" x1="-61" y2="-11" x3="-59" y4="-14" y1="-14" x4="-61" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-64"/>
+        <line antialias="false" x1="-30" y2="-60" length2="1.5" end1="none" length1="1.5" y1="-60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" x1="-15" y2="-55" length2="1.5" end1="none" length1="1.5" y1="-65" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-15"/>
+        <polygon closed="false" antialias="false" y3="-60" x1="-25" y2="-65" x3="-15" y4="-55" y1="-55" x4="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25"/>
+    </description>
+</definition>

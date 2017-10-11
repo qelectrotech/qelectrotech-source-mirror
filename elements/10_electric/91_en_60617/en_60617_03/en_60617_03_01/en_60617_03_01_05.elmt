@@ -1,0 +1,26 @@
+<definition hotspot_x="44" version="0.70" orientation="dyyy" height="40" hotspot_y="34" width="90" type="element" link_type="simple">
+    <uuid uuid="{87b78d60-87a4-4da3-b9cd-3bfeb98d9efc}"/>
+    <names>
+        <name lang="fr">Circuit à courant triphasé</name>
+        <name lang="de">Dreiphasen-Vierleitersystem</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="40" y2="-30" y1="-30" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <input y="-36" x="-35" rotate="true" text="3N ~ 50 Hz 400 V" size="6" tagg="none"/>
+        <input y="5" x="-25" text="2 x 120 mm² AI" size="6" tagg="none"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="40" y2="-10" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="40" y2="-20" y1="-20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <terminal y="-30" x="-40" orientation="w"/>
+        <terminal y="-20" x="40" orientation="e"/>
+        <terminal y="0" x="40" orientation="e"/>
+        <terminal y="-20" x="-40" orientation="w"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="-10" x="-40" orientation="w"/>
+        <terminal y="-10" x="40" orientation="e"/>
+        <terminal y="-30" x="40" orientation="e"/>
+    </description>
+</definition>

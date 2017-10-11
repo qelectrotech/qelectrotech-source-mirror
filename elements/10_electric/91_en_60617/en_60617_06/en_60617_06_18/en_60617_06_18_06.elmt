@@ -1,0 +1,22 @@
+<definition type="element" link_type="simple" height="70" width="90" version="0.70" orientation="dyyy" hotspot_x="35" hotspot_y="25">
+    <uuid uuid="{23375386-e5ea-41fa-bbb5-88eed8b57809}"/>
+    <names>
+        <name lang="fr">Générateur photovoltaïque</name>
+        <name lang="de">Photoelektrischer Generator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="-16" y2="14" length2="1.5" end1="none" length1="1.5" y1="24" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-26"/>
+        <input text="_" size="9" tagg="label" y="115" x="45" rotate="true"/>
+        <line antialias="false" x1="-21" y2="19" length2="1.5" end1="none" length1="1.5" y1="29" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-31"/>
+        <polygon antialias="false" y3="25" x1="-20" y2="20" x3="-15" y4="23" y1="23" x4="-20" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-17"/>
+        <polygon antialias="false" y3="30" x1="-22" y2="28" x3="-20" y4="25" y1="25" x4="-22" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-25"/>
+        <rect antialias="false" height="60" width="60" y="-20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="G" size="9" y="0" x="15"/>
+        <line antialias="false" x1="10" y2="20" length2="1.5" end1="none" length1="1.5" y1="20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20"/>
+        <line antialias="false" x1="20" y2="25" length2="1.5" end1="none" length1="1.5" y1="15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20"/>
+        <line antialias="false" x1="25" y2="30" length2="1.5" end1="none" length1="1.5" y1="10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25"/>
+        <line antialias="false" x1="25" y2="20" length2="1.5" end1="none" length1="1.5" y1="20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="35"/>
+    </description>
+</definition>

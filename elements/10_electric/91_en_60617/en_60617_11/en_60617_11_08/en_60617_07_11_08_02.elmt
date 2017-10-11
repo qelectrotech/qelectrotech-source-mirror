@@ -1,0 +1,14 @@
+<definition link_type="simple" type="element" width="70" height="30" hotspot_x="25" hotspot_y="5" orientation="dyyy" version="0.70">
+    <uuid uuid="{f4f49a0c-097b-4c1d-acb5-8e2c1cb72b22}"/>
+    <names>
+        <name lang="de">Stichdose</name>
+        <name lang="fr">Prise d'usager</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" size="9" y="85" x="85" rotate="true"/>
+        <line end2="none" end1="none" length1="1.5" y2="10" length2="1.5" x1="-20" y1="10" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="20" y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="20"/>
+    </description>
+</definition>

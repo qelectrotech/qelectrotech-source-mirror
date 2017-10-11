@@ -1,0 +1,41 @@
+<definition width="230" height="80" type="element" hotspot_x="65" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="50">
+    <uuid uuid="{355377ca-7ff4-4c3b-af0e-ba9441f47b8e}"/>
+    <names>
+        <name lang="de">Impulszähler mit Vielfach-Kontaktgeber</name>
+        <name lang="fr">Compteur d'impulsions électriques à plusieurs
+contacts</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <rect width="20" height="20" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <circle diameter="10" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" antialias="false"/>
+        <rect width="40" height="20" x="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <line y2="-20" length1="1.5" y1="-40" length2="1.5" x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="40" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="80" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="120" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="20" length1="1.5" y1="0" length2="1.5" x1="160" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="40" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="80" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="120" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-40" length1="1.5" y1="-20" length2="1.5" x1="160" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="30" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="70" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="110" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="150" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="-10" length1="1.5" y1="-10" length2="1.5" x1="0" x2="155" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <text size="9" text="10" x="15" y="-30"/>
+        <text size="9" text="10" x="55" y="-30"/>
+        <text size="9" text="10" x="95" y="-30"/>
+        <text size="9" text="10" x="135" y="-30"/>
+        <text size="5" text="3" x="30" y="-35"/>
+        <text size="5" text="2" x="70" y="-35"/>
+        <text size="5" text="1" x="110" y="-35"/>
+        <text size="5" text="0" x="150" y="-35"/>
+        <terminal orientation="s" x="-40" y="20"/>
+        <terminal orientation="n" x="-40" y="-40"/>
+    </description>
+</definition>

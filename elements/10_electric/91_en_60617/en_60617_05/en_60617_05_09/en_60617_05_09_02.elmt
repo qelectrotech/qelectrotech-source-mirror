@@ -1,0 +1,15 @@
+<definition type="element" link_type="simple" height="80" width="70" version="0.70" orientation="dyyy" hotspot_x="65" hotspot_y="75">
+    <uuid uuid="{b82aaae4-10b5-4109-8870-658f97683a89}"/>
+    <names>
+        <name lang="fr">Réflecteur</name>
+        <name lang="de">Reflektor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="-30" y2="-70" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" x1="-30" y2="0" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line antialias="false" x1="-30" y2="0" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-60"/>
+    </description>
+</definition>

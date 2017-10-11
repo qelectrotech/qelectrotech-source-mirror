@@ -1,0 +1,17 @@
+<definition width="30" height="90" type="element" hotspot_x="15" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="85">
+    <uuid uuid="{27ebce5e-4057-4a91-af1f-b25c49c1e301}"/>
+    <names>
+        <name lang="de">Thermoelement mit isoliertem Heizelement</name>
+        <name lang="fr">Thermocouple à élément chauffant isolé</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" rotate="true" tagg="label" text="_" x="5" y="25"/>
+        <circle diameter="4" x="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-42" antialias="false"/>
+        <polygon y3="-40" x4="10" y2="-55" y5="-80" y1="-80" x5="10" x1="-10" x2="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-55" x3="0" antialias="false"/>
+        <arc width="20" height="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" start="180" angle="-180" antialias="true"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line y2="0" length1="1.5" y1="-20" length2="1.5" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+    </description>
+</definition>

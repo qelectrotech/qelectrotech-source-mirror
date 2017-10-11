@@ -1,0 +1,17 @@
+<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="42" width="50" hotspot_y="45">
+    <uuid uuid="{900f6d4b-62e1-48d5-9d62-832826a66abc}"/>
+    <names>
+        <name lang="de">Kurvenfeuer, weiss, einseitig strahlend</name>
+        <name lang="fr">Feu de virage, faisceau blanc et unidirectionnel
+(en surface)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <circle y="-40" antialias="false" x="-40" diameter="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-40" height="40" antialias="false" x="-5" width="10" style="line-style:normal;line-weight:normal;filling:white;color:white"/>
+        <circle y="-35" antialias="false" x="-35" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-31" y2="-20" y3="-10" closed="false" x2="-35" antialias="false" x1="-10" x3="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

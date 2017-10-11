@@ -1,0 +1,21 @@
+<definition hotspot_x="54" version="0.70" orientation="dyyy" height="40" hotspot_y="16" width="130" type="element" link_type="simple">
+    <uuid uuid="{0823930e-5a2d-4806-8e59-d71b132219e3}"/>
+    <names>
+        <name lang="fr">Boîte d'extrémité avec un câble tripolaire</name>
+        <name lang="de">Kabelendverschluß mit einem dreiadrigen
+Kabel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="45" x="35" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="70" y2="10" y1="10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50"/>
+        <polygon x2="10" x5="-10" y2="0" y1="10" x3="30" x4="10" y4="20" antialias="false" y5="10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="10" x1="-10"/>
+        <line x2="-20" y2="0" y1="20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-40"/>
+        <line x2="60" y2="0" y1="20" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40"/>
+        <text y="-2" x="-20" text="3" size="6"/>
+        <text y="-2" x="60" text="3" size="6"/>
+        <terminal y="10" x="-50" orientation="w"/>
+        <terminal y="10" x="70" orientation="e"/>
+    </description>
+</definition>

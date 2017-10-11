@@ -1,0 +1,20 @@
+<definition hotspot_x="24" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="70" type="element" link_type="simple">
+    <uuid uuid="{bd9b0f14-ff5f-4920-a4d0-726afce9d0ce}"/>
+    <names>
+        <name lang="fr">Fiche et prise de connecteur, par exemple
+cavalier, mâle-mâle</name>
+        <name lang="de">Steckverbindung, zwei Buchsen durch einen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <rect y="-3" x="0" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black" width="20"/>
+        <line x2="40" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="25"/>
+        <line x2="-20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <arc y="-5" x="-5" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" start="90"/>
+        <arc y="-5" x="15" antialias="true" height="10" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" start="270"/>
+        <terminal y="0" x="40" orientation="e"/>
+        <terminal y="0" x="-20" orientation="w"/>
+    </description>
+</definition>

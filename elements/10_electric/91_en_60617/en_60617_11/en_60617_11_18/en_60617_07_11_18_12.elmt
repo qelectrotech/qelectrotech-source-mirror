@@ -1,0 +1,20 @@
+<definition orientation="dyyy" type="element" version="0.70" height="90" link_type="simple" hotspot_x="45" width="50" hotspot_y="85">
+    <uuid uuid="{9929e05d-0e2a-4e4f-b6b2-89c583eab929}"/>
+    <names>
+        <name lang="de">Flugplatzfeuer, oben weisses rundstrahlendes
+Licht, unten weiss/weisses zweiseitig
+strahlendes Licht</name>
+        <name lang="fr">Feu aéronautique au sol, faisceau
+omnidirectionnel blanc en haut et bidirectionnel
+blanc/blanc en bas (en hauteur)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input rotate="true" y="25" tagg="label" size="9" x="5" text="_"/>
+        <rect y="-40" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-80" height="40" antialias="false" x="-40" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-75" antialias="false" x="-35" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" y1="-40" y2="0" x2="-20" length2="1.5" antialias="false" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

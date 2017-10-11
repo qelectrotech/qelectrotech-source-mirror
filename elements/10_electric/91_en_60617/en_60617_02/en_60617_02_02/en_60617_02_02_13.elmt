@@ -1,0 +1,15 @@
+<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
+    <uuid uuid="{2bf26a1e-3506-4415-bd0a-f0bd2e3da24b}"/>
+    <names>
+        <name lang="fr">Polarité positive</name>
+        <name lang="de">positive Polarität</name>
+        <name lang="en">Positive polarity</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" y2="4" length2="1.5" length1="1.5" y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" antialias="false"/>
+        <input x="5" text="_" size="9" rotate="true" tagg="label" y="15"/>
+        <line x2="4" y2="0" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-4" end2="none" antialias="false"/>
+    </description>
+</definition>

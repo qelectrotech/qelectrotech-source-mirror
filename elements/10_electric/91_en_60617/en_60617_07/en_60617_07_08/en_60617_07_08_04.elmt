@@ -1,0 +1,25 @@
+<definition link_type="simple" type="element" width="40" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="23">
+    <uuid uuid="{7cb08b18-6893-4ef1-808e-7c31bda2634c}"/>
+    <names>
+        <name lang="fr">Interrupteur de position, contact à ouverture à
+manœuvre positive d'ouverture</name>
+        <name lang="de">Endschalter mit zwangsläufiger Betätigung des
+Öffners</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-40" length2="1.5"/>
+        <line x2="0" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="20" length2="1.5"/>
+        <line x2="8" antialias="false" y1="0" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-23" length2="1.5"/>
+        <input rotate="true" tagg="label" text="_" size="9" x="5" y="25"/>
+        <line x2="10" antialias="false" y1="-20" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-20" length2="1.5"/>
+        <polygon x2="3" antialias="false" y1="-10" x3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3" closed="false" y2="-16" y3="-16"/>
+        <circle antialias="false" diameter="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17.5" y="-17.5"/>
+        <line x2="-5" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15" y2="-10" length2="1.5"/>
+        <line x2="-8" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" y2="-6" length2="1.5"/>
+        <line x2="-8" antialias="false" y1="-10" length1="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" y2="-14" length2="1.5"/>
+        <terminal orientation="n" x="0" y="-40"/>
+        <terminal orientation="s" x="0" y="20"/>
+    </description>
+</definition>

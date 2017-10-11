@@ -1,0 +1,24 @@
+<definition hotspot_x="33" type="element" width="70" hotspot_y="33" version="0.70" orientation="dyyy" height="50" link_type="simple">
+    <uuid uuid="{8dc7ba26-4c15-4a37-a883-fe4484c83169}"/>
+    <names>
+        <name lang="fr">Objet, par exemple:
+- Equipement
+- Dispositif
+- Unité fonctionnelle
+- Composant
+- Fonction</name>
+        <name lang="de">Objekt, Betriebsmittel, z.B.::
+- Gerät
+- Einrichtung
+- Funktionseinheit
+- Komponente
+- Funktion</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" rotate="true" x="5" tagg="label" y="15"/>
+        <text text="Form 3 / Forme 3" size="6" x="-30" y="-16.45"/>
+        <circle diameter="20" antialias="false" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
+    </description>
+</definition>

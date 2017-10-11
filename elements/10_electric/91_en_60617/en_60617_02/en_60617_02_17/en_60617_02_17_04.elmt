@@ -1,0 +1,14 @@
+<definition hotspot_x="15" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="40" type="element" link_type="simple">
+    <uuid uuid="{af574fa2-6057-48dc-8816-06267364c636}"/>
+    <names>
+        <name lang="fr">Contact mobile (par exemple glissant)</name>
+        <name lang="de">bewegbarer Kontakt (z.B.: Schleifkontakt)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="-10" y2="-6" y1="-6" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20"/>
+        <line x2="-10" y2="6" y1="-6" end1="none" length1="1.5" length2="1.5" antialias="false" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-10"/>
+    </description>
+</definition>

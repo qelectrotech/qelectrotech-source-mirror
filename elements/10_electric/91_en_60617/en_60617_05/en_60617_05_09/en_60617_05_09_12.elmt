@@ -1,0 +1,22 @@
+<definition type="element" link_type="simple" height="250" width="190" version="0.70" orientation="dyyy" hotspot_x="185" hotspot_y="245">
+    <uuid uuid="{0519944a-b837-4e2c-921b-6d09303bc0d6}"/>
+    <names>
+        <name lang="fr">Électro-aimant engendrant un champ
+transversal</name>
+        <name lang="de">Elektromagnet, der ein Querfeld erzeugt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="15" x="5" rotate="true"/>
+        <line antialias="false" x1="0" y2="-180" length2="1.5" end1="none" length1="1.5" y1="-60" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <arc antialias="true" height="120" width="120" start="0" y="-120" x="-120" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="120" width="120" start="0" y="-240" x="-120" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-120" y2="-60" length2="1.5" end1="none" length1="1.5" y1="-180" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-120"/>
+        <line antialias="false" x1="-150" y2="-100" length2="1.5" end1="none" length1="1.5" y1="-120" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-150"/>
+        <line antialias="false" x1="-180" y2="-100" length2="1.5" end1="none" length1="1.5" y1="-120" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-180"/>
+        <arc antialias="true" height="10" width="10" start="0" y="-125" x="-180" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="10" width="10" start="0" y="-125" x="-170" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" height="10" width="10" start="0" y="-125" x="-160" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

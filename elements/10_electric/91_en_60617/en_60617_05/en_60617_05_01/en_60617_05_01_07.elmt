@@ -1,0 +1,15 @@
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="45" orientation="dyyy" type="element" height="50" width="30">
+    <uuid uuid="{5ef7fd6d-95be-42b2-b956-a67d63adeade}"/>
+    <names>
+        <name lang="fr">Jonction redresseuse</name>
+        <name lang="de">gleichrichtender Übergang</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <line end1="none" end2="none" x1="-20" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="0" y2="0" antialias="false"/>
+        <line end1="none" end2="none" x1="-10" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-10" y2="0" antialias="false"/>
+        <polygon x4="-20" x1="-20" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-20" y3="0" x2="0" y2="-20" antialias="false" x3="-10" closed="false"/>
+    </description>
+</definition>

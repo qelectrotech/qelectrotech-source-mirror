@@ -1,0 +1,14 @@
+<definition link_type="simple" version="0.70" hotspot_x="14" hotspot_y="26" orientation="dyyy" type="element" height="40" width="40">
+    <uuid uuid="{55ae75be-f4d5-4732-9d82-a1c1dcdc1104}"/>
+    <names>
+        <name lang="fr">Variabilité intrinsèque, symbole général</name>
+        <name lang="de">Veränderbarkeit, inhärent </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" end2="none" x1="-10" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="20" y2="-20" antialias="false"/>
+        <input text="_" tagg="label" rotate="true" y="15" size="9" x="5"/>
+        <terminal orientation="n" y="-20" x="20"/>
+    </description>
+</definition>

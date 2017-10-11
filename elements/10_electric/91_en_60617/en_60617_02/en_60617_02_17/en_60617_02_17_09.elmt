@@ -1,0 +1,16 @@
+<definition hotspot_x="10" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="20" type="element" link_type="simple">
+    <uuid uuid="{e44ffa96-7f2a-4d6f-9566-4c35b31166a5}"/>
+    <names>
+        <name lang="fr">Numérique</name>
+        <name lang="de">digital</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="5" y2="-3" y1="-3" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <line x2="5" y2="3" y1="3" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5"/>
+        <line x2="-3" y2="5" y1="-5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3"/>
+        <line x2="3" y2="5" y1="-5" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="3"/>
+    </description>
+</definition>

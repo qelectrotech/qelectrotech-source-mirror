@@ -1,0 +1,23 @@
+<definition orientation="dyyy" type="element" width="110" height="70" hotspot_y="55" hotspot_x="55" version="0.70" link_type="simple">
+    <uuid uuid="{576a4416-e6ea-414e-b3bb-6e4d479897a7}"/>
+    <names>
+        <name lang="de">näherungsempfindliche Einrichtung, kapazitiv </name>
+        <name lang="fr">Détecteur capacitif de proximité fonctionnant à
+l'approche d'un matériau solide</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="9" text="_" tagg="label" y="25" rotate="true" x="5"/>
+        <polygon y4="-30" antialias="false" closed="false" y5="-40" x1="0" y1="-40" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" x4="10" x3="0" x5="0" y3="-20"/>
+        <line antialias="false" x1="-4" y1="-36" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-24" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="4" y1="-36" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-24" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" x="-30"/>
+        <line antialias="false" x1="-2" y1="-14" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-6" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="2" y1="-14" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-6" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="2" y1="-10" x2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="-2" y1="-10" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" end1="none" length1="1.5" length2="1.5"/>
+        <line antialias="false" x1="30" y1="-20" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-20" end1="none" length1="1.5" length2="1.5"/>
+        <rect antialias="false" width="10" height="20" style="line-style:normal;line-weight:normal;filling:fdiag;color:black" y="-30" x="-50"/>
+    </description>
+</definition>

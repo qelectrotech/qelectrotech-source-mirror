@@ -1,0 +1,17 @@
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+    <uuid uuid="{a83a789e-9fac-4fba-9879-7ca4bd92d983}"/>
+    <names>
+        <name lang="fr">Redresseur en couplage à double voie (en
+pont)</name>
+        <name lang="de">Gleichrichter in Brückenschaltung</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input text="_" size="9" tagg="label" y="35" x="5" rotate="true"/>
+        <polygon closed="false" antialias="false" y3="-40" x1="-20" y2="-20" x3="-20" y4="-20" y1="0" x4="0" y5="0" x5="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40"/>
+        <line antialias="false" x1="-20" y2="-10" length2="1.5" end1="none" length1="1.5" y1="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+        <line antialias="false" x1="-25" y2="-15" length2="1.5" end1="none" length1="1.5" y1="-15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-15"/>
+        <polygon closed="false" antialias="false" y3="-15" x1="-25" y2="-25" x3="-20" y4="-25" y1="-25" x4="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-15"/>
+    </description>
+</definition>

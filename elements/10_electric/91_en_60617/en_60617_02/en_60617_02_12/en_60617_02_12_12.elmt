@@ -1,0 +1,16 @@
+<definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
+    <uuid uuid="{5cddd31b-2dcc-416e-9cce-eec59071181c}"/>
+    <names>
+        <name lang="fr">Dispositif d`accrochage libéré</name>
+        <name lang="de">Sperre, nicht verklinkt</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input y="15" x="5" rotate="true" text="_" size="9" tagg="label"/>
+        <line x2="0" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <polygon x2="0" y2="-6" y1="0" x3="10" x4="0" y4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="0" x1="0"/>
+        <line x2="10" y2="-3" y1="-10" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line x2="20" y2="0" y1="0" end1="none" length1="1.5" length2="1.5" antialias="false" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="9"/>
+    </description>
+</definition>
