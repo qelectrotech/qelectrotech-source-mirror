@@ -30,7 +30,7 @@
 class QetGraphicsHandlerItem : public QGraphicsItem
 {
     public:
-        QetGraphicsHandlerItem(qreal size = 15);
+        QetGraphicsHandlerItem(qreal size = 8);
         QRectF boundingRect() const override;
 		
 		enum { Type = UserType + 1200};
@@ -47,7 +47,7 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 		QColor m_color;
 		
 	public:
-		static QVector<QetGraphicsHandlerItem *> handlerForPoint(const QVector<QPointF> &points, int size = 15);
+		static QVector<QetGraphicsHandlerItem *> handlerForPoint(const QVector<QPointF> &points, int size = 8);
 };
 
 #endif // QETGRAPHICSHANDLERITEM_H
