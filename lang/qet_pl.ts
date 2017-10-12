@@ -6859,7 +6859,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Dostawca</translation>
+        <translation>Dostawca</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
