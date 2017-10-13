@@ -58,7 +58,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="68"/>
         <source>Compilation : </source>
-        <translation>Kompilering:</translation>
+        <translation>Kompilering: </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="92"/>
@@ -270,12 +270,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="53"/>
         <source>Centre : </source>
-        <translation>Centrer:</translation>
+        <translation>Centrer: </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>Diamètres : </source>
-        <translation>Diameter:</translation>
+        <translation>Diameter: </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="59"/>
@@ -676,7 +676,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Vis potentiale tekst på ark.</translation>
+        <translation>Vis potentiale tekst på ark. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -1580,7 +1580,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="106"/>
         <source>Nom interne : </source>
-        <translation>Internt navn:</translation>
+        <translation>Internt navn: </translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
@@ -1751,7 +1751,8 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Skal symbol slettes?</translation>
+        <translation>Skal symbol slettes?
+</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
@@ -1971,12 +1972,12 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation>Centrer:</translation>
+        <translation>Center: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>Diamètres : </source>
-        <translation>Diameter:</translation>
+        <translation>Diameter: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="56"/>
@@ -2215,7 +2216,7 @@ Alle elementer og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation>Nummereringsindstillinger</translation>
+        <translation> Nummereringsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
@@ -2278,7 +2279,8 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Hvis tal angivet i feltet har færre cifre end den valgte type, vil en eller to 0 tilføjes.
 
 -Type &quot;Tekst&quot; er en fast tekst.
-Feltet &quot;Forøg&quot; anvendes ikke.</translation>
+Feltet &quot;Forøg&quot; anvendes ikke.
+</translation>
     </message>
 </context>
 <context>
@@ -3799,7 +3801,8 @@ Options disponibles :
 Kommandovalg:
   --help                        Vis hjælp
   -v, --version                 Vis version
-  --license                     Vis licens</translation>
+  --license                     Vis licens
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1607"/>
@@ -6771,7 +6774,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
-        <translation>Gem som...</translation>
+        <translation>Gem som... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="55"/>
@@ -6790,7 +6793,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
-        <translation>BOM:</translation>
+        <translation>BOM: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -6850,7 +6853,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Leverandør</translation>
+        <translation>Leverandør</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
@@ -6976,12 +6979,12 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
-        <translation>Øverste venstre hjørne:</translation>
+        <translation>Øverste venstre hjørne: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Dimensions : </source>
-        <translation>Størrelse:</translation>
+        <translation>Størrelse: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="56"/>
@@ -7162,7 +7165,8 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Hvis tal angivet i feltet har cifre end den valgte type, vil en eller to 0 tilføjes.
 
 -Type &quot;Tekst&quot; er en fast tekst.
-Feltet &quot;Forøg&quot; anvendes ikke.</translation>
+Feltet &quot;Forøg&quot; anvendes ikke.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -7360,7 +7364,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation>Rediger egenskab for oprindelig</translation>
+        <translation>Rediger egenskab for oprindelig </translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
@@ -7388,12 +7392,12 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Style : </source>
-        <translation>Typografi:</translation>
+        <translation>Typografi: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Épaisseur : </source>
-        <translation>Tykkelse:</translation>
+        <translation>Tykkelse: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
@@ -7712,22 +7716,22 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>Position : </source>
-        <translation>Placering:</translation>
+        <translation>Placering: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>x : </source>
-        <translation>x:</translation>
+        <translation>x: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="57"/>
         <source>y : </source>
-        <translation>y:</translation>
+        <translation>y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="62"/>
         <source>Orientation : </source>
-        <translation>Retning:</translation>
+        <translation>Retning: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
@@ -7757,7 +7761,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="47"/>
         <source>Angle de rotation : </source>
-        <translation>Rotationsvinkel:</translation>
+        <translation>Rotationsvinkel: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
@@ -7767,27 +7771,27 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="58"/>
         <source>x : </source>
-        <translation>x:</translation>
+        <translation>x: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="60"/>
         <source>y : </source>
-        <translation>y:</translation>
+        <translation>y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="65"/>
         <source>Taille : </source>
-        <translation>Størrelse:</translation>
+        <translation>Størrelse: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="70"/>
         <source>Couleur : </source>
-        <translation>Farve:</translation>
+        <translation>Farve: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="77"/>
         <source>Texte : </source>
-        <translation>Tekst:</translation>
+        <translation>Tekst: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
@@ -7825,7 +7829,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="42"/>
         <source>Angle de rotation par défaut : </source>
-        <translation>Standard rotationsvinkel:</translation>
+        <translation>Standard rotationsvinkel: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
@@ -7835,22 +7839,22 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="53"/>
         <source>x : </source>
-        <translation>x:</translation>
+        <translation>x: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="55"/>
         <source>y : </source>
-        <translation>y:</translation>
+        <translation>y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="60"/>
         <source>Taille : </source>
-        <translation>Størrelse:</translation>
+        <translation>Størrelse: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="65"/>
         <source>Texte par défaut : </source>
-        <translation>Standard tekst:</translation>
+        <translation>Standard tekst: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
@@ -8005,7 +8009,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
-        <translation>højre</translation>
+        <translation>højre </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
@@ -8600,7 +8604,8 @@ Maksimum længde: %2piksel
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation>Minimum længde: %1piksel</translation>
+        <translation>Minimum længde: %1piksel
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
@@ -8716,7 +8721,7 @@ Maksimum længde: %2piksel
 %l: linje nummer
 %c: kolonne nummer
 %M: installering
-%LM: placering</translation>
+%LM: placering </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
@@ -8789,7 +8794,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>Projekt:</translation>
+        <translation>Projekt: </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
