@@ -6768,7 +6768,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
-        <translation>STÜCKLISTE:</translation>
+        <translation>STÜCKLISTE: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -6828,7 +6828,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Lieferant</translation>
+        <translation>Lieferant</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
