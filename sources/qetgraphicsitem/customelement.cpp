@@ -59,11 +59,11 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	}
 
 		//Start from empty lists.
-	list_lines_.clear();
-	list_rectangles_.clear();
-	list_circles_.clear();
-	list_polygons_.clear();
-	list_arcs_.clear();
+	m_lines.clear();
+	m_rectangles.clear();
+	m_circles.clear();
+	m_polygons.clear();
+	m_arcs.clear();
 	setPrefix(autonum::elementPrefixForLocation(location));
 
 	int elmt_state;
@@ -219,62 +219,62 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	Destructeur
 */
 CustomElement::~CustomElement() {
-	qDeleteAll (list_lines_);
-	qDeleteAll (list_rectangles_);
-	qDeleteAll (list_circles_);
-	qDeleteAll (list_polygons_);
-	qDeleteAll (list_arcs_);
-	qDeleteAll (list_texts_);
-	qDeleteAll (list_terminals);
+	qDeleteAll (m_lines);
+	qDeleteAll (m_rectangles);
+	qDeleteAll (m_circles);
+	qDeleteAll (m_polygons);
+	qDeleteAll (m_arcs);
+	qDeleteAll (m_texts);
+	qDeleteAll (m_terminals);
 }
 
 /// @return la liste des bornes de cet element
 QList<Terminal *> CustomElement::terminals() const {
-	return(list_terminals);
+	return(m_terminals);
 }
 
 /// @return la liste des conducteurs rattaches a cet element
 QList<Conductor *> CustomElement::conductors() const {
 	QList<Conductor *> conductors;
-	foreach(Terminal *t, list_terminals) conductors << t -> conductors();
+	foreach(Terminal *t, m_terminals) conductors << t -> conductors();
 	return(conductors);
 }
 
 /// @return la liste des textes de cet element
 QList<ElementTextItem *> CustomElement::texts() const {
-	return(list_texts_);
+	return(m_texts);
 }
 
 /// @return the list of lines
 QList<QLineF *> CustomElement::lines() const {
-	return(list_lines_);
+	return(m_lines);
 }
 
 /// @return the list of rectangles
 QList<QRectF *> CustomElement::rectangles() const {
-	return(list_rectangles_);
+	return(m_rectangles);
 }
 
 /// @return the list of bounding rectangles for circles
 QList<QRectF *> CustomElement::circles() const {
-	return(list_circles_);
+	return(m_circles);
 }
 
 /// @return the list of bounding rectangles for circles
 QList<QVector<QPointF> *> CustomElement::polygons() const {
-	return(list_polygons_);
+	return(m_polygons);
 }
 
 /// @return the list of arcs
 QList<QVector<qreal> *> CustomElement::arcs() const {
-	return(list_arcs_);
+	return(m_arcs);
 }
 
 /**
 	@return Le nombre de bornes que l'element possede
 */
 int CustomElement::terminalsCount() const {
-	return(list_terminals.size());
+	return(m_terminals.size());
 }
 
 /**
@@ -352,7 +352,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 
 	//Add line to the list
 	QLineF *newLine = new QLineF(line);
-	list_lines_ << newLine;
+	m_lines << newLine;
 
 	QPointF point1(line.p1());
 	QPointF point2(line.p2());
@@ -452,7 +452,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 
 	//Add rectangle to the list
 	QRectF *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
-	list_rectangles_ << rect;
+	m_rectangles << rect;
 
 	qp.save();
 	setPainterStyle(e, qp);
@@ -491,7 +491,7 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 
 	// Add circle to list
 	QRectF *circle = new QRectF(circle_bounding_rect);
-	list_circles_ << circle;
+	m_circles << circle;
 
 	qp.drawEllipse(circle_bounding_rect);
 	qp.restore();
@@ -528,7 +528,7 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	arc -> push_back(ellipse_h);
 	arc -> push_back(0);
 	arc -> push_back(360);
-	list_arcs_ << arc;
+	m_arcs << arc;
 
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
 	qp.restore();
@@ -569,7 +569,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	arc -> push_back(arc_h);
 	arc -> push_back(arc_s);
 	arc -> push_back(arc_a);
-	list_arcs_ << arc;
+	m_arcs << arc;
 
 	qp.drawArc(QRectF(arc_x, arc_y, arc_l, arc_h), (int)(arc_s * 16), (int)(arc_a * 16));
 	qp.restore();
@@ -617,7 +617,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 
 	// Add to list of polygons.
 	QVector<QPointF> *poly = new QVector<QPointF>(points);
-	list_polygons_ << poly;
+	m_polygons << poly;
 
 	qp.restore();
 	return(true);
@@ -666,7 +666,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	eti -> setOriginalRotationAngle(original_rotation_angle);
 	eti -> setRotationAngle(original_rotation_angle);
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
-	list_texts_ << eti;
+	m_texts << eti;
 
 	// Se positionne aux coordonnees indiquees dans la description du texte
 	qp.setTransform(QTransform(), false);
@@ -709,41 +709,74 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 		- une chaine de caracteres facultative utilisee comme valeur par defaut
 		- une taille
 		- le fait de subir les rotations de l'element ou non
-	@param e L'element XML a analyser
+	@param dom_element L'element XML a analyser
 	@return Un pointeur vers l'objet ElementTextItem ainsi cree si l'analyse reussit, 0 sinon
 */
-ElementTextItem *CustomElement::parseInput(QDomElement &e) {
+bool CustomElement::parseInput(QDomElement &dom_element) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
-		!QET::attributeIsAReal(e, "x", &pos_x) ||\
-		!QET::attributeIsAReal(e, "y", &pos_y) ||\
-		!QET::attributeIsAnInteger(e, "size", &size)
-	) return(nullptr);
-
-	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
-	eti -> setFont(QETApp::diagramTextsFont(size));
-	eti -> setTagg(e.attribute("tagg", "other"));
-	m_element_informations.addValue(e.attribute("tagg", "other"), e.attribute("text"));
-
+		!QET::attributeIsAReal(dom_element, "x", &pos_x) ||\
+		!QET::attributeIsAReal(dom_element, "y", &pos_y) ||\
+		!QET::attributeIsAnInteger(dom_element, "size", &size)
+	) return(false);
+	
+		//The text have a tagg, we create an element text item
+	if (dom_element.attribute("tagg", "none") != "none")
+	{
+		ElementTextItem *eti = new ElementTextItem(dom_element.attribute("text"), this);
+		eti -> setFont(QETApp::diagramTextsFont(size));
+		eti -> setTagg(dom_element.attribute("tagg", "other"));
+		m_element_informations.addValue(dom_element.attribute("tagg", "other"), dom_element.attribute("text"));
+		
 		// position the text field
-	eti -> setOriginalPos(QPointF(pos_x, pos_y));
-	eti -> setPos(pos_x, pos_y);
-
+		eti -> setOriginalPos(QPointF(pos_x, pos_y));
+		eti -> setPos(pos_x, pos_y);
+		
 		// rotation of the text field
-	qreal original_rotation_angle = 0.0;
-	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
-	eti -> setOriginalRotationAngle(original_rotation_angle);
-	eti -> setRotationAngle(original_rotation_angle);
-
+		qreal original_rotation_angle = 0.0;
+		QET::attributeIsAReal(dom_element, "rotation", &original_rotation_angle);
+		eti -> setOriginalRotationAngle(original_rotation_angle);
+		eti -> setRotationAngle(original_rotation_angle);
+		
 		// behavior when the parent element is rotated
-	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
-
-	list_texts_ << eti;
-
-	connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
-
-	return(eti);
+		eti -> setFollowParentRotations(dom_element.attribute("rotate") == "true");
+		
+		m_texts << eti;
+		
+		connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
+		
+		return(eti);
+	}
+		//The text haven't got a tagg, so we convert it to a dynamic text item
+		//and store it to m_converted_text_from_xml_description, instead of m_dynamic_text_list
+		//because these dynamic text need post treatement
+	else
+	{
+		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+		deti->setText(dom_element.attribute("text", "_"));
+		deti->setFontSize(dom_element.attribute("size", QString::number(9)).toInt());
+		deti->setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
+		
+		
+			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
+			//The origin transformation point of ElementTextItem is the middle of left edge, and so by definition, change with the size of the font
+			//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
+		QMatrix matrix;
+			//First make the rotation
+		matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
+		QPointF pos = matrix.map(QPointF(0, -deti->boundingRect().height()/2));
+		matrix.reset();
+			//Second translate to the pos
+		QPointF p(dom_element.attribute("x", QString::number(0)).toDouble(),
+				  dom_element.attribute("y", QString::number(0)).toDouble());
+		matrix.translate(p.x(), p.y());
+		deti->setPos(matrix.map(pos));
+		m_converted_text_from_xml_description.insert(deti, p);
+		return true;
+	}
+	
+	return false;
 }
 
 /**
@@ -791,7 +824,7 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	else return(nullptr);
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
 	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
-	list_terminals << new_terminal;
+	m_terminals << new_terminal;
 	return(new_terminal);
 }
 
@@ -1036,7 +1069,7 @@ ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString
  * @param tagg
  */
 ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
-	foreach (ElementTextItem *eti, list_texts_) {
+	foreach (ElementTextItem *eti, m_texts) {
 		if (eti -> tagg() == tagg) return eti;
 	}
 	return nullptr;

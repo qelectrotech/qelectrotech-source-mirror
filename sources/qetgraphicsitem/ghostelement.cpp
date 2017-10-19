@@ -60,10 +60,7 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr,
 	// instancie les champs de texte decrits dans l'element XML
 	foreach(QDomElement qde, QET::findInDomElement(e, "inputs", "input")) {
 		qde.setAttribute("size", 9); // arbitraire
-		if (ElementTextItem *new_input = CustomElement::parseInput(qde)) {
-			new_input -> fromXml(qde);
-		}
-		qde.removeAttribute("size");
+		CustomElement::parseInput(qde);
 	}
 	
 	/*

@@ -216,6 +216,11 @@ void DiagramEventAddElement::addElement()
 	element -> setPos(m_element->pos());
 	element -> setRotation(m_element -> rotation());
 	m_diagram -> addItem(element);
+	
+		//The element is dropped by the user, the dynamic text field stored in m_converted_text_from_xml_description
+		//can be moved to m_dynamic_text_list, because we are sure fromXml will be not called.
+	element->m_dynamic_text_list.append(element->m_converted_text_from_xml_description.keys());
+	element->m_converted_text_from_xml_description.clear();
 
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
 	new AddItemCommand<Element *>(element, m_diagram, m_element -> pos(), undo_object);

@@ -49,16 +49,17 @@ class CustomElement : public FixedElement
 		ElementsLocation location_;
 		QPicture drawing;
 		QPicture low_zoom_drawing;
-		QList<Terminal *> list_terminals;
-		QList<ElementTextItem *> list_texts_;
+		QList<Terminal *> m_terminals;
+		QList<ElementTextItem *> m_texts;
+		QList<DynamicElementTextItem *> m_dynamic_texts;
 		bool forbid_antialiasing;
 
 
-		QList<QLineF *> list_lines_;
-		QList<QRectF *> list_rectangles_;
-		QList<QRectF *> list_circles_;
-		QList<QVector<QPointF> *> list_polygons_;
-		QList<QVector<qreal> *> list_arcs_;
+		QList<QLineF *> m_lines;
+		QList<QRectF *> m_rectangles;
+		QList<QRectF *> m_circles;
+		QList<QVector<QPointF> *> m_polygons;
+		QList<QVector<qreal> *> m_arcs;
 	
 	// methods
 	public:
@@ -87,7 +88,7 @@ class CustomElement : public FixedElement
 		virtual bool parseArc(QDomElement &, QPainter &);
 		virtual bool parsePolygon(QDomElement &, QPainter &);
 		virtual bool parseText(QDomElement &, QPainter &);
-		virtual ElementTextItem *parseInput(QDomElement &);
+		virtual bool parseInput(QDomElement &);
 		virtual DynamicElementTextItem *parseDynamicText(QDomElement &);
 		virtual Terminal *parseTerminal(QDomElement &);
 		

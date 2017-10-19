@@ -37,6 +37,8 @@ class DynamicElementTextItem;
 */
 class Element : public QetGraphicsItem
 {
+	friend class DiagramEventAddElement;
+	
 	Q_OBJECT
 	
 		// constructors, destructor
@@ -215,6 +217,11 @@ class Element : public QetGraphicsItem
 		void hoverEnterEvent   ( QGraphicsSceneHoverEvent * ) override;
 		void hoverLeaveEvent   ( QGraphicsSceneHoverEvent * ) override;
 
+	protected:
+			// @m_converted_text_from_description, when a element is created from his description, the old element text item (tagged as 'input' in the xml)
+			// are converted to dynamic text field, the QPointF is the original position of the text item, because the origin transformation point of text item
+			// and dynamic text item are not the same, so we must to keep a track of this value, to be use in the function element::fromXml
+		QHash <DynamicElementTextItem *, QPointF> m_converted_text_from_xml_description;
 	private:
 		bool m_mouse_over;
 		QString m_prefix;

@@ -448,20 +448,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 	}
 
-		//import text filed value
-	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
-	foreach(QGraphicsItem *qgi, childItems())
-	{
-		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi))
-		{
-			foreach(QDomElement input, inputs)
-			{
-				eti -> fromXml(input);
-				etiToElementLabels(eti);
-			}
-		}
-	}
-
 	//load uuid of connected elements
 	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
 	foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
@@ -481,6 +467,122 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement("sequentialNumbers"));
 
+		//Position and selection.
+		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
+	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	
+	// orientation
+	bool conv_ok;
+	int read_ori = e.attribute("orientation").toInt(&conv_ok);
+	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
+	if (handle_inputs_rotation) {
+		rotateBy(90*read_ori);
+	} else {
+		applyRotation(90*read_ori);
+	}
+	
+		//Befor load the dynamic text field,
+		//we remove the dynamic text field created from the description of this element, to avoid doublons.
+	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+		delete deti;
+	m_dynamic_text_list.clear();
+    
+		//************************//
+		//***Dynamic texts item***//
+		//************************//
+    for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
+    {
+        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+        addDynamicTextItem(deti);
+        deti->fromXml(qde);
+    }
+	
+
+		//************************//
+		//***Element texts item***//
+		//************************//
+	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
+	
+		//First case, we check for the text item converted to dynamic text item
+	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
+	const QList <QDomElement> dom_inputs = inputs;
+	
+	for (DynamicElementTextItem *deti : conv_deti_list)
+	{
+		for(QDomElement dom_input : dom_inputs)
+		{
+				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
+				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
+				//that mean this is the good text
+			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()), m_converted_text_from_xml_description.value(deti).x()) &&
+				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()), m_converted_text_from_xml_description.value(deti).y()))
+			{
+				deti->setText(dom_input.attribute("text"));
+				
+				qreal rotation = deti->rotation();
+				QPointF xml_pos = m_converted_text_from_xml_description.value(deti);
+				
+				if (dom_input.attribute("userrotation").toDouble())
+					rotation = dom_input.attribute("userrotation").toDouble();
+				
+				if (dom_input.hasAttribute("userx"))
+					xml_pos.setX(dom_input.attribute("userx").toDouble());
+				if(dom_input.hasAttribute("usery"))
+					xml_pos.setY(dom_input.attribute("usery", "0").toDouble());
+				
+					//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
+					//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
+					//We need to use a QMatrix to find the pos of this text from the saved pos of text item
+				
+				deti->setPos(xml_pos);
+				deti->setRotation(rotation);
+				
+				QMatrix matrix;
+					//First make the rotation
+				matrix.rotate(rotation);
+				QPointF pos = matrix.map(QPointF(0, -deti->boundingRect().height()/2));
+				matrix.reset();
+					//Second translate to the pos
+				matrix.translate(xml_pos.x(), xml_pos.y());
+				deti->setPos(matrix.map(pos));
+				
+					//dom_input and deti matched we remove the dom_input from @inputs list,
+					//to avoid unnecessary checking made below
+					//we also move deti from the m_converted_text_from_xml_description to m_dynamic_text_list
+				inputs.removeAll(dom_input);
+				m_dynamic_text_list.append(deti);
+				m_converted_text_from_xml_description.remove(deti);
+			}
+		}
+	}
+	
+		//###Firts case : if this is the first time the user open the project since text item are converted to dynamic text,
+		//in the previous opening of the project, every texts field present in the element description was created.
+		//At save time, the values of each of them was save in the 'input' dom element.
+		//The loop upper is made for the first case, to import the values in 'input' to the new converted dynamic texts field.
+		//###Second case : this is not the first time the user open the project since text item are converted to dynamic text.
+		//That mean, in a previous opening of the project, the text item was already converted and save as a dynamic text field.
+		//So there isn't 'input' dom element in the project, and every dynamic text item present in m_converted_text_from_xml_description
+		//need to be deleted (because already exist in m_dynamic_text_list, from a previous save)
+	for (DynamicElementTextItem *deti : m_converted_text_from_xml_description.keys())
+		delete deti;
+	m_converted_text_from_xml_description.clear();
+	
+		//For the moment the text item with a tagg are not converted to dynamic text item
+		//so we must to check it
+	foreach(QGraphicsItem *qgi, childItems())
+	{
+		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi))
+		{
+			foreach(QDomElement input, inputs)
+			{
+				eti -> fromXml(input);
+				etiToElementLabels(eti);
+			}
+		}
+	}
+	
 		//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 		/**
@@ -517,35 +619,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
-
-	//Position and selection.
-	//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
-	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	
-	// orientation
-	bool conv_ok;
-	int read_ori = e.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
-	if (handle_inputs_rotation) {
-		rotateBy(90*read_ori);
-	} else {
-		applyRotation(90*read_ori);
-	}
-	
-		//Befor load the dynamic text field,
-		//we remove the dynamic text field created from the description of this element, to avoid doublons.
-	for(DynamicElementTextItem *deti : m_dynamic_text_list)
-		delete deti;
-	m_dynamic_text_list.clear();
-    
-        //Dynamic texts
-    for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
-    {
-        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
-        addDynamicTextItem(deti);
-        deti->fromXml(qde);
-    }
     
 	return(true);
 }
