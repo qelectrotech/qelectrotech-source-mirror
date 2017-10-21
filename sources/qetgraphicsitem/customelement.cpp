@@ -164,6 +164,22 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		
 		if (elmts.tagName() == "description")
 		{
+				//Minor workaround to find if there is a "input" tagg as label.
+				//If not, we set the tagg "label" to the first "input.
+			QList <QDomElement> input_field;
+			bool have_label = false;
+			for (QDomElement input_node = node.firstChildElement("input") ; !input_node.isNull() ; input_node = input_node.nextSiblingElement("input"))
+			{
+				if (!input_node.isNull())
+				{
+					input_field << input_node;
+					if (input_node.attribute("tagg", "none") == "label")
+						have_label = true;
+				}
+			}
+			if(!have_label && !input_field.isEmpty())
+				input_field.first().setAttribute("tagg", "label");
+			
 				//Manage the graphic description = part of drawing
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
 			{
