@@ -1014,13 +1014,18 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QS
  * refresh all content of diagram.
  * - refresh conductor text.
  * - linking the elements waiting to be linked
+ * - Refresh the connection of the dynamic element text item (use for text with source of text label)
  */
-void Diagram::refreshContents() {
-
-	foreach (Element *elmt, elements())
+void Diagram::refreshContents()
+{
+	for (Element *elmt : elements())
+	{
 		elmt->initLink(project());
+		for (DynamicElementTextItem *deti : elmt->dynamicTextItems())
+			deti->refreshLabelConnection();
+	}
 
-	foreach (Conductor *conductor, conductors())
+	for (Conductor *conductor : conductors())
 		conductor->refreshText();
 }
 

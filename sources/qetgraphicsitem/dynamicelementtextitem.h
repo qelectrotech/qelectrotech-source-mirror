@@ -76,6 +76,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		
 		Element *parentElement() const;
 		Element *elementUseForInfo() const;
+		void refreshLabelConnection();
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
@@ -104,8 +105,11 @@ class DynamicElementTextItem : public DiagramTextItem
 		void reportFormulaChanged();
 		void setConnectionForReportFormula(const QString &formula);
 		void removeConnectionForReportFormula(const QString &formula);
+		void setupFormulaConnection();
+		void clearFormulaConnection();
 		void updateReportFormulaConnection();
 		void updateReportText();
+		void updateLabel();
 		void conductorWasAdded(Conductor *conductor);
 		void conductorWasRemoved(Conductor *conductor);
 		void setPotentialConductor();
@@ -126,6 +130,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;
 		QMetaObject::Connection m_report_formula_con;
+		QList<QMetaObject::Connection> m_formula_connection;
 		QColor m_user_color;
 };
 

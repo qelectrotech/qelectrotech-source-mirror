@@ -267,6 +267,21 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 }
 
 /**
+ * @brief DynamicElementTextItem::refreshLabelConnection
+ * Refresh the connection of this text when the source of text is label,
+ * or composite text, with a variable %{label}
+ */
+void DynamicElementTextItem::refreshLabelConnection()
+{
+	if ((m_text_from == ElementInfo && m_info_name == "label") ||
+		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+	{
+		setupFormulaConnection();
+		updateLabel();
+	}
+}
+
+/**
  * @brief DynamicElementTextItem::textFrom
  * @return what the final text is created from.
  */
@@ -282,6 +297,7 @@ DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
 	setNoEditable(text_from == UserText? false : true);
+	clearFormulaConnection();
 	
 	if(text_from == UserText)
 	{
@@ -290,14 +306,27 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 	}
 	else if (text_from == ElementInfo && elementUseForInfo())
 	{
-		setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
+		if(m_info_name == "label")
+		{
+			setupFormulaConnection();
+			updateLabel();
+		}
+		else
+			setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
 		
 		if(m_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
 	else if (text_from == CompositeText && elementUseForInfo())
 	{
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
+		if(m_composite_text.contains("%{label}"))
+		{
+			setupFormulaConnection();
+			updateLabel();
+		}
+		else
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
+		
 		if(m_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
@@ -357,6 +386,9 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 {
 	QString old_info_name = m_info_name;
 	m_info_name = info_name;
+	
+	if(old_info_name == "label")
+		clearFormulaConnection();
 
 	if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)) //special treatment for report
 	{
@@ -373,6 +405,11 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 			else
 				conductorPropertiesChanged();
 		}
+	}
+	else if (m_info_name == "label" && elementUseForInfo())
+	{
+		setupFormulaConnection();
+		updateLabel();
 	}
 	else if(elementUseForInfo()) {
 		setPlainText(elementUseForInfo()->elementInformations().value(info_name).toString());
@@ -398,6 +435,9 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 {
 	QString old_composite_text = m_composite_text;
 	m_composite_text = text;
+	
+	if(old_composite_text.contains("%{label}"))
+		clearFormulaConnection();
 
 	if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)) //special treatment for report
 	{
@@ -413,6 +453,11 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			setConnectionForReportFormula(m_report_formula);
 		
 		updateReportText();
+	}
+	else if (m_composite_text.contains("%{label}") && elementUseForInfo())
+	{
+		setupFormulaConnection();
+		updateLabel();
 	}
 	else
 	{
@@ -615,11 +660,33 @@ void DynamicElementTextItem::elementInfoChanged()
 		dc = elementUseForInfo()->elementInformations();
 	
 	QString final_text;
+	Element *element = elementUseForInfo();
 
 	if (m_text_from == ElementInfo)
-		final_text = dc.value(m_info_name).toString();
+	{
+			//If the info is the label, then we must to make some connection
+			//if the label is created from a formula
+		if(m_info_name == "label")
+		{
+			setupFormulaConnection();
+			
+			if (dc.value("formula").toString().isEmpty())
+				final_text = dc.value(m_info_name).toString();
+			else
+				final_text = autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element);
+		}
+		else
+			final_text = dc.value(m_info_name).toString();
+	}
 	else if (m_text_from == CompositeText)
+	{
+			//If the composite have the label variable, we must to make some
+			//connection if the label is created from a formula
+		if (m_composite_text.contains("%{label}"))
+			setupFormulaConnection();
+		
 		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
 	
@@ -758,6 +825,52 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	
 }
 
+/**
+ * @brief DynamicElementTextItem::setupFormulaConnection
+ * Setup the required connection for the formula of the label.
+ */
+void DynamicElementTextItem::setupFormulaConnection()
+{
+	if ((m_text_from == ElementInfo && m_info_name == "label") ||
+		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+	{
+		clearFormulaConnection();
+		
+		Element *element = elementUseForInfo();
+		if (!element)
+			return;
+		
+		Diagram *diagram = element->diagram();
+		QString formula = element->elementInformations().value("formula").toString();
+
+			//Label is frozen, so we don't update it.
+		if (element->isFreezeLabel())
+			return;
+		
+		if (diagram && formula.contains("%F"))
+		{
+			m_F_str = diagram->border_and_titleblock.folio();
+			formula.replace("%F", m_F_str);
+			m_formula_connection << connect(&diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &DynamicElementTextItem::updateLabel);
+		}
+		
+		if (diagram && (formula.contains("%f") || formula.contains("%id")))
+			m_formula_connection << connect(diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateLabel);
+		if (formula.contains("%l"))
+			m_formula_connection << connect(element, &Element::yChanged, this, &DynamicElementTextItem::updateLabel);
+		if (formula.contains("%c"))
+			m_formula_connection << connect(element, &Element::xChanged, this, &DynamicElementTextItem::updateLabel);
+			
+	}
+}
+
+void DynamicElementTextItem::clearFormulaConnection()
+{
+	for (QMetaObject::Connection con : m_formula_connection)
+		disconnect(con);
+	m_formula_connection.clear();
+}
+
 void DynamicElementTextItem::updateReportFormulaConnection()
 {
 	removeConnectionForReportFormula(m_report_formula);
@@ -780,6 +893,24 @@ void DynamicElementTextItem::updateReportText()
 	}
 	else if (m_text_from == CompositeText) {
 		setPlainText(reportReplacedCompositeText());
+	}
+}
+
+void DynamicElementTextItem::updateLabel()
+{
+	if ((m_text_from == ElementInfo && m_info_name == "label") ||
+		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
+	{
+		DiagramContext dc;
+		if(elementUseForInfo())
+			dc = elementUseForInfo()->elementInformations();
+		
+		Element *element = elementUseForInfo();
+		
+		if(m_text_from == ElementInfo)
+			setPlainText(autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element));
+		else if (m_text_from == CompositeText)
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 	}
 }
 

@@ -149,6 +149,7 @@ class Element : public QetGraphicsItem
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
+		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 
 	protected:
