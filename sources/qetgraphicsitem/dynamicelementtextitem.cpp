@@ -896,6 +896,12 @@ void DynamicElementTextItem::updateReportText()
 	}
 }
 
+/**
+ * @brief DynamicElementTextItem::updateLabel
+ * Update the displayed text, when this dynamic text is based on the label of the parent element.
+ * This function is notably use when the label itself is based from a formula.
+ * If this dynamic text isn't based on label, this function do nothing.
+ */
 void DynamicElementTextItem::updateLabel()
 {
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
@@ -908,7 +914,12 @@ void DynamicElementTextItem::updateLabel()
 		Element *element = elementUseForInfo();
 		
 		if(m_text_from == ElementInfo)
-			setPlainText(autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element));
+		{
+			if(dc.value("formula").toString().isEmpty())
+				setPlainText(dc.value("label").toString());
+			else
+				setPlainText(autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element));
+		}
 		else if (m_text_from == CompositeText)
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 	}
