@@ -42,6 +42,7 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 		bool setLiveEdit(bool live_edit) override;
 		void apply() override;
 		void setCurrentText(DynamicElementTextItem *text);
+		QUndoCommand *associatedUndo() const override;
 	
 	private:
 		void dataEdited(DynamicElementTextItem *deti);

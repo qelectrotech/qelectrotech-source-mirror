@@ -160,7 +160,35 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
     qsi_list.clear();
     qsi_list << color << colora;
 	qsi->appendRow(qsi_list);
+	
+		//X pos
+	QStandardItem *x_pos = new QStandardItem(tr("Position X"));
+	x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QStandardItem *x_pos_a = new QStandardItem;
+	x_pos_a->setData(deti->pos().x(), Qt::EditRole);
+	x_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
+	x_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	
+	qsi_list.clear();
+	qsi_list << x_pos << x_pos_a;
+	qsi->appendRow(qsi_list);
+	
+		//Y pos
+	QStandardItem *y_pos = new QStandardItem(tr("Position Y"));
+	y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QStandardItem *y_pos_a = new QStandardItem;
+	y_pos_a->setData(deti->pos().y(), Qt::EditRole);
+	y_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
+	y_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	
+	qsi_list.clear();
+	qsi_list << y_pos << y_pos_a;
+	qsi->appendRow(qsi_list);
     
+	
+	
 	qsi_list.clear();
 	QStandardItem *empty_qsi = new QStandardItem(0);
 	empty_qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -244,9 +272,14 @@ QModelIndex DynamicElementTextModel::indexFromText(DynamicElementTextItem *text)
  * Each change made for @deti is append as a child of the returned QUndoCommand.
  * In other word, if the returned QUndoCommand have no child, that mean there is no change.
  */
-QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem *deti) const
+QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem *deti, QUndoCommand *parent_undo) const
 {
-	QUndoCommand *undo = new QUndoCommand(tr("Éditer un texte d'élément"));
+	
+	QUndoCommand *undo = nullptr;
+	if(parent_undo)
+		undo = parent_undo;
+	else
+		undo = new QUndoCommand(tr("Éditer un texte d'élément"));
 	
 	if (!m_texts_list.contains(deti))
 		return undo;
@@ -291,6 +324,12 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	QColor color = text_qsi->child(3,1)->data(Qt::EditRole).value<QColor>();
 	if(color != deti->color())
 		new QPropertyUndoCommand(deti, "color", QVariant(deti->color()), QVariant(color), undo);
+	
+	QPointF p(text_qsi->child(4,1)->data(Qt::EditRole).toDouble(),
+			  text_qsi->child(5,1)->data(Qt::EditRole).toDouble());
+	if(p != deti->pos())
+		new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+	
 	
 	return undo;
 }
@@ -381,7 +420,7 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 	
 		//We emit the signal only if @qsi is in the second column, because the data are stored on this column
 		//the first column is use only for display the title of the property
-	if(qsi->column() == 1)
+	if(qsi->column() == 1 && !m_block_dataForTextChanged)
 		emit dataForTextChanged(deti);
 }
 
@@ -406,6 +445,8 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::textFromChanged, [deti,this](){this->updateDataFromText(deti, textFrom);});
 		connection_list << connect(deti, &DynamicElementTextItem::textChanged,     [deti,this](){this->updateDataFromText(deti, userText);});
 		connection_list << connect(deti, &DynamicElementTextItem::infoNameChanged, [deti,this](){this->updateDataFromText(deti, infoText);});
+		connection_list << connect(deti, &DynamicElementTextItem::xChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
+		connection_list << connect(deti, &DynamicElementTextItem::yChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
 		
 		m_hash_text_connect.insert(deti, connection_list);
@@ -427,6 +468,8 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 	QStandardItem *qsi = m_texts_list.value(deti);
 	if (!qsi)
 		return;
+	
+	m_block_dataForTextChanged = true;
 	
 	switch (type)
 	{
@@ -480,7 +523,15 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 			qsi->child(3,1)->setData(deti->color(), Qt::ForegroundRole);
 			break;
 		}
+		case pos:
+		{
+			qsi->child(4,1)->setData(deti->pos().x(), Qt::EditRole);
+			qsi->child(5,1)->setData(deti->pos().y(), Qt::EditRole);
+			break;
+		}
 	}
+	
+	m_block_dataForTextChanged = false;
 }
 
 
@@ -552,6 +603,18 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>());
 			cd->setObjectName("color_dialog");
 			return cd;
+		}
+		case DynamicElementTextModel::pos:
+		{
+			QWidget *w = QStyledItemDelegate::createEditor(parent, option, index);
+			
+			if(QDoubleSpinBox *dsb = dynamic_cast<QDoubleSpinBox *>(w))
+			{
+				dsb->setDecimals(0);
+				dsb->setSuffix(" px");
+			}
+
+			return w;
 		}
 	}
 	return QStyledItemDelegate::createEditor(parent, option, index);

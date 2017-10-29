@@ -120,6 +120,22 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 	m_tree_view->setCurrentIndex(index);
 }
 
+QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
+{
+	QUndoCommand *parent_undo = new QUndoCommand(tr("Modifier un texte d'élément"));
+	for (DynamicElementTextItem *deti : m_element->dynamicTextItems())
+		m_model->undoForEditedText(deti, parent_undo);
+	
+	if(parent_undo->childCount() >= 1)
+	{
+		if(parent_undo->childCount() >= 2)
+			parent_undo->setText(tr("Modifier %1 textes d'élément").arg(QString::number(parent_undo->childCount())));
+		return parent_undo;
+	}
+	else
+		return nullptr;
+}
+
 void DynamicElementTextItemEditor::dataEdited(DynamicElementTextItem *deti)
 {
 	Q_UNUSED(deti)
