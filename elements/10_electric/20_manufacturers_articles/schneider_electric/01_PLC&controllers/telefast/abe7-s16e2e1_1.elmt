@@ -1,0 +1,101 @@
+<definition width="940" height="90" hotspot_y="34" link_type="simple" type="element" hotspot_x="15" orientation="dyyy" version="0.70">
+    <uuid uuid="{78a2b7d6-251d-40bf-8dec-fce73eb22f0a}"/>
+    <names>
+        <name lang="fr">ABE7-S16E2E1/1</name>
+    </names>
+    <elementInformations/>
+    <informations>SIEMENS S7-300 (digital inputs)</informations>
+    <description>
+        <dynamic_text uuid="{b2770e93-a119-4ff6-a0e9-9861031312ee}" x="806" text_from="UserText" font_size="6" z="1" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{77a1e307-f7fe-447b-992e-d1d753971d7c}" x="305" text_from="UserText" font_size="6" z="2" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{8933a99d-8b09-45ba-bbe8-29a0fca5089d}" x="206" text_from="UserText" font_size="6" z="3" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{c0852120-997e-4b5f-b510-2e960bdffd8b}" x="507" text_from="UserText" font_size="6" z="4" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{a27e244f-e4be-46fd-9617-d30f0540dc24}" x="104" text_from="UserText" font_size="6" z="5" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{2a2c1860-5456-4348-81a1-146f58bbf7eb}" x="707" text_from="UserText" font_size="6" z="6" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{7d697e34-95b7-4f26-ac26-6e9377b0238f}" x="406" text_from="UserText" font_size="6" z="7" y="-14" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <dynamic_text uuid="{d57e8a91-d570-45cc-a68f-03de28283bce}" x="604" text_from="UserText" font_size="6" z="8" y="-13.55" rotation="0">
+            <text>%I</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <polygon x2="-10" y4="49" y1="49" y2="37" y3="37" x4="70" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x3="70" antialias="false"/>
+        <text text="1" x="-3" y="-21" size="5"/>
+        <polygon x2="-10" y4="-30" y5="-30" y1="-29" y2="-19" x5="70" y3="-19" x4="70" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x3="70" antialias="false"/>
+        <line x2="30" length1="1.5" end2="none" y1="-30" end1="none" y2="-19" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" antialias="false"/>
+        <text text="+" x="-3" y="46.85" size="5"/>
+        <text text="4" x="57" y="-21" size="5"/>
+        <text text="3" x="37" y="-21" size="5"/>
+        <text text="2" x="17" y="-21" size="5"/>
+        <line x2="10" length1="1.5" end2="none" y1="-30" end1="none" y2="-19" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" antialias="false"/>
+        <line x2="50" length1="1.5" end2="none" y1="-30" end1="none" y2="-19" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50" antialias="false"/>
+        <polygon x2="410" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="430" y3="-20" x4="430" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="410" x6="430" x3="430" antialias="false"/>
+        <line x2="30" length1="1.5" end2="none" y1="38" end1="none" y2="49" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" antialias="false"/>
+        <text text="-" x="57" y="46.85" size="5"/>
+        <polygon x2="510" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="530" y3="-20" x4="530" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="510" x6="530" x3="530" antialias="false"/>
+        <text text="-" x="37" y="46.85" size="5"/>
+        <polygon x2="610" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="630" y3="-20" x4="630" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="610" x6="630" x3="630" antialias="false"/>
+        <text text="+" x="17" y="46.85" size="5"/>
+        <line x2="10" length1="1.5" end2="none" y1="38" end1="none" y2="49.15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" antialias="false"/>
+        <line x2="50" length1="1.5" end2="none" y1="38" end1="none" y2="49" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50" antialias="false"/>
+        <polygon x2="310" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="330" y3="-20" x4="330" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="310" x6="330" x3="330" antialias="false"/>
+        <polygon x2="210" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="230" y3="-20" x4="230" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="210" x6="230" x3="230" antialias="false"/>
+        <polygon x2="110" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="130" y3="-20" x4="130" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="110" x6="130" x3="130" antialias="false"/>
+        <text text="100" x="114" y="-21" size="6"/>
+        <text text="104" x="514" y="-21" size="6"/>
+        <text text="102" x="313" y="-21" size="6"/>
+        <text text="101" x="213" y="-21" size="6"/>
+        <text text="106" x="714" y="-21" size="6"/>
+        <text text="103" x="413" y="-21" size="6"/>
+        <text text="105" x="614" y="-21" size="6"/>
+        <polygon x2="710" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="730" y3="-20" x4="730" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="710" x6="730" x3="730" antialias="false"/>
+        <text text="107" x="814" y="-21" size="6"/>
+        <polygon x2="810" y4="-29" y5="-29" y1="-29" y6="-29" y2="-20" x5="830" y3="-20" x4="830" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="810" x6="830" x3="830" antialias="false"/>
+        <dynamic_text uuid="{d879e269-c0e9-4a5d-89a0-805518f8ec85}" x="406" text_from="UserText" font_size="9" z="41" y="17" rotation="0">
+            <text>ABE7-S16E2E1</text>
+            <color>#31363b</color>
+        </dynamic_text>
+        <input text="_" x="530" rotate="true" tagg="label" y="30" size="9"/>
+        <text text="24VDC" x="0" y="30" size="4"/>
+        <text text="0VDC" x="44" y="30" size="4"/>
+        <polygon x2="0" y4="40" y1="40" y2="30" y3="30" x4="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x3="20" antialias="false"/>
+        <polygon x2="40" y4="40" y5="40" y1="40" y2="30" x5="60" y3="30" x4="60" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" x3="60" antialias="false"/>
+        <polygon x2="-10" y4="50" y5="50" y1="-30" y2="-30" x5="910" y3="50" x4="910" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="900" x3="-10" antialias="false"/>
+        <polygon x2="890" y4="50" y5="50" y1="-30" y2="-10" x5="910" y3="0" x4="920" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="900" x3="900" antialias="false"/>
+        <terminal x="120" orientation="n" y="-29"/>
+        <terminal x="20" orientation="s" y="50"/>
+        <terminal x="60" orientation="s" y="50"/>
+        <terminal x="40" orientation="s" y="50"/>
+        <terminal x="20" orientation="n" y="-29"/>
+        <terminal x="0" orientation="n" y="-29"/>
+        <terminal x="820" orientation="n" y="-29"/>
+        <terminal x="0" orientation="s" y="50"/>
+        <terminal x="60" orientation="n" y="-29"/>
+        <terminal x="40" orientation="n" y="-30"/>
+        <terminal x="520" orientation="n" y="-29"/>
+        <terminal x="420" orientation="n" y="-29"/>
+        <terminal x="720" orientation="n" y="-29"/>
+        <terminal x="620" orientation="n" y="-29"/>
+        <terminal x="320" orientation="n" y="-29"/>
+        <terminal x="220" orientation="n" y="-29"/>
+    </description>
+</definition>
