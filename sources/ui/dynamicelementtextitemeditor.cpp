@@ -23,6 +23,7 @@
 #include "diagram.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "undocommand/addelementtextcommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 #include <QTreeView>
 #include <QUndoCommand>
@@ -78,7 +79,16 @@ void DynamicElementTextItemEditor::apply()
 	for (DynamicElementTextItem *deti : m_element->dynamicTextItems())
 	{
 		QUndoCommand *undo = m_model->undoForEditedText(deti);
-		if(undo->childCount())
+
+		if (undo->childCount() == 1)
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
+			if (quc->text().isEmpty())
+				quc->setText(undo->text());
+			undo_list << quc;
+			delete undo;
+		}
+		else if(undo->childCount() > 1)
 			undo_list << undo;
 		else
 			delete undo;
@@ -90,7 +100,9 @@ void DynamicElementTextItemEditor::apply()
 	if(!undo_list.isEmpty() && m_element->diagram())
 	{
 		if (undo_list.size() == 1)
+		{
 			m_element->diagram()->undoStack().push(undo_list.first());
+		}
 		else
 		{
 			QUndoStack &us = m_element->diagram()->undoStack();
@@ -117,6 +129,7 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 		return;
 	
 	m_tree_view->expand(index);
+	m_tree_view->expand(index.child(0,0));
 	m_tree_view->setCurrentIndex(index);
 }
 
@@ -157,6 +170,8 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
 	{
 		m_element->diagram()->undoStack().push(new AddElementTextCommand(m_element, deti));
 		m_model->addText(deti);
+		
+		setCurrentText(deti);
 	}
 	else
 	{

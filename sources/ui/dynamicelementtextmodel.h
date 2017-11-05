@@ -79,6 +79,9 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
         QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
         void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
 		
+	protected:
+		bool eventFilter(QObject *object, QEvent *event) override;
+		
 	private:
 		QStringList availableInfo(DynamicElementTextItem *deti) const;
 };

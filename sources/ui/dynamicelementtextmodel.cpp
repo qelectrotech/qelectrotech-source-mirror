@@ -314,21 +314,33 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	}
 	
 	int fs = text_qsi->child(1,1)->data(Qt::EditRole).toInt();
-	if (fs != deti->fontSize()) 
-		new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+	if (fs != deti->fontSize())
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+		quc->setText(tr("Modifier la taille d'un texte d'élément"));
+	}
 	
 	QString tagg = text_qsi->child(2,1)->data(Qt::DisplayRole).toString();
 	if(tagg != deti->tagg())
-		new QPropertyUndoCommand(deti, "tagg", QVariant(deti->tagg()), QVariant(tagg), undo);
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "tagg", QVariant(deti->tagg()), QVariant(tagg), undo);
+		quc->setText(tr("Modifier le tagg d'un texte d'élément"));
+	}
 	
 	QColor color = text_qsi->child(3,1)->data(Qt::EditRole).value<QColor>();
 	if(color != deti->color())
-		new QPropertyUndoCommand(deti, "color", QVariant(deti->color()), QVariant(color), undo);
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "color", QVariant(deti->color()), QVariant(color), undo);
+		quc->setText(tr("Modifier la couleur d'un texte d'élément"));
+	}
 	
 	QPointF p(text_qsi->child(4,1)->data(Qt::EditRole).toDouble(),
 			  text_qsi->child(5,1)->data(Qt::EditRole).toDouble());
 	if(p != deti->pos())
-		new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+	{
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+		quc->setText(tr("Déplacer un texte d'élément"));
+	}
 	
 	
 	return undo;
@@ -598,6 +610,13 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			cted->setObjectName("composite_text");
 			return cted;
 		}
+		case DynamicElementTextModel::size:
+		{
+			QSpinBox *sb = new QSpinBox(parent);
+			sb->setObjectName("font_size");
+			sb->setFrame(false);
+			return sb;
+		}
 		case DynamicElementTextModel::color:
 		{
 			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>());
@@ -606,15 +625,12 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::pos:
 		{
-			QWidget *w = QStyledItemDelegate::createEditor(parent, option, index);
-			
-			if(QDoubleSpinBox *dsb = dynamic_cast<QDoubleSpinBox *>(w))
-			{
-				dsb->setDecimals(0);
-				dsb->setSuffix(" px");
-			}
-
-			return w;
+			QSpinBox *sb = new QSpinBox(parent);
+			sb->setObjectName("pos_dialog");
+			sb->setRange(-1000,10000);
+			sb->setFrame(false);
+			sb->setSuffix(" px");
+			return sb;
 		}
 	}
 	return QStyledItemDelegate::createEditor(parent, option, index);
@@ -683,6 +699,24 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 	}
 	
 	QStyledItemDelegate::setModelData(editor, model, index);
+}
+
+bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
+{
+		//This is a bad hack, for change the normal behavior :
+		//in normal behavior, the value is commited when the spinbox lose focus or enter key is pressed
+		//With this hack the value is commited each time the value change, so the text is moved in live.
+		//We also use this hack for the font size spinbox
+	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size")
+	{
+		QSpinBox *sb = static_cast<QSpinBox *>(object);
+		if(event->type() == QEvent::KeyRelease)
+			emit commitData(sb);
+		else if (event->type() == QEvent::MouseButtonRelease)
+			emit commitData(sb);
+	}
+	
+	return QStyledItemDelegate::eventFilter(object, event);
 }
 
 /**

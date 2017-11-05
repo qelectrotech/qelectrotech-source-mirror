@@ -52,6 +52,16 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	m_animate(false)
 {}
 
+QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
+{
+	m_object        = other->m_object;
+	m_property_name = other->m_property_name;
+	m_old_value     = other->m_old_value;
+	m_new_value     = other->m_new_value;
+	m_animate       = other->m_animate;
+	setText(other->text());
+}
+
 /**
  * @brief QPropertyUndoCommand::setNewValue
  * Set the new value of the property (set with redo) to @new_value
