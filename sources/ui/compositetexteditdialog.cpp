@@ -84,3 +84,14 @@ void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
 	Q_UNUSED(arg1)
 	ui->m_plain_text_edit->insertPlainText(ui->m_info_cb->currentData().toString());
 }
+
+/**
+ * @brief CompositeTextEditDialog::focusInEvent
+ * Reimplemented from QWidget::focusInEvent
+ * @param event
+ */
+void CompositeTextEditDialog::focusInEvent(QFocusEvent *event)
+{
+	ui->m_plain_text_edit->setFocus();
+	QDialog::focusInEvent(event);
+}

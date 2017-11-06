@@ -28,6 +28,9 @@ class CompositeTextEditDialog : public QDialog
 	
 	private slots:
 		void on_m_info_cb_activated(const QString &arg1);
+		
+	protected:
+		void focusInEvent(QFocusEvent *event) override;
 	
 	private :
 		void setUpComboBox();

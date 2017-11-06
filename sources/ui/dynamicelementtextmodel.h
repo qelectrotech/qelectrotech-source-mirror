@@ -73,6 +73,8 @@ class DynamicElementTextModel : public QStandardItemModel
 
 class DynamicTextItemDelegate : public QStyledItemDelegate
 {
+	Q_OBJECT
+	
     public:
         DynamicTextItemDelegate(QObject *parent = Q_NULLPTR);
         

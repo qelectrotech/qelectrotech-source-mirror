@@ -563,6 +563,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		case DynamicElementTextModel::textFrom:
 		{
 			QComboBox *qcb = new QComboBox(parent);
+			qcb->setObjectName("text_from");
 			qcb->addItem(tr("Texte utilisateur"));
 			qcb->addItem(tr("Information de l'élément"));
 			qcb->addItem(tr("Texte composé"));
@@ -714,6 +715,13 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 			emit commitData(sb);
 		else if (event->type() == QEvent::MouseButtonRelease)
 			emit commitData(sb);
+	}
+	
+		//Like the hack above, change the current index of the combobox, apply the change immediately, no need to lose focus or press enter.
+	if((object->objectName() == "text_from" || object->objectName() == "info_text") && event->type() == QEvent::FocusIn)
+	{
+		QComboBox *qcb = static_cast<QComboBox *>(object);
+		connect(qcb, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [this,qcb](){emit commitData(qcb);});
 	}
 	
 	return QStyledItemDelegate::eventFilter(object, event);
