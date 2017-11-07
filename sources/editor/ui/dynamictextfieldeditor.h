@@ -50,7 +50,8 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		void on_m_rotation_sb_editingFinished();
 		void on_m_user_text_le_editingFinished();
 		void on_m_size_sb_editingFinished();
-		void on_m_color_pb_clicked();
+		void on_m_color_pb_clicked();	
+		void on_m_frame_cb_clicked();
 		
 		private:
 		Ui::DynamicTextFieldEditor *ui;

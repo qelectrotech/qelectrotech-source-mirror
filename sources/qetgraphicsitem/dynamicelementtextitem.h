@@ -44,6 +44,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
+	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	
 	public:
 		Q_ENUMS(TextFrom)
@@ -61,6 +62,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void textFromChanged(DynamicElementTextItem::TextFrom text_from);
 		void infoNameChanged(QString info);
 		void compositeTextChanged(QString text);
+		void frameChanged(bool frame);
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -89,6 +91,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString infoName() const;
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
+		void setFrame(const bool frame);
+		bool frame() const;
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -97,6 +101,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		
 	private:
 		void elementInfoChanged();
@@ -132,6 +137,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QMetaObject::Connection m_report_formula_con;
 		QList<QMetaObject::Connection> m_formula_connection;
 		QColor m_user_color;
+		bool m_frame = false;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

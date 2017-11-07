@@ -43,7 +43,8 @@ class DynamicElementTextModel : public QStandardItemModel
             size,
             tagg,
             color,
-			pos
+			pos,
+			frame
         };
         
 		DynamicElementTextModel(QObject *parent = nullptr);

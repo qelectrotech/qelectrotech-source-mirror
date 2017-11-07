@@ -74,6 +74,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged,     [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,    [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged, [this]() {this->updateForm();});
 	
 	return true;
@@ -95,6 +96,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui->m_x_sb->setValue(m_text_field.data()->x());
 		ui->m_y_sb->setValue(m_text_field.data()->y());
 		ui->m_rotation_sb->setValue(QET::correctAngle(m_text_field.data()->rotation()));
+		ui->m_frame_cb->setChecked(m_text_field.data()->frame());
 		ui->m_user_text_le->setText(m_text_field.data()->text());
 		ui->m_size_sb->setValue(m_text_field.data()->fontSize());
 		ui->m_tagg_le->setText(m_text_field.data()->tagg());
@@ -112,7 +114,7 @@ void DynamicTextFieldEditor::setColorPushButton(QColor color)
 void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
 {
     QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "x", m_text_field.data()->x(), ui->m_x_sb->value());
-	undo->setText(tr("Déplacer un champ texte dynamique"));
+	undo->setText(tr("Déplacer un champ texte"));
 	undo->enableAnimation(true);
 	undoStack().push(undo);
 }
@@ -120,7 +122,7 @@ void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
 void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
 {
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "y", m_text_field.data()->y(), ui->m_y_sb->value());
-	undo->setText(tr("Déplacer un champ texte dynamique"));
+	undo->setText(tr("Déplacer un champ texte"));
 	undo->enableAnimation(true);
 	undoStack().push(undo);
 }
@@ -128,7 +130,7 @@ void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
 void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished()
 {
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "rotation", m_text_field.data()->rotation(), ui->m_rotation_sb->value());
-	undo->setText(tr("Pivoter un champ texte dynamique"));
+	undo->setText(tr("Pivoter un champ texte"));
 	undo->enableAnimation(true);
 	undoStack().push(undo);
 }
@@ -136,14 +138,14 @@ void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished()
 void DynamicTextFieldEditor::on_m_user_text_le_editingFinished()
 {
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "text", m_text_field.data()->text(), ui->m_user_text_le->text());
-	undo->setText(tr("Modifier le texte d'un champ texte dynamique"));
+	undo->setText(tr("Modifier le texte d'un champ texte"));
 	undoStack().push(undo);
 }
 
 void DynamicTextFieldEditor::on_m_size_sb_editingFinished()
 {
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "fontSize", m_text_field.data()->fontSize(), ui->m_size_sb->value());
-	undo->setText(tr("Modifier la taille d'un champ texte dynamique"));
+	undo->setText(tr("Modifier la taille d'un champ texte"));
 	undo->enableAnimation(true);
 	undoStack().push(undo);
 }
@@ -155,8 +157,20 @@ void DynamicTextFieldEditor::on_m_color_pb_clicked()
 	if(color.isValid() && color != m_text_field.data()->color())
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "color", m_text_field.data()->color(), color);
-		undo->setText(tr("Modifier la couleur d'un champ texte dynamique"));
+		undo->setText(tr("Modifier la couleur d'un champ texte"));
 		undoStack().push(undo);
 		setColorPushButton(m_text_field.data()->color());
+	}
+}
+
+void DynamicTextFieldEditor::on_m_frame_cb_clicked()
+{
+    bool frame = ui->m_frame_cb->isChecked();
+	
+	if(frame != m_text_field.data()->frame())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "frame", m_text_field.data()->frame(), frame);
+		undo->setText(tr("Modifier le cadre d'un champ texte"));
+		undoStack().push(undo);
 	}
 }

@@ -40,6 +40,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
+	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	
 	public:
 		static bool canImportFromTextField(const QDomElement &dom_element);
@@ -57,6 +58,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void compositeTextChanged(QString text);
 		void colorChanged(QColor color);
 		void fontSizeChanged(int size);
+		void frameChanged(bool frame);
 	
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -89,12 +91,15 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
         QColor color() const;
 		void setFontSize(int s);
         int fontSize()const;
+		void setFrame(bool frame);
+		bool frame() const;
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
         QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		
 	private:
 		QPointF m_origine_pos,
@@ -107,6 +112,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
 		QUuid m_uuid;
 		
+		bool m_frame = false;
 };
 
 #endif // PARTDYNAMICTEXTFIELD_H

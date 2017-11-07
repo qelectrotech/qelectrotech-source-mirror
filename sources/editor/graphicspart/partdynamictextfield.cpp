@@ -104,6 +104,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
+	root_element.setAttribute("frame", m_frame? "true" : "false");
 	
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
@@ -165,6 +166,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
+	m_frame = dom_elmt.attribute("frame", "false") == "true"? true : false;
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
@@ -349,6 +351,18 @@ int PartDynamicTextField::fontSize() const {
 	return font().pointSize();
 }
 
+void PartDynamicTextField::setFrame(bool frame)
+{
+	m_frame = frame;
+	update();
+	emit frameChanged(m_frame);
+}
+
+bool PartDynamicTextField::frame() const
+{
+	return m_frame;
+}
+
 /**
  * @brief PartDynamicTextField::mouseMoveEvent
  * @param event
@@ -407,4 +421,44 @@ QVariant PartDynamicTextField::itemChange(QGraphicsItem::GraphicsItemChange chan
 		updateCurrentPartEditor();
 	
 	return(QGraphicsTextItem::itemChange(change, value));
+}
+
+void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	QGraphicsTextItem::paint(painter, option, widget);
+	
+	if (m_frame)
+	{
+		painter->save();
+		painter->setFont(QETApp::diagramTextsFont(fontSize()));
+		
+			//Adjust the thickness according to the font size, 
+		qreal w=0.3;
+		if(fontSize() >= 5)
+		{
+			w = (qreal)fontSize()*0.1;
+			if(w > 2.5)
+				w = 2.5;
+		}
+		
+		QPen pen;
+		pen.setColor(color());
+		pen.setWidthF(w);
+		painter->setPen(pen);
+		painter->setRenderHint(QPainter::Antialiasing);
+		
+			//Get the bounding rectangle of the text 
+		QRectF text_bounding = painter->boundingRect(boundingRect(), toPlainText());
+			//Center text_bounding in the bounding rect of this
+		text_bounding.moveTop((boundingRect().height()-text_bounding.height())/2);
+		text_bounding.moveLeft((boundingRect().width() - text_bounding.width())/2);
+			//adjust only for better visual
+		text_bounding.adjust(-2,0,2,0); 
+		
+			//Adjust the rounding of the rectangle according to the size of the font
+		qreal ro = (qreal)fontSize()/3;
+		painter->drawRoundedRect(text_bounding, ro, ro);
+		
+		painter->restore();
+	}
 }

@@ -121,6 +121,17 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	qsi_list << composite << compositea;
 	src->appendRow(qsi_list);
 
+		//Tagg
+	QStandardItem *tagg = new QStandardItem(tr("Tagg"));
+	tagg->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QStandardItem *tagga = new QStandardItem(deti->tagg());
+	tagga->setData(DynamicElementTextModel::tagg, Qt::UserRole+1);
+	tagga->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	
+	qsi_list.clear();
+	qsi_list << tagg << tagga;
+	qsi->appendRow(qsi_list);
     
         //Size
 	QStandardItem *size = new QStandardItem(tr("Taille"));
@@ -134,19 +145,7 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
     qsi_list.clear();
     qsi_list << size << siza;
 	qsi->appendRow(qsi_list);
-    
-        //Tagg
-    QStandardItem *tagg = new QStandardItem(tr("Tagg"));
-    tagg->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-    
-    QStandardItem *tagga = new QStandardItem(deti->tagg());
-    tagga->setData(DynamicElementTextModel::tagg, Qt::UserRole+1);
-    tagga->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
-    
-    qsi_list.clear();
-    qsi_list << tagg << tagga;
-	qsi->appendRow(qsi_list);
-    
+
         //Color
     QStandardItem *color = new QStandardItem(tr("Couleur"));
     color->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -159,6 +158,20 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
     
     qsi_list.clear();
     qsi_list << color << colora;
+	qsi->appendRow(qsi_list);
+	
+		//Frame
+	QStandardItem *frame = new QStandardItem(tr("Cadre"));
+	frame->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QStandardItem *frame_a = new QStandardItem;
+	frame_a->setCheckable(true);
+	frame_a->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
+	frame_a->setData(DynamicElementTextModel::frame, Qt::UserRole+1);
+	frame_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+	
+	qsi_list.clear();
+	qsi_list << frame << frame_a;
 	qsi->appendRow(qsi_list);
 	
 		//X pos
@@ -186,7 +199,6 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	qsi_list.clear();
 	qsi_list << y_pos << y_pos_a;
 	qsi->appendRow(qsi_list);
-    
 	
 	
 	qsi_list.clear();
@@ -313,18 +325,18 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 			new QPropertyUndoCommand(deti, "compositeText", QVariant(deti->compositeText()), QVariant(composite_text), undo);
 	}
 	
-	int fs = text_qsi->child(1,1)->data(Qt::EditRole).toInt();
-	if (fs != deti->fontSize())
-	{
-		QUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
-		quc->setText(tr("Modifier la taille d'un texte d'élément"));
-	}
-	
-	QString tagg = text_qsi->child(2,1)->data(Qt::DisplayRole).toString();
+	QString tagg = text_qsi->child(1,1)->data(Qt::DisplayRole).toString();
 	if(tagg != deti->tagg())
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "tagg", QVariant(deti->tagg()), QVariant(tagg), undo);
 		quc->setText(tr("Modifier le tagg d'un texte d'élément"));
+	}
+	
+	int fs = text_qsi->child(2,1)->data(Qt::EditRole).toInt();
+	if (fs != deti->fontSize())
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+		quc->setText(tr("Modifier la taille d'un texte d'élément"));
 	}
 	
 	QColor color = text_qsi->child(3,1)->data(Qt::EditRole).value<QColor>();
@@ -334,14 +346,20 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		quc->setText(tr("Modifier la couleur d'un texte d'élément"));
 	}
 	
-	QPointF p(text_qsi->child(4,1)->data(Qt::EditRole).toDouble(),
-			  text_qsi->child(5,1)->data(Qt::EditRole).toDouble());
+	bool frame = text_qsi->child(4,1)->checkState() == Qt::Checked? frame=true : frame=false;
+	if(frame != deti->frame())
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "frame", QVariant(deti->frame()), QVariant(frame), undo);
+		quc->setText(tr("Modifier le cadre d'un texte d'élément"));
+	}
+	
+	QPointF p(text_qsi->child(5,1)->data(Qt::EditRole).toDouble(),
+			  text_qsi->child(6,1)->data(Qt::EditRole).toDouble());
 	if(p != deti->pos())
 	{
 		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
 		quc->setText(tr("Déplacer un texte d'élément"));
 	}
-	
 	
 	return undo;
 }
@@ -459,6 +477,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::infoNameChanged, [deti,this](){this->updateDataFromText(deti, infoText);});
 		connection_list << connect(deti, &DynamicElementTextItem::xChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
 		connection_list << connect(deti, &DynamicElementTextItem::yChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
+		connection_list << connect(deti, &DynamicElementTextItem::frameChanged,    [deti,this](){this->updateDataFromText(deti, frame);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
 		
 		m_hash_text_connect.insert(deti, connection_list);
@@ -524,10 +543,10 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 			break;
 		}
 		case size:
-			qsi->child(1,1)->setData(deti->fontSize(), Qt::EditRole);
+			qsi->child(2,1)->setData(deti->fontSize(), Qt::EditRole);
 			break;
 		case tagg:
-			qsi->child(2,1)->setData(deti->tagg(), Qt::DisplayRole);
+			qsi->child(1,1)->setData(deti->tagg(), Qt::DisplayRole);
 			break;
 		case color:
 		{
@@ -537,8 +556,13 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		}
 		case pos:
 		{
-			qsi->child(4,1)->setData(deti->pos().x(), Qt::EditRole);
-			qsi->child(5,1)->setData(deti->pos().y(), Qt::EditRole);
+			qsi->child(5,1)->setData(deti->pos().x(), Qt::EditRole);
+			qsi->child(6,1)->setData(deti->pos().y(), Qt::EditRole);
+			break;
+		}
+		case frame:
+		{
+			qsi->child(4,1)->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
 			break;
 		}
 	}
