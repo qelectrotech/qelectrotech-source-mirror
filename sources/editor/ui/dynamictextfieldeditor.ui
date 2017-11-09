@@ -6,46 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>336</width>
-    <height>264</height>
+    <width>419</width>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Taille</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Source du texte</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Couleur</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="6">
-    <widget class="QComboBox" name="m_elmt_info_cb"/>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Tagg</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="6">
+   <item row="2" column="1" colspan="6">
     <widget class="QComboBox" name="m_text_from_cb">
      <item>
       <property name="text">
@@ -64,18 +33,22 @@
      </item>
     </widget>
    </item>
-   <item row="6" column="1" colspan="6">
-    <widget class="QLineEdit" name="m_tagg_le"/>
-   </item>
-   <item row="5" column="1" colspan="6">
-    <widget class="QSpinBox" name="m_size_sb"/>
-   </item>
-   <item row="4" column="1" colspan="6">
-    <widget class="QPushButton" name="m_composite_text_pb">
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string/>
+      <string>Couleur</string>
      </property>
     </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Tagg</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" colspan="6">
+    <widget class="QLineEdit" name="m_tagg_le"/>
    </item>
    <item row="0" column="0" colspan="7">
     <widget class="QFrame" name="frame">
@@ -153,18 +126,58 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="1" colspan="6">
-    <widget class="QLineEdit" name="m_user_text_le"/>
-   </item>
-   <item row="7" column="1" colspan="6">
+   <item row="8" column="1" colspan="6">
     <widget class="QPushButton" name="m_color_pb">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="9" column="1">
     <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="1" colspan="6">
+    <widget class="QComboBox" name="m_elmt_info_cb"/>
+   </item>
+   <item row="3" column="1" colspan="6">
+    <widget class="QLineEdit" name="m_user_text_le"/>
+   </item>
+   <item row="5" column="1" colspan="6">
+    <widget class="QPushButton" name="m_composite_text_pb">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Taille</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="6">
+    <widget class="QSpinBox" name="m_size_sb"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Source du texte</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
