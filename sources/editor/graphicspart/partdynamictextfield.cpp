@@ -48,6 +48,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	CustomElementPart(editor),
 	m_uuid(QUuid::createUuid())
 {
+	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont(9));
 	setText("_");
 	setTextFrom(DynamicElementTextItem::UserText);
