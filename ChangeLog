@@ -1,3 +1,23 @@
+====== ChangeLog from 0.5 to 0.6 ======
+In the official collection, there are now 4081 elements, and 539 categoris for a total of 4620 files
+
+* Improved performance, added multithreading to speed up the loading of items when launching QET.
+* RAM consumption has been considerably reduced.
+* New "collections" panel.
+* Automatic numberings (autonum), Variables and prefix.
+* Folio generator
+* Management Policy
+* New thickness properties for conductors.
+* The thickness of the lines of all basic shapes (lines, rectangles, ellipses, polygons) can be changed from 0,2px to 50,0px.
+* The color of lines and fillings of basic shapes can be choosed from a color palette or set with a html color code.
+* Added Copy/paste from another project.
+* Online documentation and links to download the latest packages of the version under development for Windows and MacOS are available directly from the software.
+* Resetting the layout of the summary pages.
+* In the panel left split the view into ￼a several docks.
+* ￼High-DPI support (Qt 5.6.0)
+* new python plugin to generate terminal block.
+
+
 ====== ChangeLog from 0.4 to 0.5 ======
 In the official collection, there are now  2625 elements, and 418 catégoris for a total of 3043 files.
 
