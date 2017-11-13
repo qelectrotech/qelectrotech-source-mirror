@@ -1,5 +1,7 @@
 <qet-directory>
     <names>
         <name lang="fr">Plomberie Chauffage</name>
+	<name lang="es">Calefacción de fontanería</name>
+	<name lang="en">Plumbing heating</name>
     </names>
 </qet-directory>

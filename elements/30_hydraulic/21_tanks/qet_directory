@@ -3,6 +3,7 @@
         <name lang="de">Behälter</name>
         <name lang="fr">Réservoirs</name>
         <name lang="en">Tanks</name>
+        <name lang="es">Depósitos</name>
         <name lang="pl">Zbiorniki hydrauliczne</name>
         <name lang="cs">Vodní nádrže</name>
         <name lang="it">Serbatoi</name>
@@ -11,3 +12,4 @@
         <name lang="da">Tanke</name>
     </names>
 </qet-directory>
+

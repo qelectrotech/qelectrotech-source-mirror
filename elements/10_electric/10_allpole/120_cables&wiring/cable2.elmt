@@ -6,6 +6,7 @@
         <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
         <name lang="it">Cavo 2 fasi + terra</name>
         <name lang="fr">Cable 2 phases+terre</name>
+        <name lang="es">Cable 2 fases+tierra</name>
         <name lang="ru">Кабель 2 жилы + PE</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
