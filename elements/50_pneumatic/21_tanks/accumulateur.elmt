@@ -2,6 +2,7 @@
     <uuid uuid="{59e53dcc-e2f9-42ca-ade6-b23b6ea072b7}"/>
     <names>
         <name lang="en">Tank</name>
+        <name lang="es">Depósito</name>
         <name lang="pl">Zbiornik pneumatyczny pomocniczy, rezerwowa objętość gazu do uzupełniamia połączonych akumulatorów</name>
         <name lang="cs">Pomocná nádrž na vzduch</name>
         <name lang="nl">Tank</name>
