@@ -84,11 +84,27 @@ QString nomenclature::getNomenclature()
 {
 	//Process...
 	QString data = QObject::tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += QObject::tr("N° de folio") +";"
+    data += QObject::tr("A001") +";"  //:Don't translate this text!    //ID for folio number
+    ""+ QObject::tr("B001") +";"      //:Don't translate this text!    //ID for folio title
+    ""+ QObject::tr("C001") +";"      //:Don't translate this text!    //ID for folio label
+    ""+ QObject::tr("D001") +";"      //:Don't translate this text!    //ID for qet designation
+    ""+ QObject::tr("E001") +";"      //:Don't translate this text!    //ID for position of element on the folio
+    ""+ QObject::tr("F001") +";"      //:Don't translate this text!    //ID for label of element
+    ""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
+    ""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
+    ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
+    ""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
+    ""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
+    ""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for supplier
+    ""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
+    ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auciliary field 2
+    ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
+    ""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
+    ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
+    data += QObject::tr("N° de folio") +";"
 	""+ QObject::tr("Titre de folio") +";"
 	""+ QObject::tr("Label de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"
-	""+ QObject::tr("UUID") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
 	""+ QObject::tr("Désignation") +";"
@@ -147,7 +163,6 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += diagram -> title() + ";";
 	info += autonum::AssignVariables::formulaToLabel(diagram->border_and_titleblock.folio(), empty_seq, diagram) + ";";
 	info += elmt -> name() + ";";
-	info += QUuid::createUuid().toString() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
