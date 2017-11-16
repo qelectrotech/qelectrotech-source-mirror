@@ -2206,6 +2206,7 @@ QMessageBox::warning(nullptr,
 					 "\n"
 					 ">> First install on Windows\n"
 					 "1. Install, if required, python 3.5 or above \n"
+					 " Visit https://www.python.org/downloads/ \n"
 					 "2. pip install qet_tb_generator\n"
 					 ">> Update on Windows\n"
 					 "python -m pip install --upgrade qet_tb_generator\n"
