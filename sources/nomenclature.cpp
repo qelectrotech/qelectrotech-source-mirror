@@ -88,6 +88,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Titre de folio") +";"
 	""+ QObject::tr("Label de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"
+	""+ QObject::tr("UUID") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
 	""+ QObject::tr("Désignation") +";"
@@ -146,6 +147,7 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += diagram -> title() + ";";
 	info += autonum::AssignVariables::formulaToLabel(diagram->border_and_titleblock.folio(), empty_seq, diagram) + ";";
 	info += elmt -> name() + ";";
+	info += QUuid::createUuid().toString() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
