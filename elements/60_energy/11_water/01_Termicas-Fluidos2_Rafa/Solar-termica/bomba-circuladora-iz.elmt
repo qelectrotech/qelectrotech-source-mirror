@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="27" height="40" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{6D1E6FEC-7EE4-4E6B-BEA3-5EBA076F70B5}"/><names>
         <name lang="es">Bomba circuladora-2</name>
+        <name lang="en">Circulation pump-left</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

@@ -1,6 +1,7 @@
 <definition width="50" hotspot_y="21" height="40" type="element" version="0.4" orientation="dyyy" hotspot_x="23" link_type="simple">
 <uuid uuid="{8776D0E5-25DA-4D39-BF32-796551662A3C}"/><names>
-        <name lang="es">Bomba circu-3 bridas</name>
+        <name lang="es">Bomba circuladora-doble brida</name>
+	<name lang="en">Circulating double w/flanges pump</name>
         <name lang="ca">Bomba circu-2 brides</name>
     </names>
     <informations>Rafael Ferrando.

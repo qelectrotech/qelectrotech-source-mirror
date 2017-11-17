@@ -1,6 +1,7 @@
 <definition width="110" version="0.4" hotspot_x="55" hotspot_y="26" height="60" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{ADFCF37C-4E66-47A2-92E1-ECD0F405AAA0}"/><names>
         <name lang="es">Captador solar horiz</name>
+        <name lang="en">Horizontal solar capturator</name>
         <name lang="ca">Captador solar horiz</name>
     </names>
     <informations>Rafael Ferrando.

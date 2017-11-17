@@ -1,8 +1,8 @@
 <definition width="70" height="60" link_type="simple" hotspot_x="32" hotspot_y="35" version="0.5" type="element" orientation="dyyy">
 <uuid uuid="{1259BE5C-1BAA-4582-A444-44D121A3D19C}"/><names>
-        <name lang="es">Depósito 1000L</name>
+        <name lang="es">Depósito cuadrado de 1000L</name>
         <name lang="ca">Dipòsit 1000L</name>
-        <name lang="en">1000L tank</name>
+        <name lang="en">Square 1000L tank</name>
     </names>
     <informations></informations>
     <description>

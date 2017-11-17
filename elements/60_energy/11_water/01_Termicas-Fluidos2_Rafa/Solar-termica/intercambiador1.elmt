@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="38" height="70" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{5983A5AD-246E-473E-8AE3-F4426CD2648E}"/><names>
-        <name lang="es">Intercambiador placas</name>
+        <name lang="es">Intercambiador de placas</name>
+        <name lang="en">Plates exchanger</name>
         <name lang="ca">Intercambiador plaques</name>
     </names>
     <informations>Rafael Ferrando.

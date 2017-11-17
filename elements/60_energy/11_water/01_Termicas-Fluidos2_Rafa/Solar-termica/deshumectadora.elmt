@@ -1,6 +1,7 @@
 <definition width="130" version="0.4" hotspot_x="29" hotspot_y="33" height="60" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{A0B1B8F0-BEAD-4B1E-916C-104956A4BE44}"/><names>
-        <name lang="es">Deshumectadora piscina</name>
+        <name lang="es">Deshumectadora para piscina</name>
+        <name lang="en">Dehumidifier pool</name>
         <name lang="ca">Deshumectadora piscina</name>
     </names>
     <informations></informations>

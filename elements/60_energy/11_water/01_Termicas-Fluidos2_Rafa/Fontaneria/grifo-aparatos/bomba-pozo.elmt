@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="11" orientation="dyyy" hotspot_y="55" version="0.5" type="element" height="90" width="20">
 <uuid uuid="{3ECAC576-C727-47E3-B9A7-D593D1D124CD}"/><names>
         <name lang="es">Bomba pozo sumergida</name>
+	<name lang="en">Submerged waterhole pump</name>
         <name lang="ca">Bomba pozo sumergida</name>
     </names>
     <informations>Rafael Ferrando.
