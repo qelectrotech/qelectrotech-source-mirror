@@ -1,7 +1,8 @@
 <definition width="90" version="0.4" hotspot_x="49" hotspot_y="47" height="80" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{64CA359B-0ED4-4EF3-9816-87A49AD3A41C}"/><names>
-        <name lang="es">Caldera pié mixta</name>
+        <name lang="es">Caldera de pié mixta</name>
         <name lang="ca">Caldera peu mixta</name>
+        <name lang="en">Mixed foot boiler</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

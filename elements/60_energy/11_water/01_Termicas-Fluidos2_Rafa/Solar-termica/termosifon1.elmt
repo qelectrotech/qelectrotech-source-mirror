@@ -1,6 +1,7 @@
 <definition width="100" version="0.4" hotspot_x="46" hotspot_y="47" height="90" type="element" ic="true" orientation="dyyy">
 <uuid uuid="{FF396EB0-670D-450D-8F2F-9EEF36D17415}"/><names>
-        <name lang="es">Termosifón perfil</name>
+        <name lang="es">Termosifón en perfil</name>
+        <name lang="en">Profile thermosyphon</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

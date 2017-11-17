@@ -2,6 +2,7 @@
 <uuid uuid="{558C1F38-32E1-436B-B17E-FD53437348EC}"/><names>
         <name lang="es">Aerotermo</name>
         <name lang="ca">Aerotermo</name>
+	<name lang="en">air heater</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

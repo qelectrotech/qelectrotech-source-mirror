@@ -1,6 +1,7 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="10" height="20" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{C6E0B735-319A-49FB-A644-EF59F2453DC6}"/><names>
         <name lang="es">Sonda temp.depósito</name>
+        <name lang="en">Deposit tempeture probe</name>
         <name lang="ca">Sonda temp.dipòsit</name>
     </names>
     <informations>Rafael Ferrando.

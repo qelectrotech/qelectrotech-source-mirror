@@ -1,6 +1,7 @@
 <definition width="60" version="0.4" hotspot_x="15" hotspot_y="27" height="50" type="element" ic="true" orientation="dyyy">
 <uuid uuid="{F7015FA9-D3DB-48FF-8406-3138CABCA156}"/><names>
-        <name lang="es">ACS +retorno a vivienda</name>
+        <name lang="es">ACS +retorno para vivienda</name>
+	<name lang="en">DHW +return line for house</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

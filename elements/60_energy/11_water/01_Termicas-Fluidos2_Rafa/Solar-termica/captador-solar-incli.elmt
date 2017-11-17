@@ -1,6 +1,7 @@
 <definition width="80" version="0.4" hotspot_x="70" hotspot_y="58" height="90" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{F23CA2E1-4B16-4B73-9F51-13F9B201B535}"/><names>
         <name lang="es">Captador solar inclinado</name>
+        <name lang="en">Inclined solar capturator</name>
         <name lang="ca">Captador solar inclinat</name>
     </names>
     <informations>Rafael Ferrando.
