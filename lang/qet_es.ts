@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -512,17 +512,18 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto compuesto</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="23"/>
         <source>Ajouter une variable :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Agregar o Añadir</translatorcomment>
+        <translation>Agregar una variable:</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="17"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrese su texto compuesto aquí, usando las variables disponibles</translation>
     </message>
 </context>
 <context>
@@ -747,17 +748,17 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Color secundario:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño de línea:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -980,12 +981,12 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="41"/>
         <source>Texte</source>
-        <translation type="unfinished">Texto</translation>
+        <translation>Texto</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="49"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar texto del elemento</translation>
     </message>
 </context>
 <context>
@@ -993,17 +994,17 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
         <source>Textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Textos</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar textos de elementos</translation>
     </message>
 </context>
 <context>
@@ -1011,17 +1012,17 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="37"/>
         <source>Propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>Propiedad</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="38"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
@@ -1030,7 +1031,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="437"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto del usuario</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="72"/>
@@ -1039,7 +1040,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="351"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Información del elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
@@ -1048,42 +1049,42 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto compuesto</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="82"/>
         <source>Texte</source>
-        <translation type="unfinished">Texto</translation>
+        <translation>Texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="94"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Información</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
         <source>Mon texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi texto compuesto</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="126"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
         <source>Couleur</source>
-        <translation type="unfinished">Color</translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar texto del elemento</translation>
     </message>
 </context>
 <context>
@@ -1091,88 +1092,89 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Formulario</translatorcomment>
+        <translation type="unfinished">Formulario</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="27"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="34"/>
         <source>Couleur</source>
-        <translation type="unfinished">Color</translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="44"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="52"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto del usuario</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Información del elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="62"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto compuesto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="92"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotación</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="115"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="123"/>
         <source>Déplacer un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover un campo de texto dinámico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
         <source>Pivoter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar un campo de texto dinámico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
         <source>Modifier le texte d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar el texto de un campo de texto dinámico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="146"/>
         <source>Modifier la taille d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar el tamaño de un campo de texto dinámico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="153"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Color del texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="158"/>
         <source>Modifier la couleur d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar el color de un campo de texto dinamico</translation>
     </message>
 </context>
 <context>
@@ -3448,7 +3450,6 @@ Tension/protocole : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="228"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -6428,7 +6429,6 @@ Que désirez vous faire ?</source>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
