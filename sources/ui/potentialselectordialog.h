@@ -61,7 +61,7 @@ class PotentialSelectorDialog : public QDialog
     public:
 		explicit PotentialSelectorDialog(Conductor *conductor, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
 		explicit PotentialSelectorDialog(Element *report, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
-        ~PotentialSelectorDialog();
+        ~PotentialSelectorDialog() override;
 
 	private slots:
 		void on_buttonBox_accepted();

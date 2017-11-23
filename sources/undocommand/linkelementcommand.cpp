@@ -124,29 +124,6 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
 }
 
 /**
- * @brief LinkElementCommand::addLink
- * Add elements from the list to the linked element of edited element
- * This method do several check to know if element can be linked or not.
- * @param element_list
- */
-void LinkElementCommand::addLink(QList<Element *> element_list)
-{
-	setUpNewLink(element_list, false);
-}
-
-/**
- * @brief LinkElementCommand::addLink
- * This is an overloaded function
- * @param element_
- */
-void LinkElementCommand::addLink(Element *element_)
-{
-	QList<Element *> list;
-	list << element_;
-	addLink(list);
-}
-
-/**
  * @brief LinkElementCommand::setLink
  * Replace all linked elements of edited element by elements stored in @element_list
  * This method do several check to know if element can be linked or not.
@@ -209,6 +186,9 @@ void LinkElementCommand::redo()
 	if(m_element->diagram()) m_element->diagram()->showMe();
 	makeLink(m_linked_after);
 
+		//If the action is to link two reports together, we check if the conductors
+		//of the new potential have the same text, function, and protocol.
+		//if not, a dialog ask what do to.
 	if (m_first_redo && (m_element->linkType() & Element::AllReport) \
 		&& m_element->conductors().size() \
 		&& m_linked_after.size() && m_linked_after.first()->conductors().size())
@@ -217,11 +197,18 @@ void LinkElementCommand::redo()
 		QSet <Conductor *> c_list = m_element->conductors().first()->relatedPotentialConductors();
 		c_list << m_element->conductors().first();
 			//fill list of text
-		QStringList strl;
-		foreach (const Conductor *c, c_list) strl<<(c->properties().text);
+		QStringList str_txt;
+		QStringList str_funct;
+		QStringList str_tens;
+		for (const Conductor *c : c_list)
+		{
+			str_txt   << c->properties().text;
+			str_funct << c->properties().m_function;
+			str_tens  << c->properties().m_tension_protocol;
+		}
 
 			//check text list, isn't same in potential, ask user what to do
-		if (!QET::eachStrIsEqual(strl))
+		if (!QET::eachStrIsEqual(str_txt) || !QET::eachStrIsEqual(str_funct) || !QET::eachStrIsEqual(str_tens))
 		{
 			PotentialSelectorDialog psd(m_element, this);
 			psd.exec();
