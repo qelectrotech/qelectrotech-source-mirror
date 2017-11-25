@@ -185,13 +185,13 @@ appdata.path       = $$join(INSTALL_PREFIX,,,$${QET_APPDATA_PATH})
 appdata.files      = misc/qelectrotech.appdata.xml
 
 icons.path         = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
-icons.files        = ico/oxygen-icons/16x16   \
-                     ico/oxygen-icons/22x22   \
-                     ico/oxygen-icons/32x32   \
-                     ico/oxygen-icons/48x48   \
-                     ico/oxygen-icons/64x64   \
-                     ico/oxygen-icons/128x128 \
-                     ico/oxygen-icons/256x256
+icons.files        = ico/breeze-icons/16x16   \
+                     ico/breeze-icons/22x22   \
+                     ico/breeze-icons/32x32   \
+                     ico/breeze-icons/48x48   \
+                     ico/breeze-icons/64x64   \
+                     ico/breeze-icons/128x128 \
+                     ico/breeze-icons/256x256
 
 man.path           = $$join(INSTALL_PREFIX,,,$${QET_MAN_PATH})
 man.files          = man/files/*

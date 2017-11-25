@@ -6,6 +6,11 @@ It uses XML files for elements and diagrams, and includes both a diagram editor,
 QElectroTech est une application Qt5 pour réaliser des schémas électriques.
 QET utilise le format XML pour ses éléments et ses schémas et inclut un éditeur de schémas, un éditeur d'élément, ainsi qu'un editeur de cartouche.
 
+[de]
+QElectroTech ist eine Qt5 Software, um Schaltpläne zu erstellen.
+QET benutzt das XML Format für seine Bauteile und seine Projekte, und beinhaltet einen Schaltplaneditor, einen Bauteileditor sowie einen Zeichnungskopfeditor.
+
+
 [ru]
 QElectroTech - приложение написанное на Qt5 и предназначенное для разработки электрических схем.
 Оно использует XML-файлы для элементов и схем, и включает, как редактор схем, так и редактор элементов.

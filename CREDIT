@@ -1,7 +1,5 @@
 [en]
 Thanks to Qt Software for their Qt library ( http://www.qtsoftware.com/ ), licensed under GNU/GPL.
-Thanks to Everaldo Coelho for the Crystal SVG icons theme ( http://www.iconfinder.com/iconsets/crystalproject) licensed under LGPL.
-Thanks to Nuno Pinheiro for the Oxygen icons theme ( http://www.oxygen-icons.org/ ) licensed under LGPL but also for the QElectroTech-dedicated icons.
 Thanks to the KDE project ( http://www.kde.org/ ).
 Thanks to Loic for his mathematics-related explanations.
 Thanks to Remi Collet for the Fedora packaging.
@@ -32,8 +30,6 @@ Thanks to Mrbit for ebuild Gentoo packaging.
 
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
-Merci à Everaldo Coelho pour le thème d'icônes Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject ) sous licence LGPL.
-Merci à Nuno Pinheiro pour le thème d'icônes Oxygen ( http://www.oxygen-icons.org/ ) sous licence LGPL mais aussi pour les icônes dédiées à QElectroTech
 Merci au projet KDE ( http://www.kde.org/ ).
 Merci à Loic pour ses explications d'ordre mathématique.
 Merci à Remi Collet pour les paquets Fedora.
@@ -64,8 +60,6 @@ Merci à Mrbit for ebuild les paquets Gentoo
 
 [ru]
 Спасибо Qt Software за их библиотеку Qt ( http://www.qtsoftware.com/ ), лицензированную на условиях GNU/GPL.
-Спасибо Everaldo Coelho за тему значков Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject ) лицензированную на условиях LGPL.
-Спасибо Nuno Pinheiro за тему значков Oxygen ( http://www.oxygen-icons.org/ ) лицензированную на условиях LGPL, а также за значки связанные с QElectroTech.
 Спасибо проекту KDE ( http://www.kde.org/ ).
 Спасибо Loic за объяснения связанные с математикой.
 Спасибо Remi Collet за пакет для Fedora.
@@ -79,8 +73,6 @@ Merci à Mrbit for ebuild les paquets Gentoo
 
 [pt]
 Agradecimentos a Qt Software pela sua biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada de acordo com a GNU/GPL.
-Agradecimentos a Everaldo Coelho pelo tema de ícones Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject ), licenciado de acordo com a LGPL.
-Agradecimentos a Nuno Pinheiro pelo tema de ícones Oxygen e em especial pelos ícones dedicados ao programa QElectroTech ( http://www.oxygen-icons.org/ ), lincenciado de acordo com a LGPL.
 Agradecimentos ao projecto KDE ( http://www.kde.org/ ).
 Agradecimentos a Loic pelas suas explicações relacionadas com problemas matemáticos.
 Agradecimentos a Remi Collet pela criação dos pacotes para Fedora.
@@ -94,8 +86,6 @@ Agradecimentos a 'Dr.Slump'pela tradução para italiano
 
 [es]
 Agradecimientos a Qt Software por su biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada bajo GNU/GPL.
-Agradecimientos a Everaldo Coelho por el tema de icónos Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject ), licenciado bajo LGPL.
-Agradecimientos a Nuno Pinheiro por el tema de icónos Oxygen y especialmente por los icónos dedicados al programa QElectroTech ( http://www.oxygen-icons.org/ ), licenciado bajo LGPL.
 Agradecimientos al proyecto KDE ( http://www.kde.org/ ).
 Agradecimientos a Loic por sus explicaciones relacionadas con problemas matemáticos.
 Agradecimientos a Remi Collet por criación de paquetes para Fedora.
@@ -109,8 +99,6 @@ Agradecimientos a 'Dr.Slump' por sus traducciones en italiano
 
 [cs]
 Díky Qt Software za jejich knihovnu Qt ( http://www.qtsoftware.com/ ), pod licencí GNU/GPL.
-Díky Everaldovi Coelho za téma Crystal SVG icons theme ( http://www.iconfinder.com/iconsets/crystalproject ) pod licencí LGPL.
-Díky Nunovi Pinheirovi za téma ikon Oxygen ( http://www.oxygen-icons.org/ ) pod licencí LGPL ale také za ikony věnované QElectroTech.
 Díky projektu KDE ( http://www.kde.org/ ).
 Díky Loicovi za jeho vysvětlení vztahující se k matematice.
 Díky Remi Colletovi za balíček pro Fedoru.
@@ -124,8 +112,6 @@ Dìky 'Dr.Slump' za jeho italianský překlad
 
 [pl]
 Podziękowania dla Qt Software, za biblioteki Qt (http://www.qtsoftware.com/) na licencji GNU / GPL.
-Podziękowania dla Everaldo Coelho, za ikony Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject) na licencji LGPL.
-Podziękowania dla Nun Pinheiro, za ikony Oxygen (http://www.oxygen-icons.org/) na licencji LGPL, a także za ikony przeznaczone do projektu QElectroTech.
 Podziękowania dla projektu KDE (http://www.kde.org/).
 Podziękowania dla Loic, za pomoc w rozwiązaniu problemów matematycznych.
 Podziękowania dla Remi Collet, za pakiety dla Fedory.
@@ -138,8 +124,6 @@ Podziękowania dla Alfredo Carreto, za jego tłumaczenie na język hiszpański i
 
 [it]
 Grazie a Qt Software per le loro librerie Qt (http://www.qtsoftware.com/), licenzate sotto GNU/GPL.
-Grazie a Everaldo Coelho per il tema icone Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject) licenzato sotto LGPL.
-Grazie a Nuno Pinheiro per il tema icone Oxygen (http://www.oxygen-icons.org/) licenzato sotto LGPL ma anche per le icone dedicate a QElectroTech.
 Grazie al progetto KDE (http://www.kde.org/).
 Grazie a Loic per le sue spiegazioni matematiche.
 Grazie a Remi Collet per i pacchetti per Fedora.
@@ -165,8 +149,6 @@ Grazie a Markos Chandras per i pacchetti per Gentoo.
 
 [el]
 Ευχαριστίες στην Qt Software για την βιβλιοθήκη Qt ( http://www.qtsoftware.com/ ), αδειοδοτημένο ως GNU/GPL.
-Ευχαριστίες στον Everaldo Coelho για τα εικονίδια του θέματος Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject) αδειοδοτημένο ως LGPL.
-Ευχαριστίες to Nuno Pinheiro για τα εικονίδια του θέματος Oxygen ( http://www.oxygen-icons.org/ ) αδειοδοτημένο ως LGPL και επίσης για τα εικονίδια ειδικά για το QElectroTech.
 Ευχαριστίες στο έργο KDE ( http://www.kde.org/ ).
 Ευχαριστίες στον Loic για τις εξηγήσεις σχετικές με μαθηματικά.
 Ευχαριστίες στον Remi Collet για τα πακέτα Fedora.
@@ -197,8 +179,6 @@ Grazie a Markos Chandras per i pacchetti per Gentoo.
 
 [nl]
 Dank aan Qt Software voor hun Qt library ( http://www.qtsoftware.com/ ) , onder de GNU / GPL licentie .
-Dank aan Everaldo Coelho voor de Crystal SVG iconen thema ( http://www.iconfinder.com/iconsets/crystalproject ) gelicenseerd onder LGPL .
-Dank aan Nuno Pinheiro voor de Oxygen iconen thema ( http://www.oxygen-icons.org/ ) gelicenseerd onder LGPL maar ook voor de QElectroTech -dedicated iconen.
 Dank aan het KDE-project ( http://www.kde.org/ ) .
 Dank aan Loic voor zijn wiskunde - gerelateerde verklaringen .
 Met dank aan Remi Collet voor de Fedora pakket.
@@ -229,8 +209,6 @@ Dank aan Mrbit voor ebuild Gentoo pakket.
 
 [be]
 Dank aan Qt Software bibliotheek voor Qt ( http://www.qtsoftware.com/ ), onder licentie van GNU/GPL.
-Dank aan Everaldo Coelho voor het pictogram thema Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject )onder licentie van licence LGPL.
-Dank aan Nuno Pinheiro voor het pictogram thema Oxygen ( http://www.oxygen-icons.org/ ) onder licentie van LGPL maar ook voor de iconen opgedragen aan QElectroTech
 Dank aan project KDE ( http://www.kde.org/ ).
 Dank aan Loic voor zijn uitleg van de mathematische orde.
 Dank aan Remi Collet voor de pakketten Fedora.

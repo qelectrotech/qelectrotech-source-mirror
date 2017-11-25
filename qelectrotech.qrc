@@ -55,9 +55,6 @@
         <file>ico/16x16/go-home.png</file>
         <file>ico/16x16/go-up.png</file>
         <file>ico/16x16/ground.png</file>
-        <file>ico/16x16/item_cancel.png</file>
-        <file>ico/16x16/item_copy.png</file>
-        <file>ico/16x16/item_move.png</file>
         <file>ico/16x16/label.png</file>
         <file>ico/16x16/list-add.png</file>
         <file>ico/16x16/list-remove.png</file>
@@ -91,8 +88,6 @@
         <file>ico/22x22/arrow-right.png</file>
         <file>ico/22x22/bring_forward.png</file>
         <file>ico/22x22/conductor2.png</file>
-        <file>ico/22x22/conductor3.png</file>
-        <file>ico/22x22/conductor.png</file>
         <file>ico/22x22/configure.png</file>
         <file>ico/22x22/configure-toolbars.png</file>
         <file>ico/22x22/diagram_add.png</file>
@@ -169,7 +164,6 @@
         <file>ico/22x22/transform-scale.png</file>
         <file>ico/22x22/two_pages.png</file>
         <file>ico/22x22/view_fit_width.png</file>
-        <file>ico/22x22/view_fit_window.png</file>
         <file>ico/22x22/view-fullscreen.png</file>
         <file>ico/22x22/view-refresh.png</file>
         <file>ico/22x22/view-restore.png</file>
@@ -187,20 +181,6 @@
         <file>ico/32x32/text-xml.png</file>
         <file>ico/32x32/qt.png</file>
         <file>ico/diagram.png</file>
-        <file>ico/mdiarea_bg.png</file>
-        <file>ico/oxygen-icons/128x128/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/16x16/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/16x16/mimetypes/application-x-qet-element.png</file>
-        <file>ico/oxygen-icons/16x16/mimetypes/application-x-qet-project.png</file>
-        <file>ico/oxygen-icons/22x22/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/22x22/mimetypes/application-x-qet-element.png</file>
-        <file>ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png</file>
-        <file>ico/oxygen-icons/256x256/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/32x32/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/32x32/mimetypes/application-x-qet-element.png</file>
-        <file>ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png</file>
-        <file>ico/oxygen-icons/48x48/apps/qelectrotech.png</file>
-        <file>ico/oxygen-icons/64x64/apps/qelectrotech.png</file>
         <file>ico/splash.png</file>
         <file>titleblocks/default.titleblock</file>
         <file>LICENSE</file>
@@ -232,15 +212,6 @@
         <file>ico/128x128/plasmagik.png</file>
         <file>ico/22x22/autoconnect.png</file>
         <file>ico/128x128/project.png</file>
-        <file>ico/22x22/qelectrotab-into.png</file>
-        <file>ico/16x16/project-WH-new.png</file>
-        <file>ico/16x16/project-WH-delete.png</file>
-        <file>ico/16x16/project-WH-close.png</file>
-        <file>ico/16x16/project-WH.png</file>
-        <file>ico/22x22/project-WH-new.png</file>
-        <file>ico/22x22/project-WH-delete.png</file>
-        <file>ico/22x22/project-WH-close.png</file>
-        <file>ico/22x22/project-WH.png</file>
         <file>ico/16x16/folio-new.png</file>
         <file>ico/48x48/document-print-frame.png</file>
         <file>ico/22x22/Actions-player-time-icon.png</file>
@@ -249,11 +220,339 @@
         <file>ico/24x16/br.png</file>
         <file>ico/22x22/grid.png</file>
         <file>ico/22x22/terminalstrip.png</file>
-        <file>ico/16x16/help-contents.svg.png</file>
-        <file>ico/16x16/help-donate.svg.png</file>
-        <file>ico/16x16/edit-download.svg.png</file>
-        <file>ico/16x16/kdenlive-show-video.svg.png</file>
-        <file>ico/22x22/format-text-subscript.svg.png</file>
-        <file>ico/22x22/format-text-superscript.svg.png</file>
+        <file>ico/16x16/diagram.png</file>
+        <file>ico/16x16/edit-clear-locationbar-rtl.png</file>
+        <file>ico/16x16/edit-download.png</file>
+        <file>ico/16x16/export-csv.png</file>
+        <file>ico/16x16/help-contents.png</file>
+        <file>ico/16x16/help-donate.png</file>
+        <file>ico/16x16/item-cancel.png</file>
+        <file>ico/16x16/item-copy.png</file>
+        <file>ico/16x16/item-move.png</file>
+        <file>ico/16x16/kdenlive-show-video.png</file>
+        <file>ico/16x16/object-rotate-right.png</file>
+        <file>ico/16x16/project-close.png</file>
+        <file>ico/16x16/project-delete.png</file>
+        <file>ico/16x16/project-new.png</file>
+        <file>ico/16x16/project.png</file>
+        <file>ico/16x16/qt.png</file>
+        <file>ico/16x16/terminalstrip.png</file>
+        <file>ico/22x22/diagram.png</file>
+        <file>ico/22x22/edit-clear-locationbar-rtl.png</file>
+        <file>ico/22x22/export-csv.png</file>
+        <file>ico/22x22/format-text-subscript.png</file>
+        <file>ico/22x22/format-text-superscript.png</file>
+        <file>ico/22x22/project-close.png</file>
+        <file>ico/22x22/project-delete.png</file>
+        <file>ico/22x22/project-new.png</file>
+        <file>ico/22x22/project.png</file>
+        <file>ico/22x22/view-fit-window.png</file>
+        <file>ico/24x16/ad.png</file>
+        <file>ico/24x16/ae.png</file>
+        <file>ico/24x16/af.png</file>
+        <file>ico/24x16/ag.png</file>
+        <file>ico/24x16/ai.png</file>
+        <file>ico/24x16/al.png</file>
+        <file>ico/24x16/alderney.png</file>
+        <file>ico/24x16/am.png</file>
+        <file>ico/24x16/an.png</file>
+        <file>ico/24x16/ao.png</file>
+        <file>ico/24x16/aq.png</file>
+        <file>ico/24x16/as.png</file>
+        <file>ico/24x16/at.png</file>
+        <file>ico/24x16/au.png</file>
+        <file>ico/24x16/aw.png</file>
+        <file>ico/24x16/ax.png</file>
+        <file>ico/24x16/az.png</file>
+        <file>ico/24x16/azores.png</file>
+        <file>ico/24x16/ba.png</file>
+        <file>ico/24x16/bb.png</file>
+        <file>ico/24x16/bd.png</file>
+        <file>ico/24x16/bf.png</file>
+        <file>ico/24x16/bg.png</file>
+        <file>ico/24x16/bh.png</file>
+        <file>ico/24x16/bi.png</file>
+        <file>ico/24x16/bj.png</file>
+        <file>ico/24x16/bl.png</file>
+        <file>ico/24x16/bm.png</file>
+        <file>ico/24x16/bn.png</file>
+        <file>ico/24x16/bo.png</file>
+        <file>ico/24x16/bonaire.png</file>
+        <file>ico/24x16/british_antarctic_territory.png</file>
+        <file>ico/24x16/bs.png</file>
+        <file>ico/24x16/bt.png</file>
+        <file>ico/24x16/bv.png</file>
+        <file>ico/24x16/bw.png</file>
+        <file>ico/24x16/by.png</file>
+        <file>ico/24x16/bz.png</file>
+        <file>ico/24x16/ca.png</file>
+        <file>ico/24x16/cc.png</file>
+        <file>ico/24x16/cd.png</file>
+        <file>ico/24x16/cf.png</file>
+        <file>ico/24x16/cg.png</file>
+        <file>ico/24x16/ch.png</file>
+        <file>ico/24x16/ci.png</file>
+        <file>ico/24x16/ck.png</file>
+        <file>ico/24x16/cl.png</file>
+        <file>ico/24x16/cm.png</file>
+        <file>ico/24x16/cn.png</file>
+        <file>ico/24x16/co.png</file>
+        <file>ico/24x16/cr.png</file>
+        <file>ico/24x16/cu.png</file>
+        <file>ico/24x16/cv.png</file>
+        <file>ico/24x16/cx.png</file>
+        <file>ico/24x16/cy.png</file>
+        <file>ico/24x16/cz.png</file>
+        <file>ico/24x16/dj.png</file>
+        <file>ico/24x16/dm.png</file>
+        <file>ico/24x16/do.png</file>
+        <file>ico/24x16/dz.png</file>
+        <file>ico/24x16/ec.png</file>
+        <file>ico/24x16/ee.png</file>
+        <file>ico/24x16/eg.png</file>
+        <file>ico/24x16/eh.png</file>
+        <file>ico/24x16/eo.png</file>
+        <file>ico/24x16/er.png</file>
+        <file>ico/24x16/et.png</file>
+        <file>ico/24x16/eu.png</file>
+        <file>ico/24x16/fi.png</file>
+        <file>ico/24x16/fj.png</file>
+        <file>ico/24x16/fk.png</file>
+        <file>ico/24x16/fm.png</file>
+        <file>ico/24x16/fo.png</file>
+        <file>ico/24x16/ga.png</file>
+        <file>ico/24x16/gb.png</file>
+        <file>ico/24x16/gd.png</file>
+        <file>ico/24x16/ge.png</file>
+        <file>ico/24x16/gf.png</file>
+        <file>ico/24x16/gg.png</file>
+        <file>ico/24x16/gh.png</file>
+        <file>ico/24x16/gi.png</file>
+        <file>ico/24x16/gl.png</file>
+        <file>ico/24x16/gm.png</file>
+        <file>ico/24x16/gn.png</file>
+        <file>ico/24x16/gp.png</file>
+        <file>ico/24x16/gq.png</file>
+        <file>ico/24x16/gs.png</file>
+        <file>ico/24x16/gt.png</file>
+        <file>ico/24x16/gu.png</file>
+        <file>ico/24x16/gw.png</file>
+        <file>ico/24x16/gy.png</file>
+        <file>ico/24x16/herm.png</file>
+        <file>ico/24x16/hk.png</file>
+        <file>ico/24x16/hm.png</file>
+        <file>ico/24x16/hn.png</file>
+        <file>ico/24x16/ht.png</file>
+        <file>ico/24x16/hu.png</file>
+        <file>ico/24x16/id.png</file>
+        <file>ico/24x16/ie.png</file>
+        <file>ico/24x16/il.png</file>
+        <file>ico/24x16/im.png</file>
+        <file>ico/24x16/in.png</file>
+        <file>ico/24x16/io.png</file>
+        <file>ico/24x16/iq.png</file>
+        <file>ico/24x16/ir.png</file>
+        <file>ico/24x16/is.png</file>
+        <file>ico/24x16/je.png</file>
+        <file>ico/24x16/jm.png</file>
+        <file>ico/24x16/jo.png</file>
+        <file>ico/24x16/jp.png</file>
+        <file>ico/24x16/ke.png</file>
+        <file>ico/24x16/kg.png</file>
+        <file>ico/24x16/kh.png</file>
+        <file>ico/24x16/ki.png</file>
+        <file>ico/24x16/km.png</file>
+        <file>ico/24x16/kn.png</file>
+        <file>ico/24x16/kosovo.png</file>
+        <file>ico/24x16/kp.png</file>
+        <file>ico/24x16/kr.png</file>
+        <file>ico/24x16/kw.png</file>
+        <file>ico/24x16/ky.png</file>
+        <file>ico/24x16/kz.png</file>
+        <file>ico/24x16/la.png</file>
+        <file>ico/24x16/lb.png</file>
+        <file>ico/24x16/lc.png</file>
+        <file>ico/24x16/li.png</file>
+        <file>ico/24x16/lk.png</file>
+        <file>ico/24x16/lr.png</file>
+        <file>ico/24x16/ls.png</file>
+        <file>ico/24x16/lt.png</file>
+        <file>ico/24x16/lu.png</file>
+        <file>ico/24x16/lv.png</file>
+        <file>ico/24x16/ly.png</file>
+        <file>ico/24x16/ma.png</file>
+        <file>ico/24x16/madeira.png</file>
+        <file>ico/24x16/mc.png</file>
+        <file>ico/24x16/md.png</file>
+        <file>ico/24x16/me.png</file>
+        <file>ico/24x16/mf.png</file>
+        <file>ico/24x16/mg.png</file>
+        <file>ico/24x16/mh.png</file>
+        <file>ico/24x16/mk.png</file>
+        <file>ico/24x16/ml.png</file>
+        <file>ico/24x16/mm.png</file>
+        <file>ico/24x16/mn.png</file>
+        <file>ico/24x16/mo.png</file>
+        <file>ico/24x16/mp.png</file>
+        <file>ico/24x16/mq.png</file>
+        <file>ico/24x16/mr.png</file>
+        <file>ico/24x16/ms.png</file>
+        <file>ico/24x16/mt.png</file>
+        <file>ico/24x16/mu.png</file>
+        <file>ico/24x16/mv.png</file>
+        <file>ico/24x16/mw.png</file>
+        <file>ico/24x16/mx.png</file>
+        <file>ico/24x16/my.png</file>
+        <file>ico/24x16/mz.png</file>
+        <file>ico/24x16/na.png</file>
+        <file>ico/24x16/nc.png</file>
+        <file>ico/24x16/ne.png</file>
+        <file>ico/24x16/nf.png</file>
+        <file>ico/24x16/ng.png</file>
+        <file>ico/24x16/ni.png</file>
+        <file>ico/24x16/no.png</file>
+        <file>ico/24x16/np.png</file>
+        <file>ico/24x16/nr.png</file>
+        <file>ico/24x16/nu.png</file>
+        <file>ico/24x16/nz.png</file>
+        <file>ico/24x16/om.png</file>
+        <file>ico/24x16/pa.png</file>
+        <file>ico/24x16/pe.png</file>
+        <file>ico/24x16/pf.png</file>
+        <file>ico/24x16/pg.png</file>
+        <file>ico/24x16/ph.png</file>
+        <file>ico/24x16/pk.png</file>
+        <file>ico/24x16/pm.png</file>
+        <file>ico/24x16/pn.png</file>
+        <file>ico/24x16/pr.png</file>
+        <file>ico/24x16/ps.png</file>
+        <file>ico/24x16/pw.png</file>
+        <file>ico/24x16/py.png</file>
+        <file>ico/24x16/qa.png</file>
+        <file>ico/24x16/qc.png</file>
+        <file>ico/24x16/re.png</file>
+        <file>ico/24x16/readme.txt</file>
+        <file>ico/24x16/rs.png</file>
+        <file>ico/24x16/rw.png</file>
+        <file>ico/24x16/sa.png</file>
+        <file>ico/24x16/saba.png</file>
+        <file>ico/24x16/sark.png</file>
+        <file>ico/24x16/sb.png</file>
+        <file>ico/24x16/sc.png</file>
+        <file>ico/24x16/scotland.png</file>
+        <file>ico/24x16/sd.png</file>
+        <file>ico/24x16/se.png</file>
+        <file>ico/24x16/sg.png</file>
+        <file>ico/24x16/sh.png</file>
+        <file>ico/24x16/si.png</file>
+        <file>ico/24x16/sint_eustatius.png</file>
+        <file>ico/24x16/sint_maarten.png</file>
+        <file>ico/24x16/sj.png</file>
+        <file>ico/24x16/sk.png</file>
+        <file>ico/24x16/sm.png</file>
+        <file>ico/24x16/sn.png</file>
+        <file>ico/24x16/so.png</file>
+        <file>ico/24x16/sr.png</file>
+        <file>ico/24x16/st.png</file>
+        <file>ico/24x16/sv.png</file>
+        <file>ico/24x16/sy.png</file>
+        <file>ico/24x16/sz.png</file>
+        <file>ico/24x16/tc.png</file>
+        <file>ico/24x16/td.png</file>
+        <file>ico/24x16/tf.png</file>
+        <file>ico/24x16/tg.png</file>
+        <file>ico/24x16/th.png</file>
+        <file>ico/24x16/tj.png</file>
+        <file>ico/24x16/tk.png</file>
+        <file>ico/24x16/tl.png</file>
+        <file>ico/24x16/tm.png</file>
+        <file>ico/24x16/tn.png</file>
+        <file>ico/24x16/to.png</file>
+        <file>ico/24x16/tr.png</file>
+        <file>ico/24x16/tristan_da_cunha.png</file>
+        <file>ico/24x16/tt.png</file>
+        <file>ico/24x16/tv.png</file>
+        <file>ico/24x16/tw.png</file>
+        <file>ico/24x16/tz.png</file>
+        <file>ico/24x16/ua.png</file>
+        <file>ico/24x16/ug.png</file>
+        <file>ico/24x16/um.png</file>
+        <file>ico/24x16/us.png</file>
+        <file>ico/24x16/uy.png</file>
+        <file>ico/24x16/uz.png</file>
+        <file>ico/24x16/va.png</file>
+        <file>ico/24x16/vc.png</file>
+        <file>ico/24x16/ve.png</file>
+        <file>ico/24x16/vg.png</file>
+        <file>ico/24x16/vi.png</file>
+        <file>ico/24x16/vn.png</file>
+        <file>ico/24x16/vu.png</file>
+        <file>ico/24x16/wales.png</file>
+        <file>ico/24x16/wf.png</file>
+        <file>ico/24x16/ws.png</file>
+        <file>ico/24x16/ye.png</file>
+        <file>ico/24x16/yt.png</file>
+        <file>ico/24x16/za.png</file>
+        <file>ico/24x16/zm.png</file>
+        <file>ico/24x16/zw.png</file>
+        <file>ico/32x32/format-text-color.png</file>
+        <file>ico/32x32/insert-link.png</file>
+        <file>ico/breeze-icons/128x128/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/128x128/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/16x16/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/16x16/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/22x22/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/22x22/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/256x256/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/256x256/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/32x32/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/32x32/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/48x48/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/48x48/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/64x64/apps/qelectrotech.png</file>
+        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-element.png</file>
+        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-project.png</file>
+        <file>ico/breeze-icons/64x64/mimetypes/application-x-qet-titleblock.png</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/small/16x16/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/small/22x22/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/small/32x32/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/small/48x48/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/small/64x64/qelectrotech.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-element.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-project.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/hidef/application-x-qet-titleblock.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/16x16/application-x-qet-element.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/16x16/application-x-qet-project.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/22x22/application-x-qet-element.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-element.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-project.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/32x32/application-x-qet-titleblock.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-element.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-project.svgz</file>
+        <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-titleblock.svgz</file>
+        <file>ico/mac_icon/elmt.icns</file>
+        <file>ico/mac_icon/qelectrotech.icns</file>
+        <file>ico/mac_icon/qet.icns</file>
+        <file>ico/mac_icon/titleblock.icns</file>
+        <file>ico/windows_icon/application-x-qet-element.ico</file>
+        <file>ico/windows_icon/application-x-qet-project.ico</file>
+        <file>ico/windows_icon/application-x-qet-titleblock.ico</file>
+        <file>ico/windows_icon/generate_windows_icons.sh</file>
+        <file>ico/windows_icon/qelectrotech.ico</file>
+        <file>ico/windows_icon/qelectrotech.rc</file>
+        <file>ico/copyright</file>
     </qresource>
 </RCC>
