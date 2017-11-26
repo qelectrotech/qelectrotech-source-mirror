@@ -43,19 +43,19 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	elements_panel = new ElementsPanel(this);
 	
 	// initialise les actions
-    open_directory        = new QAction(QET::Icons::FolderOpen,              tr("Ouvrir le dossier correspondant"),     this);
-	copy_path             = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier le chemin"),                    this);
-	prj_activate          = new QAction(QET::Icons::ProjectFile,               tr("Basculer vers ce projet"),             this);
-	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
-	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du projet"),          this);
-	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du folio"),       this);
-	prj_add_diagram       = new QAction(QET::Icons::DiagramAdd,                tr("Ajouter un folio"),                this);
-	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce folio"),              this);
-	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce folio"),               this);
-	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce folio"),               this);
-	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio x10"),           this);
-	prj_move_diagram_top   = new QAction(QET::Icons::GoUp,                     tr("Remonter ce folio au debut"),               this);
-	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio x10"),           this);
+    open_directory           = new QAction(QET::Icons::FolderOpen,             tr("Ouvrir le dossier correspondant"),     this);
+    copy_path                = new QAction(QET::Icons::IC_CopyFile,            tr("Copier le chemin"),                    this);
+    prj_activate             = new QAction(QET::Icons::ProjectFile,            tr("Basculer vers ce projet"),             this);
+    prj_close                = new QAction(QET::Icons::DocumentClose,          tr("Fermer ce projet"),                    this);
+    prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
+    prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
+    prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,             tr("Ajouter un folio"),                this);
+    prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
+    prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
+    prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio"),               this);
+    prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Remonter ce folio x10"),           this);
+    prj_move_diagram_top     = new QAction(QET::Icons::GoTop,                  tr("Remonter ce folio au debut"),               this);
+    prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Abaisser ce folio x10"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);

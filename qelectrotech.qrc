@@ -573,5 +573,9 @@
         <file>ico/16x16/folder-edit.png</file>
         <file>ico/16x16/folder-open.png</file>
         <file>ico/16x16/folder-properties.png</file>
+        <file>ico/16x16/go-up-double.png</file>
+        <file>ico/16x16/go-down-double.png</file>
+        <file>ico/16x16/go-top.png</file>
+        <file>ico/16x16/go-bottom.png</file>
     </qresource>
 </RCC>

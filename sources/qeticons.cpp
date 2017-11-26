@@ -99,8 +99,12 @@ namespace QET {
 		QIcon Forbidden;
 		QIcon FullScreenEnter;
 		QIcon FullScreenExit;
-		QIcon GoDown;
-		QIcon GoUp;
+        QIcon GoBottom;
+        QIcon GoDown;
+        QIcon GoDownDouble;
+        QIcon GoTop;
+        QIcon GoUp;
+        QIcon GoUpDouble;
 		QIcon Ground;
 		QIcon Grid;
 		QIcon Hide;
@@ -237,6 +241,7 @@ void QET::Icons::initIcons() {
     IC_CopyFile            .addFile(":/ico/16x16/item-copy.png");
     DiagramAdd          .addFile(":/ico/16x16/folio-new.png");
     DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
+    Diagram             .addFile(":/ico/16x16/diagram.png");
 	Diagram             .addFile(":/ico/diagram.png");
 	DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
     DiagramDelete       .addFile(":/ico/16x16/folio-delete.png");
@@ -358,10 +363,14 @@ void QET::Icons::initIcons() {
 	FullScreenEnter     .addFile(":/ico/22x22/view-fullscreen.png");
 	FullScreenExit      .addFile(":/ico/16x16/view-restore.png");
 	FullScreenExit      .addFile(":/ico/22x22/view-restore.png");
+    GoBottom            .addFile(":/ico/16x16/go-bottom.png");
 	GoDown              .addFile(":/ico/16x16/go-down.png");
 	GoDown              .addFile(":/ico/22x22/go-down.png");
+    GoDownDouble        .addFile(":/ico/16x16/go-down-double.png");
+    GoTop               .addFile(":/ico/16x16/go-top.png");
 	GoUp                .addFile(":/ico/16x16/go-up.png");
 	GoUp                .addFile(":/ico/22x22/go-up.png");
+    GoUpDouble          .addFile(":/ico/16x16/go-up-double.png");
 	Ground              .addFile(":/ico/16x16/ground.png");
     Grid                .addFile(":/ico/16x16/grid.png");
 	Grid                .addFile(":/ico/22x22/grid.png");
