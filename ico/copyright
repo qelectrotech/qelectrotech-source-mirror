@@ -1,0 +1,230 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: qelectrotech
+Upstream-Contact: Laurent Trinques <scorpio@qelectrotech.org>
+Source: http://download.tuxfamily.org/qet/debianwatch/
+
+Files: *
+Copyright: Benoît Ansieau       <benoit@qelectrotech.org>
+           Laurent Trinques     <scorpio@qelectrotech.org>
+           Joshua claveau       <joshua_39@live.fr>
+           Cyril frausty        <cyril.frausti@gmail.com>
+           Xavier Guerrin       <xavier@qelectrotech.org>
+           Youssef Oualmakran   <youssefsan@qelectrotech.org>
+           Davi Fochi           <davi@qelectrotech.org>
+License: GPL-2+
+ This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+    .
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    .
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+    .
+    On Debian systems, the complete text of the GNU General Public License
+    can be found in /usr/share/common-licenses/GPL-2 file.
+
+Files: sources/richtext/*
+Copyright: 2013 Digia Plc and/or its subsidiary(-ies).
+License: LGPL-2.1 with Digia exception
+ Commercial License Usage
+ Licensees holding valid commercial Qt licenses may use this file in
+ accordance with the commercial license agreement provided with the
+ Software or, alternatively, in accordance with the terms contained in
+ a written agreement between you and Digia.  For licensing terms and
+ conditions see http://qt.digia.com/licensing.  For further information
+ use the contact form at http://qt.digia.com/contact-us.
+ .
+ GNU Lesser General Public License Usage
+ Alternatively, this file may be used under the terms of the GNU Lesser
+ General Public License version 2.1 as published by the Free Software
+ Foundation and appearing in the file LICENSE.LGPL included in the
+ packaging of this file.  Please review the following information to
+ ensure the GNU Lesser General Public License version 2.1 requirements
+ will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ .
+ In addition, as a special exception, Digia gives you certain additional
+ rights.  These rights are described in the Digia Qt LGPL Exception
+ version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+ .
+ GNU General Public License Usage
+ Alternatively, this file may be used under the terms of the GNU
+ General Public License version 3.0 as published by the Free Software
+ Foundation and appearing in the file LICENSE.GPL included in the
+ packaging of this file.  Please review the following information to
+ ensure the GNU General Public License version 3.0 requirements will be
+ met: http://www.gnu.org/copyleft/gpl.html.
+
+
+Files: elements/*
+Copyright: The QElectroTech team
+License: CC-BY-3.0
+ The elements collection provided along with QElectroTech is provided as is and
+ without any warranty of fitness for your purpose or working.
+ The usage, the modification and the integration of the elements into electric
+ diagrams is allowed without any condition, whatever the final license of the
+ diagrams is.
+ If you redistribute all or a part of the QElectroTech collection, with or
+ without any modification, out of an electric diagram, you must respect the
+ conditions of the CC-BY license:
+ This work is licensed under the Creative Commons Attribution 3.0 License.
+ To view a copy of this license, visit
+ http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
+ Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+Files: ico/24x16/*
+Copyright: Damien Sorel
+License: public-domain
+ 24x16 Flag icons - http://www.strangeplanet.fr
+ These icons are public domain, and as such are free for any use (attribution appreciated but not required).
+ Note that these flags are mostly named using the ISO3166-1 alpha-2 country codes where appropriate.
+ If you redistribute the pack please let the readme file into.
+ If you find these icons useful, share-them!
+ Contact: webmaster@strangeplanet.fr
+
+Files: ico/16x16/*
+Files: ico/22x22/*
+Files: ico/32x32/*
+Files: ico/48x48/*
+Files: ico/128x128/*
+From the KDE Breeze theme icons
+Copyright: 2014, Uri Herrera <uri_herrera@nitrux.in> and others
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library. If not, see <http://www.gnu.org/licenses/>.
+
+Clarification:
+
+  The GNU Lesser General Public License or LGPL is written for
+  software libraries in the first place. We expressly want the LGPL to
+  be valid for this artwork library too.
+
+  KDE Breeze theme icons is a special kind of software library, it is an
+  artwork library, it's elements can be used in a Graphical User Interface, or
+  GUI.
+
+  Source code, for this library means:
+   - where they exist, SVG;
+   - otherwise, if applicable, the multi-layered formats xcf or psd, or
+  otherwise png.
+
+  The LGPL in some sections obliges you to make the files carry
+  notices. With images this is in some cases impossible or hardly useful.
+
+  With this library a notice is placed at a prominent place in the directory
+  containing the elements. You may follow this practice.
+
+  The exception in section 5 of the GNU Lesser General Public License covers
+  the use of elements of this art library in a GUI.
+
+  https://vdesign.kde.org/
+
+  Some icons have been created exclusively for QElectroTech. They are based or inspired by the KDE Breeze icon theme.
+  These icons are:
+    ico/16x16/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/document-open.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/east.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/edit-clear.png from https://www.brandeps.com (License CC BY-ND 3.0)
+                  changes: icon color, icon rotation
+    ico/16x16/endline-circle.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/endline-diamond.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/endline-none.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/endline-simple.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/endline-triangle.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/export-csv.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/folio-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/ground.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/label.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/list-remove.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/neutral.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/north.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/phase.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/project.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/project-close.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/project-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/project-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/qet.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/qt.png from http://brand.qt.io/downloads/
+    ico/16x16/south.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/terminalstrip.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/16x16/west.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/arc.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/autoconnect.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/diagram_add.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/diagram_bg.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/diagram_del.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/dialog-information.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/dcument-open.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/edit-clear.png from https://www.brandeps.com (License CC BY-ND 3.0)
+                  changes: icon color, icon rotation
+    ico/22x22/element-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/element-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/element-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/export-csv.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/folder-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/folder-edit.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/folder-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/hotspot.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/label.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/landscape.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/line.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/list-remove.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/portrait.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/project.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/project-close.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/project-delete.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/project-new.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/single_page.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/terminal.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/terminalstrip.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/22x22/two_pages.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/32x32/qt.png from http://brand.qt.io/downloads/
+    ico/32x32/simplifyrichtext.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/48x48/document-print-frame.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/128x128/diagram.png by the QElectroTech team (License CC BY-ND 3.0)
+    ico/128x128/document-export.png by the QElectroTech team (License CC BY-ND 3.0)
+    ico/128x128/project.png by the QElectroTech team (License CC BY-ND 3.0)
+    ico/256x256/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/breeze-icons/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/diagram.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/mac_icon/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/splash.png by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+    ico/windows_icon/* by Nuri from the QElectroTech team (License CC BY-ND 3.0)
+
+
+Files: debian/*
+Copyright: 2011-2017, Laurent Trinques <scorpio@qelectrotech.org>
+           2011-2015, Denis Briand <debian@denis-briand.fr>
+License: GPL-2.0
+ This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+    .
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    .
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+    .
+    On Debian systems, the complete text of the GNU General Public License
+    can be found in /usr/share/common-licenses/GPL-2 file.
