@@ -146,8 +146,8 @@ void ElementsCollectionWidget::setUpAction()
 	m_edit_dir =       new QAction(QET::Icons::FolderEdit,    tr("Éditer le dossier"),               this);
 	m_new_directory =  new QAction(QET::Icons::FolderNew,     tr("Nouveau dossier"),                 this);
 	m_new_element =    new QAction(QET::Icons::ElementNew,    tr("Nouvel élément"),                  this);
-	m_show_this_dir =  new QAction(QET::Icons::ZoomDraw,      tr("Afficher uniquement ce dossier"),  this);
-	m_show_all_dir =   new QAction(QET::Icons::ZoomOriginal,  tr("Afficher tous les dossiers"),      this);
+    m_show_this_dir =  new QAction(QET::Icons::FolderOnlyThis,tr("Afficher uniquement ce dossier"),  this);
+    m_show_all_dir =   new QAction(QET::Icons::FolderShowAll,  tr("Afficher tous les dossiers"),      this);
 	m_dir_propertie =  new QAction(QET::Icons::Folder,        tr("Propriété du dossier"),            this);
 }
 
@@ -479,7 +479,7 @@ void ElementsCollectionWidget::showThisDir()
 		showAndExpandItem(m_showed_index, true, true);
 		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
 		if (eci)
-			eci->setBackground(QBrush(Qt::yellow));
+            eci->setBackground(QBrush(QColor(255, 204, 0, 255)));
 		search();
 	}
 	else

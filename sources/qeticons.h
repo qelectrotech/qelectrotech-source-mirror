@@ -98,6 +98,8 @@ namespace QET {
 		extern QIcon FolderDelete;
 		extern QIcon FolderEdit;
 		extern QIcon FolderNew;
+        extern QIcon FolderOnlyThis;
+        extern QIcon FolderShowAll;
 		extern QIcon Forbidden;
 		extern QIcon FullScreenEnter;
 		extern QIcon FullScreenExit;

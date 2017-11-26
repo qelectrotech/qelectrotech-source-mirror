@@ -91,6 +91,8 @@ namespace QET {
 		QIcon FolderDelete;
 		QIcon FolderEdit;
 		QIcon FolderNew;
+        QIcon FolderOnlyThis;
+        QIcon FolderShowAll;
 		QIcon Forbidden;
 		QIcon FullScreenEnter;
 		QIcon FullScreenExit;
@@ -331,6 +333,8 @@ void QET::Icons::initIcons() {
 	FolderEdit          .addFile(":/ico/22x22/folder-edit.png");
 	FolderNew           .addFile(":/ico/16x16/folder-new.png");
 	FolderNew           .addFile(":/ico/22x22/folder-new.png");
+    FolderOnlyThis      .addFile(":/ico/16x16/folder-only-this.png");
+    FolderShowAll       .addFile(":/ico/16x16/folder-show-all.png");
 	Forbidden           .addFile(":/ico/16x16/user-busy.png");
 	FullScreenEnter     .addFile(":/ico/16x16/view-fullscreen.png");
 	FullScreenEnter     .addFile(":/ico/22x22/view-fullscreen.png");

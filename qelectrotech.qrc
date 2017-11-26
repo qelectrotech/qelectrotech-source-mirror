@@ -554,5 +554,7 @@
         <file>ico/windows_icon/qelectrotech.ico</file>
         <file>ico/windows_icon/qelectrotech.rc</file>
         <file>ico/copyright</file>
+        <file>ico/16x16/folder-only-this.png</file>
+        <file>ico/16x16/folder-show-all.png</file>
     </qresource>
 </RCC>
