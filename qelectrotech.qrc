@@ -565,5 +565,13 @@
         <file>ico/16x16/move.png</file>
         <file>ico/22x22/titleblock-bottom.png</file>
         <file>ico/22x22/titleblock-right.png</file>
+        <file>ico/16x16/element.png</file>
+        <file>ico/16x16/element-new.png</file>
+        <file>ico/16x16/element-delete.png</file>
+        <file>ico/16x16/element-edit.png</file>
+        <file>ico/16x16/folder-delete.png</file>
+        <file>ico/16x16/folder-edit.png</file>
+        <file>ico/16x16/folder-open.png</file>
+        <file>ico/16x16/folder-properties.png</file>
     </qresource>
 </RCC>

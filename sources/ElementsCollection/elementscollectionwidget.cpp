@@ -138,17 +138,17 @@ void ElementsCollectionWidget::leaveEvent(QEvent *event)
 
 void ElementsCollectionWidget::setUpAction()
 {
-	m_open_dir =       new QAction(QET::Icons::DocumentOpen,  tr("Ouvrir le dossier correspondant"), this);
-	m_edit_element =   new QAction(QET::Icons::ElementEdit,   tr("Éditer l'élément"),                this);
-	m_delete_element = new QAction(QET::Icons::ElementDelete, tr("Supprimer l'élément"),             this);
-	m_delete_dir =     new QAction(QET::Icons::FolderDelete,  tr("Supprimer le dossier"),            this);
-	m_reload =         new QAction(QET::Icons::ViewRefresh,   tr("Recharger les collections"),       this);
-	m_edit_dir =       new QAction(QET::Icons::FolderEdit,    tr("Éditer le dossier"),               this);
-	m_new_directory =  new QAction(QET::Icons::FolderNew,     tr("Nouveau dossier"),                 this);
-	m_new_element =    new QAction(QET::Icons::ElementNew,    tr("Nouvel élément"),                  this);
-    m_show_this_dir =  new QAction(QET::Icons::FolderOnlyThis,tr("Afficher uniquement ce dossier"),  this);
-    m_show_all_dir =   new QAction(QET::Icons::FolderShowAll,  tr("Afficher tous les dossiers"),      this);
-	m_dir_propertie =  new QAction(QET::Icons::Folder,        tr("Propriété du dossier"),            this);
+    m_open_dir =       new QAction(QET::Icons::FolderOpen,           tr("Ouvrir le dossier correspondant"), this);
+    m_edit_element =   new QAction(QET::Icons::ElementEdit,          tr("Éditer l'élément"),                this);
+    m_delete_element = new QAction(QET::Icons::ElementDelete,        tr("Supprimer l'élément"),             this);
+    m_delete_dir =     new QAction(QET::Icons::FolderDelete,         tr("Supprimer le dossier"),            this);
+    m_reload =         new QAction(QET::Icons::ViewRefresh,          tr("Recharger les collections"),       this);
+    m_edit_dir =       new QAction(QET::Icons::FolderEdit,           tr("Éditer le dossier"),               this);
+    m_new_directory =  new QAction(QET::Icons::FolderNew,            tr("Nouveau dossier"),                 this);
+    m_new_element =    new QAction(QET::Icons::ElementNew,           tr("Nouvel élément"),                  this);
+    m_show_this_dir =  new QAction(QET::Icons::FolderOnlyThis,       tr("Afficher uniquement ce dossier"),  this);
+    m_show_all_dir =   new QAction(QET::Icons::FolderShowAll,        tr("Afficher tous les dossiers"),      this);
+    m_dir_propertie =  new QAction(QET::Icons::FolderProperties,     tr("Propriété du dossier"),            this);
 }
 
 /**
