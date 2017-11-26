@@ -560,5 +560,8 @@
         <file>ico/16x16/project-properties.png</file>
         <file>ico/16x16/table-of-content.png</file>
         <file>ico/16x16/folio-properties.png</file>
+        <file>ico/16x16/select.png</file>
+        <file>ico/16x16/grid.png</file>
+        <file>ico/16x16/move.png</file>
     </qresource>
 </RCC>

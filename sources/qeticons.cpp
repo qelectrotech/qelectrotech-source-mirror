@@ -350,6 +350,7 @@ void QET::Icons::initIcons() {
 	GoUp                .addFile(":/ico/16x16/go-up.png");
 	GoUp                .addFile(":/ico/22x22/go-up.png");
 	Ground              .addFile(":/ico/16x16/ground.png");
+    Grid                .addFile(":/ico/16x16/grid.png");
 	Grid                .addFile(":/ico/22x22/grid.png");
 	Hide                .addFile(":/ico/16x16/masquer.png");
 	Home                .addFile(":/ico/16x16/go-home.png");
@@ -372,6 +373,7 @@ void QET::Icons::initIcons() {
 	PartLine            .addFile(":/ico/22x22/line.png");
 	PartPolygon         .addFile(":/ico/22x22/polygon.png");
 	PartRectangle       .addFile(":/ico/22x22/rectangle.png");
+    PartSelect          .addFile(":/ico/16x16/select.png");
 	PartSelect          .addFile(":/ico/22x22/select.png");
 	PartText            .addFile(":/ico/22x22/text.png");
 	PartTextField       .addFile(":/ico/22x22/textfield.png");
@@ -428,6 +430,7 @@ void QET::Icons::initIcons() {
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");
     ViewFitWindow       .addFile(":/ico/22x22/view-fit-window.png");
+    ViewMove            .addFile(":/ico/16x16/move.png");
 	ViewMove            .addFile(":/ico/22x22/move.png");
 	if (rtl) {
 		ViewRefresh.addPixmap(QPixmap(":/ico/16x16/view-refresh.png").transformed(reverse));
