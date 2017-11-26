@@ -144,6 +144,7 @@ namespace QET {
 		extern QIcon ProjectFile;
 		extern QIcon ProjectFileGP;
 		extern QIcon ProjectNew;
+        extern QIcon ProjectProperties;
 		extern QIcon Projects;
 		extern QIcon QETIcon;
 		extern QIcon QETLogo;
@@ -157,7 +158,8 @@ namespace QET {
 		extern QIcon SinglePage;
 		extern QIcon South;
 		extern QIcon Start;
-		extern QIcon Terminal;
+        extern QIcon TableOfContent;
+        extern QIcon Terminal;
 		extern QIcon TitleBlock;
 		extern QIcon UserInformations;
 		extern QIcon ViewFitWidth;

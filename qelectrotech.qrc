@@ -556,5 +556,9 @@
         <file>ico/copyright</file>
         <file>ico/16x16/folder-only-this.png</file>
         <file>ico/16x16/folder-show-all.png</file>
+        <file>ico/16x16/folio-delete.png</file>
+        <file>ico/16x16/project-properties.png</file>
+        <file>ico/16x16/table-of-content.png</file>
+        <file>ico/16x16/folio-properties.png</file>
     </qresource>
 </RCC>

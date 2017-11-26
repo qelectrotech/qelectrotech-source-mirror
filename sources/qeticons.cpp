@@ -136,6 +136,7 @@ namespace QET {
 		QIcon Projects;
 		QIcon ProjectFile;
 		QIcon ProjectFileGP;
+        QIcon ProjectProperties;
 		QIcon QETIcon;
 		QIcon QETLogo;
 		QIcon QETOxygenLogo;
@@ -148,7 +149,8 @@ namespace QET {
 		QIcon SinglePage;
 		QIcon South;
 		QIcon Start;
-		QIcon Terminal;
+        QIcon TableOfContent;
+        QIcon Terminal;
 		QIcon TitleBlock;
 		QIcon UserInformations;
 		QIcon ViewFitWidth;
@@ -228,12 +230,15 @@ void QET::Icons::initIcons() {
 	ConfigureToolbars   .addFile(":/ico/16x16/configure-toolbars.png");
 	ConfigureToolbars   .addFile(":/ico/22x22/configure-toolbars.png");
     IC_CopyFile            .addFile(":/ico/16x16/item-copy.png");
+    DiagramAdd          .addFile(":/ico/16x16/folio-new.png");
     DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
 	Diagram             .addFile(":/ico/diagram.png");
 	DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
-	DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
+    DiagramDelete       .addFile(":/ico/16x16/folio-delete.png");
+    DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
 	DialogCancel        .addFile(":/ico/16x16/dialog-cancel.png");
 	DialogCancel        .addFile(":/ico/22x22/dialog-cancel.png");
+    DialogInformation   .addFile(":/ico/16x16/folio-properties.png");
 	DialogInformation   .addFile(":/ico/22x22/dialog-information.png");
 	DialogOk            .addFile(":/ico/16x16/dialog-ok.png");
 	DialogOk            .addFile(":/ico/22x22/dialog-ok.png");
@@ -386,6 +391,7 @@ void QET::Icons::initIcons() {
     ProjectFile         .addFile(":/ico/breeze-icons/16x16/mimetypes/application-x-qet-project.png");
     ProjectFile         .addFile(":/ico/breeze-icons/22x22/mimetypes/application-x-qet-project.png");
     ProjectFile         .addFile(":/ico/breeze-icons/32x32/mimetypes/application-x-qet-project.png");
+    ProjectProperties   .addFile(":/ico/16x16/project-properties.png");
     QETDonate           .addFile(":/ico/16x16/help-donate.png");
     QETDownload         .addFile(":/ico/16x16/edit-download.png");
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
@@ -412,8 +418,11 @@ void QET::Icons::initIcons() {
 	SinglePage          .addFile(":/ico/22x22/single_page.png");
 	South               .addFile(":/ico/16x16/south.png");
 	Start               .addFile(":/ico/22x22/start.png");
-	Terminal            .addFile(":/ico/22x22/terminal.png");
-	TitleBlock          .addFile(":/ico/16x16/label.png");
+    TableOfContent      .addFile(":/ico/16x16/table-of-content.png");
+    Terminal            .addFile(":/ico/22x22/terminal.png");
+    TerminalStrip       .addFile(":/ico/16x16/terminalstrip.png");
+    TerminalStrip       .addFile(":/ico/22x22/terminalstrip.png");
+    TitleBlock          .addFile(":/ico/16x16/label.png");
 	TitleBlock          .addFile(":/ico/22x22/label.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
@@ -465,7 +474,6 @@ void QET::Icons::initIcons() {
 	translation         .addFile(":/ico/22x22/applications-development-translation.png");
 	listDrawings        .addFile(":/ico/48x48/view-pim-journal.png");
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");
-	TerminalStrip       .addFile(":/ico/22x22/terminalstrip.png");
     sub                 .addFile(":/ico/22x22/format-text-subscript.png");
     super               .addFile(":/ico/22x22/format-text-superscript.png");
 }

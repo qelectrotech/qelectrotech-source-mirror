@@ -292,11 +292,11 @@ void QETDiagramEditor::setUpActions()
 
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                  this);
 	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
-	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
+    prj_edit_prop     = new QAction(QET::Icons::ProjectProperties,     tr("Propriétés du projet"),                 this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                     this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                   this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
+    prj_diagramList   = new QAction(QET::Icons::TableOfContent,        tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentSpreadsheet,   tr("Exporter une nomenclature"),            this);
 	prj_terminalBloc  = new QAction(QET::Icons::TerminalStrip,         tr("Lancer le plugin de creation de bornier"), this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
