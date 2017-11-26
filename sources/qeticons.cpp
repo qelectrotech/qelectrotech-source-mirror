@@ -152,6 +152,8 @@ namespace QET {
         QIcon TableOfContent;
         QIcon Terminal;
 		QIcon TitleBlock;
+        QIcon TitleBlockBottom;
+        QIcon TitleBlockRight;
 		QIcon UserInformations;
 		QIcon ViewFitWidth;
 		QIcon ViewFitWindow;
@@ -426,6 +428,8 @@ void QET::Icons::initIcons() {
     TerminalStrip       .addFile(":/ico/22x22/terminalstrip.png");
     TitleBlock          .addFile(":/ico/16x16/label.png");
 	TitleBlock          .addFile(":/ico/22x22/label.png");
+    TitleBlockBottom    .addFile(":/ico/22x22/titleblock-bottom.png");
+    TitleBlockRight     .addFile(":/ico/22x22/titleblock-right.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");

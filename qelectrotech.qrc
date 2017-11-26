@@ -563,5 +563,7 @@
         <file>ico/16x16/select.png</file>
         <file>ico/16x16/grid.png</file>
         <file>ico/16x16/move.png</file>
+        <file>ico/22x22/titleblock-bottom.png</file>
+        <file>ico/22x22/titleblock-right.png</file>
     </qresource>
 </RCC>
