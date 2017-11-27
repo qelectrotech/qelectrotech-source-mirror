@@ -31,6 +31,7 @@ class Conductor;
 class NumerotationContext;
 class DiagramTextItem;
 class DynamicElementTextItem;
+class ElementTextItemGroup;
 
 /**
 	This is the base class for electrical elements.
@@ -131,6 +132,12 @@ class Element : public QetGraphicsItem
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
 		void updateLabel(); //This signal is emited to update element's label
+		void textAdded(DynamicElementTextItem *deti);
+		void textRemoved(DynamicElementTextItem *deti);
+		void textsGroupAdded(ElementTextItemGroup *group);
+		void textsGroupAboutToBeRemoved(ElementTextItemGroup *group);
+		void textAddedToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
+		void textRemovedFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
 
 		//METHODS related to information
 	public:
@@ -201,6 +208,12 @@ class Element : public QetGraphicsItem
         void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
         void removeDynamicTextItem(DynamicElementTextItem *deti);
         QList<DynamicElementTextItem *> dynamicTextItems() const;
+		ElementTextItemGroup *addTextGroup(const QString &name);
+		void removeTextGroup(ElementTextItemGroup *group);
+		ElementTextItemGroup *textGroup(const QString &name) const;
+		QList<ElementTextItemGroup *> textGroups() const;
+		bool addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
+		bool removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -227,6 +240,7 @@ class Element : public QetGraphicsItem
 		bool m_mouse_over;
 		QString m_prefix;
         QList <DynamicElementTextItem *> m_dynamic_text_list;
+		QList <ElementTextItemGroup *> m_texts_group;
 
 };
 

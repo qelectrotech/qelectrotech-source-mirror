@@ -30,6 +30,7 @@
 #include "diagramcontext.h"
 #include "changeelementinformationcommand.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 class ElementXmlRetroCompatibility
 {
@@ -583,6 +584,12 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 	}
 	
+	for (QDomElement qde : QET::findInDomElement(e, "texts_group", ElementTextItemGroup::xmlTaggName()))
+	{
+		ElementTextItemGroup *group = addTextGroup("loaded_from_xml_group");
+		group->fromXml(qde);
+	}
+	
 		//load informations
 	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 		/**
@@ -710,7 +717,42 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
     QDomElement dyn_text = document.createElement("dynamic_texts");
     for (DynamicElementTextItem *deti : m_dynamic_text_list)
         dyn_text.appendChild(deti->toXml(document));
-    element.appendChild(dyn_text);
+	
+	QDomElement texts_group = document.createElement("texts_group");
+	
+		//Dynamic texts owned by groups
+	for(ElementTextItemGroup *group : m_texts_group)
+	{
+			//temporarily remove the texts from group to get the pos relative to element and not group.
+			//Set the alignment to top, because top is not used by groupand so,
+			//each time a text is removed from the group, the alignement is not updated
+		Qt::Alignment al = group->alignment();
+		group->setAlignement(Qt::AlignTop);
+		
+			//Remove the texts from group
+		QList<DynamicElementTextItem *> deti_list = group->texts();
+		for(DynamicElementTextItem *deti : deti_list)
+			group->removeFromGroup(deti);
+		
+			//Save the texts to xml
+		for (DynamicElementTextItem *deti : deti_list)
+			dyn_text.appendChild(deti->toXml(document));
+		
+			//Re add texts to group
+		for(DynamicElementTextItem *deti : deti_list)
+			group->addToGroup(deti);
+		
+			//Restor the alignement
+		group->setAlignement(al);
+		
+			//Save the group to xml
+		texts_group.appendChild(group->toXml(document));
+	}
+	
+		//Append the dynamic texts to element
+	element.appendChild(dyn_text);
+		//Append the texts group to element
+	element.appendChild(texts_group);
 
     return(element);
 }
@@ -726,24 +768,42 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
     if (deti && !m_dynamic_text_list.contains(deti))
 	{
         m_dynamic_text_list.append(deti);
+		emit textAdded(deti);
 	}
     else
     {
         DynamicElementTextItem *text = new DynamicElementTextItem(this);
         m_dynamic_text_list.append(text);
+		emit textAdded(text);
     }
 }
 
 /**
  * @brief Element::removeDynamicTextItem
- * Remove @deti as dynamic text item of this element.
- * The parent item of deti stay this item.
+ * Remove @deti, no matter if is a child of this element or
+ * a child of a group of this element.
+ * The parent item of deti stay this item and deti is not deleted.
  * @param deti
  */
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 {
     if (m_dynamic_text_list.contains(deti))
+	{
         m_dynamic_text_list.removeOne(deti);
+		emit textRemoved(deti);
+		return;
+	}
+	
+	for(ElementTextItemGroup *group : m_texts_group)
+	{
+		if(group->texts().contains(deti))
+		{
+			removeTextFromGroup(deti, group);
+			m_dynamic_text_list.removeOne(deti);
+			emit textRemoved(deti);
+			return;
+		}
+	}
 }
 
 /**
@@ -751,7 +811,133 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
  * @return all dynamic text items of this element
  */
 QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
-    return m_dynamic_text_list;
+	return m_dynamic_text_list;
+}
+
+/**
+ * @brief Element::addTextGroup
+ * Create and add an element text item group to this element.
+ * If this element already have a group with the same name,
+ * then @name will renamed to name1 or name2 etc....
+ * @param name : the name of the group
+ * @return the created group.
+ */
+ElementTextItemGroup *Element::addTextGroup(const QString &name)
+{
+	if(m_texts_group.isEmpty())
+	{
+		ElementTextItemGroup *group = new ElementTextItemGroup(name, this);
+		m_texts_group << group;
+		emit textsGroupAdded(group);
+		return group;
+	}
+		
+		//Set a new name if name already exist
+	QString rename = name;
+	int i=1;
+	while (textGroup(rename))
+	{
+		rename = name+QString::number(i);
+		i++;
+	}
+	
+		//Create the group
+	ElementTextItemGroup *group = new ElementTextItemGroup(rename, this);
+	m_texts_group << group;
+	emit textsGroupAdded(group);
+	return group;
+}
+
+/**
+ * @brief Element::removeTextGroup
+ * Remove the text group with name @name
+ * All text owned by the group will be reparented to this element
+ * @param name
+ */
+void Element::removeTextGroup(ElementTextItemGroup *group)
+{
+	if(!m_texts_group.contains(group))
+		return;
+	
+	const QList <QGraphicsItem *> items_list = group->childItems();
+	
+	for(QGraphicsItem *qgi : items_list)
+	{
+		if(qgi->type() == DynamicElementTextItem::Type)
+		{
+			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(qgi);
+			removeTextFromGroup(deti, group);
+		}
+	}
+	
+	m_texts_group.removeOne(group);
+	emit textsGroupAboutToBeRemoved(group);
+	delete group;
+}
+
+/**
+ * @brief Element::textGroup
+ * @param name
+ * @return the text group named @name or nullptr if this element
+ * haven't got a group with this name
+ */
+ElementTextItemGroup *Element::textGroup(const QString &name) const
+{
+	for (ElementTextItemGroup *group : m_texts_group)
+		if(group->name() == name)
+			return group;
+	
+	return nullptr;
+}
+
+/**
+ * @brief Element::textGroups
+ * @return All texts groups of this element
+ */
+QList<ElementTextItemGroup *> Element::textGroups() const
+{
+	return m_texts_group;
+}
+
+/**
+ * @brief Element::addTextToGroup
+ * Add the text @text to the group @group;
+ * If @group isn't owned by this element return false.
+ * The text must be a text of this element.
+ * @return : true if the text was succesfully added to the group.
+ */
+bool Element::addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group)
+{
+	if(!m_dynamic_text_list.contains(text))
+		return false;
+	if(!m_texts_group.contains(group))
+		return false;
+	
+	removeDynamicTextItem(text);
+	group->addToGroup(text);
+	emit textAddedToGroup(text, group);
+	return true;
+}
+
+/**
+ * @brief Element::removeTextFromGroup
+ * Remove the text @text from the group @group, en reparent @text to this element
+ * @return true if text was succesfully removed
+ */
+bool Element::removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group)
+{
+	if(!m_texts_group.contains(group))
+		return false;
+	
+	if(group->childItems().contains(text))
+	{
+		group->removeFromGroup(text);
+		emit textRemovedFromGroup(text, group);
+		addDynamicTextItem(text);
+		return true;
+	}
+	
+	return false;
 }
 
 /**

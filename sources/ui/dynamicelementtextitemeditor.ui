@@ -31,6 +31,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="m_add_text">
+       <property name="toolTip">
+        <string>Ajouter un texte</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -42,6 +45,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="m_remove_text">
+       <property name="toolTip">
+        <string>Supprimer la sélection</string>
+       </property>
        <property name="text">
         <string/>
        </property>

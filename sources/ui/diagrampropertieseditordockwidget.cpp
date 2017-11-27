@@ -24,6 +24,7 @@
 #include "qetshapeitem.h"
 #include "shapegraphicsitempropertieswidget.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -90,7 +91,8 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 
 	switch (type_)
 	{
-		case Element::Type: {
+		case Element::Type:
+		{
 				//We already edit an element, just update the editor with a new element
 			if (m_edited_qgi_type == type_)
 			{
@@ -101,15 +103,17 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ElementPropertiesWidget(static_cast<Element*>(item), this));
-			break; }
-
-		case DiagramImageItem::Type: {
+			break;
+		}
+		case DiagramImageItem::Type:
+		{
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ImagePropertiesWidget(static_cast<DiagramImageItem*>(item), this));
-			break; }
-
-		case QetShapeItem::Type: {
+			break;
+		}
+		case QetShapeItem::Type:
+		{
 			if (m_edited_qgi_type == type_)
 			{
 				static_cast<ShapeGraphicsItemPropertiesWidget*>(editors().first())->setItem(static_cast<QetShapeItem*>(item));
@@ -119,13 +123,14 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ShapeGraphicsItemPropertiesWidget(static_cast<QetShapeItem*>(item), this));
-			break; }
-			
-		case DynamicElementTextItem::Type: {
+			break;
+		}
+		case DynamicElementTextItem::Type:
+		{
 			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(item);
 			
-				//For dynamic element text, we open the element editor
-				//We already edit an element, just update the editor with a new element
+				//For dynamic element text, we open the element editor to edit it
+				//If we already edit an element, just update the editor with a new element
 			if (m_edited_qgi_type == Element::Type)
 			{
 				static_cast<ElementPropertiesWidget*>(editors().first())->setDynamicText(deti);
@@ -135,8 +140,26 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 			m_edited_qgi_type = Element::Type;
 			addEditor(new ElementPropertiesWidget(deti, this));
-			break; }
-
+			break;
+		}
+		case QGraphicsItemGroup::Type:
+		{
+			if(ElementTextItemGroup *group = dynamic_cast<ElementTextItemGroup *>(item))
+			{
+					//For element text item group, we open the element editor to edit it
+					//If we already edit an element, just update the editor with a new element
+				if(m_edited_qgi_type == Element::Type)
+				{
+					static_cast<ElementPropertiesWidget *>(editors().first())->setTextsGroup(group);
+					return;
+				}
+				
+				clear();
+				m_edited_qgi_type = Element::Type;
+				addEditor(new ElementPropertiesWidget(group, this));
+			}
+			break;
+		}
 		default:
 			m_edited_qgi_type = -1;
 			clear();

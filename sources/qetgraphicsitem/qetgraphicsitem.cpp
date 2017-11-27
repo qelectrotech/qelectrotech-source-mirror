@@ -49,10 +49,9 @@ Diagram* QetGraphicsItem::diagram() const{
  */
 void QetGraphicsItem::setPos(const QPointF &p) {
 	QPointF pp = Diagram::snapToGrid(p);
-	if (pp == pos() || !is_movable_) return;
-	if (scene() && snap_to_grid_) {
-		QGraphicsItem::setPos(pp);
-	} else QGraphicsItem::setPos(pp);
+	if (pp == pos() || !is_movable_)
+		return;
+	QGraphicsItem::setPos(pp);
 }
 
 /**

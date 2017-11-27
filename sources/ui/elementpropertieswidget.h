@@ -25,6 +25,7 @@ class Diagram;
 class QTabWidget;
 class ElementsLocation;
 class DynamicElementTextItem;
+class ElementTextItemGroup;
 
 
 class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
@@ -34,8 +35,10 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	public:
 		explicit ElementPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
 		explicit ElementPropertiesWidget(DynamicElementTextItem *text, QWidget *parent = nullptr);
+		explicit ElementPropertiesWidget(ElementTextItemGroup *group, QWidget *parent = nullptr);
 		void setElement(Element *element) override;
 		void setDynamicText(DynamicElementTextItem *text);
+		void setTextsGroup(ElementTextItemGroup *group);
 		void apply() override;
 		void reset() override;
 		bool setLiveEdit(bool live_edit) override;

@@ -26,6 +26,7 @@
 #include "qeticons.h"
 #include "dynamicelementtextitemeditor.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
@@ -65,6 +66,28 @@ ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, Q
 		m_diagram = text->parentElement()->diagram();
 		buildGui();
 		setDynamicText(text);
+	}
+}
+
+/**
+ * @brief ElementPropertiesWidget::ElementPropertiesWidget
+ * Same as default constructor, the edited element, is the parent element of @group.
+ * The only difference with default constructor, is that the current tab is the tab for dynamic texts,
+ * and the item in the tree that represent @group is expanded and selected.
+ * @param group
+ * @param parent
+ */
+ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group, QWidget *parent) :
+	AbstractElementPropertiesEditorWidget (parent),
+	m_tab (nullptr),
+	m_general_widget(nullptr)
+{
+	if(group->parentItem() && group->parentItem()->type() == Element::Type)
+	{
+		Element *elmt = static_cast<Element *>(group->parentItem());
+		m_diagram = elmt->diagram();
+		buildGui();
+		setTextsGroup(group);
 	}
 }
 
@@ -113,6 +136,29 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
 				detie->setCurrentText(text);
+			}
+		}
+	}
+}
+
+/**
+ * @brief ElementPropertiesWidget::setTextsGroup
+ * Conveniance function : same as call : ElementPropertiesWidget::setElement, with parameter the parent element of @group.
+ * Set the dynamics text tab as current tab, expand and select the item that represent @group
+ * @param group
+ */
+void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
+{
+	if(group->parentItem() && group->parentItem()->type() == Element::Type)
+	{
+		setElement(static_cast<Element *>(group->parentItem()));
+		for(AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
+		{
+			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
+			{
+				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
+				m_tab->setCurrentWidget(detie);
+				detie->setCurrentGroup(group);
 			}
 		}
 	}

@@ -213,6 +213,7 @@ namespace QET {
 		extern QIcon QETVideo;
 		extern QIcon super;
 		extern QIcon sub;
+		extern QIcon textGroup;
 	}
 }
 #endif

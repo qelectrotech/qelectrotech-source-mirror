@@ -23,6 +23,8 @@
 #include "dynamicelementtextitem.h"
 
 class QUndoCommand;
+class ElementTextItemGroup;
+class Element;
 
 /**
  * @brief The DynamicElementTextModel class
@@ -47,27 +49,39 @@ class DynamicElementTextModel : public QStandardItemModel
 			frame
         };
         
-		DynamicElementTextModel(QObject *parent = nullptr);
+		DynamicElementTextModel(Element *element, QObject *parent = nullptr);
 		~DynamicElementTextModel() override;
 		
-		void addText(DynamicElementTextItem *deti);
-		void removeText(DynamicElementTextItem *deti);
+		bool indexIsInGroup(const QModelIndex &index) const;
         DynamicElementTextItem *textFromIndex(const QModelIndex &index) const;
         DynamicElementTextItem *textFromItem(QStandardItem *item) const;
 		QModelIndex indexFromText(DynamicElementTextItem *text) const;
 		QUndoCommand *undoForEditedText(DynamicElementTextItem *deti, QUndoCommand *parent_undo = nullptr) const;
 		
+		ElementTextItemGroup *groupFromIndex(const QModelIndex &index) const;
+		ElementTextItemGroup *groupFromItem(QStandardItem *item) const;
+		QModelIndex indexFromGroup(ElementTextItemGroup *group) const;
+		
 	signals:
 		void dataForTextChanged(DynamicElementTextItem *text);
         
     private:
+		QList<QStandardItem *> itemsForText(DynamicElementTextItem *deti);
+		void addText(DynamicElementTextItem *deti);
+		void removeText(DynamicElementTextItem *deti);
+		void addGroup(ElementTextItemGroup *group);
+		void removeGroup(ElementTextItemGroup *group);
+		void addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
+		void removeTextFromGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
 		void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
         void itemDataChanged(QStandardItem *qsi);
 		void setConnection(DynamicElementTextItem *deti, bool set);
 		void updateDataFromText(DynamicElementTextItem *deti, DynamicElementTextModel::ValueType type);
 		
 	private:
+		QPointer<Element> m_element;
 		QHash <DynamicElementTextItem *, QStandardItem *> m_texts_list;
+		QHash <ElementTextItemGroup *, QStandardItem *> m_groups_list;
 		QHash <DynamicElementTextItem *, QList<QMetaObject::Connection>> m_hash_text_connect;
 		bool m_block_dataForTextChanged = false;
 };

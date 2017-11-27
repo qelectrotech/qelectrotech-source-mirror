@@ -30,6 +30,9 @@ AddElementTextCommand::AddElementTextCommand(Element *element, DynamicElementTex
 
 AddElementTextCommand::~AddElementTextCommand()
 {
+	if(m_text->parentGroup())
+		return;
+	
 	if(!m_element->dynamicTextItems().contains(m_text))
 		delete m_text;
 }

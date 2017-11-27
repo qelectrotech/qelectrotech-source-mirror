@@ -29,15 +29,31 @@
 #include "compositetexteditdialog.h"
 #include "terminal.h"
 #include "conductor.h"
+#include "elementtextitemgroup.h"
+#include "qeticons.h"
 
-DynamicElementTextModel::DynamicElementTextModel(QObject *parent) :
-QStandardItemModel(parent)
+DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
+	QStandardItemModel(parent),
+	m_element(element)
 {
     setColumnCount(2);
     setHeaderData(0, Qt::Horizontal, tr("Propriété"), Qt::DisplayRole);
     setHeaderData(1, Qt::Horizontal, tr("Valeur"), Qt::DisplayRole);
     
 	connect(this, &DynamicElementTextModel::itemChanged, this, &DynamicElementTextModel::itemDataChanged);
+	
+	connect(m_element.data(), &Element::textsGroupAdded,            this, &DynamicElementTextModel::addGroup,            Qt::DirectConnection);
+	connect(m_element.data(), &Element::textsGroupAboutToBeRemoved, this, &DynamicElementTextModel::removeGroup,         Qt::DirectConnection);
+	connect(m_element.data(), &Element::textRemoved,                this, &DynamicElementTextModel::removeText,          Qt::DirectConnection);
+	connect(m_element.data(), &Element::textRemovedFromGroup,       this, &DynamicElementTextModel::removeTextFromGroup, Qt::DirectConnection);
+	connect(m_element.data(), &Element::textAdded,                  this, &DynamicElementTextModel::addText,             Qt::DirectConnection);
+	connect(m_element.data(), &Element::textAddedToGroup,           this, &DynamicElementTextModel::addTextToGroup,      Qt::DirectConnection);
+	
+	for (ElementTextItemGroup *grp : m_element.data()->textGroups())
+		addGroup(grp);
+	
+    for (DynamicElementTextItem *deti : m_element.data()->dynamicTextItems())
+		this->appendRow(itemsForText(deti));
 }
 
 DynamicElementTextModel::~DynamicElementTextModel()
@@ -49,18 +65,43 @@ DynamicElementTextModel::~DynamicElementTextModel()
 }
 
 /**
- * @brief DynamicElementTextModel::addText
- * @param deti
+ * @brief DynamicElementTextModel::indexIsInGroup
+ * @param index
+ * @return True if the index represent a group or an item in a group
  */
-void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
+bool DynamicElementTextModel::indexIsInGroup(const QModelIndex &index) const
 {
-    if(m_texts_list.keys().contains(deti))
-        return;
-    
-    QList <QStandardItem *> qsi_list;
+	QStandardItem *item = itemFromIndex(index);
+	if(item)
+	{
+		while (item->parent())
+			item = item->parent();
+		
+		if(m_groups_list.values().contains(item))
+			return true;
+		else
+			return false;
+	}
+	return false;
+}
 
+/**
+ * @brief DynamicElementTextModel::itemsForText
+ * @param deti
+ * @return The items for the text @deti, if the text@deti is already managed by this model
+ * the returned list is empty
+ * The returned items haven't got the same number of childs if the text is in a group or not.
+ */
+QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextItem *deti)
+{
+	QList <QStandardItem *> qsi_list;
+	
+	if(m_texts_list.keys().contains(deti))
+        return qsi_list;
+    
 	QStandardItem *qsi = new QStandardItem(deti->toPlainText());
     qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	qsi->setIcon(QET::Icons::PartText);
 	
 	
         //Source of text
@@ -174,44 +215,57 @@ void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 	qsi_list << frame << frame_a;
 	qsi->appendRow(qsi_list);
 	
-		//X pos
-	QStandardItem *x_pos = new QStandardItem(tr("Position X"));
-	x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	
-	QStandardItem *x_pos_a = new QStandardItem;
-	x_pos_a->setData(deti->pos().x(), Qt::EditRole);
-	x_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
-	x_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
-	
-	qsi_list.clear();
-	qsi_list << x_pos << x_pos_a;
-	qsi->appendRow(qsi_list);
-	
-		//Y pos
-	QStandardItem *y_pos = new QStandardItem(tr("Position Y"));
-	y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	
-	QStandardItem *y_pos_a = new QStandardItem;
-	y_pos_a->setData(deti->pos().y(), Qt::EditRole);
-	y_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
-	y_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
-	
-	qsi_list.clear();
-	qsi_list << y_pos << y_pos_a;
-	qsi->appendRow(qsi_list);
+	if(deti->parentGroup() == nullptr)
+	{
+			//X pos
+		QStandardItem *x_pos = new QStandardItem(tr("Position X"));
+		x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		
+		QStandardItem *x_pos_a = new QStandardItem;
+		x_pos_a->setData(deti->pos().x(), Qt::EditRole);
+		x_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
+		x_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+		
+		qsi_list.clear();
+		qsi_list << x_pos << x_pos_a;
+		qsi->appendRow(qsi_list);
+		
+			//Y pos
+		QStandardItem *y_pos = new QStandardItem(tr("Position Y"));
+		y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		
+		QStandardItem *y_pos_a = new QStandardItem;
+		y_pos_a->setData(deti->pos().y(), Qt::EditRole);
+		y_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
+		y_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+		
+		qsi_list.clear();
+		qsi_list << y_pos << y_pos_a;
+		qsi->appendRow(qsi_list);
+	}
 	
 	
 	qsi_list.clear();
 	QStandardItem *empty_qsi = new QStandardItem(0);
 	empty_qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	qsi_list << qsi << empty_qsi;
-    this->appendRow(qsi_list);
 	
     m_texts_list.insert(deti, qsi);
 	blockSignals(true);
 	enableSourceText(deti, deti->textFrom());
 	blockSignals(false);
 	setConnection(deti, true);
+	
+	return qsi_list;
+}
+
+/**
+ * @brief DynamicElementTextModel::addText
+ * @param deti
+ */
+void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
+{
+	this->appendRow(itemsForText(deti));
 }
 
 /**
@@ -251,15 +305,44 @@ DynamicElementTextItem *DynamicElementTextModel::textFromIndex(const QModelIndex
  * @param item
  * @return the text associated with @item. Return value can be nullptr
  * @item can be a child of an item associated with a text
+ * Note can return nullptr
  */
 DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *item) const
 {
+		//Item haven't got parent, so they can be only a text or a group
+	if(!item->parent()) 
+	{
+		if(m_texts_list.values().contains(item))
+			return m_texts_list.key(item);
+		else
+			return nullptr;
+	}
+	
+	
+	
 	QStandardItem *text_item = item;
 	while (text_item->parent())
 		text_item = text_item->parent();
 	
-	if (m_texts_list.values().contains(text_item))
+	if (m_texts_list.values().contains(text_item)) //The item is a text
 		return m_texts_list.key(text_item);
+	else if (m_groups_list.values().contains(text_item)) //The item is a group
+	{
+		QStandardItem *previous = item;
+		QStandardItem *top = item;
+			//At the end of the while, previous must be the text
+			//and top the group
+		while(top->parent())
+		{
+			previous = top;
+			top = top->parent();
+		}
+		
+		if(m_texts_list.values().contains(previous))
+			return m_texts_list.key(previous);
+		else
+			return nullptr;
+	}
 	else
 		return nullptr;
 }
@@ -271,10 +354,10 @@ DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *ite
  */
 QModelIndex DynamicElementTextModel::indexFromText(DynamicElementTextItem *text) const
 {
-	if(!m_texts_list.contains(text))
+	if(m_texts_list.contains(text))
+		return m_texts_list.value(text)->index();
+	else
 		return QModelIndex();
-	
-	return m_texts_list.value(text)->index();
 }
 
 /**
@@ -353,15 +436,140 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		quc->setText(tr("Modifier le cadre d'un texte d'élément"));
 	}
 	
-	QPointF p(text_qsi->child(5,1)->data(Qt::EditRole).toDouble(),
-			  text_qsi->child(6,1)->data(Qt::EditRole).toDouble());
-	if(p != deti->pos())
+		//When text is in a group, they're isn't item for position of the text
+	if(text_qsi->child(5,1) && text_qsi->child(6,1))
 	{
-		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
-		quc->setText(tr("Déplacer un texte d'élément"));
+		QPointF p(text_qsi->child(5,1)->data(Qt::EditRole).toDouble(),
+				  text_qsi->child(6,1)->data(Qt::EditRole).toDouble());
+		if(p != deti->pos())
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+			quc->setText(tr("Déplacer un texte d'élément"));
+		}
 	}
 	
 	return undo;
+}
+
+/**
+ * @brief DynamicElementTextModel::AddGroup
+ * Add a text item group to this model
+ * @param group
+ */
+void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
+{
+	if(m_groups_list.keys().contains(group))
+		return;
+	
+	QStandardItem *grp = new QStandardItem(group->name());
+	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	grp->setIcon(QET::Icons::textGroup);
+	
+	QStandardItem *empty_qsi = new QStandardItem(0);
+	empty_qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QList<QStandardItem *> qsi_list;
+	qsi_list << grp << empty_qsi;
+	
+	this->insertRow(0, qsi_list);
+	m_groups_list.insert(group, grp);
+	
+		//Add the texts of the group
+	for(DynamicElementTextItem *deti : group->texts())
+	{
+		QStandardItem *group_item = m_groups_list.value(group);
+		group_item->appendRow(itemsForText(deti));
+	}
+}
+
+/**
+ * @brief DynamicElementTextModel::removeGroup
+ * Remove the text item group from this model
+ * @param group
+ */
+void DynamicElementTextModel::removeGroup(ElementTextItemGroup *group)
+{
+	if(m_groups_list.keys().contains(group))
+	{
+		QModelIndex group_index = m_groups_list.value(group)->index();
+		this->removeRow(group_index.row(), group_index.parent());
+		m_groups_list.remove(group);
+	}
+}
+
+/**
+ * @brief DynamicElementTextModel::textAddedToGroup
+ * Add the text @text to the group @group
+ * @param deti
+ * @param group
+ */
+void DynamicElementTextModel::addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group)
+{
+	QStandardItem *group_item = m_groups_list.value(group);
+	group_item->appendRow(itemsForText(deti));
+}
+
+void DynamicElementTextModel::removeTextFromGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group)
+{
+	Q_UNUSED(group)
+	
+	if(m_texts_list.keys().contains(deti))
+	{
+		QStandardItem *text_item = m_texts_list.value(deti);
+		QModelIndex text_index = indexFromItem(text_item);
+		removeRow(text_index.row(), text_index.parent());
+		m_texts_list.remove(deti);
+	}
+}
+
+/**
+ * @brief DynamicElementTextModel::groupFromIndex
+ * @param index
+ * @return the group associated with @index. Return value can be nullptr
+ * @Index can be a child of an index associated with a group
+ */
+ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(const QModelIndex &index) const
+{
+	if(!index.isValid())
+        return nullptr;
+    
+    if (QStandardItem *item = itemFromIndex(index))
+        return groupFromItem(item);
+    else
+        return nullptr;
+}
+
+/**
+ * @brief DynamicElementTextModel::groupFromItem
+ * @param item
+ * @return the group associated with @item. Return value can be nullptr
+ * @item can be a child of an item associated with a group
+ */
+ElementTextItemGroup *DynamicElementTextModel::groupFromItem(QStandardItem *item) const
+{
+	QStandardItem *group_item = item;
+	
+	while (group_item->parent())
+		group_item = group_item->parent();
+	
+	if(m_groups_list.values().contains(group_item))
+		return m_groups_list.key(group_item);
+	else
+		return nullptr;
+}
+
+/**
+ * @brief DynamicElementTextModel::indexFromGroup
+ * @param group
+ * @return The index associated to the group @group
+ * or a default QModelIndex if not match
+ */
+QModelIndex DynamicElementTextModel::indexFromGroup(ElementTextItemGroup *group) const
+{
+	if(m_groups_list.keys().contains(group))
+		return m_groups_list.value(group)->index();
+	else
+		return QModelIndex();
 }
 
 /**
@@ -556,8 +764,10 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		}
 		case pos:
 		{
-			qsi->child(5,1)->setData(deti->pos().x(), Qt::EditRole);
-			qsi->child(6,1)->setData(deti->pos().y(), Qt::EditRole);
+			if(qsi->child(5,1))
+				qsi->child(5,1)->setData(deti->pos().x(), Qt::EditRole);
+			if(qsi->child(6,1))
+				qsi->child(6,1)->setData(deti->pos().y(), Qt::EditRole);
 			break;
 		}
 		case frame:
