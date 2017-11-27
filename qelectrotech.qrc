@@ -578,5 +578,7 @@
         <file>ico/16x16/go-down-double.png</file>
         <file>ico/16x16/go-top.png</file>
         <file>ico/16x16/go-bottom.png</file>
+        <file>ico/16x16/run-dxf.png</file>
+        <file>ico/22x22/folder-open.png</file>
     </qresource>
 </RCC>

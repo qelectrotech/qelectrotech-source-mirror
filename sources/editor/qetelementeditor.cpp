@@ -140,9 +140,9 @@ void QETElementEditor::setFileName(const QString &fn) {
  */
 void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
-	open              = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
-	open_file         = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-	open_dxf          = new QAction(QET::Icons::DocumentOpen,         tr("&Lancer le plugin convertisseur DXF"),       this);
+    open              = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir"),                                   this);
+    open_file         = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+    open_dxf          = new QAction(QET::Icons::RunDxf,         tr("&Lancer le plugin convertisseur DXF"),       this);
 	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
 	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
 	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);

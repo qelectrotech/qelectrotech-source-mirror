@@ -158,8 +158,9 @@ namespace QET {
 		extern QIcon QtLogo;
 		extern QIcon Raise;
 		extern QIcon Remove;
-		extern QIcon Restore;
-		extern QIcon SendBackward;
+        extern QIcon Restore;
+        extern QIcon RunDxf;
+        extern QIcon SendBackward;
 		extern QIcon Settings;
 		extern QIcon SinglePage;
 		extern QIcon South;

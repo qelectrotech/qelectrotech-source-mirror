@@ -151,6 +151,7 @@ namespace QET {
 		QIcon Raise;
 		QIcon Remove;
 		QIcon Restore;
+        QIcon RunDxf;
 		QIcon SendBackward;
 		QIcon Settings;
 		QIcon SinglePage;
@@ -357,6 +358,7 @@ void QET::Icons::initIcons() {
 	FolderNew           .addFile(":/ico/22x22/folder-new.png");
     FolderOnlyThis      .addFile(":/ico/16x16/folder-only-this.png");
     FolderOpen          .addFile(":/ico/16x16/folder-open.png");
+    FolderOpen          .addFile(":/ico/22x22/folder-open.png");
     FolderProperties    .addFile(":/ico/16x16/folder-properties.png");
     FolderShowAll       .addFile(":/ico/16x16/folder-show-all.png");
 	Forbidden           .addFile(":/ico/16x16/user-busy.png");
@@ -438,6 +440,7 @@ void QET::Icons::initIcons() {
 	Remove              .addFile(":/ico/22x22/list-remove.png");
 	resize_image        .addFile(":/ico/22x22/transform-scale.png");
 	Restore             .addFile(":/ico/22x22/restaurer.png");
+    RunDxf              .addFile(":/ico/16x16/run-dxf.png");
 	SendBackward        .addFile(":/ico/22x22/send_backward.png");
 	Settings            .addFile(":/ico/128x128/settings.png");
 	SinglePage          .addFile(":/ico/22x22/single_page.png");
