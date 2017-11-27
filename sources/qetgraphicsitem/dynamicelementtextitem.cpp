@@ -23,6 +23,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "terminal.h"
 #include "conductor.h"
+#include "elementtextitemgroup.h"
 
 #include <QDomDocument>
 #include <QDomElement>
@@ -222,9 +223,24 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 /**
  * @brief DynamicElementTextItem::ParentElement
  * @return a pointer to the parent element. Note the pointer can be null.
+ * Note that the text can return a parent element,
+ * even if the text belong to a group of this same element.
  */
 Element *DynamicElementTextItem::parentElement() const {
 	return m_parent_element;
+}
+
+/**
+ * @brief DynamicElementTextItem::parentGroup
+ * @return The group where this text belong, if this item
+ * is note in a group, return nullptr.
+ */
+ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
+{
+	if(group())
+		return dynamic_cast<ElementTextItemGroup *>(group());
+	else
+		return nullptr;
 }
 
 /**
@@ -491,6 +507,11 @@ void DynamicElementTextItem::setFrame(const bool frame)
 bool DynamicElementTextItem::frame() const
 {
 	return m_frame;
+}
+
+QUuid DynamicElementTextItem::uuid() const
+{
+	return m_uuid;
 }
 
 /**

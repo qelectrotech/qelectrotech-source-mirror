@@ -24,6 +24,7 @@
 
 class Element;
 class Conductor;
+class ElementTextItemGroup;
 
 /**
  * @brief The DynamicElementTextItem class
@@ -77,6 +78,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void fromXml(const QDomElement &dom_elmt) override;
 		
 		Element *parentElement() const;
+		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
 		
@@ -93,6 +95,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString compositeText() const;
 		void setFrame(const bool frame);
 		bool frame() const;
+		QUuid uuid() const;
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
