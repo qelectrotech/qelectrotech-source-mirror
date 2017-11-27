@@ -351,11 +351,11 @@ void QETDiagramEditor::setUpActions()
 	connect(&m_row_column_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::rowColumnGroupTriggered);
 
 		//Selections Actions (related to a selected item)
-	m_delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
-	m_rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
-	m_rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
-	m_find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
-	m_edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné")  );
+    m_delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")                 );
+    m_rotate_selection  = m_selection_actions_group.addAction( QET::Icons::TransformRotate,   tr("Pivoter")                   );
+    m_rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")       );
+    m_find_element      = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
+    m_edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
 
 	m_delete_selection -> setShortcut( QKeySequence::Delete);
 	m_rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
@@ -376,9 +376,9 @@ void QETDiagramEditor::setUpActions()
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
 		//Select Action
-	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll, tr("Tout sélectionner")	   );
-	QAction *select_nothing = m_select_actions_group.addAction(                            tr("Désélectionner tout") );
-	QAction *select_invert  = m_select_actions_group.addAction(                            tr("Inverser la sélection")  );
+    QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
+    QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
+    QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
 
 	select_all     -> setShortcut(QKeySequence::SelectAll);
 	select_nothing -> setShortcut(QKeySequence::Deselect);
@@ -626,7 +626,7 @@ void QETDiagramEditor::setUpMenu() {
 	
 
 	// menu Affichage
-	QMenu *projects_view_mode = menu_affichage -> addMenu(tr("Afficher les projets"));
+    QMenu *projects_view_mode = menu_affichage -> addMenu(QET::Icons::ConfigureToolbars, tr("Afficher les projets"));
 	projects_view_mode -> setTearOffEnabled(true);
 	projects_view_mode -> addAction(windowed_view_mode);
 	projects_view_mode -> addAction(tabbed_view_mode);
@@ -1461,7 +1461,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 		else if (selected_conductors_count)
 		{
 			m_edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
-			m_edit_selection -> setIcon(QET::Icons::ElementEdit);
+            m_edit_selection -> setIcon(QET::Icons::ConductorEdit);
 		}
 	}
 		//not an editable item

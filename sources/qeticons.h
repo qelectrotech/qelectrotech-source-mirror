@@ -40,6 +40,7 @@ namespace QET {
 		extern QIcon BringForward;
 		extern QIcon Cancel;
 		extern QIcon Conductor;
+        extern QIcon ConductorEdit;
 		extern QIcon ConductorSettings;
 		extern QIcon Configure;
 		extern QIcon ConfigureToolbars;
@@ -74,6 +75,8 @@ namespace QET {
 		extern QIcon EditRedo;
 		extern QIcon EditRename;
 		extern QIcon EditSelectAll;
+        extern QIcon EditSelectInvert;
+        extern QIcon EditSelectNone;
 		extern QIcon EditTableCellMerge;
 		extern QIcon EditTableCellSplit;
 		extern QIcon EditTableDeleteColumn;
@@ -170,6 +173,7 @@ namespace QET {
 		extern QIcon TitleBlock;
         extern QIcon TitleBlockBottom;
         extern QIcon TitleBlockRight;
+        extern QIcon TransformRotate;
 		extern QIcon UserInformations;
 		extern QIcon ViewFitWidth;
 		extern QIcon ViewFitWindow;

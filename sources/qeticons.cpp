@@ -33,6 +33,7 @@ namespace QET {
 		QIcon BringForward;
 		QIcon Cancel;
 		QIcon Conductor;
+        QIcon ConductorEdit;
 		QIcon ConductorSettings;
 		QIcon Configure;
 		QIcon ConfigureToolbars;
@@ -67,6 +68,8 @@ namespace QET {
 		QIcon EditRedo;
 		QIcon EditRename;
 		QIcon EditSelectAll;
+        QIcon EditSelectInvert;
+        QIcon EditSelectNone;
 		QIcon EditTableCellMerge;
 		QIcon EditTableCellSplit;
 		QIcon EditTableDeleteColumn;
@@ -162,6 +165,7 @@ namespace QET {
 		QIcon TitleBlock;
         QIcon TitleBlockBottom;
         QIcon TitleBlockRight;
+        QIcon TransformRotate;
 		QIcon UserInformations;
 		QIcon ViewFitWidth;
 		QIcon ViewFitWindow;
@@ -235,6 +239,8 @@ void QET::Icons::initIcons() {
 	Autoconnect         .addFile(":/ico/22x22/autoconnect.png");
 	BringForward        .addFile(":/ico/22x22/bring_forward.png");
     Cancel              .addFile(":/ico/16x16/item-cancel.png");
+    ConductorEdit       .addFile(":/ico/16x16/conductor-edit.png");
+    ConductorSettings   .addFile(":/ico/16x16/conductor-reset.png");
     ConductorSettings   .addFile(":/ico/22x22/conductor2.png");
 	Configure           .addFile(":/ico/16x16/configure.png");
 	Configure           .addFile(":/ico/22x22/configure.png");
@@ -306,10 +312,12 @@ void QET::Icons::initIcons() {
 		EditRedo            .addFile(":/ico/16x16/edit-redo.png");
 		EditRedo            .addFile(":/ico/22x22/edit-redo.png");
 	}
-	EditRename          .addFile(":/ico/16x16/edit-rename.png");
-	EditRename          .addFile(":/ico/22x22/edit-rename.png");
-	EditSelectAll       .addFile(":/ico/16x16/edit-select-all.png");
-	EditSelectAll       .addFile(":/ico/22x22/edit-select-all.png");
+    EditRename                .addFile(":/ico/16x16/edit-rename.png");
+    EditRename                .addFile(":/ico/22x22/edit-rename.png");
+    EditSelectAll             .addFile(":/ico/16x16/edit-select-all.png");
+    EditSelectAll             .addFile(":/ico/22x22/edit-select-all.png");
+    EditSelectInvert          .addFile(":/ico/16x16/edit-select-invert.png");
+    EditSelectNone            .addFile(":/ico/16x16/edit-select-none.png");
 	EditTableCellMerge        .addFile(":/ico/16x16/edit-table-cell-merge.png");
 	EditTableCellMerge        .addFile(":/ico/22x22/edit-table-cell-merge.png");
 	EditTableCellSplit        .addFile(":/ico/16x16/edit-table-cell-split.png");
@@ -389,6 +397,7 @@ void QET::Icons::initIcons() {
 	NewDiagram          .addFile(":/ico/128x128/diagram.png");
 	North               .addFile(":/ico/16x16/north.png");
 	ObjectLocked        .addFile(":/ico/22x22/object-locked.png");
+    ObjectRotateRight   .addFile(":/ico/16x16/object-rotate-right.png");
 	ObjectRotateRight   .addFile(":/ico/22x22/object-rotate-right.png");
 	ObjectUnlocked      .addFile(":/ico/22x22/object-unlocked.png");
 	Orientations        .addFile(":/ico/16x16/orientations.png");
@@ -454,6 +463,7 @@ void QET::Icons::initIcons() {
 	TitleBlock          .addFile(":/ico/22x22/label.png");
     TitleBlockBottom    .addFile(":/ico/22x22/titleblock-bottom.png");
     TitleBlockRight     .addFile(":/ico/22x22/titleblock-right.png");
+    TransformRotate     .addFile(":/ico/16x16/transform-rotate.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");
