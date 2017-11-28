@@ -379,6 +379,26 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_title_le</tabstop>
+  <tabstop>m_author_le</tabstop>
+  <tabstop>m_no_date_rb</tabstop>
+  <tabstop>m_current_date_rb</tabstop>
+  <tabstop>m_fixed_date_rb</tabstop>
+  <tabstop>m_date_edit</tabstop>
+  <tabstop>m_date_now_pb</tabstop>
+  <tabstop>m_file_le</tabstop>
+  <tabstop>m_folio_le</tabstop>
+  <tabstop>m_mach</tabstop>
+  <tabstop>m_loc</tabstop>
+  <tabstop>m_indice</tabstop>
+  <tabstop>auto_page_cb</tabstop>
+  <tabstop>m_edit_autofolionum_pb</tabstop>
+  <tabstop>m_tbt_cb</tabstop>
+  <tabstop>m_display_at_cb</tabstop>
+  <tabstop>m_tbt_pb</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="../../qelectrotech.qrc"/>
  </resources>
