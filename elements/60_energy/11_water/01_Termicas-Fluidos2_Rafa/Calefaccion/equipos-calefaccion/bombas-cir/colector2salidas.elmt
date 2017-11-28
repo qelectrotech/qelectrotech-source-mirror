@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="14" orientation="dyyy" hotspot_y="19" version="0.5" type="element" height="50" width="30">
 <uuid uuid="{B505D371-F534-4C6E-AAA6-1057EF67CC4D}"/><names>
         <name lang="es">Colector 2 salidas</name>
+        <name lang="en">2 output collector</name>
         <name lang="ca">Col.lector 2 eixides</name>
         <name lang="it">Collettore 2 uscite</name>
     </names>

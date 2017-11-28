@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="87" orientation="dyyy" hotspot_y="35" version="0.5" type="element" height="70" width="120">
 <uuid uuid="{F7591F57-AF31-4D0F-84B6-C5970FB20828}"/><names>
         <name lang="es">Caldera industrial</name>
+        <name lang="en">Industrial boiler</name>
         <name lang="ca">Caldera industrial</name>
     </names>
     <informations>Rafael Ferrando.

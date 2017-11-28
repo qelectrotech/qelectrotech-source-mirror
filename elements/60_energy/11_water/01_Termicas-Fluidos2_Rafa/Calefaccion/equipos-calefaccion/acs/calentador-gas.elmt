@@ -1,7 +1,8 @@
 <definition orientation="dyyy" link_type="simple" type="element" hotspot_x="24" hotspot_y="44" width="50" height="80" version="0.5">
 <uuid uuid="{D95B78E9-6185-441B-9A83-F871680AB794}"/><names>
         <name lang="ca">Escalfador ACS cas</name>
-        <name lang="es">Calentador ACS-gas</name>
+        <name lang="es">Calentador ACS de gas</name>
+        <name lang="en">DHW gas heater</name>
         <name lang="it">Boiler a gas</name>
     </names>
     <informations>Rafael Ferrando.
