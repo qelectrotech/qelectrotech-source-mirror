@@ -35,19 +35,22 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 {
 	Q_OBJECT
 	
+	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
+	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
 		~ElementTextItemGroup() override;
 		void addToGroup(QGraphicsItem *item);
 		void removeFromGroup(QGraphicsItem *item);
 		
-		void setAlignement(Qt::Alignment alignement);
+		void setAlignment(Qt::Alignment alignement);
 		Qt::Alignment alignment() const;
-		void updateAlignement();
+		void updateAlignment();
 		void setName(QString name);
 		QString name() const {return m_name;}
 		QList<DynamicElementTextItem *> texts() const;
 		Diagram *diagram() const;
+		Element *parentElement() const;
 		
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(QDomElement &dom_element);
@@ -63,11 +66,10 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void keyPressEvent(QKeyEvent *event) override;
 
 	private:
-		Qt::Alignment m_alignement = Qt::AlignJustify;
+		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
 		bool m_first_move = true;
 		QPointF m_mouse_to_origin_movement;
-		Element *m_element = nullptr;
 };
 
 #endif // ELEMENTTEXTITEMGROUP_H

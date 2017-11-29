@@ -21,6 +21,7 @@
 #include "element.h"
 #include "conductor.h"
 #include "conductortextitem.h"
+#include "elementtextitemgroup.h"
 
 /**
  * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -44,7 +45,12 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 	}
 	
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
-		m_elmt_text_hash.insert(deti, deti->parentElement());
+	{
+		if(deti->parentGroup())
+			m_grp_texts_hash.insert(deti, deti->parentGroup());
+		else
+			m_elmt_text_hash.insert(deti, deti->parentElement());
+	}
 	
 	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
@@ -72,8 +78,14 @@ void DeleteQGraphicsItemCommand::undo()
 	
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
-		deti->setParentItem(m_elmt_text_hash.value(deti));
-		m_elmt_text_hash.value(deti)->addDynamicTextItem(deti);
+		if(m_elmt_text_hash.keys().contains(deti))
+			m_elmt_text_hash.value(deti)->addDynamicTextItem(deti);
+		else if (m_grp_texts_hash.keys().contains(deti))
+		{
+			Element *elmt = m_grp_texts_hash.value(deti)->parentElement();
+			elmt->addDynamicTextItem(deti);
+			elmt->addTextToGroup(deti, m_grp_texts_hash.value(deti));
+		}
 	}
 }
 
@@ -109,6 +121,9 @@ void DeleteQGraphicsItemCommand::redo()
 	
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
+		if(deti->parentGroup() && deti->parentGroup()->parentElement())
+			deti->parentGroup()->parentElement()->removeTextFromGroup(deti, deti->parentGroup());
+
 		deti->parentElement()->removeDynamicTextItem(deti);
 		deti->setParentItem(nullptr);
 	}

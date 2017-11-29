@@ -209,6 +209,7 @@ class Element : public QetGraphicsItem
         void removeDynamicTextItem(DynamicElementTextItem *deti);
         QList<DynamicElementTextItem *> dynamicTextItems() const;
 		ElementTextItemGroup *addTextGroup(const QString &name);
+		void addTextGroup(ElementTextItemGroup *group);
 		void removeTextGroup(ElementTextItemGroup *group);
 		ElementTextItemGroup *textGroup(const QString &name) const;
 		QList<ElementTextItemGroup *> textGroups() const;

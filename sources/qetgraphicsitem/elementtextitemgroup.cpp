@@ -19,6 +19,7 @@
 #include "dynamicelementtextitem.h"
 #include "element.h"
 #include "diagram.h"
+#include "addelementtextcommand.h"
 
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
@@ -34,8 +35,7 @@ bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
  */
 ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent) :
 	QGraphicsItemGroup(parent),
-	m_name(name),
-	m_element(parent)
+	m_name(name)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsFocusable);
 }
@@ -53,14 +53,14 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 	{
 		item->setFlag(QGraphicsItem::ItemIsSelectable, false);
 		QGraphicsItemGroup::addToGroup(item);	
-		updateAlignement();
+		updateAlignment();
 		
 		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
-		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignement);
-		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignement);
-		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignement);
-		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignement);
-		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignement);	
+		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);	
 	}
 }
 
@@ -72,15 +72,15 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
 	QGraphicsItemGroup::removeFromGroup(item);
 	item->setFlag(QGraphicsItem::ItemIsSelectable, true);
-	updateAlignement();
+	updateAlignment();
 	
 	if(DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
 	{
-		disconnect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignement);
-		disconnect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignement);
-		disconnect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignement);
-		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignement);
-		disconnect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignement);
+		disconnect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
 	}
 }
 
@@ -89,25 +89,27 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
  * Set the alignement of this group
  * @param alignement
  */
-void ElementTextItemGroup::setAlignement(Qt::Alignment alignement)
+void ElementTextItemGroup::setAlignment(Qt::Alignment alignement)
 {
-	m_alignement = alignement;
-	updateAlignement();
+	m_alignment = alignement;
+	updateAlignment();
 }
 
 Qt::Alignment ElementTextItemGroup::alignment() const
 {
-	return m_alignement;
+	return m_alignment;
 }
 
 /**
- * @brief ElementTextItemGroup::setAlignement
+ * @brief ElementTextItemGroup::setAlignment
  * Update the alignement of the items in this group, according
  * to the current alignement.
  * @param alignement
  */
-void ElementTextItemGroup::updateAlignement()
+void ElementTextItemGroup::updateAlignment()
 {
+	prepareGeometryChange();
+	
 	QList <QGraphicsItem *> texts = childItems();
 	if (texts.size() > 1)
 	{
@@ -116,7 +118,7 @@ void ElementTextItemGroup::updateAlignement()
 		
 		qreal y_offset =0;
 		
-		if(m_alignement == Qt::AlignLeft)
+		if(m_alignment == Qt::AlignLeft)
 		{
 			QPointF ref = texts.first()->pos();
 				
@@ -127,7 +129,7 @@ void ElementTextItemGroup::updateAlignement()
 			}
 			return;
 		}
-		else if(m_alignement == Qt::AlignVCenter)
+		else if(m_alignment == Qt::AlignVCenter)
 		{
 			QPointF ref(texts.first()->pos().x() + texts.first()->boundingRect().width()/2,
 						texts.first()->pos().y());
@@ -141,7 +143,7 @@ void ElementTextItemGroup::updateAlignement()
 			return;
 				
 		}
-		else if (m_alignement == Qt::AlignRight)
+		else if (m_alignment == Qt::AlignRight)
 		{
 			QPointF ref(texts.first()->pos().x() + texts.first()->boundingRect().width(),
 						texts.first()->pos().y());
@@ -194,6 +196,18 @@ Diagram *ElementTextItemGroup::diagram() const
 }
 
 /**
+ * @brief ElementTextItemGroup::parentElement
+ * @return The parent element of this group or nullptr
+ */
+Element *ElementTextItemGroup::parentElement() const
+{
+	if(parentItem() && parentItem()->type() == Element::Type)
+		return static_cast<Element *>(parentItem());
+	else
+		return nullptr;
+}
+
+/**
  * @brief ElementTextItemGroup::toXml
  * Export data of this group to xml
  * @param dom_document
@@ -205,7 +219,7 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	dom_element.setAttribute("name", m_name);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	dom_element.setAttribute("alignment", me.valueToKey(m_alignement));
+	dom_element.setAttribute("alignment", me.valueToKey(m_alignment));
 	
 	QDomElement dom_texts = dom_document.createElement("texts");
 	for(DynamicElementTextItem *deti : texts())
@@ -233,19 +247,22 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	
 	m_name = dom_element.attribute("name", "no name");
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	m_alignement = Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data()));
+	m_alignment = Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data()));
 	
-	for(QDomElement text : QET::findInDomElement(dom_element, "texts", "text"))
+	if(parentElement())
 	{
-		DynamicElementTextItem *deti = nullptr;
-		QUuid uuid(text.attribute("uuid"));
-		
-		for(DynamicElementTextItem *txt : m_element->dynamicTextItems())
-			if(txt->uuid() == uuid)
-				deti = txt;
-		
-		if (deti)
-			m_element->addTextToGroup(deti, this);
+		for(QDomElement text : QET::findInDomElement(dom_element, "texts", "text"))
+		{
+			DynamicElementTextItem *deti = nullptr;
+			QUuid uuid(text.attribute("uuid"));
+			
+			for(DynamicElementTextItem *txt : parentElement()->dynamicTextItems())
+				if(txt->uuid() == uuid)
+					deti = txt;
+			
+			if (deti)
+				parentElement()->addTextToGroup(deti, this);
+		}
 	}
 }
 
@@ -321,7 +338,11 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		
 		QPointF old_pos = pos();
 		if(m_first_move)
+		{
 			m_mouse_to_origin_movement = old_pos - event->buttonDownScenePos(Qt::LeftButton);
+			if(parentElement())
+				parentElement()->setHighlighted(true);
+		}
 		
 		QPointF expected_pos = event->scenePos() + m_mouse_to_origin_movement;
 		setPos(Diagram::snapToGrid(expected_pos));
@@ -344,7 +365,11 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if(diagram())
+	{
 		diagram()->endMoveElementTexts();
+		if(parentElement())
+			parentElement()->setHighlighted(false);
+	}
 	
 	if(!(event->modifiers() & Qt::ControlModifier))
 		QGraphicsItemGroup::mouseReleaseEvent(event);
@@ -355,13 +380,27 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  * @param event
  */
 void ElementTextItemGroup::keyPressEvent(QKeyEvent *event)
-{
-	prepareGeometryChange();
-	if(event->key() == Qt::Key_A)
-		setAlignement(Qt::AlignLeft);
-	else if (event->key() == Qt::Key_Z)
-		setAlignement(Qt::AlignVCenter);
-	else if (event->key() == Qt::Key_E)
-		setAlignement(Qt::AlignRight);
+{	
+	if(event->key() == Qt::Key_A && m_alignment	!= Qt::AlignLeft)
+	{
+		if(diagram())
+			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignLeft));
+		else
+			setAlignment(Qt::AlignLeft);
+	}
+	else if (event->key() == Qt::Key_Z && m_alignment	!= Qt::AlignVCenter)
+	{
+		if(diagram())
+			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignVCenter));
+		else
+			setAlignment(Qt::AlignVCenter);
+	}
+	else if (event->key() == Qt::Key_E && m_alignment	!= Qt::AlignRight)
+	{
+		if(diagram())
+			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignRight));
+		else
+			setAlignment(Qt::AlignRight);
+	}
 }
 

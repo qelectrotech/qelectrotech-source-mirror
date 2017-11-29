@@ -20,6 +20,8 @@
 #include "diagram.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
+#include <QObject>
 
 /**
  * @brief ElementTextsMover::ElementTextsMover
@@ -44,26 +46,54 @@ bool ElementTextsMover::isReady() const {
  */
 int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
-	if (m_movement_running || !diagram) return(-1);
+	if (m_movement_running || !diagram)
+		return(-1);
 
 	m_diagram = diagram;
 	m_movement_driver = driver_item;
-	m_texts_item_H.clear();
+	m_last_pos = driver_item->pos();
+	m_items_hash.clear();
+	m_text_count = m_group_count =0;
+//	m_texts_hash.clear();
+//	m_grps_hash.clear();
 
+//	for(QGraphicsItem *item : diagram->selectedItems())
+//	{
+//		if (item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
+//		{
+//			DiagramTextItem *dti = static_cast<DiagramTextItem *> (item);
+//			m_texts_hash.insert(dti, dti->pos());
+//		}
+//	}
+	
 	for(QGraphicsItem *item : diagram->selectedItems())
 	{
-		if (item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
-		{
-			DiagramTextItem *dti = static_cast<DiagramTextItem *> (item);
-			m_texts_item_H.insert(dti, dti->pos());
-		}
+		 if(item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
+		 {
+			 m_items_hash.insert(item, item->pos());
+			 m_text_count++;
+		 }
+		 else if(item->type() == QGraphicsItemGroup::Type)
+		 {
+			 if(dynamic_cast<ElementTextItemGroup *>(item))
+			 {
+				 m_items_hash.insert(item, item->pos());
+				 m_group_count++;
+			 }
+		 }
 	}
 	
-	if (!m_texts_item_H.size()) return(-1);
+//	if (!m_texts_hash.size())
+//		return(-1);
+	
+	if(m_items_hash.isEmpty())
+		return -1;
 	
 	m_movement_running = true;
 	
-	return(m_texts_item_H.size());
+	return m_items_hash.size();
+	
+//	return(m_texts_hash.size());
 }
 
 /**
@@ -74,15 +104,28 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
  */
 void ElementTextsMover::continueMovement(const QPointF &movement)
 {
-	if (!m_movement_running || movement.isNull()) return;
+	if (!m_movement_running || movement.isNull())
+		return;
 	
-	for(DiagramTextItem *text_item : m_texts_item_H.keys())
+	QPointF move = m_movement_driver->pos() - m_last_pos;
+	m_last_pos = m_movement_driver->pos();
+	
+	for(QGraphicsItem *qgi : m_items_hash.keys())
 	{
-		if (text_item == m_movement_driver)
+		if(qgi == m_movement_driver)
 			continue;
-		QPointF applied_movement = text_item->mapMovementToParent(text_item->mapMovementFromScene(movement));
-		text_item->setPos(text_item->pos() + applied_movement);
+		
+		qgi->setPos(qgi->pos() + move);
 	}
+	
+//	for(DiagramTextItem *text_item : m_texts_hash.keys())
+//	{
+//		if (text_item == m_movement_driver)
+//			continue;
+		
+//		QPointF applied_movement = text_item->mapMovementToParent(text_item->mapMovementFromScene(movement));
+//		text_item->setPos(text_item->pos() + applied_movement);
+//	}
 }
 
 /**
@@ -91,26 +134,70 @@ void ElementTextsMover::continueMovement(const QPointF &movement)
  */
 void ElementTextsMover::endMovement()
 {
-		//No movement running, or no text to move
-	if (!m_movement_running || m_texts_item_H.isEmpty())
-		return;
+//		//No movement running, or no text to move
+//	if (!m_movement_running || m_texts_hash.isEmpty())
+//		return;
 	
+//		//Movement is null
+//	DiagramTextItem *dti = m_texts_hash.keys().first();
+//	if (dti->pos() == m_texts_hash.value(dti))
+//		return;
+	
+//	QUndoCommand *undo = new QUndoCommand(m_texts_hash.size() == 1 ? QString(QObject::tr("Déplacer un texte d'élément"))  :
+//																	   QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_hash.size())));
+	
+//	for (DiagramTextItem *dti : m_texts_hash.keys())
+//	{
+//		QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(dti, "pos", m_texts_hash.value(dti), dti->pos(), undo);
+//		child_undo->enableAnimation();
+//	}
+	
+		//No movement or no items to move
+	if(!m_movement_running || m_items_hash.isEmpty())
+		return;
+			
 		//Movement is null
-	DiagramTextItem *dti = m_texts_item_H.keys().first();
-	if (dti->pos() == m_texts_item_H.value(dti))
+	QGraphicsItem *qgi = m_items_hash.keys().first();
+	if(qgi->pos() == m_items_hash.value(qgi))
 		return;
+					 
+	QUndoCommand *undo = new QUndoCommand(undoText());
 	
-	QUndoCommand *undo = new QUndoCommand(m_texts_item_H.size() == 1 ? QString(QObject::tr("Déplacer un texte d'élément"))  :
-																	   QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_item_H.size())));
-	
-	for (DiagramTextItem *dti : m_texts_item_H.keys())
+	for (QGraphicsItem *qgi : m_items_hash.keys())
 	{
-		QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(dti, "pos", m_texts_item_H.value(dti), dti->pos(), undo);
-		child_undo->enableAnimation();
-
+		if(QObject *object = dynamic_cast<QObject *>(qgi))
+		{
+			QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(object, "pos", m_items_hash.value(qgi), qgi->pos(), undo);
+			child_undo->enableAnimation();
+		}
 	}
 
 	m_diagram->undoStack().push(undo);
 	
 	m_movement_running = false;
+}
+
+QString ElementTextsMover::undoText() const
+{
+	QString undo_text;
+	
+	if(m_text_count == 1)
+		undo_text.append(QObject::tr("Déplacer un texte d'élément"));
+	else if(m_text_count > 1)
+		undo_text.append(QObject::tr("Déplacer %1 textes d'élément").arg(m_items_hash.size()));
+	
+	if(m_group_count >= 1)
+	{
+		if(undo_text.isEmpty())
+			undo_text.append(QObject::tr("Déplacer"));
+		else
+			undo_text.append(QObject::tr(" et"));
+		
+		if(m_group_count == 1)
+			undo_text.append(QObject::tr(" un groupe de texte"));
+		else
+			undo_text.append(QObject::tr((" %1 groupes de textes")).arg(m_group_count));
+	}
+	
+	return undo_text;
 }

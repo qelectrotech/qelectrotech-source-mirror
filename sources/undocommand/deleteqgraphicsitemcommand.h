@@ -22,6 +22,7 @@
 #include "diagramcontent.h"
 
 class Diagram;
+class ElementTextItemGroup;
 
 class DeleteQGraphicsItemCommand : public QUndoCommand
 {
@@ -41,6 +42,7 @@ class DeleteQGraphicsItemCommand : public QUndoCommand
 		Diagram *m_diagram;
 		QHash <Element *, QList<Element *> > m_link_hash; /// keep linked element for each removed element linked to other element.
 		QHash <DynamicElementTextItem *, Element *> m_elmt_text_hash; /// Keep the parent element of each deleted dynamic element text item
+		QHash <DynamicElementTextItem *, ElementTextItemGroup *> m_grp_texts_hash; ///Keep the parent group of each deleted element text item
 };
 
 #endif // DELETEQGRAPHICSITEMCOMMAND_H

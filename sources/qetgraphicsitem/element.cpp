@@ -727,7 +727,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 			//Set the alignment to top, because top is not used by groupand so,
 			//each time a text is removed from the group, the alignement is not updated
 		Qt::Alignment al = group->alignment();
-		group->setAlignement(Qt::AlignTop);
+		group->setAlignment(Qt::AlignTop);
 		
 			//Remove the texts from group
 		QList<DynamicElementTextItem *> deti_list = group->texts();
@@ -743,7 +743,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 			group->addToGroup(deti);
 		
 			//Restor the alignement
-		group->setAlignement(al);
+		group->setAlignment(al);
 		
 			//Save the group to xml
 		texts_group.appendChild(group->toXml(document));
@@ -759,7 +759,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 
 /**
  * @brief Element::addDynamiqueTextItem
- * Add @deti as a dynamic text item of this element
+ * Add @deti as a dynamic text item of this element, @deti is reparented to this
  * If @deti is null, a new DynamicElementTextItem is created and added to this element.
  * @param deti
  */
@@ -768,6 +768,7 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
     if (deti && !m_dynamic_text_list.contains(deti))
 	{
         m_dynamic_text_list.append(deti);
+		deti->setParentItem(this);
 		emit textAdded(deti);
 	}
     else
@@ -780,9 +781,8 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 /**
  * @brief Element::removeDynamicTextItem
- * Remove @deti, no matter if is a child of this element or
- * a child of a group of this element.
- * The parent item of deti stay this item and deti is not deleted.
+ * Remove @deti, no matter if is a child of this element or a child of a group of this element.
+ * Set he parent item of @deti to 0, @deti is not deleted.
  * @param deti
  */
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
@@ -790,6 +790,7 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
     if (m_dynamic_text_list.contains(deti))
 	{
         m_dynamic_text_list.removeOne(deti);
+		deti->setParentItem(nullptr);
 		emit textRemoved(deti);
 		return;
 	}
@@ -800,6 +801,7 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 		{
 			removeTextFromGroup(deti, group);
 			m_dynamic_text_list.removeOne(deti);
+			deti->setParentItem(nullptr);
 			emit textRemoved(deti);
 			return;
 		}
@@ -849,9 +851,25 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 }
 
 /**
+ * @brief Element::addTextGroup
+ * @param group add group @group to the group of this element.
+ * the group must not be owned by an element.
+ */
+void Element::addTextGroup(ElementTextItemGroup *group)
+{
+	if(group->parentElement())
+		return;
+	
+	m_texts_group << group;
+	group->setParentItem(this);
+	emit textsGroupAdded(group);
+}
+
+/**
  * @brief Element::removeTextGroup
- * Remove the text group with name @name
- * All text owned by the group will be reparented to this element
+ * Remove the text group @group from this element, and set the parent of group to 0.
+ * group is not deleted.
+ * All texts owned by the group will be reparented to this element
  * @param name
  */
 void Element::removeTextGroup(ElementTextItemGroup *group)
@@ -870,9 +888,10 @@ void Element::removeTextGroup(ElementTextItemGroup *group)
 		}
 	}
 	
-	m_texts_group.removeOne(group);
+	
 	emit textsGroupAboutToBeRemoved(group);
-	delete group;
+	m_texts_group.removeOne(group);
+	group->setParentItem(nullptr);
 }
 
 /**
@@ -912,10 +931,13 @@ bool Element::addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup 
 		return false;
 	if(!m_texts_group.contains(group))
 		return false;
+
+	m_dynamic_text_list.removeOne(text);
+	emit textRemoved(text);
 	
-	removeDynamicTextItem(text);
 	group->addToGroup(text);
 	emit textAddedToGroup(text, group);
+	
 	return true;
 }
 
@@ -929,7 +951,7 @@ bool Element::removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemG
 	if(!m_texts_group.contains(group))
 		return false;
 	
-	if(group->childItems().contains(text))
+	if(group->texts().contains(text))
 	{
 		group->removeFromGroup(text);
 		emit textRemovedFromGroup(text, group);

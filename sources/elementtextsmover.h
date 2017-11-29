@@ -24,6 +24,7 @@
 class QGraphicsItem;
 class DiagramTextItem;
 class Diagram;
+class QGraphicsItemGroup;
 
 /**
 	This class manages the interactive movement of element text items on a
@@ -41,11 +42,19 @@ class ElementTextsMover
 		int  beginMovement(Diagram *diagram, QGraphicsItem *driver_item = nullptr);
 		void continueMovement(const QPointF &);
 		void endMovement();
+		
+	private:
+		QString undoText() const;
 	
 	private:
 		bool m_movement_running = false;
 		Diagram *m_diagram = nullptr;
 		QGraphicsItem *m_movement_driver = nullptr;
-		QHash <DiagramTextItem *, QPointF> m_texts_item_H;
+		QHash <DiagramTextItem *, QPointF> m_texts_hash;
+		QHash <QGraphicsItemGroup *, QPointF> m_grps_hash;
+		QHash <QGraphicsItem *, QPointF> m_items_hash;
+		QPointF m_last_pos;
+		int m_text_count = 0,
+			m_group_count = 0;
 };
 #endif

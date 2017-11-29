@@ -19,10 +19,16 @@
 #define ADDELEMENTTEXTCOMMAND_H
 
 #include <QUndoCommand>
+#include <QPointer>
 
 class Element;
 class DynamicElementTextItem;
+class ElementTextItemGroup;
 
+/**
+ * @brief The AddElementTextCommand class
+ * Manage the adding of element text
+ */
 class AddElementTextCommand : public QUndoCommand
 {
 	public:
@@ -37,18 +43,90 @@ class AddElementTextCommand : public QUndoCommand
 		DynamicElementTextItem *m_text = nullptr;
 };
 
-//class RemoveElementTextCommand : public QUndoCommand
-//{
-//	public:
-//		RemoveElementTextCommand(DynamicElementTextItem *deti, QUndoCommand *parent = nullptr);
-//		virtual ~RemoveElementTextCommand();
+/**
+ * @brief The AddTextsGroupCommand class
+ * Manage the adding of a texts group
+ */
+class AddTextsGroupCommand : public QUndoCommand
+{
+	public:
+		AddTextsGroupCommand(Element *element, QString groupe_name, QUndoCommand *parent = nullptr);
+		~AddTextsGroupCommand() override;
 		
-//		virtual void undo();
-//		virtual void redo();
-	
-//	private:
-//		Element *m_element = nullptr;
-//		DynamicElementTextItem *m_text = nullptr;
-//};
+		void undo() override;
+		void redo() override;
+		
+	private:
+		QPointer<Element> m_element;
+		QPointer<ElementTextItemGroup> m_group;
+		QString m_name;
+		bool m_first_undo = true;
+};
+
+/**
+ * @brief The RemoveTextsGroupCommand class
+ * Manage the removinf of a texts group
+ */
+class RemoveTextsGroupCommand : public QUndoCommand
+{
+	public:
+		RemoveTextsGroupCommand(Element *element, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		~RemoveTextsGroupCommand() override;
+		
+		void undo() override;
+		void redo() override;
+		
+	private:
+		QPointer<Element> m_element;
+		QPointer<ElementTextItemGroup> m_group;
+};
+
+class AddTextToGroupCommand : public QUndoCommand
+{
+	public:
+		AddTextToGroupCommand(DynamicElementTextItem *text, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		~AddTextToGroupCommand() override;
+		
+		void undo() override;
+		void redo() override;
+		
+	private:
+		QPointer<DynamicElementTextItem> m_text;
+		QPointer<ElementTextItemGroup> m_group;
+		QPointer<Element> m_element;
+};
+
+class RemoveTextFromGroupCommand : public QUndoCommand
+{
+	public:
+		RemoveTextFromGroupCommand(DynamicElementTextItem *text, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		~RemoveTextFromGroupCommand() override;
+		
+		void undo() override;
+		void redo() override;
+		
+	private:
+		QPointer<DynamicElementTextItem> m_text;
+		QPointer<ElementTextItemGroup> m_group;
+		QPointer<Element> m_element;
+};
+
+class AlignmentTextsGroupCommand : public QUndoCommand
+{
+	public:
+		AlignmentTextsGroupCommand(ElementTextItemGroup *group, Qt::Alignment new_alignment, QUndoCommand *parent = nullptr);
+		~AlignmentTextsGroupCommand() override;
+		
+		int id() const override{return 6;}
+		bool mergeWith(const QUndoCommand *other) override;
+		void undo() override;
+		void redo() override;
+		
+	private:
+		QPointer<ElementTextItemGroup> m_group;
+		Qt::Alignment m_previous_alignment,
+					  m_new_alignment;
+		QHash<DynamicElementTextItem *, QPointF> m_texts_pos;
+};
 
 #endif // ADDELEMENTTEXTCOMMAND_H
