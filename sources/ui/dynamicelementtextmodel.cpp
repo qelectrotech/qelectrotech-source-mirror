@@ -242,6 +242,19 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 		qsi_list.clear();
 		qsi_list << y_pos << y_pos_a;
 		qsi->appendRow(qsi_list);
+		
+			//Rotation
+		QStandardItem *rot = new QStandardItem(tr("Rotation"));
+		rot->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		
+		QStandardItem *rot_a = new QStandardItem;
+		rot_a->setData(deti->rotation(), Qt::EditRole);
+		rot_a->setData(DynamicElementTextModel::rotation, Qt::UserRole+1);
+		rot_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+		
+		qsi_list.clear();;
+		qsi_list << rot << rot_a;
+		qsi->appendRow(qsi_list);
 	}
 	
 	
@@ -445,6 +458,17 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		{
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
 			quc->setText(tr("Déplacer un texte d'élément"));
+		}
+	}
+		//When text is in a group, they're isn't item for the rotation of the text
+	if(text_qsi->child(7,1))
+	{
+		qreal rot = text_qsi->child(7,1)->data(Qt::EditRole).toDouble();
+		rot = QET::correctAngle(rot);
+		if(rot != deti->rotation())
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "rotation", QVariant(deti->rotation()), QVariant(rot), undo);
+			quc->setText(tr("Pivoter un texte d'élément"));
 		}
 	}
 	
@@ -686,6 +710,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::xChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
 		connection_list << connect(deti, &DynamicElementTextItem::yChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
 		connection_list << connect(deti, &DynamicElementTextItem::frameChanged,    [deti,this](){this->updateDataFromText(deti, frame);});
+		connection_list << connect(deti, &DynamicElementTextItem::rotationChanged, [deti,this](){this->updateDataFromText(deti, rotation);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
 		
 		m_hash_text_connect.insert(deti, connection_list);
@@ -773,6 +798,12 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		case frame:
 		{
 			qsi->child(4,1)->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
+			break;
+		}
+		case rotation:
+		{
+			if(qsi->child(7,1))
+				qsi->child(7,1)->setData(deti->rotation(), Qt::EditRole);
 			break;
 		}
 	}
@@ -867,6 +898,16 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			sb->setSuffix(" px");
 			return sb;
 		}
+		case DynamicElementTextModel::rotation:
+		{
+			QSpinBox *sb = new QSpinBox(parent);
+			sb->setObjectName("rot_spinbox");
+			sb->setRange(0, 359);
+			sb->setWrapping(true);
+			sb->setFrame(false);
+			sb->setSuffix(" °");
+			return sb;
+		}
 	}
 	return QStyledItemDelegate::createEditor(parent, option, index);
 }
@@ -942,7 +983,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 		//in normal behavior, the value is commited when the spinbox lose focus or enter key is pressed
 		//With this hack the value is commited each time the value change, so the text is moved in live.
 		//We also use this hack for the font size spinbox
-	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size")
+	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size" || object->objectName() == "rot_spinbox")
 	{
 		QSpinBox *sb = static_cast<QSpinBox *>(object);
 		if(event->type() == QEvent::KeyRelease)

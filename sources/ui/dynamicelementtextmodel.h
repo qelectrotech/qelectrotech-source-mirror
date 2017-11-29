@@ -46,7 +46,8 @@ class DynamicElementTextModel : public QStandardItemModel
             tagg,
             color,
 			pos,
-			frame
+			frame,
+			rotation
         };
         
 		DynamicElementTextModel(Element *element, QObject *parent = nullptr);
