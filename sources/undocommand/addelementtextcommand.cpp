@@ -118,6 +118,9 @@ RemoveTextsGroupCommand::RemoveTextsGroupCommand(Element *element, ElementTextIt
 	m_group(group)
 {
 	setText(QObject::tr("Supprimer un groupe de textes d'élément"));
+	
+	for(DynamicElementTextItem *deti : group->texts())
+		m_text_list.append(deti);
 }
 
 RemoveTextsGroupCommand::~RemoveTextsGroupCommand()
@@ -126,13 +129,25 @@ RemoveTextsGroupCommand::~RemoveTextsGroupCommand()
 void RemoveTextsGroupCommand::undo()
 {
 	if(m_element && m_group)
+	{
 		m_element.data()->addTextGroup(m_group.data());
+		
+		for(QPointer<DynamicElementTextItem> p : m_text_list)
+			if(p)
+				m_element.data()->addTextToGroup(p.data(), m_group.data());
+	}
 }
 
 void RemoveTextsGroupCommand::redo()
 {
 	if(m_element && m_group)
+	{
+		for(QPointer<DynamicElementTextItem> p : m_text_list)
+			if(p)
+				m_element.data()->removeTextFromGroup(p.data(), m_group.data());
+		
 		m_element.data()->removeTextGroup(m_group.data());
+	}
 }
 
 
@@ -177,7 +192,14 @@ void AddTextToGroupCommand::undo()
 void AddTextToGroupCommand::redo()
 {
 	if(m_element && m_group && m_text)
+	{
+		if(m_text.data()->isSelected())
+		{
+			m_text.data()->setSelected(false);
+			m_group.data()->setSelected(true);
+		}
 		m_element.data()->addTextToGroup(m_text, m_group);
+	}
 }
 
 /*****************************

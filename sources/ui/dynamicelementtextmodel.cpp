@@ -31,6 +31,8 @@
 #include "conductor.h"
 #include "elementtextitemgroup.h"
 #include "qeticons.h"
+#include "diagram.h"
+#include "addelementtextcommand.h"
 
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
@@ -100,7 +102,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
         return qsi_list;
     
 	QStandardItem *qsi = new QStandardItem(deti->toPlainText());
-    qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+    qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled |Qt::ItemIsDragEnabled);
 	qsi->setIcon(QET::Icons::PartText);
 	
 	
@@ -299,8 +301,8 @@ void DynamicElementTextModel::removeText(DynamicElementTextItem *deti)
 /**
  * @brief DynamicElementTextModel::textFromIndex
  * @param index
- * @return the text associated with @index. Return value can be nullptr
- * @Index can be a child of an index associated with a text
+ * @return the text associated with @index. Returned value can be nullptr
+ * @Index can be a child of an index associated with a text and can be the column 0 or 1. 
  */
 DynamicElementTextItem *DynamicElementTextModel::textFromIndex(const QModelIndex &index) const
 {
@@ -317,11 +319,19 @@ DynamicElementTextItem *DynamicElementTextModel::textFromIndex(const QModelIndex
  * @brief DynamicElementTextModel::textFromItem
  * @param item
  * @return the text associated with @item. Return value can be nullptr
- * @item can be a child of an item associated with a text
+ * @item can be a child of an item associated with a text and can be the column 0 or 1. 
  * Note can return nullptr
  */
 DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *item) const
 {
+		//Get the item of the column 0
+	if(item->column() == 1)
+	{
+		if(item->parent())
+			item = item->parent()->child(item->row(), 0);
+		else
+			item = itemFromIndex(index(item->row(),0));
+	}
 		//Item haven't got parent, so they can be only a text or a group
 	if(!item->parent()) 
 	{
@@ -486,7 +496,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 		return;
 	
 	QStandardItem *grp = new QStandardItem(group->name());
-	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
 	grp->setIcon(QET::Icons::textGroup);
 	
 	QStandardItem *empty_qsi = new QStandardItem(0);
@@ -550,7 +560,7 @@ void DynamicElementTextModel::removeTextFromGroup(DynamicElementTextItem *deti, 
  * @brief DynamicElementTextModel::groupFromIndex
  * @param index
  * @return the group associated with @index. Return value can be nullptr
- * @Index can be a child of an index associated with a group
+ * @Index can be a child of an index associated with a group and can be the column 0 or 1.
  */
 ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(const QModelIndex &index) const
 {
@@ -567,17 +577,24 @@ ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(const QModelIndex 
  * @brief DynamicElementTextModel::groupFromItem
  * @param item
  * @return the group associated with @item. Return value can be nullptr
- * @item can be a child of an item associated with a group
+ * @item can be a child of an item associated with a group and can be the column 0 or 1.
  */
 ElementTextItemGroup *DynamicElementTextModel::groupFromItem(QStandardItem *item) const
 {
-	QStandardItem *group_item = item;
+		//Get the item of the column 0
+	if(item->column() == 1)
+	{
+		if(item->parent())
+			item = item->parent()->child(item->row(), 0);
+		else
+			item = itemFromIndex(index(item->row(),0));
+	}
 	
-	while (group_item->parent())
-		group_item = group_item->parent();
+	while (item->parent())
+		item = item->parent();
 	
-	if(m_groups_list.values().contains(group_item))
-		return m_groups_list.key(group_item);
+	if(m_groups_list.values().contains(item))
+		return m_groups_list.key(item);
 	else
 		return nullptr;
 }
@@ -594,6 +611,241 @@ QModelIndex DynamicElementTextModel::indexFromGroup(ElementTextItemGroup *group)
 		return m_groups_list.value(group)->index();
 	else
 		return QModelIndex();
+}
+
+/**
+ * @brief DynamicElementTextModel::indexIsText
+ * @param index
+ * @return True if @index represente a text, both for the column 0 and 1.
+ * Return false if @index is a child of an index associated to a text.
+ */
+bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
+{
+	QStandardItem *item = nullptr;
+	
+		//The item represent the second column
+	if(index.column() == 1)
+	{
+		if(index.parent().isValid())
+			item = itemFromIndex(index.parent().child(index.row(),0));
+		else
+			item = itemFromIndex(this->index(index.row(),0));
+	}
+	else
+		item = itemFromIndex(index);
+
+	if(item && m_texts_list.values().contains(item))
+		return true;
+	else
+		return false;
+}
+
+/**
+ * @brief DynamicElementTextModel::indexIsGroup
+ * @param index
+ * @return True if @index represente a group, both for the column 0 and 1.
+ * Return false if @index is a child of an index associated to a group.
+ */
+bool DynamicElementTextModel::indexIsGroup(const QModelIndex &index) const
+{
+	QStandardItem *item = nullptr;
+	
+		//The item represent the second column
+	if(index.column() == 1)
+	{
+		if(index.parent().isValid())
+			item = itemFromIndex(index.parent().child(index.row(),0));
+		else
+			item = itemFromIndex(this->index(index.row(),0));
+	}
+	else
+		item = itemFromIndex(index);
+
+	if(item && m_groups_list.values().contains(item))
+		return true;
+	else
+		return false;
+}
+
+bool DynamicElementTextModel::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
+{
+	Q_UNUSED(action);
+	
+	if(data->hasFormat("application/x-qet-element-text-uuid"))
+	{
+		QModelIndex index;
+		if(parent.isValid() && row != -1 && column !=1) //Insert in child of parent
+			index = parent.child(row, column);
+		else if (parent.isValid() && row == -1 && column == -1) //Drop in parent
+			index = parent;
+		
+		QUuid uuid(data->text());
+
+			//The data is drop in a group
+		if(indexIsInGroup(index))
+		{
+				//Data is dragged from a text direct child of element
+			for(DynamicElementTextItem *text : m_element.data()->dynamicTextItems())
+				if(text->uuid() == uuid)
+					return true;
+				//Data is dragged from a text in a group
+			for(ElementTextItemGroup *group : m_element.data()->textGroups())
+			{
+				for(DynamicElementTextItem *text : group->texts())
+					if(text->uuid() == uuid)
+						return true;
+			}
+			
+			return false;
+						
+		}
+		else //The data is not drop in a group, then the action must be a drag of text from a group to the element
+		{
+			for(ElementTextItemGroup *group : m_element.data()->textGroups())
+			{
+				for(DynamicElementTextItem *text : group->texts())
+					if(text->uuid() == uuid)
+						return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+/**
+ * @brief DynamicElementTextModel::dropMimeData
+ * @param data
+ * @param action
+ * @param row
+ * @param column
+ * @param parent
+ * @return In any case return false, for overwrite the default behavior of model.
+ */
+bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
+{
+	Q_UNUSED(action)
+	
+	if(data->hasFormat("application/x-qet-element-text-uuid"))
+	{		
+		QUuid uuid(data->text());
+		DynamicElementTextItem *deti = nullptr;
+		ElementTextItemGroup *group = nullptr;
+		
+		QModelIndex index;
+		if(parent.isValid() && row != -1 && column !=1) //Insert in child of parent
+			index = parent.child(row, column);
+		else if (parent.isValid() && row == -1 && column == -1) //Drop in parent
+			index = parent;
+
+			//Darg and drop in a group of text
+		if(indexIsInGroup(index))
+		{
+				//The dragged text is a direct child of element
+			for(DynamicElementTextItem *text : m_element.data()->dynamicTextItems())
+			{
+				if(text->uuid() == uuid)
+				{
+					deti = text;
+					group = groupFromIndex(index);
+					
+					if(group && deti) //Text successfully added in a group	
+					{
+						m_element.data()->diagram()->undoStack().push(new AddTextToGroupCommand(deti, group));
+						return false;
+					}
+				}
+			}
+			
+				//The dragged text is in a group
+			for(ElementTextItemGroup *grp : m_element.data()->textGroups())
+			{
+				for(DynamicElementTextItem *text : grp->texts())
+				{
+					if(text->uuid() == uuid)
+					{
+						deti = text;
+						group = groupFromIndex(index);
+						
+							//Text successfully moved from a group to another group
+						if(group && deti)
+						{
+							QUndoStack &stack = m_element.data()->diagram()->undoStack();
+							stack.beginMacro(tr("Déplacer un texte dans un autre groupe"));
+							stack.push(new RemoveTextFromGroupCommand(deti, grp));
+							stack.push(new AddTextToGroupCommand(deti, group));
+							stack.endMacro();
+							
+							return false;
+						}
+					}
+				}
+			}
+				
+			return false;
+		}
+		else //Drag and drop in anaother place 
+		{
+				//Get the dropped text
+			for(ElementTextItemGroup *grp : m_element.data()->textGroups())
+			{
+				for(DynamicElementTextItem *text : grp->texts())
+				{
+					if(text->uuid() == uuid)
+					{
+						deti = text;
+						group = grp;
+						break;
+					}
+				}
+				if(deti)
+					break;
+			}
+			
+			if(deti && group) //Text successfully removed from group
+			{
+				m_element.data()->diagram()->undoStack().push((new RemoveTextFromGroupCommand(deti, group)));
+				return false;
+			}
+			
+			return false;
+		}
+	}
+	
+	return false;
+}
+
+QMimeData *DynamicElementTextModel::mimeData(const QModelIndexList &indexes) const
+{
+	QModelIndex index = indexes.first();
+	if (index.isValid())
+	{
+		QStandardItem *item =  itemFromIndex(index);
+		if(item)
+		{
+			DynamicElementTextItem *deti = m_texts_list.key(item);
+			if(deti)
+			{
+				QMimeData *mime_data = new QMimeData();
+				mime_data->setText(deti->uuid().toString());
+				mime_data->setData("application/x-qet-element-text-uuid", deti->uuid().toString().toLatin1());
+				return mime_data;
+			}
+		}
+	}
+	
+	return new QMimeData();
+}
+
+/**
+ * @brief DynamicElementTextModel::mimeTypes
+ * @return 
+ */
+QStringList DynamicElementTextModel::mimeTypes() const
+{
+	QStringList mime_list = QAbstractItemModel::mimeTypes();
+	mime_list << "application/x-qet-element-text-uuid";
+	return mime_list;
 }
 
 /**

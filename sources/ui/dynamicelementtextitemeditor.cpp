@@ -42,9 +42,11 @@ DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWi
 	m_tree_view->setAlternatingRowColors(true);
 	m_tree_view->setEditTriggers(QAbstractItemView::CurrentChanged);
 	m_tree_view->installEventFilter(this);
+	m_tree_view->setDragDropMode(QAbstractItemView::InternalMove);
     ui->verticalLayout->addWidget(m_tree_view);
 	
-	setUpAction();
+	connect(m_tree_view, &QTreeView::clicked, this, &DynamicElementTextItemEditor::treeViewClicked);
+	ui->m_remove_selection->setDisabled(true);
 	
     setElement(element);
 }
@@ -135,6 +137,7 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 	m_tree_view->expand(index);
 	m_tree_view->expand(index.child(0,0));
 	m_tree_view->setCurrentIndex(index);
+	ui->m_remove_selection->setEnabled(true);
 }
 
 /**
@@ -150,6 +153,7 @@ void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)
 	
 	m_tree_view->expand(index);
 	m_tree_view->setCurrentIndex(index);
+	ui->m_remove_selection->setEnabled(true);
 }
 
 QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
@@ -168,164 +172,6 @@ QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
 		return nullptr;
 }
 
-/**
- * @brief DynamicElementTextItemEditor::eventFilter
- * Reimplemented for intercept the context menu event of the tree view
- * @param watched
- * @param event
- * @return 
- */
-bool DynamicElementTextItemEditor::eventFilter(QObject *watched, QEvent *event)
-{
-	if(watched == m_tree_view && event->type() == QEvent::ContextMenu)
-	{
-		QContextMenuEvent *qcme = static_cast<QContextMenuEvent *>(event);
-		QModelIndex index = m_tree_view->currentIndex();
-		
-		if(index.isValid())
-		{
-			for(QAction *action : m_actions_list)
-				m_context_menu->removeAction(action);
-			m_add_to_group->menu()->clear();
-			
-				//Pop up a context menu for a group or a text in a group
-			if(m_model->indexIsInGroup(index))
-			{
-				QStandardItem *item = m_model->itemFromIndex(index);
-				if(item)
-				{
-					if(m_model->textFromItem(item)) //User click on a text or a child item of a text
-					{
-						m_context_menu->addAction(m_remove_text_from_group);
-						m_context_menu->addAction(m_remove_current_text);
-					}
-					else//User click on a group item
-						m_context_menu->addAction(m_remove_current_group);
-				}
-			}
-			else //Popup a context menu for a text not owned by a group
-			{
-				if(m_element.data()->textGroups().isEmpty())
-					m_context_menu->addAction(m_new_group);
-				else
-				{
-					m_context_menu->addAction(m_add_to_group);
-					m_context_menu->addAction(m_new_group);
-					m_context_menu->addAction(m_remove_current_text);
-					
-					for(ElementTextItemGroup *grp : m_element.data()->textGroups())
-					{
-						QAction *action = m_add_to_group->menu()->addAction(grp->name());
-						connect(action, &QAction::triggered, m_signal_mapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
-						m_signal_mapper->setMapping(action, grp->name());
-					}
-				}
-			}
-			
-			m_context_menu->popup(qcme->globalPos());
-			return true;
-		}
-	}
-	return AbstractElementPropertiesEditorWidget::eventFilter(watched, event);
-}
-
-void DynamicElementTextItemEditor::setUpAction()
-{
-	m_context_menu = new QMenu(this);
-	
-		//Action add text to a group
-	m_add_to_group = new QAction(tr("Ajouter au groupe"), m_context_menu);
-	m_add_to_group->setMenu(new QMenu(m_context_menu));
-	
-	m_signal_mapper = new QSignalMapper(this);
-	connect(m_signal_mapper, static_cast<void (QSignalMapper::*)(const QString &)>(&QSignalMapper::mapped), this, &DynamicElementTextItemEditor::addCurrentTextToGroup);
-	
-		//Action remove text from a group
-	m_remove_text_from_group = new QAction(tr("Supprimer le texte de ce groupe"), m_context_menu);
-	connect(m_remove_text_from_group, &QAction::triggered, [this]()
-	{
-		QAbstractItemModel *m = this->m_tree_view->model();
-		if(m == nullptr)
-			return;
-		
-		DynamicElementTextModel *model = static_cast<DynamicElementTextModel *>(m);
-		if(model->indexIsInGroup(m_tree_view->currentIndex()))
-		{
-			DynamicElementTextItem *deti = m_model->textFromIndex(m_tree_view->currentIndex());
-			if(deti && deti->parentGroup())
-				m_element.data()->removeTextFromGroup(deti, deti->parentGroup());
-		}
-	});
-	
-		//Action create new group and the connection for open a dialog to edit the name
-		//of the new group
-	m_new_group = new QAction(tr("Nouveau groupe"), m_context_menu);
-	connect(m_new_group, &QAction::triggered, [this]()
-	{
-		QAbstractItemModel *m = this->m_tree_view->model();
-		if(m == nullptr)
-			return;
-		
-		DynamicElementTextModel *model = static_cast<DynamicElementTextModel *>(m);
-		if(model->indexIsInGroup(m_tree_view->currentIndex()))
-			return;
-		
-		DynamicElementTextItem *deti = model->textFromIndex(m_tree_view->currentIndex());
-		if(deti)
-		{
-			Element *element = deti->parentElement();
-			QString name = QInputDialog::getText(this, tr("Nom du groupe"), tr("Entrer le nom du nouveau groupe"));
-			
-			if(name.isEmpty())
-				return;
-			else
-				element->addTextGroup(name);
-		}
-	});
-	
-		//Action remove the selected text
-	m_remove_current_text = new QAction(tr("Supprimer le texte"), m_context_menu);
-	connect(m_remove_current_text, &QAction::triggered, [this]()
-	{
-		QAbstractItemModel *m = this->m_tree_view->model();
-		if(m == nullptr)
-			return;
-		
-		DynamicElementTextModel *model = static_cast<DynamicElementTextModel *>(m);
-		if(DynamicElementTextItem *deti = model->textFromIndex(m_tree_view->currentIndex()))
-		{
-			if(m_element.data()->diagram() && m_element.data()->diagram()->project())
-			{
-				QUndoStack *us =m_element.data()->diagram()->project()->undoStack();
-				DiagramContent dc;
-				dc.m_element_texts << deti;
-				us->push((new DeleteQGraphicsItemCommand(m_element.data()->diagram(), dc)));
-			}
-		}
-	});
-	
-		//Action remove the selected group
-	m_remove_current_group = new QAction(tr("Supprimer le groupe"), m_context_menu);
-	connect(m_remove_current_group, &QAction::triggered, [this]()
-	{
-		QAbstractItemModel *m = this->m_tree_view->model();
-		if(m == nullptr)
-			return;
-		
-		DynamicElementTextModel *model = static_cast<DynamicElementTextModel *>(m);
-		QModelIndex index = m_tree_view->currentIndex();
-		if(model->indexIsInGroup(index) && !model->textFromIndex(index)) //Item is in group and is not a text, so item is the group
-			m_element.data()->removeTextGroup(model->groupFromIndex(index));
-	});
-	
-	m_actions_list << m_add_to_group \
-				   << m_remove_text_from_group \
-				   << m_new_group \
-				   << m_remove_current_text \
-				   << m_remove_current_group;
-	
-}
-
 void DynamicElementTextItemEditor::dataEdited(DynamicElementTextItem *deti)
 {
 	Q_UNUSED(deti)
@@ -333,28 +179,12 @@ void DynamicElementTextItemEditor::dataEdited(DynamicElementTextItem *deti)
 		apply();
 }
 
-/**
- * @brief DynamicElementTextItemEditor::addCurrentTextToGroup
- * Add the current selected text to the group named @name
- * @param name
- */
-void DynamicElementTextItemEditor::addCurrentTextToGroup(QString name)
+void DynamicElementTextItemEditor::treeViewClicked(const QModelIndex &index)
 {
-	QModelIndex index = m_tree_view->currentIndex();
-	DynamicElementTextModel *model = static_cast<DynamicElementTextModel *>(m_tree_view->model());
-	
-	DynamicElementTextItem *deti = model->textFromIndex(index);
-	ElementTextItemGroup *group = m_element.data()->textGroup(name);
-	
-	if(deti && group)
-	{
-		if(deti->isSelected())
-		{
-			deti->setSelected(false);
-			group->setSelected(true);
-		}
-		m_element.data()->addTextToGroup(deti, group);
-	}
+	if(m_model->indexIsText(index) || m_model->indexIsGroup(index))
+		ui->m_remove_selection->setEnabled(true);
+	else
+		ui->m_remove_selection->setDisabled(true);
 }
 
 /**
@@ -379,10 +209,10 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_remove_text_clicked
- * Remove the selected text field
+ * @brief DynamicElementTextItemEditor::on_m_remove_selection_clicked
+ * Remove the selected item
  */
-void DynamicElementTextItemEditor::on_m_remove_text_clicked()
+void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 {
     DynamicElementTextItem *deti = m_model->textFromIndex(m_tree_view->currentIndex());
     if(deti)
@@ -396,8 +226,20 @@ void DynamicElementTextItemEditor::on_m_remove_text_clicked()
 		return;
     }
 	ElementTextItemGroup *group = m_model->groupFromIndex(m_tree_view->currentIndex());
-	if(group)
-	{
-		m_element.data()->removeTextGroup(group);
-	}
+	if(group && m_element.data()->diagram())
+		m_element.data()->diagram()->undoStack().push(new RemoveTextsGroupCommand(m_element.data(), group));
+}
+
+/**
+ * @brief DynamicElementTextItemEditor::on_m_add_group_clicked
+ * Add a new group
+ */
+void DynamicElementTextItemEditor::on_m_add_group_clicked()
+{
+	QString name = QInputDialog::getText(this, tr("Nom du groupe"), tr("Entrer le nom du nouveau groupe"));
+	
+	if(name.isEmpty())
+		return;
+	else if (m_element.data()->diagram())
+		m_element.data()->diagram()->undoStack().push(new AddTextsGroupCommand(m_element, name));
 }

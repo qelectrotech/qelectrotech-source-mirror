@@ -62,6 +62,13 @@ class DynamicElementTextModel : public QStandardItemModel
 		ElementTextItemGroup *groupFromIndex(const QModelIndex &index) const;
 		ElementTextItemGroup *groupFromItem(QStandardItem *item) const;
 		QModelIndex indexFromGroup(ElementTextItemGroup *group) const;
+		bool indexIsText(const QModelIndex &index) const;
+		bool indexIsGroup(const QModelIndex &index) const;
+		
+		bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const override;
+		bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) override;
+		QMimeData *mimeData(const QModelIndexList &indexes) const override;
+		QStringList mimeTypes() const override;
 		
 	signals:
 		void dataForTextChanged(DynamicElementTextItem *text);

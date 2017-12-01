@@ -24,8 +24,6 @@ class DynamicElementTextItem;
 class DynamicElementTextModel;
 class QTreeView;
 class QStandardItem;
-class QMenu;
-class QSignalMapper;
 class ElementTextItemGroup;
 
 namespace Ui {
@@ -47,29 +45,20 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 		void setCurrentText(DynamicElementTextItem *text);
 		void setCurrentGroup(ElementTextItemGroup *group);
 		QUndoCommand *associatedUndo() const override;
-		bool eventFilter(QObject *watched, QEvent *event) override;
 	
 	private:
-		void setUpAction();
 		void dataEdited(DynamicElementTextItem *deti);
-		void addCurrentTextToGroup(QString name);
+		void treeViewClicked(const QModelIndex &index);
     
     private slots:
         void on_m_add_text_clicked();
-        void on_m_remove_text_clicked();
-        
-    private:
+        void on_m_remove_selection_clicked();
+		void on_m_add_group_clicked();
+		
+		private:
 		Ui::DynamicElementTextItemEditor *ui;
         QTreeView *m_tree_view = nullptr;
         DynamicElementTextModel *m_model = nullptr;
-		QMenu *m_context_menu = nullptr;
-		QSignalMapper *m_signal_mapper = nullptr;
-		QAction *m_add_to_group = nullptr,
-				*m_remove_text_from_group = nullptr,
-				*m_new_group = nullptr,
-				*m_remove_current_text = nullptr,
-				*m_remove_current_group = nullptr;
-		QList<QAction *> m_actions_list;
 };
 
 #endif // DYNAMICELEMENTTEXTITEMEDITOR_H

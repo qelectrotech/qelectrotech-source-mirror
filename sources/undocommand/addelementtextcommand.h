@@ -79,6 +79,7 @@ class RemoveTextsGroupCommand : public QUndoCommand
 	private:
 		QPointer<Element> m_element;
 		QPointer<ElementTextItemGroup> m_group;
+		QList<QPointer<DynamicElementTextItem>> m_text_list;
 };
 
 class AddTextToGroupCommand : public QUndoCommand

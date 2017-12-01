@@ -35,7 +35,7 @@
         <string>Ajouter un texte</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Texte</string>
        </property>
        <property name="icon">
         <iconset resource="../../qelectrotech.qrc">
@@ -44,7 +44,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_remove_text">
+      <widget class="QPushButton" name="m_add_group">
+       <property name="toolTip">
+        <string>Ajouter un groupe de textes</string>
+       </property>
+       <property name="text">
+        <string>Groupe</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../qelectrotech.qrc">
+         <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_remove_selection">
        <property name="toolTip">
         <string>Supprimer la sélection</string>
        </property>
