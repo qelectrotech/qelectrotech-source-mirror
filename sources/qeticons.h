@@ -40,6 +40,7 @@ namespace QET {
 		extern QIcon BringForward;
 		extern QIcon Cancel;
 		extern QIcon Conductor;
+        extern QIcon ConductorEdit;
 		extern QIcon ConductorSettings;
 		extern QIcon Configure;
 		extern QIcon ConfigureToolbars;
@@ -74,6 +75,8 @@ namespace QET {
 		extern QIcon EditRedo;
 		extern QIcon EditRename;
 		extern QIcon EditSelectAll;
+        extern QIcon EditSelectInvert;
+        extern QIcon EditSelectNone;
 		extern QIcon EditTableCellMerge;
 		extern QIcon EditTableCellSplit;
 		extern QIcon EditTableDeleteColumn;
@@ -98,11 +101,19 @@ namespace QET {
 		extern QIcon FolderDelete;
 		extern QIcon FolderEdit;
 		extern QIcon FolderNew;
+        extern QIcon FolderOnlyThis;
+        extern QIcon FolderOpen;
+        extern QIcon FolderProperties;
+        extern QIcon FolderShowAll;
 		extern QIcon Forbidden;
 		extern QIcon FullScreenEnter;
 		extern QIcon FullScreenExit;
-		extern QIcon GoDown;
-		extern QIcon GoUp;
+        extern QIcon GoBottom;
+        extern QIcon GoDown;
+        extern QIcon GoDownDouble;
+        extern QIcon GoTop;
+        extern QIcon GoUp;
+        extern QIcon GoUpDouble;
 		extern QIcon Ground;
 		extern QIcon Grid;
 		extern QIcon Hide;
@@ -142,6 +153,7 @@ namespace QET {
 		extern QIcon ProjectFile;
 		extern QIcon ProjectFileGP;
 		extern QIcon ProjectNew;
+        extern QIcon ProjectProperties;
 		extern QIcon Projects;
 		extern QIcon QETIcon;
 		extern QIcon QETLogo;
@@ -149,14 +161,19 @@ namespace QET {
 		extern QIcon QtLogo;
 		extern QIcon Raise;
 		extern QIcon Remove;
-		extern QIcon Restore;
-		extern QIcon SendBackward;
+        extern QIcon Restore;
+        extern QIcon RunDxf;
+        extern QIcon SendBackward;
 		extern QIcon Settings;
 		extern QIcon SinglePage;
 		extern QIcon South;
 		extern QIcon Start;
-		extern QIcon Terminal;
+        extern QIcon TableOfContent;
+        extern QIcon Terminal;
 		extern QIcon TitleBlock;
+        extern QIcon TitleBlockBottom;
+        extern QIcon TitleBlockRight;
+        extern QIcon TransformRotate;
 		extern QIcon UserInformations;
 		extern QIcon ViewFitWidth;
 		extern QIcon ViewFitWindow;
@@ -201,6 +218,7 @@ namespace QET {
 		extern QIcon QETVideo;
 		extern QIcon super;
 		extern QIcon sub;
+		extern QIcon textGroup;
 	}
 }
 #endif

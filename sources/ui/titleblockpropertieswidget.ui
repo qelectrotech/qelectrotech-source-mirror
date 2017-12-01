@@ -55,29 +55,73 @@
         </item>
         <item>
          <widget class="QComboBox" name="m_display_at_cb">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
+          <property name="iconSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
           <item>
            <property name="text">
-            <string>en bas</string>
+            <string notr="true"> </string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../qelectrotech.qrc">
+             <normaloff>:/ico/22x22/titleblock-bottom.png</normaloff>:/ico/22x22/titleblock-bottom.png</iconset>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>à droite </string>
+            <string notr="true"> </string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../qelectrotech.qrc">
+             <normaloff>:/ico/22x22/titleblock-right.png</normaloff>:/ico/22x22/titleblock-right.png</iconset>
            </property>
           </item>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="m_tbt_pb">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string/>
           </property>
           <property name="icon">
            <iconset resource="../../qelectrotech.qrc">
-            <normaloff>:/ico/16x16/label.png</normaloff>:/ico/16x16/label.png</iconset>
+            <normaloff>:/ico/22x22/edit-rename.png</normaloff>:/ico/22x22/edit-rename.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
           </property>
           <property name="flat">
            <bool>false</bool>

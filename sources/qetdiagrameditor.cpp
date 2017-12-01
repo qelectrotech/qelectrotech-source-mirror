@@ -289,11 +289,11 @@ void QETDiagramEditor::setUpActions()
 
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                  this);
 	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
-	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
+    prj_edit_prop     = new QAction(QET::Icons::ProjectProperties,     tr("Propriétés du projet"),                 this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                     this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                   this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
+    prj_diagramList   = new QAction(QET::Icons::TableOfContent,        tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentSpreadsheet,   tr("Exporter une nomenclature"),            this);
 	prj_terminalBloc  = new QAction(QET::Icons::TerminalStrip,         tr("Lancer le plugin de creation de bornier"), this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
@@ -349,9 +349,9 @@ void QETDiagramEditor::setUpActions()
 
 		//Selections Actions (related to a selected item)
 	delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
-	rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
+	rotate_selection  = m_selection_actions_group.addAction( QET::Icons::TransformRotate, tr("Pivoter")							  );
 	rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
-	find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
+	find_element      = m_selection_actions_group.addAction(   QET::Icons::ZoomDraw,        tr("Retrouver dans le panel")			  );
 	edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné")  );
 
 	delete_selection -> setShortcut( QKeySequence::Delete);
@@ -373,9 +373,9 @@ void QETDiagramEditor::setUpActions()
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
 		//Select Action
-	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll, tr("Tout sélectionner")	   );
-	QAction *select_nothing = m_select_actions_group.addAction(                            tr("Désélectionner tout") );
-	QAction *select_invert  = m_select_actions_group.addAction(                            tr("Inverser la sélection")  );
+    QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
+    QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
+    QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
 
 	select_all     -> setShortcut(QKeySequence::SelectAll);
 	select_nothing -> setShortcut(QKeySequence::Deselect);
@@ -623,7 +623,7 @@ void QETDiagramEditor::setUpMenu() {
 	
 
 	// menu Affichage
-	QMenu *projects_view_mode = menu_affichage -> addMenu(tr("Afficher les projets"));
+    QMenu *projects_view_mode = menu_affichage -> addMenu(QET::Icons::ConfigureToolbars, tr("Afficher les projets"));
 	projects_view_mode -> setTearOffEnabled(true);
 	projects_view_mode -> addAction(windowed_view_mode);
 	projects_view_mode -> addAction(tabbed_view_mode);

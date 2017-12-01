@@ -387,7 +387,7 @@ void ProjectView::addDiagram(DiagramView *diagram_view)
 		return;
 
 		// Add new tab for the diagram
-	m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
+    m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
 	diagram_view->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
 	m_diagram_view_list << diagram_view;
