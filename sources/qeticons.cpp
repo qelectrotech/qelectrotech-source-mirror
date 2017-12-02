@@ -210,7 +210,6 @@ namespace QET {
 		QIcon QETVideo;
 		QIcon super;
 		QIcon sub;
-		QIcon textGroup;
 	}
 }
 
@@ -517,5 +516,4 @@ void QET::Icons::initIcons() {
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");
     sub                 .addFile(":/ico/22x22/format-text-subscript.png");
     super               .addFile(":/ico/22x22/format-text-superscript.png");
-	textGroup           .addFile(":/ico/breeze-icons/scalable/actions/16/object-group.svg");
 }
