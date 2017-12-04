@@ -809,7 +809,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DiagramEventAddElement</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="225"/>
         <source>Ajouter %1</source>
         <translation>vložit %1</translation>
     </message>
@@ -974,12 +974,12 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DynamicElementTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="41"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="42"/>
         <source>Texte</source>
         <translation type="unfinished">Text</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="49"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="50"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
@@ -992,92 +992,192 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <translation type="unfinished">Formulář</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="35"/>
+        <source>Ajouter un texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="38"/>
+        <source>Texte</source>
+        <translation type="unfinished">Text</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="49"/>
+        <source>Ajouter un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="52"/>
+        <source>Groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <source>Supprimer la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="42"/>
         <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="118"/>
         <source>Modifier des textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="161"/>
+        <source>Modifier un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="168"/>
+        <source>Modifier %1 textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
+        <source>Nom du groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
+        <source>Entrer le nom du nouveau groupe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="37"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="42"/>
         <source>Propriété</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="38"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="43"/>
         <source>Valeur</source>
         <translation type="unfinished">Hodnota</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="110"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="257"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="264"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="437"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="408"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="415"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="899"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="996"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="72"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="259"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="270"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="351"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="115"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="410"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="421"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="904"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="997"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="107"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="261"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="116"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="412"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="427"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="998"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="82"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="125"/>
         <source>Texte</source>
         <translation type="unfinished">Text</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="94"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="137"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="157"/>
         <source>Mon texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="126"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="180"/>
         <source>Taille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
+        <source>Modifier le tagg d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="445"/>
+        <source>Modifier la taille d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="452"/>
+        <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
+        <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="470"/>
+        <source>Déplacer un texte d&apos;élément</source>
+        <translation type="unfinished">Přesunout text prvku</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
+        <source>Pivoter un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="774"/>
+        <source>Déplacer un texte dans un autre groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="168"/>
         <source>Tagg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="193"/>
         <source>Couleur</source>
         <translation type="unfinished">Barva</translation>
     </message>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="207"/>
+        <source>Cadre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="223"/>
+        <source>Position X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="236"/>
+        <source>Position Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
+        <source>Rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="400"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1090,101 +1190,111 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <translation type="unfinished">Formulář</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
+        <source>cadre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="165"/>
         <source>Taille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="27"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="175"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="34"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
         <source>Couleur</source>
         <translation type="unfinished">Barva</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="44"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="46"/>
         <source>Tagg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="52"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="21"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="26"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="62"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="31"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="92"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="65"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="85"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="115"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="123"/>
-        <source>Déplacer un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="117"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="125"/>
+        <source>Déplacer un champ texte</source>
+        <translation type="unfinished">Přesunout textové pole</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="133"/>
+        <source>Pivoter un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="141"/>
+        <source>Modifier le texte d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
-        <source>Modifier le texte d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="148"/>
+        <source>Modifier la taille d&apos;un champ texte</source>
+        <translation type="unfinished">Upravit velikost textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="146"/>
-        <source>Modifier la taille d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="153"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="155"/>
         <source>Couleur du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="158"/>
-        <source>Modifier la couleur d&apos;un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
+        <source>Modifier la couleur d&apos;un champ texte</source>
+        <translation type="unfinished">Upravit barvu textové pole</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="173"/>
+        <source>Modifier le cadre d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1084"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1085"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="505"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1086"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1471,76 +1581,76 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="289"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="335"/>
         <source>Général</source>
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="305"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Élément manquant</source>
         <translation>Chybějící prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="307"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="353"/>
         <source>Élément</source>
         <translation>Prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="312"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="358"/>
         <source>Nom : %1
 </source>
         <translation>Název: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="315"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="361"/>
         <source>Folio : %1
 </source>
         <translation>List: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="317"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="363"/>
         <source>Position : %1
 </source>
         <translation>Poloha: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="318"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Rozměry: %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="319"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Bornes : %1
 </source>
         <translation>Svorky: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="320"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
         <source>Champs de texte : %1
 </source>
         <translation>Textová pole: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="323"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="369"/>
         <source>Emplacement : %1
 </source>
         <translation>Umístění: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="388"/>
         <source>Retrouver dans le panel</source>
         <translation>Najít v panelu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="344"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Éditer l&apos;élément</source>
         <translation>Upravit prvek</translation>
     </message>
@@ -3300,13 +3410,13 @@ textu a čísel.</translation>
 <context>
     <name>PartDynamicTextField</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="60"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="61"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="388"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="403"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished">Přesunout textové pole</translation>
     </message>
@@ -6183,7 +6293,7 @@ Co chcete dělat?</translation>
         <translation>vodič</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="49"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="55"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>smazat %1</translation>
@@ -6761,14 +6871,29 @@ Co chcete dělat?</translation>
         <translation>Upravit vlastnosti více vodičů</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="103"/>
+        <location filename="../sources/elementtextsmover.cpp" line="185"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>Přesunout text prvku</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="104"/>
+        <location filename="../sources/elementtextsmover.cpp" line="187"/>
         <source>Déplacer %1 textes d&apos;élément</source>
         <translation>Přesunout %1 textů prvků</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="192"/>
+        <source>Déplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="194"/>
+        <source> et</source>
+        <translation type="unfinished"> a</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="197"/>
+        <source> un groupe de texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -6800,87 +6925,172 @@ Co chcete dělat?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
-        <source>N° de folio</source>
-        <translation>Číslo listu</translation>
+        <source>A001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
-        <source>Titre de folio</source>
-        <translation>Název listu</translation>
+        <source>B001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
-        <source>Label de folio</source>
-        <translation>Štítek listu</translation>
+        <source>C001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
-        <source>Désignation qet</source>
-        <translation>Označení qet</translation>
+        <source>D001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
-        <source>Position</source>
-        <translation>Poloha</translation>
+        <source>E001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
-        <source>Label</source>
-        <translation>Štítek</translation>
+        <source>F001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
-        <source>Désignation</source>
-        <translation>Označení</translation>
+        <source>G001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
-        <source>Description</source>
+        <source>H001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
-        <source>Commentaire</source>
-        <translation>Poznámka</translation>
+        <source>I001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
-        <source>Fabricant</source>
-        <translation>Výrobce</translation>
+        <source>J001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
-        <source>Reference</source>
-        <translation>Odkaz</translation>
+        <source>K001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
-        <source>Fournisseur</source>
+        <source>L001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
+        <source>M001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <source>M002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <source>N001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <source>O001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <source>P001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="104"/>
+        <source>N° de folio</source>
+        <translation>Číslo listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
+        <source>Titre de folio</source>
+        <translation>Název listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
+        <source>Label de folio</source>
+        <translation>Štítek listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
+        <source>Désignation qet</source>
+        <translation>Označení qet</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <source>Position</source>
+        <translation>Poloha</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <source>Label</source>
+        <translation>Štítek</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <source>Désignation</source>
+        <translation>Označení</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="112"/>
+        <source>Commentaire</source>
+        <translation>Poznámka</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <source>Fabricant</source>
+        <translation>Výrobce</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <source>Reference</source>
+        <translation>Odkaz</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <source>Fournisseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Pomocný blok 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Pomocný blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Machine-reference</source>
         <translation>Odkaz na stroj</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Localisation</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Fonction</source>
         <translation>Funkce</translation>
     </message>
@@ -6925,8 +7135,33 @@ Co chcete dělat?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="28"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="35"/>
         <source>Ajouter un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
+        <source>Ajouter un groupe de textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="120"/>
+        <source>Supprimer un groupe de textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="169"/>
+        <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="220"/>
+        <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="265"/>
+        <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7996,42 +8231,41 @@ Ostatní pole se nepoužívají.</translation>
         <translation>Formulář</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="207"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Folio :</source>
         <translation>List:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="172"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="216"/>
         <source>Auteur :</source>
         <translation>Autor:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="228"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Dostupné jako %filename pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
-        <translation>Doprava</translation>
+        <translation type="vanished">Doprava</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="281"/>
         <source>Pas de date</source>
         <translation>Žádné datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
         <source>Date courante</source>
         <translation>Běžné datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
         <source>Appliquer la date actuelle</source>
         <translation>Použít nynější datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="117"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="161"/>
         <source>Principales</source>
         <translation>Hlavní</translation>
     </message>
@@ -8041,32 +8275,32 @@ Ostatní pole se nepoužívají.</translation>
         <translation>Informace záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
         <source>Indice Rev</source>
         <translation>Index Rev</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="186"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Dostupné jako %locmach pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
         <translation>Dostupné jako %machine pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="309"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Dostupné jako %date pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="278"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="322"/>
         <source>Date fixe :</source>
         <translation>Pevné datum:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="287"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="331"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -8079,67 +8313,66 @@ Používají se následující proměnné:
 -%autonum: automatické číslování listů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="342"/>
         <source>Titre :</source>
         <translation>Název:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="77"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zobrazit záhlaví výkresu dole (vodorovně) nebo vpravo (svisle) na listu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="63"/>
         <source>en bas</source>
-        <translation>dole</translation>
+        <translation type="vanished">dole</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Fichier :</source>
         <translation>Soubor:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
         <source>Date :</source>
         <translation>Datum:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="221"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Dostupné jako %author pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="200"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Dostupné jako %title pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="311"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
         <source>Page Num:</source>
         <translation>Číslo strany:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Installation :</source>
         <translation>Instalace:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="332"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Localisation</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Dostupné jako %indexrev pro vzory záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
         <source>Personnalisées</source>
         <translation>Vlastní</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Zde můžete stanovit vaše vlastní přiřazení název/hodnota, takže s nimi bude záhlaví výkresu počítat. Příklad:

@@ -809,7 +809,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
 <context>
     <name>DiagramEventAddElement</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="220"/>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="225"/>
         <source>Ajouter %1</source>
         <translation type="unfinished">Toevoegen %1</translation>
     </message>
@@ -974,12 +974,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
 <context>
     <name>DynamicElementTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="41"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="42"/>
         <source>Texte</source>
         <translation type="unfinished">Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="49"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="50"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
@@ -992,92 +992,192 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation type="unfinished">Dialoog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="35"/>
+        <source>Ajouter un texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="38"/>
+        <source>Texte</source>
+        <translation type="unfinished">Tekst</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="49"/>
+        <source>Ajouter un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="52"/>
+        <source>Groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <source>Supprimer la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="42"/>
         <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="97"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="118"/>
         <source>Modifier des textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="161"/>
+        <source>Modifier un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="168"/>
+        <source>Modifier %1 textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
+        <source>Nom du groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
+        <source>Entrer le nom du nouveau groupe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="37"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="42"/>
         <source>Propriété</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="38"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="43"/>
         <source>Valeur</source>
         <translation type="unfinished">Waarde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="110"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="71"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="257"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="264"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="437"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="408"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="415"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="899"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="996"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="72"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="259"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="270"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="351"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="115"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="410"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="421"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="904"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="997"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="107"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="261"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="116"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="412"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="427"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="998"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="82"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="125"/>
         <source>Texte</source>
         <translation type="unfinished">Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="94"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="137"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="114"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="157"/>
         <source>Mon texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="126"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="180"/>
         <source>Taille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
+        <source>Modifier le tagg d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="445"/>
+        <source>Modifier la taille d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="452"/>
+        <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
+        <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="470"/>
+        <source>Déplacer un texte d&apos;élément</source>
+        <translation type="unfinished">Verplaats een elementtekst</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
+        <source>Pivoter un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="774"/>
+        <source>Déplacer un texte dans un autre groupe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="168"/>
         <source>Tagg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="193"/>
         <source>Couleur</source>
         <translation type="unfinished">Kleur</translation>
     </message>
     <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="207"/>
+        <source>Cadre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="223"/>
+        <source>Position X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="236"/>
+        <source>Position Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
+        <source>Rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="400"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1090,101 +1190,111 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation type="unfinished">Dialoog</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
+        <source>cadre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="165"/>
         <source>Taille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="27"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="175"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="34"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
         <source>Couleur</source>
         <translation type="unfinished">Kleur</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="44"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="46"/>
         <source>Tagg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="52"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="21"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="26"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="62"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="31"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="92"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="65"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="85"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="115"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="123"/>
-        <source>Déplacer un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="117"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="125"/>
+        <source>Déplacer un champ texte</source>
+        <translation type="unfinished">Verplaatsen van een tekstveld</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="133"/>
+        <source>Pivoter un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="131"/>
-        <source>Pivoter un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="141"/>
+        <source>Modifier le texte d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="139"/>
-        <source>Modifier le texte d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="148"/>
+        <source>Modifier la taille d&apos;un champ texte</source>
+        <translation type="unfinished">Wijzigen van de grootte van een tekstveld</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="146"/>
-        <source>Modifier la taille d&apos;un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="153"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="155"/>
         <source>Couleur du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="158"/>
-        <source>Modifier la couleur d&apos;un champ texte dynamique</source>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
+        <source>Modifier la couleur d&apos;un champ texte</source>
+        <translation type="unfinished">Wijzigen van de kleur van een tekstveld</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="173"/>
+        <source>Modifier le cadre d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1084"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1085"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="505"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1086"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1471,76 +1581,76 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="289"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="335"/>
         <source>Général</source>
         <translation type="unfinished">Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="305"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Élément manquant</source>
         <translation type="unfinished">Element ontbreekt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="307"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="353"/>
         <source>Élément</source>
         <translation type="unfinished">Element</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="312"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="358"/>
         <source>Nom : %1
 </source>
         <translation type="unfinished">Naam : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="315"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="361"/>
         <source>Folio : %1
 </source>
         <translation type="unfinished">Pagina : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="317"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="363"/>
         <source>Position : %1
 </source>
         <translation type="unfinished">Positie op pagina : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="318"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Dimensions : %1*%2
 </source>
         <translation type="unfinished">Afmetingen : %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="319"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Bornes : %1
 </source>
         <translation type="unfinished">Terminals : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="320"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
         <source>Champs de texte : %1
 </source>
         <translation type="unfinished">Tekstvelden : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="323"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="369"/>
         <source>Emplacement : %1
 </source>
         <translation type="unfinished">Locatie : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="388"/>
         <source>Retrouver dans le panel</source>
         <translation type="unfinished">Zoek in paneel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="344"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Éditer l&apos;élément</source>
         <translation type="unfinished">Bewerk element</translation>
     </message>
@@ -3298,13 +3408,13 @@ Teksten en nummers zijn ook beschikbaar.</translation>
 <context>
     <name>PartDynamicTextField</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="60"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="61"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="388"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="403"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished">Verplaatsen van een tekstveld</translation>
     </message>
@@ -6177,7 +6287,7 @@ Que désirez vous faire ?</source>
         <translation>een geleider</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="49"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="55"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation type="unfinished">verwijderen %1</translation>
@@ -6747,14 +6857,29 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">Eigenschappen wijzigen van meerdere geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="103"/>
+        <location filename="../sources/elementtextsmover.cpp" line="185"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation type="unfinished">Verplaats een elementtekst</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextsmover.cpp" line="104"/>
+        <location filename="../sources/elementtextsmover.cpp" line="187"/>
         <source>Déplacer %1 textes d&apos;élément</source>
         <translation type="unfinished">Verplaats %1 elementteksten</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="192"/>
+        <source>Déplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="194"/>
+        <source> et</source>
+        <translation type="unfinished"> en</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="197"/>
+        <source> un groupe de texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -6787,87 +6912,172 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
-        <source>N° de folio</source>
-        <translation type="unfinished">Paginanummer</translation>
+        <source>A001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
-        <source>Titre de folio</source>
-        <translation type="unfinished">Paginatitel</translation>
+        <source>B001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
-        <source>Label de folio</source>
-        <translation type="unfinished">Paginalabel</translation>
+        <source>C001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
-        <source>Désignation qet</source>
-        <translation type="unfinished">Naam QET</translation>
+        <source>D001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
-        <source>Position</source>
-        <translation type="unfinished">Positie</translation>
+        <source>E001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
-        <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <source>F001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
-        <source>Désignation</source>
-        <translation type="unfinished">Benaming</translation>
+        <source>G001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
-        <source>Description</source>
+        <source>H001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
-        <source>Commentaire</source>
-        <translation type="unfinished">Commentaar</translation>
+        <source>I001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
-        <source>Fabricant</source>
-        <translation type="unfinished">Fabrikant</translation>
+        <source>J001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
-        <source>Reference</source>
-        <translation type="unfinished">Referentie</translation>
+        <source>K001</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
-        <source>Fournisseur</source>
+        <source>L001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
+        <source>M001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <source>M002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <source>N001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <source>O001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <source>P001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="104"/>
+        <source>N° de folio</source>
+        <translation type="unfinished">Paginanummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
+        <source>Titre de folio</source>
+        <translation type="unfinished">Paginatitel</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
+        <source>Label de folio</source>
+        <translation type="unfinished">Paginalabel</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
+        <source>Désignation qet</source>
+        <translation type="unfinished">Naam QET</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <source>Position</source>
+        <translation type="unfinished">Positie</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <source>Label</source>
+        <translation type="unfinished">Label</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <source>Désignation</source>
+        <translation type="unfinished">Benaming</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="112"/>
+        <source>Commentaire</source>
+        <translation type="unfinished">Commentaar</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <source>Fabricant</source>
+        <translation type="unfinished">Fabrikant</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <source>Reference</source>
+        <translation type="unfinished">Referentie</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <source>Fournisseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Bloc auxiliaire 1</source>
         <translation type="unfinished">Extern blok 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Bloc auxiliaire 2</source>
         <translation type="unfinished">Extern blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Machine-reference</source>
         <translation type="unfinished">Machinereferentie</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Localisation</source>
         <translation type="unfinished">Plaats</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Fonction</source>
         <translation type="unfinished">Functie</translation>
     </message>
@@ -6911,8 +7121,33 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="28"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="35"/>
         <source>Ajouter un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
+        <source>Ajouter un groupe de textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="120"/>
+        <source>Supprimer un groupe de textes d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="169"/>
+        <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="220"/>
+        <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="265"/>
+        <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7982,42 +8217,41 @@ De andere velden zijn nu niet van belang.</translation>
         <translation type="unfinished">Dialoog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="207"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Folio :</source>
         <translation>Pagina :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="172"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="216"/>
         <source>Auteur :</source>
         <translation>Auteur :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="228"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation type="unfinished">Naam beschikbaar als %filename voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="68"/>
         <source>à droite </source>
-        <translation type="unfinished">rechts </translation>
+        <translation type="obsolete">rechts </translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="281"/>
         <source>Pas de date</source>
         <translation>Zonder datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
         <source>Date courante</source>
         <translation>Huidige datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
         <source>Appliquer la date actuelle</source>
         <translation type="unfinished">Gebruik huidige datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="117"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="161"/>
         <source>Principales</source>
         <translation>Algemeen</translation>
     </message>
@@ -8027,32 +8261,32 @@ De andere velden zijn nu niet van belang.</translation>
         <translation type="unfinished">Titelblokinformatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="179"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
         <source>Indice Rev</source>
         <translation type="unfinished">Revisie-index :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="186"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation type="unfinished">Beschikbaar als %locmach voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
         <translation type="unfinished">Beschikbaar als %machine voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="309"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation type="unfinished">Beschikbaar als %date voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="278"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="322"/>
         <source>Date fixe :</source>
         <translation type="unfinished">Vaste datum:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="287"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="331"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -8065,67 +8299,66 @@ De volgende variabelen zijn te gebruiken:
 - %autonum : Pagina-autonummering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="342"/>
         <source>Titre :</source>
         <translation>Titel :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="77"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plaats het titelblok onderaan (horizontaal) of rechts (verticaal) op de pagina.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="63"/>
         <source>en bas</source>
-        <translation type="unfinished">onder</translation>
+        <translation type="obsolete">onder</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="214"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Fichier :</source>
         <translation type="unfinished">Bestand :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="125"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
         <source>Date :</source>
         <translation>Datum :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="221"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation type="unfinished">Naam beschikbaar als %author voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="200"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation type="unfinished">Naam beschikbaar als %title voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="311"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
         <source>Page Num:</source>
         <translation type="unfinished">Paginanummer :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="325"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Installation :</source>
         <translation type="unfinished">Installatie :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="332"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Localisation</source>
         <translation type="unfinished">Locatie :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="318"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation type="unfinished">Naam beschikbaar als %indexrev voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
         <source>Personnalisées</source>
         <translation>Gebruiker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation type="unfinished">Hier kunt u variabele / waarde associaties definieren voor in het titelblok. Bijv. :
