@@ -3816,7 +3816,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation>Propiedades de las selección</translation>
+        <translation>Propiedades de la selección</translation>
     </message>
 </context>
 <context>
