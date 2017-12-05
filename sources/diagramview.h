@@ -68,7 +68,6 @@ class DiagramView : public QGraphicsView
 		QETDiagramEditor *diagramEditor() const;
 		bool hasCopiableItems();
 		bool hasTextItems();
-		bool hasDeletableItems();
 		void editSelection();
 		void setEventInterface (DVEventInterface *event_interface);
 	
@@ -119,7 +118,6 @@ class DiagramView : public QGraphicsView
 		void selectNothing();
 		void selectAll();
 		void selectInvert();
-		void deleteSelection();
 		void setVisualisationMode();
 		void setSelectionMode();
 		void zoom(const qreal zoom_factor);

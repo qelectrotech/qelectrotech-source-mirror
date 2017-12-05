@@ -79,6 +79,7 @@ class DiagramContent
 		QList<DiagramTextItem *> selectedTexts() const;
 		QList<ElementTextItemGroup *> selectedTextsGroup() const;
 		QList<Conductor *> conductors(int = AnyConductor) const;
+		bool hasDeletableItems() const;
 		QList<QGraphicsItem *> items(int = All) const;
 		QString sentence(int = All) const;
 		int count(int = All) const;

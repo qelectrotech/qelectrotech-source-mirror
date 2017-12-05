@@ -22,6 +22,7 @@
 #include "conductor.h"
 #include "conductortextitem.h"
 #include "elementtextitemgroup.h"
+#include "addelementtextcommand.h"
 
 /**
  * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -44,6 +45,8 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 			
 	}
 	
+		//When remove a deti we must to know his parent item, for re-add deti as child of the parent
+		//when undo this command
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(deti->parentGroup())
@@ -51,6 +54,21 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 		else
 			m_elmt_text_hash.insert(deti, deti->parentElement());
 	}
+	
+		//If parent element of ElementTextItemGroup is also in @m_removed_content,
+		//we remove it, because when the element will be removed from the scene every child's will also be removed.
+	const QSet<ElementTextItemGroup *> group_set = m_removed_contents.m_texts_groups;
+	for(ElementTextItemGroup *group : group_set)
+	{
+		if(m_removed_contents.m_elements.contains(group->parentElement()))
+			m_removed_contents.m_texts_groups.remove(group);
+	}
+	
+		//The deletion of the groups is not managed by this undo, but by a RemoveTextsGroupCommand
+	for(ElementTextItemGroup *group : m_removed_contents.m_texts_groups) {
+		new RemoveTextsGroupCommand(group->parentElement(), group, this);}
+	
+	m_removed_contents.m_texts_groups.clear();
 	
 	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
@@ -87,6 +105,8 @@ void DeleteQGraphicsItemCommand::undo()
 			elmt->addTextToGroup(deti, m_grp_texts_hash.value(deti));
 		}
 	}
+	
+	QUndoCommand::undo();
 }
 
 /**
@@ -131,4 +151,6 @@ void DeleteQGraphicsItemCommand::redo()
 	
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
+	
+	QUndoCommand::redo();
 }

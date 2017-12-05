@@ -47,6 +47,7 @@
 #include "elementtextitem.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "rotatetextscommand.h"
+#include "diagramcommands.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -1261,23 +1262,25 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
 	DiagramView *dv = currentDiagram();
+	Diagram *diagram = dv->diagram();
+	DiagramContent dc(diagram);
 
 	if (!dv || value.isEmpty()) return;
 
 	if (value == "delete_selection")
-		dv->deleteSelection();
+	{
+		diagram->clearSelection();
+		diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+		dv->adjustSceneRect();
+	}
 	else if (value == "rotate_selection")
 	{
-		Diagram *d = dv->diagram();
-		RotateSelectionCommand *c = new RotateSelectionCommand(d);
+		RotateSelectionCommand *c = new RotateSelectionCommand(diagram);
 		if(c->isValid())
-			d->undoStack().push(c);
+			diagram->undoStack().push(c);
 	}
 	else if (value == "rotate_selected_text")
-	{
-		Diagram *d = dv->diagram();
-		d->undoStack().push(new RotateTextsCommand(d));
-	}
+		diagram->undoStack().push(new RotateTextsCommand(diagram));
 	else if (value == "find_selected_element" && currentCustomElement())
 		findElementInPanel(currentCustomElement()->location());
 	else if (value == "edit_selected_element")
@@ -1427,7 +1430,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	
 		//Action that need items (elements, conductors, texts...) selected, to be enabled
 	bool copiable_items  = dv->hasCopiableItems();
-	bool deletable_items = dv->hasDeletableItems();
+	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
 	m_delete_selection -> setEnabled(!ro && deletable_items);

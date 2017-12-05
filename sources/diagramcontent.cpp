@@ -175,6 +175,31 @@ QList<Conductor *> DiagramContent::conductors(int filter) const
 }
 
 /**
+ * @brief DiagramContent::hasDeletableItems
+ * @return true if this diagram content have deletable item
+ * The deletable items correspond to the selected items of diagram
+ * at the moment of the creation of this DiagramContent,
+ * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+ */
+bool DiagramContent::hasDeletableItems() const
+{
+	for(QGraphicsItem *qgi : m_selected_items)
+	{
+		if (qgi->type() == Element::Type ||
+			qgi->type() == Conductor::Type ||
+			qgi->type() == IndependentTextItem::Type ||
+			qgi->type() == QetShapeItem::Type ||
+			qgi->type() == DiagramImageItem::Type ||
+			qgi->type() == DynamicElementTextItem::Type)
+			return true;
+		if(qgi->type() == QGraphicsItemGroup::Type)
+			if(dynamic_cast<ElementTextItemGroup *>(qgi))
+				return true;
+	}
+	return(false);
+}
+
+/**
  * @brief DiagramContent::clear
  * Remove all items from the diagram content
  */

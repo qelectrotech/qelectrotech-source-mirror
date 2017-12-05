@@ -452,7 +452,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		quc->setText(tr("Modifier la couleur d'un texte d'élément"));
 	}
 	
-	bool frame = text_qsi->child(4,1)->checkState() == Qt::Checked? frame=true : frame=false;
+	bool frame = text_qsi->child(4,1)->checkState() == Qt::Checked? true : false;
 	if(frame != deti->frame())
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "frame", QVariant(deti->frame()), QVariant(frame), undo);

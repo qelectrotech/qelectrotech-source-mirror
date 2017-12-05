@@ -127,20 +127,6 @@ void DiagramView::selectInvert() {
 }
 
 /**
- * @brief DiagramView::deleteSelection
- * Delete the selected items
- */
-void DiagramView::deleteSelection()
-{
-	if (m_diagram -> isReadOnly())
-		return;
-	DiagramContent removed_content = DiagramContent(m_diagram);
-	m_diagram->clearSelection();
-	m_diagram->undoStack().push(new DeleteQGraphicsItemCommand(m_diagram, removed_content));
-	adjustSceneRect();
-}
-
-/**
 	Accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
@@ -746,25 +732,6 @@ bool DiagramView::hasTextItems() {
 		) {
 			return(true);
 		}
-	}
-	return(false);
-}
-
-/**
- * @brief DiagramView::hasDeletableItems
- * @return True if a least on of selected item can be deleted
- */
-bool DiagramView::hasDeletableItems()
-{
-	for(QGraphicsItem *qgi : m_diagram->selectedItems())
-	{
-		if (qgi->type() == Element::Type ||
-			qgi->type() == Conductor::Type ||
-			qgi->type() == IndependentTextItem::Type ||
-			qgi->type() == QetShapeItem::Type ||
-			qgi->type() == DiagramImageItem::Type ||
-			qgi->type() == DynamicElementTextItem::Type)
-			return true;
 	}
 	return(false);
 }
