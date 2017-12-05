@@ -189,7 +189,7 @@ void ProjectMainConfigPage::initLayout() {
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
 	setLayout(main_layout0);
-	this -> setMinimumWidth(780);
+	this -> setMinimumWidth(680);
 
 }
 
