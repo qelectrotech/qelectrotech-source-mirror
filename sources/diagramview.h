@@ -49,10 +49,10 @@ class DiagramView : public QGraphicsView
 	
 		// attributes
 
-		Diagram          *m_diagram;
+		Diagram          *m_diagram = nullptr;
 		DVEventInterface *m_event_interface = nullptr;
-		QMenu            *m_context_menu;
-		QAction          *m_paste_here;
+		QMenu            *m_context_menu = nullptr;
+		QAction          *m_paste_here = nullptr;
 		QPoint            m_paste_here_pos;
 		QPointF           m_rubber_band_origin;
 		bool              m_fresh_focus_in,
@@ -64,10 +64,8 @@ class DiagramView : public QGraphicsView
 		void removeColumn();
 		void addRow();
 		void removeRow();
-		/// @return the diagram rendered by this view
 		Diagram *diagram() { return(m_diagram); }
 		QETDiagramEditor *diagramEditor() const;
-		bool hasSelectedItems();
 		bool hasCopiableItems();
 		bool hasTextItems();
 		bool hasDeletableItems();
@@ -92,7 +90,6 @@ class DiagramView : public QGraphicsView
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
 		void dragEnterEvent(QDragEnterEvent *) override;
-		void dragLeaveEvent(QDragLeaveEvent *) override;
 		void dragMoveEvent(QDragMoveEvent *) override;
 		void dropEvent(QDropEvent *) override;
 		void handleElementDrop(QDropEvent *);
@@ -123,8 +120,6 @@ class DiagramView : public QGraphicsView
 		void selectAll();
 		void selectInvert();
 		void deleteSelection();
-		void rotateSelection();
-		void rotateTexts();
 		void setVisualisationMode();
 		void setSelectionMode();
 		void zoom(const qreal zoom_factor);

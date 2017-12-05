@@ -28,14 +28,12 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "templatelocation.h"
-#include "qetapp.h"
 #include "qetproject.h"
 #include "projectview.h"
 #include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "qtextorientationspinboxwidget.h"
 #include <QGraphicsObject>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
@@ -136,109 +134,10 @@ void DiagramView::deleteSelection()
 {
 	if (m_diagram -> isReadOnly())
 		return;
-	DiagramContent removed_content = m_diagram->selectedContent();
+	DiagramContent removed_content = DiagramContent(m_diagram);
 	m_diagram->clearSelection();
 	m_diagram->undoStack().push(new DeleteQGraphicsItemCommand(m_diagram, removed_content));
 	adjustSceneRect();
-}
-
-/**
- * @brief DiagramView::rotateSelection
- * Rotate the selected items
- */
-void DiagramView::rotateSelection()
-{
-	if (m_diagram->isReadOnly())
-		return;
-
-	QList<Element *> elements_to_rotate;
-	QList<DiagramTextItem *> texts_to_rotate;
-	QList<DiagramImageItem *> images_to_rotate;
-	
-	for (QGraphicsItem *item : m_diagram->selectedItems())
-	{
-		if (Element *e = qgraphicsitem_cast<Element *>(item))
-			elements_to_rotate << e;
-		else if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item))
-			texts_to_rotate << cti;
-		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
-			texts_to_rotate << iti;
-		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item))
-		{
-				//We rotate element text item only if is parent element is not selected
-			if (eti->parentItem() && !eti->parentItem()->isSelected())
-				texts_to_rotate << eti;
-		}
-		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
-		{
-				//We rotate dynamic element text item only if is parent element is not selected
-			if (deti->parentItem() && !deti->parentItem()->isSelected())
-				texts_to_rotate << deti;
-		}
-		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
-			images_to_rotate << dii;
-	}
-
-		//Do the rotation
-	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty() && images_to_rotate.isEmpty())
-		return;
-	m_diagram->undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate, images_to_rotate));
-}
-
-/**
- * @brief DiagramView::rotateTexts
- * Open a dialog to set the rotation angle, and apply it to the selected texts.
- */
-void DiagramView::rotateTexts()
-{
-	if (m_diagram->isReadOnly())
-		return;
-
-		//Get the texts fields
-	QList<DiagramTextItem *> texts_to_rotate;
-	for (QGraphicsItem *item : m_diagram->selectedItems())
-	{
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item))
-			texts_to_rotate << cti;
-		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
-			texts_to_rotate << iti;
-		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item))
-			texts_to_rotate << eti;
-		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
-			texts_to_rotate << deti;
-	}
-	
-	if (texts_to_rotate.isEmpty())
-		return;
-
-		//Open the dialog
-	QDialog ori_text_dialog(diagramEditor());
-	ori_text_dialog.setSizeGripEnabled(false);
-#ifdef Q_OS_MAC
-	ori_text_dialog.setWindowFlags(Qt::Sheet);
-#endif
-	ori_text_dialog.setWindowTitle(tr("Orienter les textes sélectionnés", "window title"));
-
-
-	QTextOrientationSpinBoxWidget *ori_widget = QETApp::createTextOrientationSpinBoxWidget();
-	ori_widget -> setParent(&ori_text_dialog);
-	if (texts_to_rotate.count() == 1) {
-		ori_widget -> setOrientation(texts_to_rotate.at(0) -> rotationAngle());
-	}
-	ori_widget -> spinBox() -> selectAll();
-
-	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(&buttons, SIGNAL(accepted()), &ori_text_dialog, SLOT(accept()));
-	connect(&buttons, SIGNAL(rejected()), &ori_text_dialog, SLOT(reject()));
-	
-	QVBoxLayout layout_v(&ori_text_dialog);
-	layout_v.setSizeConstraint(QLayout::SetFixedSize);
-	layout_v.addWidget(ori_widget);
-	layout_v.addStretch();
-	layout_v.addWidget(&buttons);
-
-	if (ori_text_dialog.exec() == QDialog::Accepted)
-		m_diagram -> undoStack().push(new RotateTextsCommand(texts_to_rotate, ori_widget -> orientation()));
 }
 
 /**
@@ -255,14 +154,6 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	} else {
 		e -> ignore();
 	}
-}
-
-/**
-	Gere les dragleave
-	@param e le QDragEnterEvent correspondant au drag'n drop sortant
-*/
-void DiagramView::dragLeaveEvent(QDragLeaveEvent *e) {
-	Q_UNUSED(e);
 }
 
 /**
@@ -451,7 +342,7 @@ void DiagramView::zoomReset() {
 */
 void DiagramView::cut() {
 	copy();
-	DiagramContent cut_content = m_diagram -> selectedContent();
+	DiagramContent cut_content(m_diagram);
 	m_diagram -> clearSelection();
 	m_diagram -> undoStack().push(new CutDiagramCommand(m_diagram, cut_content));
 }
@@ -651,6 +542,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 		return;
 	
 	ProjectView *current_project = this->diagramEditor()->acessCurrentProject();
+	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
 		case Qt::Key_PageUp:
@@ -702,22 +594,22 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 		}
 			break;
 		case Qt::Key_Up: {
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
+			if(!(dc.items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Down: {
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
+			if(!(dc.items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Left: {
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
+			if(!(dc.items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Right: {
-			if(!(m_diagram->selectedContent().items(DiagramContent::All).isEmpty()))
+			if(!(dc.items(DiagramContent::All).isEmpty()))
 				scrollOnMovement(e);
 		}
 			break;
@@ -743,8 +635,9 @@ void DiagramView::keyReleaseEvent(QKeyEvent *e) {
 	and horizontal bar. If element is moved to the right side of the editor
 	or below the editor SceneRect is expanded
 */
-void DiagramView::scrollOnMovement(QKeyEvent *e){
-			QList<QGraphicsItem *> selected_elmts = m_diagram->selectedContent().items(DiagramContent::All);
+void DiagramView::scrollOnMovement(QKeyEvent *e)
+{
+			QList<QGraphicsItem *> selected_elmts = DiagramContent(m_diagram).items(DiagramContent::All);
 			QRectF viewed_scene = viewedSceneRect();
 			foreach (QGraphicsItem *qgi, selected_elmts){
 				if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
@@ -820,13 +713,6 @@ QString DiagramView::title() const {
  */
 void DiagramView::editDiagramProperties() {
 	DiagramPropertiesDialog::diagramPropertiesDialog(m_diagram, diagramEditor());
-}
-
-/**
-	@return true s'il y a des items selectionnes sur le schema, false sinon
-*/
-bool DiagramView::hasSelectedItems() {
-	return(m_diagram -> selectedItems().size() > 0);
 }
 
 /**
@@ -1011,11 +897,13 @@ void DiagramView::applyReadOnly() {
 }
 
 /**
-	Edite les proprietes des objets selectionnes
-*/
-void DiagramView::editSelectionProperties() {
-	// get selection
-	DiagramContent selection = m_diagram -> selectedContent();
+ * @brief DiagramView::editSelectionProperties
+ * Edit the properties of the selected items
+ */
+void DiagramView::editSelectionProperties()
+{
+		// get selection
+	DiagramContent selection(m_diagram);
 
 	// if selection contains nothing return
 	int selected_items_count = selection.count(DiagramContent::All | DiagramContent::SelectedOnly);
@@ -1048,13 +936,15 @@ void DiagramView::editSelectionProperties() {
 }
 
 /**
-	Edit the color of the selected conductor; does nothing if multiple conductors are selected
-*/
-void DiagramView::editSelectedConductorColor() {
-	// retrieve selected content
-	DiagramContent selection = m_diagram -> selectedContent();
+ * @brief DiagramView::editSelectedConductorColor
+ * Edit the color of the selected conductor; does nothing if multiple conductors are selected
+ */
+void DiagramView::editSelectedConductorColor()
+{
+		//retrieve selected content
+	DiagramContent selection(m_diagram);
 
-	// we'll focus on the selected conductor (we do not handle multiple conductors edition)
+		// we'll focus on the selected conductor (we do not handle multiple conductors edition)
 	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
 	if (selected_conductors.count() == 1) {
 		editConductorColor(selected_conductors.at(0));

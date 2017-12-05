@@ -28,6 +28,9 @@ class DiagramImageItem;
 class ElementTextItem;
 class QetShapeItem;
 class DynamicElementTextItem;
+class ElementTextItemGroup;
+class Diagram;
+class DiagramTextItem;
 
 /**
 	This class provides a container that makes the transmission of diagram content
@@ -42,6 +45,7 @@ class DiagramContent
 {
 	public:
 		DiagramContent();
+		DiagramContent(Diagram *diagram);
 		DiagramContent(const DiagramContent &);
 		~DiagramContent();
 		
@@ -56,8 +60,9 @@ class DiagramContent
 			OtherConductors = 64,
 			AnyConductor = 112,
 			Shapes = 128,
-			All = 255,
-			SelectedOnly = 256
+			TextGroup = 256,
+			All = 511,
+			SelectedOnly = 512
 		};
 		
 		QSet<Element *> m_elements;
@@ -68,7 +73,11 @@ class DiagramContent
 		QSet<Conductor *> m_conductors_to_move;
 		QSet<Conductor *> m_other_conductors;
 		QSet<DynamicElementTextItem *> m_element_texts;
+		QSet<ElementTextItemGroup *> m_texts_groups;
+		QList<QGraphicsItem *> m_selected_items;
 		
+		QList<DiagramTextItem *> selectedTexts() const;
+		QList<ElementTextItemGroup *> selectedTextsGroup() const;
 		QList<Conductor *> conductors(int = AnyConductor) const;
 		QList<QGraphicsItem *> items(int = All) const;
 		QString sentence(int = All) const;

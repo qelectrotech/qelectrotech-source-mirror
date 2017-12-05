@@ -20,6 +20,7 @@
 #include "element.h"
 #include "diagram.h"
 #include "addelementtextcommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
@@ -37,7 +38,7 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent)
 	QGraphicsItemGroup(parent),
 	m_name(name)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsFocusable);
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -127,7 +128,6 @@ void ElementTextItemGroup::updateAlignment()
 				item->setPos(ref.x(), ref.y()+y_offset);
 				y_offset+=item->boundingRect().height();
 			}
-			return;
 		}
 		else if(m_alignment == Qt::AlignVCenter)
 		{
@@ -139,9 +139,7 @@ void ElementTextItemGroup::updateAlignment()
 				item->setPos(ref.x() - item->boundingRect().width()/2,
 							 ref.y() + y_offset);
 				y_offset+=item->boundingRect().height();
-			}
-			return;
-				
+			}	
 		}
 		else if (m_alignment == Qt::AlignRight)
 		{
@@ -154,8 +152,9 @@ void ElementTextItemGroup::updateAlignment()
 							 ref.y() + y_offset);
 				y_offset+=item->boundingRect().height();
 			}
-			return;
 		}
+		
+		setTransformOriginPoint(boundingRect().topLeft());
 	}
 }
 
@@ -381,26 +380,30 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 void ElementTextItemGroup::keyPressEvent(QKeyEvent *event)
 {	
-	if(event->key() == Qt::Key_A && m_alignment	!= Qt::AlignLeft)
+ 	if(event->modifiers() == Qt::ControlModifier)
 	{
-		if(diagram())
-			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignLeft));
-		else
-			setAlignment(Qt::AlignLeft);
+		if(event->key() == Qt::Key_Left && m_alignment	!= Qt::AlignLeft)
+		{
+			if(diagram())
+				diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignLeft));
+			else
+				setAlignment(Qt::AlignLeft);
+		}
+		else if (event->key() == Qt::Key_Up && m_alignment	!= Qt::AlignVCenter)
+		{
+			if(diagram())
+				diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignVCenter));
+			else
+				setAlignment(Qt::AlignVCenter);
+		}
+		else if (event->key() == Qt::Key_Right && m_alignment	!= Qt::AlignRight)
+		{
+			if(diagram())
+				diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignRight));
+			else
+				setAlignment(Qt::AlignRight);
+		}
 	}
-	else if (event->key() == Qt::Key_Z && m_alignment	!= Qt::AlignVCenter)
-	{
-		if(diagram())
-			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignVCenter));
-		else
-			setAlignment(Qt::AlignVCenter);
-	}
-	else if (event->key() == Qt::Key_E && m_alignment	!= Qt::AlignRight)
-	{
-		if(diagram())
-			diagram()->undoStack().push(new AlignmentTextsGroupCommand(this, Qt::AlignRight));
-		else
-			setAlignment(Qt::AlignRight);
-	}
+	event->ignore();
 }
 

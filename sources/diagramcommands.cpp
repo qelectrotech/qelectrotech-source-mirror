@@ -26,6 +26,7 @@
 #include "diagram.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
+#include "elementtextitemgroup.h"
 #include <QPropertyAnimation>
 
 QString itemText(const QetGraphicsItem *item) {
@@ -266,32 +267,36 @@ void MoveElementsCommand::redo() {
  * Move item and conductor to @actual_movement
  * @param actual_movement movement to be applied
  */
-void MoveElementsCommand::move(const QPointF &actual_movement) {
+void MoveElementsCommand::move(const QPointF &actual_movement)
+{
 	typedef DiagramContent dc;
 
-	//Move every movable item, except conductor
-	foreach (QGraphicsItem *qgi, content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
-		//If curent item have parent, and parent item is in content_to_move
-		//we don't apply movement to this item, because this item will be moved by is parent.
-		if (qgi->parentItem()) {
+		//Move every movable items, except conductor
+	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup))
+	{
+			//If curent item have parent, and parent item is in content_to_move
+			//we don't apply movement to this item, because this item will be moved by is parent.
+		if (qgi->parentItem())
 			if (content_to_move.items().contains(qgi->parentItem()))
 					continue;
-		}
-		if(qgi->toGraphicsObject()) {
+		
+		if(qgi->toGraphicsObject())
 			setupAnimation(qgi->toGraphicsObject(), "pos", qgi->pos(), qgi->pos() + actual_movement);
+		else if(qgi->type() == QGraphicsItemGroup::Type) //ElementTextItemGroup is a QObject but not a QGraphicsObject
+		{
+			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(qgi))
+				setupAnimation(etig, "pos", etig->pos(), etig->pos() + actual_movement);
 		}
 		else qgi -> setPos(qgi->pos() + actual_movement);
 	}
 	
-	// Move some conductors
-	foreach(Conductor *conductor, content_to_move.m_conductors_to_move) {
+		// Move some conductors
+	for (Conductor *conductor : content_to_move.m_conductors_to_move)
 		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
-	}
 	
-	// Recalcul the path of other conductor
-	foreach(Conductor *conductor, content_to_move.m_conductors_to_update) {
+		// Recalcul the path of other conductor
+	for (Conductor *conductor : content_to_move.m_conductors_to_update)
 		setupAnimation(conductor, "animPath", 1, 1);
-	}
 }
 
 /**
@@ -438,137 +443,6 @@ void ChangeDiagramTextCommand::redo() {
 	} else {
 		text_item -> setHtml(text_after);
 	}
-}
-
-/**
-	Constructeur
-	@param elements Elements a pivoter associes a leur orientation d'origine
-	@param texts Textes a pivoter
-	@param parent QUndoCommand parent
-*/
-RotateElementsCommand::RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &texts, const QList<DiagramImageItem *> &images, QUndoCommand *parent) :
-	QUndoCommand(parent),
-	elements_to_rotate(elements),
-	texts_to_rotate(texts),
-	images_to_rotate(images),
-	applied_rotation_angle_(90.0)
-{
-	if(elements_to_rotate.size()) diagram = elements_to_rotate.first()->diagram();
-	else if (texts_to_rotate.size()) diagram = texts_to_rotate.first()->diagram();
-	else if (images_to_rotate.size()) diagram = images_to_rotate.first()->diagram();
-
-	setText(
-		QString(
-			QObject::tr(
-				"pivoter %1",
-				"undo caption - %1 is a sentence listing the rotated content"
-			)
-		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0, texts.count(), images.count()))
-	);
-}
-
-/// Destructeur
-RotateElementsCommand::~RotateElementsCommand() {
-}
-
-/// defait le pivotement
-void RotateElementsCommand::undo() {
-	diagram -> showMe();
-	foreach(Element *e, elements_to_rotate) {
-		e -> rotateBy(-applied_rotation_angle_);
-	}
-	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		//ConductorTextItem have a default rotation angle, we apply a specific treatment
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
-			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
-			(cti -> wasRotateByUser()) ? cti -> rotateBy(-applied_rotation_angle_) :
-										 cti -> parentConductor() -> calculateTextItemPosition();
-		}
-		else {dti -> rotateBy(-applied_rotation_angle_);}
-	}
-	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(-applied_rotation_angle_);
-}
-
-/// refait le pivotement
-void RotateElementsCommand::redo() {
-	diagram -> showMe();
-	foreach(Element *e, elements_to_rotate) {
-		e -> rotateBy(applied_rotation_angle_);
-	}
-	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		//we grab the previous rotation by user of each ConductorTextItem
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
-			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
-			cti -> forceRotateByUser(true);
-		}
-		dti -> rotateBy(applied_rotation_angle_);
-	}
-	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(applied_rotation_angle_);
-}
-
-/**
-	Constructeur
-	@param texts Liste des textes impactes par l'action. L'objet retiendra leur angle de rotation au moment de sa construction.
-	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
-	@param parent QUndoCommand parent
-*/
-RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, double applied_rotation, QUndoCommand *parent) :
-	QUndoCommand(parent),
-	m_applied_rotation_angle(applied_rotation),
-	m_diagram(texts.first()->diagram())
-{
-	foreach(DiagramTextItem *text, texts) {
-		m_texts_to_rotate.insert(text, text -> rotationAngle());
-	}
-	defineCommandName();
-}
-
-/**
-	Destructeur
-*/
-RotateTextsCommand::~RotateTextsCommand() {
-}
-
-/**
-	Annule la rotation des textes
-*/
-void RotateTextsCommand::undo() {
-	m_diagram -> showMe();
-	foreach(DiagramTextItem *text, m_texts_to_rotate.keys()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text))
-			cti -> forceRotateByUser(m_previous_rotate_by_user[cti]);
-		text -> setRotationAngle(m_texts_to_rotate[text]);
-	}
-}
-
-/**
-	Applique l'angle de rotation aux textes
-*/
-void RotateTextsCommand::redo() {
-	m_diagram -> showMe();
-	foreach(DiagramTextItem *text, m_texts_to_rotate.keys()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
-			//we grab the previous rotation by user of each ConductorTextItem
-			m_previous_rotate_by_user.insert(cti, cti -> wasRotateByUser());
-			cti -> forceRotateByUser(true);
-		}
-		text -> setRotationAngle(m_applied_rotation_angle);
-	}
-}
-
-/**
-	Definit le nom de la commande d'annulation
-*/
-void RotateTextsCommand::defineCommandName() {
-	setText(
-		QString(
-			QObject::tr(
-				"orienter %1 à %2°",
-				"undo caption - %1 looks like '42 texts', %2 is a rotation angle"
-			)
-		).arg(QET::ElementsAndConductorsSentence(0, 0, m_texts_to_rotate.count()))
-		.arg(m_applied_rotation_angle)
-	);
 }
 
 /**

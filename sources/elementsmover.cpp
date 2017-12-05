@@ -33,8 +33,8 @@ ElementsMover::ElementsMover() :
 	movement_running_(false),
 	current_movement_(),
 	diagram_(nullptr),
-	movement_driver_(nullptr),
-	moved_content_()
+	m_movement_driver(nullptr),
+	m_moved_content()
 {
 	
 }
@@ -70,21 +70,21 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 	diagram_ = diagram;
 	
 	// Take count of driver item
-	movement_driver_ = driver_item;
+	m_movement_driver = driver_item;
 	
 	// At the beginning of movement, move is NULL
 	current_movement_ = QPointF(0.0, 0.0);
 	
-	moved_content_ = diagram -> selectedContent();
-	moved_content_.removeNonMovableItems();
+	m_moved_content = DiagramContent(diagram);
+	m_moved_content.removeNonMovableItems();
 
-	if (!moved_content_.count()) return(-1);
+	if (!m_moved_content.count()) return(-1);
 	
 	/* At this point, we've got all info to manage movement.
 	 * There is now a move in progress */
 	movement_running_ = true;
 	
-	return(moved_content_.count());
+	return(m_moved_content.count());
 }
 
 /**
@@ -99,18 +99,20 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
-		if (qgi == movement_driver_) continue;
+	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup))
+	{
+		if (qgi == m_movement_driver)
+			continue;
 		qgi -> setPos(qgi->pos() + movement);
 	}
 	
 	// Move some conductors
-	foreach(Conductor *conductor, moved_content_.m_conductors_to_move) {
+	foreach(Conductor *conductor, m_moved_content.m_conductors_to_move) {
 		conductor -> setPos(conductor -> pos() + movement);
 	}
 	
 	// Recalcul the path of other conductors
-	foreach(Conductor *conductor, moved_content_.m_conductors_to_update) {
+	foreach(Conductor *conductor, m_moved_content.m_conductors_to_update) {
 		conductor -> updatePath();
 	}
 }
@@ -131,18 +133,18 @@ void ElementsMover::endMovement()
 
 		//Create undo move if there is a movement
 	if (!current_movement_.isNull()) {
-		QUndoCommand *quc = new MoveElementsCommand(diagram_, moved_content_, current_movement_, undo_object);
+		QUndoCommand *quc = new MoveElementsCommand(diagram_, m_moved_content, current_movement_, undo_object);
 		undo_object->setText(quc->text());
 	}
 
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
 	typedef DiagramContent dc;
-	if (moved_content_.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
-		moved_content_.items(dc::Elements).size() == 1 &&
+	if (m_moved_content.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
+		m_moved_content.items(dc::Elements).size() == 1 &&
 		diagram_ -> project() -> autoConductor())
 	{
-		Element *elmt = moved_content_.m_elements.toList().first();
+		Element *elmt = m_moved_content.m_elements.toList().first();
 
 		int acc = elmt->AlignedFreeTerminals().size();
 

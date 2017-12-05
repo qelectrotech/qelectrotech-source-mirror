@@ -121,7 +121,7 @@ class Diagram : public QGraphicsScene
 		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
 		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
-		void keyPressEvent   (QKeyEvent *) override;
+		void keyPressEvent   (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
 	
 	public:
@@ -187,10 +187,8 @@ class Diagram : public QGraphicsScene
 		QList<CustomElement *> customElements() const;
 		QList<Element *> elements() const;
 		QList<Conductor *> conductors() const;
-		QSet<DiagramTextItem *> selectedTexts() const;
 		QSet<Conductor *> selectedConductors() const;
 		DiagramContent content() const;
-		DiagramContent selectedContent();
 		bool canRotateSelection() const;
 		int  beginMoveElements(QGraphicsItem * = nullptr);
 		void continueMoveElements(const QPointF &);

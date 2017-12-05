@@ -55,7 +55,7 @@ class ElementsMover {
 	bool movement_running_;
 	QPointF current_movement_;
 	Diagram *diagram_;
-	QGraphicsItem *movement_driver_;
-	DiagramContent moved_content_;
+	QGraphicsItem *m_movement_driver;
+	DiagramContent m_moved_content;
 };
 #endif

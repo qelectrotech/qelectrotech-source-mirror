@@ -45,6 +45,8 @@
 #include "dynamicelementtextitem.h"
 #include "conductortextitem.h"
 #include "elementtextitem.h"
+#include "undocommand/rotateselectioncommand.h"
+#include "rotatetextscommand.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -1038,12 +1040,15 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 	  * no element is selected
 	  * more than one element is selected
 */
-Element *QETDiagramEditor::currentElement() const {
+Element *QETDiagramEditor::currentElement() const
+{
 	DiagramView *dv = currentDiagram();
-	if (!dv) return(nullptr);
+	if (!dv)
+		return(nullptr);
 	
-	QList<Element *> selected_elements = dv -> diagram() -> selectedContent().m_elements.toList();
-	if (selected_elements.count() != 1) return(nullptr);
+	QList<Element *> selected_elements = DiagramContent(dv->diagram()).m_elements.toList();
+	if (selected_elements.count() != 1)
+		return(nullptr);
 	
 	return(selected_elements.first());
 }
@@ -1262,9 +1267,17 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 	if (value == "delete_selection")
 		dv->deleteSelection();
 	else if (value == "rotate_selection")
-		dv->rotateSelection();
+	{
+		Diagram *d = dv->diagram();
+		RotateSelectionCommand *c = new RotateSelectionCommand(d);
+		if(c->isValid())
+			d->undoStack().push(c);
+	}
 	else if (value == "rotate_selected_text")
-		dv->rotateTexts();
+	{
+		Diagram *d = dv->diagram();
+		d->undoStack().push(new RotateTextsCommand(d));
+	}
 	else if (value == "find_selected_element" && currentCustomElement())
 		findElementInPanel(currentCustomElement()->location());
 	else if (value == "edit_selected_element")
@@ -1400,6 +1413,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	}
 	
 	Diagram *diagram_ = dv->diagram();
+	DiagramContent dc(diagram_);
 	bool ro = diagram_->isReadOnly();
 	
 
@@ -1408,7 +1422,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_conductor_reset->setEnabled(!ro && selected_conductors_count);
 	
 		// number of selected elements
-	int selected_elements_count = diagram_->selectedContent().count(DiagramContent::Elements);
+	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
 	
 		//Action that need items (elements, conductors, texts...) selected, to be enabled
@@ -1419,17 +1433,19 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 
-		//Action that need selected texts
-	int selected_texts = diagram_->selectedTexts().count();
-	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
-	int selected_element_texts     = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == ElementTextItem::Type) selected_element_texts++;}
-	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : diagram_->selectedTexts()) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
-	m_rotate_texts -> setEnabled(!ro && selected_texts);
+		//Action that need selected texts or texts group
+	QList<DiagramTextItem *> texts = DiagramContent(diagram_).selectedTexts();
+	QList<ElementTextItemGroup *> groups = DiagramContent(diagram_).selectedTextsGroup();
+	int selected_texts = texts.count();
+	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
+	int selected_element_texts     = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ElementTextItem::Type) selected_element_texts++;}
+	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
+	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
 
 		// actions need only one editable item
-	int selected_image = diagram_-> selectedContent().count(DiagramContent::Images);
+	int selected_image = dc.count(DiagramContent::Images);
 
-	int selected_shape = diagram_-> selectedContent().count(DiagramContent::Shapes);
+	int selected_shape = dc.count(DiagramContent::Shapes);
 	int selected_editable = selected_elements_count +
 							(selected_texts - selected_conductor_texts - selected_element_texts - selected_dynamic_elmt_text) +
 							selected_image +

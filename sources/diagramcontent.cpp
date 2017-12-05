@@ -24,11 +24,72 @@
 #include "elementtextitem.h"
 #include "qetshapeitem.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
+#include "diagram.h"
+#include "terminal.h"
+#include "conductortextitem.h"
 
 /**
  * @brief DiagramContent::DiagramContent
  */
 DiagramContent::DiagramContent() {}
+
+/**
+ * @brief DiagramContent::DiagramContent
+ * Constructor
+ * @param diagram : Construct a diagramContent and fill it with the selected item of @diagram
+ */
+DiagramContent::DiagramContent(Diagram *diagram) :
+	m_selected_items(diagram->selectedItems())
+{
+		//Get the selected items
+	for (QGraphicsItem *item : m_selected_items)
+	{
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item))
+			m_elements << elmt;
+		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
+			m_text_fields << iti;
+		else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
+		{
+				//Get the isolated selected conductor (= not movable, but deletable)
+			if (!c->terminal1->parentItem()->isSelected() &&\
+				!c->terminal2->parentItem()->isSelected()) {
+				m_other_conductors << c;
+			}
+		}
+		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
+			m_images << dii;
+		else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item))
+			m_shapes << dsi;
+		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
+			m_element_texts << deti;
+		else if (QGraphicsItemGroup *group = qgraphicsitem_cast<QGraphicsItemGroup *>(item))
+			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(group))
+				m_texts_groups << etig;
+	}
+	
+		//For each selected element, we determine if conductors must be moved or updated.
+	for(Element *elmt : m_elements)
+	{
+		for(Terminal *terminal : elmt->terminals())
+		{
+			for(Conductor *conductor : terminal->conductors())
+			{
+				Terminal *other_terminal;
+				if (conductor->terminal1 == terminal)
+					other_terminal = conductor->terminal2;
+				else
+					other_terminal = conductor->terminal1;
+
+					//If the two elements of conductor are movable
+				if (m_elements.contains(other_terminal -> parentElement()))
+					m_conductors_to_move << conductor;
+				else
+					m_conductors_to_update << conductor;
+			}
+		}
+	}
+}
 
 /**
  * @brief DiagramContent::DiagramContent
@@ -43,13 +104,56 @@ DiagramContent::DiagramContent(const DiagramContent &other) :
 	m_conductors_to_update(other.m_conductors_to_update),
 	m_conductors_to_move(other.m_conductors_to_move),
 	m_other_conductors(other.m_other_conductors),
-	m_element_texts(other.m_element_texts)
+	m_element_texts(other.m_element_texts),
+	m_texts_groups(other.m_texts_groups),
+	m_selected_items(other.m_selected_items)
 {}
 
 /**
  * @brief DiagramContent::~DiagramContent
  */
 DiagramContent::~DiagramContent() {}
+
+
+/**
+ * @brief DiagramContent::selectedTexts
+ * @return a list of every selected texts (every kind of texts)
+ * Note that the returned list of texts, correspond to the selected texts
+ * at the moment of the creation of this DiagramContent,
+ * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+ */
+QList<DiagramTextItem *> DiagramContent::selectedTexts() const
+{
+	QList<DiagramTextItem *> selected_texts;
+	for(QGraphicsItem *qgi : m_selected_items)
+	{
+		if (qgi->type() == ConductorTextItem::Type ||
+			qgi->type() == ElementTextItem::Type ||
+			qgi->type() == IndependentTextItem::Type ||
+			qgi->type() == DynamicElementTextItem::Type)
+				selected_texts << static_cast<DiagramTextItem *>(qgi);
+	}
+	return(selected_texts);
+}
+
+/**
+ * @brief DiagramContent::selectedTextsGroup
+ * @return a list of selected texts group
+ * Note that the returned list of texts group, correspond to the selected texts group
+ * at the moment of the creation of this DiagramContent,
+ * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+ */
+QList<ElementTextItemGroup *> DiagramContent::selectedTextsGroup() const
+{
+	QList<ElementTextItemGroup *> groups;
+	
+	for(QGraphicsItem *qgi : m_selected_items)
+		if(qgi->type() == QGraphicsItemGroup::Type)
+			if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(qgi))
+				groups << grp;
+	
+	return groups;
+}
 
 /**
  * @brief DiagramContent::conductors
@@ -84,6 +188,8 @@ void DiagramContent::clear()
 	m_conductors_to_move.clear();
 	m_other_conductors.clear();
 	m_element_texts.clear();
+	m_texts_groups.clear();
+	m_selected_items.clear();
 }
 
 /**
@@ -138,6 +244,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 	if (filter & Images)            for(QGraphicsItem *qgi : m_images)        items_list << qgi;
 	if (filter & Shapes)            for(QGraphicsItem *qgi : m_shapes)        items_list << qgi;
 	if (filter & ElementTextFields) for(QGraphicsItem *qgi : m_element_texts) items_list << qgi;
+	if (filter & TextGroup)			for(QGraphicsItem *qgi : m_texts_groups)   items_list << qgi;
 
 	if (filter & SelectedOnly) {
 		for(QGraphicsItem *qgi : items_list) {
@@ -163,7 +270,8 @@ int DiagramContent::count(int filter) const
 		if (filter & ConductorsToMove)   for(Conductor *conductor : m_conductors_to_move)     { if (conductor -> isSelected()) ++ count; }
 		if (filter & ConductorsToUpdate) for(Conductor *conductor : m_conductors_to_update)   { if (conductor -> isSelected()) ++ count; }
 		if (filter & OtherConductors)    for(Conductor *conductor : m_other_conductors)       { if (conductor -> isSelected()) ++ count; }
-		if (filter & ElementTextFields)   for(DynamicElementTextItem *deti : m_element_texts) { if (deti      -> isSelected()) ++ count; }
+		if (filter & ElementTextFields)  for(DynamicElementTextItem *deti : m_element_texts)  { if (deti      -> isSelected()) ++ count; }
+		if (filter & TextGroup)          for(ElementTextItemGroup *etig : m_texts_groups)      { if (etig      -> isSelected()) ++ count; }
 	}
 	else {
 		if (filter & Elements)           count += m_elements.count();
@@ -174,6 +282,7 @@ int DiagramContent::count(int filter) const
 		if (filter & ConductorsToUpdate) count += m_conductors_to_update.count();
 		if (filter & OtherConductors)    count += m_other_conductors.count();
 		if (filter & ElementTextFields)  count += m_element_texts.count();
+		if (filter & TextGroup)			 count += m_texts_groups.count();
 	}
 	return(count);
 }

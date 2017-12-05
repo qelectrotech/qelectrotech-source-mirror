@@ -36,6 +36,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_OBJECT
 	
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
+	Q_PROPERTY(qreal rotation READ rotation WRITE setRotation)
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);

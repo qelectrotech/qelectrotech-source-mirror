@@ -216,69 +216,6 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 };
 
 /**
-	This command rotates several elements or text items by a particular angle.
-*/
-class RotateElementsCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = nullptr);
-	~RotateElementsCommand() override;
-	private:
-	RotateElementsCommand(const RotateElementsCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// hold rotated elements along with their former orientation
-	QList<Element *> elements_to_rotate;
-	/// text items to be rotated
-	QList<DiagramTextItem *> texts_to_rotate;
-	/// images item to be rotated
-	QList<DiagramImageItem *> images_to_rotate;
-	/// angle of rotation to be applied to text items
-	qreal applied_rotation_angle_;
-	/// previous state of each conductor text item
-	QHash<ConductorTextItem *, bool> previous_rotate_by_user_;
-	Diagram *diagram;
-};
-
-/**
-	This command directs several text items to a same particular angle of
-	rotation.
-*/
-class RotateTextsCommand : public QUndoCommand
-{
-	// constructors, destructor
-	public:
-		RotateTextsCommand(const QList<DiagramTextItem *> &, double, QUndoCommand * = nullptr);
-		~RotateTextsCommand() override;
-	private:
-		RotateTextsCommand(const RotateTextsCommand &);
-	
-	// methods
-	public:
-		void undo() override;
-		void redo() override;
-	
-	private:
-		void defineCommandName();
-	
-	// attributes
-	private:
-		/// hold rotated text items along with their former angle of rotation
-		QHash<DiagramTextItem *, double> m_texts_to_rotate;
-		/// angle of rotation of all text items after the command
-		double m_applied_rotation_angle;
-		/// previous state of each conductor text item
-		QHash<ConductorTextItem *, bool> m_previous_rotate_by_user;
-		Diagram *m_diagram;
-};
-
-/**
 	This command changes a particular conductor.
 */
 class ChangeConductorCommand : public QUndoCommand {

@@ -39,6 +39,8 @@
 #include "element.h"
 #include "diagramview.h"
 #include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
+#include "undocommand/addelementtextcommand.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -291,10 +293,10 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
  * Else move selected elements
  * @param e
  */
-void Diagram::keyPressEvent(QKeyEvent *e)
+void Diagram::keyPressEvent(QKeyEvent *event)
 {
 	if (m_event_interface)
-		if(m_event_interface->keyPressEvent(e))
+		if(m_event_interface->keyPressEvent(event))
 		{
 			if(!m_event_interface->isRunning())
 			{
@@ -302,44 +304,76 @@ void Diagram::keyPressEvent(QKeyEvent *e)
 			}
 			return;
 		}
-
-	bool transmit_event = true;
-	if (!isReadOnly()) {
+	
+	if (!isReadOnly())
+	{
 		QPointF movement;
 		qreal top_position = 0;
 		qreal left_position = 0;
-		QList<QGraphicsItem*> selected_elmts = this->selectedContent().items();
-		if (!this->selectedContent().items(DiagramContent::All).isEmpty()) {
-		switch(e -> key()) {
-			case Qt::Key_Left:
-				foreach (Element *item, selectedContent().m_elements) {
-					left_position = item->mapRectFromScene(item->boundingRect()).x();
-					if (left_position >= this->sceneRect().left() - item->boundingRect().width())
+		DiagramContent dc(this);
+		if (!dc.items(DiagramContent::All).isEmpty())
+		{
+				//Move item with the keyborb arrow
+			if(event->modifiers() == Qt::NoModifier)
+			{
+				switch(event->key())
+				{
+					case Qt::Key_Left:
+						for (Element *item : dc.m_elements)
+						{
+							left_position = item->mapRectFromScene(item->boundingRect()).x();
+							if (left_position >= this->sceneRect().left() - item->boundingRect().width())
+								return;
+						}
+						movement = QPointF(-xGrid, 0.0);
+						break;
+					case Qt::Key_Right:
+						movement = QPointF(+xGrid, 0.0);
+						break;
+					case Qt::Key_Up:
+						for(Element *item : dc.m_elements)
+						{
+							top_position = item->mapRectFromScene(item->boundingRect()).y();
+							if (top_position >= this->sceneRect().top() - item->boundingRect().height())
+								return;
+						}
+						movement = QPointF(0.0, -yGrid);
+						break;
+					case Qt::Key_Down:
+						movement = QPointF(0.0, +yGrid);
+						break;
+				}
+				
+				if (!movement.isNull() && !focusItem())
+				{
+					beginMoveElements();
+					continueMoveElements(movement);
+					event->accept();
 					return;
 				}
-				movement = QPointF(-xGrid, 0.0);
-				break;
-			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
-			case Qt::Key_Up:
-				foreach (Element *item, selectedContent().m_elements) {
-					top_position = item->mapRectFromScene(item->boundingRect()).y();
-					if (top_position >= this->sceneRect().top() - item->boundingRect().height())
-						return;
+			}
+			else if(event->modifiers() == Qt::ControlModifier)
+			{
+				//Adjust the alignment of a texts group
+				if(selectedItems().size() == 1 && selectedItems().first()->type() == QGraphicsItemGroup::Type)
+				{
+					if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(selectedItems().first()))
+					{
+						if(event->key() == Qt::Key_Left &&  etig->alignment() != Qt::AlignLeft)
+							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignLeft));
+						
+						else if (event->key() == Qt::Key_Up && etig->alignment() != Qt::AlignVCenter)
+							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignVCenter));
+						
+						else if (event->key() == Qt::Key_Right && etig->alignment() != Qt::AlignRight)
+							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignRight));
+					}
 				}
-				movement = QPointF(0.0, -yGrid);
-				break;
-			case Qt::Key_Down: movement = QPointF(0.0, +yGrid); break;
+			}
 		}
-		if (!movement.isNull() && !focusItem()) {
-			beginMoveElements();
-			continueMoveElements(movement);
-			e -> accept();
-			transmit_event = false;
-		}
-	}
-	if (transmit_event) {
-		QGraphicsScene::keyPressEvent(e);
-		}
+		
+		event->ignore();
+		QGraphicsScene::keyPressEvent(event);
 	}
 }
 
@@ -1659,25 +1693,6 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 	return(conductors_set);
 }
 
-/**
- * @brief Diagram::selectedTexts
- * @return A list of every selected texts (every kind of texts)
- */
-QSet<DiagramTextItem *> Diagram::selectedTexts() const
-{
-	QSet<DiagramTextItem *> selected_texts;
-	for(QGraphicsItem *qgi : selectedItems())
-	{
-		if (qgi->type() == ConductorTextItem::Type ||
-			qgi->type() == ElementTextItem::Type ||
-			qgi->type() == IndependentTextItem::Type ||
-			qgi->type() == DynamicElementTextItem::Type)
-				selected_texts << static_cast<DiagramTextItem *>(qgi);
-	}
-	
-	return(selected_texts);
-}
-
 /// @return true si le presse-papier semble contenir un schema
 bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
@@ -1761,62 +1776,6 @@ DiagramContent Diagram::content() const {
 }
 
 /**
- * @brief Diagram::selectedContent
- * @return the selected items, stored in a DiagramContent
- */
-DiagramContent Diagram::selectedContent()
-{
-	DiagramContent dc;
-
-		//Get the selected items
-	for (QGraphicsItem *item : selectedItems())
-	{
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item))
-			dc.m_elements << elmt;
-		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
-			dc.m_text_fields << iti;
-		else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
-		{
-			// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
-			if (
-				!c -> terminal1 -> parentItem() -> isSelected() &&\
-				!c -> terminal2 -> parentItem() -> isSelected()
-			) {
-				dc.m_other_conductors << c;
-			}
-		}
-		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
-			dc.m_images << dii;
-		else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item))
-			dc.m_shapes << dsi;
-		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
-			dc.m_element_texts << deti;
-	}
-	
-		//For each selected element, we determine if conductors must be moved or updated.
-	for(Element *elmt : dc.m_elements) {
-		for(Terminal *terminal : elmt -> terminals()) {
-			for(Conductor *conductor : terminal -> conductors()) {
-				Terminal *other_terminal;
-				if (conductor -> terminal1 == terminal) {
-					other_terminal = conductor -> terminal2;
-				} else {
-					other_terminal = conductor -> terminal1;
-				}
-				// si les deux elements du conducteur sont deplaces
-				if (dc.m_elements.contains(other_terminal -> parentElement())) {
-					dc.m_conductors_to_move << conductor;
-				} else {
-					dc.m_conductors_to_update << conductor;
-				}
-			}
-		}
-	}
-	
-	return(dc);
-}
-
-/**
  * @brief Diagram::canRotateSelection
  * @return True if a least one of selected items can be rotated
  */
@@ -1829,7 +1788,12 @@ bool Diagram::canRotateSelection() const
 			qgi->type() == DiagramImageItem::Type ||
 			qgi->type() == ElementTextItem::Type ||
 			qgi->type() == Element::Type ||
-			qgi->type() == DynamicElementTextItem::Type) return true;
+			qgi->type() == DynamicElementTextItem::Type)
+			return true;
+		
+		if(qgi->type() == QGraphicsItemGroup::Type)
+			if(dynamic_cast<ElementTextItemGroup *>(qgi))
+				return true;
 	}
 	
 	return false;
