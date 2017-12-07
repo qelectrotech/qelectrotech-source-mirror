@@ -34,7 +34,11 @@ AboutQET::AboutQET(QWidget *parent) :
 	QDialog(parent)
 {
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
+	setFixedSize (600, 600);
+	//setMinimumHeight(600);
+	//setMinimumWidth(600);
 	setModal(true);
+
 
 	QTabWidget *tabs = new QTabWidget();
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
@@ -50,7 +54,12 @@ AboutQET::AboutQET(QWidget *parent) :
 	
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout->addWidget(tabs);
-	vlayout->addWidget(buttons);
+	//vlayout->addWidget(buttons);
+	
+	QScrollArea* scrollArea = new QScrollArea(this);
+		scrollArea->setWidgetResizable(true);
+		scrollArea->setFixedSize (590, 590);
+		scrollArea->setWidget(tabs);
 }
 
 /**
@@ -100,7 +109,7 @@ QWidget *AboutQET::aboutTab() const {
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
 	about -> setTextFormat(Qt::RichText);
-	about -> setFixedSize (690, 610);
+	//about -> setFixedSize (690, 610);
 	return(about);
 }
 
