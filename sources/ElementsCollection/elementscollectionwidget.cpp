@@ -180,7 +180,7 @@ void ElementsCollectionWidget::setUpWidget()
 
 		//Setup the progress bar
 	m_progress_bar = new QProgressBar(this);
-	m_progress_bar->setFormat(tr("Chargement") + " %p%" + QString("Progressing using %1 thread(s)...").arg(QThread::idealThreadCount()));
+	m_progress_bar->setFormat(tr("Chargement") + " %p%" + QString(" %1 thread(s)").arg(QThread::idealThreadCount()));
 	m_main_vlayout->addWidget(m_progress_bar);
 	m_progress_bar->hide();
 
