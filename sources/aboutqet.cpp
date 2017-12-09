@@ -60,8 +60,6 @@ AboutQET::AboutQET(QWidget *parent) :
 		scrollArea->setWidgetResizable(true);
 		scrollArea->setFixedSize (590, 590);
 		scrollArea->setWidget(tabs);
-		scrollArea->setWindowModality(Qt::ApplicationModal);
-
 }
 
 /**
