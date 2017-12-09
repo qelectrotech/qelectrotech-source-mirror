@@ -180,7 +180,7 @@ void ElementsCollectionWidget::setUpWidget()
 
 		//Setup the progress bar
 	m_progress_bar = new QProgressBar(this);
-	m_progress_bar->setFormat(tr("chargement") + "%p% (%v sur %m)");
+	m_progress_bar->setFormat(tr("chargement") + " %p% (%v sur %m)");
 	m_main_vlayout->addWidget(m_progress_bar);
 	m_progress_bar->hide();
 
