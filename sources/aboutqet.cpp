@@ -60,6 +60,8 @@ AboutQET::AboutQET(QWidget *parent) :
 		scrollArea->setWidgetResizable(true);
 		scrollArea->setFixedSize (590, 590);
 		scrollArea->setWidget(tabs);
+		scrollArea->setWindowModality(Qt::ApplicationModal);
+
 }
 
 /**
@@ -80,11 +82,12 @@ QWidget *AboutQET::titleTab() const {
 	compilation_info += "  CLANG " + QString(__clang_version__ );
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
 	compilation_info += " - run with Qt "+ QString(qVersion());
+	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
 #else
 	compilation_info += "  GCC " + QString(__VERSION__);
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
 	compilation_info += " - run with Qt "+ QString(qVersion());
-	compilation_info += " using" + QString(" %1 thread(s)...").arg(QThread::idealThreadCount());
+	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
 #endif
 #endif
 	title -> setAlignment(Qt::AlignCenter);
