@@ -84,6 +84,7 @@ QWidget *AboutQET::titleTab() const {
 	compilation_info += "  GCC " + QString(__VERSION__);
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
 	compilation_info += " - run with Qt "+ QString(qVersion());
+	compilation_info += " using" + QString(" %1 thread(s)...").arg(QThread::idealThreadCount());
 #endif
 #endif
 	title -> setAlignment(Qt::AlignCenter);
