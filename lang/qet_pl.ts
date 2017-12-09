@@ -962,7 +962,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
         <source> %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation> %p% (%v z %m)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
@@ -1842,7 +1842,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>ładowanie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -7158,28 +7158,28 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Obróć zaznaczone</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
         <source>Pivoter %1 textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Obróć %1 teksty</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Obróć</translation>
+        <translation>Obróć</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
         <source> %1 groupes de textes</source>
-        <translation type="unfinished"></translation>
+        <translation> %1 grupy tekstów</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Orientacja zaznaczonych tekstów</translation>
+        <translation>Orientacja zaznaczonych tekstów</translation>
     </message>
 </context>
 <context>
