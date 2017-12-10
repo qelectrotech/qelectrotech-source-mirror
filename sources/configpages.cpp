@@ -27,6 +27,8 @@
 #include "qetproject.h"
 #include "reportproperties.h"
 #include "qetapp.h"
+#include <QFontDialog>
+#include <QFont>
 
 /**
  * @brief NewDiagramPage::NewDiagramPage
@@ -251,6 +253,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	terminal_exportlist_ = new QCheckBox(tr("Exporter les bornes dans la nomenclature"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
+	bool ok;
+QFont font = QFontDialog::getFont(&ok, QFont(), this);
+if (ok) {
+	settings.setValue("diagramitemfont", font.family());
+	settings.setValue("diagramitemsize", font.pointSize());
+	settings.setValue("diagramitemweight", font.weight());
+	settings.setValue("diagramitemstyle", font.styleName());
+}
+
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
 	default_element_infos_label_ = new QLabel(
