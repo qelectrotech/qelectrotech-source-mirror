@@ -52,7 +52,7 @@ void DiagramTextItem::build()
 	setZValue(10);
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
-	setFont(QETApp::diagramTextsFont());
+	setFont(QETApp::diagramTextsItemFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setNoEditable(false);
 	setToolTip(tr("Maintenir ctrl pour un déplacement libre"));

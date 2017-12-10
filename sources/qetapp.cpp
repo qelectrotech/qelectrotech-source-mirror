@@ -778,6 +778,31 @@ QFont QETApp::diagramTextsFont(qreal size)
 	}
 	return(diagram_texts_font);
 }
+/**
+ * @brief QETApp::diagramTextsItemFont
+ * the font for to use in independent text item
+ * @param size of font
+ * @return 
+ */
+QFont QETApp::diagramTextsItemFont(qreal size)
+{
+	QSettings settings;
+
+		//Font to use
+	QString diagram_texts_item_family = settings.value("diagramitemfont", "Sans Serif").toString();
+	qreal diagram_texts_item_size     = settings.value("diagramitemsize", 9.0).toDouble();
+
+	if (size != -1.0) {
+		diagram_texts_item_size = size;
+	}
+	QFont diagram_texts_item_font = QFont(diagram_texts_item_family);
+	diagram_texts_item_font.setPointSizeF(diagram_texts_item_size);
+	if (diagram_texts_item_size <= 4.0) {
+		diagram_texts_item_font.setWeight(QFont::Light);
+	}
+	return(diagram_texts_item_font);
+}
+
 
 /**
 	@return les editeurs de schemas

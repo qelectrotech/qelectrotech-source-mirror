@@ -122,6 +122,7 @@ class QETApp : public QETSingleApplication {
 	static void overrideLangDir(const QString &);
 	static QString lang_dir; ///< Directory containing localization files.
 	static QFont diagramTextsFont(qreal = -1.0);
+	static QFont diagramTextsItemFont(qreal = -1.0);
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	static QETDiagramEditor *diagramEditorAncestorOf (const QWidget *child);
 	static QList<QETDiagramEditor *> diagramEditors();
