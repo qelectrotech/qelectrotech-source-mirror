@@ -52,9 +52,17 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 {
 	if(item->type() == DynamicElementTextItem::Type)
 	{
+			//Befor add text to group we must to set the text and the group to the same rotation
+		item->setRotation(0);
 		item->setFlag(QGraphicsItem::ItemIsSelectable, false);
-		QGraphicsItemGroup::addToGroup(item);	
+		
+		qreal rot = this->rotation();
+		this->setRotation(0);
+		
+		QGraphicsItemGroup::addToGroup(item);
 		updateAlignment();
+		
+		this->setRotation(rot);
 		
 		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
 		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
@@ -72,6 +80,10 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
 	QGraphicsItemGroup::removeFromGroup(item);
+		//the item transformation is not reseted, we must to do it, because for exemple if the group rotation is 45°
+		//When item is removed from group, visually the item is unchanged (so 45°) but if we call item->rotation() the returned value is 0.
+	item->resetTransform();
+	item->setRotation(this->rotation());
 	item->setFlag(QGraphicsItem::ItemIsSelectable, true);
 	updateAlignment();
 	
@@ -94,6 +106,7 @@ void ElementTextItemGroup::setAlignment(Qt::Alignment alignement)
 {
 	m_alignment = alignement;
 	updateAlignment();
+	emit alignmentChanged(alignement);
 }
 
 Qt::Alignment ElementTextItemGroup::alignment() const
@@ -117,7 +130,7 @@ void ElementTextItemGroup::updateAlignment()
 		prepareGeometryChange();
 		std::sort(texts.begin(), texts.end(), sorting);
 		
-		qreal y_offset =0;
+		qreal y_offset = 0;
 		
 		if(m_alignment == Qt::AlignLeft)
 		{
@@ -126,7 +139,7 @@ void ElementTextItemGroup::updateAlignment()
 			for(QGraphicsItem *item : texts)
 			{
 				item->setPos(ref.x(), ref.y()+y_offset);
-				y_offset+=item->boundingRect().height();
+				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
 			}
 		}
 		else if(m_alignment == Qt::AlignVCenter)
@@ -138,7 +151,7 @@ void ElementTextItemGroup::updateAlignment()
 			{
 				item->setPos(ref.x() - item->boundingRect().width()/2,
 							 ref.y() + y_offset);
-				y_offset+=item->boundingRect().height();
+				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
 			}	
 		}
 		else if (m_alignment == Qt::AlignRight)
@@ -150,11 +163,28 @@ void ElementTextItemGroup::updateAlignment()
 			{
 				item->setPos(ref.x() - item->boundingRect().width(),
 							 ref.y() + y_offset);
-				y_offset+=item->boundingRect().height();
+				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
 			}
 		}
 		
 		setTransformOriginPoint(boundingRect().topLeft());
+	}
+}
+
+/**
+ * @brief ElementTextItemGroup::setVerticalAdjustment
+ * Set the value of the vertical adjustment to @v.
+ * The vertical adjutment is use to adjust the space between the texts of this group.
+ * @param v
+ */
+void ElementTextItemGroup::setVerticalAdjustment(int v)
+{
+	if(m_vertical_adjustment != v)
+	{
+		prepareGeometryChange();
+		m_vertical_adjustment = v;
+		updateAlignment();
+		emit verticalAdjustmentChanged(v);
 	}
 }
 
@@ -220,6 +250,9 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	dom_element.setAttribute("alignment", me.valueToKey(m_alignment));
 	
+	dom_element.setAttribute("rotation", this->rotation());
+	dom_element.setAttribute("vertical_adjustment", m_vertical_adjustment);
+	
 	QDomElement dom_texts = dom_document.createElement("texts");
 	for(DynamicElementTextItem *deti : texts())
 	{
@@ -247,6 +280,9 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	m_name = dom_element.attribute("name", "no name");
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_alignment = Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data()));
+	
+	setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
+	m_vertical_adjustment = dom_element.attribute("vertical_adjustment").toInt();
 	
 	if(parentElement())
 	{
@@ -308,6 +344,12 @@ QRectF ElementTextItemGroup::boundingRect() const
 	return rect;
 }
 
+void ElementTextItemGroup::setRotation(qreal angle)
+{
+	QGraphicsItemGroup::setRotation(angle);
+	emit rotationChanged(angle);
+}
+
 /**
  * @brief ElementTextItemGroup::mousePressEvent
  * @param event
@@ -344,7 +386,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		}
 		
 		QPointF expected_pos = event->scenePos() + m_mouse_to_origin_movement;
-		setPos(Diagram::snapToGrid(expected_pos));
+		event->modifiers() == Qt::ControlModifier ? setPos(expected_pos) : setPos(Diagram::snapToGrid(expected_pos));
 		
 		QPointF effective_movement = pos() - old_pos;
 		if(diagram())

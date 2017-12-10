@@ -36,7 +36,15 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_OBJECT
 	
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
-	Q_PROPERTY(qreal rotation READ rotation WRITE setRotation)
+	Q_PROPERTY(qreal rotation READ rotation WRITE setRotation NOTIFY rotationChanged)
+	Q_PROPERTY(int verticalAdjustment READ verticalAdjustment WRITE setVerticalAdjustment NOTIFY verticalAdjustmentChanged)
+	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	
+	public:
+	signals:
+		void rotationChanged(qreal);
+		void verticalAdjustmentChanged(int);
+		void alignmentChanged(Qt::Alignment);
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
@@ -47,6 +55,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void setAlignment(Qt::Alignment alignement);
 		Qt::Alignment alignment() const;
 		void updateAlignment();
+		int verticalAdjustment() const {return m_vertical_adjustment;}
+		void setVerticalAdjustment(int v);
 		void setName(QString name);
 		QString name() const {return m_name;}
 		QList<DynamicElementTextItem *> texts() const;
@@ -59,6 +69,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QRectF boundingRect() const override;
+		void setRotation(qreal angle);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -71,6 +82,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QString m_name;
 		bool m_first_move = true;
 		QPointF m_mouse_to_origin_movement;
+		int m_vertical_adjustment = 0;
 };
 
 #endif // ELEMENTTEXTITEMGROUP_H

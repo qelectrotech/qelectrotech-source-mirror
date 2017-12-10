@@ -99,7 +99,7 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup))
+	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes))
 	{
 		if (qgi == m_movement_driver)
 			continue;

@@ -47,7 +47,10 @@ class DynamicElementTextModel : public QStandardItemModel
             color,
 			pos,
 			frame,
-			rotation
+			rotation, 
+			grp_alignment,
+			grp_rotation,
+			grp_v_adjust
         };
         
 		DynamicElementTextModel(Element *element, QObject *parent = nullptr);
@@ -58,6 +61,7 @@ class DynamicElementTextModel : public QStandardItemModel
         DynamicElementTextItem *textFromItem(QStandardItem *item) const;
 		QModelIndex indexFromText(DynamicElementTextItem *text) const;
 		QUndoCommand *undoForEditedText(DynamicElementTextItem *deti, QUndoCommand *parent_undo = nullptr) const;
+		QUndoCommand *undoForEditedGroup(ElementTextItemGroup *group, QUndoCommand *parent_undo = nullptr) const;
 		
 		ElementTextItemGroup *groupFromIndex(const QModelIndex &index) const;
 		ElementTextItemGroup *groupFromItem(QStandardItem *item) const;
@@ -71,7 +75,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		QStringList mimeTypes() const override;
 		
 	signals:
-		void dataForTextChanged(DynamicElementTextItem *text);
+		void dataChanged();
         
     private:
 		QList<QStandardItem *> itemsForText(DynamicElementTextItem *deti);
@@ -84,14 +88,17 @@ class DynamicElementTextModel : public QStandardItemModel
 		void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
         void itemDataChanged(QStandardItem *qsi);
 		void setConnection(DynamicElementTextItem *deti, bool set);
+		void setConnection(ElementTextItemGroup *group, bool set);
 		void updateDataFromText(DynamicElementTextItem *deti, DynamicElementTextModel::ValueType type);
+		void updateDataFromGroup(ElementTextItemGroup *group, DynamicElementTextModel::ValueType type);
 		
 	private:
 		QPointer<Element> m_element;
 		QHash <DynamicElementTextItem *, QStandardItem *> m_texts_list;
 		QHash <ElementTextItemGroup *, QStandardItem *> m_groups_list;
 		QHash <DynamicElementTextItem *, QList<QMetaObject::Connection>> m_hash_text_connect;
-		bool m_block_dataForTextChanged = false;
+		QHash <ElementTextItemGroup *, QList<QMetaObject::Connection>> m_hash_group_connect;
+		bool m_block_dataChanged = false;
 };
 
 class DynamicTextItemDelegate : public QStyledItemDelegate

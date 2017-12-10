@@ -65,7 +65,7 @@ void DynamicElementTextItemEditor::setElement(Element *element)
     
     DynamicElementTextModel *old_model = m_model;
     m_model = new DynamicElementTextModel(element, m_tree_view);
-	connect(m_model, &DynamicElementTextModel::dataForTextChanged, this, &DynamicElementTextItemEditor::dataEdited);
+	connect(m_model, &DynamicElementTextModel::dataChanged, this, &DynamicElementTextItemEditor::dataEdited);
     m_tree_view->setModel(m_model);
     
     if(old_model)
@@ -92,6 +92,25 @@ void DynamicElementTextItemEditor::apply()
 	{
 		QUndoCommand *undo = m_model->undoForEditedText(deti);
 
+		if (undo->childCount() == 1)
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
+			if (quc->text().isEmpty())
+				quc->setText(undo->text());
+			undo_list << quc;
+			delete undo;
+		}
+		else if(undo->childCount() > 1)
+			undo_list << undo;
+		else
+			delete undo;
+	}
+	
+		//Get all texts groups of the edited element
+	for (ElementTextItemGroup *group : m_element.data()->textGroups())
+	{
+		QUndoCommand *undo = m_model->undoForEditedGroup(group);
+		
 		if (undo->childCount() == 1)
 		{
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
@@ -172,9 +191,8 @@ QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
 		return nullptr;
 }
 
-void DynamicElementTextItemEditor::dataEdited(DynamicElementTextItem *deti)
+void DynamicElementTextItemEditor::dataEdited()
 {
-	Q_UNUSED(deti)
 	if (m_live_edit)
 		apply();
 }

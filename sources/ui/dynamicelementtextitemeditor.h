@@ -47,7 +47,7 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 		QUndoCommand *associatedUndo() const override;
 	
 	private:
-		void dataEdited(DynamicElementTextItem *deti);
+		void dataEdited();
 		void treeViewClicked(const QModelIndex &index);
     
     private slots:
