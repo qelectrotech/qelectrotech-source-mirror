@@ -666,7 +666,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="137"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
@@ -778,7 +778,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Μετακίνηση ενός ακροδέκτη</translation>
     </message>
 </context>
 <context>
@@ -957,7 +957,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
         <source> %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation> %p% (%v από %m)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
@@ -988,27 +988,27 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="35"/>
         <source>Ajouter un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="38"/>
         <source>Texte</source>
-        <translation type="unfinished">Κείμενο</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="49"/>
         <source>Ajouter un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ομάδας κειμένων</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="52"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομάδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή της επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="42"/>
@@ -1023,22 +1023,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="161"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="168"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία %1 κειμένων του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
         <source>Nom du groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα της ομάδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="239"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισάγετε το όνομα της νέας ομάδας</translation>
     </message>
 </context>
 <context>
@@ -1108,37 +1108,37 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="438"/>
         <source>Modifier le tagg d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της ετικέτας ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="445"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του μεγέθους ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="452"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του χρώματος ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του περιθορίου ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="470"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished">Μετακίνηση ενός κειμένου του στοιχείου</translation>
+        <translation>Μετακίνηση ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Pivoter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="774"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενος κειμένου σε διαφορετική ομάδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="168"/>
@@ -1153,22 +1153,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="207"/>
         <source>Cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιθόριο</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="223"/>
         <source>Position X</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση Χ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="236"/>
         <source>Position Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση Υ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
         <source>Rotation</source>
-        <translation type="unfinished">Περιστροφή</translation>
+        <translation>Περιστροφή</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="400"/>
@@ -1186,7 +1186,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιθόριο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="165"/>
@@ -1242,22 +1242,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="117"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="125"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="133"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="141"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του κειμένου ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="148"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Επεξεργασία του μεγέθους ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του μεγέθους ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="155"/>
@@ -1267,12 +1267,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished">Επεξεργασία του χρώματος ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του χρώματος ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="173"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του πλαισίου ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -1842,7 +1842,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>φόρτωση</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -2386,7 +2386,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>ΕτικέταΚειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
@@ -2456,7 +2456,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση των ετικετών της σελίδας αντί του ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="254"/>
@@ -2473,7 +2473,7 @@ that you create. Text and number inputs are
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Κάθε στοιχείο εμπεριέχει, σε ένα ελεύθερο πεδίο κειμένου, πληροφορίες για τους δημιουργούς του, για τα δικαιώματα χρήσης, ή οτιδήποτε άλλο θεωρείτε χρήσιμο. 
-Εδώ μπορείτε να ορίσετε την προεπιλεγμένη τιμή αυτού το πλαισίου κειμένου, για τα στοιχεία που πρόκειται να δημιουργήσετε στο μέλλον:</translation>
+Εδώ μπορείτε να ορίσετε την προεπιλεγμένη τιμή αυτού το πεδιου κειμένου, για τα στοιχεία που πρόκειται να δημιουργήσετε στο μέλλον:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="306"/>
@@ -3007,7 +3007,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation>Μικρογραφία</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
@@ -3388,12 +3388,12 @@ that you create. Text and number inputs are
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="61"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δυναμικό πεδίο κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="403"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Μετακίνηση ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -3539,7 +3539,7 @@ Tension/protocole : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="237"/>
         <source>
 Numéro : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
@@ -3758,17 +3758,17 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενο περιγραφής</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός άρθρου</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός παραγγελίας</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
@@ -3978,7 +3978,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetapp.cpp" line="309"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος της ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="310"/>
@@ -4312,7 +4312,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="429"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Προσθήκη πλαισίου κειμένου</translation>
+        <translation>Προσθήκη πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="189"/>
@@ -4593,7 +4593,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1470"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation>Επεξεργασία του πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1476"/>
@@ -4687,7 +4687,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση του προσθέτου δημιουργίας ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
@@ -4968,7 +4968,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="279"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Προσθήκη πλαισίου κειμένου</translation>
+        <translation>Προσθήκη πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="165"/>
@@ -5315,7 +5315,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="145"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>Έναρξη του προσθέτου μετατροπής DXF</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
@@ -5572,13 +5572,13 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ξεκινά το προεπιλεγμένο πρόγραμμα περιήγησης στο online εγχειρίδιο QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ξεκινά το προεπιλεγμένο πρόγραμμα περιήγησης στο Youtube κανάλι του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
@@ -5590,13 +5590,13 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="118"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished"></translation>
+        <translation>Υποστηρίξτε το έργο με μια δωρεά</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Υποστηρίξτε το έργο QElectroTech με μια δωρεά</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="126"/>
@@ -6253,7 +6253,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="38"/>
         <source>un champ texte</source>
-        <translation>πεδίο κειμένου</translation>
+        <translation>ένα πεδίο κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
@@ -6438,7 +6438,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/graphicspart/parttextfield.h" line="57"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
-        <translation>πεδίο_κειμένου</translation>
+        <translation>πεδίο κειμένου</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="238"/>
@@ -6716,7 +6716,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="269"/>
         <source>Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκδ</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
@@ -6831,18 +6831,18 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="192"/>
         <source>Déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="194"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
         <source> et</source>
-        <translation type="unfinished"> και</translation>
+        <translation> και</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="197"/>
         <source> un groupe de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>μια ομάδα κειμένων</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -7016,7 +7016,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Προμηθευτής</translation>
+        <translation>Προμηθευτής</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="116"/>
@@ -7126,7 +7126,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Περιστροφή</translation>
+        <translation>Περιστροφή</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
@@ -7137,7 +7137,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Επιλέξτε τον προσανατολισμό των επιλεγμένων κειμένων</translation>
+        <translation>Επιλέξτε τον προσανατολισμό των επιλεγμένων κειμένων</translation>
     </message>
 </context>
 <context>
@@ -7976,27 +7976,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Επεξεργασία του περιεχομένου ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του περιεχομένου ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Επεξεργασία του μεγέθους ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του μεγέθους ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Επεξεργασία του χρώματος ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του χρώματος ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation>Επεξεργασία τηε γωνίας ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία τηε γωνίας ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
         <source>Déplacer un champ texte</source>
-        <translation>Μετακίνηση ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -8064,32 +8064,32 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Μετακίνηση του περιεχομένου ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση του περιεχομένου ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="153"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Επεξεργασία του μεγέθους ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του μεγέθους ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="168"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation>Επεξεργασία των ιδιοτήτων ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="183"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation>Επεξεργασία της γωνίας περιστροφής ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία της γωνίας περιστροφής ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="203"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation>Επεξεργασία της ετικέτας ενός πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία της ετικέτας ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="217"/>
         <source>Déplacer un champ texte</source>
-        <translation>Μετακίνηση ενός πλαισίου κειμένου</translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -8880,7 +8880,13 @@ Longueur maximale : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιούργισε το δικό σου κείμενο με την βοήθεια των ακόλουθων μεταβλητών :
+%f : αριθμός σελίδας 
+% F: ετικέτα σελίδας
+% l : αριθμός γραμμής
+% c : αριθμός στήλης
+% M: Εγκατάσταση 
+% LM: Τοποθεσία </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
