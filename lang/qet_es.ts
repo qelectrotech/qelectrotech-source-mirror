@@ -967,7 +967,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
         <source> %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation> %p% (%v de %m)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
@@ -1442,7 +1442,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
-        <translation>Informaciones</translation>
+        <translation>Información</translation>
     </message>
 </context>
 <context>
@@ -1495,7 +1495,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation>Informaciones</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
@@ -1859,7 +1859,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -4416,7 +4416,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
         <source>Retrouver dans le panel</source>
-        <translation>Econtrar en el panel</translation>
+        <translation>Encontrar en el panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="430"/>
@@ -5286,7 +5286,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="516"/>
         <source>Informations</source>
         <comment>dock title</comment>
-        <translation>Informaciones</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="525"/>
@@ -5667,7 +5667,7 @@ Las condiciones requeridas no son validas</translation>
         <location filename="../sources/qetmainwindow.cpp" line="141"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation>&amp;Ayuda</translation>
+        <translation>Ay&amp;uda</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="204"/>
@@ -6350,7 +6350,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="520"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Reinicializar %1</translation>
+        <translation>Reiniciar %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="568"/>
@@ -7167,28 +7167,29 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Girar la selección</translatorcomment>
+        <translation>Girar la selección</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
         <source>Pivoter %1 textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar %1 textos</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Girar</translation>
+        <translation>Girar</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
         <source> %1 groupes de textes</source>
-        <translation type="unfinished"></translation>
+        <translation> %1 grupos de textos</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Orientar los textos seleccionados</translation>
+        <translation>Orientar los textos seleccionados</translation>
     </message>
 </context>
 <context>
