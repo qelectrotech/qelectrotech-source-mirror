@@ -253,14 +253,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	terminal_exportlist_ = new QCheckBox(tr("Exporter les bornes dans la nomenclature"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
-	bool ok;
-QFont font = QFontDialog::getFont(&ok, QFont(), this);
-if (ok) {
-	settings.setValue("diagramitemfont", font.family());
-	settings.setValue("diagramitemsize", font.pointSize());
-	settings.setValue("diagramitemweight", font.weight());
-	settings.setValue("diagramitemstyle", font.styleName());
-}
+	QPushButton *fontButton = new QPushButton(tr("Choix de la police de texte utilisée pour les textes independants")); 
+
 
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
@@ -304,7 +298,8 @@ if (ok) {
 	projects_view_mode_layout -> addWidget(save_label_paste_);
 	projects_view_mode_layout -> addWidget(folio_panel_);
 	projects_view_mode_layout -> addWidget(terminal_exportlist_);
-	
+	projects_view_mode_layout->  addWidget(fontButton, 0, 0);
+	connect(fontButton, SIGNAL(clicked()), this, SLOT(setFont()));
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -525,3 +520,20 @@ QIcon PrintConfigPage::icon() const {
 QString PrintConfigPage::title() const {
 	return(tr("Impression", "configuration page title"));
 }
+/**
+ * @brief GeneralConfigurationPage::setFont
+ * Apply font to config
+ */
+void GeneralConfigurationPage::setFont()
+{
+	bool ok;
+	QSettings settings;
+	QFont font = QFontDialog::getFont(&ok, QFont(), this);
+	if (ok) {
+		settings.setValue("diagramitemfont", font.family());
+		settings.setValue("diagramitemsize", font.pointSize());
+		settings.setValue("diagramitemweight", font.weight());
+		settings.setValue("diagramitemstyle", font.styleName());
+	}
+}
+

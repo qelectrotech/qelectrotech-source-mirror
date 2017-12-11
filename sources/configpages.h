@@ -18,6 +18,7 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include <QtWidgets>
+#include <QDialog>
 #include "configpage.h"
 #include "projectpropertiesdialog.h"
 #include "titleblockpropertieswidget.h"
@@ -90,6 +91,9 @@ class GeneralConfigurationPage : public ConfigPage {
 	private:
 	void fillLang(QSettings &);
 	
+public slots:
+	void setFont();
+	
 	// attributes
 	private:
 	QLabel *title_label_;
@@ -112,6 +116,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	QGroupBox *lang_group_box;
 	QComboBox *lang_combo_box;
 	QLabel *lang_label;
+	QPushButton *fontButton;
 };
 
 /**
