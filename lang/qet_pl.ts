@@ -2537,7 +2537,7 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="261"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Czcionka pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="265"/>
