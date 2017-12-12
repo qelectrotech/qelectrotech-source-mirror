@@ -27,11 +27,12 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-	pages_list -> setIconSize(QSize(110, 110));
+    pages_list -> setIconSize(QSize(128, 128));
 	pages_list -> setMovement(QListView::Static);
-	pages_list -> setMinimumWidth(150);
-	pages_list -> setMaximumWidth(150);
-	pages_list -> setSpacing(4);
+    pages_list -> setMinimumWidth(168);
+    pages_list -> setMaximumWidth(168);
+    pages_list -> setSpacing(16);
+    pages_list -> setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
 	// pages
 	pages_widget = new QStackedWidget();
