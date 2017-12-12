@@ -2151,7 +2151,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="465"/>
+        <location filename="../sources/configpages.cpp" line="476"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Eksport</translation>
@@ -2510,189 +2510,189 @@ Litery i cyfry mogą być używane.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="245"/>
+        <location filename="../sources/configpages.cpp" line="246"/>
         <source>Apparence</source>
         <translation>Wygląd</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="246"/>
+        <location filename="../sources/configpages.cpp" line="247"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Użyj kolorów systemu</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="247"/>
+        <location filename="../sources/configpages.cpp" line="248"/>
         <source>Projets</source>
         <translation>Projekty</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="250"/>
+        <location filename="../sources/configpages.cpp" line="251"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Użyj gestów gładzika</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="252"/>
+        <location filename="../sources/configpages.cpp" line="253"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
         <translation>Użyj ID zamiast etykiet arkuszy</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="259"/>
+        <location filename="../sources/configpages.cpp" line="261"/>
+        <source>Police des champs de texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="265"/>
         <source>Gestion des éléments</source>
         <translation>Zarządzanie elementami</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="260"/>
+        <location filename="../sources/configpages.cpp" line="266"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>Wyróżnij w panelu elementy wstawiane jako nowe</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="262"/>
+        <location filename="../sources/configpages.cpp" line="268"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Każdy element posiada puste pole na informacje o autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone:</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="312"/>
+        <location filename="../sources/configpages.cpp" line="323"/>
         <source>Langue</source>
         <translation>Język</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="248"/>
+        <location filename="../sources/configpages.cpp" line="249"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Użyj okna (planowane do wprowadzenia w QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="249"/>
+        <location filename="../sources/configpages.cpp" line="250"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Użyj zakładek (planowane do wprowadzenia w QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="251"/>
+        <location filename="../sources/configpages.cpp" line="252"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Nie przechowuj etykiet elementów podczas wklejania kopii</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="253"/>
+        <location filename="../sources/configpages.cpp" line="254"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Ekspotr oznaczeń zacisków do dokumentacji</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="254"/>
+        <location filename="../sources/configpages.cpp" line="255"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Pozwól na powiększenie poza arkusz</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="256"/>
-        <source>Choix de la police de texte utilisée pour les textes independants</source>
-        <translation>Wybierz czcinkę tekstu dla niezależnych tekstów</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="315"/>
+        <location filename="../sources/configpages.cpp" line="326"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
         <translation>Język zostanie zmieniony przy kolejnym uruchomianiu QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="378"/>
+        <location filename="../sources/configpages.cpp" line="389"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Ogólne</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="386"/>
+        <location filename="../sources/configpages.cpp" line="397"/>
         <source>Système</source>
         <translation>Systemowy</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="390"/>
+        <location filename="../sources/configpages.cpp" line="401"/>
         <source>Arabe</source>
         <translation>Arabski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="391"/>
+        <location filename="../sources/configpages.cpp" line="402"/>
         <source>Brézilien</source>
         <translation>Brazylijski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="392"/>
+        <location filename="../sources/configpages.cpp" line="403"/>
         <source>Catalan</source>
         <translation>Kataloński</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="393"/>
+        <location filename="../sources/configpages.cpp" line="404"/>
         <source>Tchèque</source>
         <translation>Czeski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="394"/>
+        <location filename="../sources/configpages.cpp" line="405"/>
         <source>Allemand</source>
         <translation>Niemiecki</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="395"/>
+        <location filename="../sources/configpages.cpp" line="406"/>
         <source>Danois</source>
         <translation>Duński</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="396"/>
+        <location filename="../sources/configpages.cpp" line="407"/>
         <source>Grec</source>
         <translation>Grecki</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="397"/>
+        <location filename="../sources/configpages.cpp" line="408"/>
         <source>Anglais</source>
         <translation>Angielski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="398"/>
+        <location filename="../sources/configpages.cpp" line="409"/>
         <source>Espagnol</source>
         <translation>Hiszpański</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="399"/>
+        <location filename="../sources/configpages.cpp" line="410"/>
         <source>Français</source>
         <translation>Francuski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="400"/>
+        <location filename="../sources/configpages.cpp" line="411"/>
         <source>Croate</source>
         <translation>Chorwacki</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="401"/>
+        <location filename="../sources/configpages.cpp" line="412"/>
         <source>Italien</source>
         <translation>Włoski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="402"/>
+        <location filename="../sources/configpages.cpp" line="413"/>
         <source>Polonais</source>
         <translation>Polski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="403"/>
+        <location filename="../sources/configpages.cpp" line="414"/>
         <source>Portugais</source>
         <translation>Portugalski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="404"/>
+        <location filename="../sources/configpages.cpp" line="415"/>
         <source>Roumains</source>
         <translation>Rumuński</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="405"/>
+        <location filename="../sources/configpages.cpp" line="416"/>
         <source>Russe</source>
         <translation>Rosyjski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="406"/>
+        <location filename="../sources/configpages.cpp" line="417"/>
         <source>Slovène</source>
         <translation>Soweński</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="407"/>
+        <location filename="../sources/configpages.cpp" line="418"/>
         <source>Pays-Bas</source>
         <translation>Holenderski</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="408"/>
+        <location filename="../sources/configpages.cpp" line="419"/>
         <source>Belgique-Flemish</source>
         <translation>Belgijski-Flamandzki</translation>
     </message>
@@ -3206,33 +3206,33 @@ Litery i cyfry mogą być używane.</translation>
 <context>
     <name>NewDiagramPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="81"/>
+        <location filename="../sources/configpages.cpp" line="82"/>
         <source>Folio</source>
         <translation>Arkusz</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="82"/>
+        <location filename="../sources/configpages.cpp" line="83"/>
         <source>Conducteur</source>
         <translation>Przewód</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="83"/>
+        <location filename="../sources/configpages.cpp" line="84"/>
         <source>Reports de folio</source>
         <translation>Odsyłacze do arkuszy</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="84"/>
+        <location filename="../sources/configpages.cpp" line="85"/>
         <source>Références croisées</source>
         <translation>Oznaczenia referencyjne</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="184"/>
+        <location filename="../sources/configpages.cpp" line="185"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
         <translation>Nowy arkusz</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="185"/>
+        <location filename="../sources/configpages.cpp" line="186"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
         <translation>Nowy projekt</translation>
@@ -3643,7 +3643,7 @@ Poniższe zmienne są zgodne:
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="521"/>
+        <location filename="../sources/configpages.cpp" line="532"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Drukowanie</translation>
