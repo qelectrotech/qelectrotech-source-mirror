@@ -282,23 +282,23 @@
         <location filename="../sources/editor/arceditor.cpp" line="59"/>
         <source>horizontal :</source>
         <translatorcomment>waagerecht: </translatorcomment>
-        <translation>horizontal: </translation>
+        <translation>horizontal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="61"/>
         <source>vertical :</source>
         <translatorcomment>senkrecht: </translatorcomment>
-        <translation>vertikal: </translation>
+        <translation>vertikal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="63"/>
         <source>Angle de départ :</source>
-        <translation>Anfangswinkel: </translation>
+        <translation>Anfangswinkel:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="65"/>
         <source>Angle :</source>
-        <translation>Winkel: </translation>
+        <translation>Winkel:</translation>
     </message>
 </context>
 <context>
@@ -490,7 +490,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
         <source>Colonnes :</source>
-        <translation>Spalten: </translation>
+        <translation>Spalten:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
@@ -501,7 +501,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
         <source>Lignes :</source>
-        <translation>Zeilen: </translation>
+        <translation>Zeilen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
@@ -1147,38 +1147,38 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
         <source>Éditer un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Textgruppe bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
         <source>Gauche</source>
-        <translation type="unfinished">Linksbündig</translation>
+        <translation>Linksbündig</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1219"/>
         <source>Droite</source>
-        <translation type="unfinished">Rechtsbündig</translation>
+        <translation>Rechtsbündig</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="516"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1220"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Zentriert</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="555"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausrichtung</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="585"/>
         <source>Ajustement vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeilenabstand</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="862"/>
@@ -1341,17 +1341,17 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1338"/>
         <source>Gauche</source>
-        <translation type="unfinished">Linksbündig</translation>
+        <translation>Linksbündig</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1339"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Zentriert</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1340"/>
         <source>Droite</source>
-        <translation type="unfinished">Rechtsbündig</translation>
+        <translation>Rechtsbündig</translation>
     </message>
 </context>
 <context>
@@ -2576,7 +2576,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>Choix de la police de texte utilisée pour les textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftart der frei definierbaren Textfelder</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="315"/>
