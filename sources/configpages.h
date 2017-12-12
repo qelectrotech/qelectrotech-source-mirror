@@ -116,6 +116,7 @@ public slots:
 	QGroupBox *lang_group_box;
 	QComboBox *lang_combo_box;
 	QLabel *lang_label;
+    QLabel *font_label;
 	QPushButton *fontButton;
 };
 

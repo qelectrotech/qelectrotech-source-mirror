@@ -29,6 +29,7 @@
 #include "qetapp.h"
 #include <QFontDialog>
 #include <QFont>
+#include <QSizePolicy>
 
 /**
  * @brief NewDiagramPage::NewDiagramPage
@@ -253,8 +254,13 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	terminal_exportlist_ = new QCheckBox(tr("Exporter les bornes dans la nomenclature"), projects_view_mode_);
 	m_zoom_out_beyond_folio = new QCheckBox(tr("Autoriser le dézoom au delà du folio"), this);
 	
-	QPushButton *fontButton = new QPushButton(tr("Choix de la police de texte utilisée pour les textes independants")); 
-
+    QString fontInfos = settings.value("diagramitemfont").toString() + " " +
+                        settings.value("diagramitemsize").toString() + " (" +
+                        settings.value("diagramitemweight").toString() + ", " +
+                        settings.value("diagramitemfont").toString() + ")";
+    font_label = new QLabel(tr("Police des champs de texte"));
+    fontButton = new QPushButton(fontInfos);
+    fontButton->setMinimumHeight(28);
 
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
@@ -291,16 +297,21 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	appearance_ -> setLayout(appearance_layout);
 	
 	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout;
-	projects_view_mode_layout -> addWidget(windowed_mode_);
+    QHBoxLayout *font_view_layout = new QHBoxLayout;
+    projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
 	projects_view_mode_layout -> addWidget(m_zoom_out_beyond_folio);
 	projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_layout -> addWidget(save_label_paste_);
 	projects_view_mode_layout -> addWidget(folio_panel_);
 	projects_view_mode_layout -> addWidget(terminal_exportlist_);
-	projects_view_mode_layout->  addWidget(fontButton, 0, 0);
-	connect(fontButton, SIGNAL(clicked()), this, SLOT(setFont()));
-	projects_view_mode_ -> setLayout(projects_view_mode_layout);
+    font_view_layout->addWidget(font_label, 1);
+    font_view_layout->addWidget(fontButton, 0);
+    projects_view_mode_layout->  addLayout(font_view_layout);
+    projects_view_mode_ -> setLayout(projects_view_mode_layout);
+
+    connect(fontButton, SIGNAL(clicked()), this, SLOT(setFont()));
+
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
 	elements_management_layout -> addWidget(highlight_integrated_elements_);
@@ -407,7 +418,7 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 	lang_combo_box->addItem(QET::Icons::nl,           tr("Pays-Bas"), "nl");
 	lang_combo_box->addItem(QET::Icons::be,           tr("Belgique-Flemish"), "be");
 
-	//set curent index to the lang found in setting file
+    //set current index to the lang found in setting file
 	//if lang doesn't exist set to system
 	for (int i=0; i<lang_combo_box->count(); i++) {
 		if (lang_combo_box->itemData(i).toString() == settings.value("lang").toString()) {
@@ -527,13 +538,18 @@ QString PrintConfigPage::title() const {
 void GeneralConfigurationPage::setFont()
 {
 	bool ok;
-	QSettings settings;
+    QSettings settings;
 	QFont font = QFontDialog::getFont(&ok, QFont(), this);
 	if (ok) {
 		settings.setValue("diagramitemfont", font.family());
 		settings.setValue("diagramitemsize", font.pointSize());
 		settings.setValue("diagramitemweight", font.weight());
 		settings.setValue("diagramitemstyle", font.styleName());
+        QString fontInfos = settings.value("diagramitemfont").toString() + " " +
+                            settings.value("diagramitemsize").toString() + " (" +
+                            settings.value("diagramitemweight").toString() + ", " +
+                            settings.value("diagramitemfont").toString() + ")";
+        fontButton->setText(fontInfos);
 	}
 }
 
