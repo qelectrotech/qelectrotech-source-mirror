@@ -1148,38 +1148,38 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
         <source>Éditer un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar un grupo de textos</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
         <source>Gauche</source>
-        <translation type="unfinished">Izquierda</translation>
+        <translation>Izquierda</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1219"/>
         <source>Droite</source>
-        <translation type="unfinished">Derecho</translation>
+        <translation>Derecha</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="516"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1220"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="555"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineación</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="585"/>
         <source>Ajustement vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajuste vertical</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="862"/>
@@ -1344,17 +1344,17 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1338"/>
         <source>Gauche</source>
-        <translation type="unfinished">Izquierda</translation>
+        <translation>Izquierda</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1339"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrado</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1340"/>
         <source>Droite</source>
-        <translation type="unfinished">Derecho</translation>
+        <translation>Derecha</translation>
     </message>
 </context>
 <context>
@@ -2597,7 +2597,7 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>Choix de la police de texte utilisée pour les textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Elección de la fuente utilizada para textos independientes</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="315"/>
