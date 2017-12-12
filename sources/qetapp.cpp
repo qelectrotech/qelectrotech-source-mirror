@@ -792,7 +792,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	QString diagram_texts_item_family = settings.value("diagramitemfont", "Sans Serif").toString();
 	qreal diagram_texts_item_size     = settings.value("diagramitemsize", 9.0).toDouble();
 	qreal diagram_texts_item_weight   = settings.value("diagramitemweight").toDouble();
-	QString diagram_texts_item_style  = settings.value("diagramitemsstyle", "normal").toString();
+	QString diagram_texts_item_style  = settings.value("diagramitemstyle", "normal").toString();
 	
 	if (size != -1.0) {
 		diagram_texts_item_size = size;
