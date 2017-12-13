@@ -34,6 +34,21 @@
 #include "diagram.h"
 #include "addelementtextcommand.h"
 
+int src_txt_row   = 0;
+int usr_txt_row   = 1;
+int info_txt_row  = 2;
+int compo_txt_row = 3;
+int size_txt_row  = 4;
+int color_txt_row = 5;
+int frame_txt_row = 6;
+int x_txt_row     = 7;
+int y_txt_row     = 8;
+int rot_txt_row   = 9;
+
+int align_grp_row  = 0;
+int rot_grp_row    = 1;
+int adjust_grp_row = 2;
+
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
 	m_element(element)
@@ -133,7 +148,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
    
 	qsi_list.clear();
     qsi_list << usr << usra;
-    src->appendRow(qsi_list);
+    qsi->appendRow(qsi_list);
 	
 		//Info text
 	QStandardItem *info = new QStandardItem(tr("Information"));
@@ -146,7 +161,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
     
 	qsi_list.clear();
     qsi_list << info << infoa;
-    src->appendRow(qsi_list);
+    qsi->appendRow(qsi_list);
 	
 		//Composite text
 	QStandardItem *composite = new QStandardItem(tr("Texte composé"));
@@ -164,18 +179,6 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	
 	qsi_list.clear();
 	qsi_list << composite << compositea;
-	src->appendRow(qsi_list);
-
-		//Tagg
-	QStandardItem *tagg = new QStandardItem(tr("Tagg"));
-	tagg->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-	
-	QStandardItem *tagga = new QStandardItem(deti->tagg());
-	tagga->setData(DynamicElementTextModel::tagg, Qt::UserRole+1);
-	tagga->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
-	
-	qsi_list.clear();
-	qsi_list << tagg << tagga;
 	qsi->appendRow(qsi_list);
     
         //Size
@@ -406,7 +409,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	
 	QStandardItem *text_qsi = m_texts_list.value(deti);
 	
-	QString from = text_qsi->child(0,1)->data(Qt::DisplayRole).toString();
+	QString from = text_qsi->child(src_txt_row,1)->data(Qt::DisplayRole).toString();
 	if ((from == tr("Texte utilisateur")) && (deti->textFrom() != DynamicElementTextItem::UserText))
 		new QPropertyUndoCommand(deti, "textFrom", QVariant(deti->textFrom()), QVariant(DynamicElementTextItem::UserText), undo);
 	else if ((from == tr("Information de l'élément")) && (deti->textFrom() != DynamicElementTextItem::ElementInfo))
@@ -416,45 +419,38 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	
 	if(from == tr("Texte utilisateur"))
 	{
-		QString text = text_qsi->child(0,0)->child(0,1)->data(Qt::DisplayRole).toString();
+		QString text = text_qsi->child(usr_txt_row,1)->data(Qt::DisplayRole).toString();
 		if (text != deti->text())
 			new QPropertyUndoCommand(deti, "text", QVariant(deti->text()), QVariant(text), undo);
 	}
 	else if (from == tr("Information de l'élément"))
 	{
-		QString info_name = text_qsi->child(0,0)->child(1,1)->data(Qt::UserRole+2).toString();
+		QString info_name = text_qsi->child(info_txt_row,1)->data(Qt::UserRole+2).toString();
 		if(info_name != deti->infoName())
 			new QPropertyUndoCommand(deti, "infoName", QVariant(deti->infoName()), QVariant(info_name), undo);
 	}
 	else if (from == tr("Texte composé"))
 	{
-		QString composite_text = text_qsi->child(0,0)->child(2,1)->data(Qt::UserRole+2).toString();
+		QString composite_text = text_qsi->child(compo_txt_row,1)->data(Qt::UserRole+2).toString();
 		if(composite_text != deti->compositeText())
 			new QPropertyUndoCommand(deti, "compositeText", QVariant(deti->compositeText()), QVariant(composite_text), undo);
 	}
 	
-	QString tagg = text_qsi->child(1,1)->data(Qt::DisplayRole).toString();
-	if(tagg != deti->tagg())
-	{
-		QUndoCommand *quc = new QPropertyUndoCommand(deti, "tagg", QVariant(deti->tagg()), QVariant(tagg), undo);
-		quc->setText(tr("Modifier le tagg d'un texte d'élément"));
-	}
-	
-	int fs = text_qsi->child(2,1)->data(Qt::EditRole).toInt();
+	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
 	if (fs != deti->fontSize())
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
 		quc->setText(tr("Modifier la taille d'un texte d'élément"));
 	}
 	
-	QColor color = text_qsi->child(3,1)->data(Qt::EditRole).value<QColor>();
+	QColor color = text_qsi->child(color_txt_row,1)->data(Qt::EditRole).value<QColor>();
 	if(color != deti->color())
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "color", QVariant(deti->color()), QVariant(color), undo);
 		quc->setText(tr("Modifier la couleur d'un texte d'élément"));
 	}
 	
-	bool frame = text_qsi->child(4,1)->checkState() == Qt::Checked? true : false;
+	bool frame = text_qsi->child(frame_txt_row,1)->checkState() == Qt::Checked? true : false;
 	if(frame != deti->frame())
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "frame", QVariant(deti->frame()), QVariant(frame), undo);
@@ -462,10 +458,10 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	}
 	
 		//When text is in a group, they're isn't item for position of the text
-	if(text_qsi->child(5,1) && text_qsi->child(6,1))
+	if(text_qsi->child(x_txt_row,1) && text_qsi->child(y_txt_row,1))
 	{
-		QPointF p(text_qsi->child(5,1)->data(Qt::EditRole).toDouble(),
-				  text_qsi->child(6,1)->data(Qt::EditRole).toDouble());
+		QPointF p(text_qsi->child(x_txt_row,1)->data(Qt::EditRole).toDouble(),
+				  text_qsi->child(y_txt_row,1)->data(Qt::EditRole).toDouble());
 		if(p != deti->pos())
 		{
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
@@ -473,9 +469,9 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		}
 	}
 		//When text is in a group, they're isn't item for the rotation of the text
-	if(text_qsi->child(7,1))
+	if(text_qsi->child(rot_txt_row,1))
 	{
-		qreal rot = text_qsi->child(7,1)->data(Qt::EditRole).toDouble();
+		qreal rot = text_qsi->child(rot_txt_row,1)->data(Qt::EditRole).toDouble();
 		rot = QET::correctAngle(rot);
 		if(rot != deti->rotation())
 		{
@@ -508,7 +504,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	
 	QStandardItem *group_qsi = m_groups_list.value(group);
 	
-	QString alignment = group_qsi->child(0,1)->data(Qt::DisplayRole).toString();
+	QString alignment = group_qsi->child(align_grp_row,1)->data(Qt::DisplayRole).toString();
 	if((alignment == tr("Gauche")) && (group->alignment() != Qt::AlignLeft))
 		new QPropertyUndoCommand(group, "alignment", QVariant(group->alignment()), QVariant(Qt::AlignLeft), undo);
 	else if((alignment == tr("Droite")) && (group->alignment() != Qt::AlignRight))
@@ -516,11 +512,11 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	else if((alignment == tr("Centre")) && (group->alignment() != Qt::AlignVCenter))
 		new QPropertyUndoCommand(group, "alignment", QVariant(group->alignment()), QVariant(Qt::AlignVCenter), undo);
 	
-	qreal rotation = group_qsi->child(1,1)->data(Qt::EditRole).toDouble();
+	qreal rotation = group_qsi->child(rot_grp_row,1)->data(Qt::EditRole).toDouble();
 	if(group->rotation() != rotation)
 		new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
 	
-	int v_adjustment = group_qsi->child(2,1)->data(Qt::EditRole).toInt();
+	int v_adjustment = group_qsi->child(adjust_grp_row,1)->data(Qt::EditRole).toInt();
 	if(group->verticalAdjustment() != v_adjustment)
 		new QPropertyUndoCommand(group, "verticalAdjustment", QVariant(group->verticalAdjustment()), QVariant(v_adjustment), undo);
 	
@@ -947,7 +943,7 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	if (!m_texts_list.contains(deti))
 		return;
 
-	QStandardItem *qsi = m_texts_list.value(deti)->child(0,0);
+	QStandardItem *qsi = m_texts_list.value(deti);
 	
 	bool usr = false, info = false, compo = false;
 	
@@ -958,14 +954,14 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	}
 
 		//User text
-	qsi->child(0,0)->setEnabled(usr);
-	qsi->child(0,1)->setEnabled(usr);
+	qsi->child(usr_txt_row,0)->setEnabled(usr);
+	qsi->child(usr_txt_row,1)->setEnabled(usr);
 		//Info text
-	qsi->child(1,0)->setEnabled(info);
-	qsi->child(1,1)->setEnabled(info);
+	qsi->child(info_txt_row,0)->setEnabled(info);
+	qsi->child(info_txt_row,1)->setEnabled(info);
 		//Composite text
-	qsi->child(2,0)->setEnabled(compo);
-	qsi->child(2,1)->setEnabled(compo);
+	qsi->child(compo_txt_row,0)->setEnabled(compo);
+	qsi->child(compo_txt_row,1)->setEnabled(compo);
 }
 
 void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
@@ -984,24 +980,23 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		
 		if (qsi->data().toInt() == textFrom)
 		{
-			QStandardItem *text_from_qsi = text_qsi->child(0,0);
 			QString from = qsi->data(Qt::DisplayRole).toString();
 			
 			if (from == tr("Texte utilisateur"))
 			{
 				enableSourceText(deti, DynamicElementTextItem::UserText);
-				text_qsi->setData(text_from_qsi->child(0,1)->data(Qt::DisplayRole).toString());
+				text_qsi->setData(text_qsi->child(usr_txt_row,1)->data(Qt::DisplayRole).toString());
 			}
 			else if (from == tr("Information de l'élément"))
 			{
 				enableSourceText(deti, DynamicElementTextItem::ElementInfo);
-				QString info = text_from_qsi->child(1,1)->data(Qt::UserRole+2).toString();
+				QString info = text_qsi->child(info_txt_row,1)->data(Qt::UserRole+2).toString();
 				text_qsi->setData(dc.value(info), Qt::DisplayRole);
 			}
 			else
 			{
 				enableSourceText(deti, DynamicElementTextItem::CompositeText);
-				QString compo = text_from_qsi->child(2,1)->data(Qt::UserRole+2).toString();
+				QString compo = text_qsi->child(compo_txt_row,1)->data(Qt::UserRole+2).toString();
 				text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, dc), Qt::DisplayRole);
 			}
 			
@@ -1047,7 +1042,6 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		QList<QMetaObject::Connection> connection_list;
 		connection_list << connect(deti, &DynamicElementTextItem::colorChanged,    [deti,this](){this->updateDataFromText(deti, color);});
 		connection_list << connect(deti, &DynamicElementTextItem::fontSizeChanged, [deti,this](){this->updateDataFromText(deti, size);});
-		connection_list << connect(deti, &DynamicElementTextItem::taggChanged,     [deti,this](){this->updateDataFromText(deti, tagg);});
 		connection_list << connect(deti, &DynamicElementTextItem::textFromChanged, [deti,this](){this->updateDataFromText(deti, textFrom);});
 		connection_list << connect(deti, &DynamicElementTextItem::textChanged,     [deti,this](){this->updateDataFromText(deti, userText);});
 		connection_list << connect(deti, &DynamicElementTextItem::infoNameChanged, [deti,this](){this->updateDataFromText(deti, infoText);});
@@ -1129,63 +1123,54 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		case userText:
 		{
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
-			QStandardItem *qsia = qsi->child(0,0);
-			qsia->child(0,1)->setData(deti->toPlainText(), Qt::DisplayRole);
+			qsi->child(usr_txt_row,1)->setData(deti->toPlainText(), Qt::DisplayRole);
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			break;
 		}
 		case infoText:
 		{
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
-			QStandardItem *qsia = qsi->child(0,0);
 			QString info_name = deti->infoName();
-			qsia->child(1,1)->setData(info_name, Qt::UserRole+2);
-			qsia->child(1,1)->setData(QETApp::elementTranslatedInfoKey(info_name), Qt::DisplayRole);
+			qsi->child(info_txt_row,1)->setData(info_name, Qt::UserRole+2);
+			qsi->child(info_txt_row,1)->setData(QETApp::elementTranslatedInfoKey(info_name), Qt::DisplayRole);
 			break;
 		}
 		case compositeText:
 		{
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
-			QStandardItem *qsia = qsi->child(0,0);
-			qsia->child(2,1)->setData(deti->compositeText(), Qt::UserRole+2);
-			qsia->child(2,1)->setData(deti->toPlainText(), Qt::DisplayRole);
+			qsi->child(compo_txt_row,1)->setData(deti->compositeText(), Qt::UserRole+2);
+			qsi->child(compo_txt_row,1)->setData(deti->toPlainText(), Qt::DisplayRole);
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			break;
 		}
 		case size:
-			qsi->child(2,1)->setData(deti->fontSize(), Qt::EditRole);
-			break;
-		case tagg:
-			qsi->child(1,1)->setData(deti->tagg(), Qt::DisplayRole);
+			qsi->child(size_txt_row,1)->setData(deti->fontSize(), Qt::EditRole);
 			break;
 		case color:
 		{
-			qsi->child(3,1)->setData(deti->color(), Qt::EditRole);
-			qsi->child(3,1)->setData(deti->color(), Qt::ForegroundRole);
+			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::EditRole);
+			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::ForegroundRole);
 			break;
 		}
 		case pos:
 		{
-			if(qsi->child(5,1))
-				qsi->child(5,1)->setData(deti->pos().x(), Qt::EditRole);
-			if(qsi->child(6,1))
-				qsi->child(6,1)->setData(deti->pos().y(), Qt::EditRole);
+			if(qsi->child(x_txt_row,1))
+				qsi->child(x_txt_row,1)->setData(deti->pos().x(), Qt::EditRole);
+			if(qsi->child(y_txt_row,1))
+				qsi->child(y_txt_row,1)->setData(deti->pos().y(), Qt::EditRole);
 			break;
 		}
 		case frame:
 		{
-			qsi->child(4,1)->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
+			qsi->child(frame_txt_row,1)->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
 			break;
 		}
 		case rotation:
 		{
-			if(qsi->child(7,1))
-				qsi->child(7,1)->setData(deti->rotation(), Qt::EditRole);
+			if(qsi->child(rot_txt_row,1))
+				qsi->child(rot_txt_row,1)->setData(deti->rotation(), Qt::EditRole);
 			break;
 		}
-		case grp_alignment: break;
-		case grp_rotation: break;
-		case grp_v_adjust: break;
 	}
 	
 	m_block_dataChanged = false;
@@ -1201,32 +1186,22 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 	
 	switch (type)
 	{
-		case textFrom: break;
-		case userText: break;
-		case infoText: break;
-		case compositeText: break;
-		case size: break;
-		case tagg: break;
-		case color: break;
-		case pos: break;
-		case frame: break;
-		case rotation: break;
 		case grp_alignment:
 		{
 			switch (group->alignment())
 			{
-				case Qt::AlignLeft: qsi->child(0,1)->setData(tr("Gauche"), Qt::DisplayRole); break;
-				case Qt::AlignRight : qsi->child(0,1)->setData(tr("Droite"), Qt::DisplayRole); break;
-				case Qt::AlignVCenter : qsi->child(0,1)->setData(tr("Centre"), Qt::DisplayRole); break;
+				case Qt::AlignLeft: qsi->child(align_grp_row,1)->setData(tr("Gauche"), Qt::DisplayRole); break;
+				case Qt::AlignRight : qsi->child(align_grp_row,1)->setData(tr("Droite"), Qt::DisplayRole); break;
+				case Qt::AlignVCenter : qsi->child(align_grp_row,1)->setData(tr("Centre"), Qt::DisplayRole); break;
 				default: qsi->child(0,1)->setData("", Qt::DisplayRole); break;
 			}
 			 break;
 		}
 		case grp_rotation:
-			qsi->child(1,1)->setData(group->rotation(), Qt::EditRole);
+			qsi->child(rot_grp_row,1)->setData(group->rotation(), Qt::EditRole);
 			break;
 		case grp_v_adjust:
-			qsi->child(2,1)->setData(group->verticalAdjustment(), Qt::EditRole);
+			qsi->child(adjust_grp_row,1)->setData(group->verticalAdjustment(), Qt::EditRole);
 			break;
 	}
 	
@@ -1441,22 +1416,34 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 
 bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 {
+	
 		//This is a bad hack, for change the normal behavior :
 		//in normal behavior, the value is commited when the spinbox lose focus or enter key is pressed
-		//With this hack the value is commited each time the value change, so the text is moved in live.
-		//We also use this hack for the font size spinbox
+		//With this hack the value is commited each time the value change without the need to validate.
+		//then the change is apply in live
 	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size" || object->objectName() == "rot_spinbox" || \
 	   object->objectName() == "group_rotation" || object->objectName() == "group_v_adjustment")
 	{
+		object->event(event);
+		
 		QSpinBox *sb = static_cast<QSpinBox *>(object);
-		if(event->type() == QEvent::KeyRelease)
-			emit commitData(sb);
-		else if (event->type() == QEvent::MouseButtonRelease)
-			emit commitData(sb);
+		switch (event->type()) {
+			case QEvent::KeyPress:
+				emit commitData(sb); break;
+			case QEvent::KeyRelease:
+				emit commitData(sb); break;
+			case QEvent::MouseButtonPress:
+				emit commitData(sb); break;
+			case QEvent::MouseButtonRelease:
+				emit commitData(sb); break;
+			case QEvent::Wheel:
+				emit commitData(sb); break;
+		}
+		return true;
 	}
 	
 		//Like the hack above, change the current index of the combobox, apply the change immediately, no need to lose focus or press enter.
-	if((object->objectName() == "text_from" || object->objectName() == "info_text") && event->type() == QEvent::FocusIn)
+	if((object->objectName() == "text_from" || object->objectName() == "info_text" || object->objectName() == "group_alignment") && event->type() == QEvent::FocusIn)
 	{
 		QComboBox *qcb = static_cast<QComboBox *>(object);
 		connect(qcb, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [this,qcb](){emit commitData(qcb);});

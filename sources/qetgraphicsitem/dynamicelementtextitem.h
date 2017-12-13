@@ -40,7 +40,6 @@ class DynamicElementTextItem : public DiagramTextItem
 	
     Q_OBJECT
     
-	Q_PROPERTY(QString tagg READ tagg WRITE setTagg NOTIFY taggChanged)
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
@@ -58,7 +57,6 @@ class DynamicElementTextItem : public DiagramTextItem
 		int type() const override {return Type;}
 		
 	signals:
-		void taggChanged(QString tagg);
 		void textChanged(QString text);
 		void textFromChanged(DynamicElementTextItem::TextFrom text_from);
 		void infoNameChanged(QString info);
@@ -84,8 +82,6 @@ class DynamicElementTextItem : public DiagramTextItem
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
-		QString tagg() const;
-		void setTagg(const QString &tagg);
 		QString text() const;
 		void setText(const QString &text);
         static QString xmlTaggName() {return QString("dynamic_elmt_text");}
@@ -129,8 +125,7 @@ class DynamicElementTextItem : public DiagramTextItem
 						   m_master_element,
 						   m_other_report;
 		QPointer <Conductor> m_watched_conductor;
-		QString m_tagg,
-				m_text,
+		QString m_text,
 				m_info_name,
 				m_composite_text,
 				m_report_formula,

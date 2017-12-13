@@ -139,14 +139,6 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_comp_text.appendChild(dom_doc.createTextNode(m_composite_text));
 		root_element.appendChild(dom_comp_text);
 	}
-    
-		//tagg
-	if (!m_tagg.isEmpty())
-	{
-		QDomElement dom_tagg = dom_doc.createElement("tagg");
-		dom_tagg.appendChild(dom_doc.createTextNode(m_tagg));
-		root_element.appendChild(dom_tagg);
-	}
 	
 		//Color
 	if(color() != QColor(Qt::black))
@@ -208,11 +200,6 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_comp_text = dom_elmt.firstChildElement("composite_text");
 	if(!dom_comp_text.isNull())
 		m_composite_text = dom_comp_text.text();
-    
-		//tagg
-    QDomElement dom_tagg = dom_elmt.firstChildElement("tagg");
-	if (!dom_tagg.isNull())
-		m_tagg = dom_tagg.text();
 
 		//Color
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
@@ -354,25 +341,6 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		m_text_from = text_from;
 		emit textFromChanged(m_text_from);
 	}
-}
-
-/**
- * @brief DynamicElementTextItem::tagg
- * @return the tagg of this text
- */
-QString DynamicElementTextItem::tagg() const {
-	return m_tagg;
-}
-
-/**
- * @brief DynamicElementTextItem::setTagg
- * set the taggof this text
- * @param tagg
- */
-void DynamicElementTextItem::setTagg(const QString &tagg)
-{
-	m_tagg = tagg;
-	emit taggChanged(m_tagg);
 }
 
 /**
