@@ -2535,7 +2535,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="261"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftart für Textfelder</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="265"/>
