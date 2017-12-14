@@ -1,0 +1,59 @@
+<definition type="element" height="170" width="100" link_type="simple" hotspot_x="52" orientation="dyyy" hotspot_y="72" version="0.5">
+    <uuid uuid="{b233c8fb-c9ce-4eb0-9a41-1485a4afb168}"/>
+    <names>
+        <name lang="es">X-BRIDGE</name>
+        <name lang="nl">X-BRIDGE</name>
+        <name lang="cs">X-BRIDGE</name>
+        <name lang="it">X-BRIDGE</name>
+        <name lang="el">X-BRIDGE</name>
+        <name lang="pl">X-BRIDGE</name>
+        <name lang="be">X-BRIDGE</name>
+        <name lang="en">X-BRIDGE</name>
+        <name lang="fr">X-BRIDGE</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:green;color:none" width="5" antialias="false" x="34" y="-20"/>
+        <text text="12Vcc" size="6" x="9" y="-29"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="-25" y="-65"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="-45" y="-65"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="20" y="-65"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="-45" y="-55"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="-25" y="-55"/>
+        <text text="BUS V3" size="6" x="-16" y="57"/>
+        <text text="-" size="10" x="-17" y="-46"/>
+        <text text="+" size="10" x="-40" y="-46"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="0" y="-65"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40" antialias="false" x="-45" y="-45"/>
+        <text text="BUS V4" size="6" x="-38" y="-33"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="0" y="-55"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="20" y="-55"/>
+        <text text="-" size="10" x="28" y="-46"/>
+        <text text="+" size="10" x="5" y="-46"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40" antialias="false" x="0" y="-45"/>
+        <text text="Pwr" size="6" x="13" y="-37"/>
+        <rect height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" x="-12" y="60"/>
+        <line x2="-10" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="72" y2="82" x1="-10"/>
+        <line x2="-9.433" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="72" y2="72" x1="5.302"/>
+        <line x2="6" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="72" y2="82" x1="6"/>
+        <line x2="-9" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="82" y2="82" x1="-7"/>
+        <line x2="6" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="82" y2="82" x1="3"/>
+        <line x2="-6" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="85" y2="82" x1="-6"/>
+        <line x2="2" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="85" y2="82" x1="2"/>
+        <line x2="-6" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" y1="85" y2="85" x1="2"/>
+        <text text="EXT" size="6" x="-10" y="80"/>
+        <text text="RJ12" size="6" x="-11" y="69"/>
+        <rect height="71" style="line-style:normal;line-weight:normal;filling:none;color:black" width="85" antialias="false" x="-45" y="-25"/>
+        <rect height="145" style="line-style:normal;line-weight:normal;filling:none;color:black" width="95" antialias="false" x="-50" y="-55"/>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:green;color:none" width="5" antialias="false" x="-44" y="-20"/>
+        <text text="GCE Electronics" size="6" x="-33" y="2"/>
+        <input text="X-BRIDGE" tagg="none" rotate="true" size="9" x="-37" y="-15"/>
+        <input text="_" tagg="label" rotate="true" size="9" x="-34" y="24"/>
+        <terminal orientation="n" x="30" y="-65"/>
+        <terminal orientation="n" x="6" y="-65"/>
+        <terminal orientation="s" x="0" y="90"/>
+        <terminal orientation="n" x="-15" y="-65"/>
+        <terminal orientation="n" x="-35" y="-65"/>
+    </description>
+</definition>

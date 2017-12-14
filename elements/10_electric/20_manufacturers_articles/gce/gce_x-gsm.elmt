@@ -1,0 +1,68 @@
+<definition width="150" height="200" type="element" link_type="simple" hotspot_x="68" hotspot_y="94" orientation="dyyy" version="0.5">
+    <uuid uuid="{a681dbe0-3670-4eb3-92e0-15d60820f062}"/>
+    <names>
+        <name lang="cs">X-GSM</name>
+        <name lang="it">X-GSM</name>
+        <name lang="el">X-GSM</name>
+        <name lang="pl">X-GSM</name>
+        <name lang="be">X-GSM</name>
+        <name lang="en">X-GSM</name>
+        <name lang="fr">X-GSM</name>
+        <name lang="es">X-GSM</name>
+        <name lang="nl">X-GSM</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:normal;filling:orange;color:black" x="52" diameter="10" y="-82" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19" width="20" y="60" height="30" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-49" width="20" y="60" height="30" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="82" x1="-17" x2="-17" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" x="56" diameter="2" y="-78" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="82" x1="-47" x2="-47" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="72" x1="-1.698" x2="-16.433" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <text x="44" y="-60" text="ANT" size="9"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="72" x1="-31.698" x2="-46.433" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="82" x1="-31" x2="-31" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" y2="82" x1="-1" x2="-1" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" y2="82" x1="-44" x2="-46" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <text x="28" y="68" text="12Vcc" size="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" y2="82" x1="-14" x2="-16" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" y2="82" x1="-34" x2="-31" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" y2="82" x1="-4" x2="-1" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="82" x1="-43" x2="-43" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="82" x1="-13" x2="-13" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="82" x1="-35" x2="-35" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <text x="4" y="34" text="GCE Electronics" size="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="82" x1="-5" x2="-5" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" width="20" y="80" height="10" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="85" x1="-35" x2="-43" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" y2="85" x1="-5" x2="-13" end1="none" antialias="false" length1="1.5" end2="none" length2="1.5"/>
+        <text x="-47" y="80" text="EXT" size="6"/>
+        <text x="-18" y="69" text="RJ45" size="6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" width="20" y="80" height="10" antialias="false"/>
+        <text x="48" y="89" text="-" size="10"/>
+        <text x="-48" y="69" text="RJ12" size="6"/>
+        <text x="-17" y="80" text="LAN" size="6"/>
+        <text x="25" y="89" text="+" size="10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" width="40" y="60" height="20" antialias="false"/>
+        <text x="31" y="76" text="Alim" size="6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-61" width="136" y="-25" height="70" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-66" width="146" y="-90" height="180" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:green;color:none" x="-56" width="5" y="-20" height="60" antialias="false"/>
+        <input x="-51" y="-15" text="X-GSM" tagg="none" rotate="true" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:green;color:none" x="2" width="65" y="36" height="4" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" width="20" y="90" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" width="20" y="90" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="-47" width="65" y="-10" height="10" antialias="false"/>
+        <text color="white" x="-46" y="-2" text="X Devices" size="6"/>
+        <input x="-51" y="14" text="_" tagg="label" rotate="true" size="9"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:lightgray;color:none" y1="-77" y2="-87" y3="-87" x1="-50" y4="-47" x2="-40" y5="-47" antialias="false" x3="-20" y6="-77" x4="-20" x5="-50" x6="-50"/>
+        <text x="-42" y="-57" text="SIM" size="6"/>
+        <terminal x="30" y="100" orientation="s"/>
+        <terminal x="50" y="100" orientation="s"/>
+        <terminal x="57" y="-87" orientation="n"/>
+        <terminal x="-9" y="90" orientation="s"/>
+        <terminal x="-39" y="90" orientation="s"/>
+    </description>
+</definition>

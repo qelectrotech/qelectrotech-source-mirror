@@ -1,0 +1,48 @@
+<definition type="element" version="0.5" link_type="simple" hotspot_x="64" hotspot_y="86" orientation="dyyy" height="190" width="130">
+    <uuid uuid="{d1e2c86b-fbde-4a94-ac7c-3904ee3eeb75}"/>
+    <names>
+        <name lang="fr">GCE-X400-ANALOG</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle diameter="11" x="43" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end1="none" length2="1.5" end2="none" y1="-37.1689" y2="37.7321" x1="-49.5586" antialias="false" x2="-49.5586" style="line-style:normal;line-weight:eleve;filling:none;color:green"/>
+        <circle diameter="11" x="-55.3105" y="-75.7184" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="6" x="-8" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <circle diameter="6" x="-24" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <text x="-19" y="76" size="6" text="RJ11"/>
+        <text x="-39" y="2" size="5" text="1      2      3      4"/>
+        <polygon x3="-1" y9="78" x4="-7" x5="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-13" x7="-13" x8="-19" x9="-19" y1="78" y2="78" y3="87" y4="87" y5="91.5" y6="91.5" y10="78" closed="false" x1="-19" y7="87" x10="-19" y11="78" x2="-1" y8="87" x11="-19" antialias="false"/>
+        <rect x="-24" y="68" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="29" width="27"/>
+        <circle diameter="6" x="8" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <circle diameter="11" x="5" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-59" y="-83" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="180" width="120"/>
+        <circle diameter="11" x="26" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="11" x="-16" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-42" y="85" size="6" text="IN"/>
+        <text x="-18" y="86" size="6" text="OUT"/>
+        <circle diameter="11" x="-34.7473" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-57.7245" y="-62" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black" height="15" width="117.139"/>
+        <line length1="1.5" end1="none" length2="1.5" end2="none" y1="-15" y2="-15" x1="-42" antialias="false" x2="-32" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="6" x="-40" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <rect x="28" y="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="20"/>
+        <text x="33" y="-2" size="6" text="Sel"/>
+        <text x="-10" y="33" size="6" text="GCE Electronics"/>
+        <input tagg="label" x="-48" y="-24" size="10" rotate="true" text="X400"/>
+        <polygon x3="-29" y9="78" x4="-35" x5="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="-41" x7="-41" x8="-47" x9="-47" y1="78" y2="78" y3="87" y4="87" y5="91.5" y6="91.5" y10="78" closed="false" x1="-47" y7="87" x10="-47" y11="78" x2="-29" y8="87" x11="-47" antialias="false"/>
+        <rect x="-52" y="68" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="29" width="28"/>
+        <text x="-46" y="76" size="6" text="RJ11"/>
+        <text x="-39" y="67" size="6" text="BUS V3"/>
+        <rect x="-52" y="58" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" width="55"/>
+        <rect x="-51.6895" y="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="80" width="106"/>
+        <text x="-56.7664" y="-50" size="5" color="white" text="Gnd      1        2        3         4    3.3v"/>
+        <terminal x="-29.0289" y="-82" orientation="n"/>
+        <terminal x="-10" y="-82" orientation="n"/>
+        <terminal x="11" y="-82" orientation="n"/>
+        <terminal x="32" y="-82" orientation="n"/>
+        <terminal x="-38" y="98" orientation="s"/>
+        <terminal x="-10" y="98" orientation="s"/>
+        <terminal x="-50.003" y="-81.7184" orientation="n"/>
+        <terminal x="48.6956" y="-82" orientation="n"/>
+    </description>
+</definition>

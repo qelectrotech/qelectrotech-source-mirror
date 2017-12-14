@@ -1,0 +1,60 @@
+<definition width="50" height="190" type="element" link_type="simple" hotspot_x="26" hotspot_y="94" orientation="dyyy" version="0.5">
+    <uuid uuid="{e1a5717e-076d-429f-a2bb-c3b68feec75a}"/>
+    <names>
+        <name lang="cs">DDS5188</name>
+        <name lang="it">DDS5188</name>
+        <name lang="el">DDS5188</name>
+        <name lang="pl">DDS5188</name>
+        <name lang="be">DDS5188</name>
+        <name lang="en">DDS5188</name>
+        <name lang="fr">DDS5188</name>
+        <name lang="es">DDS5188</name>
+        <name lang="nl">DDS5188</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="12" y="88" text="L" size="6"/>
+        <text x="-21" y="-52" text="21" size="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:red;color:none" x="6.5" diameter="5" y="-88.5" antialias="false"/>
+        <text x="-19" y="88" text="4" size="6"/>
+        <text x="-11" y="-43" text="Cmpt" size="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:red;color:none" x="6.5" diameter="5" y="82.5" antialias="false"/>
+        <text x="-11" y="78" text="INPUT" size="6"/>
+        <text x="-1" y="-52" text="22" size="6"/>
+        <text x="-8" y="88" text="N" size="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:blue;color:none" x="-13.5" diameter="5" y="82.5" antialias="false"/>
+        <text x="1" y="88" text="1" size="6"/>
+        <text x="-19" y="-82" text="6" size="6"/>
+        <text x="1" y="-82" text="3" size="6"/>
+        <text x="-16" y="-72" text="OUTPUT" size="6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" width="20" y="-90" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" width="20" y="-60" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="20" y="-60" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="20" y="-90" height="10" antialias="false"/>
+        <text x="11" y="-53" text="+" size="6"/>
+        <text x="-8" y="-82" text="N" size="6"/>
+        <text x="12" y="-82" text="L" size="6"/>
+        <text x="-8" y="-52" text="-" size="9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="40" y="-50" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="40" y="-80" height="10" antialias="false"/>
+        <text x="-10" y="-2" text="kWh" rotation="270" size="6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="40" y="-90" height="180" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:lightgray;color:black" x="-6" width="20" y="-25" height="55" antialias="false"/>
+        <text x="7" y="27" text="0000000" rotation="270" size="8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="20" y="80" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" width="20" y="80" height="10" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="40" y="70" height="10" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:green;color:black" x="-17.5" diameter="4.5" y="40" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" width="40" y="50" height="20" antialias="false"/>
+        <text x="-10" y="43" text="0.5Wh/Imp" size="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:blue;color:none" x="-13.5" diameter="5" y="-88.5" antialias="false"/>
+        <input x="-24" y="-31" text="DDS5188" tagg="label" rotate="true" size="6"/>
+        <terminal x="9" y="-90" orientation="n"/>
+        <terminal x="-11" y="-90" orientation="n"/>
+        <terminal x="-11" y="-59" orientation="n"/>
+        <terminal x="9" y="-59" orientation="n"/>
+        <terminal x="-11" y="90" orientation="s"/>
+        <terminal x="9" y="90" orientation="s"/>
+    </description>
+</definition>
