@@ -1,0 +1,43 @@
+<definition width="130" version="0.4" hotspot_x="64" hotspot_y="86" height="190" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">GCE-X400CT</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="-8" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green" diameter="6"/>
+        <circle x="-24" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green" diameter="6"/>
+        <text x="-19" y="76" size="6" text="RJ11"/>
+        <text x="-39" y="2" size="5" text="1      2      3      4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19" x2="-1" x3="-1" x4="-7" antialias="false" x5="-7" x6="-13" x7="-13" x8="-19" x9="-19" closed="false" y1="78" y2="78" y10="78" y3="87" y11="78" y4="87" y5="91.5" x10="-19" y6="91.5" x11="-19" y7="87" y8="87" y9="78"/>
+        <rect width="27" x="-24" y="68" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="8" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green" diameter="6"/>
+        <circle x="5" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11"/>
+        <rect width="120" x="-59" y="-83" antialias="false" height="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="26" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11"/>
+        <circle x="-16" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11"/>
+        <text x="-42" y="85" size="6" text="IN"/>
+        <text x="-18" y="86" size="6" text="OUT"/>
+        <circle x="-37" y="-76" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11"/>
+        <text x="-34" y="-50" size="9" text="1    2     3     4"/>
+        <rect width="86" x="-42" y="-62" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-42" y2="-15" x2="-32"/>
+        <circle x="-40" y="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:green" diameter="6"/>
+        <rect width="20" x="28" y="-15" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="33" y="-2" size="6" text="Sel"/>
+        <text x="-10" y="33" size="6" text="GCE Electronics"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:eleve;filling:none;color:green" y1="37" x1="40" y2="37" x2="20"/>
+        <input x="-48" y="-24" size="10" rotate="true" text="X400CT" tagg="label"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-47" x2="-29" x3="-29" x4="-35" antialias="false" x5="-35" x6="-41" x7="-41" x8="-47" x9="-47" closed="false" y1="78" y2="78" y10="78" y3="87" y11="78" y4="87" y5="91.5" x10="-47" y6="91.5" x11="-47" y7="87" y8="87" y9="78"/>
+        <rect width="28" x="-52" y="68" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-46" y="76" size="6" text="RJ11"/>
+        <text x="-39" y="67" size="6" text="BUS V3"/>
+        <rect width="55" x="-52" y="58" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="106" x="-52" y="-32" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-31" y="-82" orientation="n"/>
+        <terminal x="-10" y="-82" orientation="n"/>
+        <terminal x="11" y="-82" orientation="n"/>
+        <terminal x="32" y="-82" orientation="n"/>
+        <terminal x="-38" y="98" orientation="s"/>
+        <terminal x="-10" y="98" orientation="s"/>
+    </description>
+</definition>

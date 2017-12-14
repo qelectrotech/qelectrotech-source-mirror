@@ -1,0 +1,45 @@
+<definition link_type="master" orientation="dyyy" hotspot_x="25" hotspot_y="94" height="190" width="50" type="element" version="0.5">
+    <uuid uuid="{a0151b35-ae75-4de7-ab95-aac65c390bdb}"/>
+    <names>
+        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="fr">Disjoncteur bipolaire 1 pole protege</name>
+        <name lang="nl">Lastscheider 1P+N</name>
+        <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
+        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="25" y2="86" x1="-10" x2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <rect x="-20" y="-90" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="180" width="40"/>
+        <line y1="-32.1067" y2="-32.1067" x1="-11" x2="8" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <polygon y1="25" y2="-15" y3="-30" x1="-10" x2="-10" antialias="true" x3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <polygon y1="-4" y2="-15" y3="-30" x1="10" x2="10" antialias="true" x3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <arc x="2" y="10.2329" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15.7671" start="90" width="16" angle="-180"/>
+        <line y1="-90" y2="-30" x1="-10" x2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="4" y2="9.29778" x1="10" x2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="4" y2="4" x1="10" x2="16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-32" y2="-28" x1="-8" x2="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-4" y2="-4" x1="10" x2="16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-32" y2="-28" x1="-12" x2="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-90" y2="-30" x1="10" x2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-32" y2="-28" x1="12" x2="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-32" y2="-28" x1="8" x2="12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="-4" y2="4" x1="16" x2="16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <line y1="90" y2="26" x1="10" x2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" end1="none" end2="none"/>
+        <input x="20" y="-30" size="9" text="_" rotate="true" tagg="label"/>
+        <input x="-13" y="-8" size="7" text="16A" rotate="true" tagg="tension-protocol"/>
+        <text x="-5" y="-71" size="6" text="IN"/>
+        <text x="-9" y="87" size="6" text="OUT"/>
+        <terminal x="-10" y="-90" orientation="n"/>
+        <terminal x="10" y="90" orientation="s"/>
+        <terminal x="10" y="-90" orientation="n"/>
+        <terminal x="-10" y="90" orientation="s"/>
+    </description>
+</definition>

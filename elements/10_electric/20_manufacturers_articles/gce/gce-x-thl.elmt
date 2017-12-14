@@ -1,0 +1,27 @@
+<definition width="100" version="0.4" hotspot_x="45" hotspot_y="82" height="100" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">GCE-X-THL</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="20" y="-57" size="4" text="-"/>
+        <text x="20" y="-37" size="4" text="-"/>
+        <text x="19" y="-23" size="4" text="+"/>
+        <text x="20" y="-43" size="4" text="+"/>
+        <rect width="10" x="7" y="-61" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="7" y="-41" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="25" y="-47" size="3" rotation="270" text="12 V"/>
+        <text x="24" y="-28" size="3" rotation="270" text="Bus"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x2="30" x3="30" x4="-20" antialias="false" x5="-20" x6="-20" x7="-20" x8="-20" closed="false" y1="-70" y2="-70" y3="2.2" y4="2.2" y5="-70" y6="-70" y7="-70" y8="-70"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25" x2="-25" x3="-35" x4="-35" antialias="false" x5="35" x6="35" x7="45" x8="45" x9="-25" closed="false" y1="-75" y2="-67.4" y10="-75" y3="-67.4" y11="-75" y4="8.6" y5="8.6" x10="-25" y6="1" x11="-25" y7="1" y8="-75" y9="-75"/>
+        <rect width="90" x="-40" y="-80" antialias="false" height="95" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-35" y="-75" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="40" y="5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="29" y="1" size="2" rotation="270" text="GCE Electronics"/>
+        <input x="-19" y="-5.5" size="9" rotate="true" text="X-THL" tagg="label"/>
+        <terminal x="17" y="-56" orientation="e"/>
+        <terminal x="17" y="-47" orientation="e"/>
+        <terminal x="17" y="-36" orientation="e"/>
+        <terminal x="17" y="-26" orientation="e"/>
+    </description>
+</definition>

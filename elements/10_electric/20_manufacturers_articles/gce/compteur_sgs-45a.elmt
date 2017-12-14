@@ -1,0 +1,47 @@
+<definition version="0.5" height="190" type="element" width="50" link_type="simple" hotspot_x="19" orientation="dyyy" hotspot_y="94">
+    <uuid uuid="{b1f078c9-b9ad-49ca-8c0c-b4aa3f5de9d2}"/>
+    <names>
+        <name lang="fr">Compteur 45A SGS</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="5" x="-6" y="63" size="3"/>
+        <text text="-" x="5" y="55" size="5"/>
+        <text text="6" x="5" y="61" size="3"/>
+        <text text="7" x="15" y="61" size="3"/>
+        <text text="+" x="16" y="54" size="3"/>
+        <circle x="14" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="64" antialias="false"/>
+        <circle x="12.3906" style="line-style:normal;line-weight:normal;filling:red;color:none" diameter="5" y="80.4219" antialias="false"/>
+        <text rotation="270" text="L Out" x="24" y="87" size="4"/>
+        <circle x="12.25" style="line-style:normal;line-weight:normal;filling:blue;color:none" diameter="5" y="-87" antialias="false"/>
+        <text text="1" x="-6" y="82" size="3"/>
+        <text text="Cmpt" x="-5" y="-43" size="6"/>
+        <text text="4" x="8" y="-83" size="3"/>
+        <text text="2" x="14" y="81" size="3"/>
+        <rect height="10" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-90" width="20" antialias="false"/>
+        <rect height="10" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-90" width="20" antialias="false"/>
+        <text text="N" x="20" y="-82" size="4"/>
+        <rect height="10" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-50" width="40" antialias="false"/>
+        <rect height="10" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" width="40" antialias="false"/>
+        <text rotation="270" text="kWh" x="-3" y="8" size="6"/>
+        <rect height="180" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-90" width="40" antialias="false"/>
+        <rect height="55" x="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-25" width="20" antialias="false"/>
+        <text rotation="270" text="00000.0" x="14" y="24" color="white" size="8"/>
+        <rect height="20" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="70" width="20" antialias="false"/>
+        <rect height="20" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="70" width="20" antialias="false"/>
+        <circle x="-11.5" style="line-style:normal;line-weight:thin;filling:green;color:black" diameter="4.5" y="40" antialias="false"/>
+        <rect height="20" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="50" width="40" antialias="false"/>
+        <text text="1 Wh/Imp" x="-4" y="43" size="4"/>
+        <input rotate="true" text="SGS 45A" tagg="label" x="-15" y="-33" size="6"/>
+        <circle x="-7.60938" style="line-style:normal;line-weight:normal;filling:red;color:none" diameter="5" y="80.4219" antialias="false"/>
+        <rect height="7" x="-2" style="line-style:normal;line-weight:normal;filling:white;color:none" y="71" width="14" antialias="false"/>
+        <circle x="4" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="64" antialias="false"/>
+        <polygon x4="14" x5="14" x6="16" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="54" y2="54" y3="52" x1="8" y4="52" antialias="false" x2="10" y5="54" x3="10" y6="54"/>
+        <text rotation="270" text="L in" x="-8" y="85" size="4"/>
+        <terminal x="15" y="-90" orientation="n"/>
+        <terminal x="-5" y="90" orientation="s"/>
+        <terminal x="15" y="90" orientation="s"/>
+        <terminal x="6" y="66" orientation="s"/>
+        <terminal x="16" y="66" orientation="s"/>
+    </description>
+</definition>
