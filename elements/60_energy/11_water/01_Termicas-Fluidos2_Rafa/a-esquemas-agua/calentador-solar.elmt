@@ -2,6 +2,7 @@
 <uuid uuid="{698FD762-7BC4-4FBB-BE24-83B5CF0E2DDA}"/><names>
         <name lang="es">Calentador solar1</name>
         <name lang="ca">Escalfador solar-1</name>
+	<name lang="en">Solar heater-1</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

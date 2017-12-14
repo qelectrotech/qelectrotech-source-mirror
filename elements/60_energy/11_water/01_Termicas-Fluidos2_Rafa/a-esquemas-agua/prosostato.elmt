@@ -2,6 +2,7 @@
 <uuid uuid="{189BF8F8-A3ED-4443-8758-13944F7B73A9}"/><names>
         <name lang="es">Manómetro</name>
         <name lang="ca">Manòmetre</name>
+	<name lang="en">manometer</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

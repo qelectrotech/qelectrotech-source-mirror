@@ -2,6 +2,7 @@
 <uuid uuid="{46B10AFA-EECF-448F-B171-1C603A2620AC}"/><names>
         <name lang="ca">Grup d'ompliment-desconectador</name>
         <name lang="es">Grupo de llenado-desconectador</name>
+	<name lang="en">Filling-disconnection group</name>
     </names>
     <informations></informations>
     <description>

@@ -4,6 +4,7 @@
         <name lang="cs">Elektrický uzávěr 2V</name>
         <name lang="it">Elettrovalvola 2vie acqua sanitaria</name>
         <name lang="es">Valv-solenoide</name>
+	<name lang="en">Solenoid valve</name>
         <name lang="ca">Valv. Solenoide</name>
         <name lang="en">Solenoid 2V "health"</name>
         <name lang="fr">Electro-vanne 2V "sanitaire"</name>

@@ -2,6 +2,7 @@
 <uuid uuid="{1EE69384-4635-4EC9-B5AE-CA27AC17EA84}"/><names>
         <name lang="ca">Vàlvula de retenció</name>
         <name lang="es">Válvula retención</name>
+	<name lang="en">Retention valve</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

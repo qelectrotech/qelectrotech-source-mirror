@@ -2,6 +2,7 @@
 <uuid uuid="{700FB29A-D15B-41C9-9D33-BA4D140094B5}"/><names>
         <name lang="es">Enlace desmontable</name>
         <name lang="ca">Enllaç desmuntable</name>
+	<name lang="en">Detachable link</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

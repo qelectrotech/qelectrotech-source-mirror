@@ -2,6 +2,7 @@
 <uuid uuid="{8D31D311-22BA-4A2D-B36A-1441939462D3}"/><names>
         <name lang="es">Presostato</name>
         <name lang="ca">Pressòstat</name>
+	<name lang="en">Pressure switch</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
