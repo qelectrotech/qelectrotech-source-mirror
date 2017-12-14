@@ -962,7 +962,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
         <source> %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation> %p% (%v su %m)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
@@ -993,27 +993,27 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="35"/>
         <source>Ajouter un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="38"/>
         <source>Texte</source>
-        <translation type="unfinished">Testo</translation>
+        <translation>Testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="49"/>
         <source>Ajouter un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un gruppo di testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="52"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare la selezione</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="42"/>
@@ -1028,22 +1028,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="180"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="187"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare %1 testi dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="257"/>
         <source>Nom du groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome del gruppo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="257"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserire il nome del nuovo gruppo</translation>
     </message>
 </context>
 <context>
@@ -1113,73 +1113,73 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="440"/>
         <source>Modifier le tagg d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare l&apos;etichetta di un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="447"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare la dimensione di un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="454"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare il colore di un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="461"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare la cornice di un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="472"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished">Spostare un testo dell&apos;elemento</translation>
+        <translation>Spostare un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="483"/>
         <source>Pivoter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruotare un testo dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
         <source>Éditer un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare un gruppo di testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
         <source>Gauche</source>
-        <translation type="unfinished">Sinistra</translation>
+        <translation>Sinistra</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1219"/>
         <source>Droite</source>
-        <translation type="unfinished">Destro</translation>
+        <translation>Destro</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="516"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1220"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="555"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Allineamento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="585"/>
         <source>Ajustement vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Regolazione verticale</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="862"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Spostare un testo da un gruppo ad un altro</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="170"/>
@@ -1194,23 +1194,23 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="209"/>
         <source>Cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Cornice</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="225"/>
         <source>Position X</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione X</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="238"/>
         <source>Position Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="251"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="573"/>
         <source>Rotation</source>
-        <translation type="unfinished">Rotazione</translation>
+        <translation>Rotazione</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="402"/>
@@ -1228,7 +1228,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>cornice</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="165"/>
@@ -1284,22 +1284,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="117"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="125"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Sposta un campo di testo</translation>
+        <translation>Spostare un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="133"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruotare un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="141"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare il testo di un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="148"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Modifica la dimensione di un campo di testo</translation>
+        <translation>Modifica la dimensione di un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="155"/>
@@ -1309,12 +1309,12 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished">Modifica il colore di un campo di testo</translation>
+        <translation>Modifica il colore di un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="173"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica la cornice di un campo di testo</translation>
     </message>
 </context>
 <context>
@@ -1337,17 +1337,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1338"/>
         <source>Gauche</source>
-        <translation type="unfinished">Sinistra</translation>
+        <translation>Sinistra</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1339"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1340"/>
         <source>Droite</source>
-        <translation type="unfinished">Destro</translation>
+        <translation>Destro</translation>
     </message>
 </context>
 <context>
@@ -1899,7 +1899,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>caricamento</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -2540,7 +2540,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="261"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulizia del campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="265"/>
@@ -6911,18 +6911,18 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="192"/>
         <source>Déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Spostare</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="194"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
         <source> et</source>
-        <translation type="unfinished"> e</translation>
+        <translation> e</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="197"/>
         <source> un groupe de texte</source>
-        <translation type="unfinished"></translation>
+        <translation> un gruppo di testo</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -6956,87 +6956,87 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>A001</source>
-        <translation type="unfinished"></translation>
+        <translation>A001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>B001</source>
-        <translation type="unfinished"></translation>
+        <translation>B001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>C001</source>
-        <translation type="unfinished"></translation>
+        <translation>C001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>D001</source>
-        <translation type="unfinished"></translation>
+        <translation>D001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>E001</source>
-        <translation type="unfinished"></translation>
+        <translation>E001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>F001</source>
-        <translation type="unfinished"></translation>
+        <translation>F001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>G001</source>
-        <translation type="unfinished"></translation>
+        <translation>G001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>H001</source>
-        <translation type="unfinished"></translation>
+        <translation>H001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>I001</source>
-        <translation type="unfinished"></translation>
+        <translation>I001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>J001</source>
-        <translation type="unfinished"></translation>
+        <translation>J001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>K001</source>
-        <translation type="unfinished"></translation>
+        <translation>K001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>L001</source>
-        <translation type="unfinished"></translation>
+        <translation>L001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>M001</source>
-        <translation type="unfinished"></translation>
+        <translation>M001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>M002</source>
-        <translation type="unfinished"></translation>
+        <translation>M002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>N001</source>
-        <translation type="unfinished"></translation>
+        <translation>N001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>O001</source>
-        <translation type="unfinished"></translation>
+        <translation>O001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>P001</source>
-        <translation type="unfinished"></translation>
+        <translation>P001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="104"/>
@@ -7096,7 +7096,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Fornitore</translation>
+        <translation>Fornitore</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="116"/>
@@ -7171,12 +7171,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
         <source>Ajouter un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un gruppo di testi dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="120"/>
         <source>Supprimer un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare un gruppo di testi dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="169"/>
