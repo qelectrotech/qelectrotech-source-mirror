@@ -2,6 +2,7 @@
 <uuid uuid="{EFAE4932-7BD6-45DE-9CE3-1DC1DEC2A285}"/><names>
         <name lang="es">Colector</name>
         <name lang="ca">Col.lector</name>
+	<name lang="en">Collector</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

@@ -2,6 +2,7 @@
 <uuid uuid="{DBAE1053-B590-4601-8864-791E90DC1728}"/><names>
         <name lang="es">Grupo de llenado</name>
         <name lang="ca">Grup d'ompliment</name>
+	<name lang="en">Filling group</name>
     </names>
     <informations></informations>
     <description>

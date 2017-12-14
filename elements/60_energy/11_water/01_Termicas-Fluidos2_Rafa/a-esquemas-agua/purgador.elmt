@@ -2,6 +2,7 @@
 <uuid uuid="{02020332-4504-4157-BF95-C3945F51D383}"/><names>
         <name lang="es">Purgador</name>
         <name lang="ca">Purgador</name>
+	<name lang="en">purger</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

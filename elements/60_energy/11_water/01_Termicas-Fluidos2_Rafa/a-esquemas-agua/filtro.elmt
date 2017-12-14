@@ -2,6 +2,7 @@
 <uuid uuid="{47310D76-F78E-4339-9B0B-9AFEA028EB1B}"/><names>
         <name lang="es">Filtro</name>
         <name lang="ca">Filtre</name>
+	<name lang="en">Filter</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

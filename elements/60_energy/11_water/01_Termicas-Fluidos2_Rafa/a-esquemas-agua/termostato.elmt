@@ -2,6 +2,7 @@
 <uuid uuid="{D1293076-DC05-400F-B697-AA6F36ACE92F}"/><names>
         <name lang="es">Termostato</name>
         <name lang="ca">Termòstat</name>
+	<name lang="en">Thermostat</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

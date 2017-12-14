@@ -2,6 +2,7 @@
 <uuid uuid="{ADFC68E9-6478-4863-B783-176BA31536AE}"/><names>
         <name lang="es">Contador divisionario</name>
         <name lang="ca">Comptador divisionari</name>
+	<name lang="en">Day/night meter</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

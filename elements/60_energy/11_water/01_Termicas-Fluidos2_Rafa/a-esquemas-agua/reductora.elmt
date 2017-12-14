@@ -2,6 +2,7 @@
 <uuid uuid="{EB9F89FA-90F3-4C1C-A5DB-7B923DBED0D2}"/><names>
         <name lang="es">Reductora de presión</name>
         <name lang="ca">Reductora de pressió</name>
+	<name lang="en">pressure reductor</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

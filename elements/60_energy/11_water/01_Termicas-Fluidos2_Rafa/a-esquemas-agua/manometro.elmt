@@ -2,6 +2,7 @@
 <uuid uuid="{62A6BBC9-3927-4D3B-8A02-C9B5CD65C726}"/><names>
         <name lang="es">Termómetro</name>
         <name lang="ca">Termómetre</name>
+	<name lang="en">Termometer</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

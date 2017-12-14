@@ -2,6 +2,7 @@
 <uuid uuid="{026357E3-72BC-4D3F-8200-1F6FA24D778F}"/><names>
         <name lang="es">Depósito de agua</name>
         <name lang="ca">Dipòsit d'aigua</name>
+	<name lang="en">Water deposit</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
