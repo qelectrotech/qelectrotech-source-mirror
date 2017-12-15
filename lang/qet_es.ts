@@ -2551,7 +2551,7 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/configpages.cpp" line="261"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente de los campos de texto</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="265"/>
