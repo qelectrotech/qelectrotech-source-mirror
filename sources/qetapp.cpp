@@ -806,6 +806,30 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	}
 	return(diagram_texts_item_font);
 }
+/**
+ * @brief QETApp::foliolistTextsFont
+ * the font for to use in summary pages
+ * @param size
+ * @return 
+ */
+QFont QETApp::foliolistTextsFont(qreal size)
+{
+	QSettings settings;
+
+		//Font to use
+	QString foliolist_texts_family = settings.value("foliolistfont", "Sans Serif").toString();
+	qreal foliolist_texts_size     = settings.value("foliolistsize", 9.0).toDouble();
+
+	if (size != -1.0) {
+		foliolist_texts_size = size;
+	}
+	QFont foliolist_texts_font = QFont(foliolist_texts_family);
+	foliolist_texts_font.setPointSizeF(foliolist_texts_size);
+	if (foliolist_texts_size <= 4.0) {
+		foliolist_texts_font.setWeight(QFont::Light);
+	}
+	return(foliolist_texts_font);
+}
 
 
 /**

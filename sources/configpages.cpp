@@ -261,6 +261,13 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	fontButton = new QPushButton(fontInfos);
 	fontButton->setMinimumHeight(28);
 
+	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
+                        settings.value("foliolistsize").toString() + " (" +
+                        settings.value("folioliststyle").toString() + ")";
+	foliolist_font_label = new QLabel(tr("Police des champs des pages sommaires"));
+	foliolist_fontButton = new QPushButton(foliolistfontInfos);
+	foliolist_fontButton->setMinimumHeight(28);
+
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
 	default_element_infos_label_ = new QLabel(
@@ -297,6 +304,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout;
 	QHBoxLayout *font_view_layout = new QHBoxLayout;
+	QHBoxLayout *foliolist_font_view_layout = new QHBoxLayout;
 	projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
 	projects_view_mode_layout -> addWidget(m_zoom_out_beyond_folio);
@@ -305,11 +313,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(folio_panel_);
 	projects_view_mode_layout -> addWidget(terminal_exportlist_);
 	font_view_layout->addWidget(font_label, 1);
-	font_view_layout->addWidget(fontButton, 0);
+	font_view_layout->addWidget(fontButton, 0);	
+	foliolist_font_view_layout->addWidget(foliolist_font_label, 1);
+	foliolist_font_view_layout->addWidget(foliolist_fontButton, 0);
 	projects_view_mode_layout->  addLayout(font_view_layout);
+	projects_view_mode_layout->  addLayout(foliolist_font_view_layout);
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
+	
 
 	connect(fontButton, SIGNAL(clicked()), this, SLOT(setFont()));
+	connect(foliolist_fontButton, SIGNAL(clicked()), this, SLOT(setFoliolistFont()));
+
 
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -550,4 +564,23 @@ void GeneralConfigurationPage::setFont()
         fontButton->setText(fontInfos);
 	}
 }
-
+/**
+ * @brief GeneralConfigurationPage::setFoliolistFont
+ * * Apply font to summary pages
+ */
+void GeneralConfigurationPage::setFoliolistFont()
+{
+	bool ok;
+	QSettings settings;
+	QFont font = QFontDialog::getFont(&ok, QFont(), this);
+	if (ok) {
+		settings.setValue("foliolistfont", font.family());
+		settings.setValue("foliolistsize", font.pointSize());
+		settings.setValue("foliolistweight", font.weight());
+		settings.setValue("folioliststyle", font.styleName());
+		QString fontInfos = settings.value("foliolistfont").toString() + " " +
+                            settings.value("foliolistsize").toString() + " (" +
+                            settings.value("folioliststyle").toString() + ")";
+        foliolist_fontButton->setText(fontInfos);
+	}
+}

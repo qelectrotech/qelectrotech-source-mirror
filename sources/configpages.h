@@ -93,6 +93,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	
 public slots:
 	void setFont();
+	void setFoliolistFont();
 	
 	// attributes
 	private:
@@ -116,8 +117,10 @@ public slots:
 	QGroupBox *lang_group_box;
 	QComboBox *lang_combo_box;
 	QLabel *lang_label;
-    QLabel *font_label;
+	QLabel *font_label;
 	QPushButton *fontButton;
+	QLabel *foliolist_font_label;
+	QPushButton *foliolist_fontButton;
 };
 
 /**

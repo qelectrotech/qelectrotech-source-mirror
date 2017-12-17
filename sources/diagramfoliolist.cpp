@@ -127,9 +127,9 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString aut
 	QSettings settings;
 
 
-	QFontMetrics origFontMetrics(QETApp::diagramTextsFont());
-	qreal origFontSize = QETApp::diagramTextsFont().pointSizeF();
-	QFont workingFont(QETApp::diagramTextsFont());
+	QFontMetrics origFontMetrics(QETApp::foliolistTextsFont());
+	qreal origFontSize = QETApp::foliolistTextsFont().pointSizeF();
+	QFont workingFont(QETApp::foliolistTextsFont());
 
 	if (settings.value("genericpanel/folio", true).toBool()){
 	// reduce the font size if the text entry is long
