@@ -264,7 +264,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
                         settings.value("foliolistsize").toString() + " (" +
                         settings.value("folioliststyle").toString() + ")";
-	foliolist_font_label = new QLabel(tr("Police des champs des pages sommaires"));
+	foliolist_font_label = new QLabel(tr("Police des champs textes des pages sommaires"));
 	foliolist_fontButton = new QPushButton(foliolistfontInfos);
 	foliolist_fontButton->setMinimumHeight(28);
 
@@ -313,7 +313,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(folio_panel_);
 	projects_view_mode_layout -> addWidget(terminal_exportlist_);
 	font_view_layout->addWidget(font_label, 1);
-	font_view_layout->addWidget(fontButton, 0);	
+	font_view_layout->addWidget(fontButton, 0);
 	foliolist_font_view_layout->addWidget(foliolist_font_label, 1);
 	foliolist_font_view_layout->addWidget(foliolist_fontButton, 0);
 	projects_view_mode_layout->  addLayout(font_view_layout);
