@@ -36,17 +36,12 @@ DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWi
 {
     ui->setupUi(this);
 	
-    m_tree_view = new QTreeView(this);
-    m_tree_view->header()->setDefaultSectionSize(150);
-    m_tree_view->setItemDelegate(new DynamicTextItemDelegate(m_tree_view));
-	m_tree_view->setAlternatingRowColors(true);
-	m_tree_view->setEditTriggers(QAbstractItemView::CurrentChanged);
-	m_tree_view->installEventFilter(this);
-	m_tree_view->setDragDropMode(QAbstractItemView::InternalMove);
-    ui->verticalLayout->addWidget(m_tree_view);
-	
-	connect(m_tree_view, &QTreeView::clicked, this, &DynamicElementTextItemEditor::treeViewClicked);
+    ui->m_tree_view->setItemDelegate(new DynamicTextItemDelegate(ui->m_tree_view));
+	ui->m_tree_view->installEventFilter(this);
 	ui->m_remove_selection->setDisabled(true);
+	
+	ui->m_export_pb->hide();
+	ui->m_import_pb->hide();
 	
     setElement(element);
 }
@@ -64,9 +59,9 @@ void DynamicElementTextItemEditor::setElement(Element *element)
      m_element = element;
     
     DynamicElementTextModel *old_model = m_model;
-    m_model = new DynamicElementTextModel(element, m_tree_view);
+    m_model = new DynamicElementTextModel(element, ui->m_tree_view);
 	connect(m_model, &DynamicElementTextModel::dataChanged, this, &DynamicElementTextItemEditor::dataEdited);
-    m_tree_view->setModel(m_model);
+    ui->m_tree_view->setModel(m_model);
     
     if(old_model)
 		delete old_model;
@@ -153,9 +148,9 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 	if(!index.isValid())
 		return;
 	
-	m_tree_view->expand(index);
-	m_tree_view->expand(index.child(0,0));
-	m_tree_view->setCurrentIndex(index);
+	ui->m_tree_view->expand(index);
+	ui->m_tree_view->expand(index.child(0,0));
+	ui->m_tree_view->setCurrentIndex(index);
 	ui->m_remove_selection->setEnabled(true);
 }
 
@@ -170,8 +165,8 @@ void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)
 	if(!index.isValid())
 		return;
 	
-	m_tree_view->expand(index);
-	m_tree_view->setCurrentIndex(index);
+	ui->m_tree_view->expand(index);
+	ui->m_tree_view->setCurrentIndex(index);
 	ui->m_remove_selection->setEnabled(true);
 }
 
@@ -195,14 +190,6 @@ void DynamicElementTextItemEditor::dataEdited()
 {
 	if (m_live_edit)
 		apply();
-}
-
-void DynamicElementTextItemEditor::treeViewClicked(const QModelIndex &index)
-{
-	if(m_model->indexIsText(index) || m_model->indexIsGroup(index))
-		ui->m_remove_selection->setEnabled(true);
-	else
-		ui->m_remove_selection->setDisabled(true);
 }
 
 /**
@@ -232,7 +219,7 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
  */
 void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 {
-    DynamicElementTextItem *deti = m_model->textFromIndex(m_tree_view->currentIndex());
+    DynamicElementTextItem *deti = m_model->textFromIndex(ui->m_tree_view->currentIndex());
     if(deti)
     {
 		if(m_element->diagram())
@@ -243,7 +230,7 @@ void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 		}
 		return;
     }
-	ElementTextItemGroup *group = m_model->groupFromIndex(m_tree_view->currentIndex());
+	ElementTextItemGroup *group = m_model->groupFromIndex(ui->m_tree_view->currentIndex());
 	if(group && m_element.data()->diagram())
 		m_element.data()->diagram()->undoStack().push(new RemoveTextsGroupCommand(m_element.data(), group));
 }
@@ -260,4 +247,12 @@ void DynamicElementTextItemEditor::on_m_add_group_clicked()
 		return;
 	else if (m_element.data()->diagram())
 		m_element.data()->diagram()->undoStack().push(new AddTextsGroupCommand(m_element, name));
+}
+
+void DynamicElementTextItemEditor::on_m_tree_view_clicked(const QModelIndex &index)
+{
+	if(m_model->indexIsText(index) || m_model->indexIsGroup(index))
+		ui->m_remove_selection->setEnabled(true);
+	else
+		ui->m_remove_selection->setDisabled(true);
 }

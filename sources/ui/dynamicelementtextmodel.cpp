@@ -520,6 +520,11 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	if(group->verticalAdjustment() != v_adjustment)
 		new QPropertyUndoCommand(group, "verticalAdjustment", QVariant(group->verticalAdjustment()), QVariant(v_adjustment), undo);
 	
+	QString name = group_qsi->data(Qt::DisplayRole).toString();
+	if(group->name() != name)
+		new QPropertyUndoCommand(group, "name", QVariant(group->name()), QVariant(name), undo);
+		
+	
 	return undo;
 }
 
@@ -535,7 +540,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	
 		//Group
 	QStandardItem *grp = new QStandardItem(group->name());
-	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
+	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEditable);
 	grp->setIcon(QET::Icons::textGroup);
 	
 	QStandardItem *empty_qsi = new QStandardItem(0);
@@ -836,7 +841,7 @@ bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction
 					if(group && deti) //Text successfully added in a group	
 					{
 						m_element.data()->diagram()->undoStack().push(new AddTextToGroupCommand(deti, group));
-						return false;
+						return true;
 					}
 				}
 			}
@@ -860,7 +865,7 @@ bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction
 							stack.push(new AddTextToGroupCommand(deti, group));
 							stack.endMacro();
 							
-							return false;
+							return true;
 						}
 					}
 				}
@@ -889,7 +894,7 @@ bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction
 			if(deti && group) //Text successfully removed from group
 			{
 				m_element.data()->diagram()->undoStack().push((new RemoveTextFromGroupCommand(deti, group)));
-				return false;
+				return true;
 			}
 			
 			return false;
@@ -1020,8 +1025,8 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 	}
 	
 		//We emit the signal only if @qsi is in the second column, because the data are stored on this column
-		//the first column is use only for display the title of the property
-	if(qsi->column() == 1 && !m_block_dataChanged)
+		//the first column is use only for display the title of the property, except for the name of texts group
+	if((m_groups_list.values().contains(qsi) || qsi->column() == 1) && !m_block_dataChanged)
 		emit dataChanged();
 }
 
@@ -1083,6 +1088,7 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 		connection_list << connect(group, &ElementTextItemGroup::alignmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_alignment);});
 		connection_list << connect(group, &ElementTextItemGroup::rotationChanged, [group, this]() {this->updateDataFromGroup(group, grp_rotation);});
 		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_v_adjust);});
+		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_name);});
 		
 		m_hash_group_connect.insert(group, connection_list);
 	}
@@ -1202,6 +1208,9 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 			break;
 		case grp_v_adjust:
 			qsi->child(adjust_grp_row,1)->setData(group->verticalAdjustment(), Qt::EditRole);
+			break;
+		case grp_name:
+			qsi->setData(group->name(), Qt::DisplayRole);
 			break;
 	}
 	

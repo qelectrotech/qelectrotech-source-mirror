@@ -39,12 +39,14 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_PROPERTY(qreal rotation READ rotation WRITE setRotation NOTIFY rotationChanged)
 	Q_PROPERTY(int verticalAdjustment READ verticalAdjustment WRITE setVerticalAdjustment NOTIFY verticalAdjustmentChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
 	
 	public:
 	signals:
 		void rotationChanged(qreal);
 		void verticalAdjustmentChanged(int);
 		void alignmentChanged(Qt::Alignment);
+		void nameChanged(QString);
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);

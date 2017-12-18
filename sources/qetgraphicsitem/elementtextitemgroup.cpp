@@ -195,6 +195,7 @@ void ElementTextItemGroup::setVerticalAdjustment(int v)
 void ElementTextItemGroup::setName(QString name)
 {
 	m_name = name;
+	emit nameChanged(m_name);
 }
 
 /**

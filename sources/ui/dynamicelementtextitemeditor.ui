@@ -73,6 +73,43 @@
      </item>
     </layout>
    </item>
+   <item>
+    <widget class="QTreeView" name="m_tree_view">
+     <property name="editTriggers">
+      <set>QAbstractItemView::CurrentChanged|QAbstractItemView::SelectedClicked</set>
+     </property>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::DragDrop</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="animated">
+      <bool>true</bool>
+     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>150</number>
+     </attribute>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="m_im_exp_layout">
+     <item>
+      <widget class="QPushButton" name="m_export_pb">
+       <property name="text">
+        <string>Exporter</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_import_pb">
+       <property name="text">
+        <string>Importer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <resources>

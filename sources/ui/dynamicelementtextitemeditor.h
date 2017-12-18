@@ -22,7 +22,6 @@
 
 class DynamicElementTextItem;
 class DynamicElementTextModel;
-class QTreeView;
 class QStandardItem;
 class ElementTextItemGroup;
 
@@ -48,16 +47,15 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 	
 	private:
 		void dataEdited();
-		void treeViewClicked(const QModelIndex &index);
     
     private slots:
         void on_m_add_text_clicked();
         void on_m_remove_selection_clicked();
 		void on_m_add_group_clicked();
+		void on_m_tree_view_clicked(const QModelIndex &index);
 		
 		private:
 		Ui::DynamicElementTextItemEditor *ui;
-        QTreeView *m_tree_view = nullptr;
         DynamicElementTextModel *m_model = nullptr;
 };
 
