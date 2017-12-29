@@ -109,6 +109,12 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 
 	new_pen.setStyle(Qt::PenStyle(ui->m_style_cb->currentIndex() + 1));
 	new_pen.setWidthF(ui->m_size_dsb->value());
+	
+	if (ui->m_style_cb->currentIndex() ==5) {
+	new_pen.setDashPattern( QVector<qreal>() << 10 << 10 );
+	new_pen.setStyle( Qt::CustomDashLine );
+	}
+	//painter.setPen( new_pen );
 	new_pen.setColor(ui->m_color_pb->palette().color(QPalette::Button));
 
 	if (new_pen != old_pen)

@@ -39,6 +39,7 @@ QDomElement QETXML::penToXml(QDomDocument &parent_document,QPen pen)
 		case Qt::DotLine        : style = "DotLine";        break;
 		case Qt::DashDotLine    : style = "DashDotLine";    break;
 		case Qt::DashDotDotLine : style = "DashDotDotLine"; break;
+		case Qt::CustomDashLine : style = "CustomDashLine"; break;
 		default                 : style = "Unknow";         break;
 	}
 
@@ -71,6 +72,8 @@ QPen QETXML::penFromXml(const QDomElement &element)
 	else if (style == "DotLine")        pen.setStyle(Qt::DotLine);
 	else if (style == "DashDotLine")    pen.setStyle(Qt::DashDotLine);
 	else if (style == "DashDotDotLine") pen.setStyle(Qt::DashDotDotLine);
+	else if (style == "CustomDashLine") pen.setStyle(Qt::CustomDashLine),
+	pen.setDashPattern( QVector<qreal>() << 10 << 10 );
 	else                                pen.setStyle(Qt::DashLine);
 
 	pen.setColor(QColor(element.attribute("color", "#000000")));
