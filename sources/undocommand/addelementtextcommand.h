@@ -20,6 +20,7 @@
 
 #include <QUndoCommand>
 #include <QPointer>
+#include <QDomElement>
 
 class Element;
 class DynamicElementTextItem;
@@ -51,6 +52,7 @@ class AddTextsGroupCommand : public QUndoCommand
 {
 	public:
 		AddTextsGroupCommand(Element *element, QString groupe_name, QUndoCommand *parent = nullptr);
+		AddTextsGroupCommand(Element *element, QDomElement dom_element, QUndoCommand *parent = nullptr);
 		~AddTextsGroupCommand() override;
 		
 		void undo() override;
@@ -59,6 +61,8 @@ class AddTextsGroupCommand : public QUndoCommand
 	private:
 		QPointer<Element> m_element;
 		QPointer<ElementTextItemGroup> m_group;
+		QList <DynamicElementTextItem *> m_deti_list;
+		QDomElement m_dom_element;
 		QString m_name;
 		bool m_first_undo = true;
 };

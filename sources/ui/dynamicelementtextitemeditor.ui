@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>226</width>
+    <height>234</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,35 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <spacer name="horizontalSpacer">
+      <widget class="QToolButton" name="m_export_pb">
+       <property name="toolTip">
+        <string>Exporter l'actuelle configuration des textes</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../qelectrotech.qrc">
+         <normaloff>:/ico/16x16/document-save.png</normaloff>:/ico/16x16/document-save.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_import_pb">
+       <property name="toolTip">
+        <string>Importer une configuration de texte</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../qelectrotech.qrc">
+         <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -30,40 +58,40 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="m_add_text">
+      <widget class="QToolButton" name="m_add_text">
        <property name="toolTip">
         <string>Ajouter un texte</string>
        </property>
        <property name="text">
-        <string>Texte</string>
+        <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+         <normaloff>:/ico/22x22/textfield.png</normaloff>:/ico/22x22/textfield.png</iconset>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_add_group">
+      <widget class="QToolButton" name="m_add_group">
        <property name="toolTip">
         <string>Ajouter un groupe de textes</string>
        </property>
        <property name="text">
-        <string>Groupe</string>
+        <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="../../qelectrotech.qrc">
-         <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+         <normaloff>:/ico/16x16/object-group.png</normaloff>:/ico/16x16/object-group.png</iconset>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="m_remove_selection">
+      <widget class="QToolButton" name="m_remove_selection">
        <property name="toolTip">
         <string>Supprimer la sélection</string>
        </property>
        <property name="text">
-        <string/>
+        <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="../../qelectrotech.qrc">
@@ -93,22 +121,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="m_im_exp_layout">
-     <item>
-      <widget class="QPushButton" name="m_export_pb">
-       <property name="text">
-        <string>Exporter</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_import_pb">
-       <property name="text">
-        <string>Importer</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="m_im_exp_layout"/>
    </item>
   </layout>
  </widget>

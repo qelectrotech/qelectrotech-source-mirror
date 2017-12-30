@@ -26,6 +26,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementtextitemgroup.h"
 #include "deleteqgraphicsitemcommand.h"
+#include "elementtextpattern.h"
 
 #include <QTreeView>
 #include <QUndoCommand>
@@ -39,9 +40,6 @@ DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWi
     ui->m_tree_view->setItemDelegate(new DynamicTextItemDelegate(ui->m_tree_view));
 	ui->m_tree_view->installEventFilter(this);
 	ui->m_remove_selection->setDisabled(true);
-	
-	ui->m_export_pb->hide();
-	ui->m_import_pb->hide();
 	
     setElement(element);
 }
@@ -255,4 +253,14 @@ void DynamicElementTextItemEditor::on_m_tree_view_clicked(const QModelIndex &ind
 		ui->m_remove_selection->setEnabled(true);
 	else
 		ui->m_remove_selection->setDisabled(true);
+}
+
+void DynamicElementTextItemEditor::on_m_export_pb_clicked()
+{
+    ExportElementTextPattern eetp(m_element);
+}
+
+void DynamicElementTextItemEditor::on_m_import_pb_clicked()
+{
+    ImportElementTextPattern ietp(m_element);
 }

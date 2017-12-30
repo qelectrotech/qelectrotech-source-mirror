@@ -488,16 +488,16 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
 	m_dynamic_text_list.clear();
-	
+    
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
-	for(QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
-	{
-		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
-		addDynamicTextItem(deti);
-		deti->fromXml(qde);
-	}
+    for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
+    {
+        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+        addDynamicTextItem(deti);
+        deti->fromXml(qde);
+    }
 	
 
 		//************************//
@@ -584,7 +584,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 	}
 	
-	for (QDomElement qde : QET::findInDomElement(e, "texts_group", ElementTextItemGroup::xmlTaggName()))
+	for (QDomElement qde : QET::findInDomElement(e, "texts_groups", ElementTextItemGroup::xmlTaggName()))
 	{
 		ElementTextItemGroup *group = addTextGroup("loaded_from_xml_group");
 		group->fromXml(qde);
@@ -626,7 +626,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
-
+    
 	return(true);
 }
 
@@ -658,7 +658,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	QDomElement seq = m_autoNum_seq.toXml(document);
 	if (seq.hasChildNodes())
 		element.appendChild(seq);
-
+	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));
 	element.setAttribute("y", QString("%1").arg(pos().y()));
@@ -674,7 +674,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		}
 		id_terminal = max_id_t + 1;
 	}
-
+	
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
@@ -686,7 +686,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);
-
+	
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
 	foreach(ElementTextItem *eti, texts()) {
@@ -706,21 +706,21 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		element.appendChild(links_uuids);
 	}
 
-	//save information of this element
+        //save information of this element
 	if (! m_element_informations.keys().isEmpty()) {
 		QDomElement infos = document.createElement("elementInformations");
 		m_element_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
-
-	//Dynamic texts
-	QDomElement dyn_text = document.createElement("dynamic_texts");
-	for(DynamicElementTextItem *deti : m_dynamic_text_list)
-		dyn_text.appendChild(deti->toXml(document));
+    	
+        //Dynamic texts
+    QDomElement dyn_text = document.createElement("dynamic_texts");
+    for (DynamicElementTextItem *deti : m_dynamic_text_list)
+        dyn_text.appendChild(deti->toXml(document));
 	
-	QDomElement texts_group = document.createElement("texts_group");
+	QDomElement texts_group = document.createElement("texts_groups");
 	
-	//Dynamic texts owned by groups
+		//Dynamic texts owned by groups
 	for(ElementTextItemGroup *group : m_texts_group)
 	{
 			//temporarily remove the texts from group to get the pos relative to element and not group.
@@ -735,7 +735,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 			group->removeFromGroup(deti);
 		
 			//Save the texts to xml
-		for(DynamicElementTextItem *deti : deti_list)
+		for (DynamicElementTextItem *deti : deti_list)
 			dyn_text.appendChild(deti->toXml(document));
 		
 			//Re add texts to group
@@ -754,7 +754,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		//Append the texts group to element
 	element.appendChild(texts_group);
 
-	return(element);
+    return(element);
 }
 
 /**
@@ -765,18 +765,18 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
  */
 void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 {
-	if (deti && !m_dynamic_text_list.contains(deti))
+    if (deti && !m_dynamic_text_list.contains(deti))
 	{
-		m_dynamic_text_list.append(deti);
+        m_dynamic_text_list.append(deti);
 		deti->setParentItem(this);
 		emit textAdded(deti);
 	}
-	else
-	{
-		DynamicElementTextItem *text = new DynamicElementTextItem(this);
-		m_dynamic_text_list.append(text);
+    else
+    {
+        DynamicElementTextItem *text = new DynamicElementTextItem(this);
+        m_dynamic_text_list.append(text);
 		emit textAdded(text);
-	}
+    }
 }
 
 /**
@@ -787,9 +787,9 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
  */
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 {
-	if (m_dynamic_text_list.contains(deti))
+    if (m_dynamic_text_list.contains(deti))
 	{
-		m_dynamic_text_list.removeOne(deti);
+        m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
 		emit textRemoved(deti);
 		return;

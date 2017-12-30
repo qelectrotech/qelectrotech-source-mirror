@@ -179,13 +179,10 @@ void ElementTextItemGroup::updateAlignment()
  */
 void ElementTextItemGroup::setVerticalAdjustment(int v)
 {
-	if(m_vertical_adjustment != v)
-	{
-		prepareGeometryChange();
-		m_vertical_adjustment = v;
-		updateAlignment();
-		emit verticalAdjustmentChanged(v);
-	}
+	prepareGeometryChange();
+	m_vertical_adjustment = v;
+	updateAlignment();
+	emit verticalAdjustmentChanged(v);
 }
 
 /**
@@ -278,12 +275,12 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 		return;
 	}
 	
-	m_name = dom_element.attribute("name", "no name");
+	setName(dom_element.attribute("name", "no name"));
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	m_alignment = Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data()));
+	setAlignment(Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data())));
 	
 	setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
-	m_vertical_adjustment = dom_element.attribute("vertical_adjustment").toInt();
+	setVerticalAdjustment(dom_element.attribute("vertical_adjustment").toInt());
 	
 	if(parentElement())
 	{

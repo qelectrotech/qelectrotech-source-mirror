@@ -76,6 +76,20 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QString groupe_name
 }
 
 /**
+ * @brief AddTextsGroupCommand::AddTextsGroupCommand
+ * @param element : The element to add a new group
+ * @param dom_element : the first time the group is created, we call the function fromXml of the group, and give @dom_element has argument.
+ * @param parent : parent undo
+ */
+AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QDomElement dom_element, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_element(element),
+	m_dom_element(dom_element)
+{
+		setText(QObject::tr("Ajouter un groupe de textes d'élément"));
+}
+
+/**
  * @brief AddTextsGroupCommand::~AddTextsGroupCommand
  * Destructor
  */
@@ -95,10 +109,22 @@ void AddTextsGroupCommand::redo()
 		if(m_first_undo)
 		{
 			m_group = m_element.data()->addTextGroup(m_name);
+			if(!m_dom_element.isNull())
+			{
+				m_group.data()->fromXml(m_dom_element);
+					//We get the list of texts (if any) because when undo is called, all child text will be removed
+					//from the group, and reparented to m_elemeny.
+					//Then the next time redo is called, the texts will be added to the group
+				m_deti_list = m_group.data()->texts();
+			}
 			m_first_undo = false;
 		}
 		else if(m_group)
+		{
 			m_element.data()->addTextGroup(m_group.data());
+			for(DynamicElementTextItem *deti : m_deti_list)
+				m_element.data()->addTextToGroup(deti, m_group.data());
+		}
 	}
 }
 

@@ -160,7 +160,7 @@ namespace QET {
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
-	bool writeXmlFile(QDomDocument &, const QString &, QString * = nullptr);
+	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
 	QPointF graphicsSceneEventPos(QEvent *);
 	bool eachStrIsEqual (const QStringList &qsl);
 }

@@ -67,7 +67,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(QDomElement &dom_element);
-		static QString xmlTaggName() {return QString("text_group");}
+		static QString xmlTaggName() {return QString("texts_group");}
 		
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QRectF boundingRect() const override;

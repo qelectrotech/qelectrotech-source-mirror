@@ -53,6 +53,8 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
         void on_m_remove_selection_clicked();
 		void on_m_add_group_clicked();
 		void on_m_tree_view_clicked(const QModelIndex &index);
+		void on_m_export_pb_clicked();
+		void on_m_import_pb_clicked();
 		
 		private:
 		Ui::DynamicElementTextItemEditor *ui;
