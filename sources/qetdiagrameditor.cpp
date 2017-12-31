@@ -2211,7 +2211,7 @@ success = process->startDetached("qet_tb_generator");
 #endif
 if ( !success ) {
 QMessageBox::warning(nullptr,
-tr("Error launching plugin"), 
+tr("Error launching qet_tb_generator plugin"), 
 tr("To install the plugin qet_tb_generator\nVisit https://pypi.python.org/pypi/qet-tb-generator/\n"
 					 "\n"
 					 "Requires python 3.5 or above.\n"
