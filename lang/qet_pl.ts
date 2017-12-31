@@ -993,7 +993,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuj bieżącą konfigurację tekstów</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1002,12 +1002,12 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuj konfigurację tekstów</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -2587,7 +2587,7 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>Czcionka pól tekstowych spisu arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -4486,7 +4486,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd podczas uruchamiania wtyczki qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4518,7 +4518,33 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Instalacja wtyczki qet_tb_generator
+Odwiedź https://pypi.python.org/pypi/qet-tb-generator/
+
+Wymagany python 3.5 lub nowszy.
+&gt;&gt; Instalacja na Linuksie
+1. Sprawdź czy masz zainstalowany pip3: pip3 --version
+Jeżeli nie zainstaluj za pomocą: sudo apt-get install python3-pip
+2. Zainstaluj program: sudo pip3 install qet_tb_generator
+3. Uruchom program: qet_tb_generator
+&gt;&gt; Aktualizacja w Linuksie
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; Instalacja w systemie Windows
+1. Zainstaluj jeżeli jest wymagany, python 3.5 lub nowszy 
+ Odwiedź https://www.python.org/downloads/ 
+2. Zainstaluj pip qet_tb_generator
+&gt;&gt; Aktualizacja w systemie Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;użytkownik może uruchomić ten skrypt w terminalu w tym katalogu 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; Instalacja na macOSX 
+1. Zainstaluj jeżeli jest wymagany, python 3.5 or above 
+ Odwiedź https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. Zainstaluj pip3 qet_tb_generator 
+&gt;&gt; Aktualizacja na macOSX 
+ pip3 install --upgrade qet_tb_generator </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
@@ -5523,7 +5549,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1094"/>
         <source>Error launching DXFtoQET plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd podczas uruchamiania wtyczki DXFtoQET</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1095"/>
@@ -5539,7 +5565,18 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja na Linuksie
+Umieść plik binarny DXFtoQET w katalogu /home/user_name/.qet/ directory
+make it executable : chmod +x ./DXFtoQET
+&gt;&gt; Instalacja w systemie Windows
+Umieść plik binarny DXFtoQET.exe w katalogu C:\Users\user_name\AppData\Roaming\qet\ directory 
+
+&gt;&gt; Instalacja w macOSX
+Umieść plik binarny DXFtoQET.app w /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1123"/>
@@ -7305,43 +7342,44 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguracja tekstów</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguracja tekstów o nazwie &lt;&lt; %1 &gt;&gt; już istnieje.
+Czy chcesz ją zastąpić ?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa dla konfiguracji</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź nazwę dla tworzonej konfiguracji</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak konfiguracji tekstów.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybież konfigurację tekstów</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz konfigurację tekstów dla elementu</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuj konfigurację tekstu: %1</translation>
     </message>
 </context>
 <context>
@@ -7670,7 +7708,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreskowa nietypowa</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
