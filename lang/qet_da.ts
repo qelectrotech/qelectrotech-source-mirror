@@ -993,7 +993,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportere nuværende tekstkonfiguration</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1002,12 +1002,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Importere tekstkonfiguration</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -2587,7 +2587,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstfelt skrifttype oversigt sider</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -4486,7 +4486,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved start qet_tb_generator udvidelsesmodul</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4518,7 +4518,34 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>For at installere udvidelsesmodulet qet_tb_generator
+Gå til https://pypi.python.org/pypi/qet-tb-generator/
+
+Kræver python 3.5 eller derover.
+&gt;&gt; Første installation på Linux
+1. kontrollere at pip3 er installeret: pip3 --version
+Hvis ikke, installeres det med: sudo apt-get install python3-pip
+2. Installere programmet: sudo pip3 install qet_tb_generator
+3. Kør programmet: qet_tb_generator
+&gt;&gt; Opdatere på Linux
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; Første installation på Windows
+1. Installere, hvis krævet, python 3.5 eller derover 
+ Gå til https://www.python.org/downloads/ 
+2. pip install qet_tb_generator
+&gt;&gt; Opdatere på  Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;bruger kan i en terminal køre dette skript i mappen 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; Første installation på macOSX 
+1. Installere, hvis krævet, python 3.5 eller derover 
+ Gå til https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator 
+&gt;&gt; Opdatere på macOSX 
+ pip3 install --upgrade qet_tb_generator 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
@@ -5524,7 +5551,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1094"/>
         <source>Error launching DXFtoQET plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved start af DXFtoQET udvidelsesmodul</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1095"/>
@@ -5540,7 +5567,18 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>For at installere DXFtoQET udvidelsesmodluet
+Gå til https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installere på Linux
+Gem DXFtoQET binær kode i /home/user_name/.qet/ mappen 
+gør den kørbar: chmod +x ./DXFtoQET
+&gt;&gt; Installere på Windows
+Gem DXFtoQET.exe binær kode i C:\Users\user_name\AppData\Roaming\qet\ mappen 
+
+&gt;&gt; Installere på macOSX
+Gem DXFtoQET.app binær kode i /Users/user_name/.qet/ mappen 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1123"/>
@@ -7298,43 +7336,44 @@ Hvad skal ske?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstkonfiguration</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>En tekstkonfiguration med navnet &lt;&lt; %1 &gt;&gt; eksisterer allerede.
+Vil du erstatte den?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurationsnavn</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast navnet på konfigurationen for at oprette</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen eksisterende tekstkonfiguration.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vælg en tekstkonfiguration</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Vælg den tekstkonfiguration, der skal tilføjes til symbolet</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Importere tekstkonfiguration: %1</translation>
     </message>
 </context>
 <context>
@@ -7669,7 +7708,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilpasset stiplet streg</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
