@@ -7260,6 +7260,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
+        <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
         <translation>Text configuration</translation>
     </message>
@@ -7279,11 +7280,6 @@ Do you want to replace it?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
         <translation>Enter the name of the configuration to create</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="143"/>
-        <source>Configurtaion de textes</source>
-        <translation>Text configuration</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
