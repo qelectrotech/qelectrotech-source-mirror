@@ -140,7 +140,7 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	if(!exist)
 	{
 		QMessageBox::information(parentWidget(),
-								 QObject::tr("Configurtaion de textes"),
+								 QObject::tr("Configuration de textes"),
 								 QObject::tr("Aucune configuration de textes existante."));
 		return;
 	}
