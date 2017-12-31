@@ -1002,57 +1002,66 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished">شكل</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="35"/>
-        <source>Ajouter un texte</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <source>Exporter l&apos;actuelle configuration des textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="38"/>
-        <source>Texte</source>
-        <translation type="unfinished">نص</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="49"/>
-        <source>Ajouter un groupe de textes</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="39"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="66"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
+        <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="52"/>
-        <source>Groupe</source>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <source>Importer une configuration de texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <source>Ajouter un texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <source>Ajouter un groupe de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>Supprimer la sélection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="137"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="130"/>
         <source>Modifier des textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="180"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="173"/>
         <source>Modifier un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="187"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="180"/>
         <source>Modifier %1 textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="257"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="242"/>
         <source>Nom du groupe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="257"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="242"/>
         <source>Entrer le nom du nouveau groupe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="42"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
         <source>Textes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1060,171 +1069,161 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="42"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="57"/>
         <source>Propriété</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="43"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="58"/>
         <source>Valeur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="112"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="127"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="116"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="410"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="417"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="131"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="413"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="420"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="990"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1121"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="117"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="412"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="423"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="132"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="415"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="426"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="995"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1122"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="118"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="152"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="414"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="429"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="133"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="167"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="417"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="432"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1123"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="127"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="142"/>
         <source>Texte</source>
         <translation type="unfinished">نص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="154"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="159"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="174"/>
         <source>Mon texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="182"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="185"/>
         <source>Taille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="440"/>
-        <source>Modifier le tagg d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="447"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="443"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="454"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="450"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="461"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="457"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="472"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="468"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation type="unfinished">تحريك نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="483"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="479"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="504"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
         <source>Éditer un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="508"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1199"/>
         <source>Gauche</source>
         <translation type="unfinished">يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1219"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="510"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1200"/>
         <source>Droite</source>
         <translation type="unfinished">يمين</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="516"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1220"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="563"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1201"/>
         <source>Centre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="555"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="556"/>
         <source>Alignement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="585"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="586"/>
         <source>Ajustement vertical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="862"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="863"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="170"/>
-        <source>Tagg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="195"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="198"/>
         <source>Couleur</source>
         <translation type="unfinished">لون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="209"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="212"/>
         <source>Cadre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="225"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
         <source>Position X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="238"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="241"/>
         <source>Position Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="251"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="573"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="254"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="574"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="402"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="405"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1331,32 +1330,32 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1254"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1238"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1255"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1239"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1256"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1240"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1338"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1322"/>
         <source>Gauche</source>
         <translation type="unfinished">يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1339"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1323"/>
         <source>Centre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1340"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1324"/>
         <source>Droite</source>
         <translation type="unfinished">يمين</translation>
     </message>
@@ -2180,7 +2179,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="476"/>
+        <location filename="../sources/configpages.cpp" line="489"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>تصدير</translation>
@@ -2557,28 +2556,28 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="261"/>
+        <location filename="../sources/configpages.cpp" line="260"/>
         <source>Police des champs de texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="265"/>
+        <location filename="../sources/configpages.cpp" line="271"/>
         <source>Gestion des éléments</source>
         <translation>إدارة العناصر</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="266"/>
+        <location filename="../sources/configpages.cpp" line="272"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>إبراز العناصر المُدمجة حديثا في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="268"/>
+        <location filename="../sources/configpages.cpp" line="274"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>يُحمّل كلّ عنصر  بمعلومات متعلّقة بمؤلفيه, ترخيصه أو أيّ إفادة أخرى تراها ضرورية في حقل حر . يُمكنكم تحديد القيمة , الإفتراضية لهذا  , الحقل بالنسبة للعناصر التي تُنشئها :</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="323"/>
+        <location filename="../sources/configpages.cpp" line="336"/>
         <source>Langue</source>
         <translation>اللغة</translation>
     </message>
@@ -2603,113 +2602,118 @@ that you create. Text and number inputs are
         <translation>السماح بالتصغير لما بعد الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="326"/>
+        <location filename="../sources/configpages.cpp" line="267"/>
+        <source>Police des champs textes des pages sommaires</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="339"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
         <translation>ستُأخذ اللغة الجديدة في الاعتبار عند التشغيل التالي لـ QElectrotech.</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="389"/>
+        <location filename="../sources/configpages.cpp" line="402"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>عام</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="397"/>
+        <location filename="../sources/configpages.cpp" line="410"/>
         <source>Système</source>
         <translation>النظام</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="401"/>
+        <location filename="../sources/configpages.cpp" line="414"/>
         <source>Arabe</source>
         <translation>العربية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="402"/>
+        <location filename="../sources/configpages.cpp" line="415"/>
         <source>Brézilien</source>
         <translation>البرازيلي</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="403"/>
+        <location filename="../sources/configpages.cpp" line="416"/>
         <source>Catalan</source>
         <translation>الكتالونية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="404"/>
+        <location filename="../sources/configpages.cpp" line="417"/>
         <source>Tchèque</source>
         <translation>التشيكية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="405"/>
+        <location filename="../sources/configpages.cpp" line="418"/>
         <source>Allemand</source>
         <translation>الألمانية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="406"/>
+        <location filename="../sources/configpages.cpp" line="419"/>
         <source>Danois</source>
         <translation>دنماركية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="407"/>
+        <location filename="../sources/configpages.cpp" line="420"/>
         <source>Grec</source>
         <translation>اليونانية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="408"/>
+        <location filename="../sources/configpages.cpp" line="421"/>
         <source>Anglais</source>
         <translation>الإنجليزية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="409"/>
+        <location filename="../sources/configpages.cpp" line="422"/>
         <source>Espagnol</source>
         <translation>الإسبانية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="410"/>
+        <location filename="../sources/configpages.cpp" line="423"/>
         <source>Français</source>
         <translation>الفرنسية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="411"/>
+        <location filename="../sources/configpages.cpp" line="424"/>
         <source>Croate</source>
         <translation>الكرواتية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="412"/>
+        <location filename="../sources/configpages.cpp" line="425"/>
         <source>Italien</source>
         <translation>الإيطالية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="413"/>
+        <location filename="../sources/configpages.cpp" line="426"/>
         <source>Polonais</source>
         <translation>البولندية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="414"/>
+        <location filename="../sources/configpages.cpp" line="427"/>
         <source>Portugais</source>
         <translation>البرتغالية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="415"/>
+        <location filename="../sources/configpages.cpp" line="428"/>
         <source>Roumains</source>
         <translation>الرومانية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="416"/>
+        <location filename="../sources/configpages.cpp" line="429"/>
         <source>Russe</source>
         <translation>الروسية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="417"/>
+        <location filename="../sources/configpages.cpp" line="430"/>
         <source>Slovène</source>
         <translation>السلوفينية</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="418"/>
+        <location filename="../sources/configpages.cpp" line="431"/>
         <source>Pays-Bas</source>
         <translation>هولندا</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="419"/>
+        <location filename="../sources/configpages.cpp" line="432"/>
         <source>Belgique-Flemish</source>
         <translation>بلجيكا- فلامون</translation>
     </message>
@@ -3656,7 +3660,7 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="532"/>
+        <location filename="../sources/configpages.cpp" line="545"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>طباعة</translation>
@@ -3959,167 +3963,167 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>إطارات تعريف المستعمل</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="865"/>
+        <location filename="../sources/qetapp.cpp" line="889"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="866"/>
+        <location filename="../sources/qetapp.cpp" line="890"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="867"/>
+        <location filename="../sources/qetapp.cpp" line="891"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>مخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="868"/>
+        <location filename="../sources/qetapp.cpp" line="892"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>كهربائي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="869"/>
+        <location filename="../sources/qetapp.cpp" line="893"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1273"/>
+        <location filename="../sources/qetapp.cpp" line="1297"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>إعدادات برنامج QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1384"/>
+        <location filename="../sources/qetapp.cpp" line="1408"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1449"/>
+        <location filename="../sources/qetapp.cpp" line="1473"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...ايقونة systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1451"/>
+        <location filename="../sources/qetapp.cpp" line="1475"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1453"/>
+        <location filename="../sources/qetapp.cpp" line="1477"/>
         <source>&amp;Quitter</source>
         <translation>&amp;إنهاء</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1454"/>
+        <location filename="../sources/qetapp.cpp" line="1478"/>
         <source>&amp;Masquer</source>
         <translation>&amp;حجب</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1455"/>
+        <location filename="../sources/qetapp.cpp" line="1479"/>
         <source>&amp;Restaurer</source>
         <translation>ا&amp;سترجاع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1456"/>
+        <location filename="../sources/qetapp.cpp" line="1480"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;حجب كلّ محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1457"/>
+        <location filename="../sources/qetapp.cpp" line="1481"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;استرجاع كل محرري المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1458"/>
+        <location filename="../sources/qetapp.cpp" line="1482"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;احجب كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1459"/>
+        <location filename="../sources/qetapp.cpp" line="1483"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;استرجع كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1460"/>
+        <location filename="../sources/qetapp.cpp" line="1484"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;احجب كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1461"/>
+        <location filename="../sources/qetapp.cpp" line="1485"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;استرجع كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1462"/>
+        <location filename="../sources/qetapp.cpp" line="1486"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;محرر تخطييط جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1463"/>
+        <location filename="../sources/qetapp.cpp" line="1487"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;محرّر عنصر جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1465"/>
+        <location filename="../sources/qetapp.cpp" line="1489"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>إغلاق تطبيق QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1466"/>
+        <location filename="../sources/qetapp.cpp" line="1490"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>خفض QElectrotech في  systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1467"/>
+        <location filename="../sources/qetapp.cpp" line="1491"/>
         <source>Restaurer QElectroTech</source>
         <translation>إسترجاع QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1483"/>
+        <location filename="../sources/qetapp.cpp" line="1507"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1552"/>
+        <location filename="../sources/qetapp.cpp" line="1576"/>
         <source>Éditeurs de schémas</source>
         <translation>محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1561"/>
+        <location filename="../sources/qetapp.cpp" line="1585"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>محرري العناصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1571"/>
+        <location filename="../sources/qetapp.cpp" line="1595"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1636"/>
+        <location filename="../sources/qetapp.cpp" line="1660"/>
         <source>Usage : </source>
         <translation>إستعمال :</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1636"/>
+        <location filename="../sources/qetapp.cpp" line="1660"/>
         <source> [options] [fichier]...
 
 </source>
         <translation>[خيارات] [ rملف]...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1637"/>
+        <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4135,26 +4139,26 @@ Options disponibles :
 - الترخيص ......................... عرض الترخيص</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1643"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR    عرّف مجلد صنف العناصر
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1646"/>
+        <location filename="../sources/qetapp.cpp" line="1670"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR         عرّف مجلد مجموعة نماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1649"/>
+        <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR             عرّف مجلد الإعدادات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1651"/>
+        <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR               عرّف المجلد المحتوي على ملفات اللغة</translation>
@@ -4389,6 +4393,43 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Inverser la sélection</source>
         <translation>اعكس التحديد</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
+        <source>Error launching plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
+        <source>To install the plugin qet_tb_generator
+Visit https://pypi.python.org/pypi/qet-tb-generator/
+
+Requires python 3.5 or above.
+&gt;&gt; First install on Linux
+1. check you have pip3 installed: pip3 --version
+If not install with: sudo apt-get install python3-pip
+2. Install the program: sudo pip3 install qet_tb_generator
+3. Run the program: qet_tb_generator
+&gt;&gt; Update on Linux
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; First install on Windows
+1. Install, if required, python 3.5 or above 
+ Visit https://www.python.org/downloads/ 
+2. pip install qet_tb_generator
+&gt;&gt; Update on Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;user could launch in a terminal this script in this directory 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; First install on macOSX 
+1. Install, if required, python 3.5 or above 
+ Visit https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator 
+&gt;&gt; Update on macOSX 
+ pip3 install --upgrade qet_tb_generator 
+</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="357"/>
@@ -6665,7 +6706,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="567"/>
-        <location filename="../sources/qetxml.cpp" line="242"/>
+        <location filename="../sources/qetxml.cpp" line="245"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>إستحالة فتح الملف %1 للكتابةو , مواجهة خطأ %2 .</translation>
@@ -7228,26 +7269,27 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="89"/>
         <source>Ajouter un groupe de textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="120"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="146"/>
         <source>Supprimer un groupe de textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="169"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="195"/>
         <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="220"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="246"/>
         <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="265"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="291"/>
         <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7276,6 +7318,52 @@ Que désirez vous faire ?</source>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation type="unfinished">توجيه النص المحدد</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="62"/>
+        <source>Configuration de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="63"/>
+        <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
+Voulez-vous la remplacer ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="82"/>
+        <source>Nom de la configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="83"/>
+        <source>Entrer le nom de la configuration à créer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="143"/>
+        <source>Configurtaion de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="144"/>
+        <source>Aucune configuration de textes existante.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="168"/>
+        <source>Séléctionner une configuration de textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="169"/>
+        <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="236"/>
+        <source>Importer la configuration de texte : %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7600,108 +7688,113 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>خطوط نقاط نقاط</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="96"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
+        <source>Tiret custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
         <source>Type</source>
         <translation>نوع</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="103"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="212"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="108"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="217"/>
         <source>Couleur</source>
         <translation>لون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="120"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="125"/>
         <source>Remplissage</source>
         <translation>تعبئة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="126"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="131"/>
         <source>Style</source>
         <translation>نمط</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="139"/>
         <source>Aucun</source>
         <translation>لا شيئ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="139"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="144"/>
         <source>Plein</source>
         <translation>مُعبّأ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="144"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="149"/>
         <source>Densité 1</source>
         <translation>كثافة 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="149"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="154"/>
         <source>Densité 2</source>
         <translation>كثافة 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="159"/>
         <source>Densité 3</source>
         <translation>كثافة 3</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="159"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="164"/>
         <source>Densité 4</source>
         <translation>كثافة 4</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="164"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="169"/>
         <source>Densité 5</source>
         <translation>كثافة 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="169"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="174"/>
         <source>Densité 6</source>
         <translation>كثافة 6</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="174"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="179"/>
         <source>Densité 7</source>
         <translation>كثافة 7</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="179"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="184"/>
         <source>Horizontal</source>
         <translation>أفقي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="189"/>
         <source>Vertical</source>
         <translation>عمودي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="189"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
         <source>Croix</source>
         <translation>قاطع  و مقطوع</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="194"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
         <source>Diagonal arrière</source>
         <translation>قطري خلف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="199"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
         <source>Diagonal avant</source>
         <translation>قطري أمام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="204"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="209"/>
         <source>Diagonal en croix</source>
         <translation>قطري صليب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="229"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="234"/>
         <source>Verrouiller la position</source>
         <translation>تجميد الوضعية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="236"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="241"/>
         <source>Polygone fermé</source>
         <translation>متعدد أضلع مُغلق</translation>
     </message>
@@ -7711,17 +7804,17 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>تحرير خاصيات أوليّة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="117"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="123"/>
         <source>Modifier le trait d&apos;une forme</source>
         <translation>تعديل سطر الشكل</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="138"/>
         <source>Modifier le remplissage d&apos;une forme</source>
         <translation>تعديل تعبئة الشكل</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="143"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="149"/>
         <source>Fermer le polygone</source>
         <translation>غلق متعدد الأضلع</translation>
     </message>
