@@ -140,28 +140,40 @@ void QETElementEditor::setFileName(const QString &fn) {
  */
 void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
-    open              = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir"),                                   this);
-    open_file         = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-    open_dxf          = new QAction(QET::Icons::RunDxf,         tr("&Lancer le plugin convertisseur DXF"),       this);
+	open              = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir"),                                   this);
+	open_file         = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+	open_dxf          = new QAction(QET::Icons::RunDxf,         tr("&Lancer le plugin convertisseur DXF"),       this);
 	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
 	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
 	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
 	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
 	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
 	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                         this);
-    deselectall       = new QAction(QET::Icons::EditSelectNone,       tr("Désélectionner tout"),                       this);
+	deselectall       = new QAction(QET::Icons::EditSelectNone,       tr("Désélectionner tout"),                       this);
 	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
 	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
 	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
 	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
 	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
 	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                                this);
-    inv_select        = new QAction(QET::Icons::EditSelectInvert,     tr("Inverser la sélection"),                     this);
+	inv_select        = new QAction(QET::Icons::EditSelectInvert,     tr("Inverser la sélection"),                     this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("Éditer le nom et les traductions de l'élément"), this);
 	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),      this);
 	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"),        this);
 	
+	open_dxf -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+					 "\n"
+					 ">> Install on Linux\n"
+					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
+					 "make it executable : chmod +x ./DXFtoQET\n"
+					 ">> Install on Windows\n"
+					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n" 
+					 "\n"
+					 ">> Install on macOSX\n"
+					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
+					  ));
+
 	undo = m_elmt_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = m_elmt_scene -> undoStack().createRedoAction(this, tr("Refaire"));
 	undo -> setIcon(QET::Icons::EditUndo);
