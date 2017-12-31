@@ -57,7 +57,6 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QModelIndex>
-#include <QStandardPaths>
 
 /*
 	Nombre maximum de primitives affichees par la "liste des parties"
@@ -1079,31 +1078,18 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
  * @brief QETElementEditor::slot_openDxf
  */
 void QETElementEditor::slot_openDxf (){
-bool success;
-QProcess *process = new QProcess(qApp);
 
 #if defined(Q_OS_WIN32)
-success = process->startDetached(QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
+QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
 #elif defined(Q_OS_MAC)
-success = process->startDetached(QDir::homePath() + "/.qet/DXFtoQET.app");
+QString program = (QDir::homePath() + "/.qet/DXFtoQET.app");
 #else
-success = process->startDetached(QDir::homePath() + "/.qet/DXFtoQET");
+QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
-if ( !success ) {
-QMessageBox::warning(nullptr,
-tr("Error launching DXFtoQET plugin"), 
-tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install on Linux\n"
-					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
-					 "make it executable : chmod +x ./DXFtoQET\n"
-					 ">> Install on Windows\n"
-					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n" 
-					 "\n"
-					 ">> Install on macOSX\n"
-					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
-					  ));
-}
+QStringList arguments;
+QProcess *DXF = new QProcess(qApp);
+DXF->start(program,arguments);
+
 }
 
 /**
