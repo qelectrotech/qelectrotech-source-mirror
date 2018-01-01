@@ -993,7 +993,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta la configurazione corrente dei testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1002,12 +1002,12 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa una configurazione dei testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -2585,7 +2585,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulizia dei campi di testo per le pagine sommario</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -4479,7 +4479,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore durante l&apos;avvio del plugin qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4511,7 +4511,33 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin qet_tb_generator
+Visita https://pypi.python.org/pypi/qet-tb-generator/
+
+Richiede Python 3.5 o successivo.
+&gt;&gt; Prima installazione su Linux
+1. Verifica di aver installato pip3: pip3 --version
+Se non si installa con: sudo apt-get install python3-pip
+2. Installa il programma: sudo pip3 install qet_tb_generator
+3. Esegui il programma: qet_tb_generator
+&gt;&gt; Aggiornamento su Linux
+sudo pip3 install --upgrade qet_tb_generator
+
+&gt;&gt; Prima installazione su Windows
+1. Installare, se richiesto, python 3.5 o successivo
+ Visita https://www.python.org/downloads/
+2. pip install qet_tb_generator
+&gt;&gt; Aggiornamento su Windows
+python -m pip install --upgrade di qet_tb_generator
+&gt;&gt; l&apos;utente può avviare in un terminale questo script in questa directory
+ C: \ Users \ XXXX \ AppData \ Local \ Programmi \ Python \ Python36-32 \ Scripts
+
+&gt;&gt; Prima installazione su macOSX
+1. Installare, se richiesto, python 3.5 o successivo
+ Visita https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674
+2. pip3 install qet_tb_generator
+&gt;&gt; Aggiornamento su macOSX
+ installazione pip3 - upgrade qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
@@ -5524,7 +5550,17 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin DXFtoQET
+Visita https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installazione su Linux
+Inserire il file binario DXFtoQET nella directory /home/user_name/.qet/
+renderlo eseguibile con: chmod + x ./DXFtoQET
+&gt;&gt; Installazione su Windows
+Inserire il file DXFtoQET.exe nella directory C: \ Users \ nome_utente \ AppData \ Roaming \ qet \
+
+&gt;&gt; Installazione su macOSX
+Inserire il file binario DXFtoQET.app nella directory /Users/user_name/.qet/</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
@@ -7239,85 +7275,86 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="195"/>
         <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserire un testo di elemento in un gruppo di testi</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="246"/>
         <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare un testo di elemento da un gruppo di testi</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="291"/>
         <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare un testo di elemento da un gruppo di testi</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruotare la selezione</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
         <source>Pivoter %1 textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruotare %1 testi</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Ruota</translation>
+        <translation>Ruotare</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
         <source> %1 groupes de textes</source>
-        <translation type="unfinished"></translation>
+        <translation> %1 gruppi di testi</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Ruotare i testi selezionati</translation>
+        <translation>Ruotare i testi selezionati</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurazione dei testi</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Una configurazione di testi denominata &lt;&lt; %1 &gt;&gt; esiste già.
+Sostituirla con questa?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della configurazione</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserire il nome della configurazione da creare</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non esiste nessuna configurazione dei testi.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Selezionare una configurazione dei testi</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Selezionare la configurazione dei testi da aggiungere all&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Importare la configurazione del testo : %1</translation>
     </message>
 </context>
 <context>
@@ -7651,7 +7688,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Tratto personalizzato</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
