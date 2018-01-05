@@ -997,7 +997,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Texteinstellungen exportieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1006,12 +1006,12 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteinstellungen importieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -2580,7 +2580,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>Schriftart für Texte vom Inhaltsverzeichnis</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -4815,7 +4815,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Ausführen vom Plugin qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4847,7 +4847,34 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Installieren vom Plugin qet_tb_generator
+Besuchen Sie https://pypi.python.org/pypi/qet-tb-generator/
+
+Benötigt python 3.5 oder höher.
+&gt;&gt; Erste Installation auf Linux
+1. Prüfen, ob pip3 installiert ist: pip3 --version
+Wenn nicht, intsallieren mit: sudo apt-get install python3-pip
+2. Plugin installieren: sudo pip3 install qet_tb_generator
+3. Plugin ausführen: qet_tb_generator
+&gt;&gt; Update auf Linux
+sudo pip3 install --upgrade qet_tb_generator
+
+&gt;&gt; Erste Installation auf Windows
+1. python 3.5 oder höher installieren
+ Besuchen Sie https://www.python.org/downloads/
+2. pip install qet_tb_generator
+&gt;&gt; Update auf Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt; Plugin in einer Befehlszeile aus diesem Ordner ausführen
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts
+
+&gt;&gt; Erste Installation auf macOSX 
+1. python 3.5 oder höher installieren
+ Besuchen Sie https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator
+&gt;&gt; Update auf macOSX
+ pip3 install --upgrade qet_tb_generator 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
@@ -5549,7 +5576,17 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin DXFtoQET installieren
+Besuchen Sie https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installation auf Linux
+Binäre Datei DXFtoQET in Ordner /home/user_name/.qet/ verschieben
+Im Terminal, Datei ausführbar machen: chmod +x ./DXFtoQET
+&gt;&gt; Installation auf Windows
+Binäre Datei DXFtoQET.exe in Ordner C:\Users\user_name\AppData\Roaming\qet\ verschieben
+
+&gt;&gt; Installation auf macOSX
+Binäre Datei DXFtoQET.app in Ordner /Users/user_name/.qet/ verschieben </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
@@ -7268,43 +7305,44 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteinstellungen</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Texteinstellung &lt;&lt; %1 &gt;&gt; bereits existiert.
+Möchten Sie sie ersetzen?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Name der Texteinstellung</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Name der zu erstellenden Texteinstellung</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Texteinstellung vorhanden.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteinstellung auswählen</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl der Texteinstellung, die zum Bauteil hinzugefügt wird</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Texteinstellung importieren: %1</translation>
     </message>
 </context>
 <context>
@@ -7612,7 +7650,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefiniertes Strichmuster</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
