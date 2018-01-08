@@ -552,7 +552,7 @@ void GeneralConfigurationPage::setFont()
 {
 	bool ok;
 	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont(), this);
+	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
 	if (ok) {
 		settings.setValue("diagramitemfont", font.family());
 		settings.setValue("diagramitemsize", font.pointSize());
@@ -572,7 +572,7 @@ void GeneralConfigurationPage::setFoliolistFont()
 {
 	bool ok;
 	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont(), this);
+	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
 	if (ok) {
 		settings.setValue("foliolistfont", font.family());
 		settings.setValue("foliolistsize", font.pointSize());
