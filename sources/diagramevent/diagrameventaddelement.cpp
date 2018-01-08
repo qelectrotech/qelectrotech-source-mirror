@@ -45,6 +45,7 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 			init();
 			m_element -> setPos(pos);
 			m_element -> displayHelpLine(true);
+			m_element -> setFlag(QGraphicsItem::ItemIsSelectable, false);
 			m_diagram -> addItem(m_element);
 			m_running = true;
 		}
