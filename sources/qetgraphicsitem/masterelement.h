@@ -43,12 +43,17 @@ class MasterElement : public CustomElement
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
+		
+	protected:
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	private:
-		bool aboutDeleteXref ();
+		void xrefPropertiesChanged();
+		void aboutDeleteXref ();
 
 	private:
-		CrossRefItem *m_Xref_item;
+		CrossRefItem *m_Xref_item = nullptr;
+		bool m_first_scene_change = true;
 };
 
 #endif // MASTERELEMENT_H

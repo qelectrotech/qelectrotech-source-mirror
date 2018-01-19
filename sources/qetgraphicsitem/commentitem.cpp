@@ -58,7 +58,7 @@ void CommentItem::autoPos()
 {
 	if (m_text_parent)
 		centerToParentBottom(this);
-	else
+	else if (m_element->diagram())
 	{
 		XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
 		centerToBottomDiagram(this, m_element, xrp.offset());

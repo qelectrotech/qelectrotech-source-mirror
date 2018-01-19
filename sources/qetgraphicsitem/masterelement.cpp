@@ -19,6 +19,7 @@
 #include "crossrefitem.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include "dynamicelementtextitem.h"
 #include <QRegularExpression>
 
 /**
@@ -30,10 +31,10 @@
  * @param state int used to know if the creation of element have error
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state),
-	m_Xref_item (nullptr)
+	CustomElement(location, qgi, state)
 {
-	link_type_ = Master;
+	m_link_type = Element::Master;
+
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 	connect(this, &Element::updateLabel, [this]() {this->updateLabel(this->elementInformations(), this->elementInformations());});
 }
@@ -60,13 +61,12 @@ void MasterElement::linkToElement(Element *elmt)
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		if (!m_Xref_item) m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet
-
-		connect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
-		connect(&elmt->diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, m_Xref_item, &CrossRefItem::updateLabel);
-		m_Xref_item -> updateLabel();
+		XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+		if (!m_Xref_item && xrp.snapTo() == XRefProperties::Bottom)
+			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet
+		else
+			aboutDeleteXref();
+		
 		emit linkedElementChanged();
 	}
 }
@@ -100,13 +100,6 @@ void MasterElement::unlinkElement(Element *elmt)
 		elmt -> unlinkElement  (this);
 		elmt -> setHighlighted (false);
 
-			//update the graphics cross ref
-		disconnect(elmt, SIGNAL(xChanged()),    m_Xref_item, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(yChanged()),    m_Xref_item, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(updateLabel()), m_Xref_item, SLOT(updateLabel()));
-		disconnect(&elmt->diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, m_Xref_item, &CrossRefItem::updateLabel);
-
-		m_Xref_item -> updateLabel();
 		aboutDeleteXref();
 		emit linkedElementChanged();
 	}
@@ -154,23 +147,32 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
 	}
 
+}
 
-	//Delete or update the xref
-	if (m_Xref_item) {
-		m_Xref_item -> updateLabel();
-		aboutDeleteXref();
+QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+	if(change == QGraphicsItem::ItemSceneHasChanged && m_first_scene_change)
+	{
+		m_first_scene_change = false;
+		connect(diagram()->project(), &QETProject::XRefPropertiesChanged, this, &MasterElement::xrefPropertiesChanged);
 	}
-	else {
-		QString comment   = elementInformations()["comment"].toString();
-		bool    must_show_comment = elementInformations().keyMustShow("comment");
+	return CustomElement::itemChange(change, value);
+}
 
-		QString location  = elementInformations()["location"].toString();
-		bool	must_show_location = elementInformations().keyMustShow("location");
-
-		if (! (comment.isEmpty() || !must_show_comment) || !(location.isEmpty() || !must_show_location)) {
+void MasterElement::xrefPropertiesChanged()
+{
+	if(!diagram())
+		return;
+	
+	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	if(xrp.snapTo() == XRefProperties::Bottom)
+	{
+			//We create a Xref, and just after we call aboutDeleteXref,
+			//because the Xref may be useless.
+		if(!m_Xref_item)
 			m_Xref_item = new CrossRefItem(this);
-		}
 	}
+	aboutDeleteXref();
 }
 
 /**
@@ -183,15 +185,23 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
  * option show power contact is disable, the cross isn't draw.
  * @return
  */
-bool MasterElement::aboutDeleteXref() {
-	if(!m_Xref_item) return true;
-	if(!linkedElements().isEmpty()) return false;
-
-	if (m_Xref_item -> boundingRect().isNull()) {
+void MasterElement::aboutDeleteXref()
+{
+	if(!m_Xref_item)
+		return;
+	
+	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
+	if (xrp.snapTo() != XRefProperties::Bottom && m_Xref_item)
+	{
 		delete m_Xref_item;
 		m_Xref_item = nullptr;
-		return true;
+		return;
 	}
-
-	return false;
+	
+	if (m_Xref_item->boundingRect().isNull())
+	{
+		delete m_Xref_item;
+		m_Xref_item = nullptr;
+		return;
+	}
 }

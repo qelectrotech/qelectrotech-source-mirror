@@ -69,7 +69,7 @@ Element::Element(QGraphicsItem *parent) :
 	must_highlight_(false),
 	m_mouse_over(false)
 {
-	link_type_ = Simple;
+	m_link_type = Simple;
 	uuid_ = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -386,18 +386,18 @@ bool Element::valideXml(QDomElement &e) {
 }
 
 /**
-	Methode d'import XML. Cette methode est appelee lors de l'import de contenu
-	XML (coller, import, ouverture de fichier...) afin que l'element puisse
-	gerer lui-meme l'importation de ses bornes. Ici, comme cette classe est
-	caracterisee par un nombre fixe de bornes, l'implementation exige de
-	retrouver exactement ses bornes dans le fichier XML.
-	@param e L'element XML a analyser.
-	@param table_id_adr Reference vers la table de correspondance entre les IDs
-	du fichier XML et les adresses en memoire. Si l'import reussit, il faut y
-	ajouter les bons couples (id, adresse).
-	@return true si l'import a reussi, false sinon
-	
-*/
+ * @brief Element::fromXml
+ * Import the parameters of this element from a xml document.
+ * When call this function ensure this element is already in a scene, because
+ * the dynamic text item and element text item group (in the xml file) are created in this function
+ * and need a diagram for create their Xref, when this element is linked to another.
+ * If not the Xref can be not displayed, until the next call of update Xref of the group or text item.
+ * @param e : the dom element where the parameter is stored
+ * @param table_id_adr : Reference to the mapping table between IDs of the XML file
+ * and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
+ * @param handle_inputs_rotation : apply the rotation of this element to his child text
+ * @return 
+ */
 bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation)
 {
 	QDomDocument doc = e.ownerDocument();
@@ -507,6 +507,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	
 		//First case, we check for the text item converted to dynamic text item
 	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
+	QList <DynamicElementTextItem *> successfully_converted; 
 	const QList <QDomElement> dom_inputs = inputs;
 	
 	for (DynamicElementTextItem *deti : conv_deti_list)
@@ -518,7 +519,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				//that mean this is the good text
 			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()), m_converted_text_from_xml_description.value(deti).x()) &&
 				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()), m_converted_text_from_xml_description.value(deti).y()))
-			{
+			{	
 				deti->setText(dom_input.attribute("text"));
 				
 				qreal rotation = deti->rotation();
@@ -554,6 +555,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				inputs.removeAll(dom_input);
 				m_dynamic_text_list.append(deti);
 				m_converted_text_from_xml_description.remove(deti);
+				successfully_converted << deti;
 			}
 		}
 	}
@@ -591,17 +593,19 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	}
 	
 		//load informations
-	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
+	DiagramContext dc;
+	dc.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 		/**
 		 * Since the commit 4791, the value used as "label" and "formula" is stored in differents keys (instead of the same key, "label" in previous version),
 		 * so, if "label" contain "%" (Use variable value), and "formula" does not exist,
 		 * this mean the label was made before commit 4791 (0.51 dev). So we swap the value stored in "label" to "formula" as expected.
 		 * @TODO remove this code at version 0.7 or more (probably useless).
 		 */
-	if (m_element_informations["label"].toString().contains("%") && m_element_informations["formula"].toString().isNull())
+	if (dc["label"].toString().contains("%") && dc["formula"].toString().isNull())
 	{
-		m_element_informations.addValue("formula", m_element_informations["label"]);
+		dc.addValue("formula", dc["label"]);
 	}
+	setElementInformations(dc);
 	
 		/**
 		  * At the start of the 0.51 devel, if the text item with tagg "label" was edited directly in the diagram,
@@ -623,6 +627,71 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				!eti->toPlainText().isEmpty())
 			{
 				m_element_informations.addValue("formula", eti->toPlainText());
+			}
+		}
+	}
+	
+	/**
+	  During the devel of the version 0.7, the "old text" was replaced by the dynamic element text item.
+	  When open a project made befor the 0.7, we must to reproduce the same visual when the label are not empty and visible,
+      and comment are not empty and visible and/or location are not empty and visible.
+	  we create a text group with inside the needed texts, label and comment and/or location.
+	  */
+		//#1 There must be old text converted to dynamic text
+	if(!successfully_converted.isEmpty())
+	{
+			//#2 the element information must have label not empty and visible
+			//and a least comment or location not empty and visible
+		QString label = m_element_informations.value("label").toString();
+		QString comment = m_element_informations.value("comment").toString();
+		QString location = m_element_informations.value("location").toString();
+		bool la = m_element_informations.keyMustShow("label");
+		bool c = m_element_informations.keyMustShow("comment");
+		bool lo = m_element_informations.keyMustShow("location");
+		if(!label.isEmpty() && la &&
+		   ((!comment.isEmpty() && c) || (!location.isEmpty() && lo)))
+		{
+				//#2 in the converted list one text must have text from = element info and info name = label
+			for(DynamicElementTextItem *deti : successfully_converted)
+			{
+				if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label")
+				{
+						//Create the comment item
+					DynamicElementTextItem *comment_text = nullptr;
+					if(!comment.isEmpty() && c)
+					{
+						comment_text = new DynamicElementTextItem(this);
+						comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+						comment_text->setInfoName("comment");
+						comment_text->setFontSize(6);
+						comment_text->setFrame(true);
+						comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
+						addDynamicTextItem(comment_text);
+					}
+						//create the location item
+					DynamicElementTextItem *location_text = nullptr;
+					if(!location.isEmpty() && lo)
+					{
+						location_text = new DynamicElementTextItem(this);
+						location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+						location_text->setInfoName("location");
+						location_text->setFontSize(6);
+						location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
+						addDynamicTextItem(location_text);
+					}
+					
+						//Create the group
+					ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
+					addTextToGroup(deti, group);
+					if(comment_text)
+						addTextToGroup(comment_text, group);
+					if(location_text)
+						addTextToGroup(location_text, group);
+					group->setAlignment(Qt::AlignVCenter);
+					group->setVerticalAdjustment(-4);
+					
+					break;
+				}
 			}
 		}
 	}

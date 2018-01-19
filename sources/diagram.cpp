@@ -915,14 +915,15 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			nvel_elmt = new GhostElement(element_location);
 		}
 		
-		// charge les caracteristiques de l'element
-		if (nvel_elmt -> fromXml(element_xml, table_adr_id, handle_inputs_rotation)) {
-			// ajout de l'element au schema et a la liste des elements ajoutes
-			addItem(nvel_elmt);
-			added_elements << nvel_elmt;
-		} else {
+		addItem(nvel_elmt);
+			//Loading fail, remove item from the diagram
+		if (!nvel_elmt->fromXml(element_xml, table_adr_id, handle_inputs_rotation))
+		{
+			removeItem(nvel_elmt);
 			delete nvel_elmt;
 			qDebug() << "Diagram::fromXml() : Le chargement des parametres d'un element a echoue";
+		} else {
+			added_elements << nvel_elmt;
 		}
 	}
 	

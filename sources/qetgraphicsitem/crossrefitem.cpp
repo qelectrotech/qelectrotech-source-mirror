@@ -23,6 +23,8 @@
 #include "diagram.h"
 #include "qgraphicsitemutility.h"
 #include "assignvariables.h"
+#include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 //define the height of the header.
 static int header = 5;
@@ -31,44 +33,95 @@ static int cross_min_heigth = 33;
 
 /**
  * @brief CrossRefItem::CrossRefItem
- * Default constructor
- * @param elmt element to display the cross ref and also parent item.
- * elmt must be in a diagram
- */
-/**
- * @brief CrossRefItem::CrossRefItem
- * @param elmt
+ * @param elmt : element to display the cross ref
  */
 CrossRefItem::CrossRefItem(Element *elmt) :
 	QGraphicsObject(elmt),
-	m_element (elmt)
-{
-	Q_ASSERT_X(elmt->diagram(), "CrossRefItem constructor", "Parent element is not in a diagram");
+	m_element(elmt)
+{init();}
 
-	m_properties = elmt->diagram()->project()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
-	setAcceptHoverEvents(true);
+/**
+ * @brief CrossRefItem::CrossRefItem
+ * @param elmt : element to display the cross ref
+ * @param text : If the Xref must be displayed under a text, the text.
+ */
+CrossRefItem::CrossRefItem(Element *elmt, DynamicElementTextItem *text) :
+	QGraphicsObject(text),
+	m_element (elmt),
+	m_text(text)
+{init();}
 
-	QETProject *project = elmt->diagram()->project();
-	connect(project, &QETProject::projectDiagramsOrderChanged, this, &CrossRefItem::updateLabel);
-	connect(project, &QETProject::diagramRemoved,              this, &CrossRefItem::updateLabel);
-	connect(project, &QETProject::XRefPropertiesChanged,       this, &CrossRefItem::updateProperties);
-
-	//set specific behavior related to the parent item.
-	if(m_properties.snapTo() == XRefProperties::Bottom)
-	{
-		connect(elmt, SIGNAL(yChanged()),        this, SLOT(autoPos()));
-		connect(elmt, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
-	} else {
-		setTextParent();
-	}
-	updateLabel();
-}
+/**
+ * @brief CrossRefItem::CrossRefItem
+ * @param elmt : element to display the cross ref
+ * @param group : If the Xref must be displayed under a group, the group.
+ */
+CrossRefItem::CrossRefItem(Element *elmt, ElementTextItemGroup *group) :
+	QGraphicsObject(group),
+	m_element(elmt),
+	m_group(group)
+{init();}
 
 /**
  * @brief CrossRefItem::~CrossRefItem
  * Default destructor
  */
 CrossRefItem::~CrossRefItem() {}
+
+/**
+ * @brief CrossRefItem::init
+ * init this Xref
+ */
+void CrossRefItem::init()
+{
+	if(!m_element->diagram())
+	{
+		qDebug() << "CrossRefItem constructor", "element is not in a diagram";
+		return;
+	}
+	
+	QETProject *project = m_element->diagram()->project();
+	connect(project, &QETProject::XRefPropertiesChanged, this, &CrossRefItem::updateProperties);
+	
+	m_properties = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+	setAcceptHoverEvents(true);
+	
+	setUpConnection();
+	linkedChanged();
+	updateLabel();
+}
+
+/**
+ * @brief CrossRefItem::setUpConnection
+ * Set up several connection to keep up to date the Xref
+ */
+void CrossRefItem::setUpConnection()
+{
+	for(QMetaObject::Connection c : m_update_connection)
+		disconnect(c);
+	
+	m_update_connection.clear();
+	QETProject *project = m_element->diagram()->project();
+	bool set=false;
+		
+	if(m_properties.snapTo() == XRefProperties::Label && (m_text || m_group)) //Snap to label and parent is a text or a group
+		set=true;
+	else if(m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group) //Snap to bottom of element and parent is the element itself
+	{
+		m_update_connection << connect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
+		m_update_connection << connect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
+		set=true;
+	}
+
+	if(set)
+	{
+		m_update_connection << connect(project, &QETProject::projectDiagramsOrderChanged, this, &CrossRefItem::updateLabel);
+		m_update_connection << connect(project, &QETProject::diagramRemoved,              this, &CrossRefItem::updateLabel);
+		m_update_connection << connect(m_element, &Element::linkedElementChanged, this, &CrossRefItem::linkedChanged);
+		linkedChanged();
+		updateLabel();
+	}
+}
 
 /**
  * @brief CrossRefItem::boundingRect
@@ -115,25 +168,17 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 void CrossRefItem::updateProperties()
 {
 	XRefProperties xrp = m_element->diagram()->project()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
-
+	
 	if (m_properties != xrp)
 	{
-		if (m_properties.snapTo() != xrp.snapTo())
-		{
-			if (xrp.snapTo() == XRefProperties::Bottom)
-			{
-				setParentItem(m_element);
-				connect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
-				connect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
-			}
-			else
-			{
-				setTextParent();
-				disconnect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
-				disconnect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
-			}
-		}
 		m_properties = xrp;
+		hide();
+		if(m_properties.snapTo() == XRefProperties::Label && (m_text || m_group)) //Snap to label and parent is text or group
+			show();
+		else if((m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group)) //Snap to bottom of element is the parent
+			show();
+		
+		setUpConnection();
 		updateLabel();
 	}
 }
@@ -168,11 +213,12 @@ void CrossRefItem::updateLabel()
 			drawAsContacts(qp);
 	}
 
-	AddExtraInfo(qp, "comment");
-	AddExtraInfo(qp, "location");
+//	AddExtraInfo(qp, "comment");
+//	AddExtraInfo(qp, "location");
 	qp.end();
 
 	autoPos();
+	update();
 }
 
 /**
@@ -185,6 +231,34 @@ void CrossRefItem::autoPos() {
 		centerToBottomDiagram(this, m_element, m_properties.offset() <= 40 ? 5 : m_properties.offset());
 	else
 		centerToParentBottom(this);
+}
+
+bool CrossRefItem::sceneEvent(QEvent *event)
+{
+		//By default when a QGraphicsItem is a child of a QGraphicsItemGroup
+		//all events are forwarded to group.
+		//We override it, when this Xref is in a group
+	if(m_group)
+	{
+		switch (event->type())
+		{
+			case QEvent::GraphicsSceneHoverEnter:
+				hoverEnterEvent(static_cast<QGraphicsSceneHoverEvent *>(event));
+				break;
+			case QEvent::GraphicsSceneHoverMove:
+				hoverMoveEvent(static_cast<QGraphicsSceneHoverEvent *>(event));
+				break;
+			case QEvent::GraphicsSceneHoverLeave:
+				hoverLeaveEvent(static_cast<QGraphicsSceneHoverEvent *>(event));
+				break;
+			case QEvent::GraphicsSceneMouseDoubleClick:
+				mouseDoubleClickEvent(static_cast<QGraphicsSceneMouseEvent *>(event));
+				break;
+		}
+		return true;
+	}
+	
+	return QGraphicsObject::sceneEvent(event);
 }
 
 /**
@@ -229,7 +303,7 @@ void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 void CrossRefItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered_contact = nullptr;
-	QGraphicsObject::hoverEnterEvent(event);
+		QGraphicsObject::hoverEnterEvent(event);
 }
 
 void CrossRefItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
@@ -291,6 +365,25 @@ void CrossRefItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 	m_hovered_contact = nullptr;
 	updateLabel();
 	QGraphicsObject::hoverLeaveEvent(event);
+}
+
+void CrossRefItem::linkedChanged()
+{
+	for(QMetaObject::Connection c : m_slave_connection)
+		disconnect(c);
+	
+	m_slave_connection.clear();
+	
+	if(!isVisible())
+		return;
+	
+	for(Element *elmt : m_element->linkedElements())
+	{
+		m_slave_connection << connect(elmt, &Element::xChanged, this, &CrossRefItem::updateLabel);
+		m_slave_connection << connect(elmt, &Element::yChanged, this, &CrossRefItem::updateLabel);
+	}
+	
+	updateLabel();
 }
 
 /**
@@ -716,17 +809,6 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, QString type)
 		if (type == "comment") painter.drawRoundedRect(text_bounding, 2, 2);
 		painter.restore();
 	}
-}
-
-/**
- * @brief CrossRefItem::setTextParent
- * Set the text field tagged "label" of m_element
- * parent of this item
- */
-void CrossRefItem::setTextParent() {
-	ElementTextItem *eti = m_element->taggedText("label");
-	if (eti) setParentItem(eti);
-	else qDebug() << "CrossRefItem,no text tagged 'label' found to set has parent";
 }
 
 /**

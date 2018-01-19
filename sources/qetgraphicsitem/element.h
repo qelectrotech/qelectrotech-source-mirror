@@ -117,7 +117,7 @@ class Element : public QetGraphicsItem
 		virtual void unlinkElement     (Element *) {}
 		virtual void initLink          (QETProject *);
 		QList<Element *> linkedElements ();
-		virtual kind linkType() const {return link_type_;} // @return the linkable type
+		virtual kind linkType() const {return m_link_type;} // @return the linkable type
 		void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
 
 		//ATTRIBUTES related to linked element
@@ -125,7 +125,7 @@ class Element : public QetGraphicsItem
 		QList <Element *> connected_elements;
 		QList <QUuid>     tmp_uuids_link;
 		QUuid             uuid_;
-		kind              link_type_;
+		kind              m_link_type;
 		ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
 
 	signals:

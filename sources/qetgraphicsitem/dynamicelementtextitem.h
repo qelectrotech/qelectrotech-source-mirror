@@ -19,12 +19,14 @@
 #define DYNAMICELEMENTTEXTITEM_H
 
 #include "diagramtextitem.h"
+#include "element.h"
 #include <QUuid>
 #include <QPointer>
 
 class Element;
 class Conductor;
 class ElementTextItemGroup;
+class CrossRefItem;
 
 /**
  * @brief The DynamicElementTextItem class
@@ -62,6 +64,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void infoNameChanged(QString info);
 		void compositeTextChanged(QString text);
 		void frameChanged(bool frame);
+		void plainTextChanged();
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -92,6 +95,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setFrame(const bool frame);
 		bool frame() const;
 		QUuid uuid() const;
+		void updateXref();
+		void setPlainText(const QString &text);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -101,6 +106,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 		
 	private:
 		void elementInfoChanged();
@@ -119,6 +126,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setPotentialConductor();
 		void conductorPropertiesChanged();
 		QString reportReplacedCompositeText() const;
+		void zoomToLinkedElement();
 		
 	private:
 		QPointer <Element> m_parent_element,
@@ -133,9 +141,13 @@ class DynamicElementTextItem : public DiagramTextItem
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;
 		QMetaObject::Connection m_report_formula_con;
-		QList<QMetaObject::Connection> m_formula_connection;
+		QList<QMetaObject::Connection> m_formula_connection,
+									   m_update_slave_Xref_connection;
 		QColor m_user_color;
-		bool m_frame = false;
+		bool m_frame = false,
+			 m_first_scene_change = true;
+		CrossRefItem *m_Xref_item = nullptr;
+		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

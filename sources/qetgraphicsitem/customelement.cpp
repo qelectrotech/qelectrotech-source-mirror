@@ -737,33 +737,33 @@ bool CustomElement::parseInput(QDomElement &dom_element) {
 		!QET::attributeIsAnInteger(dom_element, "size", &size)
 	) return(false);
 	
-		//The text have a tagg, we create an element text item
-	if (dom_element.attribute("tagg", "none") != "none")
-	{
-		ElementTextItem *eti = new ElementTextItem(dom_element.attribute("text"), this);
-		eti -> setFont(QETApp::diagramTextsFont(size));
-		eti -> setTagg(dom_element.attribute("tagg", "other"));
-		m_element_informations.addValue(dom_element.attribute("tagg", "other"), dom_element.attribute("text"));
+//		//The text have a tagg, we create an element text item
+//	if (dom_element.attribute("tagg", "none") != "none")
+//	{
+//		ElementTextItem *eti = new ElementTextItem(dom_element.attribute("text"), this);
+//		eti -> setFont(QETApp::diagramTextsFont(size));
+//		eti -> setTagg(dom_element.attribute("tagg", "other"));
+//		m_element_informations.addValue(dom_element.attribute("tagg", "other"), dom_element.attribute("text"));
 		
-		// position the text field
-		eti -> setOriginalPos(QPointF(pos_x, pos_y));
-		eti -> setPos(pos_x, pos_y);
+//		// position the text field
+//		eti -> setOriginalPos(QPointF(pos_x, pos_y));
+//		eti -> setPos(pos_x, pos_y);
 		
-		// rotation of the text field
-		qreal original_rotation_angle = 0.0;
-		QET::attributeIsAReal(dom_element, "rotation", &original_rotation_angle);
-		eti -> setOriginalRotationAngle(original_rotation_angle);
-		eti -> setRotationAngle(original_rotation_angle);
+//		// rotation of the text field
+//		qreal original_rotation_angle = 0.0;
+//		QET::attributeIsAReal(dom_element, "rotation", &original_rotation_angle);
+//		eti -> setOriginalRotationAngle(original_rotation_angle);
+//		eti -> setRotationAngle(original_rotation_angle);
 		
-		// behavior when the parent element is rotated
-		eti -> setFollowParentRotations(dom_element.attribute("rotate") == "true");
+//		// behavior when the parent element is rotated
+//		eti -> setFollowParentRotations(dom_element.attribute("rotate") == "true");
 		
-		m_texts << eti;
+//		m_texts << eti;
 		
-		connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
+//		connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
 		
-		return(eti);
-	}
+//		return(eti);
+//	}
 		//The text haven't got a tagg, so we convert it to a dynamic text item
 		//and store it to m_converted_text_from_xml_description, instead of m_dynamic_text_list
 		//because these dynamic text need post treatement
@@ -773,7 +773,12 @@ bool CustomElement::parseInput(QDomElement &dom_element) {
 		deti->setText(dom_element.attribute("text", "_"));
 		deti->setFontSize(dom_element.attribute("size", QString::number(9)).toInt());
 		deti->setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
-		
+
+		if(dom_element.attribute("tagg", "none") != "none")
+		{
+			deti->setTextFrom(DynamicElementTextItem::ElementInfo);
+			deti->setInfoName(dom_element.attribute("tagg"));
+		}
 		
 			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 			//The origin transformation point of ElementTextItem is the middle of left edge, and so by definition, change with the size of the font

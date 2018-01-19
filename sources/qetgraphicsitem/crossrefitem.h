@@ -23,6 +23,8 @@
 #include <QPicture>
 
 class Element;
+class DynamicElementTextItem;
+class ElementTextItemGroup;
 
 /**
  * @brief The CrossRefItem class
@@ -42,8 +44,14 @@ class CrossRefItem : public QGraphicsObject
 		//Methods
 	public:
 		explicit CrossRefItem(Element *elmt);
+		explicit CrossRefItem(Element *elmt, DynamicElementTextItem *text);
+		explicit CrossRefItem(Element *elmt, ElementTextItemGroup *group);
 		~CrossRefItem() override;
-
+	private:
+		void init();
+		void setUpConnection();
+	
+	public:
 		enum { Type = UserType + 1009 };
 		int type() const override { return Type; }
 
@@ -68,6 +76,7 @@ class CrossRefItem : public QGraphicsObject
 		void autoPos	   ();
 
 	protected:
+		bool sceneEvent(QEvent *event) override;
 		void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event ) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
@@ -75,6 +84,7 @@ class CrossRefItem : public QGraphicsObject
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
 	private:
+		void linkedChanged();
 		void buildHeaderContact		();
 		void setUpCrossBoundingRect (QPainter &painter);
 		void drawAsCross			(QPainter &painter);
@@ -82,7 +92,6 @@ class CrossRefItem : public QGraphicsObject
 		QRectF drawContact			(QPainter &painter, int flags, Element *elmt);
 		void fillCrossRef			(QPainter &painter);
 		void AddExtraInfo			(QPainter &painter, QString);
-		void setTextParent			();
 		QList<Element *> NOElements() const;
 		QList<Element *> NCElements() const;
 
@@ -96,7 +105,10 @@ class CrossRefItem : public QGraphicsObject
 		int			   m_drawed_contacts;
 		QMap <Element *, QRectF> m_hovered_contacts_map;
 		Element *m_hovered_contact = nullptr;
-
+		DynamicElementTextItem *m_text = nullptr;
+		ElementTextItemGroup *m_group = nullptr;
+		QList <QMetaObject::Connection> m_slave_connection;
+		QList <QMetaObject::Connection> m_update_connection;
 };
 
 #endif // CROSSREFITEM_H

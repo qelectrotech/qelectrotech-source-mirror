@@ -20,6 +20,7 @@
 #include "qetapp.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include "dynamicelementtextitem.h"
 
 /**
  * @brief SlaveElement::SlaveElement
@@ -33,7 +34,8 @@ SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi,
 	CustomElement(location, qgi, state)
 {
 	m_xref_item = nullptr;
-	link_type_ = Slave;
+	m_link_type = Slave;
+	
 	connect(this, SIGNAL(updateLabel()), this, SLOT(updateLabel()));
 }
 

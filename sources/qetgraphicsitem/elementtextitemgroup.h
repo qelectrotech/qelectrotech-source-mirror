@@ -25,6 +25,7 @@
 class Element;
 class DynamicElementTextItem;
 class Diagram;
+class CrossRefItem;
 
 /**
  * @brief The ElementTextItemGroup class
@@ -77,7 +78,14 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void keyPressEvent(QKeyEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+		
+	private:
+		void updateXref();
+		void adjustSlaveXrefPos();
 
 	private:
 		Qt::Alignment m_alignment = Qt::AlignJustify;
@@ -85,6 +93,10 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		bool m_first_move = true;
 		QPointF m_mouse_to_origin_movement;
 		int m_vertical_adjustment = 0;
+		CrossRefItem *m_Xref_item = nullptr;
+		Element *m_parent_element = nullptr;
+		QList<QMetaObject::Connection> m_update_slave_Xref_connection;
+		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 };
 
 #endif // ELEMENTTEXTITEMGROUP_H

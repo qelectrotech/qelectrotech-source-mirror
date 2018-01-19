@@ -21,6 +21,8 @@
 #include "diagram.h"
 #include "addelementtextcommand.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "crossrefitem.h"
+#include "qetapp.h"
 
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
@@ -36,9 +38,11 @@ bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
  */
 ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent) :
 	QGraphicsItemGroup(parent),
-	m_name(name)
+	m_name(name),
+	m_parent_element(parent)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
+	connect(parent, &Element::linkedElementChanged, this, &ElementTextItemGroup::updateXref);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -69,7 +73,13 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);	
+		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
+		
+		connect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
+		connect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);
+		
+		updateXref();
 	}
 }
 
@@ -94,6 +104,12 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 		disconnect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
+		
+		disconnect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
+		disconnect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);
+		
+		updateXref();
 	}
 }
 
@@ -124,7 +140,8 @@ void ElementTextItemGroup::updateAlignment()
 {
 	prepareGeometryChange();
 	
-	QList <QGraphicsItem *> texts = childItems();
+	QList <DynamicElementTextItem *> texts = this->texts();
+	
 	if (texts.size() > 1)
 	{
 		prepareGeometryChange();
@@ -169,6 +186,11 @@ void ElementTextItemGroup::updateAlignment()
 		
 		setTransformOriginPoint(boundingRect().topLeft());
 	}
+	
+	if(m_Xref_item)
+		m_Xref_item->autoPos();
+	if(m_slave_Xref_item)
+		adjustSlaveXrefPos();
 }
 
 /**
@@ -334,8 +356,8 @@ QRectF ElementTextItemGroup::boundingRect() const
 		//if we move an item already in the group, the bounding rect of the group stay unchanged.
 		//We reimplement this function to avoid this behavior.
 	QRectF rect;
-	for(QGraphicsItem *qgi : childItems())
-	{
+	for(QGraphicsItem *qgi : texts())
+	{		
 		QRectF r(qgi->pos(), QSize(qgi->boundingRect().width(), qgi->boundingRect().height()));
 		rect = rect.united(r);
 	}
@@ -414,6 +436,38 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		QGraphicsItemGroup::mouseReleaseEvent(event);
 }
 
+void ElementTextItemGroup::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_slave_Xref_item)
+	{
+		if(m_slave_Xref_item->boundingRect().contains(mapToItem(m_slave_Xref_item, event->pos())))
+		{
+			if(parentElement()->linkType() == Element::Slave && !parentElement()->linkedElements().isEmpty())
+			{
+				m_slave_Xref_item->setDefaultTextColor(Qt::black);
+				Element *elmt = parentElement()->linkedElements().first();
+				
+					//Unselect and ungrab mouse to prevent unwanted
+					//move when linked element is in the same scene of this.
+				setSelected(false);
+				ungrabMouse();
+				
+				if(scene() != elmt->scene())
+					elmt->diagram()->showMe();
+				elmt->setSelected(true);
+				
+					//Zoom to the element
+				for(QGraphicsView *view : elmt->scene()->views())
+				{
+					QRectF fit = elmt->sceneBoundingRect();
+					fit.adjust(-200, -200, 200, 200);
+					view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
+				}
+			}
+		}
+	}
+}
+
 /**
  * @brief ElementTextItemGroup::keyPressEvent
  * @param event
@@ -445,5 +499,113 @@ void ElementTextItemGroup::keyPressEvent(QKeyEvent *event)
 		}
 	}
 	event->ignore();
+}
+
+void ElementTextItemGroup::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+		//The pos of the event is not in this item coordinate,
+		//but in child item hovered by the mouse, so we use the scene pos.
+	if(m_slave_Xref_item &&
+	   m_slave_Xref_item->boundingRect().contains(m_slave_Xref_item->mapFromScene(event->scenePos())))
+		m_slave_Xref_item->setDefaultTextColor(Qt::blue);
+	
+	QGraphicsItemGroup::hoverEnterEvent(event);
+}
+
+void ElementTextItemGroup::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if(m_slave_Xref_item)
+		m_slave_Xref_item->setDefaultTextColor(Qt::black);
+	
+	QGraphicsItemGroup::hoverLeaveEvent(event);
+}
+
+void ElementTextItemGroup::updateXref()
+{
+	if(m_parent_element->diagram())
+	{
+		QETProject *project = m_parent_element->diagram()->project();
+		
+		if(m_parent_element->linkType() == Element::Master &&
+		   !m_parent_element->linkedElements().isEmpty())
+		{
+			
+			XRefProperties xrp = project->defaultXRefProperties(m_parent_element->kindInformations()["type"].toString());
+			
+			if(xrp.snapTo() == XRefProperties::Label)
+			{
+					//At least one text owned by this group must be set with
+					//textFrom -> element info and element info name -> label
+					//for display a xref
+				for(DynamicElementTextItem *deti : texts())
+				{
+					if(deti->textFrom() == DynamicElementTextItem::ElementInfo &&
+					   deti->infoName() == "label")
+					{
+						if(!m_Xref_item)
+							m_Xref_item = new CrossRefItem(m_parent_element, this);
+						m_Xref_item->autoPos();
+						return;
+					}
+				}
+			}
+		}
+		else if(m_parent_element->linkType() == Element::Slave &&
+				!m_parent_element->linkedElements().isEmpty())
+		{
+			Element *master_elmt = m_parent_element->linkedElements().first();
+			for(DynamicElementTextItem *deti : texts())
+			{
+				if((deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label") ||
+				   (deti->textFrom() == DynamicElementTextItem::CompositeText && deti->compositeText().contains("%{label")))
+				{
+					XRefProperties xrp = project->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+					
+					if(!m_slave_Xref_item)
+					{
+						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
+						
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::projectDiagramsOrderChanged, this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::diagramRemoved,              this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::XRefPropertiesChanged,       this, &ElementTextItemGroup::updateXref);
+					}
+					else
+						m_slave_Xref_item->setPlainText(xref_label);
+					
+					adjustSlaveXrefPos();
+					return;
+				}
+			}
+		
+		}
+	}
+
+	
+		//There is no reason to have a xref, we delete it if exist
+	if(m_Xref_item)
+	{
+		delete m_Xref_item;
+		m_Xref_item = nullptr;	
+	}
+	if(m_slave_Xref_item)
+	{
+		delete m_slave_Xref_item;
+		m_slave_Xref_item = nullptr;
+		m_update_slave_Xref_connection.clear();
+	}
+}
+
+void ElementTextItemGroup::adjustSlaveXrefPos()
+{
+	QRectF r = boundingRect();
+	QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
+				r.bottom());
+	m_slave_Xref_item->setPos(pos);
 }
 

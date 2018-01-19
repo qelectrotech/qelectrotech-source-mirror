@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "terminal.h"
 #include "conductor.h"
+#include "dynamicelementtextitem.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, int *state) :
 	CustomElement(location, qgi, state),
@@ -40,7 +41,7 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 	if (m_text_field)
 		m_text_field -> setNoEditable();
 
-	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
+	link_type == "next_report"? m_link_type=NextReport : m_link_type=PreviousReport;
 	link_type == "next_report"? m_inverse_report=PreviousReport : m_inverse_report=NextReport;
 
 		//We make these connections, to be always aware about the conductor properties

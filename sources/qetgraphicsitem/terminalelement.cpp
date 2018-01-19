@@ -32,7 +32,7 @@ TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem
 	m_comment_item (nullptr),
 	m_location_item (nullptr)
 {
-	link_type_ = Terminale;
+	m_link_type = Terminale;
 	
 	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 	connect(this, &Element::updateLabel, [this]() {this->updateLabel(this->elementInformations(), this->elementInformations());});
@@ -80,18 +80,18 @@ void TerminalElement::updateLabel(DiagramContext old_info, DiagramContext new_in
 		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
 	}
 
-		//Comment and Location of element
-	QString comment   = new_info["comment"].toString();
-	bool    must_show = new_info.keyMustShow("comment");
-	QString location  = new_info["location"].toString();
-	bool must_show_location = new_info.keyMustShow("location");
+//		//Comment and Location of element
+//	QString comment   = new_info["comment"].toString();
+//	bool    must_show = new_info.keyMustShow("comment");
+//	QString location  = new_info["location"].toString();
+//	bool must_show_location = new_info.keyMustShow("location");
 
-	if ((!(comment.isEmpty() || !must_show) && !m_comment_item)||(!(location.isEmpty() || !must_show_location) && !m_comment_item)) {
-		m_comment_item = new CommentItem(this);
-	}
-	else if (((comment.isEmpty() || !must_show) && m_comment_item) && ((location.isEmpty() || !must_show_location) && m_comment_item)) {
-		delete m_comment_item;
-		m_comment_item = nullptr;
-	}
+//	if ((!(comment.isEmpty() || !must_show) && !m_comment_item)||(!(location.isEmpty() || !must_show_location) && !m_comment_item)) {
+//		m_comment_item = new CommentItem(this);
+//	}
+//	else if (((comment.isEmpty() || !must_show) && m_comment_item) && ((location.isEmpty() || !must_show_location) && m_comment_item)) {
+//		delete m_comment_item;
+//		m_comment_item = nullptr;
+//	}
 }
 
