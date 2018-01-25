@@ -111,7 +111,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Description") +";"
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
-	""+ QObject::tr("Reference") +";"
+	""+ QObject::tr("Reference Fabricant") +";"
 	""+ QObject::tr("Fournisseur") +";"
 	""+ QObject::tr("Bloc auxiliaire 1") +";"
 	""+ QObject::tr("Bloc auxiliaire 2") +";"
