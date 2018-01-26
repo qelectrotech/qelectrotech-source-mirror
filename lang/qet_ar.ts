@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ar_SA">
+<TS version="2.0" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -8,7 +8,7 @@
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
         <translatorcomment>نافذة عنوان</translatorcomment>
-        <translation> QElectrotech حول البرنامج</translation>
+        <translation>حول برنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="44"/>
@@ -66,7 +66,7 @@
         <location filename="../sources/aboutqet.cpp" line="105"/>
         <source>2006-2017 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 مُصممو برنامج QElectrotech  {2006-2017 ?}</translation>
+        <translation>2006-2017 مُصممو برنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="109"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="128"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>نقطة توصيل</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="149"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Python plugin qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="219"/>
@@ -319,17 +319,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">موصل</translation>
+        <translation>موصل</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
         <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>تكوين قواعد الترقيم الذاتي</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
         <source>Configurer</source>
-        <translation type="unfinished"></translation>
+        <translation>تكوين</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -516,17 +516,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>نص مُركّب</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="23"/>
         <source>Ajouter une variable :</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة مُتغيّر :</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="17"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation type="unfinished"></translation>
+        <translation>أدخل النص الخاص بك هنا، وذلك باستخدام المتغيرات المتاحة</translation>
     </message>
 </context>
 <context>
@@ -680,7 +680,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="137"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة النص:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
@@ -690,12 +690,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">تحرير الترقيمات</translation>
+        <translation>تحرير الترقيمات</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
@@ -752,17 +752,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>لون ثانوي:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
         <source>px</source>
-        <translation type="unfinished">px بيكسل</translation>
+        <translation>px بيكسل</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم الخطّ:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -820,7 +820,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="225"/>
         <source>Ajouter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة %1</translation>
     </message>
 </context>
 <context>
@@ -973,7 +973,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
         <source> %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation> %p% (%v على %m)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
@@ -986,12 +986,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="42"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="50"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير نصّ عنصر</translation>
     </message>
 </context>
 <context>
@@ -999,12 +999,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير التكوين الحالي للنصوص</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1013,57 +1013,57 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>توريد تكوين نصّ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
         <source>Ajouter un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نصّ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
         <source>Ajouter un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة مجموعة نصوص</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف التحديد</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="130"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل نصوص العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="173"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل نصّ العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="180"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل %1 نصوص العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="242"/>
         <source>Nom du groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>إسم المجموعة</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="242"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>ادخل اسم المجموعة الجديدة</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
         <source>Textes</source>
-        <translation type="unfinished"></translation>
+        <translation>نصوص</translation>
     </message>
 </context>
 <context>
@@ -1071,17 +1071,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="57"/>
         <source>Propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>خاصية</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="58"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>قيمة</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="127"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر النصّ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="131"/>
@@ -1090,7 +1090,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="990"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1121"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ المستخدم</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="132"/>
@@ -1099,7 +1099,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="995"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1122"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومة العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="133"/>
@@ -1108,124 +1108,124 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="432"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1123"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ مُركّب</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="142"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="154"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومة</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="174"/>
         <source>Mon texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّي المُركّب</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="185"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="443"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل حجم نصّ العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="450"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل لون نصّ العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="457"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تغيير إطار نصّ العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="468"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished">تحريك نص عنصر</translation>
+        <translation>تحريك نص عنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="479"/>
         <source>Pivoter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران نصّ العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
         <source>Éditer un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير مجموعة نصوص</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="508"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1199"/>
         <source>Gauche</source>
-        <translation type="unfinished">يسار</translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="510"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1200"/>
         <source>Droite</source>
-        <translation type="unfinished">يمين</translation>
+        <translation>يمين</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="512"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="563"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1201"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>مركز</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="556"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>مُحاذاة</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="586"/>
         <source>Ajustement vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل عمودي</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="863"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>تحريك نصّ في مجموعة أخرى</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="198"/>
         <source>Couleur</source>
-        <translation type="unfinished">لون</translation>
+        <translation>لون</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="212"/>
         <source>Cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
         <source>Position X</source>
-        <translation type="unfinished"></translation>
+        <translation>موضع X</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="241"/>
         <source>Position Y</source>
-        <translation type="unfinished"></translation>
+        <translation>موضع Y</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="254"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="574"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="405"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران</translation>
     </message>
 </context>
 <context>
@@ -1233,98 +1233,98 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>إطار</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="165"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>حجم</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="175"/>
         <source>Source du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر النصّ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
         <source>Couleur</source>
-        <translation type="unfinished">لون</translation>
+        <translation>لون</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="46"/>
         <source>Tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>بطاقة</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="21"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ المستخدم</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="26"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومة العنصر</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="31"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ مُركّب</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="65"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="85"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="105"/>
         <source>Rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="117"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="125"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">تحريك حقل نصّي</translation>
+        <translation>تحريك حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="133"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="141"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل محتوى حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="148"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">تعديل حجم حقل نصّي</translation>
+        <translation>تعديل حجم حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="155"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>لون النصّ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished">تعديل لون حقل نصّي</translation>
+        <translation>تعديل لون حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="173"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل إطار حقل نصّي</translation>
     </message>
 </context>
 <context>
@@ -1332,32 +1332,32 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1238"/>
         <source>Texte utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ المستخدم</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1239"/>
         <source>Information de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومة العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1240"/>
         <source>Texte composé</source>
-        <translation type="unfinished"></translation>
+        <translation>نصّ مُركّب</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1322"/>
         <source>Gauche</source>
-        <translation type="unfinished">يسار</translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1323"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>مركز</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1324"/>
         <source>Droite</source>
-        <translation type="unfinished">يمين</translation>
+        <translation>يمين</translation>
     </message>
 </context>
 <context>
@@ -1523,7 +1523,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation type="unfinished">نوع</translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
@@ -1563,17 +1563,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation type="unfinished">معلومات</translation>
+        <translation>معلومات</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
         <source>Nom</source>
-        <translation type="unfinished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
         <source>Valeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>قيّم</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
@@ -1907,7 +1907,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="151"/>
         <source>Propriété du dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>خاصيات المجلّد</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="165"/>
@@ -1917,7 +1917,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation type="unfinished"></translation>
+        <translation>تحميل</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
@@ -1973,46 +1973,46 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="515"/>
         <source>Le dossier %1 contient</source>
-        <translation type="unfinished"></translation>
+        <translation>يحتوي المجلّد %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
         <source>%n élément(s), répartie(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n عناصر مُوزعة</numerusform>
+            <numerusform>%n عنصر موزع</numerusform>
+            <numerusform>%n عنصران موزعان</numerusform>
+            <numerusform>%n عناصر مُوزعة</numerusform>
+            <numerusform>%n عناصر مُوزعة</numerusform>
+            <numerusform>%n عناصر مُوزعة</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
         <source>dans %n dossier(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>في %n مجلدات ..</numerusform>
+            <numerusform>في %n مجلد.</numerusform>
+            <numerusform>في %n مجلدان.</numerusform>
+            <numerusform>في %n مجلدات .</numerusform>
+            <numerusform>في  %n مجلدات.</numerusform>
+            <numerusform>في %n مجلد.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
         <source>Chemin de la collection :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>مسار المجموعة : %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation type="unfinished"></translation>
+        <translation>مسار في نظام الملفات : %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="524"/>
         <source>Propriété du dossier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>خاصيات المجلد %1</translation>
     </message>
 </context>
 <context>
@@ -2397,7 +2397,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux Folios</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -2473,17 +2473,17 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>مساعدة الصيغة</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">علامة نصيّة</translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة</translation>
     </message>
 </context>
 <context>
@@ -2491,22 +2491,22 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">نمط تسمية تلقائي:</translation>
+        <translation>نمط تسمية تلقائي:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished">إدراج صيغة على سبيل المثال:  %بداية%l%c</translation>
+        <translation>إدراج صيغة على سبيل المثال:  %بداية%l%c</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formula:</source>
-        <translation type="unfinished">صيغة:</translation>
+        <translation>صيغة:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
@@ -2520,7 +2520,16 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>يمكنك استخدام المتغيرات التالية إلى :الصيغ
+- % بادئة : عنصر البادئة الافتراضي
+-%l: عنصر خط
+-%c: عنصر عمود
+-%F: اسم الورقة
+-%f أو %id: معرّف الورقة
+-%total:المجموع الكلّي للأوراق
+يُمكنك أيضا تعيين أيّ مُتغيّر بحروف أخرى يُمكنك إنشائها
+تتوفر الأرقام والنصوص لتعيين ذلك.
+</translation>
     </message>
 </context>
 <context>
@@ -2548,17 +2557,17 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation type="unfinished"></translation>
+        <translation>تستخدم علامات الأوراق مكان تعريفاتها ID</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="254"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير نقاط التوصيل في التسمية</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="260"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>خط الحقول النصيّة</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="271"/>
@@ -2604,7 +2613,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>خطّ الحقول النصيّة للصفحات المُلخصة</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -2990,7 +2999,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation type="unfinished"></translation>
+        <translation>بحث</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -3005,22 +3014,22 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>ربط العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>اظهر العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
         <source>Montrer l&apos;élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>اظهر العنصر التابع</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ التخطيط</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
@@ -3036,19 +3045,19 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <source>Label</source>
-        <translation type="unfinished">علامة</translation>
+        <translation>علامة</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <source>Commentaire</source>
-        <translation type="unfinished">تعليق</translation>
+        <translation>تعليق</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <source>Label de folio</source>
-        <translation type="unfinished">علامة صفحة</translation>
+        <translation>علامة صفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
@@ -3056,7 +3065,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="410"/>
@@ -3064,31 +3073,31 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">عنوان الصفحة</translation>
+        <translation>عنوان الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="414"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>N° de folio</source>
-        <translation type="unfinished">رقم الصفحة </translation>
+        <translation>رقم الصفحة </translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>N° de fil</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم السلك</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Fonction</source>
-        <translation type="unfinished">وظيفة</translation>
+        <translation>وظيفة</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="426"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>جهد / بروتوكول</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -3127,59 +3136,59 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Vignette</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <source>Label de folio</source>
-        <translation type="unfinished">علامة صفحة</translation>
+        <translation>علامة صفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Titre de folio</source>
-        <translation type="unfinished">عنوان الصفحة</translation>
+        <translation>عنوان الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>N° de folio</source>
-        <translation type="unfinished">رقم الصفحة </translation>
+        <translation>رقم الصفحة </translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Lier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>ربط العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>Délier l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>فك ربط العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
         <source>Montrer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>اظهر العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>اظهر العنصر المتبوع</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ التخطيط</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجع متقاطع  (متبوع)</translation>
     </message>
 </context>
 <context>
@@ -3447,7 +3456,7 @@ that you create. Text and number inputs are
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="198"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="315"/>
         <source>Locmach</source>
-        <translation type="unfinished"></translation>
+        <translation>Locmach</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3488,12 +3497,12 @@ that you create. Text and number inputs are
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="61"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation>حقل نصّي ديناميكي</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="403"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">تحريك حقل نصّي</translation>
+        <translation>تحريك حقل نصّي</translation>
     </message>
 </context>
 <context>
@@ -3501,7 +3510,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished">تعديل مُستطيل</translation>
+        <translation>تعديل مُستطيل</translation>
     </message>
 </context>
 <context>
@@ -3533,7 +3542,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="256"/>
         <source>Déplacer un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>تحريك نص</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
@@ -3546,7 +3555,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="129"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">تحريك حقل نصّي</translation>
+        <translation>تحريك حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="303"/>
@@ -3612,13 +3621,13 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n موصلات يكونون الكمون التالي:</numerusform>
+            <numerusform>%n موصل يُكوّن الكمون التالي:</numerusform>
+            <numerusform>%n موصلان يكونان الكمون التالي:</numerusform>
+            <numerusform>%n موصلات يكونون الكمون التالي:</numerusform>
+            <numerusform>%n موصلات يكونون الكمون التالي:</numerusform>
+            <numerusform>%n موصل يكونون الكمون التالي:</numerusform>
         </translation>
     </message>
     <message>
@@ -3626,21 +3635,21 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="237"/>
         <source>
 Numéro : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="227"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="239"/>
         <source>
 Fonction : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>وظيفة : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="229"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="241"/>
         <source>
 Tension/protocole : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>جهد / بروتوكول : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
@@ -3654,7 +3663,7 @@ Tension/protocole : %1</source>
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -3681,7 +3690,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteur</source>
-        <translation type="unfinished">موصل</translation>
+        <translation>موصل</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
@@ -3696,7 +3705,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Folio autonumérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة ترقيم آلي</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -3883,7 +3892,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="309"/>
         <source>formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>صيغة العلامة</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="310"/>
@@ -3913,27 +3922,27 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>وصف نصّي</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم البند</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم الطلب</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>المزود</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Numéro interne</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم داخلي</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="320"/>
@@ -3948,7 +3957,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="322"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished"></translation>
+        <translation>جهد / بروتوكول</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="359"/>
@@ -4305,7 +4314,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>إطلاق البرنامج المُساعد لإنشاء كتلة طرفية</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
@@ -4341,13 +4350,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished">اضافة سطر</translation>
+        <translation>اضافة سطر</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">إزالة صف</translation>
+        <translation>إزالة صف</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
@@ -4397,7 +4406,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>حدث خطأ أثناء تشغيل المكون الإضافي qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4429,7 +4438,33 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>لتثبيت qet_tb_generator المساعد
+انتقل إلى https://pypi.python.org/pypi/qet-tb-generator/
+
+يتطلب python 3.5 أو أعلى.
+&gt;&gt; تثبيت أولا على Linux
+1. تحقق لديك pip3 تثبيت: pp3 --version
+إذا لم يتم تثبيت مع: سودو الرابطة بين الحصول على تثبيت python3-PIP
+2. تثبيت البرنامج:  sudo pip3 تثبيت qet_tb_generator
+3. قم بتشغيل البرنامج: qet_tb_generator
+&gt;&gt; تحديث على Linux
+ sudo pip3 تثبيت --upgrade qet_tb_generator
+
+&gt;&gt; تثبيت أولا على ويندوز
+1. تثبيت، إذا لزم الأمر،.python 3.5 أو أعلى
+ انتقل إلى https://www.python.org/downloads/
+2. بيب تثبيت qet_tb_generator
+&gt;&gt; تحديث على ويندوز
+.python -m PIP install --upgrade qet_tb_generator
+&gt;&gt; يمكن للمستخدم إطلاق في محطة هذا السيناريو في هذا الدليل
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; تثبيت أولا على macOSX
+1. تثبيت، إذا لزم الأمر، .python 3.5 أو أعلى
+ تفضل بزيارة https://qelectrotech.org/forum/viewtopic.php؟pid=5674#p5674
+install qet_tb_generator
+&gt;&gt; تحديث على macOSX
+ pip3 install --upgrade qet_tb_generator </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="357"/>
@@ -4824,7 +4859,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished">اضافة سطر</translation>
+        <translation>اضافة سطر</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
@@ -5048,7 +5083,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="145"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;إطلاق مساعد تحويل DXF</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
@@ -5450,7 +5485,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="292"/>
         <source>Ajouter un champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة حقل نصّي ديناميكي</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="750"/>
@@ -5584,7 +5619,18 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>لتثبيت المساعد على التحويل من DXF إلى QET
+انتقل إلى https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; تثبيت على Linux
+وضع DXF إلى QET على  Binaryثنائي  /home/user_name/.qet/ الدليل الخاص بك
+جعله قابل للتنفيذ: تشمود + x ./DXFtoQET
+&gt;&gt; تثبيت على ويندوز
+وضع  DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
+
+&gt;&gt; تثبيت على macOSX
+وضع  DXFtoQET.app binary on /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
@@ -5717,48 +5763,48 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="84"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>دليل على الأنترنت</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="94"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished"></translation>
+        <translation>قناة يوتيوب</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <location filename="../sources/qetmainwindow.cpp" line="105"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished"></translation>
+        <translation>تحميل نسخة جديدة (dev)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>إطلاق المستعرض الافتراضي إلى دليل QElectrotech على الأنترنت</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>إطلاق المستعرض الافتراضي إلى قناة QElectrotech على يوتيوب</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
         <location filename="../sources/qetmainwindow.cpp" line="106"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>إطلاق المستعرض الافتراضي في  اتجاه مستودع Nightly على الأنترنت لـ QElectrotrech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="118"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished"></translation>
+        <translation>ساعد المشروع بالتبرع</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>ساعد مشروعQElectrotech بالتبرع</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="126"/>
@@ -5978,7 +6024,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="239"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation type="unfinished"></translation>
+        <translation>مشروع « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="246"/>
@@ -6677,11 +6723,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6701,13 +6742,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="283"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%nنصوص العنصر</numerusform>
+            <numerusform>%n نص عنصر</numerusform>
+            <numerusform>%n نصّان لعنصر</numerusform>
+            <numerusform>%n نصوص العنصر</numerusform>
+            <numerusform>%nنصوص العنصر</numerusform>
+            <numerusform>%n نص عنصر</numerusform>
         </translation>
     </message>
     <message>
@@ -6929,7 +6970,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>ملفات صور (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
@@ -7023,18 +7064,18 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="192"/>
         <source>Déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>تحريك</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="194"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
         <source> et</source>
-        <translation type="unfinished"> و</translation>
+        <translation> و</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="197"/>
         <source> un groupe de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>مجموعة نصوص</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -7067,87 +7108,87 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>A001</source>
-        <translation type="unfinished"></translation>
+        <translation>A001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>B001</source>
-        <translation type="unfinished"></translation>
+        <translation>B001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>C001</source>
-        <translation type="unfinished"></translation>
+        <translation>C001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>D001</source>
-        <translation type="unfinished"></translation>
+        <translation>D001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>E001</source>
-        <translation type="unfinished"></translation>
+        <translation>E001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>F001</source>
-        <translation type="unfinished"></translation>
+        <translation>F001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>G001</source>
-        <translation type="unfinished"></translation>
+        <translation>G001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>H001</source>
-        <translation type="unfinished"></translation>
+        <translation>H001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>I001</source>
-        <translation type="unfinished"></translation>
+        <translation>I001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>J001</source>
-        <translation type="unfinished"></translation>
+        <translation>J001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>K001</source>
-        <translation type="unfinished"></translation>
+        <translation>K001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>L001</source>
-        <translation type="unfinished"></translation>
+        <translation>L001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>M001</source>
-        <translation type="unfinished"></translation>
+        <translation>M001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>M002</source>
-        <translation type="unfinished"></translation>
+        <translation>M002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>N001</source>
-        <translation type="unfinished"></translation>
+        <translation>N001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>O001</source>
-        <translation type="unfinished"></translation>
+        <translation>O001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>P001</source>
-        <translation type="unfinished"></translation>
+        <translation>P001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="104"/>
@@ -7187,7 +7228,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="111"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>توصيف</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="112"/>
@@ -7207,7 +7248,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>مزود</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="116"/>
@@ -7264,118 +7305,119 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementsmover.cpp" line="160"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>إضافة %n موصلات</numerusform>
+            <numerusform>إضافة %n موصل</numerusform>
+            <numerusform>إضافة %n موصلان</numerusform>
+            <numerusform>إضافة %n موصلات</numerusform>
+            <numerusform>إضافة %n موصلات</numerusform>
+            <numerusform>إضافة %n موصل</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
         <source>Champ texte dynamique</source>
-        <translation type="unfinished"></translation>
+        <translation>حقل نصي ديناميكي</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="35"/>
         <source>Ajouter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نص لعنصر</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="89"/>
         <source>Ajouter un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة مجموعة نصوص لعنصر</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="146"/>
         <source>Supprimer un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف مجموعة نصوص لعنصر</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="195"/>
         <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="246"/>
         <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>نزع نص لعنصر من مجموعة نصوص</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="291"/>
         <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل اصطفاف مجموعة نصوص</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران التحديد</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
         <source>Pivoter %1 textes</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران %1 نصوص</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">دوران محوري</translation>
+        <translation>دوران محوري</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
         <source> %1 groupes de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 مجموعات نصوص</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">توجيه النص المحدد</translation>
+        <translation>توجيه النص المحدد</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>تكوين نصوص</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>تكوين نصوص بمسمّى  &lt;&lt; %1 &gt;&gt; موجود.
+هل تريد استبداله ؟</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم التكوين</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>ادخل اسم التكوين المراد إنشائه</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>لا وجود لتكوينات نصوص.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد تكوين نصوص</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد تكوين النصوص المراد إضافته للعنصر</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>توريد تكوين النصّ : %1</translation>
     </message>
 </context>
 <context>
@@ -7514,7 +7556,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>يمكنك تحديد تصنيف مخصص لتقارير الورقة.
+إنشاء النص الخاص بك باستخدام المتغيرات التالية:
+%f: رقم الورقة
+%F: تسمية الورقة
+%M: آلة
+%LM: الموقع
+%l: رقم السطر
+%c: رقم العمود</translation>
     </message>
 </context>
 <context>
@@ -7542,17 +7591,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">ترقيمات مُتاحة :</translation>
+        <translation>ترقيمات مُتاحة :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">اسم الترقيم الجديد</translation>
+        <translation>اسم الترقيم الجديد</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">حذف الترقيم</translation>
+        <translation>حذف الترقيم</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -7702,7 +7751,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>شرطة مُخصّصة</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
@@ -8483,17 +8532,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
         <source>Indice Rev</source>
-        <translation type="unfinished"></translation>
+        <translation>مُؤشر Rev</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>مُتاح كـ %locmach بالنسبة نماذج الاطارات </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>متاح كـ % آلة بالنسبة لنماذج الاطارات</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="309"/>
@@ -8512,7 +8561,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>مُتاح كـ % صفحة لقوالب الاطارات
+المتغيرات التالية قابلة للاستخدام:
+-%id : عدد الورقة الحالية في المشروع
+-%المجموع الكلي: إجمالي عدد الأوراق في المشروع
+-%ترقيم آلي :ترقيم آلي للصفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="342"/>
@@ -8552,17 +8605,17 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>تركيب :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Localisation</source>
-        <translation type="unfinished">تحديد موقع</translation>
+        <translation>تحديد موقع</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>مُتااح كـ % Revمؤشر بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
@@ -8718,7 +8771,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>بشكل افتراضي، تتوفر المتغيرات التالية: &lt;ul&gt;&lt;li&gt;% {author}: مؤلف الورقة&lt;/li&gt;&lt;li&gt;%{date} : تاريخ الورقة&lt;/li&gt;&lt;li&gt;%{title} :عنوان الورقة&lt;/li&gt;&lt;li&gt;%{filename} :  اسم ملف المشروع : اسم &lt;/li&gt;&lt;li&gt;%{machine} اسم المجموعة الوظيفية للمشروع &lt;/li&gt;&lt;li&gt;%{locmach}  اسم الموقع في المجموعة الوظيفية للمشروع &lt;/li&gt;&lt;li&gt;%{indexrev} : فهرس مراجعة الورقة &lt;/li&gt;&lt;li&gt;%{version} : إصدار البرنامج :&lt;/li&gt;&lt;li&gt;%{folio} :معلومات الورقة &lt;/li&gt;&lt;li&gt;%{folio-id} : وضع الورقة في المشروع &lt;/li&gt;&lt;li&gt;%{folio-total} : إجمالي عدد الأوراق في المشروع&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
@@ -9086,27 +9139,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef انحياز رأسي :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10px يتوافق مع 1 عنوان الازاحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>تعيين الإزاحة الرأسية للمراجع المتقاطعة. 10px يتوافق مع 1 عنوان الازاحة.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>الافتراضي - يصلح لـ XRef إرتفاع</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>عر&amp;ض بالتقاطع</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
@@ -9147,7 +9200,13 @@ Longueur maximale : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>نشاء النص الخاص بك باستخدام المتغيرات التالية:
+%f: رقم الورقة
+%F: تسمية الورقة
+%l: رقم السطر
+%c: رقم العمود
+%M: التركيب
+%LM لم: الموقع</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
