@@ -75,6 +75,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textWidthChanged,     this, &ElementTextItemGroup::updateAlignment);
 		
 		connect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
 		connect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);
@@ -105,6 +106,7 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textWidthChanged,     this, &ElementTextItemGroup::updateAlignment);
 		
 		disconnect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
 		disconnect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);

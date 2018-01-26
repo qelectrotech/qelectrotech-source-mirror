@@ -41,9 +41,10 @@ int compo_txt_row = 3;
 int size_txt_row  = 4;
 int color_txt_row = 5;
 int frame_txt_row = 6;
-int x_txt_row     = 7;
-int y_txt_row     = 8;
-int rot_txt_row   = 9;
+int width_txt_row = 7;
+int x_txt_row     = 8;
+int y_txt_row     = 9;
+int rot_txt_row   = 10;
 
 int align_grp_row  = 0;
 int rot_grp_row    = 1;
@@ -220,6 +221,19 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	
 	qsi_list.clear();
 	qsi_list << frame << frame_a;
+	qsi->appendRow(qsi_list);
+	
+		//Width
+	QStandardItem *width = new QStandardItem(tr("Largeur"));
+	width->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	
+	QStandardItem *width_a = new QStandardItem;
+	width_a->setData(deti->textWidth(), Qt::EditRole);
+	width_a->setData(DynamicElementTextModel::textWidth, Qt::UserRole+1);
+	width_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	
+	qsi_list.clear();
+	qsi_list << width << width_a;
 	qsi->appendRow(qsi_list);
 	
 	if(deti->parentGroup() == nullptr)
@@ -455,6 +469,13 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	{
 		QUndoCommand *quc = new QPropertyUndoCommand(deti, "frame", QVariant(deti->frame()), QVariant(frame), undo);
 		quc->setText(tr("Modifier le cadre d'un texte d'élément"));
+	}
+	
+	qreal text_width = text_qsi->child(width_txt_row, 1)->data(Qt::EditRole).toDouble();
+	if(text_width != deti->textWidth())
+	{
+		QUndoCommand *quc = new QPropertyUndoCommand(deti, "textWidth", QVariant(deti->textWidth()), QVariant(text_width), undo);
+		quc->setText(tr("Modifier la largeur d'un texte d'élément"));
 	}
 	
 		//When text is in a group, they're isn't item for position of the text
@@ -1054,6 +1075,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::yChanged,        [deti,this](){this->updateDataFromText(deti, pos);});
 		connection_list << connect(deti, &DynamicElementTextItem::frameChanged,    [deti,this](){this->updateDataFromText(deti, frame);});
 		connection_list << connect(deti, &DynamicElementTextItem::rotationChanged, [deti,this](){this->updateDataFromText(deti, rotation);});
+		connection_list << connect(deti, &DynamicElementTextItem::textWidthChanged,[deti,this](){this->updateDataFromText(deti, textWidth);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
 		
 		m_hash_text_connect.insert(deti, connection_list);
@@ -1175,6 +1197,11 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		{
 			if(qsi->child(rot_txt_row,1))
 				qsi->child(rot_txt_row,1)->setData(deti->rotation(), Qt::EditRole);
+			break;
+		}
+		case textWidth:
+		{
+			qsi->child(width_txt_row,1)->setData(deti->textWidth(), Qt::EditRole);
 			break;
 		}
 	}
@@ -1314,6 +1341,15 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			sb->setSuffix(" °");
 			return sb;
 		}
+		case DynamicElementTextModel::textWidth:
+		{
+			QSpinBox *sb = new QSpinBox(parent);
+			sb->setObjectName("width_spinbox");
+			sb->setRange(-1, 500);
+			sb->setFrame(false);
+			sb->setSuffix(" px");
+			return sb;
+		}
 		case DynamicElementTextModel::grp_alignment:
 		{
 			QComboBox *qcb = new QComboBox(parent);
@@ -1431,7 +1467,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 		//With this hack the value is commited each time the value change without the need to validate.
 		//then the change is apply in live
 	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size" || object->objectName() == "rot_spinbox" || \
-	   object->objectName() == "group_rotation" || object->objectName() == "group_v_adjustment")
+	   object->objectName() == "group_rotation" || object->objectName() == "group_v_adjustment" || object->objectName() == "width_spinbox")
 	{
 		object->event(event);
 		

@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -47,6 +47,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
+	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	
 	public:
 		Q_ENUMS(TextFrom)
@@ -65,6 +66,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void compositeTextChanged(QString text);
 		void frameChanged(bool frame);
 		void plainTextChanged();
+		void textWidthChanged(qreal width);
 	
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -97,6 +99,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QUuid uuid() const;
 		void updateXref();
 		void setPlainText(const QString &text);
+		void setTextWidth(qreal width);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -148,6 +151,7 @@ class DynamicElementTextItem : public DiagramTextItem
 			 m_first_scene_change = true;
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
+		qreal m_text_width = -1;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

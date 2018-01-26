@@ -665,6 +665,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						comment_text->setInfoName("comment");
 						comment_text->setFontSize(6);
 						comment_text->setFrame(true);
+						comment_text->setTextWidth(70);
 						comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
 						addDynamicTextItem(comment_text);
 					}
@@ -676,6 +677,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 						location_text->setInfoName("location");
 						location_text->setFontSize(6);
+						location_text->setTextWidth(70);
 						location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
 						addDynamicTextItem(location_text);
 					}

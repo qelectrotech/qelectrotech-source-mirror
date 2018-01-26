@@ -52,6 +52,12 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 		}
 		
 	});
+	
+		//Option when text is displayed in multiple line
+	QTextOption option = document()->defaultTextOption();
+	option.setAlignment(Qt::AlignHCenter);
+	option.setWrapMode(QTextOption::WordWrap);
+	document()->setDefaultTextOption(option);
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
@@ -86,6 +92,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
+	root_element.setAttribute("text_width", QString::number(m_text_width));
 	
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
@@ -139,6 +146,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
+	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
 	
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
@@ -603,6 +611,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_frame)
 	{
 		painter->save();
+		
 		painter->setFont(QETApp::diagramTextsFont(fontSize()));
 		
 			//Adjust the thickness according to the font size, 
@@ -620,17 +629,24 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 		painter->setPen(pen);
 		painter->setRenderHint(QPainter::Antialiasing);
 		
-			//Get the bounding rectangle of the text 
-		QRectF text_bounding = painter->boundingRect(boundingRect(), toPlainText());
-			//Center text_bounding in the bounding rect of this
-		text_bounding.moveTop((boundingRect().height()-text_bounding.height())/2);
-		text_bounding.moveLeft((boundingRect().width() - text_bounding.width())/2);
-			//adjust only for better visual
-		text_bounding.adjust(-2,0,2,0); 
+			//Get the bounding rectangle of the text
+		QSizeF size = document()->size();
+		size.setWidth(document()->idealWidth());
+			//Remove the margin. Size is exactly the bounding rect of the text
+		size.rheight() -= document()->documentMargin()*2;
+		size.rwidth() -= document()->documentMargin()*2;
+			//Add a little margin only for a better visual;
+		size.rheight() += 2;
+		size.rwidth() += 2;
+		
+			//The pos of the rect
+		QPointF pos = boundingRect().center();
+		pos.rx() -= size.width()/2;
+		pos.ry() -= size.height()/2;
 		
 			//Adjust the rounding of the rectangle according to the size of the font
 		qreal ro = (qreal)fontSize()/3;
-		painter->drawRoundedRect(text_bounding, ro, ro);
+		painter->drawRoundedRect(QRectF(pos, size), ro, ro);
 		
 		painter->restore();
 	}
@@ -1262,6 +1278,20 @@ void DynamicElementTextItem::updateXref()
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
 	DiagramTextItem::setPlainText(text);
+	
+		//User define a text width
+	if(m_text_width > 0)
+	{
+		if(document()->size().width() > m_text_width)
+		{
+			document()->setTextWidth(m_text_width);
+			if(document()->size().width() > m_text_width)
+			{
+				document()->setTextWidth(document()->idealWidth());
+			}
+		}
+	}
+	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
 	else if(m_slave_Xref_item)
@@ -1271,5 +1301,12 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 					r.bottom());
 		m_slave_Xref_item->setPos(pos);
 	}
+}
+
+void DynamicElementTextItem::setTextWidth(qreal width)
+{
+	this->document()->setTextWidth(width);
+	m_text_width = width;
+	emit textWidthChanged(width);
 }
 
