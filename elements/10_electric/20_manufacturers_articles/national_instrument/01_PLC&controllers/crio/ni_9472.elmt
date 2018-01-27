@@ -1,0 +1,60 @@
+<definition hotspot_y="77" hotspot_x="36" width="80" orientation="dyyy" type="element" version="0.60" link_type="simple" height="140">
+    <uuid uuid="{b096f0a2-4194-49ea-a56c-99171521c60e}"/>
+    <names>
+        <name lang="nl">cRIO 9472 8 relais uitgangen 2A gescheiden</name>
+        <name lang="cs">cRIO 9472 8 výstupy relé 2A</name>
+        <name lang="it">cRIO 9472 - modulo 8 uscite a relè 2A</name>
+        <name lang="fr">cRIO 9474 - 8 sorties relais 2A</name>
+        <name lang="en">cRIO 9472 to 8 relay outputs 2A</name>
+        <name lang="pl">cRIO - czterokanałowy moduł wyjść przekaźnikowych</name>
+        <name lang="es">cRIO 9472 relay 8 salidas 2A</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-30" size="5" text="Entrées &#xa;sorties numériques" y="-65"/>
+        <text x="7" size="3" text="7" y="-24"/>
+        <text x="7" size="3" text="3" y="-31"/>
+        <ellipse x="3" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-29"/>
+        <rect x="-20" antialias="false" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="110" y="-50"/>
+        <ellipse x="-3" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-29"/>
+        <ellipse x="3" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-36"/>
+        <ellipse x="0" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-29"/>
+        <ellipse x="-3" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-36"/>
+        <ellipse x="-6" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-29"/>
+        <text x="-10" size="3" text="4" y="-24"/>
+        <ellipse x="0" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-36"/>
+        <rect x="-7" antialias="false" width="8" style="line-style:normal;line-weight:thin;filling:none;color:black" height="74" y="-20"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="41"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="35"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="5"/>
+        <text x="-13" size="5" text="NI 9472" y="-42"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="29"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-1"/>
+        <line end2="none" x2="20" antialias="false" y2="-40" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" length1="1.5"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="23"/>
+        <circle x="-5" antialias="true" diameter="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="49"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-7"/>
+        <circle x="-5" antialias="true" diameter="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-19"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="17"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-13"/>
+        <line end2="none" x2="-2" antialias="false" y2="50" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="52" x1="-4" length1="1.5"/>
+        <line end2="none" x2="-2" antialias="false" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="-4" length1="1.5"/>
+        <rect x="-9" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="11"/>
+        <text x="4" size="3" text="DO0&#xa;DO1&#xa;DO2&#xa;DO3&#xa;DO4&#xa;DO5&#xa;DO6&#xa;DO7&#xa;VSUP&#xa;COM" y="-8"/>
+        <input x="-29" tagg="label" size="9" rotate="true" text="NI cRIO&#xa;  9472" y="79"/>
+        <text x="-1" size="3" text="0&#xa;1&#xa;2&#xa;3&#xa;4&#xa;5&#xa;6&#xa;7&#xa;8&#xa;9" y="-8"/>
+        <ellipse x="-6" antialias="true" width="3" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6" y="-36"/>
+        <text x="-10" size="3" text="0" y="-31"/>
+        <terminal x="-9" orientation="w" y="-4"/>
+        <terminal x="-9" orientation="w" y="-10"/>
+        <terminal x="-9" orientation="w" y="8"/>
+        <terminal x="-9" orientation="w" y="2"/>
+        <terminal x="-9" orientation="w" y="20"/>
+        <terminal x="-9" orientation="w" y="14"/>
+        <terminal x="-9" orientation="w" y="32"/>
+        <terminal x="-9" orientation="w" y="26"/>
+        <terminal x="-9" orientation="w" y="44"/>
+        <terminal x="-9" orientation="w" y="38"/>
+    </description>
+</definition>

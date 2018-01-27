@@ -1,0 +1,95 @@
+<definition hotspot_y="67" hotspot_x="55" width="100" orientation="dyyy" type="element" version="0.60" link_type="simple" height="130">
+    <uuid uuid="{437b8dda-b707-49a4-89f8-594470f803e3}"/>
+    <names>
+        <name lang="nl">cRIO 9024 - controller real-time</name>
+        <name lang="cs">cRIO 9024 - řízení skutečného času</name>
+        <name lang="it">cRIO 9024 - controller real-time</name>
+        <name lang="fr">contrôleur cRIO</name>
+        <name lang="en">cRIO 9024 - controller real-time</name>
+        <name lang="pl">cRIO 9024 - sterownik czasu rzeczywistego</name>
+        <name lang="es">cRIO 9024 - controlador en tiempo real</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="20" size="2" text="RS 485-422" y="35"/>
+        <text x="-26" size="3" text="Display port" y="52"/>
+        <polygon x2="3" antialias="false" x3="2" x4="2" y2="28" x5="3" x6="13" y3="29" y7="28" closed="false" y5="38" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="13" x7="13" y4="37" y6="38"/>
+        <rect x="0" antialias="false" width="15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" y="25.5"/>
+        <rect x="-29" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="34"/>
+        <text x="20" size="2" text="RS 232" y="10"/>
+        <text x="-30" size="5" text="contrôleur 9035" y="-55"/>
+        <rect x="-41" antialias="false" width="17" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="34"/>
+        <rect x="-50" antialias="false" width="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="110" y="-50"/>
+        <text x="-43" size="3" text="eth 2" y="-33"/>
+        <rect x="-32" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="34"/>
+        <text x="-44" size="3" text="eth 1" y="-12"/>
+        <text x="-22" size="3" text="USB" y="38"/>
+        <rect x="-35" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="34"/>
+        <rect x="-28" antialias="false" width="14" style="line-style:normal;line-weight:normal;filling:none;color:black" height="18" y="-24"/>
+        <rect x="-28" antialias="false" width="14" style="line-style:normal;line-weight:normal;filling:none;color:black" height="18" y="-44"/>
+        <rect x="-38" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="34"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-29"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-9"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-13"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-33"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-31"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-37"/>
+        <rect x="-28" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:red;color:black" height="5" y="-31"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-35"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-39"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-11"/>
+        <rect x="-28" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:green;color:black" height="5" y="-44"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-41"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-43"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-17"/>
+        <rect x="-28" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:red;color:black" height="5" y="-11"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-15"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-19"/>
+        <rect x="-29" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="23"/>
+        <rect x="-41" antialias="false" width="17" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" y="23"/>
+        <rect x="-28" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:green;color:black" height="5" y="-24"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-21"/>
+        <rect x="-16" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="-23"/>
+        <rect x="-32" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="23"/>
+        <text x="13" size="3" text="C" y="-30"/>
+        <text x="13" size="3" text="C" y="-17"/>
+        <rect x="23" antialias="false" width="8" style="line-style:normal;line-weight:thin;filling:none;color:black" height="38" y="-47"/>
+        <text x="-22" size="3" text="USB" y="27"/>
+        <rect x="-35" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="23"/>
+        <rect x="21" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-22"/>
+        <text x="13" size="3" text="V2" y="-23"/>
+        <rect x="21" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-34"/>
+        <circle x="25" antialias="true" diameter="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-46"/>
+        <rect x="21" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-28"/>
+        <rect x="21" antialias="false" width="12" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" y="-40"/>
+        <circle x="25" antialias="true" diameter="4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-14"/>
+        <line end2="none" x2="28" antialias="false" y2="-45" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-43" x1="26" length1="1.5"/>
+        <line end2="none" x2="28" antialias="false" y2="-13" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11" x1="26" length1="1.5"/>
+        <text x="13" size="3" text="V1" y="-36"/>
+        <rect x="-38" antialias="false" width="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="2" y="23"/>
+        <input x="-50" tagg="label" size="9" rotate="true" text="NI cRIO 9035" y="68.5"/>
+        <polygon x7="-41" y6="15" closed="false" x2="-31" x5="-31" y5="15" y4="10" x8="-41" x9="-41" y8="0" x1="-41" x3="-26" x6="-41" y3="5" y7="0" y2="0" y9="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-26" y1="0"/>
+        <rect x="-39" antialias="false" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="2.5"/>
+        <rect x="0" antialias="false" width="15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="15" y="4.5"/>
+        <polygon x2="3" antialias="false" x3="2" x4="2" y2="7" x5="3" x6="13" y3="8" y7="7" y5="17" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="13" x7="13" y4="16" y6="17"/>
+        <line end2="none" x2="10" antialias="false" y2="16" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="10" length1="1.5"/>
+        <line end2="none" x2="10" antialias="false" y2="37" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="10" length1="1.5"/>
+        <input x="-20" tagg="none" size="9" rotate="true" text="" y="5"/>
+        <text x="-22" size="2" text="Usb &#xa;device port" y="20"/>
+        <polygon x7="-39" y6="47" closed="false" x2="-29" x5="-41" y5="48" y4="53" x8="-29" x9="-29" y8="45" x1="-29" x3="-39" x6="-41" y3="55" y7="45" y2="55" y9="45" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-41" y1="45"/>
+        <rect x="-36" antialias="false" width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" y="47"/>
+        <terminal x="-32" orientation="s" y="39"/>
+        <terminal x="33" orientation="e" y="-25"/>
+        <terminal x="33" orientation="e" y="-31"/>
+        <terminal x="33" orientation="e" y="-19"/>
+        <terminal x="33" orientation="e" y="-37"/>
+        <terminal x="-37" orientation="w" y="7.5"/>
+        <terminal x="-32" orientation="s" y="28"/>
+        <terminal x="-20" orientation="n" y="-37"/>
+        <terminal x="-20" orientation="s" y="-12"/>
+        <terminal x="4" orientation="w" y="33.25"/>
+        <terminal x="4" orientation="w" y="12"/>
+        <terminal x="-35" orientation="n" y="48"/>
+    </description>
+</definition>

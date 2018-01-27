@@ -1,0 +1,37 @@
+<definition hotspot_y="95" hotspot_x="37" width="80" orientation="dyyy" type="element" version="0.60" link_type="simple" height="160">
+    <uuid uuid="{2206886e-c444-4f24-ae0a-d863dd5edc52}"/>
+    <names>
+        <name lang="nl">cRIO 9215</name>
+        <name lang="cs">cRIO 9215</name>
+        <name lang="it">cRIO 9215</name>
+        <name lang="fr">cRIO 9215 4 entrées analogiques différentielles</name>
+        <name lang="en">cRIO 9215 4 differential analog input</name>
+        <name lang="pl">cRIO 9215</name>
+        <name lang="es">cRIO 9215</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-6.5" antialias="false" diameter="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y="43.5"/>
+        <circle x="-6.5" antialias="false" diameter="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.5"/>
+        <circle x="-6.5" antialias="false" diameter="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-31.5"/>
+        <circle x="-6.5" antialias="false" diameter="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y="18.5"/>
+        <circle x="-5" antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="20"/>
+        <circle x="-5" antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="45"/>
+        <rect x="-20" antialias="false" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="110" y="-50"/>
+        <text x="-18" size="3" text="CH2" y="2"/>
+        <text x="-18" size="3" text="CH3" y="27"/>
+        <text x="-18" size="3" text="CH4" y="52"/>
+        <circle x="-5" antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5"/>
+        <text x="-13" size="5" text="NI 9215" y="-42"/>
+        <line end2="none" x2="20" antialias="false" y2="-40" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" length1="1.5"/>
+        <input x="-30" tagg="label" size="9" rotate="true" text="NI cRIO&#xa;  9215" y="100"/>
+        <circle x="-5" antialias="false" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30"/>
+        <text x="-18" size="3" text="CH1" y="-23"/>
+        <text x="-30" size="5" text="Entrées analogique&#xa; différentielles&#xa;       -10/10v" y="-80"/>
+        <terminal x="0" orientation="n" y="-25"/>
+        <terminal x="0" orientation="n" y="50"/>
+        <terminal x="0" orientation="n" y="25"/>
+        <terminal x="0" orientation="n" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,51 @@
+<definition link_type="simple" height="120" version="0.60" type="element" width="50" hotspot_x="25" hotspot_y="56" orientation="dyyy">
+    <uuid uuid="{eaee561d-d8ef-4bf1-848a-f5cc083f8f71}"/>
+    <names>
+        <name lang="es">cRIO 9263</name>
+        <name lang="fr">cRIO 9263 4 sorties analogique</name>
+        <name lang="it">cRIO 9263</name>
+        <name lang="cs">cRIO 9263 </name>
+        <name lang="pl">cRIO 9263</name>
+        <name lang="nl">cRIO 9263</name>
+        <name lang="en">cRIO 9263 - 4 analogs output</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="110" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="40" x="-20" y="-50"/>
+        <text text="3" x="-12" size="3" y="4"/>
+        <text text="4" x="-12" size="3" y="9"/>
+        <text text="9" x="-12" size="3" y="30"/>
+        <text text="5" x="-12" size="3" y="13"/>
+        <text text="8" x="-12" size="3" y="28"/>
+        <text text="6" x="-12" size="3" y="18"/>
+        <text text="7" x="-12" size="3" y="23"/>
+        <text text="1" x="-12" size="3" y="-6"/>
+        <text text="2" x="-12" size="3" y="-1"/>
+        <text text="NI 9263" x="-13" size="5" y="-42"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="20" end2="none" y2="-40" antialias="false" length2="1.5" x1="-20" length1="1.5" y1="-40"/>
+        <input tagg="label" rotate="true" text="NI cRIO&#xa;  9263" x="-30" size="9" y="100"/>
+        <rect height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="20" x="-8" y="-19"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" y2="-14" antialias="false" length2="1.5" x1="-8" length1="1.5" y1="-14"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8" end2="none" y2="-9" antialias="false" length2="1.5" x1="12" length1="1.5" y1="-9"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" y2="-4" antialias="false" length2="1.5" x1="-8" length1="1.5" y1="-4"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8" end2="none" y2="1" antialias="false" length2="1.5" x1="12" length1="1.5" y1="1"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" y2="6" antialias="false" length2="1.5" x1="-8" length1="1.5" y1="6"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8" end2="none" y2="11" antialias="false" length2="1.5" x1="12" length1="1.5" y1="11"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" y2="16" antialias="false" length2="1.5" x1="-8" length1="1.5" y1="16"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8" end2="none" y2="21" antialias="false" length2="1.5" x1="12" length1="1.5" y1="21"/>
+        <text text="0" x="-12" size="3" y="-12"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" y2="26" antialias="false" length2="1.5" x1="-8" length1="1.5" y1="26"/>
+        <input tagg="label" rotate="true" text="Sortie &#xa;analogique &#xa;-10v/10v" x="-22" size="5" y="-60"/>
+        <terminal orientation="e" x="4" y="3.5"/>
+        <terminal orientation="e" x="4" y="28.5"/>
+        <terminal orientation="e" x="4" y="-1.5"/>
+        <terminal orientation="e" x="4" y="18.5"/>
+        <terminal orientation="e" x="4" y="23.5"/>
+        <terminal orientation="e" x="4" y="-11.5"/>
+        <terminal orientation="e" x="4" y="-6.5"/>
+        <terminal orientation="e" x="4" y="13.5"/>
+        <terminal orientation="e" x="4" y="8.5"/>
+        <terminal orientation="e" x="4" y="-16.5"/>
+    </description>
+</definition>
