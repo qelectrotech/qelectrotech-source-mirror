@@ -272,7 +272,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
 
 			// on applique le mouvement subi aux autres textes a deplacer
-			diagram_ptr -> continueMoveElementTexts(scene_effective_movement);
+			diagram_ptr -> continueMoveElementTexts(event);
 		}
 	} else event -> ignore();
 

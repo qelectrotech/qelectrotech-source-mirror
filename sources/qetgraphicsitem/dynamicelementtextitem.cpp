@@ -501,33 +501,33 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
  * @param event
  */
 void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-	if(event->buttons() & Qt::LeftButton)
+{	
+	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
-		QPointF old_pos = pos(); //The old pos
-		QPointF movement = event->pos() - event->buttonDownPos(Qt::LeftButton); //The movement since the button down pos
-		QPointF new_pos = pos() + mapMovementToParent(movement); //The new pos with this event
+		if(diagram() && m_first_move)
+			diagram()->beginMoveElementTexts(this);
+		
+		if(m_first_move)
+		{
+			m_initial_position = pos();
+			if(parentElement())
+				parentElement()->setHighlighted(true);
+		}
+		
+		QPointF current_parent_pos;
+		QPointF button_down_parent_pos;
+		current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
+		button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
+		
+		QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
 		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
 		
-		if(m_parent_element && m_parent_element->diagram())
-		{
-			Diagram *diagram = m_parent_element->diagram();
-			
-			if(m_first_move)
-			{
-				if(diagram->beginMoveElementTexts(this) == 1)
-					m_parent_element->setHighlighted(true);
-			}
-			
-				//Because setPos() can be snaped to grid or not, we calcule the real movement
-			QPointF effective_movement = pos() - old_pos;
-			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
-			diagram->continueMoveElementTexts(scene_effective_movement);
-		}
-	}
-	else
+		if(diagram())
+			diagram()->continueMoveElementTexts(event);
+	} else {
 		event->ignore();
-		
+	}
+	
 	if(m_first_move)
 		m_first_move = false;
 }

@@ -1480,13 +1480,9 @@ int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
 	return(m_element_texts_mover -> beginMovement(this, driver_item));
 }
 
-/**
-	Prend en compte un mouvement composant un deplacement d'ElementTextItems
-	@param movement mouvement a ajouter au deplacement en cours
-	@see ElementTextsMover
-*/
-void Diagram::continueMoveElementTexts(const QPointF &movement) {
-	m_element_texts_mover -> continueMovement(movement);
+void Diagram::continueMoveElementTexts(QGraphicsSceneMouseEvent *event)
+{
+	m_element_texts_mover->continueMovement(event);
 }
 
 /**

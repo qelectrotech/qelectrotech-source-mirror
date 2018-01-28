@@ -152,6 +152,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;
+		QPointF m_initial_position;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

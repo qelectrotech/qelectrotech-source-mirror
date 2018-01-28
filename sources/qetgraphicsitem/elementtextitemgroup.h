@@ -91,7 +91,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
 		bool m_first_move = true;
-		QPointF m_mouse_to_origin_movement;
+		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;

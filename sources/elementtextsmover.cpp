@@ -51,20 +51,8 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 
 	m_diagram = diagram;
 	m_movement_driver = driver_item;
-	m_last_pos = driver_item->pos();
 	m_items_hash.clear();
 	m_text_count = m_group_count =0;
-//	m_texts_hash.clear();
-//	m_grps_hash.clear();
-
-//	for(QGraphicsItem *item : diagram->selectedItems())
-//	{
-//		if (item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
-//		{
-//			DiagramTextItem *dti = static_cast<DiagramTextItem *> (item);
-//			m_texts_hash.insert(dti, dti->pos());
-//		}
-//	}
 	
 	for(QGraphicsItem *item : diagram->selectedItems())
 	{
@@ -83,8 +71,6 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 		 }
 	}
 	
-//	if (!m_texts_hash.size())
-//		return(-1);
 	
 	if(m_items_hash.isEmpty())
 		return -1;
@@ -92,40 +78,27 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 	m_movement_running = true;
 	
 	return m_items_hash.size();
-	
-//	return(m_texts_hash.size());
 }
 
-/**
- * @brief ElementTextsMover::continueMovement
- * Add @movement to the current movement
- * The movement must be in scene coordinate.
- * @param movement
- */
-void ElementTextsMover::continueMovement(const QPointF &movement)
+void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 {
-	if (!m_movement_running || movement.isNull())
+	if(!m_movement_running)
 		return;
-	
-	QPointF move = m_movement_driver->pos() - m_last_pos;
-	m_last_pos = m_movement_driver->pos();
-	
+
 	for(QGraphicsItem *qgi : m_items_hash.keys())
 	{
 		if(qgi == m_movement_driver)
 			continue;
 		
-		qgi->setPos(qgi->pos() + move);
-	}
-	
-//	for(DiagramTextItem *text_item : m_texts_hash.keys())
-//	{
-//		if (text_item == m_movement_driver)
-//			continue;
+		QPointF current_parent_pos;
+		QPointF button_down_parent_pos;
+
+		current_parent_pos = qgi->mapToParent(qgi->mapFromScene(event->scenePos()));
+		button_down_parent_pos = qgi->mapToParent(qgi->mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 		
-//		QPointF applied_movement = text_item->mapMovementToParent(text_item->mapMovementFromScene(movement));
-//		text_item->setPos(text_item->pos() + applied_movement);
-//	}
+		QPointF new_pos = m_items_hash.value(qgi) + current_parent_pos - button_down_parent_pos;
+		event->modifiers() == Qt::ControlModifier ? qgi->setPos(new_pos) : qgi->setPos(Diagram::snapToGrid(new_pos));
+	}
 }
 
 /**
@@ -133,25 +106,7 @@ void ElementTextsMover::continueMovement(const QPointF &movement)
  * Finish the movement by pushing an undo command to the parent diagram of text item
  */
 void ElementTextsMover::endMovement()
-{
-//		//No movement running, or no text to move
-//	if (!m_movement_running || m_texts_hash.isEmpty())
-//		return;
-	
-//		//Movement is null
-//	DiagramTextItem *dti = m_texts_hash.keys().first();
-//	if (dti->pos() == m_texts_hash.value(dti))
-//		return;
-	
-//	QUndoCommand *undo = new QUndoCommand(m_texts_hash.size() == 1 ? QString(QObject::tr("Déplacer un texte d'élément"))  :
-//																	   QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_hash.size())));
-	
-//	for (DiagramTextItem *dti : m_texts_hash.keys())
-//	{
-//		QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(dti, "pos", m_texts_hash.value(dti), dti->pos(), undo);
-//		child_undo->enableAnimation();
-//	}
-	
+{	
 		//No movement or no items to move
 	if(!m_movement_running || m_items_hash.isEmpty())
 		return;

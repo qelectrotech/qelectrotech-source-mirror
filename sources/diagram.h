@@ -194,7 +194,7 @@ class Diagram : public QGraphicsScene
 		void continueMoveElements(const QPointF &);
 		void endMoveElements();
 		int  beginMoveElementTexts(QGraphicsItem * = nullptr);
-		void continueMoveElementTexts(const QPointF &);
+		void continueMoveElementTexts(QGraphicsSceneMouseEvent *event);
 		void endMoveElementTexts();
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const QString &);
