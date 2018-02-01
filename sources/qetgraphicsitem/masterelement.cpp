@@ -118,6 +118,19 @@ void MasterElement::initLink(QETProject *project) {
 }
 
 /**
+ * @brief MasterElement::XrefBoundingRect
+ * @return The bounding rect of the Xref, if this element
+ * haven't got a xref, return a default QRectF
+ */
+QRectF MasterElement::XrefBoundingRect() const
+{
+	if(m_Xref_item)
+		return m_Xref_item->boundingRect();
+	else
+		return QRectF();
+}
+
+/**
  * @brief MasterElement::updateLabel
  * update label of this element
  * and the comment item if he's displayed.

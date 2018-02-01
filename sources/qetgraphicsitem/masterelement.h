@@ -40,6 +40,7 @@ class MasterElement : public CustomElement
 		void unlinkAllElements () override;
 		void unlinkElement     (Element *elmt) override;
 		void initLink          (QETProject *project) override;
+		QRectF XrefBoundingRect() const;
 
 	public slots:
 		void updateLabel(DiagramContext old_info, DiagramContext new_info);
