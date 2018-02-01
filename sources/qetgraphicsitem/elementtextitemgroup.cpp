@@ -23,6 +23,8 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "crossrefitem.h"
 #include "qetapp.h"
+#include "masterelement.h"
+#include "qgraphicsitemutility.h"
 
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
@@ -56,17 +58,12 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 {
 	if(item->type() == DynamicElementTextItem::Type)
 	{
-			//Befor add text to group we must to set the text and the group to the same rotation
-		item->setRotation(0);
-		item->setFlag(QGraphicsItem::ItemIsSelectable, false);
-		
-		qreal rot = this->rotation();
-		this->setRotation(0);
+			//Befor add text to this group we must to set the text at the same rotation of this group		
+		if((item->rotation() != rotation()) && !m_block_alignment_update)
+			item->setRotation(rotation());
 		
 		QGraphicsItemGroup::addToGroup(item);
 		updateAlignment();
-		
-		this->setRotation(rot);
 		
 		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
 		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
@@ -116,6 +113,17 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 }
 
 /**
+ * @brief ElementTextItemGroup::blockAlignmentUpdate
+ * If true, the texts in this group are never aligned, moved, rotated etc...
+ * the texts stay as it was, until blockAlignmentUpdate is set to false.
+ * @param block
+ */
+void ElementTextItemGroup::blockAlignmentUpdate(bool block)
+{
+	m_block_alignment_update = block;
+}
+
+/**
  * @brief ElementTextItemGroup::setAlignement
  * Set the alignement of this group
  * @param alignement
@@ -140,12 +148,41 @@ Qt::Alignment ElementTextItemGroup::alignment() const
  */
 void ElementTextItemGroup::updateAlignment()
 {
+	if(m_block_alignment_update)
+		return;
+	
 	prepareGeometryChange();
 	
 	QList <DynamicElementTextItem *> texts = this->texts();
 	
-	if (texts.size() > 1)
+	qreal rotation_ = rotation();
+	
+		//Set the rotation of this group to 0° relative to the scene
+	qreal rot = rotation();
+	QGraphicsItem *parent = parentItem();
+	while (parent) {
+		rot += parent->rotation();
+		parent = parent->parentItem();
+	}
+	if(rot != 0)
+		setRotation(rotation() - rot);
+	
+	
+	if(texts.size() == 1)
 	{
+		prepareGeometryChange();
+		
+		QGraphicsItem *first = texts.first();
+		setPos(mapFromScene(first->mapToScene(pos())));
+		first->setPos(0,0);
+	}
+	else if (texts.size() > 1)
+	{
+		qreal width = 0;
+		for(QGraphicsItem *item : texts)
+			if(item->boundingRect().width() > width)
+				width = item->boundingRect().width();
+		
 		prepareGeometryChange();
 		std::sort(texts.begin(), texts.end(), sorting);
 		
@@ -157,14 +194,13 @@ void ElementTextItemGroup::updateAlignment()
 				
 			for(QGraphicsItem *item : texts)
 			{
-				item->setPos(ref.x(), ref.y()+y_offset);
+				item->setPos(0, ref.y()+y_offset);
 				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
 			}
 		}
 		else if(m_alignment == Qt::AlignVCenter)
 		{
-			QPointF ref(texts.first()->pos().x() + texts.first()->boundingRect().width()/2,
-						texts.first()->pos().y());
+			QPointF ref(width/2,0);
 			
 			for(QGraphicsItem *item : texts)
 			{
@@ -175,8 +211,7 @@ void ElementTextItemGroup::updateAlignment()
 		}
 		else if (m_alignment == Qt::AlignRight)
 		{
-			QPointF ref(texts.first()->pos().x() + texts.first()->boundingRect().width(),
-						texts.first()->pos().y());
+			QPointF ref(width,0);
 			
 			for(QGraphicsItem *item : texts)
 			{
@@ -185,14 +220,17 @@ void ElementTextItemGroup::updateAlignment()
 				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
 			}
 		}
-		
-		setTransformOriginPoint(boundingRect().topLeft());
 	}
+	
+		//Restor the rotation
+	setRotation(rotation_);
 	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
 	if(m_slave_Xref_item)
 		adjustSlaveXrefPos();
+	if(m_hold_to_bottom_of_page)
+		autoPos();
 }
 
 /**
@@ -217,6 +255,47 @@ void ElementTextItemGroup::setName(QString name)
 {
 	m_name = name;
 	emit nameChanged(m_name);
+}
+
+void ElementTextItemGroup::setHoldToBottomPage(bool hold)
+{
+	if(m_hold_to_bottom_of_page == hold)
+		return;
+	
+	m_hold_to_bottom_of_page = hold;
+	if(m_hold_to_bottom_of_page)
+	{
+		setFlag(QGraphicsItem::ItemIsSelectable, false);
+		setFlag(QGraphicsItem::ItemIsMovable, false);
+		connect(m_parent_element, &Element::yChanged, this, &ElementTextItemGroup::autoPos);
+		connect(m_parent_element, &Element::rotationChanged, this, &ElementTextItemGroup::autoPos);
+		if(m_parent_element->linkType() == Element::Master)
+		{
+				//We use timer to let the time of the parent element xref to be updated, befor update the position of this group
+				//because the position of this group is related to the size of the parent element Xref
+			m_linked_changed_timer = connect(m_parent_element, &Element::linkedElementChanged,
+											 [this]() {QTimer::singleShot(200, this, &ElementTextItemGroup::autoPos);});
+			if(m_parent_element->diagram())
+				m_XrefChanged_timer = connect(m_parent_element->diagram()->project(), &QETProject::XRefPropertiesChanged,
+											  [this]()	{QTimer::singleShot(200, this, &ElementTextItemGroup::autoPos);});
+		}
+		autoPos();
+	}
+	else
+	{
+		setFlag(QGraphicsItem::ItemIsSelectable, true);
+		setFlag(QGraphicsItem::ItemIsMovable, true);
+		disconnect(m_parent_element, &Element::yChanged, this, &ElementTextItemGroup::autoPos);
+		disconnect(m_parent_element, &Element::rotationChanged, this, &ElementTextItemGroup::autoPos);
+		if(m_parent_element->linkType() == Element::Master)
+		{
+			disconnect(m_linked_changed_timer);
+			if(m_XrefChanged_timer)
+				disconnect(m_XrefChanged_timer);
+		}
+	}
+	
+	emit holdToBottomPageChanged(hold);
 }
 
 /**
@@ -268,12 +347,17 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 {
 	QDomElement dom_element = dom_document.createElement(this->xmlTaggName());
 	dom_element.setAttribute("name", m_name);
+	
+	dom_element.setAttribute("x", QString::number(pos().x()));
+	dom_element.setAttribute("y", QString::number(pos().y()));
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	dom_element.setAttribute("alignment", me.valueToKey(m_alignment));
 	
 	dom_element.setAttribute("rotation", this->rotation());
 	dom_element.setAttribute("vertical_adjustment", m_vertical_adjustment);
+	
+	dom_element.setAttribute("hold_to_bottom_page", m_hold_to_bottom_of_page == true ? "true" : "false");
 	
 	QDomElement dom_texts = dom_document.createElement("texts");
 	for(DynamicElementTextItem *deti : texts())
@@ -303,11 +387,18 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	setAlignment(Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data())));
 	
+	setPos(dom_element.attribute("x", QString::number(0)).toDouble(),
+		   dom_element.attribute("y", QString::number(0)).toDouble());
+	
 	setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
 	setVerticalAdjustment(dom_element.attribute("vertical_adjustment").toInt());
 	
+	QString hold = dom_element.attribute("hold_to_bottom_page", "false");
+	setHoldToBottomPage(hold == "true" ? true : false);
+	
 	if(parentElement())
 	{
+		m_block_alignment_update = true;
 		for(QDomElement text : QET::findInDomElement(dom_element, "texts", "text"))
 		{
 			DynamicElementTextItem *deti = nullptr;
@@ -320,6 +411,7 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 			if (deti)
 				parentElement()->addTextToGroup(deti, this);
 		}
+		m_block_alignment_update = false;
 	}
 }
 
@@ -342,6 +434,7 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		t.setCosmetic(true);
 		painter->setPen(t);
 		painter->drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+		
 		painter->restore();
 	}
 }
@@ -367,7 +460,7 @@ QRectF ElementTextItemGroup::boundingRect() const
 }
 
 void ElementTextItemGroup::setRotation(qreal angle)
-{
+{	
 	QGraphicsItemGroup::setRotation(angle);
 	emit rotationChanged(angle);
 }
@@ -612,5 +705,33 @@ void ElementTextItemGroup::adjustSlaveXrefPos()
 	QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
 				r.bottom());
 	m_slave_Xref_item->setPos(pos);
+}
+
+void ElementTextItemGroup::autoPos()
+{
+	int offset = 5;
+	
+	if(m_parent_element->linkType() == Element::Master)
+	{
+		if(!diagram())
+			return;
+		
+		MasterElement *master = static_cast<MasterElement *>(m_parent_element);
+		XRefProperties xrp = diagram()->project()->defaultXRefProperties(master->kindInformations()["type"].toString());
+		if(xrp.snapTo() == XRefProperties::Bottom)
+		{
+			QRectF rectXref = master->XrefBoundingRect();
+			offset = xrp.offset() <= 40 ? 5 : xrp.offset();
+			
+			offset += (int)rectXref.height();
+		}
+	}
+	qreal r = rotation();
+	centerToBottomDiagram(this, m_parent_element, offset);
+		//centerToBottomDiagram change the rotation of this group if needed,
+		//but setRotation is not a virtual function of QGraphicsItem, and the function centerToBottomDiagram
+		//work with a QGraphicsItem. So we emit the signal if rotation changed
+	if(rotation() != r)
+		emit rotationChanged(rotation());
 }
 

@@ -49,28 +49,38 @@ bool centerToParentBottom(QGraphicsItem *item) {
  * @param offset
  * @return true if element is centered else false (element_to_follow have not diagram)
  */
-bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, int offset) {
+#include "elementtextitemgroup.h"
+#include "crossrefitem.h"
+bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset) {
 	if (! element_to_follow -> diagram()) {
 		qDebug() << "qgraphicsitemutility centerAtBottomDiagram : Element_to_follow have not diagram";
 		return false;
 	}
-
+	
 	QRectF  border = element_to_follow -> diagram() -> border_and_titleblock.insideBorderRect();
 	QPointF point  = element_to_follow -> sceneBoundingRect().center();
-
+	
 	point.setY(border.bottom() - item_to_center -> boundingRect().height() - offset );
-	point.rx() -= (item_to_center -> boundingRect().width()/2 +
-				   item_to_center -> boundingRect().left()); //< we add boundingrect.left because this value can be négative
-
+	point.rx() -= (item_to_center -> boundingRect().width()/2);
+	
+		//Apply the difference between the pos() of item and his bounding rect
+	QPointF tl = item_to_center->boundingRect().topLeft();
+	point.rx() -= tl.x();
+	point.ry() -= tl.y();
+	
 	item_to_center -> setPos(0,0);	  //Due to a weird behavior or bug, before set the new position and rotation,
 	item_to_center -> setRotation(0); //we must to set the position and rotation at 0.
-
-	item_to_center -> setPos(item_to_center -> mapFromScene(point));
-
-	if (item_to_center -> rotation() != - element_to_follow -> rotation()) {
-		item_to_center -> setRotation(0);
-		item_to_center -> setRotation(- element_to_follow -> rotation());
+	
+	item_to_center->setPos(item_to_center->mapFromScene(point));
+	
+	qreal rot = item_to_center->rotation();
+	QGraphicsItem *parent = item_to_center->parentItem();
+	while (parent) {
+		rot += parent->rotation();
+		parent = parent->parentItem();
 	}
+	if(rot != 0)
+		item_to_center->setRotation(item_to_center->rotation() - rot);
 
 	return true;
 }

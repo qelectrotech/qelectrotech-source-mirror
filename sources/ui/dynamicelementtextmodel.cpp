@@ -49,6 +49,7 @@ int rot_txt_row   = 10;
 int align_grp_row  = 0;
 int rot_grp_row    = 1;
 int adjust_grp_row = 2;
+int hold_to_bottom_grp_row = 3;
 
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
@@ -544,6 +545,10 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	QString name = group_qsi->data(Qt::DisplayRole).toString();
 	if(group->name() != name)
 		new QPropertyUndoCommand(group, "name", QVariant(group->name()), QVariant(name), undo);
+	
+	bool hold_to_bottom = group_qsi->child(hold_to_bottom_grp_row, 1)->checkState() == Qt::Checked? true : false;
+	if(group->holdToBottomPage() != hold_to_bottom)
+		new QPropertyUndoCommand(group, "holdToBottomPage", QVariant(group->holdToBottomPage()), QVariant(hold_to_bottom), undo);
 		
 	
 	return undo;
@@ -585,7 +590,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 		default: break;}
 	
 	QStandardItem *alignment_a = new QStandardItem(text);
-	alignment_a->setData(DynamicElementTextModel::grp_alignment, Qt::UserRole+1);
+	alignment_a->setData(DynamicElementTextModel::grpAlignment, Qt::UserRole+1);
 	alignment_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	qsi_list.clear();
 	qsi_list << alignment << alignment_a;
@@ -597,7 +602,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	
 	QStandardItem *rot_a = new QStandardItem;
 	rot_a->setData(group->rotation(), Qt::EditRole);
-	rot_a->setData(DynamicElementTextModel::grp_rotation, Qt::UserRole+1);
+	rot_a->setData(DynamicElementTextModel::grpRotation, Qt::UserRole+1);
 	rot_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	qsi_list.clear();
 	qsi_list << rot << rot_a;
@@ -609,10 +614,23 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	
 	QStandardItem *v_adj_a = new QStandardItem;
 	v_adj_a->setData(group->verticalAdjustment(), Qt::EditRole);
-	v_adj_a->setData(DynamicElementTextModel::grp_v_adjust, Qt::UserRole+1);
+	v_adj_a->setData(DynamicElementTextModel::grpVAdjust, Qt::UserRole+1);
 	v_adj_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	qsi_list.clear();
 	qsi_list << v_adj << v_adj_a;
+	grp->appendRow(qsi_list);
+	
+		//Hold to the bottom of the page
+	QStandardItem *hold_bottom = new QStandardItem(tr("Maintenir en bas de page"));
+	hold_bottom->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+	
+	QStandardItem *hold_bottom_a = new QStandardItem();
+	hold_bottom_a->setCheckable(true);
+	hold_bottom_a->setCheckState(group->holdToBottomPage() ? Qt::Checked : Qt::Unchecked);
+	hold_bottom_a->setData(DynamicElementTextModel::grpHoldBottom, Qt::UserRole+1);
+	hold_bottom_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+	qsi_list.clear();
+	qsi_list << hold_bottom << hold_bottom_a;
 	grp->appendRow(qsi_list);
 	
 
@@ -623,6 +641,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 		group_item->appendRow(itemsForText(deti));
 	}
 	setConnection(group, true);
+	enableGroupRotation(group);
 }
 
 /**
@@ -990,6 +1009,30 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	qsi->child(compo_txt_row,1)->setEnabled(compo);
 }
 
+/**
+ * @brief DynamicElementTextModel::enableGroupRotation
+ * Enable/disable the item "group rotation" according the option hold to bottom 
+ * @param group
+ */
+void DynamicElementTextModel::enableGroupRotation(ElementTextItemGroup *group)
+{
+	if(!m_groups_list.contains(group))
+		return;
+	
+	QStandardItem *qsi = m_groups_list.value(group);
+	
+	if(group->holdToBottomPage())
+	{
+		qsi->child(rot_grp_row, 0)->setFlags(Qt::ItemIsSelectable);
+		qsi->child(rot_grp_row, 1)->setFlags(Qt::ItemIsSelectable);
+	}
+	else
+	{
+		qsi->child(rot_grp_row, 0)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		qsi->child(rot_grp_row, 1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	}
+}
+
 void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 {
 	DynamicElementTextItem *deti = textFromItem(qsi);
@@ -1107,10 +1150,11 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 			return;
 		
 		QList<QMetaObject::Connection> connection_list;
-		connection_list << connect(group, &ElementTextItemGroup::alignmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_alignment);});
-		connection_list << connect(group, &ElementTextItemGroup::rotationChanged, [group, this]() {this->updateDataFromGroup(group, grp_rotation);});
-		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_v_adjust);});
-		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grp_name);});
+		connection_list << connect(group, &ElementTextItemGroup::alignmentChanged, [group, this]() {this->updateDataFromGroup(group, grpAlignment);});
+		connection_list << connect(group, &ElementTextItemGroup::rotationChanged, [group, this]() {this->updateDataFromGroup(group, grpRotation);});
+		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grpVAdjust);});
+		connection_list << connect(group, &ElementTextItemGroup::verticalAdjustmentChanged, [group, this]() {this->updateDataFromGroup(group, grpName);});
+		connection_list << connect(group, &ElementTextItemGroup::holdToBottomPageChanged, [group, this]() {this->updateDataFromGroup(group, grpHoldBottom);});
 		
 		m_hash_group_connect.insert(group, connection_list);
 	}
@@ -1219,7 +1263,7 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 	
 	switch (type)
 	{
-		case grp_alignment:
+		case grpAlignment:
 		{
 			switch (group->alignment())
 			{
@@ -1230,15 +1274,21 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 			}
 			 break;
 		}
-		case grp_rotation:
+		case grpRotation:
 			qsi->child(rot_grp_row,1)->setData(group->rotation(), Qt::EditRole);
 			break;
-		case grp_v_adjust:
+		case grpVAdjust:
 			qsi->child(adjust_grp_row,1)->setData(group->verticalAdjustment(), Qt::EditRole);
 			break;
-		case grp_name:
+		case grpName:
 			qsi->setData(group->name(), Qt::DisplayRole);
 			break;
+		case grpHoldBottom:
+		{
+			qsi->child(hold_to_bottom_grp_row,1)->setCheckState(group->holdToBottomPage()? Qt::Checked : Qt::Unchecked);
+			enableGroupRotation(group);
+			break;
+		}
 	}
 	
 	m_block_dataChanged = false;
@@ -1350,7 +1400,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			sb->setSuffix(" px");
 			return sb;
 		}
-		case DynamicElementTextModel::grp_alignment:
+		case DynamicElementTextModel::grpAlignment:
 		{
 			QComboBox *qcb = new QComboBox(parent);
 			qcb->setFrame(false);
@@ -1360,7 +1410,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			qcb->addItem(tr("Droite"));
 			return qcb;
 		}
-		case DynamicElementTextModel::grp_rotation:
+		case DynamicElementTextModel::grpRotation:
 		{
 			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("group_rotation");
@@ -1370,7 +1420,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			sb->setSuffix(" °");
 			return sb;
 		}
-		case DynamicElementTextModel::grp_v_adjust:
+		case DynamicElementTextModel::grpVAdjust:
 		{
 			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("group_v_adjustment");

@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -41,6 +41,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_PROPERTY(int verticalAdjustment READ verticalAdjustment WRITE setVerticalAdjustment NOTIFY verticalAdjustmentChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+	Q_PROPERTY(bool holdToBottomPage READ holdToBottomPage WRITE setHoldToBottomPage NOTIFY holdToBottomPageChanged)
 	
 	public:
 	signals:
@@ -48,12 +49,14 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void verticalAdjustmentChanged(int);
 		void alignmentChanged(Qt::Alignment);
 		void nameChanged(QString);
+		void holdToBottomPageChanged(bool);
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
 		~ElementTextItemGroup() override;
 		void addToGroup(QGraphicsItem *item);
 		void removeFromGroup(QGraphicsItem *item);
+		void blockAlignmentUpdate(bool block);
 		
 		void setAlignment(Qt::Alignment alignement);
 		Qt::Alignment alignment() const;
@@ -62,6 +65,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void setVerticalAdjustment(int v);
 		void setName(QString name);
 		QString name() const {return m_name;}
+		void setHoldToBottomPage(bool hold);
+		bool holdToBottomPage() const {return m_hold_to_bottom_of_page;}
 		QList<DynamicElementTextItem *> texts() const;
 		Diagram *diagram() const;
 		Element *parentElement() const;
@@ -86,17 +91,22 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	private:
 		void updateXref();
 		void adjustSlaveXrefPos();
+		void autoPos();
 
 	private:
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
-		bool m_first_move = true;
+		bool m_first_move = true,
+			 m_hold_to_bottom_of_page = false,
+			 m_block_alignment_update = false;
 		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;
 		QList<QMetaObject::Connection> m_update_slave_Xref_connection;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
+		QMetaObject::Connection m_XrefChanged_timer,
+								m_linked_changed_timer;
 };
 
 #endif // ELEMENTTEXTITEMGROUP_H

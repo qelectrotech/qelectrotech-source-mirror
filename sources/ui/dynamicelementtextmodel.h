@@ -48,10 +48,11 @@ class DynamicElementTextModel : public QStandardItemModel
 			frame,
 			rotation,
 			textWidth,
-			grp_alignment,
-			grp_rotation,
-			grp_v_adjust,
-			grp_name
+			grpAlignment,
+			grpRotation,
+			grpVAdjust,
+			grpName,
+			grpHoldBottom
         };
         
 		DynamicElementTextModel(Element *element, QObject *parent = nullptr);
@@ -87,6 +88,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		void addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
 		void removeTextFromGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
 		void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
+		void enableGroupRotation(ElementTextItemGroup *group);
         void itemDataChanged(QStandardItem *qsi);
 		void setConnection(DynamicElementTextItem *deti, bool set);
 		void setConnection(ElementTextItemGroup *group, bool set);

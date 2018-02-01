@@ -361,9 +361,9 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
 	}
 	description_string += QString(tr("Position : %1\n")).arg(m_diagram -> convertPosition(m_element -> scenePos()).toString());
+	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
 	description_string += QString(tr("Bornes : %1\n")).arg(m_element -> terminals().count());
-	description_string += QString(tr("Champs de texte : %1\n")).arg(m_element -> texts().count());
 
 	if (custom_element) {
 		description_string += QString(tr("Emplacement : %1\n")).arg(custom_element -> location().toString());

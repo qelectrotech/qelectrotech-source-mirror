@@ -519,7 +519,12 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				//that mean this is the good text
 			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()), m_converted_text_from_xml_description.value(deti).x()) &&
 				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()), m_converted_text_from_xml_description.value(deti).y()))
-			{	
+			{
+					//Once again this 'if', is only for retrocompatibility with old old old project
+					//when element text with tagg "label" is not null, but the element information "label" is. 
+				if((deti->textFrom() == DynamicElementTextItem::ElementInfo) && (deti->infoName() == "label"))
+					m_element_informations.addValue("label", dom_input.attribute("text"));
+				
 				deti->setText(dom_input.attribute("text"));
 				
 				qreal rotation = deti->rotation();
@@ -605,6 +610,11 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	{
 		dc.addValue("formula", dc["label"]);
 	}
+		//retrocompatibility with older version
+	if(dc.value("label").toString().isEmpty() &&
+	   !m_element_informations.value("label").toString().isEmpty())
+		dc.addValue("label", m_element_informations.value("label"));
+	
 	setElementInformations(dc);
 	
 		/**
@@ -648,52 +658,110 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		bool la = m_element_informations.keyMustShow("label");
 		bool c = m_element_informations.keyMustShow("comment");
 		bool lo = m_element_informations.keyMustShow("location");
-		if(!label.isEmpty() && la &&
-		   ((!comment.isEmpty() && c) || (!location.isEmpty() && lo)))
+		
+		if((m_link_type != Master) ||
+		   ((m_link_type == Master) &&
+			(diagram()->project()->defaultXRefProperties(m_kind_informations["type"].toString()).snapTo() == XRefProperties::Label))
+		   )
 		{
-				//#2 in the converted list one text must have text from = element info and info name = label
-			for(DynamicElementTextItem *deti : successfully_converted)
+			if(!label.isEmpty() && la &&
+			   ((!comment.isEmpty() && c) || (!location.isEmpty() && lo)))
 			{
-				if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label")
+					//#2 in the converted list one text must have text from = element info and info name = label
+				for(DynamicElementTextItem *deti : successfully_converted)
 				{
-						//Create the comment item
-					DynamicElementTextItem *comment_text = nullptr;
-					if(!comment.isEmpty() && c)
+					if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label")
 					{
-						comment_text = new DynamicElementTextItem(this);
-						comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
-						comment_text->setInfoName("comment");
-						comment_text->setFontSize(6);
-						comment_text->setFrame(true);
-						comment_text->setTextWidth(70);
-						comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
-						addDynamicTextItem(comment_text);
+						qreal rotation = deti->rotation();
+						
+							//Create the comment item
+						DynamicElementTextItem *comment_text = nullptr;
+						if(!comment.isEmpty() && c)
+						{
+							comment_text = new DynamicElementTextItem(this);
+							comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+							comment_text->setInfoName("comment");
+							comment_text->setFontSize(6);
+							comment_text->setFrame(true);
+							if(comment_text->toPlainText().count() > 17)
+								comment_text->setTextWidth(80);
+							comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
+							addDynamicTextItem(comment_text);
+						}
+							//create the location item
+						DynamicElementTextItem *location_text = nullptr;
+						if(!location.isEmpty() && lo)
+						{
+							location_text = new DynamicElementTextItem(this);
+							location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+							location_text->setInfoName("location");
+							location_text->setFontSize(6);
+							if(comment_text->toPlainText().count() > 17)
+								location_text->setTextWidth(80);
+							location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
+							addDynamicTextItem(location_text);
+						}
+						
+						QPointF pos = deti->pos();
+							//Create the group
+						ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
+						addTextToGroup(deti, group);
+						if(comment_text)
+							addTextToGroup(comment_text, group);
+						if(location_text)
+							addTextToGroup(location_text, group);
+						group->setAlignment(Qt::AlignVCenter);
+						group->setVerticalAdjustment(-4);
+						group->setRotation(rotation);
+							//Change the position of the group, so that the text "label" stay in the same
+							//position in scene coordinate
+						group->setPos(pos - deti->pos());
+						
+						break;
 					}
-						//create the location item
-					DynamicElementTextItem *location_text = nullptr;
-					if(!location.isEmpty() && lo)
-					{
-						location_text = new DynamicElementTextItem(this);
-						location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
-						location_text->setInfoName("location");
-						location_text->setFontSize(6);
-						location_text->setTextWidth(70);
-						location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
-						addDynamicTextItem(location_text);
-					}
-					
-						//Create the group
-					ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
-					addTextToGroup(deti, group);
-					if(comment_text)
-						addTextToGroup(comment_text, group);
-					if(location_text)
-						addTextToGroup(location_text, group);
-					group->setAlignment(Qt::AlignVCenter);
-					group->setVerticalAdjustment(-4);
-					
-					break;
 				}
+			}
+		}
+		else
+		{
+				//This element is supposed to be a master and Xref property snap to bottom
+			if((!comment.isEmpty() && c) || (!location.isEmpty() && lo))
+			{
+					//Create the comment item
+				DynamicElementTextItem *comment_text = nullptr;
+				if(!comment.isEmpty() && c)
+				{
+					comment_text = new DynamicElementTextItem(this);
+					comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+					comment_text->setInfoName("comment");
+					comment_text->setFontSize(6);
+					comment_text->setFrame(true);
+					comment_text->setTextWidth(80);
+					addDynamicTextItem(comment_text);
+				}
+					//create the location item
+				DynamicElementTextItem *location_text = nullptr;
+				if(!location.isEmpty() && lo)
+				{
+					location_text = new DynamicElementTextItem(this);
+					location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+					location_text->setInfoName("location");
+					location_text->setFontSize(6);
+					location_text->setTextWidth(80);
+					if(comment_text)
+						location_text->setPos(comment_text->x(), comment_text->y()+10); //+10 is arbitrary, location_text must be below the comment
+					addDynamicTextItem(location_text);
+				}
+				
+					//Create the group
+				ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
+				if(comment_text)
+					addTextToGroup(comment_text, group);
+				if(location_text)
+					addTextToGroup(location_text, group);
+				group->setAlignment(Qt::AlignVCenter);
+				group->setVerticalAdjustment(-4);
+				group->setHoldToBottomPage(true);
 			}
 		}
 	}
@@ -794,6 +862,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		//Dynamic texts owned by groups
 	for(ElementTextItemGroup *group : m_texts_group)
 	{
+		group->blockAlignmentUpdate(true);
 			//temporarily remove the texts from group to get the pos relative to element and not group.
 			//Set the alignment to top, because top is not used by groupand so,
 			//each time a text is removed from the group, the alignement is not updated
@@ -818,6 +887,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		
 			//Save the group to xml
 		texts_group.appendChild(group->toXml(document));
+		group->blockAlignmentUpdate(false);
 	}
 	
 		//Append the dynamic texts to element

@@ -17,11 +17,11 @@
 */
 #ifndef QGRAPHICSITEMUTILITY_H
 #define QGRAPHICSITEMUTILITY_H
-
+#include <QtGlobal>
 class QGraphicsItem;
 class Element;
 
 bool centerToParentBottom  (QGraphicsItem *item);
-bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, int offset = 0 );
+bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
 
 #endif // QGRAPHICSITEMUTILITY_H
