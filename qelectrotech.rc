@@ -1,0 +1,4 @@
+#include <windows.h>
+
+ID_ICON1 ICON DISCARDABLE "qelectrotech.ico"
+1 RT_MANIFEST "qelectrotech.exe.manifest"
