@@ -398,6 +398,7 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 	@param io_device Peripherique de sortie pour le code DXF (souvent : un fichier)
 */
 void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QString &file_path) {
+    saveReloadDiagramParameters(diagram, true);
 
 	project_ -> setFilePath(file_path);
 
@@ -410,8 +411,10 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	Createdxf::dxfBegin(file_path);
 
 	//Add project elements (lines, rectangles, circles, texts) to dxf file
-	Createdxf::drawRectangle(file_path, 0, 0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
-	diagram -> border_and_titleblock.drawDxf(width, height, keep_aspect_ratio, file_path, 0);
+    if (epw -> exportProperties().draw_border) {
+    Createdxf::drawRectangle(file_path, 0, 0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
+    }
+    diagram -> border_and_titleblock.drawDxf(width, height, keep_aspect_ratio, file_path, 0);
 
 	// Build the lists of elements.
 	QList<Element *> list_elements;
@@ -677,6 +680,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 	}
 	Createdxf::dxfEnd(file_path);
+
+    saveReloadDiagramParameters(diagram, false);
 }
 
 void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString author, QString title,
