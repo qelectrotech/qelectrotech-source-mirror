@@ -116,6 +116,7 @@ void AddTextsGroupCommand::redo()
 					//from the group, and reparented to m_elemeny.
 					//Then the next time redo is called, the texts will be added to the group
 				m_deti_list = m_group.data()->texts();
+				m_group.data()->updateAlignment();
 			}
 			m_first_undo = false;
 		}
