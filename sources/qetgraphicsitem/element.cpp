@@ -696,7 +696,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 							location_text->setInfoName("location");
 							location_text->setFontSize(6);
-							if(comment_text->toPlainText().count() > 17)
+							if(location_text->toPlainText().count() > 17)
 								location_text->setTextWidth(80);
 							location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
 							addDynamicTextItem(location_text);
