@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -993,7 +993,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést nynější nastavení textu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1002,12 +1002,12 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavést nastavení textu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -2589,7 +2589,7 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="267"/>
         <source>Police des champs textes des pages sommaires</source>
-        <translation type="unfinished"></translation>
+        <translation>Písmo textových polí shrnujících stran</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="339"/>
@@ -4487,7 +4487,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2214"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba při spouštění přídavného modulu qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2215"/>
@@ -4519,7 +4519,33 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator
+Navštivte https://pypi.python.org/pypi/qet-tb-generator/
+
+Vyžaduje python 3.5 nebo novější.
+&gt;&gt; Instalace na Linuxu
+1. Ověřte, že máte nainstalován pip3: pip3 --version
+Pokud ne, nainstalujte pomocí: sudo apt-get install python3-pip
+2. Nainstalujte program: sudo pip3 install qet_tb_generator
+3. Spusťte program: qet_tb_generator
+&gt;&gt; Aktualizace na Linuxu
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; Instalace na Windows
+1. Nainstalujte, je-li to potřeba python 3.5 nebo novější 
+Navštivte https://www.python.org/downloads/ 
+2. pip install qet_tb_generator
+&gt;&gt; Aktualizace na Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;uživatel tento skript může spustit v terminálu v tomto adresáři 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; Instalace na macOSX 
+1. Nainstalujte, je-li to potřeba python 3.5 nebo novější 
+Navštivte https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator 
+&gt;&gt; Aktualizace na macOSX 
+ pip3 install --upgrade qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
@@ -5535,7 +5561,17 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu DXFtoQET
+Navštivte https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalace na Linuxu
+Dejte spustitelný soubor DXFtoQET binary do adresáře /home/user_name/.qet/
+udělejte jej spustitelným : chmod +x ./DXFtoQET
+&gt;&gt; Instalace na Windows
+Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
+
+&gt;&gt; Instalace na macOSX
+Dejte spustitelný soubor DXFtoQET binary do adresáře /Users/user_name/.qet/</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
@@ -7300,43 +7336,44 @@ Co chcete dělat?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení textu</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Již je nastavení textu s názvem &lt;&lt; %1 &gt;&gt;.
+Chcete je nahradit?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Název nastavení</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadejte název nastavení k vytvoření</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádné stávající nastavení textu.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte nastavení textu</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte nastavení textu pro přidání k textu</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavést nastavení textu: %1</translation>
     </message>
 </context>
 <context>
@@ -7671,7 +7708,7 @@ Ostatní pole se nepoužívají.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní čárkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
