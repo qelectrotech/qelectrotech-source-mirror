@@ -289,7 +289,9 @@ void DiagramView::zoom(const qreal zoom_factor)
 		QSettings settings;
 		if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
 			(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
-			scale(zoom_factor, zoom_factor);
+			if (zoom_factor >= 0){
+				scale(zoom_factor, zoom_factor);
+			}
 	}
 	m_diagram->adjustSceneRect();
 	adjustGridToZoom();
