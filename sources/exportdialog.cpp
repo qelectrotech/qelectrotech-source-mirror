@@ -483,7 +483,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 	}
 
-	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path);
+	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
 
 	//Draw elements
 	foreach(Element *elmt, list_elements) {

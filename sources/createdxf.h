@@ -48,7 +48,11 @@ class Createdxf
 	static void drawText(QString,QString,double,double,double,double,int);
 	static void drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour, bool leftAlign = false, float scale = 0);
 
-	static const double sheetWidth;
+
+    static int getcolorCode (const long red, const long green, const long blue);
+    static long RGBcodeTable[];
+
+    static const double sheetWidth;
 	static const double sheetHeight;
 	static double		xScale;
 	static double		yScale;

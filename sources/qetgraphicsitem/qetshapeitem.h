@@ -71,7 +71,7 @@ class QetShapeItem : public QetGraphicsItem
 
 		virtual bool	    fromXml (const QDomElement &);
 		virtual QDomElement toXml	(QDomDocument &document) const;
-		virtual bool		toDXF	(const QString &filepath);
+		virtual bool		toDXF	(const QString &filepath,const QPen &pen);
 
 		void editProperty() override;
 		QString name() const override;

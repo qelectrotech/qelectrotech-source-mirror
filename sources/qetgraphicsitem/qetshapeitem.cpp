@@ -666,13 +666,14 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
  * @param filepath file path of the the dxf document
  * @return true if draw success
  */
-bool QetShapeItem::toDXF(const QString &filepath)
+bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 {
-	switch (m_shapeType)
+
+    switch (m_shapeType)
 	{
-		case Line:      Createdxf::drawLine     (filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), 0);              return true;
-		case Rectangle: Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0); return true;
-		case Ellipse:   Createdxf::drawEllipse  (filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0); return true;
+        case Line:      Createdxf::drawLine     (filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue()));              return true;
+        case Rectangle: Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
+        case Ellipse:   Createdxf::drawEllipse  (filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
 		default: return false;
 	}
 }
