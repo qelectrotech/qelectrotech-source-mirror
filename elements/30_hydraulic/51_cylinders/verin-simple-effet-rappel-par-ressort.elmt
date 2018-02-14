@@ -2,6 +2,7 @@
     <uuid uuid="{5d3d072e-acf5-48ab-98e8-671d5e531960}"/>
     <names>
         <name lang="en">Single acting cylinder - returned by spring</name>
+        <name lang="es">Pistón hidráulico simple retornado por resorte</name>
         <name lang="nl">Cylinder 1zijdig + veer</name>
         <name lang="el">Έμβολο μονής ενεργείας, επανάταξη με ελατήριο</name>
         <name lang="fr">Vérin simple effet - retour par ressort</name>

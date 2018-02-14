@@ -1,6 +1,7 @@
 <definition width="140" version="0.4" hotspot_x="20" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
 <uuid uuid="{BF950FAB-A8D9-40E4-B239-0C3413B2BFD4}"/><names>
         <name lang="en">Terminal_5G1</name>
+        <name lang="es">Clema 5G1</name>
         <name lang="fr">Bornier cable 5G1</name>
         <name lang="it">Morsettiera Cavo 5G1</name>
         <name lang="pl">Listwa zaciskowa 5G</name>
