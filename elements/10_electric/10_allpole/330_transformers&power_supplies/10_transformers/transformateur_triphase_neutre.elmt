@@ -3,6 +3,7 @@
         <name lang="ar">محول ثلاثي الأوجه + خط محايد</name>
         <name lang="el">Μετασχηματιστής τριφασικός + ουδέτερος</name>
         <name lang="en">Three-phase + neutral transducer</name>
+        <name lang="es">Transformador delta-estrella</name>
         <name lang="de">Transformator Drehstrom + Neutralleiter</name>
         <name lang="it">Trasformatore trifase + neutro</name>
         <name lang="fr">Transformateur triphasé + neutre</name>

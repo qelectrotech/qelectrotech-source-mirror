@@ -2,6 +2,7 @@
 <uuid uuid="{14F92270-BD89-49F0-8F56-BF94C0EC2115}"/><names>
         <name lang="el">Κλειστή επαφή χρονοδιακόπτη</name>
         <name lang="en">Contact NC-controlled clock</name>
+        <name lang="es">Contacto NC controlado por reloj</name>
         <name lang="de">Öffner zeitgesteuert</name>
         <name lang="it">Contatto NC comandato da orologio</name>
         <name lang="fr">Commande par horloge électrique NF</name>

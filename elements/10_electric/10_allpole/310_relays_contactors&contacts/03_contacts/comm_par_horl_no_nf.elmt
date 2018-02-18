@@ -2,6 +2,7 @@
 <uuid uuid="{E525883A-24F6-46F0-88A7-37007CB30EED}"/><names>
         <name lang="el">Μεταγωγική επαφή χρονοδιακόπτη</name>
         <name lang="en">Contact NC/NO-controlled clock</name>
+        <name lang="es">Contacto NC/NA controlado por reloj</name>
         <name lang="de">Wechsler zeitgesteuert</name>
         <name lang="it">Contatto NC/NO comandato da orologio</name>
         <name lang="fr">Commande par horloge électrique NO/NF</name>

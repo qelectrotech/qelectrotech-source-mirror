@@ -3,6 +3,7 @@
         <name lang="ar">مُحوّل ذاتي ثلاثي الأوجه + خط محايد</name>
         <name lang="el">Αυτομετασχηματιστής τριφασικός με ουδέτερο</name>
         <name lang="en">Three-phase autotransducer + neutral</name>
+        <name lang="es">Autotransformador delta-estrella</name>
         <name lang="de">Spartransformator Drehstrom + Neutralleiter</name>
         <name lang="it">Autotrasformatore trifase + neutro</name>
         <name lang="fr">Autotransformateur triphasé + neutre</name>

@@ -2,6 +2,7 @@
 <uuid uuid="{0BBC7E69-F104-450D-902F-C59FBE7B9974}"/><names>
         <name lang="el">Θερμικό, κλειστό</name>
         <name lang="en">Thermal relay NC</name>
+        <name lang="es">Relé termico NC</name>
         <name lang="de">Öffner thermisch betätigt</name>
         <name lang="it">Azionato da relè termico (NC)</name>
         <name lang="fr">Actionné par un dispositif thermique NF</name>

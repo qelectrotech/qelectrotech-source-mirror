@@ -1,6 +1,7 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
 <uuid uuid="{A0CAA76A-0EDB-427B-A3FC-6070BB71AE64}"/><names>
         <name lang="en">Contact Motorized NO</name>
+        <name lang="es">Contacto motorizado NA</name>
         <name lang="de">Schliesser Motor betätigt</name>
         <name lang="fr">Commande par moteur électrique NO</name>
         <name lang="pl">Zestyk zwierny sterowany silnikiem</name>

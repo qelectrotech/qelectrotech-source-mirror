@@ -1,6 +1,7 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
 <uuid uuid="{4BC7F7CA-CCEE-4D6F-96A5-44116893ED8D}"/><names>
         <name lang="en">Three-phase transformer Yd</name>
+        <name lang="es">Transformador trifásico Yd</name>
         <name lang="de">Transformator Stern/Dreieck</name>
         <name lang="it">Trasformatore trifase Yd</name>
         <name lang="fr">Transformateur triphasé etoile triangle</name>

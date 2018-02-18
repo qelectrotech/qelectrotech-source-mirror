@@ -2,6 +2,7 @@
     <uuid uuid="{a2740e69-3632-4ab0-8bd1-0591adc0b909}"/>
     <names>
         <name lang="fr">Interrupteur sectionneur triphasé</name>
+        <name lang="es">Seccionador 3P mando de palanca</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

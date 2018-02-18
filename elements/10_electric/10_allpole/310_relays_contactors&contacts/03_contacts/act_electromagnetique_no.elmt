@@ -2,6 +2,7 @@
 <uuid uuid="{99A71355-179F-4655-A609-8DFAC3688E46}"/><names>
         <name lang="el">Ανοικτή επαφή ηλεκτρομαγνητικού ρελέ</name>
         <name lang="en">Electromagnetic relay NO</name>
+        <name lang="es">Relé electromagnetico NA</name>
         <name lang="de">Schliesser elektromagnetisch betätigt</name>
         <name lang="it">Contatto azionato da relè elettromagnetico (NO)</name>
         <name lang="fr">Actionné par un dispositif électromagnétique NO</name>

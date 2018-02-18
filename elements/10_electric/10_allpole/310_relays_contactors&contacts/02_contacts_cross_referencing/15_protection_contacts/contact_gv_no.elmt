@@ -2,6 +2,7 @@
     <uuid uuid="{ad62e994-1c20-42c4-8a2f-40519cc56f5c}"/>
     <names>
         <name lang="fr">Contact NO disjoncteur magnéto-thermique GV</name>
+        <name lang="es">Contacto de disyuntor termico magnetico NA</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

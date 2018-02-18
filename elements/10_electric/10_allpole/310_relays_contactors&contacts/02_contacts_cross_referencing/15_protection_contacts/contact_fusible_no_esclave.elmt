@@ -2,6 +2,7 @@
 <uuid uuid="{F237D4BD-1B50-4ADB-AA9E-DA7AE2B830FB}"/><names>
         <name lang="el">Θερμικό, ανοικτό</name>
         <name lang="en">Fuse NO</name>
+        <name lang="es">Fusible NA</name>
         <name lang="de">Schliesser sicherungsbetätigt</name>
         <name lang="it">Azionato da fusibili (NO)</name>
         <name lang="fr">Actionné par un dispositif fusible NO</name>

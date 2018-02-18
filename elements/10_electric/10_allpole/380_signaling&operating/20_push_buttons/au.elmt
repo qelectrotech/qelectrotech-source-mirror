@@ -10,7 +10,7 @@
         <name lang="de">Pilzdrucktaster Öffner</name>
         <name lang="pt">Paragem de emergência (NC)</name>
         <name lang="cs">Nouzové zastavení</name>
-        <name lang="es">Parada de emergencia (NC)</name>
+        <name lang="es">Paro de emergencia (NC)</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">commutator</kindInformation>
