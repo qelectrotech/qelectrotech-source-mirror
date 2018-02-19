@@ -31,7 +31,7 @@ win32 {
 	QET_LANG_PATH              = 'lang/'
 	QET_LICENSE_PATH           = './'
 	# Liste des ressources Windows
-    RC_FILE = qelectrotech.rc
+    #RC_FILE = qelectrotech.rc
 }
 macx {
 	# Chemins MacOS X

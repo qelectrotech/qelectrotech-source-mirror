@@ -32,14 +32,10 @@ int main(int argc, char **argv)
 	QCoreApplication::setApplicationName("QElectroTech");
 		//Creation and execution of the application
 		//HighDPI
-#if QT_VERSION >= QT_VERSION_CHECK (5, 6, 0)
-#if defined Q_OS_MAC
-    QApplication::setAttribute (Qt::AA_EnableHighDpiScaling);
-#elif !defined(Q_OS_MAC)
-    QApplication::setAttribute (Qt::AA_DisableHighDpiScaling);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #else
-    qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("1"));
-#endif
+    qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
 #endif
 	return(QETApp(argc, argv).exec());
 }
