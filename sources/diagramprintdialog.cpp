@@ -354,7 +354,7 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 */
 void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties options) {
 	//qDebug() << "Demande d'impression de " << diagrams.count() << "schemas.";
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
     #ifdef Q_OS_WIN
         #ifdef QT_DEBUG
             qDebug() << "--";
