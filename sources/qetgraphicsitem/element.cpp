@@ -1284,6 +1284,13 @@ void Element::setUpFormula(bool code_letter)
 			autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
 			diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
 		}
+		if(!m_freeze_label && !formula.isEmpty())
+		{
+			DiagramContext dc = m_element_informations;
+			QString label = autonum::AssignVariables::formulaToLabel(formula, m_autoNum_seq, diagram(), this);
+			m_element_informations.addValue("label", label);
+			emit elementInfoChange(dc, m_element_informations);
+		}
 	}
 }
 
