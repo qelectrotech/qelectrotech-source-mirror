@@ -6,7 +6,7 @@
         <name lang="en">Three-phase engine PE + TERM + BRAKE</name>
         <name lang="cs">Trojfázový motor PE + TERM + BRAKE</name>
         <name lang="pl">Silnik trójfazowy PE + TERM + BRAKE</name>
-        <name lang="es">Motor trifásico PE + TERM + BRAKE</name>
+        <name lang="es">Motor trifásico Tierra + Termocupla + Freno</name>
         <name lang="de">Drehstrom Motor PE + TERM + BRAKE</name>
         <name lang="pt">Motor trifásico PE + TERM + BRAKE</name>
         <name lang="fr">Moteur triphasé PE + TERM + BRAKE</name>

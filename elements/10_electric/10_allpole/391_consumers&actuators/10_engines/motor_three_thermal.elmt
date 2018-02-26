@@ -5,7 +5,7 @@
         <name lang="en">Three-phase engine PE + TERM</name>
         <name lang="ru">Трёхфазный эл. мотор PE + TERM</name>
         <name lang="cs">Trojfázový motor PE + TERM</name>
-        <name lang="es">Motor trifásico PE + TERM</name>
+        <name lang="es">Motor trifásico Tierra + Termocupla</name>
         <name lang="pl">Silnik trójfazowy PE + TERM</name>
         <name lang="de">Drehstrom Motor PE + TERM</name>
         <name lang="pt">Motor trifásico PE + TERM</name>
