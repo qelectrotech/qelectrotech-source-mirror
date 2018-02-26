@@ -711,27 +711,6 @@ bool QETElementEditor::checkElement()
 		);
 	}
 
-		/// Check master, slave, simple and report element
-	if(m_elmt_scene -> elementType() == "master" ||
-	   m_elmt_scene -> elementType() == "slave"  ||
-	   m_elmt_scene -> elementType() == "simple")
-
-	{
-		bool wrng = true;
-		foreach (CustomElementPart *cep, m_elmt_scene->primitives())
-			if (cep->property("tagg").toString() == "label") wrng = false;
-
-			///Error #1: element is master, slave or simple but havent got input tagged 'label'
-		if (wrng) {
-			errors << qMakePair(
-							tr("Absence de champ texte 'label'", "warning title"),
-							tr("<br><b>Erreur</b  > :"
-							   "<br>Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg 'label'."
-							   "<br><b>Solution</b> :"
-							   "<br>Insérer un champ texte et lui attribuer le tagg 'label'", "warning description"));
-		}
-	}
-
 		/// Check folio report element
 	if (m_elmt_scene -> elementType().contains("report"))
 	{
