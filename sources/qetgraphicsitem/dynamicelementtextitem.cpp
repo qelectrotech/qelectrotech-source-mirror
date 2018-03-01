@@ -345,7 +345,8 @@ QString DynamicElementTextItem::text() const {
 void DynamicElementTextItem::setText(const QString &text)
 {
 	m_text = text;
-	setPlainText(m_text);
+	if(m_text_from == DynamicElementTextItem::UserText)
+		setPlainText(m_text);
 	emit textChanged(m_text);
 }
 
@@ -388,7 +389,7 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 		updateLabel();
 		updateXref();
 	}
-	else if(elementUseForInfo()) {
+	else if(elementUseForInfo() && m_text_from == DynamicElementTextItem::ElementInfo) {
 		setPlainText(elementUseForInfo()->elementInformations().value(info_name).toString());
 	}
 	
@@ -440,7 +441,7 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 		updateLabel();
 		updateXref();
 	}
-	else
+	else if (m_text_from == DynamicElementTextItem::CompositeText)
 	{
 		DiagramContext dc;
 		if(elementUseForInfo())
