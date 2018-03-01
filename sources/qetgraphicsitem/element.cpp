@@ -676,6 +676,8 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						
 							//Create the comment item
 						DynamicElementTextItem *comment_text = nullptr;
+						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+							return(true);
 						if(!comment.isEmpty() && c)
 						{
 							comment_text = new DynamicElementTextItem(this);
@@ -690,6 +692,8 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						}
 							//create the location item
 						DynamicElementTextItem *location_text = nullptr;
+						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+							return(true);
 						if(!location.isEmpty() && lo)
 						{
 							location_text = new DynamicElementTextItem(this);
@@ -703,6 +707,8 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						}
 						
 						QPointF pos = deti->pos();
+						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+							return(true);
 							//Create the group
 						ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
 						addTextToGroup(deti, group);
