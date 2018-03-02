@@ -1,0 +1,28 @@
+<definition type="element" hotspot_y="86" orientation="dyyy" height="100" width="100" version="0.70" link_type="simple" hotspot_x="50">
+    <uuid uuid="{38eb610f-8abb-4ee1-b298-d11e9e19e5e4}"/>
+    <names>
+        <name lang="fr">GCE-Xdisplay</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect height="95" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" width="90" y="-84" antialias="false"/>
+        <text text="-" x="17" size="4" y="-60"/>
+        <text text="-" x="17" size="4" y="-40"/>
+        <text text="+" x="16" size="4" y="-26"/>
+        <text text="+" x="17" size="4" y="-46"/>
+        <rect height="20" x="4" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-64" antialias="false"/>
+        <rect height="20" x="4" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-44" antialias="false"/>
+        <text text="12 V" rotation="270" x="22" size="3" y="-50"/>
+        <text text="Bus" rotation="270" x="21" size="3" y="-31"/>
+        <polygon y4="-0.8" x4="-23" y1="-73" x6="-23" y3="-0.8" y8="-73" closed="false" y6="-73" x7="-23" x3="27" y5="-73" x5="-23" antialias="false" x1="-23" x8="-23" y7="-73" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="27" y2="-73"/>
+        <text text="GCE Electronics" rotation="270" x="26" size="2" y="-2"/>
+        <dynamic_text frame="false" rotation="0" x="-22" text_from="UserText" uuid="{a61d9150-b50e-47a2-b7e5-7d22eb5805fa}" y="-20" z="12" font_size="9">
+            <text>X-XD</text>
+        </dynamic_text>
+        <terminal orientation="e" x="14" y="-30"/>
+        <terminal orientation="e" x="14" y="-50"/>
+        <terminal orientation="e" x="14" y="-60"/>
+        <terminal orientation="e" x="14" y="-40"/>
+    </description>
+</definition>
