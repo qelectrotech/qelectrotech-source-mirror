@@ -2,6 +2,7 @@
     <uuid uuid="{913365a3-1fff-45a0-88de-3a2cc228aef2}"/>
     <names>
         <name lang="en">Electric motor</name>
+        <name lang="es">Comando por motor eléctrico</name>
         <name lang="nl">Motor elektrisch</name>
         <name lang="el">Ηλεκτρικός κινητήρας</name>
         <name lang="fr">Moteur electrique</name>

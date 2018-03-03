@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
 <uuid uuid="{509330FA-499E-4EB1-93C0-8D39D2BCC286}"/><names>
         <name lang="en">Variable displacement hydraulic pump</name>
+        <name lang="es">Bomba de desplazamiento variable</name>
         <name lang="fr">Pompe debit variable</name>
         <name lang="pl">Pompa o zmiennej wydajności i jednym kiekunku tłoczenia</name>
         <name lang="cs">Vodní čerpadlo s proměnlivým výkonem</name>

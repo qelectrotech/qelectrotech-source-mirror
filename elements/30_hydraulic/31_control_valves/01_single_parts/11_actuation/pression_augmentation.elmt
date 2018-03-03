@@ -2,6 +2,7 @@
     <uuid uuid="{73f935b1-4d27-4787-89c6-8df62fe7fd77}"/>
     <names>
         <name lang="en">Increase in air pressure</name>
+        <name lang="es">Incremento en presión de aire</name>
         <name lang="nl">Lucht Stijgend</name>
         <name lang="fr">Augmentation de la pression de l'air</name>
         <name lang="pl">Sterowane przez wzrost ciśnienia</name>

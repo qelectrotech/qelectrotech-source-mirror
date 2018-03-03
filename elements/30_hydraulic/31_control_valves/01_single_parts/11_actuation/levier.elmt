@@ -2,6 +2,7 @@
     <uuid uuid="{ded9c87d-191d-4ba6-8030-48781f73d310}"/>
     <names>
         <name lang="en">Lever</name>
+        <name lang="es">Comando por nivel</name>
         <name lang="nl">hefboom</name>
         <name lang="el">Μοχλός</name>
         <name lang="fr">Levier</name>

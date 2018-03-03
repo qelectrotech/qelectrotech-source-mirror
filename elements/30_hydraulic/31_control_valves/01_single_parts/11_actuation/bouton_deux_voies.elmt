@@ -2,6 +2,7 @@
     <uuid uuid="{7af53d6c-e80b-46a8-ad97-dac13b2105b5}"/>
     <names>
         <name lang="en">Two-way button</name>
+        <name lang="es">Pulsador 2 posiciones</name>
         <name lang="nl">Drukknop 2 standen</name>
         <name lang="fr">Bouton deux voies</name>
         <name lang="pl">Przycisk o dwuch kierunkach działania</name>

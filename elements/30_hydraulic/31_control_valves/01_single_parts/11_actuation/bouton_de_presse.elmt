@@ -2,6 +2,7 @@
     <uuid uuid="{83176a82-0fc3-44f0-a3f8-7dc998fff944}"/>
     <names>
         <name lang="en">Button press</name>
+        <name lang="es">Pulsador presionado</name>
         <name lang="nl">Drukknop</name>
         <name lang="fr">Bouton de presse</name>
         <name lang="pl">Przycisk wciskany</name>

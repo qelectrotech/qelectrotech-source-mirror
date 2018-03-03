@@ -2,6 +2,7 @@
     <uuid uuid="{0dd39709-38f3-4620-86a9-cf7f03fbc0e5}"/>
     <names>
         <name lang="en">Push-button</name>
+        <name lang="es">Pulsador</name>
         <name lang="nl">Drukknop</name>
         <name lang="fr">Poussoir</name>
         <name lang="pl">Popychacz</name>

@@ -2,6 +2,7 @@
     <uuid uuid="{8a5a532d-620b-441d-8221-06b69811cdc6}"/>
     <names>
         <name lang="en">Pump hydraulic motor 3</name>
+        <name lang="es">Motor de bomba hidráulica, flujo unidireccional, flujo constante, giro unidirecional</name>
         <name lang="nl">Pomp motor 3</name>
         <name lang="fr">Pompe-moteur hydraulique 3</name>
         <name lang="pl">Pompa-silnik hydrauliczny o jednym kierunku przepływu, o stałej objętości roboczej i o jednym kierunku obrotów</name>

@@ -2,6 +2,7 @@
     <uuid uuid="{edc1dda1-52db-4634-ac93-7e6478f84780}"/>
     <names>
         <name lang="en">Control air pressure</name>
+        <name lang="es">Control de presión de aire</name>
         <name lang="nl">Luchtdruk</name>
         <name lang="fr">Commande pression de l'air</name>
         <name lang="pl">Sterowane za pomocą ciśnienia</name>

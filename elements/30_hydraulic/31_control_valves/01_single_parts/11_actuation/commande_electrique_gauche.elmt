@@ -2,6 +2,7 @@
     <uuid uuid="{f2a34b6f-6b55-4572-8da7-e86f37415ad2}"/>
     <names>
         <name lang="en">Electrical command left</name>
+        <name lang="es">Comando eléctrico izquierdo</name>
         <name lang="nl">Spoel Elektrisch links</name>
         <name lang="fr">Commande electrique gauche</name>
         <name lang="pl">Elektryczne (strona lewa)</name>

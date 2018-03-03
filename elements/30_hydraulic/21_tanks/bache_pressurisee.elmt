@@ -2,6 +2,7 @@
     <uuid uuid="{c1f30735-64eb-40c1-8d2d-e8b322852c11}"/>
     <names>
         <name lang="en">Hydraulic accumulator</name>
+        <name lang="es">Acumulador hidraulico</name>
         <name lang="nl">Druktank</name>
         <name lang="fr">Bâche pressurisée (accumulateur)</name>
         <name lang="pl">Akumulator hydrauliczny</name>

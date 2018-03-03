@@ -2,6 +2,7 @@
     <uuid uuid="{972637df-035d-424c-980b-a0534995090f}"/>
     <names>
         <name lang="en">Pull button</name>
+        <name lang="es">Pulsador de tiro</name>
         <name lang="nl">Trekknop</name>
         <name lang="fr">Tirage bouton</name>
         <name lang="pl">Przycisk wyciągany</name>

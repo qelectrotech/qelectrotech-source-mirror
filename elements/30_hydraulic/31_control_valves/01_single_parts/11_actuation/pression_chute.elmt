@@ -2,6 +2,7 @@
     <uuid uuid="{b3d514b1-bc11-4f65-91de-445aae6865bc}"/>
     <names>
         <name lang="en">Control air pressure drop</name>
+        <name lang="es">Control de caida de presión</name>
         <name lang="nl">Lucht dalend</name>
         <name lang="fr">Commande chute de pression d'air</name>
         <name lang="pl">Sterowane przez spadek ciśnienia</name>
