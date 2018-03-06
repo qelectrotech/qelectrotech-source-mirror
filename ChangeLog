@@ -1,5 +1,5 @@
 ====== ChangeLog from 0.5 to 0.6 ======
-In the official collection, there are now 4081 elements, and 539 categoris for a total of 4620 files
+In the official collection, there are now 4106 elements, and 539 categoris for a total of 4645 files
 
 * Improved performance, added multithreading to speed up the loading of items when launching QET.
 * RAM consumption has been considerably reduced.
@@ -16,6 +16,11 @@ In the official collection, there are now 4081 elements, and 539 categoris for a
 * In the panel left split the view into ￼a several docks.
 * ￼High-DPI support (Qt 5.6.0)
 * new python plugin to generate terminal block.
+* Windows packages are now created on a Debian operating system using cross-compilation and targeted to make executable binary files for these operating systems. 
+This technical evolution allows a significant time saving during the creation of the packages. And we can provide also in the same time Windows XP and Vista packages by cross-compil with Qt 5.7.1 environment
+* The Mac OS X executable binary files are created on a virtual environment, moved compiler to latest LLVM clan version, improved dmg packages with added Info.plist.
+* An annoying memory leak has been found and solved. Afters hours of use, some users noticed that the RAM consumption growed steadily, up to 10GB or more. This problem is now solved.
+
 
 
 ====== ChangeLog from 0.4 to 0.5 ======
