@@ -80,14 +80,14 @@ class CustomElement : public FixedElement
 	
 	protected:
 		virtual bool buildFromXml(const QDomElement &, int * = nullptr);
-		virtual bool parseElement(QDomElement &, QPainter &);
-		virtual bool parseLine(QDomElement &, QPainter &);
-		virtual bool parseRect(QDomElement &, QPainter &);
-		virtual bool parseEllipse(QDomElement &, QPainter &);
-		virtual bool parseCircle(QDomElement &, QPainter &);
-		virtual bool parseArc(QDomElement &, QPainter &);
-		virtual bool parsePolygon(QDomElement &, QPainter &);
-		virtual bool parseText(QDomElement &, QPainter &);
+		virtual bool parseElement(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseLine(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseRect(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseEllipse(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseCircle(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseArc(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parsePolygon(QDomElement &, QPainter &, bool addtolist = true);
+		virtual bool parseText(QDomElement &, QPainter &, bool addtolist = true);
 		virtual bool parseInput(QDomElement &);
 		virtual DynamicElementTextItem *parseDynamicText(QDomElement &);
 		virtual Terminal *parseTerminal(QDomElement &);

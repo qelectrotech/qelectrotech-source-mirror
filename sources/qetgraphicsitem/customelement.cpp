@@ -190,11 +190,12 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 				if (parseElement(qde, qp))
 				{
 					++ parsed_elements_count;
+
 					QString current_tag = qde.tagName();
 					if (current_tag != "terminal" && current_tag != "input" && current_tag != DynamicElementTextItem::xmlTaggName())
 					{
 						forbid_antialiasing = true;
-						parseElement(qde, low_zoom_qp);
+						parseElement(qde, low_zoom_qp, false);
 						forbid_antialiasing = false;
 					}
 				}
@@ -318,16 +319,16 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseElement(QDomElement &e, QPainter &qp)
+bool CustomElement::parseElement(QDomElement &e, QPainter &qp, bool addtolist)
 {
 	if      (e.tagName() == "terminal")     return(parseTerminal(e));
-	else if (e.tagName() == "line")         return(parseLine(e, qp));
-	else if (e.tagName() == "rect")         return(parseRect(e, qp));
-	else if (e.tagName() == "ellipse")      return(parseEllipse(e, qp));
-	else if (e.tagName() == "circle")       return(parseCircle(e, qp));
-	else if (e.tagName() == "arc")          return(parseArc(e, qp));
-	else if (e.tagName() == "polygon")      return(parsePolygon(e, qp));
-	else if (e.tagName() == "text")         return(parseText(e, qp));
+	else if (e.tagName() == "line")         return(parseLine(e, qp, addtolist));
+	else if (e.tagName() == "rect")         return(parseRect(e, qp, addtolist));
+	else if (e.tagName() == "ellipse")      return(parseEllipse(e, qp, addtolist));
+	else if (e.tagName() == "circle")       return(parseCircle(e, qp, addtolist));
+	else if (e.tagName() == "arc")          return(parseArc(e, qp, addtolist));
+	else if (e.tagName() == "polygon")      return(parsePolygon(e, qp, addtolist));
+	else if (e.tagName() == "text")         return(parseText(e, qp, addtolist));
 	else if (e.tagName() == "input")        return(parseInput(e));
 	else if (e.tagName() == "dynamic_text") return(parseDynamicText(e));
 	else return(true);
@@ -344,7 +345,7 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp)
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseLine(QDomElement &e, QPainter &qp, bool addtolist) {
 	// verifie la presence et la validite des attributs obligatoires
 	qreal x1, y1, x2, y2;
 	if (!QET::attributeIsAReal(e, QString("x1"), &x1)) return(false);
@@ -366,9 +367,11 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 
 	QLineF line(x1, y1, x2, y2);
 
+	if (addtolist){
 	//Add line to the list
-	QLineF *newLine = new QLineF(line);
-	m_lines << newLine;
+		QLineF *newLine = new QLineF(line);
+		m_lines << newLine;
+	}
 
 	QPointF point1(line.p1());
 	QPointF point2(line.p2());
@@ -458,7 +461,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseRect(QDomElement &e, QPainter &qp, bool addtolist) {
 	// verifie la presence des attributs obligatoires
 	qreal rect_x, rect_y, rect_w, rect_h;
 	if (!QET::attributeIsAReal(e, QString("x"),       &rect_x))  return(false);
@@ -466,9 +469,11 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("width"),   &rect_w))  return(false);
 	if (!QET::attributeIsAReal(e, QString("height"),  &rect_h))  return(false);
 
-	//Add rectangle to the list
-	QRectF *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
-	m_rectangles << rect;
+	if (addtolist){
+		//Add rectangle to the list
+		QRectF *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
+		m_rectangles << rect;
+	}
 
 	qp.save();
 	setPainterStyle(e, qp);
@@ -495,7 +500,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseCircle(QDomElement &e, QPainter &qp, bool addtolist) {
 	// verifie la presence des attributs obligatoires
 	qreal cercle_x, cercle_y, cercle_r;
 	if (!QET::attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
@@ -505,9 +510,11 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	setPainterStyle(e, qp);
 	QRectF circle_bounding_rect(cercle_x, cercle_y, cercle_r, cercle_r);
 
-	// Add circle to list
-	QRectF *circle = new QRectF(circle_bounding_rect);
-	m_circles << circle;
+	if (addtolist){
+		// Add circle to list
+		QRectF *circle = new QRectF(circle_bounding_rect);
+		m_circles << circle;
+	}
 
 	qp.drawEllipse(circle_bounding_rect);
 	qp.restore();
@@ -527,7 +534,7 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp, bool addtolist) {
 	// verifie la presence des attributs obligatoires
 	qreal ellipse_x, ellipse_y, ellipse_l, ellipse_h;
 	if (!QET::attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
@@ -537,14 +544,16 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	qp.save();
 	setPainterStyle(e, qp);
 
-	QVector<qreal> *arc = new QVector<qreal>;
-	arc -> push_back(ellipse_x);
-	arc -> push_back(ellipse_y);
-	arc -> push_back(ellipse_l);
-	arc -> push_back(ellipse_h);
-	arc -> push_back(0);
-	arc -> push_back(360);
-	m_arcs << arc;
+	if (addtolist){
+		QVector<qreal> *arc = new QVector<qreal>;
+		arc -> push_back(ellipse_x);
+		arc -> push_back(ellipse_y);
+		arc -> push_back(ellipse_l);
+		arc -> push_back(ellipse_h);
+		arc -> push_back(0);
+		arc -> push_back(360);
+		m_arcs << arc;
+	}
 
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
 	qp.restore();
@@ -565,7 +574,7 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseArc(QDomElement &e, QPainter &qp, bool addtolist) {
 	// verifie la presence des attributs obligatoires
 	qreal arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
 	if (!QET::attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
@@ -578,14 +587,16 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	qp.save();
 	setPainterStyle(e, qp);
 
-	QVector<qreal> *arc = new QVector<qreal>;
-	arc -> push_back(arc_x);
-	arc -> push_back(arc_y);
-	arc -> push_back(arc_l);
-	arc -> push_back(arc_h);
-	arc -> push_back(arc_s);
-	arc -> push_back(arc_a);
-	m_arcs << arc;
+	if (addtolist){
+		QVector<qreal> *arc = new QVector<qreal>;
+		arc -> push_back(arc_x);
+		arc -> push_back(arc_y);
+		arc -> push_back(arc_l);
+		arc -> push_back(arc_h);
+		arc -> push_back(arc_s);
+		arc -> push_back(arc_a);
+		m_arcs << arc;
+	}
 
 	qp.drawArc(QRectF(arc_x, arc_y, arc_l, arc_h), (int)(arc_s * 16), (int)(arc_a * 16));
 	qp.restore();
@@ -603,7 +614,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
+bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp, bool addtolist) {
 	int i = 1;
 	while(true) {
 		if (QET::attributeIsAReal(e, QString("x%1").arg(i)) && QET::attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
@@ -630,10 +641,11 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 		// insert first point at the end again for DXF export.
 		points.push_back(points[0]);
 	}
-
-	// Add to list of polygons.
-	QVector<QPointF> *poly = new QVector<QPointF>(points);
-	m_polygons << poly;
+	if (addtolist){
+		// Add to list of polygons.
+		QVector<QPointF> *poly = new QVector<QPointF>(points);
+		m_polygons << poly;
+	}
 
 	qp.restore();
 	return(true);
@@ -648,7 +660,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseText(QDomElement &e, QPainter &qp, bool addtolist) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
@@ -672,17 +684,19 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
 
-	//Add element to list of texts.
-	ElementTextItem *eti = new ElementTextItem(e.attribute("text"));
-	eti -> setFont(QETApp::diagramTextsFont(size));
-	eti -> setOriginalPos(QPointF(pos_x, pos_y));
-	eti -> setPos(pos_x, pos_y);
-	qreal original_rotation_angle = 0.0;
-	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
-	eti -> setOriginalRotationAngle(original_rotation_angle);
-	eti -> setRotationAngle(original_rotation_angle);
-	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
-	m_texts << eti;
+	if (addtolist){
+		//Add element to list of texts.
+		ElementTextItem *eti = new ElementTextItem(e.attribute("text"));
+		eti -> setFont(QETApp::diagramTextsFont(size));
+		eti -> setOriginalPos(QPointF(pos_x, pos_y));
+		eti -> setPos(pos_x, pos_y);
+		qreal original_rotation_angle = 0.0;
+		QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
+		eti -> setOriginalRotationAngle(original_rotation_angle);
+		eti -> setRotationAngle(original_rotation_angle);
+		eti -> setFollowParentRotations(e.attribute("rotate") == "true");
+		m_texts << eti;
+	}
 
 	// Se positionne aux coordonnees indiquees dans la description du texte
 	qp.setTransform(QTransform(), false);
