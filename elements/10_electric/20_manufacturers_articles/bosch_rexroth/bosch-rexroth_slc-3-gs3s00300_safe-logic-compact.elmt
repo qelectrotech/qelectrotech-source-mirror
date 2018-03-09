@@ -1,0 +1,53 @@
+<definition orientation="dyyy" height="270" version="0.70" hotspot_x="35" hotspot_y="135" type="element" link_type="simple" width="70">
+    <uuid uuid="{14596b91-6d15-4f92-a27c-20b913f2bd2a}"/>
+    <names>
+        <name lang="de">Bosch Rexroth SLC-3-GS3S00300 Safe Logic Compact, Gateway Modul mit 2x Sercos RJ45 Schnittstellen</name>
+        <name lang="fr">Bosch Rexroth SLC-3-GS3S00300 Safe Logic Compact, module Gateway avec 2x interfaces Sercos RJ45</name>
+        <name lang="en">Bosch Rexroth SLC-3-GS3S00300 Safe Logic Compact, Gateway module with 2x Sercos RJ45 interfaces</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="6" width="5" x="18"/>
+        <text text="XFE2" y="65" size="6" x="-10"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="27" antialias="false" y="-105" width="56" x="-28"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="-16" width="5" x="18"/>
+        <text text="LINK/ACT1" y="-51" size="5" x="-8"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="23" antialias="false" y="82" width="26" x="-13"/>
+        <text text="LINK/ACT2" y="54" size="5" x="-8"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="57" width="5" x="18"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="28" width="5" x="18"/>
+        <text text="NET" y="3" size="5" x="13"/>
+        <text text="S3" y="25" size="5" x="16"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="22" antialias="false" y="-127" width="56" x="-28"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="-66" width="5" x="18"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="75" end1="none" antialias="false" length2="1.5" end2="none" x2="-27" y2="70" x1="-27" length1="1.5"/>
+        <text text="sercos" y="45" size="9" x="-27"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="70" end1="none" antialias="false" length2="1.5" end2="none" x2="27" y2="75" x1="27" length1="1.5"/>
+        <text text="MOD" y="-19" size="5" x="12"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="68" end1="none" antialias="false" length2="1.5" end2="none" x2="-25" y2="68" x1="25" length1="1.5"/>
+        <input text="_" y="-38" size="9" tagg="label" x="-26" rotate="true"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="9" antialias="false" y="-38" width="5" x="18"/>
+        <text text="MS" y="-41" size="5" x="16"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="75" end1="none" antialias="false" length2="1.5" end2="none" x2="30" y2="75" x1="-30" length1="1.5"/>
+        <text text="XFE1" y="-60" size="6" x="-10"/>
+        <text text="IndraControl" y="32" size="6" rotation="270" x="-21"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-75" end1="none" antialias="false" length2="1.5" end2="none" x2="30" y2="-75" x1="-30" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" start="180" antialias="true" angle="90" y="-72" width="4" x="-27"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-70" end1="none" antialias="false" length2="1.5" end2="none" x2="-27" y2="-75" x1="-27" length1="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-75" end1="none" antialias="false" length2="1.5" end2="none" x2="27" y2="-70" x1="27" length1="1.5"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" start="270" antialias="true" angle="90" y="-72" width="4" x="23"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-68" end1="none" antialias="false" length2="1.5" end2="none" x2="-25" y2="-68" x1="25" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="27" antialias="false" y="78" width="56" x="-28"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="22" antialias="false" y="105" width="56" x="-28"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="23" antialias="false" y="-105" width="26" x="-13"/>
+        <polygon x10="7" y3="-89" y1="-103" y12="-103" x12="11" antialias="false" x7="4" y8="-86" x2="-11" x13="-10" y4="-86" x11="11" x9="7" y2="-89" y6="-84" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-11" x4="-7" x6="-4" x8="4" y5="-86" x3="-7" y10="-89" y7="-84" y13="-103" x5="-4" y11="-89" y9="-86"/>
+        <polygon x10="7" y3="89" y1="103" y12="89" x12="11" antialias="false" x7="-4" y8="84" x2="-11" x13="11" y4="89" x11="7" x9="4" y2="103" y6="86" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="11" x4="-7" x6="-4" x8="4" y5="86" x3="-11" y10="86" y7="84" y13="103" x5="-7" y11="89" y9="86"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="260" antialias="false" y="-130" width="60" x="-30"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" start="90" antialias="true" angle="90" y="68" width="4" x="-27"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" height="4" start="0" antialias="true" angle="90" y="68" width="4" x="23"/>
+        <terminal orientation="s" y="100" x="0"/>
+        <terminal orientation="n" y="-100" x="0"/>
+    </description>
+</definition>

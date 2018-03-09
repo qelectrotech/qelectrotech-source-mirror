@@ -1,0 +1,39 @@
+<definition hotspot_x="35" link_type="simple" version="0.70" height="270" hotspot_y="135" type="element" orientation="dyyy" width="70">
+    <uuid uuid="{66ba5ec7-c189-4c8e-a6c9-ce7d315a75e3}"/>
+    <names>
+        <name lang="fr">Bosch Rexroth SLC-3-CPU000300 ;Safe Logic Compact, module CPU de sécurité avec interfaces RS232 et FlexBus, tension d'alim. 24VDC</name>
+        <name lang="de">Bosch Rexroth SLC-3-CPU000300 Safe Logic Compact, Sicherheits-CPU Modul mit RS232 und FlexBus Schnittstellen, Betriebsspannung 24VDC</name>
+        <name lang="en">Bosch Rexroth SLC-3-CPU000300 Safe Logic Compact, safety CPU module with RS232 and FlexBus interfaces, supply voltage 24VDC</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="18" antialias="false" height="9" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-13" width="5"/>
+        <rect x="-28" antialias="false" height="27" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-105" width="56"/>
+        <circle x="-4" antialias="false" diameter="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-22"/>
+        <text x="-22" size="9" text="Rexroth" y="-54"/>
+        <circle x="-10" antialias="false" diameter="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-18"/>
+        <circle x="-6" antialias="false" diameter="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-18"/>
+        <text x="16" size="5" text="CV" y="-16"/>
+        <text x="-24" size="6" text="CPU0" y="22"/>
+        <input x="-25" size="9" tagg="label" text="_" rotate="true" y="43"/>
+        <rect x="18" antialias="false" height="9" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-38" width="5"/>
+        <text x="16" size="5" text="MS" y="-41"/>
+        <line length1="1.5" length2="1.5" y2="75" x1="-30" y1="75" x2="30" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <text x="-24" size="5" text="A1" y="-70"/>
+        <text x="-4" size="5" text="A2" y="-70"/>
+        <text x="-24" size="6" text="IndraControl" y="14"/>
+        <line length1="1.5" length2="1.5" y2="-75" x1="-30" y1="-75" x2="30" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <arc x="-27" start="180" antialias="true" height="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-72" width="4"/>
+        <line length1="1.5" length2="1.5" y2="-75" x1="-27" y1="-70" x2="-27" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <line length1="1.5" length2="1.5" y2="-70" x1="7" y1="-75" x2="7" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <arc x="3" start="270" antialias="true" height="4" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-72" width="4"/>
+        <line length1="1.5" length2="1.5" y2="-68" x1="5" y1="-68" x2="-25" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none"/>
+        <rect x="-28" antialias="false" height="27" style="line-style:normal;line-weight:thin;filling:none;color:black" y="78" width="56"/>
+        <rect x="-28" antialias="false" height="22" style="line-style:normal;line-weight:thin;filling:none;color:black" y="105" width="56"/>
+        <polygon x4="-30" y2="-130" x1="28" y1="-130" x2="30" y4="130" antialias="false" y5="-130" x3="30" y6="-130" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-30" y3="130" x6="-28" closed="false"/>
+        <circle x="-14" antialias="true" diameter="14" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-28"/>
+        <circle x="-12" antialias="false" diameter="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-22"/>
+    </description>
+</definition>
