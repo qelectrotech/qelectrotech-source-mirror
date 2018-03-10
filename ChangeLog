@@ -1,5 +1,23 @@
+====== ChangeLog from 0.6 to 0.7 ======
+
+* conductors can now be drawn with two colors.
+* The code for the resize handles has been almost completely redesigned.
+* It is now possible to add a text field to an element directly from the diagram.
+* Element text item with are now converted to dynamic element text item.
+* User can export / import the configuration of the texts and texts group of an element.
+* Element editor : element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
+* Element editor : it is no longer required to have a text field, for save the edited element.
+* Fix crash occured by the conductor and shape "ghost".
+* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
+Possiblility to overide defaut settings by adding in QElectroTech.conf
+* Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
+* improve High-DPI support on Windows plateform.
+* DXF export : fix some double items in dxf file.
+* DXF export : add some colors for basic shapes inside dxf.
+*
+
 ====== ChangeLog from 0.5 to 0.6 ======
-In the official collection, there are now 4081 elements, and 539 categoris for a total of 4620 files
+In the official collection, there are now 4106 elements, and 539 categoris for a total of 4645 files
 
 * Improved performance, added multithreading to speed up the loading of items when launching QET.
 * RAM consumption has been considerably reduced.
@@ -16,6 +34,11 @@ In the official collection, there are now 4081 elements, and 539 categoris for a
 * In the panel left split the view into ￼a several docks.
 * ￼High-DPI support (Qt 5.6.0)
 * new python plugin to generate terminal block.
+* Windows packages are now created on a Debian operating system using cross-compilation and targeted to make executable binary files for these operating systems. 
+This technical evolution allows a significant time saving during the creation of the packages. And we can provide also in the same time Windows XP and Vista packages by cross-compil with Qt 5.7.1 environment
+* The Mac OS X executable binary files are created on a virtual environment, moved compiler to latest LLVM clan version, improved dmg packages with added Info.plist.
+* An annoying memory leak has been found and solved. Afters hours of use, some users noticed that the RAM consumption growed steadily, up to 10GB or more. This problem is now solved.
+
 
 
 ====== ChangeLog from 0.4 to 0.5 ======
