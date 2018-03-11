@@ -25,6 +25,7 @@
 #include "diagramposition.h"
 #include "diagramcontent.h"
 #include "dynamicelementtextitem.h"
+#include "partdynamictextfield.h"
 
 /**
 	Constructeur de la classe CustomElement. Permet d'instancier un element
