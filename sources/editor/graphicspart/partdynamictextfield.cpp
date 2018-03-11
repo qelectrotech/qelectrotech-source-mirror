@@ -277,6 +277,8 @@ QString PartDynamicTextField::infoName() const{
 void PartDynamicTextField::setCompositeText(const QString &text)
 {
 	m_composite_text = text;
+	if(elementScene())
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementInformation()));
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -483,9 +485,11 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
  */
 void PartDynamicTextField::elementInfoChanged()
 {
+	if(!elementScene())
+		return;
+	
 	if(m_text_from == DynamicElementTextItem::ElementInfo)
-	{
-		DiagramContext dc = elementScene()->elementInformation();
-		setPlainText(dc.value(m_info_name).toString());
-	}
+		setPlainText(elementScene()->elementInformation().value(m_info_name).toString());
+	else if (m_text_from == DynamicElementTextItem::CompositeText && elementScene())
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementInformation()));
 }

@@ -19,6 +19,19 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	setUpComboBox();
 }
 
+CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) :
+	QDialog(parent),
+	ui(new Ui::CompositeTextEditDialog)
+{
+	ui->setupUi(this);
+	m_default_text = text;
+	ui->m_plain_text_edit->setPlainText(m_default_text);
+#if QT_VERSION >= 0x050300
+	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
+#endif
+	setUpComboBox();
+}
+
 CompositeTextEditDialog::~CompositeTextEditDialog() {
 	delete ui;
 }
@@ -38,34 +51,42 @@ QString CompositeTextEditDialog::plainText() const {
 void CompositeTextEditDialog::setUpComboBox()
 {
 	QStringList qstrl;
-	if(m_text->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
+	
+	if(m_text)
 	{
-		qstrl << "label";
-		
-		if(!m_text->m_watched_conductor.isNull())
+		if(m_text->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
 		{
-			Conductor *cond = m_text->m_watched_conductor.data();
-			if (!cond->properties().m_function.isEmpty())
-				qstrl << "function";
-			if(!cond->properties().m_tension_protocol.isEmpty())
-				qstrl << "tension-protocol";
+			qstrl << "label";
+			
+			if(!m_text->m_watched_conductor.isNull())
+			{
+				Conductor *cond = m_text->m_watched_conductor.data();
+				if (!cond->properties().m_function.isEmpty())
+					qstrl << "function";
+				if(!cond->properties().m_tension_protocol.isEmpty())
+					qstrl << "tension-protocol";
+			}
+		}
+		else
+		{
+			Element *elmt = m_text->elementUseForInfo();
+			if(!elmt)
+				return;
+			
+			QStringList info_list = QETApp::elementInfoKeys();
+			info_list.removeAll("formula"); //No need to have formula
+			DiagramContext dc = elmt->elementInformations();
+			
+			for(QString info : info_list)
+			{
+				if(dc.contains(info))
+					qstrl << info;
+			}
 		}
 	}
 	else
 	{
-		Element *elmt = m_text->elementUseForInfo();
-		if(!elmt)
-			return;
-		
-		QStringList info_list = QETApp::elementInfoKeys();
-		info_list.removeAll("formula"); //No need to have formula
-		DiagramContext dc = elmt->elementInformations();
-		
-		for(QString info : info_list)
-		{
-			if(dc.contains(info))
-				qstrl << info;
-		}
+		qstrl = QETApp::elementInfoKeys();
 	}
 	
 		//We use a QMap because the keys of the map are sorted, then no matter the curent local,

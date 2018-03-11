@@ -22,6 +22,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "qetelementeditor.h"
 #include "qetapp.h"
+#include "compositetexteditdialog.h"
 
 #include <QPointer>
 #include <QGraphicsItem>
@@ -275,5 +276,19 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index)
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "textFrom", m_text_field.data()->textFrom(), tf);
 		undo->setText(tr("Modifier la source de texte, d'un texte"));
 		undoStack().push(undo);
+	}
+}
+
+void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
+{
+	CompositeTextEditDialog ctd(m_text_field.data()->compositeText(), this);
+	if(ctd.exec())
+	{
+		QString ct = ctd.plainText();
+		if(ct != m_text_field.data()->compositeText())
+		{
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "compositeText", m_text_field.data()->compositeText(), ctd.plainText());
+			undoStack().push(undo);
+		}
 	}
 }

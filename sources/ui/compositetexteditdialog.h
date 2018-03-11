@@ -22,6 +22,7 @@ class CompositeTextEditDialog : public QDialog
 	
 	public:
 		explicit CompositeTextEditDialog(DynamicElementTextItem *text, QWidget *parent = nullptr);
+		explicit CompositeTextEditDialog(QString text, QWidget *parent = nullptr);
 		~CompositeTextEditDialog() override;
 		
 		QString plainText() const;
