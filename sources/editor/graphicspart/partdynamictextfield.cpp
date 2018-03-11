@@ -187,33 +187,33 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 	if(dom_element.tagName() != "input")
 		return;
 	
-		setFont(QETApp::diagramTextsFont(dom_element.attribute("size", QString::number(9)).toInt()));
-		
-		if(dom_element.attribute("tagg", "none") == "none")
-		{
-			setTextFrom(DynamicElementTextItem::UserText);
-			setText(dom_element.attribute("text", "_"));
-		}
-		else
-		{
-			setTextFrom(DynamicElementTextItem::ElementInfo);
-			setInfoName(dom_element.attribute("tagg", "label"));
-		}
-
-		QGraphicsTextItem::setRotation(dom_element.attribute("rotation", "0").toDouble());
-		
-			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
-			//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
-			//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
-		QMatrix matrix;
-			//First make the rotation
-		matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
-		QPointF pos = matrix.map(QPointF(0, -boundingRect().height()/2));
-		matrix.reset();
-			//Second translate to the pos
-		matrix.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
-						 dom_element.attribute("y", QString::number(0)).toDouble());
-		QGraphicsTextItem::setPos(matrix.map(pos));
+	setFont(QETApp::diagramTextsFont(dom_element.attribute("size", QString::number(9)).toInt()));
+	
+	if(dom_element.attribute("tagg", "none") == "none")
+	{
+		setTextFrom(DynamicElementTextItem::UserText);
+		setText(dom_element.attribute("text", "_"));
+	}
+	else
+	{
+		setTextFrom(DynamicElementTextItem::ElementInfo);
+		setInfoName(dom_element.attribute("tagg", "label"));
+	}
+	
+	QGraphicsTextItem::setRotation(dom_element.attribute("rotation", "0").toDouble());
+	
+	//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
+	//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
+	//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
+	QMatrix matrix;
+	//First make the rotation
+	matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
+	QPointF pos = matrix.map(QPointF(0, -boundingRect().height()/2));
+	matrix.reset();
+	//Second translate to the pos
+	matrix.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
+					 dom_element.attribute("y", QString::number(0)).toDouble());
+	QGraphicsTextItem::setPos(matrix.map(pos));
 }
 
 /**
