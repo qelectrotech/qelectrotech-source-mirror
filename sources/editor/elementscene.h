@@ -63,41 +63,30 @@ class ElementScene : public QGraphicsScene
 	
 		// attributes
 	private:
-			/// List of localized names
-		NamesList m_names_list;
-			/// Extra informations
-		QString m_informations;
-			/// element type
-		QString m_elmt_type;
-			/// element kind info
+		NamesList m_names_list; /// List of localized names
+		QString m_informations; /// Extra informations
+		QString m_elmt_type; /// element type
 		DiagramContext m_elmt_kindInfo,
-					   m_elmt_information;
-			/// QGraphicsItem manager
+					   m_elmt_information; /// element kind info
 		QGIManager m_qgi_manager;
-			/// Undo stack
 		QUndoStack m_undo_stack;
-	
-			/// Variables related to drawing
+
 		ESEventInterface *m_event_interface = nullptr;
 		Behavior m_behavior;
 		QETElementEditor *m_element_editor = nullptr;
 	
-			/// Variables to manage the paste area on the scene
 		QGraphicsRectItem *m_paste_area;
 		QRectF m_defined_paste_area;
-	
-			/// Variables to handle copy/paste with offset
+		
 		QString m_last_copied;
 	
 			/// Decorator item displayed when at least one item is selected
 		ElementPrimitiveDecorator *m_decorator = nullptr;
+
+		int m_x_grid,
+			m_y_grid;
 	
-			///< Size of the horizontal grid step
-		int m_x_grid;
-			///< Size of the vertical grid step
-		int m_y_grid;
-	
-	// methods
+		// methods
 	public:
 		void setEventInterface (ESEventInterface *event_interface);
 		void clearEventInterface();
@@ -109,6 +98,7 @@ class ElementScene : public QGraphicsScene
 		void setInformations(const QString &);
 		QString elementType () const {return m_elmt_type;}
 		DiagramContext elementKindInfo () const {return m_elmt_kindInfo;}
+		DiagramContext elementInformation() const {return m_elmt_information;}
 		virtual int xGrid() const;
 		virtual int yGrid() const;
 		virtual void setGrid(int, int);
@@ -129,6 +119,7 @@ class ElementScene : public QGraphicsScene
 		void cut();
 		void copy();
 		QETElementEditor* editor() const;
+		void setElementInfo(DiagramContext dc);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
@@ -169,16 +160,17 @@ class ElementScene : public QGraphicsScene
 		void stackAction(ElementEditionCommand *);
 	
 	signals:
-		/// Signal emitted after one or several parts were added
+			/// Signal emitted after one or several parts were added
 		void partsAdded();
-		/// Signal emitted after one or several parts were removed
+			/// Signal emitted after one or several parts were removed
 		void partsRemoved();
-		/// Signal emitted when the zValue of one or several parts change
+			/// Signal emitted when the zValue of one or several parts change
 		void partsZValueChanged();
-		/// Signal emitted when users have defined the copy/paste area
+			/// Signal emitted when users have defined the copy/paste area
 		void pasteAreaDefined(const QRectF &);
-		/// Signal emitted when need zoomFit
+			/// Signal emitted when need zoomFit
 		void needZoomFit();
+		void elementInfoChanged();
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)

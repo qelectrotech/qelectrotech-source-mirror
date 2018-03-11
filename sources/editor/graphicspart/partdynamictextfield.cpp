@@ -54,6 +54,11 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	setTextFrom(DynamicElementTextItem::UserText);
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
 	
+		//Option when text is displayed in multiple line
+	QTextOption option = document()->defaultTextOption();
+	option.setAlignment(Qt::AlignHCenter);
+	option.setWrapMode(QTextOption::WordWrap);
+	document()->setDefaultTextOption(option);
 }
 
 QString PartDynamicTextField::name() const
@@ -106,6 +111,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
+	root_element.setAttribute("text_width", QString::number(m_text_width));
 	
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
@@ -129,14 +135,6 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 		QDomElement dom_comp_text = dom_doc.createElement("composite_text");
 		dom_comp_text.appendChild(dom_doc.createTextNode(m_composite_text));
 		root_element.appendChild(dom_comp_text);
-	}
-    
-		//tagg
-	if (!m_tagg.isEmpty())
-	{
-		QDomElement dom_tagg = dom_doc.createElement("tagg");
-		dom_tagg.appendChild(dom_doc.createTextNode(m_tagg));
-		root_element.appendChild(dom_tagg);
 	}
 	
 		//Color
@@ -167,7 +165,8 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
-	m_frame = dom_elmt.attribute("frame", "false") == "true"? true : false;
+	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
+	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
@@ -189,11 +188,6 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_comp_text = dom_elmt.firstChildElement("composite_text");
 	if(!dom_comp_text.isNull())
 		m_composite_text = dom_comp_text.text();
-    
-		//tagg
-    QDomElement dom_tagg = dom_elmt.firstChildElement("tagg");
-	if (!dom_tagg.isNull())
-		m_tagg = dom_tagg.text();
 
 		//Color
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
@@ -247,25 +241,6 @@ void PartDynamicTextField::setTextFrom(DynamicElementTextItem::TextFrom text_fro
 {
 	m_text_from = text_from;
 	emit textFromChanged(m_text_from);
-}
-
-/**
- * @brief PartDynamicTextField::tagg
- * @return the tagg of this text
- */
-QString PartDynamicTextField::tagg() const {
-	return m_tagg;
-}
-
-/**
- * @brief PartDynamicTextField::setTagg
- * set the taggof this text
- * @param tagg
- */
-void PartDynamicTextField::setTagg(const QString &tagg)
-{
-	m_tagg = tagg;
-	emit taggChanged(m_tagg);
 }
 
 /**
@@ -364,6 +339,36 @@ bool PartDynamicTextField::frame() const
 	return m_frame;
 }
 
+void PartDynamicTextField::setTextWidth(qreal width)
+{
+	this->document()->setTextWidth(width);
+	
+		//Adjust the width, to ideal width if needed
+	if(width > 0 && document()->size().width() > width)
+		document()->setTextWidth(document()->idealWidth());
+
+	m_text_width = document()->textWidth();
+	emit textWidthChanged(m_text_width);
+}
+
+void PartDynamicTextField::setPlainText(const QString &text)
+{
+	QGraphicsTextItem::setPlainText(text);
+	
+		//User define a text width
+	if(m_text_width > 0)
+	{
+		if(document()->size().width() > m_text_width)
+		{
+			document()->setTextWidth(m_text_width);
+			if(document()->size().width() > m_text_width)
+			{
+				document()->setTextWidth(document()->idealWidth());
+			}
+		}
+	}
+}
+
 /**
  * @brief PartDynamicTextField::mouseMoveEvent
  * @param event
@@ -417,7 +422,16 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 QVariant PartDynamicTextField::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged)
+	{
 		updateCurrentPartEditor();
+		if(change == QGraphicsItem::ItemSceneHasChanged &&
+		   m_first_add &&
+		   elementScene() != nullptr)
+		{
+				connect(elementScene(), &ElementScene::elementInfoChanged, this, &PartDynamicTextField::elementInfoChanged);
+				m_first_add = false;
+		}
+	}
 	else if ((change == QGraphicsItem::ItemSelectedHasChanged) && (value.toBool() == true))
 		updateCurrentPartEditor();
 	
@@ -441,25 +455,45 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 			if(w > 2.5)
 				w = 2.5;
 		}
-		
+
 		QPen pen;
 		pen.setColor(color());
 		pen.setWidthF(w);
 		painter->setPen(pen);
 		painter->setRenderHint(QPainter::Antialiasing);
 		
-			//Get the bounding rectangle of the text 
-		QRectF text_bounding = painter->boundingRect(boundingRect(), toPlainText());
-			//Center text_bounding in the bounding rect of this
-		text_bounding.moveTop((boundingRect().height()-text_bounding.height())/2);
-		text_bounding.moveLeft((boundingRect().width() - text_bounding.width())/2);
-			//adjust only for better visual
-		text_bounding.adjust(-2,0,2,0); 
+			//Get the bounding rectangle of the text
+		QSizeF size = document()->size();
+		size.setWidth(document()->idealWidth());
+			//Remove the margin. Size is exactly the bounding rect of the text
+		size.rheight() -= document()->documentMargin()*2;
+		size.rwidth() -= document()->documentMargin()*2;
+			//Add a little margin only for a better visual;
+		size.rheight() += 2;
+		size.rwidth() += 2;
+		
+			//The pos of the rect
+		QPointF pos = boundingRect().center();
+		pos.rx() -= size.width()/2;
+		pos.ry() -= size.height()/2;
 		
 			//Adjust the rounding of the rectangle according to the size of the font
 		qreal ro = (qreal)fontSize()/3;
-		painter->drawRoundedRect(text_bounding, ro, ro);
+		painter->drawRoundedRect(QRectF(pos, size), ro, ro);
 		
 		painter->restore();
+	}
+}
+
+/**
+ * @brief PartDynamicTextField::elementInfoChanged
+ * Used to up to date this text field, when the element information (see elementScene) changed
+ */
+void PartDynamicTextField::elementInfoChanged()
+{
+	if(m_text_from == DynamicElementTextItem::ElementInfo)
+	{
+		DiagramContext dc = elementScene()->elementInformation();
+		setPlainText(dc.value(m_info_name).toString());
 	}
 }

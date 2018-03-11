@@ -33,7 +33,6 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 {
 	Q_OBJECT
 	
-	Q_PROPERTY(QString tagg READ tagg WRITE setTagg NOTIFY taggChanged)
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 	Q_PROPERTY(DynamicElementTextItem::TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
@@ -41,6 +40,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
+	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	
 	public:
 		static bool canImportFromTextField(const QDomElement &dom_element);
@@ -59,6 +59,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void colorChanged(QColor color);
 		void fontSizeChanged(int size);
 		void frameChanged(bool frame);
+		void textWidthChanged(qreal width);
 	
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -68,6 +69,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		
 		QString name() const override;
 		QString xmlName() const override;
+		static QString xmlTaggName() {return QString("dynamic_text");}
 		bool isUseless() const override {return false;}
 		QRectF sceneGeometricRect() const override {return sceneBoundingRect();}
 		void startUserTransformation(const QRectF &initial_selection_rect) override;
@@ -79,8 +81,6 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
-		QString tagg() const;
-		void setTagg(const QString &tagg);
 		QString text() const;
 		void setText(const QString &text);
 		void setInfoName(const QString &info_name);
@@ -93,6 +93,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
         int fontSize()const;
 		void setFrame(bool frame);
 		bool frame() const;
+		void setTextWidth(qreal width);
+		void setPlainText(const QString &text);
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -102,17 +104,19 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		
 	private:
+		void elementInfoChanged();
+		
+	private:
 		QPointF m_origine_pos,
 				m_saved_point;
-		QString m_tagg,
-				m_text,
+		QString m_text,
 				m_info_name,
 				m_composite_text;
-		
 		DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
 		QUuid m_uuid;
-		
-		bool m_frame = false;
+		bool m_frame = false,
+			 m_first_add = true;
+		qreal m_text_width = -1;
 };
 
 #endif // PARTDYNAMICTEXTFIELD_H

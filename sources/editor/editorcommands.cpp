@@ -604,16 +604,18 @@ ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString ty
 
 ChangePropertiesCommand::~ChangePropertiesCommand() {}
 
-void ChangePropertiesCommand::undo() {
+void ChangePropertiesCommand::undo()
+{
 	m_scene->m_elmt_type = m_type.first();
 	m_scene->m_elmt_kindInfo = m_kind_info.first();
-	m_scene->m_elmt_information = m_elmt_info.first();
+	m_scene->setElementInfo(m_elmt_info.first());
 }
 
-void ChangePropertiesCommand::redo() {
+void ChangePropertiesCommand::redo()
+{
 	m_scene->m_elmt_type = m_type.last();
 	m_scene->m_elmt_kindInfo = m_kind_info.last();
-	m_scene->m_elmt_information = m_elmt_info.last();
+	m_scene->setElementInfo(m_elmt_info.last());
 }
 
 

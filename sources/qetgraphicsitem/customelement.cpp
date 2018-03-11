@@ -192,7 +192,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 					++ parsed_elements_count;
 
 					QString current_tag = qde.tagName();
-					if (current_tag != "terminal" && current_tag != "input" && current_tag != DynamicElementTextItem::xmlTaggName())
+					if (current_tag != "terminal" && current_tag != "input" && current_tag != PartDynamicTextField::xmlTaggName())
 					{
 						forbid_antialiasing = true;
 						parseElement(qde, low_zoom_qp, false);

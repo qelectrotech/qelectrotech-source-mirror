@@ -532,6 +532,15 @@ QETElementEditor* ElementScene::editor() const {
 	return m_element_editor;
 }
 
+void ElementScene::setElementInfo(DiagramContext dc)
+{
+	if(m_elmt_information != dc)
+	{
+		m_elmt_information = dc;
+		emit elementInfoChanged();
+	}
+}
+
 /**
  * @brief ElementScene::slot_select
  * Select the item in content, every others items in the scene are deselected

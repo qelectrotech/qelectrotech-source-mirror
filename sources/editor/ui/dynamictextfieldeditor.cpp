@@ -20,6 +20,8 @@
 #include "customelementpart.h"
 #include "partdynamictextfield.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetelementeditor.h"
+#include "qetapp.h"
 
 #include <QPointer>
 #include <QGraphicsItem>
@@ -34,6 +36,7 @@ DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor, PartDyn
 	ui->m_elmt_info_cb->setDisabled(true);
 	if(text_field)
 		setPart(text_field);
+	fillInfoComboBox();
 }
 
 DynamicTextFieldEditor::~DynamicTextFieldEditor()
@@ -75,6 +78,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged, [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged, [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,    [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,[this]() {this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged, [this]() {this->updateForm();});
 	
 	return true;
@@ -99,8 +103,27 @@ void DynamicTextFieldEditor::updateForm()
 		ui->m_frame_cb->setChecked(m_text_field.data()->frame());
 		ui->m_user_text_le->setText(m_text_field.data()->text());
 		ui->m_size_sb->setValue(m_text_field.data()->fontSize());
-		ui->m_tagg_le->setText(m_text_field.data()->tagg());
 		setColorPushButton(m_text_field.data()->color());
+		ui->m_width_sb->setValue(m_text_field.data()->textWidth());
+		
+		switch (m_text_field.data()->textFrom())
+		{
+			case DynamicElementTextItem::UserText:
+				ui->m_text_from_cb->setCurrentIndex(0);
+				break;
+			case DynamicElementTextItem::ElementInfo:
+			{
+				ui->m_text_from_cb->setCurrentIndex(1);
+				ui->m_elmt_info_cb->setCurrentIndex(ui->m_elmt_info_cb->findData(m_text_field.data()->infoName()));
+			}
+				break;
+			case DynamicElementTextItem::CompositeText:
+				ui->m_text_from_cb->setCurrentIndex(2);
+			default:
+				break;
+		}
+
+		on_m_text_from_cb_activated(ui->m_text_from_cb->currentIndex()); //For enable the good widget
 	}
 }
 
@@ -109,6 +132,32 @@ void DynamicTextFieldEditor::setColorPushButton(QColor color)
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
 	ui->m_color_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
+}
+
+/**
+ * @brief DynamicTextFieldEditor::fillInfoComboBox
+ * Fill the combo box "element information"
+ */
+void DynamicTextFieldEditor::fillInfoComboBox()
+{
+	ui->m_elmt_info_cb->clear();
+	
+	QStringList strl;
+	QString type = elementEditor()->elementScene()->elementType();
+	
+	if(type.contains("report"))
+		strl << "function" << "tension-protocol";
+	else
+		strl = QETApp::elementInfoKeys();
+	
+		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
+		//the value of the combo box are always alphabetically sorted
+	QMap <QString, QString> info_map;
+	for(QString str : strl)
+		info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+
+	for (QString key : info_map.keys())
+		ui->m_elmt_info_cb->addItem(key, info_map.value(key));
 }
 
 void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
@@ -171,6 +220,60 @@ void DynamicTextFieldEditor::on_m_frame_cb_clicked()
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "frame", m_text_field.data()->frame(), frame);
 		undo->setText(tr("Modifier le cadre d'un champ texte"));
+		undoStack().push(undo);
+	}
+}
+
+void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
+{
+    qreal width = (qreal)ui->m_width_sb->value();
+	
+	if(width != m_text_field.data()->textWidth())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "textWidth", m_text_field.data()->textWidth(), width);
+		undo->setText(tr("Modifier la largeur d'un texte"));
+		undoStack().push(undo);
+	}
+}
+
+void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1)
+{
+    Q_UNUSED(arg1)
+	
+	QString info = ui->m_elmt_info_cb->currentData().toString();
+	
+	if(info != m_text_field.data()->infoName())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "infoName", m_text_field.data()->infoName(), info);
+		undo->setText(tr("Modifier l'information d'un texte"));
+		undoStack().push(undo);
+		
+		m_text_field.data()->setPlainText(elementEditor()->elementScene()->elementInformation().value(m_text_field.data()->infoName()).toString());
+	}
+}
+
+void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index)
+{
+	ui->m_user_text_le->setDisabled(true);
+	ui->m_elmt_info_cb->setDisabled(true);
+	ui->m_composite_text_pb->setDisabled(true);
+    
+	if(index == 0)
+		ui->m_user_text_le->setEnabled(true);
+	else if (index == 1)
+		ui->m_elmt_info_cb->setEnabled(true);
+	else
+		ui->m_composite_text_pb->setEnabled(true);
+	
+	DynamicElementTextItem::TextFrom tf;
+	if(index == 0) tf = DynamicElementTextItem::UserText;
+	else if(index == 1) tf = DynamicElementTextItem::ElementInfo;
+	else tf = DynamicElementTextItem::CompositeText;
+	
+	if(tf != m_text_field.data()->textFrom())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "textFrom", m_text_field.data()->textFrom(), tf);
+		undo->setText(tr("Modifier la source de texte, d'un texte"));
 		undoStack().push(undo);
 	}
 }
