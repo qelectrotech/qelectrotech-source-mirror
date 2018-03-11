@@ -43,9 +43,6 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	
 	public:
-		static bool canImportFromTextField(const QDomElement &dom_element);
-	
-	public:
 			///PROPERTY
 		void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
 		QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}

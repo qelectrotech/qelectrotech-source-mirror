@@ -25,24 +25,6 @@
 #include <QColor>
 #include <QMatrix>
 
-/**
- * @brief PartDynamicTextField::PartDynamicTextField
- * Return if a dynamic text field can import information from the xml definition of a text field
- * @param editor
- * @param parent
- */
-bool PartDynamicTextField::canImportFromTextField(const QDomElement &dom_element)
-{
-	if(dom_element.tagName() != "input")
-		return false;
-	
-	QString tagg = dom_element.attribute("tagg", "none");
-	if(tagg == "none")
-		return true;
-	else
-		return false;
-}
-
 PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
@@ -202,11 +184,22 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
  */
 void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 {
-	if(canImportFromTextField(dom_element))
-	{
+	if(dom_element.tagName() != "input")
+		return;
+	
 		setFont(QETApp::diagramTextsFont(dom_element.attribute("size", QString::number(9)).toInt()));
-		setTextFrom(DynamicElementTextItem::UserText);
-		setText(dom_element.attribute("text", "_"));
+		
+		if(dom_element.attribute("tagg", "none") == "none")
+		{
+			setTextFrom(DynamicElementTextItem::UserText);
+			setText(dom_element.attribute("text", "_"));
+		}
+		else
+		{
+			setTextFrom(DynamicElementTextItem::ElementInfo);
+			setInfoName(dom_element.attribute("tagg", "label"));
+		}
+
 		QGraphicsTextItem::setRotation(dom_element.attribute("rotation", "0").toDouble());
 		
 			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
@@ -221,7 +214,6 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 		matrix.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
 						 dom_element.attribute("y", QString::number(0)).toDouble());
 		QGraphicsTextItem::setPos(matrix.map(pos));
-	}
 }
 
 /**
