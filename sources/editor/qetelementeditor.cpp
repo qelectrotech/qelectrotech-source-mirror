@@ -36,9 +36,7 @@
 #include "rectangleeditor.h"
 #include "terminaleditor.h"
 #include "texteditor.h"
-#include "textfieldeditor.h"
 #include "partterminal.h"
-#include "parttextfield.h"
 #include "styleeditor.h"
 #include "dynamictextfieldeditor.h"
 
@@ -48,7 +46,6 @@
 #include "eseventaddpolygon.h"
 #include "eseventaddarc.h"
 #include "eseventaddtext.h"
-#include "eseventaddtextfield.h"
 #include "eseventaddterminal.h"
 #include "eseventadddynamictextfield.h"
 
@@ -288,7 +285,6 @@ void QETElementEditor::setupActions() {
 	QAction *add_text      = new QAction(QET::Icons::PartText,      tr("Ajouter du texte"),          parts);
 	QAction *add_arc       = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),  parts);
 	QAction *add_terminal  = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),         parts);
-	QAction *add_textfield = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"), parts);
 	QAction *add_dynamic_text_field = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ texte dynamique"), parts);
 
 	foreach (QAction *action, parts -> actions()) action -> setCheckable(true);
@@ -300,7 +296,6 @@ void QETElementEditor::setupActions() {
 	connect(add_text,      SIGNAL(triggered()), this, SLOT(addText()      ));
 	connect(add_arc,       SIGNAL(triggered()), this, SLOT(addArc()       ));
 	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(addTerminal()  ));
-	connect(add_textfield, SIGNAL(triggered()), this, SLOT(addTextField() ));
 	connect(add_dynamic_text_field, &QAction::triggered, this, &QETElementEditor::addDynamicTextField);
 
 	
@@ -520,7 +515,6 @@ void QETElementEditor::setupInterface() {
 	m_editors["rect"]      = new RectangleEditor(this);
 	m_editors["terminal"]  = new TerminalEditor(this);
 	m_editors["text"]      = new TextEditor(this);
-	m_editors["input"]     = new TextFieldEditor(this);
 	m_editors["style"]     = new StyleEditor(this);
 	m_editors["dynamic_text"] = new DynamicTextFieldEditor(this);
 	
@@ -688,7 +682,7 @@ void QETElementEditor::slot_updateInformations()
 /**
  * @brief QETElementEditor::checkElement
  * Do several check about element.
- * If error is occurred return false
+ * If error is occured return false
  */
 bool QETElementEditor::checkElement()
 {
@@ -714,15 +708,13 @@ bool QETElementEditor::checkElement()
 		/// Check folio report element
 	if (m_elmt_scene -> elementType().contains("report"))
 	{
-		int text =0, terminal =0;
+		int terminal =0;
 
 		foreach(QGraphicsItem *qgi, m_elmt_scene->items())
-		{
-			if		(qgraphicsitem_cast<PartTerminal *>(qgi))  terminal ++;
-			else if (qgraphicsitem_cast<PartTextField *>(qgi)) text ++;
-		}
+			if (qgraphicsitem_cast<PartTerminal *>(qgi)) 
+				terminal ++;
 
-			///Error #2 folio report must have only one terminal
+			///Error folio report must have only one terminal
 		if (terminal != 1)
 		{
 			errors << qMakePair (tr("Absence de borne"),
@@ -988,14 +980,6 @@ void QETElementEditor::addText() {
 }
 
 /**
- * @brief QETElementEditor::addTextField
- * Set text field creation interface to scene
- */
-void QETElementEditor::addTextField() {
-	m_elmt_scene -> setEventInterface(new ESEventAddTextField(m_elmt_scene));
-}
-
-/**
  * @brief QETElementEditor::addTerminal
  * Set terminal creation interface to scene
  */
@@ -1135,7 +1119,7 @@ void QETElementEditor::slot_reload()
 /**
  * @brief QETElementEditor::slot_save
  * Save the current editing element.
- * If the filepath or location is unknown, use save_as instead
+ * If the filepath or location is unknow, use save_as instead
  * @return true if save with success
  */
 bool QETElementEditor::slot_save()

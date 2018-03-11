@@ -131,7 +131,6 @@ class QETElementEditor : public QETMainWindow {
 		void addPolygon();
 		void addArc();
 		void addText();
-		void addTextField();
 		void addTerminal();
 		void addDynamicTextField();
 		void UncheckAddPrimitive();

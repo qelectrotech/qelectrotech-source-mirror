@@ -25,7 +25,6 @@
 #include "partpolygon.h"
 #include "partterminal.h"
 #include "parttext.h"
-#include "parttextfield.h"
 #include "partarc.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
@@ -442,7 +441,6 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 	foreach (QGraphicsItem *qgi, items()) {
 		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi->type() == QGraphicsRectItem::Type) continue;
-		if (qgi->type() == PartTextField::Type) continue;
 		if (qgi->type() == PartDynamicTextField::Type) continue;
 		if (CustomElementPart *cep = dynamic_cast <CustomElementPart*> (qgi)) {
 			esgr |= cep -> sceneGeometricRect();
