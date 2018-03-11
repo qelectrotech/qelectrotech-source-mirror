@@ -242,7 +242,7 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 
 /**
 	@param file_path Path of the template file to edit.
-	@return false if a problem occured while opening the template, true otherwise.
+	@return false if a problem occurred while opening the template, true otherwise.
 */
 bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 	// get title block template object from the file, edit it
@@ -268,7 +268,7 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 
 /**
 	@param tbt Title block template to be edited
-	@return false if a problem occured while opening the template, true otherwise.
+	@return false if a problem occurred while opening the template, true otherwise.
 */
 bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt) {
 	if (!tbt) return(false);
@@ -277,7 +277,7 @@ bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt) {
 
 /**
 	@param tbt Title block template to be directly edited
-	@return false if a problem occured while opening the template, true otherwise.
+	@return false if a problem occurred while opening the template, true otherwise.
 */
 bool QETTitleBlockTemplateEditor::edit(TitleBlockTemplate *tbt) {
 	if (!tbt) return(false);

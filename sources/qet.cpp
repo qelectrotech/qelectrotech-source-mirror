@@ -554,7 +554,7 @@ QString QET::titleBlockColumnLengthToString(const TitleBlockColumnLength  &icl) 
 	@param filepath Path to the file to be written
 	@param error_message If non-zero, will contain an error message explaining
 	what happened when this function returns false.
-	@return false if an error occured, true otherwise
+	@return false if an error occurred, true otherwise
 */
 bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message) {
 	QFile file(filepath);

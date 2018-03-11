@@ -229,7 +229,7 @@ QDomElement TitleBlockTemplatesProjectCollection::getTemplateXmlDescription(cons
 	existing one.
 	@param xml_elmt An \<titleblocktemplate\> XML element describing the
 	template. Its "name" attribute must equal to template_name.
-	@return false if a problem occured, true otherwise
+	@return false if a problem occurred, true otherwise
 */
 bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
 	// check basic stuff

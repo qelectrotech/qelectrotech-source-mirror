@@ -40,7 +40,7 @@ QDomElement QETXML::penToXml(QDomDocument &parent_document,QPen pen)
 		case Qt::DashDotLine    : style = "DashDotLine";    break;
 		case Qt::DashDotDotLine : style = "DashDotDotLine"; break;
 		case Qt::CustomDashLine : style = "CustomDashLine"; break;
-		default                 : style = "Unknow";         break;
+		default                 : style = "Unknown";         break;
 	}
 
 	element.setAttribute("style", style);
@@ -110,7 +110,7 @@ QDomElement QETXML::brushToXml(QDomDocument &parent_document, QBrush brush)
 		case Qt::BDiagPattern     : style = "BDiagPattern";     break;
 		case Qt::FDiagPattern     : style = "FDiagPattern";     break;
 		case Qt::DiagCrossPattern : style = "DiagCrossPattern"; break;
-		default                   : style = "Unknow";           break;
+		default                   : style = "Unknown";           break;
 	}
 
 	element.setAttribute("style", style);
@@ -147,7 +147,7 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
 	else if (style == "BDiagPattern")     brush.setStyle(Qt::BDiagPattern);
 	else if (style == "FDiagPattern")     brush.setStyle(Qt::FDiagPattern);
 	else if (style == "DiagCrossPattern") brush.setStyle(Qt::DiagCrossPattern);
-	else if (style == "Unknow")           brush.setStyle(Qt::NoBrush);
+	else if (style == "Unknown")          brush.setStyle(Qt::NoBrush);
 
 	brush.setColor(QColor(element.attribute("color", "#000000")));
 	return brush;
@@ -230,7 +230,7 @@ QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &docume
  * @param xml_document : An XML document to be exported
  * @param file_path : Path to the file to be written
  * @param error_message : If non-zero, will contain an error message explaining what happened when this function returns false.
- * @return false if an error occured, true otherwise
+ * @return false if an error occurred, true otherwise
  */
 bool QETXML::writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message)
 {

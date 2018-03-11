@@ -957,7 +957,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	Integrate a title block template into this project.
 	@param src_tbt The location of the title block template to be integrated into this project
 	@param handler 
-	@return the name of the template after integration, or an empty QString if a problem occured.
+	@return the name of the template after integration, or an empty QString if a problem occurred.
 */
 QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
 	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &titleblocks_);

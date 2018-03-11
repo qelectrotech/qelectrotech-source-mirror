@@ -321,7 +321,7 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
  * @param parent : parent of the dir to create
  * @param name : name of directorie to create
  * @param name_list : translations of the directorie name
- * @return : ElementsLocation that represent the new directorie, location can be null if an error was occured
+ * @return : ElementsLocation that represent the new directorie, location can be null if an error was occurred
  */
 ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list)
 {
@@ -357,7 +357,7 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 			return created_dir;
 		}
 		else {
-			qDebug() << "ElementCollectionHandler::createDir : error was occured at creation of new directories in file system. ";
+			qDebug() << "ElementCollectionHandler::createDir : error was occurred at creation of new directories in file system. ";
 			return ElementsLocation();
 		}
 	}
@@ -367,7 +367,7 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 			return created_dir;
 		}
 		else {
-			qDebug() << "ElementCollectionHandler::createDir : error was occured at creation of new directories in embbeded collection.";
+			qDebug() << "ElementCollectionHandler::createDir : error was occurred at creation of new directories in embbeded collection.";
 			return ElementsLocation();
 		}
 	}

@@ -7,7 +7,7 @@
 * User can export / import the configuration of the texts and texts group of an element.
 * Element editor : element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
 * Element editor : it is no longer required to have a text field, for save the edited element.
-* Fix crash occured by the conductor and shape "ghost".
+* Fix crash occurred by the conductor and shape "ghost".
 * Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
 Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
