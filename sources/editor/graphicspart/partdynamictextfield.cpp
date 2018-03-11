@@ -232,6 +232,20 @@ DynamicElementTextItem::TextFrom PartDynamicTextField::textFrom() const {
 void PartDynamicTextField::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
 	m_text_from = text_from;
+	switch (m_text_from)
+	{
+		case DynamicElementTextItem::UserText:
+			setPlainText(m_text);
+			break;
+		case DynamicElementTextItem::ElementInfo:
+			setInfoName(m_info_name);
+			break;
+		case DynamicElementTextItem::CompositeText:
+			setCompositeText(m_composite_text);
+			break;
+		default:
+			break;
+	}
 	emit textFromChanged(m_text_from);
 }
 
@@ -258,6 +272,8 @@ void PartDynamicTextField::setText(const QString &text)
 void PartDynamicTextField::setInfoName(const QString &info_name)
 {
 	m_info_name = info_name;
+	if(m_text_from == DynamicElementTextItem::ElementInfo && elementScene())
+		setPlainText(elementScene()->elementInformation().value(m_info_name).toString());
 	emit infoNameChanged(m_info_name);
 }
 
@@ -277,7 +293,7 @@ QString PartDynamicTextField::infoName() const{
 void PartDynamicTextField::setCompositeText(const QString &text)
 {
 	m_composite_text = text;
-	if(elementScene())
+	if(m_text_from == DynamicElementTextItem::CompositeText && elementScene())
 		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementInformation()));
 	emit compositeTextChanged(m_composite_text);
 }
