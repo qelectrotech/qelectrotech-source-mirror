@@ -1,21 +1,21 @@
-<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="4" width="30" hotspot_x="11">
-    <uuid uuid="{8ef9d490-8db2-450a-ab89-22d2b35c01ed}"/>
+<definition width="30" version="0.3" hotspot_x="12" hotspot_y="6" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="it">Collegamento</name>
-        <name lang="en">Combine</name>
+        <name lang="ar">وصلة</name>
         <name lang="ru">Соединение</name>
-        <name lang="pl">Połączenie 1</name>
+        <name lang="en">Combine</name>
+        <name lang="it">Collegamento</name>
         <name lang="fr">Jonction</name>
+        <name lang="pl">Połączenie 1</name>
+        <name lang="es">Unión</name>
         <name lang="cs">Spoj</name>
-		<name lang="es">Unión</name>
     </names>
     <informations></informations>
     <description>
-        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="7" y1="0" end2="none" x2="1" antialias="false" end1="none" length2="1.5"/>
-        <input x="2" y="13.5" size="1" tagg="label" rotate="true" text="_"/>
-        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="6" end2="none" x2="6" antialias="false" end1="none" length2="1.5"/>
-        <terminal orientation="w" x="-4" y="0"/>
-        <terminal orientation="s" x="0" y="10"/>
-        <terminal orientation="e" x="10" y="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="7" y2="0" x2="1"/>
+        <input x="2" y="13.5" size="1" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="0" y2="0" x2="6"/>
+        <terminal x="-4" y="0" orientation="w"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="10" y="0" orientation="e"/>
     </description>
 </definition>
