@@ -38,7 +38,6 @@ DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWi
     ui->setupUi(this);
 	
     ui->m_tree_view->setItemDelegate(new DynamicTextItemDelegate(ui->m_tree_view));
-	ui->m_tree_view->installEventFilter(this);
 	ui->m_remove_selection->setDisabled(true);
 	
     setElement(element);
@@ -171,8 +170,11 @@ void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)
 QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
 {
 	QUndoCommand *parent_undo = new QUndoCommand(tr("Modifier un texte d'élément"));
-	for (DynamicElementTextItem *deti : m_element->dynamicTextItems())
+	for (DynamicElementTextItem *deti : m_element.data()->dynamicTextItems())
 		m_model->undoForEditedText(deti, parent_undo);
+	
+	for (ElementTextItemGroup *grp : m_element.data()->textGroups())
+		m_model->undoForEditedGroup(grp, parent_undo);
 	
 	if(parent_undo->childCount() >= 1)
 	{
