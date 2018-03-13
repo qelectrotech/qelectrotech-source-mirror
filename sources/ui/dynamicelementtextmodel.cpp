@@ -799,7 +799,7 @@ bool DynamicElementTextModel::indexIsGroup(const QModelIndex &index) const
 bool DynamicElementTextModel::canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const
 {
 	Q_UNUSED(action);
-	
+
 	if(data->hasFormat("application/x-qet-element-text-uuid"))
 	{
 		QModelIndex index;
@@ -945,7 +945,7 @@ bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction
 }
 
 QMimeData *DynamicElementTextModel::mimeData(const QModelIndexList &indexes) const
-{
+{	
 	QModelIndex index = indexes.first();
 	if (index.isValid())
 	{
@@ -963,7 +963,7 @@ QMimeData *DynamicElementTextModel::mimeData(const QModelIndexList &indexes) con
 		}
 	}
 	
-	return new QMimeData();
+	return QStandardItemModel::mimeData(indexes);
 }
 
 /**
@@ -1355,7 +1355,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			if(!deti)
 				break;
 			
-			CompositeTextEditDialog *cted = new CompositeTextEditDialog(deti);
+			CompositeTextEditDialog *cted = new CompositeTextEditDialog(deti, parent);
 			cted->setObjectName("composite_text");
 			return cted;
 		}

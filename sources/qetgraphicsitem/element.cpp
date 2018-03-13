@@ -91,6 +91,9 @@ void Element::editProperty()
 		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
 		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
 		connect(epw, &ElementPropertiesWidget::findEditClicked, &dialog, &QDialog::reject);
+			//Must be windowModal, else when user do a drag and drop
+			//with the "text" tab of ElementPropertiesWidget, the ui freeze, until user press escape key
+		dialog.setWindowModality(Qt::WindowModal);
 		dialog.exec();
 	}
 }
