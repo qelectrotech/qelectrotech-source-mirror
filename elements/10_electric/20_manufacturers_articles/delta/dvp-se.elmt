@@ -1,0 +1,87 @@
+<definition height="160" hotspot_y="55" link_type="simple" hotspot_x="130" orientation="dyyy" width="540" version="0.60" type="element">
+    <uuid uuid="{139e4eb5-6989-4a07-9e82-0386c5e31ea0}"/>
+    <names>
+        <name lang="it">DVP-SE</name>
+        <name lang="en">DVP-SE</name>
+        <name lang="cs">DVP-SE</name>
+        <name lang="el">DVP-SE</name>
+        <name lang="nl">DVP-SE</name>
+        <name lang="fr">DVP-SE</name>
+        <name lang="es">DVP-SE</name>
+        <name lang="pl">DVP-SE</name>
+    </names>
+    <informations>Author: Guillaume Morel</informations>
+    <description>
+        <circle y="80" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-90" antialias="false"/>
+        <text y="78" rotation="270" text="LINK" x="-42" size="8"/>
+        <text y="78" rotation="270" text="POWER" x="-102" size="8"/>
+        <input rotate="true" y="120" text="_" x="120" tagg="label" size="9"/>
+        <text y="-12" text="X7" x="82" size="8"/>
+        <text y="78" rotation="270" text="ERROR" x="-62" size="8"/>
+        <text y="45" text="USB" x="210" size="6"/>
+        <text y="29" rotation="270" text="24VDC" x="385" size="8"/>
+        <circle y="80" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false"/>
+        <circle y="80" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" antialias="false"/>
+        <text y="80" rotation="270" text="STOP" x="130" size="8"/>
+        <text y="78" rotation="270" text="RUN" x="-82" size="8"/>
+        <text y="80" rotation="270" text="RUN" x="75" size="8"/>
+        <text y="-12" text="X6" x="62" size="8"/>
+        <text y="27" rotation="270" text="-" x="395" size="8"/>
+        <text y="8" rotation="270" text="+" x="395" size="8"/>
+        <text y="-12" text="Y2" x="196" size="8"/>
+        <text y="59" text="TCP/IP" x="312" size="6"/>
+        <text y="2" rotation="315" text="COM3-" x="296" size="8"/>
+        <text y="-12" text="Y1" x="176" size="8"/>
+        <text y="4" rotation="315" text="COM3+" x="270" size="8"/>
+        <text y="-12" text="Y0" x="155" size="8"/>
+        <text y="-12" text="SG" x="256" size="8"/>
+        <text y="-12" text="C0" x="135" size="8"/>
+        <text y="-15" text="." x="240" size="8"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-125" end1="none" x1="-125" y2="-50" antialias="false" y1="100" end2="none"/>
+        <text y="-12" text="Y3" x="216" size="8"/>
+        <text y="-12" text="X5" x="43" size="8"/>
+        <text y="-12" text="X4" x="23" size="8"/>
+        <text y="-12" text="X3" x="3" size="8"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="375" end1="none" x1="-125" y2="-50" antialias="false" y1="-50" end2="none"/>
+        <text y="29" text="DVP12SE11R" x="-46" size="8"/>
+        <text y="16" text="DELTA AUTOMATION" x="-46" size="8"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="302" end1="none" x1="302" y2="45" antialias="false" y1="85" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="302" end1="none" x1="342" y2="85" antialias="false" y1="85" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="342" end1="none" x1="342" y2="85" antialias="false" y1="45" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="342" end1="none" x1="302" y2="45" antialias="false" y1="45" end2="none"/>
+        <text y="-12" text="X2" x="-18" size="8"/>
+        <text y="-12" text="X1" x="-38" size="8"/>
+        <text y="-12" text="X0" x="-58" size="8"/>
+        <text y="-12" text="S/S" x="-78" size="8"/>
+        <rect y="48" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="194" width="41" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="375" end1="none" x1="-125" y2="100" antialias="false" y1="100" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="375" end1="none" x1="375" y2="-50" antialias="false" y1="100" end2="none"/>
+        <circle y="80" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-110" antialias="false"/>
+        <rect y="70" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="80" width="40" antialias="false"/>
+        <ellipse y="70" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="81" width="12" antialias="false"/>
+        <rect y="-5" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="375" width="28" antialias="false"/>
+        <rect y="-35" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-80" width="175" antialias="false"/>
+        <rect y="-35" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="135" width="175" antialias="false"/>
+        <terminal y="5" x="403" orientation="e"/>
+        <terminal y="-32" x="-13" orientation="n"/>
+        <terminal y="-32" x="302" orientation="n"/>
+        <terminal y="-32" x="-73" orientation="n"/>
+        <terminal y="-32" x="281" orientation="n"/>
+        <terminal y="-32" x="-53" orientation="n"/>
+        <terminal y="-32" x="48" orientation="n"/>
+        <terminal y="-32" x="-33" orientation="n"/>
+        <terminal y="-32" x="261" orientation="n"/>
+        <terminal y="-32" x="221" orientation="n"/>
+        <terminal y="-32" x="241" orientation="n"/>
+        <terminal y="-32" x="181" orientation="n"/>
+        <terminal y="-32" x="28" orientation="n"/>
+        <terminal y="-32" x="201" orientation="n"/>
+        <terminal y="-32" x="8" orientation="n"/>
+        <terminal y="-32" x="140" orientation="n"/>
+        <terminal y="-32" x="160" orientation="n"/>
+        <terminal y="65" x="337" orientation="e"/>
+        <terminal y="-32" x="88" orientation="n"/>
+        <terminal y="-32" x="68" orientation="n"/>
+        <terminal y="25" x="403" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,50 @@
+<definition version="0.70" hotspot_y="216" orientation="dyyy" hotspot_x="45" link_type="simple" width="100" height="450" type="element">
+    <uuid uuid="{3511c2ec-b062-4f38-9d96-bf742a7ba392}"/>
+    <names>
+        <name lang="fr">EWON</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle diameter="10" x="-24" y="-76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="141" y2="135" length2="1.5" antialias="true" x1="-7" end2="none" length1="1.5"/>
+        <circle diameter="10" x="3" y="-76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <arc start="-180" x="-8" y="139" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="-32" width="10" height="10"/>
+        <arc start="-240" x="2" y="134" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="-120" width="10" height="10"/>
+        <circle diameter="10" x="-24" y="-106" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="184" y2="178" length2="1.5" antialias="true" x1="4" end2="none" length1="1.5"/>
+        <circle diameter="10" x="3" y="-106" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="10" x="-24" y="-154" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <arc start="-150" x="-8" y="170" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="-30" width="10" height="10"/>
+        <arc start="0" x="2" y="175" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="-120" width="10" height="10"/>
+        <circle diameter="10" x="-24" y="-131" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="144" y2="174" length2="1.5" antialias="false" x1="-8" end2="none" length1="1.5"/>
+        <circle diameter="10" x="3" y="-154" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end1="none" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="139" y2="179" length2="1.5" antialias="false" x1="12" end2="none" length1="1.5"/>
+        <polygon antialias="false" x6="-13.444" x8="-7.444" x4="-7.444" x10="-1.444" y1="-38.1111" x11="-1.444" y12="3.889" x13="20.556" x14="18.556" x2="-1.444" x12="20.556" y11="3.889" y7="-12.111" x1="18.556" y8="-12.111" y4="-32.1111" y2="-38.1111" y6="-22.1111" closed="false" y10="-2.111" y14="-38.1111" x7="-13.444" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-1.444" y9="-2.111" y3="-32.1111" y13="-38.1111" x9="-7.444" y5="-22.1111" x5="-7.444"/>
+        <rect x="-14" y="-42" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="40" height="50"/>
+        <circle diameter="4" x="5" y="177" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <rect x="-39" y="-210" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="87" height="420"/>
+        <circle diameter="4" x="5" y="137" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <text size="9" text="E" x="-20" y="-190"/>
+        <circle diameter="4" x="5" y="157" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="4" x="-5" y="142" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <rect x="1" y="211" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="48" height="12"/>
+        <circle diameter="4" x="5" y="167" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <dynamic_text rotation="0" frame="false" x="-21" y="24.5" uuid="{91b94312-45d2-4e8d-934d-8247b95d18b5}" text_width="-1" text_from="ElementInfo" z="14" font_size="9">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="4" x="5" y="147" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="4" x="-5" y="162" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="4" x="-5" y="172" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="4" x="-5" y="152" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <dynamic_text rotation="0" frame="false" x="-15.6634" y="-211.327" uuid="{b94f175a-e9fb-48a5-9366-c78aca207388}" text_width="-1" text_from="UserText" z="18" font_size="14">
+            <text>WON</text>
+        </dynamic_text>
+        <terminal x="40" y="225" orientation="s"/>
+        <terminal x="10" y="225" orientation="s"/>
+        <terminal x="2" y="159.5" orientation="w"/>
+        <terminal x="-14" y="-22" orientation="w"/>
+    </description>
+</definition>
