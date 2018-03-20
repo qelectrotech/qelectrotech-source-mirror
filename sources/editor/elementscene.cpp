@@ -33,6 +33,7 @@
 #include "eseventinterface.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "partdynamictextfield.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 #include <algorithm>
 #include <QKeyEvent>
@@ -177,16 +178,48 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
  * manage key press event
  * @param event
  */
-void ElementScene::keyPressEvent(QKeyEvent *event) {
-	if (m_event_interface) {
-		if (m_event_interface -> keyPressEvent(event)) {
-			if (m_event_interface->isFinish()) {
+void ElementScene::keyPressEvent(QKeyEvent *event)
+{
+	if (m_event_interface)
+	{
+		if (m_event_interface -> keyPressEvent(event))
+		{
+			if (m_event_interface->isFinish())
+			{
 				delete m_event_interface; m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
 		}
 	}
+	
+	if(selectedItems().size() == 1)
+	{	
+		QGraphicsObject *qgo = selectedItems().first()->toGraphicsObject();
+		if(qgo)
+		{
+			QPointF original_pos = qgo->pos();
+			QPointF p = qgo->pos();
+			int k = event->key();
+			if(k == Qt::Key_Right)
+				p.rx() += 1;
+			else if (k == Qt::Key_Left)
+				p.rx() -= 1;
+			else if (k == Qt::Key_Up)
+				p.ry() -= 1;
+			else if (k == Qt::Key_Down)
+				p.ry() += 1;
+			
+			qgo->setPos(p);
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(qgo, "pos", QVariant(original_pos), QVariant(p));
+			undo->setText(tr("Déplacer une primitive"));
+			undo->enableAnimation();
+			undoStack().push(undo);
+			event->accept();
+			return;
+		}
+	}
+	
 	QGraphicsScene::keyPressEvent(event);
 }
 

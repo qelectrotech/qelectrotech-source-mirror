@@ -246,26 +246,38 @@ void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *even
 /**
 	@reimp QGraphicsItem::keyPressEvent
 */
-void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e) {
+void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
+{
 	const qreal movement_length = 1.0;
 	QPointF movement;
-	switch(e -> key()) {
+	
+	switch(e -> key())
+	{
 		case Qt::Key_Left:  movement = QPointF(-movement_length, 0.0); break;
 		case Qt::Key_Right: movement = QPointF(+movement_length, 0.0); break;
 		case Qt::Key_Up:    movement = QPointF(0.0, -movement_length); break;
 		case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
 	}
-	if (!movement.isNull() && focusItem() == this) {
-		if (!moving_by_keys_) {
+	if (!movement.isNull() && focusItem() == this)
+	{
+		if (!moving_by_keys_)
+		{
 			moving_by_keys_ = true;
 			keys_movement_ = movement;
-		} else {
+		}
+		else
+		{
 			keys_movement_ += movement;
 		}
-		foreach(QGraphicsItem *qgi, graphicsItems()) {
+		
+		for(QGraphicsItem *qgi : graphicsItems())
+		{
 			qgi -> setPos(qgi -> pos() + movement);
 			adjust();
 		}
+		
+		e->accept();
+		return;
 	}
 	
 	QGraphicsObject::keyPressEvent(e);
@@ -276,7 +288,7 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e) {
 */
 void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 	// detecte le relachement d'une touche de direction ( = deplacement de parties)
-	if (
+	if(
 		(e -> key() == Qt::Key_Left  || e -> key() == Qt::Key_Right  ||\
 		 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
 		moving_by_keys_  && !e -> isAutoRepeat()
@@ -285,6 +297,8 @@ void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 		emit(actionFinished(new MovePartsCommand(keys_movement_, nullptr, graphicsItems())));
 		keys_movement_ = QPointF();
 		moving_by_keys_ = false;
+		e->accept();
+		return;
 	}
 	QGraphicsObject::keyPressEvent(e);
 }
