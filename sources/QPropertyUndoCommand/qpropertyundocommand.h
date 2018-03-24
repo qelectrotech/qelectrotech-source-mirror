@@ -39,6 +39,7 @@ class QPropertyUndoCommand : public QUndoCommand
 
 		void setNewValue(const QVariant &new_value);
 		void enableAnimation (bool animate = true);
+		void setAnimated(bool animate = true, bool first_time = true);
 
 		int id() const override{return 10000;}
 		bool mergeWith(const QUndoCommand *other) override;
@@ -46,10 +47,11 @@ class QPropertyUndoCommand : public QUndoCommand
 		void undo() override;
 
 	private:
-		QObject *m_object;
+		QObject *m_object = nullptr;
 		const char *m_property_name;
 		QVariant m_old_value, m_new_value;
-		bool m_animate;
+		bool m_animate = false,
+			 m_first_time = true;
 };
 
 #endif // QPROPERTYUNDOCOMMAND_H

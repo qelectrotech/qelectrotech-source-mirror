@@ -454,7 +454,8 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
 	if (fs != deti->fontSize())
 	{
-		QUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+		quc->setAnimated(true, false);
 		quc->setText(tr("Modifier la taille d'un texte d'élément"));
 	}
 	
@@ -475,7 +476,8 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	qreal text_width = text_qsi->child(width_txt_row, 1)->data(Qt::EditRole).toDouble();
 	if(text_width != deti->textWidth())
 	{
-		QUndoCommand *quc = new QPropertyUndoCommand(deti, "textWidth", QVariant(deti->textWidth()), QVariant(text_width), undo);
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "textWidth", QVariant(deti->textWidth()), QVariant(text_width), undo);
+		quc->setAnimated(true, false);
 		quc->setText(tr("Modifier la largeur d'un texte d'élément"));
 	}
 	
@@ -487,6 +489,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		if(p != deti->pos())
 		{
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "pos", QVariant(deti->pos()), QVariant(p), undo);
+			quc->setAnimated(true, false);
 			quc->setText(tr("Déplacer un texte d'élément"));
 		}
 	}
@@ -498,6 +501,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		if(rot != deti->rotation())
 		{
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "rotation", QVariant(deti->rotation()), QVariant(rot), undo);
+			quc->setAnimated(true, false);
 			quc->setText(tr("Pivoter un texte d'élément"));
 		}
 	}
@@ -536,7 +540,10 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	
 	qreal rotation = group_qsi->child(rot_grp_row,1)->data(Qt::EditRole).toDouble();
 	if(group->rotation() != rotation)
-		new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
+	{
+		QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
+		qpuc->enableAnimation();
+	}
 	
 	int v_adjustment = group_qsi->child(adjust_grp_row,1)->data(Qt::EditRole).toInt();
 	if(group->verticalAdjustment() != v_adjustment)

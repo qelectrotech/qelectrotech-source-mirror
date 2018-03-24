@@ -31,8 +31,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	m_object(object),
 	m_property_name(property_name),
 	m_old_value(old_value),
-	m_new_value(new_value),
-	m_animate(false)
+	m_new_value(new_value)
 {}
 
 /**
@@ -48,8 +47,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	QUndoCommand(parent),
 	m_object(object),
 	m_property_name(property_name),
-	m_old_value(old_value),
-	m_animate(false)
+	m_old_value(old_value)
 {}
 
 QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
@@ -59,6 +57,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
 	m_old_value     = other->m_old_value;
 	m_new_value     = other->m_new_value;
 	m_animate       = other->m_animate;
+	m_first_time    = other->m_first_time;
 	setText(other->text());
 }
 
@@ -78,6 +77,18 @@ void QPropertyUndoCommand::setNewValue(const QVariant &new_value) {
  */
 void QPropertyUndoCommand::enableAnimation (bool animate) {
 	m_animate = animate;
+}
+
+/**
+ * @brief QPropertyUndoCommand::setAnimated
+ * @param animate = true for animate this undo
+ * @param first_time = if true, the first animation is done at the first call of redo  
+ * if false, the first animation is done at the second call of redo.
+ */
+void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
+{
+	m_animate = animate;
+	m_first_time = first_time;
 }
 
 /**
@@ -103,7 +114,7 @@ void QPropertyUndoCommand::redo()
 {
 	if (m_object->property(m_property_name) != m_new_value)
 	{
-		if (m_animate)
+		if (m_animate && m_first_time)
 		{
 			QPropertyAnimation *animation = new QPropertyAnimation(m_object, m_property_name);
 			animation->setStartValue(m_old_value);
@@ -111,7 +122,10 @@ void QPropertyUndoCommand::redo()
 			animation->start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		else
+		{
 			m_object->setProperty(m_property_name, m_new_value);
+			m_first_time = true;
+		}
 	}
 
 	QUndoCommand::redo();
