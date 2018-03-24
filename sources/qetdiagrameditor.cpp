@@ -105,7 +105,6 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	
 	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(subWindowActivated(QMdiSubWindow*)));
 	connect (QApplication::clipboard(), SIGNAL(dataChanged()),                       this, SLOT(slot_updatePasteAction()));
-	//connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
 
 	readSettings();
 	show();
@@ -708,7 +707,7 @@ bool QETDiagramEditor::event(QEvent *e)
 	Imprime le schema courant
 */
 void QETDiagramEditor::printDialog() {
-	ProjectView *current_project = currentProject();
+	ProjectView *current_project = currentProjectView();
 	if (!current_project) return;
 	current_project -> printProject();
 }
@@ -717,7 +716,7 @@ void QETDiagramEditor::printDialog() {
 	Gere l'export de schema sous forme d'image
 */
 void QETDiagramEditor::exportDialog() {
-	ProjectView *current_project = currentProject();
+	ProjectView *current_project = currentProjectView();
 	if (!current_project) return;
 	current_project -> exportProject();
 }
@@ -727,7 +726,7 @@ void QETDiagramEditor::exportDialog() {
  * Ask the current active project to save
  */
 void QETDiagramEditor::save() {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		QETResult saved = project_view -> save();
 
 		if (saved.isOk()) {
@@ -751,7 +750,7 @@ void QETDiagramEditor::save() {
  * Ask the current active project to save as
  */
 void QETDiagramEditor::saveAs() {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		QETResult save_file = project_view -> saveAs();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
@@ -860,7 +859,7 @@ bool QETDiagramEditor::closeProject(QETProject *project) {
 	Note : cette methode renvoie true s'il n'y a pas de projet courant
 */
 bool QETDiagramEditor::closeCurrentProject() {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		return(closeProject(project_view));
 	}
 	return(true);
@@ -1011,7 +1010,7 @@ QList<ProjectView *> QETDiagramEditor::openedProjects() const {
 	@return Le projet actuellement edite (= qui a le focus dans l'interface
 	MDI) ou 0 s'il n'y en a pas
 */
-ProjectView *QETDiagramEditor::currentProject() const {
+ProjectView *QETDiagramEditor::currentProjectView() const {
 	QMdiSubWindow *current_window = workspace.activeSubWindow();
 	if (!current_window) return(nullptr);
 	
@@ -1029,7 +1028,7 @@ ProjectView *QETDiagramEditor::currentProject() const {
 	courant) ou 0 s'il n'y en a pas
 */
 DiagramView *QETDiagramEditor::currentDiagram() const {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		return(project_view -> currentDiagram());
 	}
 	return(nullptr);
@@ -1310,7 +1309,7 @@ void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
  */
 void QETDiagramEditor::slot_setSelectionMode()
 {
-	if (ProjectView *pv = currentProject())
+	if (ProjectView *pv = currentProjectView())
 		foreach(DiagramView *dv, pv -> diagram_views())
 			dv -> setSelectionMode();
 }
@@ -1321,7 +1320,7 @@ void QETDiagramEditor::slot_setSelectionMode()
  */
 void QETDiagramEditor::slot_setVisualisationMode()
 {
-	if (ProjectView *pv = currentProject())
+	if (ProjectView *pv = currentProjectView())
 		foreach(DiagramView *dv, pv -> diagram_views())
 			dv -> setVisualisationMode();
 }
@@ -1333,7 +1332,7 @@ void QETDiagramEditor::slot_setVisualisationMode()
 void QETDiagramEditor::slot_updateActions()
 {
 	DiagramView *dv = currentDiagram();
-	ProjectView *pv = currentProject();
+	ProjectView *pv = currentProjectView();
 
 	bool opened_project = pv;
 	bool opened_diagram = dv;
@@ -1373,8 +1372,8 @@ void QETDiagramEditor::slot_updateActions()
 void QETDiagramEditor::slot_updateAutoNumDock() {
 	if ( workspace.subWindowList().indexOf(workspace.activeSubWindow()) != activeSubWindowIndex) {
 			activeSubWindowIndex = workspace.subWindowList().indexOf(workspace.activeSubWindow());
-			if (currentProject() != nullptr && currentDiagram() != nullptr) {
-				m_autonumbering_dock->setProject(currentProject()->project(),currentProject());
+			if (currentProjectView() != nullptr && currentDiagram() != nullptr) {
+				m_autonumbering_dock->setProject(currentProjectView()->project(),currentProjectView());
 			}
 	}
 }
@@ -1385,16 +1384,8 @@ void QETDiagramEditor::slot_updateAutoNumDock() {
  */
 void QETDiagramEditor::slot_updateUndoStack()
 {
-	ProjectView *pv = currentProject();
-	if (pv)
-	{
-		undo_group.setActiveStack(pv->project()->undoStack());
-//		save_file -> setEnabled (undo_group.activeStack() -> count() && !pv -> project() -> isReadOnly());
-//	}
-//	else
-//	{
-//		//save_file -> setDisabled(true);
-	}
+	if(currentProjectView())
+		undo_group.setActiveStack(currentProjectView()->project()->undoStack());
 }
 
 /**
@@ -1520,7 +1511,7 @@ void QETDiagramEditor::slot_updateModeActions()
 		}
 	}
 
-	if (ProjectView *pv = currentProject())
+	if (ProjectView *pv = currentProjectView())
 	{
 		m_auto_conductor -> setEnabled (true);
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
@@ -1649,7 +1640,7 @@ bool QETDiagramEditor::drawGrid() const {
  * Retrieve current DiagramView used in diagram editor
  */
 DiagramView *QETDiagramEditor::acessCurrentDiagramView () {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		return(project_view -> currentDiagram());
 	}
 	return(nullptr);
@@ -1692,7 +1683,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 		windows_actions -> addAction(action);
 		action -> setStatusTip(QString(tr("Active le projet « %1 »")).arg(pv_title));
 		action -> setCheckable(true);
-		action -> setChecked(project_view == currentProject());
+		action -> setChecked(project_view == currentProjectView());
 		connect(action, SIGNAL(triggered()), &windowMapper, SLOT(map()));
 		windowMapper.setMapping(action, project_view);
 	}
@@ -1702,7 +1693,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	Edite les informations du schema en cours
 */
 void QETDiagramEditor::editCurrentDiagramProperties() {
-	if (ProjectView *project_view = currentProject()) {
+	if (ProjectView *project_view = currentProjectView()) {
 		activateProject(project_view);
 		project_view -> editCurrentDiagramProperties();
 	}
@@ -1755,7 +1746,7 @@ void QETDiagramEditor::slot_resetConductors() {
  */
 void QETDiagramEditor::slot_autoConductor(bool ac)
 {
-	if (ProjectView *pv = currentProject())
+	if (ProjectView *pv = currentProjectView())
 		pv -> project() -> setAutoConductor(ac);
 }
 
@@ -1865,7 +1856,7 @@ void QETDiagramEditor::projectWasClosed(ProjectView *project_view) {
 	Edite les proprietes du projet courant.
 */
 void QETDiagramEditor::editCurrentProjectProperties() {
-	editProjectProperties(currentProject());
+	editProjectProperties(currentProjectView());
 }
 
 /**
@@ -1890,7 +1881,7 @@ void QETDiagramEditor::editProjectProperties(QETProject *project) {
 	Ajoute un nouveau schema au projet courant
 */
 void QETDiagramEditor::addDiagramToProject() {
-	if (ProjectView *current_project = currentProject()) {
+	if (ProjectView *current_project = currentProjectView()) {
 		current_project -> addNewDiagram();
 	}
 }
@@ -1900,7 +1891,7 @@ void QETDiagramEditor::addDiagramToProject() {
  * Add new folio list to project
  */
 void QETDiagramEditor::addDiagramFolioListToProject() {
-	if (ProjectView *current_project = currentProject())
+	if (ProjectView *current_project = currentProjectView())
 		current_project -> addNewDiagramFolioList();
 }
 
@@ -2044,7 +2035,7 @@ void QETDiagramEditor::moveDiagramDownx10(Diagram *diagram) {
 	Nettoie le projet courant
 */
 void QETDiagramEditor::cleanCurrentProject() {
-	if (ProjectView *current_project = currentProject()) {
+	if (ProjectView *current_project = currentProjectView()) {
 		int clean_count = current_project -> cleanProject();
 		if (clean_count) pa -> reloadAndFilter();
 	}
@@ -2059,7 +2050,7 @@ void QETDiagramEditor::reloadOldElementPanel() {
  */
 void QETDiagramEditor::nomenclatureProject() {
 	//TODO: Test nomenclature CYRIL F.
-	nomenclature nomencl(currentProject()->project() ,this);
+	nomenclature nomencl(currentProjectView()->project() ,this);
 	nomencl.saveToCSVFile();
 }
 
@@ -2067,7 +2058,7 @@ void QETDiagramEditor::nomenclatureProject() {
 	Supprime le schema courant du projet courant
 */
 void QETDiagramEditor::removeDiagramFromProject() {
-	if (ProjectView *current_project = currentProject()) {
+	if (ProjectView *current_project = currentProjectView()) {
 		if (DiagramView *current_diagram = current_project -> currentDiagram()) {
 			bool isFolioList = false;
 
