@@ -28,7 +28,6 @@
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/customelement.h"
-#include "qetgraphicsitem/elementtextitem.h"
 #include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
@@ -495,40 +494,6 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 
 		qreal hotspot_x = (elem_pos_x) * Createdxf::xScale;
 		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
-
-		QList<ElementTextItem *> elmt_text = elmt -> texts();
-		foreach(ElementTextItem *dti, elmt_text) {
-			qreal fontSize = dti -> font().pointSizeF();
-			if (fontSize < 0)
-				fontSize = dti -> font().pixelSize();
-			fontSize *= Createdxf::yScale;
-			qreal x = elem_pos_x + dti -> pos().x();
-			qreal y = elem_pos_y + dti -> pos().y();
-			x *= Createdxf::xScale;
-			y = Createdxf::sheetHeight - (y * Createdxf::yScale);// - fontSize;
-			QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
-			x = transformed_point.x();
-			y = transformed_point.y();
-			QStringList lines = dti -> toPlainText().split('\n');
-			y += (fontSize/2) * (lines.count()-1);
-			foreach (QString line, lines) {
-				qreal angle = 360 - (dti -> rotationAngle() + rotation_angle);
-				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
-
-				angle += 1080;
-				// coordinates for next line
-				if (int(angle) % 360 == 0) // no rotation
-					y -= fontSize*1.06;
-				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
-					y += fontSize*1.06;
-				else if (int(angle - 270) % 360 == 0) // 270 degrees rotation
-					x -= fontSize*1.06;
-				else // ((angle - 90) % 360 == 0)  90 degrees rotation
-					x += fontSize*1.06;
-			}
-
-		}
 
 		QList<QLineF *> elmt_line = elmt -> lines();
 		foreach(QLineF *line, elmt_line) {

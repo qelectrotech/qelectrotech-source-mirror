@@ -37,9 +37,6 @@ class SimpleElement : public CustomElement {
 
 		void initLink(QETProject *project) override;
 
-	public slots:
-		void updateLabel(DiagramContext old_info, DiagramContext new_info);
-
 	private:
 		CommentItem *m_comment_item;
 		CommentItem *m_location_item;

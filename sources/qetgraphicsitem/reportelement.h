@@ -20,8 +20,6 @@
 
 #include "customelement.h"
 
-class ElementTextItem;
-
 /**
  * @brief The ReportElement class
  *this class represent an element that can be linked to an other ReportElement
@@ -39,20 +37,7 @@ class ReportElement : public CustomElement
 		void unlinkElement(Element *elmt) override;
 		
 	private:
-		void conductorWasAdded(Conductor *conductor);
-		void conductorWasRemoved(Conductor *conductor);
-		void setFormula (QString label);
-		void updateLabel();
-		void reportPropertiesChange(const QString &old_str, const QString &new_str);
-		void setConnectionForFormula(const QString &str);
-		void removeConnectionForFormula(const QString &str);
-		void updateFormulaConnection();
-		
-	private:
 		int              m_inverse_report;
-		QString          m_formula;
-		ElementTextItem *m_text_field;
-		Conductor       *m_watched_conductor;
 };
 
 #endif // REPORTELEMENT_H

@@ -44,7 +44,6 @@
 #include "autonumberingdockwidget.h"
 #include "dynamicelementtextitem.h"
 #include "conductortextitem.h"
-#include "elementtextitem.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "rotatetextscommand.h"
 #include "diagramcommands.h"
@@ -1432,7 +1431,6 @@ void QETDiagramEditor::slot_updateComplexActions()
 	QList<ElementTextItemGroup *> groups = DiagramContent(diagram_).selectedTextsGroup();
 	int selected_texts = texts.count();
 	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
-	int selected_element_texts     = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ElementTextItem::Type) selected_element_texts++;}
 	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
 	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
 
@@ -1441,7 +1439,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 
 	int selected_shape = dc.count(DiagramContent::Shapes);
 	int selected_editable = selected_elements_count +
-							(selected_texts - selected_conductor_texts - selected_element_texts - selected_dynamic_elmt_text) +
+							(selected_texts - selected_conductor_texts - selected_dynamic_elmt_text) +
 							selected_image +
 							selected_shape +
 							selected_conductors_count;

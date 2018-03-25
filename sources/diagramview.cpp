@@ -24,7 +24,6 @@
 #include "diagramposition.h"
 #include "conductorpropertieswidget.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "qetgraphicsitem/elementtextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "templatelocation.h"
@@ -543,7 +542,6 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			if (!hasTextItems()) {
 				if (
 					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ElementTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
 					)
@@ -556,7 +554,6 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			if (!hasTextItems()) {
 				if (
 					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
-					qgraphicsitem_cast<ElementTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<DiagramTextItem *>(m_diagram->focusItem())
 					)
@@ -735,7 +732,6 @@ bool DiagramView::hasTextItems() {
 	foreach(QGraphicsItem *qgi, m_diagram -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-			qgraphicsitem_cast<ElementTextItem *>(qgi) ||
 			qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramTextItem *>(qgi)
 		) {

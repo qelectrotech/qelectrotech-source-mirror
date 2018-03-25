@@ -18,7 +18,6 @@
 #include "element.h"
 #include "diagram.h"
 #include "conductor.h"
-#include "elementtextitem.h"
 #include "diagramcommands.h"
 #include <QtDebug>
 #include "elementprovider.h"
@@ -237,24 +236,6 @@ void Element::rotateBy(const qreal &angle) {
 			p -> updateConductor();
 		}
 	}
-
-	// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
-	foreach(ElementTextItem *eti, texts()) {
-		if (!eti -> followParentRotations())  {
-			// on souhaite pivoter le champ de texte par rapport a son centre
-			QPointF eti_center = eti -> boundingRect().center();
-			// pour ce faire, on repere la position de son centre par rapport a son parent
-			QPointF parent_eti_center_before = eti -> mapToParent(eti_center);
-			// on applique ensuite une simple rotation contraire, qui sera donc appliquee sur le milieu du cote gauche du champ de texte
-			eti -> rotateBy(-applied_angle);
-			// on regarde ensuite la nouvelle position du centre du champ de texte par rapport a son parent
-			QPointF parent_eti_center_after = eti -> mapToParent(eti_center);
-			// on determine la translation a appliquer
-			QPointF eti_translation = parent_eti_center_before - parent_eti_center_after;
-			// on applique cette translation
-			eti -> setPos(eti -> pos() + eti_translation);
-		}
-	}
 }
 
 /*** Methodes protegees ***/
@@ -342,25 +323,6 @@ void Element::updatePixmap() {
 	p.translate(hotspot_coord);
 	// L'element se dessine sur la pixmap
 	paint(&p, nullptr);
-}
-
-/**
-	This class is used to retrieve label and function information from element
-	and add it to Diagram Context. Used to make older versions work correctly
-	@param Element Text item to check information
-*/
-void Element::etiToElementLabels(ElementTextItem *eti) {
-	if (eti->tagg() == "label" && eti->toPlainText()!= "_") {
-		DiagramContext &dc = this->rElementInformations();
-		dc.addValue("label", eti->toPlainText());
-		this->setElementInformations(dc);
-		this->setTaggedText("label", eti->toPlainText());
-	}
-	else if(eti->tagg() == "function" && eti->toPlainText() != "_") {
-		DiagramContext &dc = this->rElementInformations();
-		dc.addValue("function", eti->toPlainText());
-		this->setElementInformations(dc);
-	}
 }
 
 /**
@@ -580,20 +542,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		delete deti;
 	m_converted_text_from_xml_description.clear();
 	
-		//For the moment the text item with a tagg are not converted to dynamic text item
-		//so we must to check it
-	foreach(QGraphicsItem *qgi, childItems())
-	{
-		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi))
-		{
-			foreach(QDomElement input, inputs)
-			{
-				eti -> fromXml(input);
-				etiToElementLabels(eti);
-			}
-		}
-	}
-	
 	for (QDomElement qde : QET::findInDomElement(e, "texts_groups", ElementTextItemGroup::xmlTaggName()))
 	{
 		ElementTextItemGroup *group = addTextGroup("loaded_from_xml_group");
@@ -619,30 +567,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		dc.addValue("label", m_element_informations.value("label"));
 	
 	setElementInformations(dc);
-	
-		/**
-		  * At the start of the 0.51 devel, if the text item with tagg "label" was edited directly in the diagram,
-		  * the text was not write to the element information value "formula".
-		  * During the devel, this behavior change, when user edit the text item direclty in the diagram,
-		  * the text was also write in the element information.
-		  * Then when open a .qet file, the text item with tagg "label", is write with the value stored in the element information.
-		  * The mistake is :
-		  * if user write directly in the diagram  with a version befor the change (so the text is not in the element information),
-		  * and open the project with a version after the change, then the text item with tagg "label" is empty. 
-		  * The code below fix this.
-		  */
-	if (saved_version > -1 && saved_version <= 0.51)
-	{
-		if (ElementTextItem *eti = taggedText("label"))
-		{
-			if (m_element_informations["label"].toString().isEmpty() &&
-				m_element_informations["formula"].toString().isEmpty() &&
-				!eti->toPlainText().isEmpty())
-			{
-				m_element_informations.addValue("formula", eti->toPlainText());
-			}
-		}
-	}
 	
 	/**
 	  During the devel of the version 0.7, the "old text" was replaced by the dynamic element text item.
@@ -837,9 +761,6 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
-	foreach(ElementTextItem *eti, texts()) {
-		inputs.appendChild(eti -> toXml(document));
-	}
 	element.appendChild(inputs);
 
 	//if this element is linked to other elements,
@@ -1261,6 +1182,8 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
  */
 void Element::setUpFormula(bool code_letter)
 {
+	Q_UNUSED(code_letter)
+	
 	if (linkType() == Element::Slave || linkType() & Element::AllReport)
 		return;
 
@@ -1268,31 +1191,15 @@ void Element::setUpFormula(bool code_letter)
 	{
 		QString formula = diagram()->project()->elementAutoNumCurrentFormula();
 
-		if (formula.isEmpty())
-		{
-			if (code_letter && !m_prefix.isEmpty())
-			{
-				if (ElementTextItem *eti = taggedText("label"))
-				{
-					QString text = eti->toPlainText();
-					if (text.isEmpty() || text == "_")
-					{
-						m_element_informations.addValue("formula", "%prefix");
-					}
-				}
-			}
-		}
-		else
-		{
-			m_element_informations.addValue("formula", formula);
+		m_element_informations.addValue("formula", formula);
+		
+		QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
+		NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
+		NumerotationContextCommands ncc (nc);
+		
+		autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
+		diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
 
-			QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
-			NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
-			NumerotationContextCommands ncc (nc);
-
-			autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
-			diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
-		}
 		if(!m_freeze_label && !formula.isEmpty())
 		{
 			DiagramContext dc = m_element_informations;
@@ -1300,57 +1207,6 @@ void Element::setUpFormula(bool code_letter)
 			m_element_informations.addValue("label", label);
 			emit elementInfoChange(dc, m_element_informations);
 		}
-	}
-}
-
-/**
- * @brief ElementTextItem::setTaggedText
- * Set text @newstr to the text tagged with @tagg.
- * If tagg is found return the text item, else return NULL.
- * @param tagg required tagg
- * @param newstr new label
- * @param noeditable set editable or not (by default, set editable)
- */
-ElementTextItem* Element::setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable) {
-	ElementTextItem *eti = taggedText(tagg);
-	if (eti) {
-		eti -> setPlainText(newstr);
-		eti -> setNoEditable(noeditable);
-	}
-	return eti;
-}
-
-/**
- * @brief Element::textItemChanged
- * Use to keep up to date the element information when text item changed.
- * @param dti
- * @param old_str
- * @param new_str
- */
-void Element::textItemChanged(DiagramTextItem *dti, QString old_str, QString new_str)
-{
-	Q_UNUSED(new_str)
-
-	if (!diagram())
-		return;
-
-	ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(dti);
-	if (!eti)
-		return;
-
-	QString tagg = eti->tagg();
-	if (m_element_informations.contains(tagg))
-	{
-		DiagramContext dc = m_element_informations;
-		dc.addValue(tagg, eti->toPlainText(), dc.keyMustShow(tagg));
-		if (tagg == "label")
-			dc.addValue("formula", eti->toPlainText(), dc.keyMustShow("formula"));
-
-		diagram()->undoStack().push(new ChangeElementInformationCommand(this, m_element_informations, dc));
-	}
-	else
-	{
-		diagram()->undoStack().push(new ChangeDiagramTextCommand(eti, old_str, eti->toPlainText()));
 	}
 }
 
@@ -1376,15 +1232,7 @@ void Element::setPrefix(QString prefix) {
  */
 void Element::freezeLabel(bool freeze)
 {
-	if (m_freeze_label != freeze)
-	{
-		m_freeze_label = freeze;
-		QString f = m_element_informations["formula"].toString();
-		setUpConnectionForFormula(f,f);
-
-		if (m_freeze_label == true)
-			updateLabel();
-	}
+	m_freeze_label = freeze;
 }
 
 /**
@@ -1396,46 +1244,4 @@ void Element::freezeNewAddedElement() {
 		freezeLabel(true);
 	}
 	else return;
-}
-
-/**
- * @brief Element::setUpConnectionForFormula
- * setup connection according to the variable of formula
- * @param old_formula
- * @param new_formula
- */
-void Element::setUpConnectionForFormula(QString old_formula, QString new_formula)
-{
-		//Because the variable %F is a reference to another text which can contain variables,
-		//we must to replace %F by the real text, to check if the real text contain the variable %id
-	if (diagram() && old_formula.contains("%F"))
-	{
-		disconnect(&diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &Element::updateLabel);
-		old_formula.replace("%F", m_F_str);
-	}
-
-	if (diagram() && (old_formula.contains("%f") || old_formula.contains("%id")))
-		disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
-	if (old_formula.contains("%l"))
-		disconnect(this, &Element::yChanged, this, &Element::updateLabel);
-	if (old_formula.contains("%c"))
-		disconnect(this, &Element::xChanged, this, &Element::updateLabel);
-
-		//Label is frozen, so we don't update it.
-	if (m_freeze_label == true)
-		return;
-	
-	if (diagram() && new_formula.contains("%F"))
-	{
-		m_F_str = diagram()->border_and_titleblock.folio();
-		new_formula.replace("%F", m_F_str);
-		connect(&diagram()->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &Element::updateLabel);
-	}
-	
-	if (diagram() && (new_formula.contains("%f") || new_formula.contains("%id")))
-		connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Element::updateLabel);
-	if (new_formula.contains("%l"))
-		connect(this, &Element::yChanged, this, &Element::updateLabel);
-	if (new_formula.contains("%c"))
-		connect(this, &Element::xChanged, this, &Element::updateLabel);
 }

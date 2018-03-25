@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "customelement.h"
-#include "elementtextitem.h"
 #include "diagram.h"
 #include "qetapp.h"
 #include "partline.h"
@@ -242,7 +241,6 @@ CustomElement::~CustomElement() {
 	qDeleteAll (m_circles);
 	qDeleteAll (m_polygons);
 	qDeleteAll (m_arcs);
-	qDeleteAll (m_texts);
 	qDeleteAll (m_terminals);
 }
 
@@ -256,11 +254,6 @@ QList<Conductor *> CustomElement::conductors() const {
 	QList<Conductor *> conductors;
 	foreach(Terminal *t, m_terminals) conductors << t -> conductors();
 	return(conductors);
-}
-
-/// @return la liste des textes de cet element
-QList<ElementTextItem *> CustomElement::texts() const {
-	return(m_texts);
 }
 
 /// @return the list of lines
@@ -685,20 +678,6 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp, bool addtolist) {
 	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
 
-	if (addtolist){
-		//Add element to list of texts.
-		ElementTextItem *eti = new ElementTextItem(e.attribute("text"));
-		eti -> setFont(QETApp::diagramTextsFont(size));
-		eti -> setOriginalPos(QPointF(pos_x, pos_y));
-		eti -> setPos(pos_x, pos_y);
-		qreal original_rotation_angle = 0.0;
-		QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
-		eti -> setOriginalRotationAngle(original_rotation_angle);
-		eti -> setRotationAngle(original_rotation_angle);
-		eti -> setFollowParentRotations(e.attribute("rotate") == "true");
-		m_texts << eti;
-	}
-
 	// Se positionne aux coordonnees indiquees dans la description du texte
 	qp.setTransform(QTransform(), false);
 	qp.translate(pos_x, pos_y);
@@ -751,37 +730,6 @@ bool CustomElement::parseInput(QDomElement &dom_element) {
 		!QET::attributeIsAReal(dom_element, "y", &pos_y) ||\
 		!QET::attributeIsAnInteger(dom_element, "size", &size)
 	) return(false);
-	
-//		//The text have a tagg, we create an element text item
-//	if (dom_element.attribute("tagg", "none") != "none")
-//	{
-//		ElementTextItem *eti = new ElementTextItem(dom_element.attribute("text"), this);
-//		eti -> setFont(QETApp::diagramTextsFont(size));
-//		eti -> setTagg(dom_element.attribute("tagg", "other"));
-//		m_element_informations.addValue(dom_element.attribute("tagg", "other"), dom_element.attribute("text"));
-		
-//		// position the text field
-//		eti -> setOriginalPos(QPointF(pos_x, pos_y));
-//		eti -> setPos(pos_x, pos_y);
-		
-//		// rotation of the text field
-//		qreal original_rotation_angle = 0.0;
-//		QET::attributeIsAReal(dom_element, "rotation", &original_rotation_angle);
-//		eti -> setOriginalRotationAngle(original_rotation_angle);
-//		eti -> setRotationAngle(original_rotation_angle);
-		
-//		// behavior when the parent element is rotated
-//		eti -> setFollowParentRotations(dom_element.attribute("rotate") == "true");
-		
-//		m_texts << eti;
-		
-//		connect(eti, &ElementTextItem::diagramTextChanged, this, &Element::textItemChanged);
-		
-//		return(eti);
-//	}
-		//The text haven't got a tagg, so we convert it to a dynamic text item
-		//and store it to m_converted_text_from_xml_description, instead of m_dynamic_text_list
-		//because these dynamic text need post treatement
 	else
 	{
 		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
@@ -1078,35 +1026,4 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 
 	// mise en place (ou non) de l'antialiasing
 	setQPainterAntiAliasing(qp, e.attribute("antialias") == "true");
-}
-
-/**
- * @brief CustomElement::setTaggedText
- * Set text @newstr to the text tagged with @tagg.
- * If tagg is found return the text item, else return NULL.
- * @param tagg required tagg
- * @param newstr new label
- * @param noeditable set editable or not (by default, set editable)
- */
-ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable) {
-	ElementTextItem *eti = taggedText(tagg);
-	if (eti) {
-		eti -> setPlainText(newstr);
-		eti -> setNoEditable(noeditable);
-	}
-	return eti;
-}
-
-/**
- * @brief CustomElement::taggedText
- * return the text field tagged with @tagg or NULL if text field isn't found
- * Some of available taggs :
- * function, tension-protocol, label, comment, location
- * @param tagg
- */
-ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
-	foreach (ElementTextItem *eti, m_texts) {
-		if (eti -> tagg() == tagg) return eti;
-	}
-	return nullptr;
 }

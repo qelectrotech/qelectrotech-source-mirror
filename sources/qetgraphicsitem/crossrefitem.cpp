@@ -19,7 +19,6 @@
 #include "element.h"
 #include "qetapp.h"
 #include "diagramposition.h"
-#include "elementtextitem.h"
 #include "diagram.h"
 #include "qgraphicsitemutility.h"
 #include "assignvariables.h"

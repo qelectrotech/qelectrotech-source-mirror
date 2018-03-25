@@ -18,7 +18,6 @@
 #include "ghostelement.h"
 #include "qet.h"
 #include "terminal.h"
-#include "elementtextitem.h"
 #include "diagramcommands.h"
 
 /**

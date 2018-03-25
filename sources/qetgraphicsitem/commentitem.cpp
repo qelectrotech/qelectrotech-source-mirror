@@ -19,7 +19,6 @@
 #include "element.h"
 #include "qetapp.h"
 #include "diagram.h"
-#include "elementtextitem.h"
 #include "qgraphicsitemutility.h"
 #include <QPainter>
 
@@ -93,14 +92,6 @@ void CommentItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
  * else return false, the element is the parent of this comment item
  */
 bool CommentItem::setTextParent() {
-	if (ElementTextItem *eti = m_element->taggedText("label")) {
-		setParentItem(eti);
-		m_text_parent = true;
-		return true;
-	}
-
-	qDebug() << "Comment item: can't found text tagged 'label' from actual parent element to set has parent, "
-				 "comment will be displayed at bottom of diagram";
 	return false;
 }
 

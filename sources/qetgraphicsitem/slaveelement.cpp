@@ -18,7 +18,6 @@
 #include "slaveelement.h"
 #include "diagramposition.h"
 #include "qetapp.h"
-#include "elementtextitem.h"
 #include "diagram.h"
 #include "dynamicelementtextitem.h"
 
@@ -35,8 +34,6 @@ SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi,
 {
 	m_xref_item = nullptr;
 	m_link_type = Slave;
-	
-	connect(this, SIGNAL(updateLabel()), this, SLOT(updateLabel()));
 }
 
 /**
@@ -60,23 +57,9 @@ void SlaveElement::linkToElement(Element *elmt)
 	{
 		if(!isFree())
 			unlinkAllElements();
-		
-		for(QMetaObject::Connection c : m_connections)
-			this->disconnect(c);
-		m_connections.clear();
 
 		connected_elements << elmt;
 
-		QETProject *project = elmt->diagram()->project();
-		m_connections << connect(elmt,    SIGNAL(xChanged()),                                        this, SLOT(updateLabel()));
-		m_connections << connect(elmt,    SIGNAL(yChanged()),                                        this, SLOT(updateLabel()));
-		m_connections << connect(elmt,    SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel()));
-		m_connections << connect(project, SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)),  this, SLOT(updateLabel()));
-		m_connections << connect(project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),              this, SLOT(updateLabel()));
-		m_connections << connect(project, SIGNAL(XRefPropertiesChanged()),                           this, SLOT(updateLabel()));
-		m_connections << connect(elmt,    SIGNAL(updateLabel()),                                     this, SLOT(updateLabel()));
-
-		updateLabel();
 		elmt -> linkToElement(this);
 		emit linkedElementChanged();
 	}
@@ -109,66 +92,8 @@ void SlaveElement::unlinkElement(Element *elmt)
 	{
 		connected_elements.removeOne(elmt);
 
-		disconnect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
-		disconnect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
-		disconnect(elmt,                 SIGNAL(elementInfoChange(DiagramContext, DiagramContext)),this, SLOT(updateLabel()));
-		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-		disconnect(diagram()->project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
-		disconnect(elmt -> diagram(),    SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateLabel()));
-		disconnect(elmt,                 SIGNAL(updateLabel()),                                    this, SLOT(updateLabel()));
-
-		delete m_xref_item; m_xref_item = nullptr;
-		
-		if (ElementTextItem *eti = this->taggedText("label"))
-			eti->setPlainText("_");
-		
-		updateLabel();
 		elmt -> unlinkElement  (this) ;
 		elmt -> setHighlighted (false);
 		emit linkedElementChanged();
-	}
-}
-
-/**
- * @brief SlaveElement::updateLabel
- * update the label (tagged with label) of this element.
- * If this element is connected to a master,
- * the label show the string tagged by "label" of the master
- * and add a qgraphicstextitem for show the position of the master
- */
-void SlaveElement::updateLabel()
-{
-	QString label;
-	if (ElementTextItem *eti = this->taggedText("label"))
-		label = eti->toPlainText();
-	QString Xreflabel;
-	bool no_editable = false;
-
-	//must be linked to set the label of master
-	if (linkedElements().count())
-	{
-		no_editable = true;
-		Element *elmt = linkedElements().first();
-		label = elmt->elementInformations()["label"].toString();
-		
-		XRefProperties xrp = elmt->diagram()->project()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
-		Xreflabel = xrp.slaveLabel();
-		Xreflabel = autonum::AssignVariables::formulaToLabel(Xreflabel, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-	}
-	else
-		label = autonum::AssignVariables::formulaToLabel(label, m_autoNum_seq, diagram(), this);
-
-	// set the new label
-	ElementTextItem *eti = setTaggedText("label", label, no_editable);
-	if (eti && !isFree())
-	{
-		if (m_xref_item)
-			m_xref_item->setPlainText(Xreflabel);
-		else 
-		{
-			m_xref_item = new QGraphicsTextItem(Xreflabel, eti);
-			m_xref_item->setFont(QETApp::diagramTextsFont(5));
-			m_xref_item->setPos(eti ->  boundingRect().bottomLeft());
-		}
 	}
 }

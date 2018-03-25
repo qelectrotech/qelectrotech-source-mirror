@@ -21,7 +21,6 @@
 #include "independenttextitem.h"
 #include "conductor.h"
 #include "diagramimageitem.h"
-#include "elementtextitem.h"
 #include "qetshapeitem.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
@@ -128,7 +127,6 @@ QList<DiagramTextItem *> DiagramContent::selectedTexts() const
 	for(QGraphicsItem *qgi : m_selected_items)
 	{
 		if (qgi->type() == ConductorTextItem::Type ||
-			qgi->type() == ElementTextItem::Type ||
 			qgi->type() == IndependentTextItem::Type ||
 			qgi->type() == DynamicElementTextItem::Type)
 				selected_texts << static_cast<DiagramTextItem *>(qgi);

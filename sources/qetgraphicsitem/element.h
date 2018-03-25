@@ -24,7 +24,6 @@
 #include "assignvariables.h"
 #include <algorithm>
 
-class ElementTextItem;
 class QETProject;
 class Terminal;
 class Conductor;
@@ -81,10 +80,6 @@ class Element : public QetGraphicsItem
 		virtual QList<Terminal *> terminals() const = 0;
 			/// @return the list of conductors attached to this element
 		virtual QList<Conductor *> conductors() const = 0;
-			/// @return the list of text items attached to this element
-		virtual QList<ElementTextItem *> texts() const = 0;
-			/// @return the text field tagged with @tagg or NULL if text field isn't found
-		virtual ElementTextItem* taggedText(const QString &tagg) const = 0;
 			/// @return the list of lines items in this element
 		virtual QList<QLineF *> lines() const = 0;
 			/// @return the list of rectangles items in this element
@@ -126,12 +121,10 @@ class Element : public QetGraphicsItem
 		QList <QUuid>     tmp_uuids_link;
 		QUuid             uuid_;
 		kind              m_link_type;
-		ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
 
 	signals:
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
-		void updateLabel(); //This signal is emited to update element's label
 		void textAdded(DynamicElementTextItem *deti);
 		void textRemoved(DynamicElementTextItem *deti);
 		void textsGroupAdded(ElementTextItemGroup *group);
@@ -141,7 +134,6 @@ class Element : public QetGraphicsItem
 
 		//METHODS related to information
 	public:
-		void textItemChanged(DiagramTextItem *dti, QString old_str, QString new_str);
 		DiagramContext  elementInformations    ()const              {return m_element_informations;}
 		DiagramContext& rElementInformations   ()                   {return m_element_informations;}
 		virtual void    setElementInformations (DiagramContext dc);
@@ -158,9 +150,6 @@ class Element : public QetGraphicsItem
 		void freezeLabel(bool freeze);
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
-
-	protected:
-		virtual void setUpConnectionForFormula(QString old_formula, QString new_formula);
 
 		//ATTRIBUTES
 	protected:
@@ -224,7 +213,6 @@ class Element : public QetGraphicsItem
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
-		void etiToElementLabels(ElementTextItem*);
 
 	protected:
 		void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event ) override;

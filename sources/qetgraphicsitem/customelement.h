@@ -22,7 +22,6 @@
 #include "elementslocation.h"
 #include <QPicture>
 
-class ElementTextItem;
 class Terminal;
 
 /**
@@ -50,7 +49,6 @@ class CustomElement : public FixedElement
 		QPicture drawing;
 		QPicture low_zoom_drawing;
 		QList<Terminal *> m_terminals;
-		QList<ElementTextItem *> m_texts;
 		QList<DynamicElementTextItem *> m_dynamic_texts;
 		bool forbid_antialiasing;
 
@@ -65,7 +63,6 @@ class CustomElement : public FixedElement
 	public:
 		QList<Terminal *> terminals() const override;
 		QList<Conductor *> conductors() const override;
-		QList<ElementTextItem *> texts() const override;
 		QList<QLineF *> lines() const override;
 		QList<QRectF *> rectangles() const override;
 		QList<QRectF *> circles() const override;
@@ -76,7 +73,6 @@ class CustomElement : public FixedElement
 		QString typeId() const override;
 		ElementsLocation location() const;
 		QString name() const override;
-		ElementTextItem* taggedText(const QString &tagg) const override;
 	
 	protected:
 		virtual bool buildFromXml(const QDomElement &, int * = nullptr);
@@ -95,8 +91,6 @@ class CustomElement : public FixedElement
 		virtual void setQPainterAntiAliasing(QPainter &, bool);
 		virtual bool validOrientationAttribute(const QDomElement &);
 		virtual void setPainterStyle(QDomElement &, QPainter &);
-		ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
-
 };
 
 /**

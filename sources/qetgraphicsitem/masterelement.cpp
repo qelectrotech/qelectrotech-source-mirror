@@ -17,7 +17,6 @@
 */
 #include "masterelement.h"
 #include "crossrefitem.h"
-#include "elementtextitem.h"
 #include "diagram.h"
 #include "dynamicelementtextitem.h"
 #include <QRegularExpression>
@@ -34,9 +33,6 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 	CustomElement(location, qgi, state)
 {
 	m_link_type = Element::Master;
-
-	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
-	connect(this, &Element::updateLabel, [this]() {this->updateLabel(this->elementInformations(), this->elementInformations());});
 }
 
 /**
@@ -114,7 +110,6 @@ void MasterElement::unlinkElement(Element *elmt)
 void MasterElement::initLink(QETProject *project) {
 	//Create the link with other element if needed
 	CustomElement::initLink(project);
-	updateLabel(DiagramContext(), elementInformations());
 }
 
 /**
@@ -128,38 +123,6 @@ QRectF MasterElement::XrefBoundingRect() const
 		return m_Xref_item->boundingRect();
 	else
 		return QRectF();
-}
-
-/**
- * @brief MasterElement::updateLabel
- * update label of this element
- * and the comment item if he's displayed.
- */
-void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info)
-{
-	QString old_formula = old_info["formula"].toString();
-	QString new_formula = new_info["formula"].toString();
-
-	setUpConnectionForFormula(old_formula, new_formula);
-
-	QString label = autonum::AssignVariables::formulaToLabel(new_formula, m_autoNum_seq, diagram(), this);
-
-	if (label.isEmpty())
-	{
-		setTaggedText("label", new_info["label"].toString());
-	}
-	else
-	{
-		bool visible = m_element_informations.contains("label") ? m_element_informations.keyMustShow("label") : true;
-		m_element_informations.addValue("label", label, visible);
-		setTaggedText("label", label);
-	}
-
-	if (ElementTextItem *eti = taggedText("label"))
-	{
-		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
-	}
-
 }
 
 QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)

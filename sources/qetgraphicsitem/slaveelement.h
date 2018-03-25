@@ -25,20 +25,14 @@ class SlaveElement : public CustomElement
 {
 	Q_OBJECT
 	public:
-	explicit SlaveElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
-	~SlaveElement() override;
-	void linkToElement(Element *elmt) override;
-	void unlinkAllElements() override;
-	void unlinkElement(Element *elmt) override;
-
-	signals:
-
-	private slots:
-	void updateLabel();
-
+		explicit SlaveElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		~SlaveElement() override;
+		void linkToElement(Element *elmt) override;
+		void unlinkAllElements() override;
+		void unlinkElement(Element *elmt) override;
+	
 	private:
 		QGraphicsTextItem *m_xref_item;
-		QList<QMetaObject::Connection> m_connections;
 };
 
 #endif // SLAVEELEMENT_H

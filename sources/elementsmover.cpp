@@ -23,7 +23,6 @@
 #include "element.h"
 #include "independenttextitem.h"
 #include "diagramimageitem.h"
-#include "elementtextitem.h"
 #include "conductorautonumerotation.h"
 
 /**

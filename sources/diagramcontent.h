@@ -25,7 +25,6 @@ class Conductor;
 class Element;
 class IndependentTextItem;
 class DiagramImageItem;
-class ElementTextItem;
 class QetShapeItem;
 class DynamicElementTextItem;
 class ElementTextItemGroup;

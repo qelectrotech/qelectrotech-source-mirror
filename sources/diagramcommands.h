@@ -30,7 +30,6 @@
 
 class DiagramTextItem;
 class Element;
-class ElementTextItem;
 class IndependentTextItem;
 class DiagramImageItem;
 class QetGraphicsItem;

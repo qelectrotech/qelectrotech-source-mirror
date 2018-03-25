@@ -19,7 +19,6 @@
 #include "element.h"
 #include "conductortextitem.h"
 #include "independenttextitem.h"
-#include "elementtextitem.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "diagramimageitem.h"
@@ -49,10 +48,6 @@ m_angle(angle)
 					break;
 				case IndependentTextItem::Type:
 					m_text << static_cast<DiagramTextItem *>(item);
-					break;
-				case ElementTextItem::Type:
-					if(item->parentItem() && !item->parentItem()->isSelected())
-						m_text << static_cast<DiagramTextItem *>(item);
 					break;
 				case DynamicElementTextItem::Type:
 					if(item->parentItem() && !item->parentItem()->isSelected())

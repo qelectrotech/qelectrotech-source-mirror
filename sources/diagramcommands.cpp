@@ -20,7 +20,6 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "diagram.h"
-#include "qetgraphicsitem/elementtextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qgimanager.h"
 #include "diagram.h"
@@ -100,23 +99,7 @@ void PasteDiagramCommand::redo()
 		{
 				//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
-			
-				//Reset the text of report element
-			if (e -> linkType() & Element::AllReport)
-			{
-				
-					//Befor commit 3559 there isn't text field tagged label,
-					//so if not found we take the first text field
-				if (ElementTextItem *eti = e->taggedText("label"))
-					eti->setPlainText("/");
-				else if (e->texts().size())
-					e->texts().first()->setPlainText("/");
-				
-				if (ElementTextItem *eti = e->taggedText("function"))
-					eti->setPlainText("_");
-				if (ElementTextItem *eti = e->taggedText("tension-protocol"))
-					eti->setPlainText("_");
-			}
+
 			if (settings.value("diagramcommands/save-label", true).toBool())
 			{
 					//Reset the information about the label, the comment and location
@@ -124,10 +107,6 @@ void PasteDiagramCommand::redo()
 				e -> rElementInformations().addValue("label", "");
 				e -> rElementInformations().addValue("comment", "");
 				e -> rElementInformations().addValue("location", "");
-				
-					//Reset the text field tagged "label
-				if (ElementTextItem *eti = e ->taggedText("label"))
-					eti -> setPlainText("_");
 				
 					//Reset the text of conductors
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move.toList();
@@ -137,11 +116,6 @@ void PasteDiagramCommand::redo()
 					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
 					c -> setProperties(cp);
 				}
-			}
-			else
-			{	
-					//We call update label, notably to setup the connection required by the formula of the element
-				e->updateLabel();
 			}
 		}
 	}

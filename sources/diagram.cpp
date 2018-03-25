@@ -24,7 +24,6 @@
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
-#include "qetgraphicsitem/elementtextitem.h"
 #include "elementsmover.h"
 #include "exportdialog.h"
 #include "qetgraphicsitem/ghostelement.h"
@@ -1228,12 +1227,10 @@ void Diagram::invertSelection() {
  * Update elements and conductors that reference folio field
  * in their labels.
  */
-void Diagram::updateLabels() {
-	foreach (Element *elmt, elements()) {
-		if (elmt->elementInformations()["label"].toString().contains(("%F")))
-			elmt->updateLabel();
-	}
-	foreach (Conductor *cnd, content().conductors()) {
+void Diagram::updateLabels()
+{
+	for (Conductor *cnd : content().conductors())
+	{
 		cnd->refreshText();
 	}
 }
@@ -1783,7 +1780,6 @@ bool Diagram::canRotateSelection() const
 		if (qgi->type() == IndependentTextItem::Type ||
 			qgi->type() == ConductorTextItem::Type ||
 			qgi->type() == DiagramImageItem::Type ||
-			qgi->type() == ElementTextItem::Type ||
 			qgi->type() == Element::Type ||
 			qgi->type() == DynamicElementTextItem::Type)
 			return true;

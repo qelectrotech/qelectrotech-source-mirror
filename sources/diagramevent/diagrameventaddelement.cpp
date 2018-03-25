@@ -190,7 +190,7 @@ bool DiagramEventAddElement::buildElement()
 		//Everything is good
 	return true;
 }
-#include "elementtextitem.h"
+
 /**
  * @brief DiagramEventAddElement::addElement
  * Add an element at the current pos en current rotation,
@@ -243,6 +243,5 @@ void DiagramEventAddElement::addElement()
 
 	m_diagram -> undoStack().push(undo_object);
 	element->setUpFormula();
-	element->updateLabel();
 	element->freezeNewAddedElement();
 }

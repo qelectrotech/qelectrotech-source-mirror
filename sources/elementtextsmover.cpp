@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextsmover.h"
-#include "elementtextitem.h"
 #include "diagram.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "dynamicelementtextitem.h"
@@ -56,7 +55,7 @@ int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_ite
 	
 	for(QGraphicsItem *item : diagram->selectedItems())
 	{
-		 if(item->type() == ElementTextItem::Type || item->type() == DynamicElementTextItem::Type)
+		 if(item->type() == DynamicElementTextItem::Type)
 		 {
 			 m_items_hash.insert(item, item->pos());
 			 m_text_count++;
