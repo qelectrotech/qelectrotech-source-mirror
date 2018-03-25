@@ -90,12 +90,6 @@ class Element : public QetGraphicsItem
 		virtual QList<QVector<QPointF> *> polygons() const = 0;
 			/// @return the list of arcs in this element
 		virtual QList<QVector<qreal> *> arcs() const = 0;
-			/// @return the current number of terminals of this element
-		virtual int terminalsCount() const = 0;
-			/// @return the minimum number of terminals for this element
-		virtual int minTerminalsCount() const = 0;
-			/// @return the maximum number of terminals for this element
-		virtual int maxTerminalsCount() const = 0;
 
 		QList <QPair <Terminal *, Terminal *> > AlignedFreeTerminals () const;
 

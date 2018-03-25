@@ -17,7 +17,7 @@
 */
 #ifndef CUSTOM_ELEMENT_H
 #define CUSTOM_ELEMENT_H
-#include "fixedelement.h"
+#include "element.h"
 #include "nameslist.h"
 #include "elementslocation.h"
 #include <QPicture>
@@ -29,7 +29,7 @@ class Terminal;
 	element, the difference being that the CustomElement reads its description
 	(names, drawing, behavior) from an XML document.
 */
-class CustomElement : public FixedElement
+class CustomElement : public Element
 {
 	Q_OBJECT
 	
@@ -68,7 +68,6 @@ class CustomElement : public FixedElement
 		QList<QRectF *> circles() const override;
 		QList<QVector<QPointF> *> polygons() const override;
 		QList<QVector<qreal> *> arcs() const override;
-		int terminalsCount() const override;
 		void paint(QPainter *, const QStyleOptionGraphicsItem *) override;
 		QString typeId() const override;
 		ElementsLocation location() const;

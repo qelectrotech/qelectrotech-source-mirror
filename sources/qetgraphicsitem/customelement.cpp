@@ -47,7 +47,7 @@
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
 CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	FixedElement(qgi),
+	Element(qgi),
 	location_(location),
 	forbid_antialiasing(false)
 {
@@ -279,13 +279,6 @@ QList<QVector<QPointF> *> CustomElement::polygons() const {
 /// @return the list of arcs
 QList<QVector<qreal> *> CustomElement::arcs() const {
 	return(m_arcs);
-}
-
-/**
-	@return Le nombre de bornes que l'element possede
-*/
-int CustomElement::terminalsCount() const {
-	return(m_terminals.size());
 }
 
 /**
