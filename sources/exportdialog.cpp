@@ -599,7 +599,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize;
 			QStringList lines = textItem->toPlainText().split('\n');
 			foreach (QString line, lines) {
-				qreal angle = 360 - (textItem -> rotationAngle());
+				qreal angle = 360 - (textItem -> rotation());
 				if (line.size() > 0 && line != "_" )
 					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0 );
 
@@ -628,7 +628,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
 		QStringList lines = dti -> toPlainText().split('\n');
 		foreach (QString line, lines) {
-			qreal angle = 360 - (dti -> rotationAngle());
+			qreal angle = 360 - (dti -> rotation());
 			if (line.size() > 0 && line != "_" )
 				Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
 

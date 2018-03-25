@@ -54,9 +54,6 @@ class DiagramTextItem : public QGraphicsTextItem
 		Diagram *diagram() const;
 		virtual void fromXml(const QDomElement &) = 0;
 		virtual QDomElement toXml(QDomDocument &) const;
-		qreal rotationAngle() const;
-		void setRotationAngle(const qreal &);
-		void rotateBy(const qreal &);
 		void edit();
 
 		QPointF mapMovementToScene    (const QPointF &) const;
@@ -100,7 +97,6 @@ class DiagramTextItem : public QGraphicsTextItem
 		QString m_previous_html_text,
 				m_previous_text;
 		
-		qreal m_rotation_angle;
 		QPointF m_mouse_to_origin_movement;
 };
 #endif

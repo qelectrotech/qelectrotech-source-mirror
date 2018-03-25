@@ -26,8 +26,7 @@
  * @param parent : parent item
  */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
-	QGraphicsTextItem(parent),
-	m_rotation_angle(0.0)
+	QGraphicsTextItem(parent)
 { build(); }
 
 /**
@@ -38,8 +37,7 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 	QGraphicsTextItem(text, parent),
 	m_mouse_hover(false),
-	m_previous_html_text(text),
-	m_rotation_angle(0.0)
+	m_previous_html_text(text)
 { build(); }
 
 /**
@@ -74,37 +72,6 @@ Diagram *DiagramTextItem::diagram() const {
  */
 QDomElement DiagramTextItem::toXml(QDomDocument &) const {
 	return QDomElement();
-}
-
-/**
-	@return l'angle de rotation actuel de ce texte
-*/
-qreal DiagramTextItem::rotationAngle() const {
-	return(m_rotation_angle);
-}
-
-/**
-	Permet de tourner le texte a un angle donne de maniere absolue.
-	Un angle de 0 degres correspond a un texte horizontal non retourne.
-	@param rotation Nouvel angle de rotation de ce texte
-	@see applyRotation
-*/
-void DiagramTextItem::setRotationAngle(const qreal &rotation) {
-	qreal applied_rotation = QET::correctAngle(rotation);
-	applyRotation(applied_rotation - m_rotation_angle);
-	m_rotation_angle = applied_rotation;
-}
-
-/**
-	Permet de tourner le texte de maniere relative.
-	L'angle added_rotation est ajoute a l'orientation actuelle du texte.
-	@param added_rotation Angle a ajouter a la rotation actuelle
-	@see applyRotation
-*/
-void DiagramTextItem::rotateBy(const qreal &added_rotation) {
-	qreal applied_added_rotation = QET::correctAngle(added_rotation);
-	m_rotation_angle = QET::correctAngle(m_rotation_angle + applied_added_rotation);
-	applyRotation(applied_added_rotation);
 }
 
 /**

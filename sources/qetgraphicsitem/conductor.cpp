@@ -1278,8 +1278,8 @@ void Conductor::calculateTextItemPosition() {
 		QPointF text_pos = posForText(rotation);
 
 		if (!m_text_item -> wasRotateByUser()) {
-			rotation == Qt::Vertical ? m_text_item -> setRotationAngle(m_properties.verti_rotate_text):
-									   m_text_item -> setRotationAngle(m_properties.horiz_rotate_text);
+			rotation == Qt::Vertical ? m_text_item -> setRotation(m_properties.verti_rotate_text):
+									   m_text_item -> setRotation(m_properties.horiz_rotate_text);
 		}
 
 		//Adjust the position of text if his rotation

@@ -24,6 +24,7 @@
 #include "diagramimageitem.h"
 #include "diagram.h"
 #include "conductor.h"
+#include "qet.h"
 
 #include <QGraphicsItem>
 
@@ -87,12 +88,12 @@ void RotateSelectionCommand::undo()
 				ConductorTextItem *cti = static_cast<ConductorTextItem *>(text.data());
 				cti->forceRotateByUser(m_rotate_by_user.value(text.data()));
 				if(cti->wasRotateByUser())
-					cti->rotateBy(-m_angle);
+					cti->setRotation(cti->rotation() - m_angle);
 				else
 					cti->parentConductor()->calculateTextItemPosition();
 			}
 			else
-				text.data()->rotateBy(-m_angle);
+				text.data()->setRotation(text.data()->rotation() - m_angle);
 		}
 	}
 	for(QPointer<DiagramImageItem> image : m_image)
@@ -123,7 +124,7 @@ void RotateSelectionCommand::redo()
 				m_rotate_by_user.insert(text.data(), cti->wasRotateByUser());
 				cti->forceRotateByUser(true);
 			}
-			text.data()->rotateBy(m_angle);
+			text.data()->setRotation(text.data()->rotation() + m_angle);
 		}
 	}
 	for(QPointer<DiagramImageItem> image : m_image)

@@ -49,7 +49,7 @@ IndependentTextItem::~IndependentTextItem() {
 void IndependentTextItem::fromXml(const QDomElement &e) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setHtml(e.attribute("text"));
-	setRotationAngle(e.attribute("rotation").toDouble());
+	setRotation(e.attribute("rotation").toDouble());
 }
 
 /**
