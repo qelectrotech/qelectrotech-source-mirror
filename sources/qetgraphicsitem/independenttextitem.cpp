@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
+#include "qet.h"
 #include <QDomElement>
 
 /**
@@ -60,8 +61,8 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const {
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());
-	if (rotationAngle()) {
-		result.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	if (rotation()) {
+		result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	}
 	return(result);
 }
