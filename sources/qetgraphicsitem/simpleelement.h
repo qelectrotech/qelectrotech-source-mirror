@@ -20,7 +20,6 @@
 
 #include "customelement.h"
 
-class CommentItem;
 class QETProject;
 
 /**
@@ -36,10 +35,6 @@ class SimpleElement : public CustomElement {
 		~SimpleElement() override;
 
 		void initLink(QETProject *project) override;
-
-	private:
-		CommentItem *m_comment_item;
-		CommentItem *m_location_item;
 };
 
 #endif // SIMPLEELEMENT_H

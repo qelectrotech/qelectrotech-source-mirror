@@ -20,7 +20,6 @@
 
 #include "customelement.h"
 
-class CommentItem;
 class QETProject;
 
 class TerminalElement : public CustomElement
@@ -30,10 +29,6 @@ class TerminalElement : public CustomElement
 		TerminalElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
 		~TerminalElement() override;
 		void initLink(QETProject *project) override;
-
-	private:
-		CommentItem *m_comment_item;
-		CommentItem *m_location_item;
 };
 
 #endif // TERMINALELEMENT_H

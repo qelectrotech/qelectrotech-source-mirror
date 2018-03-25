@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalelement.h"
-#include "commentitem.h"
 
 /**
  * @brief TerminalElement::TerminalElement
@@ -27,16 +26,10 @@
  * @param state int used to know if the creation of element have error
  */
 TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state),
-	m_comment_item (nullptr),
-	m_location_item (nullptr)
-{
-	m_link_type = Terminale;
-}
+	CustomElement(location, qgi, state)
+{m_link_type = Terminale;}
 
-TerminalElement::~TerminalElement() {
-if (m_comment_item) delete m_comment_item;
-}
+TerminalElement::~TerminalElement() {}
 
 /**
  * @brief TerminalElement::initLink

@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "simpleelement.h"
-#include "commentitem.h"
 #include "diagram.h"
 
 /**
@@ -27,9 +26,7 @@
  * @param state
  */
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state),
-	m_comment_item (nullptr),
-	m_location_item (nullptr)
+	CustomElement(location, qgi, state)
 {
 	m_link_type = Simple;
 }
@@ -37,9 +34,7 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 /**
  * @brief SimpleElement::~SimpleElement
  */
-SimpleElement::~SimpleElement() {
-	if (m_comment_item) delete m_comment_item;
-}
+SimpleElement::~SimpleElement() {}
 
 /**
  * @brief SimpleElement::initLink
