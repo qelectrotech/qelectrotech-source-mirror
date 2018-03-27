@@ -73,6 +73,14 @@ Element::Element(QGraphicsItem *parent) :
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
+	
+	connect(this, &Element::rotationChanged, [this]() {
+		for(QGraphicsItem *qgi : childItems())
+		{
+			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
+				t->updateConductor();
+		}
+	});
 }
 
 /**
@@ -219,23 +227,6 @@ void Element::deselect() {
 QPixmap Element::pixmap() {
 	if (preview.isNull()) updatePixmap(); // on genere la pixmap si ce n'est deja fait
 	return(preview);
-}
-
-/**
- * @brief Element::rotateBy
- * this methode is redefined for handle child item
- * @param angle
- */
-void Element::rotateBy(const qreal &angle) {
-	qreal applied_angle = QET::correctAngle(angle);
-	applyRotation(applied_angle + rotation());
-
-	//update the path of conductor
-	foreach(QGraphicsItem *qgi, childItems()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
-			p -> updateConductor();
-		}
-	}
 }
 
 /*** Methodes protegees ***/
@@ -443,9 +434,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
 	if (handle_inputs_rotation) {
-		rotateBy(90*read_ori);
+		setRotation(rotation() + (90*read_ori));
 	} else {
-		applyRotation(90*read_ori);
+		setRotation(90*read_ori);
 	}
 	
 		//Befor load the dynamic text field,

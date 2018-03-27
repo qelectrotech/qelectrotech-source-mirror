@@ -147,7 +147,7 @@ bool DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
 {
 	if (m_element && event->key() == Qt::Key_Space)
 	{
-		m_element->rotateBy(90);
+		m_element->setRotation(m_element->rotation() + 90);
 		return true;
 	}
 

@@ -74,7 +74,7 @@ bool DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
     if (m_image && event -> button() == Qt::RightButton)
     {
-            m_image -> rotateBy(90);
+			m_image->setRotation(m_image->rotation() + 90);
             return true;
     }
 

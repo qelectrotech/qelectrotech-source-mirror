@@ -142,7 +142,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	setPixmap(pixmap);
 
 	setScale(e.attribute("size").toDouble());
-	applyRotation(e.attribute("rotation").toDouble());
+	setRotation(e.attribute("rotation").toDouble());
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
 	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	is_movable_ = (e.attribute("is_movable").toInt());
@@ -159,7 +159,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
 	//write some attribute
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
-	result.setAttribute("rotation", QString("%1").arg(rotation()));
+	result.setAttribute("rotation", QString("%1").arg(QET::correctAngle(rotation())));
 	result.setAttribute("size", QString("%1").arg(scale()));
 	result.setAttribute("is_movable", bool(is_movable_));
 

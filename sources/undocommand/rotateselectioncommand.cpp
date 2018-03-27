@@ -78,7 +78,7 @@ void RotateSelectionCommand::undo()
 	
 	for(QPointer<Element> elmt : m_element)
 		if(elmt)
-			elmt.data()->rotateBy(-m_angle);
+			elmt.data()->setRotation(elmt.data()->rotation() - m_angle);
 	for(QPointer<DiagramTextItem> text : m_text)
 	{
 		if(text)
@@ -98,7 +98,7 @@ void RotateSelectionCommand::undo()
 	}
 	for(QPointer<DiagramImageItem> image : m_image)
 		if(image)
-			image.data()->rotateBy(-m_angle);
+			image.data()->setRotation(image.data()->rotation() - m_angle);
 	for(QPointer<ElementTextItemGroup> group : m_group)
 		if(group)
 			group.data()->setRotation(group.data()->rotation() - m_angle);
@@ -113,7 +113,7 @@ void RotateSelectionCommand::redo()
 	
 	for(QPointer<Element> elmt : m_element)
 		if(elmt)
-			elmt.data()->rotateBy(m_angle);
+			elmt.data()->setRotation(elmt.data()->rotation() + m_angle);
 	for(QPointer<DiagramTextItem> text : m_text)
 	{
 		if(text)
@@ -129,7 +129,7 @@ void RotateSelectionCommand::redo()
 	}
 	for(QPointer<DiagramImageItem> image : m_image)
 		if(image)
-			image.data()->rotateBy(m_angle);
+			image.data()->setRotation(image.data()->rotation() + m_angle);
 	for(QPointer<ElementTextItemGroup> group : m_group)
 		if(group)
 			group.data()->setRotation(group.data()->rotation() + m_angle);

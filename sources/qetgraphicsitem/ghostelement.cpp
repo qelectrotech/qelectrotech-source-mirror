@@ -82,9 +82,9 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr,
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
 	if (handle_inputs_rotation) {
-		rotateBy(90*read_ori);
+		setRotation(rotation() + (90*read_ori));
 	} else {
-		applyRotation(90*read_ori);
+		setRotation(90*read_ori);
 	}
 	return(true);
 }

@@ -65,26 +65,6 @@ void QetGraphicsItem::setPos(qreal x, qreal y) {
 }
 
 /**
-	Permet de tourner l'item de maniere relative.
-	L'angle added_rotation est ajoute a l'orientation actuelle du image.
-	@param added_rotation Angle a ajouter a la rotation actuelle
-	@see applyRotation
-*/
-void QetGraphicsItem::rotateBy(const qreal &added_rotation) {
-	qreal applied_added_rotation = QET::correctAngle(added_rotation + rotation());
-	applyRotation(applied_added_rotation);
-}
-
-/**
-	Effectue la rotation de l'item en lui même
-	Cette methode peut toutefois etre redefinie dans des classes filles
-	@param angle Angle de la rotation a effectuer
-*/
-void QetGraphicsItem::applyRotation(const qreal &angle) {
-	setRotation(QET::correctAngle(angle));
-}
-
-/**
  * @brief QetGraphicsItem::mousePressEvent
  *handle the mouse click
  * @param e

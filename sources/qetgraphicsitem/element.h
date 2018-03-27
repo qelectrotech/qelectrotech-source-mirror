@@ -176,7 +176,6 @@ class Element : public QetGraphicsItem
         void select();
         void deselect();
         
-        void rotateBy(const qreal &) override;
         void editProperty() override;
         
             // methods related to XML import/export
