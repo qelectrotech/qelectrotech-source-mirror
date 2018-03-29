@@ -354,7 +354,25 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 */
 void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties options) {
 	//qDebug() << "Demande d'impression de " << diagrams.count() << "schemas.";
-	
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+    #ifdef Q_OS_WIN
+        #ifdef QT_DEBUG
+            qDebug() << "--";
+            qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << printer_->resolution();
+            qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
+        #endif
+
+        QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
+        qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
+        printer_->setResolution(dotsPerInch);
+
+        #ifdef QT_DEBUG
+            qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
+            qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << printer_->resolution();
+            qDebug() << "--";
+        #endif
+    #endif
+#endif
 	// QPainter utiliser pour effectuer le rendu
 	QPainter qp(printer_);
 	
