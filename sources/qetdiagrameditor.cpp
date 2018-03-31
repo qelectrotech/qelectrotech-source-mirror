@@ -314,16 +314,16 @@ void QETDiagramEditor::setUpActions()
 	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
 	save_file          = m_file_actions_group.addAction( QET::Icons::DocumentSave,    tr("&Enregistrer")					  );
 	save_file_as       = m_file_actions_group.addAction( QET::Icons::DocumentSaveAs,  tr("Enregistrer sous")				  );
-	close_file         = m_file_actions_group.addAction( QET::Icons::ProjectClose,   tr("&Fermer")							  );
+	m_close_file         = m_file_actions_group.addAction( QET::Icons::ProjectClose,   tr("&Fermer")							  );
 
 	new_file   -> setShortcut( QKeySequence::New   );
 	open_file  -> setShortcut( QKeySequence::Open  );
-	close_file -> setShortcut( QKeySequence::Close );
+	m_close_file -> setShortcut( QKeySequence::Close );
 	save_file  -> setShortcut( QKeySequence::Save  );
 
 	new_file         -> setStatusTip( tr("Crée un nouveau projet", "status bar tip")								 );
 	open_file        -> setStatusTip( tr("Ouvre un projet existant", "status bar tip")								 );
-	close_file       -> setStatusTip( tr("Ferme le projet courant", "status bar tip")								 );
+	m_close_file       -> setStatusTip( tr("Ferme le projet courant", "status bar tip")								 );
 	save_file        -> setStatusTip( tr("Enregistre le projet courant et tous ses folios", "status bar tip")		 );
 	save_file_as     -> setStatusTip( tr("Enregistre le projet courant avec un autre nom de fichier", "status bar tip") );
 
@@ -331,7 +331,7 @@ void QETDiagramEditor::setUpActions()
 	connect(save_file,        SIGNAL( triggered() ), this, SLOT( save()				   ) );
 	connect(new_file,         SIGNAL( triggered() ), this, SLOT( newProject()		   ) );
 	connect(open_file,        SIGNAL( triggered() ), this, SLOT( openProject()		   ) );
-	connect(close_file,       SIGNAL( triggered() ), this, SLOT( closeCurrentProject() ) );
+	connect(m_close_file,       SIGNAL( triggered() ), this, SLOT( closeCurrentProject() ) );
 
 		//Row and Column actions
 	QAction *add_column    = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne") );
@@ -677,23 +677,12 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 /**
  * @brief QETDiagramEditor::event
  * Reimplemented to :
- * -avoid conflic with shortcut "Ctrl+W" (QKeySequence::Close)
  * -Load elements collection when WindowActivate.
  * @param e
  * @return 
  */
 bool QETDiagramEditor::event(QEvent *e)
 {
-	if (e -> type() == QEvent::ShortcutOverride)
-	{
-		QKeyEvent *shortcut_event = static_cast<QKeyEvent *>(e);
-		if (shortcut_event && shortcut_event -> matches(QKeySequence::Close))
-		{
-			close_file -> trigger();
-			e -> accept();
-			return(true);
-		}
-	}
 	if (m_first_show && e->type() == QEvent::WindowActivate)
 	{
 		m_first_show = false;
@@ -1337,7 +1326,7 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
 
-	close_file       -> setEnabled(opened_project);
+	m_close_file       -> setEnabled(opened_project);
 	save_file        -> setEnabled(opened_project);
 	save_file_as     -> setEnabled(opened_project);
 	prj_edit_prop    -> setEnabled(opened_project);
@@ -1565,6 +1554,15 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	QMdiSubWindow *sub_window = workspace.addSubWindow(project_view);
 	sub_window -> setWindowIcon(project_view -> windowIcon());
 	sub_window -> systemMenu() -> clear();
+	
+		//By defaut QMdiSubWindow have a QAction "close" with shortcut QKeySequence::Close
+		//But the QAction m_close_file of this class have the same shortcut too.
+		//We remove the shortcut of the QAction of QMdiSubWindow for avoid conflic
+	for(QAction *act : sub_window->actions())
+	{
+		if(act->shortcut() == QKeySequence::Close)
+			act->setShortcut(QKeySequence());
+	}
 
 		//Display the new window
 	if (maximise) project_view -> showMaximized();
@@ -1652,7 +1650,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	foreach(QAction *a, windows_menu -> actions()) windows_menu -> removeAction(a);
 	
 	// actions de fermeture
-	windows_menu -> addAction(close_file);
+	windows_menu -> addAction(m_close_file);
 	//windows_menu -> addAction(closeAllAct);
 	
 	// actions de reorganisation des fenetres

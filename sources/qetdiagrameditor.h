@@ -213,7 +213,7 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *m_find_element;					///< Find the selected element in the panel
 
 		QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
-		QAction *close_file;			   ///< Close current project file
+		QAction *m_close_file;			   ///< Close current project file
 		QAction *save_file;				   ///< Save current project
 		QAction *save_file_as;			   ///< Save current project as a specific file
 
