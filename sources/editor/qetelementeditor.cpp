@@ -415,7 +415,8 @@ void QETElementEditor::setupMenus() {
  * @brief QETElementEditor::contextMenuEvent
  * @param event
  */
-void QETElementEditor::contextMenu(QPoint p) {
+void QETElementEditor::contextMenu(QPoint p)
+{
 		QMenu menu(this);
 		menu.addAction(undo);
 		menu.addAction(redo);
@@ -432,6 +433,14 @@ void QETElementEditor::contextMenu(QPoint p) {
 		menu.addMenu(paste_from_menu);
 		menu.addSeparator();
 		menu.addActions(m_depth_ag -> actions());
+		
+			//Remove from the context menu the actions which are disabled.
+		const QList<QAction *>actions = menu.actions();
+		for(QAction *action : actions)
+		{
+			if(!action->isEnabled())
+				menu.removeAction(action);
+		}
 		menu.exec(p);
  }
 

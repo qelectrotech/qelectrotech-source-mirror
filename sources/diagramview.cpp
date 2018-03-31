@@ -1144,8 +1144,15 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			m_context_menu -> addSeparator();
 			m_context_menu -> addActions(qde -> m_selection_actions_group.actions());
 		}
-
-		// affiche le menu contextuel
+		
+			//Remove from the context menu the actions which are disabled.
+		const QList<QAction *> actions = m_context_menu->actions();
+		for(QAction *action : actions)
+		{
+			if(!action->isEnabled())
+				m_context_menu->removeAction(action);
+		}
+		
 		m_context_menu -> popup(e -> globalPos());
 	}
 	e -> accept();
