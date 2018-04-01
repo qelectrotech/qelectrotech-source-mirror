@@ -147,6 +147,7 @@ QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
 	addAuthor(translators, "Alfredo Carreto",                           "electronicos_mx@yahoo.com.mx",   tr("Traduction en espagnol"));
+	addAuthor(translators, "Edgar Robles Najar",                        "tgo.edrobles@gmail.com",         tr("Traduction en espagnol"));
 	addAuthor(translators, "Yuriy Litkevich",                           "yuriy@qelectrotech.org",         tr("Traduction en russe"));
 	addAuthor(translators, "Evgeny Kozlov",                             "Evgeny.Kozlov.mailbox@gmail.com",tr("Traduction en russe"));
 	addAuthor(translators, "José Carlos Martins",                       "jose@qelectrotech.org",          tr("Traduction en portugais"));
@@ -162,6 +163,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Nikos Papadopoylos",                        "231036448@freemail.gr",          tr("Traduction en grec"));
 	addAuthor(translators, "Yannis Gyftomitros",                        "yang@hellug.gr",                 tr("Traduction en grec"));
 	addAuthor(translators, "Paul Van Deelen",                           "shooter@home.nl",                tr("Traduction en néerlandais"));
+	addAuthor(translators, "Dik Leenheer",                              "dleenheer@suzerein.nl",          tr("Traduction en néerlandais"));
 	addAuthor(translators, "Ronny Desmedt",                             "r.desmedt@live.be",              tr("Traduction en flamand"));
 	addAuthor(translators, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
 	addAuthor(translators, "Hilario Silveira",                          "hilario@soliton.com.br",         tr("Traduction en brézilien"));
