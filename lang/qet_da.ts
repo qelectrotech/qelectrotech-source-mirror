@@ -530,13 +530,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1507"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Ændr leder egenskab</translation>
+        <translation>Ændre leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1512"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Ændr egenskab for flere ledere</translation>
+        <translation>Ændre egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -555,13 +555,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="72"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Ændr leder egenskab</translation>
+        <translation>Ændre leder egenskab</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Ændr egenskab for flere ledere</translation>
+        <translation>Ændre egenskab for flere ledere</translation>
     </message>
 </context>
 <context>
@@ -937,7 +937,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/diagramview.cpp" line="958"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Ændr leder egenskab</translation>
+        <translation>Ændre leder egenskab</translation>
     </message>
 </context>
 <context>
@@ -1028,17 +1028,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="129"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation>Ændr symbol tekst</translation>
+        <translation>Ændre symbol tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="172"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation>Ændr symbol tekst</translation>
+        <translation>Ændre symbol tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="182"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation>Ændr %1 symbol tekste</translation>
+        <translation>Ændre %1 symbol tekste</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
@@ -1123,17 +1123,17 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredde</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation>Ændr symboltekst størrelse</translation>
+        <translation>Ændre symboltekst størrelse</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="466"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation>Ændr symboltekst farve</translation>
+        <translation>Ændre symboltekst farve</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
@@ -1143,7 +1143,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre symboltekst bredde</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
@@ -1194,7 +1194,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="631"/>
         <source>Maintenir en bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Placere nederst på siden</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="910"/>
@@ -1284,7 +1284,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredde</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="182"/>
@@ -1310,12 +1310,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="191"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt tekst</translation>
+        <translation>Ændre tekstfelt tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="198"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt størrelse</translation>
+        <translation>Ændre tekstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="205"/>
@@ -1325,27 +1325,27 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="210"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt farve</translation>
+        <translation>Ændre tekstfelt farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="223"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt ramme</translation>
+        <translation>Ændre tekstfelt ramme</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="235"/>
         <source>Modifier la largeur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre tekst bredde</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="249"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre tekst information</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="277"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre tekstkilde tekst</translation>
     </message>
 </context>
 <context>
@@ -1387,7 +1387,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/qetgraphicsitem/element.cpp" line="631"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="681"/>
         <source>Label + commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket + kommentar</translation>
     </message>
 </context>
 <context>
@@ -1711,7 +1711,8 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Rotation : %1°
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Rotation: %1°
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
@@ -1750,7 +1751,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="215"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Flyt til oprindelig</translation>
+        <translation>Flyt til oprindelig</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="660"/>
@@ -1839,7 +1840,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementscategoryeditor.cpp" line="74"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Ændr rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
+        <translation>Ændre rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
@@ -2829,7 +2830,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation>Ændr billede størrelse</translation>
+        <translation>Ændre billede størrelse</translation>
     </message>
 </context>
 <context>
@@ -3000,7 +3001,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="223"/>
         <location filename="../sources/editor/lineeditor.cpp" line="239"/>
         <source>Modifier une ligne</source>
-        <translation>Ændr streg</translation>
+        <translation>Ændre streg</translation>
     </message>
 </context>
 <context>
@@ -3507,7 +3508,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="336"/>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="343"/>
         <source>Modifier un arc</source>
-        <translation>Ændr cirkelbue</translation>
+        <translation>Ændre cirkelbue</translation>
     </message>
 </context>
 <context>
@@ -3529,7 +3530,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
-        <translation>Ændr rektangel</translation>
+        <translation>Ændre rektangel</translation>
     </message>
 </context>
 <context>
@@ -3537,7 +3538,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="253"/>
         <source>Modifier une ligne</source>
-        <translation>Ændr streg</translation>
+        <translation>Ændre streg</translation>
     </message>
 </context>
 <context>
@@ -3545,7 +3546,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="357"/>
         <source>Modifier un polygone</source>
-        <translation>Ændr flerkant</translation>
+        <translation>Ændre flerkant</translation>
     </message>
 </context>
 <context>
@@ -3553,7 +3554,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="373"/>
         <source>Modifier un rectangle</source>
-        <translation>Ændr rektangel</translation>
+        <translation>Ændre rektangel</translation>
     </message>
 </context>
 <context>
@@ -3566,7 +3567,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
         <source>Modifier un champ texte</source>
-        <translation>Ændr tekstfelt</translation>
+        <translation>Ændre tekstfelt</translation>
     </message>
 </context>
 <context>
@@ -3595,7 +3596,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>Modifier un polygone</source>
-        <translation>Ændr flerkant</translation>
+        <translation>Ændre flerkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
@@ -3661,7 +3662,7 @@ Spænding/protokol: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Ændr egenskab for flere leder</translation>
+        <translation>Ændre egenskab for flere leder</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="330"/>
@@ -6491,13 +6492,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/diagramcommands.cpp" line="393"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation>ændr tekst</translation>
+        <translation>ændre tekst</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="437"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation>ændr leder</translation>
+        <translation>ændre leder</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="494"/>
@@ -6509,13 +6510,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/diagramcommands.cpp" line="542"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>ændr titelblok</translation>
+        <translation>ændre titelblok</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="575"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation>ændr ark størrelse</translation>
+        <translation>ændre ark størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6586,7 +6587,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="602"/>
         <source>Modifier les propriétés</source>
-        <translation>Ændr egenskab</translation>
+        <translation>Ændre egenskab</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -6983,7 +6984,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation>Ændr symbol informationer: %1</translation>
+        <translation>Ændre symbol informationer: %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
@@ -6995,13 +6996,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/conductorautonumerotation.cpp" line="80"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Ændr egenskab for leder</translation>
+        <translation>Ændre egenskab for leder</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="86"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Ændr egenskab for flere leder</translation>
+        <translation>Ændre egenskab for flere leder</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="139"/>
@@ -7196,7 +7197,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Reference Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Producent varenummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7297,7 +7298,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="292"/>
         <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
-        <translation>Ændr justering af en tekstgruppe</translation>
+        <translation>Ændre justering af en tekstgruppe</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
@@ -7399,7 +7400,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="567"/>
         <source>Modifier %1</source>
-        <translation>Ændr %1</translation>
+        <translation>Ændre %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="700"/>
@@ -7442,7 +7443,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
         <source>Modifier un rectangle</source>
-        <translation>Ændr rektangel</translation>
+        <translation>Ændre rektangel</translation>
     </message>
 </context>
 <context>
@@ -7817,12 +7818,12 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="123"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation>Ændr streg i form</translation>
+        <translation>Ændre streg i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="138"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation>Ændr fyld i form</translation>
+        <translation>Ændre fyld i form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="149"/>
@@ -8184,7 +8185,7 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation>Ændr retning på klemme</translation>
+        <translation>Ændre retning på klemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
@@ -8244,22 +8245,22 @@ De øvrige felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt</translation>
+        <translation>Ændre tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt størrelse</translation>
+        <translation>Ændre tekstfelt størrelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt farve</translation>
+        <translation>Ændre tekstfelt farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation>Ændr tekstfelt vinkel</translation>
+        <translation>Ændre tekstfelt vinkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
@@ -8875,13 +8876,13 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation>Ændr kolonne størrelse</translation>
+        <translation>Ændre kolonne størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Ændr linje størrelse</translation>
+        <translation>Ændre linje størrelse</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
@@ -8899,7 +8900,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation>Ændr forhåndsvisningsbredde</translation>
+        <translation>Ændre forhåndsvisningsbredde</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
