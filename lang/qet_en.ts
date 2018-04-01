@@ -1123,7 +1123,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Width</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
@@ -1143,7 +1143,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the width of an element text</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
@@ -1194,7 +1194,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="631"/>
         <source>Maintenir en bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Keep at the bottom of the page</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="910"/>
@@ -1284,7 +1284,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Width</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="182"/>
@@ -1335,17 +1335,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="235"/>
         <source>Modifier la largeur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the width of a text</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="249"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit text information</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="277"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change text source, text</translation>
     </message>
 </context>
 <context>
@@ -1387,7 +1387,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/element.cpp" line="631"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="681"/>
         <source>Label + commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Label + comment</translation>
     </message>
 </context>
 <context>
@@ -1711,7 +1711,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Rotation : %1°
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Rotation : %1°
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
@@ -1750,7 +1751,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="215"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Move a primitive</translation>
+        <translation>Move a primitive</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="660"/>
@@ -7143,7 +7144,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Reference Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Reference Manufacturer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
